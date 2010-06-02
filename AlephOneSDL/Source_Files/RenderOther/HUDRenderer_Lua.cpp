@@ -26,7 +26,9 @@ HUD_RENDERER_LUA.CPP
 #include "Image_Blitter.h"
 #include "Shape_Blitter.h"
 
+#ifdef HAVE_LUA
 #include "lua_hud_script.h"
+#endif
 #include "shell.h"
 #include "screen.h"
 
@@ -57,7 +59,9 @@ void Lua_DrawHUD(short time_elapsed)
 {
 	HUD_Lua.update_motion_sensor(time_elapsed);
 	HUD_Lua.start_draw();
+#ifdef HAVE_LUA
 	L_Call_HUDDraw();
+#endif
 	HUD_Lua.end_draw();
 }
 

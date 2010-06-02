@@ -110,7 +110,9 @@ Jan 12, 2003 (Loren Petrich)
 #include "items.h"
 #include "media.h"
 #include "Packing.h"
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 
 #ifdef env68k
@@ -554,7 +556,9 @@ void move_monsters(
 									monster_died(monster_index);
 									teleport_object_out(monster->object_index);
 									remove_map_object(monster->object_index);
+#ifdef HAVE_LUA
 									L_Invalidate_Monster(monster_index);
+#endif
 									MARK_SLOT_AS_FREE(monster);
 								}
 								break;
@@ -1459,7 +1463,9 @@ void damage_monster(
 
 			// LP change: pegging to maximum value
 			monster->vitality = MIN(int32(monster->vitality) - int32(delta_vitality), int32(INT16_MAX));
+#ifdef HAVE_LUA
 			L_Call_Monster_Damaged(target_index, aggressor_index, damage->type,  delta_vitality, projectile_index);
+#endif
 			
 			if (monster->vitality > 0)
 			{
@@ -1514,7 +1520,9 @@ void damage_monster(
 				if (aggressor_index!=NONE)
 					if (MONSTER_IS_PLAYER(aggressor_monster))
 						aggressor_player_index = monster_index_to_player_index(aggressor_index);
+#ifdef HAVE_LUA
 				L_Call_Monster_Killed (target_index, aggressor_player_index, projectile_index);
+#endif
 			}
 		}
 		
@@ -2611,7 +2619,9 @@ static void kill_monster(
 	if (monster->flags&_monster_was_demoted) monster->type+= 1;
 	object_was_just_destroyed(_object_is_monster, monster->type);
 
+#ifdef HAVE_LUA
 	L_Invalidate_Monster(monster_index);
+#endif
 	MARK_SLOT_AS_FREE(monster);
 }
 		

@@ -218,7 +218,11 @@ void TopLevelLogger::flush()
 static void
 InitializeLogging() {
     assert(sOutputFile == NULL);
-#if defined(__unix__) || defined(__NetBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__))
+#ifdef __IPHONE__
+  const char *home = getDataDir();
+  if ( home )
+  {
+#elif defined(__unix__) || defined(__NetBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__))
     const char *home = getenv("HOME");
     if (home == NULL) {
         struct passwd *pw = getpwuid (getuid ());

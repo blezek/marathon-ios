@@ -97,7 +97,9 @@ Oct 13, 2000 (Loren Petrich)
 #include "dynamic_limits.h"
 #include "Packing.h"
 
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 /*
 //translate_projectile() must set _projectile_hit_landscape bit
@@ -244,7 +246,9 @@ void detonate_projectile(
 	damage_monsters_in_radius(NONE, owner_index, owner_type, origin, polygon_index,
 		definition->area_of_effect, damage, NONE);
 	if (definition->detonation_effect!=NONE) new_effect(origin, polygon_index, definition->detonation_effect, 0);
+#ifdef HAVE_LUA
 	L_Call_Projectile_Detonated(type, owner_index, polygon_index, *origin);
+#endif
 }
 
 short new_projectile(
@@ -487,7 +491,9 @@ void move_projectiles(
 								if (flags&_projectile_hit_landscape && !(flags&_projectile_hit_media)) detonation_effect= NONE;
 								
 								if (detonation_effect!=NONE) new_effect(&new_location, new_polygon_index, detonation_effect, object->facing);
+#ifdef HAVE_LUA
                 L_Call_Projectile_Detonated(projectile->type, projectile->owner_index, new_polygon_index, new_location);
+#endif
 
 								if ((definition->flags&_persistent_and_virulent) && !destroy_persistent_projectile && monster_obstruction_index!=NONE)
 								{
@@ -544,7 +550,9 @@ void remove_projectile(
 	short projectile_index)
 {
 	struct projectile_data *projectile= get_projectile_data(projectile_index);
+#ifdef HAVE_LUA
 	L_Invalidate_Projectile(projectile_index);
+#endif
 	remove_map_object(projectile->object_index);
 	MARK_SLOT_AS_FREE(projectile);
 }

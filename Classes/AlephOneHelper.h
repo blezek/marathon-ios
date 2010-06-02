@@ -6,4 +6,4 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-char *getDataDir();
+const char *getDataDir();

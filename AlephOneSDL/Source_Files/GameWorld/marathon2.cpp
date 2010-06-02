@@ -102,8 +102,10 @@ Feb 8, 2003 (Woody Zenfell):
 #include "OGL_Setup.h"
 
 // MH additions:
+#ifdef HAVE_LUA
 #include "lua_script.h"
 #include "lua_hud_script.h"
+#endif
 #include <string>
 
 // ZZZ additions:
@@ -387,7 +389,9 @@ enum {
 static int
 update_world_elements_one_tick()
 {
-        L_Call_Idle();
+#ifdef HAVE_LUA
+  L_Call_Idle();
+#endif
 
         update_lights();
         update_medias();
@@ -451,7 +455,9 @@ update_world()
                 // Note that GameQueue should be stocked evenly (i.e. every player has the same # of flags)
                 if(GameQueue->countActionFlags(0) == 0)
                 {
-                        canUpdate = overlay_queue_with_queue_into_queue(GetRealActionQueues(), GetLuaActionQueues(), GameQueue);
+#ifdef HAVE_LUA
+                  canUpdate = overlay_queue_with_queue_into_queue(GetRealActionQueues(), GetLuaActionQueues(), GameQueue);
+#endif
                 }
 
 		if(!sPredictionWanted)
@@ -487,7 +493,9 @@ update_world()
                 theElapsedTime++;
 
                 
-                L_Call_PostIdle();
+#ifdef HAVE_LUA
+          L_Call_PostIdle();
+#endif
                 if(theUpdateResult != kUpdateNormalCompletion)
                 {
                         canUpdate = false;
@@ -567,11 +575,13 @@ void leaving_map(
 	mark_all_monster_collections(false);
 	mark_player_collections(false);
 	mark_map_collections(false);
+#ifdef HAVE_LUA
 	MarkLuaCollections(false);
     MarkLuaHUDCollections(false);
 	L_Call_Cleanup ();
 	//Close and unload the Lua state
 	CloseLuaScript();
+#endif
 #if !defined(DISABLE_NETWORKING)
 	NetSetChatCallbacks(NULL);
 #endif // !defined(DISABLE_NETWORKING)
@@ -613,9 +623,11 @@ bool entering_map(bool restoring_saved)
 	mark_map_collections(true);
 
 	// ghs: load the Lua script here to see if it needs any additional collections
+#ifdef HAVE_LUA
 	RunLuaScript();
 	MarkLuaCollections(true);
     MarkLuaHUDCollections(true);
+#endif
 
 #ifdef SDL
 	load_collections(true, get_screen_mode()->acceleration != _no_acceleration);
@@ -643,7 +655,9 @@ bool entering_map(bool restoring_saved)
 //	sync_heartbeat_count();
 //	set_keyboard_controller_status(true);
 
+#ifdef HAVE_LUA
 	L_Call_Init(restoring_saved);
+#endif
 
 #if !defined(DISABLE_NETWORKING)
 	NetSetChatCallbacks(InGameChatCallbacks::instance());

@@ -17,14 +17,14 @@
 
 
 /* Define if OpenGL support is enabled. */
-#define HAVE_OPENGL 1
+// #define HAVE_OPENGL 0
 
 /* Define if SDL_image support is enabled. */
 #define HAVE_SDL_IMAGE 1
 
 /* Define if SDL_net support is enabled. */
-#define HAVE_SDL_NET 1
-
+// DJB
+#define HAVE_SDL_NET 0
 
 /* Leave that blank line there!!  Autoheader needs it.
    If you're adding to this file, keep in mind:
@@ -36,7 +36,7 @@
 
 /* Define if you have the <SDL_net.h> header file. */
 // DJB
-#define HAVE_SDL_NET_H 0
+#define HAVE_SDL_NET_H 0
 
 /* Define if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1

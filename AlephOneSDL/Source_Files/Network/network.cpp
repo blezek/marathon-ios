@@ -157,7 +157,9 @@ clearly this is all broken until we have packet types
 #include "RingGameProtocol.h"
 #include "StarGameProtocol.h"
 
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #include "libnat.h"
 
@@ -256,7 +258,9 @@ struct ignore_player {
 struct ignore_lua
 {
 	void operator()(const std::string&) const {
+#ifdef HAVE_LUA
 		ToggleLuaMute();
+#endif
 	}
 };
 
@@ -1230,7 +1234,9 @@ bool NetEnter(void)
 	clear_player_mic_mutes();
 	IgnoreParser.register_command("mic", ignore_mic());
 
+#ifdef HAVE_LUA
 	ResetLuaMute();
+#endi
 	IgnoreParser.register_command("lua", ignore_lua());
 
 	Console::instance()->register_command("ignore", IgnoreParser);

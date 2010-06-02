@@ -23,12 +23,11 @@
 
 	This contains the definitions of all the OpenGL models and skins
 */
-
+#ifdef HAVE_OPENGL
 #include "cseries.h"
 #include "OGL_Model_Def.h"
 #include "OGL_Setup.h"
 
-#ifdef HAVE_OPENGL
 
 #include <cmath>
 

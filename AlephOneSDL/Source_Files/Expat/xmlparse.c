@@ -74,6 +74,8 @@ typedef char ICHAR;
 #define ROUND_UP(n, sz) (((n) + ((sz) - 1)) & ~((sz) - 1))
 
 /* Handle the case where memmove() doesn't exist. */
+//DJB
+#define HAVE_MEMMOVE
 #ifndef HAVE_MEMMOVE
 #ifdef HAVE_BCOPY
 #define memmove(d,s,l) bcopy((s),(d),(l))

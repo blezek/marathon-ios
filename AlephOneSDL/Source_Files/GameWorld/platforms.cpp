@@ -78,7 +78,9 @@ Jun 30, 2002 (tiennou):
 #include "DamageParser.h"
 
 //MH: Lua scripting
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #include <string.h>
 
@@ -722,7 +724,9 @@ bool set_platform_state(
 				/* assume the correct state, and correctly update all switches referencing this platform */
 				SET_PLATFORM_IS_ACTIVE(platform, state);
                                 //MH: Lua script hook
-                                L_Call_Platform_Activated(platform->polygon_index);
+#ifdef HAVE_LUA
+        L_Call_Platform_Activated(platform->polygon_index);
+#endif
 				assume_correct_switch_position(_panel_is_platform_switch, platform->polygon_index, state);
 				
 				new_state= state;

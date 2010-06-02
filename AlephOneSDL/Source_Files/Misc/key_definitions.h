@@ -103,7 +103,7 @@ static struct key_definition standard_key_definitions[]=
 	/* shift, control and command modifiers */
 	{SDLK_LSHIFT, _sidestep_dont_turn},
 	{SDLK_LCTRL, _run_dont_walk},
-	{SDLK_LMETA, _look_dont_turn},
+	{SDLK_LCTRL, _look_dont_turn},
 	
 	/* tab for action */
 	{SDLK_TAB, _action_trigger_state},
@@ -191,7 +191,7 @@ static struct key_definition left_handed_key_definitions[]=
 	/* shift, control and command modifiers */
 	{SDLK_LSHIFT, _sidestep_dont_turn},
 	{SDLK_LCTRL, _run_dont_walk},
-	{SDLK_LMETA, _look_dont_turn},
+	{SDLK_LCTRL, _look_dont_turn},
 	
 	/* tab for action */
 	{SDLK_TAB, _action_trigger_state},
@@ -279,7 +279,7 @@ static struct key_definition powerbook_key_definitions[]=
 	/* shift, control and command modifiers */
 	{SDLK_LSHIFT, _sidestep_dont_turn},
 	{SDLK_LCTRL, _run_dont_walk},
-	{SDLK_LMETA, _look_dont_turn},
+	{SDLK_LCTRL, _look_dont_turn},
 	
 	/* tab for action */
 	{SDLK_TAB, _action_trigger_state},

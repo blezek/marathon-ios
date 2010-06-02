@@ -62,6 +62,7 @@ Aug 21, 2001 (Loren Petrich):
 	Adding support for 3D-model inhabitant objects
 */
 
+#ifdef HAVE_OPENGL
 
 #include "XML_ElementParser.h"
 #include "OGL_Subst_Texture_Def.h"
@@ -401,4 +402,8 @@ OGL_FogData *OGL_GetFogData(int Type);
 // XML support:
 XML_ElementParser *OpenGL_GetParser();
 
+#endif
+#endif
+#ifndef OGL_NUMBER_OF_TEXTURE_TYPES
+#define OGL_NUMBER_OF_TEXTURE_TYPES 0
 #endif

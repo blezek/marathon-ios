@@ -100,9 +100,11 @@ Jan 17, 2001 (Loren Petrich):
 
 #include "map.h"
 
+#ifdef HAVE_OPENGL
 // LP addition: OpenGL support
 #include "OGL_Render.h"
 #include "OGL_LoadScreen.h"
+#endif
 
 // LP addition: infravision XML setup needs colors
 #include "ColorParser.h"
@@ -298,7 +300,8 @@ SDL_Surface *get_shape_surface(int shape, int inCollection, byte** outPointerToP
 		    // (since in the future it may change) or should store
 		    // the pixel format it used somewhere so we're sure we've
 		    // got the right one
-		    if (SDL_GetVideoSurface()->flags & SDL_OPENGLBLIT) {
+                  // DJB if (SDL_GetVideoSurface()->flags & SDL_OPENGLBLIT) {
+                    if (0) {
 		      for(int i = 0; i < 256; i++) {
 			colors[i].r = RED16(shading_tables[i]) << 3;
 			colors[i].g = GREEN16(shading_tables[i]) << 3;
@@ -1422,7 +1425,9 @@ void unload_all_collections(
 		{
 			unload_collection(header);
 		}
+#ifdef HAVE_OPENGL
 		OGL_UnloadModelsImages(collection_index);
+#endif
 	}
 }
 
@@ -1696,7 +1701,9 @@ void load_collections(
 			{
 				unload_collection(header);
 			}
+#ifdef HAVE_OPENGL
 			OGL_UnloadModelsImages(collection_index);
+#endif
 			SW_Texture_Extras::instance()->Unload(collection_index);
 		}
 		else

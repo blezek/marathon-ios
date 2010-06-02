@@ -139,7 +139,9 @@ extern TP2PerfGlobals perf_globals;
 #include "shell.h"
 #include "preferences.h"
 #include "FileHandler.h"
+#ifdef HAVE_LUA
 #include "lua_script.h" // PostIdle
+#endif
 #include "interface_menus.h"
 #include "XML_LevelScript.h"
 #include "Music.h"
@@ -164,7 +166,9 @@ const short max_handled_recording= aleph_recording_version;
 
 // LP addition: getting OpenGL rendering stuff
 #include "render.h"
+#ifdef HAVE_OPENGL
 #include "OGL_Render.h"
+#endif
 #include "alephversion.h"
 
 // To tell it to stop playing,
@@ -180,8 +184,9 @@ const short max_handled_recording= aleph_recording_version;
 #include "game_wad.h"
 
 #include "motion_sensor.h" // for reset_motion_sensor()
-
+#ifdef HAVE_LUA
 #include "lua_hud_script.h"
+#endif
 
 using alephone::Screen;
 
@@ -844,9 +849,10 @@ bool load_and_start_game(FileSpecifier& File)
 	{
 		interface_fade_out(MAIN_MENU_BASE, true);
 	}
-
+#ifdef HAVE_LUA
 	LoadHUDLua();
 	RunLuaHUDScript();
+#endif
 
 	success= load_game_from_file(File);
 
@@ -989,8 +995,10 @@ void pause_game(
 	void)
 {
 	stop_fade();
+#ifdef HAVE_OPENGL
 	if (!OGL_IsActive() || !(TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_Fader)))
 		set_fade_effect(NONE);
+#endif
 	darken_world_window();
 	set_keyboard_controller_status(false);
 #ifdef SDL
@@ -1004,8 +1012,10 @@ void resume_game(
 #ifdef SDL
 	hide_cursor();
 #endif
+#ifdef HAVE_OPENGL
 	if (!OGL_IsActive() || !(TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_Fader)))
 		SetFadeEffectDelay(TICKS_PER_SECOND/2);
+#endif
 	validate_world_window();
 	set_keyboard_controller_status(true);
 }
@@ -1349,9 +1359,11 @@ void do_menu_item_command(
 						if(really_wants_to_quit)
 						{
 							// Rhys Hill fix for crash when quitting OpenGL
+#ifdef HAVE_OPENGL
 							if (!OGL_IsActive())
 								render_screen(0); /* Get rid of hole.. */
 /* If you want to quit on command-q while in the game.. */
+#endif
 #if 0
 							if(menu_item==iQuitGame)
 							{
@@ -1924,9 +1936,10 @@ static bool begin_game(
 			show_movie(entry.level_number);
 			try_and_display_chapter_screen(CHAPTER_SCREEN_BASE + entry.level_number, false, false);
 		}
-
+#ifdef HAVE_LUA
 		LoadHUDLua();
 		RunLuaHUDScript();
+#endif
 		
 		/* Begin the game! */
 		success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
@@ -1958,15 +1971,19 @@ static void start_game(
 	reset_screen();
 	
 	enter_screen();
+#ifdef HAVE_LUA
 	if (!changing_level)
 		L_Call_HUDInit();
+#endif
 	
+#ifdef HAVE_OPENGL
 	// LP: this is in case we are starting underneath a liquid
 	if (!OGL_IsActive() || !(TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_Fader)))
 	{
 		set_fade_effect(NONE);
 		SetFadeEffectDelay(TICKS_PER_SECOND/2);
 	}
+#endif
 
 	// Screen should already be black! 
 	validate_world_window();
@@ -2035,8 +2052,10 @@ static void finish_game(
 
 	stop_fade();
 	set_fade_effect(NONE);
+#ifdef HAVE_OPENGL
 	L_Call_HUDCleanup();
 	exit_screen();
+#endif
 
 	/* Stop the replay */
 	switch(game_state.user)
@@ -2066,7 +2085,9 @@ static void finish_game(
 	show_cursor();
 
 	leaving_map();
+#ifdef HAVE_LUA
 	CloseLuaHUDScript();
+#endif
 	
 	// LP: stop playing the background music if it was present
 	Music::instance()->StopLevelMusic();

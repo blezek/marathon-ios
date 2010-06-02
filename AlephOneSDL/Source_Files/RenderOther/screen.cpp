@@ -52,7 +52,7 @@
 #include "preferences.h"
 #include "computer_interface.h"
 #include "Crosshairs.h"
-#include "OGL_Render.h"
+// #include "OGL_Render.h"
 #include "ViewControl.h"
 #include "screen_drawing.h"
 #include "mouse.h"
@@ -62,9 +62,11 @@
 
 #include "sdl_fonts.h"
 
+#ifdef HAVE_LUA
 #include "lua_script.h"
 #include "lua_hud_script.h"
 #include "HUDRenderer_Lua.h"
+#endif
 
 #include <algorithm>
 
@@ -289,7 +291,9 @@ bool Screen::hud()
 
 bool Screen::lua_hud()
 {
+#ifdef HAVE_LUA
 	return screen_mode.hud && LuaHUDRunning();
+#endif
 }
 
 bool Screen::openGL()
@@ -537,7 +541,9 @@ void enter_screen(void)
 	scr->lua_term_rect.w = 640;
 	scr->lua_term_rect.h = 320;
 
+#ifdef HAVE_LUA
 	L_Call_HUDResize();
+#endif
 }
 
 
@@ -676,7 +682,9 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 		{
 			prev_width = width;
 			prev_height = height;
+#ifdef HAVE_LUA
 			L_Call_HUDResize();
+#endif
 	  }
 	}
 }
@@ -871,9 +879,10 @@ void render_screen(short ticks_elapsed)
 	world_view->origin_polygon_index = current_player->camera_polygon_index;
 
 	// Script-based camera control
+#ifdef HAVE_LUA
 	if (!UseLuaCameras())
 		world_view->show_weapons_in_hand = !ChaseCam_GetPosition(world_view->origin, world_view->origin_polygon_index, world_view->yaw, world_view->pitch);
-
+#endif
 #ifdef HAVE_OPENGL
 	// Is map to be drawn with OpenGL?
 	if (OGL_IsActive() && world_view->overhead_map_active)
@@ -962,7 +971,9 @@ void render_screen(short ticks_elapsed)
 		// Update HUD
 		if (Screen::instance()->lua_hud())
 		{
+#ifdef HAVE_LUA
 			Lua_DrawHUD(ticks_elapsed);
+#endif
 		}
 		else if (HUD_RenderRequest) {
 			SDL_Rect src_rect = { 0, 320, 640, 160 };

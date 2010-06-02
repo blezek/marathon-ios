@@ -5,7 +5,7 @@
  *
  *  http://www.gnu.org/licenses/gpl.html
  */
-
+#ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
 
 #include <iostream>
@@ -64,3 +64,4 @@ void Rasterizer_Shader_Class::SetView(view_data& view) {
 
 	glTranslatef(-view.origin.x, -view.origin.y, -view.origin.z);
 }
+#endif

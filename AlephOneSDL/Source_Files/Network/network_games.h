@@ -24,7 +24,7 @@
 	Wednesday, July 19, 1995 11:03:09 AM- rdm created.
 
 */
-
+#include "player.h"
 struct player_ranking_data {
 	short player_index;
 	long ranking;

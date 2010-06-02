@@ -50,7 +50,9 @@ using namespace std;
 #include "Plugins.h"
 #include "Random.h"
 #include "images.h"
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #include "OGL_LoadScreen.h"
 
@@ -337,7 +339,9 @@ void RunScriptChunks()
 		if (offset + length > luas_chunk.size())
 			break;
 
+#ifdef HAVE_LUA
 		LoadLuaScript(reinterpret_cast<char *>(&luas_chunk[offset]), length, _embedded_lua_script);
+#endif
 		offset += length;
 	}
 }

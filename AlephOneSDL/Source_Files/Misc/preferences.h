@@ -54,7 +54,9 @@ May 22, 2003 (Woody Zenfell):
 #include "interface.h"
 #include "ChaseCam.h"
 #include "Crosshairs.h"
+#ifdef HAVE_OPENGL
 #include "OGL_Setup.h"
+#endif
 #include "shell.h"
 #include "SoundManager.h"
 
@@ -71,8 +73,10 @@ enum {
 struct graphics_preferences_data
 {
 	struct screen_mode_data screen_mode;
+#ifdef HAVE_OPENGL
 	// LP change: added OpenGL support
 	OGL_ConfigureData OGL_Configure;
+#endif
 
 	bool double_corpse_limit;
 

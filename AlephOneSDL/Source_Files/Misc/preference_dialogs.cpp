@@ -162,7 +162,7 @@ void OpenGLDialog::OpenGLPrefsByRunning ()
 	m_okWidget->set_callback (boost::bind (&OpenGLDialog::Stop, this, true));
 	
 	BinderSet binders;
-	
+#ifdef HAVE_OPENGL
 	BitPref zBufferPref (graphics_preferences->OGL_Configure.Flags, OGL_Flag_ZBuffer);
 	binders.insert<bool> (m_zBufferWidget, &zBufferPref);
 	BitPref fogPref (graphics_preferences->OGL_Configure.Flags, OGL_Flag_Fog);
@@ -234,7 +234,7 @@ void OpenGLDialog::OpenGLPrefsByRunning ()
 	Int16Pref weaponDepthPref(graphics_preferences->OGL_Configure.TxtrConfigList[3].ColorFormat);
 	binders.insert<int> (m_textureDepthWidget[3], &weaponDepthPref);
 	
-	
+#endif
 	// Set initial values from prefs
 	binders.migrate_all_second_to_first ();
 	
@@ -353,7 +353,7 @@ public:
 	
 		w_select_popup *texture_quality_wa[OGL_NUMBER_OF_TEXTURE_TYPES];
 		for (int i = 0; i < OGL_NUMBER_OF_TEXTURE_TYPES; i++) texture_quality_wa[i] = NULL;
-		
+#ifdef HAVE_OPENGL
 		texture_quality_wa[OGL_Txtr_Wall] =  new w_select_popup ();
 		general_table->dual_add(texture_quality_wa[OGL_Txtr_Wall]->label("Walls"), m_dialog);
 		general_table->dual_add(texture_quality_wa[OGL_Txtr_Wall], m_dialog);
@@ -369,7 +369,7 @@ public:
 		texture_quality_wa[OGL_Txtr_WeaponsInHand] = new w_select_popup ();
 		general_table->dual_add(texture_quality_wa[OGL_Txtr_WeaponsInHand]->label("Weapons in Hand"), m_dialog);
 		general_table->dual_add(texture_quality_wa[OGL_Txtr_WeaponsInHand], m_dialog);
-
+#endif
 		w_select_popup *model_quality_w = new w_select_popup();
 		general_table->dual_add(model_quality_w->label("3D Model Skins"), m_dialog);
 		general_table->dual_add(model_quality_w, m_dialog);
@@ -420,10 +420,12 @@ public:
 		}
 
 		w_label *texture_labels[OGL_NUMBER_OF_TEXTURE_TYPES];
+#ifdef HAVE_OPENGL
 		texture_labels[OGL_Txtr_Wall] = new w_label("Walls");
 		texture_labels[OGL_Txtr_Landscape] = new w_label("Landscapes");
 		texture_labels[OGL_Txtr_Inhabitant] = new w_label("Sprites");
 		texture_labels[OGL_Txtr_WeaponsInHand] = new w_label("Weapons in Hand / HUD");
+#endif
 
 		advanced_placer->dual_add(new w_static_text("Built-in Texture Size and Depth"), m_dialog);
 		advanced_placer->dual_add(new w_static_text("(reduce for machines with low VRAM)"), m_dialog);

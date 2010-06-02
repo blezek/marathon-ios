@@ -59,7 +59,7 @@ May 22, 2003 (Woody Zenfell):
 #include "shell.h" /* For the screen_mode structure */
 #include "interface.h"
 #include "SoundManager.h"
-#include "ISp_Support.h" /* BT: Added April 16, 2000 for Input Sprocket Support */
+// #include "ISp_Support.h" /* BT: Added April 16, 2000 for Input Sprocket Support */
 
 #include "preferences.h"
 #include "preferences_private.h" // ZZZ: added 23 Oct 2001 for sharing of dialog item ID's with SDL.
@@ -1516,7 +1516,7 @@ static SDLKey default_keys[NUM_KEYS] = {
 	SDLK_d, SDLK_c, SDLK_v,						// vertical looking
 	SDLK_KP7, SDLK_KP9,							// weapon cycling
 	SDLK_SPACE, SDLK_LALT,						// weapon trigger
-	SDLK_LSHIFT, SDLK_LCTRL, SDLK_LMETA,		// modifiers
+	SDLK_LSHIFT, SDLK_LCTRL, // SDLK_LMETA,		// modifiers
 	SDLK_TAB,									// action trigger
 	SDLK_m,										// map
     SDLK_BACKQUOTE                              // microphone (ZZZ)
@@ -2162,6 +2162,7 @@ void write_preferences(
 	fprintf(F,"  scmode_bitdepth=\"%hd\"\n",graphics_preferences->screen_mode.bit_depth);
 	fprintf(F,"  scmode_gamma=\"%hd\"\n",graphics_preferences->screen_mode.gamma_level);
     fprintf(F,"  scmode_fix_h_not_v=\"%s\"\n", BoolString(graphics_preferences->screen_mode.fix_h_not_v));
+#ifdef HAVE_OPENGL
 	fprintf(F,"  ogl_flags=\"%hu\"\n",graphics_preferences->OGL_Configure.Flags);
 	fprintf(F,"  software_alpha_blending=\"%i\"\n", graphics_preferences->software_alpha_blending);
         fprintf(F,"  anisotropy_level=\"%f\"\n", graphics_preferences->OGL_Configure.AnisotropyLevel);
@@ -2169,6 +2170,7 @@ void write_preferences(
 	fprintf(F,"  geforce_fix=\"%s\"\n", BoolString(graphics_preferences->OGL_Configure.GeForceFix));
 	fprintf(F,"  wait_for_vsync=\"%s\"\n", BoolString(graphics_preferences->OGL_Configure.WaitForVSync));
 	fprintf(F,"  use_srgb=\"%s\"\n", BoolString(graphics_preferences->OGL_Configure.Use_sRGB));
+#endif
 	fprintf(F,"  double_corpse_limit=\"%s\"\n", BoolString(graphics_preferences->double_corpse_limit));
 	fprintf(F,"  hog_the_cpu=\"%s\"\n", BoolString(graphics_preferences->hog_the_cpu));
 #ifdef __WIN32__
@@ -2176,14 +2178,21 @@ void write_preferences(
 #endif
 	fprintf(F,">\n");
 	fprintf(F,"  <void>\n");
+#ifdef HAVE_OPENGL
 	WriteColor(F,"    ",graphics_preferences->OGL_Configure.VoidColor,"\n");
+#endif
 	fprintf(F,"  </void>\n");
 	fprintf(F,"  <landscapes>\n");
 	for (int i=0; i<4; i++)
 		for (int j=0; j<2; j++)
+    {
+#ifdef HAVE_OPENGL
 			WriteColorWithIndex(F,"    ",(2*i+j),
 				graphics_preferences->OGL_Configure.LscpColors[i][j],"\n");
+#endif
+    }
 	fprintf(F,"  </landscapes>\n");
+#ifdef HAVE_OPENGL
 	for (int k=0; k<OGL_NUMBER_OF_TEXTURE_TYPES; k++)
 	{
 		OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[k];
@@ -2193,6 +2202,7 @@ void write_preferences(
 	OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.ModelConfig;
 	fprintf(F,"  <texture index=\"%hd\" near_filter=\"%hd\" far_filter=\"%hd\" resolution=\"%hd\" color_format=\"%d\" max_size=\"%d\"/>\n",
 		OGL_NUMBER_OF_TEXTURE_TYPES, TxtrConfig.NearFilter, TxtrConfig.FarFilter, TxtrConfig.Resolution, TxtrConfig.ColorFormat, TxtrConfig.MaxSize);
+#endif
 	fprintf(F,"</graphics>\n\n");
 	
 	fprintf(F,"<player\n");
@@ -2387,8 +2397,9 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 		preferences->screen_mode.bit_depth = 32;
 	
 	preferences->screen_mode.draw_every_other_line= false;
-	
+#ifdef HAVE_OPENGL
 	OGL_SetDefaults(preferences->OGL_Configure);
+#endif
 
 	preferences->double_corpse_limit= false;
 	preferences->hog_the_cpu = false;
@@ -2732,7 +2743,9 @@ void load_environment_from_preferences(
 // LP addition: get these from the preferences data
 ChaseCamData& GetChaseCamData() {return player_preferences->ChaseCam;}
 CrosshairData& GetCrosshairData() {return player_preferences->Crosshairs;}
+#ifdef HAVE_OPENGL
 OGL_ConfigureData& Get_OGL_ConfigureData() {return graphics_preferences->OGL_Configure;}
+#endif
 
 
 // ZZZ: override player-behavior modifiers
@@ -2868,8 +2881,9 @@ public:
 
 bool XML_VoidPrefsParser::Start()
 {
+#ifdef HAVE_OPENGL
 	CopyColor(Color,graphics_preferences->OGL_Configure.VoidColor);
-	
+#endif
 	Color_SetArray(&Color);
 	
 	return true;
@@ -2877,8 +2891,9 @@ bool XML_VoidPrefsParser::Start()
 
 bool XML_VoidPrefsParser::End()
 {
+#ifdef HAVE_OPENGL
 	CopyColor(graphics_preferences->OGL_Configure.VoidColor,Color);
-
+#endif
 	return true;
 }
 
@@ -2898,10 +2913,11 @@ public:
 
 bool XML_LandscapePrefsParser::Start()
 {
+#ifdef HAVE_OPENGL
 	for (int i=0; i<4; i++)
 		for (int j=0; j<2; j++)
 			CopyColor(Colors[2*i+j],graphics_preferences->OGL_Configure.LscpColors[i][j]);
-	
+#endif	
 	Color_SetArray(Colors,8);
 	
 	return true;
@@ -2909,10 +2925,11 @@ bool XML_LandscapePrefsParser::Start()
 
 bool XML_LandscapePrefsParser::End()
 {
+#ifdef HAVE_OPENGL      
 	for (int i=0; i<4; i++)
 		for (int j=0; j<2; j++)
 			CopyColor(graphics_preferences->OGL_Configure.LscpColors[i][j],Colors[2*i+j]);
-
+#endif
 	return true;
 }
 
@@ -3015,9 +3032,8 @@ bool XML_TexturePrefsParser::AttributesDone()
 		AttribsMissing();
 		return false;
 	}
-
+#ifdef HAVE_OPENGL
 	OGL_Texture_Configure& Config = (Index == OGL_NUMBER_OF_TEXTURE_TYPES) ?  graphics_preferences->OGL_Configure.ModelConfig : graphics_preferences->OGL_Configure.TxtrConfigList[Index];
-
 	if (ValuesPresent[0])
 		Config.NearFilter = Values[0];
 	
@@ -3032,7 +3048,7 @@ bool XML_TexturePrefsParser::AttributesDone()
 
 	if (ValuesPresent[4])
 		Config.MaxSize = Values[4];
-	
+#endif
 	return true;
 }
 
@@ -3170,7 +3186,9 @@ bool XML_GraphicsPrefsParser::HandleAttribute(const char *Tag, const char *Value
 	}
 	else if (StringsEqual(Tag,"ogl_flags"))
 	{
+#ifdef HAVE_OPENGL
 		return ReadUInt16Value(Value,graphics_preferences->OGL_Configure.Flags);
+#endif
 	}
         else if (StringsEqual(Tag,"experimental_rendering"))
         {
@@ -3181,6 +3199,7 @@ bool XML_GraphicsPrefsParser::HandleAttribute(const char *Tag, const char *Value
 	{
 		return ReadInt16Value(Value, graphics_preferences->software_alpha_blending);
 	}
+#ifdef HAVE_OPENGL
         else if (StringsEqual(Tag,"anisotropy_level"))
 	  {
 	    return ReadFloatValue(Value, graphics_preferences->OGL_Configure.AnisotropyLevel);
@@ -3201,6 +3220,7 @@ bool XML_GraphicsPrefsParser::HandleAttribute(const char *Tag, const char *Value
 	{
 		return ReadBooleanValue(Value, graphics_preferences->OGL_Configure.Use_sRGB);
 	}
+#endif
 	else if (StringsEqual(Tag,"double_corpse_limit"))
 	  {
 	    return ReadBooleanValue(Value,graphics_preferences->double_corpse_limit);

@@ -89,7 +89,7 @@ Feb 20, 2002 (Woody Zenfell):
 #include "key_definitions.h"
 #include "tags.h"
 #include "vbl.h"
-#include "ISp_Support.h" /* BT: Added April 16, 2000 for Input Sprocket Support */
+// #include "ISp_Support.h" /* BT: Added April 16, 2000 for Input Sprocket Support */
 #include "FileHandler.h"
 #include "Packing.h"
 #include "ActionQueues.h"
@@ -1315,11 +1315,11 @@ uint32 parse_keymap(void)
     {
       Uint8 *key_map;
       if (Console::instance()->input_active()) {
-	static Uint8 chat_input_mode_keymap[SDLK_LAST];
+	static Uint8 chat_input_mode_keymap[323];
 	memset(&chat_input_mode_keymap, 0, sizeof(chat_input_mode_keymap));
 	key_map = chat_input_mode_keymap;
       } else {
-	key_map = SDL_GetKeyState(NULL);
+	// DJB key_map = SDL_GetKeyState(NULL);
       }
       
       // ZZZ: let mouse code simulate keypresses

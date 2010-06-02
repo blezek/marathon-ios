@@ -169,7 +169,9 @@ May 22, 2003 (Woody Zenfell):
 #include "ActionQueues.h"
 
 // jkvw addition:
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #include <string.h>
 #include <stdio.h>
@@ -815,7 +817,9 @@ void damage_player(
 			{
 				// LP change: pegging to maximum value
 				player->suit_oxygen= int16(MIN(int32(player->suit_oxygen)-int32(damage_amount),int32(INT16_MAX)));
+#ifdef HAVE_LUA
 				L_Call_Player_Damaged(player_index, aggressor_player_index, aggressor_index, damage->type, damage_amount, projectile_index);
+#endif
 				if (player->suit_oxygen < 0) player->suit_oxygen= 0;
 				if (player_index==current_player_index) mark_oxygen_display_as_dirty();
 				break;
@@ -824,7 +828,9 @@ void damage_player(
 			{
 				// LP change: pegging to maximum value
 				player->suit_energy= int16(MIN(int32(player->suit_energy)-int32(damage_amount),int32(INT16_MAX)));
+#ifdef HAVE_LUA
 				L_Call_Player_Damaged(player_index, aggressor_player_index, aggressor_index, damage->type, damage_amount, projectile_index);			
+#endif
 				/* damage the player, recording the kill if the aggressor was another player and we died */
 				if (player->suit_energy<0)
 				{
@@ -868,7 +874,9 @@ void damage_player(
 								player->monster_damage_taken.kills+= 1;
 								team_monster_damage_taken[player->team].kills += 1;
 							}
+#ifdef HAVE_LUA
 							L_Call_Player_Killed (player_index, aggressor_player_index, action, projectile_index);
+#endif
 						}
 						
 						player->suit_oxygen= 0;
@@ -1611,7 +1619,9 @@ static void revive_player(
 	// LP addition: set field-of-view approrpriately
 	if (player_index == current_player_index) ResetFieldOfView();
         
+#ifdef HAVE_LUA
 	L_Call_Player_Revived (player_index);
+#endif
 }
 
 /* The player just changed map levels, recreate him, and all of the objects */

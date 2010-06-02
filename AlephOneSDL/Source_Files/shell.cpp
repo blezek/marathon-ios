@@ -48,7 +48,9 @@
 #include "items.h"
 #include "interface_menus.h"
 #include "weapons.h"
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #include "Crosshairs.h"
 #include "OGL_Render.h"
@@ -892,7 +894,9 @@ static void handle_game_key(const SDL_Event &event)
 			else if (Console::instance()->use_lua_console())
 			{
 				PlayInterfaceButtonSound(Sound_ButtonSuccess());
+#ifdef HAVE_LUA
 				Console::instance()->activate_input(ExecuteLuaString, ">");
+#endif
 			}
 			else
 			{

@@ -20,11 +20,11 @@
 	OpenGL load screens
 	written by Gregory Smith, 2006
 */
+#ifdef HAVE_OPENGL
 
 #include "OGL_LoadScreen.h"
 #include "screen.h"
 
-#ifdef HAVE_OPENGL
 
 #include "OGL_Setup.h" // for SglColor*
 

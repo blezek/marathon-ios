@@ -23,6 +23,7 @@
 
 	This contains code for doing fader stuff.	
 */
+#ifdef HAVE_OPENGL
 
 #include "cseries.h"
 #include "fades.h"
@@ -32,7 +33,6 @@
 #include "OGL_Setup.h"
 #include "OGL_Faders.h"
 
-#ifdef HAVE_OPENGL
 
 // The randomizer for the flat-static color
 static GM_Random FlatStaticRandom;

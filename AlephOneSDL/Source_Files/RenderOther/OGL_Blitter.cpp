@@ -20,11 +20,12 @@
 	OpenGL blitter
 	written by Gregory Smith, 2006
 */
+#ifdef HAVE_OPENGL
+
 
 #include "OGL_Blitter.h"
 #include "OGL_Setup.h"
 
-#ifdef HAVE_OPENGL
 
 const int OGL_Blitter::tile_size;
 set<OGL_Blitter*> OGL_Blitter::m_blitter_registry;

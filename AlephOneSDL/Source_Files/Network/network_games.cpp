@@ -29,7 +29,9 @@ Jul 1, 2000 (Loren Petrich):
 #include "cseries.h"
 #include "map.h"
 #include "items.h"
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 #include "player.h"
 #include "monsters.h"
 #include "network.h"

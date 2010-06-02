@@ -45,7 +45,9 @@
 #include "fades.h"
 #include "ViewControl.h"
 #include "weapons.h"
+#ifdef HAVE_OPENGL
 #include "OGL_Setup.h"
+#endif
 #include "shell.h"
 #include "SoundManager.h"
 #include "vbl.h"
@@ -93,7 +95,9 @@ void SetupParseTree()
 	MarathonParser.AddChild(View_GetParser());
 	MarathonParser.AddChild(Landscapes_GetParser());
 	MarathonParser.AddChild(Weapons_GetParser());
+#ifdef HAVE_OPENGL
 	MarathonParser.AddChild(OpenGL_GetParser());
+#endif
 	MarathonParser.AddChild(Cheats_GetParser());
 	MarathonParser.AddChild(TextureLoading_GetParser());
 	MarathonParser.AddChild(Keyboard_GetParser());

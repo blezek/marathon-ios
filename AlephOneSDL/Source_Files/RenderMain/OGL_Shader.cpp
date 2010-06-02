@@ -19,6 +19,9 @@
  
  Implements OpenGL vertex/fragment shader class
  */
+
+#ifdef HAVE_OPENGL
+
 #include <iostream>
 
 // gl_ClipVertex workaround
@@ -656,4 +659,4 @@ void initDefaultPrograms() {
 		}
 	}
 }
-    
+#endif

@@ -5,6 +5,7 @@
  *
  *  http://www.gnu.org/licenses/gpl.html
  */
+#ifdef HAVE_OPENGL
 
 #include "OGL_Headers.h"
 
@@ -1155,4 +1156,4 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object, bool
 	TMgr.RestoreTextureMatrix();
 	glDisable(GL_CLIP_PLANE5);
 }
-
+#endif

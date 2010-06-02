@@ -82,7 +82,9 @@ Feb 11, 2001 (Loren Petrich):
 #include "ShapesParser.h"
 
 //MH: Lua scripting
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #ifdef env68k
 #pragma segment marathon
@@ -179,7 +181,9 @@ short new_item(
 			/* let PLACEMENT.C keep track of how many there are */
 			object_was_just_added(_object_is_item, type);
 			// and let Lua know too
+#ifdef HAVE_LUA
 			L_Call_Item_Created(object_index);
+#endif
  		}
 	}
 	else
@@ -608,7 +612,9 @@ bool try_and_add_player_item(
 	if (success)
 	{
 		//MH: Call Lua script hook
+#ifdef HAVE_LUA
 		L_Call_Got_Item(type, player_index);
+#endif
 	}
 
 	/* Play the pickup sound */

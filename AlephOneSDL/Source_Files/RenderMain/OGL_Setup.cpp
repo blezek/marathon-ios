@@ -68,13 +68,13 @@ Jan 25, 2002 (Br'fin (Jeremy Parsons)):
 Feb 5, 2002 (Br'fin (Jeremy Parsons)):
 	Refined OGL default preferences for Carbon
 */
+#ifdef HAVE_OPENGL
 
 #include <vector>
 #include <string.h>
 #include <math.h>
 #include "cseries.h"
 
-#ifdef HAVE_OPENGL
 
 #ifdef __MVCPP__
 #include <windows.h>
@@ -82,7 +82,6 @@ Feb 5, 2002 (Br'fin (Jeremy Parsons)):
 
 #include "OGL_Headers.h"
 
-#endif
 
 #include "shape_descriptors.h"
 #include "OGL_Setup.h"
@@ -640,3 +639,5 @@ void SglColor4usv(const GLushort* iv) {
   GLfloat ov[4] = {sRGB_frob(iv[0]*(1.f/65535.f)), sRGB_frob(iv[1]*(1.f/65535.f)), sRGB_frob(iv[2]*(1.f/65535.f)), iv[3]*(1.f/65535.f)};
   glColor4fv(ov);
 }
+#endif
+

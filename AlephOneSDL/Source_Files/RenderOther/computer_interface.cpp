@@ -120,7 +120,9 @@ Jan 25, 2002 (Br'fin (Jeremy Parsons)):
 #include "Packing.h"
 
 // MH: Lua scripting
+#ifdef HAVE_LUA
 #include "lua_script.h"
+#endif
 
 #define LABEL_INSET 3
 #define LOG_DURATION_BEFORE_TIMEOUT (2*TICKS_PER_SECOND)
@@ -521,7 +523,9 @@ void initialize_player_terminal_info(
 	//CP Addition: trap for logout!
 	if (terminal->state != _no_terminal_state)
         {
-                L_Call_Terminal_Exit(terminal->terminal_id, player_index);
+#ifdef HAVE_LUA
+          L_Call_Terminal_Exit(terminal->terminal_id, player_index);
+#endif
         }
 
 	terminal->flags= 0;
@@ -819,7 +823,9 @@ void abort_terminal_mode(
 	if(terminal->state != _no_terminal_state)
 	{
 		terminal->state= _no_terminal_state;
+#ifdef HAVE_LUA
 		L_Call_Terminal_Exit(terminal->terminal_id, player_index);
+#endif
 	}
 }
 

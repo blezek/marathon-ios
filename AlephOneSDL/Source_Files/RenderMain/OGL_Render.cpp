@@ -127,6 +127,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 	Added LowLevelShape workaround for passing LowLevelShape info of sprites
 	instead of abusing/overflowing shape_descriptors
 */
+#ifdef HAVE_OPENGL
 
 #include <vector>
 #include <string.h>
@@ -140,7 +141,6 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include "shell.h"
 #include "preferences.h"
 
-#ifdef HAVE_OPENGL
 
 #ifdef __MVCPP__
 #include <windows.h>

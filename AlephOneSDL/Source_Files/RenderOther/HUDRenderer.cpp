@@ -26,7 +26,9 @@
  */
 
 #include "HUDRenderer.h"
+#ifdef HAVE_LUA
 #include "lua_script.h" // texture palette
+#endif
 
 using namespace std;
 
@@ -51,6 +53,7 @@ bool HUD_Class::update_everything(short time_elapsed)
 {
 	ForceUpdate = false;
 
+#ifdef HAVE_LUA
 	if (!LuaTexturePaletteSize())
 	{
 
@@ -66,9 +69,11 @@ bool HUD_Class::update_everything(short time_elapsed)
 			draw_message_area(time_elapsed);
 	}
 	else
+#endif
 	{
 		int size;
 		// some good looking break points, based on 640x160
+#ifdef HAVE_LUA
 		if (LuaTexturePaletteSize() <= 5)
 			size = 128;
 		else if (LuaTexturePaletteSize() <= 16)
@@ -82,6 +87,7 @@ bool HUD_Class::update_everything(short time_elapsed)
 		else if (LuaTexturePaletteSize() <= 144)
 			size = 26;
 		else
+#endif
 			size = 20;
 
 		int rows = 160 / size;
@@ -92,10 +98,13 @@ bool HUD_Class::update_everything(short time_elapsed)
 		
 		for (int i = 0; i < LuaTexturePaletteSize(); ++i)
 		{
+#ifdef HAVE_LUA      
 			if (LuaTexturePaletteTexture(i) != UNONE)
 				DrawTexture(LuaTexturePaletteTexture(i), LuaTexturePaletteTextureType(i), (i % cols) * size + x_offset, 320 + y_offset + (i / cols) * size, size - 1);
+#endif
 		}
 		
+#ifdef HAVE_LUA
 		if (LuaTexturePaletteSelected() >= 0)
 		{
 			int i = LuaTexturePaletteSelected();
@@ -106,6 +115,7 @@ bool HUD_Class::update_everything(short time_elapsed)
 			r.bottom = r.top + size;
 			FrameRect(&r, _inventory_text_color);
 		}
+#endif
 
 		ForceUpdate = true;
 	}
