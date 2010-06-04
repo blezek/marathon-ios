@@ -95,16 +95,14 @@ bool HUD_Class::update_everything(short time_elapsed)
 
 		int x_offset = (640 - cols * size) / 2;
 		int y_offset = (160 - rows * size) / 2;
+#ifdef HAVE_LUA      
 		
 		for (int i = 0; i < LuaTexturePaletteSize(); ++i)
 		{
-#ifdef HAVE_LUA      
 			if (LuaTexturePaletteTexture(i) != UNONE)
 				DrawTexture(LuaTexturePaletteTexture(i), LuaTexturePaletteTextureType(i), (i % cols) * size + x_offset, 320 + y_offset + (i / cols) * size, size - 1);
-#endif
 		}
 		
-#ifdef HAVE_LUA
 		if (LuaTexturePaletteSelected() >= 0)
 		{
 			int i = LuaTexturePaletteSelected();

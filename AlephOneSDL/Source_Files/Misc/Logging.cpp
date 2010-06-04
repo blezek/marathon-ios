@@ -218,29 +218,9 @@ void TopLevelLogger::flush()
 static void
 InitializeLogging() {
     assert(sOutputFile == NULL);
-#ifdef __IPHONE__
-  const char *home = getDataDir();
-  if ( home )
-  {
-#elif defined(__unix__) || defined(__NetBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__))
-    const char *home = getenv("HOME");
-    if (home == NULL) {
-        struct passwd *pw = getpwuid (getuid ());
-        if (pw != NULL) home = pw->pw_dir;
-    }
-    if (home)
-    {
-        string filename = home;
-#if defined(__APPLE__) && defined(__MACH__)
-        filename += "/Library/Logs/Aleph One Log.txt";
-#else
-        filename += "/.alephone/Aleph One Log.txt";
-#endif
-        sOutputFile = fopen(filename.c_str(), "a");
-    }
-    else
-#endif
-    sOutputFile = fopen("Aleph One Log.txt", "a");
+   char *home = (char*)getDataDir();
+    string filename = string ( home ) + "/AlephOneLog.txt";
+    sOutputFile = fopen(filename.c_str(), "a");
 
     sCurrentLogger = new TopLevelLogger;
     if(sOutputFile != NULL)

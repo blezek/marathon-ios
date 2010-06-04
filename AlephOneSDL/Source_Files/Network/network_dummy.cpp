@@ -21,7 +21,6 @@
 /*
  *  network_dummy.cpp - Dummy network functions
  */
-
 #include "cseries.h"
 #include "map.h"
 #include "network.h"

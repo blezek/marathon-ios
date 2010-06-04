@@ -96,7 +96,7 @@ September 17, 2004 (jkvw):
 	Also moved to TCPMess for TCP communications.
 */
 
-#if defined(DISABLE_NETWORKING)
+#ifdef DISABLE_NETWORKING
 
 #include "network_dummy.cpp"
 
@@ -2568,4 +2568,4 @@ void NetUpdateUnconfirmedActionFlags()
 }
 
 #endif // !defined(DISABLE_NETWORKING)
-
+#endif

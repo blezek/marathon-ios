@@ -2885,6 +2885,7 @@ int16 Lua_Annotations_Length() {
 char Lua_Fog_Color_Name[] = "fog_color";
 typedef L_Class<Lua_Fog_Color_Name> Lua_Fog_Color;
 
+#ifdef HAVE_OPENGL
 static int Lua_Fog_Color_Get_R(lua_State *L)
 {
 	lua_pushnumber(L, (float) (OGL_GetFogData(Lua_Fog_Color::Index(L, 1))->Color.red) / 65535);
@@ -2932,7 +2933,47 @@ static int Lua_Fog_Color_Set_B(lua_State *L)
 	OGL_GetFogData(Lua_Fog_Color::Index(L, 1))->Color.blue = PIN(int(65535 * color + 0.5), 0, 65535);
 	return 0;
 }
+#else
+static int Lua_Fog_Color_Get_R(lua_State *L)
+{
+	lua_pushnumber(L, (float) (1.0) );
+	return 1;
+}
 
+static int Lua_Fog_Color_Get_G(lua_State *L)
+{
+	lua_pushnumber(L, (float) (1.0));
+	return 1;
+}
+
+static int Lua_Fog_Color_Get_B(lua_State *L)
+{
+	lua_pushnumber(L, 1.0 );
+	return 1;
+}
+
+static int Lua_Fog_Color_Set_R(lua_State *L)
+{
+	if (!lua_isnumber(L, 2))
+		luaL_error(L, "r: incorrect argument type");
+  	return 0;
+}
+
+static int Lua_Fog_Color_Set_G(lua_State *L)
+{
+	if (!lua_isnumber(L, 2))
+		luaL_error(L, "g: incorrect argument type");
+  
+	return 0;
+}
+
+static int Lua_Fog_Color_Set_B(lua_State *L)
+{
+	if (!lua_isnumber(L, 2))
+		luaL_error(L, "b: incorrect argument type");
+	return 0;
+}
+#endif
 const luaL_reg Lua_Fog_Color_Get[] = {
 	{"r", Lua_Fog_Color_Get_R},
 	{"g", Lua_Fog_Color_Get_G},
@@ -2950,6 +2991,7 @@ const luaL_reg Lua_Fog_Color_Set[] = {
 char Lua_Fog_Name[] = "fog";
 typedef L_Class<Lua_Fog_Name> Lua_Fog;
 
+#ifdef HAVE_OPENGL
 static int Lua_Fog_Get_Active(lua_State *L)
 {
 	lua_pushboolean(L, OGL_GetFogData(Lua_Fog::Index(L, 1))->IsPresent);
@@ -2973,21 +3015,10 @@ static int Lua_Fog_Get_Depth(lua_State *L)
 	lua_pushnumber(L, OGL_GetFogData(Lua_Fog::Index(L, 1))->Depth);
 	return 1;
 }
-
-const luaL_reg Lua_Fog_Get[] = {
-	{"active", Lua_Fog_Get_Active},
-	{"affects_landscapes", Lua_Fog_Get_Affects_Landscapes},
-	{"color", Lua_Fog_Get_Color},
-	{"depth", Lua_Fog_Get_Depth},
-	{"present", Lua_Fog_Get_Active},
-	{0, 0}
-};
-
 static int Lua_Fog_Set_Active(lua_State *L)
 {
 	if (!lua_isboolean(L, 2))
 		return luaL_error(L, "active: incorrect argument type");
-	
 	OGL_GetFogData(Lua_Fog::Index(L, 1))->IsPresent = static_cast<bool>(lua_toboolean(L, 2));
 	return 0;
 }
@@ -3005,10 +3036,66 @@ static int Lua_Fog_Set_Depth(lua_State *L)
 {
 	if (!lua_isnumber(L, 2))
 		return luaL_error(L, "depth: incorrect argument type");
-
+  
 	OGL_GetFogData(Lua_Fog::Index(L, 1))->Depth = static_cast<float>(lua_tonumber(L, 2));
 	return 0;
 }
+
+
+#else
+static int Lua_Fog_Get_Active(lua_State *L)
+{
+	lua_pushboolean(L, 0 );
+	return 1;
+}
+
+static int Lua_Fog_Get_Affects_Landscapes(lua_State *L)
+{
+	lua_pushboolean(L, 0 );
+	return 1;
+}
+
+static int Lua_Fog_Get_Color(lua_State *L)
+{
+	Lua_Fog_Color::Push(L, Lua_Fog::Index(L, 1));
+	return 1;
+}
+
+static int Lua_Fog_Get_Depth(lua_State *L)
+{
+	lua_pushnumber(L, 1.0);
+	return 1;
+}
+static int Lua_Fog_Set_Active(lua_State *L)
+{
+	if (!lua_isboolean(L, 2))
+		return luaL_error(L, "active: incorrect argument type");
+	return 0;
+}
+
+static int Lua_Fog_Set_Affects_Landscapes(lua_State *L)
+{
+	if (!lua_isboolean(L, 2))
+		return luaL_error(L, "affects_landscapes: incorrect argument type");
+	return 0;
+}
+
+static int Lua_Fog_Set_Depth(lua_State *L)
+{
+	if (!lua_isnumber(L, 2))
+		return luaL_error(L, "depth: incorrect argument type");
+	return 0;
+}
+
+#endif
+const luaL_reg Lua_Fog_Get[] = {
+	{"active", Lua_Fog_Get_Active},
+	{"affects_landscapes", Lua_Fog_Get_Affects_Landscapes},
+	{"color", Lua_Fog_Get_Color},
+	{"depth", Lua_Fog_Get_Depth},
+	{"present", Lua_Fog_Get_Active},
+	{0, 0}
+};
 
 const luaL_reg Lua_Fog_Set[] = {
 	{"active", Lua_Fog_Set_Active},
@@ -3047,21 +3134,36 @@ static int Lua_Level_Get_Mission_Flag(lua_State *L)
 	return 1;
 }
 
+#ifdef HAVE_OPENGL
 static int Lua_Level_Get_Fog(lua_State *L)
 {
 	Lua_Fog::Push(L, OGL_Fog_AboveLiquid);
 	return 1;
 }
 	
-static int Lua_Level_Get_Name(lua_State *L)
+static int Lua_Level_Get_Underwater_Fog(lua_State *L)
 {
-	lua_pushstring(L, static_world->level_name);
+	Lua_Fog::Push(L, OGL_Fog_BelowLiquid);
+	return 1;
+}
+
+#else
+static int Lua_Level_Get_Fog(lua_State *L)
+{
+	Lua_Fog::Push(L, 0);
 	return 1;
 }
 
 static int Lua_Level_Get_Underwater_Fog(lua_State *L)
 {
-	Lua_Fog::Push(L, OGL_Fog_BelowLiquid);
+	Lua_Fog::Push(L, 0 );
+	return 1;
+}
+
+#endif
+static int Lua_Level_Get_Name(lua_State *L)
+{
+	lua_pushstring(L, static_world->level_name);
 	return 1;
 }
 

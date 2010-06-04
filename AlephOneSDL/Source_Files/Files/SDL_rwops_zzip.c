@@ -5,6 +5,8 @@
  *      (this example uses errno which might not be multithreaded everywhere)
  */
 
+#ifndef __IPHONE__
+
 #include <SDL_rwops_zzip.h>
 #include <zzip/zzip.h>
 #include <string.h> /* strchr */
@@ -60,3 +62,4 @@ SDL_RWops *SDL_RWFromZZIP(const char* file, const char* mode)
     rwops->close = _zzip_close;
     return rwops;
 }
+#endif

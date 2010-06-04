@@ -20,7 +20,7 @@
  *
  */
 
-#if !defined(DISABLE_NETWORKING)
+#if 1 || !defined(DISABLE_NETWORKING)
  
 #include "AStream.h"
 #include <string.h>
