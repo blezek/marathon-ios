@@ -2102,7 +2102,7 @@ static void finish_game(
 	{
 		if(game_state.current_netgame_allows_microphone)
 		{
-			remove_network_microphone();
+			// DJB remove_network_microphone();
 		}
 		NetUnSync(); // gracefully exit from the game
 
@@ -2536,13 +2536,13 @@ void install_network_microphone(
 {
 	open_network_speaker();
 	NetAddDistributionFunction(kNewNetworkAudioDistributionTypeID, received_network_audio_proc, true);
-	open_network_microphone();
+	// DJB open_network_microphone();
 }
 
 void remove_network_microphone(
 	void)
 {
-	close_network_microphone();
+	// DJB close_network_microphone();
 	NetRemoveDistributionFunction(kNewNetworkAudioDistributionTypeID);
 	close_network_speaker();
 }

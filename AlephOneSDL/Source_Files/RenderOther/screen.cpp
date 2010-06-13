@@ -259,7 +259,8 @@ void Screen::Initialize(screen_mode_data* mode)
 
 	// Set screen to 640x480 without OpenGL for menu
 	screen_mode = *mode;
-	change_screen_mode(640, 480, bit_depth, true);
+  // 
+  change_screen_mode(iWidth, iHeight, bit_depth, true);
 	screen_initialized = true;
 
 }
@@ -276,12 +277,12 @@ int Screen::width()
 
 int Screen::window_height()
 {
-	return std::max(static_cast<short>(480), screen_mode.height);
+	return std::max(static_cast<short>(iHeight), screen_mode.height);
 }
 
 int Screen::window_width()
 {
-	return std::max(static_cast<short>(640), screen_mode.width);
+	return std::max(static_cast<short>(iWidth), screen_mode.width);
 }
 
 bool Screen::hud()
@@ -568,6 +569,7 @@ void exit_screen(void)
 
 static void change_screen_mode(int width, int height, int depth, bool nogl)
 {
+  printf ( "Change_screen_mode %d x %d\n", width, height );
 
 	int vmode_height = (screen_mode.fullscreen && !screen_mode.fill_the_screen) ? desktop_height : height;
 	int vmode_width = (screen_mode.fullscreen && !screen_mode.fill_the_screen) ? desktop_width : width;
@@ -602,7 +604,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 	} else {
 		flags |= SDL_HWSURFACE | SDL_HWPALETTE;
 	}
-	
+	printf ( "Creating video mode (%d,%d)\n", vmode_width, vmode_height );
 	main_surface = SDL_SetVideoMode(vmode_width, vmode_height, depth, flags);
 #ifdef HAVE_OPENGL
 #if SDL_VERSION_ATLEAST(1,2,6)

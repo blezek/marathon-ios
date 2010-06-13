@@ -330,7 +330,7 @@ void global_idle_proc(void)
 {
 	Music::instance()->Idle();
 	network_speaker_idle_proc();
-	network_microphone_idle_proc();
+	// DJB network_microphone_idle_proc();
 	SoundManager::instance()->Idle();
 }
 

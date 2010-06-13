@@ -1236,7 +1236,7 @@ bool NetEnter(void)
 
 #ifdef HAVE_LUA
 	ResetLuaMute();
-#endi
+#endif
 	IgnoreParser.register_command("lua", ignore_lua());
 
 	Console::instance()->register_command("ignore", IgnoreParser);
@@ -2568,4 +2568,3 @@ void NetUpdateUnconfirmedActionFlags()
 }
 
 #endif // !defined(DISABLE_NETWORKING)
-#endif

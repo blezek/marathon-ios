@@ -397,7 +397,7 @@ void mark_player_network_stats_as_dirty(short player_index)
 void set_interface_microphone_recording_state(bool state)
 {
 #if !defined(DISABLE_NETWORKING)
-	set_network_microphone_state(state);
+	// DJB set_network_microphone_state(state);
 #endif // !defined(DISABLE_NETWORKING)
 }
 
