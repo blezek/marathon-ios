@@ -64,7 +64,7 @@
 #include "joystick.h"
 
 #include <sstream>
-
+#include <SDL_events.h>
 /*
  *  Widget base class
  */
@@ -547,7 +547,7 @@ void w_tab::event(SDL_Event& e)
 
 			}
 			dirty = true;
-			e.type = SDL_NOEVENT;
+			e.type = SDL_FIRSTEVENT;
 			break;
 
 		case SDLK_RIGHT:
@@ -562,7 +562,7 @@ void w_tab::event(SDL_Event& e)
 					active_tab++;
 			}
 			dirty = true;
-			e.type = SDL_NOEVENT;
+			e.type = SDL_FIRSTEVENT;
 			break;
 		
 		default:
@@ -729,14 +729,14 @@ void w_select::event(SDL_Event &e)
 			else
 				selection--;
 			selection_changed();
-			e.type = SDL_NOEVENT;	// Swallow event
+			e.type = SDL_FIRSTEVENT;	// Swallow event
 		} else if (e.key.keysym.sym == SDLK_RIGHT) {
 			if (selection >= num_labels - 1)
 				selection = 0;
 			else
 				selection++;
 			selection_changed();
-			e.type = SDL_NOEVENT;	// Swallow event
+			e.type = SDL_FIRSTEVENT;	// Swallow event
 		}
 	}
 }
@@ -1112,7 +1112,7 @@ void w_text_entry::event(SDL_Event &e)
 		switch (e.key.keysym.sym) {
 			case SDLK_LEFT:			// Left/right does nothing (for now)
 			case SDLK_RIGHT:
-				e.type = SDL_NOEVENT;	// Swallow event
+				e.type = SDL_FIRSTEVENT;	// Swallow event
 				break;
                                 
                         case SDLK_RETURN:
@@ -1120,7 +1120,7 @@ void w_text_entry::event(SDL_Event &e)
                                 if(enter_pressed_callback)
                                     enter_pressed_callback(this);
                         
-                                e.type = SDL_NOEVENT;	// Swallow event (shouldn't typing do this also??)
+                                e.type = SDL_FIRSTEVENT;	// Swallow event (shouldn't typing do this also??)
                                 break;
 
 			case SDLK_BACKSPACE:	// Backspace deletes last character
@@ -1214,7 +1214,7 @@ void w_number_entry::event(SDL_Event &e)
                     if (uc >= ' ' && uc < 0x80) {
                             if (uc < '0' || uc > '9') {
                                     // Swallow all non-numbers
-                                    e.type = SDL_NOEVENT;
+                                    e.type = SDL_FIRSTEVENT;
                                     return;
                             }
                     }
@@ -1364,7 +1364,7 @@ void w_key::event(SDL_Event &e)
         // ZZZ: suppress mouse motion while assigning
         // (it's annoying otherwise, trust me)
         if(e.type == SDL_MOUSEMOTION)
-            e.type = SDL_NOEVENT;
+            e.type = SDL_FIRSTEVENT;
     }
 }
 
@@ -1520,11 +1520,11 @@ void w_slider::event(SDL_Event &e)
 		if (e.key.keysym.sym == SDLK_LEFT) {
 			set_selection(selection - 1);
 			item_selected();
-			e.type = SDL_NOEVENT;	// Swallow event
+			e.type = SDL_FIRSTEVENT;	// Swallow event
 		} else if (e.key.keysym.sym == SDLK_RIGHT) {
 			set_selection(selection + 1);
 			item_selected();
-			e.type = SDL_NOEVENT;	// Swallow event
+			e.type = SDL_FIRSTEVENT;	// Swallow event
 		}
 	} else if (e.type == SDL_MOUSEBUTTONUP) {
 		if (thumb_dragging) {
@@ -1725,12 +1725,12 @@ void w_list_base::event(SDL_Event &e)
 			case SDLK_UP:
 				if (selection != 0)
 				{	set_selection(selection - 1); }
-				e.type = SDL_NOEVENT;	// Prevent selection of previous widget
+				e.type = SDL_FIRSTEVENT;	// Prevent selection of previous widget
 				break;
 			case SDLK_DOWN:
 				if (selection < num_items - 1)
 				{	set_selection(selection + 1); }
-				e.type = SDL_NOEVENT;	// Prevent selection of next widget
+				e.type = SDL_FIRSTEVENT;	// Prevent selection of next widget
 				break;
 			case SDLK_PAGEUP:
 				if (selection > shown_items)

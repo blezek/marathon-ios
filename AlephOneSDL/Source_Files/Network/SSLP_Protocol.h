@@ -41,7 +41,7 @@
 #ifndef SSLP_PROTOCOL_H
 #define	SSLP_PROTOCOL_H
 
-#include	<SDL_net.h>
+#include	"SDL_net.h"
 
 #ifdef OBSOLETE
 #ifdef __GNUC__

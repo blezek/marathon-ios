@@ -2548,10 +2548,10 @@ bool dialog::process_events()
 
 		// Get next event
 		SDL_Event e;
-		e.type = SDL_NOEVENT;
+		e.type = SDL_FIRSTEVENT;
 		SDL_PollEvent(&e);
 
-		if (e.type == SDL_NOEVENT)
+		if (e.type == SDL_FIRSTEVENT)
 			break;
 
 		// Handle event

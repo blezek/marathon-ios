@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2010 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -25,6 +25,10 @@
 #define _SDL_uikitvideo_h
 
 #include "SDL_sysvideo.h"
+
+#include <UIKit/UIKit.h>
+
+extern BOOL SDL_UIKit_supports_multiple_displays;
 
 #endif /* _SDL_uikitvideo_h */
 

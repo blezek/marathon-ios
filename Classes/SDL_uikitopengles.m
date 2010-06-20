@@ -29,14 +29,6 @@
 #include "SDL_loadso.h"
 #include <dlfcn.h>
 
-extern int UIKit_GL_MakeCurrent(_THIS, SDL_Window * window,
-                                SDL_GLContext context);
-extern void UIKit_GL_SwapWindow(_THIS, SDL_Window * window);
-extern SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window);
-extern void UIKit_GL_DeleteContext(_THIS, SDL_GLContext context);
-extern void *UIKit_GL_GetProcAddress(_THIS, const char *proc);
-extern int UIKit_GL_LoadLibrary(_THIS, const char *path);
-
 static int UIKit_GL_Initialize(_THIS);
 
 void *
@@ -81,9 +73,14 @@ UIKit_GL_LoadLibrary(_THIS, const char *path)
     return 0;
 }
 
+extern void SDL_UIKit_UpdateBatteryMonitoring(void);
 
 void UIKit_GL_SwapWindow(_THIS, SDL_Window * window)
 {
+    #ifdef SDL_POWER_UIKIT
+    // Check once a frame to see if we should turn off the battery monitor.
+    SDL_UIKit_UpdateBatteryMonitoring();
+    #endif
 
 	SDL_WindowData *data = (SDL_WindowData *)window->driverdata;
 	
@@ -102,45 +99,27 @@ void UIKit_GL_SwapWindow(_THIS, SDL_Window * window)
 
 SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 {
-	
 	SDL_uikitopenglview *view;
+	SDL_WindowData *data = (SDL_WindowData *) window->driverdata;
+    UIScreen *uiscreen = (UIScreen *) window->display->driverdata;
+	UIWindow *uiwindow = data->uiwindow;
 
-	SDL_WindowData *data = (SDL_WindowData *)window->driverdata;
-	
-#ifdef __IPAD__
-  CGRect frameRect = CGRectMake(0.0, 0.0, 1024.0, 768.0);
-#else
-  CGRect frameRect = CGRectMake(0.0, 0.0, 320.0, 480.0);
-#endif
-
-	/* construct our view, passing in SDL's OpenGL configuration data */
-	view = [[SDL_uikitopenglview alloc] initWithFrame: frameRect 
-									retainBacking: _this->gl_config.retained_backing 
-									rBits: _this->gl_config.red_size 
-									gBits: _this->gl_config.green_size 
-									bBits: _this->gl_config.blue_size 
-									aBits: _this->gl_config.alpha_size 
+    /* construct our view, passing in SDL's OpenGL configuration data */
+    view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
+									retainBacking: _this->gl_config.retained_backing \
+									rBits: _this->gl_config.red_size \
+									gBits: _this->gl_config.green_size \
+									bBits: _this->gl_config.blue_size \
+									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
 	
 	data->view = view;
-	view.backgroundColor = [UIColor greenColor];
+	
 	/* add the view to our window */
-	[data->uiwindow addSubview: view ];
+	[uiwindow addSubview: view ];
 	
 	/* Don't worry, the window retained the view */
 	[view release];
-  /*
-  CGAffineTransform tr = data->view.transform; // get current transform (portrait)
-  BOOL gFlippedGL = YES;
-  if (gFlippedGL)
-    tr = CGAffineTransformRotate(tr, -(M_PI / 2.0)); // rotate 90 degrees to go landscape
-  else
-    tr = CGAffineTransformRotate(tr, (M_PI / 2.0)); // rotate 90 degrees to go landscape
-  
-  data->view.transform = tr; // set current transform (landscape)
-   */
-  data->view.center = data->uiwindow.center;
-  NSLog ( @"OpenGLES window center: %@", NSStringFromCGPoint(data->view.center) );
 	
 	if ( UIKit_GL_MakeCurrent(_this, window, view) < 0 ) {
         UIKit_GL_DeleteContext(_this, view);

@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2010 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -25,8 +25,8 @@
 #include "SDL_events.h"
 #include "SDL_thread.h"
 #include "SDL_mouse_c.h"
-// #include "SDL_keyboard_c.h"
-// #include "SDL_windowevents_c.h"
+#include "SDL_keyboard_c.h"
+#include "SDL_windowevents_c.h"
 
 /* Start and stop the event processing loop */
 extern int SDL_StartEventLoop(Uint32 flags);
@@ -46,8 +46,5 @@ extern void SDL_QuitQuit(void);
 /* The event filter function */
 extern SDL_EventFilter SDL_EventOK;
 extern void *SDL_EventOKParam;
-
-/* The array of event processing states */
-extern Uint8 SDL_ProcessEvents[SDL_NUMEVENTS];
 
 /* vi: set ts=4 sw=4 expandtab: */

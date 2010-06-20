@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2010 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -85,12 +85,14 @@ static void GLES_UnlockTexture(SDL_Renderer * renderer,
                                SDL_Texture * texture);
 static void GLES_DirtyTexture(SDL_Renderer * renderer, SDL_Texture * texture,
                               int numrects, const SDL_Rect * rects);
-static int GLES_RenderPoints(SDL_Renderer * renderer, const SDL_Point * points,
-                             int count);
-static int GLES_RenderLines(SDL_Renderer * renderer, const SDL_Point * points,
-                            int count);
-static int GLES_RenderRects(SDL_Renderer * renderer, const SDL_Rect ** rects,
-                            int count);
+static int GLES_RenderDrawPoints(SDL_Renderer * renderer,
+                                 const SDL_Point * points, int count);
+static int GLES_RenderDrawLines(SDL_Renderer * renderer,
+                                const SDL_Point * points, int count);
+static int GLES_RenderDrawRects(SDL_Renderer * renderer,
+                                const SDL_Rect ** rects, int count);
+static int GLES_RenderFillRects(SDL_Renderer * renderer,
+                                const SDL_Rect ** rects, int count);
 static int GLES_RenderCopy(SDL_Renderer * renderer, SDL_Texture * texture,
                            const SDL_Rect * srcrect,
                            const SDL_Rect * dstrect);
@@ -244,15 +246,16 @@ GLES_CreateRenderer(SDL_Window * window, Uint32 flags)
     renderer->LockTexture = GLES_LockTexture;
     renderer->UnlockTexture = GLES_UnlockTexture;
     renderer->DirtyTexture = GLES_DirtyTexture;
-    //renderer->RenderPoints = GLES_RenderPoints;
-    //renderer->RenderLines = GLES_RenderLines;
-    //renderer->RenderRects = GLES_RenderRects;
+    renderer->RenderDrawPoints = GLES_RenderDrawPoints;
+    renderer->RenderDrawLines = GLES_RenderDrawLines;
+    renderer->RenderDrawRects = GLES_RenderDrawRects;
+    renderer->RenderFillRects = GLES_RenderFillRects;
     renderer->RenderCopy = GLES_RenderCopy;
     renderer->RenderPresent = GLES_RenderPresent;
     renderer->DestroyTexture = GLES_DestroyTexture;
     renderer->DestroyRenderer = GLES_DestroyRenderer;
     renderer->info = GL_ES_RenderDriver.info;
-    renderer->window = window->id;
+    renderer->window = window;
     renderer->driverdata = data;
 
     renderer->info.flags =
@@ -273,12 +276,12 @@ GLES_CreateRenderer(SDL_Window * window, Uint32 flags)
         return NULL;
     }
 
-    data->context = SDL_GL_CreateContext(window->id);
+    data->context = SDL_GL_CreateContext(window);
     if (!data->context) {
         GLES_DestroyRenderer(renderer);
         return NULL;
     }
-    if (SDL_GL_MakeCurrent(window->id, data->context) < 0) {
+    if (SDL_GL_MakeCurrent(window, data->context) < 0) {
         GLES_DestroyRenderer(renderer);
         return NULL;
     }
@@ -329,80 +332,12 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
 {
 
     GLES_RenderData *data = (GLES_RenderData *) renderer->driverdata;
-    SDL_Window *window = SDL_GetWindowFromID(renderer->window);
+    SDL_Window *window = renderer->window;
 
-    if (SDL_GL_MakeCurrent(window->id, data->context) < 0) {
+    if (SDL_GL_MakeCurrent(window, data->context) < 0) {
         return -1;
     }
     if (data->updateSize) {
-      GLfloat width, height;
-      printf ( "Starting GLES_ActivateRenderer, window size (%d,%d)\n", window->w, window->h );
-#ifdef __IPAD__
-      width = 1024;
-      hegiht = 768;
-#else
-      width = 480;
-      height = 320;
-#endif
-      GLfloat w = width / 2.0;
-      GLfloat h = height / 2.0;
-      
-#if 1
-      // This is the original code
-      data->glMatrixMode(GL_PROJECTION);
-      data->glLoadIdentity();
-      data->glMatrixMode(GL_MODELVIEW);
-      data->glLoadIdentity();
-      data->glViewport(0, 0, window->w, window->h);
-      data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
-                     0.0, 1.0);
-      
-      // Now rotate the view
-      glTranslatef(w,h,0);
-			glRotatef(-90,0,0,1);
-			glTranslatef(-h,-w,0);
-      
-      data->updateSize = SDL_FALSE;
-#else
-     // This is our attempt to rotate the code 
-      data->glMatrixMode(GL_PROJECTION);
-      data->glLoadIdentity();
-      // Default viewpont is the full screen
-      // data->glViewport(0, 0, width, height);
-      data->glOrthof(0.0, (GLfloat) width, (GLfloat) height, 0.0,
-                     0.0, 1.0);
-      data->glMatrixMode(GL_MODELVIEW);
-      data->glLoadIdentity();
-      glTranslatef(w,h,0);
-			glRotatef(90,0,0,1);
-			glTranslatef(-h,-w,0);
-#endif
-      /*
-      
-      glViewport(0, 0, width, height );
-      printf ( "Setting viewpoort to 0, 0, %f, %f\n", width, height );
-      glMatrixMode(GL_PROJECTION);
-      glLoadIdentity();
-      printf ( "glOrthof ( 0, %f, %f, 0 )\n", width, height );
-      glOrthof(0.0, width, height, 0.0, 0, 100.0f);
-
-      data->glMatrixMode(GL_MODELVIEW);
-      glTranslatef(w,h,0);
-			glRotatef(90,0,0,1);
-			glTranslatef(-h,-w,0);
-       */
-//      
-//      
-//      
-//      glViewport(0, 0, 480, 320);
-//      
-//      if (gFlippedGL)
-//        glRotatef(90, 0, 0, 1);
-//      else
-//        glRotatef(-90, 0, 0, 1);
-//      glOrthof(0.0, (GLfloat) 480, (GLfloat) 320, 0.0, 0, 100.0f);
-//       
-      /*
         data->glMatrixMode(GL_PROJECTION);
         data->glLoadIdentity();
         data->glMatrixMode(GL_MODELVIEW);
@@ -410,7 +345,20 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
         data->glViewport(0, 0, window->w, window->h);
         data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
                        0.0, 1.0);
-       */
+
+      // Now rotate the view
+      GLfloat w = window->w / 2.0;
+      GLfloat h = window->h / 2.0;
+
+      glTranslatef(w,h,0);
+			glRotatef(90,0,0,1);
+      GLfloat scaleX = 0.66, scaleY = 0.66;
+      printf ( "Scale is: %f, %f\n", scaleX, scaleY );
+      printf ( "Window size is %d x %d\n", window->w, window->h );
+      // glScalef ( scaleX, scaleY, 1 );
+			// glTranslatef(-h/scaleX,-w/scaleY,0);
+      glTranslatef(-h,-w,0);
+      
         data->updateSize = SDL_FALSE;
     }
     return 0;
@@ -440,7 +388,6 @@ static int
 GLES_CreateTexture(SDL_Renderer * renderer, SDL_Texture * texture)
 {
     GLES_RenderData *renderdata = (GLES_RenderData *) renderer->driverdata;
-    SDL_Window *window = SDL_GetWindowFromID(renderer->window);
     GLES_TextureData *data;
     GLint internalFormat;
     GLenum format, type;
@@ -712,7 +659,8 @@ GLES_SetBlendMode(GLES_RenderData * data, int blendMode, int isprimitive)
 }
 
 static int
-GLES_RenderPoints(SDL_Renderer * renderer, const SDL_Point * points, int count)
+GLES_RenderDrawPoints(SDL_Renderer * renderer, const SDL_Point * points,
+                      int count)
 {
     GLES_RenderData *data = (GLES_RenderData *) renderer->driverdata;
     int i;
@@ -740,7 +688,8 @@ GLES_RenderPoints(SDL_Renderer * renderer, const SDL_Point * points, int count)
 }
 
 static int
-GLES_RenderLines(SDL_Renderer * renderer, const SDL_Point * points, int count)
+GLES_RenderDrawLines(SDL_Renderer * renderer, const SDL_Point * points,
+                     int count)
 {
     GLES_RenderData *data = (GLES_RenderData *) renderer->driverdata;
     int i;
@@ -775,7 +724,47 @@ GLES_RenderLines(SDL_Renderer * renderer, const SDL_Point * points, int count)
 }
 
 static int
-GLES_RenderRects(SDL_Renderer * renderer, const SDL_Rect ** rects, int count)
+GLES_RenderDrawRects(SDL_Renderer * renderer, const SDL_Rect ** rects,
+                     int count)
+{
+    GLES_RenderData *data = (GLES_RenderData *) renderer->driverdata;
+    int i;
+
+    GLES_SetBlendMode(data, renderer->blendMode, 1);
+
+    data->glColor4f((GLfloat) renderer->r * inv255f,
+                    (GLfloat) renderer->g * inv255f,
+                    (GLfloat) renderer->b * inv255f,
+                    (GLfloat) renderer->a * inv255f);
+
+    data->glEnableClientState(GL_VERTEX_ARRAY);
+    for (i = 0; i < count; ++i) {
+        const SDL_Rect *rect = rects[i];
+        GLshort minx = rect->x;
+        GLshort maxx = rect->x + rect->w;
+        GLshort miny = rect->y;
+        GLshort maxy = rect->y + rect->h;
+        GLshort vertices[8];
+        vertices[0] = minx;
+        vertices[1] = miny;
+        vertices[2] = maxx;
+        vertices[3] = miny;
+        vertices[4] = minx;
+        vertices[5] = maxy;
+        vertices[6] = maxx;
+        vertices[7] = maxy;
+
+        data->glVertexPointer(2, GL_SHORT, 0, vertices);
+        data->glDrawArrays(GL_LINE_LOOP, 0, 4);
+    }
+    data->glDisableClientState(GL_VERTEX_ARRAY);
+
+    return 0;
+}
+
+static int
+GLES_RenderFillRects(SDL_Renderer * renderer, const SDL_Rect ** rects,
+                     int count)
 {
     GLES_RenderData *data = (GLES_RenderData *) renderer->driverdata;
     int i;
@@ -897,7 +886,7 @@ GLES_RenderCopy(SDL_Renderer * renderer, SDL_Texture * texture,
 
     if (data->GL_OES_draw_texture_supported && data->useDrawTexture) {
         /* this code is a little funny because the viewport is upside down vs SDL's coordinate system */
-        SDL_Window *window = SDL_GetWindowFromID(renderer->window);
+        SDL_Window *window = renderer->window;
         GLint cropRect[4];
         cropRect[0] = srcrect->x;
         cropRect[1] = srcrect->y + srcrect->h;
@@ -967,7 +956,6 @@ GLES_RenderPresent(SDL_Renderer * renderer)
 static void
 GLES_DestroyTexture(SDL_Renderer * renderer, SDL_Texture * texture)
 {
-    GLES_RenderData *renderdata = (GLES_RenderData *) renderer->driverdata;
     GLES_TextureData *data = (GLES_TextureData *) texture->driverdata;
 
     if (!data) {

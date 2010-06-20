@@ -173,6 +173,7 @@ void Screen::Initialize(screen_mode_data* mode)
 #if SDL_VERSION_ATLEAST(1, 2, 10)
 		desktop_height = SDL_GetVideoInfo()->current_h;
 		desktop_width = SDL_GetVideoInfo()->current_w;
+    printf ( "Desktop size: %d x %d\n", desktop_width, desktop_height );
 #endif
 
 		// build a list of fullscreen modes
@@ -260,7 +261,7 @@ void Screen::Initialize(screen_mode_data* mode)
 	// Set screen to 640x480 without OpenGL for menu
 	screen_mode = *mode;
   // 
-  change_screen_mode(iWidth, iHeight, bit_depth, true);
+  change_screen_mode(640, 480, bit_depth, true);
 	screen_initialized = true;
 
 }
@@ -371,6 +372,11 @@ SDL_Rect Screen::view_rect()
 		r.h = r.h * 3 / 4;
 	}
 
+  r.x = 0;
+  r.y = 0;
+  r.w = iWidth;
+  r.h = iHeight;
+  
 	return r;
 }
 
@@ -604,8 +610,11 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 	} else {
 		flags |= SDL_HWSURFACE | SDL_HWPALETTE;
 	}
-	printf ( "Creating video mode (%d,%d)\n", vmode_width, vmode_height );
-	main_surface = SDL_SetVideoMode(vmode_width, vmode_height, depth, flags);
+  // Swap!
+	// DJB Original, but only supporting portrait.
+  // main_surface = SDL_SetVideoMode(vmode_width, vmode_height, depth, flags);
+	printf ( "Creating video mode (%d,%d)\n", vmode_height, vmode_width );
+	main_surface = SDL_SetVideoMode(vmode_height, vmode_width, depth, flags);
 #ifdef HAVE_OPENGL
 #if SDL_VERSION_ATLEAST(1,2,6)
 	if (main_surface == NULL && !nogl && screen_mode.acceleration != _no_acceleration && Get_OGL_ConfigureData().Multisamples > 0) {

@@ -306,7 +306,7 @@ static void initialize_application(void)
 #endif
 
 	// Find data directories, construct search path
-	DirectorySpecifier default_data_dir;
+  DirectorySpecifier default_data_dir;
 
   // DJB
 #if TARGET_OS_IPHONE
@@ -728,7 +728,7 @@ static void main_event_loop(void)
 
 			while (true) {
 				SDL_Event event;
-				event.type = SDL_NOEVENT;
+				event.type = SDL_FIRSTEVENT;
 				SDL_PollEvent(&event);
 
 				if (yield_time) {
@@ -736,13 +736,13 @@ static void main_event_loop(void)
 					// processes by calling SDL_Delay() but only try for a maximum
 					// of 30ms
 					int num_tries = 0;
-					while (event.type == SDL_NOEVENT && num_tries < 3) {
+					while (event.type == SDL_FIRSTEVENT && num_tries < 3) {
 						SDL_Delay(10);
 						SDL_PollEvent(&event);
 						num_tries++;
 					}
 					yield_time = false;
-				} else if (event.type == SDL_NOEVENT)
+				} else if (event.type == SDL_FIRSTEVENT)
 					break;
 
 				process_event(event);

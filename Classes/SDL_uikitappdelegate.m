@@ -20,12 +20,12 @@
  slouken@libsdl.org
 */
 
+#import "SDL_sysvideo.h"
+
 #import "SDL_uikitappdelegate.h"
 #import "SDL_uikitopenglview.h"
 #import "SDL_events_c.h"
 #import "jumphack.h"
-#import "ASIHTTPRequest.h"
-#import "ZipArchive.h"
 
 #ifdef main
 #undef main
@@ -57,9 +57,6 @@ int main(int argc, char **argv) {
 
 @implementation SDLUIKitDelegate
 
-@synthesize window;
-@synthesize windowID;
-
 /* convenience method */
 +(SDLUIKitDelegate *)sharedAppDelegate {
 	/* the delegate is set in UIApplicationMain(), which is garaunteed to be called before this method */
@@ -67,10 +64,7 @@ int main(int argc, char **argv) {
 }
 
 - (id)init {
-  NSLog ( @"Starting AppDelegate" );
 	self = [super init];
-	window = nil;
-	windowID = 0;
 	return self;
 }
 
@@ -95,34 +89,8 @@ int main(int argc, char **argv) {
 	/* Set working directory to resource path */
 	[[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
 	
-  // See if we have M1A1 installed, if not, fetch it and download
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString* docsPath = [paths objectAtIndex:0];
-  NSString *installDirectory = [docsPath stringByAppendingString:@"/M1A1"];
-  
-  BOOL isDirectory;
-  BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory  isDirectory:&isDirectory];
-  NSLog ( @"Checking for file: %@", installDirectory );
-  if ( !fileExists ) {
-    NSString* path = [docsPath stringByAppendingString:@"M1A1.zip"];
-    NSLog ( @"Download file!" );
-      NSURL *url = [NSURL URLWithString:@"http://10.0.0.11/~blezek/M1A1.zip"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:path];    
-    [request startSynchronous];
-    
-    // Now unzip
-    ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];
-    [zipper UnzipOpenFile:path];
-    [zipper UnzipFileTo:docsPath overWrite:NO];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:path error:NULL];
-  }
-  
-
-  
-	[self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+	[self performSelector:@selector(postFinishLaunch) withObject:nil
+afterDelay:0.0];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -135,21 +103,42 @@ int main(int argc, char **argv) {
 
 - (void) applicationWillResignActive:(UIApplication*)application
 {
-//	NSLog(@"%@", NSStringFromSelector(_cmd));
-	SDL_SendWindowEvent(self.windowID, SDL_WINDOWEVENT_MINIMIZED, 0, 0);
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
+
+    // Send every window on every screen a MINIMIZED event.
+    SDL_VideoDevice *_this = SDL_GetVideoDevice();
+    if (!_this) {
+        return;
+    }
+
+    int i;
+    for (i = 0; i < _this->num_displays; i++) {
+        const SDL_VideoDisplay *display = &_this->displays[i];
+        SDL_Window *window;
+        for (window = display->windows; window != nil; window = window->next) {
+            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_MINIMIZED, 0, 0);
+        }
+    }
 }
 
 - (void) applicationDidBecomeActive:(UIApplication*)application
 {
-//	NSLog(@"%@", NSStringFromSelector(_cmd));
-	SDL_SendWindowEvent(self.windowID, SDL_WINDOWEVENT_RESTORED, 0, 0);
-}
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
 
+    // Send every window on every screen a RESTORED event.
+    SDL_VideoDevice *_this = SDL_GetVideoDevice();
+    if (!_this) {
+        return;
+    }
 
-
--(void)dealloc {
-	[window release];
-	[super dealloc];
+    int i;
+    for (i = 0; i < _this->num_displays; i++) {
+        const SDL_VideoDisplay *display = &_this->displays[i];
+        SDL_Window *window;
+        for (window = display->windows; window != nil; window = window->next) {
+            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESTORED, 0, 0);
+        }
+    }
 }
 
 @end

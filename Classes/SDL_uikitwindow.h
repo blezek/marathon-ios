@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2010 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -36,7 +36,6 @@ extern void UIKit_DestroyWindow(_THIS, SDL_Window * window);
 
 struct SDL_WindowData
 {
-    SDL_WindowID windowID;
     UIWindow *uiwindow;
     SDL_uikitopenglview *view;
 };

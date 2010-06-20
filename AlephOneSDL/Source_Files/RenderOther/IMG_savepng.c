@@ -26,9 +26,9 @@
  * 2009-12-26 - Add support for writing metadata - Gregory Smith
  */
 #include <stdlib.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_byteorder.h>
-#include <png.h>
+#include <SDL.h>
+// #include <SDL_byteorder.h>
+#include "png.h"
 #include "IMG_savepng.h"
 
 int IMG_SavePNG(const char *file, SDL_Surface *surf,int compression, struct IMG_PNG_text* text, int num_text){

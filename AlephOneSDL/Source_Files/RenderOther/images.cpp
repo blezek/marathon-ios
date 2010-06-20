@@ -133,7 +133,7 @@ static void draw_picture(LoadedResource &PictRsrc);
 #include <SDL_endian.h>
 
 #ifdef HAVE_SDL_IMAGE_H
-#include <SDL_image.h>
+#include "SDL_image.h"
 #endif
 
 #include "byte_swapping.h"
@@ -877,6 +877,10 @@ static void draw_picture(LoadedResource &rsrc)
 		SDL_FillRect(video, NULL, SDL_MapRGB(video->format, 0, 0, 0));
 	}
 
+  // DJB
+  dst_rect.w = iWidth;
+  dst_rect.h = iHeight;
+  
 	// Blit picture to screen
 	SDL_BlitSurface(s, &src_rect, video, &dst_rect);
 	SDL_FreeSurface(s);
@@ -980,7 +984,7 @@ void scroll_full_screen_pict_resource_from_scenario(int pict_resource_number, bo
 			SDL_Delay(10);
 
 			// Check for events to abort
-			event.type = SDL_NOEVENT;
+			event.type = SDL_FIRSTEVENT;
 			SDL_PollEvent(&event);
 			switch (event.type) {
 				case SDL_MOUSEBUTTONDOWN:

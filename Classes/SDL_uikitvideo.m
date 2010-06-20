@@ -19,6 +19,9 @@
     Sam Lantinga
     slouken@libsdl.org
 */
+
+#import <UIKit/UIKit.h>
+
 #include "SDL_config.h"
 
 #include "SDL_video.h"
@@ -35,20 +38,18 @@
 #include "SDL_renderer_sw.h"
 #include "SDL_renderer_gles.h"
 
+#include "SDL_assert.h"
+
 #define UIKITVID_DRIVER_NAME "uikit"
 
 /* Initialization/Query functions */
 static int UIKit_VideoInit(_THIS);
-static int UIKit_SetDisplayMode(_THIS, SDL_DisplayMode * mode);
+static void UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * sdl_display);
+static int UIKit_SetDisplayMode(_THIS, SDL_VideoDisplay * display,
+                                SDL_DisplayMode * mode);
 static void UIKit_VideoQuit(_THIS);
 
-extern int UIKit_GL_MakeCurrent(_THIS, SDL_Window * window,
-                                SDL_GLContext context);
-extern void UIKit_GL_SwapWindow(_THIS, SDL_Window * window);
-extern SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window);
-extern void UIKit_GL_DeleteContext(_THIS, SDL_GLContext context);
-extern void *UIKit_GL_GetProcAddress(_THIS, const char *proc);
-extern int UIKit_GL_LoadLibrary(_THIS, const char *path);
+BOOL SDL_UIKit_supports_multiple_displays = NO;
 
 /* DUMMY driver bootstrap functions */
 
@@ -81,6 +82,7 @@ UIKit_CreateDevice(int devindex)
     /* Set the function pointers */
     device->VideoInit = UIKit_VideoInit;
     device->VideoQuit = UIKit_VideoQuit;
+    device->GetDisplayModes = UIKit_GetDisplayModes;
     device->SetDisplayMode = UIKit_SetDisplayMode;
     device->PumpEvents = UIKit_PumpEvents;
 	device->CreateWindow = UIKit_CreateWindow;
@@ -107,55 +109,144 @@ VideoBootStrap UIKIT_bootstrap = {
 };
 
 
+/*
+!!! FIXME:
+
+The main screen should list a AxB mode for portrait orientation, and then
+ also list BxA for landscape mode. When setting a given resolution, we should
+ rotate the view's transform appropriately (extra credit if you check the
+ accelerometer and rotate the display so it's never upside down).
+
+  http://iphonedevelopment.blogspot.com/2008/10/starting-in-landscape-mode-without.html
+
+*/
+
+static void
+UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
+{
+    UIScreen *uiscreen = (UIScreen *) display->driverdata;
+    SDL_DisplayMode mode;
+    SDL_zero(mode);
+
+    // availableModes showed up in 3.2 (the iPad and later). We should only
+    //  land here for at least that version of the OS.
+    if (!SDL_UIKit_supports_multiple_displays) {
+        const CGRect rect = [uiscreen bounds];
+        mode.format = SDL_PIXELFORMAT_ABGR8888;
+        mode.w = (int) rect.size.width;
+        mode.h = (int) rect.size.height;
+        mode.refresh_rate = 0;
+        mode.driverdata = NULL;
+        SDL_AddDisplayMode(display, &mode);
+        return;
+    }
+
+    const NSArray *modes = [uiscreen availableModes];
+    const NSUInteger mode_count = [modes count];
+    NSUInteger i;
+    for (i = 0; i < mode_count; i++) {
+        UIScreenMode *uimode = (UIScreenMode *) [modes objectAtIndex:i];
+        const CGSize size = [uimode size];
+        mode.format = SDL_PIXELFORMAT_ABGR8888;
+        mode.w = (int) size.width;
+        mode.h = (int) size.height;
+        mode.refresh_rate = 0;
+        mode.driverdata = uimode;
+        [uimode retain];
+        SDL_AddDisplayMode(display, &mode);
+    }
+}
+
+
+static void
+UIKit_AddDisplay(UIScreen *uiscreen, int w, int h)
+{
+    SDL_VideoDisplay display;
+    SDL_DisplayMode mode;
+    SDL_zero(mode);
+    mode.format = SDL_PIXELFORMAT_ABGR8888;
+    mode.w = w;
+    mode.h = h;
+    mode.refresh_rate = 0;
+
+    SDL_zero(display);
+    display.desktop_mode = mode;
+    display.current_mode = mode;
+
+    [uiscreen retain];
+    display.driverdata = uiscreen;
+    SDL_AddVideoDisplay(&display);
+}
+
+
 int
 UIKit_VideoInit(_THIS)
 {
-    SDL_DisplayMode mode;
-		
-	_this->gl_config.driver_loaded = 1;
+    _this->gl_config.driver_loaded = 1;
 
-	SDL_VideoDisplay display;
-	SDL_zero(display);
+    NSString *reqSysVer = @"3.2";
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
+        SDL_UIKit_supports_multiple_displays = YES;
 
-    /* Use a 32-bpp desktop mode */
-    SDL_zero(mode);
-	mode.format = SDL_PIXELFORMAT_ABGR8888;
-#ifdef __IPAD__
-  mode.w = 1024;
-  mode.h = 768;
-#else
-  mode.w = 480;
-  mode.h = 320;
-#endif
-  
-  // DJB  mode.w = 320;
-// DJB    mode.h = 480;
-    mode.refresh_rate = 0;
-    mode.driverdata = NULL;
-		
-	display.num_display_modes = 1;
-	display.max_display_modes = 1;
-	display.display_modes = (SDL_DisplayMode *)SDL_malloc(display.max_display_modes * sizeof(SDL_DisplayMode));
-	
-	display.display_modes[0] = mode;
-	display.desktop_mode = mode;
-	display.current_mode = mode;
-		
-	SDL_AddVideoDisplay(&display);
+    // If this is iPhoneOS < 3.2, all devices are one screen, 320x480 pixels.
+    //  The iPad added both a larger main screen and the ability to use
+    //  external displays.
+    if (!SDL_UIKit_supports_multiple_displays) {
+        // Just give 'em the whole main screen.
+        UIScreen *uiscreen = [UIScreen mainScreen];
+        const CGRect rect = [uiscreen bounds];
+        UIKit_AddDisplay(uiscreen, (int)rect.size.width, (int)rect.size.height);
+    } else {
+        const NSArray *screens = [UIScreen screens];
+        const NSUInteger screen_count = [screens count];
+        NSUInteger i;
+        for (i = 0; i < screen_count; i++) {
+            // the main screen is the first element in the array.
+            UIScreen *uiscreen = (UIScreen *) [screens objectAtIndex:i];
+            const CGSize size = [[uiscreen currentMode] size];
+            UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
+        }
+    }
 
     /* We're done! */
     return 0;
 }
 
 static int
-UIKit_SetDisplayMode(_THIS, SDL_DisplayMode * mode)
+UIKit_SetDisplayMode(_THIS, SDL_VideoDisplay * display, SDL_DisplayMode * mode)
 {
+    UIScreen *uiscreen = (UIScreen *) display->driverdata;
+    if (!SDL_UIKit_supports_multiple_displays) {
+        // Not on at least iPhoneOS 3.2 (versions prior to iPad).
+        SDL_assert(mode->driverdata == NULL);
+    } else {
+        UIScreenMode *uimode = (UIScreenMode *) mode->driverdata;
+        [uiscreen setCurrentMode:uimode];
+    }
+
     return 0;
 }
 
 void
 UIKit_VideoQuit(_THIS)
 {
+    // Release Objective-C objects, so higher level doesn't free() them.
+    int i, j;
+    for (i = 0; i < _this->num_displays; i++) {
+        SDL_VideoDisplay *display = &_this->displays[i];
+        UIScreen *uiscreen = (UIScreen *) display->driverdata;
+        [uiscreen release];
+        display->driverdata = NULL;
+        for (j = 0; j < display->num_display_modes; j++) {
+            SDL_DisplayMode *mode = &display->display_modes[j];
+            UIScreenMode *uimode = (UIScreenMode *) mode->driverdata;
+            if (uimode) {
+                [uimode release];
+                mode->driverdata = NULL;
+            }
+        }
+    }
 }
 
 /* vi: set ts=4 sw=4 expandtab: */

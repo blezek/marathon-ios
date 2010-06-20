@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2010 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -26,6 +26,11 @@
 #include "SDL_mouse_c.h"
 #include "SDL_events.h"
 
+// DJB  Handle multiple touches
+#define SDL_IPHONE_MULTIPLE_MICE 1
+// DJB  Enable events!
+#define FIXME_MULTITOUCH 0
+
 #if SDL_IPHONE_MULTIPLE_MICE
 #define MAX_SIMULTANEOUS_TOUCHES 5
 #else
@@ -38,8 +43,10 @@
 #else
 @interface SDL_uikitview : UIView {
 #endif
-		
+	
+#if FIXME_MULTITOUCH
 	SDL_Mouse mice[MAX_SIMULTANEOUS_TOUCHES];
+#endif
 
 #if SDL_IPHONE_KEYBOARD
 	UITextField *textField;
