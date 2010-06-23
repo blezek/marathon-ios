@@ -123,7 +123,9 @@ int IMG_SavePNG_RW(SDL_RWops *src, SDL_Surface *surf,int compression, struct IMG
 		}
 		png_set_PLTE(png_ptr,info_ptr,palette,fmt->palette->ncolors);
 		if (surf->flags&SDL_SRCCOLORKEY) {
-#ifndef __IPHONE__
+// DJB 
+// #ifndef __IPHONE__
+#if 0
 			palette_alpha=(Uint8 *)malloc((fmt->colorkey+1)*sizeof(Uint8));
 			if (!palette_alpha) {
 				SDL_SetError("Couldn't create memory for palette transparency");
@@ -241,7 +243,9 @@ int IMG_SavePNG_RW(SDL_RWops *src, SDL_Surface *surf,int compression, struct IMG
 				goto savedone;
 			}
 			if(surf->flags&SDL_SRCALPHA){
-#ifndef __IPHONE__
+// DJB
+// #ifndef __IPHONE__
+#if 0
 				temp_alpha=fmt->alpha;
 #endif
 				used_alpha=1;

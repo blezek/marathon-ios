@@ -2371,12 +2371,12 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
   memset(&preferences->screen_mode, '\0', sizeof(screen_mode_data));
 	preferences->screen_mode.gamma_level= DEFAULT_GAMMA_LEVEL;
 
-#ifdef __IPAD__
-	preferences->screen_mode.width = 1024;
-	preferences->screen_mode.height = 768;
-#else /* iPhone */
+#ifdef __IPHONE__
 	preferences->screen_mode.width = 480;
 	preferences->screen_mode.height = 320;
+#else /* iPad */
+	preferences->screen_mode.width = 1024;
+	preferences->screen_mode.height = 768;
 #endif
 	preferences->screen_mode.hud = true;
 	preferences->screen_mode.hud_scale_level = 0;

@@ -90,7 +90,9 @@ bool Image_Blitter::Load(const SDL_Surface& s, const SDL_Rect& src)
 	SDL_SetAlpha(m_surface, SDL_SRCALPHA, 0);
 	
 	// when blitting surface, make sure we copy rather than blend the alpha
-#ifdef __IPHONE__
+// DJB
+// #ifdef __IPHONE__
+#if 1
   uint8 src_alpha = 1.0;
 #else
 	uint8 src_alpha = s.format->alpha;

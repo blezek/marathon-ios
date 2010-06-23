@@ -5,7 +5,8 @@
  *      (this example uses errno which might not be multithreaded everywhere)
  */
 
-#ifndef __IPHONE__
+// #ifndef __IPHONE__
+#if 0
 
 #include <SDL_rwops_zzip.h>
 #include <zzip/zzip.h>
