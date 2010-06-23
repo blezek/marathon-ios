@@ -1312,19 +1312,21 @@ uint32 parse_keymap(void)
   uint32 flags = 0;
 
   if(get_keyboard_controller_status())
-    {
-      Uint8 *key_map;
-      if (Console::instance()->input_active()) {
-	static Uint8 chat_input_mode_keymap[323];
-	memset(&chat_input_mode_keymap, 0, sizeof(chat_input_mode_keymap));
-	key_map = chat_input_mode_keymap;
-      } else {
-	// DJB key_map = SDL_GetKeyState(NULL);
-      }
-      
-      // ZZZ: let mouse code simulate keypresses
-      mouse_buttons_become_keypresses(key_map);
-      joystick_buttons_become_keypresses(key_map);
+  {
+    Uint8 *key_map;
+    if (Console::instance()->input_active()) {
+      static Uint8 chat_input_mode_keymap[323];
+      memset(&chat_input_mode_keymap, 0, sizeof(chat_input_mode_keymap));
+      key_map = chat_input_mode_keymap;
+    } else {
+      // DJB in SDL 1.3, this is SDL_GetKeyboardState
+      // key_map = SDL_GetKeyState(NULL);
+      key_map = SDL_GetKeyboardState(NULL);
+    }
+    
+    // ZZZ: let mouse code simulate keypresses
+    mouse_buttons_become_keypresses(key_map);
+    joystick_buttons_become_keypresses(key_map);
       
       // Parse the keymap
       key_definition *key = current_key_definitions;

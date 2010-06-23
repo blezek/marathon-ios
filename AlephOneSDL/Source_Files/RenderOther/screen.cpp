@@ -610,11 +610,8 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 	} else {
 		flags |= SDL_HWSURFACE | SDL_HWPALETTE;
 	}
-  // Swap!
-	// DJB Original, but only supporting portrait.
-  // main_surface = SDL_SetVideoMode(vmode_width, vmode_height, depth, flags);
-	printf ( "Creating video mode (%d,%d)\n", vmode_height, vmode_width );
-	main_surface = SDL_SetVideoMode(vmode_height, vmode_width, depth, flags);
+  main_surface = SDL_SetVideoMode(vmode_width, vmode_height, depth, flags);
+	printf ( "Creating video mode (%d,%d)\n", vmode_width, vmode_height );
 #ifdef HAVE_OPENGL
 #if SDL_VERSION_ATLEAST(1,2,6)
 	if (main_surface == NULL && !nogl && screen_mode.acceleration != _no_acceleration && Get_OGL_ConfigureData().Multisamples > 0) {

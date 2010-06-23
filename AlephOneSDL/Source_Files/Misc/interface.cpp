@@ -2396,10 +2396,17 @@ static void handle_interface_menu_screen_click(
 	yoffset = (SDL_GetVideoSurface()->h - 480) / 2;
 #endif
 
+  // DJB
+  printf ( "Window resolution: %d x %d\n", SDL_GetVideoSurface()->w, SDL_GetVideoSurface()->h );
+  printf ( "Click location %d x %d\n", x, y );
+  printf ( "Offsets %d x %d\n", xoffset, yoffset );
+  printf ( "Final point %d x %d\n", x - xoffset, y - yoffset );
+  
 	/* find it.. */
 	for(index= _new_game_button_rect; index<NUMBER_OF_INTERFACE_RECTANGLES; ++index)
 	{
 		screen_rect= get_interface_rectangle(index);
+    printf ( "Checking rectangle ( %d x %d ) ( %d x %d )\n", screen_rect->top, screen_rect->left, screen_rect->bottom, screen_rect->right );
 		if (point_in_rectangle(x - xoffset, y - yoffset, screen_rect))
 			break;
 	}

@@ -47,129 +47,55 @@
 	[self initializeKeyboard];
 #endif	
 
-#if FIXME_MULTITOUCH
-	int i;
-	for (i=0; i<MAX_SIMULTANEOUS_TOUCHES; i++) {
-        mice[i].id = i;
-		mice[i].driverdata = NULL;
-		SDL_AddMouse(&mice[i], "Mouse", 0, 0, 1);
-	}
-	self.multipleTouchEnabled = YES;
-#endif
-			
 	return self;
 
 }
 
+- (CGPoint) transformTouchLocation:(CGPoint)location {
+  CGPoint newLocation;
+  newLocation.x = location.y;
+  newLocation.y = self.frame.size.width - location.x;
+  return newLocation;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 
-	NSEnumerator *enumerator = [touches objectEnumerator];
-	UITouch *touch =(UITouch*)[enumerator nextObject];
-	
-#if FIXME_MULTITOUCH
-	/* associate touches with mice, so long as we have slots */
-	int i;
-	int found = 0;
-	for(i=0; touch && i < MAX_SIMULTANEOUS_TOUCHES; i++) {
-	
-		/* check if this mouse is already tracking a touch */
-		if (mice[i].driverdata != NULL) {
-			continue;
-		}
-		/*	
-			mouse not associated with anything right now,
-			associate the touch with this mouse
-		*/
-		found = 1;
-		
-		/* save old mouse so we can switch back */
-		int oldMouse = SDL_SelectMouse(-1);
-		
-		/* select this slot's mouse */
-		SDL_SelectMouse(i);
-		CGPoint locationInView = [touch locationInView: self];
-		
-		/* set driver data to touch object, we'll use touch object later */
-		mice[i].driverdata = [touch retain];
-		
-		/* send moved event */
-    // DJB  Need to swap x and y because of the rotated OpenGL context
-		// SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
-    SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
-		
-		/* send mouse down event */
-		SDL_SendMouseButton(i, SDL_PRESSED, SDL_BUTTON_LEFT);
-		
-		/* re-calibrate relative mouse motion */
-		SDL_GetRelativeMouseState(i, NULL, NULL);
-		
-		/* grab next touch */
-		touch = (UITouch*)[enumerator nextObject]; 
-		
-		/* switch back to our old mouse */
-		SDL_SelectMouse(oldMouse);
-		
-	}
-#endif
-}
+  for ( UITouch *touch in touches ) {
+    if ( touch.tapCount == 1 ) {
+      // Simulate a mouse event
+      CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
+      NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
+      SDL_SendMouseMotion(0, location.x, location.y);
+      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+      SDL_GetRelativeMouseState(NULL, NULL);
+    }
+  }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	
-	NSEnumerator *enumerator = [touches objectEnumerator];
-	UITouch *touch=nil;
-	
-#if FIXME_MULTITOUCH
-	while(touch = (UITouch *)[enumerator nextObject]) {
-		/* search for the mouse slot associated with this touch */
-		int i, found = NO;
-		for (i=0; i<MAX_SIMULTANEOUS_TOUCHES && !found; i++) {
-			if (mice[i].driverdata == touch) {
-				/* found the mouse associate with the touch */
-				[(UITouch*)(mice[i].driverdata) release];
-				mice[i].driverdata = NULL;
-				/* send mouse up */
-				SDL_SendMouseButton(i, SDL_RELEASED, SDL_BUTTON_LEFT);
-				/* discontinue search for this touch */
-				found = YES;
-			}
-		}
-	}
-#endif
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-	/*
-		this can happen if the user puts more than 5 touches on the screen
-		at once, or perhaps in other circumstances.  Usually (it seems)
-		all active touches are canceled.
-	*/
-	[self touchesEnded: touches withEvent: event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	
-	NSEnumerator *enumerator = [touches objectEnumerator];
-	UITouch *touch=nil;
-	
-#if FIXME_MULTITOUCH
-	while(touch = (UITouch *)[enumerator nextObject]) {
-		/* try to find the mouse associated with this touch */
-		int i, found = NO;
-		for (i=0; i<MAX_SIMULTANEOUS_TOUCHES && !found; i++) {
-			if (mice[i].driverdata == touch) {
-				/* found proper mouse */
-				CGPoint locationInView = [touch locationInView: self];
-				/* send moved event */
-				// DJB  Need to swap touch locations!
-        // SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
-        SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
-				/* discontinue search */
-				found = YES;
-			}
-		}
-	}
-#endif
+  for ( UITouch *touch in touches ) {
+    CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
+    NSLog(@"touchesMoved location %@", NSStringFromCGPoint(location));
+    SDL_SendMouseMotion(0, location.x, location.y);
+  }
+  
 }
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+  for ( UITouch *touch in touches ) {
+    if ( touch.tapCount == 1 ) {
+      // Simulate a mouse event
+      CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
+      NSLog(@"touchesEnded location: %@", NSStringFromCGPoint(location));
+      SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+    }
+  }
+}
+
+
 
 /*
 	---- Keyboard related functionality below this line ----
@@ -405,3 +331,152 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
 
 
 #endif /* SDL_IPHONE_KEYBOARD */
+
+
+
+#if 0
+// Original code
+- (id)initWithFrame:(CGRect)frame {
+  
+	self = [super initWithFrame: frame];
+	
+#if SDL_IPHONE_KEYBOARD
+	[self initializeKeyboard];
+#endif	
+  
+#if FIXME_MULTITOUCH
+	int i;
+	for (i=0; i<MAX_SIMULTANEOUS_TOUCHES; i++) {
+    mice[i].id = i;
+		mice[i].driverdata = NULL;
+		SDL_AddMouse(&mice[i], "Mouse", 0, 0, 1);
+	}
+	self.multipleTouchEnabled = YES;
+#endif
+  
+	return self;
+  
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  
+  for ( UITouch *touch in touches ) {
+    if ( touch.tapCount == 1 ) {
+      // Simulate a mouse event
+      CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
+      NSLog(@"Mouse event at location: %@", NSStringFromCGPoint(location));
+      SDL_SendMouseMotion(0, location.y, location.x);
+      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+      SDL_GetRelativeMouseState(NULL, NULL);
+    }
+  }
+  
+#if FIXME_MULTITOUCH
+	/* associate touches with mice, so long as we have slots */
+	int i;
+	int found = 0;
+	for(i=0; touch && i < MAX_SIMULTANEOUS_TOUCHES; i++) {
+    
+		/* check if this mouse is already tracking a touch */
+		if (mice[i].driverdata != NULL) {
+			continue;
+		}
+		/*	
+     mouse not associated with anything right now,
+     associate the touch with this mouse
+     */
+		found = 1;
+		
+		/* save old mouse so we can switch back */
+		int oldMouse = SDL_SelectMouse(-1);
+		
+		/* select this slot's mouse */
+		SDL_SelectMouse(i);
+		CGPoint locationInView = [touch locationInView: self];
+		
+		/* set driver data to touch object, we'll use touch object later */
+		mice[i].driverdata = [touch retain];
+		
+		/* send moved event */
+    // DJB  Need to swap x and y because of the rotated OpenGL context
+		// SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
+    SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
+		
+		/* send mouse down event */
+		SDL_SendMouseButton(i, SDL_PRESSED, SDL_BUTTON_LEFT);
+		
+		/* re-calibrate relative mouse motion */
+		SDL_GetRelativeMouseState(i, NULL, NULL);
+		
+		/* grab next touch */
+		touch = (UITouch*)[enumerator nextObject]; 
+		
+		/* switch back to our old mouse */
+		SDL_SelectMouse(oldMouse);
+		
+	}
+#endif
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+  for ( UITouch *touch in touches ) {
+    if ( touch.tapCount == 1 ) {
+      // Simulate a mouse event
+      NSLog(@"Mouse event at location: %@", NSStringFromCGPoint([touch locationInView:self]));
+      SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+    }
+  }
+  
+	
+#if FIXME_MULTITOUCH
+	while(touch = (UITouch *)[enumerator nextObject]) {
+		/* search for the mouse slot associated with this touch */
+		int i, found = NO;
+		for (i=0; i<MAX_SIMULTANEOUS_TOUCHES && !found; i++) {
+			if (mice[i].driverdata == touch) {
+				/* found the mouse associate with the touch */
+				[(UITouch*)(mice[i].driverdata) release];
+				mice[i].driverdata = NULL;
+				/* send mouse up */
+				SDL_SendMouseButton(i, SDL_RELEASED, SDL_BUTTON_LEFT);
+				/* discontinue search for this touch */
+				found = YES;
+			}
+		}
+	}
+#endif
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+  for ( UITouch *touch in touches ) {
+    CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
+    NSLog(@"Sending mouse motion to point %@", NSStringFromCGPoint(location));
+    SDL_SendMouseMotion(0, location.y, location.x);
+  }
+  
+	NSEnumerator *enumerator = [touches objectEnumerator];
+	UITouch *touch=nil;
+	
+#if FIXME_MULTITOUCH
+	while(touch = (UITouch *)[enumerator nextObject]) {
+		/* try to find the mouse associated with this touch */
+		int i, found = NO;
+		for (i=0; i<MAX_SIMULTANEOUS_TOUCHES && !found; i++) {
+			if (mice[i].driverdata == touch) {
+				/* found proper mouse */
+				CGPoint locationInView = [touch locationInView: self];
+				/* send moved event */
+				// DJB  Need to swap touch locations!
+        // SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
+        SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
+				/* discontinue search */
+				found = YES;
+			}
+		}
+	}
+#endif
+}
+
+#endif

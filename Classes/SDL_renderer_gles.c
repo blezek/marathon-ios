@@ -350,14 +350,15 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
       GLfloat w = window->w / 2.0;
       GLfloat h = window->h / 2.0;
 
-      glTranslatef(w,h,0);
+      // DJB Because this is before we translate, do h,w
+      // glTranslatef(h,w,0);
 			glRotatef(90,0,0,1);
       GLfloat scaleX = 0.66, scaleY = 0.66;
       printf ( "Scale is: %f, %f\n", scaleX, scaleY );
       printf ( "Window size is %d x %d\n", window->w, window->h );
       // glScalef ( scaleX, scaleY, 1 );
 			// glTranslatef(-h/scaleX,-w/scaleY,0);
-      glTranslatef(-h,-w,0);
+      glTranslatef(-w/2.0,-window->h,0);
       
         data->updateSize = SDL_FALSE;
     }

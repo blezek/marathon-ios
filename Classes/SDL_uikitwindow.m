@@ -58,8 +58,9 @@ static int SetupWindowData(_THIS, SDL_Window *window, UIWindow *uiwindow, SDL_bo
     {
         window->x = 0;
         window->y = 0;
-        window->w = (int)uiwindow.frame.size.width;
-        window->h = (int)uiwindow.frame.size.height;
+      //DJB Swap width and height for landscape mode
+        window->w = (int)uiwindow.frame.size.height;
+        window->h = (int)uiwindow.frame.size.width;
     }
     
     window->driverdata = data;
