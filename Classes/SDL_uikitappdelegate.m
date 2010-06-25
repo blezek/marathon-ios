@@ -26,6 +26,9 @@
 #import "SDL_uikitopenglview.h"
 #import "SDL_events_c.h"
 #import "jumphack.h"
+#import "ASIHTTPRequest.h"
+#import "ZipArchive.h"
+
 
 #ifdef main
 #undef main
@@ -89,8 +92,37 @@ int main(int argc, char **argv) {
 	/* Set working directory to resource path */
 	[[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
 	
-	[self performSelector:@selector(postFinishLaunch) withObject:nil
-afterDelay:0.0];
+  [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
+  
+  // See if we have M1A1 installed, if not, fetch it and download
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString* docsPath = [paths objectAtIndex:0];
+  NSString *installDirectory = [docsPath stringByAppendingString:@"/M1A1"];
+  
+  BOOL isDirectory;
+  BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory  isDirectory:&isDirectory];
+  NSLog ( @"Checking for file: %@", installDirectory );
+  if ( !fileExists ) {
+    NSString* path = [docsPath stringByAppendingString:@"M1A1.zip"];
+    NSLog ( @"Download file!" );
+    NSURL *url = [NSURL URLWithString:@"http://10.0.0.11/~blezek/M1A1.zip"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadDestinationPath:path];    
+    [request startSynchronous];
+    
+    // Now unzip
+    ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];
+    [zipper UnzipOpenFile:path];
+    [zipper UnzipFileTo:docsPath overWrite:NO];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:path error:NULL];
+  }
+   
+  
+  
+	[self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+  
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

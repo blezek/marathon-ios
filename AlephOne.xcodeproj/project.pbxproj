@@ -113,7 +113,6 @@
 		A85087DD11C1D54400D95436 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A85087DE11C1D54400D95436 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A85087F211C1D5B200D95436 /* LandscapeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */; };
-		A85087FF11C1D70800D95436 /* UpperLeft.bmp in Resources */ = {isa = PBXBuildFile; fileRef = A85087FE11C1D70800D95436 /* UpperLeft.bmp */; };
 		A850881211C1D86200D95436 /* LandscapeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */; };
 		A850887611C1E46500D95436 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886711C1E46500D95436 /* ASIAuthenticationDialog.m */; };
 		A850887711C1E46500D95436 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886911C1E46500D95436 /* ASIFormDataRequest.m */; };
@@ -138,7 +137,6 @@
 		A854910C11BDEF0C0073554A /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A854910D11BDEF0C0073554A /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
 		A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
-		A85E672F11CB173A00D0FAEF /* UpperLeft.bmp in Resources */ = {isa = PBXBuildFile; fileRef = A85087FE11C1D70800D95436 /* UpperLeft.bmp */; };
 		A85E673011CB173A00D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673211CB173A00D0FAEF /* LandscapeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */; };
 		A85E673311CB173A00D0FAEF /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3411B35CFA00689138 /* error.c */; };
@@ -849,7 +847,6 @@
 		A850866511C1D4B800D95436 /* LandscapeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandscapeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A850866711C1D4B800D95436 /* LandscapeTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LandscapeTest-Info.plist"; sourceTree = "<group>"; };
 		A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LandscapeTest.cpp; sourceTree = "<group>"; };
-		A85087FE11C1D70800D95436 /* UpperLeft.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = UpperLeft.bmp; sourceTree = "<group>"; };
 		A850886611C1E46500D95436 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A850886711C1E46500D95436 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		A850886811C1E46500D95436 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -1535,7 +1532,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A85087FE11C1D70800D95436 /* UpperLeft.bmp */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
@@ -2714,7 +2710,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A85087FF11C1D70800D95436 /* UpperLeft.bmp in Resources */,
 				A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */,
 				A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */,
 			);
@@ -2732,7 +2727,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
-				A85E672F11CB173A00D0FAEF /* UpperLeft.bmp in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
