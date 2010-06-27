@@ -91,24 +91,29 @@ int main(int argc, char **argv) {
 			
 	/* Set working directory to resource path */
 	[[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
-	
-  [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
-  
+	  
   // See if we have M1A1 installed, if not, fetch it and download
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   NSString* docsPath = [paths objectAtIndex:0];
+  NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
   NSString *installDirectory = [docsPath stringByAppendingString:@"/M1A1"];
   
   BOOL isDirectory;
   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory  isDirectory:&isDirectory];
   NSLog ( @"Checking for file: %@", installDirectory );
   if ( !fileExists ) {
-    NSString* path = [docsPath stringByAppendingString:@"M1A1.zip"];
-    NSLog ( @"Download file!" );
-    NSURL *url = [NSURL URLWithString:@"http://10.0.0.11/~blezek/M1A1.zip"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:path];    
-    [request startSynchronous];
+    NSString* path = [resourcePath stringByAppendingString:@"/M1A1.zip"];
+    
+    // See if the zip file exists
+    fileExists = [[NSFileManager defaultManager] fileExistsAtPath:resourcePath isDirectory:&isDirectory];
+    if ( !fileExists ) {      
+      path = [docsPath stringByAppendingString:@"/lM1A1.zip"];
+      NSLog ( @"Download file!" );
+      NSURL *url = [NSURL URLWithString:@"http://10.0.0.11/~blezek/M1A1.zip"];
+      ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+      [request setDownloadDestinationPath:path];    
+      [request startSynchronous];
+    }
     
     // Now unzip
     ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];

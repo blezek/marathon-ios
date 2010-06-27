@@ -1942,6 +1942,8 @@ static bool begin_game(
 #endif
 		
 		/* Begin the game! */
+    // DJB Clear any existing errors
+    clear_game_error();
 		success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
 		if(success)
 		{

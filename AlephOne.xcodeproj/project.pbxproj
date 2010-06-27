@@ -59,6 +59,8 @@
 		A842544211B4A36500F4D68F /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A842544411B4A36500F4D68F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
 		A84254AC11B4A9DA00F4D68F /* AlephOneHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */; };
+		A84F3F2A11D6FE7D00705C6C /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
+		A84F3F2B11D6FE8300705C6C /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
 		A850879711C1D53A00D95436 /* SDL_yuv_sw_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */; };
 		A850879811C1D53A00D95436 /* SDL_audio_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAA811C07475000AC9E1 /* SDL_audio_c.h */; };
 		A850879911C1D53A00D95436 /* SDL_uikitopengles.h in Sources */ = {isa = PBXBuildFile; fileRef = A85490FC11BDEF0C0073554A /* SDL_uikitopengles.h */; };
@@ -844,6 +846,7 @@
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
 		A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneHelper.mm; path = Classes/AlephOneHelper.mm; sourceTree = "<group>"; };
+		A84F3F2911D6FE7C00705C6C /* M1A1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = M1A1.zip; path = Resources/M1A1.zip; sourceTree = "<group>"; };
 		A850866511C1D4B800D95436 /* LandscapeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandscapeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A850866711C1D4B800D95436 /* LandscapeTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LandscapeTest-Info.plist"; sourceTree = "<group>"; };
 		A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LandscapeTest.cpp; sourceTree = "<group>"; };
@@ -1532,6 +1535,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A84F3F2911D6FE7C00705C6C /* M1A1.zip */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
@@ -2712,6 +2716,7 @@
 			files = (
 				A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */,
 				A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */,
+				A84F3F2A11D6FE7D00705C6C /* M1A1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2728,6 +2733,7 @@
 			files = (
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
+				A84F3F2B11D6FE8300705C6C /* M1A1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
