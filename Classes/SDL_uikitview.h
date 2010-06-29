@@ -44,6 +44,8 @@
 @interface SDL_uikitview : UIView {
 #endif
 	
+  IBOutlet UIView *hud;
+  
 #if FIXME_MULTITOUCH
 	SDL_Mouse mice[MAX_SIMULTANEOUS_TOUCHES];
 #endif
@@ -54,10 +56,13 @@
 #endif	
 	
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+  @property(nonatomic,retain) IBOutlet UIView *hud;
+
+  - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (CGPoint) transformTouchLocation:(CGPoint)location;
+  
 
 #if SDL_IPHONE_KEYBOARD
 - (void)showKeyboard;

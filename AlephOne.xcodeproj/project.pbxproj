@@ -60,7 +60,6 @@
 		A842544411B4A36500F4D68F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
 		A84254AC11B4A9DA00F4D68F /* AlephOneHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */; };
 		A84F3F2A11D6FE7D00705C6C /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
-		A84F3F2B11D6FE8300705C6C /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
 		A850879711C1D53A00D95436 /* SDL_yuv_sw_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */; };
 		A850879811C1D53A00D95436 /* SDL_audio_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAA811C07475000AC9E1 /* SDL_audio_c.h */; };
 		A850879911C1D53A00D95436 /* SDL_uikitopengles.h in Sources */ = {isa = PBXBuildFile; fileRef = A85490FC11BDEF0C0073554A /* SDL_uikitopengles.h */; };
@@ -668,6 +667,8 @@
 		A88C921111B35CFA00689138 /* weapons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913111B35CFA00689138 /* weapons.cpp */; };
 		A88C921211B35CFA00689138 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913211B35CFA00689138 /* world.cpp */; };
 		A899FF1711BC96370071BF5F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A899FF1611BC96370071BF5F /* AudioToolbox.framework */; };
+		A8A5815611D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
+		A8A5815711D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
 		A8D966FF11C717A700016403 /* SDLnet.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FB11C717A700016403 /* SDLnet.c */; };
 		A8D9670011C717A700016403 /* SDLnetselect.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FC11C717A700016403 /* SDLnetselect.c */; };
 		A8D9670111C717A700016403 /* SDLnetTCP.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FD11C717A700016403 /* SDLnetTCP.c */; };
@@ -1358,6 +1359,7 @@
 		A88C913111B35CFA00689138 /* weapons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapons.cpp; sourceTree = "<group>"; };
 		A88C913211B35CFA00689138 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
 		A899FF1611BC96370071BF5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A8A5815511D789FF00F573B4 /* HUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUD.xib; sourceTree = "<group>"; };
 		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
@@ -1539,6 +1541,7 @@
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
+				A8A5815511D789FF00F573B4 /* HUD.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2717,6 +2720,7 @@
 				A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */,
 				A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */,
 				A84F3F2A11D6FE7D00705C6C /* M1A1.zip in Resources */,
+				A8A5815611D789FF00F573B4 /* HUD.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2733,7 +2737,7 @@
 			files = (
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
-				A84F3F2B11D6FE8300705C6C /* M1A1.zip in Resources */,
+				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

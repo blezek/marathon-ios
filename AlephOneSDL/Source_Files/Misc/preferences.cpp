@@ -2067,6 +2067,8 @@ void read_preferences ()
 	*sound_preferences = SoundManager::Parameters();
 	default_environment_preferences(environment_preferences);
 
+  printf ( "graphics preferences in read_preferences %d x %d\n", graphics_preferences->screen_mode.width, graphics_preferences->screen_mode.height );
+
 	// Slurp in the file and parse it
 
 	FileSpecifier FileSpec;
@@ -2110,6 +2112,9 @@ void read_preferences ()
 	validate_input_preferences(input_preferences);
 	validate_environment_preferences(environment_preferences);
 	
+  // DJB
+  printf ( "graphics preferences in read_preferences after loading %d x %d\n", graphics_preferences->screen_mode.width, graphics_preferences->screen_mode.height );
+
 	// jkvw: If we try to load a default file, but can't, we'll have set the game error.
 	//       But that's not useful, because we're just going to try loading the file
 	//       from user preferences.  It used to be this code was only called in initialisation,
@@ -2378,6 +2383,7 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 	preferences->screen_mode.width = 1024;
 	preferences->screen_mode.height = 768;
 #endif
+  printf ( "Set screen mode in preferences %d x %d\n", preferences->screen_mode.width, preferences->screen_mode.height );
 	preferences->screen_mode.hud = true;
 	preferences->screen_mode.hud_scale_level = 0;
 	preferences->screen_mode.term_scale_level = 0;
@@ -2395,7 +2401,7 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 		preferences->screen_mode.fill_the_screen = false;
 	else
 		preferences->screen_mode.fill_the_screen = true;
-
+  
 	if (preferences->screen_mode.acceleration == _no_acceleration)
 		preferences->screen_mode.bit_depth = 16;
 	else

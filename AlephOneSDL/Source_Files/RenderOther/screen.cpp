@@ -278,12 +278,12 @@ int Screen::width()
 
 int Screen::window_height()
 {
-	return std::max(static_cast<short>(iHeight), screen_mode.height);
+	return std::max(static_cast<short>(480), screen_mode.height);
 }
 
 int Screen::window_width()
 {
-	return std::max(static_cast<short>(iWidth), screen_mode.width);
+	return std::max(static_cast<short>(640), screen_mode.width);
 }
 
 bool Screen::hud()
@@ -372,10 +372,13 @@ SDL_Rect Screen::view_rect()
 		r.h = r.h * 3 / 4;
 	}
 
+  // DJB
+  /*
   r.x = 0;
   r.y = 0;
   r.w = iWidth;
   r.h = iHeight;
+   */
   
 	return r;
 }
@@ -579,6 +582,9 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 
 	int vmode_height = (screen_mode.fullscreen && !screen_mode.fill_the_screen) ? desktop_height : height;
 	int vmode_width = (screen_mode.fullscreen && !screen_mode.fill_the_screen) ? desktop_width : width;
+  // DJB
+  vmode_width = desktop_width;
+  vmode_height = desktop_height;
 	uint32 flags = (screen_mode.fullscreen ? SDL_FULLSCREEN : 0);
 #ifdef HAVE_OPENGL
 	if (!nogl && screen_mode.acceleration != _no_acceleration) {

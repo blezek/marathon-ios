@@ -30,6 +30,7 @@
 #endif
 
 @implementation SDL_uikitview
+@synthesize hud;
 
 - (void)dealloc {
 #if SDL_IPHONE_KEYBOARD
@@ -46,6 +47,11 @@
 #if SDL_IPHONE_KEYBOARD
 	[self initializeKeyboard];
 #endif	
+
+  [[NSBundle mainBundle] loadNibNamed:@"HUD" owner:self options:nil];
+  // [HUD release];
+  NSLog ( @"Loaded hud: %@", self.hud );
+  [self addSubview:self.hud];
 
 	return self;
 

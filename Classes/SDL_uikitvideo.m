@@ -133,8 +133,11 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
     if (!SDL_UIKit_supports_multiple_displays) {
         const CGRect rect = [uiscreen bounds];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
-        mode.w = (int) rect.size.width;
-        mode.h = (int) rect.size.height;
+      // DJB, swap these for landscape
+      // mode.w = (int) rect.size.width;
+      // mode.h = (int) rect.size.height;
+      mode.w = (int) rect.size.width;
+      mode.h = (int) rect.size.height;
         mode.refresh_rate = 0;
         mode.driverdata = NULL;
         SDL_AddDisplayMode(display, &mode);
@@ -148,8 +151,11 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
         UIScreenMode *uimode = (UIScreenMode *) [modes objectAtIndex:i];
         const CGSize size = [uimode size];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
-        mode.w = (int) size.width;
-        mode.h = (int) size.height;
+      // DJB swap for landscape
+      // mode.w = (int) size.width;
+      // mode.h = (int) size.height;
+      mode.w = (int) size.height;
+      mode.h = (int) size.width;
         mode.refresh_rate = 0;
         mode.driverdata = uimode;
         [uimode retain];
@@ -196,7 +202,9 @@ UIKit_VideoInit(_THIS)
         // Just give 'em the whole main screen.
         UIScreen *uiscreen = [UIScreen mainScreen];
         const CGRect rect = [uiscreen bounds];
-        UIKit_AddDisplay(uiscreen, (int)rect.size.width, (int)rect.size.height);
+      // DJB Landscape mode, swap
+      // UIKit_AddDisplay(uiscreen, (int)rect.size.width, (int)rect.size.height);
+      UIKit_AddDisplay(uiscreen, (int)rect.size.height, (int)rect.size.width);
     } else {
         const NSArray *screens = [UIScreen screens];
         const NSUInteger screen_count = [screens count];

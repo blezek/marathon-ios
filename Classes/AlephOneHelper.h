@@ -7,11 +7,11 @@
 //
 
 #ifdef __IPAD__
-#define iWidth 1024
-#define iHeight 768
+// #define iWidth 1024
+// #define iHeight 768
 #else
-#define iWidth 480
-#define iHeight 320
+// #define iWidth 480
+// #define iHeight 320
 #endif
 
 char *getDataDir();

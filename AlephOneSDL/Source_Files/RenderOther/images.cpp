@@ -877,9 +877,11 @@ static void draw_picture(LoadedResource &rsrc)
 		SDL_FillRect(video, NULL, SDL_MapRGB(video->format, 0, 0, 0));
 	}
 
+  /*
   // DJB
   dst_rect.w = iWidth;
   dst_rect.h = iHeight;
+   */
   
 	// Blit picture to screen
 	SDL_BlitSurface(s, &src_rect, video, &dst_rect);
