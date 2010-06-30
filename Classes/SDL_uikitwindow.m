@@ -144,10 +144,11 @@ int UIKit_CreateWindow(_THIS, SDL_Window *window) {
     else
         uiwindow = [uiwindow initWithFrame:[uiscreen applicationFrame]];
 
+  // DJB
+  
     if (SDL_UIKit_supports_multiple_displays) {
         [uiwindow setScreen:uiscreen];
     }
-
     if (SetupWindowData(_this, window, uiwindow, SDL_TRUE) < 0) {
         [uiwindow release];
         return -1;

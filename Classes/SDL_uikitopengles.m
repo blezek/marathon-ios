@@ -28,6 +28,8 @@
 #include "SDL_sysvideo.h"
 #include "SDL_loadso.h"
 #include <dlfcn.h>
+// DJB
+#import "GameViewController.h"
 
 static int UIKit_GL_Initialize(_THIS);
 
@@ -101,9 +103,17 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 {
 	SDL_uikitopenglview *view;
 	SDL_WindowData *data = (SDL_WindowData *) window->driverdata;
-    UIScreen *uiscreen = (UIScreen *) window->display->driverdata;
+  UIScreen *uiscreen = (UIScreen *) window->display->driverdata;
 	UIWindow *uiwindow = data->uiwindow;
 
+  
+  // DJB
+  // Construct the Game view controller
+  [globalGameView release];
+  GameViewController *game = [GameViewController alloc];
+  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:game options:nil];
+  globalGameView = game;
+  
     /* construct our view, passing in SDL's OpenGL configuration data */
     view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
 									retainBacking: _this->gl_config.retained_backing \
@@ -112,11 +122,12 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 									bBits: _this->gl_config.blue_size \
 									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
-	
+	globalGameView.viewGL = view;
+  [globalGameView.view insertSubview:view belowSubview:globalGameView.pause];
 	data->view = view;
 	
 	/* add the view to our window */
-	[uiwindow addSubview: view ];
+	[uiwindow addSubview:globalGameView.view ];
 	
 	/* Don't worry, the window retained the view */
 	[view release];

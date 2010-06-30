@@ -137,6 +137,15 @@
 		A854910B11BDEF0C0073554A /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
 		A854910C11BDEF0C0073554A /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A854910D11BDEF0C0073554A /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
+		A8562A7B11DACF1B0071DFEF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.m */; };
+		A8562A7C11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
+		A8562A7D11DACF1B0071DFEF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.m */; };
+		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
+		A8562AEE11DAD43E0071DFEF /* GameViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
+		A8562B4111DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
+		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
+		A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B5811DAE3A50071DFEF /* Pistol.png */; };
+		A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B5811DAE3A50071DFEF /* Pistol.png */; };
 		A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673011CB173A00D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673211CB173A00D0FAEF /* LandscapeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */; };
@@ -904,6 +913,11 @@
 		A854912611BDF0840073554A /* SDL_sysvideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_sysvideo.h; sourceTree = "<group>"; };
 		A854912D11BDF0D40073554A /* SDL_blit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blit.h; sourceTree = "<group>"; };
 		A854912E11BDF0D40073554A /* SDL_renderer_gles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_renderer_gles.h; sourceTree = "<group>"; };
+		A8562A7811DACF1B0071DFEF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = Classes/GameViewController.h; sourceTree = "<group>"; };
+		A8562A7911DACF1B0071DFEF /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = Classes/GameViewController.m; sourceTree = "<group>"; };
+		A8562A7A11DACF1B0071DFEF /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GameViewController.xib; path = Classes/GameViewController.xib; sourceTree = "<group>"; };
+		A8562B4011DAE0010071DFEF /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Artwork/Pause.png; sourceTree = "<group>"; };
+		A8562B5811DAE3A50071DFEF /* Pistol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pistol.png; path = Artwork/Pistol.png; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
 		A85E66C811CB0AF200D0FAEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		A85E686011CB173A00D0FAEF /* AlephOne-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1530,6 +1544,8 @@
 				A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */,
 				A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */,
 				A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */,
+				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
+				A8562A7911DACF1B0071DFEF /* GameViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1537,6 +1553,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8562B5711DAE3850071DFEF /* Artwork */,
+				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
 				A84F3F2911D6FE7C00705C6C /* M1A1.zip */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
@@ -1752,6 +1770,15 @@
 			);
 			name = SDLExtras;
 			path = Classes/SDLExtras;
+			sourceTree = "<group>";
+		};
+		A8562B5711DAE3850071DFEF /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				A8562B5811DAE3A50071DFEF /* Pistol.png */,
+				A8562B4011DAE0010071DFEF /* Pause.png */,
+			);
+			name = Artwork;
 			sourceTree = "<group>";
 		};
 		A85E686211CB173B00D0FAEF /* Resources-iPad */ = {
@@ -2721,6 +2748,9 @@
 				A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */,
 				A84F3F2A11D6FE7D00705C6C /* M1A1.zip in Resources */,
 				A8A5815611D789FF00F573B4 /* HUD.xib in Resources */,
+				A8562A7C11DACF1B0071DFEF /* GameViewController.xib in Resources */,
+				A8562B4111DAE0010071DFEF /* Pause.png in Resources */,
+				A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2738,6 +2768,9 @@
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
+				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
+				A8562B4211DAE0010071DFEF /* Pause.png in Resources */,
+				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3043,6 +3076,7 @@
 				A889BBC911C8817400923787 /* sweep.c in Sources */,
 				A889BBCA11C8817400923787 /* tess.c in Sources */,
 				A889BBCB11C8817400923787 /* tessmono.c in Sources */,
+				A8562A7B11DACF1B0071DFEF /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3100,6 +3134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8562AEE11DAD43E0071DFEF /* GameViewController.xib in Sources */,
 				A85E689911CB194400D0FAEF /* pngwutil.c in Sources */,
 				A85E689A11CB194400D0FAEF /* pngwtran.c in Sources */,
 				A85E689B11CB194400D0FAEF /* pngwrite.c in Sources */,
@@ -3395,6 +3430,7 @@
 				A85E684511CB173A00D0FAEF /* sweep.c in Sources */,
 				A85E684611CB173A00D0FAEF /* tess.c in Sources */,
 				A85E684711CB173A00D0FAEF /* tessmono.c in Sources */,
+				A8562A7D11DACF1B0071DFEF /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
