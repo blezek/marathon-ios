@@ -12,11 +12,13 @@
 @interface GameViewController : UIViewController {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *view;
+  IBOutlet UIView *hud;
   IBOutlet UIButton *pause;
 }
 
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *view;
+@property (nonatomic, retain) UIView *hud;
 @property (nonatomic, retain) UIButton *pause;
 @end
 

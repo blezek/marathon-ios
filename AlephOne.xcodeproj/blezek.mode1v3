@@ -229,7 +229,7 @@
 				<key>PBXProjectModuleGUID</key>
 				<string>A85E68E911CB1C1300D0FAEF</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>SDL_uikitwindow.m</string>
+				<string>SDL_uikitopengles.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -237,11 +237,11 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>A8FA76B011D295E0009E2510</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>SDL_uikitwindow.m</string>
+						<string>SDL_uikitopengles.m</string>
 						<key>_historyCapacity</key>
 						<integer>40</integer>
 						<key>bookmark</key>
-						<string>A8562B6111DAE3CE0071DFEF</string>
+						<string>A8D4E20811DC25C5006CBA1E</string>
 						<key>history</key>
 						<array>
 							<string>A853F6A511D3F7DC00F871F3</string>
@@ -254,7 +254,6 @@
 							<string>A8A581A511D792B500F573B4</string>
 							<string>A8A581FC11D7959200F573B4</string>
 							<string>A8A5820D11D8105100F573B4</string>
-							<string>A8A5820E11D8105100F573B4</string>
 							<string>A8A5829A11D81C9500F573B4</string>
 							<string>A8562A1E11D982A80071DFEF</string>
 							<string>A8562A2E11D985E70071DFEF</string>
@@ -265,11 +264,13 @@
 							<string>A8562A8B11DAD14C0071DFEF</string>
 							<string>A8562A8C11DAD14C0071DFEF</string>
 							<string>A8562A8D11DAD14C0071DFEF</string>
-							<string>A8562A8E11DAD14C0071DFEF</string>
 							<string>A8562A8F11DAD14C0071DFEF</string>
-							<string>A8562B1D11DAD7120071DFEF</string>
-							<string>A8562B2A11DADBAD0071DFEF</string>
-							<string>A8562B2B11DADBAD0071DFEF</string>
+							<string>A8B236ED11DAE58B003D203F</string>
+							<string>A8B236F011DAE58B003D203F</string>
+							<string>A8D4E1DB11DC20ED006CBA1E</string>
+							<string>A8D4E1DC11DC20ED006CBA1E</string>
+							<string>A8D4E1DD11DC20ED006CBA1E</string>
+							<string>A8D4E1D611DC20DD006CBA1E</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -320,6 +321,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -362,20 +365,18 @@
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>A82F35AB11B8A6BB0053FE85</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>A8562ABB11DAD2ED0071DFEF</string>
-								<string>A8562AF511DAD4550071DFEF</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>42</integer>
+									<integer>43</integer>
 									<integer>41</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 419}, {359, 975}}</string>
+							<string>{{0, 0}, {359, 975}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -412,7 +413,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AlephOne-Info.plist</string>
+								<string>SDL_uikitopengles.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -420,14 +421,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AlephOne-Info.plist</string>
+										<string>SDL_uikitopengles.m</string>
 										<key>_historyCapacity</key>
 										<integer>40</integer>
 										<key>bookmark</key>
-										<string>A8562B6011DAE3CE0071DFEF</string>
+										<string>A8D4E20711DC25C5006CBA1E</string>
 										<key>history</key>
 										<array>
-											<string>A889BB1611C7980300923787</string>
 											<string>A889BB1711C7980300923787</string>
 											<string>A889BB1811C7980300923787</string>
 											<string>A889BC3E11C8851800923787</string>
@@ -466,7 +466,8 @@
 											<string>A8562B0911DAD5DA0071DFEF</string>
 											<string>A8562B0A11DAD5DA0071DFEF</string>
 											<string>A8562B5F11DAE3CE0071DFEF</string>
-											<string>A85E68FB11CB1D6400D0FAEF</string>
+											<string>A8B236EB11DAE58B003D203F</string>
+											<string>A8D4E1D911DC20ED006CBA1E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -478,14 +479,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {707, 664}}</string>
+								<string>{{0, 0}, {707, 650}}</string>
 								<key>RubberWindowFrame</key>
 								<string>783 143 1088 1034 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>664pt</string>
+							<string>650pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -498,14 +499,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 669}, {707, 324}}</string>
+								<string>{{0, 655}, {707, 338}}</string>
 								<key>RubberWindowFrame</key>
 								<string>783 143 1088 1034 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>324pt</string>
+							<string>338pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -524,9 +525,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A8562A0911D97FE10071DFEF</string>
+				<string>A8D4E1A411DC1C66006CBA1E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>A8562A0A11D97FE10071DFEF</string>
+				<string>A8D4E1A511DC1C66006CBA1E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -649,7 +650,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>299557838.89557803</real>
+	<real>299640261.53453201</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -666,13 +667,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A8562B6211DAE3CE0071DFEF</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>A8562A3311D985E70071DFEF</string>
-		<string>A8562A2311D982A80071DFEF</string>
+		<string>A8D4E1BC11DC1E42006CBA1E</string>
+		<string>A8D4E1BD11DC1E42006CBA1E</string>
 		<string>A88C8F0B11B35B4F00689138</string>
-		<string>A85E68E911CB1C1300D0FAEF</string>
 		<string>/Users/blezek/Source/AlephOne/AlephOne/AlephOne.xcodeproj</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>A85E68E911CB1C1300D0FAEF</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
@@ -698,7 +698,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameViewController.h</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -756,7 +756,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>A88C8F0B11B35B4F00689138</string>
-				<string>A8562A0C11D97FE10071DFEF</string>
+				<string>A8D4E1A711DC1C66006CBA1E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -878,13 +878,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>A8562A0D11D97FE10071DFEF</string>
+				<string>A8D4E1A811DC1C66006CBA1E</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A8562A0E11D97FE10071DFEF</string>
-				<string>A8562A0F11D97FE10071DFEF</string>
-				<string>A8562A1011D97FE10071DFEF</string>
-				<string>A8562A1111D97FE10071DFEF</string>
-				<string>A8562A1211D97FE10071DFEF</string>
+				<string>A8D4E1A911DC1C66006CBA1E</string>
+				<string>A8D4E1AA11DC1C66006CBA1E</string>
+				<string>A8D4E1AB11DC1C66006CBA1E</string>
+				<string>A8D4E1AC11DC1C66006CBA1E</string>
+				<string>A8D4E1AD11DC1C66006CBA1E</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -916,7 +916,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SDL_uikitview.m</string>
+										<string>SDL_uikitopengles.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -974,8 +974,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>A8562A3511D986320071DFEF</string>
-				<string>A8562A3611D986320071DFEF</string>
+				<string>A8D4E1DF11DC20ED006CBA1E</string>
+				<string>A8D4E1E011DC20ED006CBA1E</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -984,7 +984,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -1040,7 +1040,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>A8562A2111D982A80071DFEF</string>
+				<string>A8D4E1BB11DC1E42006CBA1E</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

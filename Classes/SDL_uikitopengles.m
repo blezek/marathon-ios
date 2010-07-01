@@ -112,6 +112,7 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   [globalGameView release];
   GameViewController *game = [GameViewController alloc];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:game options:nil];
+  [game viewDidLoad];
   globalGameView = game;
   
     /* construct our view, passing in SDL's OpenGL configuration data */
@@ -123,7 +124,7 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
 	globalGameView.viewGL = view;
-  [globalGameView.view insertSubview:view belowSubview:globalGameView.pause];
+  [globalGameView.view insertSubview:view belowSubview:globalGameView.hud];
 	data->view = view;
 	
 	/* add the view to our window */

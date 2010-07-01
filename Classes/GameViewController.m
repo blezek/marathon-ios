@@ -11,7 +11,7 @@
 GameViewController *globalGameView = nil;
 
 @implementation GameViewController
-@synthesize view, pause, viewGL;
+@synthesize view, pause, viewGL, hud;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -24,10 +24,21 @@ GameViewController *globalGameView = nil;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-  if ( self.view == nil ) {
-    // Create the view?!?
-  }
-    [super viewDidLoad];
+  
+  CGAffineTransform transform = self.hud.transform;
+  
+  // Use the status bar frame to determine the center point of the window's content area.
+  CGRect bounds = CGRectMake(0, 0, 1024, 768);
+  CGPoint center = CGPointMake(bounds.size.height / 2.0, bounds.size.width / 2.0);
+  
+  // Set the center point of the view to the center point of the window's content area.
+  self.hud.center = center;
+  
+  // Rotate the view 90 degrees around its new center point.
+  transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
+  self.hud.transform = transform;
+  self.hud.bounds = CGRectMake(0, 0, 1024, 768);
+  [super viewDidLoad];
 }
 
 
