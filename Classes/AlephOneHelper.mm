@@ -7,6 +7,7 @@
 //
 
 #import "AlephOneHelper.h"
+#import "GameViewController.h"
 
 NSString *dataDir;
 
@@ -17,4 +18,8 @@ char* getDataDir() {
   dataDir = [dataDir stringByAppendingString:@"/M1A1/"];
   return (char*)[dataDir UTF8String];
   
+}
+
+void helperStartGame () {
+  [globalGameView startGame];
 }

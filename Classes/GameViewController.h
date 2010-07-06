@@ -16,6 +16,8 @@
   IBOutlet UIButton *pause;
 }
 
+- (void)startGame;
+
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *view;
 @property (nonatomic, retain) UIView *hud;

@@ -15,3 +15,5 @@
 #endif
 
 char *getDataDir();
+
+void helperStartGame();

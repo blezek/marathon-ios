@@ -477,6 +477,8 @@
 		A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
+		A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
+		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A889BBBE11C8817400923787 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAE11C8817400923787 /* dict.c */; };
 		A889BBBF11C8817400923787 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAF11C8817400923787 /* error.c */; };
 		A889BBC011C8817400923787 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB011C8817400923787 /* geom.c */; };
@@ -942,6 +944,7 @@
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
 		A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A85E68CC11CB1B1C00D0FAEF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		A889BBB011C8817400923787 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
@@ -1775,6 +1778,7 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
 				A8562B5811DAE3A50071DFEF /* Pistol.png */,
 				A8562B4011DAE0010071DFEF /* Pause.png */,
 			);
@@ -2751,6 +2755,7 @@
 				A8562A7C11DACF1B0071DFEF /* GameViewController.xib in Resources */,
 				A8562B4111DAE0010071DFEF /* Pause.png in Resources */,
 				A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */,
+				A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2771,6 +2776,7 @@
 				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
 				A8562B4211DAE0010071DFEF /* Pause.png in Resources */,
 				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
+				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

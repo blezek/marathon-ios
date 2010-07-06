@@ -1991,6 +1991,9 @@ static void start_game(
 	validate_world_window();
 	
 	draw_interface();
+  
+  // DJB Start the game
+  helperStartGame();
 
 #ifdef PERFORMANCE	
 	PerfControl(perf_globals, true);

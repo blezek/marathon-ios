@@ -585,7 +585,7 @@ bool new_game(
 	
 	// LP change: adding chase-cam initialization
 	ChaseCam_Initialize();
-
+  
 	return success;
 }
 
