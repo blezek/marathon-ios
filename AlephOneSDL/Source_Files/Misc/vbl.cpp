@@ -1,80 +1,80 @@
 /*
-VBL.C
-
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
+ VBL.C
  
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
-
-Friday, August 21, 1992 7:06:54 PM
-
-Tuesday, November 17, 1992 3:53:29 PM
-	the new task of the vbl controller is only to move the player.  this is necessary for
-	good control of the game.  everything else (doors, monsters, projectiles, etc) will
-	be moved immediately before the next frame is drawn, based on delta-time values.
-	collisions (including the player with walls) will also be handled at this time.
-Thursday, November 19, 1992 1:27:23 AM
-	the enumeration 'turning_head' had to be changed to '_turn_not_rotate' to make this
-	file compile.  go figure.
-Wednesday, December 2, 1992 2:31:05 PM
-	the world doesnÕt change while the mouse button is pressed.
-Friday, January 15, 1993 11:19:11 AM
-	the world doesnÕt change after 14 ticks have passed without a screen refresh.
-Friday, January 22, 1993 3:06:32 PM
-	world_ticks was never being initialized to zero.  hmmm.
-Saturday, March 6, 1993 12:23:48 PM
-	at exit, we remove our vbl task.
-Sunday, May 16, 1993 4:07:47 PM
-	finally recoding everything
-Monday, August 16, 1993 10:22:17 AM
-	#ifdef CHARLES added.
-Saturday, August 21, 1993 12:35:29 PM
-	from pathways VBL_CONTROLLER.C.
-Sunday, May 22, 1994 8:51:15 PM
-	all the world physics has been moved into PHYSICS.C; all we do now is maintain and
-	distribute a circular queue of keyboard flags (we're the keyboard_controller, not the
-	movement_controller).
-Thursday, June 2, 1994 12:55:52 PM
-	gee, now we donÕt even maintain the queue we just send our actions to PLAYER.C.
-Tuesday, July 5, 1994 9:27:49 PM
-	nuked most of the shit in here. changed the vbl task to a time
-	manager task. the only functions from the old vbl.c that remain are precalculate_key_information()
-	and parse_keymap().
-Thursday, July 7, 1994 11:59:32 AM
-	Added recording/replaying
-Wednesday, August 10, 1994 2:44:57 PM
-	added caching system for FSRead.
-Friday, January 13, 1995 11:38:51 AM  (Jason')
-	fixed the 'a' key getting blacklisted.
-
-Jan 30, 2000 (Loren Petrich)
-	Did some typecasts
-
-Jul 7, 2000 (Loren Petrich)
-	Added Ben Thompson's ISp-support changes
-
-Aug 12, 2000 (Loren Petrich):
-	Using object-oriented file handler
-
-Aug 26, 2000 (Loren Petrich):
-	Created alternative to SetLength(): delete a file, then re-create it.
-	This should be more stdio-friendly.
-
-Feb 20, 2002 (Woody Zenfell):
-    Uses GetRealActionQueues()->enqueueActionFlags() rather than queue_action_flags().
-*/
+ Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+ and the "Aleph One" developers.
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ This license is contained in the file "COPYING",
+ which is included with this source code; it is available online at
+ http://www.gnu.org/licenses/gpl.html
+ 
+ Friday, August 21, 1992 7:06:54 PM
+ 
+ Tuesday, November 17, 1992 3:53:29 PM
+ the new task of the vbl controller is only to move the player.  this is necessary for
+ good control of the game.  everything else (doors, monsters, projectiles, etc) will
+ be moved immediately before the next frame is drawn, based on delta-time values.
+ collisions (including the player with walls) will also be handled at this time.
+ Thursday, November 19, 1992 1:27:23 AM
+ the enumeration 'turning_head' had to be changed to '_turn_not_rotate' to make this
+ file compile.  go figure.
+ Wednesday, December 2, 1992 2:31:05 PM
+ the world doesnÕt change while the mouse button is pressed.
+ Friday, January 15, 1993 11:19:11 AM
+ the world doesnÕt change after 14 ticks have passed without a screen refresh.
+ Friday, January 22, 1993 3:06:32 PM
+ world_ticks was never being initialized to zero.  hmmm.
+ Saturday, March 6, 1993 12:23:48 PM
+ at exit, we remove our vbl task.
+ Sunday, May 16, 1993 4:07:47 PM
+ finally recoding everything
+ Monday, August 16, 1993 10:22:17 AM
+ #ifdef CHARLES added.
+ Saturday, August 21, 1993 12:35:29 PM
+ from pathways VBL_CONTROLLER.C.
+ Sunday, May 22, 1994 8:51:15 PM
+ all the world physics has been moved into PHYSICS.C; all we do now is maintain and
+ distribute a circular queue of keyboard flags (we're the keyboard_controller, not the
+ movement_controller).
+ Thursday, June 2, 1994 12:55:52 PM
+ gee, now we donÕt even maintain the queue we just send our actions to PLAYER.C.
+ Tuesday, July 5, 1994 9:27:49 PM
+ nuked most of the shit in here. changed the vbl task to a time
+ manager task. the only functions from the old vbl.c that remain are precalculate_key_information()
+ and parse_keymap().
+ Thursday, July 7, 1994 11:59:32 AM
+ Added recording/replaying
+ Wednesday, August 10, 1994 2:44:57 PM
+ added caching system for FSRead.
+ Friday, January 13, 1995 11:38:51 AM  (Jason')
+ fixed the 'a' key getting blacklisted.
+ 
+ Jan 30, 2000 (Loren Petrich)
+ Did some typecasts
+ 
+ Jul 7, 2000 (Loren Petrich)
+ Added Ben Thompson's ISp-support changes
+ 
+ Aug 12, 2000 (Loren Petrich):
+ Using object-oriented file handler
+ 
+ Aug 26, 2000 (Loren Petrich):
+ Created alternative to SetLength(): delete a file, then re-create it.
+ This should be more stdio-friendly.
+ 
+ Feb 20, 2002 (Woody Zenfell):
+ Uses GetRealActionQueues()->enqueueActionFlags() rather than queue_action_flags().
+ */
 
 #include "cseries.h"
 #include <string.h>
@@ -142,7 +142,7 @@ struct replay_private_data replay;
 
 #ifdef DEBUG
 ActionQueue *get_player_recording_queue(
-	short player_index)
+                                        short player_index)
 {
 	assert(replay.recording_queues);
 	assert(player_index>=0 && player_index<MAXIMUM_NUMBER_OF_PLAYERS);
@@ -175,13 +175,13 @@ static void close_stream_file(void);
 
 /* ---------- code */
 void initialize_keyboard_controller(
-	void)
+                                    void)
 {
 	ActionQueue *queue;
 	short player_index;
 	
-//	vassert(NUMBER_OF_KEYS == NUMBER_OF_STANDARD_KEY_DEFINITIONS,
-//		csprintf(temporary, "NUMBER_OF_KEYS == %d, NUMBER_OF_KEY_DEFS = %d. Not Equal!", NUMBER_OF_KEYS, NUMBER_OF_STANDARD_KEY_DEFINITIONS));
+  //	vassert(NUMBER_OF_KEYS == NUMBER_OF_STANDARD_KEY_DEFINITIONS,
+  //		csprintf(temporary, "NUMBER_OF_KEYS == %d, NUMBER_OF_KEY_DEFS = %d. Not Equal!", NUMBER_OF_KEYS, NUMBER_OF_STANDARD_KEY_DEFINITIONS));
 	assert(NUMBER_OF_STANDARD_KEY_DEFINITIONS==NUMBER_OF_LEFT_HANDED_KEY_DEFINITIONS);
 	assert(NUMBER_OF_LEFT_HANDED_KEY_DEFINITIONS==NUMBER_OF_POWERBOOK_KEY_DEFINITIONS);
 	
@@ -189,7 +189,7 @@ void initialize_keyboard_controller(
 	heartbeat_count= 0;
 	input_task_active= false;
 	obj_clear(replay);
-
+  
 	input_task= install_timer_task(TICKS_PER_SECOND, input_controller);
 	assert(input_task);
 	
@@ -213,65 +213,65 @@ void initialize_keyboard_controller(
 }
 
 void set_keyboard_controller_status(
-	bool active)
+                                    bool active)
 {
 	input_task_active= active;
-
+  
 	/******************************************************************************************/
 	/* BT:	Added April 16, 2000 ISp: De-activate Input Sprockets while the keyboard is
-			not active.  This also means that the game is currently not recieving keystrokes */
+   not active.  This also means that the game is currently not recieving keystrokes */
 #ifdef mac
 	if(active) Start_ISp();
 	else Stop_ISp();
 #endif
-
+  
 #if TARGET_API_MAC_CARBON
 	if (active)
 		enter_mouse(0);
 	else
 		exit_mouse(0);
 #endif
-
+  
 #ifdef SDL
 	// We enable/disable mouse control here
 	if (active) {
 		enter_mouse(input_preferences->input_device);
-                enter_joystick();
-        } else {
+    enter_joystick();
+  } else {
 		exit_mouse(input_preferences->input_device);
-                exit_joystick();
-        }
+    exit_joystick();
+  }
 #endif
 	
 	/******************************************************************************************/
 }
 
 bool get_keyboard_controller_status(
-	void)
+                                    void)
 {
 	return input_task_active;
 }
 
 int32 get_heartbeat_count(
-	void)
+                          void)
 {
 	return heartbeat_count;
 }
 
 void sync_heartbeat_count(
-	void)
+                          void)
 {
 	heartbeat_count= dynamic_world->tick_count;
 }
 
 void increment_replay_speed(
-	void)
+                            void)
 {
 	if (replay.replay_speed < MAXIMUM_REPLAY_SPEED) replay.replay_speed++;
 }
 
 void decrement_replay_speed(
-	void)
+                            void)
 {
 	if (replay.replay_speed > MINIMUM_REPLAY_SPEED) replay.replay_speed--;
 }
@@ -283,7 +283,7 @@ void increment_heartbeat_count(int value)
 
 /* Returns NONE if it is custom.. */
 short find_key_setup(
-	short *keycodes)
+                     short *keycodes)
 {
 	short key_setup= NONE;
 	
@@ -291,12 +291,12 @@ short find_key_setup(
 	{
 		struct key_definition *definition = all_key_definitions[index];
 		unsigned jj;
-
+    
 		for (jj= 0; jj<NUMBER_OF_STANDARD_KEY_DEFINITIONS; jj++)
 		{
 			if (definition[jj].offset != keycodes[jj]) break;
 		}
-
+    
 		if (jj==NUMBER_OF_STANDARD_KEY_DEFINITIONS)
 		{
 			key_setup= index;
@@ -307,8 +307,8 @@ short find_key_setup(
 }
 
 void set_default_keys(
-	short *keycodes, 
-	short which_default)
+                      short *keycodes, 
+                      short which_default)
 {
 	struct key_definition *definitions;
 	
@@ -321,7 +321,7 @@ void set_default_keys(
 }
 
 void set_keys(
-	short *keycodes)
+              short *keycodes)
 {
 	struct key_definition *definitions;
 	
@@ -351,7 +351,7 @@ bool has_recording_file(void)
 
 /* Called by the time manager task in vbl_macintosh.c */
 bool input_controller(
-	void)
+                      void)
 {
 	if (input_task_active)
 	{
@@ -364,14 +364,14 @@ bool input_controller(
 			else if (replay.game_is_being_replayed) // input from recorded game file
 			{
 				static short phase= 0; /* When this gets to 0, update the world */
-
+        
 				/* Minimum replay speed is a pause. */
 				if(replay.replay_speed != MINIMUM_REPLAY_SPEED)
 				{
 					if (replay.replay_speed > 0 || (--phase<=0))
 					{
 						short flag_count= MAX(replay.replay_speed, 1);
-					
+            
 						if (!pull_flags_from_recording(flag_count)) // oops. silly me.
 						{
 							if (replay.have_read_last_chunk)
@@ -385,7 +385,7 @@ bool input_controller(
 							/* Increment the heartbeat.. */
 							heartbeat_count+= flag_count;
 						}
-	
+            
 						/* Reset the phase-> doesn't matter if the replay speed is positive */					
 						/* +1 so that replay_speed 0 is different from replay_speed 1 */
 						phase= -(replay.replay_speed) + 1;
@@ -400,7 +400,7 @@ bool input_controller(
 				heartbeat_count++; // ba-doom
 			}
 		} else {
-// dprintf("Out of phase.. (%d);g", heartbeat_count - dynamic_world->tick_count);
+      // dprintf("Out of phase.. (%d);g", heartbeat_count - dynamic_world->tick_count);
 		}
 	}
 	
@@ -408,9 +408,9 @@ bool input_controller(
 }
 
 void process_action_flags(
-	short player_identifier, 
-	const uint32 *action_flags, 
-	short count)
+                          short player_identifier, 
+                          const uint32 *action_flags, 
+                          short count)
 {
 	if (replay.game_is_being_recorded)
 	{
@@ -421,9 +421,9 @@ void process_action_flags(
 }
 
 static void record_action_flags(
-	short player_identifier, 
-	const uint32 *action_flags, 
-	short count)
+                                short player_identifier, 
+                                const uint32 *action_flags, 
+                                short count)
 {
 	short index;
 	ActionQueue  *queue;
@@ -448,7 +448,7 @@ static void record_action_flags(
  *
  *********************************************************************************************/
 void save_recording_queue_chunk(
-	short player_index)
+                                short player_index)
 {
 	uint8 *location;
 	uint32 last_flag, count, flag = 0;
@@ -465,12 +465,12 @@ void save_recording_queue_chunk(
 	location= buffer;
 	count= 0; // keeps track of how many bytes we'll save.
 	last_flag= (uint32)NONE;
-
+  
 	queue= get_player_recording_queue(player_index);
 	
 	// don't want to save too much stuff
 	max_flags= MIN(RECORD_CHUNK_SIZE, get_recording_queue_size(player_index)); 
-
+  
 	// save what's in the queue
 	run_count= num_flags_saved= 0;
 	for (i = 0; i<max_flags; i++)
@@ -511,10 +511,10 @@ void save_recording_queue_chunk(
 	
 	FilmFile.Write(count,buffer);
 	replay.header.length+= count;
-		
+  
 	vwarn(num_flags_saved == RECORD_CHUNK_SIZE,
-		csprintf(temporary, "bad recording: %d flags, max=%d, count = %u;dm #%p #%u", num_flags_saved, max_flags,
-			count, buffer, count));
+        csprintf(temporary, "bad recording: %d flags, max=%d, count = %u;dm #%p #%u", num_flags_saved, max_flags,
+                 count, buffer, count));
 }
 
 /*********************************************************************************************
@@ -525,7 +525,7 @@ void save_recording_queue_chunk(
  *
  *********************************************************************************************/
 static bool pull_flags_from_recording(
-	short count)
+                                      short count)
 {
 	short player_index;
 	bool success= true;
@@ -537,14 +537,14 @@ static bool pull_flags_from_recording(
 	{
 		if(get_recording_queue_size(player_index)==0) success= false;
 	}
-
+  
 	if(success)
 	{
 		for (player_index = 0; player_index < dynamic_world->player_count; player_index++)
 		{
 			short index;
 			ActionQueue  *queue;
-		
+      
 			queue= get_player_recording_queue(player_index);
 			for (index= 0; index<count; index++)
 			{
@@ -553,7 +553,7 @@ static bool pull_flags_from_recording(
 #ifdef DEBUG_REPLAY
 					debug_stream_of_flags(*(queue->buffer+queue->read_index), player_index);
 #endif
-                    GetRealActionQueues()->enqueueActionFlags(player_index, queue->buffer + queue->read_index, 1);
+          GetRealActionQueues()->enqueueActionFlags(player_index, queue->buffer + queue->read_index, 1);
 					INCREMENT_QUEUE_COUNTER(queue->read_index);
 				} else {
 					dprintf("Dropping flag?");
@@ -566,11 +566,11 @@ static bool pull_flags_from_recording(
 }
 
 static short get_recording_queue_size(
-	short which_queue)
+                                      short which_queue)
 {
 	short size;
 	ActionQueue *queue= get_player_recording_queue(which_queue);
-
+  
 	/* Note that this is a circular queue */
 	size= queue->write_index-queue->read_index;
 	if(size<0) size+= MAXIMUM_QUEUE_SIZE;
@@ -579,7 +579,7 @@ static short get_recording_queue_size(
 }
 
 static void precalculate_key_information(
-	void)
+                                         void)
 {
 #ifndef SDL
 	/* convert raw key codes to offets and masks */
@@ -592,12 +592,12 @@ static void precalculate_key_information(
 }
 
 void set_recording_header_data(
-	short number_of_players, 
-	short level_number, 
-	uint32 map_checksum,
-	short version, 
-	struct player_start_data *starts, 
-	struct game_data *game_information)
+                               short number_of_players, 
+                               short level_number, 
+                               uint32 map_checksum,
+                               short version, 
+                               struct player_start_data *starts, 
+                               struct game_data *game_information)
 {
 	assert(!replay.valid);
 	obj_clear(replay.header);
@@ -612,12 +612,12 @@ void set_recording_header_data(
 }
 
 void get_recording_header_data(
-	short *number_of_players, 
-	short *level_number, 
-	uint32 *map_checksum,
-	short *version, 
-	struct player_start_data *starts, 
-	struct game_data *game_information)
+                               short *number_of_players, 
+                               short *level_number, 
+                               uint32 *map_checksum,
+                               short *version, 
+                               struct player_start_data *starts, 
+                               struct game_data *game_information)
 {
 	assert(replay.valid);
 	*number_of_players= replay.header.num_players;
@@ -629,11 +629,11 @@ void get_recording_header_data(
 }
 
 bool setup_for_replay_from_file(
-	FileSpecifier& File,
-	uint32 map_checksum)
+                                FileSpecifier& File,
+                                uint32 map_checksum)
 {
 	bool successful= false;
-
+  
 	(void)(map_checksum);
 	
 	FilmFileSpec = File;
@@ -650,7 +650,7 @@ bool setup_for_replay_from_file(
 		byte Header[SIZEOF_recording_header];
 		FilmFile.Read(SIZEOF_recording_header,Header);
 		unpack_recording_header(Header,&replay.header,1);
-	
+    
 		/* Set to the mapfile this replay came from.. */
 		if(use_map_file(replay.header.map_checksum))
 		{
@@ -676,21 +676,21 @@ bool setup_for_replay_from_file(
 
 /* Note that we _must_ set the header information before we start recording!! */
 void start_recording(
-	void)
+                     void)
 {
 	assert(!replay.valid);
 	replay.valid= true;
 	
 	if(get_recording_filedesc(FilmFileSpec))
 		FilmFileSpec.Delete();
-
+  
 	if (FilmFileSpec.Create(_typecode_film))
 	{
 		/* I debate the validity of fsCurPerm here, but Alain had it, and it has been working */
 		if (FilmFileSpec.Open(FilmFile,true))
 		{
 			replay.game_is_being_recorded= true;
-	
+      
 			// save a header containing information about the game.
 			byte Header[SIZEOF_recording_header];
 			pack_recording_header(Header,&replay.header,1);
@@ -700,7 +700,7 @@ void start_recording(
 }
 
 void stop_recording(
-	void)
+                    void)
 {
 	if (replay.game_is_being_recorded)
 	{
@@ -708,18 +708,18 @@ void stop_recording(
 		
 		short player_index;
 		int32 total_length;
-
+    
 		assert(replay.valid);
 		for (player_index= 0; player_index<dynamic_world->player_count; player_index++)
 		{
 			save_recording_queue_chunk(player_index);
 		}
-
+    
 		/* Rewrite the header, since it has the new length */
 		FilmFile.SetPosition(0);
 		byte Header[SIZEOF_recording_header];
 		pack_recording_header(Header,&replay.header,1);
-
+    
 		// ZZZ: removing code that does stuff from assert() argument.  BUT...
 		// should we really be asserting on this anyway?  I mean, the write could fail
 		// in 'normal operation' too, not just when we screwed something up in writing the program?
@@ -731,21 +731,21 @@ void stop_recording(
 		
 		FilmFile.Close();
 	}
-
+  
 	replay.valid= false;
 }
 
 void rewind_recording(
-	void)
+                      void)
 {
 	if(replay.game_is_being_recorded)
 	{
 		/* This is unnecessary, because it is called from reset_player_queues, */
 		/* which is always called from revert_game */
 		/*
-		FilmFile.SetLength(sizeof(recording_header));
-		FilmFile.SetPosition(sizeof(recording_header));
-		*/
+     FilmFile.SetLength(sizeof(recording_header));
+     FilmFile.SetPosition(sizeof(recording_header));
+     */
 		// Alternative that does not use "SetLength", but instead creates and re-creates the file.
 		FilmFile.SetPosition(0);
 		byte Header[SIZEOF_recording_header];
@@ -762,14 +762,14 @@ void rewind_recording(
 }
 
 void check_recording_replaying(
-	void)
+                               void)
 {
 	short player_index, queue_size;
-
+  
 	if (replay.game_is_being_recorded)
 	{
 		bool enough_data_to_save= true;
-	
+    
 		// it's time to save the queues if all of them have >= RECORD_CHUNK_SIZE flags in them.
 		for (player_index= 0; enough_data_to_save && player_index<dynamic_world->player_count; player_index++)
 		{
@@ -784,7 +784,7 @@ void check_recording_replaying(
 			FileSpecifier FilmFile_Check;
 			
 			get_recording_filedesc(FilmFile_Check);
-
+      
 			success= FilmFile_Check.GetFreeSpace(freespace);
 			if (success && freespace>(RECORD_CHUNK_SIZE*sizeof(int16)*sizeof(uint32)*dynamic_world->player_count))
 			{
@@ -798,7 +798,7 @@ void check_recording_replaying(
 	else if (replay.game_is_being_replayed)
 	{
 		bool load_new_data= true;
-	
+    
 		// it's time to refill the requeues if they all have < RECORD_CHUNK_SIZE flags in them.
 		for (player_index= 0; load_new_data && player_index<dynamic_world->player_count; player_index++)
 		{
@@ -816,7 +816,7 @@ void check_recording_replaying(
 }
 
 void reset_recording_and_playback_queues(
-	void)
+                                         void)
 {
 	short index;
 	
@@ -827,7 +827,7 @@ void reset_recording_and_playback_queues(
 }
 
 void stop_replay(
-	void)
+                 void)
 {
 	assert(replay.valid);
 	if (replay.game_is_being_replayed)
@@ -848,13 +848,13 @@ void stop_replay(
 		close_stream_file();
 #endif
 	}
-
+  
 	/* Unecessary, because reset_player_queues calls this. */
 	replay.valid= false;
 }
 
 static void read_recording_queue_chunks(
-	void)
+                                        void)
 {
 	int32 i, sizeof_read;
 	uint32 action_flags; 
@@ -917,7 +917,7 @@ static void read_recording_queue_chunks(
 			assert(replay.have_read_last_chunk || num_flags);
 			count += num_flags;
 			vassert((num_flags != 0 && count <= RECORD_CHUNK_SIZE) || replay.have_read_last_chunk, 
-				csprintf(temporary, "num_flags = %d, count = %d", num_flags, count));
+              csprintf(temporary, "num_flags = %d, count = %d", num_flags, count));
 			for (i = 0; i < num_flags; i++)
 			{
 				*(queue->buffer + queue->write_index) = action_flags;
@@ -931,10 +931,10 @@ static void read_recording_queue_chunks(
 
 /* This is gross, (Alain wrote it, not me!) but I don't have time to clean it up */
 static bool vblFSRead(
-	OpenedFile& File,
-	int32 *count, 
-	void *dest,
-	bool& HitEOF)
+                      OpenedFile& File,
+                      int32 *count, 
+                      void *dest,
+                      bool& HitEOF)
 {
 	int32 fsread_count;
 	bool status = true;
@@ -944,7 +944,7 @@ static bool vblFSRead(
 	// LP: way for testing whether hitting end-of-file;
 	// doing that by testing for whether a read was complete.
 	HitEOF = false;
-
+  
 	if (replay.bytes_in_cache < *count)
 	{
 		assert(replay.bytes_in_cache + *count < int(DISK_CACHE_SIZE));
@@ -975,13 +975,13 @@ static bool vblFSRead(
 			if(status) replay.bytes_in_cache += fsread_count;
 		}
 	}
-
+  
 	// If we're still low, then we've consumed the disk cache
 	if(replay.bytes_in_cache < *count)
 	{
 		HitEOF = true;
 	}
-
+  
 	// Ignore EOF if we still have cache
 	if (HitEOF && replay.bytes_in_cache < *count)
 	{
@@ -1001,7 +1001,7 @@ static bool vblFSRead(
 }
 
 static void remove_input_controller(
-	void)
+                                    void)
 {
 	remove_timer_task(input_task);
 	if (replay.game_is_being_recorded)
@@ -1022,7 +1022,7 @@ static void remove_input_controller(
 			FilmFile.Close();
 		}
 	}
-
+  
 	replay.valid= false;
 }
 
@@ -1063,26 +1063,26 @@ bool XML_KeyParser::HandleAttribute(const char *Tag, const char *Value)
 #ifdef SDL
 	else if (StringsEqual(Tag,"sdl"))
 #else
-	else if (StringsEqual(Tag,"mac"))
+    else if (StringsEqual(Tag,"mac"))
 #endif
-	{
-		if (ReadInt16Value(Value,Key))
-		{
-			IsPresent[1] = true;
-			return true;
-		}
-		else return false;
-	}
+    {
+      if (ReadInt16Value(Value,Key))
+      {
+        IsPresent[1] = true;
+        return true;
+      }
+      else return false;
+    }
 	// Do nothing in case of the opposite sort of key
 #ifdef SDL
-	else if (StringsEqual(Tag,"mac"))
+    else if (StringsEqual(Tag,"mac"))
 #else
-	else if (StringsEqual(Tag,"sdl"))
+      else if (StringsEqual(Tag,"sdl"))
 #endif
-	{
-		// OK no matter what
-		return true;
-	}
+      {
+        // OK no matter what
+        return true;
+      }
 	UnrecognizedTag();
 	return false;
 }
@@ -1289,12 +1289,12 @@ void move_replay(void)
 	FileSpecifier src_file, dst_file;
 	if (!get_recording_filedesc(src_file))
 		return;
-
+  
 	// Ask user for destination file
 	char prompt[256], default_name[256];
 	if (!dst_file.WriteDialog(_typecode_film, getcstr(prompt, strPROMPTS, _save_replay_prompt), getcstr(default_name, strFILENAMES, filenameMARATHON_RECORDING)))
 		return;
-
+  
 	// Copy file
 	dst_file.CopyContents(src_file);
 	int error = dst_file.GetError();
@@ -1310,7 +1310,7 @@ void move_replay(void)
 uint32 parse_keymap(void)
 {
   uint32 flags = 0;
-
+  
   if(get_keyboard_controller_status())
   {
     Uint8 *key_map;
@@ -1327,72 +1327,72 @@ uint32 parse_keymap(void)
     // ZZZ: let mouse code simulate keypresses
     mouse_buttons_become_keypresses(key_map);
     joystick_buttons_become_keypresses(key_map);
-      
-      // Parse the keymap
-      key_definition *key = current_key_definitions;
-      for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++)
-	if (key_map[key->offset])
-	  flags |= key->action_flag;
-      
-      // Post-process the keymap
-      struct special_flag_data *special = special_flags;
-      for (unsigned i=0; i<NUMBER_OF_SPECIAL_FLAGS; i++, special++) {
-	if (flags & special->flag) {
-	  switch (special->type) {
-	  case _double_flag:
-	    // If this flag has a double-click flag and has been hit within
-	    // DOUBLE_CLICK_PERSISTENCE (but not at MAXIMUM_FLAG_PERSISTENCE),
-	    // mask on the double-click flag */
-	    if (special->persistence < MAXIMUM_FLAG_PERSISTENCE
-		&&	special->persistence > MAXIMUM_FLAG_PERSISTENCE - DOUBLE_CLICK_PERSISTENCE)
-	      flags |= special->alternate_flag;
-	    break;
-	    
-	  case _latched_flag:
-	    // If this flag is latched and still being held down, mask it out
-	    if (special->persistence == MAXIMUM_FLAG_PERSISTENCE)
-	      flags &= ~special->flag;
-	    break;
-	    
-	  default:
-	    assert(false);
-	    break;
-	  }
-	  
-	  special->persistence = MAXIMUM_FLAG_PERSISTENCE;
-	} else
-	  special->persistence = FLOOR(special->persistence-1, 0);
-      }
-      
-
-      bool do_interchange =
-	      (local_player->variables.flags & _HEAD_BELOW_MEDIA_BIT) ?
-	      (input_preferences->modifiers & _inputmod_interchange_swim_sink) != 0:
-	      (input_preferences->modifiers & _inputmod_interchange_run_walk) != 0;
-      
-      // Handle the selected input controller
-      if (input_preferences->input_device != _keyboard_or_game_pad) {
-	_fixed delta_yaw, delta_pitch, delta_velocity;
-	test_mouse(input_preferences->input_device, &flags, &delta_yaw, &delta_pitch, &delta_velocity);
-	flags = mask_in_absolute_positioning_information(flags, delta_yaw, delta_pitch, delta_velocity);
-        if (do_interchange)
-	    flags ^= _run_dont_walk;
-      } else {
-        int joyflags = process_joystick_axes(flags, heartbeat_count);
-        if (joyflags != flags) {
-            flags = joyflags;
-        } else {
-
-          // Modify flags with run/walk and swim/sink if we're using the keyboard
-        if (do_interchange)
-	    flags ^= _run_dont_walk;
+    
+    // Parse the keymap
+    key_definition *key = current_key_definitions;
+    for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++)
+      if (key_map[key->offset])
+        flags |= key->action_flag;
+    
+    // Post-process the keymap
+    struct special_flag_data *special = special_flags;
+    for (unsigned i=0; i<NUMBER_OF_SPECIAL_FLAGS; i++, special++) {
+      if (flags & special->flag) {
+        switch (special->type) {
+          case _double_flag:
+            // If this flag has a double-click flag and has been hit within
+            // DOUBLE_CLICK_PERSISTENCE (but not at MAXIMUM_FLAG_PERSISTENCE),
+            // mask on the double-click flag */
+            if (special->persistence < MAXIMUM_FLAG_PERSISTENCE
+                &&	special->persistence > MAXIMUM_FLAG_PERSISTENCE - DOUBLE_CLICK_PERSISTENCE)
+              flags |= special->alternate_flag;
+            break;
+            
+          case _latched_flag:
+            // If this flag is latched and still being held down, mask it out
+            if (special->persistence == MAXIMUM_FLAG_PERSISTENCE)
+              flags &= ~special->flag;
+            break;
+            
+          default:
+            assert(false);
+            break;
         }
+        
+        special->persistence = MAXIMUM_FLAG_PERSISTENCE;
+      } else
+        special->persistence = FLOOR(special->persistence-1, 0);
+    }
+    
+    
+    bool do_interchange =
+    (local_player->variables.flags & _HEAD_BELOW_MEDIA_BIT) ?
+    (input_preferences->modifiers & _inputmod_interchange_swim_sink) != 0:
+    (input_preferences->modifiers & _inputmod_interchange_run_walk) != 0;
+    
+    // Handle the selected input controller
+    if (input_preferences->input_device != _keyboard_or_game_pad) {
+      _fixed delta_yaw, delta_pitch, delta_velocity;
+      test_mouse(input_preferences->input_device, &flags, &delta_yaw, &delta_pitch, &delta_velocity);
+      flags = mask_in_absolute_positioning_information(flags, delta_yaw, delta_pitch, delta_velocity);
+      if (do_interchange)
+        flags ^= _run_dont_walk;
+    } else {
+      int joyflags = process_joystick_axes(flags, heartbeat_count);
+      if (joyflags != flags) {
+        flags = joyflags;
+      } else {
+        
+        // Modify flags with run/walk and swim/sink if we're using the keyboard
+        if (do_interchange)
+          flags ^= _run_dont_walk;
       }
-      
-      
-      if (player_in_terminal_mode(local_player_index))
-	flags = build_terminal_action_flags((char *)key_map);
-    } // if(get_keyboard_controller_status())
+    }
+    
+    
+    if (player_in_terminal_mode(local_player_index))
+      flags = build_terminal_action_flags((char *)key_map);
+  } // if(get_keyboard_controller_status())
   
   return flags;
 }
@@ -1456,7 +1456,7 @@ void execute_timer_tasks(uint32 time)
 			if (first_time) {
 				if(get_keyboard_controller_status())
 					mouse_idle(input_preferences->input_device);
-
+        
 				first_time = false;
 			}
 			tm_func();

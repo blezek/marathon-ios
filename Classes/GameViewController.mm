@@ -8,6 +8,22 @@
 
 #import "GameViewController.h"
 
+#include "cseries.h"
+#include <string.h>
+#include <stdlib.h>
+
+#include "map.h"
+#include "interface.h"
+#include "shell.h"
+#include "preferences.h"
+#include "mouse.h"
+#include "player.h"
+#include "key_definitions.h"
+#include "tags.h"
+extern "C" {
+#include "SDL_keyboard_c.h"
+#include "SDL_keyboard.h"
+}
 GameViewController *globalGameView = nil;
 
 @implementation GameViewController
@@ -56,6 +72,19 @@ GameViewController *globalGameView = nil;
   }
   // self.view.bounds = CGRectMake(0, 0, 1024, 768);
  */
+  
+  
+  key_definition *key = current_key_definitions;
+  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
+    if ( key->action_flag == _left_trigger_state ){
+      leftFireKey = key->offset;
+    }
+    if ( key->action_flag == _right_trigger_state ){
+      rightFireKey = key->offset;
+    }
+  }
+  NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
+  
   [super viewDidLoad];
 }
 
@@ -68,6 +97,19 @@ GameViewController *globalGameView = nil;
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
 }
+
+- (IBAction) leftTrigger:(id)sender {
+  NSLog(@"Key %s has been pressed", SDL_GetScancodeName( SDL_GetScancodeFromKey(leftFireKey ) ));
+  // SDL_SendKeyboardKey ( SDL_PRESSED, SDL_GetScancodeFromKey ( leftFireKey ) );
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  key_map[leftFireKey] = !key_map[leftFireKey];
+  
+}
+- (IBAction) rightTrigger:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  key_map[rightFireKey] = !key_map[rightFireKey];
+}
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

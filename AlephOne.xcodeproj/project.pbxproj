@@ -56,6 +56,7 @@
 		A82F367511B8A87C0053FE85 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364F11B8A87C0053FE85 /* lvm.c */; };
 		A82F367611B8A87C0053FE85 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F365011B8A87C0053FE85 /* lzio.c */; };
 		A82F367711B8A87C0053FE85 /* lua_script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F365111B8A87C0053FE85 /* lua_script.cpp */; };
+		A835DFA111F003F700A1C670 /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
 		A842544211B4A36500F4D68F /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A842544411B4A36500F4D68F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
 		A84254AC11B4A9DA00F4D68F /* AlephOneHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */; };
@@ -137,9 +138,9 @@
 		A854910B11BDEF0C0073554A /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
 		A854910C11BDEF0C0073554A /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A854910D11BDEF0C0073554A /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
-		A8562A7B11DACF1B0071DFEF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.m */; };
+		A8562A7B11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7C11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
-		A8562A7D11DACF1B0071DFEF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.m */; };
+		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562AEE11DAD43E0071DFEF /* GameViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562B4111DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
@@ -916,7 +917,7 @@
 		A854912D11BDF0D40073554A /* SDL_blit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blit.h; sourceTree = "<group>"; };
 		A854912E11BDF0D40073554A /* SDL_renderer_gles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_renderer_gles.h; sourceTree = "<group>"; };
 		A8562A7811DACF1B0071DFEF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = Classes/GameViewController.h; sourceTree = "<group>"; };
-		A8562A7911DACF1B0071DFEF /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = Classes/GameViewController.m; sourceTree = "<group>"; };
+		A8562A7911DACF1B0071DFEF /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = Classes/GameViewController.mm; sourceTree = "<group>"; };
 		A8562A7A11DACF1B0071DFEF /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GameViewController.xib; path = Classes/GameViewController.xib; sourceTree = "<group>"; };
 		A8562B4011DAE0010071DFEF /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Artwork/Pause.png; sourceTree = "<group>"; };
 		A8562B5811DAE3A50071DFEF /* Pistol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pistol.png; path = Artwork/Pistol.png; sourceTree = "<group>"; };
@@ -1378,6 +1379,7 @@
 		A899FF1611BC96370071BF5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A8A5815511D789FF00F573B4 /* HUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUD.xib; sourceTree = "<group>"; };
 		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
+		A8AE80CF11ED5C04005DC183 /* Entitlements.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Entitlements.plist; path = Resources/Entitlements.plist; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
 		A8D340F411B5E63F00BC535F /* VecOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VecOps.h; path = AlephOneSDL/Source_Files/Misc/VecOps.h; sourceTree = "<group>"; };
@@ -1548,7 +1550,7 @@
 				A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */,
 				A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */,
 				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
-				A8562A7911DACF1B0071DFEF /* GameViewController.m */,
+				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1561,6 +1563,7 @@
 				A84F3F2911D6FE7C00705C6C /* M1A1.zip */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
+				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
 				A8A5815511D789FF00F573B4 /* HUD.xib */,
 			);
@@ -2777,6 +2780,7 @@
 				A8562B4211DAE0010071DFEF /* Pause.png in Resources */,
 				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
 				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
+				A835DFA111F003F700A1C670 /* M1A1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3082,7 +3086,7 @@
 				A889BBC911C8817400923787 /* sweep.c in Sources */,
 				A889BBCA11C8817400923787 /* tess.c in Sources */,
 				A889BBCB11C8817400923787 /* tessmono.c in Sources */,
-				A8562A7B11DACF1B0071DFEF /* GameViewController.m in Sources */,
+				A8562A7B11DACF1B0071DFEF /* GameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3436,7 +3440,7 @@
 				A85E684511CB173A00D0FAEF /* sweep.c in Sources */,
 				A85E684611CB173A00D0FAEF /* tess.c in Sources */,
 				A85E684711CB173A00D0FAEF /* tessmono.c in Sources */,
-				A8562A7D11DACF1B0071DFEF /* GameViewController.m in Sources */,
+				A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3470,6 +3474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3502,6 +3507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -3594,6 +3600,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3614,16 +3621,11 @@
 				);
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/SDL/lib\\\"",
-					"\\\"$(SRCROOT)/Libraries\\\"",
-				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-iPad";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos3.2;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -3631,9 +3633,66 @@
 		A85E685F11CB173A00D0FAEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+					HAVE_LUA,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+				);
+				INFOPLIST_FILE = "AlephOne-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				PRODUCT_NAME = "AlephOne-iPad";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8AE80CB11ED5BD5005DC183 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SDKROOT = iphoneos3.2;
+			};
+			name = AdHocDistribution;
+		};
+		A8AE80CC11ED5BD5005DC183 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -3648,20 +3707,82 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "AlephOne-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/SDL/lib\\\"",
-					"\\\"$(SRCROOT)/Libraries\\\"",
+					"\"$(SRCROOT)/SDL/lib\"",
+					"\"$(SRCROOT)/Libraries\"",
 				);
-				PRODUCT_NAME = "AlephOne-iPad";
+				PRODUCT_NAME = AlephOne;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos3.2;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = AdHocDistribution;
+		};
+		A8AE80CD11ED5BD5005DC183 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "LandscapeTest-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SDL/lib\"",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LandscapeTest;
+				SDKROOT = iphoneos3.2;
+				ZERO_LINK = NO;
+			};
+			name = AdHocDistribution;
+		};
+		A8AE80CE11ED5BD5005DC183 /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/AlephOne/AlephOne/Resources/Entitlements.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+					HAVE_LUA,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+				);
+				INFOPLIST_FILE = "AlephOne-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				PRODUCT_NAME = "AlephOne-iPad";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdHocDistribution;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3669,15 +3790,20 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"${SOURCE_ROOT}/include",
+					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -3687,12 +3813,19 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include";
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.3;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};
@@ -3704,6 +3837,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				A8AE80CC11ED5BD5005DC183 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3713,6 +3847,7 @@
 			buildConfigurations = (
 				A850866811C1D4B800D95436 /* Debug */,
 				A850866911C1D4B800D95436 /* Release */,
+				A8AE80CD11ED5BD5005DC183 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3722,6 +3857,7 @@
 			buildConfigurations = (
 				A85E685E11CB173A00D0FAEF /* Debug */,
 				A85E685F11CB173A00D0FAEF /* Release */,
+				A8AE80CE11ED5BD5005DC183 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3731,6 +3867,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				A8AE80CB11ED5BD5005DC183 /* AdHocDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

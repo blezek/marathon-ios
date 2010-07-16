@@ -14,9 +14,13 @@
   IBOutlet UIView *view;
   IBOutlet UIView *hud;
   IBOutlet UIButton *pause;
+  SDLKey leftFireKey;
+  SDLKey rightFireKey;
 }
 
 - (void)startGame;
+- (IBAction) leftTrigger:(id)sender;
+- (IBAction) rightTrigger:(id)sender;
 
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *view;

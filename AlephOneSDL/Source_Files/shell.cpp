@@ -456,6 +456,12 @@ static void initialize_application(void)
 		graphics_preferences->screen_mode.fullscreen = true;
 	if (force_windowed)		// takes precedence over fullscreen because windowed is safer
 		graphics_preferences->screen_mode.fullscreen = false;
+  
+  // DJB Make sure we are properly sized
+  graphics_preferences->screen_mode.width = 1024;
+	graphics_preferences->screen_mode.height = 768;
+
+  
 	write_preferences();
 
 	Plugins::instance()->load_mml();
