@@ -213,8 +213,7 @@ UIKit_VideoInit(_THIS)
             // the main screen is the first element in the array.
             UIScreen *uiscreen = (UIScreen *) [screens objectAtIndex:i];
             const CGSize size = [[uiscreen currentMode] size];
-          // DJB Landscape mode, swap width and height
-            UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
+            UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
         }
     }
 
