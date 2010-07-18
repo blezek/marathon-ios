@@ -1,7 +1,7 @@
 #ifndef _IMAGE_BLITTER_
 #define _IMAGE_BLITTER_
 /*
-IMAGE_BLITTER.H
+   IMAGE_BLITTER.H
 
     Copyright (C) 2009 by Jeremiah Morris and the Aleph One developers
 
@@ -20,7 +20,7 @@ IMAGE_BLITTER.H
     http://www.gnu.org/licenses/gpl.html
 
     Implements images for 2D UI
-*/
+ */
 
 #include "cseries.h"
 #include "ImageLoader.h"
@@ -36,42 +36,44 @@ using namespace std;
 class Image_Blitter
 {
 public:
-	Image_Blitter();
-	
-	bool Load(const ImageDescriptor& image);
-    bool Load(int picture_resource);
-	bool Load(const SDL_Surface& s);
-	bool Load(const SDL_Surface& s, const SDL_Rect& src);
-	virtual void Unload();
-	bool Loaded();
-	
-	void Rescale(int width, int height);
-	int Width();
-	int Height();
-	int UnscaledWidth();
-	int UnscaledHeight();
-	
-	virtual void Draw(SDL_Surface *dst_surface, SDL_Rect& dst) { Draw(dst_surface, dst, crop_rect); }
-	virtual void Draw(SDL_Surface *dst_surface, SDL_Rect& dst, SDL_Rect& src);
-		
-	virtual ~Image_Blitter();
-	
-	// tint the output image -- (1, 1, 1, 1) is untinted
-	float tint_color_r, tint_color_g, tint_color_b, tint_color_a;
-	
-	// rotate the output image about the center of destination rect
-	// (in degrees clockwise)
-	float rotation;
-	
-	// set default cropping rectangle
-	SDL_Rect crop_rect;
-	
+Image_Blitter();
+
+bool Load(const ImageDescriptor& image);
+bool Load(int picture_resource);
+bool Load(const SDL_Surface& s);
+bool Load(const SDL_Surface& s, const SDL_Rect& src);
+virtual void Unload();
+bool Loaded();
+
+void Rescale(int width, int height);
+int Width();
+int Height();
+int UnscaledWidth();
+int UnscaledHeight();
+
+virtual void Draw(SDL_Surface *dst_surface, SDL_Rect& dst) {
+  Draw(dst_surface, dst, crop_rect);
+}
+virtual void Draw(SDL_Surface *dst_surface, SDL_Rect& dst, SDL_Rect& src);
+
+virtual ~Image_Blitter();
+
+// tint the output image -- (1, 1, 1, 1) is untinted
+float tint_color_r, tint_color_g, tint_color_b, tint_color_a;
+
+// rotate the output image about the center of destination rect
+// (in degrees clockwise)
+float rotation;
+
+// set default cropping rectangle
+SDL_Rect crop_rect;
+
 protected:
-	
-	SDL_Surface *m_surface;
-    SDL_Surface *m_disp_surface;
-	SDL_Surface *m_scaled_surface;
-	SDL_Rect m_src, m_scaled_src;
+
+SDL_Surface *m_surface;
+SDL_Surface *m_disp_surface;
+SDL_Surface *m_scaled_surface;
+SDL_Rect m_src, m_scaled_src;
 };
 
 #endif

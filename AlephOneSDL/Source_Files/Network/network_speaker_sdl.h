@@ -2,22 +2,22 @@
  *  network_speaker_sdl.h
  *  created for Marathon: Aleph One <http://source.bungie.org/>
 
-	Copyright (C) 2002 and beyond by Woody Zenfell, III
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 2002 and beyond by Woody Zenfell, III
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
  *  The code in this file is licensed to you under the GNU GPL.  As the copyright holder,
  *  however, I reserve the right to use this code as I see fit, without being bound by the
@@ -42,20 +42,20 @@
 
 // Flags for NetworkSpeakerSoundBuffer::mFlags below
 enum {
-    kSoundDataIsDisposable  = 0x01  // dequeuer is expected to call release_network_speaker_buffer(mData)
+  kSoundDataIsDisposable  = 0x01    // dequeuer is expected to call release_network_speaker_buffer(mData)
 };
 
 // These are used to link the network_speaker routines to the sound_sdl routines.
 struct NetworkSpeakerSoundBufferDescriptor {
-    byte*   mData;
-    uint32  mLength;
-    uint32  mFlags;
+  byte*   mData;
+  uint32 mLength;
+  uint32 mFlags;
 };
 
 // To insulate callers from details of flag storage
 __inline__ bool
 is_sound_data_disposable(NetworkSpeakerSoundBufferDescriptor* inBuffer) {
-    return (inBuffer->mFlags & kSoundDataIsDisposable) ? true : false;
+  return (inBuffer->mFlags & kSoundDataIsDisposable) ? true : false;
 }
 
 

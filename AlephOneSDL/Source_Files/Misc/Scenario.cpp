@@ -1,28 +1,28 @@
 /*
 
-	Copyright (C) 2006 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 2006 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	Scenario tag parser
-	by Gregory Smith 2006
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+
+        Scenario tag parser
+        by Gregory Smith 2006
 
 
-	This is for handling scenario compatibility info
-*/
+        This is for handling scenario compatibility info
+ */
 
 #include "cseries.h"
 #include "Scenario.h"
@@ -31,69 +31,76 @@ Scenario *Scenario::m_instance;
 
 Scenario *Scenario::instance()
 {
-	if (!m_instance) m_instance = new Scenario();
-	return m_instance;
+  if (!m_instance) {
+    m_instance = new Scenario();
+  }
+  return m_instance;
 }
 
 void Scenario::AddCompatible(const string Compatible)
 {
-	m_compatibleVersions.push_back(string(Compatible, 0, 23));
+  m_compatibleVersions.push_back(string(Compatible, 0, 23));
 }
 
 bool Scenario::IsCompatible(const string Compatible)
 {
-	if (Compatible == "" || m_id == "") return true;
-	if (Compatible == m_id) return true;
-	for (int i = 0; i < m_compatibleVersions.size(); i++)
-	{
-		if (m_compatibleVersions[i] == Compatible) return true;
-	}
+  if (Compatible == "" || m_id == "") {
+    return true;
+  }
+  if (Compatible == m_id) {
+    return true;
+  }
+  for (int i = 0; i < m_compatibleVersions.size(); i++)
+  {
+    if (m_compatibleVersions[i] == Compatible) {
+      return true;
+    }
+  }
 
-	return false;
+  return false;
 }
 
 class XML_ScenarioParser : public XML_ElementParser
 {
 public:
-	bool HandleAttribute(const char *Tag, const char *Value);
+bool HandleAttribute(const char *Tag, const char *Value);
 
-	XML_ScenarioParser() : XML_ElementParser("scenario") { }
+XML_ScenarioParser() : XML_ElementParser("scenario") {
+}
 };
 
 bool XML_ScenarioParser::HandleAttribute(const char *Tag, const char *Value)
 {
-	if (StringsEqual(Tag, "name"))
-	{
-		Scenario::instance()->SetName(Value);
-		return true;
-	}
-	else if (StringsEqual(Tag, "version"))
-	{
-		Scenario::instance()->SetVersion(Value);
-		return true;
-	}
-	else if (StringsEqual(Tag, "id"))
-	{
-		Scenario::instance()->SetID(Value);
-		return true;
-	}
-	
-	UnrecognizedTag();
-	return false;
+  if (StringsEqual(Tag, "name")) {
+    Scenario::instance()->SetName(Value);
+    return true;
+  }
+  else if (StringsEqual(Tag, "version")) {
+    Scenario::instance()->SetVersion(Value);
+    return true;
+  }
+  else if (StringsEqual(Tag, "id")) {
+    Scenario::instance()->SetID(Value);
+    return true;
+  }
+
+  UnrecognizedTag();
+  return false;
 }
 
 class XML_CanJoinParser : public XML_ElementParser
 {
 public:
-	bool HandleString(const char *String, int Length);
-	
-	XML_CanJoinParser() : XML_ElementParser("can_join") { }
+bool HandleString(const char *String, int Length);
+
+XML_CanJoinParser() : XML_ElementParser("can_join") {
+}
 };
 
 bool XML_CanJoinParser::HandleString(const char *String, int Length)
 {
-	Scenario::instance()->AddCompatible(string(String, Length));
-	return true;
+  Scenario::instance()->AddCompatible(string(String, Length));
+  return true;
 }
 
 static XML_ScenarioParser ScenarioParser;
@@ -102,7 +109,7 @@ static XML_CanJoinParser CanJoinParser;
 
 
 XML_ElementParser *Scenario_GetParser()
-{	
-	ScenarioParser.AddChild(&CanJoinParser);
-	return &ScenarioParser;
+{
+  ScenarioParser.AddChild(&CanJoinParser);
+  return &ScenarioParser;
 }

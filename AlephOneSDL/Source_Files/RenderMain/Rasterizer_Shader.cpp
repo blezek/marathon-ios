@@ -25,43 +25,44 @@
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
 
 const GLfloat kViewBaseMatrix[16] = {
-	0,	0,	-1,	0,
-	1,	0,	0,	0,
-	0,	1,	0,	0,
-	0,	0,	0,	1
+  0,      0,      -1,     0,
+  1,      0,      0,      0,
+  0,      1,      0,      0,
+  0,      0,      0,      1
 };
 
 void Rasterizer_Shader_Class::SetView(view_data& view) {
-	OGL_SetView(view);
-	float aspect = view.screen_width / float(view.screen_height);
-	float yfov = view.field_of_view / (View_FOV_FixHorizontalNotVertical() ? aspect : 2.0);
-	float xfov = yfov * aspect;
-	
-	// Adjust for view distortion during teleport effect
-	yfov *= view.real_world_to_screen_y / float(view.world_to_screen_y);
-	xfov *= view.real_world_to_screen_x / float(view.world_to_screen_x);
-	
-	// The view flips or shrinks when the FOV goes too far out
-	// of normal bounds, so this limit keeps the teleporting
-	// effect from getting distorted in annoying ways.
-	if (yfov > 119.9) {
-		yfov = 119.9;
-	}
-	
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(yfov, xfov / yfov, 64, 128*1024);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(kViewBaseMatrix);
-	float pitch = view.pitch * 360.0 / float(NUMBER_OF_ANGLES);
-	float yaw = view.yaw * 360.0 / float(NUMBER_OF_ANGLES);
-	glRotatef(pitch, 0.0, 1.0, 0.0);
+  OGL_SetView(view);
+  float aspect = view.screen_width / float(view.screen_height);
+  float yfov = view.field_of_view /
+               (View_FOV_FixHorizontalNotVertical() ? aspect : 2.0);
+  float xfov = yfov * aspect;
+
+  // Adjust for view distortion during teleport effect
+  yfov *= view.real_world_to_screen_y / float(view.world_to_screen_y);
+  xfov *= view.real_world_to_screen_x / float(view.world_to_screen_x);
+
+  // The view flips or shrinks when the FOV goes too far out
+  // of normal bounds, so this limit keeps the teleporting
+  // effect from getting distorted in annoying ways.
+  if (yfov > 119.9) {
+    yfov = 119.9;
+  }
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluPerspective(yfov, xfov / yfov, 64, 128*1024);
+  glMatrixMode(GL_MODELVIEW);
+  glLoadMatrixf(kViewBaseMatrix);
+  float pitch = view.pitch * 360.0 / float(NUMBER_OF_ANGLES);
+  float yaw = view.yaw * 360.0 / float(NUMBER_OF_ANGLES);
+  glRotatef(pitch, 0.0, 1.0, 0.0);
 //	apperently 'roll' is not what i think it is
 //	rubicon sets it to some strange value
 //	float roll = view.roll * 360.0 / float(NUMBER_OF_ANGLES);
-//	glRotated(roll, 1.0, 0.0, 0.0); 
-	glRotatef(yaw, 0.0, 0.0, -1.0);
+//	glRotated(roll, 1.0, 0.0, 0.0);
+  glRotatef(yaw, 0.0, 0.0, -1.0);
 
-	glTranslatef(-view.origin.x, -view.origin.y, -view.origin.z);
+  glTranslatef(-view.origin.x, -view.origin.y, -view.origin.z);
 }
 #endif

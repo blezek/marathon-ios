@@ -1,5 +1,5 @@
 /*
-JOYSTICK.H
+   JOYSTICK.H
 
         Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
         and the "Aleph One" developers.
@@ -18,10 +18,10 @@ JOYSTICK.H
         which is included with this source code; it is available online at
         http://www.gnu.org/licenses/gpl.html
 
-May 18, 2009 (Eric Peterson):
+   May 18, 2009 (Eric Peterson):
     Initial revision.
 
-*/
+ */
 
 #ifndef JOYSTICK_H
 #define JOYSTICK_H

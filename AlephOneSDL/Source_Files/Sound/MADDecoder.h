@@ -3,26 +3,26 @@
 
 /*
 
-	Copyright (C) 2007 Gregory Smith.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 2007 Gregory Smith.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	Handles mp3 files with libmad
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
-*/
+        Handles mp3 files with libmad
+
+ */
 
 #include "cseries.h"
 #include "Decoder.h"
@@ -32,43 +32,57 @@
 class MADDecoder : public StreamDecoder
 {
 public:
-	bool Open(FileSpecifier &File);
-	int32 Decode(uint8* buffer, int32 max_length);
-	void Rewind();
-	void Close();
+bool Open(FileSpecifier &File);
+int32 Decode(uint8* buffer, int32 max_length);
+void Rewind();
+void Close();
 
-	bool IsSixteenBit() { return true; }
-	bool IsStereo() { return stereo; }
-	bool IsSigned() { return true; }
-	int BytesPerFrame() { return bytes_per_frame; }
-	float Rate() { return rate; }
+bool IsSixteenBit() {
+  return true;
+}
+bool IsStereo() {
+  return stereo;
+}
+bool IsSigned() {
+  return true;
+}
+int BytesPerFrame() {
+  return bytes_per_frame;
+}
+float Rate() {
+  return rate;
+}
 #ifdef ALEPHONE_LITTLE_ENDIAN
-	bool IsLittleEndian() { return true; }
+bool IsLittleEndian() {
+  return true;
+}
 #else
-	bool IsLittleEndian() { return false; }
+bool IsLittleEndian() {
+  return false;
+}
 #endif
 
-	MADDecoder();
-	~MADDecoder();
+MADDecoder();
+~MADDecoder();
 
 private:
-	bool stereo;
-	int bytes_per_frame;
-	float rate;
-	int sample;
+bool stereo;
+int bytes_per_frame;
+float rate;
+int sample;
 
-	OpenedFile file;
-	bool file_done;
+OpenedFile file;
+bool file_done;
 
-	mad_stream Stream;
-	mad_frame Frame;
-	mad_synth Synth;
+mad_stream Stream;
+mad_frame Frame;
+mad_synth Synth;
 
-	static const int INPUT_BUFFER_SIZE = 5 * 8192;
+static const int INPUT_BUFFER_SIZE = 5 * 8192;
 
-	uint8 InputBuffer[INPUT_BUFFER_SIZE + MAD_BUFFER_GUARD];
+uint8 InputBuffer[INPUT_BUFFER_SIZE + MAD_BUFFER_GUARD];
 
-	bool DecodeFrame();
+bool DecodeFrame();
 };
 
 #endif

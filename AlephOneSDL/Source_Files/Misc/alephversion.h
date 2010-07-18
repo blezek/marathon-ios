@@ -5,7 +5,7 @@
 
    Resources/Aleph One Classic SDL.r
 
-*/
+ */
 
 #define A1_DISPLAY_VERSION "0.23"
 #define A1_DISPLAY_DATE_VERSION "2010-01-18"
@@ -38,7 +38,8 @@
 #endif
 
 #ifndef A1_VERSION_STRING
-#define A1_VERSION_STRING "Aleph One " A1_DISPLAY_PLATFORM " " A1_DISPLAY_DATE_VERSION " " A1_DISPLAY_VERSION
+#define A1_VERSION_STRING "Aleph One " A1_DISPLAY_PLATFORM " " \
+  A1_DISPLAY_DATE_VERSION " " A1_DISPLAY_VERSION
 #endif
 
 

@@ -1,31 +1,31 @@
 /*
  *  Logging.cpp - facilities for flexible logging
 
-	Copyright (C) 2003 and beyond by Woody Zenfell, III
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 2003 and beyond by Woody Zenfell, III
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
- 
- Jan. 16, 2003 (Woody Zenfell): Created.
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
- July 13, 2003 (Woody Zenfell):
-	Split out the repetitive bits to Logging_gruntwork.h; now generating that with a script
-	Now offering logWarningNMT3() and co. for use in non-main threads, for added safety
-	New Logging level 'summary'
-*/
+
+   Jan. 16, 2003 (Woody Zenfell): Created.
+
+   July 13, 2003 (Woody Zenfell):
+        Split out the repetitive bits to Logging_gruntwork.h; now generating that with a script
+        Now offering logWarningNMT3() and co. for use in non-main threads, for added safety
+        New Logging level 'summary'
+ */
 
 #ifndef LOGGING_H
 #define LOGGING_H
@@ -33,29 +33,40 @@
 #include <stdarg.h>
 
 enum {
-	logFatalLevel	= 0,	// program must exit
-	logErrorLevel	= 10,	// can't do something significant
-	logWarningLevel	= 20,	// can continue but results could be really screwy
-	logAnomalyLevel	= 30,	// can continue, results could be off a little, but no big deal
-	logNoteLevel	= 40,	// something worth mentioning
-	logSummaryLevel	= 45,	// occasional dumps of aggregate statistics
-	logTraceLevel	= 50,	// details of actions and logic
-	logDumpLevel	= 60	// values of data etc.
+  logFatalLevel   = 0,          // program must exit
+  logErrorLevel   = 10,         // can't do something significant
+  logWarningLevel = 20,         // can continue but results could be really screwy
+  logAnomalyLevel = 30,         // can continue, results could be off a little, but no big deal
+  logNoteLevel    = 40,         // something worth mentioning
+  logSummaryLevel = 45,         // occasional dumps of aggregate statistics
+  logTraceLevel   = 50,         // details of actions and logic
+  logDumpLevel    = 60          // values of data etc.
 };
 
 
 class Logger {
 public:
-	virtual void pushLogContext(const char* inFile, int inLine, const char* inContext, ...);
-	virtual void logMessage(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, ...);
-	virtual void logMessageNMT(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, ...);
+virtual void pushLogContext(const char* inFile, int inLine,
+                            const char* inContext,
+                            ...);
+virtual void logMessage(const char* inDomain, int inLevel, const char* inFile,
+                        int inLine, const char* inMessage,
+                        ...);
+virtual void logMessageNMT(const char* inDomain, int inLevel,
+                           const char* inFile, int inLine,
+                           const char* inMessage,
+                           ...);
 
-	virtual void pushLogContextV(const char* inFile, int inLine, const char* inContext, va_list inArgList) = 0;
-	virtual void popLogContext() = 0;
-	virtual void logMessageV(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, va_list inArgList) = 0;
-	virtual void flush() = 0;
+virtual void pushLogContextV(const char* inFile, int inLine,
+                             const char* inContext,
+                             va_list inArgList) = 0;
+virtual void popLogContext() = 0;
+virtual void logMessageV(const char* inDomain, int inLevel, const char* inFile,
+                         int inLine, const char* inMessage,
+                         va_list inArgList) = 0;
+virtual void flush() = 0;
 
-	virtual ~Logger();
+virtual ~Logger();
 };
 
 
@@ -66,8 +77,8 @@ Logger* GetCurrentLogger();
 class XML_ElementParser;
 XML_ElementParser* Logging_GetParser();
 void setLoggingThreshhold(const char* inDomain, short inThreshhold); // message appears if its level < inThreshhold
-void setShowLoggingLocations(const char* inDomain, bool inShowLocations);	// show file and line?
-void setFlushLoggingOutput(const char* inDomain, bool inFlushOutput);	// flush output file after every log message?
+void setShowLoggingLocations(const char* inDomain, bool inShowLocations);       // show file and line?
+void setFlushLoggingOutput(const char* inDomain, bool inFlushOutput);   // flush output file after every log message?
 
 
 
@@ -106,70 +117,78 @@ extern const char* logDomain;
 // XXX hmm, the definition for these was effectively lifted from GNU's assert.h, but they don't seem to work.
 // Removing for now, sorry.
 /*
-#define logCheckWarn(condition)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed"))))
-#define logCheckAnomaly(condition)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed"))))
-#define logCheckWarn0(condition, message)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message))))
-#define logCheckAnomaly0(condition, message)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message))))
-#define logCheckWarn1(condition, message, arg1)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message, (arg1)))))
-#define logCheckAnomaly1(condition, message, arg1)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message, (arg1)))))
-*/
+ #define logCheckWarn(condition)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed"))))
+ #define logCheckAnomaly(condition)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed"))))
+ #define logCheckWarn0(condition, message)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message))))
+ #define logCheckAnomaly0(condition, message)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message))))
+ #define logCheckWarn1(condition, message, arg1)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logWarningLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message, (arg1)))))
+ #define logCheckAnomaly1(condition, message, arg1)   ((void) ((condition) ? 0 : (GetCurrentLogger()->logMessage(logDomain, logAnomalyLevel, __FILE__, __LINE__, "check (" #condition ") failed; " message, (arg1)))))
+ */
 
 
 // Class intended for stack-based use for entering/leaving a logging subcontext
 class LogContext {
 public:
-	LogContext(bool inNonMainThread) : contextSet(false), nonMainThread(inNonMainThread) {}
+LogContext(bool inNonMainThread) : contextSet(false),
+  nonMainThread(inNonMainThread) {
+}
 
-	LogContext(const char* inFile, int inLine, const char* inContext, ...) : contextSet(false), nonMainThread(false) {
-		va_list theVarArgs;
-		va_start(theVarArgs, inContext);
-		enterContextV(inFile, inLine, inContext, theVarArgs);
-		va_end(theVarArgs);
-	}
+LogContext(const char* inFile, int inLine, const char* inContext,
+           ...) : contextSet(false), nonMainThread(false) {
+  va_list theVarArgs;
+  va_start(theVarArgs, inContext);
+  enterContextV(inFile, inLine, inContext, theVarArgs);
+  va_end(theVarArgs);
+}
 
-	LogContext(bool inNonMainThread, const char* inFile, int inLine, const char* inContext, ...) : contextSet(false), nonMainThread(inNonMainThread) {
-		va_list theVarArgs;
-		va_start(theVarArgs, inContext);
-		enterContextV(inFile, inLine, inContext, theVarArgs);
-		va_end(theVarArgs);
-	}
+LogContext(bool inNonMainThread, const char* inFile, int inLine,
+           const char* inContext,
+           ...) : contextSet(false), nonMainThread(inNonMainThread) {
+  va_list theVarArgs;
+  va_start(theVarArgs, inContext);
+  enterContextV(inFile, inLine, inContext, theVarArgs);
+  va_end(theVarArgs);
+}
 
-	void enterContext(const char* inFile, int inLine, const char* inContext, ...) {
-		va_list theVarArgs;
-		va_start(theVarArgs, inContext);
-		enterContextV(inFile, inLine, inContext, theVarArgs);
-		va_end(theVarArgs);
-	}
+void enterContext(const char* inFile, int inLine, const char* inContext, ...) {
+  va_list theVarArgs;
+  va_start(theVarArgs, inContext);
+  enterContextV(inFile, inLine, inContext, theVarArgs);
+  va_end(theVarArgs);
+}
 
-	void enterContextV(const char* inFile, int inLine, const char* inContext, va_list inArgs) {
-		if(contextSet)
-			leaveContext();
-		
+void enterContextV(const char* inFile, int inLine, const char* inContext,
+                   va_list inArgs) {
+  if(contextSet) {
+    leaveContext();
+  }
+
 #if defined(mac) && !defined(__MACH__)
-		if(!nonMainThread)
+  if(!nonMainThread)
 #endif
-			GetCurrentLogger()->pushLogContextV(inFile, inLine, inContext, inArgs);
+  GetCurrentLogger()->pushLogContextV(inFile, inLine, inContext, inArgs);
 
-		contextSet = true;
-	}
+  contextSet = true;
+}
 
-	void leaveContext() {
+void leaveContext() {
 #if defined(mac) && !defined(__MACH__)
-		if(!nonMainThread)
+  if(!nonMainThread)
 #endif
-			if(contextSet)
-				GetCurrentLogger()->popLogContext();
+  if(contextSet) {
+    GetCurrentLogger()->popLogContext();
+  }
 
-		contextSet = false;
-	}
+  contextSet = false;
+}
 
-	~LogContext() {
-		leaveContext();
-	}
-	
+~LogContext() {
+  leaveContext();
+}
+
 protected:
-	bool contextSet;
-	bool nonMainThread;
+bool contextSet;
+bool nonMainThread;
 };
 
 
@@ -182,23 +201,23 @@ protected:
 // know (what was tried and what the results of each try were).  The idea then is,
 // much of the SubLog can be included in a regular Log.
 /*
-class SubLogger : public Logger {
-public:
-	virtual void pushLogContext(const char* inFile, int inLine, const char* inContext, ...);
-	virtual void popLogContext();
-	virtual void logMessage(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, ...);
-protected:
-	struct LogAction {
-		enum { ePushContext, ePopContext, eMessage } mType;
-		string	mDomain;
-		int	mLevel;
-		string	mMessage;
-		string	mFile;
-		int	mLine;
-	};
-	
-	vector<LogAction> mLogActions;
-};
-*/
+   class SubLogger : public Logger {
+   public:
+        virtual void pushLogContext(const char* inFile, int inLine, const char* inContext, ...);
+        virtual void popLogContext();
+        virtual void logMessage(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, ...);
+   protected:
+        struct LogAction {
+                enum { ePushContext, ePopContext, eMessage } mType;
+                string	mDomain;
+                int	mLevel;
+                string	mMessage;
+                string	mFile;
+                int	mLine;
+        };
+
+        vector<LogAction> mLogActions;
+   };
+ */
 
 #endif // LOGGING_H

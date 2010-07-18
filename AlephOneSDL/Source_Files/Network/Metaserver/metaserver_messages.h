@@ -1,25 +1,25 @@
 /*
  *  metaserver_messages.h - TCPMess message types for metaserver client
 
-	Copyright (C) 2004 and beyond by Woody Zenfell, III
-	and the "Aleph One" developers.
+        Copyright (C) 2004 and beyond by Woody Zenfell, III
+        and the "Aleph One" developers.
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
- April 15, 2004 (Woody Zenfell):
-	Created.
+   April 15, 2004 (Woody Zenfell):
+        Created.
  */
 
 #ifndef METASERVER_MESSAGES_H
@@ -40,42 +40,42 @@ using boost::algorithm::to_lower_copy;
 
 enum
 {
-	// Message types sent from servers to clients
-	kSERVER_ROOMLIST	= 0,
-	kSERVER_PLAYERLIST	= 1,
-	kSERVER_GAMELIST	= 2,
-	kSERVER_DENY		= 3,
-	kSERVER_SALT		= 6,
-	kSERVER_LOGINSUCCESS	= 7,
-	kSERVER_SETPLAYERDATA	= 8,
-	kSERVER_LIMIT		= 9,
-	kSERVER_BROADCAST	= 10,
-	kSERVER_ACCEPT		= 12,
-	kSERVER_FIND		= 14,
-	kSERVER_STATS		= 17,
+  // Message types sent from servers to clients
+  kSERVER_ROOMLIST        = 0,
+  kSERVER_PLAYERLIST      = 1,
+  kSERVER_GAMELIST        = 2,
+  kSERVER_DENY            = 3,
+  kSERVER_SALT            = 6,
+  kSERVER_LOGINSUCCESS    = 7,
+  kSERVER_SETPLAYERDATA   = 8,
+  kSERVER_LIMIT           = 9,
+  kSERVER_BROADCAST       = 10,
+  kSERVER_ACCEPT          = 12,
+  kSERVER_FIND            = 14,
+  kSERVER_STATS           = 17,
 
-	// Messages sent from clients to servers
-	kCLIENT_LOGIN		= 100,
-	kCLIENT_ROOM_LOGIN	= 101,
-	kCLIENT_LOGOUT          = 102,
-	kCLIENT_NAME_TEAM	= 103,
-	kCLIENT_CREATEGAME	= 104,
-	kCLIENT_REMOVEGAME	= 105,
-	kCLIENT_PLAYERMODE      = 107,
-	kCLIENT_KEY		= 109,
-	kCLIENT_SYNCGAMES	= 110,
-        kCLIENT_GAMEPLAYERLIST	= 111,
-        kCLIENT_GAMESCORE	= 112,
-	kCLIENT_RESETGAME	= 113,
-	kCLIENT_STARTGAME	= 114,
-	kCLIENT_LOCALIZE	= 115,
-	kCLIENT_FIND		= 117,
-	kCLIENT_STATS		= 121,
-	
-	// Message types sent in both directions
-	kBOTH_CHAT		= 200,
-	kBOTH_PRIVATE_MESSAGE	= 201,
-	kBOTH_KEEP_ALIVE	= 202,
+  // Messages sent from clients to servers
+  kCLIENT_LOGIN           = 100,
+  kCLIENT_ROOM_LOGIN      = 101,
+  kCLIENT_LOGOUT          = 102,
+  kCLIENT_NAME_TEAM       = 103,
+  kCLIENT_CREATEGAME      = 104,
+  kCLIENT_REMOVEGAME      = 105,
+  kCLIENT_PLAYERMODE      = 107,
+  kCLIENT_KEY             = 109,
+  kCLIENT_SYNCGAMES       = 110,
+  kCLIENT_GAMEPLAYERLIST  = 111,
+  kCLIENT_GAMESCORE       = 112,
+  kCLIENT_RESETGAME       = 113,
+  kCLIENT_STARTGAME       = 114,
+  kCLIENT_LOCALIZE        = 115,
+  kCLIENT_FIND            = 117,
+  kCLIENT_STATS           = 121,
+
+  // Message types sent in both directions
+  kBOTH_CHAT              = 200,
+  kBOTH_PRIVATE_MESSAGE   = 201,
+  kBOTH_KEEP_ALIVE        = 202,
 };
 
 
@@ -90,58 +90,58 @@ AIStream& operator >>(AIStream& stream, HandoffToken& token);
 
 struct GameDescription
 {
-	uint16		m_type;
-	int32		m_timeLimit;
-	uint32		m_mapChecksum;
-	uint16		m_difficulty;
-	uint16		m_maxPlayers;
-	bool		m_teamsAllowed;
-	bool		m_closed;
-	bool		m_running;
-	uint8		m_numPlayers;
-	std::string	m_name;
-	std::string	m_mapName;
-	
-	// future versions will take action on these:
-	std::string m_scenarioID;
-	std::string m_networkSetupProtocolID;
-	
-	// while these are purely for display purposes
-	std::string m_scenarioName;
-	std::string m_scenarioVersion;
-	std::string m_alephoneBuildString;
-	std::string m_netScript;
+  uint16 m_type;
+  int32 m_timeLimit;
+  uint32 m_mapChecksum;
+  uint16 m_difficulty;
+  uint16 m_maxPlayers;
+  bool m_teamsAllowed;
+  bool m_closed;
+  bool m_running;
+  uint8 m_numPlayers;
+  std::string m_name;
+  std::string m_mapName;
 
-	// more stuff
-	bool m_hasGameOptions;
-	int16 m_gameOptions;
-	int16 m_cheatFlags;
-	int16 m_killLimit;
-	std::string m_mapFileName;
-	std::string m_physicsName;
-	
-	GameDescription()
-		: m_type(0)
-		, m_timeLimit(0)
-		, m_mapChecksum(0)
-		, m_difficulty(0)
-		, m_maxPlayers(8)
-		, m_teamsAllowed(false)
-		, m_closed(false)
-		, m_running(false)
-		, m_numPlayers(1)
-		, m_name("Untitled Game")
-		, m_mapName("Unspecified Map")
-		, m_scenarioID(Scenario::instance()->GetID())
-		, m_networkSetupProtocolID(kNetworkSetupProtocolID)
-		, m_scenarioName(Scenario::instance()->GetName())
-		, m_scenarioVersion(Scenario::instance()->GetVersion())
-		, m_hasGameOptions(false)
-		, m_gameOptions(0)
-		, m_cheatFlags(0)
-		, m_killLimit(0)
-	{}
+  // future versions will take action on these:
+  std::string m_scenarioID;
+  std::string m_networkSetupProtocolID;
 
+  // while these are purely for display purposes
+  std::string m_scenarioName;
+  std::string m_scenarioVersion;
+  std::string m_alephoneBuildString;
+  std::string m_netScript;
+
+  // more stuff
+  bool m_hasGameOptions;
+  int16 m_gameOptions;
+  int16 m_cheatFlags;
+  int16 m_killLimit;
+  std::string m_mapFileName;
+  std::string m_physicsName;
+
+  GameDescription()
+    : m_type(0)
+    , m_timeLimit(0)
+    , m_mapChecksum(0)
+    , m_difficulty(0)
+    , m_maxPlayers(8)
+    , m_teamsAllowed(false)
+    , m_closed(false)
+    , m_running(false)
+    , m_numPlayers(1)
+    , m_name("Untitled Game")
+    , m_mapName("Unspecified Map")
+    , m_scenarioID(Scenario::instance()->GetID())
+    , m_networkSetupProtocolID(kNetworkSetupProtocolID)
+    , m_scenarioName(Scenario::instance()->GetName())
+    , m_scenarioVersion(Scenario::instance()->GetVersion())
+    , m_hasGameOptions(false)
+    , m_gameOptions(0)
+    , m_cheatFlags(0)
+    , m_killLimit(0)
+  {
+  }
 };
 
 AIStream& operator >>(AIStream& stream, GameDescription& desc);
@@ -153,29 +153,34 @@ std::ostream& operator <<(std::ostream& stream, const GameDescription& desc);
 class LoginAndPlayerInfoMessage : public SmallMessageHelper
 {
 public:
-	LoginAndPlayerInfoMessage(const std::string& userName, const std::string& playerName, const std::string& teamName)
-		: m_userName(userName), m_playerName(playerName), m_teamName(teamName) {}
-	
-	enum { kType = kCLIENT_LOGIN };
+LoginAndPlayerInfoMessage(const std::string& userName,
+                          const std::string& playerName,
+                          const std::string& teamName)
+  : m_userName(userName), m_playerName(playerName), m_teamName(teamName) {
+}
 
-	MessageTypeID type() const { return kType; }
+enum { kType = kCLIENT_LOGIN };
 
-	COVARIANT_RETURN(Message*, LoginAndPlayerInfoMessage*) clone() const
-	{ return new LoginAndPlayerInfoMessage(*this); }
+MessageTypeID type() const {
+  return kType;
+}
+
+COVARIANT_RETURN(Message*, LoginAndPlayerInfoMessage*) clone() const
+{ return new LoginAndPlayerInfoMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
+void reallyDeflateTo(AOStream& thePacket) const;
 
-	bool reallyInflateFrom(AIStream& inStream)
-	{
-		// no support for receiving this type of message
-		return false;
-	}
+bool reallyInflateFrom(AIStream& inStream)
+{
+  // no support for receiving this type of message
+  return false;
+}
 
 private:
-	std::string	m_userName;
-	std::string	m_playerName;
-	std::string	m_teamName;
+std::string m_userName;
+std::string m_playerName;
+std::string m_teamName;
 };
 
 typedef DatalessMessage<kCLIENT_LOGOUT> LogoutMessage;
@@ -183,55 +188,66 @@ typedef DatalessMessage<kCLIENT_LOGOUT> LogoutMessage;
 class SetPlayerModeMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_PLAYERMODE };
+enum { kType = kCLIENT_PLAYERMODE };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, SetPlayerModeMessage*) clone() const
-		{ return new SetPlayerModeMessage(*this); }
+COVARIANT_RETURN(Message*, SetPlayerModeMessage*) clone() const
+{ return new SetPlayerModeMessage(*this); }
 
-	SetPlayerModeMessage(uint16 mode) : m_mode(mode) { }
+SetPlayerModeMessage(uint16 mode) : m_mode(mode) {
+}
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-		{
-			thePacket << m_mode;
-		}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  thePacket << m_mode;
+}
 
-	bool reallyInflateFrom(AIStream& inStream)
-		{ assert(false); }
+bool reallyInflateFrom(AIStream& inStream)
+{
+  assert(false);
+}
 
 private:
-	uint16 m_mode;
+uint16 m_mode;
 };
 
 class SaltMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_SALT, kKeyLength = 16 };
+enum { kType = kSERVER_SALT, kKeyLength = 16 };
 
-	enum { kPlaintextEncryption, kBraindeadSimpleEncryption };
+enum { kPlaintextEncryption, kBraindeadSimpleEncryption };
 
-	uint16 encryptionType() const { return m_encryptionType; }
-	const uint8* salt() const { return &(m_salt[0]); }
+uint16 encryptionType() const {
+  return m_encryptionType;
+}
+const uint8* salt() const {
+  return &(m_salt[0]);
+}
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, SaltMessage*) clone() const
-	{ return new SaltMessage(*this); }
+COVARIANT_RETURN(Message*, SaltMessage*) clone() const
+{ return new SaltMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint16	m_encryptionType;
-	uint8	m_salt[kKeyLength];
+uint16 m_encryptionType;
+uint8 m_salt[kKeyLength];
 };
 
 
@@ -243,21 +259,23 @@ typedef DatalessMessage<kSERVER_ACCEPT> AcceptMessage;
 class LocalizationMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_LOCALIZE };
+enum { kType = kCLIENT_LOCALIZE };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, LocalizationMessage*) clone() const
-	{ return new LocalizationMessage(*this); }
+COVARIANT_RETURN(Message*, LocalizationMessage*) clone() const
+{ return new LocalizationMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
+void reallyDeflateTo(AOStream& thePacket) const;
 
-	bool reallyInflateFrom(AIStream& inStream)
-	{
-		// no need for inflation
-		return false;
-	}
+bool reallyInflateFrom(AIStream& inStream)
+{
+  // no need for inflation
+  return false;
+}
 };
 
 
@@ -265,27 +283,35 @@ protected:
 class RoomDescription
 {
 public:
-	enum
-	{
-		kNormalRoomType = 0,
-		kRankedRoomType,
-		kTournamentRoomType
-	};
+enum
+{
+  kNormalRoomType = 0,
+  kRankedRoomType,
+  kTournamentRoomType
+};
 
-	void read(AIStream& inStream);
+void read(AIStream& inStream);
 
-	const std::string roomName() const;
-	int playerCount() const { return m_playerCount; }
-	int gameCount() const { return m_gameCount; }
-	int roomType() const { return m_type; }
-	const IPaddress roomServerAddress() const { return m_address; }
+const std::string roomName() const;
+int playerCount() const {
+  return m_playerCount;
+}
+int gameCount() const {
+  return m_gameCount;
+}
+int roomType() const {
+  return m_type;
+}
+const IPaddress roomServerAddress() const {
+  return m_address;
+}
 
 private:
-	uint16 m_id;
-	uint16 m_playerCount;
-	uint16 m_gameCount;
-	uint16 m_type;
-	IPaddress m_address;
+uint16 m_id;
+uint16 m_playerCount;
+uint16 m_gameCount;
+uint16 m_type;
+IPaddress m_address;
 };
 
 std::ostream& operator <<(std::ostream& out, const RoomDescription& roomDesc);
@@ -293,26 +319,30 @@ std::ostream& operator <<(std::ostream& out, const RoomDescription& roomDesc);
 class RoomListMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_ROOMLIST };
+enum { kType = kSERVER_ROOMLIST };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, RoomListMessage*) clone() const
-	{ return new RoomListMessage(*this); }
+COVARIANT_RETURN(Message*, RoomListMessage*) clone() const
+{ return new RoomListMessage(*this); }
 
-	const std::vector<RoomDescription>& rooms() const { return m_rooms; }
+const std::vector<RoomDescription>& rooms() const {
+  return m_rooms;
+}
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	std::vector<RoomDescription>	m_rooms;
+std::vector<RoomDescription>    m_rooms;
 };
 
 std::ostream& operator <<(std::ostream& out, const RoomListMessage& message);
@@ -322,30 +352,33 @@ std::ostream& operator <<(std::ostream& out, const RoomListMessage& message);
 class RoomLoginMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_ROOM_LOGIN, kKeyLength = 16 };
+enum { kType = kCLIENT_ROOM_LOGIN, kKeyLength = 16 };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, RoomLoginMessage*) clone() const
-	{ return new RoomLoginMessage(*this); }
+COVARIANT_RETURN(Message*, RoomLoginMessage*) clone() const
+{ return new RoomLoginMessage(*this); }
 
-	RoomLoginMessage(const std::string& login, const HandoffToken& token) : m_loginName(login)
-	{
-		memcpy(m_token, token, sizeof(m_token));
-	}
+RoomLoginMessage(const std::string& login,
+                 const HandoffToken& token) : m_loginName(login)
+{
+  memcpy(m_token, token, sizeof(m_token));
+}
 
 protected:
-	void reallyDeflateTo(AOStream& out) const;
+void reallyDeflateTo(AOStream& out) const;
 
-	bool reallyInflateFrom(AIStream&)
-	{
-		// don't need to be able to receive these
-		return false;
-	}
+bool reallyInflateFrom(AIStream&)
+{
+  // don't need to be able to receive these
+  return false;
+}
 
 private:
-	HandoffToken	m_token;
-	std::string	m_loginName;
+HandoffToken m_token;
+std::string m_loginName;
 };
 
 
@@ -353,59 +386,75 @@ private:
 class NameAndTeamMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_NAME_TEAM };
+enum { kType = kCLIENT_NAME_TEAM };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, NameAndTeamMessage*) clone() const
-	{ return new NameAndTeamMessage(*this); }
+COVARIANT_RETURN(Message*, NameAndTeamMessage*) clone() const
+{ return new NameAndTeamMessage(*this); }
 
-	NameAndTeamMessage(const std::string& name, const std::string& team) : m_name(name), m_team(team), m_away(false), m_away_message("") {}
+NameAndTeamMessage(const std::string& name,
+                   const std::string& team) : m_name(name), m_team(team),
+  m_away(false),
+  m_away_message("") {
+}
 
-	NameAndTeamMessage(const std::string& name, const std::string& team, bool away, const std::string& away_message) : m_name(name), m_team(team), m_away(away), m_away_message(away_message) { }
+NameAndTeamMessage(const std::string& name, const std::string& team, bool away,
+                   const std::string& away_message) : m_name(name), m_team(team),
+  m_away(away),
+  m_away_message(away_message) {
+}
 
 protected:
-	void reallyDeflateTo(AOStream& out) const;
+void reallyDeflateTo(AOStream& out) const;
 
-	bool reallyInflateFrom(AIStream&)
-	{
-		// don't need to be able to receive these
-		return false;
-	}
+bool reallyInflateFrom(AIStream&)
+{
+  // don't need to be able to receive these
+  return false;
+}
 
 private:
-	std::string	m_name;
-	std::string	m_team;
+std::string m_name;
+std::string m_team;
 
-	bool            m_away;
-	std::string     m_away_message;
+bool m_away;
+std::string m_away_message;
 };
 
 class IDAndLimitMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_LIMIT };
+enum { kType = kSERVER_LIMIT };
 
-	uint32 playerID() const { return m_playerID; }
-	uint16 playerLimit() const { return m_playerLimit; }
+uint32 playerID() const {
+  return m_playerID;
+}
+uint16 playerLimit() const {
+  return m_playerLimit;
+}
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, IDAndLimitMessage*) clone() const
-	{ return new IDAndLimitMessage(*this); }
+COVARIANT_RETURN(Message*, IDAndLimitMessage*) clone() const
+{ return new IDAndLimitMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint32	m_playerID;
-	uint16	m_playerLimit;
+uint32 m_playerID;
+uint16 m_playerLimit;
 };
 
 
@@ -413,28 +462,34 @@ private:
 class DenialMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_DENY };
+enum { kType = kSERVER_DENY };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	uint32 code() const { return m_code; }
-	const std::string message() const { return m_message; }
+uint32 code() const {
+  return m_code;
+}
+const std::string message() const {
+  return m_message;
+}
 
-	COVARIANT_RETURN(Message*, DenialMessage*) clone() const
-	{ return new DenialMessage(*this); }
+COVARIANT_RETURN(Message*, DenialMessage*) clone() const
+{ return new DenialMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint32		m_code;
-	std::string	m_message;
+uint32 m_code;
+std::string m_message;
 };
 
 
@@ -442,98 +497,133 @@ private:
 class BroadcastMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_BROADCAST };
+enum { kType = kSERVER_BROADCAST };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	const std::string message() const { return m_message; }
+const std::string message() const {
+  return m_message;
+}
 
-	COVARIANT_RETURN(Message*, BroadcastMessage*) clone() const
-	{ return new BroadcastMessage(*this); }
+COVARIANT_RETURN(Message*, BroadcastMessage*) clone() const
+{ return new BroadcastMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	std::string m_message;
+std::string m_message;
 };
 
 class PrivateMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kBOTH_PRIVATE_MESSAGE };
-	static const int kDirectedBit = 0x1;
-	
-	MessageTypeID type() const { return kType; }
+enum { kType = kBOTH_PRIVATE_MESSAGE };
+static const int kDirectedBit = 0x1;
 
-	PrivateMessage() {}
+MessageTypeID type() const {
+  return kType;
+}
 
-	PrivateMessage(uint32 inSenderID, const std::string& inSenderName, uint32 inSelectedID, const std::string& inMessage);
+PrivateMessage() {
+}
 
-	const uint32 senderID() const { return m_senderID; }
-	const uint32 selectedID() const { return m_selectedID; }
-	const uint16 internalType() const { return m_internalType; }
-	const std::string senderName() const { return m_senderName; }
-	const std::string message() const { return m_message; }
-	const bool directed() const { return m_flags & kDirectedBit; }
-	
-	COVARIANT_RETURN(Message*, PrivateMessage*) clone() const
-		{ return new PrivateMessage(*this); }
+PrivateMessage(uint32 inSenderID, const std::string& inSenderName,
+               uint32 inSelectedID,
+               const std::string& inMessage);
+
+const uint32 senderID() const {
+  return m_senderID;
+}
+const uint32 selectedID() const {
+  return m_selectedID;
+}
+const uint16 internalType() const {
+  return m_internalType;
+}
+const std::string senderName() const {
+  return m_senderName;
+}
+const std::string message() const {
+  return m_message;
+}
+const bool directed() const {
+  return m_flags & kDirectedBit;
+}
+
+COVARIANT_RETURN(Message*, PrivateMessage*) clone() const
+{ return new PrivateMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
-	bool reallyInflateFrom(AIStream& inStream);
+void reallyDeflateTo(AOStream& thePacket) const;
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint16 m_color[3];
-	uint32 m_senderID;
-	uint32 m_selectedID;
-	uint16 m_internalType;
-	uint16 m_flags;
-	std::string m_senderName;
-	std::string m_message;
+uint16 m_color[3];
+uint32 m_senderID;
+uint32 m_selectedID;
+uint16 m_internalType;
+uint16 m_flags;
+std::string m_senderName;
+std::string m_message;
 };
-	
+
 
 class ChatMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kBOTH_CHAT };
+enum { kType = kBOTH_CHAT };
 
-	static const int kDirectedBit = 0x1;
+static const int kDirectedBit = 0x1;
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	ChatMessage() {}
+ChatMessage() {
+}
 
-	ChatMessage(uint32 inSenderID, const std::string& inSenderName, const std::string& inMessage);
+ChatMessage(uint32 inSenderID, const std::string& inSenderName,
+            const std::string& inMessage);
 
-	const uint32 senderID() const { return m_senderID; }
-	const uint16 internalType() const { return m_internalType; }
-	const std::string senderName() const { return m_senderName; }
-	const std::string message() const { return m_message; }
-	const bool directed() const { return m_flags & kDirectedBit; }
+const uint32 senderID() const {
+  return m_senderID;
+}
+const uint16 internalType() const {
+  return m_internalType;
+}
+const std::string senderName() const {
+  return m_senderName;
+}
+const std::string message() const {
+  return m_message;
+}
+const bool directed() const {
+  return m_flags & kDirectedBit;
+}
 
-	COVARIANT_RETURN(Message*, ChatMessage*) clone() const
-	{ return new ChatMessage(*this); }
+COVARIANT_RETURN(Message*, ChatMessage*) clone() const
+{ return new ChatMessage(*this); }
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
-	bool reallyInflateFrom(AIStream& inStream);
+void reallyDeflateTo(AOStream& thePacket) const;
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint16		m_color[3];
-	uint32		m_senderID;
-	uint16          m_internalType;
-	uint16          m_flags;
-	std::string	m_senderName;
-	std::string	m_message;
+uint16 m_color[3];
+uint32 m_senderID;
+uint16 m_internalType;
+uint16 m_flags;
+std::string m_senderName;
+std::string m_message;
 };
 
 
@@ -545,83 +635,112 @@ typedef DatalessMessage<kBOTH_KEEP_ALIVE> KeepAliveMessage;
 class MetaserverPlayerInfo
 {
 public:
-	// Flags for adminFlags
-	static const uint16	kNotAdmin	= 0x0;
-	static const uint16	kBungie		= 0x1;
-	static const uint16	kAdmin		= 0x4;
-	
-	MetaserverPlayerInfo(AIStream& fromStream);
+// Flags for adminFlags
+static const uint16 kNotAdmin       = 0x0;
+static const uint16 kBungie         = 0x1;
+static const uint16 kAdmin          = 0x4;
 
-	uint16 verb() const { return m_verb; }
-	uint32 playerID() const { return m_playerID; }
-	const std::string& name() const { return m_name; }
+MetaserverPlayerInfo(AIStream& fromStream);
 
-	const uint16 *color() const { return m_primaryColor; }
-	const uint16 *team_color() const { return m_secondaryColor; }
+uint16 verb() const {
+  return m_verb;
+}
+uint32 playerID() const {
+  return m_playerID;
+}
+const std::string& name() const {
+  return m_name;
+}
 
-	static bool sort(const MetaserverPlayerInfo& a, const MetaserverPlayerInfo& b) { 
-		return (a.m_adminFlags == b.m_adminFlags) ? ( (a.m_status == b.m_status) ? a.playerID() < b.playerID() : a.m_status < b.m_status) : a.m_adminFlags > b.m_adminFlags;
-	}
+const uint16 *color() const {
+  return m_primaryColor;
+}
+const uint16 *team_color() const {
+  return m_secondaryColor;
+}
 
-	friend std::ostream& operator <<(std::ostream& out, const MetaserverPlayerInfo& info);
+static bool sort(const MetaserverPlayerInfo& a,
+                 const MetaserverPlayerInfo& b) {
+  return (a.m_adminFlags ==
+          b.m_adminFlags) ? ( (a.m_status ==
+                               b.m_status) ? a.playerID() <
+                              b.playerID() : a.m_status <
+                              b.m_status) : a.m_adminFlags > b.m_adminFlags;
+}
 
-	bool away() const { return m_status & 0x1; }
+friend std::ostream& operator <<(std::ostream& out,
+                                 const MetaserverPlayerInfo& info);
 
-	// Conformance to metaserver-maintained-list interface
-	typedef uint32 IDType;
-	static const IDType IdNone = 0xffffffff;
+bool away() const {
+  return m_status & 0x1;
+}
 
-	IDType id() const { return playerID(); }
-	
-	bool target() const { return m_target; }
-	void target(bool _target) { m_target = _target; } 
+// Conformance to metaserver-maintained-list interface
+typedef uint32 IDType;
+static const IDType IdNone = 0xffffffff;
+
+IDType id() const {
+  return playerID();
+}
+
+bool target() const {
+  return m_target;
+}
+void target(bool _target) {
+  m_target = _target;
+}
 
 private:
-	MetaserverPlayerInfo();
+MetaserverPlayerInfo();
 
-	uint16		m_verb;
-	uint16		m_adminFlags;
-	uint32		m_ranking;
-	uint32		m_playerID;
-	uint32		m_roomID;
-	uint16		m_rank;
-	uint16		m_playerDataSize;
-	uint8		m_icon;
-	uint8		m_status;
-	uint16		m_primaryColor[3];
-	uint16		m_secondaryColor[3];
-	std::string	m_name;
-	std::string	m_team;
+uint16 m_verb;
+uint16 m_adminFlags;
+uint32 m_ranking;
+uint32 m_playerID;
+uint32 m_roomID;
+uint16 m_rank;
+uint16 m_playerDataSize;
+uint8 m_icon;
+uint8 m_status;
+uint16 m_primaryColor[3];
+uint16 m_secondaryColor[3];
+std::string m_name;
+std::string m_team;
 
-	bool m_target;
+bool m_target;
 };
 
 class PlayerListMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_PLAYERLIST };
-	
-	MessageTypeID type() const { return kType; }
-	
-	PlayerListMessage() {}
-	
-	COVARIANT_RETURN(Message*, PlayerListMessage*) clone() const
-	{ return new PlayerListMessage(*this); }
-	
-	const std::vector<MetaserverPlayerInfo>& players() const { return m_players; }
+enum { kType = kSERVER_PLAYERLIST };
 
-	
+MessageTypeID type() const {
+  return kType;
+}
+
+PlayerListMessage() {
+}
+
+COVARIANT_RETURN(Message*, PlayerListMessage*) clone() const
+{ return new PlayerListMessage(*this); }
+
+const std::vector<MetaserverPlayerInfo>& players() const {
+  return m_players;
+}
+
+
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
-	
-	bool reallyInflateFrom(AIStream& inStream);
-	
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
+
+bool reallyInflateFrom(AIStream& inStream);
+
 private:
-	std::vector<MetaserverPlayerInfo>	m_players;
+std::vector<MetaserverPlayerInfo>       m_players;
 };
 
 std::ostream& operator <<(std::ostream& out, const PlayerListMessage& info);
@@ -631,33 +750,36 @@ std::ostream& operator <<(std::ostream& out, const PlayerListMessage& info);
 class CreateGameMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_CREATEGAME };
+enum { kType = kCLIENT_CREATEGAME };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	CreateGameMessage(uint16 gamePort, const GameDescription& description)
-		: m_gamePort(gamePort)
-		, m_description(description)
-	{}
+CreateGameMessage(uint16 gamePort, const GameDescription& description)
+  : m_gamePort(gamePort)
+  , m_description(description)
+{
+}
 
-	COVARIANT_RETURN(Message*, CreateGameMessage*) clone() const
-	{ return new CreateGameMessage(*this); }
+COVARIANT_RETURN(Message*, CreateGameMessage*) clone() const
+{ return new CreateGameMessage(*this); }
 
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
+void reallyDeflateTo(AOStream& thePacket) const;
 
-	bool reallyInflateFrom(AIStream& inStream)
-	{
-		// no need for inflation
-		assert(false);
-		return false;
-	}
+bool reallyInflateFrom(AIStream& inStream)
+{
+  // no need for inflation
+  assert(false);
+  return false;
+}
 
-	
+
 private:
-	uint16		m_gamePort;
-	GameDescription	m_description;
+uint16 m_gamePort;
+GameDescription m_description;
 };
 
 
@@ -669,29 +791,35 @@ typedef DatalessMessage<kCLIENT_SYNCGAMES> SyncGamesMessage;
 class LoginSuccessfulMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_LOGINSUCCESS };
+enum { kType = kSERVER_LOGINSUCCESS };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, LoginSuccessfulMessage*) clone() const
-	{ return new LoginSuccessfulMessage(*this); }
+COVARIANT_RETURN(Message*, LoginSuccessfulMessage*) clone() const
+{ return new LoginSuccessfulMessage(*this); }
 
-	uint32 userID() const { return m_userID; }
-	const HandoffToken& token() const { return m_token; }
+uint32 userID() const {
+  return m_userID;
+}
+const HandoffToken& token() const {
+  return m_token;
+}
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	uint32		m_userID;
-	uint16		m_order;
-	HandoffToken	m_token;
+uint32 m_userID;
+uint16 m_order;
+HandoffToken m_token;
 };
 
 
@@ -699,22 +827,24 @@ private:
 class SetPlayerDataMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kSERVER_SETPLAYERDATA };
+enum { kType = kSERVER_SETPLAYERDATA };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, SetPlayerDataMessage*) clone() const
-	{ return new SetPlayerDataMessage(*this); }
+COVARIANT_RETURN(Message*, SetPlayerDataMessage*) clone() const
+{ return new SetPlayerDataMessage(*this); }
 
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
 };
@@ -724,129 +854,156 @@ private:
 class GameListMessage : public SmallMessageHelper
 {
 public:
-	struct GameListEntry
-	{
-		// Conformance to MetaserverMaintainedList's Element interface
-		typedef uint32 IDType;
-		static const IDType IdNone = 0xffffffff;
-		IDType id() const { return m_gameID; }
-		uint8 verb() const { return m_verb; }
+struct GameListEntry
+{
+  // Conformance to MetaserverMaintainedList's Element interface
+  typedef uint32 IDType;
+  static const IDType IdNone = 0xffffffff;
+  IDType id() const {
+    return m_gameID;
+  }
+  uint8 verb() const {
+    return m_verb;
+  }
 
-		bool target() const { return m_target; }
-		void target(bool _target) { m_target = _target; }
+  bool target() const {
+    return m_target;
+  }
+  void target(bool _target) {
+    m_target = _target;
+  }
 
-		bool running() const { return m_description.m_running; }
-		bool compatible() const { return Scenario::instance()->IsCompatible(m_description.m_scenarioID); }
+  bool running() const {
+    return m_description.m_running;
+  }
+  bool compatible() const {
+    return Scenario::instance()->IsCompatible(m_description.m_scenarioID);
+  }
 
-		static bool sort(const GameListEntry& a, const GameListEntry& b) {
-			// sort compatible/not running, then compatible/running
-			// then not compatible
-			// in those groups, sort by ID
-			if (a.compatible() && b.compatible())
-			{
-				if (a.running() == b.running())
-				{
-					return a.id() < b.id();
-				}
-				else 
-				{
-					return !a.running();
-				}
-			}
-			else if (a.compatible() == b.compatible())
-			{
-				return a.id() < b.id();
-			}
-			else
-				return a.compatible();
-		}
+  static bool sort(const GameListEntry& a, const GameListEntry& b) {
+    // sort compatible/not running, then compatible/running
+    // then not compatible
+    // in those groups, sort by ID
+    if (a.compatible() && b.compatible()) {
+      if (a.running() == b.running()) {
+        return a.id() < b.id();
+      }
+      else
+      {
+        return !a.running();
+      }
+    }
+    else if (a.compatible() == b.compatible()) {
+      return a.id() < b.id();
+    }
+    else{
+      return a.compatible();
+    }
+  }
 
-		int minutes_remaining() const {
-			if (m_timeRemaining == -1) return -1;
-			int remaining = m_timeRemaining / 60 - (SDL_GetTicks() - m_ticks) / 1000 / 60;
-			if (remaining < 0) remaining = 0;
-			return remaining;
-		}
+  int minutes_remaining() const {
+    if (m_timeRemaining == -1) {
+      return -1;
+    }
+    int remaining = m_timeRemaining / 60 -
+                    (SDL_GetTicks() - m_ticks) / 1000 / 60;
+    if (remaining < 0) {
+      remaining = 0;
+    }
+    return remaining;
+  }
 
-		std::string format_for_chat(const std::string& player_name) const;
-		std::string game_string() const;
+  std::string format_for_chat(const std::string& player_name) const;
+  std::string game_string() const;
 
-		// Conformance to w_items_in_game<>'s Element interface
-		const std::string& name() const { return m_description.m_name; }
+  // Conformance to w_items_in_game<>'s Element interface
+  const std::string& name() const {
+    return m_description.m_name;
+  }
 
-		uint32		m_gameID;
-		uint8		m_ipAddress[4];
-		uint16		m_port;
-		uint8		m_verb;
-		uint8		m_gameEnable;
-		uint32		m_timeRemaining;
-		uint32		m_hostPlayerID;
-		uint16		m_len;
-		GameDescription	m_description;
+  uint32 m_gameID;
+  uint8 m_ipAddress[4];
+  uint16 m_port;
+  uint8 m_verb;
+  uint8 m_gameEnable;
+  uint32 m_timeRemaining;
+  uint32 m_hostPlayerID;
+  uint16 m_len;
+  GameDescription m_description;
 
-		uint32          m_ticks; // SDL ticks at last update
-		std::string     m_hostPlayerName;
+  uint32 m_ticks;                        // SDL ticks at last update
+  std::string m_hostPlayerName;
 
-	GameListEntry() : m_target(false) { }
-		bool            m_target;
-	};
-	
-	enum { kType = kSERVER_GAMELIST };
+  GameListEntry() : m_target(false) {
+  }
+  bool m_target;
+};
 
-	MessageTypeID type() const { return kType; }
+enum { kType = kSERVER_GAMELIST };
 
-	COVARIANT_RETURN(Message*, GameListMessage*) clone() const
-	{ return new GameListMessage(*this); }
+MessageTypeID type() const {
+  return kType;
+}
 
-	const std::vector<GameListEntry>& entries() const { return m_entries; }
+COVARIANT_RETURN(Message*, GameListMessage*) clone() const
+{ return new GameListMessage(*this); }
+
+const std::vector<GameListEntry>& entries() const {
+  return m_entries;
+}
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const
-	{
-		// no need for deflation
-		assert(false);
-	}
+void reallyDeflateTo(AOStream& thePacket) const
+{
+  // no need for deflation
+  assert(false);
+}
 
-	bool reallyInflateFrom(AIStream& inStream);
+bool reallyInflateFrom(AIStream& inStream);
 
 private:
-	std::vector<GameListEntry>	m_entries;
+std::vector<GameListEntry>      m_entries;
 };
 
 AIStream& operator >>(AIStream& stream, GameListMessage::GameListEntry& entry);
-std::ostream& operator <<(std::ostream& stream, const GameListMessage::GameListEntry& entry);
+std::ostream& operator <<(std::ostream& stream,
+                          const GameListMessage::GameListEntry& entry);
 
 
 
-typedef DatalessMessage<kCLIENT_RESETGAME>	ResetGameMessage;
-typedef DatalessMessage<kCLIENT_REMOVEGAME>	RemoveGameMessage;
+typedef DatalessMessage<kCLIENT_RESETGAME>      ResetGameMessage;
+typedef DatalessMessage<kCLIENT_REMOVEGAME>     RemoveGameMessage;
 
 
 
 class StartGameMessage : public SmallMessageHelper
 {
 public:
-	enum { kType = kCLIENT_STARTGAME };
+enum { kType = kCLIENT_STARTGAME };
 
-	MessageTypeID type() const { return kType; }
+MessageTypeID type() const {
+  return kType;
+}
 
-	COVARIANT_RETURN(Message*, StartGameMessage*) clone() const
-	{ return new StartGameMessage(*this); }
+COVARIANT_RETURN(Message*, StartGameMessage*) clone() const
+{ return new StartGameMessage(*this); }
 
-	StartGameMessage(int32 gameTimeInSeconds) : m_gameTimeInSeconds(gameTimeInSeconds) {}
+StartGameMessage(int32 gameTimeInSeconds) : m_gameTimeInSeconds(
+    gameTimeInSeconds) {
+}
 
 protected:
-	void reallyDeflateTo(AOStream& thePacket) const;
+void reallyDeflateTo(AOStream& thePacket) const;
 
-	bool reallyInflateFrom(AIStream& inStream)
-	{
-		// no need for inflation
-		assert(false);
-		return false;
-	}
-	
+bool reallyInflateFrom(AIStream& inStream)
+{
+  // no need for inflation
+  assert(false);
+  return false;
+}
+
 private:
-	int32	m_gameTimeInSeconds;
+int32 m_gameTimeInSeconds;
 };
 
 #endif // METASERVER_MESSAGES_H

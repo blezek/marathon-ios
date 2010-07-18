@@ -1,23 +1,23 @@
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-*/
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+
+ */
 // Loren Petrich: the author(s) of the "cseries" files is not given, but is probably
 // either Bo Lindbergh, Mihai Parparita, or both, given their efforts in getting the
 // code working initially.
@@ -46,7 +46,7 @@ namespace std {};
 
 #elif __MVCPP__
 
-using namespace std;	// Visual C++ doesn't like that other way of using the namespace.
+using namespace std;    // Visual C++ doesn't like that other way of using the namespace.
 #if _MSC_VER < 1300
 #define for if(false) {} else for // solves a bug in MSVC prior to MSVC7 for the "redeclared" initializers used in for loops.
 #endif
@@ -75,7 +75,7 @@ using namespace std;	// Visual C++ doesn't like that other way of using the name
 /*
  *  Emulation of MacOS data types and definitions
  */
-#if !defined(SDL_RFORK_HACK)// && !defined(TARGET_API_MAC_CARBON)
+#if !defined(SDL_RFORK_HACK) // && !defined(TARGET_API_MAC_CARBON)
 
 #if defined(__APPLE__) && defined(__MACH__)
 // if we're on the right platform, we can use the real thing (and get headers for functions we might want to use)
@@ -85,15 +85,15 @@ typedef int OSErr;
 typedef unsigned char Str255[256];
 
 struct Rect {
-	int16 top, left;
-	int16 bottom, right;
+  int16 top, left;
+  int16 bottom, right;
 };
 
 const int noErr = 0;
 #endif
 
 struct RGBColor {
-	uint16 red, green, blue;
+  uint16 red, green, blue;
 };
 
 const int kFontIDMonaco = 4;

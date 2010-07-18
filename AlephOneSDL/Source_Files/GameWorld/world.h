@@ -1,41 +1,41 @@
 /*
-WORLD.H
+   WORLD.H
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-Wednesday, June 17, 1992 6:40:10 PM
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
-Friday, June 26, 1992 10:47:47 AM
-	to maintain precision when squaring world coordinates, they must be in [0,32*WORLD_ONE).
-Wednesday, August 18, 1993 2:59:47 PM
-	added 3d world points, world_distance is now a short (because we care).
-Sunday, May 22, 1994 10:48:26 PM
-	added fixed_point3d.  GUESS_HYPOTENUSE() is no longer completely broken.
+   Wednesday, June 17, 1992 6:40:10 PM
 
-Feb 15, 2000 (Loren Petrich):
-	Moved definition of "long" versions of vectors into here
-	
-Feb 17, 2000 (Loren Petrich):
-	Made the arctangent function long-distance friendly
+   Friday, June 26, 1992 10:47:47 AM
+        to maintain precision when squaring world coordinates, they must be in [0,32*WORLD_ONE).
+   Wednesday, August 18, 1993 2:59:47 PM
+        added 3d world points, world_distance is now a short (because we care).
+   Sunday, May 22, 1994 10:48:26 PM
+        added fixed_point3d.  GUESS_HYPOTENUSE() is no longer completely broken.
 
-Jul 1, 2000 (Loren Petrich):
-	Inlined the angle normalization; using tricky code for that
-*/
+   Feb 15, 2000 (Loren Petrich):
+        Moved definition of "long" versions of vectors into here
+
+   Feb 17, 2000 (Loren Petrich):
+        Made the arctangent function long-distance friendly
+
+   Jul 1, 2000 (Loren Petrich):
+        Inlined the angle normalization; using tricky code for that
+ */
 
 #ifndef _WORLD_H
 #define _WORLD_H
@@ -73,11 +73,15 @@ typedef int16 world_distance;
 #define WORLD_FRACTIONAL_PART(d) ((d)&((world_distance)(WORLD_ONE-1)))
 #define WORLD_INTEGERAL_PART(d) ((d)>>WORLD_FRACTIONAL_BITS)
 
-#define WORLD_TO_FIXED(w) (((_fixed)(w))<<(FIXED_FRACTIONAL_BITS-WORLD_FRACTIONAL_BITS))
-#define FIXED_TO_WORLD(f) ((world_distance)((f)>>(FIXED_FRACTIONAL_BITS-WORLD_FRACTIONAL_BITS)))
+#define WORLD_TO_FIXED(w) (((_fixed)(w))<< \
+                           (FIXED_FRACTIONAL_BITS-WORLD_FRACTIONAL_BITS))
+#define FIXED_TO_WORLD(f) ((world_distance)((f)>> \
+                                            (FIXED_FRACTIONAL_BITS- \
+                                             WORLD_FRACTIONAL_BITS)))
 
 #define FACING4(a) (NORMALIZE_ANGLE((a)-EIGHTH_CIRCLE)>>(ANGULAR_BITS-2))
-#define FACING5(a) ((NORMALIZE_ANGLE((a)-FULL_CIRCLE/10))/((NUMBER_OF_ANGLES/5)+1))
+#define FACING5(a) ((NORMALIZE_ANGLE((a)-FULL_CIRCLE/ \
+                                     10))/((NUMBER_OF_ANGLES/5)+1))
 #define FACING8(a) (NORMALIZE_ANGLE((a)-SIXTEENTH_CIRCLE)>>(ANGULAR_BITS-3))
 
 /* arguments must be positive (!) or use guess_hypotenuse() */
@@ -91,19 +95,19 @@ typedef int16 world_distance;
 
 struct world_point2d
 {
-	world_distance x, y;
+  world_distance x, y;
 };
 typedef struct world_point2d world_point2d;
 
 struct world_point3d
 {
-	world_distance x, y, z;
+  world_distance x, y, z;
 };
 typedef struct world_point3d world_point3d;
 
 struct fixed_point3d
 {
-	_fixed x, y, z;
+  _fixed x, y, z;
 };
 typedef struct fixed_point3d fixed_point3d;
 
@@ -111,19 +115,19 @@ typedef struct fixed_point3d fixed_point3d;
 
 struct world_vector2d
 {
-	world_distance i, j;
+  world_distance i, j;
 };
 typedef struct world_vector2d world_vector2d;
 
 struct world_vector3d
 {
-	world_distance i, j, k;
+  world_distance i, j, k;
 };
 typedef struct world_vector3d world_vector3d;
 
 struct fixed_vector3d
 {
-	_fixed i, j, k;
+  _fixed i, j, k;
 };
 typedef struct fixed_vector3d fixed_vector3d;
 
@@ -131,25 +135,25 @@ typedef struct fixed_vector3d fixed_vector3d;
 
 struct long_point2d
 {
-	int32 x, y;
+  int32 x, y;
 };
 typedef struct long_point2d long_point2d;
 
 struct long_point3d
 {
-	int32 x, y, z;
+  int32 x, y, z;
 };
 typedef struct long_point3d long_point3d;
 
 struct long_vector2d
 {
-	int32 i, j;
+  int32 i, j;
 };
 typedef struct long_vector2d long_vector2d;
 
 struct long_vector3d
 {
-	int32 i, j, k;
+  int32 i, j, k;
 };
 typedef struct long_vector3d long_vector3d;
 
@@ -157,12 +161,12 @@ typedef struct long_vector3d long_vector3d;
 
 struct world_location3d
 {
-	world_point3d point;
-	short polygon_index;
-	
-	angle yaw, pitch;
+  world_point3d point;
+  short polygon_index;
 
-	world_vector3d velocity;
+  angle yaw, pitch;
+
+  world_vector3d velocity;
 };
 typedef struct world_location3d world_location3d;
 
@@ -179,17 +183,26 @@ void build_trig_tables(void);
 // looks as if the code had been worked on by more than one programmer.
 static inline angle normalize_angle(angle theta)
 {
-	return NORMALIZE_ANGLE(theta);
+  return NORMALIZE_ANGLE(theta);
 }
 
-world_point2d *rotate_point2d(world_point2d *point, world_point2d *origin, angle theta);
-world_point3d *rotate_point3d(world_point3d *point, world_point3d *origin, angle theta, angle phi);
+world_point2d *rotate_point2d(world_point2d *point, world_point2d *origin,
+                              angle theta);
+world_point3d *rotate_point3d(world_point3d *point, world_point3d *origin,
+                              angle theta,
+                              angle phi);
 
-world_point2d *translate_point2d(world_point2d *point, world_distance distance, angle theta);
-world_point3d *translate_point3d(world_point3d *point, world_distance distance, angle theta, angle phi);
+world_point2d *translate_point2d(world_point2d *point, world_distance distance,
+                                 angle theta);
+world_point3d *translate_point3d(world_point3d *point, world_distance distance,
+                                 angle theta,
+                                 angle phi);
 
-world_point2d *transform_point2d(world_point2d *point, world_point2d *origin, angle theta);
-world_point3d *transform_point3d(world_point3d *point, world_point3d *origin, angle theta, angle phi);
+world_point2d *transform_point2d(world_point2d *point, world_point2d *origin,
+                                 angle theta);
+world_point3d *transform_point3d(world_point3d *point, world_point3d *origin,
+                                 angle theta,
+                                 angle phi);
 
 /* angle is in [0,NUMBER_OF_ANGLES), or, [0,2¹) */
 // LP change: made this long-distance friendly
@@ -211,22 +224,26 @@ int32 isqrt(register uint32 x);
 // by storing the upper digits in the upper byte of a "flags" value.
 // These digits are the first 4 of X and Y beyond the short-integer digits.
 
-void long_to_overflow_short_2d(long_vector2d& LVec, world_point2d& WVec, uint16& flags);
-void overflow_short_to_long_2d(world_point2d& WVec, uint16& flags, long_vector2d& LVec);
+void long_to_overflow_short_2d(long_vector2d& LVec, world_point2d& WVec,
+                               uint16& flags);
+void overflow_short_to_long_2d(world_point2d& WVec, uint16& flags,
+                               long_vector2d& LVec);
 
 // Transform that produces a result with this kludge
-world_point2d *transform_overflow_point2d(world_point2d *point, world_point2d *origin, angle theta, uint16 *flags);
+world_point2d *transform_overflow_point2d(world_point2d *point,
+                                          world_point2d *origin, angle theta,
+                                          uint16 *flags);
 
 // Simple copy-overs
 static inline void long_to_short_2d(long_vector2d& LVec, world_vector2d&WVec)
 {
-	WVec.i = static_cast<short>(LVec.i);
-	WVec.j = static_cast<short>(LVec.j);
+  WVec.i = static_cast<short>(LVec.i);
+  WVec.j = static_cast<short>(LVec.j);
 }
 static inline void short_to_long_2d(world_vector2d&WVec, long_vector2d& LVec)
 {
-	LVec.i = WVec.i;
-	LVec.j = WVec.j;
+  LVec.i = WVec.i;
+  LVec.j = WVec.j;
 }
 
 #endif

@@ -4,26 +4,26 @@
  */
 
 /*
-  Copyright (c) 2003, Woody Zenfell, III
+   Copyright (c) 2003, Woody Zenfell, III
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
-*/
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+ */
 
 
 #ifndef MESSAGEDISPATCHER_H
@@ -38,61 +38,66 @@
 class MessageDispatcher : public MessageHandler
 {
 public:
-	MessageDispatcher() : mDefaultHandler(NULL) {}
-	
-	void setHandlerForType(MessageHandler* inHandler, MessageTypeID inType)
-	{
-		if(inHandler == NULL)
-			clearHandlerForType(inType);
-		else
-			mMap[inType] = inHandler;
-	}
+MessageDispatcher() : mDefaultHandler(NULL) {
+}
 
-	MessageHandler* handlerForType(MessageTypeID inType)
-	{
-		MessageHandler* theHandler = mDefaultHandler;
+void setHandlerForType(MessageHandler* inHandler, MessageTypeID inType)
+{
+  if(inHandler == NULL) {
+    clearHandlerForType(inType);
+  }
+  else{
+    mMap[inType] = inHandler;
+  }
+}
 
-		MessageDispatcherMap::iterator i = mMap.find(inType);
-		if(i != mMap.end())
-			theHandler = i->second;
+MessageHandler* handlerForType(MessageTypeID inType)
+{
+  MessageHandler* theHandler = mDefaultHandler;
 
-		return theHandler;
-	}
+  MessageDispatcherMap::iterator i = mMap.find(inType);
+  if(i != mMap.end()) {
+    theHandler = i->second;
+  }
 
-	MessageHandler* handlerForTypeNoDefault(MessageTypeID inType)
-	{
-		MessageDispatcherMap::iterator i = mMap.find(inType);
-		return (i != mMap.end()) ? i->second : NULL;
-	}
+  return theHandler;
+}
 
-	void clearHandlerForType(MessageTypeID inType)
-	{
-		mMap.erase(inType);
-	}
+MessageHandler* handlerForTypeNoDefault(MessageTypeID inType)
+{
+  MessageDispatcherMap::iterator i = mMap.find(inType);
+  return (i != mMap.end()) ? i->second : NULL;
+}
 
-	void setDefaultHandler(MessageHandler* inHandler)
-	{
-		mDefaultHandler = inHandler;
-	}
+void clearHandlerForType(MessageTypeID inType)
+{
+  mMap.erase(inType);
+}
 
-	MessageHandler* defaultHandler() const
-	{
-		return mDefaultHandler;
-	}
+void setDefaultHandler(MessageHandler* inHandler)
+{
+  mDefaultHandler = inHandler;
+}
 
-	void handle(Message* inMessage, CommunicationsChannel* inChannel)
-	{
-		MessageHandler* theHandler = handlerForType(inMessage->type());
+MessageHandler* defaultHandler() const
+{
+  return mDefaultHandler;
+}
 
-		if(theHandler != NULL)
-			theHandler->handle(inMessage, inChannel);
-	}
+void handle(Message* inMessage, CommunicationsChannel* inChannel)
+{
+  MessageHandler* theHandler = handlerForType(inMessage->type());
+
+  if(theHandler != NULL) {
+    theHandler->handle(inMessage, inChannel);
+  }
+}
 
 private:
-	typedef std::map<MessageTypeID, MessageHandler*> MessageDispatcherMap;
-	
-	MessageDispatcherMap	mMap;
-	MessageHandler*		mDefaultHandler;
+typedef std::map<MessageTypeID, MessageHandler*> MessageDispatcherMap;
+
+MessageDispatcherMap mMap;
+MessageHandler*         mDefaultHandler;
 };
 
 #endif // MESSAGEDISPATCHER_H

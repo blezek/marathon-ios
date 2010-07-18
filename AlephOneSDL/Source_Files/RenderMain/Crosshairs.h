@@ -1,53 +1,53 @@
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
-	February 21, 2000 (Loren Petrich)
-	
-	Crosshairs-interface file.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-Feb 25, 2000 (Loren Petrich):
-	Split the rendering routines up into routines that need different parameters.
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+        February 21, 2000 (Loren Petrich)
 
-Mar 2, 2000 (Loren Petrich):	
-	Moved crosshair data and configuration here from interface.h
-	
-Jun 26, 2002 (Loren Petrich):
-	Added support for crosshairs being circular and/or partially transparent
-*/
+        Crosshairs-interface file.
+
+   Feb 25, 2000 (Loren Petrich):
+        Split the rendering routines up into routines that need different parameters.
+
+   Mar 2, 2000 (Loren Petrich):
+        Moved crosshair data and configuration here from interface.h
+
+   Jun 26, 2002 (Loren Petrich):
+        Added support for crosshairs being circular and/or partially transparent
+ */
 
 #ifndef _CROSSHAIRS
 #define _CROSSHAIRS
 
 enum {
-	CHShape_RealCrosshairs,
-	CHShape_Circle
+  CHShape_RealCrosshairs,
+  CHShape_Circle
 };
 
 struct CrosshairData
 {
-     RGBColor Color;
-	short Thickness;
-	short FromCenter;
-	short Length;
-	short Shape;
-	float Opacity;
-	float GLColorsPreCalc[4];
-	bool PreCalced;
+  RGBColor Color;
+  short Thickness;
+  short FromCenter;
+  short Length;
+  short Shape;
+  float Opacity;
+  float GLColorsPreCalc[4];
+  bool PreCalced;
 };
 
 // True for OK, false for cancel

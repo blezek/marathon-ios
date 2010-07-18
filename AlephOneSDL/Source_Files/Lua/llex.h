@@ -11,16 +11,16 @@
 #include "lzio.h"
 
 
-#define FIRST_RESERVED	257
+#define FIRST_RESERVED  257
 
 /* maximum length of a reserved word */
-#define TOKEN_LEN	(sizeof("function")/sizeof(char))
+#define TOKEN_LEN       (sizeof("function")/sizeof(char))
 
 
 /*
-* WARNING: if you change the order of this enumeration,
-* grep "ORDER RESERVED"
-*/
+ * WARNING: if you change the order of this enumeration,
+ * grep "ORDER RESERVED"
+ */
 enum RESERVED {
   /* terminal symbols denoted by reserved words */
   TK_AND = FIRST_RESERVED, TK_BREAK,
@@ -33,7 +33,7 @@ enum RESERVED {
 };
 
 /* number of reserved words */
-#define NUM_RESERVED	(cast(int, TK_WHILE-FIRST_RESERVED+1))
+#define NUM_RESERVED    (cast(int, TK_WHILE-FIRST_RESERVED+1))
 
 
 /* array with token `names' */

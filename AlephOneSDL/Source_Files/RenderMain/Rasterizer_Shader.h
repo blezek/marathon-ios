@@ -15,13 +15,12 @@
 #include "Rasterizer_OGL.h"
 
 class Rasterizer_Shader_Class : public Rasterizer_OGL_Class {
-
 public:
 
-	Rasterizer_Shader_Class() : Rasterizer_OGL_Class() {}
+Rasterizer_Shader_Class() : Rasterizer_OGL_Class() {
+}
 
-	virtual void SetView(view_data& View);
-
+virtual void SetView(view_data& View);
 };
 
 #endif

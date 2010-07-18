@@ -2,44 +2,44 @@
 #define _VIEW_CONTROL_
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	May 22, 2000 (Loren Petrich)
-	
-	View controller. This controls various parameters of the viewing.
-	
-	The parameters are, in turn, controllable with XML.
-	
-	May 23, 2000 (Loren Petrich):
-	
-	Added field-of-view control
-	
-	May 24, 2000 (Loren Petrich):
-	
-	Added landscape control
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
-Nov 29, 2000 (Loren Petrich):
-	Added making view-folding effect optional
-	Added making teleport static/fold effect optional
+        May 22, 2000 (Loren Petrich)
 
-Dec 17, 2000 (Loren Petrich:
-	Added teleport-sound control for Marathon 1 compatibility
-*/
+        View controller. This controls various parameters of the viewing.
+
+        The parameters are, in turn, controllable with XML.
+
+        May 23, 2000 (Loren Petrich):
+
+        Added field-of-view control
+
+        May 24, 2000 (Loren Petrich):
+
+        Added landscape control
+
+   Nov 29, 2000 (Loren Petrich):
+        Added making view-folding effect optional
+        Added making teleport static/fold effect optional
+
+   Dec 17, 2000 (Loren Petrich:
+        Added teleport-sound control for Marathon 1 compatibility
+ */
 
 #include "world.h"
 #include "FontHandler.h"
@@ -81,28 +81,30 @@ FontSpecifier& GetOnScreenFont();
 
 struct LandscapeOptions
 {
-	// 2^(HorizExp) is the number of texture repeats when going in a circle;
-	// it is a horizontal scaling factor
-	short HorizExp;
-	// 2^(VertExp) is a vertical scaling factor, which creates an amount of scaling
-	// equal to the corresponding horizontal scaling factor.
-	short VertExp;
-	// Aspect-ratio exponent to use in OpenGL rendering;
-	// (height) = 2^(-OGL_AspRatExp)*(width).
-	// Necessary because OpenGL prefers powers of 2, and Bungie's landscapes have heights
-	// that are not powers of 2.
-	short OGL_AspRatExp;
-	// Whether the texture repeats in the vertical direction (true: like Marathon 1)
-	// or gets clamped in the vertical direction (false: like Marathon 2/oo)
-	bool VertRepeat;
-	// This is the azimuth or yaw (full circle = 512);
-	// the texture is shifted leftward, relative to view direction, by this amount.
-	angle Azimuth;
-	
-	// Constructor: sets everything to defaults appropriate for standard textures
-	// Same scale for horizontal and vertical, 2^1 = 2 repeats,
-	// OpenGL hight is half width, and the azimuth is zero
-	LandscapeOptions(): HorizExp(1), VertExp(1), OGL_AspRatExp(0), VertRepeat(false), Azimuth(0) {}
+  // 2^(HorizExp) is the number of texture repeats when going in a circle;
+  // it is a horizontal scaling factor
+  short HorizExp;
+  // 2^(VertExp) is a vertical scaling factor, which creates an amount of scaling
+  // equal to the corresponding horizontal scaling factor.
+  short VertExp;
+  // Aspect-ratio exponent to use in OpenGL rendering;
+  // (height) = 2^(-OGL_AspRatExp)*(width).
+  // Necessary because OpenGL prefers powers of 2, and Bungie's landscapes have heights
+  // that are not powers of 2.
+  short OGL_AspRatExp;
+  // Whether the texture repeats in the vertical direction (true: like Marathon 1)
+  // or gets clamped in the vertical direction (false: like Marathon 2/oo)
+  bool VertRepeat;
+  // This is the azimuth or yaw (full circle = 512);
+  // the texture is shifted leftward, relative to view direction, by this amount.
+  angle Azimuth;
+
+  // Constructor: sets everything to defaults appropriate for standard textures
+  // Same scale for horizontal and vertical, 2^1 = 2 repeats,
+  // OpenGL hight is half width, and the azimuth is zero
+  LandscapeOptions() : HorizExp(1), VertExp(1), OGL_AspRatExp(0),
+    VertRepeat(false), Azimuth(0) {
+  }
 };
 
 LandscapeOptions *View_GetLandscapeOptions(shape_descriptor Desc);

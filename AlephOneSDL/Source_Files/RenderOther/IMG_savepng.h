@@ -1,25 +1,25 @@
 /*
-  Based on zlib license - see http://www.gzip.org/zlib/zlib_license.html
+   Based on zlib license - see http://www.gzip.org/zlib/zlib_license.html
 
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
+   This software is provided 'as-is', without any express or implied
+   warranty.  In no event will the authors be held liable for any damages
+   arising from the use of this software.
 
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
+   Permission is granted to anyone to use this software for any purpose,
+   including commercial applications, and to alter it and redistribute it
+   freely, subject to the following restrictions:
 
-  1. The origin of this software must not be misrepresented; you must not
+   1. The origin of this software must not be misrepresented; you must not
      claim that you wrote the original software. If you use this software
      in a product, an acknowledgment in the product documentation would be
      appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
+   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+   3. This notice may not be removed or altered from any source distribution.
 
-  "Philip D. Bober" <wildfire1138@mchsi.com>
+   "Philip D. Bober" <wildfire1138@mchsi.com>
 
-  Keyword support added 12-26-2009 by Gregory Smith
+   Keyword support added 12-26-2009 by Gregory Smith
  */
 #ifndef __IMG_SAVETOPNG_H__
 #define __IMG_SAVETOPNG_H__
@@ -36,8 +36,8 @@ extern "C" {
 
 struct IMG_PNG_text
 {
-	char* key;
-	char* value;
+  char* key;
+  char* value;
 };
 
 /**
@@ -46,20 +46,20 @@ struct IMG_PNG_text
  */
 DECLSPEC int SDLCALL    IMG_SavePNG(const char  *file,
                                     SDL_Surface *surf,
-                                    int          compression,
-				    struct IMG_PNG_text* text,
-				    int num_text);
+                                    int compression,
+                                    struct IMG_PNG_text* text,
+                                    int num_text);
 /**
  * Takes a SDL_RWops pointer, a surface to save, and a compression level.
  * compression can be 0(min) through 9(max), or -1(default).
  */
 DECLSPEC int SDLCALL IMG_SavePNG_RW(SDL_RWops   *src,
                                     SDL_Surface *surf,
-                                    int          compression,
-				    struct IMG_PNG_text* text,
-				    int num_text);
+                                    int compression,
+                                    struct IMG_PNG_text* text,
+                                    int num_text);
 #ifdef __cplusplus
 }
 #endif
 
-#endif/*__IMG_SAVETOPNG_H__*/
+#endif /*__IMG_SAVETOPNG_H__*/

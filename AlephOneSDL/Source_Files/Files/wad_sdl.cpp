@@ -1,23 +1,23 @@
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-*/
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+
+ */
 
 /*
  *  wad_sdl.cpp - Additional map file handling, SDL implementation
@@ -42,43 +42,49 @@ extern vector<DirectorySpecifier> data_search_path;
 
 class FindByChecksum : public FileFinder {
 public:
-	FindByChecksum(uint32 checksum) : look_for_checksum(checksum) {}
-	~FindByChecksum() {}
+FindByChecksum(uint32 checksum) : look_for_checksum(checksum) {
+}
+~FindByChecksum() {
+}
 
-	FileSpecifier found_what;
+FileSpecifier found_what;
 
 private:
-	bool found(FileSpecifier &file)
-	{
-		OpenedFile f;
-		if (!file.Open(f))
-			return false;
-		f.SetPosition(0x44);
-		SDL_RWops *p = f.GetRWops();
-		uint32 checksum = SDL_ReadBE32(p);
-		if (checksum == look_for_checksum) {
-			found_what = file;
-			return true;
-		}
-		return false;
-	}
+bool found(FileSpecifier &file)
+{
+  OpenedFile f;
+  if (!file.Open(f)) {
+    return false;
+  }
+  f.SetPosition(0x44);
+  SDL_RWops *p = f.GetRWops();
+  uint32 checksum = SDL_ReadBE32(p);
+  if (checksum == look_for_checksum) {
+    found_what = file;
+    return true;
+  }
+  return false;
+}
 
-	uint32 look_for_checksum;
+uint32 look_for_checksum;
 };
 
-bool find_wad_file_that_has_checksum(FileSpecifier &matching_file, Typecode file_type, short path_resource_id, uint32 checksum)
+bool find_wad_file_that_has_checksum(FileSpecifier &matching_file,
+                                     Typecode file_type, short path_resource_id,
+                                     uint32 checksum)
 {
-	FindByChecksum finder(checksum);
-	vector<DirectorySpecifier>::const_iterator i = data_search_path.begin(), end = data_search_path.end();
-	while (i != end) {
-		FileSpecifier dir = *i;
-		if (finder.Find(dir, file_type)) {
-			matching_file = finder.found_what;
-			return true;
-		}
-		i++;
-	}
-	return false;
+  FindByChecksum finder(checksum);
+  vector<DirectorySpecifier>::const_iterator i = data_search_path.begin(),
+                                             end = data_search_path.end();
+  while (i != end) {
+    FileSpecifier dir = *i;
+    if (finder.Find(dir, file_type)) {
+      matching_file = finder.found_what;
+      return true;
+    }
+    i++;
+  }
+  return false;
 }
 
 
@@ -88,35 +94,41 @@ bool find_wad_file_that_has_checksum(FileSpecifier &matching_file, Typecode file
 
 class FindByDate : public FileFinder {
 public:
-	FindByDate(time_t date) : look_for_date(date) {}
-	~FindByDate() {}
+FindByDate(time_t date) : look_for_date(date) {
+}
+~FindByDate() {
+}
 
-	FileSpecifier found_what;
+FileSpecifier found_what;
 
 private:
-	bool found(FileSpecifier &file)
-	{
-		if (file.GetDate() == look_for_date) {
-			found_what = file;
-			return true;
-		}
-		return false;
-	}
+bool found(FileSpecifier &file)
+{
+  if (file.GetDate() == look_for_date) {
+    found_what = file;
+    return true;
+  }
+  return false;
+}
 
-	TimeType look_for_date;
+TimeType look_for_date;
 };
 
-bool find_file_with_modification_date(FileSpecifier &matching_file, Typecode file_type, short path_resource_id, TimeType modification_date)
+bool find_file_with_modification_date(FileSpecifier &matching_file,
+                                      Typecode file_type,
+                                      short path_resource_id,
+                                      TimeType modification_date)
 {
-	FindByDate finder(modification_date);
-	vector<DirectorySpecifier>::const_iterator i = data_search_path.begin(), end = data_search_path.end();
-	while (i != end) {
-		FileSpecifier dir = *i;
-		if (finder.Find(dir, file_type)) {
-			matching_file = finder.found_what;
-			return true;
-		}
-		i++;
-	}
-	return false;
+  FindByDate finder(modification_date);
+  vector<DirectorySpecifier>::const_iterator i = data_search_path.begin(),
+                                             end = data_search_path.end();
+  while (i != end) {
+    FileSpecifier dir = *i;
+    if (finder.Find(dir, file_type)) {
+      matching_file = finder.found_what;
+      return true;
+    }
+    i++;
+  }
+  return false;
 }

@@ -1,29 +1,29 @@
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	Creator of root of XML-Parser Tree
-	by Loren Petrich,
-	April 16, 2000
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
-	This is for setting up the absolute root element; this element has as its children
-	the possible root elements of the Marathon XML files, which is here only "marathon"
-*/
+        Creator of root of XML-Parser Tree
+        by Loren Petrich,
+        April 16, 2000
+
+        This is for setting up the absolute root element; this element has as its children
+        the possible root elements of the Marathon XML files, which is here only "marathon"
+ */
 
 #include "cseries.h"
 #include "XML_ParseTreeRoot.h"
@@ -72,44 +72,44 @@ XML_ElementParser MarathonParser("marathon");
 
 void SetupParseTree()
 {
-	// Add the only recognized XML-document-root object here
-	RootParser.AddChild(&MarathonParser);
+  // Add the only recognized XML-document-root object here
+  RootParser.AddChild(&MarathonParser);
 
-	// Add all its subobjects
-	MarathonParser.AddChild(TS_GetParser());		// Text strings
-	MarathonParser.AddChild(Interface_GetParser());
-	MarathonParser.AddChild(PlayerName_GetParser());
-	MarathonParser.AddChild(Infravision_GetParser());
-	MarathonParser.AddChild(MotionSensor_GetParser());
-	MarathonParser.AddChild(OverheadMap_GetParser());
-	MarathonParser.AddChild(DynamicLimits_GetParser());
-	MarathonParser.AddChild(AnimatedTextures_GetParser());
-	MarathonParser.AddChild(Player_GetParser());
-	MarathonParser.AddChild(Items_GetParser());
-	MarathonParser.AddChild(ControlPanels_GetParser());
-	MarathonParser.AddChild(Liquids_GetParser());
-	MarathonParser.AddChild(Sounds_GetParser());
-	MarathonParser.AddChild(Platforms_GetParser());
-	MarathonParser.AddChild(Scenery_GetParser());
-	MarathonParser.AddChild(Faders_GetParser());
-	MarathonParser.AddChild(View_GetParser());
-	MarathonParser.AddChild(Landscapes_GetParser());
-	MarathonParser.AddChild(Weapons_GetParser());
+  // Add all its subobjects
+  MarathonParser.AddChild(TS_GetParser());                      // Text strings
+  MarathonParser.AddChild(Interface_GetParser());
+  MarathonParser.AddChild(PlayerName_GetParser());
+  MarathonParser.AddChild(Infravision_GetParser());
+  MarathonParser.AddChild(MotionSensor_GetParser());
+  MarathonParser.AddChild(OverheadMap_GetParser());
+  MarathonParser.AddChild(DynamicLimits_GetParser());
+  MarathonParser.AddChild(AnimatedTextures_GetParser());
+  MarathonParser.AddChild(Player_GetParser());
+  MarathonParser.AddChild(Items_GetParser());
+  MarathonParser.AddChild(ControlPanels_GetParser());
+  MarathonParser.AddChild(Liquids_GetParser());
+  MarathonParser.AddChild(Sounds_GetParser());
+  MarathonParser.AddChild(Platforms_GetParser());
+  MarathonParser.AddChild(Scenery_GetParser());
+  MarathonParser.AddChild(Faders_GetParser());
+  MarathonParser.AddChild(View_GetParser());
+  MarathonParser.AddChild(Landscapes_GetParser());
+  MarathonParser.AddChild(Weapons_GetParser());
 #ifdef HAVE_OPENGL
-	MarathonParser.AddChild(OpenGL_GetParser());
+  MarathonParser.AddChild(OpenGL_GetParser());
 #endif
-	MarathonParser.AddChild(Cheats_GetParser());
-	MarathonParser.AddChild(TextureLoading_GetParser());
-	MarathonParser.AddChild(Keyboard_GetParser());
-	MarathonParser.AddChild(DamageKicks_GetParser());
-	MarathonParser.AddChild(Logging_GetParser());
-	MarathonParser.AddChild(Scenario_GetParser());
+  MarathonParser.AddChild(Cheats_GetParser());
+  MarathonParser.AddChild(TextureLoading_GetParser());
+  MarathonParser.AddChild(Keyboard_GetParser());
+  MarathonParser.AddChild(DamageKicks_GetParser());
+  MarathonParser.AddChild(Logging_GetParser());
+  MarathonParser.AddChild(Scenario_GetParser());
 #ifdef SDL
-	MarathonParser.AddChild(Theme_GetParser());
+  MarathonParser.AddChild(Theme_GetParser());
 #endif
-	MarathonParser.AddChild(SW_Texture_Extras_GetParser());
-	MarathonParser.AddChild(Console_GetParser());
-	MarathonParser.AddChild(ExternalDefaultLevelScript_GetParser());
+  MarathonParser.AddChild(SW_Texture_Extras_GetParser());
+  MarathonParser.AddChild(Console_GetParser());
+  MarathonParser.AddChild(ExternalDefaultLevelScript_GetParser());
 }
 
 // This will reset all values changed by MML scripts which implement ResetValues() method

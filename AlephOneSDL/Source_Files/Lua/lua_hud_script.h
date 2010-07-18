@@ -2,8 +2,8 @@
 #ifndef LUA_HUD_SCRIPT_H
 #define LUA_HUD_SCRIPT_H
 /*
-LUA_HUD_SCRIPT.H
- 
+   LUA_HUD_SCRIPT.H
+
     Copyright (C) 2009 by Jeremiah Morris and the Aleph One developers
 
     This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@ LUA_HUD_SCRIPT.H
     http://www.gnu.org/licenses/gpl.html
 
     Implements Lua HUD state and trigger callbacks
-*/
+ */
 
 #include "cseries.h"
 #include <string>

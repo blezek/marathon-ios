@@ -1,22 +1,22 @@
 /*
  *  StarGameProtocol.cpp
 
-	Copyright (C) 2003 and beyond by Woody Zenfell, III
-	and the "Aleph One" developers.
+        Copyright (C) 2003 and beyond by Woody Zenfell, III
+        and the "Aleph One" developers.
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
  *  Created by Woody Zenfell, III on Sat May 17 2003.
  *
@@ -44,31 +44,45 @@
 
 // This is a bit hacky yeah, we really ought to check both RealActionQueues and the recording queues, etc.
 template <typename tValueType>
-class LegacyActionQueueToTickBasedQueueAdapter : public WritableTickBasedCircularQueue<tValueType> {
+class LegacyActionQueueToTickBasedQueueAdapter : public
+  WritableTickBasedCircularQueue<tValueType> {
 public:
-        explicit LegacyActionQueueToTickBasedQueueAdapter(int inTargetPlayerIndex) : mPlayerIndex(inTargetPlayerIndex) { reset(0); }
-        void reset(int32 inTick) { mWriteTick = inTick; GetRealActionQueues()->resetQueue(mPlayerIndex); }
-        int32 availableCapacity() const { return GetRealActionQueues()->availableCapacity(mPlayerIndex); }
-        void enqueue(const tValueType& inFlags) { process_action_flags(mPlayerIndex, static_cast<const uint32 *>(&inFlags), 1);  ++mWriteTick; }
-        int32 getWriteTick() const { return mWriteTick; }
+explicit LegacyActionQueueToTickBasedQueueAdapter(int inTargetPlayerIndex) :
+  mPlayerIndex(inTargetPlayerIndex) {
+  reset(0);
+}
+void reset(int32 inTick) {
+  mWriteTick = inTick; GetRealActionQueues()->resetQueue(mPlayerIndex);
+}
+int32 availableCapacity() const {
+  return GetRealActionQueues()->availableCapacity(mPlayerIndex);
+}
+void enqueue(const tValueType& inFlags) {
+  process_action_flags(mPlayerIndex, static_cast<const uint32 *>(&inFlags), 1);
+  ++mWriteTick;
+}
+int32 getWriteTick() const {
+  return mWriteTick;
+}
 
 protected:
-        int 	mPlayerIndex;
-        int32	mWriteTick;
+int mPlayerIndex;
+int32 mWriteTick;
 };
 
 
-static WritableTickBasedActionQueue* sStarQueues[MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
-static bool		sHubIsLocal;
-static NetTopology*	sTopology = NULL;
-static short*		sNetStatePtr = NULL;
+static WritableTickBasedActionQueue* sStarQueues[
+  MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
+static bool sHubIsLocal;
+static NetTopology*     sTopology = NULL;
+static short*           sNetStatePtr = NULL;
 
 
 bool
 StarGameProtocol::Enter(short* inNetStatePtr)
 {
-	sNetStatePtr = inNetStatePtr;
-	return true;
+  sNetStatePtr = inNetStatePtr;
+  return true;
 }
 
 
@@ -90,11 +104,18 @@ StarGameProtocol::Exit2()
 
 
 void
-StarGameProtocol::DistributeInformation(short type, void *buffer, short buffer_size, bool send_to_self, bool only_send_to_team)
+StarGameProtocol::DistributeInformation(short type, void *buffer,
+                                        short buffer_size, bool send_to_self,
+                                        bool only_send_to_team)
 {
-	const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
-	if(theInfo != NULL && theInfo->lossy)
-		spoke_distribute_lossy_streaming_bytes_to_everyone(type, static_cast<byte*>(buffer), buffer_size, !send_to_self, only_send_to_team);
+  const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
+  if(theInfo != NULL && theInfo->lossy) {
+    spoke_distribute_lossy_streaming_bytes_to_everyone(
+      type,
+      static_cast<byte*>(
+        buffer), buffer_size,
+      !send_to_self, only_send_to_team);
+  }
 }
 
 
@@ -102,53 +123,67 @@ StarGameProtocol::DistributeInformation(short type, void *buffer, short buffer_s
 void
 StarGameProtocol::PacketHandler(DDPPacketBufferPtr packet)
 {
-        if(sHubIsLocal)
-                hub_received_network_packet(packet);
-        else
-                spoke_received_network_packet(packet);
+  if(sHubIsLocal) {
+    hub_received_network_packet(packet);
+  }
+  else{
+    spoke_received_network_packet(packet);
+  }
 }
 
 
 
 bool
-StarGameProtocol::Sync(NetTopology* inTopology, int32 inSmallestGameTick, size_t inLocalPlayerIndex, size_t inServerPlayerIndex)
+StarGameProtocol::Sync(NetTopology* inTopology, int32 inSmallestGameTick,
+                       size_t inLocalPlayerIndex,
+                       size_t inServerPlayerIndex)
 {
-	assert(inTopology != NULL);
-	
-	sTopology = inTopology;
-	
-        bool theConnectedPlayerStatus[MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
+  assert(inTopology != NULL);
 
-        for(int i = 0; i < sTopology->player_count; i++)
-        {
-                if(sTopology->players[i].identifier == NONE)
-                        sStarQueues[i] = NULL;
-                else
-                        sStarQueues[i] = new LegacyActionQueueToTickBasedQueueAdapter<action_flags_t>(i);
+  sTopology = inTopology;
 
-                theConnectedPlayerStatus[i] = ((sTopology->players[i].identifier != NONE) && !sTopology->players[i].net_dead);
-        }
+  bool theConnectedPlayerStatus[MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
 
-        if(inLocalPlayerIndex == inServerPlayerIndex)
-        {
-		sHubIsLocal = true;
-		
-                NetAddrBlock* theAddresses[MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
+  for(int i = 0; i < sTopology->player_count; i++)
+  {
+    if(sTopology->players[i].identifier == NONE) {
+      sStarQueues[i] = NULL;
+    }
+    else{
+      sStarQueues[i] =
+        new LegacyActionQueueToTickBasedQueueAdapter<action_flags_t>(i);
+    }
 
-                for(int i = 0; i < sTopology->player_count; i++)
-                        theAddresses[i] = (theConnectedPlayerStatus[i] ? &(sTopology->players[i].ddpAddress) : NULL);
+    theConnectedPlayerStatus[i] =
+      ((sTopology->players[i].identifier != NONE) &&
+       !sTopology->players[i].net_dead);
+  }
 
-                hub_initialize(inSmallestGameTick, sTopology->player_count, theAddresses, inLocalPlayerIndex);
-        }
-	else
-		sHubIsLocal = false;
+  if(inLocalPlayerIndex == inServerPlayerIndex) {
+    sHubIsLocal = true;
 
-        spoke_initialize(sTopology->players[inServerPlayerIndex].ddpAddress, inSmallestGameTick, sTopology->player_count,
-                         sStarQueues, theConnectedPlayerStatus, inLocalPlayerIndex, sHubIsLocal);
+    NetAddrBlock* theAddresses[MAXIMUM_NUMBER_OF_NETWORK_PLAYERS];
 
-        *sNetStatePtr = netActive;
+    for(int i = 0; i < sTopology->player_count; i++)
+      theAddresses[i] =
+        (theConnectedPlayerStatus[i] ? &(sTopology->players[i].ddpAddress) :
+         NULL);
 
-        return true;
+    hub_initialize(inSmallestGameTick, sTopology->player_count, theAddresses,
+                   inLocalPlayerIndex);
+  }
+  else{
+    sHubIsLocal = false;
+  }
+
+  spoke_initialize(sTopology->players[inServerPlayerIndex].ddpAddress,
+                   inSmallestGameTick, sTopology->player_count,
+                   sStarQueues, theConnectedPlayerStatus, inLocalPlayerIndex,
+                   sHubIsLocal);
+
+  *sNetStatePtr = netActive;
+
+  return true;
 }
 
 
@@ -156,25 +191,24 @@ StarGameProtocol::Sync(NetTopology* inTopology, int32 inSmallestGameTick, size_t
 bool
 StarGameProtocol::UnSync(bool inGraceful, int32 inSmallestPostgameTick)
 {
-        if(*sNetStatePtr == netStartingUp || *sNetStatePtr == netActive)
-        {
-                spoke_cleanup(inGraceful);
-                if(sHubIsLocal)
-                        hub_cleanup(inGraceful, inSmallestPostgameTick);
+  if(*sNetStatePtr == netStartingUp || *sNetStatePtr == netActive) {
+    spoke_cleanup(inGraceful);
+    if(sHubIsLocal) {
+      hub_cleanup(inGraceful, inSmallestPostgameTick);
+    }
 
-                for(int i = 0; i < sTopology->player_count; i++)
-                {
-                        if(sStarQueues[i] != NULL)
-                        {
-                                delete sStarQueues[i];
-                                sStarQueues[i] = NULL;
-                        }
-                }
-        }
+    for(int i = 0; i < sTopology->player_count; i++)
+    {
+      if(sStarQueues[i] != NULL) {
+        delete sStarQueues[i];
+        sStarQueues[i] = NULL;
+      }
+    }
+  }
 
-        *sNetStatePtr = netDown;
+  *sNetStatePtr = netDown;
 
-        return true;
+  return true;
 }
 
 
@@ -182,58 +216,64 @@ StarGameProtocol::UnSync(bool inGraceful, int32 inSmallestPostgameTick)
 int32
 StarGameProtocol::GetNetTime(void)
 {
-        return spoke_get_net_time();
+  return spoke_get_net_time();
 }
 
 int32
 StarGameProtocol::GetUnconfirmedActionFlagsCount()
 {
-	TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
-	return q->getWriteTick() - q->getReadTick();
+  TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
+  return q->getWriteTick() - q->getReadTick();
 }
 
-uint32 
+uint32
 StarGameProtocol::PeekUnconfirmedActionFlag(int32 offset)
 {
-	TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
-	return q->peek(q->getReadTick() + offset);
+  TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
+  return q->peek(q->getReadTick() + offset);
 }
 
-void 
+void
 StarGameProtocol::UpdateUnconfirmedActionFlags()
 {
-	TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
-	while (q->getReadTick() < spoke_get_smallest_unconfirmed_tick() && q->getReadTick() < q->getWriteTick())
-	{
-		q->dequeue();
-	}
+  TickBasedActionQueue *q = spoke_get_unconfirmed_flags_queue();
+  while (q->getReadTick() < spoke_get_smallest_unconfirmed_tick() &&
+         q->getReadTick() < q->getWriteTick())
+  {
+    q->dequeue();
+  }
 }
 
 /* ZZZ addition:
----------------------------
-	make_player_really_net_dead
----------------------------
+   ---------------------------
+        make_player_really_net_dead
+   ---------------------------
 
----> player index of newly net-dead player
+   ---> player index of newly net-dead player
 
-	sets up our housekeeping here to mark a player as net-dead.
-	*/
+        sets up our housekeeping here to mark a player as net-dead.
+ */
 
 void
 make_player_really_net_dead(size_t inPlayerIndex)
 {
-        assert(inPlayerIndex < static_cast<size_t>(sTopology->player_count));
-        sTopology->players[inPlayerIndex].net_dead = true;
+  assert(inPlayerIndex < static_cast<size_t>(sTopology->player_count));
+  sTopology->players[inPlayerIndex].net_dead = true;
 }
 
 
 
 void
-call_distribution_response_function_if_available(byte* inBuffer, uint16 inBufferSize, int16 inDistributionType, uint8 inSendingPlayerIndex)
+call_distribution_response_function_if_available(byte* inBuffer,
+                                                 uint16 inBufferSize,
+                                                 int16 inDistributionType,
+                                                 uint8 inSendingPlayerIndex)
 {
-	const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(inDistributionType);
-	if(theInfo != NULL)
-		theInfo->distribution_proc(inBuffer, inBufferSize, inSendingPlayerIndex);
+  const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(
+    inDistributionType);
+  if(theInfo != NULL) {
+    theInfo->distribution_proc(inBuffer, inBufferSize, inSendingPlayerIndex);
+  }
 }
 
 
@@ -243,15 +283,14 @@ static XML_ElementParser sStarParser("star_protocol");
 
 XML_ElementParser*
 StarGameProtocol::GetParser() {
-	static bool sAddedChildren = false;
-	if(!sAddedChildren)
-	{
-		sStarParser.AddChild(Hub_GetParser());
-		sStarParser.AddChild(Spoke_GetParser());
-		sAddedChildren = true;
-	}
+  static bool sAddedChildren = false;
+  if(!sAddedChildren) {
+    sStarParser.AddChild(Hub_GetParser());
+    sStarParser.AddChild(Spoke_GetParser());
+    sAddedChildren = true;
+  }
 
-	return &sStarParser;
+  return &sStarParser;
 }
 
 
@@ -259,8 +298,8 @@ StarGameProtocol::GetParser() {
 void
 DefaultStarPreferences()
 {
-	DefaultHubPreferences();
-	DefaultSpokePreferences();
+  DefaultHubPreferences();
+  DefaultSpokePreferences();
 }
 
 
@@ -268,10 +307,10 @@ DefaultStarPreferences()
 void
 WriteStarPreferences(FILE* F)
 {
-	fprintf(F,"  <star_protocol>\n");
-	WriteHubPreferences(F);
-	WriteSpokePreferences(F);
-	fprintf(F,"  </star_protocol>\n");
+  fprintf(F,"  <star_protocol>\n");
+  WriteHubPreferences(F);
+  WriteSpokePreferences(F);
+  fprintf(F,"  </star_protocol>\n");
 }
 
 #endif // !defined(DISABLE_NETWORKING)

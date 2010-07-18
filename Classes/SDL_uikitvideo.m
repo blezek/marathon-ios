@@ -213,6 +213,10 @@ UIKit_VideoInit(_THIS)
             // the main screen is the first element in the array.
             UIScreen *uiscreen = (UIScreen *) [screens objectAtIndex:i];
             const CGSize size = [[uiscreen currentMode] size];
+          // DJB, OK, the simulator and iPad return different results.  On the simulator, we get
+          // Width = 768, Height = 1024.
+          // In the device
+          // width = 1024, Height = 768.  This could be related to the rotation flag not being honored...
             UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
         }
     }

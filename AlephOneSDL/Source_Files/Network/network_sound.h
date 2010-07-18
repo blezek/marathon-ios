@@ -2,31 +2,31 @@
 #define __NETWORK_SOUND_H
 
 /*
-NETWORK_SOUND.H
+   NETWORK_SOUND.H
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-Sunday, August 14, 1994 3:36:17 AM- go nuts
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
-Feb 1, 2003 (Woody Zenfell):
+   Sunday, August 14, 1994 3:36:17 AM- go nuts
+
+   Feb 1, 2003 (Woody Zenfell):
         Merged SDL-style and Mac-style network audio interfaces.  Both use this now.
         This is the main interface for external code wanting to use the network audio support.
-*/
+ */
 
 #include "cseries.h"
 
@@ -47,7 +47,8 @@ void close_network_speaker();
 void queue_network_speaker_data(byte* inData, short inLength);
 
 // Called by network routines to store incoming network audio for playback
-void received_network_audio_proc(void *buffer, short buffer_size, short player_index);
+void received_network_audio_proc(void *buffer, short buffer_size,
+                                 short player_index);
 
 void quiet_network_speaker(void);
 
@@ -61,7 +62,7 @@ void clear_player_mic_mutes();
 bool    is_network_microphone_implemented();
 
 // This may answer the question a bit more accurately.
-bool	has_sound_input_capability(void);
+bool    has_sound_input_capability(void);
 
 // Setup - don't call twice without intervening close...()
 OSErr   open_network_microphone();

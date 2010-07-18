@@ -24,11 +24,20 @@ void L_Call_Got_Item(short type, short player_index);
 void L_Call_Light_Activated(short index);
 void L_Call_Platform_Activated(short index);
 void L_Call_Player_Revived(short player_index);
-void L_Call_Player_Killed(short player_index, short aggressor_player_index, short action, short projectile_index);
-void L_Call_Monster_Killed(short monster_index, short aggressor_player_index, short projectile_index);
-void L_Call_Monster_Damaged(short monster_index, short aggressor_monster_index, int16 damage_type, short damage_amount, short projectile_index);
-void L_Call_Player_Damaged(short player_index, short aggressor_player_index, short aggressor_monster_index, int16 damage_type, short damage_amount, short projectile_index);
-void L_Call_Projectile_Detonated(short type, short owner_index, short polygon, world_point3d location);
+void L_Call_Player_Killed(short player_index, short aggressor_player_index,
+                          short action,
+                          short projectile_index);
+void L_Call_Monster_Killed(short monster_index, short aggressor_player_index,
+                           short projectile_index);
+void L_Call_Monster_Damaged(short monster_index, short aggressor_monster_index,
+                            int16 damage_type, short damage_amount,
+                            short projectile_index);
+void L_Call_Player_Damaged(short player_index, short aggressor_player_index,
+                           short aggressor_monster_index, int16 damage_type,
+                           short damage_amount,
+                           short projectile_index);
+void L_Call_Projectile_Detonated(short type, short owner_index, short polygon,
+                                 world_point3d location);
 void L_Call_Item_Created(short item_index);
 
 void L_Invalidate_Monster(short monster_index);
@@ -36,9 +45,9 @@ void L_Invalidate_Projectile(short projectile_index);
 void L_Invalidate_Object(short object_index);
 
 enum ScriptType {
-	_embedded_lua_script,
-	_lua_netscript,
-	_solo_lua_script
+  _embedded_lua_script,
+  _lua_netscript,
+  _solo_lua_script
 };
 
 void *L_Persistent_Table_Key();
@@ -95,34 +104,34 @@ int GetLuaGameEndCondition();
 // camera data structures
 struct timed_point
 {
-    int polygon;
-    world_point3d point;
-    int32 delta_time; //for REALLY long cutscenes
+  int polygon;
+  world_point3d point;
+  int32 delta_time;   //for REALLY long cutscenes
 };
 
 struct timed_angle
 {
-    short yaw, pitch;
-    int32 delta_time;
+  short yaw, pitch;
+  int32 delta_time;
 };
 
 struct lua_path
 {
-    short index;
-    std::vector<timed_point> path_points;
-    short current_point_index;
-    int32 last_point_time;
-    std::vector<timed_angle> path_angles;
-    short current_angle_index;
-    int32 last_angle_time;
+  short index;
+  std::vector<timed_point> path_points;
+  short current_point_index;
+  int32 last_point_time;
+  std::vector<timed_angle> path_angles;
+  short current_angle_index;
+  int32 last_angle_time;
 };
 
 struct lua_camera //an expanded version of script_camera; uses Lua's path scheme
 {
-    short index;
-    lua_path path;
-    int32 time_elapsed;
-    int player_active;
+  short index;
+  lua_path path;
+  int32 time_elapsed;
+  int player_active;
 };
 
 #endif

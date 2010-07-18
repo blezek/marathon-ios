@@ -2,37 +2,37 @@
 #define _TEXT_STRINGS_
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	Text-String Collection Interface
-	by Loren Petrich,
-	April 20, 2000
-	
-	These functions replace the getting of MacOS STR# resources,
-	and are called in much the same fashion.
-	
-	Each string is a MacOS Pascal string (length byte + characters)
-	with a null byte at the end, so it can also be treated as a C string.
-	[length] [characters] [null]
-	
-	They are referenced by resource-ID number, which defines a string set,
-	and an index inside that string set, which starts from 0.
-*/
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+
+        Text-String Collection Interface
+        by Loren Petrich,
+        April 20, 2000
+
+        These functions replace the getting of MacOS STR# resources,
+        and are called in much the same fashion.
+
+        Each string is a MacOS Pascal string (length byte + characters)
+        with a null byte at the end, so it can also be treated as a C string.
+        [length] [characters] [null]
+
+        They are referenced by resource-ID number, which defines a string set,
+        and an index inside that string set, which starts from 0.
+ */
 
 // Set up a string in the repository; a repeated call will replace an old string
 void TS_PutString(short ID, short Index, unsigned char *String);

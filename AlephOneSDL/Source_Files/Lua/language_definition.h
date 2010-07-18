@@ -647,7 +647,7 @@
 {"_projectile_sewage_yeti", 0x24},
 {"_projectile_lava_yeti", 0x25},
 {"_projectile_smg_bullet", 0x26},
-        
+
 // polygon types
 {"_polygon_is_normal", 0x00},
 {"_polygon_is_item_impassable", 0x01},
@@ -696,7 +696,7 @@
 {"_game_of_most_time", _game_of_most_time},
 {"_game_of_least_points", _game_of_least_points},
 {"_game_of_least_time", _game_of_least_time},
-		
+
 {"_refuel_oxygen", _panel_is_oxygen_refuel},
 {"_refuel_single_shield", _panel_is_shield_refuel},
 {"_refuel_double_shield", _panel_is_double_shield_refuel},

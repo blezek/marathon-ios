@@ -1,21 +1,21 @@
 /*
 
-	Copyright (C) 2005 and beyond by Loren Petrich
-	and the "Aleph One" developers.
+        Copyright (C) 2005 and beyond by Loren Petrich
+        and the "Aleph One" developers.
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
  */
 
@@ -33,25 +33,26 @@ void initialize_MLTE();
 class SelfReleasingCFStringRef
 {
 public:
-	SelfReleasingCFStringRef(CFStringRef newlyCreatedStringRef)
-		: m_stringRef(newlyCreatedStringRef)
-	{}
+SelfReleasingCFStringRef(CFStringRef newlyCreatedStringRef)
+  : m_stringRef(newlyCreatedStringRef)
+{
+}
 
-	CFStringRef StringRef() const {
-		return m_stringRef;
-	}
+CFStringRef StringRef() const {
+  return m_stringRef;
+}
 
-	~SelfReleasingCFStringRef()
-	{
-		CFRelease(m_stringRef);
-	}
+~SelfReleasingCFStringRef()
+{
+  CFRelease(m_stringRef);
+}
 
 private:
-	CFStringRef m_stringRef;
-	
-	// No reason these couldn't be implemented, but they're not yet.
-	SelfReleasingCFStringRef(const SelfReleasingCFStringRef&);
-	SelfReleasingCFStringRef& operator =(const SelfReleasingCFStringRef&);
+CFStringRef m_stringRef;
+
+// No reason these couldn't be implemented, but they're not yet.
+SelfReleasingCFStringRef(const SelfReleasingCFStringRef&);
+SelfReleasingCFStringRef& operator =(const SelfReleasingCFStringRef&);
 };
 
 
@@ -65,16 +66,20 @@ std::auto_ptr<SelfReleasingCFStringRef> StringToCFString(const std::string& s);
 class AutoNibReference
 {
 public:
-	AutoNibReference(CFStringRef nibName)
+AutoNibReference(CFStringRef nibName)
 {
-		OSStatus result = CreateNibReference(nibName, &m_nibReference);
-		// Best error-handling strategy evar . . . but when in Rome?
-		assert(result == noErr);
+  OSStatus result = CreateNibReference(nibName, &m_nibReference);
+  // Best error-handling strategy evar . . . but when in Rome?
+  assert(result == noErr);
 }
 
-~AutoNibReference() { DisposeNibReference(m_nibReference); }
+~AutoNibReference() {
+  DisposeNibReference(m_nibReference);
+}
 
-const IBNibRef nibReference() const { return m_nibReference; }
+const IBNibRef nibReference() const {
+  return m_nibReference;
+}
 
 private:
 IBNibRef m_nibReference;
@@ -85,13 +90,15 @@ IBNibRef m_nibReference;
 // it will automatically deallocate the window when it goes out of scope
 class AutoNibWindow
 {
-	WindowRef w;
+WindowRef w;
 public:
 
-	AutoNibWindow(IBNibRef Nib, CFStringRef Name);
-	~AutoNibWindow();
+AutoNibWindow(IBNibRef Nib, CFStringRef Name);
+~AutoNibWindow();
 
-	WindowRef operator()() {return w;}
+WindowRef operator()() {
+  return w;
+}
 };
 
 // Gets a control reference from:
@@ -99,10 +106,10 @@ public:
 //   Signature (check the Interface Builder)
 //   Control ID (check the Interface Builder)
 ControlRef GetCtrlFromWindow(
-			     WindowRef DlgWindow,
-			     uint32 Signature,
-			     uint32 ID
-			     );
+  WindowRef DlgWindow,
+  uint32 Signature,
+  uint32 ID
+  );
 
 // Sets whether a control is active/enabled or inactive/disabled
 void SetControlActivity(ControlRef Ctrl, bool Activity);
@@ -128,19 +135,19 @@ void SetGlobalControlSignature(OSType sig);
 // It cleans up when it goes out of scope
 class AutoDrawability
 {
-	ControlUserPaneDrawUPP DrawingUPP;
+ControlUserPaneDrawUPP DrawingUPP;
 public:
 
-	AutoDrawability();
-	~AutoDrawability();
+AutoDrawability();
+~AutoDrawability();
 
-	// Needs the control to be made drawable,
-	// the function to be used for drawing (can be shared by several controls),
-	// and the drawing data for that control.
-	// That function will be called with the control that was hit and its drawing data
-	void operator()(ControlRef Ctrl,
-		 void (*DrawFunction)(ControlRef, void *),
-		 void *DrawData = NULL);
+// Needs the control to be made drawable,
+// the function to be used for drawing (can be shared by several controls),
+// and the drawing data for that control.
+// That function will be called with the control that was hit and its drawing data
+void operator()(ControlRef Ctrl,
+                void (*DrawFunction)(ControlRef, void *),
+                void *DrawData = NULL);
 };
 
 
@@ -155,9 +162,9 @@ void SwatchDrawer(ControlRef Ctrl, void *Data);
 //   Prompt (optional)
 // Returns whether or not the color was finally changed.
 bool PickControlColor(ControlRef Ctrl,
-		      RGBColor *ClrPtr,
-		      ConstStr255Param Prompt = NULL
-		      );
+                      RGBColor *ClrPtr,
+                      ConstStr255Param Prompt = NULL
+                      );
 
 
 // For adding hittability to a user-defined control,
@@ -166,14 +173,14 @@ bool PickControlColor(ControlRef Ctrl,
 // It cleans up when it goes out of scope
 class AutoHittability
 {
-	ControlUserPaneHitTestUPP HitTesterUPP;
+ControlUserPaneHitTestUPP HitTesterUPP;
 public:
 
-	AutoHittability();
-	~AutoHittability();
+AutoHittability();
+~AutoHittability();
 
-	// Needs only the control to be made hittable
-	void operator()(ControlRef Ctrl);
+// Needs only the control to be made hittable
+void operator()(ControlRef Ctrl);
 };
 
 
@@ -189,15 +196,15 @@ public:
 //     False: ignore both and stop adding menu items
 //   Default for initial value is 1
 void BuildMenu(
-	       ControlRef MenuCtrl,
-	       bool (*BuildMenuItem)(int,uint8 *,bool &,void *),
-	       void *BuildMenuData = NULL
-	       );
+  ControlRef MenuCtrl,
+  bool (*BuildMenuItem)(int,uint8 *,bool &,void *),
+  void *BuildMenuData = NULL
+  );
 
 struct ParsedControl
 {
-	ControlRef Ctrl;
-	ControlID ID;
+  ControlRef Ctrl;
+  ControlID ID;
 };
 
 // Runs a modal dialog; needs:
@@ -210,20 +217,20 @@ struct ParsedControl
 // There are always two special dialog numbers: iOK (1) and iCANCEL (2)
 // Will return 'true' if iOK was pressed and 'false' otherwise
 bool RunModalDialog(
-		    WindowRef DlgWindow,
-		    bool IsSheet,
-		    void (*DlgHandler)(ParsedControl &,void *) = NULL,
-		    void *DlgData = NULL
-		    );
+  WindowRef DlgWindow,
+  bool IsSheet,
+  void (*DlgHandler)(ParsedControl &,void *) = NULL,
+  void *DlgData = NULL
+  );
 
 
 // Stops a running modal dialog; needs:
 //   Dialog window
 //   Whether the dialog will be a sheet if sheets are available
 void StopModalDialog(
-		     WindowRef DlgWindow,
-		     bool IsSheet
-		     );
+  WindowRef DlgWindow,
+  bool IsSheet
+  );
 
 
 // A replacement for RunModalDialog/StopModalDialog.
@@ -232,15 +239,15 @@ void StopModalDialog(
 class Modal_Dialog
 {
 public:
-	Modal_Dialog (WindowRef dialogWindow, bool isSheet);
-	
-	bool Run ();
-	void Stop (bool result); // Whatever we pass in here is returned by Run
+Modal_Dialog (WindowRef dialogWindow, bool isSheet);
+
+bool Run ();
+void Stop (bool result);         // Whatever we pass in here is returned by Run
 
 private:
-	WindowRef m_dialogWindow;
-	bool m_isSheet;
-	bool m_result;
+WindowRef m_dialogWindow;
+bool m_isSheet;
+bool m_result;
 };
 
 // Adds a timer to the current event loop;
@@ -249,73 +256,90 @@ private:
 typedef boost::function<void (void)> TimerCallback;
 class AutoTimer
 {
-	EventLoopTimerUPP HandlerUPP;
-	EventLoopTimerRef Timer;
+EventLoopTimerUPP HandlerUPP;
+EventLoopTimerRef Timer;
 
 public:
-	AutoTimer(
-		EventTimerInterval Delay,		// Before the timer starts
-		EventTimerInterval Interval,		// How often it fires (0 is once-off)
-		EventLoopTimerProcPtr Handler,
-		void *HandlerData = NULL
-	);
-	
-	AutoTimer(
-		EventTimerInterval Delay,		// Before the timer starts
-		EventTimerInterval Interval,		// How often it fires (0 is once-off)
-		TimerCallback Handler
-	);
-	
-	~AutoTimer();
+AutoTimer(
+  EventTimerInterval Delay,                             // Before the timer starts
+  EventTimerInterval Interval,                          // How often it fires (0 is once-off)
+  EventLoopTimerProcPtr Handler,
+  void *HandlerData = NULL
+  );
 
-	EventLoopTimerRef operator() () {return Timer;}
+AutoTimer(
+  EventTimerInterval Delay,                             // Before the timer starts
+  EventTimerInterval Interval,                          // How often it fires (0 is once-off)
+  TimerCallback Handler
+  );
+
+~AutoTimer();
+
+EventLoopTimerRef operator() () {
+  return Timer;
+}
 
 private:
-	static void bounce_boosted_callback (EventLoopTimerRef ignored, void* me)
-		{ reinterpret_cast<AutoTimer*>(me)->boosted_callback (); }
-	
-	void boosted_callback () { m_callback (); }
-	
-	TimerCallback m_callback;
+static void bounce_boosted_callback (EventLoopTimerRef ignored, void* me)
+{
+  reinterpret_cast<AutoTimer*>(me)->boosted_callback ();
+}
+
+void boosted_callback () {
+  m_callback ();
+}
+
+TimerCallback m_callback;
 };
 
 
 class AutoWatcher
 {
 protected:
-	AutoWatcher (ControlRef ctrl, int num_event_types, const EventTypeSpec* event_types);
-	virtual ~AutoWatcher () { DisposeEventHandlerUPP (m_EventHandlerUPP); }
-	
-	virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent) = 0;
+AutoWatcher (ControlRef ctrl, int num_event_types,
+             const EventTypeSpec* event_types);
+virtual ~AutoWatcher () {
+  DisposeEventHandlerUPP (m_EventHandlerUPP);
+}
+
+virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent) = 0;
 
 private:
-	static pascal OSStatus callback (EventHandlerCallRef inCallRef,
-					EventRef inEvent, void* inUserData);
+static pascal OSStatus callback (EventHandlerCallRef inCallRef,
+                                 EventRef inEvent, void* inUserData);
 
-	EventHandlerUPP m_EventHandlerUPP;
+EventHandlerUPP m_EventHandlerUPP;
 };
 
 typedef boost::function<void (void)> ControlHitCallback;
 class AutoControlWatcher : public AutoWatcher
 {
 public:
-	AutoControlWatcher (ControlRef ctrl)
-		: AutoWatcher (ctrl, 1, ControlWatcherEvents)
-		, m_callback (NULL)
-		{}
+AutoControlWatcher (ControlRef ctrl)
+  : AutoWatcher (ctrl, 1, ControlWatcherEvents)
+  , m_callback (NULL)
+{
+}
 
-	void set_callback (ControlHitCallback callback)
-		{ m_callback = callback; }
+void set_callback (ControlHitCallback callback)
+{
+  m_callback = callback;
+}
 
 protected:
-	static const EventTypeSpec ControlWatcherEvents[1];
-	// = {{kEventClassControl, kEventControlHit}};
+static const EventTypeSpec ControlWatcherEvents[1];
+// = {{kEventClassControl, kEventControlHit}};
 
-	virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent)
-		{ if (m_callback) m_callback (); return noErr; }
+virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent)
+{
+  if (m_callback) {
+    m_callback ();
+  }
+  return noErr;
+}
 
 private:
-	ControlHitCallback m_callback;
+ControlHitCallback m_callback;
 };
 
 // Doesn't identify or respond to modifier keys (currently)
@@ -323,41 +347,44 @@ typedef boost::function<void (char)> GotCharacterCallback;
 class AutoKeystrokeWatcher : public AutoWatcher
 {
 public:
-	AutoKeystrokeWatcher (ControlRef ctrl)
-		: AutoWatcher (ctrl, 2, KeystrokeWatcherEvents)
-		, m_callback (NULL)
-		{}
+AutoKeystrokeWatcher (ControlRef ctrl)
+  : AutoWatcher (ctrl, 2, KeystrokeWatcherEvents)
+  , m_callback (NULL)
+{
+}
 
-	void set_callback (GotCharacterCallback callback)
-		{ m_callback = callback; }
+void set_callback (GotCharacterCallback callback)
+{
+  m_callback = callback;
+}
 
 protected:
-	static const EventTypeSpec KeystrokeWatcherEvents[2];
-	// = {{kEventClassKeyboard, kEventRawKeyDown},{kEventClassKeyboard, kEventRawKeyRepeat}};
+static const EventTypeSpec KeystrokeWatcherEvents[2];
+// = {{kEventClassKeyboard, kEventRawKeyDown},{kEventClassKeyboard, kEventRawKeyRepeat}};
 
-	virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent);
+virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent);
 
 private:
-	GotCharacterCallback m_callback;
+GotCharacterCallback m_callback;
 };
 
 // Adds a keyboard watcher to a control; useful for catching keystrokes
 // It cleans up when it goes out of scope
 class AutoKeyboardWatcher
 {
-	EventHandlerUPP KeyboardHandlerUPP;
+EventHandlerUPP KeyboardHandlerUPP;
 
 public:
 
-	AutoKeyboardWatcher(
-		     EventHandlerProcPtr Handler	// Called for every keystroke
-		     );
-	~AutoKeyboardWatcher();
+AutoKeyboardWatcher(
+  EventHandlerProcPtr Handler                           // Called for every keystroke
+  );
+~AutoKeyboardWatcher();
 
-	void Watch(
-	    ControlRef Ctrl,			// Control to watch keystrokes at
-	    void *HandlerData = NULL
-	    );
+void Watch(
+  ControlRef Ctrl,                              // Control to watch keystrokes at
+  void *HandlerData = NULL
+  );
 };
 
 
@@ -366,25 +393,28 @@ class AutoTabHandler : public AutoWatcher
 {
 public:
 
-	AutoTabHandler (ControlRef in_tab, std::vector<ControlRef> in_panes, WindowRef in_window)
-		: AutoWatcher (in_tab, 1, TabControlEvents)
-		, tab (in_tab)
-		, panes (in_panes)
-		, window (in_window)
-		{ SetActiveTab (0); }
+AutoTabHandler (ControlRef in_tab, std::vector<ControlRef> in_panes,
+                WindowRef in_window)
+  : AutoWatcher (in_tab, 1, TabControlEvents)
+  , tab (in_tab)
+  , panes (in_panes)
+  , window (in_window)
+{
+  SetActiveTab (0);
+}
 
 private:
 
-	static const EventTypeSpec TabControlEvents[1];
-	// = {{kEventClassControl, kEventControlHit}};
+static const EventTypeSpec TabControlEvents[1];
+// = {{kEventClassControl, kEventControlHit}};
 
-	virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent);
-	void SetActiveTab (int new_value);
-	
-	ControlRef tab;
-	std::vector<ControlRef> panes;
-	int old_value;
-	WindowRef window;
+virtual OSStatus act (EventHandlerCallRef inCallRef, EventRef inEvent);
+void SetActiveTab (int new_value);
+
+ControlRef tab;
+std::vector<ControlRef> panes;
+int old_value;
+WindowRef window;
 };
 
 

@@ -1,22 +1,22 @@
 /*
  *  network_ring.cpp
 
-	Copyright (C) 1991-2003 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
+        Copyright (C) 1991-2003 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
 
  *  File created by Woody Zenfell, III on Sat May 17 2003: split out from network.cpp.
  *
@@ -47,44 +47,44 @@
 #include "Logging.h"
 
 // Optional features, disabled by default on Mac to preserve existing behavior (I hope ;) )
-#undef	NETWORK_ADAPTIVE_LATENCY_2	// use this one instead; it should be good.  no wait...
-#define NETWORK_ADAPTIVE_LATENCY_3	// there, this one ought to get it right, finally.
-#define	NETWORK_IP			// needed if using IPaddress { host, port }; (as in SDL_net) rather than NetAddrBlock for addressing.
-#undef	NETWORK_USE_RECENT_FLAGS	// if the game stalls, use flags at the end of the stall, not the more stale ones at the beginning
-#define	NETWORK_SMARTER_FLAG_DITCHING	// this mechanism won't be quite as hasty to toss flags as Bungie's
+#undef  NETWORK_ADAPTIVE_LATENCY_2      // use this one instead; it should be good.  no wait...
+#define NETWORK_ADAPTIVE_LATENCY_3      // there, this one ought to get it right, finally.
+#define NETWORK_IP                      // needed if using IPaddress { host, port }; (as in SDL_net) rather than NetAddrBlock for addressing.
+#undef  NETWORK_USE_RECENT_FLAGS        // if the game stalls, use flags at the end of the stall, not the more stale ones at the beginning
+#define NETWORK_SMARTER_FLAG_DITCHING   // this mechanism won't be quite as hasty to toss flags as Bungie's
 
 // ZZZ: This structure is never placed on the wire, so you can do whatever you want with it
 // without having to worry about updating additional structures.
 struct NetStatus
 {
-	/* we receive packets from downring and send them upring */
-	NetAddrBlock upringAddress, downringAddress;
-	int16 upringPlayerIndex;
+  /* we receive packets from downring and send them upring */
+  NetAddrBlock upringAddress, downringAddress;
+  int16 upringPlayerIndex;
 
-	int32 lastValidRingSequence; /* the sequence number of the last valid ring packet we received */
-	int32 ringPacketCount; /* the number of ring packets we have received */
+  int32 lastValidRingSequence;       /* the sequence number of the last valid ring packet we received */
+  int32 ringPacketCount;       /* the number of ring packets we have received */
 
-	bool receivedAcknowledgement; /* true if we received a valid acknowledgement for the last ring packet we sent */
-	bool canForwardRing;
-	bool clearToForwardRing; /* true if we are the server and we got a valid ring packet but we didn’t send it */
-	bool acceptPackets; /* true if we want to get packets */
-	bool acceptRingPackets; /* true if we want to get ring packets */
-	bool oldSelfSendStatus;
+  bool receivedAcknowledgement;       /* true if we received a valid acknowledgement for the last ring packet we sent */
+  bool canForwardRing;
+  bool clearToForwardRing;       /* true if we are the server and we got a valid ring packet but we didn’t send it */
+  bool acceptPackets;       /* true if we want to get packets */
+  bool acceptRingPackets;       /* true if we want to get ring packets */
+  bool oldSelfSendStatus;
 
-	int16 retries;
+  int16 retries;
 
-	int16 action_flags_per_packet;
-	int16 last_extra_flags;
-	int16 update_latency;
+  int16 action_flags_per_packet;
+  int16 last_extra_flags;
+  int16 update_latency;
 
-	bool iAmTheServer;
-	bool single_player; /* Set true if I dropped everyone else. */
-	short server_player_index;
-	int16 new_packet_tag; /* Valid _only_ if you are the server, and is only set when you just became the server. */
+  bool iAmTheServer;
+  bool single_player;       /* Set true if I dropped everyone else. */
+  short server_player_index;
+  int16 new_packet_tag;       /* Valid _only_ if you are the server, and is only set when you just became the server. */
 
-	uint8 *buffer;
+  uint8 *buffer;
 
-	int32 localNetTime;
+  int32 localNetTime;
 };
 typedef struct NetStatus NetStatus, *NetStatusPtr;
 
@@ -92,8 +92,8 @@ typedef struct NetStatus NetStatus, *NetStatusPtr;
 // this note, that's probably right.  :)
 struct NetQueue
 {
-	int16 read_index, write_index;
-	int32 buffer[NET_QUEUE_SIZE];
+  int16 read_index, write_index;
+  int32 buffer[NET_QUEUE_SIZE];
 };
 typedef struct NetQueue NetQueue, *NetQueuePtr;
 
@@ -101,9 +101,9 @@ static volatile NetStatusPtr status;
 
 struct RingPreferences
 {
-	bool	mAcceptPacketsFromAnyone;
-	bool	mAdaptToLatency;
-	int32	mLatencyHoldTicks;
+  bool mAcceptPacketsFromAnyone;
+  bool mAdaptToLatency;
+  int32 mLatencyHoldTicks;
 };
 
 static RingPreferences sRingPreferences;
@@ -121,7 +121,7 @@ static DDPFramePtr distributionFrame;
 // ZZZ: On packet reception, we copy the _NET (packed) data into the local preferred format.  This is
 // the storage for the unpacked copy.  Note that few folks refer to it directly - usually a pointer
 // to the unpacked data (i.e. into this buffer) is passed along as an argument.
-static	char	unpackedReceiveBuffer[ddpMaxData];
+static char unpackedReceiveBuffer[ddpMaxData];
 
 // ZZZ note: originally in IPring, I had every function that dealt with network data packing and unpacking
 // its own stuff.  That's probably easier to follow and more correct, but there are a few problems:
@@ -179,8 +179,8 @@ static volatile NetQueue local_queue;
 // If it shrugs and the call for that period is lost forever, it should NOT use this mechanism.
 // In the spirit of leaving things alone if they work, I'll leave this just as an IPring thing for now.
 #ifdef NETWORK_FAUX_QUEUE
-static volatile uint32	faux_queue_due;		// packet handler increments each time it smears
-static volatile uint32	faux_queue_paid;	// NQT increments this each time it throws away action_flags instead of queueing them
+static volatile uint32 faux_queue_due;          // packet handler increments each time it smears
+static volatile uint32 faux_queue_paid;         // NQT increments this each time it throws away action_flags instead of queueing them
 #endif
 
 // ZZZ annotation: I suspect these were used for something like what I'm about to do again.
@@ -272,9 +272,9 @@ static short initial_update_latency = UPDATE_LATENCY;
 // I use these same things, slightly differently in the code, to do NETWORK_ADAPTIVE_LATENCY_2 (see below).
 #if defined(NETWORK_ADAPTIVE_LATENCY) || defined(NETWORK_ADAPTIVE_LATENCY_2)
 enum {
-	kAdaptiveLatencyWindowSize = 3 * TICKS_PER_SECOND,	// number of rings we look at for deciding whether to change latency
-	kAdaptiveLatencyInitialValue = 1,			// our first guess at a good latency value
-	kAdaptiveLatencyMaximumValue = MAXIMUM_UPDATES_PER_PACKET	// cap on the latency value
+  kAdaptiveLatencyWindowSize = 3 * TICKS_PER_SECOND,            // number of rings we look at for deciding whether to change latency
+  kAdaptiveLatencyInitialValue = 1,                             // our first guess at a good latency value
+  kAdaptiveLatencyMaximumValue = MAXIMUM_UPDATES_PER_PACKET             // cap on the latency value
 };
 
 // We adjust the ring latency when (average measured ring latency over window) - (current latency setting)
@@ -283,15 +283,15 @@ enum {
 // settings.  I have set these pretty low, which favors adding latency over allowing choppiness.  I suppose
 // these could be made more dynamically settable (via MML or dialog-box) to let users decide where they want
 // the tradeoff, but I doubt most really care to tweak such settings themselves.
-const float	kNeedToIncreaseLatencyThreshhold = .1F;
-const float	kNeedToDecreaseLatencyThreshhold = -.95F;
+const float kNeedToIncreaseLatencyThreshhold = .1F;
+const float kNeedToDecreaseLatencyThreshhold = -.95F;
 
-static int	sAdaptiveLatencySamples[kAdaptiveLatencyWindowSize];	// sample buffer, used much like a circular queue.
-static int	sAdaptiveLatencyWindowEdge;	// so we know where in the sample buffer our window starts/ends
-				       // between calls to update_adaptive_latency, it indicates the head of the queue.
-static int	sAdaptiveLatencySampleCount;	// so we don't try to make decisions without enough samples
-static int	sAdaptiveLatencyRunningTotal;	// total of latencies in the sample window
-static volatile int sCurrentAdaptiveLatency;	// how many action_flags we want going around in those packets
+static int sAdaptiveLatencySamples[kAdaptiveLatencyWindowSize];         // sample buffer, used much like a circular queue.
+static int sAdaptiveLatencyWindowEdge;          // so we know where in the sample buffer our window starts/ends
+// between calls to update_adaptive_latency, it indicates the head of the queue.
+static int sAdaptiveLatencySampleCount;         // so we don't try to make decisions without enough samples
+static int sAdaptiveLatencyRunningTotal;        // total of latencies in the sample window
+static volatile int sCurrentAdaptiveLatency;    // how many action_flags we want going around in those packets
 
 // Hmm, now not only am I concerned about the concept of "net time", but I'm worried that the faux-queue idea I implemented
 // before is now going to interfere with the adaptive latency scheme, or vice-versa.  I mean, if adaptive latency decides that
@@ -300,7 +300,7 @@ static volatile int sCurrentAdaptiveLatency;	// how many action_flags we want go
 // which means they'll have to smear again next time... it's not the end of the world, but it defeats the purpose of calling NQT
 // periodically instead of just smearing every time we need data.
 // OK OK I convinced myself.  Disabling FAUX_QUEUE.  That didn't help with erratic server scheduling anyway.
-#endif//NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2
+#endif //NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2
 
 // Adaptive latency take 2... heh heh...
 // Here's the problem with the first effort.  (Or second, if you count FAUX_QUEUE as an effort.)
@@ -348,11 +348,11 @@ static volatile int sCurrentAdaptiveLatency;	// how many action_flags we want go
 // (Note that these may not happen at the same packet arrival, but should be nonetheless linked.)
 
 // I have now implemented the flag ditching mechanism outlined above:
-#ifdef	NETWORK_SMARTER_FLAG_DITCHING
-static int	sFlagDitchingCounter;		// reset if local_queue empties; increments by local_queue leftovers otherwise.
+#ifdef  NETWORK_SMARTER_FLAG_DITCHING
+static int sFlagDitchingCounter;                // reset if local_queue empties; increments by local_queue leftovers otherwise.
 
 enum {
-	kFlagDitchingThreshhold = TICKS_PER_SECOND	// if counter exceeds this, ditch a flag and reset counter.
+  kFlagDitchingThreshhold = TICKS_PER_SECOND            // if counter exceeds this, ditch a flag and reset counter.
 };
 #endif
 // We're really splitting hairs at this point.  I think this is only better than the Bungie mechanism if
@@ -466,10 +466,12 @@ static short ddpSocket = 0;
 // ZZZ: again, buffer is always going to be NetDistributionPacket_NET*
 static void NetProcessLossyDistribution(void *buffer);
 // ZZZ: this is used to handle an incoming ring packet; it'll always be NetPacket_NET*
-static void NetProcessIncomingBuffer(void *buffer, int32 buffer_size, int32 sequence);
+static void NetProcessIncomingBuffer(void *buffer, int32 buffer_size,
+                                     int32 sequence);
 
 static size_t NetPacketSize(NetPacketPtr packet);
-static void NetBuildRingPacket(DDPFramePtr frame, byte *data, size_t data_size, int32 sequence);
+static void NetBuildRingPacket(DDPFramePtr frame, byte *data, size_t data_size,
+                               int32 sequence);
 static void NetBuildFirstRingPacket(DDPFramePtr frame, int32 sequence);
 static void NetRebuildRingPacket(DDPFramePtr frame, short tag, int32 sequence);
 static void NetAddFlagsToPacket(NetPacketPtr packet);
@@ -481,16 +483,18 @@ static bool NetCheckResendRingPacket(void);
 static bool NetServerTask(void);
 static bool NetQueueingTask(void);
 
-#if defined(NETWORK_ADAPTIVE_LATENCY) || defined(NETWORK_ADAPTIVE_LATENCY_2) || defined(NETWORK_ADAPTIVE_LATENCY_3)
+#if defined(NETWORK_ADAPTIVE_LATENCY) || defined(NETWORK_ADAPTIVE_LATENCY_2) || \
+  defined(NETWORK_ADAPTIVE_LATENCY_3)
 // ZZZ addition, for adaptive latency business.  measurement is only used for adaptive_latency_2
 // tick is used only for adaptive_latency_3.
 static void update_adaptive_latency(int measurement = 0, int tick = 0);
-#endif//NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2 || NETWORK_ADAPTIVE_LATENCY_3
+#endif //NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2 || NETWORK_ADAPTIVE_LATENCY_3
 
 static short NetAdjustUpringAddressUpwards(void);
 static short NetSizeofLocalQueue(void);
 
-static void process_packet_buffer_flags(void *buffer, int32 buffer_size, short packet_tag);
+static void process_packet_buffer_flags(void *buffer, int32 buffer_size,
+                                        short packet_tag);
 static void process_flags(NetPacketPtr packet_data);
 
 /* Note that both of these functions may result in a change of gatherer.  the first one is */
@@ -506,45 +510,45 @@ void record_profile(int raf);
 
 #ifdef DEBUG_NET
 struct network_statistics {
-	int32 numSmears;
-	int32 numCountChanges;
+  int32 numSmears;
+  int32 numCountChanges;
 
-	int32 ontime_acks;
-	int32 sync_ontime_acks;
-	int32 time_ontime_acks;
-	int32 unsync_ontime_acks;
-	int32 dead_ontime_acks;
+  int32 ontime_acks;
+  int32 sync_ontime_acks;
+  int32 time_ontime_acks;
+  int32 unsync_ontime_acks;
+  int32 dead_ontime_acks;
 
-	int32 late_acks;
-	int32 packets_from_the_unknown;
-	int32 retry_count;
-	int32 sync_retry_count;
-	int32 time_retry_count;
-	int32 unsync_retry_count;
-	int32 dead_retry_count;
+  int32 late_acks;
+  int32 packets_from_the_unknown;
+  int32 retry_count;
+  int32 sync_retry_count;
+  int32 time_retry_count;
+  int32 unsync_retry_count;
+  int32 dead_retry_count;
 
-	int32 late_unsync_rings;
-	int32 late_sync_rings;
-	int32 late_rings;
-	int32 late_time_rings;
-	int32 late_dead_rings;
+  int32 late_unsync_rings;
+  int32 late_sync_rings;
+  int32 late_rings;
+  int32 late_time_rings;
+  int32 late_dead_rings;
 
-	int32 change_ring_packet_count;
+  int32 change_ring_packet_count;
 
-	int32 rebuilt_server_tag;
-	int32 packets_with_zero_flags;
+  int32 rebuilt_server_tag;
+  int32 packets_with_zero_flags;
 
-	short spurious_unsyncs;
-	short unsync_while_coming_down;
-	short upring_drops;
-	short server_set_required_flags_to_zero;
-	short unsync_returned_to_sender;
-	short server_unsyncing;
-	short assuming_control;
-	short assuming_control_on_retry;
-	short server_bailing_early;
+  short spurious_unsyncs;
+  short unsync_while_coming_down;
+  short upring_drops;
+  short server_set_required_flags_to_zero;
+  short unsync_returned_to_sender;
+  short server_unsyncing;
+  short assuming_control;
+  short assuming_control_on_retry;
+  short server_bailing_early;
 
-	uint32 action_flags_processed;
+  uint32 action_flags_processed;
 } net_stats;
 
 #ifdef STREAM_NET
@@ -558,48 +562,43 @@ static void close_stream_file(void);
 bool
 RingGameProtocol::Enter(short* inNetStatePtr)
 {
-	bool success= false;
-	sNetStatePtr= inNetStatePtr;
-	status = (NetStatusPtr)malloc(sizeof(NetStatus));
-	memset(status, 0, sizeof(NetStatus));
-	if(status)
-	{
-		status->buffer = (byte *)malloc(ddpMaxData);
-		if (status->buffer)
-		{
-			ringFrame= NetDDPNewFrame();
-			if (ringFrame)
-			{
-				ackFrame= NetDDPNewFrame();
-				if (ackFrame)
-				{
-					distributionFrame= NetDDPNewFrame();
-					if (distributionFrame)
-					{
-						status->single_player= false;
+  bool success= false;
+  sNetStatePtr= inNetStatePtr;
+  status = (NetStatusPtr)malloc(sizeof(NetStatus));
+  memset(status, 0, sizeof(NetStatus));
+  if(status) {
+    status->buffer = (byte *)malloc(ddpMaxData);
+    if (status->buffer) {
+      ringFrame= NetDDPNewFrame();
+      if (ringFrame) {
+        ackFrame= NetDDPNewFrame();
+        if (ackFrame) {
+          distributionFrame= NetDDPNewFrame();
+          if (distributionFrame) {
+            status->single_player= false;
 #ifdef DEBUG_NET
-						obj_clear(net_stats);
+            obj_clear(net_stats);
 #ifdef STREAM_NET
-						open_stream_file();
+            open_stream_file();
 #endif
 #endif
-						success= true;
-					}
-				}
-			}
-		}
-	}
-	return success;
+            success= true;
+          }
+        }
+      }
+    }
+  }
+  return success;
 }
 
 
 void
 RingGameProtocol::Exit1()
 {
-	/* These functions do the right thing for NULL pointers */
-	resendTMTask= myTMRemove(resendTMTask);
-	serverTMTask= myTMRemove(serverTMTask);
-	queueingTMTask= myTMRemove(queueingTMTask);
+  /* These functions do the right thing for NULL pointers */
+  resendTMTask= myTMRemove(resendTMTask);
+  serverTMTask= myTMRemove(serverTMTask);
+  queueingTMTask= myTMRemove(queueingTMTask);
 }
 
 
@@ -607,201 +606,205 @@ void
 RingGameProtocol::Exit2()
 {
 #ifdef DEBUG_NET
-	NetPrintInfo();
+  NetPrintInfo();
 #ifdef STREAM_NET
-	close_stream_file();
+  close_stream_file();
 #endif
 #endif
 
-	free(status->buffer);
-	free(status);
-	status= NULL;
+  free(status->buffer);
+  free(status);
+  status= NULL;
 
-	NetDDPDisposeFrame(ackFrame);
-	NetDDPDisposeFrame(ringFrame);
-	NetDDPDisposeFrame(distributionFrame);
-}	
+  NetDDPDisposeFrame(ackFrame);
+  NetDDPDisposeFrame(ringFrame);
+  NetDDPDisposeFrame(distributionFrame);
+}
 
 
 /*
- -------
- NetSync
- -------
+   -------
+   NetSync
+   -------
 
-	(no parameters)
+        (no parameters)
 
- make sure all players are present (by waiting for the ring to come around twice).  this is what
- actually jump-starts the ring.
+   make sure all players are present (by waiting for the ring to come around twice).  this is what
+   actually jump-starts the ring.
 
- returns true if we synched successfully. false otherwise.
+   returns true if we synched successfully. false otherwise.
 
- -------
- NetUnSync
- -------
+   -------
+   NetUnSync
+   -------
 
-	(no parameters)
+        (no parameters)
 
- called at the end of a network game to ensure a clean exit from the net game.
- (we make sure that we don’t quit the game holding the ring packet.)
+   called at the end of a network game to ensure a clean exit from the net game.
+   (we make sure that we don’t quit the game holding the ring packet.)
 
  */
 
 bool
-RingGameProtocol::Sync(NetTopology* inTopology, int32 inSmallestGameTick, size_t inLocalPlayerIndex, size_t inServerPlayerIndex)
+RingGameProtocol::Sync(NetTopology* inTopology, int32 inSmallestGameTick,
+                       size_t inLocalPlayerIndex,
+                       size_t inServerPlayerIndex)
 {
-	uint32 ticks;
-	bool success= true;
+  uint32 ticks;
+  bool success= true;
 #ifdef TEST_MODEM
-	return ModemSync();
+  return ModemSync();
 #else
-	localPlayerIndex= inLocalPlayerIndex;
-	topology= inTopology;
+  localPlayerIndex= inLocalPlayerIndex;
+  topology= inTopology;
 
-        // ZZZ: taking the net-time from the dynamic_world; whittling away at network/game code separation again?
-        // anyway we need to do this for restoring a saved-game, since DWTC won't start at 0 in that case (but
-        // without the following line, the netTime would have...)  Anyway yeah NetSync() is only called after
-        // the dynamic_world is set up - I'm pretty sure ;) - so this should be ok.
-        status->localNetTime= inSmallestGameTick;
-	status->action_flags_per_packet= initial_updates_per_packet;
-	status->update_latency= initial_update_latency;
-	status->lastValidRingSequence= 0;
-	status->ringPacketCount= 0;
-	status->server_player_index= inServerPlayerIndex;
-	status->last_extra_flags= 0;
-	status->acceptPackets= true; /* let the PacketHandler see incoming packets */
-	status->acceptRingPackets= true;
-	local_queue.read_index= local_queue.write_index= 0;
+  // ZZZ: taking the net-time from the dynamic_world; whittling away at network/game code separation again?
+  // anyway we need to do this for restoring a saved-game, since DWTC won't start at 0 in that case (but
+  // without the following line, the netTime would have...)  Anyway yeah NetSync() is only called after
+  // the dynamic_world is set up - I'm pretty sure ;) - so this should be ok.
+  status->localNetTime= inSmallestGameTick;
+  status->action_flags_per_packet= initial_updates_per_packet;
+  status->update_latency= initial_update_latency;
+  status->lastValidRingSequence= 0;
+  status->ringPacketCount= 0;
+  status->server_player_index= inServerPlayerIndex;
+  status->last_extra_flags= 0;
+  status->acceptPackets= true;       /* let the PacketHandler see incoming packets */
+  status->acceptRingPackets= true;
+  local_queue.read_index= local_queue.write_index= 0;
 #ifdef NETWORK_FAUX_QUEUE
-        // ZZZ addition: faux queue mechanism to handle jittery scheduling correctly
-        faux_queue_due = faux_queue_paid = 0;
+  // ZZZ addition: faux queue mechanism to handle jittery scheduling correctly
+  faux_queue_due = faux_queue_paid = 0;
 #endif
 
 #if defined(NETWORK_ADAPTIVE_LATENCY) || defined(NETWORK_ADAPTIVE_LATENCY_2)
-        // ZZZ addition: initialize adaptive latency mechanism
-        sCurrentAdaptiveLatency		= kAdaptiveLatencyInitialValue;
-        sAdaptiveLatencyRunningTotal	= 0;
-        sAdaptiveLatencySampleCount	= 0;
-        sAdaptiveLatencyWindowEdge	= 0;
+  // ZZZ addition: initialize adaptive latency mechanism
+  sCurrentAdaptiveLatency         = kAdaptiveLatencyInitialValue;
+  sAdaptiveLatencyRunningTotal    = 0;
+  sAdaptiveLatencySampleCount     = 0;
+  sAdaptiveLatencyWindowEdge      = 0;
 #endif
 
 #if defined(NETWORK_ADAPTIVE_LATENCY_3)
-        // ZZZ addition: initialize adaptive latency mechanism
-        sCurrentAdaptiveLatency = 0;
-        sGreatestRecentLatencyTick = 0;
-        sGreatestRecentLatencyMeasurement = 0;
-        sSecondGreatestRecentLatencyMeasurement = 0;
+  // ZZZ addition: initialize adaptive latency mechanism
+  sCurrentAdaptiveLatency = 0;
+  sGreatestRecentLatencyTick = 0;
+  sGreatestRecentLatencyMeasurement = 0;
+  sSecondGreatestRecentLatencyMeasurement = 0;
 #endif
 
-	// Calculate up- and downring neighbors
-	short previousPlayerIndex, nextPlayerIndex;
-	
-        // ZZZ: changes to these to skip players with identifier NONE, in support of generalized resume-game
-        // (They Might Be Zombies)
-	/* recalculate downringAddress */
-        previousPlayerIndex = localPlayerIndex;
-	do
-        {
-                previousPlayerIndex = (topology->player_count + previousPlayerIndex - 1) % topology->player_count;
-        } while(topology->players[previousPlayerIndex].identifier == NONE && previousPlayerIndex != localPlayerIndex);
+  // Calculate up- and downring neighbors
+  short previousPlayerIndex, nextPlayerIndex;
 
-        status->downringAddress= topology->players[previousPlayerIndex].ddpAddress;
+  // ZZZ: changes to these to skip players with identifier NONE, in support of generalized resume-game
+  // (They Might Be Zombies)
+  /* recalculate downringAddress */
+  previousPlayerIndex = localPlayerIndex;
+  do
+  {
+    previousPlayerIndex =
+      (topology->player_count + previousPlayerIndex -
+       1) % topology->player_count;
+  } while(topology->players[previousPlayerIndex].identifier == NONE &&
+          previousPlayerIndex != localPlayerIndex);
 
-	/* recalculate upringAddress */
-        nextPlayerIndex = localPlayerIndex;
-	do
-        {
-                nextPlayerIndex = (topology->player_count + nextPlayerIndex + 1) % topology->player_count;
-        } while(topology->players[nextPlayerIndex].identifier == NONE && nextPlayerIndex != localPlayerIndex);
+  status->downringAddress= topology->players[previousPlayerIndex].ddpAddress;
 
-	status->upringAddress= topology->players[nextPlayerIndex].ddpAddress;
-	status->upringPlayerIndex = nextPlayerIndex;
-	
-	*sNetStatePtr= netStartingUp;
+  /* recalculate upringAddress */
+  nextPlayerIndex = localPlayerIndex;
+  do
+  {
+    nextPlayerIndex =
+      (topology->player_count + nextPlayerIndex + 1) % topology->player_count;
+  } while(topology->players[nextPlayerIndex].identifier == NONE &&
+          nextPlayerIndex != localPlayerIndex);
 
-	/* if we are the server (player index zero), start the ring */
-	if (localPlayerIndex==status->server_player_index)
-	{
-		status->iAmTheServer= true;
+  status->upringAddress= topology->players[nextPlayerIndex].ddpAddress;
+  status->upringPlayerIndex = nextPlayerIndex;
 
-		/* act like somebody just sent us this packet */
-		status->ringPacketCount= 1;
+  *sNetStatePtr= netStartingUp;
 
-		NetBuildFirstRingPacket(ringFrame, status->lastValidRingSequence+1);
-		NetSendRingPacket(ringFrame);
-	}
-	else
-	{
-		status->iAmTheServer = false;
-	}
+  /* if we are the server (player index zero), start the ring */
+  if (localPlayerIndex==status->server_player_index) {
+    status->iAmTheServer= true;
 
-	/* once we get a normal packet, netState will be set, and we can cruise. */
-	ticks= machine_tick_count();
-	while (success && *sNetStatePtr != netActive) // packet handler changes this variable.
-	{
-		if (machine_tick_count() - ticks > NET_SYNC_TIME_OUT)
-		{
-			alert_user(infoError, strNETWORK_ERRORS, netErrSyncFailed, 0);
+    /* act like somebody just sent us this packet */
+    status->ringPacketCount= 1;
 
-			/* How did Alain do this? */
-			status->acceptPackets= false;
-			status->acceptRingPackets= false;
-			*sNetStatePtr= netDown;
-			success= false;
-		}
-	}
+    NetBuildFirstRingPacket(ringFrame, status->lastValidRingSequence+1);
+    NetSendRingPacket(ringFrame);
+  }
+  else
+  {
+    status->iAmTheServer = false;
+  }
+
+  /* once we get a normal packet, netState will be set, and we can cruise. */
+  ticks= machine_tick_count();
+  while (success && *sNetStatePtr != netActive)       // packet handler changes this variable.
+  {
+    if (machine_tick_count() - ticks > NET_SYNC_TIME_OUT) {
+      alert_user(infoError, strNETWORK_ERRORS, netErrSyncFailed, 0);
+
+      /* How did Alain do this? */
+      status->acceptPackets= false;
+      status->acceptRingPackets= false;
+      *sNetStatePtr= netDown;
+      success= false;
+    }
+  }
 #endif // ndef TEST_MODEM
 
-	return success;
+  return success;
 }
 
 
 
 /*
-	New unsync:
-	1) Server tells everyone to give him 0 action flags.
-	2) Server then waits for the packet to go all the way around the loop.
+        New unsync:
+        1) Server tells everyone to give him 0 action flags.
+        2) Server then waits for the packet to go all the way around the loop.
  */
 bool
 RingGameProtocol::UnSync(bool inGraceful, int32 inSmallestPostgameTick)
 {
-        bool success= true;
-	uint32 ticks;
+  bool success= true;
+  uint32 ticks;
 
 #ifdef TEST_MODEM
-	success= ModemUnsync();
+  success= ModemUnsync();
 #else
 
-	if (*sNetStatePtr==netStartingUp || *sNetStatePtr==netActive)
-	{
-		*sNetStatePtr= netComingDown;
+  if (*sNetStatePtr==netStartingUp || *sNetStatePtr==netActive) {
+    *sNetStatePtr= netComingDown;
 
-		/* Next time the server receives a packet, and if the netState==netComingDown */
-		/*  the server will send a packet with zero flags, which means process the remaining */
-		/*  flags, and get ready to change level.  Once the packet with zero flags gets back */
-		/*  to the server, the server sends an unsync ring packet.  This will cause all the other */
-		/*  machines to unsync, and when the server gets the packet back, it turns the net off */
+    /* Next time the server receives a packet, and if the netState==netComingDown */
+    /*  the server will send a packet with zero flags, which means process the remaining */
+    /*  flags, and get ready to change level.  Once the packet with zero flags gets back */
+    /*  to the server, the server sends an unsync ring packet.  This will cause all the other */
+    /*  machines to unsync, and when the server gets the packet back, it turns the net off */
 
-		ticks= machine_tick_count();
-		// we wait until the packet handler changes "acceptPackets" or until we hit a serious
-		// timeout, in case we are quitting and someone else is refusing to give up the ring.
-		while((status->acceptRingPackets || !status->receivedAcknowledgement)
-	&& (machine_tick_count()-ticks<UNSYNC_TIMEOUT))
-			;
-	}
-	if(status->acceptRingPackets)
-	{
-		status->acceptRingPackets= success= false;
-	}
-	status->acceptPackets= false; // in case we just timed out.
-	*sNetStatePtr= netDown;
+    ticks= machine_tick_count();
+    // we wait until the packet handler changes "acceptPackets" or until we hit a serious
+    // timeout, in case we are quitting and someone else is refusing to give up the ring.
+    while((status->acceptRingPackets || !status->receivedAcknowledgement)
+          && (machine_tick_count()-ticks<UNSYNC_TIMEOUT))
+      ;
+  }
+  if(status->acceptRingPackets) {
+    status->acceptRingPackets= success= false;
+  }
+  status->acceptPackets= false;       // in case we just timed out.
+  *sNetStatePtr= netDown;
 
 #ifdef DEBUG_NET
-	fdprintf("Flags processed: %d Time: %d;g", net_stats.action_flags_processed, TickCount()-ticks);
-	net_stats.action_flags_processed= 0;
+  fdprintf("Flags processed: %d Time: %d;g", net_stats.action_flags_processed,
+           TickCount()-ticks);
+  net_stats.action_flags_processed= 0;
 #endif
 #endif // ndef TEST_MODEM
 
-	return success;
+  return success;
 }
 
 
@@ -809,61 +812,70 @@ RingGameProtocol::UnSync(bool inGraceful, int32 inSmallestPostgameTick)
 /* Distribute information to the whole net. */
 void
 RingGameProtocol::DistributeInformation(
-			      short type,
-			      void *buffer,
-			      short buffer_size,
-			      bool send_to_self,
-	bool)
+  short type,
+  void *buffer,
+  short buffer_size,
+  bool send_to_self,
+  bool)
 {
-	NetDistributionPacket 		distribution_header;
-        NetDistributionPacket_NET	distribution_header_NET;
+  NetDistributionPacket distribution_header;
+  NetDistributionPacket_NET distribution_header_NET;
 
 #ifdef TEST_MODEM
-	ModemDistributeInformation(type, buffer, buffer_size, send_to_self);
+  ModemDistributeInformation(type, buffer, buffer_size, send_to_self);
 #else
 
-	// Sanity Check! Sanity Check!
-	// Hand Check! Hand Check!
- // ZZZ: there ought to be some kind of check here on buffer size, but it should be based on
- // the size of the DDP (UDP) packet storage allocated and the sizes of stuff to be crammed in there.
- //	assert(buffer_size <= MAX_NET_DISTRIBUTION_BUFFER_SIZE);
+  // Sanity Check! Sanity Check!
+  // Hand Check! Hand Check!
+  // ZZZ: there ought to be some kind of check here on buffer size, but it should be based on
+  // the size of the DDP (UDP) packet storage allocated and the sizes of stuff to be crammed in there.
+  //	assert(buffer_size <= MAX_NET_DISTRIBUTION_BUFFER_SIZE);
 
-	// ZZZ: I suppose one could argue that you should be able to send distribution types you don't
- // process, but currently anyway this is used to lookup lossless/lossy.  Maybe the caller should
- // specify lossless/lossy as a parameter to this function rather than associating it with a
- // distribution type anyway.  The two seem to be at least somewhat independent.
-	const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
-	assert(theInfo != NULL);
-	
-	if (send_to_self)
-	{
-		theInfo->distribution_proc(buffer, buffer_size, localPlayerIndex);
-	}
+  // ZZZ: I suppose one could argue that you should be able to send distribution types you don't
+  // process, but currently anyway this is used to lookup lossless/lossy.  Maybe the caller should
+  // specify lossless/lossy as a parameter to this function rather than associating it with a
+  // distribution type anyway.  The two seem to be at least somewhat independent.
+  const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
+  assert(theInfo != NULL);
 
-	distributionFrame->data_size = sizeof(NetPacketHeader_NET) + sizeof(NetDistributionPacket_NET) + buffer_size;
-	{
-		NetPacketHeader_NET*	header_NET	= (NetPacketHeader_NET*) distributionFrame->data;
-                NetPacketHeader		header_storage;
-                NetPacketHeader*	header		= &header_storage;
+  if (send_to_self) {
+    theInfo->distribution_proc(buffer, buffer_size, localPlayerIndex);
+  }
 
-		header->tag = theInfo->lossy ? tagLOSSY_DISTRIBUTION : tagLOSSLESS_DISTRIBUTION;
-		header->sequence = 0;
+  distributionFrame->data_size = sizeof(NetPacketHeader_NET) +
+                                 sizeof(NetDistributionPacket_NET) +
+                                 buffer_size;
+  {
+    NetPacketHeader_NET*    header_NET      =
+      (NetPacketHeader_NET*) distributionFrame->data;
+    NetPacketHeader header_storage;
+    NetPacketHeader*        header          = &header_storage;
 
-                netcpy(header_NET, header);
-	}
-	distribution_header.distribution_type = type;
-	distribution_header.first_player_index = localPlayerIndex;
-	distribution_header.data_size = buffer_size;
+    header->tag =
+      theInfo->lossy ? tagLOSSY_DISTRIBUTION : tagLOSSLESS_DISTRIBUTION;
+    header->sequence = 0;
 
-        // Probably could just netcpy this straight into distributionFrame->data.
-        netcpy(&distribution_header_NET, &distribution_header);
+    netcpy(header_NET, header);
+  }
+  distribution_header.distribution_type = type;
+  distribution_header.first_player_index = localPlayerIndex;
+  distribution_header.data_size = buffer_size;
 
-	memcpy(distributionFrame->data + sizeof(NetPacketHeader_NET), &distribution_header_NET, sizeof(NetDistributionPacket_NET));
-	memcpy(distributionFrame->data + sizeof(NetPacketHeader_NET) + sizeof(NetDistributionPacket_NET) /*- 2*sizeof(byte)*/, buffer, buffer_size);
+  // Probably could just netcpy this straight into distributionFrame->data.
+  netcpy(&distribution_header_NET, &distribution_header);
 
-	// LP: kludge to get it to compile
+  memcpy(distributionFrame->data + sizeof(NetPacketHeader_NET),
+         &distribution_header_NET,
+         sizeof(NetDistributionPacket_NET));
+  memcpy(
+    distributionFrame->data + sizeof(NetPacketHeader_NET) +
+    sizeof(NetDistributionPacket_NET) /*- 2*sizeof(byte)*/, buffer,
+    buffer_size);
+
+  // LP: kludge to get it to compile
 #ifdef NETWORK_IP
-	NetDDPSendFrame(distributionFrame, &status->upringAddress, kPROTOCOL_TYPE, ddpSocket);
+  NetDDPSendFrame(distributionFrame, &status->upringAddress, kPROTOCOL_TYPE,
+                  ddpSocket);
 #endif
 #endif // TEST_MODEM
 }
@@ -871,16 +883,16 @@ RingGameProtocol::DistributeInformation(
 
 
 /*
- -------------------
- NetDDPPacketHandler
- -------------------
+   -------------------
+   NetDDPPacketHandler
+   -------------------
 
-	---> DDPPacketBufferPtr
+        ---> DDPPacketBufferPtr
 
- called at interrupt time; will send an acknowledgement and (if not the server node) forward the
- ring packet and spawn a time manager task to verify that it was acknowledged.  because these all
- work off global data structures, we can only have one ring packet ‘in the air’ (i.e., waiting to
-										 be acknowledged) at a time.
+   called at interrupt time; will send an acknowledgement and (if not the server node) forward the
+   ring packet and spawn a time manager task to verify that it was acknowledged.  because these all
+   work off global data structures, we can only have one ring packet ‘in the air’ (i.e., waiting to
+                                                                                 be acknowledged) at a time.
  */
 
 // ZZZ: this is the first place an incoming packet is seen by the networking subsystem.
@@ -889,236 +901,241 @@ RingGameProtocol::DistributeInformation(
 void
 RingGameProtocol::PacketHandler(DDPPacketBufferPtr packet)
 {
-	static bool already_here = false;
+  static bool already_here = false;
 
-        // ZZZ: netcpy some of the packet's data into unpacked-storage area
+  // ZZZ: netcpy some of the packet's data into unpacked-storage area
 
-        NetPacketHeaderPtr	header		= (NetPacketHeaderPtr) unpackedReceiveBuffer;
-        NetPacketHeader_NET*	header_NET	= (NetPacketHeader_NET*) packet->datagramData;
+  NetPacketHeaderPtr header          =
+    (NetPacketHeaderPtr) unpackedReceiveBuffer;
+  NetPacketHeader_NET*    header_NET      =
+    (NetPacketHeader_NET*) packet->datagramData;
 
-        netcpy(header, header_NET);
+  netcpy(header, header_NET);
 
-	//	NetPacketHeaderPtr header= (NetPacketHeaderPtr) packet->datagramData;
+  //	NetPacketHeaderPtr header= (NetPacketHeaderPtr) packet->datagramData;
 
-	assert(!already_here);
-	already_here = true;
+  assert(!already_here);
+  already_here = true;
 
-	if (status->acceptPackets)
-	{
-		if (packet->datagramSize >= sizeof(NetPacketHeader_NET) && packet->protocolType == kPROTOCOL_TYPE)
-		{
-			switch (header->tag)
-			{
-				case tagLOSSLESS_DISTRIBUTION:
-					vpause("received lossless distribution packet. not implemented.");
-					break;
-				case tagLOSSY_DISTRIBUTION:
-					NetProcessLossyDistribution(packet->datagramData+sizeof(NetPacketHeader_NET));
-					break;
-				case tagACKNOWLEDGEMENT:
+  if (status->acceptPackets) {
+    if (packet->datagramSize >= sizeof(NetPacketHeader_NET) &&
+        packet->protocolType == kPROTOCOL_TYPE) {
+      switch (header->tag)
+      {
+      case tagLOSSLESS_DISTRIBUTION:
+        vpause("received lossless distribution packet. not implemented.");
+        break;
+      case tagLOSSY_DISTRIBUTION:
+        NetProcessLossyDistribution(packet->datagramData+
+                                    sizeof(NetPacketHeader_NET));
+        break;
+      case tagACKNOWLEDGEMENT:
 #ifndef NETWORK_IP
 #ifdef CLASSIC_MAC_NETWORKING
-					if (/*packet->sourceAddress.aNet == status->upringAddress.aNet && */
-                                                sRingPreferences.mAcceptPacketsFromAnyone ||
-						(packet->sourceAddress.aNode == status->upringAddress.aNode &&
-       packet->sourceAddress.aSocket == status->upringAddress.aSocket))
+        if (                                /*packet->sourceAddress.aNet == status->upringAddress.aNet && */
+          sRingPreferences.mAcceptPacketsFromAnyone ||
+          (packet->sourceAddress.aNode == status->upringAddress.aNode &&
+           packet->sourceAddress.aSocket == status->upringAddress.aSocket))
 #endif
 #else
-if (sRingPreferences.mAcceptPacketsFromAnyone ||
-    (packet->sourceAddress.host == status->upringAddress.host &&
-     packet->sourceAddress.port == status->upringAddress.port))
+        if (sRingPreferences.mAcceptPacketsFromAnyone ||
+            (packet->sourceAddress.host == status->upringAddress.host &&
+             packet->sourceAddress.port == status->upringAddress.port))
 #endif
-{
-	if (header->sequence==status->lastValidRingSequence+1)
-	{
-		/* on-time acknowledgement; set a global so our time manager task doesn’t resend
-		this packet when it fires */
-		//								fdprintf("ontime ack;g");
+        {
+          if (header->sequence==status->lastValidRingSequence+1) {
+            /* on-time acknowledgement; set a global so our time manager task doesn’t resend
+               this packet when it fires */
+            //								fdprintf("ontime ack;g");
 #ifdef DEBUG_NET
-	{
-		// Figure out what was ACKed
-		NetPacket	packet_data_storage;
-		NetPacket*	packet_data		= &packet_data_storage;
-		NetPacket_NET*	packet_data_NET	= (NetPacket_NET*)
-			(ringFrame->data + sizeof(NetPacketHeader_NET));
+            {
+              // Figure out what was ACKed
+              NetPacket packet_data_storage;
+              NetPacket*      packet_data             = &packet_data_storage;
+              NetPacket_NET*  packet_data_NET = (NetPacket_NET*)
+                                                (ringFrame->data +
+                                                 sizeof(NetPacketHeader_NET));
 
-		netcpy(packet_data, packet_data_NET);
+              netcpy(packet_data, packet_data_NET);
 
-		//NetPacketPtr packet_data= (NetPacketPtr) (ringFrame->data+sizeof(NetPacketHeader));
+              //NetPacketPtr packet_data= (NetPacketPtr) (ringFrame->data+sizeof(NetPacketHeader));
 
-		switch(packet_data->ring_packet_type)
-		{
-			case typeSYNC_RING_PACKET:
-				net_stats.sync_ontime_acks++;
-				break;
+              switch(packet_data->ring_packet_type)
+              {
+              case typeSYNC_RING_PACKET:
+                net_stats.sync_ontime_acks++;
+                break;
 
-			case typeTIME_RING_PACKET:
-				net_stats.time_ontime_acks++;
-				break;
+              case typeTIME_RING_PACKET:
+                net_stats.time_ontime_acks++;
+                break;
 
-			case typeUNSYNC_RING_PACKET:
-				net_stats.unsync_ontime_acks++;
-				break;
+              case typeUNSYNC_RING_PACKET:
+                net_stats.unsync_ontime_acks++;
+                break;
 
-			case typeNORMAL_RING_PACKET:
-				net_stats.ontime_acks++;
-				break;
+              case typeNORMAL_RING_PACKET:
+                net_stats.ontime_acks++;
+                break;
 
-			case typeDEAD_PACKET:
-				net_stats.dead_ontime_acks++;
-				break;
+              case typeDEAD_PACKET:
+                net_stats.dead_ontime_acks++;
+                break;
 
-			default:
-				assert(false);
-				break;
-		}
-	}
-#endif//DEBUG_NET
-		status->receivedAcknowledgement= true;
-	}
-	else
-	{
-		if (header->sequence<=status->lastValidRingSequence)
-		{
-			/* late acknowledgement; ignore */
-			//								fdprintf("late ack;g");
+              default:
+                assert(false);
+                break;
+              }
+            }
+#endif //DEBUG_NET
+            status->receivedAcknowledgement= true;
+          }
+          else
+          {
+            if (header->sequence<=status->lastValidRingSequence) {
+              /* late acknowledgement; ignore */
+              //								fdprintf("late ack;g");
 #ifdef DEBUG_NET
-			net_stats.late_acks++;
+              net_stats.late_acks++;
 #endif
-		}
-		else
-		{
-			/* early acknowledgement; wet our pants (this should never happen) */
-			//								fdprintf("early ack (%d>%d);g", header->sequence, status->lastValidRingSequence);
-			assert(false);
-		}
-	}
-}
-break;
+            }
+            else
+            {
+              /* early acknowledgement; wet our pants (this should never happen) */
+              //								fdprintf("early ack (%d>%d);g", header->sequence, status->lastValidRingSequence);
+              assert(false);
+            }
+          }
+        }
+        break;
 
-case tagCHANGE_RING_PACKET:
+      case tagCHANGE_RING_PACKET:
 #ifndef NETWORK_IP
 #ifdef CLASSIC_MAC_NETWORKING
-	status->downringAddress.aNet= packet->sourceAddress.aNet;
-	status->downringAddress.aNode= packet->sourceAddress.aNode;
-	status->downringAddress.aSocket= packet->sourceAddress.aSocket;
+        status->downringAddress.aNet= packet->sourceAddress.aNet;
+        status->downringAddress.aNode= packet->sourceAddress.aNode;
+        status->downringAddress.aSocket= packet->sourceAddress.aSocket;
 #endif
 #else
-	status->downringAddress = packet->sourceAddress;
+        status->downringAddress = packet->sourceAddress;
 #endif
 
 #ifdef DEBUG_NET
-	net_stats.change_ring_packet_count++;
+        net_stats.change_ring_packet_count++;
 #endif
-	//					fdprintf("got change ring packet %d;g", header->sequence);
+      //					fdprintf("got change ring packet %d;g", header->sequence);
 
-	/* fall through to tagRING_PACKET */
+      /* fall through to tagRING_PACKET */
 
-case tagRING_PACKET:
-	if(status->acceptRingPackets)
-	{
+      case tagRING_PACKET:
+        if(status->acceptRingPackets) {
 #ifndef NETWORK_IP
 #ifdef CLASSIC_MAC_NETWORKING
-		if (/* packet->sourceAddress.aNet == status->downringAddress.aNet && */
-			sRingPreferences.mAcceptPacketsFromAnyone ||
-			(packet->sourceAddress.aNode == status->downringAddress.aNode &&
-    packet->sourceAddress.aSocket == status->downringAddress.aSocket))
+          if (      /* packet->sourceAddress.aNet == status->downringAddress.aNet && */
+            sRingPreferences.mAcceptPacketsFromAnyone ||
+            (packet->sourceAddress.aNode == status->downringAddress.aNode &&
+             packet->sourceAddress.aSocket == status->downringAddress.aSocket))
 #else
-if (0)	// LP: kludge to get it to compile
+          if (0) // LP: kludge to get it to compile
 #endif
 #else
 // LP: kludge to get it to compile
-if (sRingPreferences.mAcceptPacketsFromAnyone ||
-    (packet->sourceAddress.host == status->downringAddress.host &&
-     packet->sourceAddress.port == status->downringAddress.port))
+          if (sRingPreferences.mAcceptPacketsFromAnyone ||
+              (packet->sourceAddress.host == status->downringAddress.host &&
+               packet->sourceAddress.port == status->downringAddress.port))
 #endif
-{
-	if (header->sequence <= status->lastValidRingSequence)
-	{
+          {
+            if (header->sequence <= status->lastValidRingSequence) {
 #ifdef DEBUG_NET
-								{
-                                                                        // Log what we saw
-                                                                        NetPacket	packet_data_storage;
-                                                                        NetPacket*	packet_data		= &packet_data_storage;
-                                                                        NetPacket_NET*	packet_data_NET		= (NetPacket_NET*)
-										(packet->datagramData + sizeof(NetPacketHeader_NET));
+              {
+                // Log what we saw
+                NetPacket packet_data_storage;
+                NetPacket*      packet_data             = &packet_data_storage;
+                NetPacket_NET*  packet_data_NET         = (NetPacket_NET*)
+                                                          (packet->datagramData
+                                                           + sizeof(
+                                                             NetPacketHeader_NET));
 
-                                                                        netcpy(packet_data, packet_data_NET);
+                netcpy(packet_data, packet_data_NET);
 
-									//NetPacketPtr packet_data= (NetPacketPtr) (packet->datagramData+sizeof(NetPacketHeader));
+                //NetPacketPtr packet_data= (NetPacketPtr) (packet->datagramData+sizeof(NetPacketHeader));
 
-									switch(packet_data->ring_packet_type)
-									{
-										case typeUNSYNC_RING_PACKET:
-											net_stats.late_unsync_rings++;
-											break;
+                switch(packet_data->ring_packet_type)
+                {
+                case typeUNSYNC_RING_PACKET:
+                  net_stats.late_unsync_rings++;
+                  break;
 
-										case typeSYNC_RING_PACKET:
-											net_stats.late_sync_rings++;
-											break;
+                case typeSYNC_RING_PACKET:
+                  net_stats.late_sync_rings++;
+                  break;
 
-										case typeTIME_RING_PACKET:
-											net_stats.late_time_rings++;
-											break;
+                case typeTIME_RING_PACKET:
+                  net_stats.late_time_rings++;
+                  break;
 
-										case typeNORMAL_RING_PACKET:
-											net_stats.late_rings++;
-											break;
+                case typeNORMAL_RING_PACKET:
+                  net_stats.late_rings++;
+                  break;
 
-										case typeDEAD_PACKET:
-											net_stats.late_dead_rings++;
-											break;
+                case typeDEAD_PACKET:
+                  net_stats.late_dead_rings++;
+                  break;
 
-										default:
-											assert(false);
-											break;
-									}
-								}
+                default:
+                  assert(false);
+                  break;
+                }
+              }
 #endif // DEBUG_NET
-		/* late ring packet; acknowledge but ignore */
-		NetSendAcknowledgement(ackFrame, header->sequence);
-		//							fdprintf("late ring (%d<=%d);g", header->sequence, status->lastValidRingSequence);
-	} // sequence <= lastValidRingSequence
-	else
-	{
-		/* on-time or early ring packet */
-		//							fdprintf("Got ring.;g");
-  //							fdprintf("on-time ring %p (%d bytes);dm #%d #%d;g", packet, packet->datagramSize, packet->datagramData, packet->datagramSize);
+              /* late ring packet; acknowledge but ignore */
+              NetSendAcknowledgement(ackFrame, header->sequence);
+              //							fdprintf("late ring (%d<=%d);g", header->sequence, status->lastValidRingSequence);
+            } // sequence <= lastValidRingSequence
+            else
+            {
+              /* on-time or early ring packet */
+              //							fdprintf("Got ring.;g");
+              //							fdprintf("on-time ring %p (%d bytes);dm #%d #%d;g", packet, packet->datagramSize, packet->datagramData, packet->datagramSize);
 
-		/* process remote actions, add our local actions, build ringFrame for sending */
-		NetProcessIncomingBuffer(packet->datagramData+sizeof(NetPacketHeader_NET),
-			   packet->datagramSize-sizeof(NetPacketHeader_NET), header->sequence);
-	}
-} // came from expected source
+              /* process remote actions, add our local actions, build ringFrame for sending */
+              NetProcessIncomingBuffer(
+                packet->datagramData+
+                sizeof(NetPacketHeader_NET),
+                packet->datagramSize-
+                sizeof(NetPacketHeader_NET),
+                header->sequence);
+            }
+          } // came from expected source
 /* Note that I ignore packets from an unknown source. There's a valid reason that we could get
-* them. Imagine a ring with 3+ players. A->B->C->...->A. Player B sends to C, and crashes before
-* getting the ack. but it's not a fatal crash. (macsbug warning...) C sends an ack though and
-* forwards the packet. within 2 seconds, A drops B from the game. B recovers from the crash
-* and says "Whoa! I didn't get an ack from C, let's resend". Then C gets a packet from the
-* wrong person. (Note that time didn't pass for B while in macsbug, that's why he didn't just drop
-		 * c from the game) */
+ * them. Imagine a ring with 3+ players. A->B->C->...->A. Player B sends to C, and crashes before
+ * getting the ack. but it's not a fatal crash. (macsbug warning...) C sends an ack though and
+ * forwards the packet. within 2 seconds, A drops B from the game. B recovers from the crash
+ * and says "Whoa! I didn't get an ack from C, let's resend". Then C gets a packet from the
+ * wrong person. (Note that time didn't pass for B while in macsbug, that's why he didn't just drop
+ * c from the game) */
 /* Come to think of it, B could have had a fatal crash. He goes into macsbug with an assert, then
-* when he comes out, the network code hasn't been halted quite yet, so everything still happens
-* for a moment. */
-else
-{
+ * when he comes out, the network code hasn't been halted quite yet, so everything still happens
+ * for a moment. */
+          else
+          {
 #ifdef DEBUG_NET
-	net_stats.packets_from_the_unknown++;
+            net_stats.packets_from_the_unknown++;
 #endif
-	//						fdprintf("packet from unknown source %8x!=%8x.;g;", *((long*)&packet->sourceAddress), *((long*)&status->downringAddress));
-}
-	} // accept_ring_packets
-break;
+            //						fdprintf("packet from unknown source %8x!=%8x.;g;", *((long*)&packet->sourceAddress), *((long*)&status->downringAddress));
+          }
+        } // accept_ring_packets
+        break;
 // (was tagRING_PACKET, or tagRING_CHANGE_PACKET)
 
-default:
-	assert(false);
-	break;
-			} // switch(header->tag)
-		} // packet seems legitimate (correct protocolType and size)
-	} // accept_packets
+      default:
+        assert(false);
+        break;
+      }                   // switch(header->tag)
+    }             // packet seems legitimate (correct protocolType and size)
+  }       // accept_packets
 
-already_here= false;
+  already_here= false;
 } // NetDDPPacketHandler
 
 
@@ -1127,791 +1144,830 @@ already_here= false;
 // i.e., call the distribution function registered earlier, and ship the datagram along
 // upring (unless upring is the one who sent it).
 static void NetProcessLossyDistribution(
-					void *buffer)
+  void *buffer)
 {
-	short                     	type;
+  short type;
 
-        // ZZZ: convert from NET format
-        NetDistributionPacket_NET*	packet_data_NET	= (NetDistributionPacket_NET*) buffer;
-	NetDistributionPacketPtr  	packet_data	= (NetDistributionPacketPtr) (unpackedReceiveBuffer + sizeof(NetPacketHeader));
+  // ZZZ: convert from NET format
+  NetDistributionPacket_NET*      packet_data_NET =
+    (NetDistributionPacket_NET*) buffer;
+  NetDistributionPacketPtr packet_data     =
+    (NetDistributionPacketPtr) (unpackedReceiveBuffer + sizeof(NetPacketHeader));
 
-        netcpy(packet_data, packet_data_NET);
+  netcpy(packet_data, packet_data_NET);
 
-	type = packet_data->distribution_type;
+  type = packet_data->distribution_type;
 
-        // Act upon the data, if possible
-	const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
-	
-	if (theInfo != NULL)
-	{
-		theInfo->distribution_proc(((char*) buffer) + sizeof(NetDistributionPacket_NET), packet_data->data_size,
-				     packet_data->first_player_index);
-        }
+  // Act upon the data, if possible
+  const NetDistributionInfo* theInfo = NetGetDistributionInfoForType(type);
 
-        // Should we pass the data on around the ring?
-        // ZZZ: this used to only happen if the type_in_use was set, above.  I think we have an
-        // obligation to pass the data along to others: even if _we_ don't know what to do with it,
-        // someone else might.
-        if (packet_data->first_player_index != status->upringPlayerIndex)
-        {
-                // ZZZ: set up for conversion to NET format
-                NetPacketHeader_NET*		header_NET;
-                NetPacketHeader			header_storage;
-                NetPacketHeaderPtr        	header			= &header_storage;
+  if (theInfo != NULL) {
+    theInfo->distribution_proc(
+      ((char*) buffer) +
+      sizeof(NetDistributionPacket_NET),
+      packet_data->data_size,
+      packet_data->first_player_index);
+  }
 
-                // fill in data
-                distributionFrame->data_size = sizeof(NetPacketHeader_NET) + sizeof(NetDistributionPacket_NET) + packet_data->data_size;
+  // Should we pass the data on around the ring?
+  // ZZZ: this used to only happen if the type_in_use was set, above.  I think we have an
+  // obligation to pass the data along to others: even if _we_ don't know what to do with it,
+  // someone else might.
+  if (packet_data->first_player_index != status->upringPlayerIndex) {
+    // ZZZ: set up for conversion to NET format
+    NetPacketHeader_NET*            header_NET;
+    NetPacketHeader header_storage;
+    NetPacketHeaderPtr header                  = &header_storage;
 
-                header->tag = tagLOSSY_DISTRIBUTION;
-                header->sequence = 0;
+    // fill in data
+    distributionFrame->data_size = sizeof(NetPacketHeader_NET) +
+                                   sizeof(NetDistributionPacket_NET) +
+                                   packet_data->data_size;
 
-                // do the conversion
-                header_NET = (NetPacketHeader_NET*) distributionFrame->data;
-                netcpy(header_NET, header);
+    header->tag = tagLOSSY_DISTRIBUTION;
+    header->sequence = 0;
 
-                // (conversion complete)
+    // do the conversion
+    header_NET = (NetPacketHeader_NET*) distributionFrame->data;
+    netcpy(header_NET, header);
 
-                // copy in distribution data (raw, since we don't know what it is)
-                memcpy(distributionFrame->data + sizeof(NetPacketHeader_NET),
-		       buffer,
-		       sizeof(NetDistributionPacket_NET) + packet_data->data_size);
+    // (conversion complete)
 
-                NetDDPSendFrame(distributionFrame, &status->upringAddress, kPROTOCOL_TYPE, ddpSocket);
-        }
+    // copy in distribution data (raw, since we don't know what it is)
+    memcpy(distributionFrame->data + sizeof(NetPacketHeader_NET),
+           buffer,
+           sizeof(NetDistributionPacket_NET) + packet_data->data_size);
+
+    NetDDPSendFrame(distributionFrame, &status->upringAddress, kPROTOCOL_TYPE,
+                    ddpSocket);
+  }
 } // NetProcessLossyDistribution
 
 /*
- ------------------------
- NetProcessIncomingBuffer
- ------------------------
+   ------------------------
+   NetProcessIncomingBuffer
+   ------------------------
 
- this function queues flags from remote players, adds the local player’s latest command (thus
-											 modifying the buffer in place), calls NetBuildRingPacket to set up ringFrame based on this new
- data and then returns.
+   this function queues flags from remote players, adds the local player’s latest command (thus
+                                                                                         modifying the buffer in place), calls NetBuildRingPacket to set up ringFrame based on this new
+   data and then returns.
  */
 
 /* •••• Marathon Specific Code (some of it, anyway) •••• */
 static void NetProcessIncomingBuffer(
-				     void *buffer,
-				     int32 buffer_size,
-				     int32 sequence)
+  void *buffer,
+  int32 buffer_size,
+  int32 sequence)
 {
-        // ZZZ: convert from _NET format
-        NetPacket*	packet_data		= (NetPacket*) (unpackedReceiveBuffer + sizeof(NetPacketHeader));
-        NetPacket_NET*	packet_data_NET		= (NetPacket_NET*) buffer;
+  // ZZZ: convert from _NET format
+  NetPacket*      packet_data             =
+    (NetPacket*) (unpackedReceiveBuffer + sizeof(NetPacketHeader));
+  NetPacket_NET*  packet_data_NET         = (NetPacket_NET*) buffer;
 
-        netcpy(packet_data, packet_data_NET);
+  netcpy(packet_data, packet_data_NET);
 
 #ifdef DEBUG_NET_RECORD_PROFILE
-        record_profile(packet_data->required_action_flags);
+  record_profile(packet_data->required_action_flags);
 #endif
 
 #if defined(NETWORK_ADAPTIVE_LATENCY_2) || defined(NETWORK_ADAPTIVE_LATENCY_3)
-        // ZZZ: this is the only spot we sample/adjust our adaptive_latency_2 (or 3): when we've received a valid ring packet.
-        // We sample the server's required_action_flags (set to its SizeofLocalQueue before sent) as that should be a
-        // good indicator of actual ring latency.
-        update_adaptive_latency(packet_data->required_action_flags, packet_data->server_net_time);
+  // ZZZ: this is the only spot we sample/adjust our adaptive_latency_2 (or 3): when we've received a valid ring packet.
+  // We sample the server's required_action_flags (set to its SizeofLocalQueue before sent) as that should be a
+  // good indicator of actual ring latency.
+  update_adaptive_latency(packet_data->required_action_flags,
+                          packet_data->server_net_time);
 #endif
 
-        // ZZZ: copy (byte-swapped) the action_flags into the unpacked buffer.
-        netcpy(&packet_data->action_flags[0], (uint32*) (((char*) buffer) + sizeof(NetPacket_NET)), NetPacketSize(packet_data));
+  // ZZZ: copy (byte-swapped) the action_flags into the unpacked buffer.
+  netcpy(&packet_data->action_flags[0],
+         (uint32*) (((char*) buffer) + sizeof(NetPacket_NET)),
+         NetPacketSize(packet_data));
 
-	short packet_tag= NONE;
-	int32 previous_lastValidRingSequence= status->lastValidRingSequence;
+  short packet_tag= NONE;
+  int32 previous_lastValidRingSequence= status->lastValidRingSequence;
 
-	status->server_player_index= packet_data->server_player_index;
+  status->server_player_index= packet_data->server_player_index;
 
-	/* remember this as the last valid ring sequence we received (set it now so we can send sequence+1) */
-	status->lastValidRingSequence= sequence;
-	status->ringPacketCount+= 1;
+  /* remember this as the last valid ring sequence we received (set it now so we can send sequence+1) */
+  status->lastValidRingSequence= sequence;
+  status->ringPacketCount+= 1;
 
-	switch(packet_data->ring_packet_type)
-	{
-		case typeSYNC_RING_PACKET:
-			/* We sent this out to start the game, and now it has made it back to us. */
-			/* This means that we are ready to start. */
-			if (status->iAmTheServer)
-			{
-				packet_data->ring_packet_type= typeTIME_RING_PACKET;
-				// I hearby declare that time starts now! Let There Be Light!
-    //				packet_data->server_net_time= 0;
-    //				status->localNetTime= 0;
-    //				packet_data->server_net_time= dynamic_world->tick_count;
-    //				status->localNetTime= dynamic_world->tick_count;
+  switch(packet_data->ring_packet_type)
+  {
+  case typeSYNC_RING_PACKET:
+    /* We sent this out to start the game, and now it has made it back to us. */
+    /* This means that we are ready to start. */
+    if (status->iAmTheServer) {
+      packet_data->ring_packet_type= typeTIME_RING_PACKET;
+      // I hearby declare that time starts now! Let There Be Light!
+      //				packet_data->server_net_time= 0;
+      //				status->localNetTime= 0;
+      //				packet_data->server_net_time= dynamic_world->tick_count;
+      //				status->localNetTime= dynamic_world->tick_count;
 
-				if(serverTMTask)
-				{
-					/* This can only happen if we are resyncing for a changed level */
-					myTMReset(serverTMTask);
-				} else {
-					serverTMTask= myXTMSetup(1000/TICKS_PER_SECOND, NetServerTask);
-				}
-			}
-			/* else forward immediately. */
-			break;
+      if(serverTMTask) {
+        /* This can only happen if we are resyncing for a changed level */
+        myTMReset(serverTMTask);
+      }
+      else {
+        serverTMTask= myXTMSetup(1000/TICKS_PER_SECOND, NetServerTask);
+      }
+    }
+    /* else forward immediately. */
+    break;
 
-		case typeTIME_RING_PACKET:
-			*sNetStatePtr= netActive; // we are live!
-			if (status->iAmTheServer)
-			{
-				/* We have completed the sequence, and got our time packet back */
-				packet_data->ring_packet_type= typeNORMAL_RING_PACKET;
-			}
-				else // the server tells us that now is the beginning of time.
-				{
-					//				status->localNetTime= 0;
-     //				status->localNetTime= packet_data->server_net_time;
+  case typeTIME_RING_PACKET:
+    *sNetStatePtr= netActive;                     // we are live!
+    if (status->iAmTheServer) {
+      /* We have completed the sequence, and got our time packet back */
+      packet_data->ring_packet_type= typeNORMAL_RING_PACKET;
+    }
+    else                             // the server tells us that now is the beginning of time.
+    {
+      //				status->localNetTime= 0;
+      //				status->localNetTime= packet_data->server_net_time;
 
-					if(queueingTMTask)
-					{
-						/* This can only happen if we are resyncing for a changed level */
-						myTMReset(queueingTMTask);
-					} else {
-						queueingTMTask= myXTMSetup(1000/TICKS_PER_SECOND, NetQueueingTask);
-					}
-				}
-				break;
+      if(queueingTMTask) {
+        /* This can only happen if we are resyncing for a changed level */
+        myTMReset(queueingTMTask);
+      }
+      else {
+        queueingTMTask= myXTMSetup(1000/TICKS_PER_SECOND, NetQueueingTask);
+      }
+    }
+    break;
 
-		case typeNORMAL_RING_PACKET:
-			break;
+  case typeNORMAL_RING_PACKET:
+    break;
 
-		case typeUNSYNC_RING_PACKET:
-			/* We sent this out to end the game, and now it has made it back to us. */
-			/* This means that we are ready to exit. */
-			if(*sNetStatePtr==netComingDown)
-			{
+  case typeUNSYNC_RING_PACKET:
+    /* We sent this out to end the game, and now it has made it back to us. */
+    /* This means that we are ready to exit. */
+    if(*sNetStatePtr==netComingDown) {
 #ifdef DEBUG_NET
-				//				fdprintf("Got an unsync packet.. (%d);g", net_stats.action_flags_processed);
-				net_stats.unsync_while_coming_down++;
+      //				fdprintf("Got an unsync packet.. (%d);g", net_stats.action_flags_processed);
+      net_stats.unsync_while_coming_down++;
 #endif
-				status->acceptRingPackets= false;
-				if(status->iAmTheServer)
-				{
+      status->acceptRingPackets= false;
+      if(status->iAmTheServer) {
 #ifdef DEBUG_NET
-					//					fdprintf("Unsync returned to sender. Going down;g");
-					net_stats.unsync_returned_to_sender++;
+        //					fdprintf("Unsync returned to sender. Going down;g");
+        net_stats.unsync_returned_to_sender++;
 #endif
-					packet_data->ring_packet_type= typeDEAD_PACKET;
-				}
-			}
+        packet_data->ring_packet_type= typeDEAD_PACKET;
+      }
+    }
 #ifdef DEBUG_NET
-			else
-			{
-				//				fdprintf("Got a spurious unsync packet...;g");
-				net_stats.spurious_unsyncs++;
-			}
+    else
+    {
+      //				fdprintf("Got a spurious unsync packet...;g");
+      net_stats.spurious_unsyncs++;
+    }
 #endif
-			break;
+    break;
 
-		default:
-			assert(false);
-			break;
-	}
+  default:
+    assert(false);
+    break;
+  }
 
-	switch(packet_data->ring_packet_type)
-	{
-		case typeSYNC_RING_PACKET:
-		case typeTIME_RING_PACKET:
-			NetBuildRingPacket(ringFrame, (unsigned char *)packet_data, NetPacketSize(packet_data), status->lastValidRingSequence+1);
-			/* We acknowledge just before sending the ring frame.... */
-			NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
-			NetSendRingPacket(ringFrame);
-			break;
+  switch(packet_data->ring_packet_type)
+  {
+  case typeSYNC_RING_PACKET:
+  case typeTIME_RING_PACKET:
+    NetBuildRingPacket(ringFrame, (unsigned char *)packet_data,
+                       NetPacketSize(
+                         packet_data), status->lastValidRingSequence+1);
+    /* We acknowledge just before sending the ring frame.... */
+    NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
+    NetSendRingPacket(ringFrame);
+    break;
 
-		case typeUNSYNC_RING_PACKET:
-			/* Don't ack it unless we did something with it.  They will spam us with them and then */
-			/*  time out. (important if one machine is slower than the others. */
-			if(*sNetStatePtr==netComingDown)
-			{
-				NetBuildRingPacket(ringFrame, (unsigned char *)packet_data, NetPacketSize(packet_data), status->lastValidRingSequence+1);
+  case typeUNSYNC_RING_PACKET:
+    /* Don't ack it unless we did something with it.  They will spam us with them and then */
+    /*  time out. (important if one machine is slower than the others. */
+    if(*sNetStatePtr==netComingDown) {
+      NetBuildRingPacket(ringFrame, (unsigned char *)packet_data,
+                         NetPacketSize(
+                           packet_data), status->lastValidRingSequence+1);
 
-				NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
-				NetSendRingPacket(ringFrame);
-			} else {
-				/* Got it but ignored it.  lastValidRingSequence should be reset to what it was before. */
-				status->lastValidRingSequence= previous_lastValidRingSequence;
-			}
-			break;
+      NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
+      NetSendRingPacket(ringFrame);
+    }
+    else {
+      /* Got it but ignored it.  lastValidRingSequence should be reset to what it was before. */
+      status->lastValidRingSequence= previous_lastValidRingSequence;
+    }
+    break;
 
-		case typeNORMAL_RING_PACKET:
-			process_packet_buffer_flags(packet_data, buffer_size, packet_tag);
-			break;
+  case typeNORMAL_RING_PACKET:
+    process_packet_buffer_flags(packet_data, buffer_size, packet_tag);
+    break;
 
-		case typeDEAD_PACKET:
-			/* The buck stops here (after acknowledging it). */
-			NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
-			break;
+  case typeDEAD_PACKET:
+    /* The buck stops here (after acknowledging it). */
+    NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
+    break;
 
-		default:
-			assert(false);
-			break;
-	}
+  default:
+    assert(false);
+    break;
+  }
 } // NetProcessIncomingBuffer
 
 
 static void NetAddFlagsToPacket(
-				NetPacketPtr packet)
+  NetPacketPtr packet)
 {
-	uint32 *action_flags;
-	short player_index;
-	short action_flag_index;
-	static bool already_here = false;
+  uint32 *action_flags;
+  short player_index;
+  short action_flag_index;
+  static bool already_here = false;
 #ifdef NETWORK_USE_RECENT_FLAGS
-	short extra_flags;
+  short extra_flags;
 #endif
 
-	assert(already_here == false);
-	already_here= true;
+  assert(already_here == false);
+  already_here= true;
 
-	vwarn(packet->required_action_flags >= 0 && packet->required_action_flags <= MAXIMUM_UPDATES_PER_PACKET,
-       csprintf(temporary, "the server asked for %d flags.  bastard.  fucking ram doubler.", packet->required_action_flags));
+  vwarn(
+    packet->required_action_flags >= 0 && packet->required_action_flags <=
+    MAXIMUM_UPDATES_PER_PACKET,
+    csprintf(temporary,
+             "the server asked for %d flags.  bastard.  fucking ram doubler.",
+             packet->required_action_flags));
 
-	// figure out where our action flags are.
-	action_flags= packet->action_flags;
-	for (player_index= 0; player_index<localPlayerIndex; player_index++)
-	{
-		vwarn(packet->action_flag_count[player_index] >= -1 && packet->action_flag_count[player_index] <= MAXIMUM_UPDATES_PER_PACKET,
-	csprintf(temporary, "action_flag_count[%d] = %d", player_index, packet->action_flag_count[player_index]));
+  // figure out where our action flags are.
+  action_flags= packet->action_flags;
+  for (player_index= 0; player_index<localPlayerIndex; player_index++)
+  {
+    vwarn(
+      packet->action_flag_count[player_index] >= -1 &&
+      packet->action_flag_count[player_index] <= MAXIMUM_UPDATES_PER_PACKET,
+      csprintf(temporary, "action_flag_count[%d] = %d", player_index,
+               packet->action_flag_count[player_index]));
 
-		if (packet->action_flag_count[player_index] != NET_DEAD_ACTION_FLAG_COUNT) // player is net dead
-		{
-			action_flags += packet->action_flag_count[player_index];
-		}
-	}
+    if (packet->action_flag_count[player_index] !=
+        NET_DEAD_ACTION_FLAG_COUNT) {                                                      // player is net dead
+      action_flags += packet->action_flag_count[player_index];
+    }
+  }
 
-	/* readjust the packet if the required action flag doesn't equal the action flag count */
-	/*  for me and I am not the last player (if I am the last, I can just overflow.. */
-	if (packet->required_action_flags != packet->action_flag_count[localPlayerIndex]
-     && localPlayerIndex != topology->player_count - 1)
-	{
-		short count= 0;
+  /* readjust the packet if the required action flag doesn't equal the action flag count */
+  /*  for me and I am not the last player (if I am the last, I can just overflow.. */
+  if (packet->required_action_flags !=
+      packet->action_flag_count[localPlayerIndex]
+      && localPlayerIndex != topology->player_count - 1) {
+    short count= 0;
 
 #ifdef DEBUG_NET
-		net_stats.numCountChanges++;
+    net_stats.numCountChanges++;
 #endif
-		for (player_index= localPlayerIndex+1; player_index<topology->player_count; player_index++)
-		{
-			if (packet->action_flag_count[player_index] != NET_DEAD_ACTION_FLAG_COUNT) // player is net dead.
-			{
-				count+= packet->action_flag_count[player_index];
-			}
-		}
+    for (player_index= localPlayerIndex+1; player_index<topology->player_count;
+         player_index++)
+    {
+      if (packet->action_flag_count[player_index] !=
+          NET_DEAD_ACTION_FLAG_COUNT) {                                                            // player is net dead.
+        count+= packet->action_flag_count[player_index];
+      }
+    }
 
-		vassert(count>=0 && count<=(MAXIMUM_UPDATES_PER_PACKET * MAXIMUM_NUMBER_OF_NETWORK_PLAYERS),
-	  csprintf(temporary, "bad count. count = %d. packet:; dm #%p", count, ((byte*)packet)-sizeof(NetPacketHeader)));
+    vassert(count>=0 && count<=
+            (MAXIMUM_UPDATES_PER_PACKET * MAXIMUM_NUMBER_OF_NETWORK_PLAYERS),
+            csprintf(temporary, "bad count. count = %d. packet:; dm #%p", count,
+                     ((byte*)packet)-sizeof(NetPacketHeader)));
 
-                // ZZZ: potential very sneaky bug: memcpy is not required to correctly handle overlapping copies, and
-                // I think we probably have an overlapping copy here.  memmove it is.
-		//		memcpy(action_flags + packet->required_action_flags, action_flags + packet->action_flag_count[localPlayerIndex], count * sizeof(uint32));
-		memmove(action_flags + packet->required_action_flags, action_flags + packet->action_flag_count[localPlayerIndex], count * sizeof(uint32));
-		//BlockMove(action_flags + packet->action_flag_count[localPlayerIndex],
-		//	action_flags + packet->required_action_flags,
-		//	count * sizeof(int32));
-	}
+    // ZZZ: potential very sneaky bug: memcpy is not required to correctly handle overlapping copies, and
+    // I think we probably have an overlapping copy here.  memmove it is.
+    //		memcpy(action_flags + packet->required_action_flags, action_flags + packet->action_flag_count[localPlayerIndex], count * sizeof(uint32));
+    memmove(action_flags + packet->required_action_flags, action_flags +
+            packet->action_flag_count[localPlayerIndex],
+            count * sizeof(uint32));
+    //BlockMove(action_flags + packet->action_flag_count[localPlayerIndex],
+    //	action_flags + packet->required_action_flags,
+    //	count * sizeof(int32));
+  }
 
 #ifdef DEBUG_NET
-	if(packet->required_action_flags==0) net_stats.packets_with_zero_flags++;
+  if(packet->required_action_flags==0) {
+    net_stats.packets_with_zero_flags++;
+  }
 #endif
 
-#ifndef	NETWORK_SMARTER_FLAG_DITCHING
-#ifdef	NETWORK_USE_RECENT_FLAGS
-        // ZZZ change: ditch older flags first, send newer flags.  I think this will "feel" better to players.
-        // Consider: if we have too many flags, that probably means there was a "burp" somewhere along the line
-        // that held up the ring packet.  We have already had to freeze our animation (since we didn't have enough
-        // information to proceed) - the extra flags were accumulated during that freeze.  Wouldn't you want your
-        // actions following the freeze to reflect what you were doing at the end of the freeze, not at the beginning?
-        // Or, look at it this way: if you keep the early flags but throw away the later ones, you've added latency
-        // (at least for those few flags that do get sent along) between the player's inputs and his screen updates.
-        extra_flags = NetSizeofLocalQueue() - packet->required_action_flags;
-        while(extra_flags-- > 0) {
-		local_queue.read_index++;
-		if (local_queue.read_index >= NET_QUEUE_SIZE) local_queue.read_index= 0;
-	}
-        // end of that change
+#ifndef NETWORK_SMARTER_FLAG_DITCHING
+#ifdef  NETWORK_USE_RECENT_FLAGS
+  // ZZZ change: ditch older flags first, send newer flags.  I think this will "feel" better to players.
+  // Consider: if we have too many flags, that probably means there was a "burp" somewhere along the line
+  // that held up the ring packet.  We have already had to freeze our animation (since we didn't have enough
+  // information to proceed) - the extra flags were accumulated during that freeze.  Wouldn't you want your
+  // actions following the freeze to reflect what you were doing at the end of the freeze, not at the beginning?
+  // Or, look at it this way: if you keep the early flags but throw away the later ones, you've added latency
+  // (at least for those few flags that do get sent along) between the player's inputs and his screen updates.
+  extra_flags = NetSizeofLocalQueue() - packet->required_action_flags;
+  while(extra_flags-- > 0) {
+    local_queue.read_index++;
+    if (local_queue.read_index >= NET_QUEUE_SIZE) {
+      local_queue.read_index= 0;
+    }
+  }
+  // end of that change
 #endif // NETWORK_USE_RECENT_FLAGS
 #endif // !NETWORK_SMARTER_FLAG_DITCHING
 
-	// plug in our action flags.
-	for (action_flag_index= 0; action_flag_index<packet->required_action_flags; action_flag_index++)
-	{
-		if (local_queue.read_index != local_queue.write_index)
-		{
-			action_flags[action_flag_index] = local_queue.buffer[local_queue.read_index];
-			local_queue.read_index++;
-			if (local_queue.read_index >= NET_QUEUE_SIZE) local_queue.read_index = 0;
-		}
-		else // we unfortunately need to smear.
-		{
-			action_flags[action_flag_index]= parse_keymap();
+  // plug in our action flags.
+  for (action_flag_index= 0; action_flag_index<packet->required_action_flags;
+       action_flag_index++)
+  {
+    if (local_queue.read_index != local_queue.write_index) {
+      action_flags[action_flag_index] =
+        local_queue.buffer[local_queue.read_index];
+      local_queue.read_index++;
+      if (local_queue.read_index >= NET_QUEUE_SIZE) {
+        local_queue.read_index = 0;
+      }
+    }
+    else             // we unfortunately need to smear.
+    {
+      action_flags[action_flag_index]= parse_keymap();
 #ifdef NETWORK_FAUX_QUEUE
-                        // ZZZ: faux queue mechanism to handle jittery scheduling
-                        faux_queue_due++;
+      // ZZZ: faux queue mechanism to handle jittery scheduling
+      faux_queue_due++;
 #endif
 #ifdef DEBUG_NET
-			net_stats.numSmears++;
+      net_stats.numSmears++;
 #endif
-		}
-	}
+    }
+  }
 
-#ifdef	NETWORK_SMARTER_FLAG_DITCHING
-        int leftover_flags = NetSizeofLocalQueue();
+#ifdef  NETWORK_SMARTER_FLAG_DITCHING
+  int leftover_flags = NetSizeofLocalQueue();
 
-        // If no leftover flags, reset the counter.
-        if(leftover_flags == 0)
-		sFlagDitchingCounter = 0;
+  // If no leftover flags, reset the counter.
+  if(leftover_flags == 0) {
+    sFlagDitchingCounter = 0;
+  }
 
-        // Otherwise, increment the counter.  Inc it faster if there are more leftovers.
-        else
-		sFlagDitchingCounter += leftover_flags;
+  // Otherwise, increment the counter.  Inc it faster if there are more leftovers.
+  else{
+    sFlagDitchingCounter += leftover_flags;
+  }
 
-        // If we've crossed the threshhold, we've got some flags that are just taking up space (and time!).
-        // Ditch one, and reset the counter.  Note that as long as kFlagDitchingThreshhold is positive
-        // (should be!), there must be at least one flag in the queue now, or else sFlagDitchingCounter
-        // would have been reset above.
-        if(sFlagDitchingCounter >= kFlagDitchingThreshhold) {
-		local_queue.read_index++;
+  // If we've crossed the threshhold, we've got some flags that are just taking up space (and time!).
+  // Ditch one, and reset the counter.  Note that as long as kFlagDitchingThreshhold is positive
+  // (should be!), there must be at least one flag in the queue now, or else sFlagDitchingCounter
+  // would have been reset above.
+  if(sFlagDitchingCounter >= kFlagDitchingThreshhold) {
+    local_queue.read_index++;
 
-		if(local_queue.read_index >= NET_QUEUE_SIZE)
-			local_queue.read_index = 0;
+    if(local_queue.read_index >= NET_QUEUE_SIZE) {
+      local_queue.read_index = 0;
+    }
 
-		sFlagDitchingCounter = 0;
-        }
+    sFlagDitchingCounter = 0;
+  }
 
 #else // !NETWORK_SMARTER_FLAG_DITCHING
 
-        // ZZZ: this is the code that (effectively) was moved above
-#ifndef	NETWORK_USE_RECENT_FLAGS
-	// if we're accumulating too many flags, just ditch some to avoid latency
-	// (which we assume is worse than losing a couple of flags)
-	extra_flags= NetSizeofLocalQueue();
-	short flags_to_remove= MIN(extra_flags, status->last_extra_flags);
-	status->last_extra_flags = extra_flags - flags_to_remove;
-	while (flags_to_remove--)
-	{
-		local_queue.read_index++;
-		if (local_queue.read_index >= NET_QUEUE_SIZE) local_queue.read_index= 0;
-	}
+  // ZZZ: this is the code that (effectively) was moved above
+#ifndef NETWORK_USE_RECENT_FLAGS
+  // if we're accumulating too many flags, just ditch some to avoid latency
+  // (which we assume is worse than losing a couple of flags)
+  extra_flags= NetSizeofLocalQueue();
+  short flags_to_remove= MIN(extra_flags, status->last_extra_flags);
+  status->last_extra_flags = extra_flags - flags_to_remove;
+  while (flags_to_remove--)
+  {
+    local_queue.read_index++;
+    if (local_queue.read_index >= NET_QUEUE_SIZE) {
+      local_queue.read_index= 0;
+    }
+  }
 #endif // !NETWORK_USE_RECENT_FLAGS
 
 #endif // !NETWORK_SMARTER_FLAG_DITCHING
 
-	/* Sync the net time... */
-	if (!status->iAmTheServer)
-	{
-		status->localNetTime= packet->server_net_time;
-	}
+  /* Sync the net time... */
+  if (!status->iAmTheServer) {
+    status->localNetTime= packet->server_net_time;
+  }
 
-	// tell everyone that we’re meeting code.
-	packet->action_flag_count[localPlayerIndex]= packet->required_action_flags;
+  // tell everyone that we’re meeting code.
+  packet->action_flag_count[localPlayerIndex]= packet->required_action_flags;
 
-	//	fdprintf("NETPACKET:;dm %x %x;g;", packet, sizeof(NetPacket)+sizeof(long)*2*8);
+  //	fdprintf("NETPACKET:;dm %x %x;g;", packet, sizeof(NetPacket)+sizeof(long)*2*8);
 
-	/* Allow for reentrance into this function */
-	already_here= false;
+  /* Allow for reentrance into this function */
+  already_here= false;
 }
 
 
 
 static size_t NetPacketSize(
-			    NetPacketPtr  packet)
+  NetPacketPtr packet)
 {
-        // ZZZ: "register"... how quaint... I wonder if the compiler they used was really not smart enough on its own?
-        // Welp, doesn't hurt to give hints anyway, we'll leave it.  :)
-	register size_t   size = 0;
-	register short  i;
+  // ZZZ: "register"... how quaint... I wonder if the compiler they used was really not smart enough on its own?
+  // Welp, doesn't hurt to give hints anyway, we'll leave it.  :)
+  register size_t size = 0;
+  register short i;
 
-	/*	ZZZ: should not do this now, data was already converted elsewhere and we've been passed the unpacked version.
-		NetPacket	packet_storage;
-        NetPacket*	packet		= &packet_storage;
+  /*	ZZZ: should not do this now, data was already converted elsewhere and we've been passed the unpacked version.
+          NetPacket	packet_storage;
+     NetPacket*	packet		= &packet_storage;
 
-        netcpy(packet, packet_NET);
-	*/
-	for (i = 0; i < topology->player_count; ++i)
-	{
-		if (packet->action_flag_count[i] != NET_DEAD_ACTION_FLAG_COUNT) // player has become net dead.
-		{
-			assert(packet->action_flag_count[i]>=0&&packet->action_flag_count[i]<=MAXIMUM_UPDATES_PER_PACKET);
-			size += packet->action_flag_count[i] * sizeof(int32);
-		}
-	}
+     netcpy(packet, packet_NET);
+   */
+  for (i = 0; i < topology->player_count; ++i)
+  {
+    if (packet->action_flag_count[i] != NET_DEAD_ACTION_FLAG_COUNT) {           // player has become net dead.
+      assert(
+        packet->action_flag_count[i]>=0&&packet->action_flag_count[i]<=
+        MAXIMUM_UPDATES_PER_PACKET);
+      size += packet->action_flag_count[i] * sizeof(int32);
+    }
+  }
 
-        // ZZZ: CHANGE OF SEMANTICS from Bungie version - this gives only the size of the variable part
-        // of the packet (instead of the variable part + sizeof(NetPacket)).
-        // Since NetPacketSize is ONLY used to compute a size value for calls to NetBuildRingPacket, and
-        // NetBuildRingPacket is ONLY called with a value computed by NetPacketSize, this is safe - I will
-        // alter NetBuildRingPacket to expect this different value.
-	return size;
+  // ZZZ: CHANGE OF SEMANTICS from Bungie version - this gives only the size of the variable part
+  // of the packet (instead of the variable part + sizeof(NetPacket)).
+  // Since NetPacketSize is ONLY used to compute a size value for calls to NetBuildRingPacket, and
+  // NetBuildRingPacket is ONLY called with a value computed by NetPacketSize, this is safe - I will
+  // alter NetBuildRingPacket to expect this different value.
+  return size;
 }
 
 /*
- ----------------------
- NetSendAcknowledgement
- ----------------------
+   ----------------------
+   NetSendAcknowledgement
+   ----------------------
 
-	--> DDPFramePtr (usually ackFrame)   	// ZZZ note: currently, ALWAYS ackFrame.
-	--> sequence to acknowledge		// ZZZ note: always status->lastValidRingSequence EXCEPT when acking a late ring packet.
+        --> DDPFramePtr (usually ackFrame)    // ZZZ note: currently, ALWAYS ackFrame.
+        --> sequence to acknowledge		// ZZZ note: always status->lastValidRingSequence EXCEPT when acking a late ring packet.
 
- always sends the acknowledgement to downringAddress
+   always sends the acknowledgement to downringAddress
 
- ------------------
- NetBuildRingPacket
- ------------------
+   ------------------
+   NetBuildRingPacket
+   ------------------
 
- -----------------
- NetSendRingPacket
- -----------------
+   -----------------
+   NetSendRingPacket
+   -----------------
  */
 
 static void NetSendAcknowledgement(
-				   DDPFramePtr frame,
-				   int32 sequence)
+  DDPFramePtr frame,
+  int32 sequence)
 {
-        NetPacketHeader_NET*	header_NET	= (NetPacketHeader_NET*) frame->data;
-        NetPacketHeader		header_storage;
-        NetPacketHeader*	header		= &header_storage;
+  NetPacketHeader_NET*    header_NET      = (NetPacketHeader_NET*) frame->data;
+  NetPacketHeader header_storage;
+  NetPacketHeader*        header          = &header_storage;
 
-	//	fdprintf("sending ack.;g");
+  //	fdprintf("sending ack.;g");
 
-	/* build the acknowledgement */
-	frame->data_size= sizeof(NetPacketHeader_NET);
-	header->tag= tagACKNOWLEDGEMENT;
-	header->sequence= sequence;
+  /* build the acknowledgement */
+  frame->data_size= sizeof(NetPacketHeader_NET);
+  header->tag= tagACKNOWLEDGEMENT;
+  header->sequence= sequence;
 
-        // (ZZZ) format the ack for the network
-        netcpy(header_NET, header);
+  // (ZZZ) format the ack for the network
+  netcpy(header_NET, header);
 
-	/* send the acknowledgement */
+  /* send the acknowledgement */
 #ifdef NETWORK_IP
-	NetDDPSendFrame(frame, &status->downringAddress, kPROTOCOL_TYPE, ddpSocket);
+  NetDDPSendFrame(frame, &status->downringAddress, kPROTOCOL_TYPE, ddpSocket);
 #endif
 }
 
 /* Only the server can call this... */
 static void NetBuildFirstRingPacket(
-				    DDPFramePtr frame,
-				    int32 sequence)
+  DDPFramePtr frame,
+  int32 sequence)
 {
-	short player_index;
-	NetPacketPtr  data;
+  short player_index;
+  NetPacketPtr data;
 
-        // ZZZ: why doesn't he let this be automatically allocated on the stack?  It's small, and is only needed for
-        // the duration of the function call... well, no changes made, just curious.
-	data = (NetPacketPtr)malloc(sizeof(NetPacket));
-	//data = (NetPacketPtr) NewPtr(sizeof(NetPacket));
-	assert(data);
+  // ZZZ: why doesn't he let this be automatically allocated on the stack?  It's small, and is only needed for
+  // the duration of the function call... well, no changes made, just curious.
+  data = (NetPacketPtr)malloc(sizeof(NetPacket));
+  //data = (NetPacketPtr) NewPtr(sizeof(NetPacket));
+  assert(data);
 
-	data->server_player_index= localPlayerIndex;
-	data->ring_packet_type= typeSYNC_RING_PACKET;
-	data->required_action_flags= UPDATES_PER_PACKET;
+  data->server_player_index= localPlayerIndex;
+  data->ring_packet_type= typeSYNC_RING_PACKET;
+  data->required_action_flags= UPDATES_PER_PACKET;
 
-	/* This is a very important step- the first time the server gets the packet back */
-	/*  it strips flags.  It should not find any... */
-	for (player_index= 0; player_index<topology->player_count; player_index++)
-	{
-		data->action_flag_count[player_index]= 0;
-	}
+  /* This is a very important step- the first time the server gets the packet back */
+  /*  it strips flags.  It should not find any... */
+  for (player_index= 0; player_index<topology->player_count; player_index++)
+  {
+    data->action_flag_count[player_index]= 0;
+  }
 
-	NetBuildRingPacket(frame, (byte *)data, NetPacketSize(data), sequence);
+  NetBuildRingPacket(frame, (byte *)data, NetPacketSize(data), sequence);
 
-	free(data);
-	//DisposePtr((Ptr) data);
+  free(data);
+  //DisposePtr((Ptr) data);
 }
 
 // ZZZ: now, we build a packed (_NET format) ring packet from unpacked source data.
 static void NetBuildRingPacket(
-			       DDPFramePtr frame,
-			       byte *data,
-			       size_t data_size,
-			       int32 sequence)
+  DDPFramePtr frame,
+  byte *data,
+  size_t data_size,
+  int32 sequence)
 {
-        NetPacketHeader		header_storage;
-        NetPacketHeader*	header		= &header_storage;
-	NetPacketHeader_NET*	header_NET	= (NetPacketHeader_NET*) frame->data;
+  NetPacketHeader header_storage;
+  NetPacketHeader*        header          = &header_storage;
+  NetPacketHeader_NET*    header_NET      = (NetPacketHeader_NET*) frame->data;
 
-	/* build the ring packet */
-        // ZZZ: note that data_size is now just the size of the variable-length part (i.e. the action_flags)
-        // so we will add the sizeof both _NET format structures first.
-	assert(sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET) + data_size
-	== static_cast<size_t>(static_cast<short>(sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET) + data_size)));
-	frame->data_size= static_cast<short>(sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET) + data_size);
+  /* build the ring packet */
+  // ZZZ: note that data_size is now just the size of the variable-length part (i.e. the action_flags)
+  // so we will add the sizeof both _NET format structures first.
+  assert(sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET) + data_size
+         == static_cast<size_t>(static_cast<short>(sizeof(NetPacketHeader_NET)
+                                                   + sizeof(NetPacket_NET) +
+                                                   data_size)));
+  frame->data_size=
+    static_cast<short>(sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET) +
+                       data_size);
 
-        // ZZZ: set up our local header buffer's data
-	header->tag= tagRING_PACKET;
-	header->sequence= sequence;
+  // ZZZ: set up our local header buffer's data
+  header->tag= tagRING_PACKET;
+  header->sequence= sequence;
 
-        // ZZZ: changed this check to frame->data_size from just data_size, seems to be more accurate
-	assert(frame->data_size<ddpMaxData);
+  // ZZZ: changed this check to frame->data_size from just data_size, seems to be more accurate
+  assert(frame->data_size<ddpMaxData);
 
-        // ZZZ: copy in the NetPacketHeader_NET stuff from our local buffer.
-        netcpy(header_NET, header);
+  // ZZZ: copy in the NetPacketHeader_NET stuff from our local buffer.
+  netcpy(header_NET, header);
 
-        // ZZZ: copy in the NetPacket_NET structure from the passed-in data.
-        NetPacket*	packet_data	= (NetPacket*) data;
-        NetPacket_NET*	packet_data_NET	= (NetPacket_NET*) (frame->data + sizeof(NetPacketHeader_NET));
+  // ZZZ: copy in the NetPacket_NET structure from the passed-in data.
+  NetPacket*      packet_data     = (NetPacket*) data;
+  NetPacket_NET*  packet_data_NET =
+    (NetPacket_NET*) (frame->data + sizeof(NetPacketHeader_NET));
 
-        netcpy(packet_data_NET, packet_data);
+  netcpy(packet_data_NET, packet_data);
 
-        // ZZZ: I guess this would still do the right thing if netcpy (or memcpy, in some cases) gets 0 for the
-        // length, but to avoid taking that risk and to save a little work, we skip if it there aren't any flags
-        // (like, if we were called from NetBuildFirstRingPacket())
-        if(data_size > 0) {
-		// ZZZ: copy in the action_flags from the unpacked, passed-in data.
-		uint32*		action_flags		= &packet_data->action_flags[0];
-		uint32*		action_flags_NET	= (uint32*) (frame->data + sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET));
+  // ZZZ: I guess this would still do the right thing if netcpy (or memcpy, in some cases) gets 0 for the
+  // length, but to avoid taking that risk and to save a little work, we skip if it there aren't any flags
+  // (like, if we were called from NetBuildFirstRingPacket())
+  if(data_size > 0) {
+    // ZZZ: copy in the action_flags from the unpacked, passed-in data.
+    uint32*         action_flags            = &packet_data->action_flags[0];
+    uint32*         action_flags_NET        =
+      (uint32*) (frame->data + sizeof(NetPacketHeader_NET) +
+                 sizeof(NetPacket_NET));
 
-		netcpy(action_flags_NET, action_flags, data_size);
-        }
+    netcpy(action_flags_NET, action_flags, data_size);
+  }
 }
 
 // ZZZ: fixed to deal with packed (_NET) format
 static void NetRebuildRingPacket(
-				 DDPFramePtr frame,
-				 short tag,
-				 int32 sequence)
+  DDPFramePtr frame,
+  short tag,
+  int32 sequence)
 {
-        NetPacketHeader		header_storage;
-        NetPacketHeader*	header		= &header_storage;
-        NetPacketHeader_NET*	header_NET	= (NetPacketHeader_NET*) frame->data;
-	//	NetPacketHeaderPtr header= (NetPacketHeaderPtr) frame->data;
+  NetPacketHeader header_storage;
+  NetPacketHeader*        header          = &header_storage;
+  NetPacketHeader_NET*    header_NET      = (NetPacketHeader_NET*) frame->data;
+  //	NetPacketHeaderPtr header= (NetPacketHeaderPtr) frame->data;
 
-	header->tag= tag;
-	header->sequence= sequence;
+  header->tag= tag;
+  header->sequence= sequence;
 
-        netcpy(header_NET, header);
+  netcpy(header_NET, header);
 }
 
 static void NetSendRingPacket(
-			      DDPFramePtr frame)
+  DDPFramePtr frame)
 {
-	//	fdprintf("sent frame;g");
+  //	fdprintf("sent frame;g");
 
-	status->retries= 0; // needs to be here, in case retry task was canceled (’cuz it likes to set retries)
-	status->receivedAcknowledgement= false; /* will not be set until we receive an acknowledgement for this packet */
+  status->retries= 0;       // needs to be here, in case retry task was canceled (’cuz it likes to set retries)
+  status->receivedAcknowledgement= false;       /* will not be set until we receive an acknowledgement for this packet */
 
-	if (!resendTMTask)
-	{
-		resendTMTask= myTMSetup(kACK_TIMEOUT, NetCheckResendRingPacket);
-	} else {
-		myTMReset(resendTMTask);
-	}
+  if (!resendTMTask) {
+    resendTMTask= myTMSetup(kACK_TIMEOUT, NetCheckResendRingPacket);
+  }
+  else {
+    myTMReset(resendTMTask);
+  }
 
-	status->canForwardRing= false; /* will not be set unless this task fires without a packet to forward */
-	status->clearToForwardRing= false; /* will not be set until we receive the next valid ring packet but will be irrelevant if serverCanForwardRing is true */
-	// LP: NetAddrBlock is the trouble here
-	NetDDPSendFrame(frame, &status->upringAddress, kPROTOCOL_TYPE, ddpSocket);
+  status->canForwardRing= false;       /* will not be set unless this task fires without a packet to forward */
+  status->clearToForwardRing= false;       /* will not be set until we receive the next valid ring packet but will be irrelevant if serverCanForwardRing is true */
+  // LP: NetAddrBlock is the trouble here
+  NetDDPSendFrame(frame, &status->upringAddress, kPROTOCOL_TYPE, ddpSocket);
 }
 
 /*
- ------------------------
- NetCheckResendRingPacket
- ------------------------
+   ------------------------
+   NetCheckResendRingPacket
+   ------------------------
 
-	(no parameters)
+        (no parameters)
 
- this function is called kACK_TIMEOUT after a ring packet has been sent.  if the ring
- packet has not been acknowledged during this time, it will be resent from within this timer
- task and the task will be requeued to check again in kACK_TIMEOUT.
+   this function is called kACK_TIMEOUT after a ring packet has been sent.  if the ring
+   packet has not been acknowledged during this time, it will be resent from within this timer
+   task and the task will be requeued to check again in kACK_TIMEOUT.
 
  */
 /* Possibly this should check for status->receivedAcknowledgement before !reinstalling.. */
 static bool NetCheckResendRingPacket(
-				     void)
+  void)
 {
-	bool reinstall= (*sNetStatePtr != netDown);
+  bool reinstall= (*sNetStatePtr != netDown);
 
-	if(reinstall)
-	{
-		if (!status->receivedAcknowledgement)
-		{
-			if(++status->retries>=kRETRIES)
-			{
-				switch(*sNetStatePtr)
-				{
-					case netStartingUp:
-						/* There might be several retries as we start up */
-						break;
+  if(reinstall) {
+    if (!status->receivedAcknowledgement) {
+      if(++status->retries>=kRETRIES) {
+        switch(*sNetStatePtr)
+        {
+        case netStartingUp:
+          /* There might be several retries as we start up */
+          break;
 
-					case netComingDown:
+        case netComingDown:
 #ifdef DEBUG_NET
-						fdprintf("Never got confirmation on NetUnsync packet.  They don't love us.");
+          fdprintf(
+            "Never got confirmation on NetUnsync packet.  They don't love us.");
 #endif
-						reinstall= false;
-						status->acceptRingPackets= false;
-						break;
+          reinstall= false;
+          status->acceptRingPackets= false;
+          break;
 
-					default:
-						/* They have been gone too long.. */
-						drop_upring_player();
-						break;
-				}
-			}
+        default:
+          /* They have been gone too long.. */
+          drop_upring_player();
+          break;
+        }
+      }
 
 #ifdef DEBUG_NET
-			// #error need to alter this to work with new (_NET) packet formats, or data will be screwy.
-			{
-				NetPacketPtr packet_data= (NetPacketPtr) (ringFrame->data+sizeof(NetPacketHeader));
-				switch(packet_data->ring_packet_type)
-				{
-					case typeSYNC_RING_PACKET:
-						net_stats.sync_retry_count++;
-						break;
+      // #error need to alter this to work with new (_NET) packet formats, or data will be screwy.
+      {
+        NetPacketPtr packet_data=
+          (NetPacketPtr) (ringFrame->data+sizeof(NetPacketHeader));
+        switch(packet_data->ring_packet_type)
+        {
+        case typeSYNC_RING_PACKET:
+          net_stats.sync_retry_count++;
+          break;
 
-					case typeTIME_RING_PACKET:
-						net_stats.time_retry_count++;
-						break;
+        case typeTIME_RING_PACKET:
+          net_stats.time_retry_count++;
+          break;
 
-					case typeUNSYNC_RING_PACKET:
-						net_stats.unsync_retry_count++;
-						break;
+        case typeUNSYNC_RING_PACKET:
+          net_stats.unsync_retry_count++;
+          break;
 
-					case typeNORMAL_RING_PACKET:
-						net_stats.retry_count++;
-						break;
+        case typeNORMAL_RING_PACKET:
+          net_stats.retry_count++;
+          break;
 
-					case typeDEAD_PACKET:
-						net_stats.dead_retry_count++;
-						break;
+        case typeDEAD_PACKET:
+          net_stats.dead_retry_count++;
+          break;
 
-					default:
-						assert(false);
-						break;
-				}
-			}
+        default:
+          assert(false);
+          break;
+        }
+      }
 #endif
-			/* Resend it.. */
-			// LP: NetAddrBlock is the trouble here
+      /* Resend it.. */
+      // LP: NetAddrBlock is the trouble here
 #ifdef NETWORK_IP
-			NetDDPSendFrame(ringFrame, &status->upringAddress, kPROTOCOL_TYPE, ddpSocket);
+      NetDDPSendFrame(ringFrame, &status->upringAddress, kPROTOCOL_TYPE,
+                      ddpSocket);
 #endif
-		}
-		else
-		{
-			status->retries = 0;
-		}
-	}
+    }
+    else
+    {
+      status->retries = 0;
+    }
+  }
 
-	return reinstall;
+  return reinstall;
 }
 
 static bool NetServerTask(
-			  void)
+  void)
 {
-	short local_queue_size = NetSizeofLocalQueue();
-	bool reinstall= (*sNetStatePtr != netDown);
+  short local_queue_size = NetSizeofLocalQueue();
+  bool reinstall= (*sNetStatePtr != netDown);
 
-	if(reinstall)
-	{
-		/* Call the local net queueing proc.. */
-		if (local_queue_size < MAXIMUM_UPDATES_PER_PACKET)
-		{
-                        // ZZZ: did not put faux queue here since server should be right-on
-			local_queue_size++; // Random voodoo...
-			local_queue.buffer[local_queue.write_index++] = parse_keymap();
-			if (local_queue.write_index >= NET_QUEUE_SIZE)
-				local_queue.write_index = 0;
-			status->localNetTime++;
-		}
+  if(reinstall) {
+    /* Call the local net queueing proc.. */
+    if (local_queue_size < MAXIMUM_UPDATES_PER_PACKET) {
+      // ZZZ: did not put faux queue here since server should be right-on
+      local_queue_size++;                   // Random voodoo...
+      local_queue.buffer[local_queue.write_index++] = parse_keymap();
+      if (local_queue.write_index >= NET_QUEUE_SIZE) {
+        local_queue.write_index = 0;
+      }
+      status->localNetTime++;
+    }
 
 #ifdef NETWORK_ADAPTIVE_LATENCY
-                // ZZZ change: send the packet along if we've covered the current adaptive latency.
-                if(local_queue_size >= sCurrentAdaptiveLatency)
+    // ZZZ change: send the packet along if we've covered the current adaptive latency.
+    if(local_queue_size >= sCurrentAdaptiveLatency)
 #else
-			if (local_queue_size >= status->action_flags_per_packet)
+    if (local_queue_size >= status->action_flags_per_packet)
 #endif
-			{
-				// This weird voodoo with canForwardRing prevents a problem if a packet arrives at the wrong time.
-				status->canForwardRing = true; /* tell the socket listener it can forward the ring if it receives it */
-				if (status->clearToForwardRing) /* has the socket listener already received the ring?  and not forwarded it? */
-				{	// ZZZ: this control path is taken if the ring is waiting for us.  The packet we received is in
-      // status->buffer.
-      // For the other case (we are ready, but ring is not), see NetDDPPacketHandler.
-      // The effect is to impose a "ring speed limit" - rings will not go around faster than
-      // we accumulate data to put in them.  (Makes sense...)
-					NetPacketPtr packet_data= (NetPacketPtr) status->buffer;
+    {
+      // This weird voodoo with canForwardRing prevents a problem if a packet arrives at the wrong time.
+      status->canForwardRing = true;                           /* tell the socket listener it can forward the ring if it receives it */
+      if (status->clearToForwardRing) {                         /* has the socket listener already received the ring?  and not forwarded it? */
+        // ZZZ: this control path is taken if the ring is waiting for us.  The packet we received is in
+        // status->buffer.
+        // For the other case (we are ready, but ring is not), see NetDDPPacketHandler.
+        // The effect is to impose a "ring speed limit" - rings will not go around faster than
+        // we accumulate data to put in them.  (Makes sense...)
+        NetPacketPtr packet_data= (NetPacketPtr) status->buffer;
 
-					//				status->canForwardRing = false;
-     // XXX (ZZZ): I need to investigate this net_time business; now that I am throwing away
-     // server flags, I may need to throw away server time as well (?).
-					packet_data->server_net_time= status->localNetTime;
-					if(*sNetStatePtr==netComingDown)
-					{
-						if(packet_data->required_action_flags==0)
-						{
+        //				status->canForwardRing = false;
+        // XXX (ZZZ): I need to investigate this net_time business; now that I am throwing away
+        // server flags, I may need to throw away server time as well (?).
+        packet_data->server_net_time= status->localNetTime;
+        if(*sNetStatePtr==netComingDown) {
+          if(packet_data->required_action_flags==0) {
 #ifdef DEBUG_NET
-							//						fdprintf("I Server got a normal packet, at zero.  unsyncing... (%d);g", net_stats.action_flags_processed);
-							net_stats.server_unsyncing++;
+            //						fdprintf("I Server got a normal packet, at zero.  unsyncing... (%d);g", net_stats.action_flags_processed);
+            net_stats.server_unsyncing++;
 #endif
-							packet_data->ring_packet_type= typeUNSYNC_RING_PACKET;
-						}
-						else
-						{
+            packet_data->ring_packet_type= typeUNSYNC_RING_PACKET;
+          }
+          else
+          {
 #ifdef DEBUG_NET
-							//						fdprintf("I Server got a normal packet & net was coming down required flags at 0. (%d);g", net_stats.action_flags_processed);
-							net_stats.server_set_required_flags_to_zero++;
+            //						fdprintf("I Server got a normal packet & net was coming down required flags at 0. (%d);g", net_stats.action_flags_processed);
+            net_stats.server_set_required_flags_to_zero++;
 #endif
-							/* Change the type to an unsync ring packet... */
-							packet_data->required_action_flags= 0;
-						}
-					} // netComingDown
-					else // netState != netComingDown
-					{
+            /* Change the type to an unsync ring packet... */
+            packet_data->required_action_flags= 0;
+          }
+        }                                 // netComingDown
+        else                                 // netState != netComingDown
+        {
 #ifdef NETWORK_ADAPTIVE_LATENCY
-						// ZZZ change: only send out as many flags as adaptive latency suggests
-						packet_data->required_action_flags = sCurrentAdaptiveLatency;
+          // ZZZ change: only send out as many flags as adaptive latency suggests
+          packet_data->required_action_flags = sCurrentAdaptiveLatency;
 #else
-						packet_data->required_action_flags= NetSizeofLocalQueue();
+          packet_data->required_action_flags= NetSizeofLocalQueue();
 #endif
-					}
+        }
 
-					NetAddFlagsToPacket(packet_data);
-					NetBuildRingPacket(ringFrame, (byte *) packet_data, NetPacketSize(packet_data), status->lastValidRingSequence+1);
-					if(status->new_packet_tag != NONE)
-					{
+        NetAddFlagsToPacket(packet_data);
+        NetBuildRingPacket(ringFrame, (byte *) packet_data,
+                           NetPacketSize(
+                             packet_data), status->lastValidRingSequence+1);
+        if(status->new_packet_tag != NONE) {
 #ifdef DEBUG_NET
-						//					fdprintf("rebuilding the server tag (%d);g", status->new_packet_tag);
-						net_stats.rebuilt_server_tag++;
+          //					fdprintf("rebuilding the server tag (%d);g", status->new_packet_tag);
+          net_stats.rebuilt_server_tag++;
 #endif
-						NetRebuildRingPacket(ringFrame, status->new_packet_tag, status->lastValidRingSequence+1);
-					}
+          NetRebuildRingPacket(ringFrame, status->new_packet_tag,
+                               status->lastValidRingSequence+1);
+        }
 
-					/* Send the Ack just before we pass the token along.. */
-					NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
-					NetSendRingPacket(ringFrame);
-				} // clearToForwardRing (ring was already here waiting for us to accumulate enough data)
-			} // we have accumulated enough data to let the ring go on
-	} // reinstall (netState != netDown)
+        /* Send the Ack just before we pass the token along.. */
+        NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
+        NetSendRingPacket(ringFrame);
+      }                           // clearToForwardRing (ring was already here waiting for us to accumulate enough data)
+    }                     // we have accumulated enough data to let the ring go on
+  }       // reinstall (netState != netDown)
 
-		return reinstall;
+  return reinstall;
 } // NetServerTask
 
 static bool NetQueueingTask(
-			    void)
+  void)
 {
-	bool reinstall= (*sNetStatePtr != netDown);
+  bool reinstall= (*sNetStatePtr != netDown);
 
-	if(reinstall)
-	{
-		if (NetSizeofLocalQueue() < MAXIMUM_UPDATES_PER_PACKET)
-		{
+  if(reinstall) {
+    if (NetSizeofLocalQueue() < MAXIMUM_UPDATES_PER_PACKET) {
 #ifdef NETWORK_FAUX_QUEUE
-                        // ZZZ: if we owe the packet handler flags (since it smeared to cover for us), pay up.
-                        if(faux_queue_paid != faux_queue_due) {
-				faux_queue_paid++;
-                        }
-                        // OTOH if we're even-steven, we will go ahead and queue some flags for the next ring packet.
-                        else {
+      // ZZZ: if we owe the packet handler flags (since it smeared to cover for us), pay up.
+      if(faux_queue_paid != faux_queue_due) {
+        faux_queue_paid++;
+      }
+      // OTOH if we're even-steven, we will go ahead and queue some flags for the next ring packet.
+      else {
 #endif
-				local_queue.buffer[local_queue.write_index++] = parse_keymap();
-				if (local_queue.write_index >= NET_QUEUE_SIZE)
-					local_queue.write_index = 0;
+      local_queue.buffer[local_queue.write_index++] = parse_keymap();
+      if (local_queue.write_index >= NET_QUEUE_SIZE) {
+        local_queue.write_index = 0;
+      }
 #ifdef NETWORK_FAUX_QUEUE
-                        }
+    }
 #endif
-			status->localNetTime++;
-		} // room to store an action_flag
-	} // reinstall (netState != netDown)
+      status->localNetTime++;
+    }             // room to store an action_flag
+  }       // reinstall (netState != netDown)
 
-	return reinstall;
+  return reinstall;
 } // NetQueueingTask
 
 
@@ -1921,95 +1977,97 @@ static bool NetQueueingTask(
 // tick used only in adaptive_latency_3.
 static void
 update_adaptive_latency(int measurement, int tick) {
-
 #ifdef NETWORK_ADAPTIVE_LATENCY_2
-	// Use the provided measurement
-	int theCurrentLatencyMeasurement = measurement;
+  // Use the provided measurement
+  int theCurrentLatencyMeasurement = measurement;
 #else
-	// Take the current local_queue_size as a measurement of ring latency
-	int theCurrentLatencyMeasurement = NetGetSizeofLocalQueue();
+  // Take the current local_queue_size as a measurement of ring latency
+  int theCurrentLatencyMeasurement = NetGetSizeofLocalQueue();
 #endif
 
-	// Subtract the sample leaving the window from the running total
-	if(sAdaptiveLatencySampleCount >= kAdaptiveLatencyWindowSize)
-		sAdaptiveLatencyRunningTotal -= sAdaptiveLatencySamples[sAdaptiveLatencyWindowEdge];
+  // Subtract the sample leaving the window from the running total
+  if(sAdaptiveLatencySampleCount >= kAdaptiveLatencyWindowSize) {
+    sAdaptiveLatencyRunningTotal -=
+      sAdaptiveLatencySamples[sAdaptiveLatencyWindowEdge];
+  }
 
-	// Put the new sample in as the newest sample in the sample buffer
-	sAdaptiveLatencySamples[sAdaptiveLatencyWindowEdge] = theCurrentLatencyMeasurement;
+  // Put the new sample in as the newest sample in the sample buffer
+  sAdaptiveLatencySamples[sAdaptiveLatencyWindowEdge] =
+    theCurrentLatencyMeasurement;
 
-	// Slide the window one sample
-	sAdaptiveLatencyWindowEdge = (sAdaptiveLatencyWindowEdge + 1) % kAdaptiveLatencyWindowSize;
+  // Slide the window one sample
+  sAdaptiveLatencyWindowEdge =
+    (sAdaptiveLatencyWindowEdge + 1) % kAdaptiveLatencyWindowSize;
 
-	// If we're still collecting the initial set of samples, update our count
-	if(sAdaptiveLatencySampleCount < kAdaptiveLatencyWindowSize)
-		sAdaptiveLatencySampleCount++;
+  // If we're still collecting the initial set of samples, update our count
+  if(sAdaptiveLatencySampleCount < kAdaptiveLatencyWindowSize) {
+    sAdaptiveLatencySampleCount++;
+  }
 
-	// Add the newest sample into our running total
-	sAdaptiveLatencyRunningTotal += theCurrentLatencyMeasurement;
+  // Add the newest sample into our running total
+  sAdaptiveLatencyRunningTotal += theCurrentLatencyMeasurement;
 
-	// Don't adjust the latency until we have a window's worth of samples to work from
-	if(sAdaptiveLatencySampleCount >= kAdaptiveLatencyWindowSize) {
-		// Find the average latency for the past window's worth of samples
-		float theAverageLatencyMeasurement = (float) sAdaptiveLatencyRunningTotal / (float) kAdaptiveLatencyWindowSize;
+  // Don't adjust the latency until we have a window's worth of samples to work from
+  if(sAdaptiveLatencySampleCount >= kAdaptiveLatencyWindowSize) {
+    // Find the average latency for the past window's worth of samples
+    float theAverageLatencyMeasurement = (float) sAdaptiveLatencyRunningTotal /
+                                         (float) kAdaptiveLatencyWindowSize;
 
-		// See if we should adjust our latency based on that average measurement.  Be careful not to adjust
-  // latency below 1 or above the cap.
-		if(theAverageLatencyMeasurement - sCurrentAdaptiveLatency > kNeedToIncreaseLatencyThreshhold
-     && sCurrentAdaptiveLatency < kAdaptiveLatencyMaximumValue)
-		{
-			sCurrentAdaptiveLatency++;
-			logNote1("adjusted latency upwards to %d", sCurrentAdaptiveLatency);
-		}
-		else if(theAverageLatencyMeasurement - sCurrentAdaptiveLatency < kNeedToDecreaseLatencyThreshhold
-	  && sCurrentAdaptiveLatency > 1)
-		{
-			sCurrentAdaptiveLatency--;
-			logNote1("adjusted latency downwards to %d", sCurrentAdaptiveLatency);
-		}
-	}
-
+    // See if we should adjust our latency based on that average measurement.  Be careful not to adjust
+    // latency below 1 or above the cap.
+    if(theAverageLatencyMeasurement - sCurrentAdaptiveLatency >
+       kNeedToIncreaseLatencyThreshhold
+       && sCurrentAdaptiveLatency < kAdaptiveLatencyMaximumValue) {
+      sCurrentAdaptiveLatency++;
+      logNote1("adjusted latency upwards to %d", sCurrentAdaptiveLatency);
+    }
+    else if(theAverageLatencyMeasurement - sCurrentAdaptiveLatency <
+            kNeedToDecreaseLatencyThreshhold
+            && sCurrentAdaptiveLatency > 1) {
+      sCurrentAdaptiveLatency--;
+      logNote1("adjusted latency downwards to %d", sCurrentAdaptiveLatency);
+    }
+  }
 } // update_adaptive_latency
-#endif// NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2
+#endif // NETWORK_ADAPTIVE_LATENCY || NETWORK_ADAPTIVE_LATENCY_2
 
 #ifdef NETWORK_ADAPTIVE_LATENCY_3
 // ZZZ addition: adaptive latency business.
 static void
 update_adaptive_latency(int measurement, int tick) {
-        // Ignore samples from old packets that may show up; also bail if user doesn't love us
-        if(tick <= sGreatestRecentLatencyTick || !sRingPreferences.mAdaptToLatency)
-                return;
+  // Ignore samples from old packets that may show up; also bail if user doesn't love us
+  if(tick <= sGreatestRecentLatencyTick || !sRingPreferences.mAdaptToLatency) {
+    return;
+  }
 
-        // Update our measurements etc.
-        if(measurement > sGreatestRecentLatencyMeasurement)
-        {
-                sSecondGreatestRecentLatencyMeasurement = sGreatestRecentLatencyMeasurement;
-                sGreatestRecentLatencyMeasurement = measurement;
-                sGreatestRecentLatencyTick = tick;
-        }
-        else if(measurement == sGreatestRecentLatencyMeasurement)
-        {
-                sGreatestRecentLatencyTick = tick;
-        }
-        else if(measurement > sSecondGreatestRecentLatencyMeasurement)
-        {
-                sSecondGreatestRecentLatencyMeasurement = measurement;
-        }
+  // Update our measurements etc.
+  if(measurement > sGreatestRecentLatencyMeasurement) {
+    sSecondGreatestRecentLatencyMeasurement = sGreatestRecentLatencyMeasurement;
+    sGreatestRecentLatencyMeasurement = measurement;
+    sGreatestRecentLatencyTick = tick;
+  }
+  else if(measurement == sGreatestRecentLatencyMeasurement) {
+    sGreatestRecentLatencyTick = tick;
+  }
+  else if(measurement > sSecondGreatestRecentLatencyMeasurement) {
+    sSecondGreatestRecentLatencyMeasurement = measurement;
+  }
 
-        // If it's been long enough since we've seen our current greatest, fall back to second-greatest
-        if(tick - sGreatestRecentLatencyTick > sRingPreferences.mLatencyHoldTicks)
-        {
-                sGreatestRecentLatencyTick = tick;
-                sGreatestRecentLatencyMeasurement = sSecondGreatestRecentLatencyMeasurement;
-                sSecondGreatestRecentLatencyMeasurement = 0;
-        }
+  // If it's been long enough since we've seen our current greatest, fall back to second-greatest
+  if(tick - sGreatestRecentLatencyTick > sRingPreferences.mLatencyHoldTicks) {
+    sGreatestRecentLatencyTick = tick;
+    sGreatestRecentLatencyMeasurement = sSecondGreatestRecentLatencyMeasurement;
+    sSecondGreatestRecentLatencyMeasurement = 0;
+  }
 
-        int theNewAdaptiveLatency = MIN(sGreatestRecentLatencyMeasurement, MAXIMUM_UPDATES_PER_PACKET);
+  int theNewAdaptiveLatency = MIN(sGreatestRecentLatencyMeasurement,
+                                  MAXIMUM_UPDATES_PER_PACKET);
 
-        if(sCurrentAdaptiveLatency != theNewAdaptiveLatency)
-        {
-                logDump2("tick %d: setting adaptive latency to %d", tick, theNewAdaptiveLatency);
-                sCurrentAdaptiveLatency = theNewAdaptiveLatency;
-        }
+  if(sCurrentAdaptiveLatency != theNewAdaptiveLatency) {
+    logDump2("tick %d: setting adaptive latency to %d", tick,
+             theNewAdaptiveLatency);
+    sCurrentAdaptiveLatency = theNewAdaptiveLatency;
+  }
 }
 #endif // NETWORK_ADAPTIVE_LATENCY_3
 
@@ -2019,152 +2077,163 @@ update_adaptive_latency(int measurement, int tick) {
 // of the next dude in the ring. It also returns the playerIndex of what used to be
 // the next player, so that we can fiddle with things.
 static short NetAdjustUpringAddressUpwards(
-					   void)
+  void)
 {
-	short nextPlayerIndex, newNextPlayerIndex;
-	NetAddrBlock *address;
+  short nextPlayerIndex, newNextPlayerIndex;
+  NetAddrBlock *address;
 
-	// figure out where the current upring address is.
-	for (nextPlayerIndex= 0; nextPlayerIndex<topology->player_count; nextPlayerIndex++)
-	{
-		address = &(topology->players[nextPlayerIndex].ddpAddress);
+  // figure out where the current upring address is.
+  for (nextPlayerIndex= 0; nextPlayerIndex<topology->player_count;
+       nextPlayerIndex++)
+  {
+    address = &(topology->players[nextPlayerIndex].ddpAddress);
 #ifndef NETWORK_IP
 #ifdef CLASSIC_MAC_NETWORKING
-		if (address->aNet == status->upringAddress.aNet
-      && address->aNode == status->upringAddress.aNode
-      && address->aSocket == status->upringAddress.aSocket)
+    if (address->aNet == status->upringAddress.aNet
+        && address->aNode == status->upringAddress.aNode
+        && address->aSocket == status->upringAddress.aSocket)
 #endif
 #else
-			if (address->host == status->upringAddress.host &&
-       address->port == status->upringAddress.port)
+    if (address->host == status->upringAddress.host &&
+        address->port == status->upringAddress.port)
 #endif
-			{
-				break;
-			}
-	}
-		assert(nextPlayerIndex != topology->player_count);
+    {
+      break;
+    }
+  }
+  assert(nextPlayerIndex != topology->player_count);
 
-		// ZZZ: changed to deal with 'gaps' (players with identifier NONE), in support of generalized game-resumption
-		newNextPlayerIndex = nextPlayerIndex;
-		do
-		{
-			newNextPlayerIndex = (topology->player_count + newNextPlayerIndex + 1) % topology->player_count;
-		} while(topology->players[newNextPlayerIndex].identifier == NONE && newNextPlayerIndex != localPlayerIndex);
+  // ZZZ: changed to deal with 'gaps' (players with identifier NONE), in support of generalized game-resumption
+  newNextPlayerIndex = nextPlayerIndex;
+  do
+  {
+    newNextPlayerIndex =
+      (topology->player_count + newNextPlayerIndex +
+       1) % topology->player_count;
+  } while(topology->players[newNextPlayerIndex].identifier == NONE &&
+          newNextPlayerIndex != localPlayerIndex);
 
-		status->upringAddress= topology->players[newNextPlayerIndex].ddpAddress;
-		status->upringPlayerIndex= newNextPlayerIndex;
+  status->upringAddress= topology->players[newNextPlayerIndex].ddpAddress;
+  status->upringPlayerIndex= newNextPlayerIndex;
 
-		return nextPlayerIndex;
+  return nextPlayerIndex;
 }
 
 static void drop_upring_player(
-			       void)
+  void)
 {
-        // ZZZ: unpack existing ringFrame (from _NET format)
-        byte	unpackedBuffer[ddpMaxData];
+  // ZZZ: unpack existing ringFrame (from _NET format)
+  byte unpackedBuffer[ddpMaxData];
 
-        NetPacket*	packet_data		= (NetPacket*) unpackedBuffer;
-        NetPacket_NET*	packet_data_NET		= (NetPacket_NET*) (ringFrame->data + sizeof(NetPacketHeader_NET));
+  NetPacket*      packet_data             = (NetPacket*) unpackedBuffer;
+  NetPacket_NET*  packet_data_NET         =
+    (NetPacket_NET*) (ringFrame->data + sizeof(NetPacketHeader_NET));
 
-        netcpy(packet_data, packet_data_NET);
+  netcpy(packet_data, packet_data_NET);
 
-        uint32*		action_flags		= &packet_data->action_flags[0];
-        uint32*		action_flags_NET	= (uint32*) (ringFrame->data + sizeof(NetPacketHeader_NET) + sizeof(NetPacket_NET));
+  uint32*         action_flags            = &packet_data->action_flags[0];
+  uint32*         action_flags_NET        =
+    (uint32*) (ringFrame->data + sizeof(NetPacketHeader_NET) +
+               sizeof(NetPacket_NET));
 
-        size_t		data_size		= NetPacketSize(packet_data);
+  size_t data_size               = NetPacketSize(packet_data);
 
-        netcpy(action_flags, action_flags_NET, data_size);
+  netcpy(action_flags, action_flags_NET, data_size);
 
-        // (done unpacking)
+  // (done unpacking)
 
-	short flag_count, index, oldNextPlayerIndex;
-	//	NetPacketPtr packet_data= (NetPacketPtr) (ringFrame->data + sizeof (NetPacketHeader));
+  short flag_count, index, oldNextPlayerIndex;
+  //	NetPacketPtr packet_data= (NetPacketPtr) (ringFrame->data + sizeof (NetPacketHeader));
 
-	/* Reset the retries for the new packet. */
-	status->retries= 0;
+  /* Reset the retries for the new packet. */
+  status->retries= 0;
 
-	flag_count= 0;
+  flag_count= 0;
 
 #ifdef DEBUG_NET
-	//	fdprintf("Dropping upring- Attempting to delete upring (node %d) from ring. muhaha.;g", status->upringAddress.aNode);
-	net_stats.upring_drops++;
+  //	fdprintf("Dropping upring- Attempting to delete upring (node %d) from ring. muhaha.;g", status->upringAddress.aNode);
+  net_stats.upring_drops++;
 #endif
 
-	// uh-oh. looks like the upring address has gone down.
-	// modify the ring packet to zero out the players action flags
-	// and find a new downring address.
-	oldNextPlayerIndex= NetAdjustUpringAddressUpwards();
+  // uh-oh. looks like the upring address has gone down.
+  // modify the ring packet to zero out the players action flags
+  // and find a new downring address.
+  oldNextPlayerIndex= NetAdjustUpringAddressUpwards();
 
-	/* If the next player upring was the server, and the next player upring wasn't us.. */
-	if (oldNextPlayerIndex==status->server_player_index && !status->iAmTheServer)
-	{
-		// let us crown ourselves!
-		status->server_player_index= localPlayerIndex;
-		status->iAmTheServer= true;
+  /* If the next player upring was the server, and the next player upring wasn't us.. */
+  if (oldNextPlayerIndex==status->server_player_index &&
+      !status->iAmTheServer) {
+    // let us crown ourselves!
+    status->server_player_index= localPlayerIndex;
+    status->iAmTheServer= true;
 #ifdef DEBUG_NET
-		//		fdprintf("Trying to become the server (drop_upring);g");
-		net_stats.assuming_control_on_retry++;
+    //		fdprintf("Trying to become the server (drop_upring);g");
+    net_stats.assuming_control_on_retry++;
 #endif
 
-		// now down to work. gotta switch tasks. Take a deep breath...
-		queueingTMTask = myTMRemove(queueingTMTask);
-		assert(!serverTMTask);
-		serverTMTask = myXTMSetup(1000/TICKS_PER_SECOND, NetServerTask);
+    // now down to work. gotta switch tasks. Take a deep breath...
+    queueingTMTask = myTMRemove(queueingTMTask);
+    assert(!serverTMTask);
+    serverTMTask = myXTMSetup(1000/TICKS_PER_SECOND, NetServerTask);
 
-		packet_data->server_net_time= status->localNetTime;
-	}
+    packet_data->server_net_time= status->localNetTime;
+  }
 
-	//  adjust the packet to indicate that our fellow player has become deceased.
-	// (is this an obituary?)
-	action_flags = packet_data->action_flags;
-	for (index= 0; index<oldNextPlayerIndex; index++)
-	{
-		if (packet_data->action_flag_count[index] != NET_DEAD_ACTION_FLAG_COUNT)
-		{
-			action_flags += packet_data->action_flag_count[index];
-		}
-	}
+  //  adjust the packet to indicate that our fellow player has become deceased.
+  // (is this an obituary?)
+  action_flags = packet_data->action_flags;
+  for (index= 0; index<oldNextPlayerIndex; index++)
+  {
+    if (packet_data->action_flag_count[index] != NET_DEAD_ACTION_FLAG_COUNT) {
+      action_flags += packet_data->action_flag_count[index];
+    }
+  }
 
-	for (index= oldNextPlayerIndex+1; index<topology->player_count; index++)
-	{
-		if (packet_data->action_flag_count[index] != NET_DEAD_ACTION_FLAG_COUNT)
-		{
-			flag_count += packet_data->action_flag_count[index];
-		}
-	}
+  for (index= oldNextPlayerIndex+1; index<topology->player_count; index++)
+  {
+    if (packet_data->action_flag_count[index] != NET_DEAD_ACTION_FLAG_COUNT) {
+      flag_count += packet_data->action_flag_count[index];
+    }
+  }
 
-	/* Remove the servers flags.. */
-	if (flag_count > 0)
-	{
-		// changed "flag_count" to "sizeof(long)*flag_count"
-  // ZZZ: here's that sneaky bug again, memcpy is not guaranteed to work for overlapping src and dest;
-  // we use memmove instead.
-		memmove(action_flags, action_flags + packet_data->action_flag_count[oldNextPlayerIndex], flag_count * sizeof(uint32));
-		//memcpy(action_flags, action_flags + packet_data->action_flag_count[oldNextPlayerIndex], flag_count * sizeof(uint32));
-		//BlockMove(action_flags + packet_data->action_flag_count[oldNextPlayerIndex],
-		//	action_flags, sizeof(long)*flag_count);
-	}
-	/* Mark the server as net dead */
-	packet_data->action_flag_count[oldNextPlayerIndex]= NET_DEAD_ACTION_FLAG_COUNT;
+  /* Remove the servers flags.. */
+  if (flag_count > 0) {
+    // changed "flag_count" to "sizeof(long)*flag_count"
+    // ZZZ: here's that sneaky bug again, memcpy is not guaranteed to work for overlapping src and dest;
+    // we use memmove instead.
+    memmove(action_flags, action_flags +
+            packet_data->action_flag_count[oldNextPlayerIndex], flag_count *
+            sizeof(uint32));
+    //memcpy(action_flags, action_flags + packet_data->action_flag_count[oldNextPlayerIndex], flag_count * sizeof(uint32));
+    //BlockMove(action_flags + packet_data->action_flag_count[oldNextPlayerIndex],
+    //	action_flags, sizeof(long)*flag_count);
+  }
+  /* Mark the server as net dead */
+  packet_data->action_flag_count[oldNextPlayerIndex]=
+    NET_DEAD_ACTION_FLAG_COUNT;
 
-	/* If everyone else is netdead, set the single player flag. */
-	for(index= 0; index<topology->player_count; ++index)
-	{
-		if(index!=localPlayerIndex && packet_data->action_flag_count[index]!=NET_DEAD_ACTION_FLAG_COUNT)
-		{
-			break;
-		}
-	}
-	if(index==topology->player_count) status->single_player= true;
+  /* If everyone else is netdead, set the single player flag. */
+  for(index= 0; index<topology->player_count; ++index)
+  {
+    if(index!=localPlayerIndex && packet_data->action_flag_count[index]!=
+       NET_DEAD_ACTION_FLAG_COUNT) {
+      break;
+    }
+  }
+  if(index==topology->player_count) {
+    status->single_player= true;
+  }
 
-	// we have to increment the ring sequence counter in case we’re sending to ourselves
-	// to prevent "late ring packets"
- // ZZZ: to take advantage of repacking, I pass our buffer into NetBuildRingPacket.
- // (original code used just Rebuild, below.)
-        NetBuildRingPacket(ringFrame, unpackedBuffer, data_size, status->lastValidRingSequence+1);
+  // we have to increment the ring sequence counter in case we’re sending to ourselves
+  // to prevent "late ring packets"
+  // ZZZ: to take advantage of repacking, I pass our buffer into NetBuildRingPacket.
+  // (original code used just Rebuild, below.)
+  NetBuildRingPacket(ringFrame, unpackedBuffer, data_size,
+                     status->lastValidRingSequence+1);
 
-        // ZZZ: still need this though to change tag.
-	NetRebuildRingPacket(ringFrame, tagCHANGE_RING_PACKET, status->lastValidRingSequence+1);
+  // ZZZ: still need this though to change tag.
+  NetRebuildRingPacket(ringFrame, tagCHANGE_RING_PACKET,
+                       status->lastValidRingSequence+1);
 }
 
 
@@ -2172,185 +2241,214 @@ static void drop_upring_player(
 int32
 RingGameProtocol::GetNetTime(void)
 {
-        // ZZZ: modified so as not to introduce ANY gratuitous latency.  May make play a little choppy.
-	// Consider falling back to localNetTime - action_flags_per_packet...
- // (later) Took that back out.  It did make play nicely responsive, but opened us up wide to latency and jitter.
- // I hope adaptive_latency_2 will be the final meddling with this stuff.
- //    return status->localNetTime;
+  // ZZZ: modified so as not to introduce ANY gratuitous latency.  May make play a little choppy.
+  // Consider falling back to localNetTime - action_flags_per_packet...
+  // (later) Took that back out.  It did make play nicely responsive, but opened us up wide to latency and jitter.
+  // I hope adaptive_latency_2 will be the final meddling with this stuff.
+  //    return status->localNetTime;
 #if defined(NETWORK_ADAPTIVE_LATENCY_2) || defined(NETWORK_ADAPTIVE_LATENCY_3)
-	// This is it - this is the only place sCurrentAdaptiveLatency has any effect in adaptive_latency_2 (or 3).
- // The effect is to get the game engine to drain the player_queues more smoothly than they would
- // if we returned status_localNetTime.
- // Later: adding 1 in an effort to decrease lag (is this a good idea?)
- // Later than that: getting rid of that "+1", need to subtract sCurrentAdaptiveLatency and that's that.
- // Unless rings are taking less than a tick-time to get around, in which case we need not introduce
- // any latency, which is why we special-case that.
-	return status->localNetTime - (sCurrentAdaptiveLatency > 1 ? sCurrentAdaptiveLatency : 0);
+  // This is it - this is the only place sCurrentAdaptiveLatency has any effect in adaptive_latency_2 (or 3).
+  // The effect is to get the game engine to drain the player_queues more smoothly than they would
+  // if we returned status_localNetTime.
+  // Later: adding 1 in an effort to decrease lag (is this a good idea?)
+  // Later than that: getting rid of that "+1", need to subtract sCurrentAdaptiveLatency and that's that.
+  // Unless rings are taking less than a tick-time to get around, in which case we need not introduce
+  // any latency, which is why we special-case that.
+  return status->localNetTime -
+         (sCurrentAdaptiveLatency > 1 ? sCurrentAdaptiveLatency : 0);
 #else
-	return status->localNetTime - 2*status->action_flags_per_packet - status->update_latency;
+  return status->localNetTime - 2*status->action_flags_per_packet -
+         status->update_latency;
 #endif
 }
 
 int32 RingGameProtocol::GetUnconfirmedActionFlagsCount()
 {
-	return GetRealActionQueues()->countActionFlags(NetGetLocalPlayerIndex());
+  return GetRealActionQueues()->countActionFlags(NetGetLocalPlayerIndex());
 }
 
 uint32 RingGameProtocol::PeekUnconfirmedActionFlag(int32 offset)
 {
-	return GetRealActionQueues()->peekActionFlags(NetGetLocalPlayerIndex(), offset);
+  return GetRealActionQueues()->peekActionFlags(
+           NetGetLocalPlayerIndex(), offset);
 }
 
-void RingGameProtocol::UpdateUnconfirmedActionFlags() { }
+void RingGameProtocol::UpdateUnconfirmedActionFlags() {
+}
 
 
 // brazenly copied and modified from player.c (though i clearly format it much better)
 static short NetSizeofLocalQueue(
-				 void)
+  void)
 {
-	short size;
+  short size;
 
-	if ((size= local_queue.write_index-local_queue.read_index) < 0)
-		size += NET_QUEUE_SIZE;
+  if ((size= local_queue.write_index-local_queue.read_index) < 0) {
+    size += NET_QUEUE_SIZE;
+  }
 
-	return size;
+  return size;
 }
 
 
 
 void NetPrintInfo(
-		  void)
+  void)
 {
 #ifdef DEBUG_NET
-	fdprintf("numSmears= %d numCountChanges= %d ring packet_count= %d Single: %d;g", net_stats.numSmears,
-	  net_stats.numCountChanges, 	status->ringPacketCount, status->single_player);
-	fdprintf("localPlayerIndex= %d, server_player_index= %d;g", localPlayerIndex, status->server_player_index);
-	fdprintf("tick_count= %d, localNetTime= %d;g", dynamic_world->tick_count, status->localNetTime);
-	fdprintf("Unknown packets: %d Upring Drops: %d Rebuilt server Tags: %d;g", net_stats.packets_from_the_unknown, net_stats.upring_drops, net_stats.rebuilt_server_tag);
-	fdprintf("Late Rings: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d;g", net_stats.late_sync_rings, net_stats.late_time_rings, net_stats.late_rings, net_stats.late_unsync_rings, net_stats.late_dead_rings);
-	fdprintf("---Retries: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d;g", net_stats.sync_retry_count, net_stats.time_retry_count, net_stats.retry_count, net_stats.unsync_retry_count, net_stats.dead_retry_count);
-	fdprintf("Ontime Ack: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d Late: %d;g", net_stats.sync_ontime_acks, net_stats.time_ontime_acks, net_stats.ontime_acks, net_stats.unsync_ontime_acks, net_stats.dead_ontime_acks, net_stats.late_acks);
-	if(localPlayerIndex==status->server_player_index)
-	{
-		fdprintf("Server: Req to zero: %d Unsyncing: %d Returned: %d;g", net_stats.server_set_required_flags_to_zero, net_stats.server_unsyncing, net_stats.unsync_returned_to_sender);
-	}
-	fdprintf("Packets w/zero flags: %d Spurious Unsyncs: %d;g", net_stats.packets_with_zero_flags, net_stats.spurious_unsyncs);
-	fdprintf("Assumed control: Normal: %d Retry: %d (Server bailed early: %d);g", net_stats.assuming_control, net_stats.assuming_control_on_retry, net_stats.server_bailing_early);
-	fdprintf("Proper unsyncs: %d", net_stats.unsync_while_coming_down);
-#endif//DEBUG_NET
+  fdprintf(
+    "numSmears= %d numCountChanges= %d ring packet_count= %d Single: %d;g",
+    net_stats.numSmears,
+    net_stats.numCountChanges,    status->ringPacketCount,
+    status->single_player);
+  fdprintf("localPlayerIndex= %d, server_player_index= %d;g", localPlayerIndex,
+           status->server_player_index);
+  fdprintf("tick_count= %d, localNetTime= %d;g", dynamic_world->tick_count,
+           status->localNetTime);
+  fdprintf("Unknown packets: %d Upring Drops: %d Rebuilt server Tags: %d;g",
+           net_stats.packets_from_the_unknown, net_stats.upring_drops,
+           net_stats.rebuilt_server_tag);
+  fdprintf("Late Rings: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d;g",
+           net_stats.late_sync_rings, net_stats.late_time_rings,
+           net_stats.late_rings,
+           net_stats.late_unsync_rings,
+           net_stats.late_dead_rings);
+  fdprintf("---Retries: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d;g",
+           net_stats.sync_retry_count, net_stats.time_retry_count,
+           net_stats.retry_count,
+           net_stats.unsync_retry_count,
+           net_stats.dead_retry_count);
+  fdprintf(
+    "Ontime Ack: Sync: %d Time: %d Normal: %d Unsync: %d Dead: %d Late: %d;g",
+    net_stats.sync_ontime_acks, net_stats.time_ontime_acks,
+    net_stats.ontime_acks,
+    net_stats.unsync_ontime_acks, net_stats.dead_ontime_acks,
+    net_stats.late_acks);
+  if(localPlayerIndex==status->server_player_index) {
+    fdprintf("Server: Req to zero: %d Unsyncing: %d Returned: %d;g",
+             net_stats.server_set_required_flags_to_zero,
+             net_stats.server_unsyncing,
+             net_stats.unsync_returned_to_sender);
+  }
+  fdprintf("Packets w/zero flags: %d Spurious Unsyncs: %d;g",
+           net_stats.packets_with_zero_flags,
+           net_stats.spurious_unsyncs);
+  fdprintf("Assumed control: Normal: %d Retry: %d (Server bailed early: %d);g",
+           net_stats.assuming_control, net_stats.assuming_control_on_retry,
+           net_stats.server_bailing_early);
+  fdprintf("Proper unsyncs: %d", net_stats.unsync_while_coming_down);
+#endif //DEBUG_NET
 } // NetPrintInfo
 
 static void process_packet_buffer_flags(
-					void *buffer,
-					int32 buffer_size,
-					short packet_tag)
+  void *buffer,
+  int32 buffer_size,
+  short packet_tag)
 {
-        // ZZZ: By now, the buffer passed to us is unpacked and contains action flags.
-	/*        NetPacket	packet_data_storage;
-        NetPacket*	packet_data		= &packet_data_storage;
-        NetPacket_NET*	packet_data_NET		= (NetPacket_NET*) buffer;
+  // ZZZ: By now, the buffer passed to us is unpacked and contains action flags.
+  /*        NetPacket	packet_data_storage;
+     NetPacket*	packet_data		= &packet_data_storage;
+     NetPacket_NET*	packet_data_NET		= (NetPacket_NET*) buffer;
 
-        netcpy(packet_data, packet_data_NET);
-	*/
-	NetPacketPtr packet_data= (NetPacketPtr) buffer;
+     netcpy(packet_data, packet_data_NET);
+   */
+  NetPacketPtr packet_data= (NetPacketPtr) buffer;
 
-	/* The only time we don't process all flags is on network Unsyncing.. */
-	process_flags(packet_data);
+  /* The only time we don't process all flags is on network Unsyncing.. */
+  process_flags(packet_data);
 
 #ifdef DEBUG_NET
-	if(packet_data->required_action_flags==0)
-	{
-		short index;
+  if(packet_data->required_action_flags==0) {
+    short index;
 
-		for(index= status->server_player_index; index<localPlayerIndex; ++index)
-		{
-			warn(packet_data->action_flag_count[index]<=0);
-		}
+    for(index= status->server_player_index; index<localPlayerIndex; ++index)
+    {
+      warn(packet_data->action_flag_count[index]<=0);
+    }
 
-		for(index= 0; index<status->server_player_index; index++)
-		{
-			warn(packet_data->action_flag_count[index]<=0);
-		}
-	}
+    for(index= 0; index<status->server_player_index; index++)
+    {
+      warn(packet_data->action_flag_count[index]<=0);
+    }
+  }
 #endif
 
-	// can we send on the packet?
-	if (!status->iAmTheServer || status->canForwardRing)
-	{
-		status->canForwardRing = false;
-		if (status->iAmTheServer)
-		{ // (ZZZ) This is the (server) control path if there is enough data available to send on the ring
-			packet_data->server_player_index= localPlayerIndex;
-			packet_data->server_net_time= status->localNetTime;
-			if(*sNetStatePtr==netComingDown)
-			{
-				/* Change the type to an unsync ring packet... */
-				if(packet_data->required_action_flags==0)
-				{
+  // can we send on the packet?
+  if (!status->iAmTheServer || status->canForwardRing) {
+    status->canForwardRing = false;
+    if (status->iAmTheServer) { // (ZZZ) This is the (server) control path if there is enough data available to send on the ring
+      packet_data->server_player_index= localPlayerIndex;
+      packet_data->server_net_time= status->localNetTime;
+      if(*sNetStatePtr==netComingDown) {
+        /* Change the type to an unsync ring packet... */
+        if(packet_data->required_action_flags==0) {
 #ifdef DEBUG_NET
-					//					fdprintf("Server got a final packet & net was coming down (changed) type: %d (%d);g",  packet_data->ring_packet_type, net_stats.action_flags_processed);
-					net_stats.server_unsyncing++;
+          //					fdprintf("Server got a final packet & net was coming down (changed) type: %d (%d);g",  packet_data->ring_packet_type, net_stats.action_flags_processed);
+          net_stats.server_unsyncing++;
 #endif
-					packet_data->ring_packet_type= typeUNSYNC_RING_PACKET;
-				}
-				else
-				{
+          packet_data->ring_packet_type= typeUNSYNC_RING_PACKET;
+        }
+        else
+        {
 #ifdef DEBUG_NET
-					//					fdprintf("Server got a packet & net was coming down (changed) (%d) current: %d;g",  net_stats.action_flags_processed, packet_data->required_action_flags);
-					net_stats.server_set_required_flags_to_zero++;
+          //					fdprintf("Server got a packet & net was coming down (changed) (%d) current: %d;g",  net_stats.action_flags_processed, packet_data->required_action_flags);
+          net_stats.server_set_required_flags_to_zero++;
 #endif
-					packet_data->required_action_flags= 0;
-				}
-			} // netState == netComingDown
-			else // netState != netComingDown
-			{
+          packet_data->required_action_flags= 0;
+        }
+      }                   // netState == netComingDown
+      else                   // netState != netComingDown
+      {
 #ifdef NETWORK_ADAPTIVE_LATENCY
-				// ZZZ addition: update the adaptive latency state
-				update_adaptive_latency();
-				// ZZZ change: use the number of flags the adaptive latency system tells us.
-    // It's ok if this increases the number of flags needed; we'll just smear.
-				packet_data->required_action_flags = sCurrentAdaptiveLatency;
+        // ZZZ addition: update the adaptive latency state
+        update_adaptive_latency();
+        // ZZZ change: use the number of flags the adaptive latency system tells us.
+        // It's ok if this increases the number of flags needed; we'll just smear.
+        packet_data->required_action_flags = sCurrentAdaptiveLatency;
 #else
-				packet_data->required_action_flags= NetSizeofLocalQueue();
+        packet_data->required_action_flags= NetSizeofLocalQueue();
 #endif
-			}
-		} // status->iAmTheServer
+      }
+    }             // status->iAmTheServer
 
-		NetAddFlagsToPacket(packet_data);
-		NetBuildRingPacket(ringFrame, (byte *) packet_data, NetPacketSize(packet_data), status->lastValidRingSequence+1);
+    NetAddFlagsToPacket(packet_data);
+    NetBuildRingPacket(ringFrame, (byte *) packet_data,
+                       NetPacketSize(
+                         packet_data), status->lastValidRingSequence+1);
 
-		/* We just became the server.. */
-		if(packet_tag != NONE)
-		{
-			NetRebuildRingPacket(ringFrame, packet_tag, status->lastValidRingSequence+1);
-		}
+    /* We just became the server.. */
+    if(packet_tag != NONE) {
+      NetRebuildRingPacket(ringFrame, packet_tag,
+                           status->lastValidRingSequence+1);
+    }
 
-		/* Send the Ack just after we pass the token along.. */
-		NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
-		NetSendRingPacket(ringFrame);
-	}
-	// tell the server task to send on the packet
-	else // status->iAmTheServer && !status->canForwardRing
-	{ // (ZZZ note) This is the control path if we receive the ring before we have enough data to send the next one.
-   // Essentially, we package up the packet we received and wait for NetServerTask to deal with it later.
-		memcpy(status->buffer, packet_data, buffer_size - sizeof(NetPacket_NET) + sizeof(NetPacket));
-		//BlockMove(buffer, status->buffer, buffer_size);
-		status->clearToForwardRing = true;
-		status->new_packet_tag= packet_tag;
+    /* Send the Ack just after we pass the token along.. */
+    NetSendAcknowledgement(ackFrame, status->lastValidRingSequence);
+    NetSendRingPacket(ringFrame);
+  }
+  // tell the server task to send on the packet
+  else       // status->iAmTheServer && !status->canForwardRing
+  {       // (ZZZ note) This is the control path if we receive the ring before we have enough data to send the next one.
+    // Essentially, we package up the packet we received and wait for NetServerTask to deal with it later.
+    memcpy(status->buffer, packet_data,
+           buffer_size - sizeof(NetPacket_NET) + sizeof(NetPacket));
+    //BlockMove(buffer, status->buffer, buffer_size);
+    status->clearToForwardRing = true;
+    status->new_packet_tag= packet_tag;
 #ifdef NETWORK_ADAPTIVE_LATENCY
-                // ZZZ addition: also, we update the adaptive latency now, while we know what time the packet arrived.
-                // It will be used in NetServerTask next time that's scheduled.
-                update_adaptive_latency();
+    // ZZZ addition: also, we update the adaptive latency now, while we know what time the packet arrived.
+    // It will be used in NetServerTask next time that's scheduled.
+    update_adaptive_latency();
 #endif
-	}
+  }
 } // process_packet_buffer_flags
 
 /*
-	0	tick0	tick0				tick0						tick1 Pulls (0, 1, 2)
-	1	-----	tick0 (Pulls 0)		tick0						tick0
-	2	-----	-----				tick0 (Pulls 0, 1, 2(none))	tick0
+        0	tick0	tick0				tick0						tick1 Pulls (0, 1, 2)
+        1	-----	tick0 (Pulls 0)		tick0						tick0
+        2	-----	-----				tick0 (Pulls 0, 1, 2(none))	tick0
 
-	must pull yourself and everything above you to complete the ring.
+        must pull yourself and everything above you to complete the ring.
  */
 
 /* On friday, the counts were different.  I don't think that should have been the case- the */
@@ -2358,63 +2456,64 @@ static void process_packet_buffer_flags(
 /* Got rid of the redundant action_flag_index, by using the more convenient and faster */
 /*  pointer arithmetic. */
 static void process_flags(
-			  NetPacket* packet_data)
+  NetPacket* packet_data)
 {
-	uint32 *action_flags= packet_data->action_flags;
-	short player_index;
+  uint32 *action_flags= packet_data->action_flags;
+  short player_index;
 
-	/* Process the action flags (including our old ones) */
-	for (player_index= 0; player_index<topology->player_count; ++player_index)
-	{
-		short player_flag_count= packet_data->action_flag_count[player_index];
+  /* Process the action flags (including our old ones) */
+  for (player_index= 0; player_index<topology->player_count; ++player_index)
+  {
+    short player_flag_count= packet_data->action_flag_count[player_index];
 
-		vassert(player_flag_count >= -1 && player_flag_count <= MAXIMUM_UPDATES_PER_PACKET,
-	  csprintf(temporary, "UGH! count= %d;dm #%p", player_flag_count,
-	    ((byte*)packet_data)-sizeof(NetPacketHeader)));
+    vassert(
+      player_flag_count >= -1 && player_flag_count <=
+      MAXIMUM_UPDATES_PER_PACKET,
+      csprintf(temporary, "UGH! count= %d;dm #%p", player_flag_count,
+               ((byte*)packet_data)-sizeof(NetPacketHeader)));
 
-		/* if the player is not net dead */
-		if (player_flag_count != NET_DEAD_ACTION_FLAG_COUNT)
-		{
-			process_action_flags(player_index, action_flags, player_flag_count);
+    /* if the player is not net dead */
+    if (player_flag_count != NET_DEAD_ACTION_FLAG_COUNT) {
+      process_action_flags(player_index, action_flags, player_flag_count);
 #ifdef DEBUG_NET
 #ifdef STREAM_NET
-			{
-				short ii;
+      {
+        short ii;
 
-				for(ii= 0; ii<player_flag_count; ++ii)
-				{
-					debug_stream_of_flags(action_flags[ii], player_index);
-				}
-			}
+        for(ii= 0; ii<player_flag_count; ++ii)
+        {
+          debug_stream_of_flags(action_flags[ii], player_index);
+        }
+      }
 #endif
-			net_stats.action_flags_processed+= player_flag_count;
+      net_stats.action_flags_processed+= player_flag_count;
 #endif
-			/* Regardless of whether you process this player, you need to increment past */
-			/*  this player's flags */
-			action_flags+= player_flag_count;
-		}
-		else // stuff zeroes, for the good of the recording, and everyone’s sanity.
-		{
-			/* Only process if this is in our range of flags. */
-			short index;
+      /* Regardless of whether you process this player, you need to increment past */
+      /*  this player's flags */
+      action_flags+= player_flag_count;
+    }
+    else             // stuff zeroes, for the good of the recording, and everyone’s sanity.
+    {
+      /* Only process if this is in our range of flags. */
+      short index;
 
-			//			fdprintf("will stuff %d flags", packet_data->required_action_flags);
-			for (index= 0; index<packet_data->required_action_flags; index++)
-			{
-				uint32 flag= (uint32)NET_DEAD_ACTION_FLAG;
+      //			fdprintf("will stuff %d flags", packet_data->required_action_flags);
+      for (index= 0; index<packet_data->required_action_flags; index++)
+      {
+        uint32 flag= (uint32)NET_DEAD_ACTION_FLAG;
 
-				topology->players[player_index].net_dead= true;
+        topology->players[player_index].net_dead= true;
 
-				process_action_flags(player_index, &flag, 1);
+        process_action_flags(player_index, &flag, 1);
 #ifdef DEBUG_NET
 #ifdef STREAM_NET
-				debug_stream_of_flags(flag, player_index);
+        debug_stream_of_flags(flag, player_index);
 #endif
-				net_stats.action_flags_processed+= 1;
+        net_stats.action_flags_processed+= 1;
 #endif
-			}
-		}
-	}
+      }
+    }
+  }
 }
 
 
@@ -2424,8 +2523,8 @@ static void process_flags(
 #define MAXIMUM_STREAM_FLAGS (8192) // 48k
 
 struct recorded_flag {
-	int32 flag;
-	short player_index;
+  int32 flag;
+  short player_index;
 };
 
 static short stream_refnum= NONE;
@@ -2433,91 +2532,98 @@ static struct recorded_flag *action_flag_buffer= NULL;
 static int32 action_flag_index= 0;
 
 static void open_stream_file(
-			     void)
+  void)
 {
-	FSSpec file;
-	char name[]= "\pStream";
-	OSErr error;
+  FSSpec file;
+  char name[]= "\pStream";
+  OSErr error;
 
-	get_my_fsspec(&file);
-	memcpy(file.name, name, name[0]+1);
+  get_my_fsspec(&file);
+  memcpy(file.name, name, name[0]+1);
 
-	FSpDelete(&file);
-	error= FSpCreate(&file, 'ttxt', 'TEXT', smSystemScript);
-	if(error) fdprintf("Err:%d", error);
-	error= FSpOpenDF(&file, fsWrPerm, &stream_refnum);
-	if(error || stream_refnum==NONE) fdprintf("Open Err:%d", error);
+  FSpDelete(&file);
+  error= FSpCreate(&file, 'ttxt', 'TEXT', smSystemScript);
+  if(error) {
+    fdprintf("Err:%d", error);
+  }
+  error= FSpOpenDF(&file, fsWrPerm, &stream_refnum);
+  if(error || stream_refnum==NONE) {
+    fdprintf("Open Err:%d", error);
+  }
 
-	action_flag_buffer= new recorded_flag[MAXIMUM_STREAM_FLAGS];
-	assert(action_flag_buffer);
-	action_flag_index= 0;
+  action_flag_buffer= new recorded_flag[MAXIMUM_STREAM_FLAGS];
+  assert(action_flag_buffer);
+  action_flag_index= 0;
 }
 
 static void write_flags(
-			void)
+  void)
 {
-	int32 index, size;
-	short player_index;
-	OSErr error;
+  int32 index, size;
+  short player_index;
+  OSErr error;
 
-	sprintf(temporary, "%d Total Flags\n", action_flag_index-1);
-	size= strlen(temporary);
-	error= FSWrite(stream_refnum, &size, temporary);
-	if(error) fdprintf("Error: %d", error);
+  sprintf(temporary, "%d Total Flags\n", action_flag_index-1);
+  size= strlen(temporary);
+  error= FSWrite(stream_refnum, &size, temporary);
+  if(error) {
+    fdprintf("Error: %d", error);
+  }
 
-	for(player_index= 0; player_index<topology->player_count; ++player_index)
-	{
-		int32 player_action_flag_count= 0;
+  for(player_index= 0; player_index<topology->player_count; ++player_index)
+  {
+    int32 player_action_flag_count= 0;
 
-		for(index= 0; index<action_flag_index-1; ++index)
-		{
-			if(action_flag_buffer[index].player_index==player_index)
-			{
-				if(!(player_action_flag_count%TICKS_PER_SECOND))
-				{
-					sprintf(temporary, "%d 0x%08x (%d secs)\n", action_flag_buffer[index].player_index,
-	     action_flag_buffer[index].flag, player_action_flag_count/TICKS_PER_SECOND);
-				} else {
-					sprintf(temporary, "%d 0x%08x\n", action_flag_buffer[index].player_index,
-	     action_flag_buffer[index].flag);
-				}
-				size= strlen(temporary);
-				error= FSWrite(stream_refnum, &size, temporary);
-				if(error) fdprintf("Error: %d", error);
-				player_action_flag_count++;
-			}
-		}
-	}
+    for(index= 0; index<action_flag_index-1; ++index)
+    {
+      if(action_flag_buffer[index].player_index==player_index) {
+        if(!(player_action_flag_count%TICKS_PER_SECOND)) {
+          sprintf(temporary, "%d 0x%08x (%d secs)\n",
+                  action_flag_buffer[index].player_index,
+                  action_flag_buffer[index].flag,
+                  player_action_flag_count/TICKS_PER_SECOND);
+        }
+        else {
+          sprintf(temporary, "%d 0x%08x\n",
+                  action_flag_buffer[index].player_index,
+                  action_flag_buffer[index].flag);
+        }
+        size= strlen(temporary);
+        error= FSWrite(stream_refnum, &size, temporary);
+        if(error) {
+          fdprintf("Error: %d", error);
+        }
+        player_action_flag_count++;
+      }
+    }
+  }
 }
 
 static void debug_stream_of_flags(
-				  int32 action_flag,
-				  short player_index)
+  int32 action_flag,
+  short player_index)
 {
-	if(stream_refnum != NONE)
-	{
-		assert(action_flag_buffer);
-		if(action_flag_index<MAXIMUM_STREAM_FLAGS)
-		{
-			action_flag_buffer[action_flag_index].player_index= player_index;
-			action_flag_buffer[action_flag_index++].flag= action_flag;
-		}
-	}
+  if(stream_refnum != NONE) {
+    assert(action_flag_buffer);
+    if(action_flag_index<MAXIMUM_STREAM_FLAGS) {
+      action_flag_buffer[action_flag_index].player_index= player_index;
+      action_flag_buffer[action_flag_index++].flag= action_flag;
+    }
+  }
 }
 
 static void close_stream_file(
-			      void)
+  void)
 {
-	if(stream_refnum != NONE)
-	{
-		assert(action_flag_buffer);
+  if(stream_refnum != NONE) {
+    assert(action_flag_buffer);
 
-		write_flags();
-		FSClose(stream_refnum);
+    write_flags();
+    FSClose(stream_refnum);
 
-		delete []action_flag_buffer;
-		action_flag_buffer= NULL;
-	}
+    delete [] action_flag_buffer;
+    action_flag_buffer= NULL;
+  }
 }
 #endif
 #endif
@@ -2526,154 +2632,165 @@ static void close_stream_file(
 #ifdef DEBUG_NET_RECORD_PROFILE
 // ZZZ: this was used (by me) for some debugging stuff
 struct net_profile_record {
-	uint32	timestamp;
-	int32	local_queue_size;
-	int32	required_action_flags;
-	int32	player_queue_size;
-	int32	other_player_queue_size;
-	int32	net_time;
-	int32   supposed_net_time;
-	int32	world_time;
+  uint32 timestamp;
+  int32 local_queue_size;
+  int32 required_action_flags;
+  int32 player_queue_size;
+  int32 other_player_queue_size;
+  int32 net_time;
+  int32 supposed_net_time;
+  int32 world_time;
 };
 
-net_profile_record	net_profile[1000];
-int	net_profile_index = 0;
+net_profile_record net_profile[1000];
+int net_profile_index = 0;
 
-#include	"player.h"
+#include        "player.h"
 
 void
 record_profile(int req_action_flags) {
-	if(net_profile_index < 1000) {
-		// capture 1000 profiling entries
-		net_profile[net_profile_index].timestamp	= SDL_GetTicks();
-		net_profile[net_profile_index].local_queue_size	= NetSizeofLocalQueue();
-		net_profile[net_profile_index].required_action_flags = req_action_flags;
-		net_profile[net_profile_index].player_queue_size= get_action_queue_size(local_player_index);
-		net_profile[net_profile_index].other_player_queue_size= get_action_queue_size(1-local_player_index);
-		net_profile[net_profile_index].net_time		= status->localNetTime;
-		net_profile[net_profile_index].supposed_net_time = NetGetNetTime();
-		net_profile[net_profile_index].world_time	= dynamic_world->tick_count;
+  if(net_profile_index < 1000) {
+    // capture 1000 profiling entries
+    net_profile[net_profile_index].timestamp        = SDL_GetTicks();
+    net_profile[net_profile_index].local_queue_size = NetSizeofLocalQueue();
+    net_profile[net_profile_index].required_action_flags = req_action_flags;
+    net_profile[net_profile_index].player_queue_size= get_action_queue_size(
+      local_player_index);
+    net_profile[net_profile_index].other_player_queue_size=
+      get_action_queue_size(1-local_player_index);
+    net_profile[net_profile_index].net_time         = status->localNetTime;
+    net_profile[net_profile_index].supposed_net_time = NetGetNetTime();
+    net_profile[net_profile_index].world_time       = dynamic_world->tick_count;
 
-		net_profile_index++;
-	}
-	else
-		// hop into debugger to see the results
-		assert(false);
+    net_profile_index++;
+  }
+  else{
+    // hop into debugger to see the results
+    assert(false);
+  }
 }
 #endif // DEBUG_NET_RECORD_PROFILE
 
 
 
-static inline const char *BoolString(bool B) {return (B ? "true" : "false");}
+static inline const char *BoolString(bool B) {
+  return (B ? "true" : "false");
+}
 
-class XML_RingConfigurationParser: public XML_ElementParser
+class XML_RingConfigurationParser : public XML_ElementParser
 {
 public:
-	bool Start();
-	bool HandleAttribute(const char *Tag, const char *Value);
-	bool AttributesDone();
+bool Start();
+bool HandleAttribute(const char *Tag, const char *Value);
+bool AttributesDone();
 
-	XML_RingConfigurationParser(): XML_ElementParser("ring_protocol") {}
+XML_RingConfigurationParser() : XML_ElementParser("ring_protocol") {
+}
 
 protected:
 
-		enum {
-			kAcceptPacketsFromAnyoneAttribute,
-			kAdaptToLatencyAttribute,
-			kLatencyHoldTicksAttribute,
-			kNumAttributes
-		};
-        bool	mAttributePresent[kNumAttributes];
+enum {
+  kAcceptPacketsFromAnyoneAttribute,
+  kAdaptToLatencyAttribute,
+  kLatencyHoldTicksAttribute,
+  kNumAttributes
+};
+bool mAttributePresent[kNumAttributes];
 
-	bool	mAcceptPacketsFromAnyone;
-	bool	mAdaptToLatency;
-	int32	mLatencyHoldTicks;
+bool mAcceptPacketsFromAnyone;
+bool mAdaptToLatency;
+int32 mLatencyHoldTicks;
 };
 
 bool XML_RingConfigurationParser::Start()
 {
-        for(int i = 0; i < kNumAttributes; i++)
-                mAttributePresent[i] = false;
+  for(int i = 0; i < kNumAttributes; i++)
+    mAttributePresent[i] = false;
 
-	return true;
+  return true;
 }
 
-static const char* sAttributeMultiplySpecifiedString = "attribute multiply specified";
+static const char* sAttributeMultiplySpecifiedString =
+  "attribute multiply specified";
 
-bool XML_RingConfigurationParser::HandleAttribute(const char *Tag, const char *Value)
+bool XML_RingConfigurationParser::HandleAttribute(const char *Tag,
+                                                  const char *Value)
 {
-	if (StringsEqual(Tag,"accept_packets_from_anyone"))
-	{
-                if(!mAttributePresent[kAcceptPacketsFromAnyoneAttribute]) {
-                        if(ReadBooleanValueAsBool(Value,mAcceptPacketsFromAnyone)) {
-                                mAttributePresent[kAcceptPacketsFromAnyoneAttribute] = true;
-                                return true;
-                        }
-                        else
-                                return false;
-                }
-		else {
-                        ErrorString = sAttributeMultiplySpecifiedString;
-                        return false;
-                }
-	}
+  if (StringsEqual(Tag,"accept_packets_from_anyone")) {
+    if(!mAttributePresent[kAcceptPacketsFromAnyoneAttribute]) {
+      if(ReadBooleanValueAsBool(Value,mAcceptPacketsFromAnyone)) {
+        mAttributePresent[kAcceptPacketsFromAnyoneAttribute] = true;
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else {
+      ErrorString = sAttributeMultiplySpecifiedString;
+      return false;
+    }
+  }
 
-	if (StringsEqual(Tag,"adapt_to_latency"))
-	{
-                if(!mAttributePresent[kAdaptToLatencyAttribute]) {
-                        if(ReadBooleanValueAsBool(Value,mAdaptToLatency)) {
-                                mAttributePresent[kAdaptToLatencyAttribute] = true;
-                                return true;
-                        }
-                        else
-                                return false;
-                }
-		else {
-                        ErrorString = sAttributeMultiplySpecifiedString;
-                        return false;
-                }
-	}
+  if (StringsEqual(Tag,"adapt_to_latency")) {
+    if(!mAttributePresent[kAdaptToLatencyAttribute]) {
+      if(ReadBooleanValueAsBool(Value,mAdaptToLatency)) {
+        mAttributePresent[kAdaptToLatencyAttribute] = true;
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else {
+      ErrorString = sAttributeMultiplySpecifiedString;
+      return false;
+    }
+  }
 
-	if (StringsEqual(Tag,"latency_hold_ticks"))
-	{
-                if(!mAttributePresent[kLatencyHoldTicksAttribute]) {
-                        if(ReadInt32Value(Value,mLatencyHoldTicks)) {
-                                mAttributePresent[kLatencyHoldTicksAttribute] = true;
-                                return true;
-                        }
-                        else
-                                return false;
-                }
-		else {
-                        ErrorString = sAttributeMultiplySpecifiedString;
-                        return false;
-                }
-	}
+  if (StringsEqual(Tag,"latency_hold_ticks")) {
+    if(!mAttributePresent[kLatencyHoldTicksAttribute]) {
+      if(ReadInt32Value(Value,mLatencyHoldTicks)) {
+        mAttributePresent[kLatencyHoldTicksAttribute] = true;
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else {
+      ErrorString = sAttributeMultiplySpecifiedString;
+      return false;
+    }
+  }
 
-	UnrecognizedTag();
-	return false;
+  UnrecognizedTag();
+  return false;
 }
 
 bool XML_RingConfigurationParser::AttributesDone() {
-	if(mAttributePresent[kAcceptPacketsFromAnyoneAttribute])
-		sRingPreferences.mAcceptPacketsFromAnyone = mAcceptPacketsFromAnyone;
+  if(mAttributePresent[kAcceptPacketsFromAnyoneAttribute]) {
+    sRingPreferences.mAcceptPacketsFromAnyone = mAcceptPacketsFromAnyone;
+  }
 
-	if(mAttributePresent[kAdaptToLatencyAttribute])
-		sRingPreferences.mAdaptToLatency = mAdaptToLatency;
+  if(mAttributePresent[kAdaptToLatencyAttribute]) {
+    sRingPreferences.mAdaptToLatency = mAdaptToLatency;
+  }
 
-	if(mAttributePresent[kLatencyHoldTicksAttribute])
-	{
-		// Ignore out-of-range values
-		if(mLatencyHoldTicks < 2)
-		{
-			BadNumericalValue();
-			logWarning2("improper value %d for attribute latency_hold_ticks of <ring_protocol>; must be at least 2.  using default of %d", mLatencyHoldTicks, sRingPreferences.mLatencyHoldTicks);
-		}
-		else
-			sRingPreferences.mLatencyHoldTicks = mLatencyHoldTicks;
-	}
+  if(mAttributePresent[kLatencyHoldTicksAttribute]) {
+    // Ignore out-of-range values
+    if(mLatencyHoldTicks < 2) {
+      BadNumericalValue();
+      logWarning2(
+        "improper value %d for attribute latency_hold_ticks of <ring_protocol>; must be at least 2.  using default of %d",
+        mLatencyHoldTicks, sRingPreferences.mLatencyHoldTicks);
+    }
+    else{
+      sRingPreferences.mLatencyHoldTicks = mLatencyHoldTicks;
+    }
+  }
 
-        return true;
+  return true;
 }
 
 
@@ -2682,7 +2799,7 @@ static XML_RingConfigurationParser RingConfigurationParser;
 
 XML_ElementParser*
 RingGameProtocol::GetParser() {
-	return &RingConfigurationParser;
+  return &RingConfigurationParser;
 }
 
 
@@ -2690,11 +2807,14 @@ RingGameProtocol::GetParser() {
 void
 WriteRingPreferences(FILE* F)
 {
-	fprintf(F,"  <ring_protocol\n");
-	fprintf(F,"    accept_packets_from_anyone=\"%s\"\n",BoolString(sRingPreferences.mAcceptPacketsFromAnyone));
-	fprintf(F,"    adapt_to_latency=\"%s\"\n",BoolString(sRingPreferences.mAdaptToLatency));
-	fprintf(F,"    latency_hold_ticks=\"%hd\"\n",sRingPreferences.mLatencyHoldTicks);
-	fprintf(F,"  />\n");
+  fprintf(F,"  <ring_protocol\n");
+  fprintf(F,"    accept_packets_from_anyone=\"%s\"\n",
+          BoolString(sRingPreferences.mAcceptPacketsFromAnyone));
+  fprintf(F,"    adapt_to_latency=\"%s\"\n",
+          BoolString(sRingPreferences.mAdaptToLatency));
+  fprintf(F,"    latency_hold_ticks=\"%hd\"\n",
+          sRingPreferences.mLatencyHoldTicks);
+  fprintf(F,"  />\n");
 }
 
 
@@ -2702,9 +2822,9 @@ WriteRingPreferences(FILE* F)
 void
 DefaultRingPreferences()
 {
-	sRingPreferences.mAcceptPacketsFromAnyone = false;
-	sRingPreferences.mAdaptToLatency = true;
-	sRingPreferences.mLatencyHoldTicks = 2 * TICKS_PER_SECOND;
+  sRingPreferences.mAcceptPacketsFromAnyone = false;
+  sRingPreferences.mAdaptToLatency = true;
+  sRingPreferences.mLatencyHoldTicks = 2 * TICKS_PER_SECOND;
 }
 
 #endif // !defined(DISABLE_NETWORKING)

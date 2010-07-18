@@ -1,33 +1,33 @@
 /*
 
-	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-	and the "Aleph One" developers.
- 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+        and the "Aleph One" developers.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
 
-	This license is contained in the file "COPYING",
-	which is included with this source code; it is available online at
-	http://www.gnu.org/licenses/gpl.html
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-*/
+        This license is contained in the file "COPYING",
+        which is included with this source code; it is available online at
+        http://www.gnu.org/licenses/gpl.html
+
+ */
 
 /*
  *  XML_Loader_SDL.cpp - Parser for XML files, SDL implementation
  *
  *  Written in 2000 by Christian Bauer
  */
- 
- /*
- Oct 24, 2001 (Loren Petrich):
- 	Added printing out of current filename in error messages
+
+/*
+   Oct 24, 2001 (Loren Petrich):
+       Added printing out of current filename in error messages
  */
 
 #include "cseries.h"
@@ -46,14 +46,15 @@
 
 bool XML_Loader_SDL::GetData()
 {
-	if (data == NULL)
-		return false;
+  if (data == NULL) {
+    return false;
+  }
 
-	Buffer = data;
-	BufLen = data_size;
-	LastOne = true;
+  Buffer = data;
+  BufLen = data_size;
+  LastOne = true;
 
-	return true;
+  return true;
 }
 
 
@@ -63,8 +64,8 @@ bool XML_Loader_SDL::GetData()
 
 void XML_Loader_SDL::ReportReadError()
 {
-	fprintf(stderr, "Error in reading resources\n");
-	exit(1);
+  fprintf(stderr, "Error in reading resources\n");
+  exit(1);
 }
 
 
@@ -74,7 +75,9 @@ void XML_Loader_SDL::ReportReadError()
 
 void XML_Loader_SDL::ReportParseError(const char *ErrorString, int LineNumber)
 {
-	fprintf(stderr, "XML parsing error: %s at line %d in object %s\n", ErrorString, LineNumber, FileName);
+  fprintf(stderr, "XML parsing error: %s at line %d in object %s\n",
+          ErrorString, LineNumber,
+          FileName);
 }
 
 
@@ -86,8 +89,9 @@ const int MaxErrorsToShow = 7;
 
 void XML_Loader_SDL::ReportInterpretError(const char *ErrorString)
 {
-	if (GetNumInterpretErrors() < MaxErrorsToShow)
-		fprintf(stderr, "%s\n", ErrorString);
+  if (GetNumInterpretErrors() < MaxErrorsToShow) {
+    fprintf(stderr, "%s\n", ErrorString);
+  }
 }
 
 
@@ -97,7 +101,7 @@ void XML_Loader_SDL::ReportInterpretError(const char *ErrorString)
 
 bool XML_Loader_SDL::RequestAbort()
 {
-	return (GetNumInterpretErrors() >= MaxErrorsToShow);
+  return (GetNumInterpretErrors() >= MaxErrorsToShow);
 }
 
 
@@ -107,29 +111,30 @@ bool XML_Loader_SDL::RequestAbort()
 
 bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
 {
-	// Open file
-	OpenedFile file;
-	if (file_name.Open(file)) {
+  // Open file
+  OpenedFile file;
+  if (file_name.Open(file)) {
+    // Get file size and allocate buffer
+    file.GetLength(data_size);
+    data = new char[data_size];
 
-		// Get file size and allocate buffer
-		file.GetLength(data_size);
-		data = new char[data_size];
-		
-		// In case there were errors...
-		file_name.GetName(FileName);
+    // In case there were errors...
+    file_name.GetName(FileName);
 
-		// Read and parse file
-		if (file.Read(data_size, data)) {
-			if (!DoParse())
-				fprintf(stderr, "There were parsing errors in configuration file %s\n", FileName);
-		}
+    // Read and parse file
+    if (file.Read(data_size, data)) {
+      if (!DoParse()) {
+        fprintf(stderr, "There were parsing errors in configuration file %s\n",
+                FileName);
+      }
+    }
 
-		// Delete buffer
-		delete[] data;
-		data = NULL;
-		return true;
-	}
-	return false;
+    // Delete buffer
+    delete[] data;
+    data = NULL;
+    return true;
+  }
+  return false;
 }
 
 
@@ -139,29 +144,33 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
 
 bool XML_Loader_SDL::ParseDirectory(FileSpecifier &dir)
 {
-	// Get sorted list of files in directory
-	vector<dir_entry> de;
-	if (!dir.ReadDirectory(de))
-		return false;
-	sort(de.begin(), de.end());
+  // Get sorted list of files in directory
+  vector<dir_entry> de;
+  if (!dir.ReadDirectory(de)) {
+    return false;
+  }
+  sort(de.begin(), de.end());
 
-	// Parse each file
-	vector<dir_entry>::const_iterator i, end = de.end();
-	for (i=de.begin(); i!=end; i++) {
-		if (i->is_directory)
-			continue;
-		if (i->name[i->name.length() - 1] == '~') 
-			continue;
-		// people stick Lua scripts in Scripts/
-		if (boost::algorithm::ends_with(i->name, ".lua"))
-			continue;
+  // Parse each file
+  vector<dir_entry>::const_iterator i, end = de.end();
+  for (i=de.begin(); i!=end; i++) {
+    if (i->is_directory) {
+      continue;
+    }
+    if (i->name[i->name.length() - 1] == '~') {
+      continue;
+    }
+    // people stick Lua scripts in Scripts/
+    if (boost::algorithm::ends_with(i->name, ".lua")) {
+      continue;
+    }
 
-		// Construct full path name
-		FileSpecifier file_name = dir + i->name;
+    // Construct full path name
+    FileSpecifier file_name = dir + i->name;
 
-		// Parse file
-		ParseFile(file_name);
-	}
+    // Parse file
+    ParseFile(file_name);
+  }
 
-	return true;
+  return true;
 }
