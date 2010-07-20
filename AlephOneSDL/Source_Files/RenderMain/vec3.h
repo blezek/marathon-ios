@@ -130,7 +130,7 @@ struct mat4 {
   void glSet(GLenum em) {
     GLenum old;
     glGetIntegerv(GL_MATRIX_MODE, (GLint*)&old);
-    // DJB glPushAttrib(GL_MATRIX_MODE);
+    glPushAttrib(GL_MATRIX_MODE);
     glMatrixMode(em);
     glLoadMatrixf(&(_d[0][0]));
     glMatrixMode(old);

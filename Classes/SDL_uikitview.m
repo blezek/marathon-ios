@@ -22,6 +22,11 @@
 
 #import "SDL_uikitview.h"
 
+#include "SDL_stdinc.h"
+#include "SDL_mouse.h"
+#include "SDL_mouse_c.h"
+#include "SDL_events.h"
+
 #if SDL_IPHONE_KEYBOARD
 #import "SDL_keyboard_c.h"
 #import "keyinfotable.h"
@@ -68,10 +73,11 @@
 
   for ( UITouch *touch in touches ) {
     if ( touch.tapCount == 1 ) {
-      // Simulate a mouse event
+      // Simulate a mouse event 
+      
       CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
       NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
-      SDL_SendMouseMotion(0, location.x, location.y);
+      SDL_SendMouseMotion(0, location.x, location.y); \
       SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
       SDL_GetRelativeMouseState(NULL, NULL);
     }

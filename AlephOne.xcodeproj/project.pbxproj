@@ -57,6 +57,7 @@
 		A82F367611B8A87C0053FE85 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F365011B8A87C0053FE85 /* lzio.c */; };
 		A82F367711B8A87C0053FE85 /* lua_script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F365111B8A87C0053FE85 /* lua_script.cpp */; };
 		A835DFA111F003F700A1C670 /* M1A1.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84F3F2911D6FE7C00705C6C /* M1A1.zip */; };
+		A83983B411F29A48002E7CF2 /* AlephOne-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* AlephOne-Info.plist */; };
 		A842544211B4A36500F4D68F /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A842544411B4A36500F4D68F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
 		A84254AC11B4A9DA00F4D68F /* AlephOneHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */; };
@@ -1503,7 +1504,8 @@
 				A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
-				29B97315FDCFA39411CA2CEA /* Classes */,
+				29B97315FDCFA39411CA2CEA /* SDLClasses */,
+				A83983DC11F2AB92002E7CF2 /* Classes */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				A85E686211CB173B00D0FAEF /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -1514,7 +1516,7 @@
 			name = CustomTemplate;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Classes */ = {
+		29B97315FDCFA39411CA2CEA /* SDLClasses */ = {
 			isa = PBXGroup;
 			children = (
 				A85088AD11C1E72600D95436 /* ZipArchive */,
@@ -1549,10 +1551,8 @@
 				A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */,
 				A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */,
 				A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */,
-				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
-				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
 			);
-			name = Classes;
+			name = SDLClasses;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -1692,6 +1692,15 @@
 				A82F365011B8A87C0053FE85 /* lzio.c */,
 			);
 			name = "Library Sources";
+			sourceTree = "<group>";
+		};
+		A83983DC11F2AB92002E7CF2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
+				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		A850886511C1E46500D95436 /* HTTPRequest */ = {
@@ -2781,6 +2790,7 @@
 				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
 				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 				A835DFA111F003F700A1C670 /* M1A1.zip in Resources */,
+				A83983B411F29A48002E7CF2 /* AlephOne-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

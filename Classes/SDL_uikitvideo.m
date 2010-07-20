@@ -217,7 +217,11 @@ UIKit_VideoInit(_THIS)
           // Width = 768, Height = 1024.
           // In the device
           // width = 1024, Height = 768.  This could be related to the rotation flag not being honored...
-            UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
+#ifdef TARGET_IPHONE_SIMULATOR
+          UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
+#else
+          UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
+#endif
         }
     }
 

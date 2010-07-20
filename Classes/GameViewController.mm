@@ -7,7 +7,17 @@
 //
 
 #import "GameViewController.h"
+extern "C" {
+extern  int
+  SDL_SendMouseMotion(int relative, int x, int y);
 
+#include "SDL_keyboard_c.h"
+#include "SDL_keyboard.h"
+#include "SDL_stdinc.h"
+#include "SDL_mouse_c.h"
+#include "SDL_mouse.h"
+#include "SDL_events.h"
+}
 #include "cseries.h"
 #include <string.h>
 #include <stdlib.h>
@@ -20,10 +30,8 @@
 #include "player.h"
 #include "key_definitions.h"
 #include "tags.h"
-extern "C" {
-#include "SDL_keyboard_c.h"
-#include "SDL_keyboard.h"
-}
+
+
 GameViewController *globalGameView = nil;
 
 @implementation GameViewController
@@ -100,7 +108,7 @@ GameViewController *globalGameView = nil;
 
 - (IBAction) leftTrigger:(id)sender {
   NSLog(@"Key %s has been pressed", SDL_GetScancodeName( SDL_GetScancodeFromKey(leftFireKey ) ));
-  // SDL_SendKeyboardKey ( SDL_PRESSED, SDL_GetScancodeFromKey ( leftFireKey ) );
+  SDL_SendKeyboardKey ( SDL_PRESSED, SDL_GetScancodeFromKey ( leftFireKey ) );
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   key_map[leftFireKey] = !key_map[leftFireKey];
   
@@ -108,6 +116,35 @@ GameViewController *globalGameView = nil;
 - (IBAction) rightTrigger:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   key_map[rightFireKey] = !key_map[rightFireKey];
+}
+
+
+- (CGPoint) transformTouchLocation:(CGPoint)location {
+  CGPoint newLocation;
+  newLocation.x = location.y;
+  newLocation.y = self.hud.frame.size.width - location.x;
+  return newLocation;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  
+  for ( UITouch *touch in touches ) {
+    if ( touch.tapCount == 1 ) {
+      // Simulate a mouse event
+      CGPoint location = [self transformTouchLocation:[touch locationInView:self.hud]];
+      NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
+     //  SDL_SendMouseMotion(0, location.x, location.y);
+      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+      SDL_GetRelativeMouseState(NULL, NULL);
+    }
+  }
+  
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  NSLog(@"Touches ended");
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  NSLog(@"Touches moved" );
 }
 
 
