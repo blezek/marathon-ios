@@ -29,6 +29,8 @@
 #import "ASIHTTPRequest.h"
 #import "ZipArchive.h"
 
+#import "GameViewController2.h"
+#import "GameViewController.h"
 
 #ifdef main
 #undef main
@@ -88,9 +90,15 @@ int main(int argc, char **argv) {
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-			
+  NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
+  NSLog ( @"Current Directory: %@", currentDirectory );
 	/* Set working directory to resource path */
-	[[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
+  [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
+  currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
+  NSLog ( @"Current Directory: %@", currentDirectory );
+  [GameViewController sharedInstance];
+
+	// [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
 	  
   // See if we have M1A1 installed, if not, fetch it and download
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -124,7 +132,8 @@ int main(int argc, char **argv) {
     [fileManager removeItemAtPath:path error:NULL];
   }
    
-  
+  // [[NSFileManager defaultManager] changeCurrentDirectoryPath:currentDirectory];
+
   
 	[self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
   

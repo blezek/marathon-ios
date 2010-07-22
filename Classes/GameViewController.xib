@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="12"/>
+			<integer value="9"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -62,7 +62,7 @@
 					</object>
 					<object class="IBUIView" id="485381462">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">-2147483392</int>
+						<int key="NSvFlags">256</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIButton" id="1001411659">
@@ -244,6 +244,7 @@
 					<bytes key="NSRGB">MC4wMzQ4NzQyOTUyNCAwLjAzMjIyMTYwMDE0IDEAA</bytes>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="interfaceOrientation">3</int>
 				</object>
@@ -253,22 +254,6 @@
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">view</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="766721923"/>
-					</object>
-					<int key="connectionID">3</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pause</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="106618490"/>
-					</object>
-					<int key="connectionID">5</int>
-				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">hud</string>
@@ -294,6 +279,22 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">view</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="766721923"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pause</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="106618490"/>
+					</object>
+					<int key="connectionID">20</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -373,6 +374,7 @@
 						<int key="objectID">14</int>
 						<reference key="object" ref="403618115"/>
 						<reference key="parent" ref="485381462"/>
+						<string key="objectName">MovePad</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
@@ -437,7 +439,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -483,14 +485,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>hud</string>
 							<string>pause</string>
-							<string>view</string>
 							<string>viewGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
 							<string>UIButton</string>
-							<string>UIView</string>
 							<string>SDL_uikitopenglview</string>
 						</object>
 					</object>
@@ -500,7 +500,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>hud</string>
 							<string>pause</string>
-							<string>view</string>
 							<string>viewGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -512,10 +511,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">pause</string>
 								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">view</string>
-								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewGL</string>

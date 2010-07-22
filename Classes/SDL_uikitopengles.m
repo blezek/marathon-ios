@@ -30,6 +30,7 @@
 #include <dlfcn.h>
 // DJB
 #import "GameViewController.h"
+#import "GameViewController2.h"
 
 static int UIKit_GL_Initialize(_THIS);
 
@@ -109,11 +110,7 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   
   // DJB
   // Construct the Game view controller
-  [globalGameView release];
-  GameViewController *game = [GameViewController alloc];
-  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:game options:nil];
-  [game viewDidLoad];
-  globalGameView = game;
+  GameViewController *game = [GameViewController sharedInstance];
   
     /* construct our view, passing in SDL's OpenGL configuration data */
     view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
@@ -123,12 +120,13 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 									bBits: _this->gl_config.blue_size \
 									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
-	globalGameView.viewGL = view;
-  [globalGameView.view insertSubview:view belowSubview:globalGameView.hud];
+	game.viewGL = view;
+  view.userInteractionEnabled = NO;
+  [game.view insertSubview:view belowSubview:game.hud];
 	data->view = view;
 	
 	/* add the view to our window */
-	[uiwindow addSubview:globalGameView.view ];
+	[uiwindow addSubview:game.view ];
 	
 	/* Don't worry, the window retained the view */
 	[view release];

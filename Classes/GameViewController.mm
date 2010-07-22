@@ -32,11 +32,12 @@ extern  int
 #include "tags.h"
 
 
-GameViewController *globalGameView = nil;
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud;
 
+#pragma mark -
+#pragma mark class instance methods
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -170,9 +171,56 @@ GameViewController *globalGameView = nil;
 }
 
 
-- (void)dealloc {
-    [super dealloc];
+#pragma mark -
+#pragma mark Singleton methods
+static GameViewController *sharedInstance = nil;
+
++(GameViewController*)sharedInstance
+{
+  @synchronized(self)
+  {
+    if (sharedInstance == nil) {
+      sharedInstance = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
+      NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
+      [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:sharedInstance options:nil];
+      NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
+      [sharedInstance viewDidLoad];
+    }
+  }
+  return sharedInstance;
 }
+
++ (id)allocWithZone:(NSZone *)zone {
+  @synchronized(self) {
+    if (sharedInstance == nil) {
+      sharedInstance = [super allocWithZone:zone];
+      return sharedInstance;  // assignment and return on first allocation
+    }
+  }
+  return nil; // on subsequent allocation attempts return nil
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+  return self;
+}
+
+- (id)retain {
+  return self;
+}
+
+- (unsigned)retainCount {
+  return UINT_MAX;  // denotes an object that cannot be released
+}
+
+- (void)release {
+  //do nothing
+}
+
+- (id)autorelease {
+  return self;
+}
+
 
 
 @end

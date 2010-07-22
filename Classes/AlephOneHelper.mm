@@ -21,5 +21,5 @@ char* getDataDir() {
 }
 
 void helperStartGame () {
-  [globalGameView startGame];
+  [[GameViewController sharedInstance] startGame];
 }
