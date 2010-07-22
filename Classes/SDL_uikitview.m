@@ -57,6 +57,7 @@
 
 }
 
+/*
 - (CGPoint) transformTouchLocation:(CGPoint)location {
   CGPoint newLocation;
   newLocation.x = location.y;
@@ -101,7 +102,7 @@
     }
   }
 }
-
+*/
 
 
 /*

@@ -40,12 +40,15 @@ extern  int
 #pragma mark class instance methods
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
+      NSLog ( @"inside initWithNib
     }
     return self;
 }
+*/
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -180,7 +183,9 @@ static GameViewController *sharedInstance = nil;
   @synchronized(self)
   {
     if (sharedInstance == nil) {
-      sharedInstance = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
+      sharedInstance = [[GameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+      sharedInstance.view.hidden = NO;
+      NSLog ( @"View is %@", sharedInstance.view );
       NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
       [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:sharedInstance options:nil];
       NSLog ( @"Loaded Hud is %@", sharedInstance.hud );

@@ -229,7 +229,7 @@
 				<key>PBXProjectModuleGUID</key>
 				<string>A85E68E911CB1C1300D0FAEF</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>SDL_uikitappdelegate.m</string>
+				<string>GameViewController.mm</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -237,11 +237,11 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>A8FA76B011D295E0009E2510</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>SDL_uikitappdelegate.m</string>
+						<string>GameViewController.mm</string>
 						<key>_historyCapacity</key>
 						<integer>40</integer>
 						<key>bookmark</key>
-						<string>A80A20DC11F7CF9D0034F2E8</string>
+						<string>A80A210811F7D5760034F2E8</string>
 						<key>history</key>
 						<array>
 							<string>A853F6A511D3F7DC00F871F3</string>
@@ -267,15 +267,15 @@
 							<string>A84B7FCD11F15CF400A1F596</string>
 							<string>A83983E211F2ABB2002E7CF2</string>
 							<string>A83983E311F2ABB2002E7CF2</string>
-							<string>A839842E11F2B00B002E7CF2</string>
-							<string>A839842F11F2B00B002E7CF2</string>
 							<string>A8EDE15411F553840056722D</string>
 							<string>A8EDE19411F557D50056722D</string>
 							<string>A815898211F692FF00263F26</string>
 							<string>A80A20C711F7C7420034F2E8</string>
-							<string>A80A20C811F7C7420034F2E8</string>
 							<string>A80A20DA11F7CF9D0034F2E8</string>
-							<string>A80A20DB11F7CF9D0034F2E8</string>
+							<string>A80A20E611F7D2710034F2E8</string>
+							<string>A80A20EC11F7D29A0034F2E8</string>
+							<string>A80A20F111F7D34F0034F2E8</string>
+							<string>A80A20FA11F7D3F30034F2E8</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -326,8 +326,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -372,19 +370,20 @@
 								<string>A8562B5711DAE3850071DFEF</string>
 								<string>A82F35AB11B8A6BB0053FE85</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>A80A20B211F7C6DE0034F2E8</string>
 								<string>1C37FABC05509CD000000102</string>
 								<string>1C37FABC05539CD112110102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>50</integer>
-									<integer>45</integer>
-									<integer>0</integer>
+									<integer>69</integer>
+									<integer>65</integer>
+									<integer>62</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {359, 975}}</string>
+							<string>{{0, 385}, {359, 975}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -416,6 +415,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -433,7 +434,7 @@
 										<key>_historyCapacity</key>
 										<integer>40</integer>
 										<key>bookmark</key>
-										<string>A80A20D911F7CF9D0034F2E8</string>
+										<string>A80A210711F7D5760034F2E8</string>
 										<key>history</key>
 										<array>
 											<string>A85E68B111CB195C00D0FAEF</string>
@@ -658,7 +659,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>301453213.905164</real>
+	<real>301454710.68244803</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -678,10 +679,10 @@
 		<string>A80A20D111F7C7AA0034F2E8</string>
 		<string>A80A20CC11F7C7420034F2E8</string>
 		<string>A88C8F0B11B35B4F00689138</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/blezek/Source/AlephOne/AlephOne/AlephOne.xcodeproj</string>
 		<string>A85E68E911CB1C1300D0FAEF</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
 	<string>783 144 1088 1034 0 0 1920 1178 </string>
