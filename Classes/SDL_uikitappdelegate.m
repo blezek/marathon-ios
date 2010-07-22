@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
   [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
   currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
-  [GameViewController sharedInstance];
+  // [GameViewController sharedInstance];
 
 	// [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
 	  

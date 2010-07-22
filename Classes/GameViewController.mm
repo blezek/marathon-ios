@@ -34,7 +34,8 @@ extern  int
 
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud;
+@synthesize view, pause, viewGL, hud, lookView;
+@synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -96,7 +97,16 @@ extern  int
     }
   }
   NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
-  
+  self.rightWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+  self.rightWeaponSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+  [self.weaponView addGestureRecognizer:self.rightWeaponSwipe];
+
+  self.leftWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+  self.leftWeaponSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+  [self.weaponView addGestureRecognizer:self.leftWeaponSwipe];
+
+  self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+  [self.lookView addGestureRecognizer:self.panGesture];
   [super viewDidLoad];
 }
 
@@ -108,6 +118,29 @@ extern  int
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
+}
+
+#pragma mark -
+#pragma mark Gestures
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+  if ( recognizer == self.rightWeaponSwipe ) {
+    NSLog ( @"Right weapon swipe" );
+  }
+  if ( recognizer == self.leftWeaponSwipe ) {
+    NSLog ( @"left weapon swipe" );
+  }
+}
+
+- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
+  if ( recognizer.state == UIGestureRecognizerStateBegan ) {
+    lastPanPoint = [recognizer translationInView:self.hud];
+    NSLog ( @"Starting pan: %@", NSStringFromCGPoint(lastPanPoint) );
+  } else if ( recognizer.state == UIGestureRecognizerStateChanged ) {
+    lastPanPoint = [recognizer translationInView:self.hud];
+    NSLog ( @"Moving pan: %@", NSStringFromCGPoint(lastPanPoint) );
+  } else if ( recognizer.state == UIGestureRecognizerStateEnded ) {
+    NSLog ( @"Pan ended" );
+  }
 }
 
 - (IBAction) leftTrigger:(id)sender {
