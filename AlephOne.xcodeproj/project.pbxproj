@@ -16,10 +16,6 @@
 		A80EAA9A11C073AD000AC9E1 /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
 		A80EAA9B11C073AD000AC9E1 /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
 		A80EAAE411C07A26000AC9E1 /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
-		A815896E11F691E700263F26 /* GameViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = A815896C11F691E700263F26 /* GameViewController2.mm */; };
-		A815896F11F691E700263F26 /* GameViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A815896D11F691E700263F26 /* GameViewController2.xib */; };
-		A815897011F691E700263F26 /* GameViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = A815896C11F691E700263F26 /* GameViewController2.mm */; };
-		A815897111F691E700263F26 /* GameViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A815896D11F691E700263F26 /* GameViewController2.xib */; };
 		A82F35D011B8A70B0053FE85 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */; };
 		A82F35D211B8A70B0053FE85 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D111B8A70B0053FE85 /* CoreAudio.framework */; };
 		A82F35D411B8A70B0053FE85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D311B8A70B0053FE85 /* CoreGraphics.framework */; };
@@ -483,6 +479,10 @@
 		A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
+		A85F7A7311F91CAF00B2B244 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85F7A7111F91CAF00B2B244 /* NewGameViewController.m */; };
+		A85F7A7411F91CAF00B2B244 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85F7A7211F91CAF00B2B244 /* NewGameViewController.xib */; };
+		A85F7A7511F91CAF00B2B244 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85F7A7111F91CAF00B2B244 /* NewGameViewController.m */; };
+		A85F7A7611F91CAF00B2B244 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85F7A7211F91CAF00B2B244 /* NewGameViewController.xib */; };
 		A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A889BBBE11C8817400923787 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAE11C8817400923787 /* dict.c */; };
@@ -784,9 +784,6 @@
 		A80EAAE811C07ACF000AC9E1 /* SDL_glesfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_glesfuncs.h; sourceTree = "<group>"; };
 		A80EAAE911C07ACF000AC9E1 /* SDL_rect_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect_c.h; sourceTree = "<group>"; };
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
-		A815896B11F691E700263F26 /* GameViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController2.h; sourceTree = "<group>"; };
-		A815896C11F691E700263F26 /* GameViewController2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController2.mm; sourceTree = "<group>"; };
-		A815896D11F691E700263F26 /* GameViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController2.xib; sourceTree = "<group>"; };
 		A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A82F35D111B8A70B0053FE85 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		A82F35D311B8A70B0053FE85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -953,6 +950,9 @@
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
 		A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A85E68CC11CB1B1C00D0FAEF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		A85F7A7011F91CAF00B2B244 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
+		A85F7A7111F91CAF00B2B244 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
+		A85F7A7211F91CAF00B2B244 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGameViewController.xib; sourceTree = "<group>"; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
@@ -1706,9 +1706,9 @@
 			children = (
 				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
 				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
-				A815896B11F691E700263F26 /* GameViewController2.h */,
-				A815896C11F691E700263F26 /* GameViewController2.mm */,
-				A815896D11F691E700263F26 /* GameViewController2.xib */,
+				A85F7A7011F91CAF00B2B244 /* NewGameViewController.h */,
+				A85F7A7111F91CAF00B2B244 /* NewGameViewController.m */,
+				A85F7A7211F91CAF00B2B244 /* NewGameViewController.xib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2778,7 +2778,7 @@
 				A8562B4111DAE0010071DFEF /* Pause.png in Resources */,
 				A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */,
 				A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
-				A815896F11F691E700263F26 /* GameViewController2.xib in Resources */,
+				A85F7A7611F91CAF00B2B244 /* NewGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2802,7 +2802,7 @@
 				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 				A835DFA111F003F700A1C670 /* M1A1.zip in Resources */,
 				A83983B411F29A48002E7CF2 /* AlephOne-Info.plist in Resources */,
-				A815897111F691E700263F26 /* GameViewController2.xib in Resources */,
+				A85F7A7411F91CAF00B2B244 /* NewGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3109,7 +3109,7 @@
 				A889BBCA11C8817400923787 /* tess.c in Sources */,
 				A889BBCB11C8817400923787 /* tessmono.c in Sources */,
 				A8562A7B11DACF1B0071DFEF /* GameViewController.mm in Sources */,
-				A815896E11F691E700263F26 /* GameViewController2.mm in Sources */,
+				A85F7A7511F91CAF00B2B244 /* NewGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3464,7 +3464,7 @@
 				A85E684611CB173A00D0FAEF /* tess.c in Sources */,
 				A85E684711CB173A00D0FAEF /* tessmono.c in Sources */,
 				A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */,
-				A815897011F691E700263F26 /* GameViewController2.mm in Sources */,
+				A85F7A7311F91CAF00B2B244 /* NewGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

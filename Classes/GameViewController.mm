@@ -35,7 +35,7 @@ extern  int
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, lookView;
-@synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture;
+@synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -107,6 +107,12 @@ extern  int
 
   self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
   [self.lookView addGestureRecognizer:self.panGesture];
+  
+  self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+  [self.hud addGestureRecognizer:self.menuTapGesture];
+  // Hide initially
+  self.hud.hidden = NO;
+  self.hud.userInteractionEnabled = YES;
   [super viewDidLoad];
 }
 
@@ -118,6 +124,13 @@ extern  int
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
+}
+
+- (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
+  self.viewGL = oglView;
+  self.viewGL.userInteractionEnabled = YES;
+  // [self.viewGL addGestureRecognizer:self.menuTapGesture];
+  [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
 
 #pragma mark -
@@ -136,10 +149,27 @@ extern  int
     lastPanPoint = [recognizer translationInView:self.hud];
     NSLog ( @"Starting pan: %@", NSStringFromCGPoint(lastPanPoint) );
   } else if ( recognizer.state == UIGestureRecognizerStateChanged ) {
-    lastPanPoint = [recognizer translationInView:self.hud];
+    CGPoint currentPoint = [recognizer translationInView:self.hud];
+    int dx, dy;
+    dx = currentPoint.x - lastPanPoint.x;
+    dy = currentPoint.y - lastPanPoint.y;
+    SDL_SendMouseMotion ( true, dx, dy );
+    lastPanPoint = currentPoint;
     NSLog ( @"Moving pan: %@", NSStringFromCGPoint(lastPanPoint) );
+    
   } else if ( recognizer.state == UIGestureRecognizerStateEnded ) {
     NSLog ( @"Pan ended" );
+  }
+}
+
+- (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
+  if ( recognizer == menuTapGesture ) {
+    CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.hud]];
+    location = [recognizer locationInView:self.hud];
+    SDL_SendMouseMotion(0, location.x, location.y);
+    SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+    SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+    SDL_GetRelativeMouseState(NULL, NULL);
   }
 }
 
@@ -211,18 +241,28 @@ extern  int
 #pragma mark Singleton methods
 static GameViewController *sharedInstance = nil;
 
++(GameViewController*)createNewSharedInstance {
+  @synchronized(self)
+  {
+    [sharedInstance release];
+    sharedInstance = nil;
+    sharedInstance = [[GameViewController alloc] init]; // WithNibName:nil bundle:[NSBundle mainBundle]];
+    sharedInstance.view.hidden = NO;
+    NSLog ( @"View is %@", sharedInstance.view );
+    NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
+    [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:sharedInstance options:nil];
+    NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
+    [sharedInstance viewDidLoad];
+  }
+  return sharedInstance;
+}
+
 +(GameViewController*)sharedInstance
 {
   @synchronized(self)
   {
-    if (sharedInstance == nil) {
-      sharedInstance = [[GameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-      sharedInstance.view.hidden = NO;
-      NSLog ( @"View is %@", sharedInstance.view );
-      NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
-      [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:sharedInstance options:nil];
-      NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
-      [sharedInstance viewDidLoad];
+    if ( sharedInstance == nil ) {
+      [GameViewController createNewSharedInstance];
     }
   }
   return sharedInstance;

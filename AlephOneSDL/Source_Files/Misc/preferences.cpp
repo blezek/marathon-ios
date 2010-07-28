@@ -2328,6 +2328,12 @@ void read_preferences ()
   printf ( "Resetting screen mode to %d x %d\n",
            graphics_preferences->screen_mode.width,
            graphics_preferences->screen_mode.height );
+  graphics_preferences->screen_mode.fill_the_screen = true;
+  graphics_preferences->screen_mode.fullscreen = true;
+  graphics_preferences->screen_mode.hud = false;
+  
+  // Set keyboard
+  input_preferences->input_device = _mouse_yaw_pitch;
 
   // jkvw: If we try to load a default file, but can't, we'll have set the game error.
   //       But that's not useful, because we're just going to try loading the file

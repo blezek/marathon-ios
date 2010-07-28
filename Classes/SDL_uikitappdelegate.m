@@ -29,7 +29,6 @@
 #import "ASIHTTPRequest.h"
 #import "ZipArchive.h"
 
-#import "GameViewController2.h"
 #import "GameViewController.h"
 
 #ifdef main

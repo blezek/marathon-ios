@@ -23,16 +23,21 @@
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
   UIPanGestureRecognizer *panGesture;
+  UITapGestureRecognizer *menuTapGesture;
   CGPoint lastPanPoint;
 }
 
 +(GameViewController*)sharedInstance;
++(GameViewController*)createNewSharedInstance;
 
 - (void)startGame;
+- (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
+
 - (IBAction) leftTrigger:(id)sender;
 - (IBAction) rightTrigger:(id)sender;
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer;
+- (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -47,4 +52,5 @@
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, retain) UITapGestureRecognizer *menuTapGesture;
 @end
