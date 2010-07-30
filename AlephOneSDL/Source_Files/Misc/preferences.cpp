@@ -2330,7 +2330,7 @@ void read_preferences ()
            graphics_preferences->screen_mode.height );
   graphics_preferences->screen_mode.fill_the_screen = true;
   graphics_preferences->screen_mode.fullscreen = true;
-  graphics_preferences->screen_mode.hud = false;
+  graphics_preferences->screen_mode.hud = true;
   
   // Set keyboard
   input_preferences->input_device = _mouse_yaw_pitch;
@@ -2355,7 +2355,8 @@ void write_preferences(
   void)
 {
   // LP: I've used plain stdio here because it's simple to do formatted writing with it.
-
+  // DJB Never write preferences
+  return;
   // Fix courtesy of mdadams@ku.edu
   FileSpecifier FileSpec;
   FileSpec.SetToPreferencesDir();

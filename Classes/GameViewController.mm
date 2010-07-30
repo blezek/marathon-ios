@@ -155,7 +155,7 @@ extern  int
     dy = currentPoint.y - lastPanPoint.y;
     SDL_SendMouseMotion ( true, dx, dy );
     lastPanPoint = currentPoint;
-    NSLog ( @"Moving pan: %@", NSStringFromCGPoint(lastPanPoint) );
+    // NSLog ( @"Moving pan: %@", NSStringFromCGPoint(lastPanPoint) );
     
   } else if ( recognizer.state == UIGestureRecognizerStateEnded ) {
     NSLog ( @"Pan ended" );
