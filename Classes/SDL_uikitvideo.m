@@ -134,10 +134,13 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
         const CGRect rect = [uiscreen bounds];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
       // DJB, swap these for landscape
-      // mode.w = (int) rect.size.width;
-      // mode.h = (int) rect.size.height;
+#if TARGET_IPHONE_SIMULATOR
       mode.w = (int) rect.size.width;
       mode.h = (int) rect.size.height;
+#else
+      mode.w = (int) rect.size.height;
+      mode.h = (int) rect.size.width;
+#endif
         mode.refresh_rate = 0;
         mode.driverdata = NULL;
         SDL_AddDisplayMode(display, &mode);
@@ -152,10 +155,13 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
         const CGSize size = [uimode size];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
       // DJB swap for landscape
-      // mode.w = (int) size.width;
-      // mode.h = (int) size.height;
+#if TARGET_IPHONE_SIMULATOR
       mode.w = (int) size.height;
       mode.h = (int) size.width;
+#else
+      mode.w = (int) size.width;
+      mode.h = (int) size.height;
+#endif
         mode.refresh_rate = 0;
         mode.driverdata = uimode;
         [uimode retain];
