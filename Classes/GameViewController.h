@@ -11,20 +11,45 @@
 #import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
 
+typedef enum {
+  MenuMode,
+  GameMode,
+  AutoMapMode
+} HUDMode;
+
 @interface GameViewController : UIViewController {
   IBOutlet SDL_uikitopenglview *viewGL;
-  // IBOutlet UIView *view;
   IBOutlet UIView *hud;
   IBOutlet UIButton *pause;
   IBOutlet UIView *weaponView;
   IBOutlet UIView *lookView;
+  IBOutlet UIView *moveView;
+  IBOutlet UIView *leftFireView;
+  IBOutlet UIView *rightFireView;
+
+  HUDMode mode;
+  
   SDLKey leftFireKey;
   SDLKey rightFireKey;
+  
+  SDLKey forwardKey;
+  SDLKey backwardKey;
+  SDLKey leftKey;
+  SDLKey rightKey;
+  SDLKey runKey;
+  
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
   UIPanGestureRecognizer *panGesture;
+  UIPanGestureRecognizer *leftShootPanGesture;
+  UIPanGestureRecognizer *rightShootPanGesture;
+  
+  UIPanGestureRecognizer *moveGesture;
   UITapGestureRecognizer *menuTapGesture;
   CGPoint lastPanPoint;
+  CGPoint moveCenterPoint;
+  CGFloat moveRadius;
+  CGFloat deadSpaceRadius;
 }
 
 +(GameViewController*)sharedInstance;
@@ -36,7 +61,8 @@
 - (IBAction) leftTrigger:(id)sender;
 - (IBAction) rightTrigger:(id)sender;
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
-- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer;
+- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer;
+- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer;
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
@@ -48,9 +74,15 @@
 @property (nonatomic, retain) IBOutlet UIView *hud;
 @property (nonatomic, retain) IBOutlet UIView *weaponView;
 @property (nonatomic, retain) IBOutlet UIView *lookView;
+@property (nonatomic, retain) IBOutlet UIView *moveView;
+@property (nonatomic, retain) IBOutlet UIView *leftFireView;
+@property (nonatomic, retain) IBOutlet UIView *rightFireView;
 @property (nonatomic, retain) IBOutlet UIButton *pause;
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, retain) UIPanGestureRecognizer *leftShootPanGesture;
+@property (nonatomic, retain) UIPanGestureRecognizer *rightShootPanGesture;
+@property (nonatomic, retain) UIPanGestureRecognizer *moveGesture;
 @property (nonatomic, retain) UITapGestureRecognizer *menuTapGesture;
 @end

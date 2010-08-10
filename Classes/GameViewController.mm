@@ -34,8 +34,11 @@ extern  int
 
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud, lookView;
+@synthesize view, pause, viewGL, hud, lookView, moveView, moveGesture;
 @synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
+@synthesize rightFireView, leftFireView;
+@synthesize rightShootPanGesture;
+@synthesize leftShootPanGesture;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -53,7 +56,7 @@ extern  int
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-
+  mode = MenuMode;
   CGAffineTransform transform = self.hud.transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -95,6 +98,18 @@ extern  int
     if ( key->action_flag == _right_trigger_state ){
       rightFireKey = key->offset;
     }
+    if ( key->action_flag == _moving_forward ) {
+      forwardKey = key->offset;
+    }
+    if ( key->action_flag == _moving_backward ) {
+      backwardKey = key->offset;
+    }
+    if ( key->action_flag == _sidestepping_left ){
+      leftKey = key->offset;
+    }
+    if ( key->action_flag == _sidestepping_right ) {
+      rightKey = key->offset;
+    }
   }
   NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
   self.rightWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -105,8 +120,20 @@ extern  int
   self.leftWeaponSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
   [self.weaponView addGestureRecognizer:self.leftWeaponSwipe];
 
-  self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+  self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLookGesture:)];
   [self.lookView addGestureRecognizer:self.panGesture];
+  
+  self.leftShootPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLookGesture:)];
+  [self.leftFireView addGestureRecognizer:self.leftShootPanGesture];
+
+  self.rightShootPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLookGesture:)];
+  [self.rightFireView addGestureRecognizer:self.rightShootPanGesture];
+  
+  self.moveGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMoveGesture:)];
+  [self.moveView addGestureRecognizer:self.moveGesture];
+  moveCenterPoint = CGPointMake(self.moveView.bounds.size.width / 2.0, self.moveView.bounds.size.height / 2.0 );
+  moveRadius = ( moveCenterPoint.x + moveCenterPoint.y ) / 2.0;
+  deadSpaceRadius = moveRadius / 5.0;
   
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.hud addGestureRecognizer:self.menuTapGesture];
@@ -117,6 +144,7 @@ extern  int
 }
 
 - (void)startGame {
+  mode = GameMode;
   self.hud.alpha = 0.0;
   self.hud.hidden = NO;
   // Animate the HUD coming into view
@@ -124,6 +152,8 @@ extern  int
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
+  extern bool displaying_fps;
+  displaying_fps = true;
 }
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
@@ -144,9 +174,18 @@ extern  int
   }
 }
 
-- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
+- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer {
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  
   if ( recognizer.state == UIGestureRecognizerStateBegan ) {
     lastPanPoint = [recognizer translationInView:self.hud];
+    // Start shooting if needed
+    if ( recognizer == self.leftShootPanGesture ) {
+      key_map[leftFireKey] = 1;
+    }
+    if ( recognizer == self.rightShootPanGesture ) {
+      key_map[rightFireKey] = 1;
+    }
     NSLog ( @"Starting pan: %@", NSStringFromCGPoint(lastPanPoint) );
   } else if ( recognizer.state == UIGestureRecognizerStateChanged ) {
     CGPoint currentPoint = [recognizer translationInView:self.hud];
@@ -159,17 +198,79 @@ extern  int
     
   } else if ( recognizer.state == UIGestureRecognizerStateEnded ) {
     NSLog ( @"Pan ended" );
+    if ( recognizer == self.leftShootPanGesture ) {
+      key_map[leftFireKey] = 0;
+    }
+    if ( recognizer == self.rightShootPanGesture ) {
+      key_map[rightFireKey] = 0;
+    }
   }
 }
 
+- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer {
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  if ( recognizer.state == UIGestureRecognizerStateEnded ) {
+    // lift up on all the keys
+    key_map[leftKey] = 0;
+    key_map[rightKey] = 0;
+    key_map[forwardKey] = 0;
+    key_map[backwardKey] = 0;
+    // key_map[runKey] = 0;
+    return;
+  }
+  
+  // Doesn't matter where we are in this control, just find the position relative to the center
+  CGPoint currentPoint = [recognizer locationInView:recognizer.view];
+  // NSLog ( @"Starting move: %@", NSStringFromCGPoint(currentPoint) );
+  
+  float dx, dy;
+  dx = currentPoint.x - moveCenterPoint.x;
+  dy = currentPoint.y - moveCenterPoint.y;
+  NSLog ( @"Move delta: %f, %f", dx, dy );
+  // Do we move left or right?
+  // Left
+  if ( dx < -deadSpaceRadius ) {
+    // Just move for now
+    NSLog ( @"Move left" );
+    key_map[leftKey] = 1;
+  } else {
+    key_map[leftKey] = 0;
+  }
+  // Right
+  if ( dx > deadSpaceRadius ) {
+    NSLog(@"Move right" );
+    key_map[rightKey] = 1;
+  } else {
+    key_map[rightKey] = 0;
+  }
+  
+  // Forward, remember that y is increasing up
+  if ( dy < -deadSpaceRadius ) {
+    NSLog(@"Move forward");
+    key_map[forwardKey] = 1;
+  } else {
+    key_map[forwardKey] = 0;    
+  }
+  // Backward
+  if ( dy > deadSpaceRadius ) {
+    NSLog(@"Move backward");
+    key_map[backwardKey] = 1;
+  } else {
+    key_map[backwardKey] = 0;    
+  }
+}
+
+
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-  if ( recognizer == menuTapGesture ) {
-    CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.hud]];
-    location = [recognizer locationInView:self.hud];
-    SDL_SendMouseMotion(0, location.x, location.y);
-    SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
-    SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
-    SDL_GetRelativeMouseState(NULL, NULL);
+  if ( mode == MenuMode ) {
+    if ( recognizer == menuTapGesture ) {
+      CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.hud]];
+      location = [recognizer locationInView:self.hud];
+      SDL_SendMouseMotion(0, location.x, location.y);
+      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+      SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+      SDL_GetRelativeMouseState(NULL, NULL);
+    }
   }
 }
 
