@@ -2331,7 +2331,8 @@ void read_preferences ()
   graphics_preferences->screen_mode.fill_the_screen = true;
   graphics_preferences->screen_mode.fullscreen = true;
   graphics_preferences->screen_mode.hud = true;
-  
+  input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
+
   // Set keyboard
   input_preferences->input_device = _mouse_yaw_pitch;
 
