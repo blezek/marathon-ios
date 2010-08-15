@@ -11,7 +11,7 @@
 #import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
 #import "MovePadView.h"
-#import "FireView.h"
+#import "ButtonView.h"
 #import "LookView.h"
 
 typedef enum {
@@ -25,10 +25,12 @@ typedef enum {
   IBOutlet UIView *hud;
   IBOutlet UIButton *pause;
   IBOutlet UIView *weaponView;
+  IBOutlet ButtonView *mapView;
+  IBOutlet ButtonView *actionView;
   IBOutlet LookView *lookView;
   IBOutlet MovePadView *moveView;
-  IBOutlet FireView *leftFireView;
-  IBOutlet FireView *rightFireView;
+  IBOutlet ButtonView *leftFireView;
+  IBOutlet ButtonView *rightFireView;
 
   HUDMode mode;
   
@@ -64,10 +66,12 @@ typedef enum {
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) IBOutlet UIView *hud;
 @property (nonatomic, retain) IBOutlet UIView *weaponView;
+@property (nonatomic, retain) IBOutlet ButtonView *mapView;
+@property (nonatomic, retain) IBOutlet ButtonView *actionView;
 @property (nonatomic, retain) IBOutlet LookView *lookView;
 @property (nonatomic, retain) IBOutlet MovePadView *moveView;
-@property (nonatomic, retain) IBOutlet FireView *leftFireView;
-@property (nonatomic, retain) IBOutlet FireView *rightFireView;
+@property (nonatomic, retain) IBOutlet ButtonView *leftFireView;
+@property (nonatomic, retain) IBOutlet ButtonView *rightFireView;
 @property (nonatomic, retain) IBOutlet UIButton *pause;
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;

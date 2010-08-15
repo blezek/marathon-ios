@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# For Decaf, build iPhone and iPad versions
+echo '   Building for iPhone    '
+xcodebuild -configuration AdHocDistribution -target AlephOneHD build
+
+dd=`date +%Y%m%d`
+rm -rf AlephOneDistribution-$dd
+rm -rf AlephOneDistribution-$dd.zip
+mkdir -p AlephOneDistribution-$dd
+
+echo '   Building distribution package '
+cp -r build/AdHocDistribution-iphoneos/AlephOne-iPad.app AlephOneDistribution-$dd
+cp ProvisioningProfiles/AlephOne_Ad_Hoc.mobileprovision AlephOneDistribution-$dd
+
+zip -r AlephOneDistribution-$dd.zip AlephOneDistribution-$dd/ > /dev/null
+
+echo '   Upload'
+curl -X DELETE -F token=OpenSource -F api_key=d94fd08d2d2996bc1d8dccf60dc453e4a228175f -F version=2.0 http://api.drop.io/drops/appathy/assets/appathydistribution-$dd-zip
+
+curl -F api_key=d94fd08d2d2996bc1d8dccf60dc453e4a228175f -F version=2.0 -F drop_name=appathy -F file=@AlephOneDistribution-$dd.zip http://assets.drop.io/upload > /dev/null

@@ -365,7 +365,7 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
 	return self;
   
 }
-
+/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   
   for ( UITouch *touch in touches ) {
@@ -378,7 +378,7 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
       SDL_GetRelativeMouseState(NULL, NULL);
     }
   }
-  
+*/
 #if FIXME_MULTITOUCH
 	/* associate touches with mice, so long as we have slots */
 	int i;

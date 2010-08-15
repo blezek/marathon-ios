@@ -36,7 +36,7 @@ extern  int
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, lookView, moveView, moveGesture;
 @synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
-@synthesize rightFireView, leftFireView;
+@synthesize rightFireView, leftFireView, mapView, actionView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -57,8 +57,19 @@ extern  int
   
   // Setup other views
   [self.moveView setup];
-  [self.leftFireView setup:true];
-  [self.rightFireView setup:false];
+  
+  key_definition *key = current_key_definitions;
+  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
+    if ( key->action_flag == _left_trigger_state ){
+      [self.leftFireView setup:key->offset];
+    } else if ( key->action_flag == _right_trigger_state ){
+        [self.rightFireView setup:key->offset];
+    } else if ( key->action_flag == _toggle_map ){
+      [self.mapView setup:key->offset];
+    } else if ( key->action_flag == _action_trigger_state ) {
+      [self.actionView setup:key->offset];
+    }
+  }
   
   mode = MenuMode;
   CGAffineTransform transform = self.hud.transform;
@@ -94,15 +105,7 @@ extern  int
  */
   
   
-  key_definition *key = current_key_definitions;
-  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
-    if ( key->action_flag == _left_trigger_state ){
-      leftFireKey = key->offset;
-    }
-    if ( key->action_flag == _right_trigger_state ){
-      rightFireKey = key->offset;
-    }
-  }
+
   NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
   self.rightWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
   self.rightWeaponSwipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -129,14 +132,12 @@ extern  int
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
-  extern bool displaying_fps;
-  displaying_fps = true;
   [self.hud removeGestureRecognizer:self.menuTapGesture];
 }
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
-  self.viewGL.userInteractionEnabled = YES;
+  self.viewGL.userInteractionEnabled = NO;
   // [self.viewGL addGestureRecognizer:self.menuTapGesture];
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
@@ -153,22 +154,6 @@ extern  int
 }
 
 - (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer {
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-  
-  if ( recognizer.state == UIGestureRecognizerStateBegan ) {
-    lastPanPoint = [recognizer translationInView:self.hud];
-    NSLog ( @"Starting pan: %@", NSStringFromCGPoint(lastPanPoint) );
-  } else if ( recognizer.state == UIGestureRecognizerStateChanged ) {
-    CGPoint currentPoint = [recognizer translationInView:self.hud];
-    int dx, dy;
-    dx = currentPoint.x - lastPanPoint.x;
-    dy = currentPoint.y - lastPanPoint.y;
-    SDL_SendMouseMotion ( true, dx, dy );
-    lastPanPoint = currentPoint;
-    // NSLog ( @"Moving pan: %@", NSStringFromCGPoint(lastPanPoint) );
-    
-  } else if ( recognizer.state == UIGestureRecognizerStateEnded ) {
-  }
 }
 
 - (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer {
@@ -178,6 +163,7 @@ extern  int
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
   if ( mode == MenuMode ) {
     if ( recognizer == menuTapGesture ) {
+      NSLog ( @"Handling menu tap" );
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.hud]];
       location = [recognizer locationInView:self.hud];
       SDL_SendMouseMotion(0, location.x, location.y);
@@ -196,7 +182,7 @@ extern  int
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  
+  /*
   for ( UITouch *touch in touches ) {
     if ( touch.tapCount == 1 ) {
       // Simulate a mouse event
@@ -207,7 +193,7 @@ extern  int
       SDL_GetRelativeMouseState(NULL, NULL);
     }
   }
-  
+  */
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   NSLog(@"Touches ended");

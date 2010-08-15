@@ -1,12 +1,12 @@
 //
-//  FireView.mm
+//  ButtonView.mm
 //  AlephOne
 //
-//  Created by Daniel Blezek on 8/12/10.
+//  Created by Daniel Blezek on 8/14/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "FireView.h"
+#import "ButtonView.h"
 #import "GameViewController.h"
 extern "C" {
   extern  int
@@ -33,42 +33,30 @@ extern "C" {
 #include "tags.h"
 
 
-@implementation FireView
+@implementation ButtonView
 
-- (void)setup:(bool)isLeftFireButton {
-  key_definition *key = current_key_definitions;
-  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
-    if ( isLeftFireButton ) {
-      if ( key->action_flag == _left_trigger_state ){
-        fireKey = key->offset;
-      }
-    } else {
-      if ( key->action_flag == _right_trigger_state ){
-        fireKey = key->offset;
-      }
-    }
-  }
+- (void)setup:(SDLKey)k {
+  key = k;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   for ( UITouch *touch in [event touchesForView:self] ) {
-    NSLog(@"Touch in fire button");
-    key_map[fireKey] = 1;
+    key_map[key] = 1;
   }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-  NSLog(@"starting touchesEnded in fire button");
-
+  
   for ( UITouch *touch in [event touchesForView:self] ) {
     NSLog(@"Touch ended in fire button");
-    key_map[fireKey] = 0;
+    key_map[key] = 0;
   }
   return;
   
 }
+
 
 - (void)dealloc {
     [super dealloc];
