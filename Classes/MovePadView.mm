@@ -75,14 +75,14 @@ extern "C" {
   float fdy = fabs ( dy );
   // Are we running?
   if ( fdx > runRadius || fdy > runRadius ) {
-    key_map[runKey] = 1;
+    // key_map[runKey] = 1;
   } else {
     key_map[runKey] = 0;
   }
   // Left
   if ( dx < -deadSpaceRadius ) {
     // Just move for now
-    NSLog ( @"Move left" );
+    // NSLog ( @"Move left" );
     key_map[leftKey] = 1;
   } else {
     key_map[leftKey] = 0;

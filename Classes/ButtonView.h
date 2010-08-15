@@ -1,8 +1,8 @@
 //
-//  FireView.h
+//  ButtonView.h
 //  AlephOne
 //
-//  Created by Daniel Blezek on 8/12/10.
+//  Created by Daniel Blezek on 8/14/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,10 +10,11 @@
 #import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
 
-@interface FireView : UIView {
-  SDLKey fireKey;
+
+@interface ButtonView : UIView {
+  SDLKey key;
 }
 
-- (void)setup:(bool)isLeftFireButton;
+- (void)setup:(SDLKey)k;
 
 @end

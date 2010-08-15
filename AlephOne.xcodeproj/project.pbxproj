@@ -18,8 +18,6 @@
 		A80EAAE411C07A26000AC9E1 /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1CFA1214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
-		A82F1D631214EC15004D0B68 /* FireView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1D621214EC15004D0B68 /* FireView.mm */; };
-		A82F1D641214EC15004D0B68 /* FireView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1D621214EC15004D0B68 /* FireView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
 		A82F1DD11214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
 		A82F35D011B8A70B0053FE85 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */; };
@@ -154,6 +152,8 @@
 		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
 		A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B5811DAE3A50071DFEF /* Pistol.png */; };
 		A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B5811DAE3A50071DFEF /* Pistol.png */; };
+		A85A380012178BA50080BBA9 /* ButtonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85A37FF12178BA50080BBA9 /* ButtonView.mm */; };
+		A85A380112178BA50080BBA9 /* ButtonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85A37FF12178BA50080BBA9 /* ButtonView.mm */; };
 		A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673011CB173A00D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673211CB173A00D0FAEF /* LandscapeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85087EC11C1D59A00D95436 /* LandscapeTest.cpp */; };
@@ -788,8 +788,6 @@
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
 		A82F1CF81214E27C004D0B68 /* MovePadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MovePadView.mm; path = Classes/MovePadView.mm; sourceTree = "<group>"; };
-		A82F1D611214EC15004D0B68 /* FireView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FireView.h; path = Classes/FireView.h; sourceTree = "<group>"; };
-		A82F1D621214EC15004D0B68 /* FireView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FireView.mm; path = Classes/FireView.mm; sourceTree = "<group>"; };
 		A82F1DCE1214F2E9004D0B68 /* LookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookView.h; path = Classes/LookView.h; sourceTree = "<group>"; };
 		A82F1DCF1214F2E9004D0B68 /* LookView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LookView.mm; path = Classes/LookView.mm; sourceTree = "<group>"; };
 		A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -934,6 +932,8 @@
 		A8562A7A11DACF1B0071DFEF /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GameViewController.xib; path = Classes/GameViewController.xib; sourceTree = "<group>"; };
 		A8562B4011DAE0010071DFEF /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Artwork/Pause.png; sourceTree = "<group>"; };
 		A8562B5811DAE3A50071DFEF /* Pistol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pistol.png; path = Artwork/Pistol.png; sourceTree = "<group>"; };
+		A85A37FE12178BA50080BBA9 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
+		A85A37FF12178BA50080BBA9 /* ButtonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ButtonView.mm; path = Classes/ButtonView.mm; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
 		A85E66C811CB0AF200D0FAEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		A85E686011CB173A00D0FAEF /* AlephOne-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1713,10 +1713,10 @@
 				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
 				A82F1CF71214E27C004D0B68 /* MovePadView.h */,
 				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
-				A82F1D611214EC15004D0B68 /* FireView.h */,
-				A82F1D621214EC15004D0B68 /* FireView.mm */,
 				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
 				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
+				A85A37FE12178BA50080BBA9 /* ButtonView.h */,
+				A85A37FF12178BA50080BBA9 /* ButtonView.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3116,8 +3116,8 @@
 				A889BBCB11C8817400923787 /* tessmono.c in Sources */,
 				A8562A7B11DACF1B0071DFEF /* GameViewController.mm in Sources */,
 				A82F1CFA1214E27C004D0B68 /* MovePadView.mm in Sources */,
-				A82F1D641214EC15004D0B68 /* FireView.mm in Sources */,
 				A82F1DD11214F2E9004D0B68 /* LookView.mm in Sources */,
+				A85A380012178BA50080BBA9 /* ButtonView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3473,8 +3473,8 @@
 				A85E684711CB173A00D0FAEF /* tessmono.c in Sources */,
 				A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */,
 				A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */,
-				A82F1D631214EC15004D0B68 /* FireView.mm in Sources */,
 				A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */,
+				A85A380112178BA50080BBA9 /* ButtonView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
