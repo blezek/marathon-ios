@@ -30,6 +30,7 @@ extern  int
 #include "player.h"
 #include "key_definitions.h"
 #include "tags.h"
+#include "items.h"
 
 
 
@@ -133,6 +134,10 @@ extern  int
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
   [self.hud removeGestureRecognizer:self.menuTapGesture];
+  // If we are in the simulator, make us invincible
+#if TARGET_IPHONE_SIMULATOR
+  process_player_powerup(local_player_index, _i_invincibility_powerup);
+#endif
 }
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
