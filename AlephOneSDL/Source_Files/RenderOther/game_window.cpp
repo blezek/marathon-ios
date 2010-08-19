@@ -84,6 +84,9 @@
 
 #include    "network_sound.h"
 
+// DJB
+#include "IMG_savepng.h"
+
 #ifdef env68k
         #pragma segment screen
 #endif
@@ -352,7 +355,7 @@ void update_interface(short time_elapsed)
     _set_port_to_HUD();
     if (HUD_SW.update_everything(time_elapsed)) {
       force_update = true;
-    }
+    }          
     _restore_port();
 
     // Draw the whole thing if doing so is requested
