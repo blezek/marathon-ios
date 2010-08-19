@@ -40,14 +40,12 @@
 #include "mouse.h"
 #include "interface.h"
 
-#ifdef HAVE_LUA
 extern "C"
 {
 #include "lua.h"
 #include "lauxlib.h"
 #include "lualib.h"
 }
-#endif
 
 #include <string>
 using namespace std;
