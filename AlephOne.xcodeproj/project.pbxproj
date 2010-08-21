@@ -83,7 +83,6 @@
 		A85087A411C1D53A00D95436 /* SDL_sysaudio.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAA911C07475000AC9E1 /* SDL_sysaudio.h */; };
 		A85087A511C1D53A00D95436 /* SDL_sysvideo.h in Sources */ = {isa = PBXBuildFile; fileRef = A854912611BDF0840073554A /* SDL_sysvideo.h */; };
 		A85087A611C1D53A00D95436 /* SDL_rect_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE911C07ACF000AC9E1 /* SDL_rect_c.h */; };
-		A85087A711C1D53A00D95436 /* SDL_blit.h in Sources */ = {isa = PBXBuildFile; fileRef = A854912D11BDF0D40073554A /* SDL_blit.h */; };
 		A85087A811C1D53A00D95436 /* SDLUIAccelerationDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9711C073AD000AC9E1 /* SDLUIAccelerationDelegate.h */; };
 		A85087AA11C1D53A00D95436 /* SDL_pixels_c.h in Sources */ = {isa = PBXBuildFile; fileRef = A854912411BDF0840073554A /* SDL_pixels_c.h */; };
 		A85087AB11C1D53A00D95436 /* SDL_renderer_sw.h in Sources */ = {isa = PBXBuildFile; fileRef = A854912511BDF0840073554A /* SDL_renderer_sw.h */; };
@@ -925,7 +924,6 @@
 		A854912411BDF0840073554A /* SDL_pixels_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels_c.h; sourceTree = "<group>"; };
 		A854912511BDF0840073554A /* SDL_renderer_sw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_renderer_sw.h; sourceTree = "<group>"; };
 		A854912611BDF0840073554A /* SDL_sysvideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_sysvideo.h; sourceTree = "<group>"; };
-		A854912D11BDF0D40073554A /* SDL_blit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blit.h; sourceTree = "<group>"; };
 		A854912E11BDF0D40073554A /* SDL_renderer_gles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_renderer_gles.h; sourceTree = "<group>"; };
 		A8562A7811DACF1B0071DFEF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = Classes/GameViewController.h; sourceTree = "<group>"; };
 		A8562A7911DACF1B0071DFEF /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = Classes/GameViewController.mm; sourceTree = "<group>"; };
@@ -1787,7 +1785,6 @@
 				A8D967D611C72AFA00016403 /* SDL_windowevents_c.h */,
 				A8D967CA11C72A2500016403 /* SDL_mouse_c.h */,
 				A80EAAA811C07475000AC9E1 /* SDL_audio_c.h */,
-				A854912D11BDF0D40073554A /* SDL_blit.h */,
 				A854911611BDEFBA0073554A /* SDL_events_c.h */,
 				A80EAAE811C07ACF000AC9E1 /* SDL_glesfuncs.h */,
 				A80EAAA211C0741C000AC9E1 /* SDL_joystick_c.h */,
@@ -3142,7 +3139,6 @@
 				A85087A411C1D53A00D95436 /* SDL_sysaudio.h in Sources */,
 				A85087A511C1D53A00D95436 /* SDL_sysvideo.h in Sources */,
 				A85087A611C1D53A00D95436 /* SDL_rect_c.h in Sources */,
-				A85087A711C1D53A00D95436 /* SDL_blit.h in Sources */,
 				A85087A811C1D53A00D95436 /* SDLUIAccelerationDelegate.h in Sources */,
 				A85087AA11C1D53A00D95436 /* SDL_pixels_c.h in Sources */,
 				A85087AB11C1D53A00D95436 /* SDL_renderer_sw.h in Sources */,
