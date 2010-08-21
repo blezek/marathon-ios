@@ -36,8 +36,9 @@ extern  int
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, lookView, moveView, moveGesture;
-@synthesize weaponView, rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
+@synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, actionView;
+@synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -69,7 +70,12 @@ extern  int
       [self.mapView setup:key->offset];
     } else if ( key->action_flag == _action_trigger_state ) {
       [self.actionView setup:key->offset];
+    } else if ( key->action_flag == _cycle_weapons_forward ) {
+      [self.nextWeaponView setup:key->offset];
+    } else if ( key->action_flag == _cycle_weapons_backward ) {
+      [self.previousWeaponView setup:key->offset];
     }
+  
   }
   
   mode = MenuMode;
@@ -106,7 +112,7 @@ extern  int
  */
   
   
-
+/*
   NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
   self.rightWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
   self.rightWeaponSwipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -115,7 +121,7 @@ extern  int
   self.leftWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
   self.leftWeaponSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
   [self.weaponView addGestureRecognizer:self.leftWeaponSwipe];
-
+*/
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.hud addGestureRecognizer:self.menuTapGesture];
   // Hide initially

@@ -2328,12 +2328,16 @@ void read_preferences ()
   printf ( "Resetting screen mode to %d x %d\n",
            graphics_preferences->screen_mode.width,
            graphics_preferences->screen_mode.height );
-  graphics_preferences->screen_mode.fill_the_screen = true;
+  graphics_preferences->screen_mode.fill_the_screen = false;
   graphics_preferences->screen_mode.fullscreen = true;
   graphics_preferences->screen_mode.hud = true;
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
   input_preferences->mouse_acceleration = 0;
-
+  
+  // Setup the Lua Hud
+  environment_preferences->use_hud_lua = false;
+  sprintf ( environment_preferences->hud_lua_file, "%s/Scripts/FloatingX.lua", getDataDir() ); 
+  printf ( "Hud file %s\n", environment_preferences->hud_lua_file );
   // Set keyboard
   input_preferences->input_device = _mouse_yaw_pitch;
 
