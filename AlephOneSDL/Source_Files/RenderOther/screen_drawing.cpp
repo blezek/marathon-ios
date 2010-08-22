@@ -330,9 +330,17 @@ void _draw_screen_shape(shape_descriptor shape_id,
     SDL_FreeSurface(s);
     s = s2;
   }
+  // DJB If we are trying to draw an 8 bit surface on 32 bit destination, convert the 8 bit surface
+  if ( s->format->BitsPerPixel == 8 && draw_surface->format->BitsPerPixel == 32 ) {
+    SDL_Surface *s2 = SDL_DisplayFormat(s);
+    SDL_FreeSurface(s);
+    s = s2;    
+  }
 
   // Blit the surface
-  SDL_BlitSurface(s, source ? &src_rect : NULL, draw_surface, &dst_rect);
+  if ( SDL_BlitSurface(s, source ? &src_rect : NULL, draw_surface, &dst_rect) == -1 ) {
+    printf ( "Error blitting! %s", SDL_GetError() );
+  }
   if (draw_surface == SDL_GetVideoSurface()) {
     SDL_UpdateRects(draw_surface, 1, &dst_rect);
   }
@@ -367,11 +375,9 @@ void _draw_screen_shape_at_x_y(shape_descriptor shape_id, short x, short y)
   SDL_Rect dst_rect = {x, y, s->w, s->h};
 
   // Blit the surface
-  SDL_BlitSurface(s, NULL, draw_surface, &dst_rect);
-  // DJB Draw HUD
-  if ( shape_id == 10 ) {
-    SDL_SaveBMP(s, "/tmp/HUD-MotionSensorOnly.bmp");
-    SDL_SaveBMP ( draw_surface, "/tmp/HUD-PostBlitOfMotionSensor.bmp" );
+  // DJB  Log an blit errors
+  if ( SDL_BlitSurface(s, NULL, draw_surface, &dst_rect) == -1 ) {
+    printf ( "Error blitting! %s", SDL_GetError() );
   }
   if (draw_surface == SDL_GetVideoSurface()) {
     SDL_UpdateRects(draw_surface, 1, &dst_rect);
