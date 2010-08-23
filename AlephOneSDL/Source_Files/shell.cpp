@@ -310,15 +310,11 @@ int main(int argc, char **argv)
   return 0;
 }
 
-// DJB
-#include "AlephOneHelper.h"
+// DJB initialize_application, simplified cut out all non-iPhone/iPad code
+#include "AlephOneHelper.h"          
+             
 static void initialize_application(void)
 {
-#if defined(__WIN32__) && defined(__MINGW32__)
-  if (LoadLibrary("exchndl.dll")) {
-    option_debug = true;
-  }
-#endif
 
   // Find data directories, construct search path
   DirectorySpecifier default_data_dir;
@@ -326,6 +322,7 @@ static void initialize_application(void)
   // DJB
 #if TARGET_OS_IPHONE
   default_data_dir = getDataDir();
+  local_data_dir = getLocalDataDir();
 #elif defined(unix) || defined(__NetBSD__) || defined(__OpenBSD__) || \
   (defined(__APPLE__) && defined(__MACH__) && !defined(HAVE_BUNDLE_NAME))
 

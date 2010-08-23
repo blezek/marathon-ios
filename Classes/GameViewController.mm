@@ -213,7 +213,18 @@ extern  int
   NSLog(@"Touches moved" );
 }
 
+#pragma mark -
+#pragma mark Game controls
 
+- (IBAction)pause:(id)from {
+  // Level name is
+  // static_world->level_name
+  save_game();
+}
+
+
+#pragma mark -
+#pragma mark View Controller Methods
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.

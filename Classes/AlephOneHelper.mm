@@ -20,6 +20,12 @@ char* getDataDir() {
   
 }
 
+
+char* getLocalDataDir() {
+  NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+  return (char*)[docsDir UTF8String];
+}
+
 void helperStartGame () {
   [[GameViewController sharedInstance] startGame];
 }

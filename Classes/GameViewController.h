@@ -14,6 +14,10 @@
 #import "ButtonView.h"
 #import "LookView.h"
 
+
+// Useful functions
+extern bool save_game(void);
+
 typedef enum {
   MenuMode,
   GameMode,
@@ -51,6 +55,8 @@ typedef enum {
 
 +(GameViewController*)sharedInstance;
 +(GameViewController*)createNewSharedInstance;
+
+- (IBAction)pause:(id)from;
 
 - (void)startGame;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;

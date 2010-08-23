@@ -15,5 +15,6 @@
 #endif
 
 char *getDataDir();
-
+char* getLocalDataDir();
 void helperStartGame();
+
