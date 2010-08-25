@@ -15,7 +15,7 @@
 #import "ASIHTTPRequest.h"
 #import "ZipArchive.h"
 #import "GameViewController.h"
-
+#import "ManagedObjects.h"
 
 @implementation AlephOneAppDelegate
 
@@ -38,48 +38,60 @@ extern int SDL_main(int argc, char *argv[]);
   
 	// [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
   
+  NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+  [context setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+  NSEntityDescription *scenarioEntity = [NSEntityDescription entityForName:@"Scenario" inManagedObjectContext:self.managedObjectContext];
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+  [fetchRequest setEntity:scenarioEntity];
+  NSError *error;
+  NSArray *list = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+  Scenario *scenario;
+  if ( [list count] == 0 ) {
+    // Insert us!
+    scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:context];
+    scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
+    scenario.isDownloaded = NO;
+    scenario.name = @"Marathon";
+    scenario.path = @"M1A1";
+  } else {
+    scenario = [list objectAtIndex:0];
+  }
+  
+  
   // See if we have M1A1 installed, if not, fetch it and download
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString* docsPath = [paths objectAtIndex:0];
-  NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-  NSString *installDirectory = [docsPath stringByAppendingString:@"/M1A1"];
+  NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [self applicationDocumentsDirectory], scenario.path];
+  NSLog ( @"Install path is %@", installDirectory );
   
   BOOL isDirectory;
-  BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory  isDirectory:&isDirectory];
+  BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory isDirectory:&isDirectory];
   NSLog ( @"Checking for file: %@", installDirectory );
   if ( !fileExists ) {
-    NSString* path = [resourcePath stringByAppendingString:@"/M1A1.zip"];
+    NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [self applicationDocumentsDirectory], scenario.path];
     
-    // See if the zip file exists
-    fileExists = [[NSFileManager defaultManager] fileExistsAtPath:resourcePath isDirectory:&isDirectory];
-    if ( !fileExists ) {      
-      path = [docsPath stringByAppendingString:@"/lM1A1.zip"];
-      NSLog ( @"Download file!" );
-      NSURL *url = [NSURL URLWithString:@"http://10.0.0.11/~blezek/M1A1.zip"];
-      ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-      [request setDownloadDestinationPath:path];    
-      [request startSynchronous];
-    }
+    NSLog ( @"Download file!" );
+    NSURL *url = [NSURL URLWithString:scenario.downloadURL];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadDestinationPath:path];    
+    [request startSynchronous];
     
     // Now unzip
     ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];
     [zipper UnzipOpenFile:path];
-    [zipper UnzipFileTo:docsPath overWrite:NO];
+    [zipper UnzipFileTo:[self applicationDocumentsDirectory] overWrite:NO];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtPath:path error:NULL];
+    scenario.isDownloaded = [NSNumber numberWithBool:YES];
   }
-  
-  // [[NSFileManager defaultManager] changeCurrentDirectoryPath:currentDirectory];
-  
-  
+  [context save:&error];
+  newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  [window addSubview:newGameViewController.view];
+  [window makeKeyAndVisible];
+
 	[self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-	
-    [window makeKeyAndVisible];
 	
 	return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -211,9 +223,7 @@ char* argv0 = "AlephOneHD";
     if (managedObjectModel_ != nil) {
         return managedObjectModel_;
     }
-    NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"AlephOne" ofType:@"momd"];
-    NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
-    managedObjectModel_ = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
+    managedObjectModel_ = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];   
     return managedObjectModel_;
 }
 

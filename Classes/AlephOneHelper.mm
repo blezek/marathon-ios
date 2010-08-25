@@ -29,3 +29,10 @@ char* getLocalDataDir() {
 void helperStartGame () {
   [[GameViewController sharedInstance] startGame];
 }
+
+#include "interface.h"
+bool begin_game(short user, bool cheat);
+void helperNewGame () {
+  // Pop up a dialog
+  begin_game(_single_player, false);
+}

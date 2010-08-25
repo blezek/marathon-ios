@@ -17,4 +17,6 @@
 char *getDataDir();
 char* getLocalDataDir();
 void helperStartGame();
-
+void helperNewGame();
+void helperSaveGame();
+void helperLoadGame();

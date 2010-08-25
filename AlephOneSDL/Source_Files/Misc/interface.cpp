@@ -309,7 +309,8 @@ extern bool choose_saved_game_to_load(FileSpecifier& File);
 static void display_credits(void);
 static void draw_button(short index, bool pressed);
 static void handle_replay(bool last_replay);
-static bool begin_game(short user, bool cheat);
+// DJB No longer static
+bool begin_game(short user, bool cheat);
 static void start_game(short user, bool changing_level);
 // LP: "static" removed
 void handle_load_game(void);
@@ -1396,7 +1397,9 @@ void do_menu_item_command(
     switch(menu_item)
     {
     case iNewGame:
-      begin_game(_single_player, cheat);
+      // DJB Start a new game with a dialog!
+        helperNewGame();
+      // begin_game(_single_player, cheat);
       ForceRepaintMenuDisplay();
       break;
     case iPlaySingletonLevel:
@@ -1774,7 +1777,8 @@ static void handle_replay( /* This is gross. */
 }
 
 // ZZZ: some modifications to use generalized game-startup
-static bool begin_game(
+// DJB No longer static...
+bool begin_game(
   short user,
   bool cheat)
 {

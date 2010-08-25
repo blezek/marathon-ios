@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "NewGameViewController.h"
 
 @interface AlephOneAppDelegate : NSObject <UIApplicationDelegate> {
     
-    UIWindow *window;
+  UIWindow *window;
+  NewGameViewController *newGameViewController;
     
 @private
     NSManagedObjectContext *managedObjectContext_;
@@ -28,4 +30,5 @@
 - (NSString *)applicationDocumentsDirectory;
 
 @end
+
 
