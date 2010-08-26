@@ -38,6 +38,8 @@
 
 #include <UIKit/UIKit.h>
 #include <Foundation/Foundation.h>
+// DJB Need the app delegate
+#import "AlephOneAppDelegate.h"
 
 static int SetupWindowData(_THIS, SDL_Window *window, UIWindow *uiwindow, SDL_bool created)
 {
@@ -137,8 +139,12 @@ int UIKit_CreateWindow(_THIS, SDL_Window *window) {
     }
 
     /* ignore the size user requested, and make a fullscreen window */
+  
+  // DJB Always grab the existing window!
+  UIWindow *uiwindow = [AlephOneAppDelegate sharedAppDelegate].window;
     // !!! FIXME: can we have a smaller view?
-    UIWindow *uiwindow = [UIWindow alloc];
+    /*
+     UIWindow *uiwindow = [UIWindow alloc];
     if (window->flags & SDL_WINDOW_BORDERLESS)
         uiwindow = [uiwindow initWithFrame:[uiscreen bounds]];
     else
@@ -147,7 +153,10 @@ int UIKit_CreateWindow(_THIS, SDL_Window *window) {
     if (SDL_UIKit_supports_multiple_displays) {
         [uiwindow setScreen:uiscreen];
     }
+     */
     if (SetupWindowData(_this, window, uiwindow, SDL_TRUE) < 0) {
+      // DJB Error setting up window data
+      NSLog ( @"Failed to setup window data!" );
         [uiwindow release];
         return -1;
     }    
@@ -159,7 +168,8 @@ int UIKit_CreateWindow(_THIS, SDL_Window *window) {
 void UIKit_DestroyWindow(_THIS, SDL_Window * window) {
     SDL_WindowData *data = (SDL_WindowData *)window->driverdata;
     if (data) {
-        [data->uiwindow release];
+      // DJB Never release the window, just re-use the existing one
+        // [data->uiwindow release];
         SDL_free(data);
         window->driverdata = NULL;
     }

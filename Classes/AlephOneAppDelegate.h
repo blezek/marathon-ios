@@ -28,6 +28,7 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (NSString *)applicationDocumentsDirectory;
++(AlephOneAppDelegate *)sharedAppDelegate;
 
 @end
 

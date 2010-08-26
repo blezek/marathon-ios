@@ -84,8 +84,12 @@ extern int SDL_main(int argc, char *argv[]);
     scenario.isDownloaded = [NSNumber numberWithBool:YES];
   }
   [context save:&error];
+  
   newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  [window addSubview:newGameViewController.view];
+  GameViewController *game = [GameViewController createNewSharedInstance];
+
+  // [window addSubview:newGameViewController.view];
+  [window addSubview:game.view];
   [window makeKeyAndVisible];
 
 	[self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];

@@ -109,7 +109,8 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   
   // DJB
   // Construct the Game view controller
-  GameViewController *game = [GameViewController createNewSharedInstance];
+  // GameViewController *game = [GameViewController createNewSharedInstance];
+  GameViewController *game = [GameViewController sharedInstance];
   
     /* construct our view, passing in SDL's OpenGL configuration data */
     view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
@@ -123,7 +124,8 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 	data->view = view;
 	
 	/* add the view to our window */
-	[uiwindow addSubview:game.view ];
+	// DJB Adding the GameViewController to the UIWindow should happen at initialization
+  // [uiwindow addSubview:game.view ];
 	
 	/* Don't worry, the window retained the view */
 	[view release];

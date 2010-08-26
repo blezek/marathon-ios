@@ -27,6 +27,7 @@ typedef enum {
 @interface GameViewController : UIViewController {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *hud;
+  IBOutlet UIView *menuView;
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *actionView;
@@ -73,6 +74,7 @@ typedef enum {
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) IBOutlet UIView *hud;
+@property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet ButtonView *mapView;
 @property (nonatomic, retain) IBOutlet ButtonView *actionView;
 @property (nonatomic, retain) IBOutlet LookView *lookView;

@@ -35,7 +35,7 @@ extern  int
 
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud, lookView, moveView, moveGesture;
+@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
@@ -56,29 +56,9 @@ extern  int
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-  
-  // Setup other views
-  [self.moveView setup];
-  
-  key_definition *key = current_key_definitions;
-  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
-    if ( key->action_flag == _left_trigger_state ){
-      [self.leftFireView setup:key->offset];
-    } else if ( key->action_flag == _right_trigger_state ){
-        [self.rightFireView setup:key->offset];
-    } else if ( key->action_flag == _toggle_map ){
-      [self.mapView setup:key->offset];
-    } else if ( key->action_flag == _action_trigger_state ) {
-      [self.actionView setup:key->offset];
-    } else if ( key->action_flag == _cycle_weapons_forward ) {
-      [self.nextWeaponView setup:key->offset];
-    } else if ( key->action_flag == _cycle_weapons_backward ) {
-      [self.previousWeaponView setup:key->offset];
-    }
-  
-  }
-  
+
   mode = MenuMode;
+
   CGAffineTransform transform = self.hud.transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -90,9 +70,10 @@ extern  int
   transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
   self.hud.transform = transform;
   self.hud.bounds = CGRectMake(0, 0, 1024, 768);
+  self.menuView.center = center;
+  self.menuView.transform = transform;
+  self.menuView.bounds = CGRectMake(0, 0, 1024, 768);
 /*  
-  
-  
   CGAffineTransform transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -123,15 +104,39 @@ extern  int
   [self.weaponView addGestureRecognizer:self.leftWeaponSwipe];
 */
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-  [self.hud addGestureRecognizer:self.menuTapGesture];
+  [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially
-  self.hud.hidden = NO;
+  self.hud.hidden = YES;
+  self.menuView.hidden = NO;
   self.hud.userInteractionEnabled = YES;
   [super viewDidLoad];
 }
 
 - (void)startGame {
   mode = GameMode;
+  
+  // Setup other views
+  [self.moveView setup];
+  
+  key_definition *key = current_key_definitions;
+  for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
+    if ( key->action_flag == _left_trigger_state ){
+      [self.leftFireView setup:key->offset];
+    } else if ( key->action_flag == _right_trigger_state ){
+      [self.rightFireView setup:key->offset];
+    } else if ( key->action_flag == _toggle_map ){
+      [self.mapView setup:key->offset];
+    } else if ( key->action_flag == _action_trigger_state ) {
+      [self.actionView setup:key->offset];
+    } else if ( key->action_flag == _cycle_weapons_forward ) {
+      [self.nextWeaponView setup:key->offset];
+    } else if ( key->action_flag == _cycle_weapons_backward ) {
+      [self.previousWeaponView setup:key->offset];
+    }
+    
+  }
+  
+  
   self.hud.alpha = 0.0;
   self.hud.hidden = NO;
   // Animate the HUD coming into view
@@ -175,8 +180,8 @@ extern  int
   if ( mode == MenuMode ) {
     if ( recognizer == menuTapGesture ) {
       NSLog ( @"Handling menu tap" );
-      CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.hud]];
-      location = [recognizer locationInView:self.hud];
+      CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
+      location = [recognizer locationInView:self.menuView];
       SDL_SendMouseMotion(0, location.x, location.y);
       SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
       SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
