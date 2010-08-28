@@ -32,7 +32,7 @@
 
 #ifndef _CROSSHAIRS
 #define _CROSSHAIRS
-
+#include "cseries.h"
 enum {
   CHShape_RealCrosshairs,
   CHShape_Circle

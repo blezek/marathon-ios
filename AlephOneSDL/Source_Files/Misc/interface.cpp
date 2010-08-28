@@ -2025,8 +2025,8 @@ static void start_game(
 
   draw_interface();
 
-  // DJB Start the game
-  helperStartGame();
+  // DJB Bring up the HUD
+  helperBringUpHUD();
 
 #ifdef PERFORMANCE
   PerfControl(perf_globals, true);

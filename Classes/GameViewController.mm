@@ -7,6 +7,8 @@
 //
 
 #import "GameViewController.h"
+#import "NewGameViewController.h"
+
 extern "C" {
 extern  int
   SDL_SendMouseMotion(int relative, int x, int y);
@@ -31,14 +33,16 @@ extern  int
 #include "key_definitions.h"
 #include "tags.h"
 #include "items.h"
+#include "interface.h"
 
 
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture;
+@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
+@synthesize saveGameView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -58,22 +62,32 @@ extern  int
 - (void)viewDidLoad {
 
   mode = MenuMode;
-
+  haveNewGamePreferencesBeenSet = NO;
   CGAffineTransform transform = self.hud.transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);
   CGPoint center = CGPointMake(bounds.size.height / 2.0, bounds.size.width / 2.0);
   // Set the center point of the view to the center point of the window's content area.
-  self.hud.center = center;
   // Rotate the view 90 degrees around its new center point.
   transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
-  self.hud.transform = transform;
-  self.hud.bounds = CGRectMake(0, 0, 1024, 768);
-  self.menuView.center = center;
-  self.menuView.transform = transform;
-  self.menuView.bounds = CGRectMake(0, 0, 1024, 768);
-/*  
+
+  // self.view.transform = transform;
+  // self.view.bounds = CGRectMake(0, 0, 1024, 768);
+  
+  NSMutableSet *viewList = [[[NSMutableSet alloc] init] autorelease];
+  [viewList addObject:self.hud];
+  [viewList addObject:self.menuView];
+  [viewList addObject:self.newGameView];
+  [viewList addObject:self.saveGameView];
+  for ( UIView *v in viewList ) {
+    v.center = center;
+    v.transform = transform;
+    v.bounds = CGRectMake(0, 0, 1024, 768);
+    v.hidden = YES;
+  }
+  
+  /*  
   CGAffineTransform transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -92,27 +106,42 @@ extern  int
   // self.view.bounds = CGRectMake(0, 0, 1024, 768);
  */
   
-  
-/*
-  NSLog ( @"Found left fire key: %d right fire key %d", leftFireKey, rightFireKey );
-  self.rightWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-  self.rightWeaponSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-  [self.weaponView addGestureRecognizer:self.rightWeaponSwipe];
-
-  self.leftWeaponSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-  self.leftWeaponSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-  [self.weaponView addGestureRecognizer:self.leftWeaponSwipe];
-*/
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially
-  self.hud.hidden = YES;
   self.menuView.hidden = NO;
-  self.hud.userInteractionEnabled = YES;
   [super viewDidLoad];
 }
 
-- (void)startGame {
+- (IBAction)newGame {
+  // Have we already set the preferences?  If so, then start the game, otw, bring up the preferences
+  if ( haveNewGamePreferencesBeenSet ) {
+    // Start the game!
+    [self cancelNewGame]; // Withdraw the view
+    begin_game(_single_player, false);  
+    haveNewGamePreferencesBeenSet = NO;
+  } else {
+    // Bring up the preferences
+    // TODO -- nice animation!
+    self.newGameView.hidden = NO;
+  }
+}
+
+- (IBAction)beginGame {
+  haveNewGamePreferencesBeenSet = YES;
+  [self cancelNewGame];
+  CGPoint location = lastMenuTap;
+  SDL_SendMouseMotion(0, location.x, location.y);
+  SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
+  SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+  SDL_GetRelativeMouseState(NULL, NULL);
+}
+
+- (IBAction)cancelNewGame {
+  self.newGameView.hidden = YES;
+}
+
+- (void)bringUpHUD {
   mode = GameMode;
   
   // Setup other views
@@ -182,6 +211,7 @@ extern  int
       NSLog ( @"Handling menu tap" );
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
       location = [recognizer locationInView:self.menuView];
+      lastMenuTap = location;
       SDL_SendMouseMotion(0, location.x, location.y);
       SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
       SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);

@@ -295,6 +295,9 @@ void free_main_menu_buffers(void);
 void draw_main_menu(void);
 void draw_menu_button(short index, bool pressed);
 
+// DJB External declaration
+extern bool begin_game(short user, bool cheat);
+
 /* ---------- prototypes/INTERFACE_MACINTOSH.C- couldn't think of a better place... */
 void hide_cursor(void);
 void show_cursor(void);

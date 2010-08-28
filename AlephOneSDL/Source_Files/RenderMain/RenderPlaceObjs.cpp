@@ -202,7 +202,7 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       shape_and_transfer_mode data;
       shape_information_data *shape_information;
       shape_information_data scaled_shape_information;                   // if necessary
-      shape_information_data model_shape_information;                   // also if necessary
+      // DJB Removed warning shape_information_data model_shape_information;                   // also if necessary
 
       // Maximum distance of object parts (use position if a sprite)
       int Farthest = transformed_origin.x;
@@ -214,8 +214,8 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       int DistanceRef = transformed_origin.x;
 
       // For the convenience of the 3D-model renderer
-      int LightDepth = transformed_origin.x;
-      GLfloat LightDirection[3];
+      // DJB Remove warning int LightDepth = transformed_origin.x;
+      // DJB remove warning GLfloat LightDirection[3];
 
       get_object_shape_and_transfer_mode(&view->origin, object_index, &data);
       // Nonexistent shape: skip
@@ -241,8 +241,8 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       }
 
       // Create a fake sprite rectangle using the model's bounding box
-      float Scale = 1;
 #ifdef HAVE_OPENGL
+      float Scale = 1;
       if (ModelPtr) {
         // Copy over
         model_shape_information = *shape_information;
@@ -505,7 +505,7 @@ void RenderPlaceObjsClass::sort_render_object_into_tree(
   sorted_node_data *desired_node;
   short i;
   // LP: reference to simplify the code
-  vector<sorted_node_data>& SortedNodes = RSPtr->SortedNodes;
+  // DJB Remove warning vector<sorted_node_data>& SortedNodes = RSPtr->SortedNodes;
 
   /* find the last render_object in the given list of new objects */
   for (last_new_render_object= new_render_object;

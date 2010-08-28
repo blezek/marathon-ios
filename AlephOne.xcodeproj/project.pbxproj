@@ -691,9 +691,9 @@
 		A8AD43A91222141000A09383 /* SaveGame.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
-		A8C29C5A1224BF7B00E79491 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.m */; };
+		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
-		A8C29C5C1224BF7B00E79491 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.m */; };
+		A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8D966FF11C717A700016403 /* SDLnet.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FB11C717A700016403 /* SDLnet.c */; };
 		A8D9670011C717A700016403 /* SDLnetselect.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FC11C717A700016403 /* SDLnetselect.c */; };
@@ -1408,7 +1408,7 @@
 		A8C29BA41224B69600E79491 /* ManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjects.h; path = Classes/ManagedObjects.h; sourceTree = "<group>"; };
 		A8C29BA51224B69600E79491 /* ManagedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjects.m; path = Classes/ManagedObjects.m; sourceTree = "<group>"; };
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
-		A8C29C581224BF7B00E79491 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewGameViewController.m; path = Classes/NewGameViewController.m; sourceTree = "<group>"; };
+		A8C29C581224BF7B00E79491 /* NewGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NewGameViewController.mm; path = Classes/NewGameViewController.mm; sourceTree = "<group>"; };
 		A8C29C591224BF7B00E79491 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = Classes/NewGameViewController.xib; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
@@ -1744,7 +1744,7 @@
 				A85A37FF12178BA50080BBA9 /* ButtonView.mm */,
 				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
-				A8C29C581224BF7B00E79491 /* NewGameViewController.m */,
+				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3154,7 +3154,7 @@
 				A8AD432712220F9500A09383 /* main.m in Sources */,
 				A8AD43A81222141000A09383 /* SaveGame.xcdatamodel in Sources */,
 				A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */,
-				A8C29C5C1224BF7B00E79491 /* NewGameViewController.m in Sources */,
+				A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3511,7 +3511,7 @@
 				A8AD432A12220F9500A09383 /* main.m in Sources */,
 				A8AD43A91222141000A09383 /* SaveGame.xcdatamodel in Sources */,
 				A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */,
-				A8C29C5A1224BF7B00E79491 /* NewGameViewController.m in Sources */,
+				A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

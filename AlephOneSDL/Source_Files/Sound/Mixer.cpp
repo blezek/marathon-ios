@@ -258,7 +258,8 @@ void Mixer::PlaySoundResource(LoadedResource &rsrc)
   uint16 num_cmds = SDL_ReadBE16(p);
   for (int i=0; i<num_cmds; i++) {
     uint16 cmd = SDL_ReadBE16(p);
-    uint16 param1 = SDL_ReadBE16(p);
+    // DJB Removed warning 
+    // uint16 param1 = SDL_ReadBE16(p);
     uint32 param2 = SDL_ReadBE32(p);
     //printf("cmd %04x %04x %08x\n", cmd, param1, param2);
 

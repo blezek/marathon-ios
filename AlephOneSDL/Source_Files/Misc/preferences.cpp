@@ -375,7 +375,7 @@ static void crosshair_dialog(void *arg)
   CrosshairData OldCrosshairs = player_preferences->Crosshairs;
   crosshair_binders.reset(new BinderSet);
 
-  dialog *parent = (dialog *) arg;
+  // DJB Removed unused variable dialog *parent = (dialog *) arg;
 
   dialog d;
   vertical_placer *placer = new vertical_placer;

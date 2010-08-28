@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface NewGameViewController : UIViewController {
-
 }
 
 - (IBAction)start:(id)control;

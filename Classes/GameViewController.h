@@ -28,6 +28,8 @@ typedef enum {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
+  IBOutlet UIView *newGameView;
+  IBOutlet UIView *saveGameView;
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *actionView;
@@ -40,6 +42,9 @@ typedef enum {
   IBOutlet ButtonView *inventoryToggleView;
 
   HUDMode mode;
+  
+  bool haveNewGamePreferencesBeenSet;
+  CGPoint lastMenuTap;
   
   SDLKey leftFireKey;
   SDLKey rightFireKey;
@@ -58,8 +63,11 @@ typedef enum {
 +(GameViewController*)createNewSharedInstance;
 
 - (IBAction)pause:(id)from;
+- (IBAction)newGame;
+- (IBAction)beginGame;
+- (IBAction)cancelNewGame;
 
-- (void)startGame;
+- (void)bringUpHUD;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
@@ -74,6 +82,8 @@ typedef enum {
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) IBOutlet UIView *hud;
+@property (nonatomic, retain) IBOutlet UIView *newGameView;
+@property (nonatomic, retain) IBOutlet UIView *saveGameView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet ButtonView *mapView;
 @property (nonatomic, retain) IBOutlet ButtonView *actionView;

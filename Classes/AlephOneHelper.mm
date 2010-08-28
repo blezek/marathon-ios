@@ -8,6 +8,7 @@
 
 #import "AlephOneHelper.h"
 #import "GameViewController.h"
+#include "interface.h"
 
 NSString *dataDir;
 
@@ -26,13 +27,11 @@ char* getLocalDataDir() {
   return (char*)[docsDir UTF8String];
 }
 
-void helperStartGame () {
-  [[GameViewController sharedInstance] startGame];
+void helperBringUpHUD () {
+  [[GameViewController sharedInstance] bringUpHUD];
 }
 
-#include "interface.h"
-bool begin_game(short user, bool cheat);
 void helperNewGame () {
-  // Pop up a dialog
-  begin_game(_single_player, false);
+  // We need to handle some preferences here
+  [[GameViewController sharedInstance] newGame];
 }
