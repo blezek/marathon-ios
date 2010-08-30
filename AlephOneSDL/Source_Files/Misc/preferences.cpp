@@ -109,6 +109,8 @@
 #endif
 
 #include "joystick.h"
+// DJB Include AlephOneHelper.h
+#include "AlephOneHelper.h"
 
 using namespace alephone;
 

@@ -20,11 +20,10 @@
     slouken@libsdl.org
 */
 
-#include "SDL_config.h"
 
 #ifndef _SDL_uikitopengles
 #define _SDL_uikitopengles
-
+#include "SDL_config.h"
 #include "SDL_uikitvideo.h"
 
 extern int UIKit_GL_MakeCurrent(_THIS, SDL_Window * window,

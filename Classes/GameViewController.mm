@@ -36,7 +36,6 @@ extern  int
 #include "interface.h"
 
 
-
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
@@ -105,7 +104,6 @@ extern  int
   }
   // self.view.bounds = CGRectMake(0, 0, 1024, 768);
  */
-  
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially

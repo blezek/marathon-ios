@@ -150,6 +150,9 @@ extern TP2PerfGlobals perf_globals;
 #include <smpeg/smpeg.h>
 #endif
 
+// DJB Include AlephOneHelper.h
+#include "AlephOneHelper.h"
+
 #include "sdl_dialogs.h"
 #include "sdl_widgets.h"
 #include "network_dialog_widgets_sdl.h"

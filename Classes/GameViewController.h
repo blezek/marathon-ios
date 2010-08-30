@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SaveGameViewController.h"
 #import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
 #import "MovePadView.h"
 #import "ButtonView.h"
 #import "LookView.h"
-
+#include "FileHandler.h"
 
 // Useful functions
 extern bool save_game(void);
+extern "C" void setOpenGLView ( SDL_uikitopenglview* view );
 
 typedef enum {
   MenuMode,
@@ -44,11 +45,15 @@ typedef enum {
   HUDMode mode;
   
   bool haveNewGamePreferencesBeenSet;
+  bool haveChoosenSaveGame;
+  FileSpecifier *chosenSaveGame;
+  
   CGPoint lastMenuTap;
   
   SDLKey leftFireKey;
   SDLKey rightFireKey;
   
+  IBOutlet SaveGameViewController *saveGameViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -66,6 +71,13 @@ typedef enum {
 - (IBAction)newGame;
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
+
+
+- (IBAction)cancelChooseGame;
+- (IBAction)gameChosen;
+- saveGame:(FileSpecifier*)game;
+- (bool)chooseSaveGame:(FileSpecifier*)saved_game;
+
 
 - (void)bringUpHUD;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
@@ -95,6 +107,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet ButtonView *nextWeaponView;
 @property (nonatomic, retain) IBOutlet ButtonView *inventoryToggleView;
 @property (nonatomic, retain) IBOutlet UIButton *pause;
+@property (nonatomic, retain) IBOutlet SaveGameViewController *saveGameViewController;
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;

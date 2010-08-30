@@ -19,7 +19,7 @@
  Sam Lantinga
  slouken@libsdl.org
  */
-
+  
 #include "SDL_uikitopengles.h"
 #include "SDL_uikitopenglview.h"
 #include "SDL_uikitappdelegate.h"
@@ -28,8 +28,9 @@
 #include "SDL_sysvideo.h"
 #include "SDL_loadso.h"
 #include <dlfcn.h>
+
 // DJB
-#import "GameViewController.h"
+extern void setOpenGLView ( SDL_uikitopenglview* view );
 
 static int UIKit_GL_Initialize(_THIS);
 
@@ -107,12 +108,7 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 	UIWindow *uiwindow = data->uiwindow;
 
   
-  // DJB
-  // Construct the Game view controller
-  // GameViewController *game = [GameViewController createNewSharedInstance];
-  GameViewController *game = [GameViewController sharedInstance];
-  
-    /* construct our view, passing in SDL's OpenGL configuration data */
+     /* construct our view, passing in SDL's OpenGL configuration data */
     view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
 									retainBacking: _this->gl_config.retained_backing \
 									rBits: _this->gl_config.red_size \
@@ -120,7 +116,7 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 									bBits: _this->gl_config.blue_size \
 									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
-  [game setOpenGLView:view];
+  setOpenGLView ( view );
 	data->view = view;
 	
 	/* add the view to our window */

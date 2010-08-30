@@ -36,7 +36,8 @@
 #include "interface.h"
 #include "game_wad.h"
 #include "game_errors.h"
-
+// DJB Include AlephOneHelper
+#include "AlephOneHelper.h"
 // From shell_sdl.cpp
 extern vector<DirectorySpecifier> data_search_path;
 
@@ -111,7 +112,9 @@ bool get_default_theme_spec(FileSpecifier &file)
 
 bool choose_saved_game_to_load(FileSpecifier &saved_game)
 {
-  return saved_game.ReadDialog(_typecode_savegame);
+  // DJB Rather than use SDL, use the UIKit code in GameViewController
+  return helperChooseSaveGame ( saved_game );
+  // return saved_game.ReadDialog(_typecode_savegame);
 }
 
 

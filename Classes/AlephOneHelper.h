@@ -13,6 +13,7 @@
 // #define iWidth 480
 // #define iHeight 320
 #endif
+#include "FileHandler.h"
 
 char *getDataDir();
 char* getLocalDataDir();
@@ -20,3 +21,6 @@ void helperBringUpHUD();
 void helperNewGame();
 void helperSaveGame();
 void helperLoadGame();
+
+// Choose a saved game
+int helperChooseSaveGame ( FileSpecifier &saved_game );

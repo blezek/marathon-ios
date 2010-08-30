@@ -6,8 +6,8 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlephOneHelper.h"
 #import "GameViewController.h"
+#import "AlephOneHelper.h"
 #include "interface.h"
 
 NSString *dataDir;
@@ -34,4 +34,19 @@ void helperBringUpHUD () {
 void helperNewGame () {
   // We need to handle some preferences here
   [[GameViewController sharedInstance] newGame];
+}
+
+int helperChooseSaveGame ( FileSpecifier &saved_game ) {
+  return [[GameViewController sharedInstance] chooseSaveGame:&saved_game];
+}
+
+
+extern "C" void setOpenGLView ( SDL_uikitopenglview* view ) {
+  // DJB
+  // Construct the Game view controller
+  // GameViewController *game = [GameViewController createNewSharedInstance];
+  GameViewController *game = [GameViewController sharedInstance];
+  
+  [game setOpenGLView:view];
+  
 }

@@ -235,7 +235,8 @@ void TopLevelLogger::flush()
 #include <pwd.h>
 #endif
 #endif
-
+// DJB Adding helper declarations
+#include "AlephOneHelper.h"
 static void
 InitializeLogging() {
   assert(sOutputFile == NULL);

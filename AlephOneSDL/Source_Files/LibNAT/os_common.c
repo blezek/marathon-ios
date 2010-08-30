@@ -259,7 +259,8 @@ int Select_Till_Readywrite(OsSocket * s,
 int LNat_Common_Get_Local_Ip(OsSocket * s, char ** local_ip)
 {
   struct sockaddr_in local;
-  size_t saSize = sizeof(struct sockaddr);
+  // DJB Removing warning
+  socklen_t saSize = sizeof(struct sockaddr);
   if(getsockname(s->sock,(struct sockaddr *)&local,&saSize)) {
     return SOCKET_GETSOCKNAME_FAILED;
   }
