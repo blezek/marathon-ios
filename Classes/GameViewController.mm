@@ -34,6 +34,7 @@ extern  int
 #include "tags.h"
 #include "items.h"
 #include "interface.h"
+#import "game_wad.h"
 
 
 @implementation GameViewController
@@ -41,7 +42,8 @@ extern  int
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
-@synthesize saveGameView;
+@synthesize saveGameView, haveNewGamePreferencesBeenSet;
+@synthesize saveGameViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -62,6 +64,7 @@ extern  int
 
   mode = MenuMode;
   haveNewGamePreferencesBeenSet = NO;
+  startingNewGameSoSave = NO;
   CGAffineTransform transform = self.hud.transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -112,17 +115,10 @@ extern  int
 }
 
 - (IBAction)newGame {
-  // Have we already set the preferences?  If so, then start the game, otw, bring up the preferences
-  if ( haveNewGamePreferencesBeenSet ) {
-    // Start the game!
-    [self cancelNewGame]; // Withdraw the view
-    begin_game(_single_player, false);  
-    haveNewGamePreferencesBeenSet = NO;
-  } else {
-    // Bring up the preferences
-    // TODO -- nice animation!
-    self.newGameView.hidden = NO;
-  }
+  // Set the preferences, and kick off a new game if needed
+  // Bring up the preferences
+  // TODO -- nice animation!
+  self.newGameView.hidden = NO;
 }
 
 - (IBAction)beginGame {
@@ -133,9 +129,11 @@ extern  int
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
   SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
   SDL_GetRelativeMouseState(NULL, NULL);
+  startingNewGameSoSave = YES;
 }
 
 - (IBAction)cancelNewGame {
+  // TODO -- nice animation
   self.newGameView.hidden = YES;
 }
 
@@ -172,6 +170,15 @@ extern  int
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
   [self.hud removeGestureRecognizer:self.menuTapGesture];
+  
+  // Should we save a new game in place?
+  if ( startingNewGameSoSave ) {
+    startingNewGameSoSave = NO;
+    FileSpecifier file;
+    [self.saveGameViewController createNewGameFile:file];
+    bool success = save_game_file(file);
+  }
+  
   // If we are in the simulator, make us invincible
 #if TARGET_IPHONE_SIMULATOR
   process_player_powerup(local_player_index, _i_invincibility_powerup);
@@ -184,6 +191,7 @@ extern  int
   // [self.viewGL addGestureRecognizer:self.menuTapGesture];
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
+
 
 #pragma mark -
 #pragma mark Gestures

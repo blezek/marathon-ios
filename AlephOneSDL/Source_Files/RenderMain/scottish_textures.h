@@ -43,6 +43,9 @@
  */
 
 #include "shape_descriptors.h"
+// DJB
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
 
 /* ---------- constants */
 

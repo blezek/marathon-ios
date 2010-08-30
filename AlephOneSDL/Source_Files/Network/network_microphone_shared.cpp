@@ -241,6 +241,7 @@ copy_and_send_audio_data(uint8* inFirstChunkReadPosition,
       (inSecondChunkBytesRemaining % sNumberOfBytesPerSample);
   }
 
+#ifdef SPEEX
   // Let runtime system worry about allocating and freeing the buffer (and don't do it on the stack).
   // assume Speex will not encode kNetworkAudioSamplesPerPacket samples to be larger than kNetworkAudioSamplesPerPacket * kNetworkAudioBytesPerFrame!
   static uint8 sOutgoingPacketBuffer[kNetworkAudioSamplesPerPacket *
@@ -248,7 +249,6 @@ copy_and_send_audio_data(uint8* inFirstChunkReadPosition,
                                      SIZEOF_network_audio_header];
 
   network_audio_header theHeader;
-#ifdef SPEEX
   theHeader.mReserved = 1;
   theHeader.mFlags    = 0;
 

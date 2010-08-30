@@ -1401,8 +1401,9 @@ void do_menu_item_command(
     {
     case iNewGame:
       // DJB Start a new game with a dialog!
-        helperNewGame();
-      // begin_game(_single_player, cheat);
+        if ( helperNewGame() ) {
+          begin_game(_single_player, cheat);
+        }
       ForceRepaintMenuDisplay();
       break;
     case iPlaySingletonLevel:

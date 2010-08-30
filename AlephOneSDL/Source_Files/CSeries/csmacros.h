@@ -41,7 +41,10 @@
 #define CEILING(value,ceiling) MIN(value,ceiling)
 
 #define PIN(value,floor,ceiling) (CEILING(FLOOR((value),(floor)),(ceiling)))
+// DJB Remove warning
+#ifndef ABS
 #define ABS(x) ((x)<0 ? -(x) : (x))
+#endif
 #define SGN(x) ((x)<0 ? -1 : (x)>0 ? 1 : 0)
 
 template <typename T> void

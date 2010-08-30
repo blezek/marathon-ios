@@ -65,7 +65,7 @@ received_network_audio_proc(void *buffer, short buffer_size,
 
   netcpy(&theHeader, theHeader_NET);
 
-  byte* theSoundData = ((byte*)buffer) + sizeof(network_audio_header_NET);
+  //DJB Remove warning byte* theSoundData = ((byte*)buffer) + sizeof(network_audio_header_NET);
 
   // 0 if using uncompressed audio, 1 if using speex
   if(!(theHeader.mFlags & kNetworkAudioForTeammatesOnlyFlag) ||

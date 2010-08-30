@@ -27,3 +27,18 @@
 
 @end
 
+@interface SavedGame : NSManagedObject
+{
+}
+@property (nonatomic, retain) NSString * difficulty;
+@property (nonatomic, retain) NSString * filename;
+@property (nonatomic, retain) NSDate * lastSaveTime;
+@property (nonatomic, retain) NSString * level;
+@property (nonatomic, retain) NSNumber * numberOfSessions;
+@property (nonatomic, retain) NSNumber * timeInSeconds;
+@property (nonatomic, retain) NSManagedObject * scenario;
+@end
+
+// coalesce these into one @interface SavedGame (CoreDataGeneratedAccessors) section
+@interface SavedGame (CoreDataGeneratedAccessors)
+@end

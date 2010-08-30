@@ -45,8 +45,9 @@ typedef enum {
   HUDMode mode;
   
   bool haveNewGamePreferencesBeenSet;
+  bool startingNewGameSoSave;
   bool haveChoosenSaveGame;
-  FileSpecifier *chosenSaveGame;
+  FileSpecifier chosenSaveGame;
   
   CGPoint lastMenuTap;
   
@@ -71,7 +72,6 @@ typedef enum {
 - (IBAction)newGame;
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
-
 
 - (IBAction)cancelChooseGame;
 - (IBAction)gameChosen;
@@ -113,4 +113,5 @@ typedef enum {
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, retain) UIPanGestureRecognizer *moveGesture;
 @property (nonatomic, retain) UITapGestureRecognizer *menuTapGesture;
+@property (nonatomic, assign) bool haveNewGamePreferencesBeenSet;
 @end

@@ -15,3 +15,13 @@
 @dynamic path;
 @dynamic savedGames;
 @end
+
+@implementation SavedGame
+@dynamic difficulty;
+@dynamic filename;
+@dynamic lastSaveTime;
+@dynamic level;
+@dynamic numberOfSessions;
+@dynamic scenario;
+@dynamic timeInSeconds;
+@end

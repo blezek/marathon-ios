@@ -978,7 +978,7 @@ bool game_is_over(
   }
   else if(GET_GAME_OPTIONS() & _game_has_kill_limit) {
     short player_index;
-    short count=0;
+    // DJB Remove warning short count=0;
 
     switch(GET_GAME_TYPE())
     {

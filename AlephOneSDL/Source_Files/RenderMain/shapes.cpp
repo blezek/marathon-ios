@@ -1753,8 +1753,11 @@ void extended_get_shape_bitmap_and_shading_table(
   }
 }
 
+// DJB Remove warning
+#ifdef HAVE_OPENGL
 // Because this object has to continue to exist after exiting the next function
 static low_level_shape_definition AdjustedFrame;
+#endif
 
 struct shape_information_data *extended_get_shape_information(
   short collection_code,
@@ -2807,9 +2810,9 @@ static void build_collection_tinting_table(
 
   /* build the tint table */
   if (tint_color!=NONE) {
+#ifdef HAVE_OPENGL
     // LP addition: OpenGL support
     rgb_color &Color = tint_colors16[tint_color];
-#ifdef HAVE_OPENGL
     OGL_SetInfravisionTint(collection_index,true,Color.red/65535.0F,
                            Color.green/65535.0F,
                            Color.blue/65535.0F);

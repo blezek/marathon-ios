@@ -31,9 +31,16 @@ void helperBringUpHUD () {
   [[GameViewController sharedInstance] bringUpHUD];
 }
 
-void helperNewGame () {
-  // We need to handle some preferences here
-  [[GameViewController sharedInstance] newGame];
+// Should we start a new game?
+bool helperNewGame () {
+  if ( [GameViewController sharedInstance].haveNewGamePreferencesBeenSet ) {
+    [GameViewController sharedInstance].haveNewGamePreferencesBeenSet = NO;
+    return true;
+  } else {
+    // We need to handle some preferences here
+    [[GameViewController sharedInstance] performSelector:@selector(newGame) withObject:nil afterDelay:0.01];
+    return false;
+  }
 }
 
 int helperChooseSaveGame ( FileSpecifier &saved_game ) {
