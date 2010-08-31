@@ -8,6 +8,7 @@
 
 #import "SaveGameViewController.h"
 #import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
 #include "preferences.h"
 #import "map.h"
 
@@ -77,7 +78,7 @@
   
   NSString *filename = [NSString stringWithFormat:@"%@/%@", saveGameDirectory, [NSDate date]];
   NSLog ( @"Filename: %@", filename );
-  
+  game.filename = filename;
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
@@ -313,14 +314,9 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+  // Find the selected saved game.
+  SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  [[GameViewController sharedInstance] gameChosen:game];
 }
 
 

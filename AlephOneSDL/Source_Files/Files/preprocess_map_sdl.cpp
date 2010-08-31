@@ -112,9 +112,7 @@ bool get_default_theme_spec(FileSpecifier &file)
 
 bool choose_saved_game_to_load(FileSpecifier &saved_game)
 {
-  // DJB Rather than use SDL, use the UIKit code in GameViewController
-  return helperChooseSaveGame ( saved_game );
-  // return saved_game.ReadDialog(_typecode_savegame);
+  return saved_game.ReadDialog(_typecode_savegame);
 }
 
 

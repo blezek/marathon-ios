@@ -14,6 +14,7 @@
 #import "ButtonView.h"
 #import "LookView.h"
 #include "FileHandler.h"
+#import "ManagedObjects.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -30,7 +31,7 @@ typedef enum {
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
   IBOutlet UIView *newGameView;
-  IBOutlet UIView *saveGameView;
+  IBOutlet UIView *loadGameView;
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *actionView;
@@ -73,10 +74,10 @@ typedef enum {
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
 
-- (IBAction)cancelChooseGame;
-- (IBAction)gameChosen;
+- (IBAction)chooseSaveGame;
+- (IBAction)gameChosen:(SavedGame*)game;
 - saveGame:(FileSpecifier*)game;
-- (bool)chooseSaveGame:(FileSpecifier*)saved_game;
+- (IBAction) chooseSaveGameConceled;
 
 
 - (void)bringUpHUD;
@@ -95,7 +96,7 @@ typedef enum {
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) IBOutlet UIView *hud;
 @property (nonatomic, retain) IBOutlet UIView *newGameView;
-@property (nonatomic, retain) IBOutlet UIView *saveGameView;
+@property (nonatomic, retain) IBOutlet UIView *loadGameView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet ButtonView *mapView;
 @property (nonatomic, retain) IBOutlet ButtonView *actionView;

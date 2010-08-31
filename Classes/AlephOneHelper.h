@@ -15,12 +15,12 @@
 #endif
 #include "FileHandler.h"
 
-char *getDataDir();
-char* getLocalDataDir();
-void helperBringUpHUD();
-bool helperNewGame();
-void helperSaveGame();
-void helperLoadGame();
+extern char *getDataDir();
+extern char* getLocalDataDir();
+extern void helperBringUpHUD();
+extern bool helperNewGame();
+extern void helperSaveGame();
+extern void helperHandleLoadGame();
 
 // Choose a saved game
-int helperChooseSaveGame ( FileSpecifier &saved_game );
+extern int helperChooseSaveGame ( FileSpecifier &saved_game );

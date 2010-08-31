@@ -11,7 +11,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
-		A80A20E111F7D1F60034F2E8 /* GameViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A80EAA9911C073AD000AC9E1 /* SDL_coreaudio_iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */; };
 		A80EAA9A11C073AD000AC9E1 /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
 		A80EAA9B11C073AD000AC9E1 /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
@@ -3222,7 +3221,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A80A20E111F7D1F60034F2E8 /* GameViewController.xib in Sources */,
 				A85E689911CB194400D0FAEF /* pngwutil.c in Sources */,
 				A85E689A11CB194400D0FAEF /* pngwtran.c in Sources */,
 				A85E689B11CB194400D0FAEF /* pngwrite.c in Sources */,

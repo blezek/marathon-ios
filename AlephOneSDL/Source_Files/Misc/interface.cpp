@@ -333,7 +333,8 @@ static void     display_screen(short base_pict_id);
 static void display_introduction_screen_for_demo(void);
 static void display_epilogue(void);
 
-static void force_system_colors(void);
+// DJB No longer static
+void force_system_colors(void);
 static bool point_in_rectangle(short x, short y, screen_rectangle *rect);
 
 static void start_interface_fade(short type,
@@ -2058,6 +2059,10 @@ static void start_game(
 void handle_load_game(
   void)
 {
+  // DJB Call helper function
+  helperHandleLoadGame();
+  return;
+  
   FileSpecifier FileToLoad;
   bool success= false;
 
@@ -2344,7 +2349,8 @@ static void display_loading_map_error(
   set_game_error(systemError, errNone);
 }
 
-static void force_system_colors(
+// DJB no longer static
+void force_system_colors(
   void)
 {
   if(can_interface_fade_out()) {

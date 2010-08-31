@@ -42,7 +42,7 @@ extern  int
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
-@synthesize saveGameView, haveNewGamePreferencesBeenSet;
+@synthesize loadGameView, haveNewGamePreferencesBeenSet;
 @synthesize saveGameViewController;
 
 #pragma mark -
@@ -81,7 +81,7 @@ extern  int
   [viewList addObject:self.hud];
   [viewList addObject:self.menuView];
   [viewList addObject:self.newGameView];
-  [viewList addObject:self.saveGameView];
+  [viewList addObject:self.loadGameView];
   for ( UIView *v in viewList ) {
     v.center = center;
     v.transform = transform;
@@ -176,7 +176,7 @@ extern  int
     startingNewGameSoSave = NO;
     FileSpecifier file;
     [self.saveGameViewController createNewGameFile:file];
-    bool success = save_game_file(file);
+    save_game_file(file);
   }
   
   // If we are in the simulator, make us invincible
@@ -192,6 +192,26 @@ extern  int
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
 
+#pragma mark -
+#pragma mark Choose saved game methods
+
+extern void force_system_colors(void);
+extern bool choose_saved_game_to_load(FileSpecifier& File);
+extern bool load_and_start_game(FileSpecifier& File);
+
+- (IBAction)chooseSaveGame {
+  self.loadGameView.hidden = NO;
+}
+  
+- (IBAction) gameChosen:(SavedGame*)game {
+  self.loadGameView.hidden = YES;
+  FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
+  load_and_start_game(FileToLoad);
+}
+
+- (IBAction) chooseSaveGameCanceled {
+  self.loadGameView.hidden = YES;
+}
 
 #pragma mark -
 #pragma mark Gestures
