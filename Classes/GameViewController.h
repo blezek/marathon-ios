@@ -64,10 +64,22 @@ typedef enum {
   UIPanGestureRecognizer *moveGesture;
   UITapGestureRecognizer *menuTapGesture;
   CGPoint lastPanPoint;
+  
+  // CADisplayLink setup
+  BOOL displayLinkSupported;
+  // Use of the CADisplayLink class is the preferred method for controlling your animation timing.
+  // CADisplayLink will link to the main display and fire every vsync when added to a given run-loop.
+  // The NSTimer class is used only as fallback when running on a pre 3.1 device where CADisplayLink
+  // isn't available.
+  id displayLink;
+  NSTimer *animationTimer;  
 }
 
 +(GameViewController*)sharedInstance;
 +(GameViewController*)createNewSharedInstance;
+
+- (void)startAnimation;
+- (void)runMainLoopOnce:(id)sender;
 
 - (IBAction)pause:(id)from;
 - (IBAction)newGame;

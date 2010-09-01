@@ -8,6 +8,9 @@
 
 #import "GameViewController.h"
 #import "NewGameViewController.h"
+#import "AlephOneShell.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 extern "C" {
 extern  int
@@ -280,9 +283,34 @@ extern bool load_and_start_game(FileSpecifier& File);
 - (IBAction)pause:(id)from {
   // Level name is
   // static_world->level_name
-  save_game();
+  // save_game();
 }
 
+- (void)startAnimation {
+  // A system version of 3.1 or greater is required to use CADisplayLink. The NSTimer
+  // class is used as fallback when it isn't available.
+  NSString *reqSysVer = @"3.1";
+  NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+  if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+    displayLinkSupported = TRUE;
+  }
+  
+  NSInteger animationFrameInterval = 1;  
+  if (displayLinkSupported) {
+    // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
+    // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
+    // not be called in system versions earlier than 3.1.
+    displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
+    [displayLink setFrameInterval:animationFrameInterval];
+    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+  } else {
+    animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
+  }
+}
+
+- (void)runMainLoopOnce:(id)sender {
+  AlephOneMainLoop();
+}
 
 #pragma mark -
 #pragma mark View Controller Methods

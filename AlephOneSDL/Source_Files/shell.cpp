@@ -162,10 +162,11 @@ extern bool get_default_music_spec(FileSpecifier &file);
 void execute_timer_tasks(uint32 time);
 
 // Prototypes
-static void initialize_application(void);
+// DJB initialize_application and process_event no longer static
+void initialize_application(void);
 static void shutdown_application(void);
 static void initialize_marathon_music_handler(void);
-static void process_event(const SDL_Event &event);
+void process_event(const SDL_Event &event);
 
 // cross-platform static variables
 short vidmasterStringSetID = -1; // can be set with MML
@@ -312,8 +313,8 @@ int main(int argc, char **argv)
 
 // DJB initialize_application, simplified cut out all non-iPhone/iPad code
 #include "AlephOneHelper.h"          
-             
-static void initialize_application(void)
+// DJB initialize_application no longer static             
+void initialize_application(void)
 {
 
   // Find data directories, construct search path
@@ -1246,7 +1247,8 @@ static void process_game_key(const SDL_Event &event)
   }
 }
 
-static void process_event(const SDL_Event &event)
+// DJB no longer static
+void process_event(const SDL_Event &event)
 {
   switch (event.type) {
   case SDL_MOUSEBUTTONDOWN:

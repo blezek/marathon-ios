@@ -44,6 +44,9 @@ UIKit_PumpEvents(_THIS)
 		when the delegate receives the ApplicationWillTerminate message, we execute
 		a longjmp statement to get back here, preventing an immediate exit.
 	 */	
+  
+  // DJB No longer needed, CADisplayLink loop should handle all events!
+#if 0
 	if (setjmp(*jump_env()) == 0) {
     // DJB Try a different run loop from the app
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -59,7 +62,7 @@ UIKit_PumpEvents(_THIS)
 			result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
 		} while(result == kCFRunLoopRunHandledSource && MoreEvents);
 	}
-
+#endif
 }
 
 /* vi: set ts=4 sw=4 expandtab: */
