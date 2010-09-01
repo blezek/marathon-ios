@@ -77,7 +77,7 @@ typedef enum {
 - (IBAction)chooseSaveGame;
 - (IBAction)gameChosen:(SavedGame*)game;
 - saveGame:(FileSpecifier*)game;
-- (IBAction) chooseSaveGameConceled;
+- (IBAction) chooseSaveGameCanceled;
 
 
 - (void)bringUpHUD;

@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="66"/>
 			<integer value="62"/>
+			<integer value="66"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -609,12 +609,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">chooseSaveGameConceled</string>
+						<string key="label">chooseSaveGameCanceled</string>
 						<reference key="source" ref="30661469"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">78</int>
+					<int key="connectionID">80</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -870,7 +870,7 @@
 					<string>UIResponder</string>
 					<string>MovePadView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{263, 122}, {1024, 1024}}</string>
+					<string>{{329, 122}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LookView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -922,7 +922,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">78</int>
+			<int key="maxID">80</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -945,7 +945,7 @@
 							<string>beginGame</string>
 							<string>cancelNewGame</string>
 							<string>chooseSaveGame</string>
-							<string>chooseSaveGameConceled</string>
+							<string>chooseSaveGameCanceled</string>
 							<string>gameChosen:</string>
 							<string>newGame</string>
 							<string>pause:</string>
@@ -968,7 +968,7 @@
 							<string>beginGame</string>
 							<string>cancelNewGame</string>
 							<string>chooseSaveGame</string>
-							<string>chooseSaveGameConceled</string>
+							<string>chooseSaveGameCanceled</string>
 							<string>gameChosen:</string>
 							<string>newGame</string>
 							<string>pause:</string>
@@ -988,7 +988,7 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">chooseSaveGameConceled</string>
+								<string key="name">chooseSaveGameCanceled</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

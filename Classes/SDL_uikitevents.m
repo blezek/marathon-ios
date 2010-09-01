@@ -45,11 +45,19 @@ UIKit_PumpEvents(_THIS)
 		a longjmp statement to get back here, preventing an immediate exit.
 	 */	
 	if (setjmp(*jump_env()) == 0) {
+    // DJB Try a different run loop from the app
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    BOOL MoreEvents = NO;
+    NSString *currentMode = [theRL currentMode];
+    currentMode = NSRunLoopCommonModes;
+    NSDate* future = [NSDate distantPast];
+    
 		/* if we're setting the jump, rather than jumping back */
 		SInt32 result;
 		do {
+      MoreEvents = [theRL runMode:currentMode beforeDate:future];
 			result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
-		} while(result == kCFRunLoopRunHandledSource);
+		} while(result == kCFRunLoopRunHandledSource && MoreEvents);
 	}
 
 }
