@@ -59,7 +59,9 @@ extern "C" {
 
 
 - (void)dealloc {
-    [super dealloc];
+  // Kill a warning
+  (void)all_key_definitions;
+  [super dealloc];
 }
 
 

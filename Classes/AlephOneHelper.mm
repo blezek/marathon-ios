@@ -31,6 +31,10 @@ void helperBringUpHUD () {
   [[GameViewController sharedInstance] bringUpHUD];
 }
 
+void helperSaveGame () {
+  [[GameViewController sharedInstance] saveGame];
+}
+
 // Should we start a new game?
 bool helperNewGame () {
   if ( [GameViewController sharedInstance].haveNewGamePreferencesBeenSet ) {

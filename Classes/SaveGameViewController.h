@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "FileHandler.h"
+#import "ManagedObjects.h"
 
 @interface SaveGameViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+  IBOutlet UIView *uiView;
 @private
   NSFetchedResultsController *fetchedResultsController_;
   NSManagedObjectContext *managedObjectContext_;
@@ -18,10 +19,10 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
-// Create a new game in CoreData, and return the filename
-- (IBAction)createNewGameFile:(FileSpecifier&)file;
+// Create a new game in CoreData, and return
+- (SavedGame*)createNewGameFile;
 
-
+@property (nonatomic, retain) UIView *uiView;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

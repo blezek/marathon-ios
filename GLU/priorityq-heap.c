@@ -175,7 +175,9 @@ PQhandle pqInsert( PriorityQ *pq, PQkey keyNew )
 				     ((pq->max + 1) * sizeof( pq->nodes[0] )));
     if (pq->nodes == NULL) {
        pq->nodes = saveNodes;	/* restore ptr to free upon return */
-       return 1000000000000L;
+      // DJB Return a better value
+      // return 1000000000000L;
+      return 1000000000L;
     }
     pq->handles = (PQhandleElem *)memRealloc( pq->handles,
 			                     (size_t)
@@ -183,7 +185,9 @@ PQhandle pqInsert( PriorityQ *pq, PQkey keyNew )
 					       sizeof( pq->handles[0] )));
     if (pq->handles == NULL) {
        pq->handles = saveHandles; /* restore ptr to free upon return */
-       return 100000000000L;
+      // DJB Return a better value
+      // return 100000000000L;
+      return 1000000000L;
     }
   }
 

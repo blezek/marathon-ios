@@ -7,6 +7,8 @@
 //
 
 #import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
+
 extern "C" {
 #import "SDL_sysvideo.h"
 #import "SDL_events_c.h"
@@ -15,13 +17,12 @@ extern "C" {
 #import "SDL_uikitopenglview.h"
 #import "ASIHTTPRequest.h"
 #import "ZipArchive.h"
-#import "GameViewController.h"
 #import "ManagedObjects.h"
 #import "AlephOneShell.h"
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario;
+@synthesize window, scenario, game;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -87,10 +88,13 @@ extern int SDL_main(int argc, char *argv[]);
   [context save:&error];
   
   newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  GameViewController *game = [GameViewController createNewSharedInstance];
-
+  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
+  [self.game viewDidLoad];
+  
+  MLog ( @"Loaded view: %@", self.game.view );
   // [window addSubview:newGameViewController.view];
-  [window addSubview:game.view];
+  [window addSubview:self.game.view];
   [window makeKeyAndVisible];
 
 	// Try out the CADisplayLink
@@ -185,16 +189,17 @@ extern int SDL_main(int argc, char *argv[]);
     }
   SDL_SendQuit();
   /* hack to prevent automatic termination.  See SDL_uikitevents.m for details */
-	longjmp(*(jump_env()), 1);
+	// DJB We really don't need the long jump...
+  // longjmp(*(jump_env()), 1);
   
 }
 
-char* argv0 = "AlephOneHD";
+const char* argv[] = { "AlephOneHD" };
 // Start up SDL
 - (void)postFinishLaunch {
   
 	/* run the user's application, passing argc and argv */
-	int exit_status = SDL_main(1, &argv0);
+	int exit_status = SDL_main(1, (char**)argv);
 	
 	/* exit, passing the return status from the user's application */
 	exit(exit_status);

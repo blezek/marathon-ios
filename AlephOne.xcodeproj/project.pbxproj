@@ -17,6 +17,8 @@
 		A80EAAE411C07A26000AC9E1 /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82B5BDB122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
+		A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */; };
+		A82B5CE9122EDD8C00B0316C /* ChooseSaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1CFA1214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
@@ -694,6 +696,12 @@
 		A8AE47C91229152F0093110D /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
 		A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
+		A8B413911235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
+		A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
+		A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
+		A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
+		A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
+		A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
@@ -800,6 +808,7 @@
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
+		A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGame.png; path = Artwork/ChooseSaveGame.png; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
 		A82F1CF81214E27C004D0B68 /* MovePadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MovePadView.mm; path = Classes/MovePadView.mm; sourceTree = "<group>"; };
 		A82F1DCE1214F2E9004D0B68 /* LookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookView.h; path = Classes/LookView.h; sourceTree = "<group>"; };
@@ -1415,6 +1424,10 @@
 		A8AE47C61229152F0093110D /* SaveGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SaveGameViewController.mm; path = Classes/SaveGameViewController.mm; sourceTree = "<group>"; };
 		A8AE47C71229152F0093110D /* SaveGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveGameViewController.xib; path = Classes/SaveGameViewController.xib; sourceTree = "<group>"; };
 		A8AE80CF11ED5C04005DC183 /* Entitlements.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Entitlements.plist; path = Resources/Entitlements.plist; sourceTree = "<group>"; };
+		A8B4138F1235DE10000D59A4 /* SavedGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedGameCell.h; path = Classes/SavedGameCell.h; sourceTree = "<group>"; };
+		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
+		A8B413931235DE3D000D59A4 /* SavedGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SavedGameCell.xib; path = Resources/SavedGameCell.xib; sourceTree = "<group>"; };
+		A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGameLarge.png; path = Artwork/ChooseSaveGameLarge.png; sourceTree = "<group>"; };
 		A8C29BA41224B69600E79491 /* ManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjects.h; path = Classes/ManagedObjects.h; sourceTree = "<group>"; };
 		A8C29BA51224B69600E79491 /* ManagedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjects.m; path = Classes/ManagedObjects.m; sourceTree = "<group>"; };
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
@@ -1594,6 +1607,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */,
+				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
 				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
 				A8AD432512220F9500A09383 /* MainWindow.xib */,
 				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
@@ -1605,6 +1620,7 @@
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
 				A8A5815511D789FF00F573B4 /* HUD.xib */,
+				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1737,29 +1753,31 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A8C29BA41224B69600E79491 /* ManagedObjects.h */,
-				A8C29BA51224B69600E79491 /* ManagedObjects.m */,
 				32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */,
+				A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */,
+				A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */,
 				A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */,
 				A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */,
-				A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */,
-				A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */,
-				A8AD432412220F9500A09383 /* main.m */,
-				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
-				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
-				A82F1CF71214E27C004D0B68 /* MovePadView.h */,
-				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
-				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
-				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
+				A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */,
+				A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */,
 				A85A37FE12178BA50080BBA9 /* ButtonView.h */,
 				A85A37FF12178BA50080BBA9 /* ButtonView.mm */,
-				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
+				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
+				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
+				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
+				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
+				A8AD432412220F9500A09383 /* main.m */,
+				A8C29BA41224B69600E79491 /* ManagedObjects.h */,
+				A8C29BA51224B69600E79491 /* ManagedObjects.m */,
+				A82F1CF71214E27C004D0B68 /* MovePadView.h */,
+				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
 				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
+				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
-				A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */,
-				A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */,
+				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
+				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2785,6 +2803,12 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
@@ -2835,6 +2859,9 @@
 				A8AD432812220F9500A09383 /* MainWindow.xib in Resources */,
 				A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8AE47C91229152F0093110D /* SaveGameViewController.xib in Resources */,
+				A82B5CE9122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
+				A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
+				A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2859,6 +2886,9 @@
 				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
 				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
+				A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
+				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
+				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3174,6 +3204,7 @@
 				A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 				A8AE47C81229152F0093110D /* SaveGameViewController.mm in Sources */,
 				A82B5BDB122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
+				A8B413911235DE10000D59A4 /* SavedGameCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3532,6 +3563,7 @@
 				A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 				A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */,
 				A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
+				A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

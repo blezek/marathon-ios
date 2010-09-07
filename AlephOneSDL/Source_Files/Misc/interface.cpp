@@ -889,11 +889,15 @@ bool load_and_start_game(FileSpecifier& File)
   size_t theResult = UNONE;
 
   if (success) {
+    // DJB, don't prompt for restoring networked game...
+    theResult = 0;
+    /*
 #ifdef __MACOS__
     theResult = 0;
 #else
     theResult = should_restore_game_networked();
 #endif
+     */
   }
 
   if (theResult == UNONE) {

@@ -8,6 +8,7 @@
 
 #import "SaveGameViewController.h"
 #import "AlephOneAppDelegate.h"
+#import "SavedGameCell.h"
 #import "GameViewController.h"
 #include "preferences.h"
 #import "map.h"
@@ -15,13 +16,23 @@
 
 @implementation SaveGameViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
+@synthesize uiView;
 
 
 #pragma mark -
 #pragma mark View lifecycle
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+    // Custom initialization
+    MLog ( @"inside initWithNib" );
+    self.managedObjectContext = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
+  }
+  return self;
+}
+           
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
   self.managedObjectContext = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,6 +62,10 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 480.0;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Override to allow orientations other than the default portrait orientation.
@@ -59,7 +74,7 @@
 
 #pragma mark -
 #pragma mark File Methods
-- (IBAction)createNewGameFile:(FileSpecifier&)file {
+- (SavedGame*)createNewGameFile {
   
   // Create the directory
   NSLog ( @"scenario name %@", [AlephOneAppDelegate sharedAppDelegate].scenario.name );
@@ -87,9 +102,7 @@
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
   [self.managedObjectContext save:nil];
-  
-  // Fill in the file
-  file = FileSpecifier ( (char*)[filename UTF8String] );
+  return game;
 }
     
 #pragma mark -
@@ -114,16 +127,16 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SavedGameCell *cell = (SavedGameCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[[SavedGameCell alloc] init] autorelease];
+      NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SavedGameCell" owner:cell options:nil];
     }
     
-    // Configure the cell...
+  // Configure the cell...
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  cell.textLabel.text = game.filename;
-    
-    return cell;
+  [cell setFields:game];
+  return cell;
 }
 
 
@@ -172,6 +185,13 @@
 */
 #pragma mark -
 #pragma mark Fetched results controller
+- (NSManagedObjectContext*)managedObjectContext {
+  if ( managedObjectContext_ != nil ) {
+    return managedObjectContext_;
+  }
+  managedObjectContext_ = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
+  return managedObjectContext_;
+}
 
 - (NSFetchedResultsController *)fetchedResultsController {
   

@@ -122,6 +122,10 @@ bool choose_saved_game_to_load(FileSpecifier &saved_game)
 
 bool save_game(void)
 {
+  // DJB Just save with current saved game by calling the helper
+  helperSaveGame();
+  return true;
+  /*
   pause_game();
   show_cursor();
 
@@ -147,6 +151,7 @@ bool save_game(void)
   resume_game();
 
   return success;
+   */
 }
 
 

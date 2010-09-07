@@ -11,11 +11,13 @@
 #import "NewGameViewController.h"
 #import "ManagedObjects.h"
 
+@class GameViewController;
 @interface AlephOneAppDelegate : NSObject <UIApplicationDelegate> {
     
   UIWindow *window;
   NewGameViewController *newGameViewController;
   Scenario *scenario;
+  GameViewController *game;
     
 @private
     NSManagedObjectContext *managedObjectContext_;
@@ -25,6 +27,7 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
+@property (nonatomic, retain) GameViewController *game;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

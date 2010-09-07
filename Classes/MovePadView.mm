@@ -35,6 +35,9 @@ extern "C" {
 @implementation MovePadView
 
 - (void)setup {
+  // Kill a warning
+  (void)all_key_definitions;
+
   // Initialization code
   moveCenterPoint = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0 );
   moveRadius = ( moveCenterPoint.x + moveCenterPoint.y ) / 2.0;

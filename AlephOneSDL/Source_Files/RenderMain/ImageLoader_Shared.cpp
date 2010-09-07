@@ -72,6 +72,8 @@ int ImageDescriptor::GetMipMapSize(int level) const
     fprintf(stderr, "invalid format!\n");
     assert(false);
   }
+  // DJB Remove warning
+  return 0;
 }
 
 const uint32 *ImageDescriptor::GetMipMapPtr(int Level) const
@@ -141,9 +143,10 @@ bool ImageDescriptor::Minify()
     if (!(Width > 1 || Height > 1)) {
       return false;
     }
+#ifdef HAVE_OPENGL
+    // DJB Moved to remove warning
     int newWidth = Width >> 1;
     int newHeight = Height >> 1;
-#ifdef HAVE_OPENGL
     if (OGL_IsActive()) {
       uint32 *newPixels = new uint32[newWidth * newHeight];
       gluScaleImage(GL_RGBA, Width, Height, GL_UNSIGNED_BYTE, Pixels, newWidth,

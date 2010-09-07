@@ -9,6 +9,8 @@
 #import "GameViewController.h"
 #import "NewGameViewController.h"
 #import "AlephOneShell.h"
+#import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -46,25 +48,31 @@ extern  int
 @synthesize rightFireView, leftFireView, mapView, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
 @synthesize loadGameView, haveNewGamePreferencesBeenSet;
-@synthesize saveGameViewController;
+@synthesize saveGameViewController, currentSavedGame;
 
 #pragma mark -
 #pragma mark class instance methods
 
+
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
-      NSLog ( @"inside initWithNib
+      NSLog ( @"inside initWithNib" );
     }
     return self;
 }
-*/
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-
+  self.saveGameViewController = [[SaveGameViewController alloc] initWithNibName:@"SaveGameViewController" bundle:nil];
+  self.saveGameViewController.view;
+  MLog ( @"Save Game View: %@", self.saveGameViewController.view );
+  // Since the SaveGameViewController was initialized from a nib, add it's view to the proper place
+  [self.loadGameView addSubview:self.saveGameViewController.uiView];
+  
+  // Kill a warning
+  (void)all_key_definitions;
   mode = MenuMode;
   haveNewGamePreferencesBeenSet = NO;
   startingNewGameSoSave = NO;
@@ -114,6 +122,7 @@ extern  int
   [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially
   self.menuView.hidden = NO;
+  isPaused = NO;
   [super viewDidLoad];
 }
 
@@ -177,9 +186,8 @@ extern  int
   // Should we save a new game in place?
   if ( startingNewGameSoSave ) {
     startingNewGameSoSave = NO;
-    FileSpecifier file;
-    [self.saveGameViewController createNewGameFile:file];
-    save_game_file(file);
+    self.currentSavedGame = [self.saveGameViewController createNewGameFile];
+    [self saveGame];
   }
   
   // If we are in the simulator, make us invincible
@@ -207,6 +215,7 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
   
 - (IBAction) gameChosen:(SavedGame*)game {
+  self.currentSavedGame = game;
   self.loadGameView.hidden = YES;
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
   load_and_start_game(FileToLoad);
@@ -214,6 +223,12 @@ extern bool load_and_start_game(FileSpecifier& File);
 
 - (IBAction) chooseSaveGameCanceled {
   self.loadGameView.hidden = YES;
+}
+
+- (IBAction)saveGame {
+  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
+  save_game_file(file);
+
 }
 
 #pragma mark -
@@ -283,7 +298,19 @@ extern bool load_and_start_game(FileSpecifier& File);
 - (IBAction)pause:(id)from {
   // Level name is
   // static_world->level_name
-  // save_game();
+  
+#if TARGET_IPHONE_SIMULATOR
+  // If we are in the simulator, save the game
+  save_game();
+#endif
+  
+  // Normally would just darken the screen, here we may want to popup a list of things to do.
+  if ( isPaused ) {
+    resume_game();
+  } else {
+    pause_game();
+  }
+  isPaused = !isPaused;
 }
 
 - (void)startAnimation {
@@ -338,66 +365,18 @@ extern bool load_and_start_game(FileSpecifier& File);
 
 #pragma mark -
 #pragma mark Singleton methods
-static GameViewController *sharedInstance = nil;
 
 +(GameViewController*)createNewSharedInstance {
-  @synchronized(self)
-  {
-    [sharedInstance release];
-    sharedInstance = nil;
-    sharedInstance = [[GameViewController alloc] init]; // WithNibName:nil bundle:[NSBundle mainBundle]];
-    sharedInstance.view.hidden = NO;
-    NSLog ( @"View is %@", sharedInstance.view );
-    NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
-    [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:sharedInstance options:nil];
-    NSLog ( @"Loaded Hud is %@", sharedInstance.hud );
-    [sharedInstance viewDidLoad];
-  }
-  return sharedInstance;
+  return [AlephOneAppDelegate sharedAppDelegate].game;
 }
 
 +(GameViewController*)sharedInstance
 {
-  @synchronized(self)
-  {
-    if ( sharedInstance == nil ) {
-      [GameViewController createNewSharedInstance];
-    }
-  }
-  return sharedInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-  @synchronized(self) {
-    if (sharedInstance == nil) {
-      sharedInstance = [super allocWithZone:zone];
-      return sharedInstance;  // assignment and return on first allocation
-    }
-  }
-  return nil; // on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-  return self;
-}
-
-- (id)retain {
-  return self;
-}
-
-- (unsigned)retainCount {
-  return UINT_MAX;  // denotes an object that cannot be released
+  return [AlephOneAppDelegate sharedAppDelegate].game;
 }
 
 - (void)release {
   //do nothing
 }
-
-- (id)autorelease {
-  return self;
-}
-
-
 
 @end
