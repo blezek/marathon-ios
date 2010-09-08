@@ -40,7 +40,7 @@ extern  int
 #include "items.h"
 #include "interface.h"
 #import "game_wad.h"
-
+#include "overhead_map.h"
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView;
@@ -225,7 +225,36 @@ extern bool load_and_start_game(FileSpecifier& File);
   self.loadGameView.hidden = YES;
 }
 
+extern SDL_Surface *draw_surface;
+
 - (IBAction)saveGame {
+  // See if we can generate an overhead view
+  struct overhead_map_data overhead_data;
+  int MapSize = 196;
+  // Create a buffer to render into
+  SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 8, 0xff, 0xff, 0xff, 0xff);
+  SDL_Surface *map = SDL_DisplayFormat(s);
+  SDL_FreeSurface(s);
+  
+  SDL_Surface *old = draw_surface;
+  draw_surface = map;
+  
+  overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE;
+  overhead_data.origin.x= local_player->location.x;
+  overhead_data.origin.y= local_player->location.y;
+  overhead_data.half_width= 196/2;
+  overhead_data.half_height= 196/2;
+  overhead_data.width= 196;
+  overhead_data.height= 196;
+  overhead_data.mode= _rendering_saved_game_preview;
+  
+  _render_overhead_map(&overhead_data);
+  
+  draw_surface = old;
+  // See here: http://www.bit-101.com/blog/?p=1861
+  SDL_SaveBMP ( map, "/tmp/Map.bmp" );
+  SDL_FreeSurface ( map );
+  
   FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
   save_game_file(file);
 

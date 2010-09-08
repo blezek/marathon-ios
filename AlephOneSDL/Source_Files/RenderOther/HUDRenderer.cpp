@@ -58,9 +58,9 @@ bool HUD_Class::update_everything(short time_elapsed)
     update_motion_sensor(time_elapsed);
     // DJB
 #if TARGET_IPHONE_SIMULATOR
-    extern SDL_Surface *HUD_Buffer;
+    // extern SDL_Surface *HUD_Buffer;
     // Without OpenGL, dumping the screen is easy
-    SDL_SaveBMP(HUD_Buffer, "/tmp/HUD-MotionSensor.bmp");
+    // SDL_SaveBMP(HUD_Buffer, "/tmp/HUD-MotionSensor.bmp");
 #endif
     
     update_inventory_panel((time_elapsed == NONE) ? true : false);
