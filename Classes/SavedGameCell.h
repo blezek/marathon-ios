@@ -14,6 +14,8 @@
   UILabel *storageDate;
   UILabel *playTime;
   UILabel *storageIdentifier; // Make this the MD5 of the save game!
+  UIImageView *overheadMap;
+  UIImageView *screenShot;
 }
 
 - (void)setFields:(SavedGame*) game;
@@ -22,5 +24,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *storageDate;
 @property (nonatomic, retain) IBOutlet UILabel *playTime;
 @property (nonatomic, retain) IBOutlet UILabel *storageIdentifier;
+@property (nonatomic, retain) IBOutlet UIImageView *overheadMap;
+@property (nonatomic, retain) IBOutlet UIImageView *screenShot;
+
 
 @end

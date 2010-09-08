@@ -17,6 +17,7 @@
 @implementation SaveGameViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize uiView;
+@synthesize savedGameCell;
 
 
 #pragma mark -
@@ -63,7 +64,7 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 480.0;
+  return 390.0;
 }
 
 
@@ -129,8 +130,9 @@
     
     SavedGameCell *cell = (SavedGameCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-      cell = [[[SavedGameCell alloc] init] autorelease];
-      NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SavedGameCell" owner:cell options:nil];
+      [[NSBundle mainBundle] loadNibNamed:@"SavedGameCell" owner:self options:nil];
+      cell = savedGameCell;
+      self.savedGameCell = nil;
     }
     
   // Configure the cell...

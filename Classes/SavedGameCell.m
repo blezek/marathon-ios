@@ -11,6 +11,7 @@
 
 @implementation SavedGameCell
 @synthesize subject, storageDate, playTime, storageIdentifier;
+@synthesize overheadMap, screenShot;
 
 - (void)setFields:(SavedGame*) game {
   self.subject.text = [NSString stringWithFormat:@"Location: %@", game.level];
