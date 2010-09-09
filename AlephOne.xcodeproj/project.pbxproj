@@ -690,8 +690,6 @@
 		A8AD432A12220F9500A09383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
 		A8AD43511222125200A09383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
-		A8AD43A81222141000A09383 /* SaveGame.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */; };
-		A8AD43A91222141000A09383 /* SaveGame.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */; };
 		A8AE47C81229152F0093110D /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
 		A8AE47C91229152F0093110D /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
@@ -726,6 +724,12 @@
 		A8D9673A11C7186300016403 /* IMG_xv.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672C11C7186300016403 /* IMG_xv.c */; };
 		A8D9673B11C7186300016403 /* IMG_xxx.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672D11C7186300016403 /* IMG_xxx.c */; };
 		A8D9673C11C7186300016403 /* IMG.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672E11C7186300016403 /* IMG.c */; };
+		A8DC98E61238799C00317186 /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
+		A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
+		A8DC998A123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
+		A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
+		A8DC998C123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
+		A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -956,7 +960,7 @@
 		A85A37FF12178BA50080BBA9 /* ButtonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ButtonView.mm; path = Classes/ButtonView.mm; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
 		A85E66C811CB0AF200D0FAEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
-		A85E686011CB173A00D0FAEF /* AlephOne-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne:SDG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85E687111CB18FD00D0FAEF /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = png.h; path = "Libraries/libpng-1.2.24/png.h"; sourceTree = SOURCE_ROOT; };
 		A85E687211CB18FD00D0FAEF /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngconf.h; path = "Libraries/libpng-1.2.24/pngconf.h"; sourceTree = SOURCE_ROOT; };
 		A85E687311CB18FD00D0FAEF /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = png.c; path = "Libraries/libpng-1.2.24/png.c"; sourceTree = SOURCE_ROOT; };
@@ -1417,7 +1421,7 @@
 		A8AD432412220F9500A09383 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		A8AD432512220F9500A09383 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Classes/MainWindow.xib; sourceTree = "<group>"; };
 		A8AD43501222125200A09383 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = SaveGame.xcdatamodel; path = Classes/SaveGame.xcdatamodel; sourceTree = "<group>"; };
+		A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = SaveGame.xcdatamodel; sourceTree = "<group>"; };
 		A8AD43B91222176E00A09383 /* SDL_pixels_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels_c.h; sourceTree = "<group>"; };
 		A8AD43BA122217D700A09383 /* SDL_blit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blit.h; sourceTree = "<group>"; };
 		A8AE47C51229152F0093110D /* SaveGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveGameViewController.h; path = Classes/SaveGameViewController.h; sourceTree = "<group>"; };
@@ -1461,6 +1465,10 @@
 		A8D967CA11C72A2500016403 /* SDL_mouse_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse_c.h; sourceTree = "<group>"; };
 		A8D967D511C72AFA00016403 /* SDL_keyboard_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard_c.h; sourceTree = "<group>"; };
 		A8D967D611C72AFA00016403 /* SDL_windowevents_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_windowevents_c.h; sourceTree = "<group>"; };
+		A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 2.xcdatamodel"; sourceTree = "<group>"; };
+		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
+		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
+		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1546,7 +1554,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* AlephOne.app */,
 				A850866511C1D4B800D95436 /* LandscapeTest.app */,
-				A85E686011CB173A00D0FAEF /* AlephOne-iPad.app */,
+				A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1607,6 +1615,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8DC9989123884B300317186 /* DownloadViewController.xib */,
 				A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */,
 				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
 				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
@@ -1773,11 +1782,13 @@
 				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
 				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
-				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
+				A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */,
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
 				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
+				A8DC9987123884B300317186 /* DownloadViewController.h */,
+				A8DC9988123884B300317186 /* DownloadViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2789,7 +2800,7 @@
 			);
 			name = AlephOneHD;
 			productName = AlephOne;
-			productReference = A85E686011CB173A00D0FAEF /* AlephOne-iPad.app */;
+			productReference = A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2862,6 +2873,7 @@
 				A82B5CE9122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
 				A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
+				A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2889,6 +2901,7 @@
 				A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
 				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
+				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3199,12 +3212,13 @@
 				A85A380012178BA50080BBA9 /* ButtonView.mm in Sources */,
 				A8AD432612220F9500A09383 /* AlephOneAppDelegate.mm in Sources */,
 				A8AD432712220F9500A09383 /* main.m in Sources */,
-				A8AD43A81222141000A09383 /* SaveGame.xcdatamodel in Sources */,
+				A8DC98E61238799C00317186 /* SaveGame.xcdatamodeld in Sources */,
 				A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */,
 				A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 				A8AE47C81229152F0093110D /* SaveGameViewController.mm in Sources */,
 				A82B5BDB122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
 				A8B413911235DE10000D59A4 /* SavedGameCell.m in Sources */,
+				A8DC998C123884B300317186 /* DownloadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3558,12 +3572,13 @@
 				A85A380112178BA50080BBA9 /* ButtonView.mm in Sources */,
 				A8AD432912220F9500A09383 /* AlephOneAppDelegate.mm in Sources */,
 				A8AD432A12220F9500A09383 /* main.m in Sources */,
-				A8AD43A91222141000A09383 /* SaveGame.xcdatamodel in Sources */,
+				A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */,
 				A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */,
 				A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 				A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */,
 				A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
 				A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */,
+				A8DC998A123884B300317186 /* DownloadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3744,7 +3759,7 @@
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "";
-				PRODUCT_NAME = "AlephOne-iPad";
+				PRODUCT_NAME = "AlephOne:SDG";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3777,7 +3792,7 @@
 				);
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PRODUCT_NAME = "AlephOne-iPad";
+				PRODUCT_NAME = "AlephOne:SDG";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3898,7 +3913,7 @@
 				);
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PRODUCT_NAME = "AlephOne-iPad";
+				PRODUCT_NAME = "AlephOne:SDG";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3999,6 +4014,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
+				A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */,
+			);
+			currentVersion = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */;
+			name = SaveGame.xcdatamodeld;
+			path = Classes/SaveGame.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

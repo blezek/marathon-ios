@@ -1231,12 +1231,13 @@ void bound_screen()
     (screen->height() - screen->window_height()) / 2, screen->window_width(),
     screen->window_height() };
 
+  // DJB Moving to remove warning
+#ifdef HAVE_OPENGL
   Rect sr =
   { ScreenRect.y, ScreenRect.x, ScreenRect.y + ScreenRect.h, ScreenRect.x +
     ScreenRect.w};
   Rect vr =
   { ViewRect.y, ViewRect.x, ViewRect.y + ViewRect.h, ViewRect.x + ViewRect.w};
-#ifdef HAVE_OPENGL
   OGL_SetWindow(sr, vr, true);
 #endif
 }

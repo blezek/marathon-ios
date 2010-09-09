@@ -32,6 +32,7 @@
 }
 @property (nonatomic, retain) NSString * difficulty;
 @property (nonatomic, retain) NSString * filename;
+@property (nonatomic, retain) NSString * mapFilename;
 @property (nonatomic, retain) NSDate * lastSaveTime;
 @property (nonatomic, retain) NSString * level;
 @property (nonatomic, retain) NSNumber * numberOfSessions;

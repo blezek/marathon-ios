@@ -19,6 +19,7 @@
   NSManagedObjectContext *managedObjectContext_;
 }
 
+- (IBAction)cancel:(id)sender;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 // Create a new game in CoreData, and return

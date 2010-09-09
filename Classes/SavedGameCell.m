@@ -20,6 +20,11 @@
   [formatter setDateStyle:NSDateFormatterShortStyle];
   self.storageDate.text = [NSString stringWithFormat:@"Storage Date: %@", [formatter stringFromDate:game.lastSaveTime]];
   self.storageIdentifier.text = [NSString stringWithFormat:@"Storage Identifier: 0x%x", [game hash]];
+  
+  // load the Overhead map
+  if ( game.mapFilename != nil ) {
+    self.overheadMap.image = [UIImage imageWithContentsOfFile:game.mapFilename];
+  }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

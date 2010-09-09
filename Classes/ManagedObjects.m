@@ -19,6 +19,7 @@
 @implementation SavedGame
 @dynamic difficulty;
 @dynamic filename;
+@dynamic mapFilename;
 @dynamic lastSaveTime;
 @dynamic level;
 @dynamic numberOfSessions;

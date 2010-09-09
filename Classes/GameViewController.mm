@@ -239,7 +239,8 @@ extern SDL_Surface *draw_surface;
   SDL_Surface *old = draw_surface;
   draw_surface = map;
   
-  overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE;
+  overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE; // This is 1, let's go a little larger
+  overhead_data.scale= 3;
   overhead_data.origin.x= local_player->location.x;
   overhead_data.origin.y= local_player->location.y;
   overhead_data.half_width= 196/2;
@@ -252,7 +253,7 @@ extern SDL_Surface *draw_surface;
   
   draw_surface = old;
   // See here: http://www.bit-101.com/blog/?p=1861
-  SDL_SaveBMP ( map, "/tmp/Map.bmp" );
+  SDL_SaveBMP ( map, (char*)[self.currentSavedGame.mapFilename UTF8String] );
   SDL_FreeSurface ( map );
   
   FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );

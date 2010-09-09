@@ -75,6 +75,11 @@
 
 #pragma mark -
 #pragma mark File Methods
+
+- (IBAction)cancel:(id)sender {
+  [[GameViewController sharedInstance] chooseSaveGameCanceled];
+}
+
 - (SavedGame*)createNewGameFile {
   
   // Create the directory
@@ -95,6 +100,7 @@
   NSString *filename = [NSString stringWithFormat:@"%@/%@", saveGameDirectory, [NSDate date]];
   NSLog ( @"Filename: %@", filename );
   game.filename = filename;
+  game.mapFilename = [NSString stringWithFormat:@"%@/%@-Map.bmp", saveGameDirectory, [NSDate date]];
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];

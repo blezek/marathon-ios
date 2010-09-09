@@ -8,6 +8,7 @@
 
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
+#import "DownloadViewController.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -15,16 +16,38 @@ extern "C" {
 #import "jumphack.h"
 }
 #import "SDL_uikitopenglview.h"
-#import "ASIHTTPRequest.h"
-#import "ZipArchive.h"
 #import "ManagedObjects.h"
 #import "AlephOneShell.h"
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game;
+@synthesize window, scenario, game, downloadViewController;
 
 extern int SDL_main(int argc, char *argv[]);
+
+#pragma mark -
+#pragma mark AlephOne startup
+
+- (void)startAlephOne {
+  // Remove the Download manager
+  [self.downloadViewController.view removeFromSuperview];
+  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
+  [self.game viewDidLoad];
+  
+  MLog ( @"Loaded view: %@", self.game.view );
+  // [window addSubview:newGameViewController.view];
+  [window addSubview:self.game.view];
+  
+	// Try out the CADisplayLink
+  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+  // Initialize the game
+  AlephOneInitialize();
+  [game startAnimation];
+	
+  
+}
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -51,59 +74,28 @@ extern int SDL_main(int argc, char *argv[]);
   if ( [list count] == 0 ) {
     // Insert us!
     self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:context];
+#if TARGET_IPHONE_SIMULATOR
     self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
+#else
+    self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
+#endif
     self.scenario.isDownloaded = NO;
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
   } else {
     self.scenario = [list objectAtIndex:0];
   }
-  
-  
-  // See if we have M1A1 installed, if not, fetch it and download
-  NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [self applicationDocumentsDirectory], self.scenario.path];
-  NSLog ( @"Install path is %@", installDirectory );
-  
-  BOOL isDirectory;
-  BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory isDirectory:&isDirectory];
-  NSLog ( @"Checking for file: %@", installDirectory );
-  if ( !fileExists ) {
-    NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [self applicationDocumentsDirectory], self.scenario.path];
-    
-    NSLog ( @"Download file!" );
-    NSURL *url = [NSURL URLWithString:self.scenario.downloadURL];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:path];    
-    [request startSynchronous];
-    
-    // Now unzip
-    ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];
-    [zipper UnzipOpenFile:path];
-    [zipper UnzipFileTo:[self applicationDocumentsDirectory] overWrite:NO];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:path error:NULL];
-    self.scenario.isDownloaded = [NSNumber numberWithBool:YES];
-  }
   [context save:&error];
-  
-  newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
-  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
-  [self.game viewDidLoad];
-  
-  MLog ( @"Loaded view: %@", self.game.view );
-  // [window addSubview:newGameViewController.view];
-  [window addSubview:self.game.view];
+  // Create the download view controller
+  self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
+  if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
+    [window addSubview:self.downloadViewController.view];
+    [self.downloadViewController downloadOrchooseGame];
+  } else {
+    [self startAlephOne];
+  }
   [window makeKeyAndVisible];
-
-	// Try out the CADisplayLink
-  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-  // Initialize the game
-  AlephOneInitialize();
-  [game startAnimation];
-	
-	return YES;
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
