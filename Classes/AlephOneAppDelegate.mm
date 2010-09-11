@@ -78,14 +78,31 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
 #else
     self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
+    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
 #endif
     self.scenario.isDownloaded = NO;
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
   } else {
     self.scenario = [list objectAtIndex:0];
+    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
   }
   [context save:&error];
+  
+  [self.downloadViewController.view removeFromSuperview];
+  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
+  [self.game viewDidLoad];
+  
+  MLog ( @"Loaded view: %@", self.game.view );
+  // [window addSubview:newGameViewController.view];
+  [window addSubview:self.game.view];
+  
+	// Try out the CADisplayLink
+  [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+  return YES;
+  
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
   if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {

@@ -168,7 +168,7 @@ void AlephOneMainLoop()
       SDL_Event event;
       event.type = SDL_FIRSTEVENT;
       SDL_PollEvent(&event);
-      
+      yield_time = false;
         if (yield_time) {
           // The game is not in a "hot" state, yield time to other
           // processes by calling SDL_Delay() but only try for a maximum
