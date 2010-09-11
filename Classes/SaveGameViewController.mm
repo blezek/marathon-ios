@@ -60,7 +60,8 @@
 #pragma mark -
 #pragma mark File Methods
 - (IBAction)createNewGameFile:(FileSpecifier&)file {
-  
+  file = FileSpecifier ( "/tmp/foo" );
+  return;
   // Create the directory
   NSLog ( @"scenario name %@", [AlephOneAppDelegate sharedAppDelegate].scenario.name );
   NSString *saveGameDirectory = [NSString stringWithFormat:@"%@/SaveGames/%@/", 
@@ -174,7 +175,7 @@
 #pragma mark Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController {
-  
+  return nil;
   if (fetchedResultsController_ != nil) {
     return fetchedResultsController_;
   }
