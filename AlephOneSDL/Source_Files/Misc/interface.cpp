@@ -1405,11 +1405,11 @@ void do_menu_item_command(
     switch(menu_item)
     {
     case iNewGame:
-      // DJB Start a new game with a dialog!
+        // DJB Start a new game with a dialog!
         if ( helperNewGame() ) {
           begin_game(_single_player, cheat);
         }
-      ForceRepaintMenuDisplay();
+        ForceRepaintMenuDisplay();
       break;
     case iPlaySingletonLevel:
       begin_game(_single_player,2);

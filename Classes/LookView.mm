@@ -52,7 +52,7 @@ extern "C" {
     dx = currentPoint.x - lastPanPoint.x;
     dy = currentPoint.y - lastPanPoint.y;
     SDL_SendMouseMotion ( true, dx, dy );
-    NSLog(@"touches moved, sending delta" );
+    // NSLog(@"touches moved, sending delta" );
     lastPanPoint = currentPoint;
     break;
   }

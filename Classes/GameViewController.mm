@@ -49,6 +49,7 @@ extern  int
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
 @synthesize loadGameView, haveNewGamePreferencesBeenSet;
 @synthesize saveGameViewController, currentSavedGame;
+@synthesize savedGameMessage;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -122,6 +123,7 @@ extern  int
   [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially
   self.menuView.hidden = NO;
+  self.savedGameMessage.hidden = YES;
   isPaused = NO;
   [super viewDidLoad];
 }
@@ -256,8 +258,17 @@ extern SDL_Surface *draw_surface;
   SDL_SaveBMP ( map, (char*)[self.currentSavedGame.mapFilename UTF8String] );
   SDL_FreeSurface ( map );
   
+  MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
   FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
   save_game_file(file);
+  
+  // Animate the saved game message
+  self.savedGameMessage.hidden = YES;
+  self.savedGameMessage.alpha = 0.5;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:1.0];
+  self.savedGameMessage.alpha = 0.0;
+  [UIView commitAnimations];
 
 }
 
@@ -352,7 +363,7 @@ extern SDL_Surface *draw_surface;
     displayLinkSupported = TRUE;
   }
   
-  NSInteger animationFrameInterval = 1;  
+  NSInteger animationFrameInterval = 2;  
   if (displayLinkSupported) {
     // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
     // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will

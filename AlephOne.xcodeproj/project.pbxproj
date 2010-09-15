@@ -1470,6 +1470,7 @@
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
+		A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1571,7 +1572,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				A85E686211CB173B00D0FAEF /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				A82F35AB11B8A6BB0053FE85 /* Libraries */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				A850866711C1D4B800D95436 /* LandscapeTest-Info.plist */,
 			);
@@ -1655,13 +1655,6 @@
 				A8AD43501222125200A09383 /* CoreData.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A82F35AB11B8A6BB0053FE85 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		A82F360811B8A87C0053FE85 /* Lua */ = {
@@ -4026,6 +4019,7 @@
 			children = (
 				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
 				A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */,
+				A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */,
 			);
 			currentVersion = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */;
 			name = SaveGame.xcdatamodeld;

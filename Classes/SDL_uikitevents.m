@@ -29,7 +29,8 @@
 
 #import <Foundation/Foundation.h>
 #include "jumphack.h"
-
+// DJB Include helper for USE_SDL_EVENT_LOOP definition
+#include "AlephOneHelper.h"
 void
 UIKit_PumpEvents(_THIS)
 {
@@ -44,23 +45,23 @@ UIKit_PumpEvents(_THIS)
 		when the delegate receives the ApplicationWillTerminate message, we execute
 		a longjmp statement to get back here, preventing an immediate exit.
 	 */	
-  
+#ifdef USE_SDL_EVENT_LOOP
   // DJB No longer needed, CADisplayLink loop should handle all events!
-#if 0
 	if (setjmp(*jump_env()) == 0) {
+    /*
     // DJB Try a different run loop from the app
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     BOOL MoreEvents = NO;
     NSString *currentMode = [theRL currentMode];
     currentMode = NSRunLoopCommonModes;
     NSDate* future = [NSDate distantPast];
-    
+    */
 		/* if we're setting the jump, rather than jumping back */
 		SInt32 result;
 		do {
-      MoreEvents = [theRL runMode:currentMode beforeDate:future];
+      // MoreEvents = [theRL runMode:currentMode beforeDate:future];
 			result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
-		} while(result == kCFRunLoopRunHandledSource && MoreEvents);
+		} while(result == kCFRunLoopRunHandledSource);
 	}
 #endif
 }

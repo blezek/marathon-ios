@@ -480,6 +480,7 @@ uint16 DisplayTextWidth(const char *Text)
 {
   return text_width(Text, DisplayTextFont, DisplayTextStyle);
 }
+static uint32 lastdisplay = 0;
 
 static void update_fps_display(SDL_Surface *s)
 {
@@ -531,6 +532,10 @@ static void update_fps_display(SDL_Surface *s)
       Y -= Font.LineSpacing;
     }
     DisplayText(X,Y,fps);
+    if ( (ticks - lastdisplay) > 1000 ) {
+      printf( "%s\n", fps );
+      lastdisplay = ticks;
+    }
   }
   else
   {

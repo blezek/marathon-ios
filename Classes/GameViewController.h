@@ -42,6 +42,7 @@ typedef enum {
   IBOutlet ButtonView *previousWeaponView;
   IBOutlet ButtonView *nextWeaponView;
   IBOutlet ButtonView *inventoryToggleView;
+  IBOutlet UIView *savedGameMessage;
 
   HUDMode mode;
   
@@ -108,6 +109,7 @@ typedef enum {
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) IBOutlet UIView *hud;
+@property (nonatomic, retain) IBOutlet UIView *savedGameMessage;
 @property (nonatomic, retain) IBOutlet UIView *newGameView;
 @property (nonatomic, retain) IBOutlet UIView *loadGameView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;

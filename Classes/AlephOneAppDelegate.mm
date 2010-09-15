@@ -18,6 +18,7 @@ extern "C" {
 #import "SDL_uikitopenglview.h"
 #import "ManagedObjects.h"
 #import "AlephOneShell.h"
+#import "AlephOneHelper.h"
 
 @implementation AlephOneAppDelegate
 
@@ -41,11 +42,15 @@ extern int SDL_main(int argc, char *argv[]);
   [window addSubview:self.game.view];
   
 	// Try out the CADisplayLink
-  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+#ifdef USE_SDL_EVENT_LOOP
+  [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+#endif
+  
+#ifdef USE_CADisplayLoop
   // Initialize the game
   AlephOneInitialize();
   [game startAnimation];
-	
+#endif
   
 }
 
@@ -100,8 +105,8 @@ extern int SDL_main(int argc, char *argv[]);
   [window addSubview:self.game.view];
   
 	// Try out the CADisplayLink
-  [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-  return YES;
+  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+  // return YES;
   
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];

@@ -13,7 +13,10 @@
 // #define iWidth 480
 // #define iHeight 320
 #endif
-#include "FileHandler.h"
+
+// Do we use CADisplayLoop or SDL events?
+#define USE_SDL_EVENT_LOOP 1
+// #define USE_CADisplayLoop 1
 
 extern char *getDataDir();
 extern char* getLocalDataDir();
@@ -22,5 +25,3 @@ extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHandleLoadGame();
 
-// Choose a saved game
-extern int helperChooseSaveGame ( FileSpecifier &saved_game );
