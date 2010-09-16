@@ -515,7 +515,13 @@ static void update_fps_display(SDL_Surface *s)
         sprintf(fps, "%3.2ffps %s", count, ms);
       }
     }
-
+    
+    // DJB Printf every second or so
+    if ( (ticks - lastdisplay) > 1000 ) {
+      printf( "%s @ %d ticks per second \n", fps, MACHINE_TICKS_PER_SECOND );
+      lastdisplay = ticks;
+    }
+    return;
     FontSpecifier& Font = GetOnScreenFont();
 
     DisplayTextDest = s;
@@ -532,10 +538,6 @@ static void update_fps_display(SDL_Surface *s)
       Y -= Font.LineSpacing;
     }
     DisplayText(X,Y,fps);
-    if ( (ticks - lastdisplay) > 1000 ) {
-      printf( "%s\n", fps );
-      lastdisplay = ticks;
-    }
   }
   else
   {

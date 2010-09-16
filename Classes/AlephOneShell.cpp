@@ -114,6 +114,8 @@ void AlephOneInitialize() {
   initialize_application();
 }
 
+static uint32 lastTimeThroughLoop = 0;
+
 // Unlike the original, we just want to run one pass through.  Leave the scheduling to
 // CADisplayLink
 const uint32 TICKS_BETWEEN_EVENT_POLL = 167; // 6 Hz
@@ -199,5 +201,9 @@ void AlephOneMainLoop()
     SDL_Delay(1);
   }
 #endif
+  if ( cur_time - lastTimeThroughLoop > 1000 ) {
+    printf( "This time took %d ticks\n", SDL_GetTicks() - cur_time );
+    lastTimeThroughLoop = cur_time;
+  }
 }
 

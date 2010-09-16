@@ -15,8 +15,8 @@
 #endif
 
 // Do we use CADisplayLoop or SDL events?
-#define USE_SDL_EVENT_LOOP 1
-// #define USE_CADisplayLoop 1
+// #define USE_SDL_EVENT_LOOP 1
+#define USE_CADisplayLoop 1
 
 extern char *getDataDir();
 extern char* getLocalDataDir();
