@@ -121,7 +121,8 @@ void HUD_Lua_Class::start_draw(void)
 
 #ifdef HAVE_OPENGL
   if (m_opengl) {
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    // DJB OpenGL See if we can just ignore saving of attributes...
+    // glPushAttrib(GL_ALL_ATTRIB_BITS);
     glEnable(GL_TEXTURE_2D);
     glDisable(GL_CULL_FACE);
     glDisable(GL_DEPTH_TEST);
@@ -169,7 +170,8 @@ void HUD_Lua_Class::end_draw(void)
   if (m_opengl) {
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
-    glPopAttrib();
+    // DJB OpenGL See if we can just ignore saving of attributes...
+    // glPopAttrib();
   }
   else
 #endif
@@ -316,14 +318,25 @@ void HUD_Lua_Class::fill_rect(float x, float y, float w, float h,
     }
     glColor4f(r, g, b, a);
     glDisable(GL_TEXTURE_2D);
+    
+    // DJB OpenGL  Draw a quad
+    GLfloat v[8] = {
+      x,     y,
+      x + w, y,
+      x + w, y + h,
+      x,     y + h      
+    };
+    glVertexPointer ( 2, GL_FLOAT, 0, v );
+    glEnableClientState ( GL_VERTEX_ARRAY );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
+    /*
     glBegin(GL_QUADS);
-
     glVertex2f(x,     y);
     glVertex2f(x + w, y);
     glVertex2f(x + w, y + h);
     glVertex2f(x,     y + h);
-
     glEnd();
+     */
     glEnable(GL_TEXTURE_2D);
     if (Using_sRGB) {
       glEnable(GL_FRAMEBUFFER_SRGB_EXT);
@@ -363,8 +376,40 @@ void HUD_Lua_Class::frame_rect(float x, float y, float w, float h,
     }
     glColor4f(r, g, b, a);
     glDisable(GL_TEXTURE_2D);
-    glBegin(GL_QUADS);
 
+    // DJB OpenGL  Drawing 4 quads, use triangle strips instead
+    // glBegin(GL_QUADS);
+
+    GLfloat v[32] = {
+
+      x,     y,
+      x + w, y,
+      x + w, y + t,
+      x,     y + t,
+
+      x,     y + h - t,
+      x + w, y + h - t,
+      x + w, y + h,
+      x,     y + h,
+
+      x,     y + t,
+      x + t, y + t,
+      x + t, y + h - t,
+      x,     y + h - t,
+
+      x + w - t, y + t,
+      x + w,     y + t,
+      x + w,     y + h - t,
+      x + w - t, y + h - t,
+    };
+    // Define the array
+    glVertexPointer ( 2, GL_FLOAT, 0, v );
+    glEnableClientState ( GL_VERTEX_ARRAY );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 4, 4 );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 8, 4 );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 12, 4 );
+    /*
     glVertex2f(x,     y);
     glVertex2f(x + w, y);
     glVertex2f(x + w, y + t);
@@ -386,6 +431,7 @@ void HUD_Lua_Class::frame_rect(float x, float y, float w, float h,
     glVertex2f(x + w - t, y + h - t);
 
     glEnd();
+    */
     glEnable(GL_TEXTURE_2D);
     if (Using_sRGB) {
       glEnable(GL_FRAMEBUFFER_SRGB_EXT);

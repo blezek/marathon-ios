@@ -73,7 +73,8 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
     }
   }
 
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  // DJB OpenGL don't push anything
+  // glPushAttrib(GL_ALL_ATTRIB_BITS);
 
   if (LuaTexturePaletteSize()) {
     glDisable(GL_TEXTURE_2D);
@@ -99,6 +100,18 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
   }
   else
   {
+    // DJB OpenGL
+    glColor4f(0, 0, 0, 1);
+    GLshort v[8] = {
+      dest.left,  dest.top,
+      dest.right, dest.top,
+      dest.right, dest.bottom,
+      dest.left,  dest.bottom
+    };
+    glVertexPointer ( 2, GL_FLOAT, 0, v );
+    glEnableClientState ( GL_VERTEX_ARRAY );
+    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
+    /*
     glColor3ub(0, 0, 0);
     glBegin(GL_QUADS);
     glVertex2i(dest.left,  dest.top);
@@ -106,15 +119,16 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
     glVertex2i(dest.right, dest.bottom);
     glVertex2i(dest.left,  dest.bottom);
     glEnd();
+     */
   }
-
-  GLdouble x_scale = (dest.right - dest.left) / 640.0;
-  GLdouble y_scale = (dest.bottom - dest.top) / 160.0;
+  // DJB OpenGL float, not double
+  GLfloat x_scale = (dest.right - dest.left) / 640.0;
+  GLfloat y_scale = (dest.bottom - dest.top) / 160.0;
   glScissor(dest.left, dest.bottom, static_cast<long>(640.0 * x_scale),
             static_cast<long>(160.0 * y_scale));
   glMatrixMode(GL_MODELVIEW);
-  glTranslated(dest.left, dest.top - (320.0 * y_scale), 0.0);
-  glScaled(x_scale, y_scale, 1.0);
+  glTranslatef(dest.left, dest.top - (320.0 * y_scale), 0.0);
+  glScalef(x_scale, y_scale, 1.0);
 
   // Add dynamic elements (redraw everything)
   mark_weapon_display_as_dirty();
@@ -126,7 +140,8 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
   glMatrixMode(GL_MODELVIEW);
   glPopMatrix();
 
-  glPopAttrib();
+  // DJB OpenGL
+  // glPopAttrib();
 }
 
 
@@ -169,17 +184,38 @@ void HUD_OGL_Class::DrawShape(shape_descriptor shape, screen_rectangle *dest,
   int orig_width = TMgr.Texture->width, orig_height = TMgr.Texture->height;
   int x = dest->left, y = dest->top;
   int width = dest->right - dest->left, height = dest->bottom - dest->top;
-  GLdouble U_Scale = TMgr.U_Scale * (src->right - src->left) / orig_width;
-  GLdouble V_Scale = TMgr.V_Scale * (src->bottom - src->top) / orig_height;
-  GLdouble U_Offset = TMgr.U_Offset + TMgr.U_Scale * src->left / orig_width;
-  GLdouble V_Offset = TMgr.V_Offset + TMgr.V_Scale * src->top / orig_height;
+  GLfloat U_Scale = TMgr.U_Scale * (src->right - src->left) / orig_width;
+  GLfloat V_Scale = TMgr.V_Scale * (src->bottom - src->top) / orig_height;
+  GLfloat U_Offset = TMgr.U_Offset + TMgr.U_Scale * src->left / orig_width;
+  GLfloat V_Offset = TMgr.V_Offset + TMgr.V_Scale * src->top / orig_height;
 
   // Draw shape
-  glColor3f(1.0, 1.0, 1.0);
+  // DJB OpenGL
+  glColor4f(1.0, 1.0, 1.0, 1.0);
   glEnable(GL_TEXTURE_2D);
   glDisable(GL_BLEND);
   TMgr.SetupTextureMatrix();
   TMgr.RenderNormal();
+
+  // DJB OpenGL
+  GLfloat t[8] = {
+    U_Offset, V_Offset,
+    U_Offset + U_Scale, V_Offset,
+    U_Offset + U_Scale, V_Offset + V_Scale,
+    U_Offset, V_Offset + V_Scale,
+  };
+  GLshort v[8] = {
+    x, y,
+    x + width, y,
+    x + width, y + height,
+    x, y + height,
+  };
+  glVertexPointer(2, GL_SHORT, 0, v);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glTexCoordPointer(2, GL_FLOAT, 0, t);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  /*
   glBegin(GL_TRIANGLE_FAN);
   glTexCoord2d(U_Offset, V_Offset);
   glVertex2i(x, y);
@@ -190,6 +226,7 @@ void HUD_OGL_Class::DrawShape(shape_descriptor shape, screen_rectangle *dest,
   glTexCoord2d(U_Offset, V_Offset + V_Scale);
   glVertex2i(x, y + height);
   glEnd();
+  */
   TMgr.RestoreTextureMatrix();
 }
 
@@ -210,13 +247,14 @@ void HUD_OGL_Class::DrawShapeAtXY(shape_descriptor shape, short x, short y,
 
   // Get dimensions
   int width = TMgr.Texture->width, height = TMgr.Texture->height;
-  GLdouble U_Scale = TMgr.U_Scale;
-  GLdouble V_Scale = TMgr.V_Scale;
-  GLdouble U_Offset = TMgr.U_Offset;
-  GLdouble V_Offset = TMgr.V_Offset;
+  GLfloat U_Scale = TMgr.U_Scale;
+  GLfloat V_Scale = TMgr.V_Scale;
+  GLfloat U_Offset = TMgr.U_Offset;
+  GLfloat V_Offset = TMgr.V_Offset;
 
   // Draw shape
-  glColor3f(1.0, 1.0, 1.0);
+  // DJB OpenGL
+  glColor4f(1.0, 1.0, 1.0, 1.0);
   glEnable(GL_TEXTURE_2D);
   if (transparency) {
     glEnable(GL_BLEND);
@@ -227,6 +265,25 @@ void HUD_OGL_Class::DrawShapeAtXY(shape_descriptor shape, short x, short y,
   }
   TMgr.SetupTextureMatrix();
   TMgr.RenderNormal();
+  // DJB OpenGL
+  GLfloat t[8] = {
+    U_Offset, V_Offset,
+    U_Offset + U_Scale, V_Offset,
+    U_Offset + U_Scale, V_Offset + V_Scale,
+    U_Offset, V_Offset + V_Scale,
+  };
+  GLshort v[8] = {
+    x, y,
+    x + width, y,
+    x + width, y + height,
+    x, y + height,
+  };
+  glVertexPointer(2, GL_SHORT, 0, v);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glTexCoordPointer(2, GL_FLOAT, 0, t);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  /*
   glBegin(GL_TRIANGLE_FAN);
   glTexCoord2d(U_Offset, V_Offset);
   glVertex2i(x, y);
@@ -237,6 +294,7 @@ void HUD_OGL_Class::DrawShapeAtXY(shape_descriptor shape, short x, short y,
   glTexCoord2d(U_Offset, V_Offset + V_Scale);
   glVertex2i(x, y + height);
   glEnd();
+  */
   TMgr.RestoreTextureMatrix();
 }
 
@@ -307,7 +365,17 @@ void HUD_OGL_Class::FillRect(screen_rectangle *r, short color_index)
 
   // Draw rectangle
   glDisable(GL_TEXTURE_2D);
-  glRecti(r->left, r->top, r->right, r->bottom);
+  // DJB OpenGL
+  GLfloat v[8] = {
+    r->bottom, r->left,
+    r->top, r->left,
+    r->bottom, r->right,
+    r->top, r->right,
+  };
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glVertexPointer(2, GL_FLOAT, 0, v);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  // glRectf(r->left, r->top, r->right, r->bottom);
 }
 
 
@@ -324,12 +392,24 @@ void HUD_OGL_Class::FrameRect(screen_rectangle *r, short color_index)
   // Draw rectangle
   glDisable(GL_TEXTURE_2D);
   glLineWidth(1);
+  // DJB OpenGL
+  GLfloat v[8] = {
+    r->left + 0.5, r->top + 0.5,
+    r->right - 0.5, r->top + 0.5,
+    r->right - 0.5, r->bottom - 0.5,
+    r->left + 0.5, r->bottom - 0.5,
+  };
+  glVertexPointer ( 2, GL_FLOAT, 0, v );
+  glEnableClientState ( GL_VERTEX_ARRAY );
+  glDrawArrays ( GL_LINE_LOOP, 0, 4 );
+  /*
   glBegin(GL_LINE_LOOP);
   glVertex2f(r->left + 0.5, r->top + 0.5);
   glVertex2f(r->right - 0.5, r->top + 0.5);
   glVertex2f(r->right - 0.5, r->bottom - 0.5);
   glVertex2f(r->left + 0.5, r->bottom - 0.5);
   glEnd();
+  */
 }
 
 
@@ -343,22 +423,22 @@ void HUD_OGL_Class::FrameRect(screen_rectangle *r, short color_index)
 
 void HUD_OGL_Class::SetClipPlane(int x, int y, int c_x, int c_y, int radius)
 {
-  GLdouble blip_dist = sqrt(static_cast<float>(x*x+y*y));
+  GLfloat blip_dist = sqrt(static_cast<float>(x*x+y*y));
   if (blip_dist <= 2.0) {
     return;
   }
-  GLdouble normal_x = x / blip_dist, normal_y = y / blip_dist;
-  GLdouble tan_pt_x = c_x + normal_x * radius + 0.5, tan_pt_y = c_y +
+  GLfloat normal_x = x / blip_dist, normal_y = y / blip_dist;
+  GLfloat tan_pt_x = c_x + normal_x * radius + 0.5, tan_pt_y = c_y +
                                                                 normal_y *
                                                                 radius + 0.5;
 
   glEnable(GL_CLIP_PLANE0);
 
-  GLdouble eqn[4] = {
+  GLfloat eqn[4] = {
     -normal_x, -normal_y, 0,
     normal_x * tan_pt_x + normal_y * tan_pt_y
   };
-  glClipPlane(GL_CLIP_PLANE0, eqn);
+  glClipPlanef(GL_CLIP_PLANE0, eqn);
 }
 
 

@@ -126,20 +126,33 @@ void OGL_LoadScreen::Progress(const int progress)
   if (useProgress) {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-    glTranslated(x_offset, y_offset, 0.0);
-    glScaled(x_scale, y_scale, 1.0);
+    // DJB OpenGL
+    glTranslatef(x_offset, y_offset, 0.0);
+    glScalef(x_scale, y_scale, 1.0);
 
     glDisable(GL_TEXTURE_2D);
 
     // draw the progress bar background
     SglColor3us(colors[0].red, colors[0].green, colors[0].blue);
+    // DJB OpenGL
+    GLfloat v[12] = {
+      x, y, 0,
+      x + w, y, 0,
+      x + w, y + h, 0,
+      x, y + h, 0,
+    };
+    glVertexPointer(3, GL_SHORT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
+    /*
     glBegin(GL_QUADS);
     glVertex3f(x, y, 0);
     glVertex3f(x + w, y, 0);
     glVertex3f(x + w, y + h, 0);
     glVertex3f(x, y + h, 0);
     glEnd();
-
+    */
     int height = h, width = w;
     int left = x, top = y;
     if (height > width) {
@@ -153,13 +166,25 @@ void OGL_LoadScreen::Progress(const int progress)
 
     // draw the progress bar foreground
     SglColor3us(colors[1].red, colors[1].green, colors[1].blue);
+    // DJB OpenGL
+    GLfloat v2[12] = {
+      left, top, 0,
+      left + width, top, 0,
+      left + width, top + height, 0,
+      left, top + height, 0,
+    };
+    glVertexPointer(3, GL_SHORT, 0, v2);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    /*
     glBegin(GL_QUADS);
     glVertex3f(left, top, 0);
     glVertex3f(left + width, top, 0);
     glVertex3f(left + width, top + height, 0);
     glVertex3f(left, top + height, 0);
     glEnd();
-
+    */
     glEnable(GL_TEXTURE_2D);
 
     glPopMatrix();

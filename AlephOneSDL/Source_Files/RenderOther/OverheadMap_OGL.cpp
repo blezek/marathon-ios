@@ -106,15 +106,27 @@ void OverheadMap_OGL_Class::begin_overall()
 {
   // Blank out the screen
   // Do that by painting a black polygon
-
-  glColor3f(0,0,0);
-  glBegin(GL_POLYGON);
-  glVertex2f(0,0);
-  glVertex2f(0,ViewHeight);
-  glVertex2f(ViewWidth,ViewHeight);
-  glVertex2f(ViewWidth,0);
-  glEnd();
-
+  // DJB OpenGL
+  glColor4f(0,0,0,1);
+  GLfloat v[8] = {
+    0,0,
+    0,ViewHeight,
+    ViewWidth,ViewHeight,
+    ViewWidth,0,
+  };
+  glVertexPointer(2, GL_FLOAT, 0, v);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  
+  /*
+   glColor3f(0,0,0);
+   glBegin(GL_POLYGON);
+   glVertex2f(0,0);
+   glVertex2f(0,ViewHeight);
+   glVertex2f(ViewWidth,ViewHeight);
+   glVertex2f(ViewWidth,0);
+   glEnd();
+   */   
 /*
  #ifndef mac
         glEnable(GL_SCISSOR_TEST);	// Don't erase the HUD
@@ -327,7 +339,8 @@ void OverheadMap_OGL_Class::draw_thing(
   {
   case _rectangle_thing:
     glVertexPointer(2,GL_FLOAT,0,RectangleShape[0]);
-    glDrawArrays(GL_POLYGON,0,NumRectangleVertices);
+      // DJB OpenGL
+    glDrawArrays(GL_TRIANGLE_STRIP,0,NumRectangleVertices);
     break;
   case _circle_thing:
     glLineWidth(2);
@@ -372,7 +385,9 @@ void OverheadMap_OGL_Class::draw_player(
   float scale = 1/float(1 << shrink);
   glScalef(scale,scale,1);
   glVertexPointer(2,GL_FLOAT,0,PlayerShape[0]);
-  glDrawArrays(GL_POLYGON,0,3);
+  // DJB OpenGL
+  // glDrawArrays(GL_POLYGON,0,3);
+  glDrawArrays(GL_TRIANGLES,0,3);
   glLineWidth(1);                                       // LP: need only 1-pixel thickness of line
   glDrawArrays(GL_LINE_LOOP,0,3);       // LP addition: perimeter drawing makes small version easier to see
   glPopMatrix();

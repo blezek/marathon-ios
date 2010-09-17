@@ -127,6 +127,8 @@ struct mat4 {
                 _d[3][0]*v[0] + _d[3][1]*v[1] + _d[3][1]*v[2] + _d[3][1]*v[3] );
   }
 
+  // DJB Is this needed?
+  /*
   void glSet(GLenum em) {
     GLenum old;
     glGetIntegerv(GL_MATRIX_MODE, (GLint*)&old);
@@ -135,6 +137,7 @@ struct mat4 {
     glLoadMatrixf(&(_d[0][0]));
     glMatrixMode(old);
   }
+   */
 };
 
 #endif

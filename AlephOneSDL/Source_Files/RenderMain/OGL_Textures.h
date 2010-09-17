@@ -105,7 +105,8 @@ struct TextureState
 struct CollBitmapTextureState
 {
   TextureState CTStates[NUMBER_OF_OPENGL_BITMAP_SETS];
-  GLdouble U_Scale, V_Scale, U_Offset, V_Offset;
+  // DJB Float
+  GLfloat U_Scale, V_Scale, U_Offset, V_Offset;
 
   // Sensible default
   CollBitmapTextureState() {
@@ -280,7 +281,8 @@ float GlowBloomShift() {
 
 // Scaling and offset of the current texture;
 // important for sprites, which will be padded to make them OpenGL-friendly.
-GLdouble U_Scale, V_Scale, U_Offset, V_Offset;
+  // DJB GLdouble to GLfloat
+GLfloat U_Scale, V_Scale, U_Offset, V_Offset;
 
 // What to render:
 

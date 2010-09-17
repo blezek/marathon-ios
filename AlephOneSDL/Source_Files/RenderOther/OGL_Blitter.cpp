@@ -193,7 +193,7 @@ void OGL_Blitter::BoundScreen()
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glViewport(0, 0, ScreenWidth(), ScreenHeight());
-  glOrtho(0, ScreenWidth(), ScreenHeight(), 0, -1, 1);
+  glOrthof(0, ScreenWidth(), ScreenHeight(), 0, -1, 1);
   glMatrixMode(GL_MODELVIEW);
 }
 
@@ -220,8 +220,8 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
   if (!m_textures_loaded) {
     return;
   }
-
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  // DJB OpenGL
+  // glPushAttrib(GL_ALL_ATTRIB_BITS);
 
   // disable everything but alpha blending and clipping
   glDisable(GL_CULL_FACE);
@@ -237,8 +237,8 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
     glDisable(GL_FRAMEBUFFER_SRGB_EXT);
   }
 
-  GLdouble x_scale = dst.w / (GLdouble) src.w;
-  GLdouble y_scale = dst.h / (GLdouble) src.h;
+  GLfloat x_scale = dst.w / (GLfloat) src.w;
+  GLfloat y_scale = dst.h / (GLfloat) src.h;
 
   bool rotating = (rotation > 0.1 || rotation < -0.1);
   if (rotating) {
@@ -265,25 +265,45 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
     int tw = std::min((int) m_rects[i].w, src.x + src.w - m_rects[i].x) - tx;
     int th = std::min((int) m_rects[i].h, src.y + src.h - m_rects[i].y) - ty;
 
-    GLdouble VMin = tx / (GLdouble) m_tile_width;
-    GLdouble VMax = (tx + tw) / (GLdouble) m_tile_width;
-    GLdouble UMin = ty / (GLdouble) m_tile_height;
-    GLdouble UMax = (ty + th) / (GLdouble) m_tile_height;
+    GLfloat VMin = tx / (GLfloat) m_tile_width;
+    GLfloat VMax = (tx + tw) / (GLfloat) m_tile_width;
+    GLfloat UMin = ty / (GLfloat) m_tile_height;
+    GLfloat UMax = (ty + th) / (GLfloat) m_tile_height;
 
-    GLdouble tleft   =
-      ((m_rects[i].x + tx) * x_scale) + (GLdouble) (dst.x - (src.x * x_scale));
-    GLdouble tright  = tleft + (tw * x_scale);
-    GLdouble ttop    =
-      ((m_rects[i].y + ty) * y_scale) + (GLdouble) (dst.y - (src.y * y_scale));
-    GLdouble tbottom = ttop + (th * y_scale);
+    GLfloat tleft   =
+      ((m_rects[i].x + tx) * x_scale) + (GLfloat) (dst.x - (src.x * x_scale));
+    GLfloat tright  = tleft + (tw * x_scale);
+    GLfloat ttop    =
+      ((m_rects[i].y + ty) * y_scale) + (GLfloat) (dst.y - (src.y * y_scale));
+    GLfloat tbottom = ttop + (th * y_scale);
 
     glBindTexture(GL_TEXTURE_2D, m_refs[i]);
+    // DJB OpenGL
+    GLfloat t[8] = {
+      VMin, UMin,
+      VMax, UMin,
+      VMax, UMax,
+      VMin, UMax,
+    };
+    GLfloat v[12] = {
+      tleft,  ttop,    0,
+      tright, ttop,    0,
+      tright, tbottom, 0,
+      tleft,  tbottom, 0,
+    };
+    glVertexPointer(3, GL_FLOAT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, t);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    /*
     glBegin(GL_QUADS);
     glTexCoord2f(VMin, UMin); glVertex3f(tleft,  ttop,    0);
     glTexCoord2f(VMax, UMin); glVertex3f(tright, ttop,    0);
     glTexCoord2f(VMax, UMax); glVertex3f(tright, tbottom, 0);
     glTexCoord2f(VMin, UMax); glVertex3f(tleft,  tbottom, 0);
     glEnd();
+    */
   }
 
   if (Using_sRGB) {
@@ -292,7 +312,8 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
   if (rotating) {
     glPopMatrix();
   }
-  glPopAttrib();
+  // DJB OpenGL
+  // glPopAttrib();
 }
 
 #endif

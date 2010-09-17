@@ -133,10 +133,11 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
   }
 
   // Get dimensions
-  GLdouble U_Scale = TMgr.U_Scale;
-  GLdouble V_Scale = TMgr.V_Scale;
-  GLdouble U_Offset = TMgr.U_Offset;
-  GLdouble V_Offset = TMgr.V_Offset;
+  // DJB Doubles to floats...
+  GLfloat U_Scale = TMgr.U_Scale;
+  GLfloat V_Scale = TMgr.V_Scale;
+  GLfloat U_Offset = TMgr.U_Offset;
+  GLfloat V_Offset = TMgr.V_Offset;
 
   // Draw shape
   SglColor4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
@@ -169,6 +170,26 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
       V_Scale *= crop_rect.h / static_cast<double>(m_scaled_src.h);
     }
 
+    // DJB OpenGL  Change from triangle fan
+    GLfloat t[8] = {
+      U_Offset, V_Offset,
+      U_Offset + U_Scale, V_Offset,
+      U_Offset + U_Scale, V_Offset + V_Scale,
+      U_Offset, V_Offset + V_Scale
+    };
+    GLshort v[8] = {
+      dst.x, dst.y,
+      dst.x + dst.w, dst.y,
+      dst.x + dst.w, dst.y + dst.h,
+      dst.x, dst.y + dst.h
+    };
+    glVertexPointer(2, GL_SHORT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, t);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+    /*
     glBegin(GL_TRIANGLE_FAN);
     glTexCoord2d(U_Offset, V_Offset);
     glVertex2i(dst.x, dst.y);
@@ -179,6 +200,7 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
     glTexCoord2d(U_Offset, V_Offset + V_Scale);
     glVertex2i(dst.x, dst.y + dst.h);
     glEnd();
+     */
   }
   else if (m_type == Shape_Texture_Landscape) {
     U_Scale = -TMgr.Texture->width / static_cast<double>(TMgr.Texture->height);
@@ -201,6 +223,25 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
       U_Scale *= crop_rect.h / static_cast<double>(m_scaled_src.h);
     }
 
+    // DJB OpenGL Change from glBegin/glEnd
+    GLfloat t[8] = {
+      V_Offset, U_Offset,
+      V_Offset + V_Scale, U_Offset,
+      V_Offset + V_Scale, U_Offset + U_Scale,
+      V_Offset, U_Offset + U_Scale
+    };
+    GLshort v[8] = {
+      dst.x, dst.y,
+      dst.x + dst.w, dst.y,
+      dst.x + dst.w, dst.y + dst.h,
+      dst.x, dst.y + dst.h
+    };
+    glVertexPointer(2, GL_SHORT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, t);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    /*
     glBegin(GL_TRIANGLE_FAN);
     glTexCoord2d(V_Offset, U_Offset);
     glVertex2i(dst.x, dst.y);
@@ -211,6 +252,7 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
     glTexCoord2d(V_Offset, U_Offset + U_Scale);
     glVertex2i(dst.x, dst.y + dst.h);
     glEnd();
+     */
   }
   else
   {
@@ -227,6 +269,25 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
       U_Scale *= crop_rect.h / static_cast<double>(m_scaled_src.h);
     }
 
+    // DJB OpenGL 
+    GLfloat t[8] = {
+      U_Offset, V_Offset,
+      U_Offset, V_Offset + V_Scale,
+      U_Offset + U_Scale, V_Offset + V_Scale,
+      U_Offset + U_Scale, V_Offset
+    };
+    GLshort v[8] = {
+      dst.x, dst.y,
+      dst.x + dst.w, dst.y,
+      dst.x + dst.w, dst.y + dst.h,
+      dst.x, dst.y + dst.h
+    };
+    glVertexPointer(2, GL_SHORT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, t);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 3);
+    /*
     glBegin(GL_TRIANGLE_FAN);
     glTexCoord2d(U_Offset, V_Offset);
     glVertex2i(dst.x, dst.y);
@@ -237,6 +298,7 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
     glTexCoord2d(U_Offset + U_Scale, V_Offset);
     glVertex2i(dst.x, dst.y + dst.h);
     glEnd();
+    */
   }
 
   if (rotating) {

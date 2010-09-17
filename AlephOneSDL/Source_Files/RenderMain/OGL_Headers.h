@@ -35,12 +35,8 @@
 #endif
 
 // DJB
-#if defined(__IPHONE__)
-#include <SDL/SDL_opengles.h>
-#include <glu.h>
-#else
-#include <SDL/SDL_opengl.h>
-#endif
+#include <SDL_opengles.h>
+// #include <glu.h>
 
 #endif
 

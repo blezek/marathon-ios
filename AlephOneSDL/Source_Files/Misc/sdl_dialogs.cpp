@@ -2875,6 +2875,8 @@ int dialog::finish(bool play_sound)
     for (int i = 0; i < 2; i++)      // execute for both buffers
 #endif
     {
+      // DJB No GL_QUADS, but we don't need this code anyway...
+      /*
       glBegin(GL_QUADS);
       glVertex2i(rect.x, rect.y);
       glVertex2i(rect.x + rect.w, rect.y);
@@ -2882,6 +2884,7 @@ int dialog::finish(bool play_sound)
       glVertex2i(rect.x, rect.y + rect.h);
       glEnd();
       SDL_GL_SwapBuffers();
+       */
     }
   }
   else
