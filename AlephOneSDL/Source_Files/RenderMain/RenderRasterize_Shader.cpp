@@ -27,7 +27,7 @@
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
 
 inline bool FogActive();
-void FindShadingColor(GLdouble Depth, _fixed Shading, GLfloat *Color);
+void FindShadingColor(GLfloat Depth, _fixed Shading, GLfloat *Color);
 
 class FBO {
 friend class Blur;
@@ -264,7 +264,7 @@ void RenderRasterize_Shader::render_node(sorted_node_data *node,
   for (clipping_window_data *win = node->clipping_windows; win;
        win = win->next_window)
   {
-    GLdouble clip[] = { 0., 0., 0., 0. };
+    GLfloat clip[] = { 0., 0., 0., 0. };
 
     // recenter to player's orientation temporarily
     glMatrixMode(GL_MODELVIEW);
@@ -1124,7 +1124,7 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
     (media_index != NONE) ? get_media_data(media_index) : NULL;
   if (media) {
     float h = media->height;
-    GLdouble plane[] = { 0.0, 0.0, 1.0, -h };
+    GLfloat plane[] = { 0.0, 0.0, 1.0, -h };
     if (view->under_media_boundary ^ other_side_of_media) {
       plane[2] = -1.0;
       plane[3] = h;

@@ -237,11 +237,11 @@ inline short Adjust_Y(short y) {
  */
 
 // Marathon centered world -> Marathon eye
-static GLdouble CenteredWorld_2_MaraEye[16];
+static GLfloat CenteredWorld_2_MaraEye[16];
 // Marathon world -> Marathon eye
-static GLdouble World_2_MaraEye[16];
+static GLfloat World_2_MaraEye[16];
 // Marathon eye -> OpenGL eye (good for handling vertical-surface data)
-static const GLdouble MaraEye_2_OGLEye[16] =
+static const GLfloat MaraEye_2_OGLEye[16] =
 {       // Correct OpenGL arrangement: transpose to get usual arrangement
   0,      0,      -1,     0,
   1,      0,      0,      0,
@@ -250,17 +250,17 @@ static const GLdouble MaraEye_2_OGLEye[16] =
 };
 
 // World -> OpenGL eye (good modelview matrix for 3D-model inhabitants)
-static GLdouble World_2_OGLEye[16];
+static GLfloat World_2_OGLEye[16];
 // Centered world -> OpenGL eye (good modelview matrix for 3D-model skyboxes)
 // (also good for handling horizontal-surface data)
-static GLdouble CenteredWorld_2_OGLEye[16];
+static GLfloat CenteredWorld_2_OGLEye[16];
 
 // Screen -> clip (good starter matrix; assumes distance is already projected)
-static GLdouble Screen_2_Clip[16];
+static GLfloat Screen_2_Clip[16];
 // OpenGL eye -> clip (good projection matrix for 3D models)
-static GLdouble OGLEye_2_Clip[16];
+static GLfloat OGLEye_2_Clip[16];
 // OpenGL eye -> screen
-static GLdouble OGLEye_2_Screen[16];
+static GLfloat OGLEye_2_Screen[16];
 
 
 // Projection-matrix management: select the appropriate one for what to render
@@ -295,18 +295,18 @@ static void SetProjectionType(int NewProjectionType)
 
 
 // Rendering depth extent: minimum and maximum z
-const GLdouble Z_Near = 50;
-const GLdouble Z_Far = 1.5*64*WORLD_ONE;
+const GLfloat Z_Near = 50;
+const GLfloat Z_Far = 1.5*64*WORLD_ONE;
 
 // Projection coefficients for depth
-const GLdouble Z_Proj0 = (Z_Far + Z_Near)/(Z_Far - Z_Near);
-const GLdouble Z_Proj1 = 2*Z_Far*Z_Near/(Z_Far - Z_Near);
+const GLfloat Z_Proj0 = (Z_Far + Z_Near)/(Z_Far - Z_Near);
+const GLfloat Z_Proj1 = 2*Z_Far*Z_Near/(Z_Far - Z_Near);
 
 // Whether Z-buffering is being used
 bool Z_Buffering = false;
 
 // Screen <-> world conversion factors and functions
-GLdouble XScale, YScale, XScaleRecip, YScaleRecip, XOffset, YOffset;
+GLfloat XScale, YScale, XScaleRecip, YScaleRecip, XOffset, YOffset;
 
 // This adjusts a point position in place, using Adjust_X and Adjust_Y
 // (intended to correct for exactly-on-edge bug)
@@ -318,7 +318,7 @@ inline void AdjustPoint(point2d& Pt)
 
 // This produces a ray in OpenGL eye coordinates (z increasing inward);
 // it sets the point position to its adjusted value
-inline void Screen2Ray(point2d& Pt, GLdouble* Ray)
+inline void Screen2Ray(point2d& Pt, GLfloat* Ray)
 {
   AdjustPoint(Pt);
   Ray[0] = XScaleRecip*(Pt.x - XOffset);
@@ -335,17 +335,17 @@ struct SurfaceCoords
   // these have a 4th coordinate, for the convenience of the OpenGL-matrix-multiply routines
   // that are used to create them. It is, however, ignored here.
   // U (along scanlines):
-  GLdouble U_Vec[4];
+  GLfloat U_Vec[4];
   // V (scanline-to-scanline):
-  GLdouble V_Vec[4];
+  GLfloat V_Vec[4];
 
   // Complement vectors: (vector).(complement vector) = 1 if for the same quantity, 0 otherwise
   // U (along scanlines):
-  GLdouble U_CmplVec[3];
+  GLfloat U_CmplVec[3];
   // V (scanline-to-scanline):
-  GLdouble V_CmplVec[3];
+  GLfloat V_CmplVec[3];
   // W (perpendicular to both)
-  GLdouble W_CmplVec[3];
+  GLfloat W_CmplVec[3];
 
   // Find complement vectors; return whether the two input vectors were noncollinear
   bool FindComplements();
@@ -1154,22 +1154,22 @@ bool SurfaceCoords::FindComplements()
   // Compose the complements of the two texture vectors;
   // this code is designed to be general, and is probably overkill for the Marathon engine,
   // where the texture vectors are always orthogonal.
-  GLdouble P_U2 = ScalarProd(U_Vec,U_Vec);
-  GLdouble P_UV = ScalarProd(U_Vec,V_Vec);
-  GLdouble P_V2 = ScalarProd(V_Vec,V_Vec);
-  GLdouble P_Den = P_U2*P_V2 - P_UV*P_UV;
+  GLfloat P_U2 = ScalarProd(U_Vec,U_Vec);
+  GLfloat P_UV = ScalarProd(U_Vec,V_Vec);
+  GLfloat P_V2 = ScalarProd(V_Vec,V_Vec);
+  GLfloat P_Den = P_U2*P_V2 - P_UV*P_UV;
 
   // Will return here if the vectors are collinear
   if (P_Den == 0) {
     return false;
   }
 
-  GLdouble Norm = 1/P_Den;
-  GLdouble C_UU = Norm*P_V2;
-  GLdouble C_UV = -Norm*P_UV;
-  GLdouble C_VV = Norm*P_U2;
+  GLfloat Norm = 1/P_Den;
+  GLfloat C_UU = Norm*P_V2;
+  GLfloat C_UV = -Norm*P_UV;
+  GLfloat C_VV = Norm*P_U2;
 
-  GLdouble TempU[3], TempV[3];
+  GLfloat TempU[3], TempV[3];
 
   VecScalarMult(U_Vec,C_UU,TempU);
   VecScalarMult(V_Vec,C_UV,TempV);
@@ -1188,8 +1188,8 @@ bool SurfaceCoords::FindComplements()
 
 
 // Multiply a vector by an OpenGL matrix
-inline void GL_MatrixTimesVector(const GLdouble *Matrix, const GLdouble *Vector,
-                                 GLdouble *ResVec)
+inline void GL_MatrixTimesVector(const GLfloat *Matrix, const GLfloat *Vector,
+                                 GLfloat *ResVec)
 {
   for (int k = 0; k < 4; k++)
     ResVec[k] =
@@ -1280,7 +1280,7 @@ bool OGL_SetView(view_data &View)
   glLoadIdentity();
 
   // Calculate the horizontal-surface projected-texture vectors
-  GLdouble OrigVec[4];
+  GLfloat OrigVec[4];
 
   // Horizontal U
   OrigVec[0] = WORLD_ONE;
@@ -1340,7 +1340,7 @@ bool OGL_SetForegroundView(bool HorizReflect)
   // x is rightward (OpenGL: x is rightward)
   // y is forward (OpenGL: y is upward)
   // z is upward (OpenGL: z is backward)
-  const GLdouble Foreground_2_OGLEye[16] =
+  const GLfloat Foreground_2_OGLEye[16] =
   {             // Correct OpenGL arrangement: transpose to get usual arrangement
     1,      0,      0,      0,
     0,      0,      1,      0,
@@ -1369,27 +1369,27 @@ bool OGL_SetForegroundView(bool HorizReflect)
 
 // This finds the intensity-slope crossover depth for splitting polygon lines;
 // it takes the shading value from the render object
-inline GLdouble FindCrossoverDepth(_fixed Shading)
+inline GLfloat FindCrossoverDepth(_fixed Shading)
 {
   return ((8*
-           GLdouble(WORLD_ONE))/GLdouble(FIXED_ONE))*(SelfLuminosity - Shading);
+           GLfloat(WORLD_ONE))/GLfloat(FIXED_ONE))*(SelfLuminosity - Shading);
 }
 
 
 // This finds the color value for lighting from the render object's shading value
-void FindShadingColor(GLdouble Depth, _fixed Shading, GLfloat *Color)
+void FindShadingColor(GLfloat Depth, _fixed Shading, GLfloat *Color)
 {
-  GLdouble SelfIllumShading =
-    PIN(SelfLuminosity - (GLdouble(FIXED_ONE)/(8*GLdouble(
+  GLfloat SelfIllumShading =
+    PIN(SelfLuminosity - (GLfloat(FIXED_ONE)/(8*GLfloat(
                                                  WORLD_ONE)))*Depth,0,FIXED_ONE);
 
-  GLdouble CombinedShading =
+  GLfloat CombinedShading =
     (Shading>SelfIllumShading) ? (Shading + 0.5*
                                   SelfIllumShading) : (SelfIllumShading + 0.5*
                                                        Shading);
 
   if(Using_sRGB) {
-    GLdouble temp = PIN(static_cast<GLfloat>(CombinedShading/FIXED_ONE),0,1);
+    GLfloat temp = PIN(static_cast<GLfloat>(CombinedShading/FIXED_ONE),0,1);
     Color[0] = Color[1] = Color[2] = sRGB_frob(temp);
   }
   else{
@@ -1439,8 +1439,8 @@ static void MakeFalseColor(int c, float Opacity = 1)
 // Storage of intermediate results for mass render with glDrawArrays
 struct ExtendedVertexData
 {
-  GLdouble Vertex[4];
-  GLdouble TexCoord[2];
+  GLfloat Vertex[4];
+  GLfloat TexCoord[2];
   GLfloat Color[3];
   GLfloat GlowColor[3];
 };
@@ -1465,15 +1465,15 @@ inline int DecrementAndWrap(int n, int Limit)
 
 // The depth must be in OpenGL form (increasing inward);
 // the other arguments are: the two source and one destination extended vertex
-static void InterpolateByDepth(GLdouble Depth,
+static void InterpolateByDepth(GLfloat Depth,
                                ExtendedVertexData& EV0,
                                ExtendedVertexData& EV1,
                                ExtendedVertexData& EVRes)
 {
-  GLdouble Denom = EV1.Vertex[2] - EV0.Vertex[2];
+  GLfloat Denom = EV1.Vertex[2] - EV0.Vertex[2];
   assert(Denom != 0);
 
-  GLdouble IntFac = (Depth - EV0.Vertex[2])/Denom;
+  GLfloat IntFac = (Depth - EV0.Vertex[2])/Denom;
 
   for (int k=0; k<4; k++)
     EVRes.Vertex[k] = EV0.Vertex[k] + IntFac*(EV1.Vertex[k] - EV0.Vertex[k]);
@@ -1507,7 +1507,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   SurfaceCoords* SCPtr;
 
   // A workspace vector
-  GLdouble OrigVec[4];
+  GLfloat OrigVec[4];
 
   // Calculate the projected origin and texture coordinates
   if (IsVertical) {
@@ -1556,7 +1556,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   OrigVec[1] = Origin.y;
   OrigVec[2] = Origin.z;
   OrigVec[3] = 1;
-  GLdouble TexOrigin[4];
+  GLfloat TexOrigin[4];
   if (IsVertical) {
     GL_MatrixTimesVector(MaraEye_2_OGLEye,OrigVec,TexOrigin);
   }
@@ -1569,9 +1569,9 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   }
 
   // Project it onto the coordinate vectors
-  GLdouble TexOrigin_U = ScalarProd(SCPtr->U_CmplVec,TexOrigin);
-  GLdouble TexOrigin_V = ScalarProd(SCPtr->V_CmplVec,TexOrigin);
-  GLdouble TexOrigin_W = ScalarProd(SCPtr->W_CmplVec,TexOrigin);
+  GLfloat TexOrigin_U = ScalarProd(SCPtr->U_CmplVec,TexOrigin);
+  GLfloat TexOrigin_V = ScalarProd(SCPtr->V_CmplVec,TexOrigin);
+  GLfloat TexOrigin_W = ScalarProd(SCPtr->W_CmplVec,TexOrigin);
 
   // Storage of intermediate results for mass render;
   // take into account the fact that the polygon might get split in both ascending
@@ -1589,20 +1589,20 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 
     // Emit a ray from the vertex in OpenGL eye coords;
     // it had been specified in screen coordinates
-    GLdouble VertexRay[3];
+    GLfloat VertexRay[3];
     Screen2Ray(Vertex,VertexRay);
 
     // Project it:
-    GLdouble VertexRay_U = ScalarProd(SCPtr->U_CmplVec,VertexRay);
-    GLdouble VertexRay_V = ScalarProd(SCPtr->V_CmplVec,VertexRay);
-    GLdouble VertexRay_W = ScalarProd(SCPtr->W_CmplVec,VertexRay);
+    GLfloat VertexRay_U = ScalarProd(SCPtr->U_CmplVec,VertexRay);
+    GLfloat VertexRay_V = ScalarProd(SCPtr->V_CmplVec,VertexRay);
+    GLfloat VertexRay_W = ScalarProd(SCPtr->W_CmplVec,VertexRay);
 
     // Find the distance along the ray;
     // watch out for excessively long or negative distances;
     // force them to the maximum Z allowed.
     // This is done because the screen coordinates of the area to be rendered
     // has been rounded off to integers, which may cause off-the-edge errors.
-    GLdouble RayDistance = 0;
+    GLfloat RayDistance = 0;
     bool RayDistanceWasModified = false;
     if (VertexRay_W == 0) {
       RayDistanceWasModified = true;
@@ -1629,14 +1629,14 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     }
 
     // Find the texture coordinates
-    GLdouble U = VertexRay_U*RayDistance - TexOrigin_U;
-    GLdouble V = VertexRay_V*RayDistance - TexOrigin_V;
+    GLfloat U = VertexRay_U*RayDistance - TexOrigin_U;
+    GLfloat V = VertexRay_V*RayDistance - TexOrigin_V;
 
     if (RayDistanceWasModified) {
       // Rebuild the vertex here.
       // This is necessary here, since if the ray distance was modified,
       // the vertex will be forced to move on the screen.
-      GLdouble TempU[3], TempV[3], TempUV[3];
+      GLfloat TempU[3], TempV[3], TempUV[3];
       VecScalarMult(SCPtr->U_Vec,U,TempU);
       VecScalarMult(SCPtr->V_Vec,V,TempV);
       VecAdd(TempU,TempV,TempUV);
@@ -1676,7 +1676,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     // Divide the polygon along these lines;
     // these mark out the self-luminosity boundaries.
     // Be sure to use OpenGL depth conventions
-    GLdouble SplitDepths[3];
+    GLfloat SplitDepths[3];
     // This is where the lighting reaches ambient
     SplitDepths[0] = -FindCrossoverDepth(0);
     // This is where the decline slope changes
@@ -1734,7 +1734,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
       // Find ascending splits
       for (int m=0; m<3; m++)
       {
-        GLdouble SplitDepth = SplitDepths[m];
+        GLfloat SplitDepth = SplitDepths[m];
         for (int k=0; k<NumVertices; k++)
         {
           ExtendedVertexData& EV0 = ExtendedVertexList[k];
@@ -1751,7 +1751,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
       // Find descending splits
       for (int m=0; m<3; m++)
       {
-        GLdouble SplitDepth = SplitDepths[m];
+        GLfloat SplitDepth = SplitDepths[m];
         for (int k=0; k<NumVertices; k++)
         {
           ExtendedVertexData& EV0 = ExtendedVertexList[k];
@@ -1892,15 +1892,15 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     // Find minimum and maximum depths:
     GLint MinVertex = 0;
     GLint MaxVertex = 0;
-    GLdouble MinDepth = ExtendedVertexList[MinVertex].Vertex[2];
-    GLdouble MaxDepth = ExtendedVertexList[MaxVertex].Vertex[2];
+    GLfloat MinDepth = ExtendedVertexList[MinVertex].Vertex[2];
+    GLfloat MaxDepth = ExtendedVertexList[MaxVertex].Vertex[2];
 
     for (int k=0; k<NumVertices; k++)
     {
       // Create some convenient references
       ExtendedVertexData& EVData = ExtendedVertexList[k];
 
-      GLdouble Depth = EVData.Vertex[2];
+      GLfloat Depth = EVData.Vertex[2];
       if (Depth < MinDepth) {
         MinDepth = Depth;
         MinVertex = k;
@@ -1950,7 +1950,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
       else
       {
         // Right minus left depth
-        GLdouble RLDiff = ExtendedVertexList[RightVertex].Vertex[2]
+        GLfloat RLDiff = ExtendedVertexList[RightVertex].Vertex[2]
                           - ExtendedVertexList[LeftVertex].Vertex[2];
         if (RLDiff < 0) {
           // Left vertex ahead; advance the right one
@@ -2168,12 +2168,12 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
 
     // Emit a ray from the vertex in OpenGL eye coords;
     // it had been specified in screen coordinates
-    GLdouble VertexRay[3];
+    GLfloat VertexRay[3];
     Screen2Ray(Vertex,VertexRay);
 
     // Find the texture coordinates
-    GLdouble U = AdjustedYaw + HorizScale*VertexRay[0];
-    GLdouble V = 0.5 + VertScale*VertexRay[1];
+    GLfloat U = AdjustedYaw + HorizScale*VertexRay[0];
+    GLfloat V = 0.5 + VertScale*VertexRay[1];
 
     // Store the texture coordinates
     EVData.TexCoord[0] = U;
@@ -2330,7 +2330,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 
   if (IsInhabitant) {
     // OpenGL eye coordinates
-    GLdouble VertexRay[3];
+    GLfloat VertexRay[3];
     Screen2Ray(TopLeft,VertexRay);
     VecScalarMult(VertexRay,RayDistance,ExtendedVertexList[0].Vertex);
     Screen2Ray(BottomRight,VertexRay);
@@ -2367,10 +2367,10 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   // Calculate the texture coordinates;
   // the scanline direction is downward, (texture coordinate 0)
   // while the line-to-line direction is rightward (texture coordinate 1)
-  GLdouble U_Scale = TMgr.U_Scale/(RenderRectangle.y1 - RenderRectangle.y0);
-  GLdouble V_Scale = TMgr.V_Scale/(RenderRectangle.x1 - RenderRectangle.x0);
-  GLdouble U_Offset = TMgr.U_Offset;
-  GLdouble V_Offset = TMgr.V_Offset;
+  GLfloat U_Scale = TMgr.U_Scale/(RenderRectangle.y1 - RenderRectangle.y0);
+  GLfloat V_Scale = TMgr.V_Scale/(RenderRectangle.x1 - RenderRectangle.x0);
+  GLfloat U_Offset = TMgr.U_Offset;
+  GLfloat V_Offset = TMgr.V_Offset;
 
   if (RenderRectangle.flip_vertical) {
     ExtendedVertexList[0].TexCoord[0] = U_Offset + U_Scale*
@@ -2559,7 +2559,7 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
   // For finding the clip planes: 0, 1, 2, 3, and 4
   bool ClipLeft = false, ClipRight = false, ClipTop = false, ClipBottom = false,
        ClipLiquid = false;
-  GLdouble ClipPlane[4] = {0,0,0,0};
+  GLfloat ClipPlane[4] = {0,0,0,0};
 
   if (RenderRectangle.clip_left >= RenderRectangle.x0) {
     ClipLeft = true;

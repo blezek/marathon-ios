@@ -96,7 +96,7 @@ struct TextureState
         This is the collected texture states per collection bitmap;
         it contains both texture-mapping info and the state for each color-table value.
 
-        The GLdouble stuff is for setting up offsets of the texture coordinates, using:
+        The GLfloat stuff is for setting up offsets of the texture coordinates, using:
         Texture Coordinate = (offset) + (scale) * (clip position)
         where (scale) = (sprite size) / (texture size)
         and (clip position) = ((clip screen position) - (left screen position)) /
@@ -281,7 +281,7 @@ float GlowBloomShift() {
 
 // Scaling and offset of the current texture;
 // important for sprites, which will be padded to make them OpenGL-friendly.
-  // DJB GLdouble to GLfloat
+  // DJB GLfloat to GLfloat
 GLfloat U_Scale, V_Scale, U_Offset, V_Offset;
 
 // What to render:

@@ -1430,7 +1430,7 @@ void darken_world_window(void)
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
-    glOrtho(0.0, GLdouble(main_surface->w), GLdouble(
+    glOrtho(0.0, GLfloat(main_surface->w), GLfloat(
               main_surface->h), 0.0, 0.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
