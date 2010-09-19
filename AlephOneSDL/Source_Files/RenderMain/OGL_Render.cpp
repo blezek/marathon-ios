@@ -2015,7 +2015,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   else{
     // Go!
     // Don't care about triangulation here, because the polygon never got split
-    glDrawArrays(GL_POLYGON,0,NumVertices);
+    // DJB OpenGL GL_POLYGON
+    glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
   }
 
   // Do textured rendering
@@ -2045,7 +2046,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     else
     {
       SglColor3f(GlowColor,GlowColor,GlowColor);
-      glDrawArrays(GL_POLYGON,0,NumVertices);
+      // DJB OpenGL GL_POLYGON
+      glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
     }
   }
 
@@ -2106,7 +2108,8 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
                     AltEVList[0].Vertex);
 
     // Go!
-    glDrawArrays(GL_POLYGON,0,NumVertices);
+    // DJB OpenGL GL_POLYGON
+    glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
 
     // Restore
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -2193,7 +2196,7 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
   }
 
   // Set up lighting:
-  glColor3f(1,1,1);
+  glColor4f(1,1,1,1);
 
   // Cribbed from RenderAsRealWall()
   // Set up blending mode: either sharp edges or opaque
@@ -2232,7 +2235,8 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
   TMgr.RenderNormal();
 
   // Go!
-  glDrawArrays(GL_POLYGON,0,NumVertices);
+  // DJB OpenGL GL_POLYGON
+  glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
 
   // Cribbed from RenderAsRealWall()
   // Do textured rendering
@@ -2243,13 +2247,14 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
     // instead of the crisp mode.
     // Added "IsBlended" test, so that alpha-channel selection would work properly
     // on a glowmap texture that is atop a texture that is opaque to the void.
-    glColor3f(1,1,1);
+    glColor4f(1,1,1,1);
     glEnable(GL_BLEND);
     glDisable(GL_ALPHA_TEST);
 
     TMgr.RenderGlowing();
     SetBlend(TMgr.GlowBlend());
-    glDrawArrays(GL_POLYGON,0,NumVertices);
+    // DJB OpenGL GL_POLYGON
+    glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
   }
 
   // Revert to default blend
@@ -2443,7 +2448,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   }
 
   // Already corrected
-  glColor4fv(Color);
+  // DJB OpenGL
+  glColor4f(Color[0],Color[1],Color[2],Color[3]);
 
   // Location of data:
   glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
@@ -2461,14 +2467,16 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
       if (Z_Buffering) {
         glDisable(GL_DEPTH_TEST);
       }
-      glDrawArrays(GL_POLYGON,0,4);
+      // DJB OpenGL GL_POLYGON
+      glDrawArrays(GL_TRIANGLE_FAN,0,4);
     }
     else {
       // Do multitextured stippling to create the static effect
       for (int k=0; k<StaticEffectPasses; k++)
       {
         StaticModeIndivSetup(k);
-        glDrawArrays(GL_POLYGON,0,4);
+        // DJB OpenGL GL_POLYGON
+        glDrawArrays(GL_TRIANGLE_FAN,0,4);
       }
     }
     TeardownStaticMode();
@@ -2479,7 +2487,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     SetBlend(TMgr.NormalBlend());
 
     // Do textured rendering
-    glDrawArrays(GL_POLYGON,0,4);
+    // DJB OpenGL GL_POLYGON
+    glDrawArrays(GL_TRIANGLE_FAN,0,4);
 
     if (TMgr.IsGlowMapped()) {
       // Do blending here to get the necessary semitransparency;
@@ -2497,7 +2506,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 
       TMgr.RenderGlowing();
       SetBlend(TMgr.GlowBlend());
-      glDrawArrays(GL_POLYGON,0,4);
+      // DJB OpenGL GL_POLYGON
+      glDrawArrays(GL_TRIANGLE_FAN,0,4);
     }
   }
 
@@ -2938,7 +2948,8 @@ void SetupStaticMode(rectangle_definition& RenderRectangle)
     }
 
     // Get ready to use those static patterns
-    glEnable(GL_POLYGON_STIPPLE);
+    // DJB OpenGL no static effect
+    // glEnable(GL_POLYGON_STIPPLE);
 #else
     // Use the stencil buffer to create the static effect
     glEnable(GL_STENCIL_TEST);
@@ -2959,7 +2970,8 @@ void TeardownStaticMode()
     // Restore the default blending
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     // glDisable(GL_COLOR_LOGIC_OP);
-    glDisable(GL_POLYGON_STIPPLE);
+    // DJB OpenGL Static
+    // glDisable(GL_POLYGON_STIPPLE);
 #else
     // Done with the stencil buffer
     glDisable(GL_STENCIL_TEST);
@@ -3024,8 +3036,9 @@ void StaticModeIndivSetup(int SeqNo)
   }
 
   // no need to correct
-  glColor3fv(StaticBaseColors[SeqNo]);
-  glPolygonStipple((byte *)StaticPatterns[SeqNo]);
+  glColor4f(StaticBaseColors[SeqNo][0],StaticBaseColors[SeqNo][1],StaticBaseColors[SeqNo][2],1.0);
+  // DJB OpenGL Static
+  // glPolygonStipple((byte *)StaticPatterns[SeqNo]);
 #else
   // Stencil buffering
   switch(SeqNo)
@@ -3312,7 +3325,7 @@ bool OGL_RenderCrosshairs()
   // Create a new modelview matrix for the occasion
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
-  glTranslated(ViewWidth / 2, ViewHeight / 2, 1);
+  glTranslatef(ViewWidth / 2, ViewHeight / 2, 1);
 
   // To keep pixels aligned, we have to draw on pixel boundaries.
   // The SW renderer always offsets down and to the right when faced

@@ -468,6 +468,27 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 
       // Draw the glyph rectangle
       // Due to a bug in MacOS X Classic OpenGL, glVertex2s() was changed to glVertex2f()
+      // DJB OpenGL GL_POLYGON
+      GLfloat t[8] = {
+        Left,Top,
+        Right,Top,
+        Right,Bottom,
+        Left,Bottom,
+      };
+      GLfloat v[8] = {
+        0,-ascent_p,
+        Width,-ascent_p,
+        Width,descent_p,
+        0,descent_p,     
+      };
+      glVertexPointer(2, GL_FLOAT, 0, v);
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glTexCoordPointer(2, GL_FLOAT, 0, t);
+      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      
+      
+      /*
       glBegin(GL_POLYGON);
 
       glTexCoord2f(Left,Top);
@@ -483,9 +504,9 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
       glVertex2d(0,descent_p);
 
       glEnd();
-
+      */
       // Move to the next glyph's position
-      glTranslated(Width-Pad,0,0);
+      glTranslatef(Width-Pad,0,0);
 
       glEndList();
 
