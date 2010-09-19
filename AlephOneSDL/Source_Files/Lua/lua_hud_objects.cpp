@@ -910,7 +910,7 @@ int Lua_Fonts_New(lua_State *L)
 
   FontSpecifier *ff = new FontSpecifier(f);
   ff->Init();
-#if HAVE_OPENGL
+#ifdef HAVE_OPENGL
   if (alephone::Screen::instance()->openGL()) {
     ff->OGL_Reset(true);
   }

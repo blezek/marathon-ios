@@ -328,7 +328,7 @@ void HUD_Lua_Class::fill_rect(float x, float y, float w, float h,
     };
     glVertexPointer ( 2, GL_FLOAT, 0, v );
     glEnableClientState ( GL_VERTEX_ARRAY );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 0, 4 );
     /*
     glBegin(GL_QUADS);
     glVertex2f(x,     y);
@@ -405,10 +405,10 @@ void HUD_Lua_Class::frame_rect(float x, float y, float w, float h,
     // Define the array
     glVertexPointer ( 2, GL_FLOAT, 0, v );
     glEnableClientState ( GL_VERTEX_ARRAY );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 4, 4 );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 8, 4 );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 12, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 0, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 4, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 8, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 12, 4 );
     /*
     glVertex2f(x,     y);
     glVertex2f(x + w, y);

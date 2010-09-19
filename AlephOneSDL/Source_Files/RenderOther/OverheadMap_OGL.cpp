@@ -116,7 +116,7 @@ void OverheadMap_OGL_Class::begin_overall()
   };
   glVertexPointer(2, GL_FLOAT, 0, v);
   glEnableClientState(GL_VERTEX_ARRAY);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
   
   /*
    glColor3f(0,0,0);
@@ -340,7 +340,7 @@ void OverheadMap_OGL_Class::draw_thing(
   case _rectangle_thing:
     glVertexPointer(2,GL_FLOAT,0,RectangleShape[0]);
       // DJB OpenGL
-    glDrawArrays(GL_TRIANGLE_STRIP,0,NumRectangleVertices);
+    glDrawArrays(GL_TRIANGLE_FAN,0,NumRectangleVertices);
     break;
   case _circle_thing:
     glLineWidth(2);

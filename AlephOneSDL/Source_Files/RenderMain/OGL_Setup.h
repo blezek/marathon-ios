@@ -132,6 +132,7 @@ void SglColor4fv(const GLfloat* v);
 void SglColor4fva(const GLfloat* v);
 void SglColor4usv(const GLushort* v);
 
+
 // Initializer; returns whether or not OpenGL is present
 bool OGL_Initialize();
 

@@ -281,13 +281,14 @@ static void SetProjectionType(int NewProjectionType)
   {
   case Projection_OpenGL_Eye:
     glMatrixMode(GL_PROJECTION);
-    glLoadMatrixd(OGLEye_2_Clip);
+      // DJB OpenGL changing to float
+    glLoadMatrixf(OGLEye_2_Clip);
     ProjectionType = NewProjectionType;
     break;
 
   case Projection_Screen:
     glMatrixMode(GL_PROJECTION);
-    glLoadMatrixd(Screen_2_Clip);
+    glLoadMatrixf(Screen_2_Clip);
     ProjectionType = NewProjectionType;
     break;
   }
@@ -582,7 +583,7 @@ bool OGL_StartRun()
   // Plain and simple
   vector<GLint> PixelFormatSetupList;
   PixelFormatSetupList.push_back(GLint(AGL_RGBA));
-  PixelFormatSetupList.push_back(GLint(AGL_DOUBLEBUFFER));
+  PixelFormatSetupList.push_back(GLint(AGL_FLOATBUFFER));
   if (graphics_preferences->experimental_rendering &&
       graphics_preferences->screen_mode.fullscreen) {
     PixelFormatSetupList.push_back(GLint(AGL_FULLSCREEN));
@@ -689,10 +690,10 @@ bool OGL_StartRun()
     // [DEFAULT] -- anything marked out as this ought to be reverted to if changed
     glDepthFunc(GL_LEQUAL);
     if (ShaderRender) {
-      glDepthRange(0,1);
+      glDepthRangef(0,1);
     }
     else{
-      glDepthRange(1,0);
+      glDepthRangef(1,0);
     }
   }
 
@@ -1006,8 +1007,8 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
   // for all the other projections
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
-  glGetDoublev(GL_PROJECTION_MATRIX,Screen_2_Clip);
+  glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
+  glGetFloatv(GL_PROJECTION_MATRIX,Screen_2_Clip);
 
   // Set projection type to initially none (force load of first one)
   ProjectionType = Projection_NONE;
@@ -1118,14 +1119,25 @@ bool OGL_EndMain()
   OGL_DoFades(0,0,ViewWidth,ViewHeight);
 
   // Paint over 1-pixel boundary
-  glColor3f(0,0,0);
+  glColor4f(0,0,0,1);
+  // DJB OpenGL coverting line loop
+  GLfloat v[8] = {
+    0.5,0.5,
+    0.5F,ViewHeight-0.5F,
+    ViewWidth-0.5F,ViewHeight-0.5F,
+    ViewWidth-0.5F,0.5F,    
+  };
+  glVertexPointer(2,GL_FLOAT,0,v);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glDrawArrays(GL_LINE_LOOP, 0, 4);
+  /*
   glBegin(GL_LINE_LOOP);
   glVertex2f(0.5,0.5);
   glVertex2f(0.5F,ViewHeight-0.5F);
   glVertex2f(ViewWidth-0.5F,ViewHeight-0.5F);
   glVertex2f(ViewWidth-0.5F,0.5F);
   glEnd();
-
+  */
   return true;
 }
 
@@ -1212,7 +1224,7 @@ bool OGL_SetView(view_data &View)
 
   // World coordinates to Marathon eye coordinates
   glLoadIdentity();
-  glGetDoublev(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
+  glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
 
   // Do rotation first:
   const double TrigMagReciprocal = 1/double(TRIG_MAGNITUDE);
@@ -1222,7 +1234,7 @@ bool OGL_SetView(view_data &View)
   CenteredWorld_2_MaraEye[1] = -Sine;
   CenteredWorld_2_MaraEye[4] = Sine;
   CenteredWorld_2_MaraEye[4+1] = Cosine;
-  glLoadMatrixd(CenteredWorld_2_MaraEye);
+  glLoadMatrixf(CenteredWorld_2_MaraEye);
 
   // Set the view direction
   ViewDir[0] = (float)Cosine;
@@ -1230,18 +1242,18 @@ bool OGL_SetView(view_data &View)
   ModelRenderObject.ViewDirection[2] = 0;       // Always stays the same
 
   // Do a translation and then save;
-  glTranslated(-View.origin.x,-View.origin.y,-View.origin.z);
-  glGetDoublev(GL_MODELVIEW_MATRIX,World_2_MaraEye);
+  glTranslatef(-View.origin.x,-View.origin.y,-View.origin.z);
+  glGetFloatv(GL_MODELVIEW_MATRIX,World_2_MaraEye);
 
   // Find the appropriate modelview matrix for 3D-model inhabitant rendering
-  glLoadMatrixd(MaraEye_2_OGLEye);
-  glMultMatrixd(World_2_MaraEye);
-  glGetDoublev(GL_MODELVIEW_MATRIX,World_2_OGLEye);
+  glLoadMatrixf(MaraEye_2_OGLEye);
+  glMultMatrixf(World_2_MaraEye);
+  glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
 
   // Find the appropriate modelview matrix for 3D-model skybox rendering
-  glLoadMatrixd(MaraEye_2_OGLEye);
-  glMultMatrixd(CenteredWorld_2_MaraEye);
-  glGetDoublev(GL_MODELVIEW_MATRIX,CenteredWorld_2_OGLEye);
+  glLoadMatrixf(MaraEye_2_OGLEye);
+  glMultMatrixf(CenteredWorld_2_MaraEye);
+  glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_OGLEye);
 
   // Find world-to-screen and screen-to-world conversion factors;
   // be sure to have some fallbacks in case of zero
@@ -1261,7 +1273,7 @@ bool OGL_SetView(view_data &View)
   // Find the OGL-eye-to-screen matrix
   // Remember that z is small negative to large negative (OpenGL style)
   glLoadIdentity();
-  glGetDoublev(GL_MODELVIEW_MATRIX,OGLEye_2_Screen);
+  glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Screen);
   OGLEye_2_Screen[0] = XScale;
   OGLEye_2_Screen[4+1] = YScale;
   OGLEye_2_Screen[4*2] = -XOffset;
@@ -1272,9 +1284,9 @@ bool OGL_SetView(view_data &View)
   OGLEye_2_Screen[4*3+3] = 0;
 
   // Find the OGL-eye-to-clip matrix:
-  glLoadMatrixd(Screen_2_Clip);
-  glMultMatrixd(OGLEye_2_Screen);
-  glGetDoublev(GL_MODELVIEW_MATRIX,OGLEye_2_Clip);
+  glLoadMatrixf(Screen_2_Clip);
+  glMultMatrixf(OGLEye_2_Screen);
+  glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Clip);
 
   // Restore the default modelview matrix
   glLoadIdentity();
@@ -1349,8 +1361,8 @@ bool OGL_SetForegroundView(bool HorizReflect)
   };
 
   // Find the appropriate modelview matrix for 3D-model inhabitant rendering
-  glLoadMatrixd(Foreground_2_OGLEye);
-  glGetDoublev(GL_MODELVIEW_MATRIX,World_2_OGLEye);
+  glLoadMatrixf(Foreground_2_OGLEye);
+  glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
 
   // Perform the reflection if desired; refer to above definition of Foreground_2_OGLEye
   if (HorizReflect) {
@@ -1660,7 +1672,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 
   if (RenderPolygon.flags&_SHADELESS_BIT) {
     // The shadeless color is E-Z
-    glColor3f(1,1,1);
+    glColor4f(1,1,1,1);
     GlowColor = 1;
   }
   else if (RenderPolygon.ambient_shade < 0) {
@@ -1872,9 +1884,9 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   SetProjectionType(Projection_OpenGL_Eye);
 
   // Location of data:
-  glVertexPointer(4,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glVertexPointer(4,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
-  glTexCoordPointer(2,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
 
   // Painting a texture...
@@ -2209,9 +2221,9 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
   SetProjectionType(Projection_Screen);
 
   // Location of data:
-  glVertexPointer(3,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
-  glTexCoordPointer(2,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
 
   // Painting a texture...
@@ -2434,9 +2446,9 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   glColor4fv(Color);
 
   // Location of data:
-  glVertexPointer(3,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
-  glTexCoordPointer(2,GL_DOUBLE,sizeof(ExtendedVertexData),
+  glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
   glEnable(GL_TEXTURE_2D);
 
@@ -2567,7 +2579,7 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
     ClipPlane[0] = 1;
     ClipPlane[1] = 0;
     ClipPlane[2] = XScaleRecip*(RenderRectangle.clip_left - XOffset);
-    glClipPlane(GL_CLIP_PLANE0,ClipPlane);
+    glClipPlanef(GL_CLIP_PLANE0,ClipPlane);
   }
 
   if (RenderRectangle.clip_right <= RenderRectangle.x1) {
@@ -2576,7 +2588,7 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
     ClipPlane[0] = -1;
     ClipPlane[1] = 0;
     ClipPlane[2] = -XScaleRecip*(RenderRectangle.clip_right - XOffset);
-    glClipPlane(GL_CLIP_PLANE1,ClipPlane);
+    glClipPlanef(GL_CLIP_PLANE1,ClipPlane);
   }
 
   if (RenderRectangle.clip_top >= RenderRectangle.y0) {
@@ -2585,7 +2597,7 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
     ClipPlane[0] = 0;
     ClipPlane[1] = -1;
     ClipPlane[2] = -YScaleRecip*(RenderRectangle.clip_top - YOffset);
-    glClipPlane(GL_CLIP_PLANE2,ClipPlane);
+    glClipPlanef(GL_CLIP_PLANE2,ClipPlane);
   }
 
   if (RenderRectangle.clip_bottom <= RenderRectangle.y1) {
@@ -2594,14 +2606,14 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
     ClipPlane[0] = 0;
     ClipPlane[1] = 1;
     ClipPlane[2] = YScaleRecip*(RenderRectangle.clip_bottom - YOffset);
-    glClipPlane(GL_CLIP_PLANE3,ClipPlane);
+    glClipPlanef(GL_CLIP_PLANE3,ClipPlane);
   }
 
   // Get from the model coordinates to the screen coordinates.
   SetProjectionType(Projection_OpenGL_Eye);
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
-  glLoadMatrixd(World_2_OGLEye);
+  glLoadMatrixf(World_2_OGLEye);
   world_point3d& Position = RenderRectangle.Position;
   glTranslatef(Position.x,Position.y,Position.z);
 
@@ -2614,7 +2626,7 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
       ClipPlane[0] = ClipPlane[1] = 0;
       ClipPlane[2] = -1;
       ClipPlane[3] = LiquidRelHeight;
-      glClipPlane(GL_CLIP_PLANE4,ClipPlane);
+      glClipPlanef(GL_CLIP_PLANE4,ClipPlane);
     }
   }
   else
@@ -2626,12 +2638,12 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
       ClipPlane[0] = ClipPlane[1] = 0;
       ClipPlane[2] = 1;
       ClipPlane[3] = -LiquidRelHeight;
-      glClipPlane(GL_CLIP_PLANE4,ClipPlane);
+      glClipPlanef(GL_CLIP_PLANE4,ClipPlane);
     }
   }
 
   // Its orientation and size
-  glRotated((360.0/FULL_CIRCLE)*RenderRectangle.Azimuth,0,0,1);
+  glRotatef((360.0/FULL_CIRCLE)*RenderRectangle.Azimuth,0,0,1);
   GLfloat HorizScale = Scale*RenderRectangle.HorizScale;
   glScalef(HorizScale,HorizScale,Scale);
 
@@ -3379,7 +3391,7 @@ bool OGL_RenderCrosshairs()
     }
     break;
     }
-    glRotated(-90.0, 0, 0, 1);             // turn clockwise
+    glRotatef(-90.0, 0, 0, 1);             // turn clockwise
   }
 
   // Done with that modelview matrix

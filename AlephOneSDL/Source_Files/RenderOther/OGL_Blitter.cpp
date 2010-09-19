@@ -295,7 +295,7 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
     glEnableClientState(GL_VERTEX_ARRAY);
     glTexCoordPointer(2, GL_FLOAT, 0, t);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     /*
     glBegin(GL_QUADS);
     glTexCoord2f(VMin, UMin); glVertex3f(tleft,  ttop,    0);

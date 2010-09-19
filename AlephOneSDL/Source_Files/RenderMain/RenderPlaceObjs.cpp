@@ -213,10 +213,6 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       // Reference distance for frame calculation (use position if a sprite)
       int DistanceRef = transformed_origin.x;
 
-      // For the convenience of the 3D-model renderer
-      // DJB Remove warning int LightDepth = transformed_origin.x;
-      // DJB remove warning GLfloat LightDirection[3];
-
       get_object_shape_and_transfer_mode(&view->origin, object_index, &data);
       // Nonexistent shape: skip
       if (data.collection_code == NONE) {
@@ -224,6 +220,12 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       }
 
 #ifdef HAVE_OPENGL
+      // For the convenience of the 3D-model renderer
+      // DJB Remove warning
+      int LightDepth = transformed_origin.x;
+      // DJB remove warning
+      GLfloat LightDirection[3];
+      
       // Find which 3D model will take the place of this sprite, if any
       short ModelSequence;
       OGL_ModelData *ModelPtr =
@@ -245,7 +247,7 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
       float Scale = 1;
       if (ModelPtr) {
         // Copy over
-        model_shape_information = *shape_information;
+        shape_information_data model_shape_information = *shape_information;
 
         // Set up scaling and return pointer
         if (TEST_FLAG(object->flags,_object_is_enlarged)) {

@@ -27,14 +27,22 @@
 #include "OGL_Headers.h"
 #include "FileHandler.h"
 
+#define GLhandleARB GLuint
+#define GLcharARB char
 class Shader {
 friend class XML_ShaderParser;
 private:
 
-GLhandleARB _programObj;
-GLcharARB *_vert;
-GLcharARB *_frag;
-int16 _passes;
+  // DJB OpenGL
+  GLuint _programObj;
+  char *_vert;
+  char *_frag;
+  /*
+  GLhandleARB _programObj;
+  GLcharARB *_vert;
+  GLcharARB *_frag;
+   */
+  int16 _passes;
 bool _loaded;
 
 static std::map<std::string, Shader> Shaders;

@@ -286,7 +286,7 @@ void Shape_Blitter::OGL_Draw(SDL_Rect& dst)
     glEnableClientState(GL_VERTEX_ARRAY);
     glTexCoordPointer(2, GL_FLOAT, 0, t);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 3);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     /*
     glBegin(GL_TRIANGLE_FAN);
     glTexCoord2d(U_Offset, V_Offset);

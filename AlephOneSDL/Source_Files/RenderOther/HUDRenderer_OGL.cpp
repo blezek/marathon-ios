@@ -110,7 +110,7 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
     };
     glVertexPointer ( 2, GL_FLOAT, 0, v );
     glEnableClientState ( GL_VERTEX_ARRAY );
-    glDrawArrays ( GL_TRIANGLE_STRIP, 0, 4 );
+    glDrawArrays ( GL_TRIANGLE_FAN, 0, 4 );
     /*
     glColor3ub(0, 0, 0);
     glBegin(GL_QUADS);
@@ -368,13 +368,13 @@ void HUD_OGL_Class::FillRect(screen_rectangle *r, short color_index)
   // DJB OpenGL
   GLfloat v[8] = {
     r->bottom, r->left,
-    r->top, r->left,
     r->bottom, r->right,
     r->top, r->right,
+    r->top, r->left,
   };
   glEnableClientState(GL_VERTEX_ARRAY);
   glVertexPointer(2, GL_FLOAT, 0, v);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
   // glRectf(r->left, r->top, r->right, r->bottom);
 }
 

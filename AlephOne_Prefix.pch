@@ -20,3 +20,9 @@
 // #define SDL_NOEVENT 0
 #define MLog(fmt, ...) NSLog(@"%s L%d %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);
 
+#define HAVE_OPENGL 1
+
+#ifdef HAVE_OPENGL
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+#endif

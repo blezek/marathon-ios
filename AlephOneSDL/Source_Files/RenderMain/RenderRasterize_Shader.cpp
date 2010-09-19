@@ -39,61 +39,85 @@ GLuint _w;
 GLuint _h;
 GLuint texID;
 
+  // DJB OpenG  Changing from EXT...
+  
 FBO(GLuint w, GLuint h) : _h(h), _w(w) {
-  glGenFramebuffersEXT(1, &_fbo);
-  glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, _fbo);
+  glGenFramebuffers(1, &_fbo);
+  glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
 
-  glGenRenderbuffersEXT(1, &_depthBuffer);
-  glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, _depthBuffer);
-  glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, GL_DEPTH_COMPONENT, _w, _h);
-  glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,
-                               GL_RENDERBUFFER_EXT,
+  glGenRenderbuffers(1, &_depthBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, _w, _h);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                               GL_RENDERBUFFER,
                                _depthBuffer);
 
   glGenTextures(1, &texID);
-  glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texID);
-  glTexImage2D(GL_TEXTURE_RECTANGLE_ARB, 0, Using_sRGB ? GL_SRGB : GL_RGB8, _w,
+  // DJB OpenGL changing GL_TEXTURE_RECTANGLE to GL_TEXTURE_2D
+  glBindTexture(GL_TEXTURE_2D, texID);
+  // DJB OpenGL force RGB
+  glTexImage2D(GL_TEXTURE_2D, 0, Using_sRGB ? GL_SRGB : GL_RGB, _w,
                _h, 0, GL_RGB, GL_UNSIGNED_BYTE,
                NULL);
-  glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-                            GL_TEXTURE_RECTANGLE_ARB, texID,
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                            GL_TEXTURE_2D, texID,
                             0);
-  assert(glCheckFramebufferStatusEXT(
-           GL_FRAMEBUFFER_EXT) == GL_FRAMEBUFFER_COMPLETE_EXT);
+  assert(glCheckFramebufferStatus(
+           GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
   if(Using_sRGB) {
-    glEnable(GL_FRAMEBUFFER_SRGB_EXT);
+    // DJB OpenGL glEnable(GL_FRAMEBUFFER_SRGB);
   }
-  glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void activate() {
-  glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, _fbo);
-  glPushAttrib(GL_VIEWPORT_BIT);
+  glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+  // DJB OpenGL glPushAttrib(GL_VIEWPORT_BIT);
   glViewport(0, 0, _w, _h);
 }
 
 static void deactivate() {
-  glPopAttrib();
-  glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+  // DJB OpenGL glPopAttrib();
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void draw() {
-  glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texID);
-  glEnable(GL_TEXTURE_RECTANGLE_ARB);
+  glBindTexture(GL_TEXTURE_2D, texID);
+  glEnable(GL_TEXTURE_2D);
 
+  // DJB OpenGL changing to GL_TRIANGLE_FAN
+  GLshort t[8] = {
+    0, 0,
+    0, 1,
+    1, 0,
+    1, 0,
+  };
+  GLshort v[8] = {
+    0, 0,
+    0, _h,
+    _w, _h,
+    _w, 0
+  };
+  glVertexPointer ( 2, GL_SHORT, 0, v );
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glTexCoordPointer(2, GL_SHORT, 0, t);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  /*  
   glBegin(GL_QUADS);
   glTexCoord2i(0., 0.); glVertex2i(0., 0.);
   glTexCoord2i(0., _h); glVertex2i(0., _h);
   glTexCoord2i(_w, _h); glVertex2i(_w, _h);
   glTexCoord2i(_w, 0.); glVertex2i(_w, 0.);
   glEnd();
+  */
 
-  glDisable(GL_TEXTURE_RECTANGLE_ARB);
+  glDisable(GL_TEXTURE_2D);
 }
 
 ~FBO() {
-  glDeleteFramebuffersEXT(1, &_fbo);
-  glDeleteRenderbuffersEXT(1, &_depthBuffer);
+  glDeleteFramebuffers(1, &_fbo);
+  glDeleteRenderbuffers(1, &_depthBuffer);
 }
 };
 
@@ -134,7 +158,8 @@ void draw() {
   glLoadIdentity();
 
   glDisable(GL_BLEND);
-  glOrtho(0, _vertical._w, 0, _vertical._h, 0.0, 1.0);
+  // DJB OpenGL Uisng glOrthof
+  glOrthof(0, _vertical._w, 0, _vertical._h, 0.0, 1.0);
   glColor4f(1., 1., 1., 1.);
 
   int passes = _shader_bloom->passes();
@@ -276,13 +301,14 @@ void RenderRasterize_Shader::render_node(sorted_node_data *node,
     clip[0] = win->left.i;
     clip[1] = win->left.j;
     glEnable(GL_CLIP_PLANE0);
-    glClipPlane(GL_CLIP_PLANE0, clip);
+    glClipPlanef(GL_CLIP_PLANE0, clip);
 
     glRotatef(0.2, 0., 0., 1.);             // breathing room for right-hand clip
     clip[0] = win->right.i;
     clip[1] = win->right.j;
     glEnable(GL_CLIP_PLANE1);
-    glClipPlane(GL_CLIP_PLANE1, clip);
+    // DJB OpenGL use glClipPlanef
+    glClipPlanef(GL_CLIP_PLANE1, clip);
 
     glPopMatrix();
 
@@ -445,9 +471,9 @@ TextureManager RenderRasterize_Shader::setupWallTexture(
 
   if(TMgr.Setup()) {
     if (TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_BumpMap)) {
-      glActiveTextureARB(GL_TEXTURE1_ARB);
+      glActiveTexture(GL_TEXTURE1);
       TMgr.RenderBump();
-      glActiveTextureARB(GL_TEXTURE0_ARB);
+      glActiveTexture(GL_TEXTURE0);
     }
     TMgr.RenderNormal();
   }
@@ -643,8 +669,9 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(
       sign = -1;
     }
     glNormal3f(N[0], N[1], N[2]);
-    glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign);
-
+    glMultiTexCoord4f(GL_TEXTURE1, T[0], T[1], T[2], sign);
+// DJB OpenGL  Need to figure out GL_POLYGON code!!!
+#if 0
     glBegin(GL_POLYGON);
     if (ceil) {
       for(short i=vertex_count-1; i>=0; --i) {
@@ -690,6 +717,7 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(
       }
       glEnd();
     }
+#endif
 
     Shader::disable();
     glMatrixMode(GL_TEXTURE);
@@ -817,7 +845,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window,
       vec3 T(dx, dy, 0);
       float sign = 1;
       glNormal3f(N[0], N[1], N[2]);
-      glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign);
+      glMultiTexCoord4f(GL_TEXTURE1, T[0], T[1], T[2], sign);
 
       world_distance x = 0.0, y = 0.0;
       instantiate_transfer_mode(view, surface->transfer_mode, x, y);
@@ -825,6 +853,26 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window,
       x0 -= x;
       tOffset -= y;
 
+      // DJB OpenGL covert code from quads
+      GLfloat t[2][4], v[3][4];
+      for(int i = 0; i < vertex_count; ++i) {
+        float p2 = 0;
+        if(i == 1 || i == 2) {
+          p2 = surface->length;
+        }
+        t[0][i] = (tOffset - vertices[i].z) / div;
+        t[1][i] = (x0+p2) / div;
+        v[0][i] = vertices[i].x;
+        v[1][i] = vertices[i].y;
+        v[2][i] = vertices[i].z;
+      }
+      glVertexPointer(3, GL_FLOAT, 0, v);
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glTexCoordPointer(2, GL_FLOAT, 0, t);
+      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      
+      /*
       glBegin(GL_QUADS);
       for(int i = 0; i < vertex_count; ++i) {
         float p2 = 0;
@@ -835,8 +883,28 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window,
         glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
       }
       glEnd();
-
+      */
       if (setupGlow(view, TMgr, wobble, intensity, offset, renderStep)) {
+        // DJB OpenGL convert from quads
+        for(int i = 0; i < vertex_count; ++i) {
+          float p2 = 0;
+          if(i == 1 || i == 2) {
+            p2 = surface->length;
+          }
+          t[0][i] = (tOffset - vertices[i].z) / div;
+          t[1][i] = (x0+p2) / div;
+          v[0][i] = vertices[i].x;
+          v[1][i] = vertices[i].y;
+          v[2][i] = vertices[i].z;
+        }
+        glVertexPointer(2, GL_FLOAT, 0, v);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glTexCoordPointer(2, GL_FLOAT, 0, t);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        
+        
+        /*
         glBegin(GL_QUADS);
         for(int i = 0; i < vertex_count; ++i) {
           float p2 = 0;
@@ -847,6 +915,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window,
           glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
         }
         glEnd();
+        */
       }
 
 
@@ -995,13 +1064,13 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection,
   s->enable();
 
   glVertexPointer(3,GL_FLOAT,0,ModelPtr->Model.PosBase());
-  glClientActiveTextureARB(GL_TEXTURE0_ARB);
+  glClientActiveTexture(GL_TEXTURE0);
   glTexCoordPointer(2,GL_FLOAT,0,ModelPtr->Model.TCBase());
 
   glEnableClientState(GL_NORMAL_ARRAY);
   glNormalPointer(GL_FLOAT,0,ModelPtr->Model.NormBase());
 
-  glClientActiveTextureARB(GL_TEXTURE1_ARB);
+  glClientActiveTexture(GL_TEXTURE1);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   glTexCoordPointer(4,GL_FLOAT,sizeof(vec4),ModelPtr->Model.TangentBase());
 
@@ -1010,14 +1079,14 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection,
   }
 
   if(TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_BumpMap)) {
-    glActiveTextureARB(GL_TEXTURE1_ARB);
+    glActiveTexture(GL_TEXTURE1);
     if(ModelPtr->Use(CLUT,OGL_SkinManager::Bump)) {
       LoadModelSkin(SkinPtr->OffsetImg, Collection, CLUT);
     }
     if (!SkinPtr->OffsetImg.IsPresent()) {
       FlatBumpTexture();
     }
-    glActiveTextureARB(GL_TEXTURE0_ARB);
+    glActiveTexture(GL_TEXTURE0);
   }
 
   glDrawElements(GL_TRIANGLES,
@@ -1047,7 +1116,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection,
 
   glDisableClientState(GL_NORMAL_ARRAY);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-  glClientActiveTextureARB(GL_TEXTURE0_ARB);
+  glClientActiveTexture(GL_TEXTURE0);
 
   // Restore the default render sidedness
   glEnable(GL_CULL_FACE);
@@ -1129,7 +1198,7 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
       plane[2] = -1.0;
       plane[3] = h;
     }
-    glClipPlane(GL_CLIP_PLANE5, plane);
+    glClipPlanef(GL_CLIP_PLANE5, plane);
     glEnable(GL_CLIP_PLANE5);
   }
   else if (other_side_of_media) {
@@ -1139,8 +1208,8 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
 
   if(rect.ModelPtr) {
     glPushMatrix();
-    glTranslated(pos.x, pos.y, pos.z);
-    glRotated((360.0/FULL_CIRCLE)*rect.Azimuth,0,0,1);
+    glTranslatef(pos.x, pos.y, pos.z);
+    glRotatef((360.0/FULL_CIRCLE)*rect.Azimuth,0,0,1);
     GLfloat HorizScale = rect.Scale*rect.HorizScale;
     glScalef(HorizScale,HorizScale,rect.Scale);
 
@@ -1156,10 +1225,11 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
   }
 
   glPushMatrix();
-  glTranslated(pos.x, pos.y, pos.z);
+  glTranslatef(pos.x, pos.y, pos.z);
 
-  double yaw = view->yaw * 360.0 / float(NUMBER_OF_ANGLES);
-  glRotated(yaw, 0.0, 0.0, 1.0);
+  // DJB OpenGL to float
+  GLfloat yaw = view->yaw * 360.0 / float(NUMBER_OF_ANGLES);
+  glRotatef(yaw, 0.0, 0.0, 1.0);
 
   float offset = 0;
   if (OGL_ForceSpriteDepth()) {
@@ -1216,6 +1286,25 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
     glEnable(GL_ALPHA_TEST);
     glAlphaFunc(GL_GREATER, 0.5);
   }
+  // DJB OpenGL Convert from quad
+  GLfloat t[8] = {
+    texCoords[0][0], texCoords[1][0],
+    texCoords[0][0], texCoords[1][1],
+    texCoords[0][1], texCoords[1][1],
+    texCoords[0][1], texCoords[1][0],
+  };
+  GLfloat v[12] = {
+    0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
+    0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
+    0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
+    0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
+  };  
+  glVertexPointer(2, GL_FLOAT, 0, v);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glTexCoordPointer(3, GL_FLOAT, 0, t);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  /*
   glBegin(GL_QUADS);
 
   glTexCoord2f(texCoords[0][0], texCoords[1][0]);
@@ -1235,8 +1324,27 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
              rect.WorldBottom * rect.Scale);
 
   glEnd();
-
+  */
   if (setupGlow(view, TMgr, 0, 1, offset, renderStep)) {
+    // DJB OpenGL Convert from quad
+    GLfloat t[8] = {
+      texCoords[0][0], texCoords[1][0],
+      texCoords[0][0], texCoords[1][1],
+      texCoords[0][1], texCoords[1][1],
+      texCoords[0][1], texCoords[1][0],
+    };
+    GLfloat v[12] = {
+      0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
+      0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
+      0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
+      0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
+    };  
+    glVertexPointer(2, GL_FLOAT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(3, GL_FLOAT, 0, t);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    /*    
     glBegin(GL_QUADS);
 
     glTexCoord2f(texCoords[0][0], texCoords[1][0]);
@@ -1256,6 +1364,7 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object,
                rect.WorldBottom * rect.Scale);
 
     glEnd();
+    */
   }
 
   glEnable(GL_DEPTH_TEST);

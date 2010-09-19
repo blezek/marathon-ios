@@ -143,7 +143,7 @@ void OGL_LoadScreen::Progress(const int progress)
     };
     glVertexPointer(3, GL_SHORT, 0, v);
     glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     
     /*
     glBegin(GL_QUADS);
@@ -175,7 +175,7 @@ void OGL_LoadScreen::Progress(const int progress)
     };
     glVertexPointer(3, GL_SHORT, 0, v2);
     glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
     /*
     glBegin(GL_QUADS);
