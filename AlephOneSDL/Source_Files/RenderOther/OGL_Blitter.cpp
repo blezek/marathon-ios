@@ -211,6 +211,8 @@ void OGL_Blitter::Draw(const SDL_Rect& dst, const SDL_Rect& src)
   _Draw(dst, sr);
 }
 
+// DJB OpenGL SaveState
+#include "SaveState.h"
 void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
 {
   if (!Loaded()) {
@@ -222,6 +224,11 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
   }
   // DJB OpenGL
   // glPushAttrib(GL_ALL_ATTRIB_BITS);
+  SaveState ss0 (GL_CULL_FACE);
+  SaveState ss1 (GL_DEPTH_TEST);
+  SaveState ss2 (GL_BLEND);
+  SaveState ss3 (GL_FOG);
+  SaveState ss4 (GL_TEXTURE_2D);
 
   // disable everything but alpha blending and clipping
   glDisable(GL_CULL_FACE);

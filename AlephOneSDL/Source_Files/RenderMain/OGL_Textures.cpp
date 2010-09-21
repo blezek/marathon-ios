@@ -273,7 +273,8 @@ void FlatBumpTexture() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+    // DJB OpenGL Using GL_RGBA rather than GL_RGBA
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE,
                  flatTextureData);
   }
   else{
@@ -314,12 +315,15 @@ void OGL_StartTextures()
     GL_NEAREST_MIPMAP_LINEAR,
     GL_LINEAR_MIPMAP_LINEAR
   };
-  const int NUMBER_OF_COLOR_FORMATS = 3;
+  // DJB OpenGL only support GL_RGBA
+  const int NUMBER_OF_COLOR_FORMATS = 1;
   const GLenum ColorFormatList[NUMBER_OF_COLOR_FORMATS] =
   {
-    GL_RGBA8,
+    GL_RGBA,
+/*
     GL_RGBA4,
     GL_RGBA2
+ */
   };
 
   OGL_ConfigureData& ConfigureData = Get_OGL_ConfigureData();
@@ -352,7 +356,7 @@ void OGL_StartTextures()
       TxtrTypeInfo.ColorFormat = ColorFormatList[ColorFormat];
     }
     else{
-      TxtrTypeInfo.ColorFormat = GL_RGBA8;
+      TxtrTypeInfo.ColorFormat = GL_RGBA;
     }
   }
 
@@ -384,7 +388,7 @@ void OGL_StartTextures()
       TxtrTypeInfo.ColorFormat = ColorFormatList[ColorFormat];
     }
     else{
-      TxtrTypeInfo.ColorFormat = GL_RGBA8;
+      TxtrTypeInfo.ColorFormat = GL_RGBA;
     }
   }
 
@@ -1240,9 +1244,12 @@ uint32 *TextureManager::Shrink(uint32 *Buffer)
 {
   int NumPixels = int(LoadedWidth)*int(LoadedHeight);
   GLuint *NewBuffer = new GLuint[NumPixels];
+  // DJB OpenGL no glScaleImage
+  printf ( "******************* gluScaleImage not available in OGL_Textures.cpp *********************\n" );
+/*
   gluScaleImage(GL_RGBA, TxtrWidth, TxtrHeight, GL_UNSIGNED_BYTE, Buffer,
                 LoadedWidth, LoadedHeight, GL_UNSIGNED_BYTE, NewBuffer);
-
+*/
   return (uint32 *)NewBuffer;
 }
 
@@ -1257,40 +1264,47 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 
   GLenum internalFormat = TxtrTypeInfo.ColorFormat;
   // some optimizations here:
+  // DJB OpenGL, convert GL_RGBA to GL_RGBA and GL_RGB to GL_RGB in the whole file
   if (TextureType == 1) {     // landscape
-    if (internalFormat == GL_RGBA8) {
-      internalFormat = GL_RGB8;
+    if (internalFormat == GL_RGBA) {
+      internalFormat = GL_RGB;
     }
     else if (internalFormat == GL_RGBA4) {
-      internalFormat = GL_RGB5;
+      printf ( "******************* invalid internal format!!! ***********\n" );
+      // internalFormat = GL_RGB5;
     }
   }
   else if (!IsBlended() && internalFormat == GL_RGBA4) {
     internalFormat = GL_RGB5_A1;
   }
 
+  
+  // DJB OpenGL Internal format is always GL_RGBA?
   if(Using_sRGB && !normal_map) {
     switch(internalFormat) {
     case GL_RGB:
-    case GL_R3_G3_B2:
-    case GL_RGB4:
-    case GL_RGB5:
-    case GL_RGB8:
-    case GL_RGB10:
-    case GL_RGB12:
-    case GL_RGB16:
-      internalFormat = GL_SRGB;
+
+           internalFormat = GL_SRGB;
       break;
     case GL_RGBA:
-    case GL_RGBA2:
-    case GL_RGBA4:
-    case GL_RGB5_A1:
-    case GL_RGBA8:
-    case GL_RGB10_A2:
-    case GL_RGBA12:
-    case GL_RGBA16:
       internalFormat = GL_SRGB_ALPHA;
       break;
+      defualt:
+      case GL_RGBA4:
+      case GL_RGB5_A1:
+        /*
+      case GL_RGBA2:
+      case GL_RGB10_A2:
+      case GL_RGBA12:
+      case GL_RGBA16:
+      case GL_R3_G3_B2:
+      case GL_RGB4:
+      case GL_RGB5:
+      case GL_RGB10:
+      case GL_RGB12:
+      case GL_RGB16:
+         */
+        printf ( "***************** Don't know these formats! ****************\n" );
 #if defined(GL_ARB_texture_compression) && \
       defined(GL_COMPRESSED_RGB_S3TC_DXT1_EXT)
     /* These might not do anything... */
@@ -1330,6 +1344,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
         }
 #endif
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
         int i = 0;
         for (i = 0; i < Image->GetMipMapCount(); i++) {
           glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
@@ -1353,10 +1368,19 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         else
 #endif
         {
+          // DJB OpenGL gluBuild2DMipmaps
+          printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
+          /*
           gluBuild2DMipmaps(GL_TEXTURE_2D, internalFormat,
                             Image->GetWidth(),
                             Image->GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE,
                             Image->GetBuffer());
+           */
+          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+          glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                       Image->GetWidth(),
+                       Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                       Image->GetBuffer());
         }
         mipmapsLoaded = true;
       }
@@ -1408,6 +1432,9 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
         }
 #endif
+        // DJB OpenGL generate mipmaps
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+
         int i = 0;
         for (i = 0; i < Image->GetMipMapCount(); i++) {
           glCompressedTexImage2DARB(GL_TEXTURE_2D, i, internalFormat,
@@ -1426,6 +1453,9 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           mipmapsLoaded = true;
         }
 #endif
+        // DJB OpenGL generate mipmaps
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+        mipmapsLoaded = true;
         glCompressedTexImage2DARB(GL_TEXTURE_2D, 0, internalFormat,
                                   Image->GetWidth(),
                                   Image->GetHeight(), 0, Image->GetMipMapSize(
@@ -1483,15 +1513,16 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     }
     else{
-      glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+      // DJB OpenGL convert GL_CLAMP to GL_CLAMP_TO_EDGE
+      glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
     break;
 
   case OGL_Txtr_Inhabitant:
   case OGL_Txtr_WeaponsInHand:
     // Sprites have both horizontal and vertical limits
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     break;
   }
 }
@@ -1762,6 +1793,8 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
         }
 #endif
+        // DJB OpenGL Generate mipmaps
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
         int i = 0;
         for (i = 0; i < Image.get()->GetMipMapCount(); i++)
         {
@@ -1788,10 +1821,20 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
         else
 #endif
         {
+          // DJB OpenGL No gluBuild2DMipmaps
+          printf ( "********************** no gluBuild2DMipmaps available *******************\n" );
+          /*
           gluBuild2DMipmaps(GL_TEXTURE_2D, TxtrTypeInfo.ColorFormat,
                             LoadedWidth, LoadedHeight,
                             GL_RGBA, GL_UNSIGNED_BYTE,
                             Image.get()->GetBuffer());
+           */
+          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+          glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                       Image.get()->GetWidth(),
+                       Image.get()->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                       Image.get()->GetBuffer());
+          
         }
         mipmapsLoaded = true;
       }
@@ -1837,6 +1880,8 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
         }
 #endif
+        // DJB OpenGL generate mipmaps
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
         int i = 0;
         for (i = 0; i < Image.get()->GetMipMapCount(); i++)
         {
@@ -1858,6 +1903,8 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
           mipmapsLoaded = true;
         }
 #endif
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+        mipmapsLoaded = true;
         glCompressedTexImage2DARB(GL_TEXTURE_2D, 0, internalFormat,
                                   Image.get()->GetWidth(),
                                   Image.get()->GetHeight(), 0,
@@ -1892,8 +1939,8 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 
 
   // Like sprites, model textures have both horizontal and vertical limits
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 }
 
 

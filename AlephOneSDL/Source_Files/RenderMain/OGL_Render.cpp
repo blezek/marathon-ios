@@ -3360,12 +3360,16 @@ bool OGL_RenderCrosshairs()
       int LenMax = LenMin + Crosshairs.Length;
 
       // at the initial rotation, this is the rectangle at 3:00
+      // DJB OpenGL not rendering cross hairs
+      printf ( "**************** not rendering cross hairs *******************\n" );
+      /*
       glBegin(GL_QUADS);
       glVertex2i(LenMin, HeightMin);
       glVertex2i(LenMax, HeightMin);
       glVertex2i(LenMax, HeightMax);
       glVertex2i(LenMin, HeightMax);
       glEnd();
+       */
     }
     break;
     case CHShape_Circle:
@@ -3382,6 +3386,9 @@ bool OGL_RenderCrosshairs()
       int LenMin = std::min(LenMid, static_cast<int>(Crosshairs.FromCenter));
 
       // at the initial rotation, this is the bottom right
+      // DJB OpenGL not rendering cross hairs
+      printf ( "**************** not rendering cross hairs *******************\n" );
+      /*
       glBegin(GL_QUAD_STRIP);
 
       // 3:00 horizontal edge
@@ -3401,6 +3408,7 @@ bool OGL_RenderCrosshairs()
       glVertex2i(LenMin + WidthMin, LenMax + HeightMax);
 
       glEnd();
+      */
     }
     break;
     }
@@ -3425,10 +3433,11 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
   // Create display list for the current text string;
   // use the "standard" text-font display list (display lists can be nested)
   GLuint TextDisplayList;
-  TextDisplayList = glGenLists(1);
-  glNewList(TextDisplayList,GL_COMPILE);
+  // DJB OpenGL, don't use display lists
+  // TextDisplayList = glGenLists(1);
+  // glNewList(TextDisplayList,GL_COMPILE);
   GetOnScreenFont().OGL_Render(Text);
-  glEndList();
+  // glEndList();
 
   // Place the text in the foreground of the display
   SetProjectionType(Projection_Screen);
@@ -3439,7 +3448,7 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
   glPushMatrix();
 
   // Background
-  glColor3f(0,0,0);
+  glColor4f(0,0,0,1);
 
   // Changed to drop shadow only for performance reasons
   /*
@@ -3474,17 +3483,21 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 
   glLoadIdentity();
   glTranslatef(BaseX+1.0F,BaseY+1.0F,Depth);
-  glCallList(TextDisplayList);
+  // DJB OpenGL Render text, not display list
+  // glCallList(TextDisplayList);
+  GetOnScreenFont().OGL_Render(Text);
 
   // Foreground
   SglColor3f(r/255.0f,g/255.0f,b/255.0f);
 
   glLoadIdentity();
   glTranslatef(BaseX,BaseY,Depth);
-  glCallList(TextDisplayList);
+  // DJB OpenGL Render text, not display list
+  // glCallList(TextDisplayList);
+  GetOnScreenFont().OGL_Render(Text);
 
   // Clean up
-  glDeleteLists(TextDisplayList,1);
+  // glDeleteLists(TextDisplayList,1);
   glPopMatrix();
 
   return true;

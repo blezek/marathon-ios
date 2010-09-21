@@ -250,6 +250,14 @@ int FontSpecifier::TextWidth(const char *text)
 #endif
 
 #ifdef HAVE_OPENGL
+// DJB OpenGL Caching Text information, but could use VBO in the future...
+// No need to use a pad cache, it's always 1!
+const GLfloat PadCache = 1.0;
+GLfloat WidthCache[256];
+GLfloat TextureCache[256][8];
+GLshort VertexCache[256][8];
+
+
 // Reset the OpenGL fonts; its arg indicates whether this is for starting an OpenGL session
 // (this is to avoid texture and display-list memory leaks and other such things)
 void FontSpecifier::OGL_Reset(bool IsStarting)
@@ -258,7 +266,8 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
   // that indicates that there are no valid texture and display-list ID's.
   if (!IsStarting && OGL_Texture) {
     glDeleteTextures(1,&TxtrID);
-    glDeleteLists(DispList,256);
+    // DJB OpenGL No need to delete the lists
+    // glDeleteLists(DispList,256);
     m_font_registry.erase(this);
   }
 
@@ -445,7 +454,8 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
                0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, OGL_Texture);
 
   // Allocate and create display lists of rendering commands
-  DispList = glGenLists(256);
+  
+  // DispList = glGenLists(256);
   GLfloat TWidNorm = GLfloat(1)/TxtrWidth;
   GLfloat THtNorm = GLfloat(1)/TxtrHeight;
   for (int k=0; k<=LastLine; k++)
@@ -461,32 +471,32 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
       GLfloat Left = TWidNorm*Pos;
       GLfloat Right = TWidNorm*NewPos;
 
-      glNewList(DispList + Which, GL_COMPILE);
-
+      // glNewList(DispList + Which, GL_COMPILE);
+      
       // Move to the current glyph's (padded) position
-      glTranslatef(-Pad,0,0);
+      // glTranslatef(-Pad,0,0);
 
       // Draw the glyph rectangle
       // Due to a bug in MacOS X Classic OpenGL, glVertex2s() was changed to glVertex2f()
+      // DJB OpenGL, don't use lists, just cache info
+      VertexCache[Which][0] = 0;
+      VertexCache[Which][1] = -ascent_p;
+      VertexCache[Which][2] = Width;
+      VertexCache[Which][3] = -ascent_p;
+      VertexCache[Which][4] = Width;
+      VertexCache[Which][5] = descent_p;
+      VertexCache[Which][6] = 0;
+      VertexCache[Which][7] = descent_p;
       // DJB OpenGL GL_POLYGON
-      GLfloat t[8] = {
-        Left,Top,
-        Right,Top,
-        Right,Bottom,
-        Left,Bottom,
-      };
-      GLfloat v[8] = {
-        0,-ascent_p,
-        Width,-ascent_p,
-        Width,descent_p,
-        0,descent_p,     
-      };
-      glVertexPointer(2, GL_FLOAT, 0, v);
-      glEnableClientState(GL_VERTEX_ARRAY);
-      glTexCoordPointer(2, GL_FLOAT, 0, t);
-      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-      
+      // Setup the texture coordinates
+      TextureCache[Which][0] = Left;
+      TextureCache[Which][1] = Top;
+      TextureCache[Which][2] = Right;
+      TextureCache[Which][3] = Top;
+      TextureCache[Which][4] = Right;
+      TextureCache[Which][5] = Bottom;
+      TextureCache[Which][6] = Left;
+      TextureCache[Which][7] = Bottom;
       
       /*
       glBegin(GL_POLYGON);
@@ -506,9 +516,9 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
       glEnd();
       */
       // Move to the next glyph's position
-      glTranslatef(Width-Pad,0,0);
+      // glTranslatef(Width-Pad,0,0);
 
-      glEndList();
+      // glEndList();
 
       // For next one
       Pos = NewPos;
@@ -517,11 +527,12 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
   }
 }
 
-
 // Renders a C-style string in OpenGL.
 // assumes screen coordinates and that the left baseline point is at (0,0).
 // Alters the modelview matrix so that the next characters will be drawn at the proper place.
 // One can surround it with glPushMatrix() and glPopMatrix() to remember the original.
+// DJB OpenGL Save state
+#include "SaveState.h"
 void FontSpecifier::OGL_Render(const char *Text)
 {
   // Bug out if no texture to render
@@ -532,8 +543,12 @@ void FontSpecifier::OGL_Render(const char *Text)
     }
   }
 
-  glPushAttrib(GL_ENABLE_BIT);
-
+  // glPushAttrib(GL_ENABLE_BIT);
+  SaveState ss0 ( GL_TEXTURE_2D );
+  SaveState ss1 ( GL_CULL_FACE );
+  SaveState ss2 ( GL_BLEND );
+  SaveState ss3 ( GL_ALPHA_TEST );
+  
   glEnable(GL_TEXTURE_2D);
   glDisable(GL_CULL_FACE);
   glEnable(GL_BLEND);
@@ -541,14 +556,24 @@ void FontSpecifier::OGL_Render(const char *Text)
 
   glBindTexture(GL_TEXTURE_2D,TxtrID);
 
+  glVertexPointer(2, GL_SHORT, 0, VertexCache);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
   size_t Len = MIN(strlen(Text),255);
   for (size_t k=0; k<Len; k++)
   {
     unsigned char c = Text[k];
-    glCallList(DispList+c);
+    // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
+      glTranslatef(-PadCache,0,0);
+
+      glDrawArrays(GL_TRIANGLE_FAN, c*8, 4);
+      glTranslatef(WidthCache[c]-PadCache,0,0);
+
   }
 
-  glPopAttrib();
+  // glPopAttrib();
 }
 
 
@@ -651,7 +676,7 @@ void FontSpecifier::OGL_DrawText(const char *text, const screen_rectangle &r,
   // Draw text
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
-  glTranslated(x, y, 0);
+  glTranslatef(x, y, 0);
   OGL_Render(text_to_draw);
   glPopMatrix();
 }

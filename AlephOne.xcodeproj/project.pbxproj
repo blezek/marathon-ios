@@ -1440,6 +1440,7 @@
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
 		A8C29C581224BF7B00E79491 /* NewGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NewGameViewController.mm; path = Classes/NewGameViewController.mm; sourceTree = "<group>"; };
 		A8C29C591224BF7B00E79491 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = Classes/NewGameViewController.xib; sourceTree = "<group>"; };
+		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
 		A8D340F411B5E63F00BC535F /* VecOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VecOps.h; path = AlephOneSDL/Source_Files/Misc/VecOps.h; sourceTree = "<group>"; };
@@ -1787,6 +1788,7 @@
 				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
 				A8DC9987123884B300317186 /* DownloadViewController.h */,
 				A8DC9988123884B300317186 /* DownloadViewController.m */,
+				A8D0D6941248544E0098D2AB /* SaveState.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

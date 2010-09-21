@@ -39,6 +39,8 @@
 #ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
 #include "OGL_Setup.h" // OGL_IsActive
+// DJB OpenGL Include glu.h
+#include "glu.h"
 #endif
 
 #include <cmath>
@@ -149,9 +151,13 @@ bool ImageDescriptor::Minify()
     int newHeight = Height >> 1;
     if (OGL_IsActive()) {
       uint32 *newPixels = new uint32[newWidth * newHeight];
+      // DJB OpenGL not using gluScaleImage
+      printf ( "********************* gluScaleImage not present *****************************\n" );
+      /*
       gluScaleImage(GL_RGBA, Width, Height, GL_UNSIGNED_BYTE, Pixels, newWidth,
                     newHeight, GL_UNSIGNED_BYTE,
                     newPixels);
+       */
       delete [] Pixels;
       Pixels = newPixels;
       Width = newWidth;

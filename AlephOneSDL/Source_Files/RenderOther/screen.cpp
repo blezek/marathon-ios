@@ -52,7 +52,7 @@
 #include "preferences.h"
 #include "computer_interface.h"
 #include "Crosshairs.h"
-// #include "OGL_Render.h"
+#include "OGL_Render.h"
 #include "ViewControl.h"
 #include "screen_drawing.h"
 #include "mouse.h"
@@ -640,8 +640,11 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
     }
 #endif
 #if SDL_VERSION_ATLEAST(1,2,10)
+    // DJB OpenGL No idea about the SDL_GL_SWAP_CONTROL...
+    /*
     SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL,
                         Get_OGL_ConfigureData().WaitForVSync ? 1 : 0);
+     */
 #endif
   }
   else
@@ -1000,12 +1003,13 @@ void render_screen(short ticks_elapsed)
   // Render crosshairs
   if (!world_view->overhead_map_active && !world_view->terminal_mode_active) {
     if (NetAllowCrosshair()) {
-      if (Crosshairs_IsActive())
+    if (Crosshairs_IsActive())
 #ifdef HAVE_OPENGL
       { if (!OGL_RenderCrosshairs())
 #endif
       { Crosshairs_Render(world_pixels); }
     }
+  }
   }
 
   // Display FPS and position
@@ -1103,7 +1107,7 @@ void render_screen(short ticks_elapsed)
     OGL_SwapBuffers();
   }
 #endif
-}
+  }
 
 
 /*
@@ -1406,6 +1410,8 @@ static inline void draw_pattern_rect(T *p, int pitch, uint32 pixel,
   }
 }
 
+// DJB OpenGL use our handy SaveState class
+#include "SaveState.h"
 void darken_world_window(void)
 {
   // Get world window bounds
@@ -1414,23 +1420,32 @@ void darken_world_window(void)
 #ifdef HAVE_OPENGL
   if (main_surface->flags & SDL_OPENGL) {
     // Save current state
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    // DJB OpenGL Not saving state...
+    // glPushAttrib(GL_ALL_ATTRIB_BITS);
 
     // Disable everything but alpha blending
+    SaveState ss0 ( GL_CULL_FACE );
     glDisable(GL_CULL_FACE);
+    SaveState ss1 (GL_DEPTH_TEST);
     glDisable(GL_DEPTH_TEST);
+    SaveState ss2 (GL_ALPHA_TEST);
     glDisable(GL_ALPHA_TEST);
+    SaveState ss3 (GL_BLEND);
     glEnable(GL_BLEND);
+    SaveState ss4 (GL_TEXTURE_2D);
     glDisable(GL_TEXTURE_2D);
+    SaveState ss5 (GL_FOG);
     glDisable(GL_FOG);
+    SaveState ss6 (GL_SCISSOR_TEST);
     glDisable(GL_SCISSOR_TEST);
+    SaveState ss7 (GL_STENCIL_TEST);
     glDisable(GL_STENCIL_TEST);
 
     // Direct projection
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
-    glOrtho(0.0, GLfloat(main_surface->w), GLfloat(
+    glOrthof(0.0, GLfloat(main_surface->w), GLfloat(
               main_surface->h), 0.0, 0.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -1444,18 +1459,30 @@ void darken_world_window(void)
     else{
       glColor4f(0.0, 0.0, 0.0, 0.5);
     }
+    // DJB OpenGL quad to fan
+    GLshort v[8] = {
+      r.x, r.y,
+      r.x + r.w, r.y,
+      r.x + r.w, r.y + r.h,
+      r.x, r.y + r.h,
+    };
+    glVertexPointer(2, GL_SHORT, 0, v);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    /*
     glBegin(GL_QUADS);
     glVertex2i(r.x, r.y);
     glVertex2i(r.x + r.w, r.y);
     glVertex2i(r.x + r.w, r.y + r.h);
     glVertex2i(r.x, r.y + r.h);
     glEnd();
-
+    */
     // Restore projection and state
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
-    glPopAttrib();
+    // DJB OpenGL not saving attributes
+    // glPopAttrib();
 
     SDL_GL_SwapBuffers();
     return;

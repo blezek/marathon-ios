@@ -112,6 +112,9 @@ blip_info HUD_Lua_Class::entity_blip(size_t index)
   return m_blips[index];
 }
 
+// DJB OpenGL SaveState
+#include "SaveState.h"
+
 void HUD_Lua_Class::start_draw(void)
 {
   alephone::Screen *scr = alephone::Screen::instance();
@@ -123,6 +126,14 @@ void HUD_Lua_Class::start_draw(void)
   if (m_opengl) {
     // DJB OpenGL See if we can just ignore saving of attributes...
     // glPushAttrib(GL_ALL_ATTRIB_BITS);
+    SaveState ss0 (GL_TEXTURE_2D);
+    SaveState ss1 (GL_CULL_FACE);
+    SaveState ss2 (GL_DEPTH_TEST);
+    SaveState ss3 (GL_ALPHA_TEST);
+    SaveState ss4 (GL_STENCIL_TEST);
+    SaveState ss5 (GL_BLEND);
+    SaveState ss6 (GL_FOG);
+
     glEnable(GL_TEXTURE_2D);
     glDisable(GL_CULL_FACE);
     glDisable(GL_DEPTH_TEST);

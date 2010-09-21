@@ -63,7 +63,8 @@ static OGL_Blitter HUD_Blitter;  // HUD backdrop storage
 static bool hud_pict_not_found = false; // HUD backdrop picture not found, don't try again to load it
 
 extern int LuaTexturePaletteSize();
-
+// DJB OpenGL SaveState code
+#include "SaveState.h"
 void OGL_DrawHUD(Rect &dest, short time_elapsed)
 {
   // Load static HUD picture if necessary
@@ -76,6 +77,12 @@ void OGL_DrawHUD(Rect &dest, short time_elapsed)
   // DJB OpenGL don't push anything
   // glPushAttrib(GL_ALL_ATTRIB_BITS);
 
+  SaveState ss0 (GL_TEXTURE_2D);
+  SaveState ss1 (GL_CULL_FACE);
+  SaveState ss2 (GL_DEPTH_TEST);
+  SaveState ss3 (GL_ALPHA_TEST);
+  SaveState ss4 (GL_BLEND);
+  SaveState ss5 (GL_FOG);
   if (LuaTexturePaletteSize()) {
     glDisable(GL_TEXTURE_2D);
   }
