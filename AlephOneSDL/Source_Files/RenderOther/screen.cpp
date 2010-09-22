@@ -728,8 +728,12 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 //		printf("GL_EXTENSIONS: %s\n", gl_extensions);
       gl_info_printed = true;
     }
+    
+    // DJB OpenGL  Scissor and Viewport are already set
+    /*
     glScissor(0, 0, width, height);
     glViewport(0, 0, width, height);
+     */
 #ifdef __WIN32__
     clear_screen();
 #endif
@@ -1005,11 +1009,10 @@ void render_screen(short ticks_elapsed)
     if (NetAllowCrosshair()) {
     if (Crosshairs_IsActive())
 #ifdef HAVE_OPENGL
-      { if (!OGL_RenderCrosshairs())
+      if (!OGL_RenderCrosshairs())
 #endif
       { Crosshairs_Render(world_pixels); }
     }
-  }
   }
 
   // Display FPS and position

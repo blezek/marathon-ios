@@ -114,7 +114,8 @@ void OGL_LoadTextures(short Collection)
     TOL[i].OptionsData.FindImagePosition();
 
                 #pragma omp critical
-    OGL_ProgressCallback(1);
+    // DJB OpenGL  Don't do the progress dialog just yet
+    // OGL_ProgressCallback(1);
   }
 }
 

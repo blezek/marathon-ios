@@ -1323,7 +1323,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
     }
   }
-
+  printf ( "FarFliter is %d, GL_NEAREST: %d\n", TxtrTypeInfo.FarFilter, GL_NEAREST );
   if (Image->GetFormat() == ImageDescriptor::RGBA8) {
     switch (TxtrTypeInfo.FarFilter)
     {
