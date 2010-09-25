@@ -12,6 +12,38 @@
 
 NSString *dataDir;
 
+void printGLError( const char* message ) {
+  switch ( glGetError() ) {
+  case GL_NO_ERROR: {
+    break;
+  }
+  case GL_INVALID_ENUM: {
+    MLog ( @"%s GL_INVALID_ENUM", message );
+    break;
+  }
+  case GL_INVALID_VALUE: {
+    MLog ( @"%s GL_INVALID_VALUE", message );
+    break;
+  }          
+  case GL_INVALID_OPERATION: {
+    MLog ( @"%s GL_INVALID_OPERATION", message );
+    break;
+  }          
+  case GL_STACK_OVERFLOW: {
+    MLog ( @"%s GL_STACK_OVERFLOW", message );
+    break;
+  }          
+  case GL_STACK_UNDERFLOW: {
+    MLog ( @"%s GL_STACK_UNDERFLOW", message );
+    break;
+  }          
+  case GL_OUT_OF_MEMORY: {
+    MLog ( @"%s GL_OUT_OF_MEMORY", message );
+    break;
+  }          
+  }
+}
+
 char* getDataDir() {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   dataDir = [paths objectAtIndex:0];

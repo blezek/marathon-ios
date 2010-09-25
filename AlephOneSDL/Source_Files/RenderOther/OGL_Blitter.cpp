@@ -192,8 +192,14 @@ void OGL_Blitter::BoundScreen()
 {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glViewport(0, 0, ScreenWidth(), ScreenHeight());
-  glOrthof(0, ScreenWidth(), ScreenHeight(), 0, -1, 1);
+  // DJB OpenGL Landscape
+  // glViewport(0, 0, ScreenWidth(), ScreenHeight());
+  // glOrthof(0, ScreenWidth(), ScreenHeight(), 0, -1, 1);
+  glViewport(0, 0, ScreenHeight(), ScreenWidth());
+  glOrthof(0, ScreenHeight(), ScreenWidth(), 0, -1, 1);
+  glRotatef ( 90, 0,0,1);
+  glTranslatef( 0,-ScreenHeight(),0);
+  
   glMatrixMode(GL_MODELVIEW);
 }
 

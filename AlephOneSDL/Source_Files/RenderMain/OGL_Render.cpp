@@ -171,6 +171,9 @@
 // Whether or not OpenGL is active for rendering
 static bool _OGL_IsActive = false;
 
+// DJB OpenGL
+#include "AlephOneHelper.h"
+
 
 // Reads off of the current map;
 // call it to avoid lazy loading of textures
@@ -1005,13 +1008,22 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
 #endif
 
   // Do OpenGL bounding
-  glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
+  // glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
+  // DJB OpenGL Landscape
+  glViewport(RectBounds[1], RectBounds[0], RectBounds[3], RectBounds[2]);
 
   // Create the screen -> clip (fundamental) matrix; this will be needed
   // for all the other projections
   glMatrixMode(GL_PROJECTION);
+  // DJB OpenGL Landscape
   glLoadIdentity();
-  glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
+  // glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
+  
+  // See if this works... glViewport(0, 0, ScreenHeight(), ScreenWidth());
+  glOrthof(0, ViewHeight, ViewWidth, 0, -1, 1);
+  glRotatef ( 90, 0,0,1);
+  glTranslatef( 0,-ViewHeight,0);
+  
   glGetFloatv(GL_PROJECTION_MATRIX,Screen_2_Clip);
 
   // Set projection type to initially none (force load of first one)
@@ -1457,7 +1469,8 @@ struct ExtendedVertexData
 {
   GLfloat Vertex[4];
   GLfloat TexCoord[2];
-  GLfloat Color[3];
+  // DJB OpenGL ES expect 4 component colors...
+  GLfloat Color[4];
   GLfloat GlowColor[3];
 };
 
@@ -1838,15 +1851,18 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 
       // Set up for vertex lighting
       glEnableClientState(GL_COLOR_ARRAY);
-      glColorPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
+      // DJB OpenGL glColorPointer must have 4 components per color!!!
+      glColorPointer(4,GL_FLOAT,sizeof(ExtendedVertexData),
                      ExtendedVertexList[0].Color);
-
+      printGLError ( __PRETTY_FUNCTION__ );
       // Calculate the lighting
       for (int k=0; k<NumVertices; k++)
       {
         FindShadingColor(-ExtendedVertexList[k].Vertex[2],
                          RenderPolygon.ambient_shade,
                          ExtendedVertexList[k].Color);
+        // DJB OpenGL set alpha
+        ExtendedVertexList[k].Color[3] = 1.0;
         ExtendedVertexList[k].GlowColor[0] =
           ExtendedVertexList[k].GlowColor[1] =
             ExtendedVertexList[k].GlowColor[2] = std::max(
@@ -1890,8 +1906,11 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   // Location of data:
   glVertexPointer(4,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
+  printGLError ( __PRETTY_FUNCTION__ );
+
   glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
+  printGLError ( __PRETTY_FUNCTION__ );
 
   // Painting a texture...
   glEnable(GL_TEXTURE_2D);
@@ -1900,14 +1919,15 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
   TMgr.RenderNormal();
   SetBlend(TMgr.NormalBlend());
 
-  GLint VertIndices[3*(MAXIMUM_VERTICES_OF_SPLIT_POLYGON - 2)];
+  // DJB OpenGL glDrawElements wants unsigned shorts
+  GLushort VertIndices[3*(MAXIMUM_VERTICES_OF_SPLIT_POLYGON - 2)];
   if (PolygonVariableShade) {
     // Do triangulation by hand, creating a sort of ladder;
     // this is to avoid creating a triangle fan
 
     // Find minimum and maximum depths:
-    GLint MinVertex = 0;
-    GLint MaxVertex = 0;
+    GLushort MinVertex = 0;
+    GLushort MaxVertex = 0;
     GLfloat MinDepth = ExtendedVertexList[MinVertex].Vertex[2];
     GLfloat MaxDepth = ExtendedVertexList[MaxVertex].Vertex[2];
 
@@ -1928,11 +1948,11 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     }
 
     // Now create the ladder
-    GLint *VIPtr = VertIndices;
+    GLushort *VIPtr = VertIndices;
 
     // FInd the two neighboring vertices
-    GLint LeftVertex = DecrementAndWrap(MinVertex,NumVertices);
-    GLint RightVertex = IncrementAndWrap(MinVertex,NumVertices);
+    GLushort LeftVertex = DecrementAndWrap(MinVertex,NumVertices);
+    GLushort RightVertex = IncrementAndWrap(MinVertex,NumVertices);
 
     // Place in the triangle; be sure to keep the proper order
     *(VIPtr++) = LeftVertex;
@@ -1949,7 +1969,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
         assert(RightVertex != MaxVertex);
 
         // Advance the right vertex
-        GLint NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
+        GLushort NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
         *(VIPtr++) = LeftVertex;
         *(VIPtr++) = RightVertex;
         *(VIPtr++) = NewRightVertex;
@@ -1957,7 +1977,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
       }
       else if (RightVertex == MaxVertex) {
         // Advance the left vertex
-        GLint NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
+        GLushort NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
         *(VIPtr++) = NewLeftVertex;
         *(VIPtr++) = LeftVertex;
         *(VIPtr++) = RightVertex;
@@ -1970,7 +1990,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
                           - ExtendedVertexList[LeftVertex].Vertex[2];
         if (RLDiff < 0) {
           // Left vertex ahead; advance the right one
-          GLint NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
+          GLushort NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
           *(VIPtr++) = LeftVertex;
           *(VIPtr++) = RightVertex;
           *(VIPtr++) = NewRightVertex;
@@ -1978,7 +1998,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
         }
         else if (RLDiff > 0) {
           // Right vertex ahead; advance the left one
-          GLint NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
+          GLushort NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
           *(VIPtr++) = NewLeftVertex;
           *(VIPtr++) = LeftVertex;
           *(VIPtr++) = RightVertex;
@@ -1987,8 +2007,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
         else
         {
           // Advance to the closest one
-          GLint NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
-          GLint NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
+          GLushort NewLeftVertex = DecrementAndWrap(LeftVertex,NumVertices);
+          GLushort NewRightVertex = IncrementAndWrap(RightVertex,NumVertices);
           RLDiff = ExtendedVertexList[NewRightVertex].Vertex[2]
                    - ExtendedVertexList[NewLeftVertex].Vertex[2];
           if (RLDiff > 0) {
@@ -2011,7 +2031,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     }
 
     // Now, go!
-    glDrawElements(GL_TRIANGLES,3*(NumVertices-2),GL_UNSIGNED_INT,VertIndices);
+    glDrawElements(GL_TRIANGLES,3*(NumVertices-2),GL_UNSIGNED_SHORT,VertIndices);
+    printGLError ( __PRETTY_FUNCTION__ );
 
     // Switch off
     glDisableClientState(GL_COLOR_ARRAY);
@@ -2021,6 +2042,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
     // Don't care about triangulation here, because the polygon never got split
     // DJB OpenGL GL_POLYGON
     glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
+    printGLError ( __PRETTY_FUNCTION__ );
+
   }
 
   // Do textured rendering
@@ -2052,6 +2075,8 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
       SglColor3f(GlowColor,GlowColor,GlowColor);
       // DJB OpenGL GL_POLYGON
       glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
+      printGLError ( __PRETTY_FUNCTION__ );
+
     }
   }
 
@@ -2110,10 +2135,13 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glVertexPointer(3,GL_SHORT,sizeof(AltExtendedVertexData),
                     AltEVList[0].Vertex);
+    printGLError ( __PRETTY_FUNCTION__ );
+
 
     // Go!
     // DJB OpenGL GL_POLYGON
     glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
+    printGLError ( __PRETTY_FUNCTION__ );
 
     // Restore
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -2230,8 +2258,10 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
   // Location of data:
   glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
+  printGLError ( __PRETTY_FUNCTION__ );
   glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
+  printGLError ( __PRETTY_FUNCTION__ );
 
   // Painting a texture...
   glEnable(GL_TEXTURE_2D);
@@ -2241,6 +2271,7 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
   // Go!
   // DJB OpenGL GL_POLYGON
   glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
+  printGLError ( __PRETTY_FUNCTION__ );
 
   // Cribbed from RenderAsRealWall()
   // Do textured rendering
@@ -2259,6 +2290,7 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
     SetBlend(TMgr.GlowBlend());
     // DJB OpenGL GL_POLYGON
     glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
+    printGLError ( __PRETTY_FUNCTION__ );
   }
 
   // Revert to default blend

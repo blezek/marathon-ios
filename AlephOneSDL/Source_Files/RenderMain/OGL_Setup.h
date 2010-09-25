@@ -415,5 +415,5 @@ XML_ElementParser *OpenGL_GetParser();
 #endif
 #endif
 #ifndef OGL_NUMBER_OF_TEXTURE_TYPES
-#define OGL_NUMBER_OF_TEXTURE_TYPES 0
+// #define OGL_NUMBER_OF_TEXTURE_TYPES 0
 #endif

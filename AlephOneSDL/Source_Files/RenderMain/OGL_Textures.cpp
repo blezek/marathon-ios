@@ -90,7 +90,8 @@
 #endif
 
 #include "OGL_Headers.h"
-
+//DJB OpenGL
+#include "AlephOneHelper.h"
 #include "preferences.h"
 
 #include "SDL.h"
@@ -1267,7 +1268,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
   // DJB OpenGL, convert GL_RGBA to GL_RGBA and GL_RGB to GL_RGB in the whole file
   if (TextureType == 1) {     // landscape
     if (internalFormat == GL_RGBA) {
-      internalFormat = GL_RGB;
+      internalFormat = GL_RGBA;
     }
     else if (internalFormat == GL_RGBA4) {
       printf ( "******************* invalid internal format!!! ***********\n" );
@@ -1287,7 +1288,8 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
            internalFormat = GL_SRGB;
       break;
     case GL_RGBA:
-      internalFormat = GL_SRGB_ALPHA;
+        // DJB Internal format is GL_RGBA;
+      internalFormat = GL_RGBA;
       break;
       defualt:
       case GL_RGBA4:
@@ -1333,6 +1335,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                    Image->GetWidth(),
                    Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
                    Image->GetBuffer());
+        printGLError(__PRETTY_FUNCTION__);
       break;
     case GL_NEAREST_MIPMAP_NEAREST:
     case GL_LINEAR_MIPMAP_NEAREST:
@@ -1345,6 +1348,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         }
 #endif
         glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        printGLError(__PRETTY_FUNCTION__);
         int i = 0;
         for (i = 0; i < Image->GetMipMapCount(); i++) {
           glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
@@ -1353,6 +1357,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                                                            >> i), 0, GL_RGBA,
                        GL_UNSIGNED_BYTE,
                        Image->GetMipMapPtr(i));
+          printGLError(__PRETTY_FUNCTION__);
         }
         mipmapsLoaded = true;
       }
@@ -1377,10 +1382,14 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                             Image->GetBuffer());
            */
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+          printGLError(__PRETTY_FUNCTION__);
+          // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
+          assert ( internalFormat == GL_RGBA );
           glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
                        Image->GetWidth(),
                        Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
                        Image->GetBuffer());
+          printGLError(__PRETTY_FUNCTION__);
         }
         mipmapsLoaded = true;
       }
@@ -1421,6 +1430,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                                 Image->GetWidth(),
                                 Image->GetHeight(), 0, Image->GetMipMapSize(
                                   0), Image->GetBuffer());
+        printGLError(__PRETTY_FUNCTION__);
       break;
     case GL_NEAREST_MIPMAP_NEAREST:
     case GL_LINEAR_MIPMAP_NEAREST:
@@ -1434,6 +1444,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
         // DJB OpenGL generate mipmaps
         glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        printGLError(__PRETTY_FUNCTION__);
 
         int i = 0;
         for (i = 0; i < Image->GetMipMapCount(); i++) {
@@ -1443,6 +1454,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                                                                         GetHeight()
                                                                         >> i), 0, Image->GetMipMapSize(
                                       i), Image->GetMipMapPtr(i));
+          printGLError(__PRETTY_FUNCTION__);
         }
         mipmapsLoaded = true;
       }
@@ -1460,6 +1472,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                                   Image->GetWidth(),
                                   Image->GetHeight(), 0, Image->GetMipMapSize(
                                     0), Image->GetBuffer());
+        printGLError(__PRETTY_FUNCTION__);
       }
       break;
 
@@ -1474,16 +1487,20 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 
   // Set texture-mapping features
   glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+  printGLError(__PRETTY_FUNCTION__);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
+  printGLError(__PRETTY_FUNCTION__);
   if ((TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_NEAREST ||
        TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_NEAREST ||
        TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_LINEAR ||
        TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    printGLError(__PRETTY_FUNCTION__);
   }
   else {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                     TxtrTypeInfo.FarFilter);
+    printGLError(__PRETTY_FUNCTION__);
   }
 
   switch(TextureType)
@@ -1492,6 +1509,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
     // Walls are tiled in both direction
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      printGLError(__PRETTY_FUNCTION__);
 #if defined(GL_TEXTURE_MAX_ANISOTROPY_EXT)
     // enable anisotropic filtering
     {
@@ -1511,10 +1529,12 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     if (LandscapeVertRepeat) {
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      printGLError(__PRETTY_FUNCTION__);
     }
     else{
       // DJB OpenGL convert GL_CLAMP to GL_CLAMP_TO_EDGE
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+      printGLError(__PRETTY_FUNCTION__);
     }
     break;
 
@@ -1522,7 +1542,9 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
   case OGL_Txtr_WeaponsInHand:
     // Sprites have both horizontal and vertical limits
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+      printGLError(__PRETTY_FUNCTION__);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+      printGLError(__PRETTY_FUNCTION__);
     break;
   }
 }
