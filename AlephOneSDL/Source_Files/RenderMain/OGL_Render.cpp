@@ -2474,7 +2474,9 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 
   bool IsBlended = TMgr.IsBlended();
   bool ExternallyLit = false;
-  GLfloat Color[4];
+  GLfloat Color[4] = {
+     1, 1, 1, 1
+  };
   DoLightingAndBlending(RenderRectangle, IsBlended,
                         Color, ExternallyLit);
 
@@ -2486,13 +2488,40 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   // Already corrected
   // DJB OpenGL
   glColor4f(Color[0],Color[1],Color[2],Color[3]);
-
+  printGLError(__PRETTY_FUNCTION__);
+/*
+  for ( int i = 0; i < 4; i++ ) {
+    printf ( "Vertex[%d]: %f %f %f\n", i, ExtendedVertexList[i].Vertex[0], ExtendedVertexList[i].Vertex[1], ExtendedVertexList[i].Vertex[2] ); 
+    printf ( "Texture[%d]: %f %f\n", i, ExtendedVertexList[i].TexCoord[0], ExtendedVertexList[i].TexCoord[1] );
+  }
+ */
+  GLfloat v[12] = {
+    ExtendedVertexList[0].Vertex[0], ExtendedVertexList[0].Vertex[1], ExtendedVertexList[0].Vertex[2],
+    ExtendedVertexList[1].Vertex[0], ExtendedVertexList[1].Vertex[1], ExtendedVertexList[1].Vertex[2],
+    ExtendedVertexList[2].Vertex[0], ExtendedVertexList[2].Vertex[1], ExtendedVertexList[2].Vertex[2],
+    ExtendedVertexList[3].Vertex[0], ExtendedVertexList[3].Vertex[1], ExtendedVertexList[3].Vertex[2],
+  };
+  GLfloat t[8] = {
+    ExtendedVertexList[0].TexCoord[0], ExtendedVertexList[0].TexCoord[1],
+    ExtendedVertexList[1].TexCoord[0], ExtendedVertexList[1].TexCoord[1],
+    ExtendedVertexList[2].TexCoord[0], ExtendedVertexList[2].TexCoord[1],
+    ExtendedVertexList[3].TexCoord[0], ExtendedVertexList[3].TexCoord[1],
+    
+  };
+  
   // Location of data:
+  // DJB OpenGL Use my structures...
+  /*
   glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),
                   ExtendedVertexList[0].Vertex);
   glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),
                     ExtendedVertexList[0].TexCoord);
-  glEnable(GL_TEXTURE_2D);
+  */
+  glVertexPointer(3,GL_FLOAT, 0, v );
+  printGLError(__PRETTY_FUNCTION__);
+  glTexCoordPointer(2,GL_FLOAT, 0, t );
+  printGLError(__PRETTY_FUNCTION__);
+
 
   // Go!
   TMgr.SetupTextureMatrix();
@@ -2504,7 +2533,21 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
         glDisable(GL_DEPTH_TEST);
       }
       // DJB OpenGL GL_POLYGON
+      // DJB OpenGL Debug
+      // glDisable(GL_DEPTH_TEST);
+      // glColor4f(1, 1, 1, 1);
+      glEnable(GL_ALPHA_TEST);
+      glEnable(GL_BLEND);
+      // No Texture! glEnable(GL_TEXTURE_2D);
+      // glDisable ( GL_TEXTURE_2D );
+      glDisable(GL_CULL_FACE);
+      
+      // glDisable(GL_DEPTH_TEST);
+      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // (was GL_ONE, GL_SRC_ALPHA). 
+      
+
       glDrawArrays(GL_TRIANGLE_FAN,0,4);
+      printGLError(__PRETTY_FUNCTION__);
     }
     else {
       // Do multitextured stippling to create the static effect
@@ -2513,6 +2556,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
         StaticModeIndivSetup(k);
         // DJB OpenGL GL_POLYGON
         glDrawArrays(GL_TRIANGLE_FAN,0,4);
+        printGLError(__PRETTY_FUNCTION__);
       }
     }
     TeardownStaticMode();
@@ -2524,7 +2568,20 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 
     // Do textured rendering
     // DJB OpenGL GL_POLYGON
+    // DJB OpenGL debug
+    
+    // glDisable(GL_ALPHA_TEST);
+    // glEnable(GL_BLEND);
+    // No Texture! glEnable(GL_TEXTURE_2D);
+    // glDisable ( GL_TEXTURE_2D );
+    // glDisable(GL_CULL_FACE);
+    
+    // glColor4f(1, 1, 1, 1);
+    glDisable(GL_DEPTH_TEST);
+    // glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA); // (was GL_ONE, GL_SRC_ALPHA). 
+
     glDrawArrays(GL_TRIANGLE_FAN,0,4);
+    printGLError(__PRETTY_FUNCTION__);
 
     if (TMgr.IsGlowMapped()) {
       // Do blending here to get the necessary semitransparency;
@@ -2543,7 +2600,10 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
       TMgr.RenderGlowing();
       SetBlend(TMgr.GlowBlend());
       // DJB OpenGL GL_POLYGON
+      // DJB OpenGL depth testing
+      glDisable(GL_DEPTH_TEST);
       glDrawArrays(GL_TRIANGLE_FAN,0,4);
+      printGLError(__PRETTY_FUNCTION__);
     }
   }
 

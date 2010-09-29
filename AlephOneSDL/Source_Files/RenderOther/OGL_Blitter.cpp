@@ -26,7 +26,8 @@
 #include "OGL_Blitter.h"
 #include "OGL_Setup.h"
 
-
+// DJB OpenGL debug
+#include "AlephOneHelper.h"
 const int OGL_Blitter::tile_size;
 set<OGL_Blitter*> OGL_Blitter::m_blitter_registry;
 
@@ -305,10 +306,15 @@ void OGL_Blitter::_Draw(const SDL_Rect& dst, const SDL_Rect& src)
       tleft,  tbottom, 0,
     };
     glVertexPointer(3, GL_FLOAT, 0, v);
+    printGLError(__PRETTY_FUNCTION__);
     glEnableClientState(GL_VERTEX_ARRAY);
+    printGLError(__PRETTY_FUNCTION__);
     glTexCoordPointer(2, GL_FLOAT, 0, t);
+    printGLError(__PRETTY_FUNCTION__);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    printGLError(__PRETTY_FUNCTION__);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    printGLError(__PRETTY_FUNCTION__);
     /*
     glBegin(GL_QUADS);
     glTexCoord2f(VMin, UMin); glVertex3f(tleft,  ttop,    0);
