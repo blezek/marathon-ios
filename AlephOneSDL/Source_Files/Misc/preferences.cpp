@@ -2334,7 +2334,7 @@ void read_preferences ()
   graphics_preferences->screen_mode.fullscreen = true;
   graphics_preferences->screen_mode.hud = true;
   graphics_preferences->screen_mode.acceleration = _opengl_acceleration;
-  graphics_preferences->screen_mode.gamma_level= 8;
+  graphics_preferences->screen_mode.gamma_level= 7;
 
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
   input_preferences->mouse_acceleration = 0;
