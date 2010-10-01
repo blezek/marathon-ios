@@ -2333,7 +2333,10 @@ void read_preferences ()
   graphics_preferences->screen_mode.fill_the_screen = false;
   graphics_preferences->screen_mode.fullscreen = true;
   graphics_preferences->screen_mode.hud = true;
-  graphics_preferences->screen_mode.acceleration = _opengl_acceleration;
+  // Shaders
+  graphics_preferences->screen_mode.acceleration = _no_acceleration;       // software
+  graphics_preferences->screen_mode.acceleration = _shader_acceleration;   // OpenGL shader language
+  graphics_preferences->screen_mode.acceleration = _opengl_acceleration;   // OpenGL fixed function
   graphics_preferences->screen_mode.gamma_level= 7;
 
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;

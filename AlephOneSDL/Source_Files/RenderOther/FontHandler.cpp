@@ -254,8 +254,8 @@ int FontSpecifier::TextWidth(const char *text)
 // No need to use a pad cache, it's always 1!
 const GLfloat PadCache = 1.0;
 GLfloat WidthCache[256];
-GLfloat TextureCache[256][8];
-GLshort VertexCache[256][8];
+GLfloat TextureCache[256*8];
+GLshort VertexCache[256*8];
 
 
 // Reset the OpenGL fonts; its arg indicates whether this is for starting an OpenGL session
@@ -479,24 +479,25 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
       // Draw the glyph rectangle
       // Due to a bug in MacOS X Classic OpenGL, glVertex2s() was changed to glVertex2f()
       // DJB OpenGL, don't use lists, just cache info
-      VertexCache[Which][0] = 0;
-      VertexCache[Which][1] = -ascent_p;
-      VertexCache[Which][2] = Width;
-      VertexCache[Which][3] = -ascent_p;
-      VertexCache[Which][4] = Width;
-      VertexCache[Which][5] = descent_p;
-      VertexCache[Which][6] = 0;
-      VertexCache[Which][7] = descent_p;
+      VertexCache[Which*8 + 0] = 0;
+      VertexCache[Which*8 + 1] = -ascent_p;
+      VertexCache[Which*8 + 2] = Width;
+      VertexCache[Which*8 + 3] = -ascent_p;
+      VertexCache[Which*8 + 4] = Width;
+      VertexCache[Which*8 + 5] = descent_p;
+      VertexCache[Which*8 + 6] = 0;
+      VertexCache[Which*8 + 7] = descent_p;
       // DJB OpenGL GL_POLYGON
       // Setup the texture coordinates
-      TextureCache[Which][0] = Left;
-      TextureCache[Which][1] = Top;
-      TextureCache[Which][2] = Right;
-      TextureCache[Which][3] = Top;
-      TextureCache[Which][4] = Right;
-      TextureCache[Which][5] = Bottom;
-      TextureCache[Which][6] = Left;
-      TextureCache[Which][7] = Bottom;
+      TextureCache[Which*8 + 0] = Left;
+      TextureCache[Which*8 + 1] = Top;
+      TextureCache[Which*8 + 2] = Right;
+      TextureCache[Which*8 + 3] = Top;
+      TextureCache[Which*8 + 4] = Right;
+      TextureCache[Which*8 + 5] = Bottom;
+      TextureCache[Which*8 + 6] = Left;
+      TextureCache[Which*8 + 7] = Bottom;
+      WidthCache[Which] = Width;
       
       /*
       glBegin(GL_POLYGON);
@@ -533,6 +534,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 // One can surround it with glPushMatrix() and glPopMatrix() to remember the original.
 // DJB OpenGL Save state
 #include "SaveState.h"
+#include "AlephOneHelper.h"
 void FontSpecifier::OGL_Render(const char *Text)
 {
   // Bug out if no texture to render
@@ -557,8 +559,10 @@ void FontSpecifier::OGL_Render(const char *Text)
   glBindTexture(GL_TEXTURE_2D,TxtrID);
 
   glVertexPointer(2, GL_SHORT, 0, VertexCache);
+  printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_VERTEX_ARRAY);
   glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
+  printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
   size_t Len = MIN(strlen(Text),255);
@@ -567,9 +571,34 @@ void FontSpecifier::OGL_Render(const char *Text)
     unsigned char c = Text[k];
     // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
       glTranslatef(-PadCache,0,0);
+    printGLError(__PRETTY_FUNCTION__);
 
       glDrawArrays(GL_TRIANGLE_FAN, c*8, 4);
       glTranslatef(WidthCache[c]-PadCache,0,0);
+    printGLError(__PRETTY_FUNCTION__);
+    
+    // Move to the current glyph's (padded) position
+    // glTranslatef(-Pad,0,0);
+    /*
+     glBegin(GL_POLYGON);
+     
+     glTexCoord2f(Left,Top);
+     glVertex2d(0,-ascent_p);
+     
+     glTexCoord2f(Right,Top);
+     glVertex2d(Width,-ascent_p);
+     
+     glTexCoord2f(Right,Bottom);
+     glVertex2d(Width,descent_p);
+     
+     glTexCoord2f(Left,Bottom);
+     glVertex2d(0,descent_p);
+     
+     glEnd();
+     */
+    // Move to the next glyph's position
+    // glTranslatef(Width-Pad,0,0);
+    
 
   }
 

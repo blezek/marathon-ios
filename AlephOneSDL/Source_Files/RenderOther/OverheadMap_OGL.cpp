@@ -213,7 +213,9 @@ void OverheadMap_OGL_Class::draw_polygon(
   glEnd();
 #endif
 
+  // DJB OpenGL
   // glDrawElements(GL_POLYGON,vertex_count,GL_UNSIGNED_SHORT,vertices);
+  glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_SHORT, vertices);
 }
 
 void OverheadMap_OGL_Class::end_polygons()
@@ -308,12 +310,12 @@ void OverheadMap_OGL_Class::draw_thing(
 
   // The rectangle is a square
   const int NumRectangleVertices = 4;
-  const GLfloat RectangleShape[NumRectangleVertices][2] =
+  const GLfloat RectangleShape[NumRectangleVertices*2] =
   {
-    {-0.75,-0.75},
-    {-0.75,0.75},
-    {0.75,0.75},
-    {0.75,-0.75}
+    -0.75,-0.75,
+    -0.75,0.75,
+    0.75,0.75,
+    0.75,-0.75
   };
   // The circle is here an octagon for convenience
   const int NumCircleVertices = 8;
@@ -338,7 +340,7 @@ void OverheadMap_OGL_Class::draw_thing(
   switch(shape)
   {
   case _rectangle_thing:
-    glVertexPointer(2,GL_FLOAT,0,RectangleShape[0]);
+    glVertexPointer(2,GL_FLOAT,0,RectangleShape);
       // DJB OpenGL
     glDrawArrays(GL_TRIANGLE_FAN,0,NumRectangleVertices);
     break;

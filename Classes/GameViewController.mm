@@ -219,8 +219,10 @@ extern bool load_and_start_game(FileSpecifier& File);
 - (IBAction) gameChosen:(SavedGame*)game {
   self.currentSavedGame = game;
   self.loadGameView.hidden = YES;
+  MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
   load_and_start_game(FileToLoad);
+  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
 }
 
 - (IBAction) chooseSaveGameCanceled {
@@ -240,6 +242,8 @@ extern SDL_Surface *draw_surface;
   
   SDL_Surface *old = draw_surface;
   draw_surface = map;
+  
+  MLog ( @"Saving game in position %d, %d", local_player->location.x, local_player->location.y );
   
   overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE; // This is 1, let's go a little larger
   overhead_data.scale= 3;
