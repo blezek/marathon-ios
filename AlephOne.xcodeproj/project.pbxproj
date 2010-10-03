@@ -682,6 +682,9 @@
 		A88C921111B35CFA00689138 /* weapons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913111B35CFA00689138 /* weapons.cpp */; };
 		A88C921211B35CFA00689138 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913211B35CFA00689138 /* world.cpp */; };
 		A899FF1711BC96370071BF5F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A899FF1611BC96370071BF5F /* AudioToolbox.framework */; };
+		A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
+		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
+		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
 		A8A5815611D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
 		A8A5815711D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
 		A8AD432612220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
@@ -1417,6 +1420,10 @@
 		A88C913111B35CFA00689138 /* weapons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapons.cpp; sourceTree = "<group>"; };
 		A88C913211B35CFA00689138 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
 		A899FF1611BC96370071BF5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A8A06C7B1258179E00BE6EF5 /* download-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "download-ipad.png"; path = "Artwork/download-ipad.png"; sourceTree = "<group>"; };
+		A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDColoredProgressView.m; path = Classes/PDColoredProgressView.m; sourceTree = "<group>"; };
+		A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDColoredProgressView.h; path = Classes/PDColoredProgressView.h; sourceTree = "<group>"; };
+		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
 		A8A5815511D789FF00F573B4 /* HUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUD.xib; sourceTree = "<group>"; };
 		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
@@ -1770,6 +1777,9 @@
 				A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */,
 				A85A37FE12178BA50080BBA9 /* ButtonView.h */,
 				A85A37FF12178BA50080BBA9 /* ButtonView.mm */,
+				A8DC9987123884B300317186 /* DownloadViewController.h */,
+				A8DC9988123884B300317186 /* DownloadViewController.m */,
+				A8A06C7F125819C800BE6EF5 /* drawing.m */,
 				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
 				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
 				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
@@ -1781,13 +1791,13 @@
 				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
 				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
+				A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */,
+				A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */,
+				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
+				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
 				A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */,
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
-				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
-				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
-				A8DC9987123884B300317186 /* DownloadViewController.h */,
-				A8DC9988123884B300317186 /* DownloadViewController.m */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
 			);
 			name = Classes;
@@ -1880,6 +1890,7 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A8A06C7B1258179E00BE6EF5 /* download-ipad.png */,
 				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
 				A8562B5811DAE3A50071DFEF /* Pistol.png */,
 				A8562B4011DAE0010071DFEF /* Pause.png */,
@@ -2904,6 +2915,7 @@
 				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
+				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3581,6 +3593,8 @@
 				A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
 				A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */,
 				A8DC998A123884B300317186 /* DownloadViewController.m in Sources */,
+				A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */,
+				A8A06C81125819C800BE6EF5 /* drawing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

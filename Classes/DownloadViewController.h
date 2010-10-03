@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
-
+#import "PDColoredProgressView.h"
 
 @interface DownloadViewController : UIViewController {
-  UIProgressView *progressView;
+  PDColoredProgressView *progressView;
   NSString *downloadPath;
 }
 
-@property (nonatomic, retain) IBOutlet UIProgressView *progressView;
+@property (nonatomic, retain) IBOutlet PDColoredProgressView *progressView;
 
 - (void)downloadFinished:(ASIHTTPRequest*)request;
 - (void)downloadOrchooseGame;

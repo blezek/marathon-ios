@@ -81,8 +81,6 @@
   NSFileManager *fileManager = [NSFileManager defaultManager];
   [fileManager removeItemAtPath:path error:NULL];
   app.scenario.isDownloaded = [NSNumber numberWithBool:YES];
-  NSError *error;
-  [[AlephOneAppDelegate sharedAppDelegate].managedObjectContext save:&error];
   [[AlephOneAppDelegate sharedAppDelegate] startAlephOne];
   [path autorelease];
   
@@ -95,13 +93,26 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.progressView setTintColor:[UIColor greenColor]];
+  
+  // Use the status bar frame to determine the center point of the window's content area.
+  CGRect bounds = CGRectMake(0, 0, 1024, 768);
+  CGPoint center = CGPointMake(bounds.size.height / 2.0, bounds.size.width / 2.0);
+  // Set the center point of the view to the center point of the window's content area.
+  // Rotate the view 90 degrees around its new center point.
+  CGAffineTransform transform = self.view.transform;
+  transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
+  self.view.center = center;
+  self.view.transform = transform;
+  self.view.bounds = CGRectMake ( 0, 0, 1024, 768 );
+  
   
 }
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
-    return YES;
+  return ( interfaceOrientation == UIInterfaceOrientationLandscapeRight );
 }
 
 

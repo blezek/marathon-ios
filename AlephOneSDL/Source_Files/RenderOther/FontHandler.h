@@ -126,6 +126,12 @@ void OGL_DrawText(const char *Text, const screen_rectangle &r, short flags);
 
 // Calls OGL_Reset() on all fonts
 static void OGL_ResetFonts(bool IsStarting);
+  // DJB OpenGL Caching Text information, but could use VBO in the future...
+  // No need to use a pad cache, it's always 1!
+  GLfloat WidthCache[256];
+  GLfloat TextureCache[256*8];
+  GLshort VertexCache[256*8];
+  
 #endif
 
 ~FontSpecifier();

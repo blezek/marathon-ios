@@ -69,8 +69,6 @@ extern int SDL_main(int argc, char *argv[]);
   
 	// [[NSFileManager defaultManager] changeCurrentDirectoryPath: [[NSBundle mainBundle] resourcePath]];
   
-  NSManagedObjectContext *context = [[[NSManagedObjectContext alloc] init] autorelease];
-  [context setPersistentStoreCoordinator:self.persistentStoreCoordinator];
   NSEntityDescription *scenarioEntity = [NSEntityDescription entityForName:@"Scenario" inManagedObjectContext:self.managedObjectContext];
   NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
   [fetchRequest setEntity:scenarioEntity];
@@ -78,7 +76,7 @@ extern int SDL_main(int argc, char *argv[]);
   NSArray *list = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
   if ( [list count] == 0 ) {
     // Insert us!
-    self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:context];
+    self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:self.managedObjectContext];
 #if TARGET_IPHONE_SIMULATOR
     self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
 #else
@@ -92,7 +90,7 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario = [list objectAtIndex:0];
     self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
   }
-  [context save:&error];
+  [self.managedObjectContext save:&error];
   
   [self.downloadViewController.view removeFromSuperview];
   // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];

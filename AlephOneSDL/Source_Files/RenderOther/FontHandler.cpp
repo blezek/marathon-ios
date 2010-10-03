@@ -250,12 +250,9 @@ int FontSpecifier::TextWidth(const char *text)
 #endif
 
 #ifdef HAVE_OPENGL
-// DJB OpenGL Caching Text information, but could use VBO in the future...
-// No need to use a pad cache, it's always 1!
+
+// DJB OpenGL Pad is always 1.0!
 const GLfloat PadCache = 1.0;
-GLfloat WidthCache[256];
-GLfloat TextureCache[256*8];
-GLshort VertexCache[256*8];
 
 
 // Reset the OpenGL fonts; its arg indicates whether this is for starting an OpenGL session
@@ -573,7 +570,7 @@ void FontSpecifier::OGL_Render(const char *Text)
       glTranslatef(-PadCache,0,0);
     printGLError(__PRETTY_FUNCTION__);
 
-      glDrawArrays(GL_TRIANGLE_FAN, c*8, 4);
+      glDrawArrays(GL_TRIANGLE_FAN, c*4, 4);
       glTranslatef(WidthCache[c]-PadCache,0,0);
     printGLError(__PRETTY_FUNCTION__);
     
