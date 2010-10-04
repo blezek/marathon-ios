@@ -69,6 +69,8 @@
 
 #ifdef HAVE_OPENGL
 
+// DJB OpenGL Helper
+#include "AlephOneHelper.h"
 #ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
 #include "OGL_Setup.h" // for SglColor*
@@ -213,9 +215,10 @@ void OverheadMap_OGL_Class::draw_polygon(
   glEnd();
 #endif
 
-  // DJB OpenGL
+  // DJB OpenGL  This seems to be a problem!
   // glDrawElements(GL_POLYGON,vertex_count,GL_UNSIGNED_SHORT,vertices);
   glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_SHORT, vertices);
+  printGLError(__PRETTY_FUNCTION__);
 }
 
 void OverheadMap_OGL_Class::end_polygons()

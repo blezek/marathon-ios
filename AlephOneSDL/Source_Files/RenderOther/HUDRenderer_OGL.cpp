@@ -374,10 +374,10 @@ void HUD_OGL_Class::FillRect(screen_rectangle *r, short color_index)
   glDisable(GL_TEXTURE_2D);
   // DJB OpenGL
   GLfloat v[8] = {
-    r->bottom, r->left,
-    r->bottom, r->right,
-    r->top, r->right,
-    r->top, r->left,
+    r->left, r->bottom,
+    r->right, r->bottom,
+    r->right, r->top,
+    r->left,  r->top,
   };
   glEnableClientState(GL_VERTEX_ARRAY);
   glVertexPointer(2, GL_FLOAT, 0, v);

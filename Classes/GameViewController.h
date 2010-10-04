@@ -20,6 +20,13 @@
 extern bool save_game(void);
 extern "C" void setOpenGLView ( SDL_uikitopenglview* view );
 
+// For cheats
+#include "game_window.h"
+extern void AddItemsToPlayer(short ItemType, short MaxNumber);
+extern void AddOneItemToPlayer(short ItemType, short MaxNumber);
+
+
+
 typedef enum {
   MenuMode,
   GameMode,
@@ -74,6 +81,7 @@ typedef enum {
   // The NSTimer class is used only as fallback when running on a pre 3.1 device where CADisplayLink
   // isn't available.
   id displayLink;
+  bool animating;
   NSTimer *animationTimer;  
 }
 
@@ -81,6 +89,7 @@ typedef enum {
 +(GameViewController*)createNewSharedInstance;
 
 - (void)startAnimation;
+- (void)stopAnimation;
 - (void)runMainLoopOnce:(id)sender;
 
 - (IBAction)pause:(id)from;

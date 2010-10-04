@@ -139,7 +139,7 @@ extern int SDL_main(int argc, char *argv[]);
       SDL_SendWindowEvent(sdlwindow, SDL_WINDOWEVENT_MINIMIZED, 0, 0);
     }
   }
-  
+  [game stopAnimation];
 }
 
 
@@ -148,6 +148,7 @@ extern int SDL_main(int argc, char *argv[]);
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
+  [game stopAnimation];
 }
 
 
@@ -155,6 +156,7 @@ extern int SDL_main(int argc, char *argv[]);
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+  [game startAnimation];
 }
 
 
@@ -178,7 +180,7 @@ extern int SDL_main(int argc, char *argv[]);
       SDL_SendWindowEvent(sdlwindow, SDL_WINDOWEVENT_RESTORED, 0, 0);
     }
   }
-  
+  [game startAnimation];
 }
 
 

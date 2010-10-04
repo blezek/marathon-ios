@@ -125,6 +125,7 @@ extern  int
   self.menuView.hidden = NO;
   self.savedGameMessage.hidden = YES;
   isPaused = NO;
+  animating = NO;
   [super viewDidLoad];
 }
 
@@ -344,10 +345,47 @@ extern SDL_Surface *draw_surface;
   // Level name is
   // static_world->level_name
   
-#if TARGET_IPHONE_SIMULATOR
   // If we are in the simulator, save the game
   save_game();
-#endif
+  process_player_powerup(local_player_index, _i_invincibility_powerup);
+  local_player->suit_energy= MAX(local_player->suit_energy,
+                                 3*PLAYER_MAXIMUM_SUIT_ENERGY);
+  mark_shield_display_as_dirty();
+  short items[]=
+  { _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
+    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun,
+    _i_assault_rifle_magazine, _i_assault_grenade_magazine,
+    _i_magnum_magazine, _i_missile_launcher_magazine,
+    _i_flamethrower_canister,
+    _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun,
+    _i_smg, _i_smg_ammo};
+  
+  for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
+  {
+    switch(get_item_kind(items[index]))
+    {
+      case _weapon:
+        if(items[index]==_i_shotgun || items[index]==_i_magnum) {
+          AddOneItemToPlayer(items[index],2);
+        }
+        else {
+          AddItemsToPlayer(items[index],1);
+        }
+        break;
+        
+      case _ammunition:
+        AddItemsToPlayer(items[index],10);
+        break;
+        
+      case _powerup:
+      case _weapon_powerup:
+        break;
+        
+      default:
+        break;
+    }
+    process_new_item_for_reloading(local_player_index, items[index]);
+  }
   
   // Normally would just darken the screen, here we may want to popup a list of things to do.
   if ( isPaused ) {
@@ -359,24 +397,45 @@ extern SDL_Surface *draw_surface;
 }
 
 - (void)startAnimation {
-  // A system version of 3.1 or greater is required to use CADisplayLink. The NSTimer
-  // class is used as fallback when it isn't available.
-  NSString *reqSysVer = @"3.1";
-  NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-  if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
-    displayLinkSupported = TRUE;
+  if ( !animating ) {
+    // A system version of 3.1 or greater is required to use CADisplayLink. The NSTimer
+    // class is used as fallback when it isn't available.
+    NSString *reqSysVer = @"3.1";
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+      displayLinkSupported = TRUE;
+    }
+    
+    NSInteger animationFrameInterval = 2;  
+    if (displayLinkSupported) {
+      // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
+      // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
+      // not be called in system versions earlier than 3.1.
+      displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
+      [displayLink setFrameInterval:animationFrameInterval];
+      [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    } else {
+      animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
+    }
+    animating = YES;
   }
-  
-  NSInteger animationFrameInterval = 2;  
-  if (displayLinkSupported) {
-    // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
-    // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
-    // not be called in system versions earlier than 3.1.
-    displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
-    [displayLink setFrameInterval:animationFrameInterval];
-    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-  } else {
-    animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
+}
+- (void)stopAnimation
+{
+  if (animating)
+  {
+    if (displayLinkSupported)
+    {
+      [displayLink invalidate];
+      displayLink = nil;
+    }
+    else
+    {
+      [animationTimer invalidate];
+      animationTimer = nil;
+    }
+    
+    animating = FALSE;
   }
 }
 

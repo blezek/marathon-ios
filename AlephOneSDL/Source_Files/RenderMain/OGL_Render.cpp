@@ -669,8 +669,8 @@ bool OGL_StartRun()
 
   Using_sRGB = false;
 // DJB OpenGL Use sRGB
-  glEnable(GL_FRAMEBUFFER_SRGB_EXT);
-  Using_sRGB = true;
+  // glEnable(GL_FRAMEBUFFER_SRGB_EXT);
+  // Using_sRGB = true;
 
   if(graphics_preferences->OGL_Configure.Use_sRGB) {
     if(!OGL_CheckExtension("GL_EXT_framebuffer_sRGB") ||
