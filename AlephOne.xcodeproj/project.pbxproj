@@ -735,6 +735,7 @@
 		A8DC998C123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
 		A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
+		A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -1480,6 +1481,7 @@
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
+		A8EB2893125D768900B7EF4A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Artwork/Default-Portrait.png"; sourceTree = "<group>"; };
 		A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1627,6 +1629,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
 				A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */,
 				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
@@ -2916,6 +2919,7 @@
 				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
 				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
+				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -94,8 +94,11 @@ static struct key_definition standard_key_definitions[]=
   {SDLK_v, _looking_center},
 
   /* KP7/KP9 for weapon cycling */
-  {SDLK_KP7, _cycle_weapons_backward},
-  {SDLK_KP9, _cycle_weapons_forward},
+  // DJB Backwards seems to be broken
+  // {SDLK_KP7, _cycle_weapons_backward},
+  // {SDLK_KP9, _cycle_weapons_forward},
+  {SDLK_t, _cycle_weapons_backward},
+  {SDLK_u, _cycle_weapons_forward},
 
   /* space for primary trigger, option for alternate trigger */
   {SDLK_SPACE, _left_trigger_state},

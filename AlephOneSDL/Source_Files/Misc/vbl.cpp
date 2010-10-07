@@ -354,7 +354,6 @@ void set_keys(
 
   /* all of them have the same ordering, so which one we pick is moot. */
   definitions = all_key_definitions[_standard_keyboard_setup];
-
   for (unsigned index= 0; index<NUMBER_OF_STANDARD_KEY_DEFINITIONS; index++)
   {
 #ifdef SDL

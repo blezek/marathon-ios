@@ -173,9 +173,9 @@ extern  int
     } else if ( key->action_flag == _cycle_weapons_backward ) {
       [self.previousWeaponView setup:key->offset];
     }
-    
   }
   
+  [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
   self.hud.alpha = 0.0;
   self.hud.hidden = NO;
@@ -267,8 +267,19 @@ extern SDL_Surface *draw_surface;
   FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
   save_game_file(file);
   
+  SavedGame* game = currentSavedGame;
+  game.lastSaveTime = [NSDate date];
+  game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
+  int sessions = game.numberOfSessions.intValue + 1;
+  game.numberOfSessions = [NSNumber numberWithInt:sessions];
+  game.timeInSeconds = [NSNumber numberWithInt:0];
+  game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
+  [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
+  [game.managedObjectContext save:nil];
+  
+  
   // Animate the saved game message
-  self.savedGameMessage.hidden = YES;
+  self.savedGameMessage.hidden = NO;
   self.savedGameMessage.alpha = 0.5;
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:1.0];

@@ -108,6 +108,11 @@ void helperHandleLoadGame ( ) {
 }
 
 
+extern "C" SDL_uikitopenglview* getOpenGLView() {
+  GameViewController *game = [GameViewController sharedInstance];
+  return game.viewGL;
+}
+
 extern "C" void setOpenGLView ( SDL_uikitopenglview* view ) {
   // DJB
   // Construct the Game view controller

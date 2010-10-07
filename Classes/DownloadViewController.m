@@ -70,7 +70,7 @@
 
 - (void)downloadFinished:(ASIHTTPRequest*) request {
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
-
+  self.progressView.progress = 1.0;
   // Now unzip
   NSString* path = downloadPath;
 
@@ -81,8 +81,8 @@
   NSFileManager *fileManager = [NSFileManager defaultManager];
   [fileManager removeItemAtPath:path error:NULL];
   app.scenario.isDownloaded = [NSNumber numberWithBool:YES];
+  [app.scenario.managedObjectContext save:nil];
   [[AlephOneAppDelegate sharedAppDelegate] startAlephOne];
-  [path autorelease];
   
 }
 

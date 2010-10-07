@@ -87,6 +87,7 @@
 		eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
 										[NSNumber numberWithBool: retained], kEAGLDrawablePropertyRetainedBacking, colorFormat, kEAGLDrawablePropertyColorFormat, nil];
 		
+    // DJB OpenGL  Here we decide if we can do GLES 1 or 2
 		context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES1];
 		
 		if (!context || ![EAGLContext setCurrentContext:context]) {

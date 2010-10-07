@@ -20,6 +20,7 @@
   Scenario *scenario;
   GameViewController *game;
   DownloadViewController *downloadViewController;
+  bool finishedStartup;
     
 @private
     NSManagedObjectContext *managedObjectContext_;

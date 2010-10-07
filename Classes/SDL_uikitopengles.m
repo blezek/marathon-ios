@@ -29,7 +29,9 @@
 #include "SDL_loadso.h"
 #include <dlfcn.h>
 
-// DJB
+// DJB OpenGL
+#include "AlephOneHelper.h"
+extern SDL_uikitopenglview* getOpenGLView();
 extern void setOpenGLView ( SDL_uikitopenglview* view );
 
 static int UIKit_GL_Initialize(_THIS);
@@ -107,7 +109,8 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   UIScreen *uiscreen = (UIScreen *) window->display->driverdata;
 	UIWindow *uiwindow = data->uiwindow;
 
-  
+  view = getOpenGLView();
+  if ( view == nil ) {
      /* construct our view, passing in SDL's OpenGL configuration data */
     view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
 									retainBacking: _this->gl_config.retained_backing \
@@ -116,15 +119,16 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
 									bBits: _this->gl_config.blue_size \
 									aBits: _this->gl_config.alpha_size \
 									depthBits: _this->gl_config.depth_size];
-  setOpenGLView ( view );
+    /* Don't worry, the window retained the view */
+    [view autorelease];
+  }
+  setOpenGLView(view);
 	data->view = view;
 	
 	/* add the view to our window */
 	// DJB Adding the GameViewController to the UIWindow should happen at initialization
   // [uiwindow addSubview:game.view ];
 	
-	/* Don't worry, the window retained the view */
-	[view release];
 	
 	if ( UIKit_GL_MakeCurrent(_this, window, view) < 0 ) {
         UIKit_GL_DeleteContext(_this, view);

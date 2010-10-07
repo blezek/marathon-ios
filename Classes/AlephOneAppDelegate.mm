@@ -31,6 +31,7 @@ extern int SDL_main(int argc, char *argv[]);
 
 - (void)startAlephOne {
   // Remove the Download manager
+  finishedStartup = YES;
   [self.downloadViewController.view removeFromSuperview];
   // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
@@ -58,7 +59,7 @@ extern int SDL_main(int argc, char *argv[]);
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
+	finishedStartup = NO;
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
 	/* Set working directory to resource path */
@@ -77,23 +78,21 @@ extern int SDL_main(int argc, char *argv[]);
   if ( [list count] == 0 ) {
     // Insert us!
     self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:self.managedObjectContext];
-#if TARGET_IPHONE_SIMULATOR
-    self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
-#else
-    self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
-    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
-#endif
     self.scenario.isDownloaded = NO;
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
   } else {
     self.scenario = [list objectAtIndex:0];
-    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
   }
-  [self.managedObjectContext save:&error];
+#if TARGET_IPHONE_SIMULATOR
+  self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
+#else
+  self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
+  self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
+#endif
+  [self.scenario.managedObjectContext save:nil];
+
   
-  [self.downloadViewController.view removeFromSuperview];
-  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
@@ -101,11 +100,8 @@ extern int SDL_main(int argc, char *argv[]);
   MLog ( @"Loaded view: %@", self.game.view );
   // [window addSubview:newGameViewController.view];
   [window addSubview:self.game.view];
-  
-	// Try out the CADisplayLink
-  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-  // return YES;
-  
+  [window makeKeyAndVisible];
+    
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
   if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
@@ -114,7 +110,6 @@ extern int SDL_main(int argc, char *argv[]);
   } else {
     [self startAlephOne];
   }
-  [window makeKeyAndVisible];
   return YES;
 }
 
@@ -125,6 +120,7 @@ extern int SDL_main(int argc, char *argv[]);
      */
   //NSLog(@"%@", NSStringFromSelector(_cmd));
   
+  /*
   // Send every window on every screen a MINIMIZED event.
   SDL_VideoDevice *_this = SDL_GetVideoDevice();
   if (!_this) {
@@ -139,6 +135,7 @@ extern int SDL_main(int argc, char *argv[]);
       SDL_SendWindowEvent(sdlwindow, SDL_WINDOWEVENT_MINIMIZED, 0, 0);
     }
   }
+   */
   [game stopAnimation];
 }
 
@@ -165,7 +162,7 @@ extern int SDL_main(int argc, char *argv[]);
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
   //NSLog(@"%@", NSStringFromSelector(_cmd));
-  
+  /*
   // Send every window on every screen a RESTORED event.
   SDL_VideoDevice *_this = SDL_GetVideoDevice();
   if (!_this) {
@@ -180,7 +177,10 @@ extern int SDL_main(int argc, char *argv[]);
       SDL_SendWindowEvent(sdlwindow, SDL_WINDOWEVENT_RESTORED, 0, 0);
     }
   }
+   */
+  if ( finishedStartup ) {
   [game startAnimation];
+  }
 }
 
 
