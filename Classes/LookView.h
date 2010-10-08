@@ -12,6 +12,20 @@
 
 @interface LookView : UIView {
   CGPoint lastPanPoint;
+  SDLKey primaryFire;
+  SDLKey secondaryFire;
+  UITouch *secondTouch;
+  UITouch *firstTouch;
+  NSDate *firstTouchTime;
+  NSDate *lastPrimaryFire;
 }
+
+@property (nonatomic) SDLKey primaryFire;
+@property (nonatomic) SDLKey secondaryFire;
+@property (nonatomic,retain) NSDate *firstTouchTime;
+@property (nonatomic,retain) NSDate *lastPrimaryFire;
+
+- (void)stopPrimaryFire;
+- (void)stopSecondaryFire;
 
 @end

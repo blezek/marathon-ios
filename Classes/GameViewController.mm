@@ -162,8 +162,10 @@ extern  int
   for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
     if ( key->action_flag == _left_trigger_state ){
       [self.leftFireView setup:key->offset];
+      self.lookView.primaryFire = key->offset;
     } else if ( key->action_flag == _right_trigger_state ){
       [self.rightFireView setup:key->offset];
+      self.lookView.secondaryFire = key->offset;
     } else if ( key->action_flag == _toggle_map ){
       [self.mapView setup:key->offset];
     } else if ( key->action_flag == _action_trigger_state ) {

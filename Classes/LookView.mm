@@ -34,14 +34,62 @@ extern "C" {
 
 
 @implementation LookView
+@synthesize primaryFire, secondaryFire;
+@synthesize firstTouchTime, lastPrimaryFire;
+- (void)viewDidLoad {
+  firstTouch = nil;
+  secondTouch = nil;
+}
+
+- (void)stopPrimaryFire {
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  key_map[primaryFire] = 0;
+}
+- (void)stopSecondaryFire {
+  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  key_map[secondaryFire] = 0;
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ( firstTouch == nil ) {
+    // grab the first
+    firstTouch = [touches anyObject];
+    self.firstTouchTime = [NSDate date];
+  } else {
+    secondTouch = [touches anyObject];
+  }
+  
   for ( UITouch *touch in [event touchesForView:self] ) {
-    lastPanPoint = [touch locationInView:self];
-    break;
+    if ( touch == firstTouch ) {
+      lastPanPoint = [touch locationInView:self];
+    } else {
+      // start the second fire
+      Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+      key_map[secondaryFire] = 1;
+    }
   }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  for ( UITouch *touch in touches ) {
+    if ( touch == firstTouch ) {
+      firstTouch = nil;
+      // Check the time, fire 
+      MLog ( @"Might fire here");
+      NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
+      self.firstTouchTime = nil;
+      if ( delta < 0.3 ) {
+        Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+        key_map[primaryFire] = 1;
+        [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
+        
+      }
+    }
+    if ( touch == secondTouch ) {
+      secondTouch = nil;
+      Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+      key_map[secondaryFire] = 0;
+    }
+  }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {

@@ -45,6 +45,7 @@ UIKit_PumpEvents(_THIS)
 		when the delegate receives the ApplicationWillTerminate message, we execute
 		a longjmp statement to get back here, preventing an immediate exit.
 	 */	
+
 #ifdef USE_SDL_EVENT_LOOP
   // DJB No longer needed, CADisplayLink loop should handle all events!
 	if (setjmp(*jump_env()) == 0) {
