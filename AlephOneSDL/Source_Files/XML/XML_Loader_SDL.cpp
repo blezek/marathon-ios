@@ -145,6 +145,7 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
 bool XML_Loader_SDL::ParseDirectory(FileSpecifier &dir)
 {
   // Get sorted list of files in directory
+  printf ( "Looking in %s", dir.GetPath() );
   vector<dir_entry> de;
   if (!dir.ReadDirectory(de)) {
     return false;

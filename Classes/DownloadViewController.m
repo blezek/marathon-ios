@@ -55,6 +55,7 @@
   if ( !fileExists ) {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [app applicationDocumentsDirectory], app.scenario.path];
+    NSString* tempPath = [NSString stringWithFormat:@"%@/%@.zip.part", [app applicationDocumentsDirectory], app.scenario.path];
     downloadPath = path;
     NSLog ( @"Download file!" );
     NSURL *url = [NSURL URLWithString:app.scenario.downloadURL];
@@ -64,6 +65,11 @@
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(downloadFinished:)];
     [request setDidFailSelector:@selector(downloadFailed:)];
+    
+    // Allow for resuming
+    [request setTemporaryFileDownloadPath:tempPath];
+    [request setAllowResumeForFileDownloads:YES];
+    request.showAccurateProgress = YES;
     [request startAsynchronous];
   }
 }

@@ -297,7 +297,7 @@ bool hasS3TC = false;
 void OGL_TextureOptionsBase::Load()
 {
   FileSpecifier File;
-
+  
   GLint maxTextureSize = 0;
   if (GetMaxSize()) {
     maxTextureSize = MIN(maxTextureSize, GetMaxSize());
