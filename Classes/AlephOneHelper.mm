@@ -122,3 +122,12 @@ extern "C" void setOpenGLView ( SDL_uikitopenglview* view ) {
   [game setOpenGLView:view];
   
 }
+
+void pumpEvents() {
+  SInt32 result;
+  do {
+    // MoreEvents = [theRL runMode:currentMode beforeDate:future];
+    result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
+  } while(result == kCFRunLoopRunHandledSource);  
+  
+}

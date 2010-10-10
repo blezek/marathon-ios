@@ -25,4 +25,5 @@ extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHandleLoadGame();
 extern void printGLError ( const char* message );
+extern void pumpEvents();
 

@@ -40,12 +40,14 @@ uint32 machine_tick_count(void)
 /*
  *  Wait for mouse click or keypress
  */
-
+// DJB Need to allow events here, while we are playing sounds
+#include "AlephOneHelper.h"
 bool wait_for_click_or_keypress(uint32 ticks)
 {
   uint32 start = SDL_GetTicks();
   SDL_Event event;
   while (SDL_GetTicks() - start < ticks) {
+    pumpEvents();
     SDL_PollEvent(&event);
     if (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_KEYDOWN) {
       return true;
