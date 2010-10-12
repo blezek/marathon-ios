@@ -26,3 +26,7 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #endif
+
+// Make sure we load PNG and JPEG
+#define LOAD_JPG 1
+#define LOAD_PNG 1

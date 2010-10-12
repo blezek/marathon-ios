@@ -30,7 +30,7 @@
 
 #ifdef LOAD_JPG
 
-#include <jpeglib.h>
+#include "jpeglib.h"
 
 /* Define this for fast loading and not as good image quality */
 /*#define FAST_JPEG*/

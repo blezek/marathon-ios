@@ -2337,6 +2337,8 @@ void read_preferences ()
   graphics_preferences->screen_mode.acceleration = _no_acceleration;       // software
   graphics_preferences->screen_mode.acceleration = _shader_acceleration;   // OpenGL shader language
   graphics_preferences->screen_mode.acceleration = _opengl_acceleration;   // OpenGL fixed function
+  graphics_preferences->screen_mode.bit_depth = 32;
+
   graphics_preferences->screen_mode.gamma_level= 7;
 
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
@@ -2348,6 +2350,7 @@ void read_preferences ()
   // printf ( "Hud file %s\n", environment_preferences->hud_lua_file );
   // Set keyboard
   input_preferences->input_device = _mouse_yaw_pitch;
+  printf("  ogl_flags=\"%hu\"\n",graphics_preferences->OGL_Configure.Flags);
 
   // jkvw: If we try to load a default file, but can't, we'll have set the game error.
   //       But that's not useful, because we're just going to try loading the file

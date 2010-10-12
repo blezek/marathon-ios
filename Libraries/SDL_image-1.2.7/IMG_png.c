@@ -67,7 +67,7 @@
 #ifdef macintosh
 #define MACOS
 #endif
-#include <png.h>
+#include "png.h"
 
 
 static struct {
