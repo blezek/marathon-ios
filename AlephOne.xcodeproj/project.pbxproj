@@ -769,6 +769,9 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
+		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
+		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
+		A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA981265465A002211FB /* ProgressLogo.png */; };
 		A8D966FF11C717A700016403 /* SDLnet.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FB11C717A700016403 /* SDLnet.c */; };
 		A8D9670011C717A700016403 /* SDLnetselect.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FC11C717A700016403 /* SDLnetselect.c */; };
 		A8D9670111C717A700016403 /* SDLnetTCP.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FD11C717A700016403 /* SDLnetTCP.c */; };
@@ -1583,6 +1586,10 @@
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
 		A8D340F411B5E63F00BC535F /* VecOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VecOps.h; path = AlephOneSDL/Source_Files/Misc/VecOps.h; sourceTree = "<group>"; };
 		A8D3411A11B5E8BC00BC535F /* SW_Texture_Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SW_Texture_Extras.h; sourceTree = "<group>"; };
+		A8D5AA7E126545AE002211FB /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressViewController.h; path = Classes/ProgressViewController.h; sourceTree = "<group>"; };
+		A8D5AA7F126545AE002211FB /* ProgressViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressViewController.mm; path = Classes/ProgressViewController.mm; sourceTree = "<group>"; };
+		A8D5AA80126545AE002211FB /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProgressViewController.xib; path = Classes/ProgressViewController.xib; sourceTree = "<group>"; };
+		A8D5AA981265465A002211FB /* ProgressLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProgressLogo.png; path = Artwork/ProgressLogo.png; sourceTree = "<group>"; };
 		A8D966FB11C717A700016403 /* SDLnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnet.c; path = "Libraries/SDL_net-1.2.7/SDLnet.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FC11C717A700016403 /* SDLnetselect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetselect.c; path = "Libraries/SDL_net-1.2.7/SDLnetselect.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FD11C717A700016403 /* SDLnetTCP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetTCP.c; path = "Libraries/SDL_net-1.2.7/SDLnetTCP.c"; sourceTree = SOURCE_ROOT; };
@@ -1759,6 +1766,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
@@ -1931,6 +1939,8 @@
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
+				A8D5AA7E126545AE002211FB /* ProgressViewController.h */,
+				A8D5AA7F126545AE002211FB /* ProgressViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2022,6 +2032,7 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A8D5AA981265465A002211FB /* ProgressLogo.png */,
 				A8A06C7B1258179E00BE6EF5 /* download-ipad.png */,
 				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
 				A8562B5811DAE3A50071DFEF /* Pistol.png */,
@@ -3130,6 +3141,8 @@
 				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
 				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
+				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
+				A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3868,6 +3881,7 @@
 				A88DBFC612640A7800FCC652 /* wrrle.c in Sources */,
 				A88DBFC712640A7800FCC652 /* wrtarga.c in Sources */,
 				A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */,
+				A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

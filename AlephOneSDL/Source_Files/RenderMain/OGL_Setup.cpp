@@ -161,9 +161,13 @@ static int32 last_update_tick;
 
 extern bool OGL_ClearScreen();
 
+// DJB OpenGL Call our progress functions
+#include "AlephOneHelper.h"
 #ifdef HAVE_OPENGL
 void OGL_StartProgress(int total_progress)
 {
+  startProgress ( total_progress );
+  /*
   ogl_progress = 0;
   total_ogl_progress = total_progress;
   if (!OGL_LoadScreen::instance()->Start()) {
@@ -172,10 +176,13 @@ void OGL_StartProgress(int total_progress)
   }
   show_ogl_progress = true;
   last_update_tick = SDL_GetTicks();
+   */
 }
 
 void OGL_ProgressCallback(int delta_progress)
 {
+  progressCallback(delta_progress);
+  /*
   if (!show_ogl_progress) {
     return;
   }
@@ -197,10 +204,13 @@ void OGL_ProgressCallback(int delta_progress)
       last_update_tick = current_ticks;
     }
   }
+   */
 }
 
 void OGL_StopProgress()
 {
+  stopProgress();
+  /*
   show_ogl_progress = false;
   if (OGL_LoadScreen::instance()->Use()) {
     OGL_LoadScreen::instance()->Stop();
@@ -208,6 +218,7 @@ void OGL_StopProgress()
   else{
     close_progress_dialog();
   }
+   */
 }
 #endif
 

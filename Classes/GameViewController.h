@@ -15,6 +15,7 @@
 #import "LookView.h"
 #include "FileHandler.h"
 #import "ManagedObjects.h"
+#import "ProgressViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -39,6 +40,7 @@ typedef enum {
   IBOutlet UIView *menuView;
   IBOutlet UIView *newGameView;
   IBOutlet UIView *loadGameView;
+  IBOutlet UIView *progressView;
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *actionView;
@@ -65,6 +67,7 @@ typedef enum {
   SDLKey rightFireKey;
   
   IBOutlet SaveGameViewController *saveGameViewController;
+  IBOutlet ProgressViewController *progressViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -102,6 +105,10 @@ typedef enum {
 - (IBAction)saveGame;
 - (IBAction)chooseSaveGameCanceled;
 
+// Progress stuff
+- (void) startProgress:(int)total;
+- (void) progressCallback:(int)delta;
+- (void) stopProgress;
 
 - (void)bringUpHUD;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
@@ -121,6 +128,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet UIView *savedGameMessage;
 @property (nonatomic, retain) IBOutlet UIView *newGameView;
 @property (nonatomic, retain) IBOutlet UIView *loadGameView;
+@property (nonatomic, retain) IBOutlet UIView *progressView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet ButtonView *mapView;
 @property (nonatomic, retain) IBOutlet ButtonView *actionView;
@@ -133,6 +141,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet ButtonView *inventoryToggleView;
 @property (nonatomic, retain) IBOutlet UIButton *pause;
 @property (nonatomic, retain) IBOutlet SaveGameViewController *saveGameViewController;
+@property (nonatomic, retain) IBOutlet ProgressViewController *progressViewController;
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;

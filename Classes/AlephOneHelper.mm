@@ -131,3 +131,13 @@ void pumpEvents() {
   } while(result == kCFRunLoopRunHandledSource);  
   
 }
+
+void startProgress ( int t ) {
+  [[GameViewController sharedInstance] startProgress:t];
+}
+void progressCallback ( int d ) {
+  [[GameViewController sharedInstance] progressCallback:d];
+}
+void stopProgress() {
+  [[GameViewController sharedInstance] stopProgress];
+}

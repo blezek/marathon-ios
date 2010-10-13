@@ -50,6 +50,7 @@ extern  int
 @synthesize loadGameView, haveNewGamePreferencesBeenSet;
 @synthesize saveGameViewController, currentSavedGame;
 @synthesize savedGameMessage;
+@synthesize progressView, progressViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -71,6 +72,10 @@ extern  int
   MLog ( @"Save Game View: %@", self.saveGameViewController.view );
   // Since the SaveGameViewController was initialized from a nib, add it's view to the proper place
   [self.loadGameView addSubview:self.saveGameViewController.uiView];
+  
+  self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:nil];
+  [self.progressView addSubview:self.progressViewController.view];
+  self.progressView.hidden = YES;
   
   // Kill a warning
   (void)all_key_definitions;
@@ -455,6 +460,22 @@ extern SDL_Surface *draw_surface;
 - (void)runMainLoopOnce:(id)sender {
   AlephOneMainLoop();
 }
+
+#pragma mark -
+#pragma mark Progress methods
+- (void) startProgress:(int)total {
+  self.progressView.hidden = NO;
+  [self.progressViewController startProgress:total];
+}
+
+- (void) progressCallback:(int)delta {
+  [self.progressViewController progressCallback:delta];
+}
+- (void) stopProgress {
+  self.progressView.hidden = YES;
+}
+
+
 
 #pragma mark -
 #pragma mark View Controller Methods

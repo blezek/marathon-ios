@@ -26,4 +26,7 @@ extern void helperSaveGame();
 extern void helperHandleLoadGame();
 extern void printGLError ( const char* message );
 extern void pumpEvents();
+extern void startProgress ( int t );
+extern void progressCallback ( int d );
+extern void stopProgress();
 
