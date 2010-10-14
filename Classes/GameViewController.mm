@@ -43,14 +43,14 @@ extern  int
 #include "overhead_map.h"
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView;
+@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
-@synthesize rightFireView, leftFireView, mapView, actionView;
+@synthesize rightFireView, leftFireView, mapView, mapView2, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
 @synthesize loadGameView, haveNewGamePreferencesBeenSet;
 @synthesize saveGameViewController, currentSavedGame;
 @synthesize savedGameMessage;
-@synthesize progressView, progressViewController;
+@synthesize progressView, progressViewController, preferencesViewController, pauseViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -73,9 +73,21 @@ extern  int
   // Since the SaveGameViewController was initialized from a nib, add it's view to the proper place
   [self.loadGameView addSubview:self.saveGameViewController.uiView];
   
-  self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:nil];
-  [self.progressView addSubview:self.progressViewController.view];
-  self.progressView.hidden = YES;
+  self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
+  [self.progressViewController view];
+  [self.progressViewController mainView];
+  [self.progressView addSubview:self.progressViewController.mainView];
+  // self.progressView.hidden = YES;
+  
+  self.preferencesViewController = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:[NSBundle mainBundle]];
+  [self.preferencesViewController view];
+  MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
+  [self.preferencesView addSubview:self.preferencesViewController.view];
+  
+  self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
+  [self.pauseViewController view];
+  [self.pauseView addSubview:self.pauseViewController.view];
+
   
   // Kill a warning
   (void)all_key_definitions;
@@ -99,6 +111,9 @@ extern  int
   [viewList addObject:self.menuView];
   [viewList addObject:self.newGameView];
   [viewList addObject:self.loadGameView];
+  [viewList addObject:self.progressView];
+  [viewList addObject:self.pauseView];
+  [viewList addObject:self.preferencesView];
   for ( UIView *v in viewList ) {
     v.center = center;
     v.transform = transform;
@@ -173,6 +188,7 @@ extern  int
       self.lookView.secondaryFire = key->offset;
     } else if ( key->action_flag == _toggle_map ){
       [self.mapView setup:key->offset];
+      [self.mapView2 setup:key->offset];
     } else if ( key->action_flag == _action_trigger_state ) {
       [self.actionView setup:key->offset];
     } else if ( key->action_flag == _cycle_weapons_forward ) {
@@ -212,6 +228,27 @@ extern  int
   // [self.viewGL addGestureRecognizer:self.menuTapGesture];
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
+
+#pragma mark -
+#pragma mark Pause actions
+- (IBAction) resume:(id)sender {
+  self.pauseView.hidden = YES;
+  [self pause:sender];
+}
+
+- (IBAction) gotoMenu:(id)sender {
+  MLog ( @"How do we go back?!" );
+  self.pauseView.hidden = YES;
+  self.hud.hidden = YES;
+  set_game_state(_close_game);
+}
+- (IBAction) gotoPreferences:(id)sender {
+  self.preferencesView.hidden = NO;
+}
+- (IBAction) closePreferences:(id)sender {
+  self.preferencesView.hidden = YES;
+}
+
 
 #pragma mark -
 #pragma mark Choose saved game methods
@@ -360,6 +397,8 @@ extern SDL_Surface *draw_surface;
 #pragma mark Game controls
 
 - (IBAction)pause:(id)from {
+  
+  
   // Level name is
   // static_world->level_name
   
@@ -407,12 +446,22 @@ extern SDL_Surface *draw_surface;
   
   // Normally would just darken the screen, here we may want to popup a list of things to do.
   if ( isPaused ) {
+    self.pauseView.hidden = YES;
     resume_game();
   } else {
     pause_game();
+    self.pauseView.hidden = NO;
+    self.pauseView.alpha = 0.0;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    self.pauseView.alpha = 1.0;
+    [UIView commitAnimations];    
   }
   isPaused = !isPaused;
 }
+
+#pragma mark -
+#pragma mark Animation Methods
 
 - (void)startAnimation {
   if ( !animating ) {
@@ -466,13 +515,16 @@ extern SDL_Surface *draw_surface;
 - (void) startProgress:(int)total {
   self.progressView.hidden = NO;
   [self.progressViewController startProgress:total];
+  MLog ( @"total = %d", total );
 }
 
 - (void) progressCallback:(int)delta {
   [self.progressViewController progressCallback:delta];
+  MLog ( @"delta = %d", delta );
 }
 - (void) stopProgress {
   self.progressView.hidden = YES;
+  MLog ( @"stopProgress" );
 }
 
 

@@ -798,6 +798,16 @@
 		A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
+		A8EB779B126697420043F0D4 /* movementbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7795126697420043F0D4 /* movementbox.png */; };
+		A8EB779C126697420043F0D4 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
+		A8EB779D126697420043F0D4 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
+		A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
+		A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
+		A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
+		A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
+		A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
+		A8EB78561266A8510043F0D4 /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* ProgressViewController.mm */; };
+		A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -1619,6 +1629,18 @@
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
 		A8EB2893125D768900B7EF4A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Artwork/Default-Portrait.png"; sourceTree = "<group>"; };
+		A8EB7795126697420043F0D4 /* movementbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementbox.png; path = Artwork/movementbox.png; sourceTree = "<group>"; };
+		A8EB7796126697420043F0D4 /* pause-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-btn.png"; path = "Artwork/pause-btn.png"; sourceTree = "<group>"; };
+		A8EB7797126697420043F0D4 /* overheadmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overheadmap.png; path = Artwork/overheadmap.png; sourceTree = "<group>"; };
+		A8EB7798126697420043F0D4 /* primarytrigger-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "primarytrigger-btn.png"; path = "Artwork/primarytrigger-btn.png"; sourceTree = "<group>"; };
+		A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "secondarytrigger-btn.png"; path = "Artwork/secondarytrigger-btn.png"; sourceTree = "<group>"; };
+		A8EB779A126697420043F0D4 /* patternbuffers-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "patternbuffers-btn.png"; path = "Artwork/patternbuffers-btn.png"; sourceTree = "<group>"; };
+		A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesViewController.h; path = Classes/PreferencesViewController.h; sourceTree = "<group>"; };
+		A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PreferencesViewController.mm; path = Classes/PreferencesViewController.mm; sourceTree = "<group>"; };
+		A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesViewController.xib; path = Resources/PreferencesViewController.xib; sourceTree = "<group>"; };
+		A8EB78531266A8510043F0D4 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseViewController.h; path = Classes/PauseViewController.h; sourceTree = "<group>"; };
+		A8EB78541266A8510043F0D4 /* ProgressViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressViewController.mm; path = Classes/ProgressViewController.mm; sourceTree = "<group>"; };
+		A8EB78551266A8510043F0D4 /* PauseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PauseViewController.xib; path = Resources/PauseViewController.xib; sourceTree = "<group>"; };
 		A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1766,6 +1788,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
+				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
+				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
 				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
@@ -1774,7 +1799,6 @@
 				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
 				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
 				A8AD432512220F9500A09383 /* MainWindow.xib */,
-				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
 				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
@@ -1941,6 +1965,10 @@
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
 				A8D5AA7E126545AE002211FB /* ProgressViewController.h */,
 				A8D5AA7F126545AE002211FB /* ProgressViewController.mm */,
+				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
+				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
+				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
+				A8EB78541266A8510043F0D4 /* ProgressViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2032,6 +2060,12 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB7795126697420043F0D4 /* movementbox.png */,
+				A8EB7796126697420043F0D4 /* pause-btn.png */,
+				A8EB7797126697420043F0D4 /* overheadmap.png */,
+				A8EB7798126697420043F0D4 /* primarytrigger-btn.png */,
+				A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */,
+				A8EB779A126697420043F0D4 /* patternbuffers-btn.png */,
 				A8D5AA981265465A002211FB /* ProgressLogo.png */,
 				A8A06C7B1258179E00BE6EF5 /* download-ipad.png */,
 				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
@@ -3143,6 +3177,14 @@
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
 				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
 				A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */,
+				A8EB779B126697420043F0D4 /* movementbox.png in Resources */,
+				A8EB779C126697420043F0D4 /* pause-btn.png in Resources */,
+				A8EB779D126697420043F0D4 /* overheadmap.png in Resources */,
+				A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */,
+				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
+				A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */,
+				A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */,
+				A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3882,6 +3924,8 @@
 				A88DBFC712640A7800FCC652 /* wrtarga.c in Sources */,
 				A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */,
 				A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */,
+				A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */,
+				A8EB78561266A8510043F0D4 /* ProgressViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4067,7 +4111,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -4100,7 +4144,7 @@
 				PRODUCT_NAME = "AlephOne:SDG";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4225,7 +4269,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};

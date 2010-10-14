@@ -9,6 +9,7 @@
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
 #import "DownloadViewController.h"
+#import "ProgressViewController.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -34,9 +35,10 @@ extern int SDL_main(int argc, char *argv[]);
   finishedStartup = YES;
   [self.downloadViewController.view removeFromSuperview];
   // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
+   
   
   MLog ( @"Loaded view: %@", self.game.view );
   // [window addSubview:newGameViewController.view];
@@ -92,16 +94,9 @@ extern int SDL_main(int argc, char *argv[]);
 #endif
   [self.scenario.managedObjectContext save:nil];
 
-  
-  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
-  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
-  [self.game viewDidLoad];
-  
-  MLog ( @"Loaded view: %@", self.game.view );
   // [window addSubview:newGameViewController.view];
-  [window addSubview:self.game.view];
   [window makeKeyAndVisible];
-    
+
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
   if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {

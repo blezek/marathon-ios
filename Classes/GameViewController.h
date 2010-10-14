@@ -16,6 +16,8 @@
 #include "FileHandler.h"
 #import "ManagedObjects.h"
 #import "ProgressViewController.h"
+#import "PreferencesViewController.h"
+#import "PauseViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -41,8 +43,12 @@ typedef enum {
   IBOutlet UIView *newGameView;
   IBOutlet UIView *loadGameView;
   IBOutlet UIView *progressView;
+  IBOutlet UIView *preferencesView;
+  IBOutlet UIView *pauseView;
+
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
+  IBOutlet ButtonView *mapView2;
   IBOutlet ButtonView *actionView;
   IBOutlet LookView *lookView;
   IBOutlet MovePadView *moveView;
@@ -68,6 +74,8 @@ typedef enum {
   
   IBOutlet SaveGameViewController *saveGameViewController;
   IBOutlet ProgressViewController *progressViewController;
+  IBOutlet PreferencesViewController *preferencesViewController;
+  IBOutlet PauseViewController *pauseViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -100,6 +108,12 @@ typedef enum {
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
 
+// Pause actions
+- (IBAction) resume:(id)sender;
+- (IBAction) gotoMenu:(id)sender;
+- (IBAction) gotoPreferences:(id)sender;
+- (IBAction) closePreferences:(id)sender;
+
 - (IBAction)chooseSaveGame;
 - (IBAction)gameChosen:(SavedGame*)game;
 - (IBAction)saveGame;
@@ -124,24 +138,33 @@ typedef enum {
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
-@property (nonatomic, retain) IBOutlet UIView *hud;
-@property (nonatomic, retain) IBOutlet UIView *savedGameMessage;
-@property (nonatomic, retain) IBOutlet UIView *newGameView;
-@property (nonatomic, retain) IBOutlet UIView *loadGameView;
-@property (nonatomic, retain) IBOutlet UIView *progressView;
-@property (nonatomic, retain) IBOutlet UIView *menuView;
-@property (nonatomic, retain) IBOutlet ButtonView *mapView;
-@property (nonatomic, retain) IBOutlet ButtonView *actionView;
-@property (nonatomic, retain) IBOutlet LookView *lookView;
-@property (nonatomic, retain) IBOutlet MovePadView *moveView;
-@property (nonatomic, retain) IBOutlet ButtonView *leftFireView;
-@property (nonatomic, retain) IBOutlet ButtonView *rightFireView;
-@property (nonatomic, retain) IBOutlet ButtonView *previousWeaponView;
-@property (nonatomic, retain) IBOutlet ButtonView *nextWeaponView;
-@property (nonatomic, retain) IBOutlet ButtonView *inventoryToggleView;
-@property (nonatomic, retain) IBOutlet UIButton *pause;
-@property (nonatomic, retain) IBOutlet SaveGameViewController *saveGameViewController;
-@property (nonatomic, retain) IBOutlet ProgressViewController *progressViewController;
+@property (nonatomic, retain) UIView *hud;
+@property (nonatomic, retain) UIView *savedGameMessage;
+@property (nonatomic, retain) UIView *newGameView;
+@property (nonatomic, retain) UIView *loadGameView;
+@property (nonatomic, retain) UIView *progressView;
+@property (nonatomic, retain) UIView *menuView;
+@property (nonatomic, retain) UIView *pauseView;
+@property (nonatomic, retain) UIView *preferencesView;
+
+@property (nonatomic, retain) ButtonView *mapView;
+@property (nonatomic, retain) ButtonView *mapView2;
+@property (nonatomic, retain) ButtonView *actionView;
+@property (nonatomic, retain) LookView *lookView;
+@property (nonatomic, retain) MovePadView *moveView;
+@property (nonatomic, retain) ButtonView *leftFireView;
+@property (nonatomic, retain) ButtonView *rightFireView;
+@property (nonatomic, retain) ButtonView *previousWeaponView;
+@property (nonatomic, retain) ButtonView *nextWeaponView;
+@property (nonatomic, retain) ButtonView *inventoryToggleView;
+@property (nonatomic, retain) UIButton *pause;
+
+@property (nonatomic, retain) SaveGameViewController *saveGameViewController;
+@property (nonatomic, retain) ProgressViewController *progressViewController;
+@property (nonatomic, retain) PreferencesViewController *preferencesViewController;
+@property (nonatomic, retain) PauseViewController *pauseViewController;
+
+
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
 @property (nonatomic, retain) UISwipeGestureRecognizer *rightWeaponSwipe;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;

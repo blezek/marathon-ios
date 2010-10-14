@@ -10,7 +10,8 @@
 #import "PDColoredProgressView.h"
 
 @interface ProgressViewController : UIViewController {
-  IBOutlet PDColoredProgressView *progressView;
+  PDColoredProgressView *progressView;
+  UIView *mainView;
   int currentProgress;
   int total;
 }
@@ -19,4 +20,5 @@
 - (void)progressCallback:(int)d;  
 
 @property (nonatomic,retain) IBOutlet PDColoredProgressView *progressView;
+@property (nonatomic,retain) IBOutlet UIView *mainView;
 @end
