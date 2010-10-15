@@ -27,6 +27,21 @@
 - (bool)isDownloadOrChooseGameNeeded {
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
   
+  NSEntityDescription *scenarioEntity = [NSEntityDescription entityForName:@"Scenario" inManagedObjectContext:app.managedObjectContext];
+  NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+  [fetchRequest setEntity:scenarioEntity];
+  NSError *error;
+  NSArray *list = [app.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+  if ( [list count] == 1 ) {
+    app.scenario = [list objectAtIndex:0];
+    return [self isScenarioDownloaded];
+  }
+  return YES;
+}
+
+- (bool)isScenarioDownloaded {
+  AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
+
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
   NSLog ( @"Install path is %@", installDirectory );
@@ -34,17 +49,30 @@
   BOOL isDirectory;
   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory isDirectory:&isDirectory];
   NSLog ( @"Checking for file: %@", installDirectory );
-  if ( fileExists ) {
-    return NO;
-  } else {
-    return YES;
-  }
-    
+  return fileExists;    
 }
 
 - (void)downloadOrchooseGame {
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
+  NSEntityDescription *scenarioEntity = [NSEntityDescription entityForName:@"Scenario" inManagedObjectContext:app.managedObjectContext];
+  NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+  [fetchRequest setEntity:scenarioEntity];
+  NSError *error;
+  NSArray *list = [app.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+  if ( [list count] == 1 ) {
+    app.scenario = [list objectAtIndex:0];
+    if ( [self isScenarioDownloaded] ) {
+      [self startGame];
+      return;
+    }
+    [self downloadAndStart];
+  }
   
+}
+
+-(void)downloadAndStart {
+  AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
   NSLog ( @"Install path is %@", installDirectory );
@@ -75,7 +103,6 @@
 }
 
 - (void)downloadFinished:(ASIHTTPRequest*) request {
-  AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
   self.progressView.progress = 1.0;
   // Now unzip
   NSString* path = downloadPath;
@@ -86,14 +113,25 @@
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
   [fileManager removeItemAtPath:path error:NULL];
+  [self startGame];
+}
+
+-(void)startGame {
+  AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
   app.scenario.isDownloaded = [NSNumber numberWithBool:YES];
   [app.scenario.managedObjectContext save:nil];
   [[AlephOneAppDelegate sharedAppDelegate] startAlephOne];
-  
 }
 
 - (void)downloadFailed:(ASIHTTPRequest*) request {
   MLog ( @"Download failed!" );
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Download failed" delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+  [av show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  [self downloadAndStart];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

@@ -207,7 +207,7 @@ extern  int
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
-  [self.hud removeGestureRecognizer:self.menuTapGesture];
+  // [self.hud removeGestureRecognizer:self.menuTapGesture];
   
   // Should we save a new game in place?
   if ( startingNewGameSoSave ) {
@@ -240,6 +240,8 @@ extern  int
   MLog ( @"How do we go back?!" );
   self.pauseView.hidden = YES;
   self.hud.hidden = YES;
+  self.menuView.hidden = NO;
+  mode = MenuMode;
   set_game_state(_close_game);
 }
 - (IBAction) gotoPreferences:(id)sender {
@@ -520,7 +522,6 @@ extern SDL_Surface *draw_surface;
 
 - (void) progressCallback:(int)delta {
   [self.progressViewController progressCallback:delta];
-  MLog ( @"delta = %d", delta );
 }
 - (void) stopProgress {
   self.progressView.hidden = YES;

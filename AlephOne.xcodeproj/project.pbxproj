@@ -740,6 +740,7 @@
 		A88DBFC612640A7800FCC652 /* wrrle.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4012640A7800FCC652 /* wrrle.c */; };
 		A88DBFC712640A7800FCC652 /* wrtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4112640A7800FCC652 /* wrtarga.c */; };
 		A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
+		A89315841267FFD2006DA87E /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.m */; };
 		A899FF1711BC96370071BF5F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A899FF1611BC96370071BF5F /* AudioToolbox.framework */; };
 		A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
@@ -806,7 +807,6 @@
 		A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
 		A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
 		A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
-		A8EB78561266A8510043F0D4 /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* ProgressViewController.mm */; };
 		A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -1036,7 +1036,7 @@
 		A85A37FF12178BA50080BBA9 /* ButtonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ButtonView.mm; path = Classes/ButtonView.mm; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
 		A85E66C811CB0AF200D0FAEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
-		A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne:SDG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85E687111CB18FD00D0FAEF /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = png.h; path = "Libraries/libpng-1.2.24/png.h"; sourceTree = SOURCE_ROOT; };
 		A85E687211CB18FD00D0FAEF /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngconf.h; path = "Libraries/libpng-1.2.24/pngconf.h"; sourceTree = SOURCE_ROOT; };
 		A85E687311CB18FD00D0FAEF /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = png.c; path = "Libraries/libpng-1.2.24/png.c"; sourceTree = SOURCE_ROOT; };
@@ -1639,7 +1639,7 @@
 		A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PreferencesViewController.mm; path = Classes/PreferencesViewController.mm; sourceTree = "<group>"; };
 		A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesViewController.xib; path = Resources/PreferencesViewController.xib; sourceTree = "<group>"; };
 		A8EB78531266A8510043F0D4 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseViewController.h; path = Classes/PauseViewController.h; sourceTree = "<group>"; };
-		A8EB78541266A8510043F0D4 /* ProgressViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressViewController.mm; path = Classes/ProgressViewController.mm; sourceTree = "<group>"; };
+		A8EB78541266A8510043F0D4 /* PauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseViewController.m; path = Classes/PauseViewController.m; sourceTree = "<group>"; };
 		A8EB78551266A8510043F0D4 /* PauseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PauseViewController.xib; path = Resources/PauseViewController.xib; sourceTree = "<group>"; };
 		A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1729,7 +1729,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* AlephOne.app */,
 				A850866511C1D4B800D95436 /* LandscapeTest.app */,
-				A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */,
+				A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1968,7 +1968,7 @@
 				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
 				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
 				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
-				A8EB78541266A8510043F0D4 /* ProgressViewController.mm */,
+				A8EB78541266A8510043F0D4 /* PauseViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3053,9 +3053,9 @@
 			productReference = A850866511C1D4B800D95436 /* LandscapeTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A85E672911CB173A00D0FAEF /* AlephOneHD */ = {
+		A85E672911CB173A00D0FAEF /* AlephOne:SDG */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOneHD" */;
+			buildConfigurationList = A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOne:SDG" */;
 			buildPhases = (
 				A85E672E11CB173A00D0FAEF /* Resources */,
 				A85E673111CB173A00D0FAEF /* Sources */,
@@ -3067,9 +3067,9 @@
 				A85E672A11CB173A00D0FAEF /* PBXTargetDependency */,
 				A85E672C11CB173A00D0FAEF /* PBXTargetDependency */,
 			);
-			name = AlephOneHD;
+			name = "AlephOne:SDG";
 			productName = AlephOne;
-			productReference = A85E686011CB173A00D0FAEF /* AlephOne:SDG.app */;
+			productReference = A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3102,7 +3102,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* AlephOne */,
 				A850866411C1D4B800D95436 /* LandscapeTest */,
-				A85E672911CB173A00D0FAEF /* AlephOneHD */,
+				A85E672911CB173A00D0FAEF /* AlephOne:SDG */,
 			);
 		};
 /* End PBXProject section */
@@ -3157,34 +3157,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
-				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
-				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
-				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
-				A8562B4211DAE0010071DFEF /* Pause.png in Resources */,
-				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
-				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
-				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
-				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
-				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
-				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
+				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
+				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
+				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
 				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
-				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
-				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
+				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
+				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
+				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
+				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
-				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
-				A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */,
+				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
 				A8EB779B126697420043F0D4 /* movementbox.png in Resources */,
-				A8EB779C126697420043F0D4 /* pause-btn.png in Resources */,
+				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8EB779D126697420043F0D4 /* overheadmap.png in Resources */,
-				A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */,
-				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
 				A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */,
-				A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */,
+				A8EB779C126697420043F0D4 /* pause-btn.png in Resources */,
+				A8562B4211DAE0010071DFEF /* Pause.png in Resources */,
 				A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */,
+				A8562B5A11DAE3A50071DFEF /* Pistol.png in Resources */,
+				A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */,
+				A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */,
+				A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */,
+				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
+				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
+				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
+				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3925,7 +3925,7 @@
 				A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */,
 				A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */,
 				A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */,
-				A8EB78561266A8510043F0D4 /* ProgressViewController.mm in Sources */,
+				A89315841267FFD2006DA87E /* PauseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4107,7 +4107,7 @@
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "";
-				PRODUCT_NAME = "AlephOne:SDG";
+				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
@@ -4141,7 +4141,7 @@
 				);
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PRODUCT_NAME = "AlephOne:SDG";
+				PRODUCT_NAME = "AlephOne-SDG";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -4265,7 +4265,7 @@
 				);
 				INFOPLIST_FILE = "AlephOne-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PRODUCT_NAME = "AlephOne:SDG";
+				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos4.2;
@@ -4350,7 +4350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOneHD" */ = {
+		A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOne:SDG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A85E685E11CB173A00D0FAEF /* Debug */,

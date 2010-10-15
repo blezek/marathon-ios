@@ -83,28 +83,24 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.isDownloaded = NO;
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
-  } else {
-    self.scenario = [list objectAtIndex:0];
-  }
 #if TARGET_IPHONE_SIMULATOR
-  self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
+    self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
 #else
-  self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
-  self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
+    self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
+    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
 #endif
-  [self.scenario.managedObjectContext save:nil];
+    [self.scenario.managedObjectContext save:nil];
+    self.scenario = nil;
+  } 
 
   // [window addSubview:newGameViewController.view];
   [window makeKeyAndVisible];
 
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
-  if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
-    [window addSubview:self.downloadViewController.view];
-    [self.downloadViewController downloadOrchooseGame];
-  } else {
-    [self startAlephOne];
-  }
+  
+  [window addSubview:self.downloadViewController.view];
+  [self.downloadViewController downloadOrchooseGame];
   return YES;
 }
 

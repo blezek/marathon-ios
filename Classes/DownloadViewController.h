@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 #import "PDColoredProgressView.h"
 
+
 @interface DownloadViewController : UIViewController {
   PDColoredProgressView *progressView;
   NSString *downloadPath;
@@ -21,4 +22,8 @@
 - (void)downloadOrchooseGame;
 - (bool)isDownloadOrChooseGameNeeded;
 - (void)downloadFailed:(ASIHTTPRequest*)request;
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)startGame;
+- (bool)isScenarioDownloaded;
+- (void)downloadAndStart;
 @end
