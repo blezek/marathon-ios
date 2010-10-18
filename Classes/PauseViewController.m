@@ -22,6 +22,23 @@
 }
 
 
+- (IBAction)shieldCheat:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game shieldCheat:sender];
+}
+- (IBAction)invincibilityCheat:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game invincibilityCheat:sender];
+}
+- (IBAction)ammoCheat:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game ammoCheat:sender];
+}
+- (IBAction)saveCheat:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game saveCheat:sender];
+}
+- (IBAction)weaponsCheat:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game weaponsCheat:sender];
+}
+
+
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

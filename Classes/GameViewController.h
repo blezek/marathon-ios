@@ -93,6 +93,7 @@ typedef enum {
   // isn't available.
   id displayLink;
   bool animating;
+  bool inMainLoop;
   NSTimer *animationTimer;  
 }
 
@@ -113,6 +114,13 @@ typedef enum {
 - (IBAction) gotoMenu:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
 - (IBAction) closePreferences:(id)sender;
+
+// Cheats
+- (IBAction)shieldCheat:(id)sender;
+- (IBAction)invincibilityCheat:(id)sender;
+- (IBAction)ammoCheat:(id)sender;
+- (IBAction)saveCheat:(id)sender;
+- (IBAction)weaponsCheat:(id)sender;
 
 - (IBAction)chooseSaveGame;
 - (IBAction)gameChosen:(SavedGame*)game;

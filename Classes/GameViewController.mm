@@ -165,6 +165,7 @@ extern  int
   SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
   SDL_GetRelativeMouseState(NULL, NULL);
   startingNewGameSoSave = YES;
+  
 }
 
 - (IBAction)cancelNewGame {
@@ -216,9 +217,10 @@ extern  int
     [self saveGame];
   }
   
-  // If we are in the simulator, make us invincible
+  // If we are in the simulator, give us some cheats
 #if TARGET_IPHONE_SIMULATOR
-  process_player_powerup(local_player_index, _i_invincibility_powerup);
+  [self weaponsCheat:self];
+  [self ammoCheat:self];
 #endif
 }
 
@@ -399,53 +401,10 @@ extern SDL_Surface *draw_surface;
 #pragma mark Game controls
 
 - (IBAction)pause:(id)from {
-  
-  
   // Level name is
   // static_world->level_name
-  
-  // If we are in the simulator, save the game
-  save_game();
-  process_player_powerup(local_player_index, _i_invincibility_powerup);
-  local_player->suit_energy= MAX(local_player->suit_energy,
-                                 3*PLAYER_MAXIMUM_SUIT_ENERGY);
-  mark_shield_display_as_dirty();
-  short items[]=
-  { _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
-    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun,
-    _i_assault_rifle_magazine, _i_assault_grenade_magazine,
-    _i_magnum_magazine, _i_missile_launcher_magazine,
-    _i_flamethrower_canister,
-    _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun,
-    _i_smg, _i_smg_ammo};
-  
-  for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
-  {
-    switch(get_item_kind(items[index]))
-    {
-      case _weapon:
-        if(items[index]==_i_shotgun || items[index]==_i_magnum) {
-          AddOneItemToPlayer(items[index],2);
-        }
-        else {
-          AddItemsToPlayer(items[index],1);
-        }
-        break;
-        
-      case _ammunition:
-        AddItemsToPlayer(items[index],10);
-        break;
-        
-      case _powerup:
-      case _weapon_powerup:
-        break;
-        
-      default:
-        break;
-    }
-    process_new_item_for_reloading(local_player_index, items[index]);
-  }
-  
+  MLog (@"Camera Polygon Index: %d", local_player->camera_polygon_index );
+  MLog (@"Supporting Polygon Index: %d", local_player->supporting_polygon_index );
   // Normally would just darken the screen, here we may want to popup a list of things to do.
   if ( isPaused ) {
     self.pauseView.hidden = YES;
@@ -461,6 +420,72 @@ extern SDL_Surface *draw_surface;
   }
   isPaused = !isPaused;
 }
+
+#pragma mark -
+#pragma mark Cheats
+
+- (IBAction)shieldCheat:(id)sender {
+  local_player->suit_energy= MAX(local_player->suit_energy,
+                                 3*PLAYER_MAXIMUM_SUIT_ENERGY);
+  mark_shield_display_as_dirty();  
+}
+
+- (IBAction)invincibilityCheat:(id)sender {
+  process_player_powerup(local_player_index, _i_invincibility_powerup);
+}
+
+- (IBAction)saveCheat:(id)sender {
+  save_game();
+}
+
+- (IBAction)ammoCheat:(id)sender {
+  short items[]=
+  { _i_assault_rifle_magazine, _i_assault_grenade_magazine,
+    _i_magnum_magazine, _i_missile_launcher_magazine,
+    _i_flamethrower_canister,
+    _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun,
+    _i_smg_ammo};
+  
+  for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
+  {
+    switch(get_item_kind(items[index]))
+    {
+      case _ammunition:
+        AddItemsToPlayer(items[index],10);
+        break;        
+      default:
+        break;
+    }
+    process_new_item_for_reloading(local_player_index, items[index]);
+  }
+  
+}
+- (IBAction)weaponsCheat:(id)sender {
+  short items[]=
+  { _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
+    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun,
+    _i_smg };
+  
+  for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
+  {
+    switch(get_item_kind(items[index]))
+    {
+      case _weapon:
+        if(items[index]==_i_shotgun || items[index]==_i_magnum) {
+          AddOneItemToPlayer(items[index],2);
+        }
+        else {
+          AddItemsToPlayer(items[index],1);
+        }
+        break;
+      default:
+        break;
+    }
+    process_new_item_for_reloading(local_player_index, items[index]);
+  }
+  
+}
+
 
 #pragma mark -
 #pragma mark Animation Methods
@@ -486,6 +511,7 @@ extern SDL_Surface *draw_surface;
     } else {
       animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
     }
+    inMainLoop = NO;
     animating = YES;
   }
 }
@@ -493,6 +519,7 @@ extern SDL_Surface *draw_surface;
 {
   if (animating)
   {
+    inMainLoop = NO;
     if (displayLinkSupported)
     {
       [displayLink invalidate];
@@ -509,7 +536,11 @@ extern SDL_Surface *draw_surface;
 }
 
 - (void)runMainLoopOnce:(id)sender {
-  AlephOneMainLoop();
+  if ( !inMainLoop ) {
+    inMainLoop = YES;
+    AlephOneMainLoop();
+    inMainLoop = NO;
+  }
 }
 
 #pragma mark -

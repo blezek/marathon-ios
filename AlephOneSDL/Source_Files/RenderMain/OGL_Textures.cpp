@@ -407,6 +407,8 @@ void OGL_StopTextures()
     for (int ic=0; ic<MAXIMUM_COLLECTIONS; ic++)
       if (TextureStateSets[it][ic]) {
         delete [] TextureStateSets[it][ic];
+        // DJB OpenGL
+        TextureStateSets[it][ic] = NULL;
       }
 
   // clear blitters and fonts
