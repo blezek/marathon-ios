@@ -33,6 +33,7 @@ extern "C" {
 #include "tags.h"
 
 @implementation MovePadView
+@synthesize knobView;
 
 - (void)setup {
   // Kill a warning
@@ -41,6 +42,7 @@ extern "C" {
   // Initialization code
   moveCenterPoint = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0 );
   moveRadius = ( moveCenterPoint.x + moveCenterPoint.y ) / 2.0;
+  moveRadius2 = moveRadius * moveRadius;
   runRadius = moveRadius / 2.0;
   deadSpaceRadius = moveRadius / 5.0;
   key_definition *key = current_key_definitions;
@@ -71,6 +73,21 @@ extern "C" {
   float dx, dy;
   dx = currentPoint.x - moveCenterPoint.x;
   dy = currentPoint.y - moveCenterPoint.y;
+  
+  // Move the knob...
+  float distance2 = dx * dx + dy * dy;
+  if ( distance2 > moveRadius2 ) {
+    // Limit to the radius
+    float tx, ty;
+    float length = 1.0 / sqrt ( distance2 );
+    tx = dx * length;
+    ty = dy * length;
+    tx = moveCenterPoint.x + tx * moveRadius;
+    ty = moveCenterPoint.y + ty * moveRadius;
+    self.knobView.center = CGPointMake(tx, ty);
+  } else {
+    self.knobView.center = currentPoint;
+  }
   // NSLog ( @"Move delta: %f, %f", dx, dy );
   // Do we move left or right?
   
@@ -78,7 +95,8 @@ extern "C" {
   float fdy = fabs ( dy );
   // Are we running?
   if ( fdx > runRadius || fdy > runRadius ) {
-    // key_map[runKey] = 1;
+    key_map[runKey] = 1;
+    MLog ( @"Running!" );
   } else {
     key_map[runKey] = 0;
   }
@@ -132,6 +150,12 @@ extern "C" {
   key_map[forwardKey] = 0;
   key_map[backwardKey] = 0;
   key_map[runKey] = 0;
+  // Animate the knob returning to home...
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+  [UIView setAnimationDuration:0.2];
+  self.knobView.center = moveCenterPoint;
+  [UIView commitAnimations];
   return;
   
 }

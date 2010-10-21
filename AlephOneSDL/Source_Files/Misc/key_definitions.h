@@ -106,7 +106,8 @@ static struct key_definition standard_key_definitions[]=
 
   /* shift, control and command modifiers */
   {SDLK_LSHIFT, _sidestep_dont_turn},
-  {SDLK_LCTRL, _run_dont_walk},
+  // DJB Use different key for run...
+  {SDLK_v, _run_dont_walk},
   {SDLK_LCTRL, _look_dont_turn},
 
   /* tab for action */

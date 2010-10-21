@@ -479,6 +479,8 @@
 		A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
+		A87785561270767C009F18D8 /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
+		A87785571270767C009F18D8 /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
 		A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
@@ -800,7 +802,6 @@
 		A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
-		A8EB779B126697420043F0D4 /* movementbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7795126697420043F0D4 /* movementbox.png */; };
 		A8EB779C126697420043F0D4 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
 		A8EB779D126697420043F0D4 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
 		A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
@@ -1059,6 +1060,8 @@
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
 		A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A85E68CC11CB1B1C00D0FAEF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		A87785541270767C009F18D8 /* movementboxBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxBase.png; path = Artwork/movementboxBase.png; sourceTree = "<group>"; };
+		A87785551270767C009F18D8 /* movementboxKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxKnob.png; path = Artwork/movementboxKnob.png; sourceTree = "<group>"; };
 		A87FF02E12452C7E0033A3EB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -1631,7 +1634,6 @@
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
 		A8EB2893125D768900B7EF4A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Artwork/Default-Portrait.png"; sourceTree = "<group>"; };
-		A8EB7795126697420043F0D4 /* movementbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementbox.png; path = Artwork/movementbox.png; sourceTree = "<group>"; };
 		A8EB7796126697420043F0D4 /* pause-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-btn.png"; path = "Artwork/pause-btn.png"; sourceTree = "<group>"; };
 		A8EB7797126697420043F0D4 /* overheadmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overheadmap.png; path = Artwork/overheadmap.png; sourceTree = "<group>"; };
 		A8EB7798126697420043F0D4 /* primarytrigger-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "primarytrigger-btn.png"; path = "Artwork/primarytrigger-btn.png"; sourceTree = "<group>"; };
@@ -2063,7 +2065,8 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
-				A8EB7795126697420043F0D4 /* movementbox.png */,
+				A87785541270767C009F18D8 /* movementboxBase.png */,
+				A87785551270767C009F18D8 /* movementboxKnob.png */,
 				A8EB7796126697420043F0D4 /* pause-btn.png */,
 				A8EB7797126697420043F0D4 /* overheadmap.png */,
 				A8EB7798126697420043F0D4 /* primarytrigger-btn.png */,
@@ -3173,7 +3176,6 @@
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
 				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
-				A8EB779B126697420043F0D4 /* movementbox.png in Resources */,
 				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8EB779D126697420043F0D4 /* overheadmap.png in Resources */,
 				A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */,
@@ -3188,6 +3190,8 @@
 				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
+				A87785561270767C009F18D8 /* movementboxBase.png in Resources */,
+				A87785571270767C009F18D8 /* movementboxKnob.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

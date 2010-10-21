@@ -14,6 +14,7 @@
 @interface MovePadView : UIView {
   CGPoint moveCenterPoint;
   CGFloat moveRadius;
+  CGFloat moveRadius2;
   CGFloat deadSpaceRadius;
   CGFloat runRadius;
   SDLKey forwardKey;
@@ -21,8 +22,10 @@
   SDLKey leftKey;
   SDLKey rightKey;
   SDLKey runKey;
-  
+  UIImageView *knobView;
 }
+
+@property (nonatomic, retain) IBOutlet UIImageView *knobView;
 - (void)setup;
 
 @end

@@ -425,8 +425,8 @@ extern SDL_Surface *draw_surface;
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
-  local_player->suit_energy= MAX(local_player->suit_energy,
-                                 3*PLAYER_MAXIMUM_SUIT_ENERGY);
+  local_player->suit_energy= MAX(local_player->suit_energy, 3*PLAYER_MAXIMUM_SUIT_ENERGY);
+  local_player->suit_oxygen = MAX ( local_player->suit_oxygen, PLAYER_MAXIMUM_SUIT_OXYGEN );
   mark_shield_display_as_dirty();  
 }
 
@@ -435,6 +435,13 @@ extern SDL_Surface *draw_surface;
 }
 
 - (IBAction)saveCheat:(id)sender {
+  MLog ( @"Damage given %d (%d kills) Damage taken %d (%d kills)",
+        local_player->monster_damage_given.damage,
+        local_player->monster_damage_given.kills,
+        local_player->monster_damage_taken.damage,
+        local_player->monster_damage_taken.kills
+        );
+  MLog ( @"Ticks at last save: %d", local_player->ticks_at_last_successful_save );
   save_game();
 }
 

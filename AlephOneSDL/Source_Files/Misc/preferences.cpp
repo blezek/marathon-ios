@@ -2329,7 +2329,7 @@ void read_preferences ()
   graphics_preferences->screen_mode.height = 768;
   printf ( "Resetting screen mode to %d x %d\n",
            graphics_preferences->screen_mode.width,
-           graphics_preferences->screen_mode.height );
+          graphics_preferences->screen_mode.height );
   graphics_preferences->screen_mode.fill_the_screen = false;
   graphics_preferences->screen_mode.fullscreen = true;
   graphics_preferences->screen_mode.hud = true;
