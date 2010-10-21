@@ -1327,80 +1327,133 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
     }
   }
-  printf ( "FarFliter is %d, GL_NEAREST: %d\n", TxtrTypeInfo.FarFilter, GL_NEAREST );
+  // DJB printf ( "FarFliter is %d, GL_NEAREST: %d\n", TxtrTypeInfo.FarFilter, GL_NEAREST );
   if (Image->GetFormat() == ImageDescriptor::RGBA8) {
     switch (TxtrTypeInfo.FarFilter)
     {
-    case GL_NEAREST:
-    case GL_LINEAR:
-      glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
-                   Image->GetWidth(),
-                   Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
-                   Image->GetBuffer());
+      case GL_NEAREST:
+      case GL_LINEAR:
+        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                     Image->GetWidth(),
+                     Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                     Image->GetBuffer());
         printGLError(__PRETTY_FUNCTION__);
-      break;
-    case GL_NEAREST_MIPMAP_NEAREST:
-    case GL_LINEAR_MIPMAP_NEAREST:
-    case GL_NEAREST_MIPMAP_LINEAR:
-    case GL_LINEAR_MIPMAP_LINEAR:
-      if (Image->GetMipMapCount() > 1) {
+        break;
+      case GL_NEAREST_MIPMAP_NEAREST:
+      case GL_LINEAR_MIPMAP_NEAREST:
+      case GL_NEAREST_MIPMAP_LINEAR:
+      case GL_LINEAR_MIPMAP_LINEAR:
+        if (Image->GetMipMapCount() > 1) {
 #ifdef GL_SGIS_generate_mipmap
-        if (useSGISMipmaps) {
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
-        }
+          if (useSGISMipmaps) {
+            glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
+          }
 #endif
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
-        printGLError(__PRETTY_FUNCTION__);
-        int i = 0;
-        for (i = 0; i < Image->GetMipMapCount(); i++) {
-          glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
-                       max(1, Image->GetWidth() >> i), max(1,
-                                                           Image->GetHeight()
-                                                           >> i), 0, GL_RGBA,
-                       GL_UNSIGNED_BYTE,
-                       Image->GetMipMapPtr(i));
+          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
           printGLError(__PRETTY_FUNCTION__);
+          int i = 0;
+          for (i = 0; i < Image->GetMipMapCount(); i++) {
+            glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
+                         max(1, Image->GetWidth() >> i), max(1,
+                                                             Image->GetHeight()
+                                                             >> i), 0, GL_RGBA,
+                         GL_UNSIGNED_BYTE,
+                         Image->GetMipMapPtr(i));
+            printGLError(__PRETTY_FUNCTION__);
+          }
+          mipmapsLoaded = true;
         }
-        mipmapsLoaded = true;
-      }
-      else {
+        else {
 #ifdef GL_SGIS_generate_mipmap
-        if (useSGISMipmaps) {
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-          glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
-                       Image->GetWidth(),
-                       Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
-                       Image->GetBuffer());
-        }
-        else
+          if (useSGISMipmaps) {
+            glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+            glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                         Image->GetWidth(),
+                         Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                         Image->GetBuffer());
+          }
+          else
 #endif
-        {
-          // DJB OpenGL gluBuild2DMipmaps
-          printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
-          /*
-          gluBuild2DMipmaps(GL_TEXTURE_2D, internalFormat,
-                            Image->GetWidth(),
-                            Image->GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE,
-                            Image->GetBuffer());
-           */
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-          printGLError(__PRETTY_FUNCTION__);
-          // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
-          assert ( internalFormat == GL_RGBA );
-          glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
-                       Image->GetWidth(),
-                       Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
-                       Image->GetBuffer());
-          printGLError(__PRETTY_FUNCTION__);
+          {
+            // DJB OpenGL gluBuild2DMipmaps
+            printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
+            /*
+             gluBuild2DMipmaps(GL_TEXTURE_2D, internalFormat,
+             Image->GetWidth(),
+             Image->GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE,
+             Image->GetBuffer());
+             */
+            glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+            printGLError(__PRETTY_FUNCTION__);
+            // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
+            assert ( internalFormat == GL_RGBA );
+            glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                         Image->GetWidth(),
+                         Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                         Image->GetBuffer());
+            printGLError(__PRETTY_FUNCTION__);
+          }
+          mipmapsLoaded = true;
         }
-        mipmapsLoaded = true;
-      }
-      break;
-    default:
-      assert(false);
+        break;
+      default:
+        assert(false);
     }
   }
-  else if (Image->GetFormat() == ImageDescriptor::DXTC1 ||
+  else   if (Image->GetFormat() == ImageDescriptor::PVRTC4) {
+    switch (TxtrTypeInfo.FarFilter)
+    {
+      case GL_NEAREST:
+      case GL_LINEAR:
+        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+                     Image->GetWidth(),
+                     Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                     Image->GetBuffer());
+        printGLError(__PRETTY_FUNCTION__);
+        break;
+      case GL_NEAREST_MIPMAP_NEAREST:
+      case GL_LINEAR_MIPMAP_NEAREST:
+      case GL_NEAREST_MIPMAP_LINEAR:
+      case GL_LINEAR_MIPMAP_LINEAR:
+        if (Image->GetMipMapCount() > 1) {
+          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+          printGLError(__PRETTY_FUNCTION__);
+          int i = 0;
+          for (i = 0; i < Image->GetMipMapCount(); i++) {
+            glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
+                         max(1, Image->GetWidth() >> i), max(1,
+                                                             Image->GetHeight()
+                                                             >> i), 0, GL_RGBA,
+                         GL_UNSIGNED_BYTE,
+                         Image->GetMipMapPtr(i));
+            printGLError(__PRETTY_FUNCTION__);
+          }
+          mipmapsLoaded = true;
+        }
+        else {
+          {
+            // DJB OpenGL gluBuild2DMipmaps
+            glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+            printGLError(__PRETTY_FUNCTION__);
+            // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
+            assert ( internalFormat == GL_RGBA );
+            glCompressedTexImage2D(GL_TEXTURE_2D,
+                                   0, GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,
+                                   Image->GetWidth(),
+                                   Image->GetHeight(),
+                                   0,
+                                   Image->ContentLength,
+                                   Image->GetBuffer() );
+            printGLError(__PRETTY_FUNCTION__);
+          }
+          mipmapsLoaded = true;
+        }
+        break;
+      default:
+        assert(false);
+    }
+  }  
+    else if (Image->GetFormat() == ImageDescriptor::DXTC1 ||
            Image->GetFormat() == ImageDescriptor::DXTC3 ||
            Image->GetFormat() == ImageDescriptor::DXTC5) {
 #if defined(GL_ARB_texture_compression) && \
@@ -1468,7 +1521,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         }
 #endif
         // DJB OpenGL generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
         mipmapsLoaded = true;
         glCompressedTexImage2DARB(GL_TEXTURE_2D, 0, internalFormat,
                                   Image->GetWidth(),

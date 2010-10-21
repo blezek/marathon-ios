@@ -764,6 +764,7 @@
 		A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
 		A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
 		A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
+		A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
@@ -1586,6 +1587,7 @@
 		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
 		A8B413931235DE3D000D59A4 /* SavedGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SavedGameCell.xib; path = Resources/SavedGameCell.xib; sourceTree = "<group>"; };
 		A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGameLarge.png; path = Artwork/ChooseSaveGameLarge.png; sourceTree = "<group>"; };
+		A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageLoader_iOS.cpp; path = Classes/ImageLoader_iOS.cpp; sourceTree = "<group>"; };
 		A8C29BA41224B69600E79491 /* ManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjects.h; path = Classes/ManagedObjects.h; sourceTree = "<group>"; };
 		A8C29BA51224B69600E79491 /* ManagedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjects.m; path = Classes/ManagedObjects.m; sourceTree = "<group>"; };
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
@@ -1969,6 +1971,7 @@
 				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
 				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
 				A8EB78541266A8510043F0D4 /* PauseViewController.m */,
+				A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3926,6 +3929,7 @@
 				A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */,
 				A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */,
 				A89315841267FFD2006DA87E /* PauseViewController.m in Sources */,
+				A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

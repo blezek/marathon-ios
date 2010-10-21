@@ -47,9 +47,12 @@ class ImageDescriptor
   uint32 *Pixels;
   int Size;
 
+
   int MipMapCount;
 
 public:
+  // DJB OpenGL support for Compressed textures
+  int ContentLength;
 
   bool IsPresent() const {
     return (Pixels != NULL);
@@ -145,6 +148,8 @@ public:
     DXTC1,
     DXTC3,
     DXTC5,
+    PVRTC2,
+    PVRTC4,
     Unknown
   };
 
@@ -163,7 +168,7 @@ private:
                           int skip);
   bool SkipMipMapFromFile(OpenedFile &File, int flags, int level,
                           DDSURFACEDESC2 &ddsd);
-
+  bool LoadPVTCFromFile ( FileSpecifier& File );
   ImageFormat Format;
 };
 
