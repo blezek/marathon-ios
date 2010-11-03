@@ -202,7 +202,7 @@ void AlephOneMainLoop()
   }
 #endif
   if ( cur_time - lastTimeThroughLoop > 1000 ) {
-    printf( "This time took %d ticks\n", SDL_GetTicks() - cur_time );
+    // printf( "This time took %d ticks\n", SDL_GetTicks() - cur_time );
     lastTimeThroughLoop = cur_time;
   }
 }

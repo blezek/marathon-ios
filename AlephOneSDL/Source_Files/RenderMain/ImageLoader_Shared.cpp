@@ -95,6 +95,8 @@ const uint32 *ImageDescriptor::GetMipMapPtr(int Level) const
 
 uint32 *ImageDescriptor::GetMipMapPtr(int Level)
 {
+  // DJB OpenGL
+  assert ( Format != PVRTC4 );
   int totalSize = 0;
   for (int i = 0; i < Level; i++) {
     totalSize += GetMipMapSize(i);
@@ -128,6 +130,8 @@ void ImageDescriptor::Resize(int _Width, int _Height, int _TotalBytes)
 
 bool ImageDescriptor::Minify()
 {
+  // DJB OpenGL
+  assert ( Format != PVRTC4 );
   if (MipMapCount > 1) {
     int newSize = Size - GetMipMapSize(0);
 
@@ -655,6 +659,8 @@ static bool DecompressDXTC5(uint32 *out, int width, int height, uint32 *in);
 
 bool ImageDescriptor::MakeRGBA()
 {
+  // DJB OpenGL
+  assert ( Format != PVRTC4 );
   ImageDescriptor RGBADesc;
   RGBADesc.Width = Width;
   RGBADesc.Height = Height;
@@ -709,6 +715,8 @@ bool ImageDescriptor::MakeRGBA()
 
 void ImageDescriptor::PremultiplyAlpha()
 {
+  // DJB OpenGL
+  assert ( Format != PVRTC4 );
   if (PremultipliedAlpha) {
     return;
   }

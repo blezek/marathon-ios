@@ -2342,7 +2342,16 @@ void read_preferences ()
   graphics_preferences->screen_mode.gamma_level= 7;
 
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
-  input_preferences->mouse_acceleration = 0;
+  input_preferences->mouse_acceleration = false;
+  sound_preferences->music = 7;
+  
+  
+  // Print out some things...
+  printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
+  printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
+  printf ( "Sound channels: %hd\n", sound_preferences->channel_count );
+  printf ( "Music Volume: %hd\n", sound_preferences->music );
+  
   
   // Setup the Lua Hud
   environment_preferences->use_hud_lua = false;

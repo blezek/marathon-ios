@@ -67,6 +67,10 @@ void helperSaveGame () {
   [[GameViewController sharedInstance] saveGame];
 }
 
+void helperDoPreferences() {
+  [[GameViewController sharedInstance] gotoPreferences:nil];
+}
+
 // Should we start a new game?
 bool helperNewGame () {
   if ( [GameViewController sharedInstance].haveNewGamePreferencesBeenSet ) {

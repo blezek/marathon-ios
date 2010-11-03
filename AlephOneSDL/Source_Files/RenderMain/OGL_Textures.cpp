@@ -1376,7 +1376,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
           {
             // DJB OpenGL gluBuild2DMipmaps
-            printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
+            // printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
             /*
              gluBuild2DMipmaps(GL_TEXTURE_2D, internalFormat,
              Image->GetWidth(),
@@ -1416,33 +1416,46 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
       case GL_NEAREST_MIPMAP_LINEAR:
       case GL_LINEAR_MIPMAP_LINEAR:
         if (Image->GetMipMapCount() > 1) {
+          /*
+          for (int level = 0; width > 0 && height > 0; ++level) {
+            GLsizei size = std::max(32, width * height * bitsPerPixel / 8);
+            glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, 
+                                   height, 0, size, data);
+            data += size;
+            width >>= 1; height >>= 1;
+          }
+          */
+          
+          
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
           printGLError(__PRETTY_FUNCTION__);
           int i = 0;
           for (i = 0; i < Image->GetMipMapCount(); i++) {
             glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
-                         max(1, Image->GetWidth() >> i), max(1,
-                                                             Image->GetHeight()
-                                                             >> i), 0, GL_RGBA,
-                         GL_UNSIGNED_BYTE,
-                         Image->GetMipMapPtr(i));
+                                    max(1, Image->GetWidth() >> i), 
+                                    max(1, Image->GetHeight() >> i),
+                                    0,
+                                    GL_RGBA,
+                                    GL_UNSIGNED_BYTE,
+                                    Image->GetMipMapPtr(i));
             printGLError(__PRETTY_FUNCTION__);
           }
           mipmapsLoaded = true;
         }
         else {
           {
-            // DJB OpenGL gluBuild2DMipmaps
+            // DJB OpenGL gluBuild2DMipmaps, but don't build for compressed textures
             glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
             printGLError(__PRETTY_FUNCTION__);
             // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
             assert ( internalFormat == GL_RGBA );
-            
+            /*
             printf ( "Ready to load compressed texture\n" );
             for ( int i = 0; i < 16; i++ ) {
               uint8_t *tmp = (uint8_t*) Image->GetBuffer();
               printf ( "pixels[%d] = %d, (0x%x)\n", i, tmp[i], tmp[i] );
             }
+            */
             
             glCompressedTexImage2D(GL_TEXTURE_2D,
                                    0, GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,
@@ -1906,7 +1919,7 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 #endif
         {
           // DJB OpenGL No gluBuild2DMipmaps
-          printf ( "********************** no gluBuild2DMipmaps available *******************\n" );
+          // printf ( "********************** no gluBuild2DMipmaps available *******************\n" );
           /*
           gluBuild2DMipmaps(GL_TEXTURE_2D, TxtrTypeInfo.ColorFormat,
                             LoadedWidth, LoadedHeight,

@@ -1461,10 +1461,14 @@ void do_menu_item_command(
       break;
 
     case iPreferences:
+        // DJB Handle preferences
+        helperDoPreferences();
+        /*
       do_preferences();
       game_state.phase= TICKS_UNTIL_DEMO_STARTS;
       game_state.last_ticks_on_idle= machine_tick_count();
       ForceRepaintMenuDisplay();
+         */
       break;
 
     case iCenterButton:

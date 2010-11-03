@@ -24,6 +24,7 @@ extern void helperBringUpHUD();
 extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHandleLoadGame();
+extern void helperDoPreferences();
 extern void printGLError ( const char* message );
 extern void pumpEvents();
 extern void startProgress ( int t );

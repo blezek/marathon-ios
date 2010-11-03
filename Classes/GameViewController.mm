@@ -217,11 +217,6 @@ extern  int
     [self saveGame];
   }
   
-  // If we are in the simulator, give us some cheats
-#if TARGET_IPHONE_SIMULATOR
-  [self weaponsCheat:self];
-  [self ammoCheat:self];
-#endif
 }
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
@@ -248,6 +243,8 @@ extern  int
 }
 - (IBAction) gotoPreferences:(id)sender {
   self.preferencesView.hidden = NO;
+  UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Test a really long message\nacross two lines even" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Rate it", @"Don't ask me again", nil];
+  [sheet showInView:self.preferencesView];
 }
 - (IBAction) closePreferences:(id)sender {
   self.preferencesView.hidden = YES;
@@ -507,7 +504,7 @@ extern SDL_Surface *draw_surface;
       displayLinkSupported = TRUE;
     }
     
-    NSInteger animationFrameInterval = 2;  
+    NSInteger animationFrameInterval = 1;  
     if (displayLinkSupported) {
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
       // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will

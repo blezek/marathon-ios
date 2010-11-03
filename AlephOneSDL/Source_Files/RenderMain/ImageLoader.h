@@ -98,6 +98,7 @@ public:
 
 // Pixel accessors
   uint32& GetPixel(int Horiz, int Vert) {
+    assert ( Format != PVRTC4 );
     return Pixels[Width*(Vert%Height) + (Horiz%Width)];
   }
   uint32 *GetPixelBasePtr() {

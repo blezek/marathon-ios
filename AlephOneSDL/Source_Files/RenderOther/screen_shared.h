@@ -517,7 +517,7 @@ static void update_fps_display(SDL_Surface *s)
     }
     
     // DJB Printf every second or so
-    if ( (ticks - lastdisplay) > 1000 ) {
+    if ( (ticks - lastdisplay) > 30000 ) {
       printf( "%s @ %d ticks per second \n", fps, MACHINE_TICKS_PER_SECOND );
       lastdisplay = ticks;
     }
