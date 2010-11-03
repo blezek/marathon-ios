@@ -1,0 +1,24 @@
+# Find all the jpegs in the args directory
+set files [split [exec find . -path "*Textures*" -type f -name "*.jpg"] "\n"]
+
+set Converted ""
+foreach f $files {
+  if { [catch [list exec texturetool -e PVRTC -f PVR --channel-weighting-linear --bits-per-pixel-4 -o [file root $f].pvrtc $f] ] } {
+    puts "failed $f"
+  } else {
+    puts $f
+    lappend Converted $f
+  }
+}
+
+foreach f $Converted {
+  set t [file tail $f]
+  exec perl -pe 's/$t/[file root $t].pvrtc/g' "Scripts/textures M1A1.mml"
+}
+  
+
+set Converted [split [exec find . -path "*Textures*" -type f -name "*.pvrtc"] "\n"]
+foreach f $Converted {
+  set t [file root [file tail $f]]
+  puts "perl -i -pe s/$t.jpg/$t.pvrtc/g Scripts/texturesM1A1.mml"
+}
