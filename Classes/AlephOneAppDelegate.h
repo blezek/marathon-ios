@@ -21,6 +21,7 @@
   GameViewController *game;
   DownloadViewController *downloadViewController;
   bool finishedStartup;
+  int OpenGLESVersion;
     
 @private
     NSManagedObjectContext *managedObjectContext_;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) Scenario *scenario;
+@property (nonatomic) int OpenGLESVersion;
 
 - (NSString *)applicationDocumentsDirectory;
 +(AlephOneAppDelegate *)sharedAppDelegate;

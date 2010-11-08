@@ -391,6 +391,8 @@ bool ImageDescriptor::LoadDDSFromFile(FileSpecifier& File, int flags,
   if (!dds_file.Read(124, header)) {
     return false;
   }
+  
+  printf ( "Loading DDS file: %s\n", File.GetPath() );
 
   DDSURFACEDESC2 ddsd;
 

@@ -101,22 +101,24 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
     ContentLength = dataLength;
     uint8_t *bytes = ((uint8_t *)contents) + sizeof(PVRTexHeader);
 
+    /*
     for ( int i = 0; i < 16; i++ ) {
       printf ( "bytes[%d] = %d, (0x%x)\n", i, contents[i], contents[i] );
     }
+     */
 
     // How many 4-byte ints do we need (padded by 2)?
     int numberOfPixels = ( dataLength / 4 ) + 2;
     Pixels = new uint32[numberOfPixels];
     memcpy ( Pixels, bytes, dataLength );
-
+    /*
     for ( int i = 0; i < 16; i++ ) {
       uint8_t *tmp = (uint8_t*) Pixels;
       printf ( "pixels[%d] = %d, (0x%x)\n", i, tmp[i], tmp[i] );
     }
+    */
 
-
-    MipMapCount = 1;
+    MipMapCount = CFSwapInt32LittleToHost ( header->numMipmaps );
     delete[] contents;
     return true;
   }

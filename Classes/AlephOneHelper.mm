@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "AlephOneHelper.h"
 #include "interface.h"
+#import "AlephOneAppDelegate.h"
 
 NSString *dataDir;
 
@@ -69,6 +70,10 @@ void helperSaveGame () {
 
 void helperDoPreferences() {
   [[GameViewController sharedInstance] gotoPreferences:nil];
+}
+
+int getOpenGLESVersion() {
+  return [AlephOneAppDelegate sharedAppDelegate].OpenGLESVersion;
 }
 
 // Should we start a new game?

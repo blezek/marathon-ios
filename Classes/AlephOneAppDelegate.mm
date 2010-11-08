@@ -23,7 +23,7 @@ extern "C" {
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game, downloadViewController;
+@synthesize window, scenario, game, downloadViewController, OpenGLESVersion;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -62,6 +62,7 @@ extern int SDL_main(int argc, char *argv[]);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	finishedStartup = NO;
+  OpenGLESVersion = 1;
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
 	/* Set working directory to resource path */

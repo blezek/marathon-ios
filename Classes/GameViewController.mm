@@ -429,6 +429,7 @@ extern SDL_Surface *draw_surface;
 
 - (IBAction)invincibilityCheat:(id)sender {
   process_player_powerup(local_player_index, _i_invincibility_powerup);
+  process_player_powerup(local_player_index, _i_infravision_powerup );
 }
 
 - (IBAction)saveCheat:(id)sender {

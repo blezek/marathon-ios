@@ -1924,8 +1924,19 @@ void load_collections(
   for (collection_index= 0, header= collection_headers;
        collection_index<MAXIMUM_COLLECTIONS; ++collection_index, ++header)
   {
-//		if (with_progress_bar)
-//			draw_progress_bar(collection_index, 2*MAXIMUM_COLLECTIONS);
+    //		if (with_progress_bar)
+    //			draw_progress_bar(collection_index, 2*MAXIMUM_COLLECTIONS);
+    // DJB OpenGL Debugging collections.  Always unload...
+    if (collection_loaded(header)) {
+      unload_collection(header);
+    }
+#ifdef HAVE_OPENGL
+    OGL_UnloadModelsImages(collection_index);
+#endif
+    SW_Texture_Extras::instance()->Unload(collection_index);
+    
+    
+    /*     
     if (((header->status&markUNLOAD) &&
          !(header->status&markLOAD)) || header->status&markPATCHED) {
       if (collection_loaded(header)) {
@@ -1938,11 +1949,13 @@ void load_collections(
     }
     else
     {
-      /* if this collection is already loaded, unlock it to tenderize the heap */
+      // if this collection is already loaded, unlock it to tenderize the heap
       if (collection_loaded(header)) {
         unlock_collection(header);
       }
     }
+    */
+  
   }
 
   /* ... then go back through the list of collections and load any that we were asked to */

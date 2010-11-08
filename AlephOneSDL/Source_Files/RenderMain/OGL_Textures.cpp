@@ -1405,16 +1405,35 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
     {
       case GL_NEAREST:
       case GL_LINEAR:
-        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
-                     Image->GetWidth(),
-                     Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
-                     Image->GetBuffer());
-        printGLError(__PRETTY_FUNCTION__);
-        break;
       case GL_NEAREST_MIPMAP_NEAREST:
       case GL_LINEAR_MIPMAP_NEAREST:
       case GL_NEAREST_MIPMAP_LINEAR:
       case GL_LINEAR_MIPMAP_LINEAR:
+      {        
+        int level = 0;
+        int width = Image->GetWidth();
+        int height = Image->GetHeight();
+        unsigned char* data = (unsigned char*)Image->GetBuffer();
+        for ( level = 0; width > 0 && height > 0; level++ ) {
+          GLsizei size = std::max ( 32, width * height * 4 / 8 );
+          glCompressedTexImage2D(GL_TEXTURE_2D, 
+                                 level, 
+                                 GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,
+                                 width, 
+                                 height, 
+                                 0, 
+                                 size, 
+                                 data);
+          data += size;
+          width >>= 1;
+          height >>= 1;
+          
+        }
+        mipmapsLoaded = true;
+        break;
+      }
+#if 0
+        
         if (Image->GetMipMapCount() > 1) {
           /*
           for (int level = 0; width > 0 && height > 0; ++level) {
@@ -1468,7 +1487,8 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           }
           mipmapsLoaded = true;
         }
-        break;
+#endif
+        
       default:
         assert(false);
     }

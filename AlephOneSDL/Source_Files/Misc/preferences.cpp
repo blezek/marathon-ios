@@ -2335,8 +2335,11 @@ void read_preferences ()
   graphics_preferences->screen_mode.hud = true;
   // Shaders
   graphics_preferences->screen_mode.acceleration = _no_acceleration;       // software
-  graphics_preferences->screen_mode.acceleration = _shader_acceleration;   // OpenGL shader language
-  graphics_preferences->screen_mode.acceleration = _opengl_acceleration;   // OpenGL fixed function
+  if ( 1 || getOpenGLESVersion() == 1 ) {
+    graphics_preferences->screen_mode.acceleration = _opengl_acceleration;   // OpenGL fixed function    
+  } else {
+    graphics_preferences->screen_mode.acceleration = _shader_acceleration;   // OpenGL shader language
+  }
   graphics_preferences->screen_mode.bit_depth = 32;
 
   graphics_preferences->screen_mode.gamma_level= 7;

@@ -23,6 +23,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import "SDL_uikitopenglview.h"
+// DJB OpenGL Inform the app delegate of GL ES 1.0 or 2.0
+#import "AlephOneAppDelegate.h"
 
 @interface SDL_uikitopenglview (privateMethods)
 
@@ -88,7 +90,13 @@
 										[NSNumber numberWithBool: retained], kEAGLDrawablePropertyRetainedBacking, colorFormat, kEAGLDrawablePropertyColorFormat, nil];
 		
     // DJB OpenGL  Here we decide if we can do GLES 1 or 2
-		context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES1];
+		context = nil; // [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES2];
+    if ( context ) {
+      [AlephOneAppDelegate sharedAppDelegate].OpenGLESVersion = 2;
+    } else {
+      context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES1];
+      [AlephOneAppDelegate sharedAppDelegate].OpenGLESVersion = 1;
+    }
 		
 		if (!context || ![EAGLContext setCurrentContext:context]) {
 			[self release];

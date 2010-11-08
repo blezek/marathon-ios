@@ -74,7 +74,7 @@ extern "C" {
     if ( touch == firstTouch ) {
       firstTouch = nil;
       // Check the time, fire 
-      MLog ( @"Might fire here");
+      // MLog ( @"Might fire here");
       NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
       self.firstTouchTime = nil;
       if ( delta < 0.3 ) {

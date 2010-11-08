@@ -96,7 +96,7 @@ extern "C" {
   // Are we running?
   if ( fdx > runRadius || fdy > runRadius ) {
     key_map[runKey] = 1;
-    MLog ( @"Running!" );
+    // MLog ( @"Running!" );
   } else {
     key_map[runKey] = 0;
   }
