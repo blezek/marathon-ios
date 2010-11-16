@@ -1926,10 +1926,12 @@ void load_collections(
   {
     //		if (with_progress_bar)
     //			draw_progress_bar(collection_index, 2*MAXIMUM_COLLECTIONS);
+    
     // DJB OpenGL Debugging collections.  Always unload...
     if (collection_loaded(header)) {
       unload_collection(header);
     }
+     
 #ifdef HAVE_OPENGL
     OGL_UnloadModelsImages(collection_index);
 #endif
@@ -1962,12 +1964,12 @@ void load_collections(
   for (collection_index= 0, header= collection_headers;
        collection_index<MAXIMUM_COLLECTIONS; ++collection_index, ++header)
   {
-//		if (with_progress_bar)
-//			draw_progress_bar(MAXIMUM_COLLECTIONS+collection_index, 2*MAXIMUM_COLLECTIONS);
+    //		if (with_progress_bar)
+    //			draw_progress_bar(MAXIMUM_COLLECTIONS+collection_index, 2*MAXIMUM_COLLECTIONS);
     /* donÕt reload collections which are already in memory, but do lock them */
     if (collection_loaded(header)) {
       // In case the substitute images had been changed by some level-specific MML...
-//			OGL_LoadModelsImages(collection_index);
+      //			OGL_LoadModelsImages(collection_index);
       lock_collection(header);
     }
     else
@@ -1978,10 +1980,10 @@ void load_collections(
                              (header->status&markSTRIP) ? true : false)) {
           alert_user(fatalError, strERRORS, outOfMemory, -1);
         }
-//				OGL_LoadModelsImages(collection_index);
+        //				OGL_LoadModelsImages(collection_index);
       }
     }
-
+    
     /* clear action flags */
     header->status= markNONE;
     header->flags= 0;

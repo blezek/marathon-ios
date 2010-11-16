@@ -2347,6 +2347,10 @@ void read_preferences ()
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
   input_preferences->mouse_acceleration = false;
   sound_preferences->music = 7;
+
+  // Drop the sprite textures
+  OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[2];
+  TxtrConfig.ColorFormat = 1;
   
   
   // Print out some things...

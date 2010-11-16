@@ -32,3 +32,4 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 
+extern void dumpTextures();

@@ -54,7 +54,11 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   } else {
     return false;
   }
-  
+
+  if ( fn.find ( "SpriteTextures" ) != std::string::npos ) {
+    printf ( "Loading Sprite Textures!!!!: %s\n", File.GetPath() );
+  }
+
   OpenedFile pvtcFile;
   if (!File.Open(pvtcFile)) {
     return false;
@@ -68,12 +72,6 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
 
   pvtcFile.Read ( length, contents );
 
-  if ( fn.find ( ".pvrtc" ) != std::string::npos ) {
-    // First few bytes
-    for ( int i = 0; i < 16; i++ ) {
-      printf ( "contents[%d] = %d, (0x%x)\n", i, contents[i], contents[i] );
-    }
-  }
 
   header = (PVRTexHeader *)contents;
   pvrTag = CFSwapInt32LittleToHost(header->pvrTag);
@@ -100,12 +98,6 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
     dataLength = CFSwapInt32LittleToHost(header->dataLength);
     ContentLength = dataLength;
     uint8_t *bytes = ((uint8_t *)contents) + sizeof(PVRTexHeader);
-
-    /*
-    for ( int i = 0; i < 16; i++ ) {
-      printf ( "bytes[%d] = %d, (0x%x)\n", i, contents[i], contents[i] );
-    }
-     */
 
     // How many 4-byte ints do we need (padded by 2)?
     int numberOfPixels = ( dataLength / 4 ) + 2;

@@ -2,17 +2,17 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">131</string>
+			<string key="NS.object.0">132</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="7"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -50,19 +50,39 @@
 							<object class="IBUIImageView" id="576603371">
 								<reference key="NSNextResponder" ref="46650701"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 43}, {256, 256}}</string>
+								<string key="NSFrameSize">{1024, 768}</string>
 								<reference key="NSSuperview" ref="46650701"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">ProgressLogo.png</string>
+									<string key="NSResourceName">GenericBackground.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="630988411">
+								<reference key="NSNextResponder" ref="46650701"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{267, 232}, {512, 256}}</string>
+								<reference key="NSSuperview" ref="46650701"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">2</int>
+									<bytes key="NSRGB">MCAwLjAxMTc2NDcwNzA0IDAuMDExNzY0NzA3MDQgMAA</bytes>
+								</object>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">LoadingLabel.png</string>
 								</object>
 							</object>
 							<object class="IBUIProgressView" id="937992411">
 								<reference key="NSNextResponder" ref="46650701"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{284, 166}, {471, 9}}</string>
+								<string key="NSFrame">{{256, 400}, {512, 9}}</string>
 								<reference key="NSSuperview" ref="46650701"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -70,13 +90,12 @@
 								<float key="IBUIProgress">0.5</float>
 							</object>
 						</object>
-						<string key="NSFrame">{{124.5, 193}, {775, 342}}</string>
+						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC45ODgyMzUzNTQ0IDEgMC45OTYwNzg0OTEyAA</bytes>
+							<bytes key="NSRGB">MC45ODgyMzUzNTQ0IDEgMQA</bytes>
 						</object>
-						<float key="IBUIAlpha">0.4577464759349823</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -91,7 +110,6 @@
 					</object>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<float key="IBUIAlpha">0.0</float>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="interfaceOrientation">3</int>
@@ -163,8 +181,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="576603371"/>
 							<reference ref="937992411"/>
+							<reference ref="630988411"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="937992411"/>
+						<reference key="parent" ref="46650701"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
@@ -172,8 +196,8 @@
 						<reference key="parent" ref="46650701"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="937992411"/>
+						<int key="objectID">15</int>
+						<reference key="object" ref="630988411"/>
 						<reference key="parent" ref="46650701"/>
 					</object>
 				</object>
@@ -184,6 +208,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>15.IBPluginDependency</string>
+					<string>15.IBViewBoundsToFrameTransform</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>5.CustomClassName</string>
@@ -198,17 +224,19 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ProgressViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDgAAAw9aAAA</bytes>
+					</object>
 					<string>{{402, 353}, {1024, 748}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>PDColoredProgressView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABD7wAAw86AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDgAAAw7lAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDAAAAw78AAA</bytes>
-					</object>
+					<object class="NSAffineTransform"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDJQAAxAVAAA</bytes>
@@ -231,7 +259,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -300,9 +328,18 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../AlephOne.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">ProgressLogo.png</string>
-			<string key="NS.object.0">{256, 256}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>GenericBackground.png</string>
+				<string>LoadingLabel.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{1024, 768}</string>
+				<string>{512, 256}</string>
+			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">131</string>
+		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>
 </archive>

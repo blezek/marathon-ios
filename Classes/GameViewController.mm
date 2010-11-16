@@ -325,8 +325,9 @@ extern SDL_Surface *draw_surface;
   
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
-  self.savedGameMessage.alpha = 0.5;
+  self.savedGameMessage.alpha = 1.0;
   [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDelay:1.0];
   [UIView setAnimationDuration:1.0];
   self.savedGameMessage.alpha = 0.0;
   [UIView commitAnimations];
@@ -552,6 +553,7 @@ extern SDL_Surface *draw_surface;
 #pragma mark Progress methods
 - (void) startProgress:(int)total {
   self.progressView.hidden = NO;
+  self.hud.hidden = YES;
   [self.progressViewController startProgress:total];
   MLog ( @"total = %d", total );
 }
@@ -561,6 +563,7 @@ extern SDL_Surface *draw_surface;
 }
 - (void) stopProgress {
   self.progressView.hidden = YES;
+  [self performSelector:@selector(bringUpHUD) withObject:nil afterDelay:0.0];
   MLog ( @"stopProgress" );
 }
 

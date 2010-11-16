@@ -845,6 +845,8 @@ void PreloadTextures()
   // ZZZ: now we have a fairly (we hope) minimal set of texture stuffs, let's load them in.
   for_each(theSetOfTexturesUsed.begin(),
            theSetOfTexturesUsed.end(), PreloadWallTexture);
+  // DJB Dump textures
+  dumpTextures();
 }
 
 void PreloadWallTexture(const TextureWithTransferMode& inTexture)

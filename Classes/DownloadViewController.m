@@ -85,7 +85,7 @@
     NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [app applicationDocumentsDirectory], app.scenario.path];
     NSString* tempPath = [NSString stringWithFormat:@"%@/%@.zip.part", [app applicationDocumentsDirectory], app.scenario.path];
     downloadPath = path;
-    NSLog ( @"Download file!" );
+    NSLog ( @"Download file from %@", app.scenario.downloadURL );
     NSURL *url = [NSURL URLWithString:app.scenario.downloadURL];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDownloadDestinationPath:path];
@@ -120,12 +120,17 @@
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
   app.scenario.isDownloaded = [NSNumber numberWithBool:YES];
   [app.scenario.managedObjectContext save:nil];
-  [[AlephOneAppDelegate sharedAppDelegate] startAlephOne];
+  [self.view removeFromSuperview];
+
+  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+
+  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
 }
 
 - (void)downloadFailed:(ASIHTTPRequest*) request {
   MLog ( @"Download failed!" );
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Download failed" delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+  NSString *msg = [NSString stringWithFormat:@"Download failed: %@", request.responseStatusMessage];
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Download failed" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
   [av show];
 }
 

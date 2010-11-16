@@ -10,6 +10,7 @@
 #import "GameViewController.h"
 #import "DownloadViewController.h"
 #import "ProgressViewController.h"
+#import "AVFoundation/AVAudioSession.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -90,11 +91,16 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
     self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
 #endif
-    // self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
+   // self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
     [self.scenario.managedObjectContext save:nil];
     self.scenario = nil;
   } 
 
+  NSError *setCategoryError = nil;
+  
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error: &setCategoryError];
+  if (setCategoryError) { /* handle the error condition */ }
+  
   // [window addSubview:newGameViewController.view];
   [window makeKeyAndVisible];
 

@@ -150,3 +150,70 @@ void progressCallback ( int d ) {
 void stopProgress() {
   [[GameViewController sharedInstance] stopProgress];
 }
+
+
+#include "cseries.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "shell.h"
+#include "render.h"
+#include "interface.h"
+#include "collection_definition.h"
+#include "screen.h"
+#include "game_errors.h"
+#include "FileHandler.h"
+#include "progress.h"
+
+#include "map.h"
+
+#ifdef HAVE_OPENGL
+// LP addition: OpenGL support
+#include "OGL_Render.h"
+#include "OGL_LoadScreen.h"
+#endif
+
+// LP addition: infravision XML setup needs colors
+#include "ColorParser.h"
+
+#include "Packing.h"
+#include "SW_Texture_Extras.h"
+
+#include <SDL_rwops.h>
+#include <memory>
+#include "OGL_Textures.h"
+void dumpTextures() {
+  return;
+  // Build all possible shape descriptors
+  shape_descriptor texture;
+  for ( int collection = 0; collection < 32; collection++ ) {
+    for ( int shape = 0; shape < MAXIMUM_SHAPES_PER_COLLECTION; shape++ ) {
+      for ( int clut = 0; clut < MAXIMUM_CLUTS_PER_COLLECTION; clut++ ) {
+        
+        texture = BUILD_DESCRIPTOR(BUILD_COLLECTION(collection, clut), shape);
+  
+  TextureManager TMgr;
+  TMgr.ShapeDesc = texture;
+  get_shape_bitmap_and_shading_table(
+                                     TMgr.ShapeDesc,
+                                     &TMgr.Texture,
+                                     &TMgr.ShadingTables,
+                                      _shading_normal);
+  if (!TMgr.Texture) {
+    return;
+  }
+  
+  TMgr.IsShadeless = false;
+  
+  int16 TMgr_TransferMode = _textured_transfer;
+  TMgr.TransferMode = TMgr_TransferMode;
+  TMgr.TransferData = 0;
+    
+  // After all this setting up, now use it!
+  TMgr.Setup();
+      }
+    }
+  }
+}
