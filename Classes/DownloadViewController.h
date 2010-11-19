@@ -13,10 +13,12 @@
 
 @interface DownloadViewController : UIViewController {
   PDColoredProgressView *progressView;
+  UIView *expandingView;
   NSString *downloadPath;
 }
 
 @property (nonatomic, retain) IBOutlet PDColoredProgressView *progressView;
+@property (nonatomic, retain) IBOutlet UIView *expandingView;
 
 - (void)downloadFinished:(ASIHTTPRequest*)request;
 - (void)downloadOrchooseGame;
@@ -26,4 +28,5 @@
 - (void)startGame;
 - (bool)isScenarioDownloaded;
 - (void)downloadAndStart;
+- (void)unzipAndStart;
 @end

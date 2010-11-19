@@ -42,10 +42,6 @@ typedef struct _PVRTexHeader
 bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   PVRTexHeader *header = NULL;
   uint32_t flags, pvrTag;
-  uint32_t dataLength = 0, dataOffset = 0, dataSize = 0;
-  uint32_t blockSize = 0, widthBlocks = 0, heightBlocks = 0;
-  uint32_t width = 0, height = 0, bpp = 4;
-  uint8_t *bytes = NULL;
   uint32_t formatFlags;
 
   std::string fn ( File.GetPath() );
@@ -95,7 +91,7 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
     Width = CFSwapInt32LittleToHost(header->width);
     Height = CFSwapInt32LittleToHost(header->height);
 
-    dataLength = CFSwapInt32LittleToHost(header->dataLength);
+    uint32_t dataLength = CFSwapInt32LittleToHost(header->dataLength);
     ContentLength = dataLength;
     uint8_t *bytes = ((uint8_t *)contents) + sizeof(PVRTexHeader);
 

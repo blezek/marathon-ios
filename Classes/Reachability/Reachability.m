@@ -3,7 +3,7 @@
  File: Reachability.m
  Abstract: Basic demonstration of how to use the SystemConfiguration Reachablity APIs.
  
- Version: 2.0
+ Version: 2.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
  ("Apple") in consideration of your agreement to the following terms, and your
@@ -41,7 +41,7 @@
  CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF
  APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
- Copyright (C) 2009 Apple Inc. All Rights Reserved.
+ Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
 */
 
@@ -97,7 +97,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	[myPool release];
 }
 
-- (BOOL) startNotifer
+- (BOOL) startNotifier
 {
 	BOOL retVal = NO;
 	SCNetworkReachabilityContext	context = {0, self, NULL, NULL, NULL};
@@ -111,7 +111,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
-- (void) stopNotifer
+- (void) stopNotifier
 {
 	if(reachabilityRef!= NULL)
 	{
@@ -121,7 +121,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 - (void) dealloc
 {
-	[self stopNotifer];
+	[self stopNotifier];
 	if(reachabilityRef!= NULL)
 	{
 		CFRelease(reachabilityRef);
@@ -172,7 +172,6 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 + (Reachability*) reachabilityForLocalWiFi;
 {
-	[super init];
 	struct sockaddr_in localWifiAddress;
 	bzero(&localWifiAddress, sizeof(localWifiAddress));
 	localWifiAddress.sin_len = sizeof(localWifiAddress);

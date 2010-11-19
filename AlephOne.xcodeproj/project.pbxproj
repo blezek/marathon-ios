@@ -139,7 +139,6 @@
 		A850887911C1E46500D95436 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886E11C1E46500D95436 /* ASIInputStream.m */; };
 		A850887A11C1E46500D95436 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887011C1E46500D95436 /* ASINetworkQueue.m */; };
 		A850887B11C1E46500D95436 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887211C1E46500D95436 /* ASINSStringAdditions.m */; };
-		A850887C11C1E46500D95436 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887511C1E46500D95436 /* Reachability.m */; };
 		A850887E11C1E49400D95436 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
 		A850888011C1E49400D95436 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
 		A85088BA11C1E72600D95436 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B011C1E72600D95436 /* ioapi.c */; };
@@ -405,7 +404,6 @@
 		A85E681F11CB173A00D0FAEF /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886E11C1E46500D95436 /* ASIInputStream.m */; };
 		A85E682011CB173A00D0FAEF /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887011C1E46500D95436 /* ASINetworkQueue.m */; };
 		A85E682111CB173A00D0FAEF /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887211C1E46500D95436 /* ASINSStringAdditions.m */; };
-		A85E682211CB173A00D0FAEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887511C1E46500D95436 /* Reachability.m */; };
 		A85E682311CB173A00D0FAEF /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B011C1E72600D95436 /* ioapi.c */; };
 		A85E682411CB173A00D0FAEF /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B211C1E72600D95436 /* mztools.c */; };
 		A85E682511CB173A00D0FAEF /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B411C1E72600D95436 /* unzip.c */; };
@@ -496,6 +494,8 @@
 		A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A87785561270767C009F18D8 /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
 		A87785571270767C009F18D8 /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
+		A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
+		A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D9B991296433E002CDE5D /* Reachability.m */; };
 		A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
@@ -1059,8 +1059,6 @@
 		A850887011C1E46500D95436 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		A850887111C1E46500D95436 /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
 		A850887211C1E46500D95436 /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
-		A850887411C1E46500D95436 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A850887511C1E46500D95436 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A850887D11C1E49400D95436 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A850887F11C1E49400D95436 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A85088AF11C1E72600D95436 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -1130,6 +1128,9 @@
 		A85E68CC11CB1B1C00D0FAEF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		A87785541270767C009F18D8 /* movementboxBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxBase.png; path = Artwork/movementboxBase.png; sourceTree = "<group>"; };
 		A87785551270767C009F18D8 /* movementboxKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxKnob.png; path = Artwork/movementboxKnob.png; sourceTree = "<group>"; };
+		A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExpandingLabel.png; path = Artwork/ExpandingLabel.png; sourceTree = "<group>"; };
+		A87D9B981296433E002CDE5D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A87D9B991296433E002CDE5D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A87FF02E12452C7E0033A3EB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -1872,8 +1873,6 @@
 		29B97315FDCFA39411CA2CEA /* SDLClasses */ = {
 			isa = PBXGroup;
 			children = (
-				A85088AD11C1E72600D95436 /* ZipArchive */,
-				A850886511C1E46500D95436 /* HTTPRequest */,
 				A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */,
 				A80EAAE311C07A26000AC9E1 /* SDL_renderer_gles.h */,
 				A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */,
@@ -2052,6 +2051,9 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A85088AD11C1E72600D95436 /* ZipArchive */,
+				A850886511C1E46500D95436 /* HTTPRequest */,
+				A87D9B971296433E002CDE5D /* Reachability */,
 				32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */,
 				A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */,
 				A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */,
@@ -2110,19 +2112,9 @@
 				A850887011C1E46500D95436 /* ASINetworkQueue.m */,
 				A850887111C1E46500D95436 /* ASINSStringAdditions.h */,
 				A850887211C1E46500D95436 /* ASINSStringAdditions.m */,
-				A850887311C1E46500D95436 /* Reachability2.0 */,
 			);
 			name = HTTPRequest;
 			path = Classes/HTTPRequest;
-			sourceTree = "<group>";
-		};
-		A850887311C1E46500D95436 /* Reachability2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				A850887411C1E46500D95436 /* Reachability.h */,
-				A850887511C1E46500D95436 /* Reachability.m */,
-			);
-			path = Reachability2.0;
 			sourceTree = "<group>";
 		};
 		A85088AD11C1E72600D95436 /* ZipArchive */ = {
@@ -2181,6 +2173,7 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */,
 				A8A06C7B1258179E00BE6EF5 /* download-ipad.png */,
 				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
 				A81A31531292462C00BCEA0C /* GenericBackground.png */,
@@ -2232,6 +2225,16 @@
 				A85E688311CB18FD00D0FAEF /* pngwutil.c */,
 			);
 			name = png;
+			sourceTree = "<group>";
+		};
+		A87D9B971296433E002CDE5D /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				A87D9B981296433E002CDE5D /* Reachability.h */,
+				A87D9B991296433E002CDE5D /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Classes/Reachability;
 			sourceTree = "<group>";
 		};
 		A889BBAD11C8817400923787 /* GLU */ = {
@@ -3370,6 +3373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */,
 				A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
 				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
@@ -3669,7 +3673,6 @@
 				A850887911C1E46500D95436 /* ASIInputStream.m in Sources */,
 				A850887A11C1E46500D95436 /* ASINetworkQueue.m in Sources */,
 				A850887B11C1E46500D95436 /* ASINSStringAdditions.m in Sources */,
-				A850887C11C1E46500D95436 /* Reachability.m in Sources */,
 				A85088BA11C1E72600D95436 /* ioapi.c in Sources */,
 				A85088BB11C1E72600D95436 /* mztools.c in Sources */,
 				A85088BC11C1E72600D95436 /* unzip.c in Sources */,
@@ -4029,7 +4032,6 @@
 				A85E681F11CB173A00D0FAEF /* ASIInputStream.m in Sources */,
 				A85E682011CB173A00D0FAEF /* ASINetworkQueue.m in Sources */,
 				A85E682111CB173A00D0FAEF /* ASINSStringAdditions.m in Sources */,
-				A85E682211CB173A00D0FAEF /* Reachability.m in Sources */,
 				A85E682311CB173A00D0FAEF /* ioapi.c in Sources */,
 				A85E682411CB173A00D0FAEF /* mztools.c in Sources */,
 				A85E682511CB173A00D0FAEF /* unzip.c in Sources */,
@@ -4179,6 +4181,7 @@
 				A80E9E851280F729005371AB /* synth.c in Sources */,
 				A80E9E861280F729005371AB /* timer.c in Sources */,
 				A80E9E871280F729005371AB /* version.c in Sources */,
+				A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

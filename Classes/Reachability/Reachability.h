@@ -3,7 +3,7 @@
  File: Reachability.h
  Abstract: Basic demonstration of how to use the SystemConfiguration Reachablity APIs.
  
- Version: 2.0
+ Version: 2.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
  ("Apple") in consideration of your agreement to the following terms, and your
@@ -41,7 +41,7 @@
  CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF
  APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
- Copyright (C) 2009 Apple Inc. All Rights Reserved.
+ Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
 */
 
@@ -76,8 +76,8 @@ typedef enum {
 + (Reachability*) reachabilityForLocalWiFi;
 
 //Start listening for reachability notifications on the current run loop
-- (BOOL) startNotifer;
-- (void) stopNotifer;
+- (BOOL) startNotifier;
+- (void) stopNotifier;
 
 - (NetworkStatus) currentReachabilityStatus;
 //WWAN may be available, but not active until a connection has been established.

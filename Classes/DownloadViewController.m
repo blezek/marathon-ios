@@ -13,6 +13,7 @@
 
 @implementation DownloadViewController
 @synthesize progressView;
+@synthesize expandingView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -132,6 +133,12 @@
 
 - (void)downloadFinished:(ASIHTTPRequest*) request {
   self.progressView.progress = 1.0;
+  self.expandingView.hidden = NO;
+  // Give us a chance to unhide...
+  [self performSelector:@selector(unzipAndStart) withObject:nil afterDelay:0.5];
+}
+
+- (void)unzipAndStart {
   // Now unzip
   NSString* path = downloadPath;
 
@@ -171,6 +178,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.progressView setTintColor:[UIColor greenColor]];
+  self.expandingView.hidden = YES;
   
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);
