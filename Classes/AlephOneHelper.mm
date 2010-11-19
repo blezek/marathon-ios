@@ -88,6 +88,14 @@ bool helperNewGame () {
   }
 }
 
+void helperPlayerKilled() {
+  [[GameViewController sharedInstance] playerKilled];
+}
+
+void helperHideHUD() {
+  [[GameViewController sharedInstance] hideHUD];
+}
+
 // Some calls defined in the interface.cpp
 extern void force_system_colors(void);
 extern bool choose_saved_game_to_load(FileSpecifier& File);

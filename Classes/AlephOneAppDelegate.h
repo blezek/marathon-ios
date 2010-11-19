@@ -42,6 +42,7 @@
 - (NSString *)applicationDocumentsDirectory;
 +(AlephOneAppDelegate *)sharedAppDelegate;
 - (void)startAlephOne;
+- (void)initAndBegin;
 @end
 
 

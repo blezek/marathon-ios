@@ -13,6 +13,8 @@
 {}
 @property (nonatomic, retain) NSString * downloadURL;
 @property (nonatomic, retain) NSNumber * isDownloaded;
+@property (nonatomic, retain) NSNumber * version;
+@property (nonatomic, retain) NSNumber * sizeInBytes;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSSet* savedGames;

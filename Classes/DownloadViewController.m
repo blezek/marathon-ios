@@ -34,7 +34,7 @@
   NSArray *list = [app.managedObjectContext executeFetchRequest:fetchRequest error:&error];
   if ( [list count] == 1 ) {
     app.scenario = [list objectAtIndex:0];
-    return [self isScenarioDownloaded];
+    return [self isScenarioDownloaded] == NO;
   }
   return YES;
 }
@@ -54,6 +54,11 @@
 
 - (void)downloadOrchooseGame {
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
+  
+  // Check filesystem space
+  NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[app applicationDocumentsDirectory] error:NULL];
+  MLog ( @"Have %@ space avaliable", [attributes objectForKey:NSFileSystemFreeSize] );
+  
   NSEntityDescription *scenarioEntity = [NSEntityDescription entityForName:@"Scenario" inManagedObjectContext:app.managedObjectContext];
   NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
   [fetchRequest setEntity:scenarioEntity];
@@ -66,6 +71,7 @@
       [self startGame];
       return;
     }
+    // [self performSelector:@selector(downloadAndStart) withObject:nil afterDelay:0.0];
     [self downloadAndStart];
   }
   
@@ -73,6 +79,28 @@
 
 -(void)downloadAndStart {
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
+  
+  
+  // Check filesystem space
+  NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[app applicationDocumentsDirectory] error:NULL];
+  NSNumber *freeSpace = [attributes objectForKey:NSFileSystemFreeSize];
+  MLog ( @"Have %@ space avaliable", freeSpace );
+  int requiredSpace = [app.scenario.sizeInBytes intValue];
+  int availableSpace = [freeSpace intValue];
+  if ( availableSpace < requiredSpace ) {
+    float Meg = 1024.0 * 1024.0;
+    NSString *msg = [NSString stringWithFormat:@"Installation requires %d megabytes.\nFree up some space and try again.", (int)(requiredSpace / Meg)];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not enough free space" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+    [av show];
+    return;
+  }
+  
+  
+  
+  // Reachability as well
+
+  
+  
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
   NSLog ( @"Install path is %@", installDirectory );

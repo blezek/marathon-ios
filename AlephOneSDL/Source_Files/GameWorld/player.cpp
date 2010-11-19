@@ -182,6 +182,9 @@
 #pragma segment player
 #endif
 
+// DJB Helper functions
+#include "AlephOneHelper.h"
+
 /* ---------- constants */
 
 struct player_powerup_durations_definition {
@@ -936,6 +939,10 @@ void damage_player(
             L_Call_Player_Killed (player_index, aggressor_player_index, action,
                                   projectile_index);
 #endif
+            // DJB Player was killed
+            if ( player_index==current_player_index ) {
+              helperPlayerKilled();
+            }
           }
 
           player->suit_oxygen= 0;

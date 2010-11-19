@@ -49,8 +49,8 @@ extern  int
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
 @synthesize loadGameView, haveNewGamePreferencesBeenSet;
 @synthesize saveGameViewController, currentSavedGame;
-@synthesize savedGameMessage;
-@synthesize progressView, progressViewController, preferencesViewController, pauseViewController;
+@synthesize savedGameMessage, restartView;
+@synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -114,12 +114,16 @@ extern  int
   [viewList addObject:self.progressView];
   [viewList addObject:self.pauseView];
   [viewList addObject:self.preferencesView];
+  [viewList addObject:splashView];
+  [viewList addObject:restartView];
   for ( UIView *v in viewList ) {
     v.center = center;
     v.transform = transform;
     v.bounds = CGRectMake(0, 0, 1024, 768);
     v.hidden = YES;
   }
+  self.splashView.hidden = NO;
+  self.restartView.hidden = YES;
   
   /*  
   CGAffineTransform transform;
@@ -172,6 +176,20 @@ extern  int
   // TODO -- nice animation
   self.newGameView.hidden = YES;
 }
+- (void)hideHUD {
+  self.hud.hidden = YES;
+}
+
+- (void)playerKilled {
+  self.hud.alpha = 1.0;
+  self.restartView.alpha = 0.0;
+  self.restartView.hidden = NO;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:2.0];
+  self.hud.alpha = 0.0;
+  self.restartView.alpha = 0.8;
+  [UIView commitAnimations];
+}
 
 - (void)bringUpHUD {
   mode = GameMode;
@@ -192,6 +210,7 @@ extern  int
       [self.mapView2 setup:key->offset];
     } else if ( key->action_flag == _action_trigger_state ) {
       [self.actionView setup:key->offset];
+      [self.restartView setup:key->offset];
     } else if ( key->action_flag == _cycle_weapons_forward ) {
       [self.nextWeaponView setup:key->offset];
     } else if ( key->action_flag == _cycle_weapons_backward ) {
@@ -260,6 +279,11 @@ extern bool load_and_start_game(FileSpecifier& File);
 
 - (IBAction)chooseSaveGame {
   self.loadGameView.hidden = NO;
+  self.loadGameView.alpha = 0.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:1.0];
+  self.loadGameView.alpha = 1.0;
+  [UIView commitAnimations];
 }
   
 - (IBAction) gameChosen:(SavedGame*)game {
@@ -554,6 +578,7 @@ extern SDL_Surface *draw_surface;
 - (void) startProgress:(int)total {
   self.progressView.hidden = NO;
   self.hud.hidden = YES;
+  self.restartView.hidden = YES;
   [self.progressViewController startProgress:total];
   MLog ( @"total = %d", total );
 }

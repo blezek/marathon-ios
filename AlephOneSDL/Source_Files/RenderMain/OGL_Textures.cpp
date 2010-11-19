@@ -691,20 +691,6 @@ bool TextureManager::Setup()
     IsGlowing = CTState.IsGlowing;
   }
 
-  /*
-  // Save the shapes...
-  if ( NormalImage.get() ) {
-    // Open a file
-    char buffer[1024];
-    // Collection, Bitmap, CLUT, Width, Height
-    sprintf ( buffer, "/tmp/%d-%d-%d-%d-%d.raw", Collection, Bitmap, CTable, NormalImage.get()->GetWidth(), NormalImage.get()->GetWidth() );
-    printf ( "Saving %s\n", buffer );
-    FILE *fid = fopen(buffer, "w");
-    fwrite((void*)NormalImage.get()->GetBuffer(), sizeof(int32), NormalImage.get()->GetNumPixels(), fid);
-    fclose ( fid );
-  }
-  */
-  
   // Done!!!
   return true;
 }

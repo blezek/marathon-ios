@@ -193,6 +193,9 @@ const short max_handled_recording= aleph_recording_version;
 
 using alephone::Screen;
 
+// DJB Include AlephOneHelper.h
+#include "AlephOneHelper.h"
+
 #ifdef env68k
         #pragma segment shell
 #endif
@@ -1136,6 +1139,9 @@ bool idle_game_state(uint32 time)
         break;
 
       case _revert_game:
+            // DJB This is where a game is reverted when the player dies
+          helperHideHUD();
+          startProgress ( 1000 );
         /* Reverting while in the update loop sounds sketchy.. */
         if(revert_game()) {
           game_state.state= _game_in_progress;
@@ -1164,6 +1170,7 @@ bool idle_game_state(uint32 time)
 
       case _change_level:
       case _displaying_network_game_dialogs:
+          printf ( "_change_level\n" );
         break;
 
       default:

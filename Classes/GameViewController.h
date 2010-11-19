@@ -45,6 +45,8 @@ typedef enum {
   IBOutlet UIView *progressView;
   IBOutlet UIView *preferencesView;
   IBOutlet UIView *pauseView;
+  IBOutlet ButtonView *restartView;
+  IBOutlet UIImageView *splashView;
 
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
@@ -108,6 +110,7 @@ typedef enum {
 - (IBAction)newGame;
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
+- (void)playerKilled;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -133,6 +136,7 @@ typedef enum {
 - (void) stopProgress;
 
 - (void)bringUpHUD;
+- (void)hideHUD;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
@@ -154,6 +158,8 @@ typedef enum {
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
 @property (nonatomic, retain) UIView *preferencesView;
+@property (nonatomic, retain) UIImageView *splashView;
+@property (nonatomic, retain) ButtonView *restartView;
 
 @property (nonatomic, retain) ButtonView *mapView;
 @property (nonatomic, retain) ButtonView *mapView2;

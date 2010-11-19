@@ -74,7 +74,7 @@ bool ImageDescriptor::LoadFromFile(FileSpecifier& File, int ImgMode, int flags,
   }
 
   // DJB OpenGL Load JPEG textures!
-  printf ( "Loading JPEG: %s\n", File.GetPath() );
+  // printf ( "Loading JPEG: %s\n", File.GetPath() );
   SDL_Surface *s = IMG_Load_RW(of.GetRWops(), 0);
 
 /*

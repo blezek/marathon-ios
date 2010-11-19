@@ -14,6 +14,8 @@
 @dynamic name;
 @dynamic path;
 @dynamic savedGames;
+@dynamic version;
+@dynamic sizeInBytes;
 @end
 
 @implementation SavedGame

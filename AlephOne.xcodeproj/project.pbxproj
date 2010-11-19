@@ -28,6 +28,8 @@
 		A80EAAE411C07A26000AC9E1 /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
 		A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31531292462C00BCEA0C /* GenericBackground.png */; };
 		A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
+		A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A32901294C3CD00BCEA0C /* SplashScreen.png */; };
+		A81A33081296255300BCEA0C /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82B5BDB122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */; };
@@ -953,6 +955,9 @@
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
 		A81A31531292462C00BCEA0C /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericBackground.png; path = Artwork/GenericBackground.png; sourceTree = "<group>"; };
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
+		A81A32901294C3CD00BCEA0C /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Artwork/SplashScreen.png; sourceTree = "<group>"; };
+		A81A33071296255300BCEA0C /* Reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reload.png; path = Artwork/Reload.png; sourceTree = "<group>"; };
+		A81A334E129630FB00BCEA0C /* SaveGame 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 4.xcdatamodel"; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
 		A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGame.png; path = Artwork/ChooseSaveGame.png; sourceTree = "<group>"; };
@@ -2061,6 +2066,7 @@
 				A8A06C7F125819C800BE6EF5 /* drawing.m */,
 				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
 				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
+				A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */,
 				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
 				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
 				A8AD432412220F9500A09383 /* main.m */,
@@ -2070,21 +2076,20 @@
 				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
 				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
+				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
+				A8EB78541266A8510043F0D4 /* PauseViewController.m */,
 				A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */,
 				A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */,
+				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
+				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
+				A8D5AA7E126545AE002211FB /* ProgressViewController.h */,
+				A8D5AA7F126545AE002211FB /* ProgressViewController.mm */,
 				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
 				A8B413901235DE10000D59A4 /* SavedGameCell.m */,
 				A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */,
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
-				A8D5AA7E126545AE002211FB /* ProgressViewController.h */,
-				A8D5AA7F126545AE002211FB /* ProgressViewController.mm */,
-				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
-				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
-				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
-				A8EB78541266A8510043F0D4 /* PauseViewController.m */,
-				A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2176,20 +2181,22 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
-				A81A31561292475E00BCEA0C /* LoadingLabel.png */,
-				A81A31531292462C00BCEA0C /* GenericBackground.png */,
-				A87785541270767C009F18D8 /* movementboxBase.png */,
-				A87785551270767C009F18D8 /* movementboxKnob.png */,
-				A8EB7796126697420043F0D4 /* pause-btn.png */,
-				A8EB7797126697420043F0D4 /* overheadmap.png */,
-				A8EB7798126697420043F0D4 /* primarytrigger-btn.png */,
-				A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */,
-				A8EB779A126697420043F0D4 /* patternbuffers-btn.png */,
-				A8D5AA981265465A002211FB /* ProgressLogo.png */,
 				A8A06C7B1258179E00BE6EF5 /* download-ipad.png */,
 				A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */,
-				A8562B5811DAE3A50071DFEF /* Pistol.png */,
+				A81A31531292462C00BCEA0C /* GenericBackground.png */,
+				A81A31561292475E00BCEA0C /* LoadingLabel.png */,
+				A87785541270767C009F18D8 /* movementboxBase.png */,
+				A87785551270767C009F18D8 /* movementboxKnob.png */,
+				A8EB7797126697420043F0D4 /* overheadmap.png */,
+				A8EB779A126697420043F0D4 /* patternbuffers-btn.png */,
+				A8EB7796126697420043F0D4 /* pause-btn.png */,
 				A8562B4011DAE0010071DFEF /* Pause.png */,
+				A8562B5811DAE3A50071DFEF /* Pistol.png */,
+				A8EB7798126697420043F0D4 /* primarytrigger-btn.png */,
+				A8D5AA981265465A002211FB /* ProgressLogo.png */,
+				A81A33071296255300BCEA0C /* Reload.png */,
+				A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */,
+				A81A32901294C3CD00BCEA0C /* SplashScreen.png */,
 			);
 			name = Artwork;
 			sourceTree = "<group>";
@@ -3372,10 +3379,14 @@
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
 				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
+				A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */,
 				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
+				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
 				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
+				A87785561270767C009F18D8 /* movementboxBase.png in Resources */,
+				A87785571270767C009F18D8 /* movementboxKnob.png in Resources */,
 				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8EB779D126697420043F0D4 /* overheadmap.png in Resources */,
 				A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */,
@@ -3387,13 +3398,11 @@
 				A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */,
 				A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */,
 				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
+				A81A33081296255300BCEA0C /* Reload.png in Resources */,
 				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
-				A87785561270767C009F18D8 /* movementboxBase.png in Resources */,
-				A87785571270767C009F18D8 /* movementboxKnob.png in Resources */,
-				A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */,
-				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
+				A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4644,6 +4653,7 @@
 				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
 				A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */,
 				A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */,
+				A81A334E129630FB00BCEA0C /* SaveGame 4.xcdatamodel */,
 			);
 			currentVersion = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */;
 			name = SaveGame.xcdatamodeld;

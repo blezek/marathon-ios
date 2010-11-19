@@ -23,6 +23,7 @@ extern char* getLocalDataDir();
 extern void helperBringUpHUD();
 extern bool helperNewGame();
 extern void helperSaveGame();
+extern void helperHideHUD();
 extern void helperHandleLoadGame();
 extern void helperDoPreferences();
 extern void printGLError ( const char* message );
@@ -31,5 +32,6 @@ extern void startProgress ( int t );
 extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
+extern void helperPlayerKilled();
 
 extern void dumpTextures();

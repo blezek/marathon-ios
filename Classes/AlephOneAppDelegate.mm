@@ -34,29 +34,35 @@ extern int SDL_main(int argc, char *argv[]);
 - (void)startAlephOne {
   // Remove the Download manager
   finishedStartup = YES;
+  // [window addSubview:self.game.view];
   [self.downloadViewController.view removeFromSuperview];
-  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
-  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
-  [self.game viewDidLoad];
-   
   
-  MLog ( @"Loaded view: %@", self.game.view );
-  // [window addSubview:newGameViewController.view];
-  [window addSubview:self.game.view];
-  
+  AlephOneInitialize();
+  MLog ( @"AlephOneInitialize finished" );
+
 	// Try out the CADisplayLink
 #ifdef USE_SDL_EVENT_LOOP
-  [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
+  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
 #endif
-  
+
 #ifdef USE_CADisplayLoop
-  // Initialize the game
-  AlephOneInitialize();
-  [game startAnimation];
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:2.0];
+  // Fade out splash screen
+  [self.game.splashView setAlpha:0.0];
+  [UIView commitAnimations];
+  [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:2.0];
 #endif
   
 }
+
+- (void)initAndBegin {
+  // Initialize the game
+  self.game.splashView.hidden = YES;
+  MLog ( @"Hiding SplashView and starting animation" );
+  // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
+  [game startAnimation];
+}  
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -85,6 +91,8 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.isDownloaded = NO;
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
+    self.scenario.version = [NSNumber numberWithInteger:1];
+    self.scenario.sizeInBytes = [NSNumber numberWithInteger:(150 * 1024 * 1024)];  // 150 meg
 #if TARGET_IPHONE_SIMULATOR
     self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
 #else
@@ -104,10 +112,19 @@ extern int SDL_main(int argc, char *argv[]);
   // [window addSubview:newGameViewController.view];
   [window makeKeyAndVisible];
 
+  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
+  [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
+  [self.game viewDidLoad];
+  [window addSubview:self.game.view];
+  
+  MLog ( @"Loaded view: %@", self.game.view );
+  
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
-  
-  [window addSubview:self.downloadViewController.view];
+  if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
+    [window addSubview:self.downloadViewController.view];
+  }
   [self.downloadViewController downloadOrchooseGame];
   return YES;
 }

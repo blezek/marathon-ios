@@ -846,7 +846,7 @@ void PreloadTextures()
   for_each(theSetOfTexturesUsed.begin(),
            theSetOfTexturesUsed.end(), PreloadWallTexture);
   // DJB Dump textures
-  dumpTextures();
+  // dumpTextures();
 }
 
 void PreloadWallTexture(const TextureWithTransferMode& inTexture)
@@ -2452,6 +2452,24 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
                                         (BottomRight.x - RenderRectangle.x0);
   }
 
+  // DJB Print textures, but not much help
+  /*
+  if ( IsInhabitant ) {
+    printf ( "RenderSprite(%d): Scale / Offsets %f %f / %f %f\n", TMgr.ShapeDesc, U_Scale, V_Scale, U_Offset, V_Offset );
+    printf ( "Rectangle: %d %d - %d %d\n", RenderRectangle.x0, RenderRectangle.y0, RenderRectangle.x1, RenderRectangle.y1 );
+    printf ( "BottomRight: %d %d TopRight: %d %d\n", BottomRight.x, BottomRight.y, TopLeft.x, TopLeft.y );
+    printf ( "Textures: (%f,%f) (%f,%f) (%f,%f) (%f,%f)\n\n",
+            ExtendedVertexList[0].TexCoord[0],
+            ExtendedVertexList[0].TexCoord[1],
+            ExtendedVertexList[1].TexCoord[0],
+            ExtendedVertexList[1].TexCoord[1],
+            ExtendedVertexList[2].TexCoord[0],
+            ExtendedVertexList[2].TexCoord[1],
+            ExtendedVertexList[3].TexCoord[0],
+            ExtendedVertexList[3].TexCoord[1] );
+  }
+   */
+  
   // Fill in remaining points
   // Be sure that the order gives a sidedness the same as
   // that of the world-geometry polygons
@@ -2465,6 +2483,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   ExtendedVertexList[3].Vertex[2] = ExtendedVertexList[2].Vertex[2];
   ExtendedVertexList[3].TexCoord[0] = ExtendedVertexList[2].TexCoord[0];
   ExtendedVertexList[3].TexCoord[1] = ExtendedVertexList[0].TexCoord[1];
+  
+  
 
   // Proper projection
   if (IsInhabitant) {

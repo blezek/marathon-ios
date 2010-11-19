@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="102"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -563,6 +563,48 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
+					<object class="IBUIImageView" id="657259285">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{1024, 768}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">SplashScreen.png</string>
+						</object>
+					</object>
+					<object class="IBUIView" id="128648929">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="1014058086">
+								<reference key="NSNextResponder" ref="128648929"/>
+								<int key="NSvFlags">274</int>
+								<string key="NSFrameSize">{1024, 768}</string>
+								<reference key="NSSuperview" ref="128648929"/>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Reload.png</string>
+								</object>
+							</object>
+						</object>
+						<string key="NSFrameSize">{1024, 768}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MSAwAA</bytes>
+							<reference key="NSCustomColorSpace" ref="240518105"/>
+						</object>
+						<bool key="IBUIAutoresizesSubviews">NO</bool>
+						<int key="IBUIContentMode">4</int>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 				</object>
 				<string key="NSFrameSize">{1024, 1024}</string>
 				<reference key="NSSuperview"/>
@@ -792,6 +834,22 @@
 					</object>
 					<int key="connectionID">107</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">splashView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="657259285"/>
+					</object>
+					<int key="connectionID">110</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">restartView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="128648929"/>
+					</object>
+					<int key="connectionID">114</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -825,6 +883,8 @@
 							<reference ref="485381462"/>
 							<reference ref="87177661"/>
 							<reference ref="904439337"/>
+							<reference ref="128648929"/>
+							<reference ref="657259285"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1057,6 +1117,9 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">102</int>
 						<reference key="object" ref="904439337"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Preferences</string>
 					</object>
@@ -1064,6 +1127,26 @@
 						<int key="objectID">106</int>
 						<reference key="object" ref="619050389"/>
 						<reference key="parent" ref="403618115"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">109</int>
+						<reference key="object" ref="657259285"/>
+						<reference key="parent" ref="766721923"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">111</int>
+						<reference key="object" ref="128648929"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="1014058086"/>
+						</object>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Restart View</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">113</int>
+						<reference key="object" ref="1014058086"/>
+						<reference key="parent" ref="128648929"/>
 					</object>
 				</object>
 			</object>
@@ -1076,6 +1159,11 @@
 					<string>101.IBPluginDependency</string>
 					<string>102.IBPluginDependency</string>
 					<string>106.IBPluginDependency</string>
+					<string>109.IBPluginDependency</string>
+					<string>109.IBViewBoundsToFrameTransform</string>
+					<string>111.CustomClassName</string>
+					<string>111.IBPluginDependency</string>
+					<string>113.IBPluginDependency</string>
 					<string>14.CustomClassName</string>
 					<string>14.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
@@ -1136,6 +1224,11 @@
 					<string>GameViewController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform"/>
+					<string>ButtonView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MovePadView</string>
@@ -1222,7 +1315,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">107</int>
+			<int key="maxID">114</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1407,9 +1500,11 @@
 							<string>previousWeaponView</string>
 							<string>progressView</string>
 							<string>progressViewController</string>
+							<string>restartView</string>
 							<string>rightFireView</string>
 							<string>saveGameViewController</string>
 							<string>savedGameMessage</string>
+							<string>splashView</string>
 							<string>viewGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1436,8 +1531,10 @@
 							<string>UIView</string>
 							<string>ProgressViewController</string>
 							<string>ButtonView</string>
+							<string>ButtonView</string>
 							<string>SaveGameViewController</string>
 							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>SDL_uikitopenglview</string>
 						</object>
 					</object>
@@ -1466,9 +1563,11 @@
 							<string>previousWeaponView</string>
 							<string>progressView</string>
 							<string>progressViewController</string>
+							<string>restartView</string>
 							<string>rightFireView</string>
 							<string>saveGameViewController</string>
 							<string>savedGameMessage</string>
+							<string>splashView</string>
 							<string>viewGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1558,6 +1657,10 @@
 								<string key="candidateClassName">ProgressViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">restartView</string>
+								<string key="candidateClassName">ButtonView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">rightFireView</string>
 								<string key="candidateClassName">ButtonView</string>
 							</object>
@@ -1568,6 +1671,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">savedGameMessage</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">splashView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewGL</string>
@@ -1918,6 +2025,8 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>Reload.png</string>
+				<string>SplashScreen.png</string>
 				<string>movementboxBase.png</string>
 				<string>movementboxKnob.png</string>
 				<string>overheadmap.png</string>
@@ -1928,6 +2037,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{512, 512}</string>
+				<string>{1024, 768}</string>
 				<string>{198, 198}</string>
 				<string>{158, 158}</string>
 				<string>{138, 137}</string>
