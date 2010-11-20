@@ -811,6 +811,8 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
+		A8C3922E129789A100E09E32 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.m */; };
+		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA981265465A002211FB /* ProgressLogo.png */; };
@@ -1707,6 +1709,9 @@
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
 		A8C29C581224BF7B00E79491 /* NewGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NewGameViewController.mm; path = Classes/NewGameViewController.mm; sourceTree = "<group>"; };
 		A8C29C591224BF7B00E79491 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = Classes/NewGameViewController.xib; sourceTree = "<group>"; };
+		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
+		A8C3922C129789A100E09E32 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = Classes/HelpViewController.m; sourceTree = "<group>"; };
+		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
@@ -1906,24 +1911,16 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
-				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
-				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
-				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
+				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
-				A8DC9989123884B300317186 /* DownloadViewController.xib */,
 				A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */,
 				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
-				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
-				A8AD432512220F9500A09383 /* MainWindow.xib */,
-				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
 				A8A5815511D789FF00F573B4 /* HUD.xib */,
-				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2092,6 +2089,8 @@
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
+				A8C3922B129789A100E09E32 /* HelpViewController.h */,
+				A8C3922C129789A100E09E32 /* HelpViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3154,6 +3153,23 @@
 			name = Vorbis;
 			sourceTree = "<group>";
 		};
+		A8C391F11297845E00E09E32 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				A8C3922D129789A100E09E32 /* HelpViewController.xib */,
+				A8DC9989123884B300317186 /* DownloadViewController.xib */,
+				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
+				A8AD432512220F9500A09383 /* MainWindow.xib */,
+				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
+				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
+				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
+				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
+				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
+				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
 		A8CCD13A1280CA7900A62339 /* MAD */ = {
 			isa = PBXGroup;
 			children = (
@@ -3407,6 +3423,7 @@
 				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
 				A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */,
+				A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4182,6 +4199,7 @@
 				A80E9E861280F729005371AB /* timer.c in Sources */,
 				A80E9E871280F729005371AB /* version.c in Sources */,
 				A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */,
+				A8C3922E129789A100E09E32 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

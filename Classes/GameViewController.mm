@@ -51,6 +51,7 @@ extern  int
 @synthesize saveGameViewController, currentSavedGame;
 @synthesize savedGameMessage, restartView;
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
+@synthesize helpViewController, helpView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -84,6 +85,9 @@ extern  int
   MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
   [self.preferencesView addSubview:self.preferencesViewController.view];
   
+  self.helpViewController = [[HelpViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  [self.helpView addSubview:self.helpViewController.view];
+  
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
   [self.pauseView addSubview:self.pauseViewController.view];
@@ -106,16 +110,18 @@ extern  int
   // self.view.transform = transform;
   // self.view.bounds = CGRectMake(0, 0, 1024, 768);
   
-  NSMutableSet *viewList = [[[NSMutableSet alloc] init] autorelease];
-  [viewList addObject:self.hud];
-  [viewList addObject:self.menuView];
-  [viewList addObject:self.newGameView];
-  [viewList addObject:self.loadGameView];
-  [viewList addObject:self.progressView];
-  [viewList addObject:self.pauseView];
-  [viewList addObject:self.preferencesView];
-  [viewList addObject:splashView];
-  [viewList addObject:restartView];
+  NSMutableSet *viewList = [[[NSMutableSet alloc] initWithObjects:
+                             self.hud,
+                             self.menuView,
+                             self.newGameView,
+                             self.loadGameView,
+                             self.progressView,
+                             self.pauseView,
+                             self.helpView,
+                             self.preferencesView,
+                             splashView,
+                             restartView,
+                             nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
     v.transform = transform;
@@ -125,24 +131,6 @@ extern  int
   self.splashView.hidden = NO;
   self.restartView.hidden = YES;
   
-  /*  
-  CGAffineTransform transform;
-  
-  // Use the status bar frame to determine the center point of the window's content area.
-  CGRect bounds = CGRectMake(0, 0, 1024, 768);
-  CGPoint center = CGPointMake(1024 / 2.0, 768 / 2.0);
-  
-  for ( UIView *subview in self.view.subviews ) {
-
-    // Set the center point of the view to the center point of the window's content area.
-    subview.center = center;
-  
-    // Rotate the view 90 degrees around its new center point.
-    transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
-    subview.transform = transform;
-  }
-  // self.view.bounds = CGRectMake(0, 0, 1024, 768);
- */
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.menuView addGestureRecognizer:self.menuTapGesture];
   // Hide initially
@@ -267,6 +255,13 @@ extern  int
 }
 - (IBAction) closePreferences:(id)sender {
   self.preferencesView.hidden = YES;
+}
+
+- (IBAction) help:(id)sender {
+  self.helpView.hidden = NO;
+}
+- (IBAction) closeHelp:(id)sender {
+  self.helpView.hidden = YES;
 }
 
 
@@ -454,7 +449,7 @@ extern SDL_Surface *draw_surface;
 
 - (IBAction)invincibilityCheat:(id)sender {
   process_player_powerup(local_player_index, _i_invincibility_powerup);
-  process_player_powerup(local_player_index, _i_infravision_powerup );
+  // process_player_powerup(local_player_index, _i_infravision_powerup );
 }
 
 - (IBAction)saveCheat:(id)sender {
@@ -530,7 +525,7 @@ extern SDL_Surface *draw_surface;
       displayLinkSupported = TRUE;
     }
     
-    NSInteger animationFrameInterval = 1;  
+    NSInteger animationFrameInterval = 2;  
     if (displayLinkSupported) {
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
       // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will

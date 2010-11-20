@@ -10,6 +10,7 @@
 #import "ManagedObjects.h"
 #import "AlephOneAppDelegate.h"
 #import "ZipArchive.h"
+#import "Reachability.h"
 
 @implementation DownloadViewController
 @synthesize progressView;
@@ -88,19 +89,33 @@
   MLog ( @"Have %@ space avaliable", freeSpace );
   int requiredSpace = [app.scenario.sizeInBytes intValue];
   int availableSpace = [freeSpace intValue];
+  float Meg = 1024.0 * 1024.0;
   if ( availableSpace < requiredSpace ) {
-    float Meg = 1024.0 * 1024.0;
     NSString *msg = [NSString stringWithFormat:@"Installation requires %d megabytes.\nFree up some space and try again.", (int)(requiredSpace / Meg)];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not enough free space" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
     [av show];
     return;
   }
   
-  
-  
   // Reachability as well
-
+  Reachability *reachability = [Reachability reachabilityForInternetConnection];
   
+  NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+  
+  if(remoteHostStatus == NotReachable) {
+    NSString *msg = @"Unable to reach download server, please check your connection.";
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No connectivity" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+    [av show];
+    return;
+  } else if (remoteHostStatus == ReachableViaWWAN) {
+    if ( dataNetwork == NO ) {
+      NSString *msg = [NSString stringWithFormat:@"Download %d megabytes over your data network?", (int)(requiredSpace / Meg / 3.0 )];
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Confirm download" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [av show];
+      dataNetwork = YES;
+      return;
+    }
+  }
   
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
@@ -135,7 +150,7 @@
   self.progressView.progress = 1.0;
   self.expandingView.hidden = NO;
   // Give us a chance to unhide...
-  [self performSelector:@selector(unzipAndStart) withObject:nil afterDelay:0.5];
+  [self performSelector:@selector(unzipAndStart) withObject:nil afterDelay:0.25];
 }
 
 - (void)unzipAndStart {
@@ -179,6 +194,7 @@
   [super viewDidLoad];
   [self.progressView setTintColor:[UIColor greenColor]];
   self.expandingView.hidden = YES;
+  dataNetwork = NO;
   
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);

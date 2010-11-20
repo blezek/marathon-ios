@@ -15,6 +15,7 @@
   PDColoredProgressView *progressView;
   UIView *expandingView;
   NSString *downloadPath;
+  bool dataNetwork;
 }
 
 @property (nonatomic, retain) IBOutlet PDColoredProgressView *progressView;

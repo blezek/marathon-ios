@@ -53,6 +53,13 @@ bool FileFinder::Find(DirectorySpecifier &dir, Typecode type, bool recursive)
     // Construct full specifier of file/dir
     FileSpecifier file = dir + i->name;
 
+    // DJB Skip our texture directories
+    if ( dir.GetPathString().find ( "SpriteTextures" ) != string::npos
+        || dir.GetPathString().find ( "TTEP" ) != string::npos ) {
+      // Don't go down these paths
+      return false;
+    }
+    
     if (i->is_directory) {
       // Recurse into directory
       if (recursive) {

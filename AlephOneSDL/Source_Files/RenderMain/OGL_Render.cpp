@@ -845,8 +845,6 @@ void PreloadTextures()
   // ZZZ: now we have a fairly (we hope) minimal set of texture stuffs, let's load them in.
   for_each(theSetOfTexturesUsed.begin(),
            theSetOfTexturesUsed.end(), PreloadWallTexture);
-  // DJB Dump textures
-  // dumpTextures();
 }
 
 void PreloadWallTexture(const TextureWithTransferMode& inTexture)
@@ -2452,23 +2450,6 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
                                         (BottomRight.x - RenderRectangle.x0);
   }
 
-  // DJB Print textures, but not much help
-  /*
-  if ( IsInhabitant ) {
-    printf ( "RenderSprite(%d): Scale / Offsets %f %f / %f %f\n", TMgr.ShapeDesc, U_Scale, V_Scale, U_Offset, V_Offset );
-    printf ( "Rectangle: %d %d - %d %d\n", RenderRectangle.x0, RenderRectangle.y0, RenderRectangle.x1, RenderRectangle.y1 );
-    printf ( "BottomRight: %d %d TopRight: %d %d\n", BottomRight.x, BottomRight.y, TopLeft.x, TopLeft.y );
-    printf ( "Textures: (%f,%f) (%f,%f) (%f,%f) (%f,%f)\n\n",
-            ExtendedVertexList[0].TexCoord[0],
-            ExtendedVertexList[0].TexCoord[1],
-            ExtendedVertexList[1].TexCoord[0],
-            ExtendedVertexList[1].TexCoord[1],
-            ExtendedVertexList[2].TexCoord[0],
-            ExtendedVertexList[2].TexCoord[1],
-            ExtendedVertexList[3].TexCoord[0],
-            ExtendedVertexList[3].TexCoord[1] );
-  }
-   */
   
   // Fill in remaining points
   // Be sure that the order gives a sidedness the same as
@@ -3452,21 +3433,25 @@ bool OGL_RenderCrosshairs()
   //
   // We precalculate the offsets for crosshair thickness below,
   // for each of the four quadrants.
-  int halfWidthMin = -Crosshairs.Thickness / 2;
-  int halfWidthMax = halfWidthMin - (Crosshairs.Thickness % 2);
+  // int halfWidthMin = -Crosshairs.Thickness / 2;
+  // int halfWidthMax = halfWidthMin - (Crosshairs.Thickness % 2);
+  // DJB Usused
+  /*
   int offsets[4][2] = {         // [quadrant][local x/y]
     { halfWidthMin, halfWidthMin },
     { halfWidthMax, halfWidthMin },
     { halfWidthMax, halfWidthMax },
     { halfWidthMin, halfWidthMax }
   };
+   */
 
   for (int quad = 0; quad < 4; quad++)
   {
-    int WidthMin = offsets[quad][0];
-    int WidthMax = WidthMin + Crosshairs.Thickness;
-    int HeightMin = offsets[quad][1];
-    int HeightMax = HeightMin + Crosshairs.Thickness;
+    // DJB Unused 
+    // int WidthMin = offsets[quad][0];
+    // int WidthMax = WidthMin + Crosshairs.Thickness;
+    // int HeightMin = offsets[quad][1];
+    // int HeightMax = HeightMin + Crosshairs.Thickness;
 
     switch(Crosshairs.Shape)
     {
@@ -3474,8 +3459,9 @@ bool OGL_RenderCrosshairs()
     {
       // Four simple rectangles
 
-      int LenMin = Crosshairs.FromCenter;
-      int LenMax = LenMin + Crosshairs.Length;
+      // DJB Unused 
+      // int LenMin = Crosshairs.FromCenter;
+      // int LenMax = LenMin + Crosshairs.Length;
 
       // at the initial rotation, this is the rectangle at 3:00
       // DJB OpenGL not rendering cross hairs
@@ -3499,9 +3485,10 @@ bool OGL_RenderCrosshairs()
       // Depending on the crosshair parameters, some segments
       // have zero length: this happens when LenMid == LenMin.
 
-      int LenMax = Crosshairs.Length;
-      int LenMid = LenMax / 2;
-      int LenMin = std::min(LenMid, static_cast<int>(Crosshairs.FromCenter));
+      // DJB Unused
+      // int LenMax = Crosshairs.Length;
+      // int LenMid = LenMax / 2;
+      // int LenMin = std::min(LenMid, static_cast<int>(Crosshairs.FromCenter));
 
       // at the initial rotation, this is the bottom right
       // DJB OpenGL not rendering cross hairs
@@ -3550,7 +3537,8 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 
   // Create display list for the current text string;
   // use the "standard" text-font display list (display lists can be nested)
-  GLuint TextDisplayList;
+  // DJB Unused 
+  // GLuint TextDisplayList;
   // DJB OpenGL, don't use display lists
   // TextDisplayList = glGenLists(1);
   // glNewList(TextDisplayList,GL_COMPILE);

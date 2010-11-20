@@ -14,6 +14,7 @@
 
 - (IBAction) resume:(id)sender;
 - (IBAction) gotoMenu:(id)sender;
+- (IBAction) help:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
 - (IBAction)shieldCheat:(id)sender;
 - (IBAction)invincibilityCheat:(id)sender;

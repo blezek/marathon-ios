@@ -308,6 +308,9 @@ bool use_map_file(
   return success;
 }
 
+
+// DJB Bring up loading dialog right away
+#include "AlephOneHelper.h"
 bool load_level_from_map(
   short level_index)
 {
@@ -316,7 +319,9 @@ bool load_level_from_map(
   struct wad_data *wad;
   short index_to_load;
   bool restoring_game= false;
-
+  
+  // DJB Start progress
+  startProgress(1000);
   if(file_is_set) {
     /* Determine what we are trying to do.. */
     if(level_index==NONE) {

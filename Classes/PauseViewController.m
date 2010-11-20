@@ -21,7 +21,9 @@
   [[AlephOneAppDelegate sharedAppDelegate].game gotoPreferences:sender];
 }
 
-
+- (IBAction)help:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate].game help:sender];
+}
 - (IBAction)shieldCheat:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game shieldCheat:sender];
 }

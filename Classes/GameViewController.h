@@ -18,6 +18,7 @@
 #import "ProgressViewController.h"
 #import "PreferencesViewController.h"
 #import "PauseViewController.h"
+#import "HelpViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -45,6 +46,7 @@ typedef enum {
   IBOutlet UIView *progressView;
   IBOutlet UIView *preferencesView;
   IBOutlet UIView *pauseView;
+  IBOutlet UIView *helpView;
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
 
@@ -78,6 +80,7 @@ typedef enum {
   IBOutlet ProgressViewController *progressViewController;
   IBOutlet PreferencesViewController *preferencesViewController;
   IBOutlet PauseViewController *pauseViewController;
+  IBOutlet HelpViewController *helpViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -117,6 +120,8 @@ typedef enum {
 - (IBAction) gotoMenu:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
 - (IBAction) closePreferences:(id)sender;
+- (IBAction) help:(id)sender;
+- (IBAction) closeHelp:(id)sender;
 
 // Cheats
 - (IBAction)shieldCheat:(id)sender;
@@ -157,6 +162,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *progressView;
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
+@property (nonatomic, retain) UIView *helpView;
 @property (nonatomic, retain) UIView *preferencesView;
 @property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) ButtonView *restartView;
@@ -177,6 +183,7 @@ typedef enum {
 @property (nonatomic, retain) ProgressViewController *progressViewController;
 @property (nonatomic, retain) PreferencesViewController *preferencesViewController;
 @property (nonatomic, retain) PauseViewController *pauseViewController;
+@property (nonatomic, retain) HelpViewController *helpViewController;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

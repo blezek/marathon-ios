@@ -339,6 +339,9 @@ static std::string HideExtension(const std::string& filename);
 const char *GetPath(void) const {
   return name.c_str();
 }
+  
+  // DJB Get path string
+  string GetPathString() { return name; }
 
 FileSpecifier();
 FileSpecifier(const string &s) : name(s), err(0) {

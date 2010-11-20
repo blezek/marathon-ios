@@ -1468,13 +1468,6 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
             printGLError(__PRETTY_FUNCTION__);
             // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
             assert ( internalFormat == GL_RGBA );
-            /*
-            printf ( "Ready to load compressed texture\n" );
-            for ( int i = 0; i < 16; i++ ) {
-              uint8_t *tmp = (uint8_t*) Image->GetBuffer();
-              printf ( "pixels[%d] = %d, (0x%x)\n", i, tmp[i], tmp[i] );
-            }
-            */
             
             glCompressedTexImage2D(GL_TEXTURE_2D,
                                    0, GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,

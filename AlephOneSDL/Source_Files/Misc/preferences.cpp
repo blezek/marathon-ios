@@ -2349,8 +2349,8 @@ void read_preferences ()
   sound_preferences->music = 7;
 
   // Drop the sprite textures
-  OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[2];
-  TxtrConfig.ColorFormat = 1;
+  // OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[2];
+  // TxtrConfig.ColorFormat = 1;
   
   
   // Print out some things...
