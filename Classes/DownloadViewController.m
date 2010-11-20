@@ -86,12 +86,12 @@
   // Check filesystem space
   NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[app applicationDocumentsDirectory] error:NULL];
   NSNumber *freeSpace = [attributes objectForKey:NSFileSystemFreeSize];
-  MLog ( @"Have %@ space avaliable", freeSpace );
-  int requiredSpace = [app.scenario.sizeInBytes intValue];
-  int availableSpace = [freeSpace intValue];
-  float Meg = 1024.0 * 1024.0;
+  long long Meg = 1024 * 1024;
+  MLog ( @"Have %@ space avaliable %lld", freeSpace, [freeSpace longLongValue] );
+  long long requiredSpace = [app.scenario.sizeInBytes longLongValue];
+  long long availableSpace = [freeSpace longLongValue];
   if ( availableSpace < requiredSpace ) {
-    NSString *msg = [NSString stringWithFormat:@"Installation requires %d megabytes.\nFree up some space and try again.", (int)(requiredSpace / Meg)];
+    NSString *msg = [NSString stringWithFormat:@"Installation requires %d megabytes (%d free).\nFree up some space and try again.", (int)(requiredSpace / Meg), (int)(availableSpace / Meg)];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not enough free space" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
     [av show];
     return;
