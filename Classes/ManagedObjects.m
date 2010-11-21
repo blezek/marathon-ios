@@ -13,6 +13,7 @@
 @dynamic isDownloaded;
 @dynamic name;
 @dynamic path;
+@dynamic downloadHost;
 @dynamic savedGames;
 @dynamic version;
 @dynamic sizeInBytes;
@@ -27,4 +28,8 @@
 @dynamic numberOfSessions;
 @dynamic scenario;
 @dynamic timeInSeconds;
+@dynamic damageGiven;
+@dynamic damageTaken;
+@dynamic shotsFired;
+@dynamic accuracy;
 @end

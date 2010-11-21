@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSNumber * version;
 @property (nonatomic, retain) NSNumber * sizeInBytes;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * downloadHost;
 @property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSSet* savedGames;
 @end
@@ -39,6 +40,10 @@
 @property (nonatomic, retain) NSString * level;
 @property (nonatomic, retain) NSNumber * numberOfSessions;
 @property (nonatomic, retain) NSNumber * timeInSeconds;
+@property (nonatomic, retain) NSNumber * damageTaken;
+@property (nonatomic, retain) NSNumber * damageGiven;
+@property (nonatomic, retain) NSNumber * shotsFired;
+@property (nonatomic, retain) NSNumber * accuracy;
 @property (nonatomic, retain) NSManagedObject * scenario;
 @end
 

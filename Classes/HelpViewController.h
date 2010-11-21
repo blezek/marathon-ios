@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AlephOneAppDelegate.h"
 
 @interface HelpViewController : UIViewController {
 
