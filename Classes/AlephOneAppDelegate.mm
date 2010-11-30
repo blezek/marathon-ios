@@ -70,6 +70,23 @@ extern int SDL_main(int argc, char *argv[]);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	finishedStartup = NO;
   OpenGLESVersion = 1;
+  
+  // Default preferences
+  // Set the application defaults  
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"NO", kCheatsEnabled,
+                               @"NO", kTapShoots,
+                               @"NO", kSecondTapShoots,
+                               @"1.0", kHSensitivity,
+                               @"1.0", kVSensitivity,
+                               @"1.0", kSfxVolume,
+                               @"1.0", kMusicVolume,
+                               nil];
+  [defaults registerDefaults:appDefaults];
+  [defaults synchronize];  
+  
+  
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
 	/* Set working directory to resource path */
@@ -103,6 +120,18 @@ extern int SDL_main(int argc, char *argv[]);
 #endif
     self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
     self.scenario.downloadHost = @"dl.dropbox.com";
+
+    // AWS
+    self.scenario.downloadURL = @"https://s3.amazonaws.com/alephone/M1A1/M1A1.zip";
+    self.scenario.downloadHost = @"s3.amazonaws.com";
+
+    // CloudFront
+    self.scenario.downloadURL = @"http://dhuphyigw82rv.cloudfront.net/M1A1/M1A1.zip";
+    self.scenario.downloadHost = @"dhuphyigw82rv.cloudfront.net";
+
+    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
+    self.scenario.downloadHost = @"10.0.0.10";
+
     [self.scenario.managedObjectContext save:nil];
     self.scenario = nil;
   } 
@@ -110,7 +139,10 @@ extern int SDL_main(int argc, char *argv[]);
   NSError *setCategoryError = nil;
   
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error: &setCategoryError];
-  if (setCategoryError) { /* handle the error condition */ }
+  if (setCategoryError) { 
+    /* handle the error condition */ 
+    MLog ( @"Error setting audio category" );
+  }
   
   // [window addSubview:newGameViewController.view];
   [window makeKeyAndVisible];

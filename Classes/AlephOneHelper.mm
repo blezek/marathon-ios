@@ -60,6 +60,10 @@ char* getLocalDataDir() {
   return (char*)[docsDir UTF8String];
 }
 
+void helperQuit() {
+  MLog ( @"helperQuit()" );
+}
+
 void helperBringUpHUD () {
   [[GameViewController sharedInstance] bringUpHUD];
 }

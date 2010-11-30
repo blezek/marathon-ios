@@ -33,3 +33,4 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
+extern void helperQuit();

@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "NewGameViewController.h"
 #import "ManagedObjects.h"
+#import "Prefs.h"
 
 @class GameViewController;
 @class DownloadViewController;

@@ -121,7 +121,8 @@ struct TxtrTypeInfoData
 static TxtrTypeInfoData TxtrTypeInfoList[OGL_NUMBER_OF_TEXTURE_TYPES];
 static TxtrTypeInfoData ModelSkinInfo;
 
-static bool useSGISMipmaps = false;
+// DJB Not needed
+// static bool useSGISMipmaps = false;
 
 // Infravision: use algorithm (red + green + blue)/3 to compose intensity,
 // then shade with these colors, one color for each collection.

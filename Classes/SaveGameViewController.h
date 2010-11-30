@@ -11,7 +11,7 @@
 #import "ManagedObjects.h"
 #import "SavedGameCell.h"
 
-@interface SaveGameViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+@interface SaveGameViewController : UITableViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UIView *uiView;
   IBOutlet SavedGameCell *savedGameCell;
 @private
@@ -20,6 +20,14 @@
 }
 
 - (IBAction)cancel:(id)sender;
+- (IBAction)deleteGame:(id)sender;
+- (IBAction)reallyDelete;
+- (IBAction)duplicate:(id)sender;
+- (IBAction)load:(id)sender;
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+- (NSIndexPath*)selectedIndex;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 // Create a new game in CoreData, and return

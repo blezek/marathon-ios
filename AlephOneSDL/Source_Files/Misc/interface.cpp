@@ -1486,7 +1486,11 @@ void do_menu_item_command(
       break;
 
     case iQuit:
+        // DJB Quit button pressed
+        helperQuit();
+        /*
       display_quit_screens();
+         */
       break;
 
     default:

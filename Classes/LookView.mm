@@ -31,7 +31,7 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
-
+#import "Prefs.h"
 
 @implementation LookView
 @synthesize primaryFire, secondaryFire;
@@ -73,18 +73,19 @@ extern "C" {
   for ( UITouch *touch in touches ) {
     if ( touch == firstTouch ) {
       firstTouch = nil;
-      // Check the time, fire 
-      // MLog ( @"Might fire here");
-      NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
-      self.firstTouchTime = nil;
-      if ( delta < 0.3 ) {
-        Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-        key_map[primaryFire] = 1;
-        [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
-        
+      if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
+        // Check the time, fire 
+        // MLog ( @"Might fire here");
+        NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
+        self.firstTouchTime = nil;
+        if ( delta < 0.3 ) {
+          Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+          key_map[primaryFire] = 1;
+          [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
+        }
       }
     }
-    if ( touch == secondTouch ) {
+    if ( touch == secondTouch && [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
       secondTouch = nil;
       Uint8 *key_map = SDL_GetKeyboardState ( NULL );
       key_map[secondaryFire] = 0;

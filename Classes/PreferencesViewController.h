@@ -10,9 +10,23 @@
 
 
 @interface PreferencesViewController : UIViewController {
-
+  UISwitch *tapShoots;
+  UISwitch *secondTapShoots;
+  UISlider *sfxVolume;
+  UISlider *musicVolume;
+  UISlider *hSensitivity;
+  UISlider *vSensitivity;
 }
 
+@property (nonatomic, retain) IBOutlet UISwitch *tapShoots;
+@property (nonatomic, retain) IBOutlet UISwitch *secondTapShoots;
+@property (nonatomic, retain) IBOutlet UISlider *sfxVolume;
+@property (nonatomic, retain) IBOutlet UISlider *musicVolume;
+@property (nonatomic, retain) IBOutlet UISlider *hSensitivity;
+@property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
+
++ (void)setAlephOnePreferences;
+- (void)setupUI;
 - (IBAction)closePreferences:(id)sender;
 
 @end

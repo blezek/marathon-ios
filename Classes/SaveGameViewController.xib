@@ -11,7 +11,7 @@
 			<string key="NS.object.0">132</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="12"/>
+			<integer value="28"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -67,7 +67,7 @@
 					<object class="IBUIButton" id="763154327">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{832, 260}, {103, 45}}</string>
+						<string key="NSFrame">{{619, 578}, {133, 45}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -79,7 +79,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Clone</string>
+						<string key="IBUINormalTitle">Duplicate</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="867228016">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -96,7 +96,7 @@
 					<object class="IBUIButton" id="93073621">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{832, 386}, {103, 45}}</string>
+						<string key="NSFrame">{{272, 578}, {103, 45}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -115,7 +115,7 @@
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{832, 525}, {103, 45}}</string>
+						<string key="NSFrame">{{760, 525}, {103, 45}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -124,6 +124,25 @@
 						<reference key="IBUIFont" ref="48679596"/>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Cancel</string>
+						<reference key="IBUIHighlightedTitleColor" ref="867228016"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
+					</object>
+					<object class="IBUIButton" id="187019948">
+						<reference key="NSNextResponder" ref="592514203"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{755, 176}, {82, 45}}</string>
+						<reference key="NSSuperview" ref="592514203"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="48679596"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Load</string>
 						<reference key="IBUIHighlightedTitleColor" ref="867228016"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -187,6 +206,33 @@
 					</object>
 					<int key="connectionID">25</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">duplicate:</string>
+						<reference key="source" ref="763154327"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">load:</string>
+						<reference key="source" ref="187019948"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">deleteGame:</string>
+						<reference key="source" ref="93073621"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">33</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -211,11 +257,12 @@
 						<int key="objectID">12</int>
 						<reference key="object" ref="592514203"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="776278387"/>
 							<reference ref="1053060072"/>
 							<reference ref="763154327"/>
-							<reference ref="127023456"/>
 							<reference ref="93073621"/>
+							<reference ref="776278387"/>
+							<reference ref="187019948"/>
+							<reference ref="127023456"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -244,6 +291,11 @@
 						<reference key="object" ref="93073621"/>
 						<reference key="parent" ref="592514203"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">28</int>
+						<reference key="object" ref="187019948"/>
+						<reference key="parent" ref="592514203"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -256,41 +308,61 @@
 					<bytes key="NSTransformStruct">P4AAAL+AAABDiAAAw+CAAA</bytes>
 				</object>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSAffineTransform" key="15.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxD+AAA</bytes>
+				</object>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="16.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AURQAABDggAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABDiAAAxCAAAA</bytes>
 				</object>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="24.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABEUUAAw5oAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABEUAAAxA4AAA</bytes>
 				</object>
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="26.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABEUAAAw7IAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABDMwAAxCqAAA</bytes>
+				</object>
+				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSAffineTransform" key="28.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABEOwAAw1wAAA</bytes>
 				</object>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">SaveGameViewController</string>
 					<string key="superclassName">UITableViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">cancel:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">cancel:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancel:">id</string>
+						<string key="deleteGame:">id</string>
+						<string key="duplicate:">id</string>
+						<string key="load:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancel:">
 							<string key="name">cancel:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="deleteGame:">
+							<string key="name">deleteGame:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="duplicate:">
+							<string key="name">duplicate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="load:">
+							<string key="name">load:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="savedGameCell">SavedGameCell</string>
 						<string key="uiView">UIView</string>
@@ -314,14 +386,30 @@
 					<string key="className">SavedGameCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="accuracy">UILabel</string>
+						<string key="damageGiven">UILabel</string>
+						<string key="damageTaken">UILabel</string>
 						<string key="overheadMap">UIImageView</string>
 						<string key="playTime">UILabel</string>
 						<string key="screenShot">UIImageView</string>
+						<string key="shotsFired">UILabel</string>
 						<string key="storageDate">UILabel</string>
 						<string key="storageIdentifier">UILabel</string>
 						<string key="subject">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="accuracy">
+							<string key="name">accuracy</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="damageGiven">
+							<string key="name">damageGiven</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="damageTaken">
+							<string key="name">damageTaken</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="overheadMap">
 							<string key="name">overheadMap</string>
 							<string key="candidateClassName">UIImageView</string>
@@ -333,6 +421,10 @@
 						<object class="IBToOneOutletInfo" key="screenShot">
 							<string key="name">screenShot</string>
 							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="shotsFired">
+							<string key="name">shotsFired</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="storageDate">
 							<string key="name">storageDate</string>

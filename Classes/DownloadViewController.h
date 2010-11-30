@@ -20,6 +20,7 @@
 
 @property (nonatomic, retain) IBOutlet PDColoredProgressView *progressView;
 @property (nonatomic, retain) IBOutlet UIView *expandingView;
+@property (nonatomic, retain) NSString *downloadPath;
 
 - (void)downloadFinished:(ASIHTTPRequest*)request;
 - (void)downloadOrchooseGame;

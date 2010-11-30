@@ -8,6 +8,7 @@
 
 #import "HelpViewController.h"
 #import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
 
 @implementation HelpViewController
 

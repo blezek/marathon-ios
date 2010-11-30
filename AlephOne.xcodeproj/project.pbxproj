@@ -785,6 +785,7 @@
 		A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
+		A8A4D30712A4B1F900AEE140 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8A4D30612A4B1F900AEE140 /* Settings.bundle */; };
 		A8A5815611D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
 		A8A5815711D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
 		A8AD432612220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
@@ -811,7 +812,7 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C29C5C1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
-		A8C3922E129789A100E09E32 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.m */; };
+		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
@@ -1686,6 +1687,8 @@
 		A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDColoredProgressView.m; path = Classes/PDColoredProgressView.m; sourceTree = "<group>"; };
 		A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDColoredProgressView.h; path = Classes/PDColoredProgressView.h; sourceTree = "<group>"; };
 		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
+		A8A4D30612A4B1F900AEE140 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		A8A4D31112A4B2C100AEE140 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Classes/Prefs.h; sourceTree = "<group>"; };
 		A8A5815511D789FF00F573B4 /* HUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUD.xib; sourceTree = "<group>"; };
 		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
@@ -1711,7 +1714,7 @@
 		A8C29C581224BF7B00E79491 /* NewGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NewGameViewController.mm; path = Classes/NewGameViewController.mm; sourceTree = "<group>"; };
 		A8C29C591224BF7B00E79491 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = Classes/NewGameViewController.xib; sourceTree = "<group>"; };
 		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
-		A8C3922C129789A100E09E32 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = Classes/HelpViewController.m; sourceTree = "<group>"; };
+		A8C3922C129789A100E09E32 /* HelpViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HelpViewController.mm; path = Classes/HelpViewController.mm; sourceTree = "<group>"; };
 		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
@@ -1922,6 +1925,7 @@
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
 				A8A5815511D789FF00F573B4 /* HUD.xib */,
+				A8A4D30612A4B1F900AEE140 /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2066,6 +2070,8 @@
 				A8A06C7F125819C800BE6EF5 /* drawing.m */,
 				A8562A7811DACF1B0071DFEF /* GameViewController.h */,
 				A8562A7911DACF1B0071DFEF /* GameViewController.mm */,
+				A8C3922B129789A100E09E32 /* HelpViewController.h */,
+				A8C3922C129789A100E09E32 /* HelpViewController.mm */,
 				A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */,
 				A82F1DCE1214F2E9004D0B68 /* LookView.h */,
 				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
@@ -2082,6 +2088,7 @@
 				A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */,
 				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
 				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
+				A8A4D31112A4B2C100AEE140 /* Prefs.h */,
 				A8D5AA7E126545AE002211FB /* ProgressViewController.h */,
 				A8D5AA7F126545AE002211FB /* ProgressViewController.mm */,
 				A8B4138F1235DE10000D59A4 /* SavedGameCell.h */,
@@ -2090,8 +2097,6 @@
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
-				A8C3922B129789A100E09E32 /* HelpViewController.h */,
-				A8C3922C129789A100E09E32 /* HelpViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3425,6 +3430,7 @@
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
 				A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */,
 				A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */,
+				A8A4D30712A4B1F900AEE140 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4200,7 +4206,7 @@
 				A80E9E861280F729005371AB /* timer.c in Sources */,
 				A80E9E871280F729005371AB /* version.c in Sources */,
 				A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */,
-				A8C3922E129789A100E09E32 /* HelpViewController.m in Sources */,
+				A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

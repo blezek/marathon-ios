@@ -80,6 +80,62 @@
   [[GameViewController sharedInstance] chooseSaveGameCanceled];
 }
 
+- (NSIndexPath*)selectedIndex {
+  NSArray *paths = [self.tableView indexPathsForVisibleRows];
+  if ( [paths count] > 0 ) {
+    return [paths objectAtIndex:0];
+  } else {
+    return nil;
+  }
+}
+
+- (IBAction)deleteGame:(id)sender {
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of pattern" delegate:self cancelButtonTitle:@"Skip" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+  as.actionSheetStyle = UIActionSheetStyleDefault;
+  [as showInView:self.view];
+  [as release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( [actionSheet destructiveButtonIndex] == buttonIndex ) {
+    [self reallyDelete];
+  }
+}
+
+- (IBAction)reallyDelete {  
+  MLog ( @"Delete" );
+  NSIndexPath* indexPath = [self selectedIndex];
+  if ( indexPath != nil ) {
+    SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [[NSFileManager defaultManager] removeItemAtPath:game.filename error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:game.mapFilename error:nil];
+    [self.managedObjectContext deleteObject:game];
+    [self.managedObjectContext save:nil];
+    [self.tableView reloadData];
+  }
+}
+
+- (IBAction)duplicate:(id)sender {
+  MLog ( @"Duplicate" );
+  NSIndexPath* indexPath = [self selectedIndex];
+  if ( indexPath != nil ) {
+    SavedGame *game = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    SavedGame *newGame = [self createNewGameFile];
+    // Copy file and map
+    [[NSFileManager defaultManager] copyItemAtPath:game.filename toPath:newGame.filename error:nil];
+    [[NSFileManager defaultManager] copyItemAtPath:game.mapFilename toPath:newGame.mapFilename error:nil];
+  }
+}
+
+- (IBAction)load:(id)sender {
+  MLog ( @"Load" );
+  NSIndexPath* indexPath = [self selectedIndex];
+  if ( indexPath != nil ) {
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+  }
+}
+
+
 - (SavedGame*)createNewGameFile {
   
   // Create the directory

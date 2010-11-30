@@ -146,6 +146,7 @@ extern  int
   // Bring up the preferences
   // TODO -- nice animation!
   self.newGameView.hidden = NO;
+  self.currentSavedGame = nil;
 }
 
 - (IBAction)beginGame {
@@ -156,8 +157,8 @@ extern  int
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
   SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
   SDL_GetRelativeMouseState(NULL, NULL);
-  startingNewGameSoSave = YES;
-  
+  startingNewGameSoSave = NO;
+  self.currentSavedGame = nil;
 }
 
 - (IBAction)cancelNewGame {
@@ -221,7 +222,7 @@ extern  int
   if ( startingNewGameSoSave ) {
     startingNewGameSoSave = NO;
     self.currentSavedGame = [self.saveGameViewController createNewGameFile];
-    [self saveGame];
+    [self performSelector:@selector(saveGame) withObject:nil afterDelay:0.05];
   }
   
 }
@@ -249,12 +250,20 @@ extern  int
   set_game_state(_close_game);
 }
 - (IBAction) gotoPreferences:(id)sender {
+  [self.preferencesViewController setupUI];
   self.preferencesView.hidden = NO;
-  UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Test a really long message\nacross two lines even" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Rate it", @"Don't ask me again", nil];
-  [sheet showInView:self.preferencesView];
+  self.preferencesView.alpha = 0.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.5];
+  self.preferencesView.alpha = 1.0;
+  [UIView commitAnimations];
 }
 - (IBAction) closePreferences:(id)sender {
-  self.preferencesView.hidden = YES;
+  self.preferencesView.alpha = 1.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.5];
+  self.preferencesView.alpha = 0.0;
+  [UIView commitAnimations];  
 }
 
 - (IBAction) help:(id)sender {
@@ -297,6 +306,10 @@ extern bool load_and_start_game(FileSpecifier& File);
 extern SDL_Surface *draw_surface;
 
 - (IBAction)saveGame {
+  if ( self.currentSavedGame == nil ) {
+    self.currentSavedGame = [self.saveGameViewController createNewGameFile];
+  }
+
   // See if we can generate an overhead view
   struct overhead_map_data overhead_data;
   int MapSize = 196;

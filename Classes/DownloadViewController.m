@@ -15,7 +15,7 @@
 @implementation DownloadViewController
 @synthesize progressView;
 @synthesize expandingView;
-
+@synthesize downloadPath;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -128,7 +128,7 @@
     
     NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [app applicationDocumentsDirectory], app.scenario.path];
     NSString* tempPath = [NSString stringWithFormat:@"%@/%@.zip.part", [app applicationDocumentsDirectory], app.scenario.path];
-    downloadPath = path;
+    self.downloadPath = path;
     NSLog ( @"Download file from %@", app.scenario.downloadURL );
     NSURL *url = [NSURL URLWithString:app.scenario.downloadURL];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -179,7 +179,7 @@
 
 - (void)downloadFailed:(ASIHTTPRequest*) request {
   MLog ( @"Download failed!" );
-  NSString *msg = [NSString stringWithFormat:@"Download failed: %@", request.responseStatusMessage];
+  NSString *msg = [NSString stringWithFormat:@"Download failed", request.responseStatusMessage];
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Download failed" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
   [av show];
 }
