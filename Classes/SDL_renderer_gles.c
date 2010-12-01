@@ -348,8 +348,10 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
                        0.0, 1.0);
 
       // Now rotate the view
+      /*
       GLfloat w = window->w / 2.0;
       GLfloat h = window->h / 2.0;
+       */
 
       // DJB Because this is before we translate, do h,w
       // glTranslatef(-w,-h,0);

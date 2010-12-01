@@ -2356,6 +2356,7 @@ void read_preferences ()
   // Print out some things...
   printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
   printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
+  printf ( "VSen (int): %d\n", FIXED_INTEGERAL_PART(input_preferences->sens_vertical) );
   printf ( "Sound channels: %hd\n", sound_preferences->channel_count );
   printf ( "Music Volume: %hd\n", sound_preferences->music );
   

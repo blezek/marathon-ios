@@ -94,6 +94,7 @@
     NSString *msg = [NSString stringWithFormat:@"Installation requires %d megabytes (%d free).\nFree up some space and try again.", (int)(requiredSpace / Meg), (int)(availableSpace / Meg)];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not enough free space" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
     [av show];
+    [av autorelease];
     return;
   }
   
@@ -106,12 +107,14 @@
     NSString *msg = @"Unable to reach download server, please check your connection.";
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No connectivity" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
     [av show];
+    [av autorelease];
     return;
   } else if (remoteHostStatus == ReachableViaWWAN) {
     if ( dataNetwork == NO ) {
       NSString *msg = [NSString stringWithFormat:@"Download %d megabytes over your data network?", (int)(requiredSpace / Meg / 3.0 )];
       UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Confirm download" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [av show];
+      [av autorelease];
       dataNetwork = YES;
       return;
     }
@@ -182,6 +185,7 @@
   NSString *msg = [NSString stringWithFormat:@"Download failed", request.responseStatusMessage];
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Download failed" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
   [av show];
+  [av autorelease];
 }
 
 

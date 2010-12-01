@@ -22,4 +22,6 @@
 - (IBAction)saveCheat:(id)sender;
 - (IBAction)weaponsCheat:(id)sender;
 
+- (IBAction)setup;
+
 @end

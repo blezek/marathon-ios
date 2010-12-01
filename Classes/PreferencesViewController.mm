@@ -8,6 +8,7 @@
 
 #import "PreferencesViewController.h"
 #import "AlephOneAppDelegate.h"
+#include "preferences.h"
 
 @implementation PreferencesViewController
 
@@ -29,6 +30,7 @@
   [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
   [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
   [defaults synchronize];
+  [PreferencesViewController setAlephOnePreferences];
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
 }
 
@@ -43,8 +45,16 @@
   self.vSensitivity.value = [defaults floatForKey:kVSensitivity];
 }
 
+- (IBAction)updatePreferences:(id)sender {
+  [PreferencesViewController setAlephOnePreferences];
+}
+
 + (void)setAlephOnePreferences {
   MLog ( @"Set preferences from device back to engine" );
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  sound_preferences->music = ceil ( (double)[defaults floatForKey:kMusicVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  input_preferences->sens_vertical = _fixed ( [defaults floatForKey:kVSensitivity] * FIXED_ONE );
+  input_preferences->sens_horizontal = _fixed ( [defaults floatForKey:kHSensitivity] * FIXED_ONE );
 }
 
 /*

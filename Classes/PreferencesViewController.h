@@ -27,6 +27,7 @@
 
 + (void)setAlephOnePreferences;
 - (void)setupUI;
+- (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;
 
 @end

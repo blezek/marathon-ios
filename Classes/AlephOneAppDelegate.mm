@@ -39,6 +39,7 @@ extern int SDL_main(int argc, char *argv[]);
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
+  [PreferencesViewController setAlephOnePreferences];
 
 	// Try out the CADisplayLink
 #ifdef USE_SDL_EVENT_LOOP

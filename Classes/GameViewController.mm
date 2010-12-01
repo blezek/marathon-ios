@@ -442,6 +442,7 @@ extern SDL_Surface *draw_surface;
   } else {
     pause_game();
     self.pauseView.hidden = NO;
+    [self.pauseViewController setup];
     self.pauseView.alpha = 0.0;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.5];

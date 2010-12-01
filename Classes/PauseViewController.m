@@ -8,8 +8,18 @@
 
 #import "PauseViewController.h"
 #import "AlephOneAppDelegate.h"
-
+#import "Prefs.h"
 @implementation PauseViewController
+
+- (IBAction) setup {
+  // Hide cheats
+  bool cheatsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kCheatsEnabled];
+  for ( UIView *view in self.view.subviews ) {
+    if ( view.tag == 1  ) {
+      view.hidden = !cheatsEnabled;
+    }
+  }
+}
 
 - (IBAction) resume:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game resume:sender];
