@@ -2484,6 +2484,8 @@ static void handle_interface_menu_screen_click(
     }
   }
 
+  // DJB 
+  printf ( "Found index %d\n", index );
   /* we found one.. */
   if(index!=NUMBER_OF_INTERFACE_RECTANGLES) {
     if(enabled_item(index-_new_game_button_rect+1)) {
