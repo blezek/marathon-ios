@@ -24,9 +24,26 @@
 - (IBAction) resume:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game resume:sender];
 }
+
 - (IBAction) gotoMenu:(id)sender {
-  [[AlephOneAppDelegate sharedAppDelegate].game gotoMenu:sender];
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Return to menu"
+                                                  delegate:self 
+                                         cancelButtonTitle:@"NO"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Yes", nil];
+  [as showInView:self.view];
+  [as release];
 }
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( [actionSheet cancelButtonIndex] != buttonIndex ) {
+    [[AlephOneAppDelegate sharedAppDelegate].game gotoMenu:self];
+  }
+}
+
+
+
 - (IBAction) gotoPreferences:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game gotoPreferences:sender];
 }

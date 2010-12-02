@@ -10,8 +10,9 @@
 #import "AlephOneAppDelegate.h"
 
 @interface HelpViewController : UIViewController {
-
+  UIScrollView *scrollView;
 }
 
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 - (IBAction) done;
 @end

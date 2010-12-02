@@ -2352,6 +2352,7 @@ void read_preferences ()
   // OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[2];
   // TxtrConfig.ColorFormat = 1;
   
+  helperSetPreferences( false);
   
   // Print out some things...
   printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );

@@ -34,3 +34,4 @@ extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void helperQuit();
+extern void helperSetPreferences(bool notifySoundManager);

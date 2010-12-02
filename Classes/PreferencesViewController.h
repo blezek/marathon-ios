@@ -25,7 +25,7 @@
 @property (nonatomic, retain) IBOutlet UISlider *hSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 
-+ (void)setAlephOnePreferences;
++ (void)setAlephOnePreferences:(BOOL)notifySoundManager;
 - (void)setupUI;
 - (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;

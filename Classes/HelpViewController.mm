@@ -11,7 +11,7 @@
 #import "GameViewController.h"
 
 @implementation HelpViewController
-
+@synthesize scrollView;
 - (IBAction)done {
   [[AlephOneAppDelegate sharedAppDelegate].game closeHelp:self];
 }
@@ -26,12 +26,49 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  int kNumImages = 8;
+  CGFloat kScrollObjHeight = scrollView.bounds.size.height;
+  CGFloat kScrollObjWidth = scrollView.bounds.size.width;
+  
+  // load all the images from our bundle and add them to the scroll view
+  NSUInteger i;
+  for (i = 1; i <= kNumImages; i++) {
+    NSString *imageName = [NSString stringWithFormat:@"help%d.png", i];
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+ 
+    // setup each frame to a default height and width, it will be properly placed when we call "updateScrollList"
+    CGRect rect = imageView.frame;
+    rect.size.height = kScrollObjHeight;
+    rect.size.width = kScrollObjWidth;
+    imageView.frame = rect;
+    imageView.tag = i;  // tag our images for later use when we place them in serial fashion
+    [scrollView addSubview:imageView];
+    [imageView release];
+  }
+  UIImageView *view = nil;
+  NSArray *subviews = [scrollView subviews];
+    
+  // reposition all image subviews in a horizontal serial fashion
+  CGFloat curXLoc = 0;
+  for (view in subviews) {
+    if ([view isKindOfClass:[UIImageView class]] && view.tag > 0) {
+      CGRect frame = view.frame;
+      frame.origin = CGPointMake(curXLoc, 0);
+      view.frame = frame;
+      
+      curXLoc += (kScrollObjWidth);
+    }
+  }
+    
+  // set the content size so it can be scrollable
+  [scrollView setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView bounds].size.height)];
+ 
 }
-*/
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -263,7 +263,8 @@ extern  int
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:0.5];
   self.preferencesView.alpha = 0.0;
-  [UIView commitAnimations];  
+  [UIView commitAnimations];
+  [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 - (IBAction) help:(id)sender {

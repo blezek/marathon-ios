@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PauseViewController : UIViewController {
+@interface PauseViewController : UIViewController <UIActionSheetDelegate> {
 }
 
 - (IBAction) resume:(id)sender;
