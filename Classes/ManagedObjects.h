@@ -45,6 +45,7 @@
 @property (nonatomic, retain) NSNumber * shotsFired;
 @property (nonatomic, retain) NSNumber * accuracy;
 @property (nonatomic, retain) NSManagedObject * scenario;
+
 @end
 
 // coalesce these into one @interface SavedGame (CoreDataGeneratedAccessors) section

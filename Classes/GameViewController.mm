@@ -283,6 +283,7 @@ extern bool choose_saved_game_to_load(FileSpecifier& File);
 extern bool load_and_start_game(FileSpecifier& File);
 
 - (IBAction)chooseSaveGame {
+  [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   self.loadGameView.alpha = 0.0;
   [UIView beginAnimations:nil context:nil];
@@ -293,6 +294,9 @@ extern bool load_and_start_game(FileSpecifier& File);
   
 - (IBAction) gameChosen:(SavedGame*)game {
   self.currentSavedGame = game;
+  int sessions = game.numberOfSessions.intValue + 1;
+  game.numberOfSessions = [NSNumber numberWithInt:sessions];
+  [game.managedObjectContext save:nil];
   self.loadGameView.hidden = YES;
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
@@ -348,11 +352,12 @@ extern SDL_Surface *draw_surface;
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
-  int sessions = game.numberOfSessions.intValue + 1;
-  game.numberOfSessions = [NSNumber numberWithInt:sessions];
   game.timeInSeconds = [NSNumber numberWithInt:0];
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
+  
+  MLog ( @"Saving game: %@", game );
+  
   [game.managedObjectContext save:nil];
   
   

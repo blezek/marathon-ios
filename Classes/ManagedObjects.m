@@ -32,4 +32,5 @@
 @dynamic damageTaken;
 @dynamic shotsFired;
 @dynamic accuracy;
+
 @end
