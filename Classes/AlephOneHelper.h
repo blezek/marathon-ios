@@ -35,3 +35,7 @@ extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void helperQuit();
 extern void helperSetPreferences(bool notifySoundManager);
+
+// Help track hits!
+extern void helperNewProjectile ( short projectile_index, short which_weapon, short which_trigger );
+extern void helperProjectileHit ( short projectile_index );

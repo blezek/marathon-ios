@@ -1851,6 +1851,8 @@ static struct weapon_data *get_player_current_weapon(
   return &player_weapons->weapons[player_weapons->current_weapon];
 }
 
+// DJB Include helpers
+#include "AlephOneHelper.h"
 /*
         This function does the following:
                 1) Calculates how many shots to fire.
@@ -2010,11 +2012,14 @@ static void fire_weapon(
                         find_closest_appropriate_target(player->monster_index,
                                                         false) :
                         NONE) : NONE;
+        // DJB Track hits
+        short projectile_index = 
         new_projectile(&origin, origin_polygon, &_vector,
                        trigger_definition->theta_error+flailing_bonus,
                        trigger_definition->projectile_type,
                        player->monster_index, _monster_marine, Target,
                        damage_modifier);
+        helperNewProjectile ( projectile_index, player_weapons->current_weapon, which_trigger );
         // player->monster_index, _monster_marine, NONE, damage_modifier);
       }
     }

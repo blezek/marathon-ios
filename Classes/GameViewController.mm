@@ -41,6 +41,7 @@ extern  int
 #include "interface.h"
 #import "game_wad.h"
 #include "overhead_map.h"
+#include "weapons.h"
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
@@ -159,6 +160,8 @@ extern  int
   SDL_GetRelativeMouseState(NULL, NULL);
   startingNewGameSoSave = NO;
   self.currentSavedGame = nil;
+  MLog ( @"Current world ticks %d", dynamic_world->tick_count );
+
 }
 
 - (IBAction)cancelNewGame {
@@ -293,6 +296,7 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
   
 - (IBAction) gameChosen:(SavedGame*)game {
+  MLog ( @"Current world ticks %d", dynamic_world->tick_count );
   self.currentSavedGame = game;
   int sessions = game.numberOfSessions.intValue + 1;
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
@@ -345,22 +349,44 @@ extern SDL_Surface *draw_surface;
   SDL_SaveBMP ( map, (char*)[self.currentSavedGame.mapFilename UTF8String] );
   SDL_FreeSurface ( map );
   
-  MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
-  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
-  save_game_file(file);
+
   
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
-  game.timeInSeconds = [NSNumber numberWithInt:0];
+  int seconds = (int) ( dynamic_world->tick_count ) / (float)TICKS_PER_SECOND;
+  game.timeInSeconds = [NSNumber numberWithInt:seconds];
+  game.damageGiven = [NSNumber numberWithInt:local_player->monster_damage_given.damage];
+  game.damageTaken = [NSNumber numberWithInt:local_player->monster_damage_taken.damage];
+  game.kills = [NSNumber numberWithInt:local_player->monster_damage_given.kills];
+  
+  // Calculate shots fired and accuracy
+  extern player_weapon_data *get_player_weapon_data(const short player_index);
+  player_weapon_data* weapon_data = get_player_weapon_data(local_player_index);
+  int shotsFired = 0;
+  int shotsHit = 0;
+  for ( int widx = 0; widx < MAXIMUM_NUMBER_OF_WEAPONS; widx++ ) {
+    for ( int tidx = 0; tidx < NUMBER_OF_TRIGGERS; tidx++ ) {
+      shotsFired += weapon_data->weapons[widx].triggers[tidx].shots_fired;
+      shotsHit += weapon_data->weapons[widx].triggers[tidx].shots_hit;
+    }
+  }
+  game.shotsFired = [NSNumber numberWithInt:shotsFired];
+  float accuracy = 100 * shotsHit / (float)shotsFired;
+  game.accuracy = [NSNumber numberWithFloat:accuracy];
+  
+  
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
   
-  MLog ( @"Saving game: %@", game );
+  MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
+  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
+  save_game_file(file);
   
+  MLog ( @"Saving game: %@", game );
   [game.managedObjectContext save:nil];
   
-  
+
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
   self.savedGameMessage.alpha = 1.0;

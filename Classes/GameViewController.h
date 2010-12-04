@@ -100,6 +100,9 @@ typedef enum {
   bool animating;
   bool inMainLoop;
   NSTimer *animationTimer;  
+  
+  // Ticks for calculating how long the player has been playing
+  int ticks;
 }
 
 +(GameViewController*)sharedInstance;

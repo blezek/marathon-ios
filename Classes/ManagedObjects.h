@@ -44,6 +44,7 @@
 @property (nonatomic, retain) NSNumber * damageGiven;
 @property (nonatomic, retain) NSNumber * shotsFired;
 @property (nonatomic, retain) NSNumber * accuracy;
+@property (nonatomic, retain) NSNumber * kills;
 @property (nonatomic, retain) NSManagedObject * scenario;
 
 @end

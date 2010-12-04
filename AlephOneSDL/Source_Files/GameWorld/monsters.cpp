@@ -1554,6 +1554,8 @@ void damage_monsters_in_radius(
   }
 }
 
+// DJB include helpers
+#include "AlephOneHelper.h"
 void damage_monster(
   short target_index,
   short aggressor_index,
@@ -1609,6 +1611,8 @@ void damage_monster(
                                                               delta_vitality);
           team_monster_damage_given[aggressor_player->team].damage += MAX(
             monster->vitality, delta_vitality);
+          // DJB record a hit
+          helperProjectileHit ( projectile_index );
         }
       }
 

@@ -10,8 +10,12 @@
 #import "AlephOneHelper.h"
 #include "interface.h"
 #import "AlephOneAppDelegate.h"
+#include "projectiles.h"
+#include "player.h"
 
 NSString *dataDir;
+
+
 
 void printGLError( const char* message ) {
   switch ( glGetError() ) {
@@ -104,6 +108,21 @@ void helperSetPreferences( bool notify) {
   [PreferencesViewController setAlephOnePreferences:notify];
 }
 
+short pRecord[128][2];
+void helperNewProjectile( short projectile_index, short which_weapon, short which_trigger ) {
+  if ( projectile_index >= 128 ) { return; };
+  pRecord[projectile_index][0] = which_weapon;
+  pRecord[projectile_index][1] = which_trigger;
+}
+
+extern player_weapon_data *get_player_weapon_data(const short player_index);
+void helperProjectileHit ( short projectile_index ) {
+  if ( projectile_index >= 128 ) { return; };
+  player_weapon_data* weapon_data = get_player_weapon_data(local_player_index);
+  short widx = pRecord[projectile_index][0];
+  short tidx = pRecord[projectile_index][1];
+  weapon_data->weapons[widx].triggers[tidx].shots_hit++;
+}
 
 // Some calls defined in the interface.cpp
 extern void force_system_colors(void);
