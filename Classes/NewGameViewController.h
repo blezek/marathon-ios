@@ -9,10 +9,29 @@
 #import <UIKit/UIKit.h>
 
 @interface NewGameViewController : UIViewController {
+  UIButton *easyButton;
+  UIButton *normalButton;
+  UIButton *hardButton;
+  UIButton *nightmareButton;
+  UISlider *startLevelSlider;
+  UILabel *startLevelLabel;
+  UILabel *pledge;
 }
+
+@property (nonatomic, retain) IBOutlet UIButton *easyButton;
+@property (nonatomic, retain) IBOutlet UIButton *normalButton;
+@property (nonatomic, retain) IBOutlet UIButton *hardButton;
+@property (nonatomic, retain) IBOutlet UIButton *nightmareButton;
+@property (nonatomic, retain) IBOutlet UISlider *startLevelSlider;
+@property (nonatomic, retain) IBOutlet UILabel *startLevelLabel;
+@property (nonatomic, retain) IBOutlet UILabel *pledge;
+
 
 - (IBAction)start:(id)control;
 - (IBAction)cancel:(id)control;
-- (IBAction)setDifficulty:(UISegmentedControl*)control;
+- (IBAction)setDifficulty:(id)control;
+- (IBAction)setEntryLevel:(id)control;
+
+- (void)setupUI;
 
 @end

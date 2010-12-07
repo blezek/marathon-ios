@@ -19,6 +19,7 @@
 #import "PreferencesViewController.h"
 #import "PauseViewController.h"
 #import "HelpViewController.h"
+#import "NewGameViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -81,6 +82,7 @@ typedef enum {
   IBOutlet PreferencesViewController *preferencesViewController;
   IBOutlet PauseViewController *pauseViewController;
   IBOutlet HelpViewController *helpViewController;
+  IBOutlet NewGameViewController *newGameViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -187,6 +189,7 @@ typedef enum {
 @property (nonatomic, retain) PreferencesViewController *preferencesViewController;
 @property (nonatomic, retain) PauseViewController *pauseViewController;
 @property (nonatomic, retain) HelpViewController *helpViewController;
+@property (nonatomic, retain) NewGameViewController *newGameViewController;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

@@ -187,3 +187,7 @@ void stopProgress() {
   [[GameViewController sharedInstance] stopProgress];
 }
 
+short helperGetEntryLevelNumber() {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  return [defaults integerForKey:kEntryLevelNumber];
+}

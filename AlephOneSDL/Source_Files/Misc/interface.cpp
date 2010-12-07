@@ -1931,7 +1931,9 @@ bool begin_game(
     else {
       entry.level_number= 0;
     }
-
+      // DJB did we set a starting entry number?
+      entry.level_number = helperGetEntryLevelNumber();
+      
     // ZZZ: let the user use his behavior modifiers in single-player.
     restore_custom_player_behavior_modifiers();
 

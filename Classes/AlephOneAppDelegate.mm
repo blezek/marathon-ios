@@ -82,6 +82,7 @@ extern int SDL_main(int argc, char *argv[]);
                                @"1.0", kVSensitivity,
                                @"1.0", kSfxVolume,
                                @"1.0", kMusicVolume,
+                               @"0", kEntryLevelNumber,
                                nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];  

@@ -15,3 +15,4 @@
 #define kVSensitivity @"verticalSensitivity"
 #define kTapShoots @"tapShoots"
 #define kSecondTapShoots @"secondTapShoots"
+#define kEntryLevelNumber @"entryLevelNumber"

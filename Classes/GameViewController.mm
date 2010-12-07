@@ -53,6 +53,7 @@ extern  int
 @synthesize savedGameMessage, restartView;
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
+@synthesize newGameViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -92,7 +93,11 @@ extern  int
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
   [self.pauseView addSubview:self.pauseViewController.view];
-
+  
+  self.newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:[NSBundle mainBundle]];
+  [self.newGameViewController view];
+  [self.newGameView addSubview:self.newGameViewController.view];
+  
   
   // Kill a warning
   (void)all_key_definitions;
@@ -146,6 +151,7 @@ extern  int
   // Set the preferences, and kick off a new game if needed
   // Bring up the preferences
   // TODO -- nice animation!
+  [self.newGameViewController setupUI];
   self.newGameView.hidden = NO;
   self.currentSavedGame = nil;
 }
