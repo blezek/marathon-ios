@@ -32,6 +32,15 @@ set Vision(30)  "0.000000 0.000000 1.000000 1"
 set Vision(31)  "1.000000 1.000000 1.000000 0"
 
 
+set Weighting --channel-weighting-linear
+set BPP        --bits-per-pixel-4
+set TextureSize "256x256!"
+
+set BPP        --bits-per-pixel-2
+set TextureSize "256x256!"
+# Can't do 128, just too many textures
+set TextureSize "128x128!"
+
 set TopDir [pwd]
 file mkdir SpriteTextures
 
@@ -77,8 +86,7 @@ foreach collection [glob *] {
 
       # What size to build?  Cap to 128x128?
       if { $maxDim > 100 } {
-        set size "256x256!"
-        set size "128x128!"
+        set size $TextureSize
       } else {
         set s 4
         while { $s < $maxDim } {
@@ -93,7 +101,7 @@ foreach collection [glob *] {
       puts "\t\t\tResizing to $size"
 
       exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
-      exec texturetool -e PVRTC -m -f PVR --channel-weighting-linear --bits-per-pixel-4 -o $outputFile $TempFile
+      exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
       puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base.pvrtc\" clut=\"$clut\"/>"
 
       if { $InfraVision } {
@@ -104,7 +112,7 @@ foreach collection [glob *] {
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
         exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" $VisionTempFile
-        exec texturetool -e PVRTC -m -f PVR --channel-weighting-linear --bits-per-pixel-4 -o $VisionFile $VisionTempFile
+        exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
         # NB, clut 8 is Infravision, 9 is silhouette
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base-IR.pvrtc\" clut=\"8\"/>"
       }

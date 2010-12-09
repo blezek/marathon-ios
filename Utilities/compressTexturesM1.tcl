@@ -266,23 +266,35 @@ lappend Collections(/water/water33.dds) "17 33"
 lappend Collections(/water/water34.dds) "17 34"
 lappend Collections(/water/water35.dds) "17 35"
 
+# Special sizes
+set SpecialSize "512x512!"
+
 # Buttons
-set Size(19,0,2) 256x256!
-set Size(19,0,3) 256x256!
-set Size(19,0,42) 256x256!
-set Size(19,0,43) 256x256!
-set Size(19,0,46) 256x256!
-set Size(19,0,47) 256x256!
-set Size(19,0,48) 256x256!
-set Size(19,0,49) 256x256!
-set Size(19,0,55) 256x256!
+set Size(19,0,2) $SpecialSize
+set Size(19,0,3) $SpecialSize
+set Size(19,0,42) $SpecialSize
+set Size(19,0,43) $SpecialSize
+set Size(19,0,46) $SpecialSize
+set Size(19,0,47) $SpecialSize
+set Size(19,0,48) $SpecialSize
+set Size(19,0,49) $SpecialSize
+set Size(19,0,55) $SpecialSize
 # Terminals
-set Size(19,0,57) 256x256!
-set Size(19,0,58) 256x256!
-set Size(19,0,59) 256x256!
-set Size(19,0,60) 256x256!
-set Size(19,0,61) 256x256!
-set Size(19,0,62) 256x256!
+set Size(19,0,57) $SpecialSize
+set Size(19,0,58) $SpecialSize
+set Size(19,0,59) $SpecialSize
+set Size(19,0,60) $SpecialSize
+set Size(19,0,61) $SpecialSize
+set Size(19,0,62) $SpecialSize
+
+
+set Weighting --channel-weighting-linear
+set BPP        --bits-per-pixel-4
+set TextureSize "256x256!"
+
+# Try a large size, but 2bpp
+set BPP        --bits-per-pixel-2
+set TextureSize "512x512!"
 
 proc Rename {} {
   global Collections
@@ -348,6 +360,7 @@ foreach collection [glob *] {
       if { $width == $height } {
         set Compress 1
         set size "128x128!"
+        set size $TextureSize
       } else {
         set Compress 0
         set size "${width}x$height"
@@ -362,7 +375,7 @@ foreach collection [glob *] {
       # Square, so we resize
       exec convert $image -resize $size $TempFile
       if { $Compress } {
-        exec texturetool -e PVRTC -m -f PVR --channel-weighting-linear --bits-per-pixel-4 -o $outputFile $TempFile
+        exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base.pvrtc\" clut=\"$clut\"/>"
       } else {
         set outputFile [file join $TopDir TTEP-M1 $collection $clut $base.png]
@@ -382,7 +395,7 @@ foreach collection [glob *] {
 
         if { $Compress } {
           set VisionFile [file join [file dir $outputFile] $base-IR.pvrtc]
-          exec texturetool -e PVRTC -m -f PVR --channel-weighting-linear --bits-per-pixel-4 -o $VisionFile $VisionTempFile
+          exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
           # NB, clut 8 is Infravision, 9 is silhouette
           puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.pvrtc\" clut=\"8\"/>"
         } else {

@@ -28,11 +28,10 @@ static vector<entry_point> levels;
 - (IBAction)start:(id)control {
   NSLog ( @"Start!" );
   [[GameViewController sharedInstance] beginGame];
-  [self dismissModalViewControllerAnimated:YES];
 }
 - (IBAction)cancel:(id)control {
   NSLog ( @"Cancel" );
-  [self dismissModalViewControllerAnimated:YES];
+  [[GameViewController sharedInstance] cancelNewGame];
 }
 - (IBAction)setDifficulty:(id)control {
   if ( control == easyButton ) { player_preferences->difficulty_level = _easy_level; }
@@ -46,7 +45,7 @@ static vector<entry_point> levels;
   int index = (int)self.startLevelSlider.value;
   
   [[NSUserDefaults standardUserDefaults] setInteger:levels[index].level_number forKey:kEntryLevelNumber];
-  self.startLevelLabel.text = [NSString stringWithFormat:@"%s", levels[self.startLevelSlider.value].level_name];
+  self.startLevelLabel.text = [NSString stringWithFormat:@"Starting Level: (%d) %s", levels[self.startLevelSlider.value].level_number, levels[self.startLevelSlider.value].level_name];
 }
 
 #pragma mark -

@@ -28,7 +28,8 @@
   [defaults setFloat:self.sfxVolume.value forKey:kSfxVolume];
   [defaults setFloat:self.musicVolume.value forKey:kMusicVolume];
   [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
-  [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
+  // Note, only one sensitivity!
+  [defaults setFloat:self.hSensitivity.value forKey:kVSensitivity];
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES];
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
@@ -53,8 +54,10 @@
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   sound_preferences->music = ceil ( (double)[defaults floatForKey:kMusicVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
-  input_preferences->sens_vertical = _fixed ( [defaults floatForKey:kVSensitivity] * FIXED_ONE );
-  input_preferences->sens_horizontal = _fixed ( [defaults floatForKey:kHSensitivity] * FIXED_ONE );
+  float sens = [defaults floatForKey:kHSensitivity];
+  if ( sens < 0.1 ) { sens = 0.1; }
+  input_preferences->sens_vertical = _fixed ( sens * FIXED_ONE );
+  input_preferences->sens_horizontal = _fixed ( sens * FIXED_ONE );
   SoundManager::instance()->SetParameters(*sound_preferences);
 
   MLog ( @"Music: %d", sound_preferences->music );

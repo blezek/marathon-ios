@@ -28,16 +28,16 @@
 - (IBAction) gotoMenu:(id)sender {
   UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Return to menu"
                                                   delegate:self 
-                                         cancelButtonTitle:@"NO"
-                                    destructiveButtonTitle:nil
-                                         otherButtonTitles:@"Yes", nil];
+                                         cancelButtonTitle:nil
+                                    destructiveButtonTitle:@"Yes"
+                                         otherButtonTitles:@"No", nil];
   [as showInView:self.view];
   [as release];
 }
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  if ( [actionSheet cancelButtonIndex] != buttonIndex ) {
+  if ( [actionSheet destructiveButtonIndex] == buttonIndex ) {
     [[AlephOneAppDelegate sharedAppDelegate].game gotoMenu:self];
   }
 }

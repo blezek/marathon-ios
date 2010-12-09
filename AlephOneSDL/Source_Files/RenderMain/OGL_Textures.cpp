@@ -1401,7 +1401,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         assert(false);
     }
   }
-  else   if (Image->GetFormat() == ImageDescriptor::PVRTC4) {
+  else   if (Image->GetFormat() == ImageDescriptor::PVRTC4 || Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
     switch (TxtrTypeInfo.FarFilter)
     {
       case GL_NEAREST:
@@ -1412,19 +1412,38 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
       case GL_LINEAR_MIPMAP_LINEAR:
       {        
         int level = 0;
+        GLenum format;
+        uint32_t blockSize = 0;
+        uint32_t bpp, widthBlocks, heightBlocks;
+        if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
+          format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+          blockSize = 4 * 4; // Pixel by pixel block size for 4bpp
+                             // widthBlocks = width / 4;
+                             // heightBlocks = height / 4;
+          bpp = 4;
+        }
+        if ( Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
+          format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+          blockSize = 8 * 4; // Pixel by pixel block size for 2bpp
+                             // widthBlocks = width / 8;
+                             // heightBlocks = height / 4;
+          bpp = 2;
+        }
+        
         int width = Image->GetWidth();
         int height = Image->GetHeight();
         unsigned char* data = (unsigned char*)Image->GetBuffer();
         for ( level = 0; width > 0 && height > 0; level++ ) {
-          GLsizei size = std::max ( 32, width * height * 4 / 8 );
+          GLsizei size = std::max ( 32u, width * height * bpp / 8 );
           glCompressedTexImage2D(GL_TEXTURE_2D, 
                                  level, 
-                                 GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,
+                                 format,
                                  width, 
                                  height, 
                                  0, 
                                  size, 
                                  data);
+          printGLError(__PRETTY_FUNCTION__);
           data += size;
           width >>= 1;
           height >>= 1;
@@ -1463,22 +1482,38 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           mipmapsLoaded = true;
         }
         else {
-          {
             // DJB OpenGL gluBuild2DMipmaps, but don't build for compressed textures
-            glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-            printGLError(__PRETTY_FUNCTION__);
+            // glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+            // printGLError(__PRETTY_FUNCTION__);
             // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
-            assert ( internalFormat == GL_RGBA );
+            // assert ( internalFormat == GL_RGBA );
             
-            glCompressedTexImage2D(GL_TEXTURE_2D,
-                                   0, GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG,
-                                   Image->GetWidth(),
-                                   Image->GetHeight(),
-                                   0,
-                                   Image->ContentLength,
-                                   Image->GetBuffer() );
-            printGLError(__PRETTY_FUNCTION__);
-          }
+            int level = 0;
+            GLenum format;
+            if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
+              format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+            }
+            if ( Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
+              format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+            }
+            
+            int width = Image->GetWidth();
+            int height = Image->GetHeight();
+            unsigned char* data = (unsigned char*)Image->GetBuffer();
+            for ( level = 0; width > 0 && height > 0; level++ ) {
+              GLsizei size = std::max ( 32, width * height * 4 / 8 );
+              glCompressedTexImage2D(GL_TEXTURE_2D, 
+                                     level, 
+                                     format,
+                                     width, 
+                                     height, 
+                                     0, 
+                                     size, 
+                                     data);
+              data += size;
+              width >>= 1;
+              height >>= 1;
+            
           mipmapsLoaded = true;
         }
 #endif
