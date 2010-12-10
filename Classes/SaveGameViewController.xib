@@ -155,7 +155,7 @@
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
+					<bytes key="NSWhite">MSAwAA</bytes>
 					<object class="NSColorSpace" key="NSCustomColorSpace">
 						<int key="NSID">2</int>
 					</object>
@@ -344,6 +344,7 @@
 						<string key="deleteGame:">id</string>
 						<string key="duplicate:">id</string>
 						<string key="load:">id</string>
+						<string key="reallyDelete">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="cancel:">
@@ -360,6 +361,10 @@
 						</object>
 						<object class="IBActionInfo" key="load:">
 							<string key="name">load:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="reallyDelete">
+							<string key="name">reallyDelete</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

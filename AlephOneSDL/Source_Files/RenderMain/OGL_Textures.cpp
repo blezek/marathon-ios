@@ -1414,7 +1414,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         int level = 0;
         GLenum format;
         uint32_t blockSize = 0;
-        uint32_t bpp, widthBlocks, heightBlocks;
+        uint32_t bpp;
         if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
           format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
           blockSize = 4 * 4; // Pixel by pixel block size for 4bpp

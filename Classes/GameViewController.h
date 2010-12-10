@@ -62,6 +62,8 @@ typedef enum {
   IBOutlet ButtonView *previousWeaponView;
   IBOutlet ButtonView *nextWeaponView;
   IBOutlet ButtonView *inventoryToggleView;
+  IBOutlet ButtonView *nextWeaponButton;
+  IBOutlet ButtonView *previousWeaponButton;
   IBOutlet UIView *savedGameMessage;
 
   HUDMode mode;
@@ -147,6 +149,7 @@ typedef enum {
 
 - (void)bringUpHUD;
 - (void)hideHUD;
+- (void)epilog;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
@@ -181,6 +184,8 @@ typedef enum {
 @property (nonatomic, retain) ButtonView *rightFireView;
 @property (nonatomic, retain) ButtonView *previousWeaponView;
 @property (nonatomic, retain) ButtonView *nextWeaponView;
+@property (nonatomic, retain) ButtonView *previousWeaponButton;
+@property (nonatomic, retain) ButtonView *nextWeaponButton;
 @property (nonatomic, retain) ButtonView *inventoryToggleView;
 @property (nonatomic, retain) UIButton *pause;
 

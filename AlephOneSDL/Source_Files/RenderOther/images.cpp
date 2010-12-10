@@ -1010,7 +1010,8 @@ struct color_table *build_8bit_system_color_table(void)
  */
 
 #define SCROLLING_SPEED (MACHINE_TICKS_PER_SECOND / 20)
-
+// DJB Helper functions
+#include "AlephOneHelper.h"
 void scroll_full_screen_pict_resource_from_scenario(int pict_resource_number,
                                                     bool text_block)
 {
@@ -1078,6 +1079,8 @@ void scroll_full_screen_pict_resource_from_scenario(int pict_resource_number,
       // Check for events to abort
       event.type = SDL_FIRSTEVENT;
       SDL_PollEvent(&event);
+      // DJB Pump events from iOS
+      pumpEvents();
       switch (event.type) {
       case SDL_MOUSEBUTTONDOWN:
       case SDL_KEYDOWN:

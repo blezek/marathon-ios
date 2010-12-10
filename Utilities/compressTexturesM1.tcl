@@ -290,11 +290,13 @@ set Size(19,0,62) $SpecialSize
 
 set Weighting --channel-weighting-linear
 set BPP        --bits-per-pixel-4
-set TextureSize "256x256!"
 
 # Try a large size, but 2bpp
 set BPP        --bits-per-pixel-2
 set TextureSize "512x512!"
+
+set IRTextureSize "256x256!"
+set TextureSize "256x256!"
 
 proc Rename {} {
   global Collections
@@ -338,16 +340,6 @@ foreach collection [glob *] {
       set bitmap [string trimleft $bitmap 0]
       if { $bitmap == "" } { set bitmap 0 }
 
-      # Convert to 128x128
-      puts "\t\tProcessing $image bitmap: $bitmap"
-      set tail [file tail $image]
-      set base [file root $tail]
-      set outputFile [file join $TopDir TTEP-M1 $collection $clut $base.pvrtc]
-      file mkdir [file dir $outputFile]
-
-      set TempFile [file join $TopDir TTEP-M1-PNG $collection $clut $base.png]
-      file mkdir [file dir $TempFile]
-
       set size [exec identify -format "%w %h" $image]
       set width [lindex $size 0]
       set height [lindex $size 1]
@@ -372,6 +364,16 @@ foreach collection [glob *] {
         puts "\t\t\tSpecial Size!: $size"
       }
 
+      # Convert to 128x128
+      puts "\t\tProcessing $image bitmap: $bitmap"
+      set tail [file tail $image]
+      set base [file root $tail]
+      set outputFile [file join $TopDir TTEP-M1 $collection $clut $base.pvrtc]
+      file mkdir [file dir $outputFile]
+
+      set TempFile [file join $TopDir TTEP-M1-PNG $collection $clut $base.png]
+      file mkdir [file dir $TempFile]
+
       # Square, so we resize
       exec convert $image -resize $size $TempFile
       if { $Compress } {
@@ -390,7 +392,7 @@ foreach collection [glob *] {
         set B [lindex $Vision($collection) 2]
 
         set VisionTempFile [file join $TopDir TTEP-M1-PNG $collection $clut $base-IR.png]
-        exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" $VisionTempFile
+        exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize $VisionTempFile
         # puts [list convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" $VisionTempFile]
 
         if { $Compress } {
@@ -399,11 +401,11 @@ foreach collection [glob *] {
           # NB, clut 8 is Infravision, 9 is silhouette
           puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.pvrtc\" clut=\"8\"/>"
         } else {
-          # Don't compress
-          set VisionFile [file join [file dir $outputFile] $base-IR.png]
-          exec convert $VisionTempFile -resize $size $outputFile
+          # Don't compress, so we don't need to do anything
+          # set VisionFile [file join [file dir $outputFile] $base-IR.png]
+          # exec convert $VisionTempFile -resize $size $outputFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.png\" clut=\"8\"/>"
+          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.png\" clut=\"8\"/>"
         }
       }
     }

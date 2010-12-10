@@ -54,6 +54,7 @@ extern  int
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
+@synthesize previousWeaponButton, nextWeaponButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -178,6 +179,11 @@ extern  int
   self.hud.hidden = YES;
 }
 
+- (void)epilog {
+  self.hud.hidden = YES;
+  mode = MenuMode;
+}
+
 - (void)playerKilled {
   self.hud.alpha = 1.0;
   self.restartView.alpha = 0.0;
@@ -211,8 +217,10 @@ extern  int
       [self.restartView setup:key->offset];
     } else if ( key->action_flag == _cycle_weapons_forward ) {
       [self.nextWeaponView setup:key->offset];
+      [self.nextWeaponButton setup:key->offset];
     } else if ( key->action_flag == _cycle_weapons_backward ) {
       [self.previousWeaponView setup:key->offset];
+      [self.previousWeaponButton setup:key->offset];
     }
   }
   
@@ -278,9 +286,20 @@ extern  int
 
 - (IBAction) help:(id)sender {
   self.helpView.hidden = NO;
+  self.helpView.alpha = 0.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.5];
+  self.helpView.alpha = 1.0;
+  [UIView commitAnimations];
+  
 }
 - (IBAction) closeHelp:(id)sender {
-  self.helpView.hidden = YES;
+  self.helpView.alpha = 1.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.5];
+  self.helpView.alpha = 0.0;
+  [UIView commitAnimations];
+  [self.helpView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 

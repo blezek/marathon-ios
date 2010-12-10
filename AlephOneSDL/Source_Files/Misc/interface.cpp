@@ -1159,6 +1159,8 @@ bool idle_game_state(uint32 time)
         break;
 
       case _begin_display_of_epilogue:
+          // DJB Take down hud, bring back menu
+          helperEpilog();
         finish_game(false);
         display_epilogue();
         break;

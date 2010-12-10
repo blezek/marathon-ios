@@ -90,7 +90,12 @@
 }
 
 - (IBAction)deleteGame:(id)sender {
-  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of pattern" delegate:self cancelButtonTitle:@"Skip" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+  if ( [self selectedIndex] == nil ) { return; }
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of pattern"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Skip"
+                                    destructiveButtonTitle:@"Delete"
+                                         otherButtonTitles:@"Cancel", nil];
   as.actionSheetStyle = UIActionSheetStyleDefault;
   [as showInView:self.view];
   [as release];
@@ -125,6 +130,7 @@
     [[NSFileManager defaultManager] copyItemAtPath:game.filename toPath:newGame.filename error:nil];
     [[NSFileManager defaultManager] copyItemAtPath:game.mapFilename toPath:newGame.mapFilename error:nil];
   }
+  [self.tableView reloadData];
 }
 
 - (IBAction)load:(id)sender {

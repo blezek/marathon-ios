@@ -104,6 +104,12 @@ void helperHideHUD() {
   [[GameViewController sharedInstance] hideHUD];
 }
 
+void helperEpilog() {  
+  [[GameViewController sharedInstance] epilog];
+  pumpEvents();
+}
+
+
 void helperSetPreferences( bool notify) {
   [PreferencesViewController setAlephOnePreferences:notify];
 }

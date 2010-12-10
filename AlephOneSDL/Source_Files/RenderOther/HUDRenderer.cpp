@@ -262,6 +262,7 @@ void HUD_Class::update_weapon_panel(bool force_redraw)
             DrawShapeAtXY(definition->weapon_panel_shape,
                           definition->standard_weapon_panel_left,
                           definition->standard_weapon_panel_top);
+
           }
 
           if(current_player->items[definition->item_id]>1) {
