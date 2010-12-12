@@ -12,6 +12,7 @@
 #import "AlephOneAppDelegate.h"
 #include "projectiles.h"
 #include "player.h"
+#import "Prefs.h"
 
 NSString *dataDir;
 
@@ -109,6 +110,10 @@ void helperEpilog() {
   pumpEvents();
 }
 
+float helperGamma() {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  return [defaults floatForKey:kGamma];
+};
 
 void helperSetPreferences( bool notify) {
   [PreferencesViewController setAlephOnePreferences:notify];

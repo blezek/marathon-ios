@@ -267,6 +267,7 @@ lappend Collections(/water/water34.dds) "17 34"
 lappend Collections(/water/water35.dds) "17 35"
 
 # Special sizes
+set SpecialSize "256x256!"
 set SpecialSize "512x512!"
 
 # Buttons
@@ -296,7 +297,9 @@ set BPP        --bits-per-pixel-2
 set TextureSize "512x512!"
 
 set IRTextureSize "256x256!"
+set IRTextureSize "128x128!"
 set TextureSize "256x256!"
+set TextureSize "512x512!"
 
 proc Rename {} {
   global Collections
@@ -328,7 +331,7 @@ puts $fid "<marathon>"
 puts $fid "<opengl>"
 
 cd TTEP-M1-Original
-foreach collection [glob *] {
+foreach collection [lsort [glob *]] {
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
   puts "Collection $collection : $InfraVision"
@@ -349,13 +352,20 @@ foreach collection [glob *] {
         set maxDim $height
       }
 
+      # Make sure maxDim is a power of 2
+      set size 2
+      while { $size < $maxDim } {
+        set size [expr $size * 2]
+      }
+      set maxDim $size
+
       if { $width == $height } {
         set Compress 1
         set size "128x128!"
         set size $TextureSize
       } else {
-        set Compress 0
-        set size "${width}x$height"
+        set Compress 1
+        set size "${maxDim}x${maxDim}!"
       }
 
       # Special sizes
@@ -364,7 +374,6 @@ foreach collection [glob *] {
         puts "\t\t\tSpecial Size!: $size"
       }
 
-      # Convert to 128x128
       puts "\t\tProcessing $image bitmap: $bitmap"
       set tail [file tail $image]
       set base [file root $tail]
@@ -376,6 +385,7 @@ foreach collection [glob *] {
 
       # Square, so we resize
       exec convert $image -resize $size $TempFile
+      puts "\t\tResized to $size"
       if { $Compress } {
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base.pvrtc\" clut=\"$clut\"/>"

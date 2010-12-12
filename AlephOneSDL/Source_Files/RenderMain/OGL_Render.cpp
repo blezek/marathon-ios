@@ -1415,16 +1415,18 @@ void FindShadingColor(GLfloat Depth, _fixed Shading, GLfloat *Color)
     (Shading>SelfIllumShading) ? (Shading + 0.5*
                                   SelfIllumShading) : (SelfIllumShading + 0.5*
                                                        Shading);
-
   if(Using_sRGB) {
     GLfloat temp = PIN(static_cast<GLfloat>(CombinedShading/FIXED_ONE),0,1);
     Color[0] = Color[1] = Color[2] = sRGB_frob(temp);
   }
   else{
-    Color[0] = Color[1] = Color[2] =
-                            PIN(static_cast<GLfloat>(CombinedShading/FIXED_ONE),
-                                0,
-                                1);
+    // DJB Gamma correction
+    GLfloat gamma = PIN(static_cast<GLfloat>(CombinedShading/FIXED_ONE),
+                        0,
+                        1);
+    gamma = powf ( gamma, 1.0 / helperGamma() );
+    
+    Color[0] = Color[1] = Color[2] = gamma;
   }
 }
 

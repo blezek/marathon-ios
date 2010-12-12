@@ -16,3 +16,4 @@
 #define kTapShoots @"tapShoots"
 #define kSecondTapShoots @"secondTapShoots"
 #define kEntryLevelNumber @"entryLevelNumber"
+#define kGamma @"gamma"

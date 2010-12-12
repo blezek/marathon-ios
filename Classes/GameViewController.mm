@@ -266,6 +266,7 @@ extern  int
   mode = MenuMode;
   set_game_state(_close_game);
 }
+
 - (IBAction) gotoPreferences:(id)sender {
   [self.preferencesViewController setupUI];
   self.preferencesView.hidden = NO;
@@ -326,11 +327,18 @@ extern bool load_and_start_game(FileSpecifier& File);
   int sessions = game.numberOfSessions.intValue + 1;
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
-  self.loadGameView.hidden = YES;
+  self.loadGameView.alpha = 1.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:1.4];
+  self.loadGameView.alpha = 0.0;
+  [UIView commitAnimations];
+  [self.helpView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.4];  
+  
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
   load_and_start_game(FileToLoad);
   MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+  
 }
 
 - (IBAction) chooseSaveGameCanceled {

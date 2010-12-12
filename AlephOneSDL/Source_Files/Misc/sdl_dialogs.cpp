@@ -110,6 +110,9 @@ static void set_theme_defaults(void);
 
 void initialize_dialogs(FileSpecifier &theme)
 {
+  
+  // DJB  Since we don't use any dialogs, don't allocate...
+  return;
   // Allocate surface for dialogs (this surface is needed because when
   // OpenGL is active, we can't write directly to the screen)
   dialog_surface =

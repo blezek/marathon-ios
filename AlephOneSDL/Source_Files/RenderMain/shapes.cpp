@@ -1918,6 +1918,9 @@ void load_collections(
 
   free_and_unlock_memory();       /* do our best to get a big, unfragmented heap */
 
+  // DJB 
+  int UnloadCount = 0;
+
   /* first go through our list of shape collections and dispose of any collections which
           were marked for unloading.  at the same time, unlock all those collections which
           will be staying (so the heap can move around) */
@@ -1927,22 +1930,24 @@ void load_collections(
     //		if (with_progress_bar)
     //			draw_progress_bar(collection_index, 2*MAXIMUM_COLLECTIONS);
     
+    /*
     // DJB OpenGL Debugging collections.  Always unload...
     if (collection_loaded(header)) {
       unload_collection(header);
     }
+    
      
 #ifdef HAVE_OPENGL
     OGL_UnloadModelsImages(collection_index);
 #endif
     SW_Texture_Extras::instance()->Unload(collection_index);
+    */
     
-    
-    /*     
     if (((header->status&markUNLOAD) &&
          !(header->status&markLOAD)) || header->status&markPATCHED) {
       if (collection_loaded(header)) {
         unload_collection(header);
+        UnloadCount++;
       }
 #ifdef HAVE_OPENGL
       OGL_UnloadModelsImages(collection_index);
@@ -1956,10 +1961,11 @@ void load_collections(
         unlock_collection(header);
       }
     }
-    */
-  
+    
+    
   }
-
+  printf ( "Unloaded %d of %d collections\n", UnloadCount, MAXIMUM_COLLECTIONS );
+  int LoadedCollections = 0;
   /* ... then go back through the list of collections and load any that we were asked to */
   for (collection_index= 0, header= collection_headers;
        collection_index<MAXIMUM_COLLECTIONS; ++collection_index, ++header)
@@ -1975,6 +1981,7 @@ void load_collections(
     else
     {
       if (header->status&markLOAD) {
+        LoadedCollections++;
         /* load and decompress collection */
         if (!load_collection(collection_index,
                              (header->status&markSTRIP) ? true : false)) {
@@ -1988,7 +1995,7 @@ void load_collections(
     header->status= markNONE;
     header->flags= 0;
   }
-
+  printf ( "Loaded %d of %d collections\n", LoadedCollections, MAXIMUM_COLLECTIONS );
   if (shapes_patch.size()) {
     SDL_RWops *f = SDL_RWFromMem(&shapes_patch[0], shapes_patch.size());
     load_shapes_patch(f);

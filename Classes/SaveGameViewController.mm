@@ -419,11 +419,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  self.uiView.alpha = 1.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:1.0];
-  self.uiView.alpha = 0.0;
-  [UIView commitAnimations];
   [[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
   // [[GameViewController sharedInstance] gameChosen:game];
 }

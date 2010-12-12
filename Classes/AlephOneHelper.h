@@ -43,3 +43,6 @@ extern void helperProjectileHit ( short projectile_index );
 
 // Starting level
 extern short helperGetEntryLevelNumber();
+
+// Gamma from settings
+extern float helperGamma();

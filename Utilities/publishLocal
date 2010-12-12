@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "Compressing..."
+cd /Users/blezek/Source/AlephOne/CompiledScenarios/
+mv -f M1A1.zip M1A1-Old.zip
+zip -r -q M1A1.zip M1A1/
+echo "Moving..."
+cp -f M1A1.zip /Users/blezek/Sites
