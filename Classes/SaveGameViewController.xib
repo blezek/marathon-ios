@@ -11,7 +11,7 @@
 			<string key="NS.object.0">132</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="28"/>
+			<integer value="12"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -40,13 +40,13 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">GenericBackground.png</string>
+							<string key="NSResourceName">savedgame-bg.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="1053060072">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{272, 180}, {480, 390}}</string>
+						<string key="NSFrame">{{280, 174}, {480, 390}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -67,7 +67,7 @@
 					<object class="IBUIButton" id="763154327">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{619, 578}, {133, 45}}</string>
+						<string key="NSFrame">{{406, 567}, {95, 95}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -78,7 +78,6 @@
 							<double key="NSSize">24</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Duplicate</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="867228016">
 							<int key="NSColorSpace">3</int>
@@ -92,18 +91,21 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">duplicate-btn.png</string>
+						</object>
 					</object>
 					<object class="IBUIButton" id="93073621">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{272, 578}, {103, 45}}</string>
+						<string key="NSFrame">{{285, 567}, {95, 95}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="48679596"/>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Delete</string>
 						<reference key="IBUIHighlightedTitleColor" ref="867228016"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
@@ -111,18 +113,21 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">delete-btn.png</string>
+						</object>
 					</object>
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{760, 525}, {103, 45}}</string>
+						<string key="NSFrame">{{523, 567}, {95, 95}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="48679596"/>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Cancel</string>
 						<reference key="IBUIHighlightedTitleColor" ref="867228016"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
@@ -130,18 +135,21 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">cancel-btn.png</string>
+						</object>
 					</object>
 					<object class="IBUIButton" id="187019948">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{755, 176}, {82, 45}}</string>
+						<string key="NSFrame">{{642, 567}, {95, 95}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="48679596"/>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Load</string>
 						<reference key="IBUIHighlightedTitleColor" ref="867228016"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
@@ -149,6 +157,10 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">complete-btn.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{1024, 768}</string>
@@ -257,12 +269,12 @@
 						<int key="objectID">12</int>
 						<reference key="object" ref="592514203"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1053060072"/>
-							<reference ref="763154327"/>
 							<reference ref="93073621"/>
 							<reference ref="776278387"/>
-							<reference ref="187019948"/>
+							<reference ref="763154327"/>
 							<reference ref="127023456"/>
+							<reference ref="187019948"/>
+							<reference ref="1053060072"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -301,11 +313,11 @@
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-1.CustomClassName">SaveGameViewController</string>
 				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="12.IBEditorWindowLastContentRect">{{341, 304}, {1024, 768}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{291, 388}, {1024, 768}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="14.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDiAAAw+CAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABDiAAAxA4AAA</bytes>
 				</object>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="15.IBViewBoundsToFrameTransform">
@@ -313,11 +325,11 @@
 				</object>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="16.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDiAAAxCAAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABEGsAAxCfAAA</bytes>
 				</object>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="24.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABEUAAAxA4AAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABEPgAAxBqAAA</bytes>
 				</object>
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="26.IBViewBoundsToFrameTransform">
@@ -325,14 +337,14 @@
 				</object>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="28.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABEOwAAw1wAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABEPMAAw4aAAA</bytes>
 				</object>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">34</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -460,10 +472,13 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../AlephOne.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">GenericBackground.png</string>
-			<string key="NS.object.0">{1024, 768}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="cancel-btn.png">{95, 95}</string>
+			<string key="complete-btn.png">{95, 95}</string>
+			<string key="delete-btn.png">{95, 95}</string>
+			<string key="duplicate-btn.png">{95, 95}</string>
+			<string key="savedgame-bg.png">{1024, 768}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>
 </archive>
