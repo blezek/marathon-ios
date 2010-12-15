@@ -286,6 +286,7 @@ extern  int
 }
 
 - (IBAction) help:(id)sender {
+  [self.helpViewController setupUI];
   self.helpView.hidden = NO;
   self.helpView.alpha = 0.0;
   [UIView beginAnimations:nil context:nil];

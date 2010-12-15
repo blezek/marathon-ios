@@ -298,8 +298,10 @@ set TextureSize "512x512!"
 
 set IRTextureSize "256x256!"
 set IRTextureSize "128x128!"
-set TextureSize "256x256!"
 set TextureSize "512x512!"
+set TextureSize "256x256!"
+
+set SizeLimit 512
 
 proc Rename {} {
   global Collections
@@ -358,6 +360,9 @@ foreach collection [lsort [glob *]] {
         set size [expr $size * 2]
       }
       set maxDim $size
+      if { $maxDim > $SizeLimit } {
+        set maxDim $SizeLimit
+      }
 
       if { $width == $height } {
         set Compress 1
