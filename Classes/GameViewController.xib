@@ -13,7 +13,6 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="2"/>
-			<integer value="118"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -94,7 +93,7 @@
 							<object class="IBUIView" id="958661457">
 								<reference key="NSNextResponder" ref="485381462"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, -95}, {1024, 700}}</string>
+								<string key="NSFrame">{{0, -98}, {1024, 703}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -296,7 +295,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{856, 686}, {64, 64}}</string>
+								<string key="NSFrame">{{856, 702}, {64, 64}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -323,7 +322,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{936, 686}, {64, 64}}</string>
+								<string key="NSFrame">{{936, 702}, {64, 64}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -402,7 +401,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{929, 560}, {79, 79}}</string>
+								<string key="NSFrame">{{932, 549}, {79, 79}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -434,7 +433,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{828, 574}, {101, 101}}</string>
+								<string key="NSFrame">{{828, 579}, {101, 101}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -945,7 +944,6 @@
 							<reference ref="106618490"/>
 							<reference ref="403618115"/>
 							<reference ref="244192360"/>
-							<reference ref="958661457"/>
 							<reference ref="625549939"/>
 							<reference ref="370094228"/>
 							<reference ref="207012852"/>
@@ -955,6 +953,7 @@
 							<reference ref="759348717"/>
 							<reference ref="442223615"/>
 							<reference ref="585031465"/>
+							<reference ref="958661457"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">HUD</string>
@@ -1162,6 +1161,7 @@
 					<string>2.IBPluginDependency</string>
 					<string>26.CustomClassName</string>
 					<string>26.IBPluginDependency</string>
+					<string>26.IBViewBoundsToFrameTransform</string>
 					<string>31.CustomClassName</string>
 					<string>31.IBPluginDependency</string>
 					<string>31.IBViewBoundsToFrameTransform</string>
@@ -1235,10 +1235,13 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MovePadView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{307, 29}, {1024, 1024}}</string>
+					<string>{{280, 71}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LookView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxA8AAA</bytes>
+					</object>
 					<string>ButtonView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

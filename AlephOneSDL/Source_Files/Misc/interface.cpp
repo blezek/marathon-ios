@@ -2525,6 +2525,9 @@ static void handle_interface_menu_screen_click(
   }
 }
 
+// DJB Chapter screens
+#include "AlephOneHelper.h"
+
 /* Note that this is modal. This sucks... */
 static void try_and_display_chapter_screen(
   short pict_resource_number,
@@ -2557,6 +2560,8 @@ static void try_and_display_chapter_screen(
       SndListHandle sound= NULL;
 #endif
 
+      helperEpilog();
+      
       /* slam the entire clut to black, now. */
       if (interface_bit_depth==8) {
         assert_world_color_table(current_picture_clut,
@@ -2589,6 +2594,7 @@ static void try_and_display_chapter_screen(
       scroll_full_screen_pict_resource_from_scenario(pict_resource_number,
                                                      text_block);
 
+      
       wait_for_click_or_keypress(text_block ? -1 : 10*MACHINE_TICKS_PER_SECOND);
 
       /* Fade out! (Pray) */
