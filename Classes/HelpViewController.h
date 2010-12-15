@@ -19,4 +19,6 @@
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 - (IBAction) done;
 - (IBAction)changePage:(id)sender;
+- (void)setupUI;
+- (void)cleanupUI;
 @end

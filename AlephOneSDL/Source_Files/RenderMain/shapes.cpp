@@ -1930,10 +1930,11 @@ void load_collections(
     //		if (with_progress_bar)
     //			draw_progress_bar(collection_index, 2*MAXIMUM_COLLECTIONS);
     
-    /*
+    
     // DJB OpenGL Debugging collections.  Always unload...
     if (collection_loaded(header)) {
       unload_collection(header);
+      UnloadCount++;
     }
     
      
@@ -1941,13 +1942,13 @@ void load_collections(
     OGL_UnloadModelsImages(collection_index);
 #endif
     SW_Texture_Extras::instance()->Unload(collection_index);
-    */
     
+    /*
     if (((header->status&markUNLOAD) &&
          !(header->status&markLOAD)) || header->status&markPATCHED) {
       if (collection_loaded(header)) {
         unload_collection(header);
-        UnloadCount++;
+     UnloadCount++;
       }
 #ifdef HAVE_OPENGL
       OGL_UnloadModelsImages(collection_index);
@@ -1961,6 +1962,7 @@ void load_collections(
         unlock_collection(header);
       }
     }
+     */
     
     
   }

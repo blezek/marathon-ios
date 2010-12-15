@@ -13,6 +13,7 @@
 @implementation HelpViewController
 @synthesize scrollView, pageControl;
 - (IBAction)done {
+  [self cleanupUI];
   [[AlephOneAppDelegate sharedAppDelegate].game closeHelp:self];
 }
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -31,6 +32,9 @@
 - (void)viewDidLoad {
   pageControlUsed = YES;
   [super viewDidLoad];
+}
+
+- (void)setupUI {
   int kNumImages = 10;
   CGFloat kScrollObjHeight = scrollView.bounds.size.height;
   CGFloat kScrollObjWidth = scrollView.bounds.size.width;
@@ -41,7 +45,7 @@
     NSString *imageName = [NSString stringWithFormat:@"help%d.png", i];
     UIImage *image = [UIImage imageNamed:imageName];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
- 
+    
     // setup each frame to a default height and width, it will be properly placed when we call "updateScrollList"
     CGRect rect = imageView.frame;
     rect.size.height = kScrollObjHeight;
@@ -53,7 +57,7 @@
   }
   UIImageView *view = nil;
   NSArray *subviews = [scrollView subviews];
-    
+  
   // reposition all image subviews in a horizontal serial fashion
   CGFloat curXLoc = 0;
   for (view in subviews) {
@@ -65,12 +69,17 @@
       curXLoc += (kScrollObjWidth);
     }
   }
-    
+  
   // set the content size so it can be scrollable
   [scrollView setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView bounds].size.height)];
- 
+  
 }
 
+- (void)cleanupUI {
+  for ( UIView *v in [scrollView subviews] ) {
+    [v removeFromSuperview];
+  }
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
