@@ -26,6 +26,9 @@
 - (IBAction)load:(id)sender;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
+- (void)appear;
+- (void)disappear;
+
 - (NSIndexPath*)selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

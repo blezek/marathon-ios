@@ -74,6 +74,13 @@
 }
 
 #pragma mark -
+#pragma mark Animations
+
+- (void)appear;
+- (void)disappear;
+
+
+#pragma mark -
 #pragma mark File Methods
 
 - (IBAction)cancel:(id)sender {

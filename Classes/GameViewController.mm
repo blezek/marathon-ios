@@ -226,13 +226,36 @@ extern  int
   
   [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
-  self.hud.alpha = 0.0;
+  self.hud.alpha = 1.0;
   self.hud.hidden = NO;
+  
+  CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  opacityAnimation.duration = 1.0;
+  opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+  opacityAnimation.toValue = [NSNumber numberWithFloat:1.0];
+  
+  CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+  scaleAnimation.duration = 1.0;
+  scaleAnimation.fromValue = [NSNumber numberWithFloat:1.5];
+  scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
+  
+  CAAnimationGroup *group = [CAAnimationGroup animation];
+  group.animations = [NSArray arrayWithObjects:opacityAnimation, scaleAnimation, nil];
+  group.duration = 1.0;
+  group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  
+  for ( UIView *v in [self.hud subviews] ) {
+    // [self.hud.layer addAnimation:group forKey:nil];
+    [v.layer addAnimation:group forKey:nil];
+  }
+  
+  /*
   // Animate the HUD coming into view
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
   self.hud.alpha = 1.0;
   [UIView commitAnimations];
+   */
   // [self.hud removeGestureRecognizer:self.menuTapGesture];
   
   // Should we save a new game in place?
@@ -243,6 +266,33 @@ extern  int
   }
   
 }
+
+- (void)teleportOut {
+  CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+  scaleY.duration = 0.5;
+  scaleY.toValue = [NSNumber numberWithFloat:0.001];
+  
+  CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
+  scaleX.duration = 1.0;
+  scaleX.toValue = [NSNumber numberWithFloat:100.0];
+  
+  CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+  scale.duration = 0.01;
+  scale.toValue = [NSNumber numberWithFloat:1.0];
+  scale.beginTime = 1.01;
+  
+  CAAnimationGroup *group = [CAAnimationGroup animation];
+  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, scale, nil];
+  group.duration = 1.0;
+  group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  
+  for ( UIView *v in [self.hud subviews] ) {
+    // [self.hud.layer addAnimation:group forKey:nil];
+    [v.layer addAnimation:group forKey:nil];
+  }
+  [self performSelector:@selector(hideHUD) withObject:nil afterDelay:2.0];
+}
+
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
@@ -315,11 +365,14 @@ extern bool load_and_start_game(FileSpecifier& File);
 - (IBAction)chooseSaveGame {
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
-  self.loadGameView.alpha = 0.0;
+  [self.saveGameViewController appear];
+  /*
+  self.loadGameView.alpha = 1.0;
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:1.0];
   self.loadGameView.alpha = 1.0;
   [UIView commitAnimations];
+   */
 }
   
 - (IBAction) gameChosen:(SavedGame*)game {
