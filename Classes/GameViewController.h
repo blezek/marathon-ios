@@ -149,6 +149,7 @@ typedef enum {
 
 - (void)bringUpHUD;
 - (void)hideHUD;
+- (void)teleportOut;
 - (void)epilog;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 

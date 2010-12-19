@@ -24,6 +24,7 @@ extern void helperBringUpHUD();
 extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHideHUD();
+extern void helperBeginTeleportOut();
 extern void helperEpilog();
 extern void helperHandleLoadGame();
 extern void helperDoPreferences();

@@ -105,6 +105,10 @@ void helperHideHUD() {
   [[GameViewController sharedInstance] hideHUD];
 }
 
+void helperBeginTeleportOut() {
+  [[GameViewController sharedInstance] teleportOut];
+}
+
 void helperEpilog() {  
   [[GameViewController sharedInstance] epilog];
   pumpEvents();

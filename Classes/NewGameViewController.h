@@ -32,6 +32,7 @@
 - (IBAction)setDifficulty:(id)control;
 - (IBAction)setEntryLevel:(id)control;
 
-- (void)setupUI;
+- (void)appear;
+- (void)disappear;
 
 @end
