@@ -10,6 +10,7 @@
 #import "GameViewController.h"
 #include "preferences.h"
 #include "map.h"
+#import "Effects.h"
 
 @implementation NewGameViewController
 @synthesize easyButton;
@@ -79,7 +80,7 @@ static vector<entry_point> levels;
 }
  */
 
-- (void)setupUI {
+- (void)appear {
   // Get levels
   levels.clear();
   /* Everything!
@@ -114,7 +115,20 @@ static vector<entry_point> levels;
   self.pledge.hidden = !show;
   self.startLevelSlider.hidden = !show;
   self.startLevelLabel.hidden = !show;
-    
+  
+  CAAnimation *group = [Effects appearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
+  }
+  
+  
+}  
+
+- (void)disappear {
+  CAAnimation *group = [Effects disappearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
+  }
 }  
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

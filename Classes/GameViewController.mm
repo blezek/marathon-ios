@@ -11,8 +11,7 @@
 #import "AlephOneShell.h"
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
-#import <QuartzCore/QuartzCore.h>
-
+#import "Effects.h"
 
 extern "C" {
 extern  int
@@ -152,14 +151,14 @@ extern  int
   // Set the preferences, and kick off a new game if needed
   // Bring up the preferences
   // TODO -- nice animation!
-  [self.newGameViewController setupUI];
+  [self.newGameViewController appear];
   self.newGameView.hidden = NO;
   self.currentSavedGame = nil;
 }
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
-  [self cancelNewGame];
+  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
@@ -172,9 +171,10 @@ extern  int
 }
 
 - (IBAction)cancelNewGame {
-  // TODO -- nice animation
-  self.newGameView.hidden = YES;
+  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.4];
+  [self.newGameViewController disappear];
 }
+
 - (void)hideHUD {
   self.hud.hidden = YES;
 }
@@ -269,11 +269,11 @@ extern  int
 
 - (void)teleportOut {
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleY.duration = 0.5;
+  scaleY.duration = 0.2;
   scaleY.toValue = [NSNumber numberWithFloat:0.001];
   
   CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleX.duration = 1.0;
+  scaleX.duration = 0.7;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
   
   CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
@@ -290,7 +290,7 @@ extern  int
     // [self.hud.layer addAnimation:group forKey:nil];
     [v.layer addAnimation:group forKey:nil];
   }
-  [self performSelector:@selector(hideHUD) withObject:nil afterDelay:2.0];
+  [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.5];
 }
 
 
@@ -396,7 +396,8 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
 
 - (IBAction) chooseSaveGameCanceled {
-  self.loadGameView.hidden = YES;
+  [self.saveGameViewController disappear];
+  [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
 }
 
 extern SDL_Surface *draw_surface;

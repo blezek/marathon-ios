@@ -63,9 +63,11 @@ extern "C" {
     if ( touch == firstTouch ) {
       lastPanPoint = [touch locationInView:self];
     } else {
-      // start the second fire
-      Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-      key_map[secondaryFire] = 1;
+      if ( [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
+        // start the second fire
+        Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+        key_map[secondaryFire] = 1;
+      }
     }
   }
 }

@@ -12,7 +12,7 @@
 #import "GameViewController.h"
 #include "preferences.h"
 #import "map.h"
-
+#import "Effects.h"
 
 @implementation SaveGameViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
@@ -76,8 +76,23 @@
 #pragma mark -
 #pragma mark Animations
 
-- (void)appear;
-- (void)disappear;
+- (void)appear {
+  self.uiView.hidden = NO;
+  CAAnimation* group = [Effects appearAnimation];
+  for ( UIView *v in self.uiView.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
+  }
+  [self.uiView.layer addAnimation:group forKey:nil];
+}
+  
+- (void)disappear {
+  CAAnimation* group = [Effects disappearAnimation];
+
+  for ( UIView *v in self.uiView.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
+  }
+  [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
+}
 
 
 #pragma mark -

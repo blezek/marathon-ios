@@ -767,6 +767,7 @@
 		A88DBFC612640A7800FCC652 /* wrrle.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4012640A7800FCC652 /* wrrle.c */; };
 		A88DBFC712640A7800FCC652 /* wrtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4112640A7800FCC652 /* wrtarga.c */; };
 		A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
+		A88E2EB512BDB43000ABFAAA /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A89240D6127FBB4C00F0A2EE /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D4127FBB4C00F0A2EE /* bitwise.c */; };
 		A89240D7127FBB4C00F0A2EE /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D5127FBB4C00F0A2EE /* framing.c */; };
 		A89241CE127FC26300F0A2EE /* analysis.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B5127FC26300F0A2EE /* analysis.c */; };
@@ -1688,6 +1689,8 @@
 		A88DBF4112640A7800FCC652 /* wrtarga.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrtarga.c; sourceTree = "<group>"; };
 		A88DBFEF12640D2F00FCC652 /* jmemmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemmgr.c; sourceTree = "<group>"; };
 		A88E2DF812BC72C200ABFAAA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
+		A88E2EB312BDB43000ABFAAA /* Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Effects.h; path = Classes/Effects.h; sourceTree = "<group>"; };
+		A88E2EB412BDB43000ABFAAA /* Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Effects.m; path = Classes/Effects.m; sourceTree = "<group>"; };
 		A89240D4127FBB4C00F0A2EE /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = "Libraries/libogg-1.1.3/src/bitwise.c"; sourceTree = SOURCE_ROOT; };
 		A89240D5127FBB4C00F0A2EE /* framing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = framing.c; path = "Libraries/libogg-1.1.3/src/framing.c"; sourceTree = SOURCE_ROOT; };
 		A89241A2127FC26300F0A2EE /* backends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = backends.h; path = "Libraries/libvorbis-1.2.0/lib/backends.h"; sourceTree = SOURCE_ROOT; };
@@ -2172,6 +2175,8 @@
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
 				A88E2DF812BC72C200ABFAAA /* Constants.h */,
+				A88E2EB312BDB43000ABFAAA /* Effects.h */,
+				A88E2EB412BDB43000ABFAAA /* Effects.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3322,16 +3327,16 @@
 		A8C391F11297845E00E09E32 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				A8C3922D129789A100E09E32 /* HelpViewController.xib */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
-				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
-				A8AD432512220F9500A09383 /* MainWindow.xib */,
-				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
-				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
-				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
-				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
 				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
+				A8C3922D129789A100E09E32 /* HelpViewController.xib */,
+				A8AD432512220F9500A09383 /* MainWindow.xib */,
+				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
+				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
+				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
 				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
+				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
+				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -4403,6 +4408,7 @@
 				A80E9E871280F729005371AB /* version.c in Sources */,
 				A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */,
 				A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */,
+				A88E2EB512BDB43000ABFAAA /* Effects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
