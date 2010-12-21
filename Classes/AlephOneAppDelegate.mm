@@ -76,6 +76,7 @@ extern int SDL_main(int argc, char *argv[]);
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"NO", kCheatsEnabled,
+                               @"1.0", kGamma,
                                @"NO", kTapShoots,
                                @"NO", kSecondTapShoots,
                                @"0.5", kHSensitivity,

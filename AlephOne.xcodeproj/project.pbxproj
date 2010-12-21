@@ -32,8 +32,6 @@
 		A81A33081296255300BCEA0C /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82B5BDB122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
-		A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */; };
-		A82B5CE9122EDD8C00B0316C /* ChooseSaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1CFA1214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
@@ -507,6 +505,7 @@
 		A87F55E612A7407E00032ED6 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
 		A87F55E712A7407E00032ED6 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
 		A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
+		A8811EAB12C06B8700A1A08E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
 		A8828E8211E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
 		A889BBBE11C8817400923787 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAE11C8817400923787 /* dict.c */; };
@@ -797,8 +796,9 @@
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
 		A8A4D30712A4B1F900AEE140 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8A4D30612A4B1F900AEE140 /* Settings.bundle */; };
-		A8A5815611D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
-		A8A5815711D789FF00F573B4 /* HUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A5815511D789FF00F573B4 /* HUD.xib */; };
+		A8AA814512C054A400821170 /* toggleweapons-left-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814312C054A400821170 /* toggleweapons-left-btn.png */; };
+		A8AA814612C054A400821170 /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
+		A8AA814C12C055B400821170 /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
 		A8AD432612220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
 		A8AD432712220F9500A09383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A8AD432812220F9500A09383 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
@@ -840,8 +840,6 @@
 		A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
 		A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
 		A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
-		A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
-		A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */; };
 		A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29BA71224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
@@ -954,7 +952,7 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlephOne_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* AlephOne-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlephOne-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A80E9E621280F729005371AB /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bit.h; path = "Libraries/libmad-0.15.1b/bit.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E641280F729005371AB /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = "Libraries/libmad-0.15.1b/decoder.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E651280F729005371AB /* fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixed.h; path = "Libraries/libmad-0.15.1b/fixed.h"; sourceTree = SOURCE_ROOT; };
@@ -1001,7 +999,6 @@
 		A81DC66F12A9EFB900BFC3C0 /* SaveGame 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 6.xcdatamodel"; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
-		A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGame.png; path = Artwork/ChooseSaveGame.png; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
 		A82F1CF81214E27C004D0B68 /* MovePadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MovePadView.mm; path = Classes/MovePadView.mm; sourceTree = "<group>"; };
 		A82F1DCE1214F2E9004D0B68 /* LookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookView.h; path = Classes/LookView.h; sourceTree = "<group>"; };
@@ -1184,6 +1181,7 @@
 		A87F55DE12A7407E00032ED6 /* help2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help2.png; path = Artwork/Help/help2.png; sourceTree = "<group>"; };
 		A87F55DF12A7407E00032ED6 /* help1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help1.png; path = Artwork/Help/help1.png; sourceTree = "<group>"; };
 		A87FF02E12452C7E0033A3EB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A8811EAA12C06B8700A1A08E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Artwork/iTunesArtwork; sourceTree = "<group>"; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
@@ -1740,8 +1738,10 @@
 		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
 		A8A4D30612A4B1F900AEE140 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A8A4D31112A4B2C100AEE140 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Classes/Prefs.h; sourceTree = "<group>"; };
-		A8A5815511D789FF00F573B4 /* HUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUD.xib; sourceTree = "<group>"; };
 		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
+		A8AA814312C054A400821170 /* toggleweapons-left-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toggleweapons-left-btn.png"; path = "Artwork/toggleweapons-left-btn.png"; sourceTree = "<group>"; };
+		A8AA814412C054A400821170 /* toggleweapons-right-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toggleweapons-right-btn.png"; path = "Artwork/toggleweapons-right-btn.png"; sourceTree = "<group>"; };
+		A8AA814B12C055B400821170 /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-btn.png"; path = "Artwork/play-btn.png"; sourceTree = "<group>"; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
 		A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneAppDelegate.h; path = Classes/AlephOneAppDelegate.h; sourceTree = "<group>"; };
 		A8AD432412220F9500A09383 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
@@ -1783,7 +1783,6 @@
 		A8B4138F1235DE10000D59A4 /* SavedGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedGameCell.h; path = Classes/SavedGameCell.h; sourceTree = "<group>"; };
 		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
 		A8B413931235DE3D000D59A4 /* SavedGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SavedGameCell.xib; path = Resources/SavedGameCell.xib; sourceTree = "<group>"; };
-		A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChooseSaveGameLarge.png; path = Artwork/ChooseSaveGameLarge.png; sourceTree = "<group>"; };
 		A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageLoader_iOS.cpp; path = Classes/ImageLoader_iOS.cpp; sourceTree = "<group>"; };
 		A8C29BA41224B69600E79491 /* ManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjects.h; path = Classes/ManagedObjects.h; sourceTree = "<group>"; };
 		A8C29BA51224B69600E79491 /* ManagedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjects.m; path = Classes/ManagedObjects.m; sourceTree = "<group>"; };
@@ -1992,16 +1991,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A8811EAA12C06B8700A1A08E /* iTunesArtwork */,
 				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
-				A8B413981235E195000D59A4 /* ChooseSaveGameLarge.png */,
-				A82B5CE7122EDD8C00B0316C /* ChooseSaveGame.png */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
-				8D1107310486CEB800E47090 /* AlephOne-Info.plist */,
-				A8A5815511D789FF00F573B4 /* HUD.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 				A8A4D30612A4B1F900AEE140 /* Settings.bundle */,
 			);
 			name = Resources;
@@ -2258,6 +2255,10 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A8AA814D12C055D800821170 /* SettingsIcons */,
+				A8AA814B12C055B400821170 /* play-btn.png */,
+				A8AA814312C054A400821170 /* toggleweapons-left-btn.png */,
+				A8AA814412C054A400821170 /* toggleweapons-right-btn.png */,
 				A8AF814412B7123F00671C11 /* assets */,
 				A859139E12B1DA5A00754DFE /* left.png */,
 				A859139F12B1DA5A00754DFE /* right.png */,
@@ -3260,6 +3261,13 @@
 			name = Vorbis;
 			sourceTree = "<group>";
 		};
+		A8AA814D12C055D800821170 /* SettingsIcons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingsIcons;
+			sourceTree = "<group>";
+		};
 		A8AF814412B7123F00671C11 /* assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -3534,7 +3542,6 @@
 			files = (
 				A85E66C911CB0AF200D0FAEF /* Icon.png in Resources */,
 				A85E68CD11CB1B1C00D0FAEF /* Default.png in Resources */,
-				A8A5815611D789FF00F573B4 /* HUD.xib in Resources */,
 				A8562A7C11DACF1B0071DFEF /* GameViewController.xib in Resources */,
 				A8562B4111DAE0010071DFEF /* Pause.png in Resources */,
 				A8562B5911DAE3A50071DFEF /* Pistol.png in Resources */,
@@ -3542,9 +3549,7 @@
 				A8AD432812220F9500A09383 /* MainWindow.xib in Resources */,
 				A8C29C5D1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8AE47C91229152F0093110D /* SaveGameViewController.xib in Resources */,
-				A82B5CE9122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
 				A8B413951235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
-				A8B4139A1235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 				A8DC998D123884B300317186 /* DownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3561,8 +3566,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */,
-				A82B5CE8122EDD8C00B0316C /* ChooseSaveGame.png in Resources */,
-				A8B413991235E195000D59A4 /* ChooseSaveGameLarge.png in Resources */,
 				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
 				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
@@ -3571,7 +3574,6 @@
 				A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */,
 				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
 				A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */,
-				A8A5815711D789FF00F573B4 /* HUD.xib in Resources */,
 				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
 				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
@@ -3632,6 +3634,10 @@
 				A8AF81A012B7124000671C11 /* savedgame-bg.png in Resources */,
 				A8AF81E412B7205400671C11 /* help9.png in Resources */,
 				A8AF81E512B7205400671C11 /* help10.png in Resources */,
+				A8AA814512C054A400821170 /* toggleweapons-left-btn.png in Resources */,
+				A8AA814612C054A400821170 /* toggleweapons-right-btn.png in Resources */,
+				A8AA814C12C055B400821170 /* play-btn.png in Resources */,
+				A8811EAB12C06B8700A1A08E /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4457,7 +4463,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SDL/lib\"",
@@ -4489,7 +4495,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SDL/lib\"",
@@ -4591,7 +4597,7 @@
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG";
@@ -4632,7 +4638,7 @@
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -4691,7 +4697,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SDL/lib\"",
@@ -4763,7 +4769,7 @@
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
-				INFOPLIST_FILE = "AlephOne-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

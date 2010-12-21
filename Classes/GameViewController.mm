@@ -276,14 +276,9 @@ extern  int
   scaleX.duration = 0.7;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
   
-  CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-  scale.duration = 0.01;
-  scale.toValue = [NSNumber numberWithFloat:1.0];
-  scale.beginTime = 1.01;
-  
   CAAnimationGroup *group = [CAAnimationGroup animation];
-  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, scale, nil];
-  group.duration = 1.0;
+  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
+  group.duration = 1.7;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {

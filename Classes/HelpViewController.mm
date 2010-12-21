@@ -35,7 +35,7 @@
 }
 
 - (void)setupUI {
-  int kNumImages = 10;
+  int kNumImages = 11;
   CGFloat kScrollObjHeight = scrollView.bounds.size.height;
   CGFloat kScrollObjWidth = scrollView.bounds.size.width;
   
