@@ -1,3 +1,7 @@
+set Scenario [lindex $argv 0]
+puts "Compressing $Scenario"
+
+
 set Vision(0)  "1 1 1 0"
 set Vision(1)  "1 1 0 1"
 set Vision(2)  "1 1 1 0"
@@ -304,9 +308,9 @@ set TextureSize "256x256!"
 set SizeLimit 512
 
 proc Rename {} {
-  global Collections
+  global Collections Scenario
   set TopDir [pwd]
-  file mkdir TTEP-M1-Original
+  file mkdir TTEP-$Scenario-Original
   cd TTEP-M1-DDS
   foreach class [glob *] {
     cd $class
@@ -326,20 +330,21 @@ proc Rename {} {
 }
 
 set TopDir [pwd]
-file mkdir TTEP-M1
+file mkdir TTEP-$Scenario
 
-set fid [open TTEP-M1/TTEP-M1.mml w]
+set fid [open TTEP-$Scenario/TTEP-$Scenario.mml w]
 puts $fid "<marathon>"
 puts $fid "<opengl>"
 
-cd TTEP-M1-Original
+cd TTEP-$Scenario-Original
 foreach collection [lsort [glob *]] {
+  if { ![file isdir $collection] } { continue }
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
   puts "Collection $collection : $InfraVision"
   foreach clut [glob *] {
     puts "\tCLUT: $clut"
-    foreach image [lsort [glob $clut/bitmap*.dds]] {
+    foreach image [lsort [glob $clut/bitmap*.*]] {
       # Find bitmap number
       set bitmap [string range $image end-6 end-4]
       set bitmap [string trimleft $bitmap 0]
@@ -382,10 +387,10 @@ foreach collection [lsort [glob *]] {
       puts "\t\tProcessing $image bitmap: $bitmap"
       set tail [file tail $image]
       set base [file root $tail]
-      set outputFile [file join $TopDir TTEP-M1 $collection $clut $base.pvrtc]
+      set outputFile [file join $TopDir TTEP-$Scenario $collection $clut $base.pvr]
       file mkdir [file dir $outputFile]
 
-      set TempFile [file join $TopDir TTEP-M1-PNG $collection $clut $base.png]
+      set TempFile [file join $TopDir TTEP-$Scenario-PNG $collection $clut $base.png]
       file mkdir [file dir $TempFile]
 
       # Square, so we resize
@@ -393,11 +398,11 @@ foreach collection [lsort [glob *]] {
       puts "\t\tResized to $size"
       if { $Compress } {
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base.pvrtc\" clut=\"$clut\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
       } else {
-        set outputFile [file join $TopDir TTEP-M1 $collection $clut $base.png]
+        set outputFile [file join $TopDir TTEP-$Scenario $collection $clut $base.png]
         exec convert $TempFile -resize $size $outputFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base.png\" clut=\"$clut\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\"/>"
       }
 
       if { $InfraVision } {
@@ -406,21 +411,21 @@ foreach collection [lsort [glob *]] {
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
 
-        set VisionTempFile [file join $TopDir TTEP-M1-PNG $collection $clut $base-IR.png]
+        set VisionTempFile [file join $TopDir TTEP-$Scenario-PNG $collection $clut $base-IR.png]
         exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize $VisionTempFile
         # puts [list convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" $VisionTempFile]
 
         if { $Compress } {
-          set VisionFile [file join [file dir $outputFile] $base-IR.pvrtc]
+          set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
           exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.pvrtc\" clut=\"8\"/>"
+          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
         } else {
           # Don't compress, so we don't need to do anything
           # set VisionFile [file join [file dir $outputFile] $base-IR.png]
           # exec convert $VisionTempFile -resize $size $outputFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-M1/$collection/$clut/$base-IR.png\" clut=\"8\"/>"
+          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\"/>"
         }
       }
     }

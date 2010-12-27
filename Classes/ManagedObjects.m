@@ -15,6 +15,7 @@
 @dynamic path;
 @dynamic downloadHost;
 @dynamic savedGames;
+@dynamic films;
 @dynamic version;
 @dynamic sizeInBytes;
 @end
@@ -33,4 +34,10 @@
 @dynamic shotsFired;
 @dynamic accuracy;
 @dynamic kills;
+@end
+
+@implementation Film
+@dynamic filename;
+@dynamic lastSaveTime;
+@dynamic scenario;
 @end

@@ -1318,9 +1318,18 @@ bool get_recording_filedesc(FileSpecifier &File)
 /*
  *  Save film buffer to user-selected file
  */
-
+// DJB include helper
+#include "AlephOneHelper.h"
 void move_replay(void)
 {
+  FileSpecifier src_file;
+  if ( !get_recording_filedesc(src_file) ) {
+    return;
+  }
+  
+  // DJB Save the film
+  saveFilm();
+  /*
   // Get source file specification
   FileSpecifier src_file, dst_file;
   if (!get_recording_filedesc(src_file)) {
@@ -1343,6 +1352,7 @@ void move_replay(void)
   if (error) {
     alert_user(infoError, strERRORS, fileError, error);
   }
+   */
 }
 
 

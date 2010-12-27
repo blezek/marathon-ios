@@ -76,6 +76,7 @@ extern int SDL_main(int argc, char *argv[]);
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"NO", kCheatsEnabled,
+                               @"1.0", kGamma,
                                @"NO", kTapShoots,
                                @"NO", kSecondTapShoots,
                                @"0.5", kHSensitivity,
@@ -107,32 +108,47 @@ extern int SDL_main(int argc, char *argv[]);
     // Insert us!
     self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:self.managedObjectContext];
     self.scenario.isDownloaded = NO;
+    
+    self.scenario.version = [NSNumber numberWithInteger:1];
+
+#if TARGET_IPHONE_SIMULATOR
+    NSString *localhost = @"localhost";
+#else 
+    NSString *localhost = @"10.0.0.10";    
+    NSString *RemoteURL = @"https://s3.amazonaws.com/alephone/";
+    NSString *RemoteHost = @"s3.amazonaws.com";
+#endif
+    
+#if SCENARIO == 1
+    // Marathon
     self.scenario.name = @"Marathon";
     self.scenario.path = @"M1A1";
-    self.scenario.version = [NSNumber numberWithInteger:1];
     self.scenario.sizeInBytes = [NSNumber numberWithInteger:(150 * 1024 * 1024)];  // 150 meg
-#if TARGET_IPHONE_SIMULATOR
-    self.scenario.downloadURL = @"http://localhost/~blezek/M1A1.zip";
-#else
-    self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
     
-    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
-    self.scenario.downloadHost = @"10.0.0.10";
+#elif SCENARIO == 2
+    // Marathon Durandal
+    self.scenario.name = @"Durandal";
+    self.scenario.path = @"M2A1";
+    self.scenario.sizeInBytes = [NSNumber numberWithInteger:(150 * 1024 * 1024)];  // 150 meg
+#elif SCENARIO == 3
+    // Marathon Infinity
+    self.scenario.name = @"Infinity";
+    self.scenario.path = @"M3A1";
+    self.scenario.sizeInBytes = [NSNumber numberWithInteger:(150 * 1024 * 1024)];  // 150 meg
+#else
+#error "Unknown scenario!
 #endif
-    self.scenario.downloadURL = @"http://dl.dropbox.com/u/1363248/M1A1.zip";
-    self.scenario.downloadHost = @"dl.dropbox.com";
-
+    
+    
+#if TARGET_IPHONE_SIMULATOR
+    self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
+    self.scenario.downloadHost = localhost;
+#else
     // AWS
-    self.scenario.downloadURL = @"https://s3.amazonaws.com/alephone/M1A1/M1A1.zip";
-    self.scenario.downloadHost = @"s3.amazonaws.com";
-
-    // CloudFront
-    self.scenario.downloadURL = @"http://dhuphyigw82rv.cloudfront.net/M1A1/M1A1.zip";
-    self.scenario.downloadHost = @"dhuphyigw82rv.cloudfront.net";
-
-    self.scenario.downloadURL = @"http://10.0.0.10/~blezek/M1A1.zip";
-    self.scenario.downloadHost = @"10.0.0.10";
-
+    self.scenario.downloadURL = [NSString stringWithFormat:@"%@/%@/%@.zip", RemoteURL, self.scenario.path, self.scenario.path];
+    self.scenario.downloadHost = RemoteHost;
+#endif
+    
     [self.scenario.managedObjectContext save:nil];
     self.scenario = nil;
   } 

@@ -45,7 +45,7 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   uint32_t formatFlags;
 
   std::string fn ( File.GetPath() );
-  if ( fn.find ( ".pvrtc" ) != std::string::npos ) {
+  if ( fn.find ( ".pvr" ) != std::string::npos ) {
     // printf ( "LoadPVRTCFromFile: %s\n", File.GetPath() );
   } else {
     return false;

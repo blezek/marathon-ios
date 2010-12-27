@@ -41,6 +41,7 @@ extern  int
 #import "game_wad.h"
 #include "overhead_map.h"
 #include "weapons.h"
+#include "vbl.h"
 
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
@@ -54,6 +55,7 @@ extern  int
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
 @synthesize previousWeaponButton, nextWeaponButton;
+@synthesize filmView, filmViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -98,6 +100,8 @@ extern  int
   [self.newGameViewController view];
   [self.newGameView addSubview:self.newGameViewController.view];
   
+  self.filmViewController = [[FilmViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+  [self.filmView addSubview:self.filmViewController.view];
   
   // Kill a warning
   (void)all_key_definitions;
@@ -127,6 +131,7 @@ extern  int
                              self.preferencesView,
                              splashView,
                              restartView,
+                             self.filmView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
@@ -145,6 +150,19 @@ extern  int
   isPaused = NO;
   animating = NO;
   [super viewDidLoad];
+}
+
+#pragma mark -
+#pragma mark Game control
+
+- (IBAction)quitPressed {
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Rate the app"
+                                                  delegate:nil 
+                                         cancelButtonTitle:nil
+                                    destructiveButtonTitle:@"Yes"
+                                         otherButtonTitles:@"No", nil];
+  [as showInView:self.view];
+  [as release];  
 }
 
 - (IBAction)newGame {
@@ -246,7 +264,9 @@ extern  int
   
   for ( UIView *v in [self.hud subviews] ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    [v.layer addAnimation:group forKey:nil];
+    if ( v != self.savedGameMessage ) {
+      [v.layer addAnimation:group forKey:nil];
+    }
   }
   
   /*
@@ -276,21 +296,18 @@ extern  int
   scaleX.duration = 0.7;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
   
-  CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-  scale.duration = 0.01;
-  scale.toValue = [NSNumber numberWithFloat:1.0];
-  scale.beginTime = 1.01;
-  
   CAAnimationGroup *group = [CAAnimationGroup animation];
-  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, scale, nil];
-  group.duration = 1.0;
+  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
+  group.duration = 1.7;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    [v.layer addAnimation:group forKey:nil];
+    if ( v != self.savedGameMessage ) {
+      [v.layer addAnimation:group forKey:nil];
+    }
   }
-  [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.5];
+  [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.3];
 }
 
 
@@ -366,15 +383,8 @@ extern bool load_and_start_game(FileSpecifier& File);
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
-  /*
-  self.loadGameView.alpha = 1.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:1.0];
-  self.loadGameView.alpha = 1.0;
-  [UIView commitAnimations];
-   */
 }
-  
+
 - (IBAction) gameChosen:(SavedGame*)game {
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
   self.currentSavedGame = game;
@@ -406,7 +416,7 @@ extern SDL_Surface *draw_surface;
   if ( self.currentSavedGame == nil ) {
     self.currentSavedGame = [self.saveGameViewController createNewGameFile];
   }
-
+  
   // See if we can generate an overhead view
   struct overhead_map_data overhead_data;
   int MapSize = 196;
@@ -437,7 +447,7 @@ extern SDL_Surface *draw_surface;
   SDL_SaveBMP ( map, (char*)[self.currentSavedGame.mapFilename UTF8String] );
   SDL_FreeSurface ( map );
   
-
+  
   
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];
@@ -474,7 +484,7 @@ extern SDL_Surface *draw_surface;
   MLog ( @"Saving game: %@", game );
   [game.managedObjectContext save:nil];
   
-
+  
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
   self.savedGameMessage.alpha = 1.0;
@@ -483,7 +493,63 @@ extern SDL_Surface *draw_surface;
   [UIView setAnimationDuration:1.0];
   self.savedGameMessage.alpha = 0.0;
   [UIView commitAnimations];
+  
+}
 
+#pragma mark -
+#pragma mark Film Methods
+
+- (IBAction)chooseFilm {
+  [self.filmViewController.tableView reloadData];
+  self.filmView.hidden = NO;
+  [self.filmViewController appear];
+}
+
+- (IBAction) filmChosen:(Film*)film {
+  self.filmView.alpha = 1.0;
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:1.4];
+  self.filmView.alpha = 0.0;
+  [UIView commitAnimations];
+  
+  FileSpecifier FileToLoad ( (char*)[film.filename UTF8String] );
+  // load_and_start_game(FileToLoad);
+  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+  
+}
+
+- (IBAction) chooseFilmCanceled {
+  [self.filmViewController disappear];
+  [self.filmView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+}
+
+- (IBAction)saveFilm {
+  Film* film = [self.filmViewController createFilm];
+  
+  short number_of_players;
+  short level_number;
+  uint32 map_checksum;
+  short version;
+  struct player_start_data starts;
+  struct game_data game_information;
+  get_recording_header_data(&number_of_players, &level_number,
+                                 &map_checksum,
+                                 &version, &starts,
+                                 &game_information);
+  film.lastSaveTime = [NSDate date];
+  film.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
+  [[AlephOneAppDelegate sharedAppDelegate].scenario addFilmsObject:film];
+  
+  MLog ( @"Saving game to %@", film.filename);
+  FileSpecifier src_file;
+  get_recording_filedesc(src_file);
+  
+  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
+  file.CopyContents(src_file);
+
+  MLog ( @"Saving film: %@", film );
+  [film.managedObjectContext save:nil];
+  
 }
 
 #pragma mark -

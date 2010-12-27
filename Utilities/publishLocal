@@ -3,5 +3,14 @@ echo "Compressing..."
 cd /Users/blezek/Source/AlephOne/CompiledScenarios/
 mv -f M1A1.zip M1A1-Old.zip
 zip -r -q M1A1.zip M1A1/
+
+mv -f M2A1.zip M2A1-Old.zip
+zip -r -q M2A1.zip M2A1/
+
+mv -f M3A1.zip M3A1-Old.zip
+zip -r -q M3A1.zip M3A1/
+
 echo "Moving..."
 cp -f M1A1.zip /Users/blezek/Sites
+cp -f M2A1.zip /Users/blezek/Sites
+cp -f M3A1.zip /Users/blezek/Sites

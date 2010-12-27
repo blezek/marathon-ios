@@ -8,6 +8,16 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Key</key>
+			<string>version</string>
+			<key>DefaultValue</key>
+			<string>1.0</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
 			<string>Enable Cheats</string>
@@ -18,6 +28,16 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Brightness</string>
+		</dict>
+		<dict>
+			<key>MinimumValueImage</key>
+			<string>weather_clear_night.png</string>
+			<key>MaximumValueImage</key>
+			<string>weather_clear.png</string>
+			<key>Type</key>
 			<string>PSSliderSpecifier</string>
 			<key>Key</key>
 			<string>gamma</string>
@@ -26,7 +46,7 @@
 			<key>MinimumValue</key>
 			<integer>1</integer>
 			<key>MaximumValue</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 </dict>

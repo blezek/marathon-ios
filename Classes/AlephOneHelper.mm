@@ -54,7 +54,8 @@ char* getDataDir() {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   dataDir = [paths objectAtIndex:0];
   // dataDir = [[NSBundle mainBundle] resourcePath];
-  dataDir = [dataDir stringByAppendingString:@"/M1A1/"];
+  dataDir = [NSString stringWithFormat:@"%@/%@/", dataDir, [AlephOneAppDelegate sharedAppDelegate].scenario.path];
+  MLog ( @"DataDir: %@", dataDir );
   return (char*)[dataDir UTF8String];
   
 }
@@ -67,6 +68,7 @@ char* getLocalDataDir() {
 
 void helperQuit() {
   MLog ( @"helperQuit()" );
+  [[GameViewController sharedInstance] quitPressed];
 }
 
 void helperBringUpHUD () {
@@ -116,7 +118,8 @@ void helperEpilog() {
 
 float helperGamma() {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  return [defaults floatForKey:kGamma];
+  float g = [defaults floatForKey:kGamma];
+  return g;
 };
 
 void helperSetPreferences( bool notify) {
@@ -205,4 +208,8 @@ void stopProgress() {
 short helperGetEntryLevelNumber() {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   return [defaults integerForKey:kEntryLevelNumber];
+}
+
+void saveFilm() {
+  [[GameViewController sharedInstance] saveFilm];
 }

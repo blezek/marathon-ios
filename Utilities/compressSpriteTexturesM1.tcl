@@ -69,7 +69,7 @@ foreach collection [glob *] {
       puts "\t\tProcessing $image"
       set tail [file tail $image]
       set base [file root $tail]
-      set outputFile [file join $TopDir SpriteTextures $collection $clut $base.pvrtc]
+      set outputFile [file join $TopDir SpriteTextures $collection $clut $base.pvr]
       file mkdir [file dir $outputFile]
 
       set TempFile [file join $TopDir SpriteTextures-PNG $collection $clut $base.png]
@@ -102,10 +102,10 @@ foreach collection [glob *] {
 
       exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
       exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
-      puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base.pvrtc\" clut=\"$clut\"/>"
+      puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
 
       if { $InfraVision } {
-        set VisionFile [file join [file dir $outputFile] $base-IR.pvrtc]
+        set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
         set VisionTempFile [file join $TopDir SpriteTextures-PNG $collection $clut $base-IR.png]
         puts "\t\t\tCreating Vision file"
         set R [lindex $Vision($collection) 0]
@@ -114,7 +114,7 @@ foreach collection [glob *] {
         exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" $VisionTempFile
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
         # NB, clut 8 is Infravision, 9 is silhouette
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base-IR.pvrtc\" clut=\"8\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
       }
     }
   }

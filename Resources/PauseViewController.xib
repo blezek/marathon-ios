@@ -45,7 +45,7 @@
 					<object class="IBUIButton" id="801362484">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{908, 26}, {83, 37}}</string>
+						<string key="NSFrame">{{521, 157}, {109, 109}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -56,7 +56,6 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Resume</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="361422447">
 							<int key="NSColorSpace">3</int>
@@ -70,11 +69,15 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">play-btn.png</string>
+						</object>
 					</object>
 					<object class="IBUIButton" id="978761579">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{456, 78}, {110, 111}}</string>
+						<string key="NSFrame">{{392, 155}, {110, 111}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -96,7 +99,7 @@
 					<object class="IBUIButton" id="619836146">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{456, 324}, {111, 111}}</string>
+						<string key="NSFrame">{{521, 284}, {111, 111}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -118,7 +121,7 @@
 					<object class="IBUIButton" id="660096293">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{456, 201}, {111, 111}}</string>
+						<string key="NSFrame">{{392, 284}, {111, 111}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -281,6 +284,7 @@
 								<int key="NSID">2</int>
 							</object>
 						</object>
+						<int key="IBUITag">1</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</object>
@@ -415,11 +419,11 @@
 						<reference key="object" ref="766721923"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="557038741"/>
 							<reference ref="801362484"/>
 							<reference ref="978761579"/>
-							<reference ref="660096293"/>
 							<reference ref="619836146"/>
-							<reference ref="557038741"/>
+							<reference ref="660096293"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -544,7 +548,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABD1oAAwsIAAA</bytes>
 					</object>
-					<string>{{880, 388}, {1024, 768}}</string>
+					<string>{{649, 337}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -552,7 +556,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABED8AAw6qAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDwIAAw7KAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -560,15 +564,15 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABD7wAAwzgAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABD/AAAw24AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDqQAAw6qAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDwIAAw24AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABD5AAAw6qAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABD/AAAw7KAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -712,6 +716,7 @@
 				<string>help-btn.png</string>
 				<string>invincibility-btn.png</string>
 				<string>mainmenu-btn.png</string>
+				<string>play-btn.png</string>
 				<string>preferences-btn.png</string>
 				<string>save-btn.png</string>
 				<string>secondarybuttons-bg.png</string>
@@ -724,6 +729,7 @@
 				<string>{111, 111}</string>
 				<string>{73, 74}</string>
 				<string>{110, 111}</string>
+				<string>{109, 109}</string>
 				<string>{111, 111}</string>
 				<string>{74, 74}</string>
 				<string>{523, 123}</string>
