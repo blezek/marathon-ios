@@ -16,17 +16,17 @@
   [self cleanupUI];
   [[AlephOneAppDelegate sharedAppDelegate].game closeHelp:self];
 }
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
+- (IBAction)internetHelp:(id)sender {
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Would go out to the internate"
+                                                  delegate:nil
+                                         cancelButtonTitle:@"Ok"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:nil];
+  as.actionSheetStyle = UIActionSheetStyleDefault;
+  [as showInView:self.view];
+  [as release];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -35,7 +35,7 @@
 }
 
 - (void)setupUI {
-  int kNumImages = 11;
+  int kNumImages = 12;
   CGFloat kScrollObjHeight = scrollView.bounds.size.height;
   CGFloat kScrollObjWidth = scrollView.bounds.size.width;
   
@@ -69,7 +69,7 @@
       curXLoc += (kScrollObjWidth);
     }
   }
-  
+  pageControl.numberOfPages = kNumImages;
   // set the content size so it can be scrollable
   [scrollView setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView bounds].size.height)];
   

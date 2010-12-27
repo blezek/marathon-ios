@@ -17,8 +17,9 @@
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
-- (IBAction) done;
+- (IBAction)done;
 - (IBAction)changePage:(id)sender;
+- (IBAction)internetHelp:(id)sender;
 - (void)setupUI;
 - (void)cleanupUI;
 @end

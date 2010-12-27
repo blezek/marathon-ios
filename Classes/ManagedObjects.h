@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * downloadHost;
 @property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSSet* savedGames;
+@property (nonatomic, retain) NSSet* films;
 @end
 
 // coalesce these into one @interface Scenario (CoreDataGeneratedAccessors) section
@@ -27,6 +28,11 @@
 - (void)removeSavedGamesObject:(NSManagedObject *)value;
 - (void)addSavedGames:(NSSet *)value;
 - (void)removeSavedGames:(NSSet *)value;
+
+- (void)addFilmsObject:(NSManagedObject *)value;
+- (void)removeFilmsObject:(NSManagedObject *)value;
+- (void)addFilms:(NSSet *)value;
+- (void)removeFilms:(NSSet *)value;
 
 @end
 
@@ -51,4 +57,17 @@
 
 // coalesce these into one @interface SavedGame (CoreDataGeneratedAccessors) section
 @interface SavedGame (CoreDataGeneratedAccessors)
+@end
+
+@interface Film : NSManagedObject
+{
+}
+@property (nonatomic, retain) NSString * filename;
+@property (nonatomic, retain) NSDate * lastSaveTime;
+@property (nonatomic, retain) NSManagedObject * scenario;
+
+@end
+
+// coalesce these into one @interface SavedGame (CoreDataGeneratedAccessors) section
+@interface Film (CoreDataGeneratedAccessors)
 @end

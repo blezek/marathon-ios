@@ -20,6 +20,7 @@
 #import "PauseViewController.h"
 #import "HelpViewController.h"
 #import "NewGameViewController.h"
+#import "FilmViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -50,6 +51,7 @@ typedef enum {
   IBOutlet UIView *helpView;
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
+  IBOutlet UIView *filmView;
 
   IBOutlet UIButton *pause;
   IBOutlet ButtonView *mapView;
@@ -85,6 +87,7 @@ typedef enum {
   IBOutlet PauseViewController *pauseViewController;
   IBOutlet HelpViewController *helpViewController;
   IBOutlet NewGameViewController *newGameViewController;
+  IBOutlet FilmViewController* filmViewController;
   
   UISwipeGestureRecognizer *leftWeaponSwipe;
   UISwipeGestureRecognizer *rightWeaponSwipe;
@@ -121,6 +124,7 @@ typedef enum {
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
 - (void)playerKilled;
+- (IBAction)quitPressed;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -141,6 +145,12 @@ typedef enum {
 - (IBAction)gameChosen:(SavedGame*)game;
 - (IBAction)saveGame;
 - (IBAction)chooseSaveGameCanceled;
+
+// Films
+- (IBAction)chooseFilm;
+- (IBAction) filmChosen:(Film*)film;
+- (IBAction) chooseFilmCanceled;
+- (IBAction)saveFilm;
 
 // Progress stuff
 - (void) startProgress:(int)total;
@@ -172,6 +182,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
 @property (nonatomic, retain) UIView *helpView;
+@property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
 @property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) ButtonView *restartView;
@@ -195,6 +206,7 @@ typedef enum {
 @property (nonatomic, retain) PreferencesViewController *preferencesViewController;
 @property (nonatomic, retain) PauseViewController *pauseViewController;
 @property (nonatomic, retain) HelpViewController *helpViewController;
+@property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
 
 
