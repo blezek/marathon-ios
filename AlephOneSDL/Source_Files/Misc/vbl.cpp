@@ -641,6 +641,11 @@ void set_recording_header_data(
   replay.header.length= SIZEOF_recording_header;
 }
 
+// DJB Helper here...
+bool replay_is_valid () {
+  return replay.valid;
+}
+
 void get_recording_header_data(
   short *number_of_players,
   short *level_number,
@@ -1318,18 +1323,8 @@ bool get_recording_filedesc(FileSpecifier &File)
 /*
  *  Save film buffer to user-selected file
  */
-// DJB include helper
-#include "AlephOneHelper.h"
 void move_replay(void)
 {
-  FileSpecifier src_file;
-  if ( !get_recording_filedesc(src_file) ) {
-    return;
-  }
-  
-  // DJB Save the film
-  saveFilm();
-  /*
   // Get source file specification
   FileSpecifier src_file, dst_file;
   if (!get_recording_filedesc(src_file)) {
@@ -1352,7 +1347,6 @@ void move_replay(void)
   if (error) {
     alert_user(infoError, strERRORS, fileError, error);
   }
-   */
 }
 
 

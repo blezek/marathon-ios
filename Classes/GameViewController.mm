@@ -100,8 +100,10 @@ extern  int
   [self.newGameViewController view];
   [self.newGameView addSubview:self.newGameViewController.view];
   
-  self.filmViewController = [[FilmViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  [self.filmView addSubview:self.filmViewController.view];
+  self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
+  [self.filmViewController view];
+  [self.filmViewController enclosingView];
+  [self.filmView addSubview:self.filmViewController.enclosingView];
   
   // Kill a warning
   (void)all_key_definitions;
@@ -185,7 +187,6 @@ extern  int
   startingNewGameSoSave = NO;
   self.currentSavedGame = nil;
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
-
 }
 
 - (IBAction)cancelNewGame {
@@ -196,6 +197,16 @@ extern  int
 - (void)hideHUD {
   self.hud.hidden = YES;
 }
+
+- (void)endReplay {
+  MLog ( @"End Replay" );
+  self.pauseView.hidden = YES;
+  self.hud.hidden = YES;
+  self.menuView.hidden = NO;
+  mode = MenuMode;
+}
+
+
 
 - (void)epilog {
   self.hud.hidden = YES;
@@ -244,6 +255,8 @@ extern  int
   
   [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
+  bool showAllControls = player_controlling_game();
+  
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   
@@ -262,10 +275,19 @@ extern  int
   group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
+  
   for ( UIView *v in [self.hud subviews] ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    if ( v != self.savedGameMessage ) {
+    if ( v == self.savedGameMessage ) { continue; }
+    v.hidden = NO;
+    if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
+    } else {
+      if ( v == self.pause ) {
+        [v.layer addAnimation:group forKey:nil];
+      } else {
+        v.hidden = YES;
+      }
     }
   }
   
@@ -380,6 +402,18 @@ extern bool choose_saved_game_to_load(FileSpecifier& File);
 extern bool load_and_start_game(FileSpecifier& File);
 
 - (IBAction)chooseSaveGame {
+  
+  if ( [self.saveGameViewController numberOfSavedGames] == 0 ) {
+    // Pop something up
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No saved games"
+                                            message:@"There are no saved games, please start a new game"
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+    [alert show];
+    return;
+  }
+  
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
@@ -498,8 +532,20 @@ extern SDL_Surface *draw_surface;
 
 #pragma mark -
 #pragma mark Film Methods
-
+extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)chooseFilm {
+  
+  if ( [self.filmViewController numberOfSavedFilms] == 0 ) {
+    // Pop something up
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No saved films"
+                                                    message:@"There are no saved films, please start a new game to record a film."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    return;
+  }
+  
   [self.filmViewController.tableView reloadData];
   self.filmView.hidden = NO;
   [self.filmViewController appear];
@@ -514,8 +560,7 @@ extern SDL_Surface *draw_surface;
   
   FileSpecifier FileToLoad ( (char*)[film.filename UTF8String] );
   // load_and_start_game(FileToLoad);
-  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
-  
+  handle_open_replay(FileToLoad);  
 }
 
 - (IBAction) chooseFilmCanceled {
@@ -532,10 +577,12 @@ extern SDL_Surface *draw_surface;
   short version;
   struct player_start_data starts;
   struct game_data game_information;
+/*
   get_recording_header_data(&number_of_players, &level_number,
                                  &map_checksum,
                                  &version, &starts,
                                  &game_information);
+ */
   film.lastSaveTime = [NSDate date];
   film.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addFilmsObject:film];
@@ -544,7 +591,7 @@ extern SDL_Surface *draw_surface;
   FileSpecifier src_file;
   get_recording_filedesc(src_file);
   
-  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
+  FileSpecifier file ( (char*)[film.filename UTF8String] );
   file.CopyContents(src_file);
 
   MLog ( @"Saving film: %@", film );

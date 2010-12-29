@@ -1505,6 +1505,9 @@
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA981265465A002211FB /* ProgressLogo.png */; };
+		A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
+		A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
+		A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
 		A8DC998A123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
 		A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
@@ -1629,8 +1632,6 @@
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
 		A81A32901294C3CD00BCEA0C /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Artwork/SplashScreen.png; sourceTree = "<group>"; };
 		A81A33071296255300BCEA0C /* Reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reload.png; path = Artwork/Reload.png; sourceTree = "<group>"; };
-		A81A334E129630FB00BCEA0C /* SaveGame 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 4.xcdatamodel"; sourceTree = "<group>"; };
-		A81DC66F12A9EFB900BFC3C0 /* SaveGame 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 6.xcdatamodel"; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
@@ -1799,7 +1800,7 @@
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
 		A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A85E68CC11CB1B1C00D0FAEF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
-		A868390C1299B04200D4F8D6 /* SaveGame 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 5.xcdatamodel"; sourceTree = "<group>"; };
+		A869F22712C8ED120045CE22 /* AlephOne:SDG 2 New-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlephOne:SDG 2 New-Info.plist"; sourceTree = "<group>"; };
 		A87785541270767C009F18D8 /* movementboxBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxBase.png; path = Artwork/movementboxBase.png; sourceTree = "<group>"; };
 		A87785551270767C009F18D8 /* movementboxKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movementboxKnob.png; path = Artwork/movementboxKnob.png; sourceTree = "<group>"; };
 		A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExpandingLabel.png; path = Artwork/ExpandingLabel.png; sourceTree = "<group>"; };
@@ -2470,7 +2471,7 @@
 		A8D967CA11C72A2500016403 /* SDL_mouse_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse_c.h; sourceTree = "<group>"; };
 		A8D967D511C72AFA00016403 /* SDL_keyboard_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard_c.h; sourceTree = "<group>"; };
 		A8D967D611C72AFA00016403 /* SDL_windowevents_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_windowevents_c.h; sourceTree = "<group>"; };
-		A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 2.xcdatamodel"; sourceTree = "<group>"; };
+		A8DC94ED12CAD0500055397E /* FilmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmViewController.xib; path = Classes/FilmViewController.xib; sourceTree = "<group>"; };
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
@@ -2486,7 +2487,6 @@
 		A8EB78531266A8510043F0D4 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseViewController.h; path = Classes/PauseViewController.h; sourceTree = "<group>"; };
 		A8EB78541266A8510043F0D4 /* PauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseViewController.m; path = Classes/PauseViewController.m; sourceTree = "<group>"; };
 		A8EB78551266A8510043F0D4 /* PauseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PauseViewController.xib; path = Resources/PauseViewController.xib; sourceTree = "<group>"; };
-		A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 3.xcdatamodel"; sourceTree = "<group>"; };
 		A8FEAB361290773200FA55E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -2606,6 +2606,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				A869F22712C8ED120045CE22 /* AlephOne:SDG 2 New-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -3992,6 +3993,7 @@
 		A8C391F11297845E00E09E32 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				A8DC94ED12CAD0500055397E /* FilmViewController.xib */,
 				A881257D12C7B64900A1A08E /* FilmCell.xib */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
 				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
@@ -4276,6 +4278,7 @@
 				A8811F9D12C76B2200A1A08E /* help11.png in Resources */,
 				A8811F9E12C76B2200A1A08E /* help12.png in Resources */,
 				A881257E12C7B64900A1A08E /* FilmCell.xib in Resources */,
+				A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4360,6 +4363,7 @@
 				A881203812C7816300A1A08E /* help11.png in Resources */,
 				A881203912C7816300A1A08E /* help12.png in Resources */,
 				A881257F12C7B64900A1A08E /* FilmCell.xib in Resources */,
+				A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4444,6 +4448,7 @@
 				A881223D12C7826300A1A08E /* help11.png in Resources */,
 				A881223E12C7826300A1A08E /* help12.png in Resources */,
 				A881258012C7B64900A1A08E /* FilmCell.xib in Resources */,
+				A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5855,6 +5860,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -5896,6 +5902,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -5937,6 +5944,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -6244,11 +6252,6 @@
 			isa = XCVersionGroup;
 			children = (
 				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
-				A8DC98E81238799C00317186 /* SaveGame 2.xcdatamodel */,
-				A8F62530123C2A4700546333 /* SaveGame 3.xcdatamodel */,
-				A81A334E129630FB00BCEA0C /* SaveGame 4.xcdatamodel */,
-				A868390C1299B04200D4F8D6 /* SaveGame 5.xcdatamodel */,
-				A81DC66F12A9EFB900BFC3C0 /* SaveGame 6.xcdatamodel */,
 			);
 			currentVersion = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */;
 			name = SaveGame.xcdatamodeld;

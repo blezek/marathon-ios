@@ -116,6 +116,11 @@ void helperEpilog() {
   pumpEvents();
 }
 
+void helperEndReplay() {
+  [[GameViewController sharedInstance] endReplay];
+  pumpEvents();
+}
+
 float helperGamma() {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   float g = [defaults floatForKey:kGamma];
@@ -142,32 +147,9 @@ void helperProjectileHit ( short projectile_index ) {
   weapon_data->weapons[widx].triggers[tidx].shots_hit++;
 }
 
-// Some calls defined in the interface.cpp
-extern void force_system_colors(void);
-extern bool choose_saved_game_to_load(FileSpecifier& File);
-extern bool load_and_start_game(FileSpecifier& File);
-
 void helperHandleLoadGame ( ) {
-  
   [[GameViewController sharedInstance] chooseSaveGame];
   return;
-  FileSpecifier FileToLoad;
-  bool success= false;
-  
-  force_system_colors();
-  show_cursor();       // JTP: Was hidden by force system colors
-  if(choose_saved_game_to_load(FileToLoad)) {
-    if(load_and_start_game(FileToLoad)) {
-      success= true;
-    }
-  }
-  
-  if(!success) {
-    hide_cursor();             // JTP: Will be shown when fade stops
-    display_main_menu();
-  }
-  
-  // return [[GameViewController sharedInstance] chooseSaveGame:&saved_game];
 }
 
 
@@ -210,6 +192,11 @@ short helperGetEntryLevelNumber() {
   return [defaults integerForKey:kEntryLevelNumber];
 }
 
-void saveFilm() {
+void helperHandleSaveFilm() {
   [[GameViewController sharedInstance] saveFilm];
 }
+
+void helperHandleLoadFilm() {
+  [[GameViewController sharedInstance] chooseFilm];
+}
+

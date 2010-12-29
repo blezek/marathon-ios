@@ -13,6 +13,7 @@
 
 @interface FilmViewController : UITableViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate> {
   IBOutlet FilmCell *filmCell;
+  IBOutlet UIView *enclosingView;
 @private
   NSFetchedResultsController *fetchedResultsController_;
   NSManagedObjectContext *managedObjectContext_;
@@ -27,6 +28,7 @@
 - (void)appear;
 - (void)disappear;
 
+- (int)numberOfSavedFilms;
 - (NSIndexPath*)selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -35,6 +37,7 @@
 - (Film*)createFilm;
 
 @property (nonatomic, retain) IBOutlet FilmCell *filmCell;
+@property (nonatomic, retain) IBOutlet UIView *enclosingView;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

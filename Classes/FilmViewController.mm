@@ -17,7 +17,7 @@
 @implementation FilmViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize filmCell;
-
+@synthesize enclosingView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -76,21 +76,21 @@
 #pragma mark Animations
 
 - (void)appear {
-  self.view.hidden = NO;
+  self.enclosingView.hidden = NO;
   CAAnimation* group = [Effects appearAnimation];
-  for ( UIView *v in self.view.subviews ) {
+  for ( UIView *v in self.enclosingView.subviews ) {
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.view.layer addAnimation:group forKey:nil];
+  [self.enclosingView.layer addAnimation:group forKey:nil];
 }
   
 - (void)disappear {
   CAAnimation* group = [Effects disappearAnimation];
 
-  for ( UIView *v in self.view.subviews ) {
+  for ( UIView *v in self.enclosingView.subviews ) {
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.view performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
+  [self.enclosingView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
 }
 
 
@@ -132,9 +132,9 @@
   MLog ( @"Delete" );
   NSIndexPath* indexPath = [self selectedIndex];
   if ( indexPath != nil ) {
-    Film *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [[NSFileManager defaultManager] removeItemAtPath:game.filename error:nil];
-    [self.managedObjectContext deleteObject:game];
+    Film *film = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [[NSFileManager defaultManager] removeItemAtPath:film.filename error:nil];
+    [self.managedObjectContext deleteObject:film];
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
   }
@@ -144,10 +144,10 @@
   MLog ( @"Duplicate" );
   NSIndexPath* indexPath = [self selectedIndex];
   if ( indexPath != nil ) {
-    Film *game = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    Film *newGame = [self createFilm];
+    Film *film = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    Film *newFilm = [self createFilm];
     // Copy file and map
-    [[NSFileManager defaultManager] copyItemAtPath:game.filename toPath:newGame.filename error:nil];
+    [[NSFileManager defaultManager] copyItemAtPath:film.filename toPath:newFilm.filename error:nil];
   }
   [self.tableView reloadData];
 }
@@ -168,7 +168,7 @@
   NSString *filmDirectory = [NSString stringWithFormat:@"%@/Films/%@/", 
                                  [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory],
                                  [AlephOneAppDelegate sharedAppDelegate].scenario.name];
-  NSLog ( @"Creating saved game directory %@", filmDirectory );
+  NSLog ( @"Creating saved film directory %@", filmDirectory );
   [[NSFileManager defaultManager] createDirectoryAtPath:filmDirectory
                             withIntermediateDirectories:YES
                                              attributes:nil
@@ -190,6 +190,10 @@
     
 #pragma mark -
 #pragma mark Table view data source
+
+- (int)numberOfSavedFilms {
+  return [self.fetchedResultsController fetchedObjects].count;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   MLog ( @"Results have %d sections", [[self.fetchedResultsController sections] count] );
@@ -218,8 +222,8 @@
     }
     
   // Configure the cell...
-  Film *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  [cell setFields:game];
+  Film *film = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  [cell setFields:film];
   return cell;
 }
 
@@ -393,9 +397,8 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-  
-  NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  cell.textLabel.text = [[managedObject valueForKey:@"level"] description];
+  Film *film = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  [(FilmCell*)cell setFields:film];
 }
 
 
@@ -432,8 +435,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Find the selected saved game.
-  Film *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  [[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
+  Film *film = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  [[GameViewController sharedInstance] performSelector:@selector(filmChosen:) withObject:film afterDelay:0.0];
   // [[GameViewController sharedInstance] gameChosen:game];
 }
 

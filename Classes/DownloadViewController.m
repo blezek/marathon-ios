@@ -102,7 +102,7 @@
   Reachability *reachability = [Reachability reachabilityForInternetConnection];
   
   NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
-/*
+
   if(remoteHostStatus == NotReachable) {
     NSString *msg = @"Unable to reach download server, please check your connection.";
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No connectivity" message:msg delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
@@ -119,11 +119,12 @@
       return;
     }
   }
-  */
+  
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
   NSLog ( @"Install path is %@", installDirectory );
-  
+  [self.progressView setTintColor:[UIColor greenColor]];
+
   BOOL isDirectory;
   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:installDirectory isDirectory:&isDirectory];
   NSLog ( @"Checking for file: %@", installDirectory );
