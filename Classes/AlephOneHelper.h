@@ -21,6 +21,7 @@
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern void helperBringUpHUD();
+
 extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHideHUD();
@@ -39,7 +40,8 @@ extern void helperQuit();
 extern void helperSetPreferences(bool notifySoundManager);
 
 // Film helpers
-extern void saveFilm();
+extern void helperHandleSaveFilm();
+extern void helperHandleLoadFilm();
 
 // Help track hits!
 extern void helperNewProjectile ( short projectile_index, short which_weapon, short which_trigger );

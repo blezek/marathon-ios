@@ -199,6 +199,11 @@
 #pragma mark -
 #pragma mark Table view data source
 
+- (int)numberOfSavedGames {
+  return [self.fetchedResultsController fetchedObjects].count;
+}
+  
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   MLog ( @"Results have %d sections", [[self.fetchedResultsController sections] count] );
   return [[self.fetchedResultsController sections] count];

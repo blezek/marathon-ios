@@ -29,6 +29,8 @@
 - (void)appear;
 - (void)disappear;
 
+- (int)numberOfSavedGames;
+
 - (NSIndexPath*)selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

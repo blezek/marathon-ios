@@ -27,6 +27,7 @@
 - (void)appear;
 - (void)disappear;
 
+- (int)numberOfSavedFilms;
 - (NSIndexPath*)selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
