@@ -101,7 +101,9 @@ extern  int
   [self.newGameView addSubview:self.newGameViewController.view];
   
   self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
-  [self.filmView addSubview:self.filmViewController.view];
+  [self.filmViewController view];
+  [self.filmViewController enclosingView];
+  [self.filmView addSubview:self.filmViewController.enclosingView];
   
   // Kill a warning
   (void)all_key_definitions;
@@ -196,6 +198,16 @@ extern  int
   self.hud.hidden = YES;
 }
 
+- (void)endReplay {
+  MLog ( @"End Replay" );
+  self.pauseView.hidden = YES;
+  self.hud.hidden = YES;
+  self.menuView.hidden = NO;
+  mode = MenuMode;
+}
+
+
+
 - (void)epilog {
   self.hud.hidden = YES;
   mode = MenuMode;
@@ -243,6 +255,8 @@ extern  int
   
   [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
+  bool showAllControls = player_controlling_game();
+  
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   
@@ -261,10 +275,19 @@ extern  int
   group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
+  
   for ( UIView *v in [self.hud subviews] ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    if ( v != self.savedGameMessage ) {
+    if ( v == self.savedGameMessage ) { continue; }
+    v.hidden = NO;
+    if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
+    } else {
+      if ( v == self.pause ) {
+        [v.layer addAnimation:group forKey:nil];
+      } else {
+        v.hidden = YES;
+      }
     }
   }
   

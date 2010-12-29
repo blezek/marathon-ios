@@ -116,6 +116,11 @@ void helperEpilog() {
   pumpEvents();
 }
 
+void helperEndReplay() {
+  [[GameViewController sharedInstance] endReplay];
+  pumpEvents();
+}
+
 float helperGamma() {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   float g = [defaults floatForKey:kGamma];

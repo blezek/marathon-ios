@@ -1116,6 +1116,8 @@ bool idle_game_state(uint32 time)
           switch(game_state.user)
         {
           case _replay:
+            // DJB End the replay
+            helperEndReplay();
             finish_game(true);
             break;
             
@@ -2059,9 +2061,6 @@ static void start_game(
   
   draw_interface();
   
-  // DJB Bring up the HUD
-  helperBringUpHUD();
-  
 #ifdef PERFORMANCE
   PerfControl(perf_globals, true);
 #endif
@@ -2082,6 +2081,9 @@ static void start_game(
   if(!changing_level) {
     set_keyboard_controller_status(true);
   }
+  // DJB Bring up the HUD
+  helperBringUpHUD();
+    
 }
 
 // LP: "static" removed

@@ -37,6 +37,7 @@ extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void helperQuit();
+extern void helperEndReplay();
 extern void helperSetPreferences(bool notifySoundManager);
 
 // Film helpers

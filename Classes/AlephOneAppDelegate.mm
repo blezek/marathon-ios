@@ -148,6 +148,10 @@ extern int SDL_main(int argc, char *argv[]);
     // AWS
     self.scenario.downloadURL = [NSString stringWithFormat:@"%@/%@/%@.zip", RemoteURL, self.scenario.path, self.scenario.path];
     self.scenario.downloadHost = RemoteHost;
+
+    self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
+    self.scenario.downloadHost = localhost;
+
 #endif
     
     [self.scenario.managedObjectContext save:nil];

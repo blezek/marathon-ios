@@ -17,7 +17,7 @@
 @implementation FilmViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize filmCell;
-
+@synthesize enclosingView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -76,21 +76,21 @@
 #pragma mark Animations
 
 - (void)appear {
-  self.view.hidden = NO;
+  self.enclosingView.hidden = NO;
   CAAnimation* group = [Effects appearAnimation];
-  for ( UIView *v in self.view.subviews ) {
+  for ( UIView *v in self.enclosingView.subviews ) {
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.view.layer addAnimation:group forKey:nil];
+  [self.enclosingView.layer addAnimation:group forKey:nil];
 }
   
 - (void)disappear {
   CAAnimation* group = [Effects disappearAnimation];
 
-  for ( UIView *v in self.view.subviews ) {
+  for ( UIView *v in self.enclosingView.subviews ) {
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.view performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
+  [self.enclosingView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
 }
 
 

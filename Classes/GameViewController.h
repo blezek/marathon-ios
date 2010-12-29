@@ -161,6 +161,7 @@ typedef enum {
 - (void)hideHUD;
 - (void)teleportOut;
 - (void)epilog;
+- (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
