@@ -571,13 +571,13 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)saveFilm {
   Film* film = [self.filmViewController createFilm];
   
+  /*
   short number_of_players;
   short level_number;
   uint32 map_checksum;
   short version;
   struct player_start_data starts;
   struct game_data game_information;
-/*
   get_recording_header_data(&number_of_players, &level_number,
                                  &map_checksum,
                                  &version, &starts,

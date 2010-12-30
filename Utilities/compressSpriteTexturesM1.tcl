@@ -1,3 +1,6 @@
+set Scenario [lindex $argv 0]
+puts "Compressing $Scenario"
+
 set Vision(0)  "1.000000 1.000000 1.000000 0"
 set Vision(1)  "1.000000 1.000000 0.000000 1"
 set Vision(2)  "1.000000 1.000000 1.000000 0"
@@ -42,13 +45,13 @@ set TextureSize "256x256!"
 set TextureSize "128x128!"
 
 set TopDir [pwd]
-file mkdir SpriteTextures
+file mkdir SpriteTextures-$Scenario
 
-set fid [open SpriteTextures/Sprites.mml w]
+set fid [open SpriteTextures-$Scenario/Sprites.mml w]
 puts $fid "<marathon>"
 puts $fid "<opengl>"
 
-cd SpriteTextures-Original
+cd SpriteTextures-$Scenario-Original
 
 # 9 is PfhorFighter
 foreach collection [glob *] {
@@ -69,10 +72,10 @@ foreach collection [glob *] {
       puts "\t\tProcessing $image"
       set tail [file tail $image]
       set base [file root $tail]
-      set outputFile [file join $TopDir SpriteTextures $collection $clut $base.pvr]
+      set outputFile [file join $TopDir SpriteTextures-$Scenario $collection $clut $base.pvr]
       file mkdir [file dir $outputFile]
 
-      set TempFile [file join $TopDir SpriteTextures-PNG $collection $clut $base.png]
+      set TempFile [file join $TopDir SpriteTextures-$Scenario-PNG $collection $clut $base.png]
       file mkdir [file dir $TempFile]
 
       set size [exec identify -format "%w %h" $image]
@@ -102,11 +105,11 @@ foreach collection [glob *] {
 
       exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
       exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
-      puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
+      puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
 
       if { $InfraVision } {
         set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
-        set VisionTempFile [file join $TopDir SpriteTextures-PNG $collection $clut $base-IR.png]
+        set VisionTempFile [file join $TopDir SpriteTextures-$Scenario-PNG $collection $clut $base-IR.png]
         puts "\t\t\tCreating Vision file"
         set R [lindex $Vision($collection) 0]
         set G [lindex $Vision($collection) 1]
@@ -114,7 +117,7 @@ foreach collection [glob *] {
         exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" $VisionTempFile
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
         # NB, clut 8 is Infravision, 9 is silhouette
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
       }
     }
   }

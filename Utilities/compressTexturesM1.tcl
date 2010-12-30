@@ -41,6 +41,15 @@ set Opacity(17,19,Scale) 0.6
 set Opacity(18,12,Type) 1
 set Opacity(18,12,Scale) 0.6
 
+set ExtraSettings(M2,17,16) {opac_type="1"}
+set ExtraSettings(M2,17,19) {opac_type="1" opac_scale="0.6"}
+set ExtraSettings(M2,18,9) {opac_type="1"}
+set ExtraSettings(M2,18,12) {opac_type="1" opac_scale="0.6"}
+set ExtraSettings(M2,18,29) {opac_type="1"}
+set ExtraSettings(M2,19,9) {opac_type="1" opac_scale="0.6"}
+set ExtraSettings(M2,19,13) {opac_type="1"}
+set ExtraSettings(M2,21,5) {opac_type="1" opac_scale="0.6"}
+
 lappend Collections(/general/controlpanels01.dds) "17 0"
 lappend Collections(/general/controlpanels01.dds) "18 0"
 lappend Collections(/general/controlpanels01.dds) "19 0"
@@ -396,13 +405,15 @@ foreach collection [lsort [glob *]] {
       # Square, so we resize
       exec convert $image -resize $size $TempFile
       puts "\t\tResized to $size"
+      set extra ""
+      if { [info exists ExtraSettings($Scenario,$collection,$bitmap)] } { set extra $ExtraSettings($Scenario,$collection,$bitmap) }
       if { $Compress } {
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\" $extra/>"
       } else {
         set outputFile [file join $TopDir TTEP-$Scenario $collection $clut $base.png]
         exec convert $TempFile -resize $size $outputFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\"/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\" $extra/>"
       }
 
       if { $InfraVision } {
@@ -419,13 +430,13 @@ foreach collection [lsort [glob *]] {
           set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
           exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
+          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
         } else {
           # Don't compress, so we don't need to do anything
           # set VisionFile [file join [file dir $outputFile] $base-IR.png]
           # exec convert $VisionTempFile -resize $size $outputFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\"/>"
+          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\" $extra/>"
         }
       }
     }

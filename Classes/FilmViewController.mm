@@ -63,7 +63,7 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 390.0;
+  return 200.0;
 }
 
 
@@ -98,7 +98,7 @@
 #pragma mark File Methods
 
 - (IBAction)cancel:(id)sender {
-  [[GameViewController sharedInstance] chooseSaveGameCanceled];
+  [[GameViewController sharedInstance] chooseFilmCanceled];
 }
 
 - (NSIndexPath*)selectedIndex {
