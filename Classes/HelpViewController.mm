@@ -12,6 +12,11 @@
 
 @implementation HelpViewController
 @synthesize scrollView, pageControl;
+@synthesize leftButton, rightButton;
+
+#define kNumImages 12
+
+
 - (IBAction)done {
   [self cleanupUI];
   [[AlephOneAppDelegate sharedAppDelegate].game closeHelp:self];
@@ -35,7 +40,6 @@
 }
 
 - (void)setupUI {
-  int kNumImages = 12;
   CGFloat kScrollObjHeight = scrollView.bounds.size.height;
   CGFloat kScrollObjWidth = scrollView.bounds.size.width;
   
@@ -72,7 +76,7 @@
   pageControl.numberOfPages = kNumImages;
   // set the content size so it can be scrollable
   [scrollView setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView bounds].size.height)];
-  
+  [self changePage:nil];  
 }
 
 - (void)cleanupUI {
@@ -96,6 +100,7 @@
   CGFloat pageWidth = scrollView.frame.size.width;
   int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
   pageControl.currentPage = page;
+  [self updateUI];
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
@@ -110,6 +115,35 @@
   pageControlUsed = NO;
 }
 
+- (void)updateUI {
+  if ( pageControl.currentPage == 0 ) {
+    self.leftButton.hidden = YES;
+  } else {
+    self.leftButton.hidden = NO;
+  }
+  if ( pageControl.currentPage == kNumImages - 1 ) {
+    self.rightButton.hidden = YES;
+  } else {
+    self.rightButton.hidden = NO;
+  }
+}
+  
+  
+  
+- (IBAction)pageRight {
+  if ( pageControl.currentPage < kNumImages - 1 ) {
+    pageControl.currentPage += 1;
+    [self changePage:pageControl];
+  }
+}
+
+- (IBAction)pageLeft {
+  if ( pageControl.currentPage > 0 ) {
+    pageControl.currentPage -= 1;
+    [self changePage:pageControl];
+  }
+}  
+
 - (IBAction)changePage:(id)sender
 {
   int page = pageControl.currentPage;
@@ -119,7 +153,8 @@
   frame.origin.x = frame.size.width * page;
   frame.origin.y = 0;
   [scrollView scrollRectToVisible:frame animated:YES];
-  
+  [self updateUI];
+
 	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
   pageControlUsed = YES;
 }

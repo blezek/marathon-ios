@@ -11,14 +11,15 @@
 #define secondsPerHour 3600
 
 @implementation FilmCell
-@synthesize storageDate, storageIdentifier;
+@synthesize storageDate, storageIdentifier, name;
 
-- (void)setFields:(Film*) game {
+- (void)setFields:(Film*) film {
   NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
   [formatter setTimeStyle:NSDateFormatterShortStyle];
   [formatter setDateStyle:NSDateFormatterShortStyle];
-  self.storageDate.text = [NSString stringWithFormat:@"Storage Date: %@", [formatter stringFromDate:game.lastSaveTime]];
-  self.storageIdentifier.text = [NSString stringWithFormat:@"Storage Identifier: 0x%x", [game hash]];
+  self.name.text = film.name;
+  self.storageDate.text = [NSString stringWithFormat:@"Storage Date: %@", [formatter stringFromDate:film.lastSaveTime]];
+  self.storageIdentifier.text = [NSString stringWithFormat:@"Storage Identifier: 0x%x", [film hash]];
 }
 
 - (void)dealloc {

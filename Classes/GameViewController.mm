@@ -12,6 +12,7 @@
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
 #import "Effects.h"
+#import "AlertPrompt.h"
 
 extern "C" {
 extern  int
@@ -110,6 +111,7 @@ extern  int
   mode = MenuMode;
   haveNewGamePreferencesBeenSet = NO;
   startingNewGameSoSave = NO;
+  showingHelpBeforeFirstGame = NO;
   CGAffineTransform transform = self.hud.transform;
   
   // Use the status bar frame to determine the center point of the window's content area.
@@ -178,6 +180,14 @@ extern  int
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kFirstGame] ) {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kFirstGame];
+    showingHelpBeforeFirstGame = YES;
+    // Popup an alert view
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"View help" message:@"See help screens\nbefore your first game?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [alert show];
+    return;
+  }
   [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
@@ -391,6 +401,10 @@ extern  int
   self.helpView.alpha = 0.0;
   [UIView commitAnimations];
   [self.helpView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  if ( showingHelpBeforeFirstGame ) {
+    showingHelpBeforeFirstGame = NO;
+    [self beginGame];
+  }
 }
 
 
@@ -569,20 +583,31 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)saveFilm {
-  Film* film = [self.filmViewController createFilm];
+  AlertPrompt *passwordAlert = [[AlertPrompt alloc] initWithTitle:@"Film Name"
+                                                         delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) okButtonTitle:NSLocalizedString(@"OK",nil)];
+  [passwordAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( showingHelpBeforeFirstGame ) {
+    if ( buttonIndex == 0 ) {
+      // User hit cancel, so start the game...
+      showingHelpBeforeFirstGame = NO;
+      [self beginGame]; 
+    } else {
+      [self help:self];
+    }
+    return;
+  }
   
-  short number_of_players;
-  short level_number;
-  uint32 map_checksum;
-  short version;
-  struct player_start_data starts;
-  struct game_data game_information;
-/*
-  get_recording_header_data(&number_of_players, &level_number,
-                                 &map_checksum,
-                                 &version, &starts,
-                                 &game_information);
- */
+  
+  
+  if ( buttonIndex == 0 ) { showingHelpBeforeFirstGame = NO; return; }
+  
+  
+  Film* film = [self.filmViewController createFilm];
+  AlertPrompt *prompt = (AlertPrompt*)alertView;
+  film.name = prompt.enteredText;
   film.lastSaveTime = [NSDate date];
   film.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addFilmsObject:film];
@@ -596,7 +621,6 @@ extern bool handle_open_replay(FileSpecifier& File);
 
   MLog ( @"Saving film: %@", film );
   [film.managedObjectContext save:nil];
-  
 }
 
 #pragma mark -

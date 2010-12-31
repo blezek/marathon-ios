@@ -84,11 +84,17 @@ extern int SDL_main(int argc, char *argv[]);
                                @"1.0", kSfxVolume,
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
+                               [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];  
   
-  
+#if TARGET_IPHONE_SIMULATOR
+  // Always test on the simulator
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
+#endif
+
+    
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
 	/* Set working directory to resource path */

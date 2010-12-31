@@ -98,6 +98,8 @@
     return;
   }
   
+#if !defined(TARGET_IPHONE_SIMULATOR)
+
   // Reachability as well
   Reachability *reachability = [Reachability reachabilityForInternetConnection];
   
@@ -119,6 +121,7 @@
       return;
     }
   }
+#endif
   
   // See if we have M1A1 installed, if not, fetch it and download
   NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];

@@ -154,10 +154,13 @@ bool OGL_CheckExtension(const std::string extension) {
   return false;
 }
 
+// DJB Unused, commented out for warning
+/*
 static int ogl_progress;
 static int total_ogl_progress;
 static bool show_ogl_progress = false;
 static int32 last_update_tick;
+*/
 
 extern bool OGL_ClearScreen();
 

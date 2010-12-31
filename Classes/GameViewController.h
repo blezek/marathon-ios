@@ -71,6 +71,7 @@ typedef enum {
   HUDMode mode;
   
   bool haveNewGamePreferencesBeenSet;
+  bool showingHelpBeforeFirstGame;
   bool startingNewGameSoSave;
   bool haveChoosenSaveGame;
   BOOL isPaused;
@@ -148,9 +149,10 @@ typedef enum {
 
 // Films
 - (IBAction)chooseFilm;
-- (IBAction) filmChosen:(Film*)film;
-- (IBAction) chooseFilmCanceled;
+- (IBAction)filmChosen:(Film*)film;
+- (IBAction)chooseFilmCanceled;
 - (IBAction)saveFilm;
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 // Progress stuff
 - (void) startProgress:(int)total;
