@@ -40,4 +40,5 @@
 @dynamic filename;
 @dynamic lastSaveTime;
 @dynamic scenario;
+@dynamic name;
 @end

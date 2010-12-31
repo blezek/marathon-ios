@@ -64,6 +64,7 @@
 }
 @property (nonatomic, retain) NSString * filename;
 @property (nonatomic, retain) NSDate * lastSaveTime;
+@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSManagedObject * scenario;
 
 @end

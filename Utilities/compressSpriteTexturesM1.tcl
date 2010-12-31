@@ -54,11 +54,11 @@ puts $fid "<opengl>"
 cd SpriteTextures-$Scenario-Original
 
 # 9 is PfhorFighter
-foreach collection [glob *] {
+foreach collection [lsort [glob *]] {
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
   puts "Collection $collection : $InfraVision"
-  foreach clut [glob *] {
+  foreach clut [lsort [glob *]] {
     puts "\tCLUT: $clut"
     foreach file [lsort [glob $clut/*mask.bmp]] {
       set mask $file

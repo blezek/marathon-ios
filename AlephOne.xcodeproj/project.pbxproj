@@ -18,6 +18,9 @@
 		A80E9E851280F729005371AB /* synth.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E791280F729005371AB /* synth.c */; };
 		A80E9E861280F729005371AB /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7A1280F729005371AB /* timer.c */; };
 		A80E9E871280F729005371AB /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7B1280F729005371AB /* version.c */; };
+		A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
+		A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
+		A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31531292462C00BCEA0C /* GenericBackground.png */; };
 		A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
 		A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A32901294C3CD00BCEA0C /* SplashScreen.png */; };
@@ -1628,6 +1631,8 @@
 		A80EAAE811C07ACF000AC9E1 /* SDL_glesfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_glesfuncs.h; sourceTree = "<group>"; };
 		A80EAAE911C07ACF000AC9E1 /* SDL_rect_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect_c.h; sourceTree = "<group>"; };
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
+		A817BDFE12CCC84300C31134 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPrompt.h; path = Classes/AlertPrompt.h; sourceTree = "<group>"; };
+		A817BDFF12CCC84300C31134 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = Classes/AlertPrompt.m; sourceTree = "<group>"; };
 		A81A31531292462C00BCEA0C /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericBackground.png; path = Artwork/GenericBackground.png; sourceTree = "<group>"; };
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
 		A81A32901294C3CD00BCEA0C /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Artwork/SplashScreen.png; sourceTree = "<group>"; };
@@ -2836,6 +2841,8 @@
 				A8AE47C51229152F0093110D /* SaveGameViewController.h */,
 				A8AE47C61229152F0093110D /* SaveGameViewController.mm */,
 				A8D0D6941248544E0098D2AB /* SaveState.h */,
+				A817BDFE12CCC84300C31134 /* AlertPrompt.h */,
+				A817BDFF12CCC84300C31134 /* AlertPrompt.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4868,6 +4875,7 @@
 				A88E2EB512BDB43000ABFAAA /* Effects.m in Sources */,
 				A88124A412C79E0100A1A08E /* FilmCell.m in Sources */,
 				A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */,
+				A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5284,6 +5292,7 @@
 				A88121D112C7816300A1A08E /* Effects.m in Sources */,
 				A881251412C7B18D00A1A08E /* FilmViewController.mm in Sources */,
 				A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */,
+				A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5700,6 +5709,7 @@
 				A88123D612C7826300A1A08E /* Effects.m in Sources */,
 				A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */,
 				A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */,
+				A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

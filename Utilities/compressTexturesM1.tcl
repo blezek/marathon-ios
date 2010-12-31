@@ -351,7 +351,7 @@ foreach collection [lsort [glob *]] {
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
   puts "Collection $collection : $InfraVision"
-  foreach clut [glob *] {
+  foreach clut [lsort [glob *]] {
     puts "\tCLUT: $clut"
     foreach image [lsort [glob $clut/bitmap*.*]] {
       # Find bitmap number

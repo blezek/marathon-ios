@@ -1457,8 +1457,6 @@ static void update_player_teleport(
         player->variables.last_direction==player->variables.direction &&
         object->location.z==polygon->floor_height) {
       if(--player->delay_before_teleport<0) {
-        // DJB Teleport
-        helperBeginTeleportOut();
         SET_PLAYER_TELEPORTING_STATUS(player, true);
         monster->action= _monster_is_teleporting;
         player->teleporting_phase= 0;
@@ -1494,6 +1492,8 @@ static void update_player_teleport(
           if (View_DoInterlevelTeleportOutEffects()) {
             start_teleporting_effect(true);
             play_object_sound(current_player->object_index, Sound_TeleportOut());
+            // DJB Teleport
+            helperBeginTeleportOut();
           }
 
           /* Every players object plays the sound, and everyones monster responds. */

@@ -12,10 +12,12 @@
 @interface FilmCell : UITableViewCell {
   UILabel *storageDate;
   UILabel *storageIdentifier;
+  UILabel *name;
 }
 
 - (void)setFields:(Film*)film;
 
 @property (nonatomic, retain) IBOutlet UILabel *storageDate;
 @property (nonatomic, retain) IBOutlet UILabel *storageIdentifier;
+@property (nonatomic, retain) IBOutlet UILabel *name;
 @end
