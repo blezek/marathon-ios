@@ -49,6 +49,7 @@ typedef enum {
   IBOutlet UIView *preferencesView;
   IBOutlet UIView *pauseView;
   IBOutlet UIView *helpView;
+  IBOutlet UIView *controlsOverviewView;
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
@@ -72,7 +73,7 @@ typedef enum {
   
   bool haveNewGamePreferencesBeenSet;
   bool showingHelpBeforeFirstGame;
-  bool startingNewGameSoSave;
+  bool showControlsOverview;
   bool haveChoosenSaveGame;
   BOOL isPaused;
   SavedGame *currentSavedGame;
@@ -96,6 +97,7 @@ typedef enum {
   
   UIPanGestureRecognizer *moveGesture;
   UITapGestureRecognizer *menuTapGesture;
+  UITapGestureRecognizer *controlsOverviewGesture;
   CGPoint lastPanPoint;
   
   // CADisplayLink setup
@@ -159,9 +161,11 @@ typedef enum {
 - (void) progressCallback:(int)delta;
 - (void) stopProgress;
 
+- (void)bringUpControlsOverview;
 - (void)bringUpHUD;
 - (void)hideHUD;
 - (void)teleportOut;
+- (void)teleportInLevel;
 - (void)epilog;
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
@@ -170,6 +174,7 @@ typedef enum {
 - (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer;
 - (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer;
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
+- (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -185,6 +190,8 @@ typedef enum {
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
 @property (nonatomic, retain) UIView *helpView;
+@property (nonatomic, retain) UIView *controlsOverviewView;
+
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
 @property (nonatomic, retain) UIImageView *splashView;
@@ -218,6 +225,7 @@ typedef enum {
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, retain) UIPanGestureRecognizer *moveGesture;
 @property (nonatomic, retain) UITapGestureRecognizer *menuTapGesture;
+@property (nonatomic, retain) UITapGestureRecognizer *controlsOverviewGesture;
 @property (nonatomic, assign) bool haveNewGamePreferencesBeenSet;
 @property (nonatomic, retain) SavedGame *currentSavedGame;
 @end

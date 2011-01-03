@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="130"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -585,6 +585,54 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
+					<object class="IBUIView" id="763863770">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="271859489">
+								<reference key="NSNextResponder" ref="763863770"/>
+								<int key="NSvFlags">274</int>
+								<string key="NSFrameSize">{1024, 768}</string>
+								<reference key="NSSuperview" ref="763863770"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">4</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ControlsOverview.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="64858570">
+								<reference key="NSNextResponder" ref="763863770"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{256, 334}, {512, 100}}</string>
+								<reference key="NSSuperview" ref="763863770"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">4</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
+								<int key="IBUITag">200</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">TouchToContinue.png</string>
+								</object>
+							</object>
+						</object>
+						<string key="NSFrameSize">{1024, 768}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MSAwAA</bytes>
+							<reference key="NSCustomColorSpace" ref="240518105"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 				</object>
 				<string key="NSFrameSize">{1024, 1024}</string>
 				<reference key="NSSuperview"/>
@@ -852,6 +900,14 @@
 					</object>
 					<int key="connectionID">129</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">controlsOverviewView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="763863770"/>
+					</object>
+					<int key="connectionID">133</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -889,6 +945,7 @@
 							<reference ref="485381462"/>
 							<reference ref="193475027"/>
 							<reference ref="215110741"/>
+							<reference ref="763863770"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1175,6 +1232,28 @@
 						<reference key="object" ref="231859592"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">130</int>
+						<reference key="object" ref="763863770"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="271859489"/>
+							<reference ref="64858570"/>
+						</object>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Controls Overview</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">131</int>
+						<reference key="object" ref="271859489"/>
+						<reference key="parent" ref="763863770"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">132</int>
+						<reference key="object" ref="64858570"/>
+						<reference key="parent" ref="763863770"/>
+						<string key="objectName">Touch to Continue</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1209,6 +1288,9 @@
 					<string>128.CustomClassName</string>
 					<string>128.IBEditorWindowLastContentRect</string>
 					<string>128.IBPluginDependency</string>
+					<string>130.IBPluginDependency</string>
+					<string>131.IBPluginDependency</string>
+					<string>132.IBPluginDependency</string>
 					<string>14.CustomClassName</string>
 					<string>14.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
@@ -1290,6 +1372,9 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>FilmViewController</string>
 					<string>{{329, 110}, {768, 1024}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MovePadView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1374,7 +1459,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">129</int>
+			<int key="maxID">133</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1729,6 +1814,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionView</string>
+							<string>controlsOverviewView</string>
 							<string>displayLink</string>
 							<string>filmView</string>
 							<string>filmViewController</string>
@@ -1766,6 +1852,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ButtonView</string>
+							<string>UIView</string>
 							<string>id</string>
 							<string>UIView</string>
 							<string>FilmViewController</string>
@@ -1806,6 +1893,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionView</string>
+							<string>controlsOverviewView</string>
 							<string>displayLink</string>
 							<string>filmView</string>
 							<string>filmViewController</string>
@@ -1845,6 +1933,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionView</string>
 								<string key="candidateClassName">ButtonView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">controlsOverviewView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">displayLink</string>
@@ -2713,8 +2805,10 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>ControlsOverview.png</string>
 				<string>Reload.png</string>
 				<string>SplashScreen.png</string>
+				<string>TouchToContinue.png</string>
 				<string>movementboxBase.png</string>
 				<string>movementboxKnob.png</string>
 				<string>overheadmap.png</string>
@@ -2727,8 +2821,10 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{1024, 768}</string>
 				<string>{512, 512}</string>
 				<string>{1024, 768}</string>
+				<string>{512, 100}</string>
 				<string>{198, 198}</string>
 				<string>{158, 158}</string>
 				<string>{138, 137}</string>
