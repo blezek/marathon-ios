@@ -28,6 +28,12 @@
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
+		A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F6012D2125C001CD264 /* ControlsOverview.png */; };
+		A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F6012D2125C001CD264 /* ControlsOverview.png */; };
+		A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F6012D2125C001CD264 /* ControlsOverview.png */; };
+		A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
+		A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
+		A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
@@ -1719,6 +1725,8 @@
 		A82F365011B8A87C0053FE85 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		A82F365111B8A87C0053FE85 /* lua_script.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_script.cpp; sourceTree = "<group>"; };
 		A82F365211B8A87C0053FE85 /* lua_script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_script.h; sourceTree = "<group>"; };
+		A8357F6012D2125C001CD264 /* ControlsOverview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlsOverview.png; path = Artwork/Help/ControlsOverview.png; sourceTree = "<group>"; };
+		A8357F7212D214B0001CD264 /* TouchToContinue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TouchToContinue.png; path = Artwork/Help/TouchToContinue.png; sourceTree = "<group>"; };
 		A842544111B4A36500F4D68F /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
@@ -2993,6 +3001,8 @@
 		A87F55D512A7403A00032ED6 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				A8357F7212D214B0001CD264 /* TouchToContinue.png */,
+				A8357F6012D2125C001CD264 /* ControlsOverview.png */,
 				A8811F9B12C76B2200A1A08E /* help11.png */,
 				A8811F9C12C76B2200A1A08E /* help12.png */,
 				A8AF81E212B7205400671C11 /* help9.png */,
@@ -4286,6 +4296,8 @@
 				A8811F9E12C76B2200A1A08E /* help12.png in Resources */,
 				A881257E12C7B64900A1A08E /* FilmCell.xib in Resources */,
 				A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */,
+				A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */,
+				A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4371,6 +4383,8 @@
 				A881203912C7816300A1A08E /* help12.png in Resources */,
 				A881257F12C7B64900A1A08E /* FilmCell.xib in Resources */,
 				A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */,
+				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
+				A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4456,6 +4470,8 @@
 				A881223E12C7826300A1A08E /* help12.png in Resources */,
 				A881258012C7B64900A1A08E /* FilmCell.xib in Resources */,
 				A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */,
+				A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */,
+				A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

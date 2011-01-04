@@ -343,8 +343,6 @@
   for ( SavedGame* game in [self.fetchedResultsController fetchedObjects] ) {
     MLog(@"\tApp: %@", game.filename );
   }
-  
-  
   return fetchedResultsController_;
 }    
 

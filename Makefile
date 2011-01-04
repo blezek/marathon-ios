@@ -1,16 +1,16 @@
 
 
 release:
-	xcodebuild -configuration Release -sdk iphoneos4.2
-	xcodebuild -configuration Release -sdk iphonesimulator4.2
+	xcodebuild -alltargets -configuration Release -sdk iphoneos4.2
+	xcodebuild -alltargets -configuration Release -sdk iphonesimulator4.2
 
 debug:
-	xcodebuild -configuration Debug -sdk iphoneos4.2
-	xcodebuild -configuration Debug -sdk iphonesimulator4.2
+	xcodebuild -alltargets -configuration Debug -sdk iphoneos4.2
+	xcodebuild -alltargets -configuration Debug -sdk iphonesimulator4.2
 
 adhoc:
-	xcodebuild -configuration AdHocDistribution -sdk iphoneos4.2
-	xcodebuild -configuration AdHocDistribution -sdk iphonesimulator4.2
+	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphoneos4.2
+	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphonesimulator4.2
 
 
 all: release debug adhoc

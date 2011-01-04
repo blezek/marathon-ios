@@ -26,6 +26,7 @@ extern bool helperNewGame();
 extern void helperSaveGame();
 extern void helperHideHUD();
 extern void helperBeginTeleportOut();
+extern void helperTeleportInLevel();
 extern void helperEpilog();
 extern void helperHandleLoadGame();
 extern void helperDoPreferences();
@@ -53,3 +54,6 @@ extern short helperGetEntryLevelNumber();
 
 // Gamma from settings
 extern float helperGamma();
+
+// Pause alpho
+extern GLfloat helperPauseAlpha();

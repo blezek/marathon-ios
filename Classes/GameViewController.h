@@ -49,6 +49,7 @@ typedef enum {
   IBOutlet UIView *preferencesView;
   IBOutlet UIView *pauseView;
   IBOutlet UIView *helpView;
+  IBOutlet UIView *controlsOverviewView;
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
@@ -72,12 +73,14 @@ typedef enum {
   
   bool haveNewGamePreferencesBeenSet;
   bool showingHelpBeforeFirstGame;
-  bool startingNewGameSoSave;
+  bool showControlsOverview;
   bool haveChoosenSaveGame;
   BOOL isPaused;
   SavedGame *currentSavedGame;
   
   CGPoint lastMenuTap;
+  
+  GLfloat pauseAlpha;
   
   SDLKey leftFireKey;
   SDLKey rightFireKey;
@@ -90,13 +93,8 @@ typedef enum {
   IBOutlet NewGameViewController *newGameViewController;
   IBOutlet FilmViewController* filmViewController;
   
-  UISwipeGestureRecognizer *leftWeaponSwipe;
-  UISwipeGestureRecognizer *rightWeaponSwipe;
-  UIPanGestureRecognizer *panGesture;
-  
-  UIPanGestureRecognizer *moveGesture;
   UITapGestureRecognizer *menuTapGesture;
-  CGPoint lastPanPoint;
+  UITapGestureRecognizer *controlsOverviewGesture;
   
   // CADisplayLink setup
   BOOL displayLinkSupported;
@@ -134,6 +132,7 @@ typedef enum {
 - (IBAction) closePreferences:(id)sender;
 - (IBAction) help:(id)sender;
 - (IBAction) closeHelp:(id)sender;
+- (GLfloat) getPauseAlpha;
 
 // Cheats
 - (IBAction)shieldCheat:(id)sender;
@@ -159,22 +158,19 @@ typedef enum {
 - (void) progressCallback:(int)delta;
 - (void) stopProgress;
 
+- (void)bringUpControlsOverview;
 - (void)bringUpHUD;
 - (void)hideHUD;
 - (void)teleportOut;
+- (void)teleportInLevel;
 - (void)epilog;
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
-- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer;
-- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer;
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
+- (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *hud;
@@ -185,6 +181,8 @@ typedef enum {
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
 @property (nonatomic, retain) UIView *helpView;
+@property (nonatomic, retain) UIView *controlsOverviewView;
+
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
 @property (nonatomic, retain) UIImageView *splashView;
@@ -218,6 +216,7 @@ typedef enum {
 @property (nonatomic, retain) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, retain) UIPanGestureRecognizer *moveGesture;
 @property (nonatomic, retain) UITapGestureRecognizer *menuTapGesture;
+@property (nonatomic, retain) UITapGestureRecognizer *controlsOverviewGesture;
 @property (nonatomic, assign) bool haveNewGamePreferencesBeenSet;
 @property (nonatomic, retain) SavedGame *currentSavedGame;
 @end

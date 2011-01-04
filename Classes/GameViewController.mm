@@ -44,6 +44,8 @@ extern  int
 #include "weapons.h"
 #include "vbl.h"
 
+#define kPauseAlphaDefault 0.5;
+
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
@@ -57,6 +59,7 @@ extern  int
 @synthesize newGameViewController;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
+@synthesize controlsOverviewView, controlsOverviewGesture;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -110,9 +113,10 @@ extern  int
   (void)all_key_definitions;
   mode = MenuMode;
   haveNewGamePreferencesBeenSet = NO;
-  startingNewGameSoSave = NO;
+  showControlsOverview = NO;
   showingHelpBeforeFirstGame = NO;
   CGAffineTransform transform = self.hud.transform;
+  pauseAlpha = kPauseAlphaDefault;
   
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);
@@ -136,6 +140,7 @@ extern  int
                              splashView,
                              restartView,
                              self.filmView,
+                             self.controlsOverviewView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
@@ -148,6 +153,10 @@ extern  int
   
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
   [self.menuView addGestureRecognizer:self.menuTapGesture];
+
+  self.controlsOverviewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(controlsOverviewTap:)];
+  [self.controlsOverviewView addGestureRecognizer:self.controlsOverviewGesture];
+
   // Hide initially
   self.menuView.hidden = NO;
   self.savedGameMessage.hidden = YES;
@@ -188,15 +197,21 @@ extern  int
     [alert show];
     return;
   }
-  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
+  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.3];
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
   SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
   SDL_GetRelativeMouseState(NULL, NULL);
-  startingNewGameSoSave = NO;
+  showControlsOverview = NO;
   self.currentSavedGame = nil;
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
+  
+  // Do we show the overview?
+  if ( dynamic_world->current_level_number == 0 ) {
+    showControlsOverview = YES;
+  }
+  
 }
 
 - (IBAction)cancelNewGame {
@@ -301,23 +316,38 @@ extern  int
     }
   }
   
-  /*
-  // Animate the HUD coming into view
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:2.0];
-  self.hud.alpha = 1.0;
-  [UIView commitAnimations];
-   */
-  // [self.hud removeGestureRecognizer:self.menuTapGesture];
-  
-  // Should we save a new game in place?
-  if ( startingNewGameSoSave ) {
-    startingNewGameSoSave = NO;
-    self.currentSavedGame = [self.saveGameViewController createNewGameFile];
-    [self performSelector:@selector(saveGame) withObject:nil afterDelay:0.05];
+  if ( showControlsOverview ) {
+    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
   }
   
 }
+
+- (GLfloat) getPauseAlpha { return pauseAlpha; }
+
+- (void)bringUpControlsOverview {
+  showControlsOverview = NO;
+  // Make the pause fully transparent
+  pauseAlpha = 0.0;
+  
+  // Need to pause and show controls overview
+  self.controlsOverviewView.hidden = NO;
+  pause_game();
+  // Add touch to continue animation
+  CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  pulse.duration = 1.0;
+  pulse.repeatCount = HUGE_VALF;
+  pulse.fromValue = [NSNumber numberWithFloat:1.0];
+  pulse.toValue = [NSNumber numberWithFloat:0.0];
+  pulse.autoreverses = YES;
+  // use a timing curve of easy in, easy out..
+  pulse.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  for ( UIView *v in [self.controlsOverviewView subviews] ) {
+    if ( v.tag == 200 ) {
+      [v.layer addAnimation:pulse forKey:nil];
+    }
+  }
+}  
+
 
 - (void)teleportOut {
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
@@ -328,9 +358,15 @@ extern  int
   scaleX.duration = 0.7;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
   
+  CABasicAnimation *blank = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  blank.duration = 3.0;
+  blank.beginTime = 0.6;
+  blank.fromValue = [NSNumber numberWithFloat:0.0];
+  blank.toValue = [NSNumber numberWithFloat:0.0];
+  
   CAAnimationGroup *group = [CAAnimationGroup animation];
-  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
-  group.duration = 1.7;
+  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, blank, nil];
+  group.duration = 2.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {
@@ -342,11 +378,34 @@ extern  int
   [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.3];
 }
 
+- (void)teleportInLevel {
+  CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+  scaleY.duration = 1.0;
+  scaleY.toValue = [NSNumber numberWithFloat:0.001];
+  scaleY.repeatCount = 2;
+  
+  CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
+  scaleX.duration = 1.0;
+  scaleX.toValue = [NSNumber numberWithFloat:100.0];
+  scaleX.repeatCount = 2;
+  
+  CAAnimationGroup *group = [CAAnimationGroup animation];
+  group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
+  group.duration = 2.0;
+  group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  
+  for ( UIView *v in [self.hud subviews] ) {
+    // [self.hud.layer addAnimation:group forKey:nil];
+    if ( v != self.savedGameMessage ) {
+      [v.layer addAnimation:group forKey:nil];
+    }
+  }
+}
+
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
   self.viewGL.userInteractionEnabled = NO;
-  // [self.viewGL addGestureRecognizer:self.menuTapGesture];
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
 
@@ -530,8 +589,14 @@ extern SDL_Surface *draw_surface;
   save_game_file(file);
   
   MLog ( @"Saving game: %@", game );
-  [game.managedObjectContext save:nil];
+  NSError *error = nil;
+  if (![game.managedObjectContext save:&error]) {
+    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+  }
   
+  if (![game.scenario.managedObjectContext save:&error]) {
+    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+  }
   
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
@@ -600,11 +665,7 @@ extern bool handle_open_replay(FileSpecifier& File);
     return;
   }
   
-  
-  
   if ( buttonIndex == 0 ) { showingHelpBeforeFirstGame = NO; return; }
-  
-  
   Film* film = [self.filmViewController createFilm];
   AlertPrompt *prompt = (AlertPrompt*)alertView;
   film.name = prompt.enteredText;
@@ -625,19 +686,11 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 #pragma mark -
 #pragma mark Gestures
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
-  if ( recognizer == self.rightWeaponSwipe ) {
-    NSLog ( @"Right weapon swipe" );
-  }
-  if ( recognizer == self.leftWeaponSwipe ) {
-    NSLog ( @"left weapon swipe" );
-  }
-}
 
-- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer {
-}
-
-- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer {
+- (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer {
+  self.controlsOverviewView.hidden = YES;
+  pauseAlpha = kPauseAlphaDefault;
+  resume_game();
 }
 
 
@@ -661,27 +714,6 @@ extern bool handle_open_replay(FileSpecifier& File);
   newLocation.x = location.y;
   newLocation.y = self.hud.frame.size.width - location.x;
   return newLocation;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  /*
-  for ( UITouch *touch in touches ) {
-    if ( touch.tapCount == 1 ) {
-      // Simulate a mouse event
-      CGPoint location = [self transformTouchLocation:[touch locationInView:self.hud]];
-      NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
-     //  SDL_SendMouseMotion(0, location.x, location.y);
-      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
-      SDL_GetRelativeMouseState(NULL, NULL);
-    }
-  }
-  */
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  NSLog(@"Touches ended");
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  NSLog(@"Touches moved" );
 }
 
 #pragma mark -

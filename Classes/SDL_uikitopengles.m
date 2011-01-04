@@ -24,6 +24,7 @@
 #include "SDL_uikitopenglview.h"
 #include "SDL_uikitappdelegate.h"
 #include "SDL_uikitwindow.h"
+#include "SDL_events.h"
 #include "jumphack.h"
 #include "SDL_sysvideo.h"
 #include "SDL_loadso.h"
