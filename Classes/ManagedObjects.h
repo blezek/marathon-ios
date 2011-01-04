@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+@class Scenario, Film, SavedGame;
 
 @interface Scenario : NSManagedObject
 {}
@@ -24,21 +25,20 @@
 
 // coalesce these into one @interface Scenario (CoreDataGeneratedAccessors) section
 @interface Scenario (CoreDataGeneratedAccessors)
-- (void)addSavedGamesObject:(NSManagedObject *)value;
-- (void)removeSavedGamesObject:(NSManagedObject *)value;
+
+- (void)addSavedGamesObject:(SavedGame *)value;
+- (void)removeSavedGamesObject:(SavedGame *)value;
 - (void)addSavedGames:(NSSet *)value;
 - (void)removeSavedGames:(NSSet *)value;
 
-- (void)addFilmsObject:(NSManagedObject *)value;
-- (void)removeFilmsObject:(NSManagedObject *)value;
+- (void)addFilmsObject:(Film *)value;
+- (void)removeFilmsObject:(Film *)value;
 - (void)addFilms:(NSSet *)value;
 - (void)removeFilms:(NSSet *)value;
-
 @end
 
 @interface SavedGame : NSManagedObject
-{
-}
+{}
 @property (nonatomic, retain) NSString * difficulty;
 @property (nonatomic, retain) NSString * filename;
 @property (nonatomic, retain) NSString * mapFilename;

@@ -80,6 +80,8 @@ typedef enum {
   
   CGPoint lastMenuTap;
   
+  GLfloat pauseAlpha;
+  
   SDLKey leftFireKey;
   SDLKey rightFireKey;
   
@@ -91,14 +93,8 @@ typedef enum {
   IBOutlet NewGameViewController *newGameViewController;
   IBOutlet FilmViewController* filmViewController;
   
-  UISwipeGestureRecognizer *leftWeaponSwipe;
-  UISwipeGestureRecognizer *rightWeaponSwipe;
-  UIPanGestureRecognizer *panGesture;
-  
-  UIPanGestureRecognizer *moveGesture;
   UITapGestureRecognizer *menuTapGesture;
   UITapGestureRecognizer *controlsOverviewGesture;
-  CGPoint lastPanPoint;
   
   // CADisplayLink setup
   BOOL displayLinkSupported;
@@ -136,6 +132,7 @@ typedef enum {
 - (IBAction) closePreferences:(id)sender;
 - (IBAction) help:(id)sender;
 - (IBAction) closeHelp:(id)sender;
+- (GLfloat) getPauseAlpha;
 
 // Cheats
 - (IBAction)shieldCheat:(id)sender;
@@ -170,16 +167,10 @@ typedef enum {
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer;
-- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer;
-- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer;
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *hud;

@@ -56,14 +56,14 @@
   opacity.beginTime = 0.1;
   
   CABasicAnimation *blank = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  blank.duration = 1.0;
+  blank.duration = 3.0;
   blank.beginTime = 0.6;
   blank.fromValue = [NSNumber numberWithFloat:0.0];
   blank.toValue = [NSNumber numberWithFloat:0.0];
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, opacity, blank, nil];
-  group.duration = 1.0;
+  group.duration = 2.6;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
   
   return group;

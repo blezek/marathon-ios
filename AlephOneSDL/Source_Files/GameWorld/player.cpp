@@ -1481,6 +1481,8 @@ static void update_player_teleport(
         if (player->teleporting_destination>=0) {                       /* simple teleport */
           if (player_index==current_player_index) {
             start_teleporting_effect(true);
+            // DJB Teleport in-level
+            helperTeleportInLevel();
           }
           play_object_sound(player->object_index, Sound_TeleportOut());
         }

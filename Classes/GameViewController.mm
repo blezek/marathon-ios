@@ -44,6 +44,8 @@ extern  int
 #include "weapons.h"
 #include "vbl.h"
 
+#define kPauseAlphaDefault 0.5;
+
 @implementation GameViewController
 @synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
@@ -114,6 +116,7 @@ extern  int
   showControlsOverview = NO;
   showingHelpBeforeFirstGame = NO;
   CGAffineTransform transform = self.hud.transform;
+  pauseAlpha = kPauseAlphaDefault;
   
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);
@@ -313,26 +316,22 @@ extern  int
     }
   }
   
-  /*
-  // Animate the HUD coming into view
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:2.0];
-  self.hud.alpha = 1.0;
-  [UIView commitAnimations];
-   */
-  // [self.hud removeGestureRecognizer:self.menuTapGesture];
-  
   if ( showControlsOverview ) {
     [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
   }
   
 }
 
+- (GLfloat) getPauseAlpha { return pauseAlpha; }
+
 - (void)bringUpControlsOverview {
   showControlsOverview = NO;
+  // Make the pause fully transparent
+  pauseAlpha = 0.0;
+  
   // Need to pause and show controls overview
   self.controlsOverviewView.hidden = NO;
-  // pause_game();
+  pause_game();
   // Add touch to continue animation
   CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
   pulse.duration = 1.0;
@@ -407,7 +406,6 @@ extern  int
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
   self.viewGL.userInteractionEnabled = NO;
-  // [self.viewGL addGestureRecognizer:self.menuTapGesture];
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
 
@@ -591,8 +589,14 @@ extern SDL_Surface *draw_surface;
   save_game_file(file);
   
   MLog ( @"Saving game: %@", game );
-  [game.managedObjectContext save:nil];
+  NSError *error = nil;
+  if (![game.managedObjectContext save:&error]) {
+    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+  }
   
+  if (![game.scenario.managedObjectContext save:&error]) {
+    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+  }
   
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
@@ -661,11 +665,7 @@ extern bool handle_open_replay(FileSpecifier& File);
     return;
   }
   
-  
-  
   if ( buttonIndex == 0 ) { showingHelpBeforeFirstGame = NO; return; }
-  
-  
   Film* film = [self.filmViewController createFilm];
   AlertPrompt *prompt = (AlertPrompt*)alertView;
   film.name = prompt.enteredText;
@@ -689,22 +689,8 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer {
   self.controlsOverviewView.hidden = YES;
-  // resume_game();
-}
-
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
-  if ( recognizer == self.rightWeaponSwipe ) {
-    NSLog ( @"Right weapon swipe" );
-  }
-  if ( recognizer == self.leftWeaponSwipe ) {
-    NSLog ( @"left weapon swipe" );
-  }
-}
-
-- (void)handleLookGesture:(UIPanGestureRecognizer *)recognizer {
-}
-
-- (void)handleMoveGesture:(UIPanGestureRecognizer *)recognizer {
+  pauseAlpha = kPauseAlphaDefault;
+  resume_game();
 }
 
 
@@ -728,27 +714,6 @@ extern bool handle_open_replay(FileSpecifier& File);
   newLocation.x = location.y;
   newLocation.y = self.hud.frame.size.width - location.x;
   return newLocation;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  /*
-  for ( UITouch *touch in touches ) {
-    if ( touch.tapCount == 1 ) {
-      // Simulate a mouse event
-      CGPoint location = [self transformTouchLocation:[touch locationInView:self.hud]];
-      NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
-     //  SDL_SendMouseMotion(0, location.x, location.y);
-      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
-      SDL_GetRelativeMouseState(NULL, NULL);
-    }
-  }
-  */
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  NSLog(@"Touches ended");
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  NSLog(@"Touches moved" );
 }
 
 #pragma mark -

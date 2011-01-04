@@ -1415,6 +1415,8 @@ static inline void draw_pattern_rect(T *p, int pitch, uint32 pixel,
 
 // DJB OpenGL use our handy SaveState class
 #include "SaveState.h"
+// DJB Use the helper
+#include "AlephOneHelper.h"
 void darken_world_window(void)
 {
   // Get world window bounds
@@ -1460,7 +1462,8 @@ void darken_world_window(void)
       glColor4f(0.0, 0.0, 0.0, 0.75);
     }
     else{
-      glColor4f(0.0, 0.0, 0.0, 0.5);
+      // DJB Use the current pause alpha color
+      glColor4f(0.0, 0.0, 0.0, helperPauseAlpha());
     }
     // DJB OpenGL quad to fan
     GLshort v[8] = {

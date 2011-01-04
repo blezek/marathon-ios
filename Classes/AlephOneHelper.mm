@@ -111,6 +111,10 @@ void helperBeginTeleportOut() {
   [[GameViewController sharedInstance] teleportOut];
 }
 
+void helperTeleportInLevel() {
+  [[GameViewController sharedInstance] teleportInLevel];
+}
+
 void helperEpilog() {  
   [[GameViewController sharedInstance] epilog];
   pumpEvents();
@@ -126,6 +130,10 @@ float helperGamma() {
   float g = [defaults floatForKey:kGamma];
   return g;
 };
+
+extern GLfloat helperPauseAlpha() {
+  return [[GameViewController sharedInstance] getPauseAlpha];
+}
 
 void helperSetPreferences( bool notify) {
   [PreferencesViewController setAlephOnePreferences:notify];

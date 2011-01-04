@@ -2418,7 +2418,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   if (!TMgr.Setup()) {
     return true;
   }
-
+  
   // Calculate the texture coordinates;
   // the scanline direction is downward, (texture coordinate 0)
   // while the line-to-line direction is rightward (texture coordinate 1)
@@ -2468,7 +2468,24 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   ExtendedVertexList[3].TexCoord[1] = ExtendedVertexList[0].TexCoord[1];
   
   
-
+  if ( IsInhabitant && TMgr.Texture->height > 100) {
+    printf ( "Inhabitant, texture coordinates ( %f, %f ) x ( %f, %f )\n",
+            ExtendedVertexList[0].TexCoord[0],
+            ExtendedVertexList[0].TexCoord[1],
+            ExtendedVertexList[2].TexCoord[0],
+            ExtendedVertexList[2].TexCoord[1] );
+    printf ( "UV scale ( %f, %f ), UV Offset ( %f, %f )\n",
+            TMgr.U_Scale, TMgr.V_Scale,
+            TMgr.U_Offset, TMgr.V_Scale );
+    printf ( "Rectangle ( %d, %d ) x ( %d, %d )\n", 
+            RenderRectangle.x0, RenderRectangle.y0,
+            RenderRectangle.x1, RenderRectangle.y1 );
+    printf ( "Clip ( %d, %d ) x ( %d, %d )\n\n",
+            TopLeft.x, TopLeft.y,
+            BottomRight.x, BottomRight.y );
+  }
+  
+  
   // Proper projection
   if (IsInhabitant) {
     SetProjectionType(Projection_OpenGL_Eye);
