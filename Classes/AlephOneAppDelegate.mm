@@ -121,7 +121,6 @@ extern int SDL_main(int argc, char *argv[]);
     NSString *localhost = @"localhost";
 #else 
     NSString *localhost = @"10.0.0.10";    
-    localhost = @"169.254.252.30";
     NSString *RemoteURL = @"https://s3.amazonaws.com/alephone/";
     NSString *RemoteHost = @"s3.amazonaws.com";
 #endif

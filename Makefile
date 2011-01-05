@@ -1,4 +1,9 @@
+all: release debug adhoc
 
+clean:
+	xcodebuild -alltargets -configuration Release clean
+	xcodebuild -alltargets -configuration Debug clean
+	xcodebuild -alltargets -configuration AdHocDistribution clean
 
 release:
 	xcodebuild -alltargets -configuration Release -sdk iphoneos4.2
@@ -12,8 +17,6 @@ adhoc:
 	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphoneos4.2
 	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphonesimulator4.2
 
-
-all: release debug adhoc
 
 publish: adhoc
 	echo '   Building for iPhone    '
