@@ -197,7 +197,6 @@ extern  int
     [alert show];
     return;
   }
-  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.3];
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
@@ -211,7 +210,7 @@ extern  int
   if ( dynamic_world->current_level_number == 0 ) {
     showControlsOverview = YES;
   }
-  
+  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
 }
 
 - (IBAction)cancelNewGame {
