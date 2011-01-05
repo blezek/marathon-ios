@@ -2414,10 +2414,17 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     return true;
   }
 
-  // Use that texture
   if (!TMgr.Setup()) {
     return true;
   }
+
+  // DJB For some reason, after teleporting, we end up having a problem with texture coordinates (on bitmap 0)  Fix it...
+  if ( IsInhabitant && TMgr.Texture->height > 100 && TMgr.TransferMode == _textured_transfer && TMgr.U_Scale < 1.0 && TMgr.V_Scale < 1.0 ) {
+    // printf ( "Should not happen! Collection %d CTable %d Frame %d Bitmap %d\n", TMgr.GetCollection(), TMgr.GetCTable(), TMgr.GetFrame(), TMgr.GetBitmap() );
+    TMgr.U_Scale = TMgr.V_Scale = 1.0;
+    TMgr.U_Offset = TMgr.V_Offset = 0.0;
+  }
+  
   
   // Calculate the texture coordinates;
   // the scanline direction is downward, (texture coordinate 0)
@@ -2467,7 +2474,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   ExtendedVertexList[3].TexCoord[0] = ExtendedVertexList[2].TexCoord[0];
   ExtendedVertexList[3].TexCoord[1] = ExtendedVertexList[0].TexCoord[1];
   
-  
+  // DJB Remove me
+  /*
   if ( IsInhabitant && TMgr.Texture->height > 100) {
     printf ( "Inhabitant, texture coordinates ( %f, %f ) x ( %f, %f )\n",
             ExtendedVertexList[0].TexCoord[0],
@@ -2484,6 +2492,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
             TopLeft.x, TopLeft.y,
             BottomRight.x, BottomRight.y );
   }
+   */
   
   
   // Proper projection

@@ -559,7 +559,7 @@ bool TextureManager::Setup()
   if (Bitmap == NONE) {
     return false;
   }
-
+  
   // Get the texture-state info: first, per-collection, then per-bitmap
   CollBitmapTextureState *CBTSList = TextureStateSets[TextureType][Collection];
   if (CBTSList == NULL) {
@@ -580,8 +580,8 @@ bool TextureManager::Setup()
   TextureState &CTState = *TxtrStatePtr;
   if (!CTState.IsUsed) {
     // Initial sprite scale/offset
-    U_Scale = V_Scale = 1;
-    U_Offset = V_Offset = 0;
+    U_Scale = V_Scale = 1.0;
+    U_Offset = V_Offset = 0.0;
 
     // Try to load a substitute texture, and if that fails,
     // get the geometry from the shapes bitmap.
@@ -691,7 +691,7 @@ bool TextureManager::Setup()
     // Get glow state
     IsGlowing = CTState.IsGlowing;
   }
-
+  
   // Done!!!
   return true;
 }
