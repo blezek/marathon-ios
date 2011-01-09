@@ -379,18 +379,20 @@ extern  int
 
 - (void)teleportInLevel {
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleY.duration = 1.0;
+  scaleY.duration = 0.5;
   scaleY.toValue = [NSNumber numberWithFloat:0.001];
-  scaleY.repeatCount = 2;
+  scaleY.repeatCount = 1;
+  scaleY.autoreverses = YES;
   
   CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleX.duration = 1.0;
+  scaleX.duration = 0.5;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
-  scaleX.repeatCount = 2;
+  scaleX.repeatCount = 1;
+  scaleX.autoreverses = YES;
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
-  group.duration = 2.0;
+  group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {
