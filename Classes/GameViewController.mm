@@ -494,18 +494,13 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
+  [self performSelector:@selector(chooseSaveGameCanceled) withObject:nil afterDelay:0.0];
+
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
   self.currentSavedGame = game;
   int sessions = game.numberOfSessions.intValue + 1;
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
-  self.loadGameView.alpha = 1.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:1.4];
-  self.loadGameView.alpha = 0.0;
-  [UIView commitAnimations];
-  [self.helpView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.4];  
-  
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
   load_and_start_game(FileToLoad);
