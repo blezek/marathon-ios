@@ -1379,6 +1379,18 @@
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
+		A88452D712D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
+		A88452D812D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
+		A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
+		A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
+		A88452DB12D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
+		A88452DC12D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
+		A88452DD12D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
+		A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
+		A88452DF12D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
+		A88452E012D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
+		A88452E112D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
+		A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
 		A88DBF5312640A7800FCC652 /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC112640A7800FCC652 /* jcapimin.c */; };
 		A88DBF5412640A7800FCC652 /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC212640A7800FCC652 /* jcapistd.c */; };
 		A88DBF5512640A7800FCC652 /* jccoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC312640A7800FCC652 /* jccoefct.c */; };
@@ -1842,6 +1854,10 @@
 		A88124A312C79E0100A1A08E /* FilmViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilmViewController.mm; path = Classes/FilmViewController.mm; sourceTree = "<group>"; };
 		A881257D12C7B64900A1A08E /* FilmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmCell.xib; path = Resources/FilmCell.xib; sourceTree = "<group>"; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
+		A88452D312D9726E006C0F09 /* EasyLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EasyLabel.png; path = Artwork/EasyLabel.png; sourceTree = "<group>"; };
+		A88452D412D9726E006C0F09 /* HardLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HardLabel.png; path = Artwork/HardLabel.png; sourceTree = "<group>"; };
+		A88452D512D9726E006C0F09 /* NightmareLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NightmareLabel.png; path = Artwork/NightmareLabel.png; sourceTree = "<group>"; };
+		A88452D612D9726E006C0F09 /* NormalLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NormalLabel.png; path = Artwork/NormalLabel.png; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		A889BBB011C8817400923787 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
@@ -2660,6 +2676,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A88452D212D97258006C0F09 /* Labels */,
 				A8811EAA12C06B8700A1A08E /* iTunesArtwork */,
 				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
@@ -3017,6 +3034,17 @@
 				A87F55DF12A7407E00032ED6 /* help1.png */,
 			);
 			name = Help;
+			sourceTree = "<group>";
+		};
+		A88452D212D97258006C0F09 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				A88452D312D9726E006C0F09 /* EasyLabel.png */,
+				A88452D412D9726E006C0F09 /* HardLabel.png */,
+				A88452D512D9726E006C0F09 /* NightmareLabel.png */,
+				A88452D612D9726E006C0F09 /* NormalLabel.png */,
+			);
+			name = Labels;
 			sourceTree = "<group>";
 		};
 		A889BBAD11C8817400923787 /* GLU */ = {
@@ -4298,6 +4326,10 @@
 				A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */,
+				A88452DF12D9726E006C0F09 /* EasyLabel.png in Resources */,
+				A88452E012D9726E006C0F09 /* HardLabel.png in Resources */,
+				A88452E112D9726E006C0F09 /* NightmareLabel.png in Resources */,
+				A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4385,6 +4417,10 @@
 				A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */,
+				A88452DB12D9726E006C0F09 /* EasyLabel.png in Resources */,
+				A88452DC12D9726E006C0F09 /* HardLabel.png in Resources */,
+				A88452DD12D9726E006C0F09 /* NightmareLabel.png in Resources */,
+				A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4472,6 +4508,10 @@
 				A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */,
+				A88452D712D9726E006C0F09 /* EasyLabel.png in Resources */,
+				A88452D812D9726E006C0F09 /* HardLabel.png in Resources */,
+				A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */,
+				A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

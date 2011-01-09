@@ -379,18 +379,20 @@ extern  int
 
 - (void)teleportInLevel {
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleY.duration = 1.0;
+  scaleY.duration = 0.5;
   scaleY.toValue = [NSNumber numberWithFloat:0.001];
-  scaleY.repeatCount = 2;
+  scaleY.repeatCount = 1;
+  scaleY.autoreverses = YES;
   
   CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleX.duration = 1.0;
+  scaleX.duration = 0.5;
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
-  scaleX.repeatCount = 2;
+  scaleX.repeatCount = 1;
+  scaleX.autoreverses = YES;
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, nil];
-  group.duration = 2.0;
+  group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {
@@ -492,18 +494,13 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
+  [self performSelector:@selector(chooseSaveGameCanceled) withObject:nil afterDelay:0.0];
+
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
   self.currentSavedGame = game;
   int sessions = game.numberOfSessions.intValue + 1;
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
-  self.loadGameView.alpha = 1.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:1.4];
-  self.loadGameView.alpha = 0.0;
-  [UIView commitAnimations];
-  [self.helpView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.4];  
-  
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
   load_and_start_game(FileToLoad);
