@@ -16,17 +16,17 @@
 + (CAAnimation*) appearAnimation {
   // warp everything in to start
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleY.duration = 0.7;
+  scaleY.duration = 0.4;
   scaleY.fromValue = [NSNumber numberWithFloat:0.01];
   scaleY.toValue = [NSNumber numberWithFloat:1.0];
   
   CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleX.duration = 0.7;
+  scaleX.duration = 0.4;
   scaleX.fromValue = [NSNumber numberWithFloat:10.0];
   scaleX.toValue = [NSNumber numberWithFloat:1.0];
   
   CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  opacity.duration = 0.7;
+  opacity.duration = 0.4;
   opacity.toValue = [NSNumber numberWithFloat:1.0];
   opacity.fromValue = [NSNumber numberWithFloat:0.0];
   
