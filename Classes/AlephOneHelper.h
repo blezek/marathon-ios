@@ -37,7 +37,11 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
+
+// Excuses, excuses
 extern void helperQuit();
+extern void helperNetwork();
+
 extern void helperEndReplay();
 extern void helperSetPreferences(bool notifySoundManager);
 
