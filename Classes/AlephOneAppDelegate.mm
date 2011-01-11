@@ -11,6 +11,7 @@
 #import "DownloadViewController.h"
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
+#import "Appirater.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -188,6 +189,7 @@ extern int SDL_main(int argc, char *argv[]);
     [window addSubview:self.downloadViewController.view];
   }
   [self.downloadViewController downloadOrchooseGame];
+  [Appirater appLaunched:YES];
   return YES;
 }
 
@@ -228,6 +230,7 @@ extern int SDL_main(int argc, char *argv[]);
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+  [Appirater appEnteredForeground:YES];
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
