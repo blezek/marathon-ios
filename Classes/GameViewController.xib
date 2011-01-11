@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="130"/>
+			<integer value="9"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -103,7 +103,7 @@
 							<object class="IBUIView" id="958661457">
 								<reference key="NSNextResponder" ref="485381462"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, -98}, {1024, 703}}</string>
+								<string key="NSFrameSize">{1024, 608}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -395,8 +395,8 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUIImageView" id="292007003">
 										<reference key="NSNextResponder" ref="513872763"/>
-										<int key="NSvFlags">274</int>
-										<string key="NSFrameSize">{79, 79}</string>
+										<int key="NSvFlags">256</int>
+										<string key="NSFrame">{{5.5, 5.5}, {79, 79}}</string>
 										<reference key="NSSuperview" ref="513872763"/>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">3</int>
@@ -411,13 +411,13 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{932, 549}, {79, 79}}</string>
+								<string key="NSFrame">{{934.5, 608}, {90, 86}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MSAwAA</bytes>
-									<reference key="NSCustomColorSpace" ref="240518105"/>
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDEgMAA</bytes>
 								</object>
+								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
 							<object class="IBUIView" id="1050357287">
@@ -428,7 +428,7 @@
 									<object class="IBUIImageView" id="282688338">
 										<reference key="NSNextResponder" ref="1050357287"/>
 										<int key="NSvFlags">274</int>
-										<string key="NSFrameSize">{101, 101}</string>
+										<string key="NSFrame">{{5.5, -2.5}, {101, 101}}</string>
 										<reference key="NSSuperview" ref="1050357287"/>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">3</int>
@@ -443,17 +443,17 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{828, 579}, {101, 101}}</string>
+								<string key="NSFrame">{{829.5, 608}, {106, 91}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MSAwAA</bytes>
-									<reference key="NSCustomColorSpace" ref="240518105"/>
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAwIDAgMAA</bytes>
 								</object>
+								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 128}, {1024, 768}}</string>
+						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -942,10 +942,10 @@
 							<reference ref="657259285"/>
 							<reference ref="128648929"/>
 							<reference ref="1025098478"/>
-							<reference ref="485381462"/>
 							<reference ref="193475027"/>
 							<reference ref="215110741"/>
 							<reference ref="763863770"/>
+							<reference ref="485381462"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1237,8 +1237,8 @@
 						<reference key="object" ref="763863770"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="271859489"/>
 							<reference ref="64858570"/>
+							<reference ref="271859489"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Controls Overview</string>
@@ -1290,6 +1290,7 @@
 					<string>128.IBPluginDependency</string>
 					<string>130.IBPluginDependency</string>
 					<string>131.IBPluginDependency</string>
+					<string>131.IBViewBoundsToFrameTransform</string>
 					<string>132.IBPluginDependency</string>
 					<string>14.CustomClassName</string>
 					<string>14.IBPluginDependency</string>
@@ -1375,10 +1376,13 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxD+AAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MovePadView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{329, 71}, {1024, 1024}}</string>
+					<string>{{324, -116}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LookView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1425,9 +1429,7 @@
 					<string>{{329, 121}, {768, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AQAAAABDAAAAA</bytes>
-					</object>
+					<object class="NSAffineTransform"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ButtonView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1635,6 +1637,7 @@
 							<string>gotoPreferences:</string>
 							<string>help:</string>
 							<string>invincibilityCheat:</string>
+							<string>networkPressed</string>
 							<string>newGame</string>
 							<string>pause:</string>
 							<string>quitPressed</string>
@@ -1673,6 +1676,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
@@ -1694,6 +1698,7 @@
 							<string>gotoPreferences:</string>
 							<string>help:</string>
 							<string>invincibilityCheat:</string>
+							<string>networkPressed</string>
 							<string>newGame</string>
 							<string>pause:</string>
 							<string>quitPressed</string>
@@ -1765,6 +1770,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">invincibilityCheat:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">networkPressed</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

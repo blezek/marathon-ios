@@ -385,14 +385,13 @@ SDL_Rect Screen::view_rect()
     r.h = r.h * 3 / 4;
   }
 
-  // DJB
-  /*
-     r.x = 0;
-     r.y = 0;
-     r.w = iWidth;
-     r.h = iHeight;
-   */
-
+  // DJB streach
+  r.w = window_width();
+  r.h = window_height() - hud_rect().h;
+  r.x = ( width() - r.w ) / 2;
+  r.y = (height() - window_height()) / 2; //  + (available_height - r.h) / 2;
+  
+  
   return r;
 }
 

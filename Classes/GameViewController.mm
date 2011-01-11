@@ -169,13 +169,23 @@ extern  int
 #pragma mark Game control
 
 - (IBAction)quitPressed {
-  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Rate the app"
-                                                  delegate:nil 
-                                         cancelButtonTitle:nil
-                                    destructiveButtonTitle:@"Yes"
-                                         otherButtonTitles:@"No", nil];
-  [as showInView:self.view];
-  [as release];  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
+                                               message:@"Quit? Like you have something better to do!  Why not rate the app instead?"
+                                              delegate:nil
+                                     cancelButtonTitle:@"No, thanks"
+                                     otherButtonTitles:@"Rate it!", nil];
+  [av show];
+  [av release];
+}
+
+- (IBAction)networkPressed {
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Networking not available"
+                                               message:@"Network play is not available, but the button can not be removed due to license resctictions, sorry..."
+                                              delegate:nil
+                                     cancelButtonTitle:@"Bummer"
+                                     otherButtonTitles:nil];
+  [av show];
+  [av release];
 }
 
 - (IBAction)newGame {
@@ -358,14 +368,14 @@ extern  int
   scaleX.toValue = [NSNumber numberWithFloat:100.0];
   
   CABasicAnimation *blank = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  blank.duration = 3.0;
+  blank.duration = 5.0;
   blank.beginTime = 0.6;
   blank.fromValue = [NSNumber numberWithFloat:0.0];
   blank.toValue = [NSNumber numberWithFloat:0.0];
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, blank, nil];
-  group.duration = 2.0;
+  group.duration = 4.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
   for ( UIView *v in [self.hud subviews] ) {
@@ -485,6 +495,7 @@ extern bool load_and_start_game(FileSpecifier& File);
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
     [alert show];
+    [alert release];
     return;
   }
   
@@ -618,6 +629,7 @@ extern bool handle_open_replay(FileSpecifier& File);
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [alert release];
     return;
   }
   
@@ -644,12 +656,27 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)saveFilm {
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kCheatsEnabled] ) {
+    saveFilmCheatWarning = [[UIAlertView alloc] initWithTitle:@"Really save?" message:@"You have enabled cheats, this may interfere with film playback.\nReally save?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    [saveFilmCheatWarning show];
+  } else {
+    [self saveFilmForReal];
+  }
+}
+- (void)saveFilmForReal {
   AlertPrompt *passwordAlert = [[AlertPrompt alloc] initWithTitle:@"Film Name"
                                                          delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) okButtonTitle:NSLocalizedString(@"OK",nil)];
   [passwordAlert show];
+  [passwordAlert release];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( alertView == saveFilmCheatWarning ) {
+    if ( buttonIndex != 0 ) {
+      [self saveFilmForReal];
+    }
+    return;
+  }
   if ( showingHelpBeforeFirstGame ) {
     if ( buttonIndex == 0 ) {
       // User hit cancel, so start the game...

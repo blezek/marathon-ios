@@ -2422,7 +2422,9 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   if ( IsInhabitant && TMgr.GetBitmap() == 0 && TMgr.Texture->height > 100 && TMgr.TransferMode == _textured_transfer && TMgr.U_Scale < 1.0 && TMgr.V_Scale < 1.0 ) {
     
     // Rolling borgs
-    if ( TMgr.GetCollection() == _collection_cyborg || TMgr.GetCollection() == _collection_compiler ) { 
+    if ( TMgr.GetCollection() == _collection_cyborg
+        || TMgr.GetCollection() == _collection_compiler 
+        || TMgr.GetCollection() == _collection_civilian) { 
       printf ( "Should not happen! Collection %d CTable %d Frame %d Bitmap %d\n", TMgr.GetCollection(), TMgr.GetCTable(), TMgr.GetFrame(), TMgr.GetBitmap() );
       printf ( "Scale ( %f, %f ) x ( %f, %f )\n\n", TMgr.U_Scale, TMgr.V_Scale, TMgr.U_Offset, TMgr.V_Offset );
       TMgr.U_Scale = TMgr.V_Scale = 1.0;

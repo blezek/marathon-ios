@@ -78,6 +78,8 @@ typedef enum {
   BOOL isPaused;
   SavedGame *currentSavedGame;
   
+  UIAlertView *saveFilmCheatWarning;
+  
   CGPoint lastMenuTap;
   
   GLfloat pauseAlpha;
@@ -124,6 +126,7 @@ typedef enum {
 - (IBAction)cancelNewGame;
 - (void)playerKilled;
 - (IBAction)quitPressed;
+- (IBAction)networkPressed;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -151,6 +154,7 @@ typedef enum {
 - (IBAction)filmChosen:(Film*)film;
 - (IBAction)chooseFilmCanceled;
 - (IBAction)saveFilm;
+- (void)saveFilmForReal;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 // Progress stuff
