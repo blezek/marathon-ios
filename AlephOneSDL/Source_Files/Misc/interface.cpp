@@ -2456,6 +2456,9 @@ static bool point_in_rectangle(
   return in_rectangle;
 }
 
+// DJB Chapter screens
+#include "AlephOneHelper.h"
+
 #ifndef SDL
 extern bool MoviePlaying; // interface_macintosh.cpp
 #endif
@@ -2501,6 +2504,9 @@ static void handle_interface_menu_screen_click(
   
   // DJB 
   printf ( "Found index %d\n", index );
+  if ( index == 9 || index == 10 ) {
+    helperNetwork();
+  }
   /* we found one.. */
   if(index!=NUMBER_OF_INTERFACE_RECTANGLES) {
     if(enabled_item(index-_new_game_button_rect+1)) {
@@ -2536,8 +2542,6 @@ static void handle_interface_menu_screen_click(
   }
 }
 
-// DJB Chapter screens
-#include "AlephOneHelper.h"
 
 /* Note that this is modal. This sucks... */
 static void try_and_display_chapter_screen(

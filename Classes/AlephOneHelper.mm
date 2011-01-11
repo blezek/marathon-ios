@@ -71,6 +71,11 @@ void helperQuit() {
   [[GameViewController sharedInstance] quitPressed];
 }
 
+void helperNetwork() {
+  MLog ( @"helperNetwork()" );
+  [[GameViewController sharedInstance] networkPressed];
+}
+
 void helperBringUpHUD () {
   [[GameViewController sharedInstance] bringUpHUD];
 }

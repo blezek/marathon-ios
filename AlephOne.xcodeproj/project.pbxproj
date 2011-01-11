@@ -1534,6 +1534,9 @@
 		A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
+		A8EB682712DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
+		A8EB682812DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
+		A8EB682912DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB779C126697420043F0D4 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
 		A8EB779D126697420043F0D4 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
 		A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
@@ -2505,6 +2508,8 @@
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
 		A8EB2893125D768900B7EF4A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Artwork/Default-Portrait.png"; sourceTree = "<group>"; };
+		A8EB682512DC1413001D43EA /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
+		A8EB682612DC1413001D43EA /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
 		A8EB7796126697420043F0D4 /* pause-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-btn.png"; path = "Artwork/pause-btn.png"; sourceTree = "<group>"; };
 		A8EB7797126697420043F0D4 /* overheadmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overheadmap.png; path = Artwork/overheadmap.png; sourceTree = "<group>"; };
 		A8EB7798126697420043F0D4 /* primarytrigger-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "primarytrigger-btn.png"; path = "Artwork/primarytrigger-btn.png"; sourceTree = "<group>"; };
@@ -2815,6 +2820,8 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB682512DC1413001D43EA /* Appirater.h */,
+				A8EB682612DC1413001D43EA /* Appirater.m */,
 				A88124A012C79E0100A1A08E /* FilmCell.h */,
 				A88124A112C79E0100A1A08E /* FilmCell.m */,
 				A88124A212C79E0100A1A08E /* FilmViewController.h */,
@@ -4932,6 +4939,7 @@
 				A88124A412C79E0100A1A08E /* FilmCell.m in Sources */,
 				A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */,
 				A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */,
+				A8EB682912DC1413001D43EA /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5349,6 +5357,7 @@
 				A881251412C7B18D00A1A08E /* FilmViewController.mm in Sources */,
 				A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */,
 				A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */,
+				A8EB682812DC1413001D43EA /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5766,6 +5775,7 @@
 				A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */,
 				A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */,
 				A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */,
+				A8EB682712DC1413001D43EA /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

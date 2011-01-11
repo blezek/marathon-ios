@@ -597,6 +597,13 @@ bool TextureManager::Setup()
     CBTS.V_Scale = V_Scale;
     CBTS.U_Offset = U_Offset;
     CBTS.V_Offset = V_Offset;
+    
+    // DJB Print if not expected
+    if ( CBTS.U_Scale != 1.0 || CBTS.V_Scale != 1.0 ) {
+      if ( BaseTxtrWidth == BaseTxtrHeight ) {
+        printf ( "Unexpected scale: %f, %f  Collection: %d Bitmap: %d\n", U_Scale, V_Scale, Collection, Bitmap );
+      }
+    }
 
     // This finding of color tables sets the glow state
     if (!substitute) {
@@ -928,6 +935,14 @@ bool TextureManager::SetupTextureGeometry()
     U_Offset = TWidRecip*WidthOffset;
     V_Scale = THtRecip*double(BaseTxtrHeight);
     V_Offset = THtRecip*HeightOffset;
+    
+    // DJB Remove
+    if ( U_Scale != 1.0 || V_Scale != 1.0 ) {
+      // Are we square and something we created?
+      if ( Collection >= 8 && BaseTxtrWidth == BaseTxtrHeight ) {
+        printf ( "Unexpected scaling: Collection %d Bitmap %d  (%f, %f)\n", Collection, Bitmap, U_Scale, V_Scale );
+      }
+    }
   }
   break;
   }
