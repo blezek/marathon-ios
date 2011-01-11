@@ -112,18 +112,18 @@
 
 - (IBAction)deleteFilm:(id)sender {
   if ( [self selectedIndex] == nil ) { return; }
-  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Delete Film"
-                                                  delegate:self
-                                         cancelButtonTitle:@"Skip"
-                                    destructiveButtonTitle:@"Delete"
-                                         otherButtonTitles:@"Cancel", nil];
-  as.actionSheetStyle = UIActionSheetStyleDefault;
-  [as showInView:self.view];
-  [as release];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete film?"
+                                                  message:nil
+                                                 delegate:self
+                                        cancelButtonTitle:@"No"
+                                        otherButtonTitles:@"Delete", nil];
+  [alert show];
+  [alert release];
+  
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  if ( [actionSheet destructiveButtonIndex] == buttonIndex ) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( 1 == buttonIndex ) {
     [self reallyDelete];
   }
 }

@@ -23,8 +23,7 @@
 - (IBAction)deleteFilm:(id)sender;
 - (IBAction)reallyDelete;
 - (IBAction)load:(id)sender;
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 - (void)appear;
 - (void)disappear;
 
