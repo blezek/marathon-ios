@@ -18,6 +18,7 @@
 @synthesize musicVolume;
 @synthesize hSensitivity;
 @synthesize vSensitivity;
+@synthesize musicLabel;
 
 - (IBAction)closePreferences:(id)sender {
   
@@ -44,6 +45,10 @@
   self.musicVolume.value = [defaults floatForKey:kMusicVolume];
   self.hSensitivity.value = [defaults floatForKey:kHSensitivity];
   self.vSensitivity.value = [defaults floatForKey:kVSensitivity];
+#if SCENARIO == 1
+  self.musicLabel.hidden = NO;
+  self.musicVolume.hidden = NO;
+#endif
 }
 
 - (IBAction)updatePreferences:(id)sender {
