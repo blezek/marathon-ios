@@ -79,6 +79,7 @@ typedef enum {
   SavedGame *currentSavedGame;
   
   UIAlertView *saveFilmCheatWarning;
+  UIAlertView *rateGame;
   
   CGPoint lastMenuTap;
   

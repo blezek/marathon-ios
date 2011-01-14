@@ -13,6 +13,7 @@
 #import "GameViewController.h"
 #import "Effects.h"
 #import "AlertPrompt.h"
+#import "Appirater.h"
 
 extern "C" {
 extern  int
@@ -169,13 +170,13 @@ extern  int
 #pragma mark Game control
 
 - (IBAction)quitPressed {
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
+  rateGame = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
                                                message:@"Quit? Like you have something better to do!  Why not rate the app instead?"
-                                              delegate:nil
+                                              delegate:self
                                      cancelButtonTitle:@"No, thanks"
                                      otherButtonTitles:@"Rate it!", nil];
-  [av show];
-  [av release];
+  [rateGame show];
+  [rateGame release];
 }
 
 - (IBAction)networkPressed {
@@ -671,6 +672,10 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if ( alertView == rateGame ) {
+    [Appirater rateApp];
+    return;
+  }
   if ( alertView == saveFilmCheatWarning ) {
     if ( buttonIndex != 0 ) {
       [self saveFilmForReal];
