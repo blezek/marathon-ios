@@ -135,6 +135,16 @@
     
     NSString* path = [NSString stringWithFormat:@"%@/%@.zip", [app applicationDocumentsDirectory], app.scenario.path];
     NSString* tempPath = [NSString stringWithFormat:@"%@/%@.zip.part", [app applicationDocumentsDirectory], app.scenario.path];
+    
+    // If tempPath exists, and is less than 1m, delete it!
+    if ( [[NSFileManager defaultManager] fileExistsAtPath:tempPath] ) {
+      NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:tempPath error:NULL];
+      if ( [attributes fileSize] < 1024*1024 ) {
+        MLog ( @"Deleting %@ size was %d", tempPath, (int)[attributes fileSize] );
+        [[NSFileManager defaultManager] removeItemAtPath:tempPath error:NULL];
+      }
+    }
+    
     self.downloadPath = path;
     NSLog ( @"Download file from %@", app.scenario.downloadURL );
     NSURL *url = [NSURL URLWithString:app.scenario.downloadURL];
@@ -166,7 +176,17 @@
 
   ZipArchive *zipper = [[[ZipArchive alloc] init] autorelease];
   [zipper UnzipOpenFile:path];
-  [zipper UnzipFileTo:[[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory] overWrite:NO];
+  bool unzipped = [zipper UnzipFileTo:[[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory] overWrite:NO];
+  [zipper UnzipCloseFile];
+  if ( !unzipped ) {
+    [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
+    self.expandingView.hidden = YES;
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Failed to expand the content" message:nil delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+    [av show];
+    [av autorelease];
+    return;
+  }    
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
   [fileManager removeItemAtPath:path error:NULL];

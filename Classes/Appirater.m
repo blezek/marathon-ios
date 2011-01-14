@@ -56,9 +56,31 @@ NSString *templateReviewURLIpad = @"itms-apps://ax.itunes.apple.com/WebObjects/M
 - (void)showRatingAlert;
 - (BOOL)ratingConditionsHaveBeenMet;
 - (void)incrementUseCount;
+- (void)rateIt;
 @end
 
 @implementation Appirater (hidden)
+- (void)rateIt {
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  // they want to rate it
+  NSString *reviewURL = nil;
+  // figure out which URL to use. iPad only apps have to use a different app store URL
+  NSDictionary *bundleDictionary = [[NSBundle mainBundle] infoDictionary];
+  if ([bundleDictionary objectForKey:@"UISupportedInterfaceOrientations"] != nil &&
+      [bundleDictionary objectForKey:@"UISupportedInterfaceOrientations~ipad"] == nil)
+  {
+    // it's an iPad only app, so use the iPad url
+    reviewURL = [templateReviewURLIpad stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%d", APPIRATER_APP_ID]];
+  }
+  else	// iPhone or Universal app, so we can use the direct url
+    reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%d", APPIRATER_APP_ID]];
+  [userDefaults setBool:YES forKey:kAppiraterRatedCurrentVersion];
+  [userDefaults synchronize];
+  
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURL]];
+  [pool release];
+}
 
 - (BOOL)connectedToNetwork {
     // Create zero addy
@@ -323,6 +345,13 @@ NSString *templateReviewURLIpad = @"itms-apps://ax.itunes.apple.com/WebObjects/M
 	[_canPromptForRating release];
 }
 
++ (void)rateApp {
+	[NSThread detachNewThreadSelector:@selector(rateIt)
+                           toTarget:[Appirater sharedInstance]
+                         withObject:nil];
+}  
+  
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	
@@ -336,23 +365,8 @@ NSString *templateReviewURLIpad = @"itms-apps://ax.itunes.apple.com/WebObjects/M
 		}
 		case 1:
 		{
-			// they want to rate it
-			NSString *reviewURL = nil;
-			// figure out which URL to use. iPad only apps have to use a different app store URL
-			NSDictionary *bundleDictionary = [[NSBundle mainBundle] infoDictionary];
-			if ([bundleDictionary objectForKey:@"UISupportedInterfaceOrientations"] != nil &&
-				[bundleDictionary objectForKey:@"UISupportedInterfaceOrientations~ipad"] == nil)
-			{
-				// it's an iPad only app, so use the iPad url
-				reviewURL = [templateReviewURLIpad stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%d", APPIRATER_APP_ID]];
-			}
-			else	// iPhone or Universal app, so we can use the direct url
-				reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%d", APPIRATER_APP_ID]];
-			[userDefaults setBool:YES forKey:kAppiraterRatedCurrentVersion];
-			[userDefaults synchronize];
-			
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURL]];
-			break;
+			[self rateIt];
+      break;
 		}
 		case 2:
 			// remind them later
