@@ -51,7 +51,8 @@ extern NSString *const kAppiraterDeclinedToRate;
 /*
  Your app's name.
  */
-#define APPIRATER_APP_NAME				[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]
+// #define APPIRATER_APP_NAME				[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]
+#define APPIRATER_APP_NAME				[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
 
 /*
  This is the message your users will see once they've passed the day+launches
@@ -183,5 +184,10 @@ extern NSString *const kAppiraterDeclinedToRate;
  in those methods).
  */
 + (void)userDidSignificantEvent:(BOOL)canPromptForRating;
+
+/*
+ Tell Appirater to go to the rating page
+ */
++ (void)rateApp;
 
 @end
