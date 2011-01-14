@@ -122,8 +122,10 @@ extern int SDL_main(int argc, char *argv[]);
     NSString *localhost = @"localhost";
 #else 
     NSString *localhost = @"10.0.0.10";    
-    NSString *RemoteURL = @"https://s3.amazonaws.com/alephone/";
+    NSString *RemoteURL = @"http://s3.amazonaws.com/";
     NSString *RemoteHost = @"s3.amazonaws.com";
+    RemoteURL = @"http://dhuphyigw82rv.cloudfront.net";
+    RemoteHost = @"dhuphyigw82rv.cloudfront.net";
 #endif
     
 #if SCENARIO == 1
@@ -152,11 +154,11 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.downloadHost = localhost;
 #else
     // AWS
-    self.scenario.downloadURL = [NSString stringWithFormat:@"%@/%@/%@.zip", RemoteURL, self.scenario.path, self.scenario.path];
+    self.scenario.downloadURL = [NSString stringWithFormat:@"%@/%@.zip", RemoteURL, self.scenario.path];
     self.scenario.downloadHost = RemoteHost;
 
-    self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
-    self.scenario.downloadHost = localhost;
+    // self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
+    // self.scenario.downloadHost = localhost;
 
 #endif
     
