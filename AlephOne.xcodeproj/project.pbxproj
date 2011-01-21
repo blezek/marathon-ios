@@ -1452,6 +1452,12 @@
 		A88DBFC712640A7800FCC652 /* wrtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4112640A7800FCC652 /* wrtarga.c */; };
 		A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
 		A88E2EB512BDB43000ABFAAA /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
+		A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCB12E1616100318968 /* weather_clear_night.png */; };
+		A88EFBCE12E1616100318968 /* weather_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCC12E1616100318968 /* weather_clear.png */; };
+		A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCB12E1616100318968 /* weather_clear_night.png */; };
+		A88EFBD012E1616100318968 /* weather_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCC12E1616100318968 /* weather_clear.png */; };
+		A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCB12E1616100318968 /* weather_clear_night.png */; };
+		A88EFBD212E1616100318968 /* weather_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCC12E1616100318968 /* weather_clear.png */; };
 		A89240D6127FBB4C00F0A2EE /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D4127FBB4C00F0A2EE /* bitwise.c */; };
 		A89240D7127FBB4C00F0A2EE /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D5127FBB4C00F0A2EE /* framing.c */; };
 		A89241CE127FC26300F0A2EE /* analysis.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B5127FC26300F0A2EE /* analysis.c */; };
@@ -2367,6 +2373,8 @@
 		A88E2DF812BC72C200ABFAAA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
 		A88E2EB312BDB43000ABFAAA /* Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Effects.h; path = Classes/Effects.h; sourceTree = "<group>"; };
 		A88E2EB412BDB43000ABFAAA /* Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Effects.m; path = Classes/Effects.m; sourceTree = "<group>"; };
+		A88EFBCB12E1616100318968 /* weather_clear_night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weather_clear_night.png; path = Resources/Settings.bundle/weather_clear_night.png; sourceTree = SOURCE_ROOT; };
+		A88EFBCC12E1616100318968 /* weather_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weather_clear.png; path = Resources/Settings.bundle/weather_clear.png; sourceTree = SOURCE_ROOT; };
 		A89240D4127FBB4C00F0A2EE /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = "Libraries/libogg-1.1.3/src/bitwise.c"; sourceTree = SOURCE_ROOT; };
 		A89240D5127FBB4C00F0A2EE /* framing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = framing.c; path = "Libraries/libogg-1.1.3/src/framing.c"; sourceTree = SOURCE_ROOT; };
 		A89241A2127FC26300F0A2EE /* backends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = backends.h; path = "Libraries/libvorbis-1.2.0/lib/backends.h"; sourceTree = SOURCE_ROOT; };
@@ -3974,6 +3982,8 @@
 		A8AA814D12C055D800821170 /* SettingsIcons */ = {
 			isa = PBXGroup;
 			children = (
+				A88EFBCB12E1616100318968 /* weather_clear_night.png */,
+				A88EFBCC12E1616100318968 /* weather_clear.png */,
 			);
 			path = SettingsIcons;
 			sourceTree = "<group>";
@@ -4337,6 +4347,8 @@
 				A88452E012D9726E006C0F09 /* HardLabel.png in Resources */,
 				A88452E112D9726E006C0F09 /* NightmareLabel.png in Resources */,
 				A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */,
+				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
+				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4428,6 +4440,8 @@
 				A88452DC12D9726E006C0F09 /* HardLabel.png in Resources */,
 				A88452DD12D9726E006C0F09 /* NightmareLabel.png in Resources */,
 				A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */,
+				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
+				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4519,6 +4533,8 @@
 				A88452D812D9726E006C0F09 /* HardLabel.png in Resources */,
 				A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */,
 				A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */,
+				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
+				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5828,6 +5844,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					A1DEBUG,
 					"SCENARIO=1",
 					HAVE_MAD,
 					HAVE_VORBISFILE,
@@ -5912,6 +5929,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					A1DEBUG,
 					"SCENARIO=2",
 					HAVE_MAD,
 					HAVE_VORBISFILE,
@@ -5952,6 +5970,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -5964,7 +5983,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -5994,6 +6013,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6006,7 +6026,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6040,6 +6060,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					A1DEBUG,
 					"SCENARIO=3",
 					HAVE_MAD,
 					HAVE_VORBISFILE,
@@ -6120,6 +6141,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6132,7 +6154,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6190,6 +6212,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6202,7 +6225,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",

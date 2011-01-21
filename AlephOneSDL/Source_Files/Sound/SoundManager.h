@@ -164,9 +164,9 @@ bool IsInitialized() {
   return initialized;
 }
 
+  void SetStatus(bool active);
 private:
 SoundManager();
-void SetStatus(bool active);
 
 SoundDefinition* GetSoundDefinition(short sound_index);
 void BufferSound(Channel &, short sound_index, _fixed pitch,
