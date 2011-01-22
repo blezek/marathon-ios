@@ -81,6 +81,7 @@
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   sound_preferences->music = ceil ( (double)[defaults floatForKey:kMusicVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  sound_preferences->volume = ceil ( (double)[defaults floatForKey:kSfxVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
   float sens;
   sens = [defaults floatForKey:kVSensitivity];
   if ( sens < 0.1 ) { sens = 0.1; }
@@ -97,8 +98,6 @@
   }
   
   SoundManager::instance()->SetParameters(*sound_preferences);
-
-  MLog ( @"Music: %d", sound_preferences->music );
 }
 
 /*

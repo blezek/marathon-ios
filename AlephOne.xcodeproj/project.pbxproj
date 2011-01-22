@@ -34,6 +34,12 @@
 		A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
+		A83DC78212E939880077C779 /* alephoneinfinity-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */; };
+		A83DC78312E939880077C779 /* alephoneinfinity-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */; };
+		A83DC78712E939880077C779 /* alephone2-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77812E939880077C779 /* alephone2-icon-512px.png */; };
+		A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77912E939880077C779 /* alephone2-icon-ipad.png */; };
+		A83DC78B12E939880077C779 /* alephone-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77412E939880077C779 /* alephone-icon-512px.png */; };
+		A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77512E939880077C779 /* alephone-icon-ipad.png */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
@@ -1748,6 +1754,13 @@
 		A82F365211B8A87C0053FE85 /* lua_script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_script.h; sourceTree = "<group>"; };
 		A8357F6012D2125C001CD264 /* ControlsOverview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlsOverview.png; path = Artwork/Help/ControlsOverview.png; sourceTree = "<group>"; };
 		A8357F7212D214B0001CD264 /* TouchToContinue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TouchToContinue.png; path = Artwork/Help/TouchToContinue.png; sourceTree = "<group>"; };
+		A83DC77412E939880077C779 /* alephone-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-512px.png"; sourceTree = "<group>"; };
+		A83DC77512E939880077C779 /* alephone-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-ipad.png"; sourceTree = "<group>"; };
+		A83DC77612E939880077C779 /* alephone-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-iphone.png"; sourceTree = "<group>"; };
+		A83DC77812E939880077C779 /* alephone2-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-512px.png"; sourceTree = "<group>"; };
+		A83DC77912E939880077C779 /* alephone2-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-ipad.png"; sourceTree = "<group>"; };
+		A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-512px.png"; sourceTree = "<group>"; };
+		A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-ipad.png"; sourceTree = "<group>"; };
 		A842544111B4A36500F4D68F /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
@@ -2697,8 +2710,8 @@
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
-				8D1107310486CEB800E47090 /* Info.plist */,
 				A8A4D30612A4B1F900AEE140 /* Settings.bundle */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
 			);
@@ -2887,6 +2900,37 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		A83DC77312E939880077C779 /* M1Icon */ = {
+			isa = PBXGroup;
+			children = (
+				A83DC77412E939880077C779 /* alephone-icon-512px.png */,
+				A83DC77512E939880077C779 /* alephone-icon-ipad.png */,
+				A83DC77612E939880077C779 /* alephone-icon-iphone.png */,
+			);
+			name = M1Icon;
+			path = Artwork/M1Icon;
+			sourceTree = "<group>";
+		};
+		A83DC77712E939880077C779 /* M2Icon */ = {
+			isa = PBXGroup;
+			children = (
+				A83DC77812E939880077C779 /* alephone2-icon-512px.png */,
+				A83DC77912E939880077C779 /* alephone2-icon-ipad.png */,
+			);
+			name = M2Icon;
+			path = Artwork/M2Icon;
+			sourceTree = "<group>";
+		};
+		A83DC77A12E939880077C779 /* MInfIcon */ = {
+			isa = PBXGroup;
+			children = (
+				A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */,
+				A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */,
+			);
+			name = MInfIcon;
+			path = Artwork/MInfIcon;
+			sourceTree = "<group>";
+		};
 		A850886511C1E46500D95436 /* HTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -2964,6 +3008,9 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A83DC77312E939880077C779 /* M1Icon */,
+				A83DC77712E939880077C779 /* M2Icon */,
+				A83DC77A12E939880077C779 /* MInfIcon */,
 				A8811F9712C769F900A1A08E /* internet-btn.png */,
 				A8AA814D12C055D800821170 /* SettingsIcons */,
 				A8AA814B12C055B400821170 /* play-btn.png */,
@@ -4349,6 +4396,8 @@
 				A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
+				A83DC78B12E939880077C779 /* alephone-icon-512px.png in Resources */,
+				A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4442,6 +4491,8 @@
 				A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
+				A83DC78712E939880077C779 /* alephone2-icon-512px.png in Resources */,
+				A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4535,6 +4586,8 @@
 				A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
+				A83DC78212E939880077C779 /* alephoneinfinity-icon-512px.png in Resources */,
+				A83DC78312E939880077C779 /* alephoneinfinity-icon-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

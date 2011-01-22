@@ -228,8 +228,8 @@ extern int SDL_main(int argc, char *argv[]);
   }
    */
   // Pause sound
-  MLog ( @"Pause mixer" );
-  SoundManager::instance()->SetStatus ( false );
+  // MLog ( @"Pause mixer" );
+  // SoundManager::instance()->SetStatus ( false );
   [game stopAnimation];
 }
 
@@ -279,8 +279,8 @@ extern int SDL_main(int argc, char *argv[]);
    */
   if ( finishedStartup ) {
     // Restart music
-    MLog ( @"Starting music" );
-    SoundManager::instance()->SetStatus(true);
+    // MLog ( @"Starting music" );
+    // SoundManager::instance()->SetStatus(true);
     // [self performSelector:@selector(startSound) withObject:nil afterDelay:0.5];
     [game startAnimation];
   }
