@@ -292,6 +292,11 @@ extern  int
   
   bool showAllControls = player_controlling_game();
   
+  if ( player_controlling_game() && [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
+    Crosshairs_SetActive(true);
+  } else {
+    Crosshairs_SetActive(false);
+  }
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   
@@ -585,7 +590,12 @@ extern SDL_Surface *draw_surface;
     }
   }
   game.shotsFired = [NSNumber numberWithInt:shotsFired];
-  float accuracy = 100 * shotsHit / (float)shotsFired;
+  float accuracy;
+  if ( shotsFired > 0 ) {
+    accuracy = 100 * shotsHit / (float)shotsFired;
+  } else {
+    accuracy = 0.0;
+  }
   game.accuracy = [NSNumber numberWithFloat:accuracy];
   
   

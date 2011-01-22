@@ -18,3 +18,5 @@
 #define kEntryLevelNumber @"entryLevelNumber"
 #define kGamma @"gamma"
 #define kFirstGame @"firstGame"
+#define kCrosshairs @"crossHairs"
+#define kAutocenter @"autoCenter"

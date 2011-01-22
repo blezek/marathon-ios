@@ -44,6 +44,7 @@
 +(AlephOneAppDelegate *)sharedAppDelegate;
 - (void)startAlephOne;
 - (void)initAndBegin;
+- (void)startSound;
 @end
 
 

@@ -2423,7 +2423,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     
     // Rolling borgs
     if ( TMgr.GetCollection() == _collection_cyborg
-        || TMgr.GetCollection() == _collection_compiler 
+        // || TMgr.GetCollection() == _collection_compiler 
         || TMgr.GetCollection() == _collection_civilian) { 
       printf ( "Should not happen! Collection %d CTable %d Frame %d Bitmap %d\n", TMgr.GetCollection(), TMgr.GetCTable(), TMgr.GetFrame(), TMgr.GetBitmap() );
       printf ( "Scale ( %f, %f ) x ( %f, %f )\n\n", TMgr.U_Scale, TMgr.V_Scale, TMgr.U_Offset, TMgr.V_Offset );
@@ -3468,25 +3468,21 @@ bool OGL_RenderCrosshairs()
   //
   // We precalculate the offsets for crosshair thickness below,
   // for each of the four quadrants.
-  // int halfWidthMin = -Crosshairs.Thickness / 2;
-  // int halfWidthMax = halfWidthMin - (Crosshairs.Thickness % 2);
-  // DJB Usused
-  /*
+  int halfWidthMin = -Crosshairs.Thickness / 2;
+  int halfWidthMax = halfWidthMin - (Crosshairs.Thickness % 2);
   int offsets[4][2] = {         // [quadrant][local x/y]
     { halfWidthMin, halfWidthMin },
     { halfWidthMax, halfWidthMin },
     { halfWidthMax, halfWidthMax },
     { halfWidthMin, halfWidthMax }
   };
-   */
 
   for (int quad = 0; quad < 4; quad++)
   {
-    // DJB Unused 
-    // int WidthMin = offsets[quad][0];
-    // int WidthMax = WidthMin + Crosshairs.Thickness;
-    // int HeightMin = offsets[quad][1];
-    // int HeightMax = HeightMin + Crosshairs.Thickness;
+    int WidthMin = offsets[quad][0];
+    int WidthMax = WidthMin + Crosshairs.Thickness;
+    int HeightMin = offsets[quad][1];
+    int HeightMax = HeightMin + Crosshairs.Thickness;
 
     switch(Crosshairs.Shape)
     {
@@ -3495,12 +3491,23 @@ bool OGL_RenderCrosshairs()
       // Four simple rectangles
 
       // DJB Unused 
-      // int LenMin = Crosshairs.FromCenter;
-      // int LenMax = LenMin + Crosshairs.Length;
+      int LenMin = Crosshairs.FromCenter;
+      int LenMax = LenMin + Crosshairs.Length;
 
       // at the initial rotation, this is the rectangle at 3:00
       // DJB OpenGL not rendering cross hairs
-      printf ( "**************** not rendering cross hairs *******************\n" );
+      
+      GLshort verts[8] = {
+        LenMin, HeightMin,
+        LenMax, HeightMin,
+        LenMax, HeightMax,
+        LenMin, HeightMax
+      };
+      glVertexPointer ( 2, GL_SHORT, 0, verts );
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      
+      // printf ( "**************** not rendering cross hairs *******************\n" );
       /*
       glBegin(GL_QUADS);
       glVertex2i(LenMin, HeightMin);

@@ -22,6 +22,8 @@ extern "C" {
 #import "ManagedObjects.h"
 #import "AlephOneShell.h"
 #import "AlephOneHelper.h"
+#include "preferences.h"
+
 
 @implementation AlephOneAppDelegate
 
@@ -85,6 +87,8 @@ extern int SDL_main(int argc, char *argv[]);
                                @"1.0", kSfxVolume,
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
+                               @"NO", kCrosshairs,
+                               @"YES", kAutocenter,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -95,6 +99,9 @@ extern int SDL_main(int argc, char *argv[]);
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
 #endif
 
+#if defined(A1DEBUG)
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCheatsEnabled];
+#endif
     
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
   NSLog ( @"Current Directory: %@", currentDirectory );
@@ -157,8 +164,10 @@ extern int SDL_main(int argc, char *argv[]);
     self.scenario.downloadURL = [NSString stringWithFormat:@"%@/%@.zip", RemoteURL, self.scenario.path];
     self.scenario.downloadHost = RemoteHost;
 
-    // self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
-    // self.scenario.downloadHost = localhost;
+#if defined(A1DEBUG)
+    self.scenario.downloadURL = [NSString stringWithFormat:@"http://%@/~blezek/%@.zip", localhost, self.scenario.path];
+    self.scenario.downloadHost = localhost;
+#endif
 
 #endif
     
@@ -218,16 +227,21 @@ extern int SDL_main(int argc, char *argv[]);
     }
   }
    */
+  // Pause sound
+  // MLog ( @"Pause mixer" );
+  // SoundManager::instance()->SetStatus ( false );
   [game stopAnimation];
 }
-
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
-  [game stopAnimation];
+  // MLog ( @"Pausing sound" );
+  // Pause sound
+  // SoundManager::instance()->SetStatus(false);
+  // [game stopAnimation];
 }
 
 
@@ -236,7 +250,9 @@ extern int SDL_main(int argc, char *argv[]);
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-  [game startAnimation];
+  // MLog ( @"Starting sound" );
+  // SoundManager::instance()->SetStatus(true);  
+  // [game startAnimation];
 }
 
 
@@ -262,9 +278,17 @@ extern int SDL_main(int argc, char *argv[]);
   }
    */
   if ( finishedStartup ) {
-  [game startAnimation];
+    // Restart music
+    // MLog ( @"Starting music" );
+    // SoundManager::instance()->SetStatus(true);
+    // [self performSelector:@selector(startSound) withObject:nil afterDelay:0.5];
+    [game startAnimation];
   }
 }
+
+- (void)startSound {
+}
+
 
 
 /**

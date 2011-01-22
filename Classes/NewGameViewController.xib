@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.SystemVersion">10J567</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">132</string>
@@ -243,57 +243,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 							<string key="NSResourceName">buttonsarea-bg.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="655394330">
-						<reference key="NSNextResponder" ref="689605433"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{221, 427}, {100, 50}}</string>
-						<reference key="NSSuperview" ref="689605433"/>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">EasyLabel.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="179680121">
-						<reference key="NSNextResponder" ref="689605433"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{380, 424}, {100, 50}}</string>
-						<reference key="NSSuperview" ref="689605433"/>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NormalLabel.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="739134597">
-						<reference key="NSNextResponder" ref="689605433"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{540, 428}, {100, 50}}</string>
-						<reference key="NSSuperview" ref="689605433"/>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">HardLabel.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="679607765">
-						<reference key="NSNextResponder" ref="689605433"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{671, 427}, {150, 50}}</string>
-						<reference key="NSSuperview" ref="689605433"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NightmareLabel.png</string>
-						</object>
-					</object>
 				</object>
 				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
@@ -462,11 +411,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 							<reference ref="381063342"/>
 							<reference ref="443320114"/>
 							<reference ref="1033442337"/>
-							<reference ref="655394330"/>
-							<reference ref="179680121"/>
 							<reference ref="508363884"/>
-							<reference ref="739134597"/>
-							<reference ref="679607765"/>
 							<reference ref="940688368"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -521,26 +466,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 						<reference key="object" ref="940688368"/>
 						<reference key="parent" ref="689605433"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">39</int>
-						<reference key="object" ref="655394330"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">40</int>
-						<reference key="object" ref="179680121"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">41</int>
-						<reference key="object" ref="739134597"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">42</int>
-						<reference key="object" ref="679607765"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -566,17 +491,9 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<string>23.IBPluginDependency</string>
 					<string>38.IBPluginDependency</string>
 					<string>38.IBViewBoundsToFrameTransform</string>
-					<string>39.IBPluginDependency</string>
-					<string>39.IBViewBoundsToFrameTransform</string>
 					<string>4.IBEditorWindowLastContentRect</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBUserGuides</string>
-					<string>40.IBPluginDependency</string>
-					<string>40.IBViewBoundsToFrameTransform</string>
-					<string>41.IBPluginDependency</string>
-					<string>41.IBViewBoundsToFrameTransform</string>
-					<string>42.IBPluginDependency</string>
-					<string>42.IBViewBoundsToFrameTransform</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -617,10 +534,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDKgAAw+kAAA</bytes>
 					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDcAAAxADAAA</bytes>
-					</object>
 					<string>{{345, 355}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSMutableArray">
@@ -630,18 +543,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 							<double key="location">463</double>
 							<int key="affinity">1</int>
 						</object>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDrIAAw+uAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEBwAAw+mAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEJ0AAw+4AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -810,11 +711,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>EasyLabel.png</string>
 				<string>GenericBackground.png</string>
-				<string>HardLabel.png</string>
-				<string>NightmareLabel.png</string>
-				<string>NormalLabel.png</string>
 				<string>buttonsarea-bg.png</string>
 				<string>cancel-btn.png</string>
 				<string>easy-btn.png</string>
@@ -824,17 +721,13 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{100, 50}</string>
 				<string>{1024, 768}</string>
-				<string>{100, 50}</string>
-				<string>{150, 50}</string>
-				<string>{100, 50}</string>
 				<string>{678, 197}</string>
 				<string>{95, 95}</string>
-				<string>{116, 116}</string>
-				<string>{115, 116}</string>
-				<string>{116, 116}</string>
-				<string>{116, 116}</string>
+				<string>{153, 153}</string>
+				<string>{153, 153}</string>
+				<string>{153, 153}</string>
+				<string>{153, 153}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

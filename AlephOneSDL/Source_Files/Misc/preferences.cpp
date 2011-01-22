@@ -2347,7 +2347,19 @@ void read_preferences ()
   input_preferences->modifiers = 0; // _inputmod_interchange_run_walk;
   input_preferences->mouse_acceleration = false;
   sound_preferences->music = 7;
-
+  printf ("<sound\n");
+  printf("  channels=\"%hd\"\n",sound_preferences->channel_count);
+  printf("  volume=\"%hd\"\n",sound_preferences->volume);
+  printf("  music_volume=\"%hd\"\n",sound_preferences->music);
+  printf("  flags=\"%hu\"\n",sound_preferences->flags);
+  printf("  rate=\"\%hu\"\n", sound_preferences->rate);
+  printf("  samples=\"\%hu\"\n", sound_preferences->samples);
+  printf("  volume_while_speaking=\"\%hu\"\n",
+          sound_preferences->volume_while_speaking);
+  printf("  mute_while_transmitting=\"%s\"\n",
+          BoolString(sound_preferences->mute_while_transmitting));
+  printf("/>\n\n");
+ 
   // Drop the sprite textures
   // OGL_Texture_Configure& TxtrConfig = graphics_preferences->OGL_Configure.TxtrConfigList[2];
   // TxtrConfig.ColorFormat = 1;

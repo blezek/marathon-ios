@@ -50,7 +50,7 @@ extern "C" {
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   
   for ( UITouch *touch in [event touchesForView:self] ) {
-    NSLog(@"Touch ended in fire button");
+    // NSLog(@"Touch ended in fire button");
     key_map[key] = 0;
   }
   return;
