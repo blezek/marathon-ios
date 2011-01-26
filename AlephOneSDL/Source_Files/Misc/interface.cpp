@@ -1214,6 +1214,8 @@ bool idle_game_state(uint32 time)
 void display_main_menu(
                        void)
 {
+  
+  // DJB New menu
   game_state.state= _display_main_menu;
   game_state.current_screen= 0;
   game_state.phase= TICKS_UNTIL_DEMO_STARTS;
