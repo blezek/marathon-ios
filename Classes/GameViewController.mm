@@ -31,6 +31,7 @@ extern  int
 #include <stdlib.h>
 
 #include "map.h"
+#include "screen.h"
 #include "interface.h"
 #include "shell.h"
 #include "preferences.h"
@@ -44,6 +45,10 @@ extern  int
 #include "overhead_map.h"
 #include "weapons.h"
 #include "vbl.h"
+#include "render.h"
+#include "interface_menus.h"
+extern void PlayInterfaceButtonSound(short SoundID);
+extern struct view_data *world_view; /* should be static */
 
 #define kPauseAlphaDefault 0.5;
 
@@ -61,6 +66,8 @@ extern  int
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
 @synthesize controlsOverviewView, controlsOverviewGesture;
+@synthesize zoomInButton, zoomOutButton;
+@synthesize replacementMenuView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -142,6 +149,7 @@ extern  int
                              restartView,
                              self.filmView,
                              self.controlsOverviewView,
+                             self.replacementMenuView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
@@ -208,11 +216,15 @@ extern  int
     [alert show];
     return;
   }
+  /*
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
   SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
   SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
   SDL_GetRelativeMouseState(NULL, NULL);
+   */
+  mode = GameMode;
+  [self menuHideReplacementMenu];
   showControlsOverview = NO;
   self.currentSavedGame = nil;
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
@@ -222,6 +234,10 @@ extern  int
     showControlsOverview = YES;
   }
   [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
+  
+  // Start the new game for real!
+  // New menus
+  do_menu_item_command(mInterface, iNewGame, false);
 }
 
 - (IBAction)cancelNewGame {
@@ -245,7 +261,7 @@ extern  int
 
 - (void)epilog {
   self.hud.hidden = YES;
-  mode = MenuMode;
+  mode = CutSceneMode;
 }
 
 - (void)playerKilled {
@@ -723,6 +739,32 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 #pragma mark -
+#pragma mark Replacement menus
+- (IBAction)menuShowReplacementMenu {
+  self.replacementMenuView.hidden = NO;
+}
+- (IBAction)menuHideReplacementMenu {
+  self.replacementMenuView.hidden = YES;
+}
+
+- (IBAction)menuNewGame {
+  [self newGame];
+}
+- (IBAction)menuLoadGame {
+  do_menu_item_command(mInterface, iLoadGame, false);
+}
+- (IBAction)menuPreferences {
+  do_menu_item_command(mInterface, iPreferences, false);
+}
+- (IBAction)menuStore {
+  MLog ( @"Goto store" );
+}
+- (IBAction)menuRestorePurchases {
+  MLog ( @"Restore purchases" );
+}
+
+
+#pragma mark -
 #pragma mark Gestures
 
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer {
@@ -733,7 +775,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-  if ( mode == MenuMode ) {
+  if ( mode == MenuMode || mode == CutSceneMode ) {
     if ( recognizer == menuTapGesture ) {
       NSLog ( @"Handling menu tap" );
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
@@ -902,6 +944,17 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (void)runMainLoopOnce:(id)sender {
+  // Do some house keeping here
+  if (world_view->overhead_map_active) {
+    self.zoomInButton.hidden = NO;
+    self.zoomOutButton.hidden = NO;
+  } else {
+    self.zoomInButton.hidden = YES;
+    self.zoomOutButton.hidden = YES;
+  }
+  if ( get_game_state() == _display_main_menu && mode == MenuMode ) {
+    [self menuShowReplacementMenu];
+  }
   if ( !inMainLoop ) {
     inMainLoop = YES;
     AlephOneMainLoop();
@@ -928,6 +981,29 @@ extern bool handle_open_replay(FileSpecifier& File);
   MLog ( @"stopProgress" );
 }
 
+#pragma mark -
+#pragma mark Map and Inventory methods
+- (IBAction)changeInventory {
+  PlayInterfaceButtonSound(Sound_ButtonSuccess());
+  scroll_inventory(-1);
+}
+
+- (IBAction)zoomMapIn {
+  if (zoom_overhead_map_in()) {
+    PlayInterfaceButtonSound(Sound_ButtonSuccess());
+  }
+  else{
+    PlayInterfaceButtonSound(Sound_ButtonFailure());
+  }
+}  
+- (IBAction)zoomMapOut {
+  if (zoom_overhead_map_out()) {
+    PlayInterfaceButtonSound(Sound_ButtonSuccess());
+  }
+  else{
+    PlayInterfaceButtonSound(Sound_ButtonFailure());
+  }
+}  
 
 
 #pragma mark -

@@ -36,6 +36,7 @@ extern void AddOneItemToPlayer(short ItemType, short MaxNumber);
 typedef enum {
   MenuMode,
   GameMode,
+  CutSceneMode,
   AutoMapMode
 } HUDMode;
 
@@ -49,12 +50,15 @@ typedef enum {
   IBOutlet UIView *preferencesView;
   IBOutlet UIView *pauseView;
   IBOutlet UIView *helpView;
+  IBOutlet UIView *replacementMenuView;
   IBOutlet UIView *controlsOverviewView;
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
 
   IBOutlet UIButton *pause;
+  IBOutlet UIButton *zoomOutButton;
+  IBOutlet UIButton *zoomInButton;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *mapView2;
   IBOutlet ButtonView *actionView;
@@ -129,6 +133,16 @@ typedef enum {
 - (IBAction)quitPressed;
 - (IBAction)networkPressed;
 
+// Replacement menus
+- (IBAction)menuShowReplacementMenu;
+- (IBAction)menuHideReplacementMenu;
+- (IBAction)menuNewGame;
+- (IBAction)menuLoadGame;
+- (IBAction)menuPreferences;
+- (IBAction)menuStore;
+- (IBAction)menuRestorePurchases;
+
+
 // Pause actions
 - (IBAction) resume:(id)sender;
 - (IBAction) gotoMenu:(id)sender;
@@ -172,6 +186,11 @@ typedef enum {
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 
+// Some actions inventory and map
+- (IBAction)changeInventory;
+- (IBAction)zoomMapIn;
+- (IBAction)zoomMapOut;
+
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
 
@@ -186,6 +205,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *menuView;
 @property (nonatomic, retain) UIView *pauseView;
 @property (nonatomic, retain) UIView *helpView;
+@property (nonatomic, retain) UIView *replacementMenuView;
 @property (nonatomic, retain) UIView *controlsOverviewView;
 
 @property (nonatomic, retain) UIView *filmView;
@@ -206,6 +226,8 @@ typedef enum {
 @property (nonatomic, retain) ButtonView *nextWeaponButton;
 @property (nonatomic, retain) ButtonView *inventoryToggleView;
 @property (nonatomic, retain) UIButton *pause;
+@property (nonatomic, retain) UIButton *zoomInButton;
+@property (nonatomic, retain) UIButton *zoomOutButton;
 
 @property (nonatomic, retain) SaveGameViewController *saveGameViewController;
 @property (nonatomic, retain) ProgressViewController *progressViewController;
