@@ -280,6 +280,7 @@ extern struct view_data *world_view; /* should be static */
   
   // Setup other views
   [self.moveView setup];
+  [self menuHideReplacementMenu];
   
   key_definition *key = current_key_definitions;
   for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
@@ -362,6 +363,7 @@ extern struct view_data *world_view; /* should be static */
   
   // Need to pause and show controls overview
   self.controlsOverviewView.hidden = NO;
+  [self runMainLoopOnce:self];
   pause_game();
   // Add touch to continue animation
   CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -709,10 +711,11 @@ extern bool handle_open_replay(FileSpecifier& File);
     return;
   }
   if ( showingHelpBeforeFirstGame ) {
+    alertView.hidden = YES;
     if ( buttonIndex == 0 ) {
       // User hit cancel, so start the game...
       showingHelpBeforeFirstGame = NO;
-      [self beginGame]; 
+      [self performSelector:@selector(beginGame) withObject:nil afterDelay:0.0];
     } else {
       [self help:self];
     }
