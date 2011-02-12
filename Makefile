@@ -1,13 +1,15 @@
 
 DEVELOPER = "iPhone Distribution: Daniel Blezek"
-BETADIR = "${PWD}/../BetaTestApps/"
-BUILDDIR = "${PWD}/build/AdHocDistribution-iphoneos/"
+BETADIR = ${PWD}/../BetaTestApps/
+BUILDDIR = ${PWD}/build/AdHocDistribution-iphoneos/
 
-M1PROFILE = "${PWD}/ProvisioningProfiles/AlephOne_M1.mobileprovision"
-M2PROFILE = "${PWD}/ProvisioningProfiles/AlephOne_M2.mobileprovision"
-M3PROFILE = "${PWD}/ProvisioningProfiles/AlephOne_M3.mobileprovision"
+M1PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M1_Ad_Hoc.mobileprovision
+M2PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M2_Ad_Hoc.mobileprovision
+M3PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M3_Ad_Hoc.mobileprovision
 
-all: release debug adhoc
+DROPBOX_PUBLIC = ${HOME}/Documents/Dropbox/Public
+
+all: release debug adhoc ipa
 
 clean:
 	xcodebuild -alltargets -configuration Release clean
@@ -33,12 +35,7 @@ ipa: adhoc
 	/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${BUILDDIR}AlephOne-SDG-3.app" -o "${BETADIR}AlephOneInf.ipa" --sign ${DEVELOPER} --embed ${M3PROFILE}
 
 publish: ipa
-	echo '   Building for iPhone    '
-	dd=`date +%Y%m%d`
-	rm -rf AlephOneDistribution-$dd
-	rm -rf AlephOneDistribution-$dd.zip
-	mkdir -p AlephOneDistribution-$dd
-	echo '   Building distribution package '
-	cp -r build/AdHocDistribution-iphoneos/AlephOne-iPad.app AlephOneDistribution-$dd
-	cp ProvisioningProfiles/AlephOne_Ad_Hoc.mobileprovision AlephOneDistribution-$dd
-	zip -r AlephOneDistribution-$dd.zip AlephOneDistribution-$dd/
+	(cd ${BETADIR} && ./BuildDistribution)
+	rsync -r "${BETADIR}/M1" ${DROPBOX_PUBLIC}
+	rsync -r "${BETADIR}/M2" ${DROPBOX_PUBLIC}
+	rsync -r "${BETADIR}/MInf" ${DROPBOX_PUBLIC}
