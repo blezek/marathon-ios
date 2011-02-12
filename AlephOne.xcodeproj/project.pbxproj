@@ -860,7 +860,6 @@
 		A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
 		A88121D512C7816300A1A08E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		A88121D712C7816300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88121D912C7816300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
@@ -1361,7 +1360,6 @@
 		A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
 		A88123DA12C7826300A1A08E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		A88123DC12C7826300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A88123DF12C7826300A1A08E /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
@@ -1385,6 +1383,20 @@
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A8828E8311E2DFD500FBBD45 /* Game Screen Shot for Controls.png in Resources */ = {isa = PBXBuildFile; fileRef = A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */; };
+		A883DC7012F5CEE60041543F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
+		A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
+		A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
+		A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
+		A883DC7412F5CEE60041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
+		A883DC7512F5CEE60041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
+		A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
+		A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
+		A883DC7812F5CEFB0041543F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
+		A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
+		A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
+		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
+		A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
+		A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A88452D712D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
 		A88452D812D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
 		A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
@@ -2786,11 +2798,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
+				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
+				A883DC7012F5CEE60041543F /* CoreTelephony.framework in Frameworks */,
+				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
+				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
+				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
+				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
+				A883DC7512F5CEE60041543F /* StoreKit.framework in Frameworks */,
+				A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */,
+				A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
 				A88121D512C7816300A1A08E /* Foundation.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
-				A88121D712C7816300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88121D912C7816300A1A08E /* libm.dylib in Frameworks */,
 				A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */,
@@ -2803,7 +2824,6 @@
 				A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88121E212C7816300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
-				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2811,11 +2831,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
+				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
+				A88123E712C7826300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
+				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
+				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
+				A883DC7812F5CEFB0041543F /* CoreTelephony.framework in Frameworks */,
+				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
+				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
+				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
+				A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */,
+				A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */,
 				A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
 				A88123DA12C7826300A1A08E /* Foundation.framework in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
-				A88123DC12C7826300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */,
 				A88123DF12C7826300A1A08E /* libstdc++.6.dylib in Frameworks */,
@@ -2824,11 +2854,7 @@
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				A88123E412C7826300A1A08E /* AudioToolbox.framework in Frameworks */,
-				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
-				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
-				A88123E712C7826300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
-				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6734,7 +6760,7 @@
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Blezek (64345L7WHP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6760,7 +6786,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "AlephOne-SDG";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3F34947F-BD74-4672-99AF-C75F444A86D3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

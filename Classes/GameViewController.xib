@@ -533,7 +533,7 @@
 							<object class="IBUIButton" id="70214282">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{925, 132}, {72, 37}}</string>
+								<string key="NSFrame">{{836, 132}, {161, 37}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -552,7 +552,7 @@
 							<object class="IBUIButton" id="851951514">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{925, 186}, {72, 37}}</string>
+								<string key="NSFrame">{{836, 186}, {161, 37}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -571,7 +571,7 @@
 							<object class="IBUIButton" id="504006047">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{925, 231}, {72, 37}}</string>
+								<string key="NSFrame">{{836, 231}, {161, 37}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -590,7 +590,7 @@
 							<object class="IBUIButton" id="428206114">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{925, 276}, {72, 37}}</string>
+								<string key="NSFrame">{{836, 276}, {161, 37}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -609,7 +609,7 @@
 							<object class="IBUIButton" id="767269251">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{925, 321}, {72, 37}}</string>
+								<string key="NSFrame">{{836, 321}, {161, 37}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -626,7 +626,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 10}, {1024, 768}}</string>
+						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -1212,9 +1212,9 @@
 							<reference ref="1025098478"/>
 							<reference ref="193475027"/>
 							<reference ref="215110741"/>
-							<reference ref="485381462"/>
 							<reference ref="763863770"/>
 							<reference ref="464543623"/>
+							<reference ref="485381462"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1567,6 +1567,11 @@
 						<reference key="parent" ref="464543623"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">156</int>
+						<reference key="object" ref="504006047"/>
+						<reference key="parent" ref="464543623"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">148</int>
 						<reference key="object" ref="428206114"/>
 						<reference key="parent" ref="464543623"/>
@@ -1574,11 +1579,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">149</int>
 						<reference key="object" ref="767269251"/>
-						<reference key="parent" ref="464543623"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">156</int>
-						<reference key="object" ref="504006047"/>
 						<reference key="parent" ref="464543623"/>
 					</object>
 				</object>
@@ -1632,6 +1632,7 @@
 					<string>145.IBViewBoundsToFrameTransform</string>
 					<string>145.notes</string>
 					<string>146.IBPluginDependency</string>
+					<string>146.IBViewBoundsToFrameTransform</string>
 					<string>147.IBPluginDependency</string>
 					<string>148.IBPluginDependency</string>
 					<string>148.IBViewBoundsToFrameTransform</string>
@@ -1743,15 +1744,16 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AQAAAABBIAAAA</bytes>
-					</object>
+					<object class="NSAffineTransform"/>
 					<object class="NSMutableAttributedString">
 						<object class="NSMutableString" key="NSString">
 							<characters key="NS.bytes"/>
 						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABEV8AAwycAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -2025,6 +2027,7 @@
 							<string>gotoPreferences:</string>
 							<string>help:</string>
 							<string>invincibilityCheat:</string>
+							<string>menuHideReplacementMenu</string>
 							<string>menuLoadGame</string>
 							<string>menuNewGame</string>
 							<string>menuPreferences</string>
@@ -2082,6 +2085,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
@@ -2104,6 +2108,7 @@
 							<string>gotoPreferences:</string>
 							<string>help:</string>
 							<string>invincibilityCheat:</string>
+							<string>menuHideReplacementMenu</string>
 							<string>menuLoadGame</string>
 							<string>menuNewGame</string>
 							<string>menuPreferences</string>
@@ -2188,6 +2193,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">invincibilityCheat:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">menuHideReplacementMenu</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
