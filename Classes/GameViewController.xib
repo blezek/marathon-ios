@@ -155,6 +155,7 @@
 								<reference key="NSSuperview" ref="485381462"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<float key="IBUIAlpha">0.5</float>
+								<int key="IBUITag">400</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
@@ -188,6 +189,7 @@
 								<reference key="NSSuperview" ref="485381462"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<float key="IBUIAlpha">0.5</float>
+								<int key="IBUITag">400</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
@@ -533,14 +535,13 @@
 							<object class="IBUIButton" id="70214282">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{836, 132}, {161, 37}}</string>
+								<string key="NSFrame">{{799, 59}, {225, 75}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="789146010"/>
-								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">New</string>
 								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -548,18 +549,21 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MenuItem-New.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="851951514">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{836, 186}, {161, 37}}</string>
+								<string key="NSFrame">{{799, 142}, {225, 75}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="789146010"/>
-								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Load</string>
 								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -567,18 +571,21 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MenuItem-Load.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="504006047">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{836, 231}, {161, 37}}</string>
+								<string key="NSFrame">{{799, 225}, {225, 75}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="789146010"/>
-								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Preferences</string>
 								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -586,18 +593,21 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MenuItem-Settings.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="428206114">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{836, 276}, {161, 37}}</string>
+								<string key="NSFrame">{{799, 308}, {225, 75}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="789146010"/>
-								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Store</string>
 								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -605,18 +615,21 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MenuItem-Store.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="767269251">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{836, 321}, {161, 37}}</string>
+								<string key="NSFrame">{{799, 391}, {225, 75}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="789146010"/>
-								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Restore Purchases</string>
 								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -624,6 +637,10 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MenuItem-Purchases.png</string>
+								</object>
 							</object>
 						</object>
 						<string key="NSFrameSize">{1024, 768}</string>
@@ -1212,9 +1229,9 @@
 							<reference ref="1025098478"/>
 							<reference ref="193475027"/>
 							<reference ref="215110741"/>
+							<reference ref="485381462"/>
 							<reference ref="763863770"/>
 							<reference ref="464543623"/>
-							<reference ref="485381462"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1634,6 +1651,7 @@
 					<string>146.IBPluginDependency</string>
 					<string>146.IBViewBoundsToFrameTransform</string>
 					<string>147.IBPluginDependency</string>
+					<string>147.IBViewBoundsToFrameTransform</string>
 					<string>148.IBPluginDependency</string>
 					<string>148.IBViewBoundsToFrameTransform</string>
 					<string>149.IBPluginDependency</string>
@@ -1752,20 +1770,23 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEV8AAwycAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEZ0AAw4mAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABED4AAwtAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEZ0AAw6cAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABEUQAAw4GAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEHcAAw8iAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABET8AAw8uAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABET8AAw/EAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABEUQAAw5gAAA</bytes>
 					</object>
 					<string>{{312, 132}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -3337,6 +3358,11 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>ControlsOverview.png</string>
+				<string>MenuItem-Load.png</string>
+				<string>MenuItem-New.png</string>
+				<string>MenuItem-Purchases.png</string>
+				<string>MenuItem-Settings.png</string>
+				<string>MenuItem-Store.png</string>
 				<string>Reload.png</string>
 				<string>SplashScreen.png</string>
 				<string>TouchToContinue.png</string>
@@ -3355,6 +3381,11 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1024, 768}</string>
+				<string>{450, 153}</string>
+				<string>{450, 153}</string>
+				<string>{450, 153}</string>
+				<string>{450, 153}</string>
+				<string>{450, 153}</string>
 				<string>{512, 512}</string>
 				<string>{1024, 768}</string>
 				<string>{512, 100}</string>

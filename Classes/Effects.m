@@ -32,7 +32,7 @@
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, opacity, nil];
-  group.duration = 1.0;
+  group.duration = 0.41;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
  
   return group;

@@ -335,7 +335,7 @@ extern struct view_data *world_view; /* should be static */
   
   for ( UIView *v in [self.hud subviews] ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    if ( v == self.savedGameMessage ) { continue; }
+    if ( v == self.savedGameMessage || v.tag == 400 ) { continue; }
     v.hidden = NO;
     if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];

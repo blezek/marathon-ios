@@ -80,7 +80,8 @@
   self.uiView.hidden = NO;
   CAAnimation* group = [Effects appearAnimation];
   for ( UIView *v in self.uiView.subviews ) {
-    [v.layer addAnimation:group forKey:nil];
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:@"appear"];
   }
   [self.uiView.layer addAnimation:group forKey:nil];
 }
@@ -89,6 +90,7 @@
   CAAnimation* group = [Effects disappearAnimation];
 
   for ( UIView *v in self.uiView.subviews ) {
+    [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
   [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
@@ -148,6 +150,23 @@
   if ( indexPath != nil ) {
     SavedGame *game = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     SavedGame *newGame = [self createNewGameFile];
+    NSString *entityName = [[game entity] name];
+
+    // Hack, preserve filenames
+    NSString *filename = newGame.filename;
+    NSString *mapFilename = newGame.mapFilename;
+    
+    NSDictionary *attributes = [[NSEntityDescription
+                                 entityForName:entityName
+                                 inManagedObjectContext:self.managedObjectContext] attributesByName];
+    
+    for (NSString *attr in attributes) {
+      [newGame setValue:[game valueForKey:attr] forKey:attr];
+    }
+    // Restore filenames
+    newGame.filename = filename;
+    newGame.mapFilename = mapFilename;    
+    
     // Copy file and map
     [[NSFileManager defaultManager] copyItemAtPath:game.filename toPath:newGame.filename error:nil];
     [[NSFileManager defaultManager] copyItemAtPath:game.mapFilename toPath:newGame.mapFilename error:nil];
@@ -180,11 +199,22 @@
   // Create a new instance in CoreData with filename
   SavedGame *game;
   game = [NSEntityDescription insertNewObjectForEntityForName:@"SavedGame" inManagedObjectContext:self.managedObjectContext];
+  [self.managedObjectContext save:nil];
+
   
-  NSString *filename = [NSString stringWithFormat:@"%@/%@", saveGameDirectory, [NSDate date]];
+	//Create unique ID
+	CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+	NSString* uuid = [NSString stringWithFormat:@"%@", (NSString *)newUniqueIdString];
+	CFRelease(newUniqueId);
+	CFRelease(newUniqueIdString);
+  
+  
+  
+  NSString *filename = [NSString stringWithFormat:@"%@/%@", saveGameDirectory, uuid];
   NSLog ( @"Filename: %@", filename );
   game.filename = filename;
-  game.mapFilename = [NSString stringWithFormat:@"%@/%@-Map.bmp", saveGameDirectory, [NSDate date]];
+  game.mapFilename = [NSString stringWithFormat:@"%@/%@-Map.bmp", saveGameDirectory, uuid];
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
