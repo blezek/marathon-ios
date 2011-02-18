@@ -1,5 +1,5 @@
 /*
-Copyright 2009-2010 Urban Airship Inc. All rights reserved.
+Copyright 2009-2011 Urban Airship Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -24,8 +24,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #import "UAAsycImageView.h"
-#import "ASIHTTPRequest.h"
-#import "ASIDownloadCache.h"
+#import "UA_ASIHTTPRequest.h"
+#import "UA_ASIDownloadCache.h"
 
 // Adapted from Mark J. AsyncImageView
 // http://www.markj.net/iphone-asynchronous-table-image/
@@ -37,40 +37,32 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 - (void)dealloc {
     [imageURL release];
-    [data release];
     [super dealloc];
 }
 
 - (void)loadImageFromURL:(NSURL*)url {
+
     if([[url absoluteString] length] == 0) {
+        self.image = nil;
         return;
     }
 
     if ([imageURL isEqual:url] && self.image != nil) {
         return;
-    } else {
-        [url retain];
-        [imageURL release];
-        imageURL = url;
     }
-
-    if (data!=nil) {
-        [data release];
-        data = nil;
-    }
+    [url retain];
+    [imageURL release];
+    imageURL = url;
     self.image = nil;
 
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:imageURL];
-	
-	[request setDelegate:self];
-    [request setDownloadCache:[ASIDownloadCache sharedCache]];
-	[request setDidFinishSelector:@selector(imageReady:)];
-	[request startAsynchronous];
-
+    UA_ASIHTTPRequest *request = [UA_ASIHTTPRequest requestWithURL:imageURL];
+    [request setDelegate:self];
+    [request setDownloadCache:[UA_ASIDownloadCache sharedCache]];
+    [request setDidFinishSelector:@selector(imageReady:)];
+    [request startAsynchronous];
 }
 
-
-- (void)imageReady:(ASIHTTPRequest *)request {
+- (void)imageReady:(UA_ASIHTTPRequest *)request {
     self.image = [UIImage imageWithData:request.responseData];
     [self setNeedsLayout];
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2009-2010 Urban Airship Inc. All rights reserved.
+Copyright 2009-2011 Urban Airship Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -23,14 +23,11 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// TODO this file: move to common
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 
 @interface UAAsyncImageView : UIImageView {
-    NSMutableData* data;
     SEL onReady;
     id target;
     NSURL *imageURL;

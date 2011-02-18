@@ -11,6 +11,7 @@
 #import "NewGameViewController.h"
 #import "ManagedObjects.h"
 #import "Prefs.h"
+#import "Secrets.h"
 
 @class GameViewController;
 @class DownloadViewController;

@@ -1,7 +1,9 @@
 #!/bin/sh
-echo "TTEP-M2..."
-cp -fr TTEP-M2 ../M2A1
-cp -f WEP-Original/WeaponEnhancmentM2.mml ../M2A1/Scripts
+echo "SpriteTextures..."
 cp -fr SpriteTextures-M2 ../M2A1
 mv -f ../M2A1/SpriteTextures-M2/Sprites.mml ../M2A1/Scripts
+
+echo "TTEP-M2..."
+cp -fr TTEP-M2 ../M2A1
 cp -f ../M2A1/TTEP-M2/TTEP-M2.mml ../M2A1/Scripts
+

@@ -1,4 +1,5 @@
-set Scenario [lindex $argv 0]
+set TextureSet [lindex $argv 0]
+set Scenario [lindex $argv 1]
 puts "Compressing $Scenario"
 
 
@@ -319,8 +320,8 @@ set SizeLimit 512
 proc Rename {} {
   global Collections Scenario
   set TopDir [pwd]
-  file mkdir TTEP-$Scenario-Original
-  cd TTEP-M1-DDS
+  file mkdir ${TextureSet}-$Scenario-Original
+  cd ${TextureSet}-M1-DDS
   foreach class [glob *] {
     cd $class
     foreach file [glob *] {
@@ -328,7 +329,7 @@ proc Rename {} {
       foreach tmp $Collections(/$class/$file) {
         set collection [lindex $tmp 0]
         set bitmap [lindex $tmp 1]
-        set outputFile [file join $TopDir TTEP-M1-Original $collection 0 [format bitmap%03d.dds $bitmap]]
+        set outputFile [file join $TopDir ${TextureSet}-M1-Original $collection 0 [format bitmap%03d.dds $bitmap]]
         puts "Copy $file $outputFile"
         file mkdir [file dir $outputFile]
         file copy -force $file $outputFile
@@ -339,13 +340,13 @@ proc Rename {} {
 }
 
 set TopDir [pwd]
-file mkdir TTEP-$Scenario
+file mkdir ${TextureSet}-$Scenario
 
-set fid [open TTEP-$Scenario/TTEP-$Scenario.mml w]
+set fid [open ${TextureSet}-$Scenario/${TextureSet}-$Scenario.mml w]
 puts $fid "<marathon>"
 puts $fid "<opengl>"
 
-cd TTEP-$Scenario-Original
+cd ${TextureSet}-$Scenario-Original
 foreach collection [lsort [glob *]] {
   if { ![file isdir $collection] } { continue }
   cd $collection
@@ -396,10 +397,10 @@ foreach collection [lsort [glob *]] {
       puts "\t\tProcessing $image bitmap: $bitmap"
       set tail [file tail $image]
       set base [file root $tail]
-      set outputFile [file join $TopDir TTEP-$Scenario $collection $clut $base.pvr]
+      set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.pvr]
       file mkdir [file dir $outputFile]
 
-      set TempFile [file join $TopDir TTEP-$Scenario-PNG $collection $clut $base.png]
+      set TempFile [file join $TopDir ${TextureSet}-$Scenario-PNG $collection $clut $base.png]
       file mkdir [file dir $TempFile]
 
       # Square, so we resize
@@ -409,11 +410,11 @@ foreach collection [lsort [glob *]] {
       if { [info exists ExtraSettings($Scenario,$collection,$bitmap)] } { set extra $ExtraSettings($Scenario,$collection,$bitmap) }
       if { $Compress } {
         exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\" $extra/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\" $extra/>"
       } else {
-        set outputFile [file join $TopDir TTEP-$Scenario $collection $clut $base.png]
+        set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.png]
         exec convert $TempFile -resize $size $outputFile
-        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\" $extra/>"
+        puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\" $extra/>"
       }
 
       if { $InfraVision } {
@@ -422,7 +423,7 @@ foreach collection [lsort [glob *]] {
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
 
-        set VisionTempFile [file join $TopDir TTEP-$Scenario-PNG $collection $clut $base-IR.png]
+        set VisionTempFile [file join $TopDir ${TextureSet}-$Scenario-PNG $collection $clut $base-IR.png]
         exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize $VisionTempFile
         # puts [list convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" $VisionTempFile]
 
@@ -430,13 +431,13 @@ foreach collection [lsort [glob *]] {
           set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
           exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
+          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
         } else {
           # Don't compress, so we don't need to do anything
           # set VisionFile [file join [file dir $outputFile] $base-IR.png]
           # exec convert $VisionTempFile -resize $size $outputFile
           # NB, clut 8 is Infravision, 9 is silhouette
-          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"TTEP-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\" $extra/>"
+          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\" $extra/>"
         }
       }
     }

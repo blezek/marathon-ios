@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2010 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2011 Urban Airship Inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -24,17 +24,39 @@
  */
 
 #import <Foundation/Foundation.h>
-
-
-FOUNDATION_EXPORT NSString *UADocumentDirectory(void);
+#import "UA_ASIHTTPRequest.h"
 
 @interface UAUtils : NSObject {
 
 }
 
 + (NSString *)udidHash;
-+ (NSString *)pluralize:(int)count singularForm:(NSString*)singular
+
++ (NSString *)deviceModelName;
+
++ (NSString *)pluralize:(int)count 
+             singularForm:(NSString*)singular
              pluralForm:(NSString*)plural;
+
 + (NSString *)getReadableFileSizeFromBytes:(double)bytes;
+
+//HTTP Request Helpers
++ (UA_ASIHTTPRequest *)userRequestWithURL:(NSURL *)url method:(NSString *)method
+                                 delegate:(id)delegate finish:(SEL)selector;
+
++ (UA_ASIHTTPRequest *)userRequestWithURL:(NSURL *)url method:(NSString *)method
+                                 delegate:(id)delegate finish:(SEL)sel1 fail:(SEL)sel2;
+
++ (UA_ASIHTTPRequest *)requestWithURL:(NSURL *)url method:(NSString *)method
+                             delegate:(id)delegate finish:(SEL)selector;
+
++ (UA_ASIHTTPRequest *)requestWithURL:(NSURL *)url method:(NSString *)method
+                             delegate:(id)delegate finish:(SEL)sel1 fail:(SEL)sel2;
+
+//HTTP Response Helpers
++ (id)responseFromRequest:(UA_ASIHTTPRequest *)request;
++ (id)parseJSON:(NSString *)responseString;
++ (void)requestWentWrong:(UA_ASIHTTPRequest*)request;
++ (void)requestWentWrong:(UA_ASIHTTPRequest*)request keyword:(NSString *)keyword;
 
 @end

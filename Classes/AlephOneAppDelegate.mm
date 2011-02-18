@@ -129,10 +129,8 @@ extern int SDL_main(int argc, char *argv[]);
     NSString *localhost = @"localhost";
 #else 
     NSString *localhost = @"10.0.0.10";    
-    NSString *RemoteURL = @"http://s3.amazonaws.com/";
-    NSString *RemoteHost = @"s3.amazonaws.com";
-    RemoteURL = @"http://dhuphyigw82rv.cloudfront.net";
-    RemoteHost = @"dhuphyigw82rv.cloudfront.net";
+    NSString *RemoteURL = Content_Delivery_URL;
+    NSString *RemoteHost = Content_Delivery_Host;
 #endif
     
 #if SCENARIO == 1
@@ -202,6 +200,8 @@ extern int SDL_main(int argc, char *argv[]);
   [window addSubview:self.game.view];
   
   MLog ( @"Loaded view: %@", self.game.view );
+  
+  
   
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];

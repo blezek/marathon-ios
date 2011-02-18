@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2010 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2011 Urban Airship Inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -23,10 +23,26 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "UAViewUtils.h"
+#import <UIKit/UIKit.h>
 
+// ALog always displays output regardless of the DEBUG setting
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define BLog(fmt, ...) \
+    do { \
+        if (releaseLogging) { \
+            NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); \
+        } \
+    } while(0)
 
-#define UALOG NSLog
+// DEBUG set in debug build setting's "Other C flags", as -DDEBUG
+#ifdef DEBUG
+#define DLog ALog
+#else
+#define DLog BLog
+extern BOOL releaseLogging; // Default is false
+#endif
+
+#define UALOG DLog
 
 // constants
 #define kAirshipProductionServer @"https://go.urbanairship.com"
@@ -79,8 +95,29 @@ g/255.0f, b/255.0f, a)
 // code block
 #define RELEASE_SAFELY(__POINTER) { [__POINTER release]; __POINTER = nil; }
 
+#ifdef _UA_VERSION
+#define UA_VERSION @ _UA_VERSION
+#else
+#define UA_VERSION @ "1.0.0"
+#endif
+
+#define UA_VERSION_INTERFACE(CLASSNAME)  \
+@interface CLASSNAME : NSObject         \
++ (NSString *)get;                      \
+@end
+
+
+#define UA_VERSION_IMPLEMENTATION(CLASSNAME, VERSION_STR)    \
+@implementation CLASSNAME                                   \
++ (NSString *)get {                                         \
+return VERSION_STR;                                     \
+}                                                           \
+@end
+
+
 #define SINGLETON_INTERFACE(CLASSNAME)  \
-+ (CLASSNAME*)shared;
++ (CLASSNAME*)shared;\
+- (void)forceRelease;
 
 
 #define SINGLETON_IMPLEMENTATION(CLASSNAME)         \
@@ -125,17 +162,37 @@ return self;                                        \
 return self;                                        \
 }                                                   \
 \
-- (unsigned)retainCount                             \
-{                                                   \
-return UINT_MAX;                                    \
-}                                                   \
-\
 - (void)release                                     \
 {                                                   \
+}                                                   \
+\
+- (void)forceRelease {                              \
+UALOG(@"Force release "#CLASSNAME"");               \
+@synchronized(self) {                               \
+if (g_shared##CLASSNAME != nil) {                   \
+g_shared##CLASSNAME = nil;                          \
+}                                                   \
+}                                                   \
+[super release];                                    \
 }                                                   \
 \
 - (id)autorelease                                   \
 {                                                   \
 return self;                                        \
 }
+
+
+#ifndef kCFCoreFoundationVersionNumber_iPhoneOS_4_0
+#define kCFCoreFoundationVersionNumber_iPhoneOS_4_0 550.32
+#endif
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+#define IF_IOS4_OR_GREATER(...) \
+if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iPhoneOS_4_0) \
+{ \
+__VA_ARGS__ \
+}
+#else
+#define IF_IOS4_OR_GREATER(...)
+#endif
 

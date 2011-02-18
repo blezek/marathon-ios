@@ -55,6 +55,7 @@
 		A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77912E939880077C779 /* alephone2-icon-ipad.png */; };
 		A83DC78B12E939880077C779 /* alephone-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77412E939880077C779 /* alephone-icon-512px.png */; };
 		A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77512E939880077C779 /* alephone-icon-ipad.png */; };
+		A84CA7A1130E23B100A3A4F4 /* Airship.plist in Resources */ = {isa = PBXBuildFile; fileRef = A84CA7A0130E23B100A3A4F4 /* Airship.plist */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
@@ -291,7 +292,6 @@
 		A85E681511CB173A00D0FAEF /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
 		A85E681611CB173A00D0FAEF /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A85E681711CB173A00D0FAEF /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
-		A85E681811CB173A00D0FAEF /* SDL_coreaudio_iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */; };
 		A85E681911CB173A00D0FAEF /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
 		A85E681A11CB173A00D0FAEF /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
 		A85E681B11CB173A00D0FAEF /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
@@ -709,7 +709,6 @@
 		A881212D12C7816300A1A08E /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
 		A881212E12C7816300A1A08E /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A881212F12C7816300A1A08E /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
-		A881213012C7816300A1A08E /* SDL_coreaudio_iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */; };
 		A881213112C7816300A1A08E /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
 		A881213212C7816300A1A08E /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
 		A881213312C7816300A1A08E /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
@@ -1209,7 +1208,6 @@
 		A881233212C7826300A1A08E /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
 		A881233312C7826300A1A08E /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
 		A881233412C7826300A1A08E /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
-		A881233512C7826300A1A08E /* SDL_coreaudio_iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */; };
 		A881233612C7826300A1A08E /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
 		A881233712C7826300A1A08E /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
 		A881233812C7826300A1A08E /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
@@ -1562,117 +1560,6 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
-		A8C4B65F12EFCC8200D5D23F /* Airship.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FC12EFCC8200D5D23F /* Airship.m */; };
-		A8C4B66012EFCC8200D5D23F /* UAAsycImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FE12EFCC8200D5D23F /* UAAsycImageView.m */; };
-		A8C4B66112EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60012EFCC8200D5D23F /* UABarButtonSegmentedControl.m */; };
-		A8C4B66212EFCC8200D5D23F /* UADateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60212EFCC8200D5D23F /* UADateUtils.m */; };
-		A8C4B66312EFCC8200D5D23F /* UAObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60512EFCC8200D5D23F /* UAObservable.m */; };
-		A8C4B66412EFCC8200D5D23F /* UAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60712EFCC8200D5D23F /* UAUtils.m */; };
-		A8C4B66512EFCC8200D5D23F /* UAViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60912EFCC8200D5D23F /* UAViewUtils.m */; };
-		A8C4B66B12EFCC8200D5D23F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61B12EFCC8200D5D23F /* SBJSON.m */; };
-		A8C4B66C12EFCC8200D5D23F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61D12EFCC8200D5D23F /* SBJsonBase.m */; };
-		A8C4B66D12EFCC8200D5D23F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61F12EFCC8200D5D23F /* SBJsonParser.m */; };
-		A8C4B66E12EFCC8200D5D23F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62112EFCC8200D5D23F /* SBJsonWriter.m */; };
-		A8C4B67012EFCC8200D5D23F /* UABase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62512EFCC8200D5D23F /* UABase64.m */; };
-		A8C4B67712EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63812EFCC8200D5D23F /* UAProductDetailiPadViewController.m */; };
-		A8C4B67812EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63A12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m */; };
-		A8C4B67912EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63C12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m */; };
-		A8C4B67A12EFCC8200D5D23F /* accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63E12EFCC8200D5D23F /* accessory.png */; };
-		A8C4B67B12EFCC8200D5D23F /* accessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63F12EFCC8200D5D23F /* accessory@2x.png */; };
-		A8C4B67C12EFCC8200D5D23F /* detail-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64012EFCC8200D5D23F /* detail-bottom.png */; };
-		A8C4B67D12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64112EFCC8200D5D23F /* detail-bottom@2x.png */; };
-		A8C4B67E12EFCC8200D5D23F /* middle-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64212EFCC8200D5D23F /* middle-detail.png */; };
-		A8C4B67F12EFCC8200D5D23F /* middle-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64312EFCC8200D5D23F /* middle-detail@2x.png */; };
-		A8C4B68012EFCC8200D5D23F /* top-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64412EFCC8200D5D23F /* top-detail.png */; };
-		A8C4B68112EFCC8200D5D23F /* top-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64512EFCC8200D5D23F /* top-detail@2x.png */; };
-		A8C4B68212EFCC8200D5D23F /* UAProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64612EFCC8200D5D23F /* UAProductDetail.xib */; };
-		A8C4B68312EFCC8200D5D23F /* UAStoreFront.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64712EFCC8200D5D23F /* UAStoreFront.xib */; };
-		A8C4B68412EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64812EFCC8200D5D23F /* UAStoreFrontLocalization.bundle */; };
-		A8C4B68512EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64A12EFCC8200D5D23F /* UAProductDetailiPad.xib */; };
-		A8C4B68612EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64B12EFCC8200D5D23F /* UAStoreFrontiPad.xib */; };
-		A8C4B68712EFCC8200D5D23F /* StoreFront.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B64D12EFCC8200D5D23F /* StoreFront.m */; };
-		A8C4B68812EFCC8200D5D23F /* UAInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65012EFCC8200D5D23F /* UAInventory.m */; };
-		A8C4B68912EFCC8200D5D23F /* UAProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65212EFCC8200D5D23F /* UAProduct.m */; };
-		A8C4B68A12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65412EFCC8200D5D23F /* UAProductDetailViewController.m */; };
-		A8C4B68B12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65612EFCC8200D5D23F /* UAStoreFrontCell.m */; };
-		A8C4B68C12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65812EFCC8200D5D23F /* UAStoreFrontCellView.m */; };
-		A8C4B68D12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65A12EFCC8200D5D23F /* UAStoreFrontViewController.m */; };
-		A8C4B68E12EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65C12EFCC8200D5D23F /* UAStoreKitObserver.m */; };
-		A8C4B68F12EFCC8200D5D23F /* UATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65E12EFCC8200D5D23F /* UATableCell.m */; };
-		A8C4B69012EFCC8200D5D23F /* Airship.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FC12EFCC8200D5D23F /* Airship.m */; };
-		A8C4B69112EFCC8200D5D23F /* UAAsycImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FE12EFCC8200D5D23F /* UAAsycImageView.m */; };
-		A8C4B69212EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60012EFCC8200D5D23F /* UABarButtonSegmentedControl.m */; };
-		A8C4B69312EFCC8200D5D23F /* UADateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60212EFCC8200D5D23F /* UADateUtils.m */; };
-		A8C4B69412EFCC8200D5D23F /* UAObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60512EFCC8200D5D23F /* UAObservable.m */; };
-		A8C4B69512EFCC8200D5D23F /* UAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60712EFCC8200D5D23F /* UAUtils.m */; };
-		A8C4B69612EFCC8200D5D23F /* UAViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60912EFCC8200D5D23F /* UAViewUtils.m */; };
-		A8C4B69C12EFCC8200D5D23F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61B12EFCC8200D5D23F /* SBJSON.m */; };
-		A8C4B69D12EFCC8200D5D23F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61D12EFCC8200D5D23F /* SBJsonBase.m */; };
-		A8C4B69E12EFCC8200D5D23F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61F12EFCC8200D5D23F /* SBJsonParser.m */; };
-		A8C4B69F12EFCC8200D5D23F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62112EFCC8200D5D23F /* SBJsonWriter.m */; };
-		A8C4B6A112EFCC8200D5D23F /* UABase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62512EFCC8200D5D23F /* UABase64.m */; };
-		A8C4B6A812EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63812EFCC8200D5D23F /* UAProductDetailiPadViewController.m */; };
-		A8C4B6A912EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63A12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m */; };
-		A8C4B6AA12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63C12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m */; };
-		A8C4B6AB12EFCC8200D5D23F /* accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63E12EFCC8200D5D23F /* accessory.png */; };
-		A8C4B6AC12EFCC8200D5D23F /* accessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63F12EFCC8200D5D23F /* accessory@2x.png */; };
-		A8C4B6AD12EFCC8200D5D23F /* detail-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64012EFCC8200D5D23F /* detail-bottom.png */; };
-		A8C4B6AE12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64112EFCC8200D5D23F /* detail-bottom@2x.png */; };
-		A8C4B6AF12EFCC8200D5D23F /* middle-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64212EFCC8200D5D23F /* middle-detail.png */; };
-		A8C4B6B012EFCC8200D5D23F /* middle-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64312EFCC8200D5D23F /* middle-detail@2x.png */; };
-		A8C4B6B112EFCC8200D5D23F /* top-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64412EFCC8200D5D23F /* top-detail.png */; };
-		A8C4B6B212EFCC8200D5D23F /* top-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64512EFCC8200D5D23F /* top-detail@2x.png */; };
-		A8C4B6B312EFCC8200D5D23F /* UAProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64612EFCC8200D5D23F /* UAProductDetail.xib */; };
-		A8C4B6B412EFCC8200D5D23F /* UAStoreFront.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64712EFCC8200D5D23F /* UAStoreFront.xib */; };
-		A8C4B6B512EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64812EFCC8200D5D23F /* UAStoreFrontLocalization.bundle */; };
-		A8C4B6B612EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64A12EFCC8200D5D23F /* UAProductDetailiPad.xib */; };
-		A8C4B6B712EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64B12EFCC8200D5D23F /* UAStoreFrontiPad.xib */; };
-		A8C4B6B812EFCC8200D5D23F /* StoreFront.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B64D12EFCC8200D5D23F /* StoreFront.m */; };
-		A8C4B6B912EFCC8200D5D23F /* UAInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65012EFCC8200D5D23F /* UAInventory.m */; };
-		A8C4B6BA12EFCC8200D5D23F /* UAProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65212EFCC8200D5D23F /* UAProduct.m */; };
-		A8C4B6BB12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65412EFCC8200D5D23F /* UAProductDetailViewController.m */; };
-		A8C4B6BC12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65612EFCC8200D5D23F /* UAStoreFrontCell.m */; };
-		A8C4B6BD12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65812EFCC8200D5D23F /* UAStoreFrontCellView.m */; };
-		A8C4B6BE12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65A12EFCC8200D5D23F /* UAStoreFrontViewController.m */; };
-		A8C4B6BF12EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65C12EFCC8200D5D23F /* UAStoreKitObserver.m */; };
-		A8C4B6C012EFCC8200D5D23F /* UATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65E12EFCC8200D5D23F /* UATableCell.m */; };
-		A8C4B6C112EFCC8200D5D23F /* Airship.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FC12EFCC8200D5D23F /* Airship.m */; };
-		A8C4B6C212EFCC8200D5D23F /* UAAsycImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B5FE12EFCC8200D5D23F /* UAAsycImageView.m */; };
-		A8C4B6C312EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60012EFCC8200D5D23F /* UABarButtonSegmentedControl.m */; };
-		A8C4B6C412EFCC8200D5D23F /* UADateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60212EFCC8200D5D23F /* UADateUtils.m */; };
-		A8C4B6C512EFCC8200D5D23F /* UAObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60512EFCC8200D5D23F /* UAObservable.m */; };
-		A8C4B6C612EFCC8200D5D23F /* UAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60712EFCC8200D5D23F /* UAUtils.m */; };
-		A8C4B6C712EFCC8200D5D23F /* UAViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B60912EFCC8200D5D23F /* UAViewUtils.m */; };
-		A8C4B6CD12EFCC8200D5D23F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61B12EFCC8200D5D23F /* SBJSON.m */; };
-		A8C4B6CE12EFCC8200D5D23F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61D12EFCC8200D5D23F /* SBJsonBase.m */; };
-		A8C4B6CF12EFCC8200D5D23F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B61F12EFCC8200D5D23F /* SBJsonParser.m */; };
-		A8C4B6D012EFCC8200D5D23F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62112EFCC8200D5D23F /* SBJsonWriter.m */; };
-		A8C4B6D212EFCC8200D5D23F /* UABase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B62512EFCC8200D5D23F /* UABase64.m */; };
-		A8C4B6D912EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63812EFCC8200D5D23F /* UAProductDetailiPadViewController.m */; };
-		A8C4B6DA12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63A12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m */; };
-		A8C4B6DB12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B63C12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m */; };
-		A8C4B6DC12EFCC8200D5D23F /* accessory.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63E12EFCC8200D5D23F /* accessory.png */; };
-		A8C4B6DD12EFCC8200D5D23F /* accessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B63F12EFCC8200D5D23F /* accessory@2x.png */; };
-		A8C4B6DE12EFCC8200D5D23F /* detail-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64012EFCC8200D5D23F /* detail-bottom.png */; };
-		A8C4B6DF12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64112EFCC8200D5D23F /* detail-bottom@2x.png */; };
-		A8C4B6E012EFCC8200D5D23F /* middle-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64212EFCC8200D5D23F /* middle-detail.png */; };
-		A8C4B6E112EFCC8200D5D23F /* middle-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64312EFCC8200D5D23F /* middle-detail@2x.png */; };
-		A8C4B6E212EFCC8200D5D23F /* top-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64412EFCC8200D5D23F /* top-detail.png */; };
-		A8C4B6E312EFCC8200D5D23F /* top-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64512EFCC8200D5D23F /* top-detail@2x.png */; };
-		A8C4B6E412EFCC8200D5D23F /* UAProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64612EFCC8200D5D23F /* UAProductDetail.xib */; };
-		A8C4B6E512EFCC8200D5D23F /* UAStoreFront.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64712EFCC8200D5D23F /* UAStoreFront.xib */; };
-		A8C4B6E612EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64812EFCC8200D5D23F /* UAStoreFrontLocalization.bundle */; };
-		A8C4B6E712EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64A12EFCC8200D5D23F /* UAProductDetailiPad.xib */; };
-		A8C4B6E812EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C4B64B12EFCC8200D5D23F /* UAStoreFrontiPad.xib */; };
-		A8C4B6E912EFCC8200D5D23F /* StoreFront.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B64D12EFCC8200D5D23F /* StoreFront.m */; };
-		A8C4B6EA12EFCC8200D5D23F /* UAInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65012EFCC8200D5D23F /* UAInventory.m */; };
-		A8C4B6EB12EFCC8200D5D23F /* UAProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65212EFCC8200D5D23F /* UAProduct.m */; };
-		A8C4B6EC12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65412EFCC8200D5D23F /* UAProductDetailViewController.m */; };
-		A8C4B6ED12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65612EFCC8200D5D23F /* UAStoreFrontCell.m */; };
-		A8C4B6EE12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65812EFCC8200D5D23F /* UAStoreFrontCellView.m */; };
-		A8C4B6EF12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65A12EFCC8200D5D23F /* UAStoreFrontViewController.m */; };
-		A8C4B6F012EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65C12EFCC8200D5D23F /* UAStoreKitObserver.m */; };
-		A8C4B6F112EFCC8200D5D23F /* UATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B65E12EFCC8200D5D23F /* UATableCell.m */; };
 		A8C4B6F912EFCD0400D5D23F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
 		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
@@ -1681,9 +1568,6 @@
 		A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A8C4B70612EFCD6900D5D23F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
-		A8C4B71912EFCE6500D5D23F /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B71812EFCE6500D5D23F /* ASIDownloadCache.m */; };
-		A8C4B71A12EFCE6500D5D23F /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B71812EFCE6500D5D23F /* ASIDownloadCache.m */; };
-		A8C4B71B12EFCE6500D5D23F /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4B71812EFCE6500D5D23F /* ASIDownloadCache.m */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA981265465A002211FB /* ProgressLogo.png */; };
@@ -1805,8 +1689,6 @@
 		A80E9E791280F729005371AB /* synth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synth.c; path = "Libraries/libmad-0.15.1b/synth.c"; sourceTree = SOURCE_ROOT; };
 		A80E9E7A1280F729005371AB /* timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = timer.c; path = "Libraries/libmad-0.15.1b/timer.c"; sourceTree = SOURCE_ROOT; };
 		A80E9E7B1280F729005371AB /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = "Libraries/libmad-0.15.1b/version.c"; sourceTree = SOURCE_ROOT; };
-		A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDL_coreaudio_iphone.c; path = Classes/SDL_coreaudio_iphone.c; sourceTree = "<group>"; };
-		A80EAA9511C073AD000AC9E1 /* SDL_coreaudio_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_coreaudio_iphone.h; path = Classes/SDL_coreaudio_iphone.h; sourceTree = "<group>"; };
 		A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDL_sysjoystick.m; path = Classes/SDL_sysjoystick.m; sourceTree = "<group>"; };
 		A80EAA9711C073AD000AC9E1 /* SDLUIAccelerationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLUIAccelerationDelegate.h; path = Classes/SDLUIAccelerationDelegate.h; sourceTree = "<group>"; };
 		A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLUIAccelerationDelegate.m; path = Classes/SDLUIAccelerationDelegate.m; sourceTree = "<group>"; };
@@ -1925,6 +1807,8 @@
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
 		A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneHelper.mm; path = Classes/AlephOneHelper.mm; sourceTree = "<group>"; };
+		A84CA788130E1F9800A3A4F4 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
+		A84CA7A0130E23B100A3A4F4 /* Airship.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Airship.plist; path = Resources/M1/Airship.plist; sourceTree = "<group>"; };
 		A850886611C1E46500D95436 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A850886711C1E46500D95436 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		A850886811C1E46500D95436 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -2651,69 +2535,6 @@
 		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
 		A8C3922C129789A100E09E32 /* HelpViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HelpViewController.mm; path = Classes/HelpViewController.mm; sourceTree = "<group>"; };
 		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
-		A8C4B5FB12EFCC8200D5D23F /* Airship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Airship.h; sourceTree = "<group>"; };
-		A8C4B5FC12EFCC8200D5D23F /* Airship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Airship.m; sourceTree = "<group>"; };
-		A8C4B5FD12EFCC8200D5D23F /* UAAsycImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAAsycImageView.h; sourceTree = "<group>"; };
-		A8C4B5FE12EFCC8200D5D23F /* UAAsycImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAAsycImageView.m; sourceTree = "<group>"; };
-		A8C4B5FF12EFCC8200D5D23F /* UABarButtonSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UABarButtonSegmentedControl.h; sourceTree = "<group>"; };
-		A8C4B60012EFCC8200D5D23F /* UABarButtonSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UABarButtonSegmentedControl.m; sourceTree = "<group>"; };
-		A8C4B60112EFCC8200D5D23F /* UADateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UADateUtils.h; sourceTree = "<group>"; };
-		A8C4B60212EFCC8200D5D23F /* UADateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UADateUtils.m; sourceTree = "<group>"; };
-		A8C4B60312EFCC8200D5D23F /* UAGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAGlobal.h; sourceTree = "<group>"; };
-		A8C4B60412EFCC8200D5D23F /* UAObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAObservable.h; sourceTree = "<group>"; };
-		A8C4B60512EFCC8200D5D23F /* UAObservable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAObservable.m; sourceTree = "<group>"; };
-		A8C4B60612EFCC8200D5D23F /* UAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAUtils.h; sourceTree = "<group>"; };
-		A8C4B60712EFCC8200D5D23F /* UAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAUtils.m; sourceTree = "<group>"; };
-		A8C4B60812EFCC8200D5D23F /* UAViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAViewUtils.h; sourceTree = "<group>"; };
-		A8C4B60912EFCC8200D5D23F /* UAViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAViewUtils.m; sourceTree = "<group>"; };
-		A8C4B61A12EFCC8200D5D23F /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		A8C4B61B12EFCC8200D5D23F /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		A8C4B61C12EFCC8200D5D23F /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		A8C4B61D12EFCC8200D5D23F /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		A8C4B61E12EFCC8200D5D23F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		A8C4B61F12EFCC8200D5D23F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		A8C4B62012EFCC8200D5D23F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		A8C4B62112EFCC8200D5D23F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		A8C4B62412EFCC8200D5D23F /* UABase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UABase64.h; sourceTree = "<group>"; };
-		A8C4B62512EFCC8200D5D23F /* UABase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UABase64.m; sourceTree = "<group>"; };
-		A8C4B63712EFCC8200D5D23F /* UAProductDetailiPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProductDetailiPadViewController.h; sourceTree = "<group>"; };
-		A8C4B63812EFCC8200D5D23F /* UAProductDetailiPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProductDetailiPadViewController.m; sourceTree = "<group>"; };
-		A8C4B63912EFCC8200D5D23F /* UAStoreFrontiPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreFrontiPadViewController.h; sourceTree = "<group>"; };
-		A8C4B63A12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreFrontiPadViewController.m; sourceTree = "<group>"; };
-		A8C4B63B12EFCC8200D5D23F /* UAStoreFrontSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreFrontSplitViewController.h; sourceTree = "<group>"; };
-		A8C4B63C12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreFrontSplitViewController.m; sourceTree = "<group>"; };
-		A8C4B63E12EFCC8200D5D23F /* accessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accessory.png; sourceTree = "<group>"; };
-		A8C4B63F12EFCC8200D5D23F /* accessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accessory@2x.png"; sourceTree = "<group>"; };
-		A8C4B64012EFCC8200D5D23F /* detail-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail-bottom.png"; sourceTree = "<group>"; };
-		A8C4B64112EFCC8200D5D23F /* detail-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail-bottom@2x.png"; sourceTree = "<group>"; };
-		A8C4B64212EFCC8200D5D23F /* middle-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-detail.png"; sourceTree = "<group>"; };
-		A8C4B64312EFCC8200D5D23F /* middle-detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-detail@2x.png"; sourceTree = "<group>"; };
-		A8C4B64412EFCC8200D5D23F /* top-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-detail.png"; sourceTree = "<group>"; };
-		A8C4B64512EFCC8200D5D23F /* top-detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-detail@2x.png"; sourceTree = "<group>"; };
-		A8C4B64612EFCC8200D5D23F /* UAProductDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UAProductDetail.xib; sourceTree = "<group>"; };
-		A8C4B64712EFCC8200D5D23F /* UAStoreFront.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UAStoreFront.xib; sourceTree = "<group>"; };
-		A8C4B64812EFCC8200D5D23F /* UAStoreFrontLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UAStoreFrontLocalization.bundle; sourceTree = "<group>"; };
-		A8C4B64A12EFCC8200D5D23F /* UAProductDetailiPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UAProductDetailiPad.xib; sourceTree = "<group>"; };
-		A8C4B64B12EFCC8200D5D23F /* UAStoreFrontiPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UAStoreFrontiPad.xib; sourceTree = "<group>"; };
-		A8C4B64C12EFCC8200D5D23F /* StoreFront.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreFront.h; sourceTree = "<group>"; };
-		A8C4B64D12EFCC8200D5D23F /* StoreFront.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreFront.m; sourceTree = "<group>"; };
-		A8C4B64E12EFCC8200D5D23F /* StoreFrontDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreFrontDelegate.h; sourceTree = "<group>"; };
-		A8C4B64F12EFCC8200D5D23F /* UAInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInventory.h; sourceTree = "<group>"; };
-		A8C4B65012EFCC8200D5D23F /* UAInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInventory.m; sourceTree = "<group>"; };
-		A8C4B65112EFCC8200D5D23F /* UAProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProduct.h; sourceTree = "<group>"; };
-		A8C4B65212EFCC8200D5D23F /* UAProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProduct.m; sourceTree = "<group>"; };
-		A8C4B65312EFCC8200D5D23F /* UAProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProductDetailViewController.h; sourceTree = "<group>"; };
-		A8C4B65412EFCC8200D5D23F /* UAProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProductDetailViewController.m; sourceTree = "<group>"; };
-		A8C4B65512EFCC8200D5D23F /* UAStoreFrontCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreFrontCell.h; sourceTree = "<group>"; };
-		A8C4B65612EFCC8200D5D23F /* UAStoreFrontCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreFrontCell.m; sourceTree = "<group>"; };
-		A8C4B65712EFCC8200D5D23F /* UAStoreFrontCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreFrontCellView.h; sourceTree = "<group>"; };
-		A8C4B65812EFCC8200D5D23F /* UAStoreFrontCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreFrontCellView.m; sourceTree = "<group>"; };
-		A8C4B65912EFCC8200D5D23F /* UAStoreFrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreFrontViewController.h; sourceTree = "<group>"; };
-		A8C4B65A12EFCC8200D5D23F /* UAStoreFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreFrontViewController.m; sourceTree = "<group>"; };
-		A8C4B65B12EFCC8200D5D23F /* UAStoreKitObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAStoreKitObserver.h; sourceTree = "<group>"; };
-		A8C4B65C12EFCC8200D5D23F /* UAStoreKitObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAStoreKitObserver.m; sourceTree = "<group>"; };
-		A8C4B65D12EFCC8200D5D23F /* UATableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UATableCell.h; sourceTree = "<group>"; };
-		A8C4B65E12EFCC8200D5D23F /* UATableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UATableCell.m; sourceTree = "<group>"; };
 		A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2722,8 +2543,6 @@
 		A8C4B70312EFCD6900D5D23F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		A8C4B71712EFCE6400D5D23F /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "External/asi-http-request/ASIDownloadCache.h"; sourceTree = "<group>"; };
-		A8C4B71812EFCE6500D5D23F /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDownloadCache.m; path = "External/asi-http-request/ASIDownloadCache.m"; sourceTree = "<group>"; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
@@ -2929,8 +2748,6 @@
 			children = (
 				A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */,
 				A80EAAE311C07A26000AC9E1 /* SDL_renderer_gles.h */,
-				A80EAA9411C073AD000AC9E1 /* SDL_coreaudio_iphone.c */,
-				A80EAA9511C073AD000AC9E1 /* SDL_coreaudio_iphone.h */,
 				A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */,
 				A80EAA9711C073AD000AC9E1 /* SDLUIAccelerationDelegate.h */,
 				A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */,
@@ -2972,6 +2789,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
+				A84CA7A0130E23B100A3A4F4 /* Airship.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3107,6 +2925,7 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A84CA788130E1F9800A3A4F4 /* Secrets.h */,
 				A8EB682512DC1413001D43EA /* Appirater.h */,
 				A8EB682612DC1413001D43EA /* Appirater.m */,
 				A88124A012C79E0100A1A08E /* FilmCell.h */,
@@ -4394,130 +4213,9 @@
 		A8C4B5F912EFCC8100D5D23F /* Airship */ = {
 			isa = PBXGroup;
 			children = (
-				A8C4B71712EFCE6400D5D23F /* ASIDownloadCache.h */,
-				A8C4B71812EFCE6500D5D23F /* ASIDownloadCache.m */,
-				A8C4B5FA12EFCC8200D5D23F /* Common */,
-				A8C4B60A12EFCC8200D5D23F /* External */,
-				A8C4B63512EFCC8200D5D23F /* StoreFront */,
 			);
 			name = Airship;
 			path = Classes/Airship;
-			sourceTree = "<group>";
-		};
-		A8C4B5FA12EFCC8200D5D23F /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B5FB12EFCC8200D5D23F /* Airship.h */,
-				A8C4B5FC12EFCC8200D5D23F /* Airship.m */,
-				A8C4B5FD12EFCC8200D5D23F /* UAAsycImageView.h */,
-				A8C4B5FE12EFCC8200D5D23F /* UAAsycImageView.m */,
-				A8C4B5FF12EFCC8200D5D23F /* UABarButtonSegmentedControl.h */,
-				A8C4B60012EFCC8200D5D23F /* UABarButtonSegmentedControl.m */,
-				A8C4B60112EFCC8200D5D23F /* UADateUtils.h */,
-				A8C4B60212EFCC8200D5D23F /* UADateUtils.m */,
-				A8C4B60312EFCC8200D5D23F /* UAGlobal.h */,
-				A8C4B60412EFCC8200D5D23F /* UAObservable.h */,
-				A8C4B60512EFCC8200D5D23F /* UAObservable.m */,
-				A8C4B60612EFCC8200D5D23F /* UAUtils.h */,
-				A8C4B60712EFCC8200D5D23F /* UAUtils.m */,
-				A8C4B60812EFCC8200D5D23F /* UAViewUtils.h */,
-				A8C4B60912EFCC8200D5D23F /* UAViewUtils.m */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		A8C4B60A12EFCC8200D5D23F /* External */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B61912EFCC8200D5D23F /* json-framework */,
-				A8C4B62412EFCC8200D5D23F /* UABase64.h */,
-				A8C4B62512EFCC8200D5D23F /* UABase64.m */,
-			);
-			path = External;
-			sourceTree = "<group>";
-		};
-		A8C4B61912EFCC8200D5D23F /* json-framework */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B61A12EFCC8200D5D23F /* SBJSON.h */,
-				A8C4B61B12EFCC8200D5D23F /* SBJSON.m */,
-				A8C4B61C12EFCC8200D5D23F /* SBJsonBase.h */,
-				A8C4B61D12EFCC8200D5D23F /* SBJsonBase.m */,
-				A8C4B61E12EFCC8200D5D23F /* SBJsonParser.h */,
-				A8C4B61F12EFCC8200D5D23F /* SBJsonParser.m */,
-				A8C4B62012EFCC8200D5D23F /* SBJsonWriter.h */,
-				A8C4B62112EFCC8200D5D23F /* SBJsonWriter.m */,
-			);
-			path = "json-framework";
-			sourceTree = "<group>";
-		};
-		A8C4B63512EFCC8200D5D23F /* StoreFront */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B63612EFCC8200D5D23F /* Classes-iPad */,
-				A8C4B63D12EFCC8200D5D23F /* Resources */,
-				A8C4B64912EFCC8200D5D23F /* Resources-iPad */,
-				A8C4B64C12EFCC8200D5D23F /* StoreFront.h */,
-				A8C4B64D12EFCC8200D5D23F /* StoreFront.m */,
-				A8C4B64E12EFCC8200D5D23F /* StoreFrontDelegate.h */,
-				A8C4B64F12EFCC8200D5D23F /* UAInventory.h */,
-				A8C4B65012EFCC8200D5D23F /* UAInventory.m */,
-				A8C4B65112EFCC8200D5D23F /* UAProduct.h */,
-				A8C4B65212EFCC8200D5D23F /* UAProduct.m */,
-				A8C4B65312EFCC8200D5D23F /* UAProductDetailViewController.h */,
-				A8C4B65412EFCC8200D5D23F /* UAProductDetailViewController.m */,
-				A8C4B65512EFCC8200D5D23F /* UAStoreFrontCell.h */,
-				A8C4B65612EFCC8200D5D23F /* UAStoreFrontCell.m */,
-				A8C4B65712EFCC8200D5D23F /* UAStoreFrontCellView.h */,
-				A8C4B65812EFCC8200D5D23F /* UAStoreFrontCellView.m */,
-				A8C4B65912EFCC8200D5D23F /* UAStoreFrontViewController.h */,
-				A8C4B65A12EFCC8200D5D23F /* UAStoreFrontViewController.m */,
-				A8C4B65B12EFCC8200D5D23F /* UAStoreKitObserver.h */,
-				A8C4B65C12EFCC8200D5D23F /* UAStoreKitObserver.m */,
-				A8C4B65D12EFCC8200D5D23F /* UATableCell.h */,
-				A8C4B65E12EFCC8200D5D23F /* UATableCell.m */,
-			);
-			path = StoreFront;
-			sourceTree = "<group>";
-		};
-		A8C4B63612EFCC8200D5D23F /* Classes-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B63712EFCC8200D5D23F /* UAProductDetailiPadViewController.h */,
-				A8C4B63812EFCC8200D5D23F /* UAProductDetailiPadViewController.m */,
-				A8C4B63912EFCC8200D5D23F /* UAStoreFrontiPadViewController.h */,
-				A8C4B63A12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m */,
-				A8C4B63B12EFCC8200D5D23F /* UAStoreFrontSplitViewController.h */,
-				A8C4B63C12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m */,
-			);
-			path = "Classes-iPad";
-			sourceTree = "<group>";
-		};
-		A8C4B63D12EFCC8200D5D23F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B63E12EFCC8200D5D23F /* accessory.png */,
-				A8C4B63F12EFCC8200D5D23F /* accessory@2x.png */,
-				A8C4B64012EFCC8200D5D23F /* detail-bottom.png */,
-				A8C4B64112EFCC8200D5D23F /* detail-bottom@2x.png */,
-				A8C4B64212EFCC8200D5D23F /* middle-detail.png */,
-				A8C4B64312EFCC8200D5D23F /* middle-detail@2x.png */,
-				A8C4B64412EFCC8200D5D23F /* top-detail.png */,
-				A8C4B64512EFCC8200D5D23F /* top-detail@2x.png */,
-				A8C4B64612EFCC8200D5D23F /* UAProductDetail.xib */,
-				A8C4B64712EFCC8200D5D23F /* UAStoreFront.xib */,
-				A8C4B64812EFCC8200D5D23F /* UAStoreFrontLocalization.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		A8C4B64912EFCC8200D5D23F /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				A8C4B64A12EFCC8200D5D23F /* UAProductDetailiPad.xib */,
-				A8C4B64B12EFCC8200D5D23F /* UAStoreFrontiPad.xib */,
-			);
-			path = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 		A8CCD13A1280CA7900A62339 /* MAD */ = {
@@ -4802,24 +4500,12 @@
 				A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */,
 				A8F2383412EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383512EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8C4B6DC12EFCC8200D5D23F /* accessory.png in Resources */,
-				A8C4B6DD12EFCC8200D5D23F /* accessory@2x.png in Resources */,
-				A8C4B6DE12EFCC8200D5D23F /* detail-bottom.png in Resources */,
-				A8C4B6DF12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */,
-				A8C4B6E012EFCC8200D5D23F /* middle-detail.png in Resources */,
-				A8C4B6E112EFCC8200D5D23F /* middle-detail@2x.png in Resources */,
-				A8C4B6E212EFCC8200D5D23F /* top-detail.png in Resources */,
-				A8C4B6E312EFCC8200D5D23F /* top-detail@2x.png in Resources */,
-				A8C4B6E412EFCC8200D5D23F /* UAProductDetail.xib in Resources */,
-				A8C4B6E512EFCC8200D5D23F /* UAStoreFront.xib in Resources */,
-				A8C4B6E612EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */,
-				A8C4B6E712EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */,
-				A8C4B6E812EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */,
 				A81C1E2F130B7825002371D5 /* MenuItem-Load.png in Resources */,
 				A81C1E30130B7825002371D5 /* MenuItem-New.png in Resources */,
 				A81C1E31130B7825002371D5 /* MenuItem-Purchases.png in Resources */,
 				A81C1E32130B7825002371D5 /* MenuItem-Settings.png in Resources */,
 				A81C1E33130B7825002371D5 /* MenuItem-Store.png in Resources */,
+				A84CA7A1130E23B100A3A4F4 /* Airship.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4917,19 +4603,6 @@
 				A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */,
 				A8F2383212EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383312EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8C4B6AB12EFCC8200D5D23F /* accessory.png in Resources */,
-				A8C4B6AC12EFCC8200D5D23F /* accessory@2x.png in Resources */,
-				A8C4B6AD12EFCC8200D5D23F /* detail-bottom.png in Resources */,
-				A8C4B6AE12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */,
-				A8C4B6AF12EFCC8200D5D23F /* middle-detail.png in Resources */,
-				A8C4B6B012EFCC8200D5D23F /* middle-detail@2x.png in Resources */,
-				A8C4B6B112EFCC8200D5D23F /* top-detail.png in Resources */,
-				A8C4B6B212EFCC8200D5D23F /* top-detail@2x.png in Resources */,
-				A8C4B6B312EFCC8200D5D23F /* UAProductDetail.xib in Resources */,
-				A8C4B6B412EFCC8200D5D23F /* UAStoreFront.xib in Resources */,
-				A8C4B6B512EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */,
-				A8C4B6B612EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */,
-				A8C4B6B712EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */,
 				A81C1E2A130B7825002371D5 /* MenuItem-Load.png in Resources */,
 				A81C1E2B130B7825002371D5 /* MenuItem-New.png in Resources */,
 				A81C1E2C130B7825002371D5 /* MenuItem-Purchases.png in Resources */,
@@ -5032,19 +4705,6 @@
 				A83DC78312E939880077C779 /* alephoneinfinity-icon-ipad.png in Resources */,
 				A8F2383012EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383112EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8C4B67A12EFCC8200D5D23F /* accessory.png in Resources */,
-				A8C4B67B12EFCC8200D5D23F /* accessory@2x.png in Resources */,
-				A8C4B67C12EFCC8200D5D23F /* detail-bottom.png in Resources */,
-				A8C4B67D12EFCC8200D5D23F /* detail-bottom@2x.png in Resources */,
-				A8C4B67E12EFCC8200D5D23F /* middle-detail.png in Resources */,
-				A8C4B67F12EFCC8200D5D23F /* middle-detail@2x.png in Resources */,
-				A8C4B68012EFCC8200D5D23F /* top-detail.png in Resources */,
-				A8C4B68112EFCC8200D5D23F /* top-detail@2x.png in Resources */,
-				A8C4B68212EFCC8200D5D23F /* UAProductDetail.xib in Resources */,
-				A8C4B68312EFCC8200D5D23F /* UAStoreFront.xib in Resources */,
-				A8C4B68412EFCC8200D5D23F /* UAStoreFrontLocalization.bundle in Resources */,
-				A8C4B68512EFCC8200D5D23F /* UAProductDetailiPad.xib in Resources */,
-				A8C4B68612EFCC8200D5D23F /* UAStoreFrontiPad.xib in Resources */,
 				A81C1E25130B7825002371D5 /* MenuItem-Load.png in Resources */,
 				A81C1E26130B7825002371D5 /* MenuItem-New.png in Resources */,
 				A81C1E27130B7825002371D5 /* MenuItem-Purchases.png in Resources */,
@@ -5305,7 +4965,6 @@
 				A85E681511CB173A00D0FAEF /* SDL_uikitvideo.m in Sources */,
 				A85E681611CB173A00D0FAEF /* SDL_uikitview.m in Sources */,
 				A85E681711CB173A00D0FAEF /* SDL_uikitwindow.m in Sources */,
-				A85E681811CB173A00D0FAEF /* SDL_coreaudio_iphone.c in Sources */,
 				A85E681911CB173A00D0FAEF /* SDL_sysjoystick.m in Sources */,
 				A85E681A11CB173A00D0FAEF /* SDLUIAccelerationDelegate.m in Sources */,
 				A85E681B11CB173A00D0FAEF /* SDL_renderer_gles.c in Sources */,
@@ -5471,31 +5130,6 @@
 				A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */,
 				A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */,
 				A8EB682912DC1413001D43EA /* Appirater.m in Sources */,
-				A8C4B6C112EFCC8200D5D23F /* Airship.m in Sources */,
-				A8C4B6C212EFCC8200D5D23F /* UAAsycImageView.m in Sources */,
-				A8C4B6C312EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */,
-				A8C4B6C412EFCC8200D5D23F /* UADateUtils.m in Sources */,
-				A8C4B6C512EFCC8200D5D23F /* UAObservable.m in Sources */,
-				A8C4B6C612EFCC8200D5D23F /* UAUtils.m in Sources */,
-				A8C4B6C712EFCC8200D5D23F /* UAViewUtils.m in Sources */,
-				A8C4B6CD12EFCC8200D5D23F /* SBJSON.m in Sources */,
-				A8C4B6CE12EFCC8200D5D23F /* SBJsonBase.m in Sources */,
-				A8C4B6CF12EFCC8200D5D23F /* SBJsonParser.m in Sources */,
-				A8C4B6D012EFCC8200D5D23F /* SBJsonWriter.m in Sources */,
-				A8C4B6D212EFCC8200D5D23F /* UABase64.m in Sources */,
-				A8C4B6D912EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */,
-				A8C4B6DA12EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */,
-				A8C4B6DB12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */,
-				A8C4B6E912EFCC8200D5D23F /* StoreFront.m in Sources */,
-				A8C4B6EA12EFCC8200D5D23F /* UAInventory.m in Sources */,
-				A8C4B6EB12EFCC8200D5D23F /* UAProduct.m in Sources */,
-				A8C4B6EC12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */,
-				A8C4B6ED12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */,
-				A8C4B6EE12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */,
-				A8C4B6EF12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */,
-				A8C4B6F012EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */,
-				A8C4B6F112EFCC8200D5D23F /* UATableCell.m in Sources */,
-				A8C4B71B12EFCE6500D5D23F /* ASIDownloadCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5748,7 +5382,6 @@
 				A881212D12C7816300A1A08E /* SDL_uikitvideo.m in Sources */,
 				A881212E12C7816300A1A08E /* SDL_uikitview.m in Sources */,
 				A881212F12C7816300A1A08E /* SDL_uikitwindow.m in Sources */,
-				A881213012C7816300A1A08E /* SDL_coreaudio_iphone.c in Sources */,
 				A881213112C7816300A1A08E /* SDL_sysjoystick.m in Sources */,
 				A881213212C7816300A1A08E /* SDLUIAccelerationDelegate.m in Sources */,
 				A881213312C7816300A1A08E /* SDL_renderer_gles.c in Sources */,
@@ -5914,31 +5547,6 @@
 				A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */,
 				A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */,
 				A8EB682812DC1413001D43EA /* Appirater.m in Sources */,
-				A8C4B69012EFCC8200D5D23F /* Airship.m in Sources */,
-				A8C4B69112EFCC8200D5D23F /* UAAsycImageView.m in Sources */,
-				A8C4B69212EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */,
-				A8C4B69312EFCC8200D5D23F /* UADateUtils.m in Sources */,
-				A8C4B69412EFCC8200D5D23F /* UAObservable.m in Sources */,
-				A8C4B69512EFCC8200D5D23F /* UAUtils.m in Sources */,
-				A8C4B69612EFCC8200D5D23F /* UAViewUtils.m in Sources */,
-				A8C4B69C12EFCC8200D5D23F /* SBJSON.m in Sources */,
-				A8C4B69D12EFCC8200D5D23F /* SBJsonBase.m in Sources */,
-				A8C4B69E12EFCC8200D5D23F /* SBJsonParser.m in Sources */,
-				A8C4B69F12EFCC8200D5D23F /* SBJsonWriter.m in Sources */,
-				A8C4B6A112EFCC8200D5D23F /* UABase64.m in Sources */,
-				A8C4B6A812EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */,
-				A8C4B6A912EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */,
-				A8C4B6AA12EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */,
-				A8C4B6B812EFCC8200D5D23F /* StoreFront.m in Sources */,
-				A8C4B6B912EFCC8200D5D23F /* UAInventory.m in Sources */,
-				A8C4B6BA12EFCC8200D5D23F /* UAProduct.m in Sources */,
-				A8C4B6BB12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */,
-				A8C4B6BC12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */,
-				A8C4B6BD12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */,
-				A8C4B6BE12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */,
-				A8C4B6BF12EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */,
-				A8C4B6C012EFCC8200D5D23F /* UATableCell.m in Sources */,
-				A8C4B71A12EFCE6500D5D23F /* ASIDownloadCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6191,7 +5799,6 @@
 				A881233212C7826300A1A08E /* SDL_uikitvideo.m in Sources */,
 				A881233312C7826300A1A08E /* SDL_uikitview.m in Sources */,
 				A881233412C7826300A1A08E /* SDL_uikitwindow.m in Sources */,
-				A881233512C7826300A1A08E /* SDL_coreaudio_iphone.c in Sources */,
 				A881233612C7826300A1A08E /* SDL_sysjoystick.m in Sources */,
 				A881233712C7826300A1A08E /* SDLUIAccelerationDelegate.m in Sources */,
 				A881233812C7826300A1A08E /* SDL_renderer_gles.c in Sources */,
@@ -6357,31 +5964,6 @@
 				A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */,
 				A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */,
 				A8EB682712DC1413001D43EA /* Appirater.m in Sources */,
-				A8C4B65F12EFCC8200D5D23F /* Airship.m in Sources */,
-				A8C4B66012EFCC8200D5D23F /* UAAsycImageView.m in Sources */,
-				A8C4B66112EFCC8200D5D23F /* UABarButtonSegmentedControl.m in Sources */,
-				A8C4B66212EFCC8200D5D23F /* UADateUtils.m in Sources */,
-				A8C4B66312EFCC8200D5D23F /* UAObservable.m in Sources */,
-				A8C4B66412EFCC8200D5D23F /* UAUtils.m in Sources */,
-				A8C4B66512EFCC8200D5D23F /* UAViewUtils.m in Sources */,
-				A8C4B66B12EFCC8200D5D23F /* SBJSON.m in Sources */,
-				A8C4B66C12EFCC8200D5D23F /* SBJsonBase.m in Sources */,
-				A8C4B66D12EFCC8200D5D23F /* SBJsonParser.m in Sources */,
-				A8C4B66E12EFCC8200D5D23F /* SBJsonWriter.m in Sources */,
-				A8C4B67012EFCC8200D5D23F /* UABase64.m in Sources */,
-				A8C4B67712EFCC8200D5D23F /* UAProductDetailiPadViewController.m in Sources */,
-				A8C4B67812EFCC8200D5D23F /* UAStoreFrontiPadViewController.m in Sources */,
-				A8C4B67912EFCC8200D5D23F /* UAStoreFrontSplitViewController.m in Sources */,
-				A8C4B68712EFCC8200D5D23F /* StoreFront.m in Sources */,
-				A8C4B68812EFCC8200D5D23F /* UAInventory.m in Sources */,
-				A8C4B68912EFCC8200D5D23F /* UAProduct.m in Sources */,
-				A8C4B68A12EFCC8200D5D23F /* UAProductDetailViewController.m in Sources */,
-				A8C4B68B12EFCC8200D5D23F /* UAStoreFrontCell.m in Sources */,
-				A8C4B68C12EFCC8200D5D23F /* UAStoreFrontCellView.m in Sources */,
-				A8C4B68D12EFCC8200D5D23F /* UAStoreFrontViewController.m in Sources */,
-				A8C4B68E12EFCC8200D5D23F /* UAStoreKitObserver.m in Sources */,
-				A8C4B68F12EFCC8200D5D23F /* UATableCell.m in Sources */,
-				A8C4B71912EFCE6500D5D23F /* ASIDownloadCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6540,6 +6122,7 @@
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6583,6 +6166,7 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6626,6 +6210,7 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6784,6 +6369,10 @@
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6854,6 +6443,10 @@
 					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 				);
+				OTHER_LDFLAGS = (
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6883,6 +6476,10 @@
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

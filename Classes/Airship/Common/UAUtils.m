@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2010 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2011 Urban Airship Inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -23,13 +23,14 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "UAUtils.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "UAUtils.h"
+#import "UAUser.h"
+#import "UAirship.h"
+#import "UA_SBJSON.h"
 
-
-NSString *UADocumentDirectory(void) {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-}
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 @implementation UAUtils
 
@@ -45,7 +46,40 @@ NSString *UADocumentDirectory(void) {
                             result[8], result[9], result[10], result[11],
                             result[12], result[13], result[14], result[15]
                             ];
+
+}
+
++ (NSString *) UUID {
+    //create a new UUID
+	CFUUIDRef uuidObj = CFUUIDCreate(nil);
     
+	//get the string representation of the UUID
+    NSString *uuidString = (NSString*)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+	
+    return [uuidString autorelease];
+}
+
++ (NSString *)deviceModelName {
+    size_t size;
+    
+    // Set 'oldp' parameter to NULL to get the size of the data
+    // returned so we can allocate appropriate amount of space
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0); 
+    
+    // Allocate the space to store name
+    char *name = malloc(size);
+    
+    // Get the platform name
+    sysctlbyname("hw.machine", name, &size, NULL, 0);
+    
+    // Place name into a string
+    NSString *machine = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+    
+    // Done with this
+    free(name);
+    
+    return machine;
 }
 
 + (NSString *)pluralize:(int)count singularForm:(NSString*)singular
@@ -76,5 +110,93 @@ NSString *UADocumentDirectory(void) {
     return([NSString stringWithFormat:@"%1.2f TB",bytes]);
 }
 
+#pragma mark -
+#pragma mark ASIHTTPRequest helper methods
+
++ (UA_ASIHTTPRequest *)requestWithURL:(NSURL *)url method:(NSString *)method
+                             delegate:(id)delegate finish:(SEL)selector {
+    
+    return [self requestWithURL:url method:method delegate:delegate
+                         finish:selector fail:@selector(requestWentWrong:)];
+}
+
++ (UA_ASIHTTPRequest *)requestWithURL:(NSURL *)url method:(NSString *)method
+                             delegate:(id)delegate finish:(SEL)finishSelector fail:(SEL)failSelector {
+    
+    if (![UAirship shared].ready) {
+        return nil;
+    }
+    
+    UA_ASIHTTPRequest *request = [UA_ASIHTTPRequest requestWithURL:url];
+    [request setRequestMethod:method];
+    request.username = [UAirship shared].appId;
+    request.password = [UAirship shared].appSecret;
+    request.delegate = delegate;
+    request.timeOutSeconds = 60;
+    [request setDidFinishSelector:finishSelector];
+    [request setDidFailSelector:failSelector];
+    
+    return request;
+}
+
++ (UA_ASIHTTPRequest *)userRequestWithURL:(NSURL *)url method:(NSString *)method
+                                 delegate:(id)delegate finish:(SEL)selector {
+    return [self userRequestWithURL:url method:method delegate:delegate
+                             finish:selector fail:@selector(requestWentWrong:)];
+}
+
++ (UA_ASIHTTPRequest *)userRequestWithURL:(NSURL *)url method:(NSString *)method
+                                 delegate:(id)delegate finish:(SEL)finishSelector fail:(SEL)failSelector {
+    
+    if (![UAirship shared].ready) {
+        return nil;
+    }
+    
+    UA_ASIHTTPRequest *request = [UA_ASIHTTPRequest requestWithURL:url];
+    [request setRequestMethod:method];
+    request.username = [UAUser defaultUser].username;
+    request.password = [UAUser defaultUser].password;
+    request.delegate = delegate;
+    request.timeOutSeconds = 60;
+    [request setDidFinishSelector:finishSelector];
+    [request setDidFailSelector:failSelector];
+    
+    return request;
+}
+
++ (id)responseFromRequest:(UA_ASIHTTPRequest *)request {
+    return [UAUtils parseJSON:request.responseString];
+}
+
++ (id)parseJSON:(NSString *)responseString {
+    UA_SBJsonParser *parser = [UA_SBJsonParser new];
+    id result = [parser objectWithString:responseString];
+    [parser release];
+    return result;
+}
+
++ (void)requestWentWrong:(UA_ASIHTTPRequest*)request {
+    [self requestWentWrong:request keyword:nil];
+}
+
++ (void)requestWentWrong:(UA_ASIHTTPRequest*)request keyword:(NSString *)keyword{
+    UALOG(@"\n***** Request ERROR %@*****"
+          @"\n\tError: %@"
+          @"\nRequest:"
+          @"\n\tURL: %@"
+          @"\n\tHeaders: %@"
+          @"\n\tMethod: %@"
+          @"\n\tBody: %@"
+          @"\nResponse:"
+          @"\n\tStatus code: %d"
+          @"\n\tHeaders: %@"
+          @"\n\tBody: %@"
+          @"\nUsing U/P: [ %@ / %@ ]",
+          keyword ? [NSString stringWithFormat:@"[%@] ", keyword] : @"",
+          request.error,
+          request.url, request.requestHeaders, request.requestMethod, request.postBody,
+          request.responseStatusCode, request.responseHeaders, request.responseString,
+          request.username, request.password);
+}
 
 @end
