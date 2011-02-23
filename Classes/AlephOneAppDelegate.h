@@ -12,6 +12,7 @@
 #import "ManagedObjects.h"
 #import "Prefs.h"
 #import "Secrets.h"
+#import "Purchases.h"
 
 @class GameViewController;
 @class DownloadViewController;
@@ -24,6 +25,8 @@
   DownloadViewController *downloadViewController;
   bool finishedStartup;
   int OpenGLESVersion;
+  
+  Purchases *purchases;
     
 @private
     NSManagedObjectContext *managedObjectContext_;
@@ -34,6 +37,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) GameViewController *game;
+@property (nonatomic, retain) Purchases *purchases;
 @property (nonatomic, retain) DownloadViewController *downloadViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -42,6 +46,7 @@
 @property (nonatomic) int OpenGLESVersion;
 
 - (NSString *)applicationDocumentsDirectory;
+- (NSString*)getDataDirectory;
 +(AlephOneAppDelegate *)sharedAppDelegate;
 - (void)startAlephOne;
 - (void)initAndBegin;

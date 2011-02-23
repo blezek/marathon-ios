@@ -47,6 +47,12 @@ extern  int
 #include "vbl.h"
 #include "render.h"
 #include "interface_menus.h"
+#import "UAirship.h"
+#import "UAStoreFront.h"
+#import "UAStoreFrontUI.h"
+
+
+
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
 
@@ -746,6 +752,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)menuShowReplacementMenu {
   self.replacementMenuView.hidden = NO;
 }
+
 - (IBAction)menuHideReplacementMenu {
   self.replacementMenuView.hidden = YES;
 }
@@ -761,6 +768,13 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (IBAction)menuStore {
   MLog ( @"Goto store" );
+  // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
+  //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
+  [UAStoreFront displayStoreFront:self animated:YES];
+  
+  // Specify the sorting of the list of products.
+  [UAStoreFront setOrderBy:UAContentsDisplayOrderPrice ascending:YES];
+  
 }
 - (IBAction)menuRestorePurchases {
   MLog ( @"Restore purchases" );

@@ -114,6 +114,7 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
   // Open file
   OpenedFile file;
   if (file_name.Open(file)) {
+    printf ( "Parsing: %s\n", file_name.GetPath() );
     // Get file size and allocate buffer
     file.GetLength(data_size);
     data = new char[data_size];
@@ -133,6 +134,8 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
     delete[] data;
     data = NULL;
     return true;
+  } else {
+    printf ( "Couldn't open: %s\n", file_name.GetPath() );
   }
   return false;
 }
@@ -145,7 +148,7 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
 bool XML_Loader_SDL::ParseDirectory(FileSpecifier &dir)
 {
   // Get sorted list of files in directory
-  printf ( "Looking in %s", dir.GetPath() );
+  printf ( "Looking in %s\n", dir.GetPath() );
   vector<dir_entry> de;
   if (!dir.ReadDirectory(de)) {
     return false;

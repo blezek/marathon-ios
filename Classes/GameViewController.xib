@@ -535,7 +535,7 @@
 							<object class="IBUIButton" id="70214282">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{799, 59}, {225, 75}}</string>
+								<string key="NSFrame">{{784, 56.5}, {240, 80}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -557,7 +557,7 @@
 							<object class="IBUIButton" id="851951514">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{799, 142}, {225, 75}}</string>
+								<string key="NSFrame">{{784, 139.5}, {240, 80}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -579,7 +579,7 @@
 							<object class="IBUIButton" id="504006047">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{799, 225}, {225, 75}}</string>
+								<string key="NSFrame">{{784, 222.5}, {240, 80}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -601,7 +601,7 @@
 							<object class="IBUIButton" id="428206114">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{799, 308}, {225, 75}}</string>
+								<string key="NSFrame">{{784, 305.5}, {240, 80}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -618,28 +618,6 @@
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">MenuItem-Store.png</string>
-								</object>
-							</object>
-							<object class="IBUIButton" id="767269251">
-								<reference key="NSNextResponder" ref="464543623"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{799, 391}, {225, 75}}</string>
-								<reference key="NSSuperview" ref="464543623"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-								<reference key="IBUIFont" ref="789146010"/>
-								<string key="IBUINormalTitle">Restore Purchases</string>
-								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
-								<object class="NSColor" key="IBUINormalTitleColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-								</object>
-								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
-								<object class="NSCustomResource" key="IBUINormalImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">MenuItem-Purchases.png</string>
 								</object>
 							</object>
 						</object>
@@ -1177,15 +1155,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">menuRestorePurchases</string>
-						<reference key="source" ref="767269251"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">155</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">gotoPreferences:</string>
 						<reference key="source" ref="504006047"/>
 						<reference key="destination" ref="841351856"/>
@@ -1568,7 +1537,6 @@
 							<reference ref="851951514"/>
 							<reference ref="504006047"/>
 							<reference ref="428206114"/>
-							<reference ref="767269251"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Replacement Menu</string>
@@ -1591,11 +1559,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">148</int>
 						<reference key="object" ref="428206114"/>
-						<reference key="parent" ref="464543623"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">149</int>
-						<reference key="object" ref="767269251"/>
 						<reference key="parent" ref="464543623"/>
 					</object>
 				</object>
@@ -1654,8 +1617,6 @@
 					<string>147.IBViewBoundsToFrameTransform</string>
 					<string>148.IBPluginDependency</string>
 					<string>148.IBViewBoundsToFrameTransform</string>
-					<string>149.IBPluginDependency</string>
-					<string>149.IBViewBoundsToFrameTransform</string>
 					<string>156.IBPluginDependency</string>
 					<string>156.IBViewBoundsToFrameTransform</string>
 					<string>2.IBEditorWindowLastContentRect</string>
@@ -1779,10 +1740,6 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABET8AAw8uAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABET8AAw/EAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -3360,7 +3317,6 @@
 				<string>ControlsOverview.png</string>
 				<string>MenuItem-Load.png</string>
 				<string>MenuItem-New.png</string>
-				<string>MenuItem-Purchases.png</string>
 				<string>MenuItem-Settings.png</string>
 				<string>MenuItem-Store.png</string>
 				<string>Reload.png</string>
@@ -3381,11 +3337,10 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1024, 768}</string>
-				<string>{450, 153}</string>
-				<string>{450, 153}</string>
-				<string>{450, 153}</string>
-				<string>{450, 153}</string>
-				<string>{450, 153}</string>
+				<string>{240, 80}</string>
+				<string>{240, 80}</string>
+				<string>{240, 80}</string>
+				<string>{240, 80}</string>
 				<string>{512, 512}</string>
 				<string>{1024, 768}</string>
 				<string>{512, 100}</string>

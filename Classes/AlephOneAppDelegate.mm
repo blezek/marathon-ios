@@ -24,10 +24,13 @@ extern "C" {
 #import "AlephOneHelper.h"
 #include "preferences.h"
 
+#import "UAirship.h"
+#import "UAStoreFront.h"
+#import "UAStoreFrontUI.h"
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game, downloadViewController, OpenGLESVersion;
+@synthesize window, scenario, game, downloadViewController, OpenGLESVersion, purchases;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -43,6 +46,9 @@ extern int SDL_main(int argc, char *argv[]);
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
 
+  // Kick in the purchases
+  [self.purchases checkPurchases];
+  
 	// Try out the CADisplayLink
 #ifdef USE_SDL_EVENT_LOOP
   // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
@@ -73,7 +79,8 @@ extern int SDL_main(int argc, char *argv[]);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	finishedStartup = NO;
   OpenGLESVersion = 1;
-  
+  purchases = [[Purchases alloc] init];
+
   // Default preferences
   // Set the application defaults  
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -201,6 +208,12 @@ extern int SDL_main(int argc, char *argv[]);
   
   MLog ( @"Loaded view: %@", self.game.view );
   
+  NSMutableDictionary *takeOffOptions = [[[NSMutableDictionary alloc] init] autorelease];
+  [takeOffOptions setValue:launchOptions forKey:UAirshipTakeOffOptionsLaunchOptionsKey];
+  // Create Airship singleton that's used to talk to Urban Airship servers.
+  // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
+  [UAirship takeOff:takeOffOptions];
+  [UAStoreFront useCustomUI:[UAStoreFrontUI class]];//UAStoreFrontUI is the sample implementation
   
   
   // Create the download view controller
@@ -433,6 +446,9 @@ const char* argv[] = { "AlephOneHD" };
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+- (NSString*)getDataDirectory {
+  return [[NSBundle mainBundle] resourcePath];
+}
 
 #pragma mark -
 #pragma mark Singleton helper

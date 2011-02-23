@@ -51,9 +51,9 @@ void printGLError( const char* message ) {
 }
 
 char* getDataDir() {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  dataDir = [paths objectAtIndex:0];
-  // dataDir = [[NSBundle mainBundle] resourcePath];
+  // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  // dataDir = [paths objectAtIndex:0];
+  dataDir = [[AlephOneAppDelegate sharedAppDelegate] getDataDirectory];
   dataDir = [NSString stringWithFormat:@"%@/%@/", dataDir, [AlephOneAppDelegate sharedAppDelegate].scenario.path];
   MLog ( @"DataDir: %@", dataDir );
   return (char*)[dataDir UTF8String];

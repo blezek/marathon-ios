@@ -45,7 +45,7 @@
   AlephOneAppDelegate *app = [AlephOneAppDelegate sharedAppDelegate];
 
   // See if we have M1A1 installed, if not, fetch it and download
-  NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app applicationDocumentsDirectory], app.scenario.path];
+  NSString *installDirectory = [NSString stringWithFormat:@"%@/%@", [app getDataDirectory], app.scenario.path];
   NSLog ( @"Install path is %@", installDirectory );
   
   BOOL isDirectory;

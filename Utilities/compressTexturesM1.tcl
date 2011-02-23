@@ -342,7 +342,7 @@ proc Rename {} {
 set TopDir [pwd]
 file mkdir ${TextureSet}-$Scenario
 
-set fid [open ${TextureSet}-$Scenario/${TextureSet}-$Scenario.mml w]
+set fid [open ${TextureSet}-$Scenario/${TextureSet}.mml w]
 puts $fid "<marathon>"
 puts $fid "<opengl>"
 
