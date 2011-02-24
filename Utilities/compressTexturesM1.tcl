@@ -359,6 +359,7 @@ foreach collection [lsort [glob *]] {
       set bitmap [string range $image end-6 end-4]
       set bitmap [string trimleft $bitmap 0]
       if { $bitmap == "" } { set bitmap 0 }
+      if { $bitmap == "ask" } { continue }
 
       set size [exec identify -format "%w %h" $image]
       set width [lindex $size 0]

@@ -111,7 +111,7 @@ static vector<entry_point> levels;
     }
   }
   [self setEntryLevel:nil];
-  BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kCheatsEnabled];
+  BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
   self.pledge.hidden = !show;
   self.startLevelSlider.hidden = !show;
   self.startLevelLabel.hidden = !show;

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define kCheatsEnabled @"cheatsEnabled"
 #define kSfxVolume @"sfxVolume"
 #define kMusicVolume @"musicVolume"
 #define kHSensitivity @"horizontalSensitivity"
@@ -20,3 +19,7 @@
 #define kFirstGame @"firstGame"
 #define kCrosshairs @"crossHairs"
 #define kAutocenter @"autoCenter"
+#define kHaveTTEP @"haveTTEP"
+#define kUseTTEP @"useTTEP"
+#define kHaveVidmasterMode @"haveVidmasterMode"
+#define kUseVidmasterMode @"useVidmasterMode"

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ $# -lt 2 ]
+then
+    echo "Usage: $0 <Directory> <Scenario>"
+    echo "example: $0 M1A1 M1"
+    exit 0
+fi
+
+Dir=$1
+Scenario=$2
+
+echo "SpriteTextures..."
+cp -fr SpriteTextures-$Scenario ../$Dir
+mv -f ../$Dir/SpriteTextures-$Scenario/Sprites.mml ../$Dir/Scripts
+
+echo "TTEP-$Scenario to TTEP..."
+cp -fr TTEP-$Scenario ../$Dir/
+
+echo "StandardTextures-$Scenario to StandardTextures..."
+cp -fr StandardTextures-$Scenario ../$Dir/

@@ -13,7 +13,7 @@
 
 - (IBAction) setup {
   // Hide cheats
-  bool cheatsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kCheatsEnabled];
+  bool cheatsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
   for ( UIView *view in self.view.subviews ) {
     if ( view.tag == 1  ) {
       view.hidden = !cheatsEnabled;

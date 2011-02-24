@@ -23,6 +23,8 @@
 @synthesize brightness;
 @synthesize autoCenter;
 @synthesize filmsDisabled;
+@synthesize vidmasterModeLabel, vidmasterMode;
+@synthesize hiresTexturesLabel, hiresTextures;
 
 - (IBAction)closePreferences:(id)sender {
   
@@ -38,15 +40,18 @@
   [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
   [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
   [defaults setBool:[self.autoCenter isOn] forKey:kAutocenter];
+  [defaults setBool:[self.vidmasterMode isOn] forKey:kUseVidmasterMode];
+  [defaults setBool:[self.hiresTextures isOn] forKey:kUseTTEP];
   [defaults synchronize];
-  [PreferencesViewController setAlephOnePreferences:YES];
+  [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
   Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
 
 }
 
 
-- (void)setupUI {
+- (void)setupUI:(BOOL)inMainMenuFlag {
+  inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   self.tapShoots.on = [defaults boolForKey:kTapShoots];
   self.crosshairs.on = [defaults boolForKey:kCrosshairs];
@@ -61,23 +66,22 @@
   self.musicLabel.hidden = NO;
   self.musicVolume.hidden = NO;
 #endif
-  [self notifyOfChanges];
+  self.hiresTexturesLabel.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
+  self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
+  self.hiresTextures.on = [defaults boolForKey:kUseTTEP];
+  self.vidmasterModeLabel.hidden = ![defaults boolForKey:kHaveVidmasterMode];
+  self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
+  self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];
+  
 }
 
 - (IBAction)updatePreferences:(id)sender {
-  [PreferencesViewController setAlephOnePreferences:YES];
+  [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
 }
 - (IBAction)notifyOfChanges {
-  if ( self.autoCenter.on ) {
-    self.filmsDisabled.hidden = YES;
-  } else {
-    self.filmsDisabled.hidden = NO;
-  }
 }
 
-
-
-+ (void)setAlephOnePreferences:(BOOL)notifySoundManager {
++ (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check{
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   sound_preferences->music = ceil ( (double)[defaults floatForKey:kMusicVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
@@ -98,6 +102,10 @@
   }
   
   SoundManager::instance()->SetParameters(*sound_preferences);
+  
+  if ( check ) {
+    [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
+  }
 }
 
 /*

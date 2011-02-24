@@ -10,6 +10,7 @@
 
 
 @interface PreferencesViewController : UIViewController {
+  BOOL inMainMenu;
   UISwitch *tapShoots;
   UISwitch *crosshairs;
   UISwitch *autoCenter;
@@ -19,6 +20,10 @@
   UISlider *hSensitivity;
   UISlider *vSensitivity;
   UISlider *brightness;
+  UILabel *hiresTexturesLabel;
+  UISwitch *hiresTextures;
+  UILabel *vidmasterModeLabel;
+  UISwitch *vidmasterMode;
   UILabel *musicLabel;
   UILabel *filmsDisabled;
 }
@@ -35,8 +40,13 @@
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
 
-+ (void)setAlephOnePreferences:(BOOL)notifySoundManager;
-- (void)setupUI;
+@property (nonatomic, retain) IBOutlet UISwitch *hiresTextures;
+@property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
+@property (nonatomic, retain) IBOutlet UISwitch *vidmasterMode;
+@property (nonatomic, retain) IBOutlet UILabel *vidmasterModeLabel;
+
++ (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check;
+- (void)setupUI:(BOOL)inMainMenu;
 - (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;
 - (IBAction)notifyOfChanges;
