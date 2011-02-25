@@ -67,10 +67,8 @@ extern "C" {
                                           SCENARIO_DESIGNATION,
                                           VIDMASTER_MODE_FILENAME]
                         isDirectory:&isDirectory];
-  /*
   [[NSUserDefaults standardUserDefaults] setBool:haveTTEP forKey:kHaveTTEP];
   [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kHaveVidmasterMode];
-  */
   MLog ( @"haveTTEP: %d haveVidmaster: %d", haveTTEP, haveVidmaster );
   
   // Do something about it

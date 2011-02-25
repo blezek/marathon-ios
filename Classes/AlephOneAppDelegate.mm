@@ -95,10 +95,10 @@ extern int SDL_main(int argc, char *argv[]);
                                @"0", kEntryLevelNumber,
                                @"NO", kCrosshairs,
                                @"NO", kAutocenter,
-                               @"YES", kHaveTTEP,
-                               @"NO", kUseTTEP,
-                               @"YES", kHaveVidmasterMode,
-                               @"NO", kUseVidmasterMode,
+                               @"NO", kHaveTTEP,
+                               @"YES", kUseTTEP,
+                               @"NO", kHaveVidmasterMode,
+                               @"YES", kUseVidmasterMode,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];

@@ -23,7 +23,6 @@
 		A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A81A31541292462C00BCEA0C /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31531292462C00BCEA0C /* GenericBackground.png */; };
 		A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
-		A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A32901294C3CD00BCEA0C /* SplashScreen.png */; };
 		A81A33081296255300BCEA0C /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
 		A81C1E25130B7825002371D5 /* MenuItem-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = A81C1E20130B7825002371D5 /* MenuItem-Load.png */; };
 		A81C1E26130B7825002371D5 /* MenuItem-New.png in Resources */ = {isa = PBXBuildFile; fileRef = A81C1E21130B7825002371D5 /* MenuItem-New.png */; };
@@ -49,12 +48,6 @@
 		A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
-		A83DC78212E939880077C779 /* alephoneinfinity-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */; };
-		A83DC78312E939880077C779 /* alephoneinfinity-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */; };
-		A83DC78712E939880077C779 /* alephone2-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77812E939880077C779 /* alephone2-icon-512px.png */; };
-		A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77912E939880077C779 /* alephone2-icon-ipad.png */; };
-		A83DC78B12E939880077C779 /* alephone-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77412E939880077C779 /* alephone-icon-512px.png */; };
-		A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A83DC77512E939880077C779 /* alephone-icon-ipad.png */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8562B4211DAE0010071DFEF /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A8562B4011DAE0010071DFEF /* Pause.png */; };
@@ -386,12 +379,10 @@
 		A87F55E612A7407E00032ED6 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
 		A87F55E712A7407E00032ED6 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
 		A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
-		A8811EAB12C06B8700A1A08E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
 		A8811F9812C769F900A1A08E /* internet-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9712C769F900A1A08E /* internet-btn.png */; };
 		A8811F9D12C76B2200A1A08E /* help11.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9B12C76B2200A1A08E /* help11.png */; };
 		A8811F9E12C76B2200A1A08E /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
 		A8811FEE12C7816300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
-		A8811FEF12C7816300A1A08E /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
 		A8811FF012C7816300A1A08E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A8811FF112C7816300A1A08E /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
 		A8811FF212C7816300A1A08E /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
@@ -420,7 +411,6 @@
 		A881200912C7816300A1A08E /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
 		A881200A12C7816300A1A08E /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A881200B12C7816300A1A08E /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
-		A881200C12C7816300A1A08E /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A32901294C3CD00BCEA0C /* SplashScreen.png */; };
 		A881200D12C7816300A1A08E /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A881200E12C7816300A1A08E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8A4D30612A4B1F900AEE140 /* Settings.bundle */; };
 		A881200F12C7816300A1A08E /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
@@ -462,7 +452,6 @@
 		A881203312C7816300A1A08E /* toggleweapons-left-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814312C054A400821170 /* toggleweapons-left-btn.png */; };
 		A881203412C7816300A1A08E /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
 		A881203512C7816300A1A08E /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
-		A881203612C7816300A1A08E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
 		A881203712C7816300A1A08E /* internet-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9712C769F900A1A08E /* internet-btn.png */; };
 		A881203812C7816300A1A08E /* help11.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9B12C76B2200A1A08E /* help11.png */; };
 		A881203912C7816300A1A08E /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
@@ -890,7 +879,6 @@
 		A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
-		A88121F412C7826300A1A08E /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
 		A88121F512C7826300A1A08E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E68CC11CB1B1C00D0FAEF /* Default.png */; };
 		A88121F612C7826300A1A08E /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
 		A88121F712C7826300A1A08E /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
@@ -919,7 +907,6 @@
 		A881220E12C7826300A1A08E /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
 		A881220F12C7826300A1A08E /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A881221012C7826300A1A08E /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
-		A881221112C7826300A1A08E /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A32901294C3CD00BCEA0C /* SplashScreen.png */; };
 		A881221212C7826300A1A08E /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A881221312C7826300A1A08E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8A4D30612A4B1F900AEE140 /* Settings.bundle */; };
 		A881221412C7826300A1A08E /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
@@ -961,7 +948,6 @@
 		A881223812C7826300A1A08E /* toggleweapons-left-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814312C054A400821170 /* toggleweapons-left-btn.png */; };
 		A881223912C7826300A1A08E /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
 		A881223A12C7826300A1A08E /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
-		A881223B12C7826300A1A08E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
 		A881223C12C7826300A1A08E /* internet-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9712C769F900A1A08E /* internet-btn.png */; };
 		A881223D12C7826300A1A08E /* help11.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9B12C76B2200A1A08E /* help11.png */; };
 		A881223E12C7826300A1A08E /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
@@ -1573,6 +1559,25 @@
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A8D5AA991265465A002211FB /* ProgressLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA981265465A002211FB /* ProgressLogo.png */; };
+		A8D66F4C131766DB009801EC /* alephone-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F47131766DB009801EC /* alephone-icon-512px.png */; };
+		A8D66F4D131766DB009801EC /* alephone-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F48131766DB009801EC /* alephone-icon-ipad.png */; };
+		A8D66F4E131766DB009801EC /* alephone-icon-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F49131766DB009801EC /* alephone-icon-iphone.png */; };
+		A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4A131766DB009801EC /* GenericBackground.png */; };
+		A8D66F50131766DB009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4B131766DB009801EC /* SplashScreen.png */; };
+		A8D66F55131766E9009801EC /* alephone2-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F51131766E9009801EC /* alephone2-icon-512px.png */; };
+		A8D66F56131766E9009801EC /* alephone2-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F52131766E9009801EC /* alephone2-icon-ipad.png */; };
+		A8D66F57131766E9009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
+		A8D66F58131766E9009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F54131766E9009801EC /* SplashScreen.png */; };
+		A8D66F5D131766F7009801EC /* alephoneinfinity-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F59131766F7009801EC /* alephoneinfinity-icon-512px.png */; };
+		A8D66F5E131766F7009801EC /* alephoneinfinity-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5A131766F7009801EC /* alephoneinfinity-icon-ipad.png */; };
+		A8D66F5F131766F7009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5B131766F7009801EC /* GenericBackground.png */; };
+		A8D66F60131766F7009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5C131766F7009801EC /* SplashScreen.png */; };
+		A8D66F6313176831009801EC /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
+		A8D66F6413176834009801EC /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
+		A8D66F6513176834009801EC /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A8811EAA12C06B8700A1A08E /* iTunesArtwork */; };
+		A8D66F691317692A009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F681317692A009801EC /* Default-Portrait.png */; };
+		A8D66F6B13176936009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F6A13176936009801EC /* Default-Portrait.png */; };
+		A8D66F6D13176941009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F6C13176941009801EC /* Default-Portrait.png */; };
 		A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
@@ -1580,7 +1585,6 @@
 		A8DC998A123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
 		A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
-		A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB2893125D768900B7EF4A /* Default-Portrait.png */; };
 		A8EB682712DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682812DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682912DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
@@ -1999,7 +2003,6 @@
 		A817BDFF12CCC84300C31134 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = Classes/AlertPrompt.m; sourceTree = "<group>"; };
 		A81A31531292462C00BCEA0C /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericBackground.png; path = Artwork/GenericBackground.png; sourceTree = "<group>"; };
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
-		A81A32901294C3CD00BCEA0C /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Artwork/SplashScreen.png; sourceTree = "<group>"; };
 		A81A33071296255300BCEA0C /* Reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reload.png; path = Artwork/Reload.png; sourceTree = "<group>"; };
 		A81C1E20130B7825002371D5 /* MenuItem-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MenuItem-Load.png"; path = "Artwork/MenuItem-Load.png"; sourceTree = "<group>"; };
 		A81C1E21130B7825002371D5 /* MenuItem-New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MenuItem-New.png"; path = "Artwork/MenuItem-New.png"; sourceTree = "<group>"; };
@@ -2090,13 +2093,6 @@
 		A82F365211B8A87C0053FE85 /* lua_script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_script.h; sourceTree = "<group>"; };
 		A8357F6012D2125C001CD264 /* ControlsOverview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlsOverview.png; path = Artwork/Help/ControlsOverview.png; sourceTree = "<group>"; };
 		A8357F7212D214B0001CD264 /* TouchToContinue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TouchToContinue.png; path = Artwork/Help/TouchToContinue.png; sourceTree = "<group>"; };
-		A83DC77412E939880077C779 /* alephone-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-512px.png"; sourceTree = "<group>"; };
-		A83DC77512E939880077C779 /* alephone-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-ipad.png"; sourceTree = "<group>"; };
-		A83DC77612E939880077C779 /* alephone-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-iphone.png"; sourceTree = "<group>"; };
-		A83DC77812E939880077C779 /* alephone2-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-512px.png"; sourceTree = "<group>"; };
-		A83DC77912E939880077C779 /* alephone2-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-ipad.png"; sourceTree = "<group>"; };
-		A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-512px.png"; sourceTree = "<group>"; };
-		A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-ipad.png"; sourceTree = "<group>"; };
 		A842544111B4A36500F4D68F /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
@@ -2848,6 +2844,22 @@
 		A8D5AA7F126545AE002211FB /* ProgressViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressViewController.mm; path = Classes/ProgressViewController.mm; sourceTree = "<group>"; };
 		A8D5AA80126545AE002211FB /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProgressViewController.xib; path = Classes/ProgressViewController.xib; sourceTree = "<group>"; };
 		A8D5AA981265465A002211FB /* ProgressLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProgressLogo.png; path = Artwork/ProgressLogo.png; sourceTree = "<group>"; };
+		A8D66F47131766DB009801EC /* alephone-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-512px.png"; sourceTree = "<group>"; };
+		A8D66F48131766DB009801EC /* alephone-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-ipad.png"; sourceTree = "<group>"; };
+		A8D66F49131766DB009801EC /* alephone-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone-icon-iphone.png"; sourceTree = "<group>"; };
+		A8D66F4A131766DB009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
+		A8D66F4B131766DB009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
+		A8D66F51131766E9009801EC /* alephone2-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-512px.png"; sourceTree = "<group>"; };
+		A8D66F52131766E9009801EC /* alephone2-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephone2-icon-ipad.png"; sourceTree = "<group>"; };
+		A8D66F53131766E9009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
+		A8D66F54131766E9009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
+		A8D66F59131766F7009801EC /* alephoneinfinity-icon-512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-512px.png"; sourceTree = "<group>"; };
+		A8D66F5A131766F7009801EC /* alephoneinfinity-icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alephoneinfinity-icon-ipad.png"; sourceTree = "<group>"; };
+		A8D66F5B131766F7009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
+		A8D66F5C131766F7009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
+		A8D66F681317692A009801EC /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		A8D66F6A13176936009801EC /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		A8D66F6C13176941009801EC /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		A8D966FB11C717A700016403 /* SDLnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnet.c; path = "Libraries/SDL_net-1.2.7/SDLnet.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FC11C717A700016403 /* SDLnetselect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetselect.c; path = "Libraries/SDL_net-1.2.7/SDLnetselect.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FD11C717A700016403 /* SDLnetTCP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetTCP.c; path = "Libraries/SDL_net-1.2.7/SDLnetTCP.c"; sourceTree = SOURCE_ROOT; };
@@ -2876,7 +2888,6 @@
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
-		A8EB2893125D768900B7EF4A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Artwork/Default-Portrait.png"; sourceTree = "<group>"; };
 		A8EB682512DC1413001D43EA /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
 		A8EB682612DC1413001D43EA /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
 		A8EB7796126697420043F0D4 /* pause-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-btn.png"; path = "Artwork/pause-btn.png"; sourceTree = "<group>"; };
@@ -3273,7 +3284,6 @@
 				A8811EAA12C06B8700A1A08E /* iTunesArtwork */,
 				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
-				A8EB2893125D768900B7EF4A /* Default-Portrait.png */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A85E68CC11CB1B1C00D0FAEF /* Default.png */,
 				A85E66C811CB0AF200D0FAEF /* Icon.png */,
@@ -3478,37 +3488,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		A83DC77312E939880077C779 /* M1Icon */ = {
-			isa = PBXGroup;
-			children = (
-				A83DC77412E939880077C779 /* alephone-icon-512px.png */,
-				A83DC77512E939880077C779 /* alephone-icon-ipad.png */,
-				A83DC77612E939880077C779 /* alephone-icon-iphone.png */,
-			);
-			name = M1Icon;
-			path = Artwork/M1Icon;
-			sourceTree = "<group>";
-		};
-		A83DC77712E939880077C779 /* M2Icon */ = {
-			isa = PBXGroup;
-			children = (
-				A83DC77812E939880077C779 /* alephone2-icon-512px.png */,
-				A83DC77912E939880077C779 /* alephone2-icon-ipad.png */,
-			);
-			name = M2Icon;
-			path = Artwork/M2Icon;
-			sourceTree = "<group>";
-		};
-		A83DC77A12E939880077C779 /* MInfIcon */ = {
-			isa = PBXGroup;
-			children = (
-				A83DC77B12E939880077C779 /* alephoneinfinity-icon-512px.png */,
-				A83DC77C12E939880077C779 /* alephoneinfinity-icon-ipad.png */,
-			);
-			name = MInfIcon;
-			path = Artwork/MInfIcon;
-			sourceTree = "<group>";
-		};
 		A850886511C1E46500D95436 /* HTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -3593,9 +3572,6 @@
 				A81C1E24130B7825002371D5 /* MenuItem-Store.png */,
 				A8F2382E12EB729B00CBC83D /* zoom_in.png */,
 				A8F2382F12EB729B00CBC83D /* zoom_out.png */,
-				A83DC77312E939880077C779 /* M1Icon */,
-				A83DC77712E939880077C779 /* M2Icon */,
-				A83DC77A12E939880077C779 /* MInfIcon */,
 				A8811F9712C769F900A1A08E /* internet-btn.png */,
 				A8AA814D12C055D800821170 /* SettingsIcons */,
 				A8AA814B12C055B400821170 /* play-btn.png */,
@@ -3621,7 +3597,6 @@
 				A8D5AA981265465A002211FB /* ProgressLogo.png */,
 				A81A33071296255300BCEA0C /* Reload.png */,
 				A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */,
-				A81A32901294C3CD00BCEA0C /* SplashScreen.png */,
 			);
 			name = Artwork;
 			sourceTree = "<group>";
@@ -5156,6 +5131,12 @@
 		A8FF8537130F798B00A874F8 /* M1 */ = {
 			isa = PBXGroup;
 			children = (
+				A8D66F6A13176936009801EC /* Default-Portrait.png */,
+				A8D66F47131766DB009801EC /* alephone-icon-512px.png */,
+				A8D66F48131766DB009801EC /* alephone-icon-ipad.png */,
+				A8D66F49131766DB009801EC /* alephone-icon-iphone.png */,
+				A8D66F4A131766DB009801EC /* GenericBackground.png */,
+				A8D66F4B131766DB009801EC /* SplashScreen.png */,
 				A86676D913135EA900BE2654 /* M1A1 */,
 				A8FF8555130F7A4300A874F8 /* AirshipConfig.plist */,
 			);
@@ -5166,6 +5147,11 @@
 		A8FF8539130F798B00A874F8 /* M2 */ = {
 			isa = PBXGroup;
 			children = (
+				A8D66F681317692A009801EC /* Default-Portrait.png */,
+				A8D66F51131766E9009801EC /* alephone2-icon-512px.png */,
+				A8D66F52131766E9009801EC /* alephone2-icon-ipad.png */,
+				A8D66F53131766E9009801EC /* GenericBackground.png */,
+				A8D66F54131766E9009801EC /* SplashScreen.png */,
 				A8667C4513135EC800BE2654 /* M2A1 */,
 				A8FF853A130F798B00A874F8 /* AirshipConfig.plist */,
 			);
@@ -5176,6 +5162,11 @@
 		A8FF853B130F798B00A874F8 /* M3 */ = {
 			isa = PBXGroup;
 			children = (
+				A8D66F6C13176941009801EC /* Default-Portrait.png */,
+				A8D66F59131766F7009801EC /* alephoneinfinity-icon-512px.png */,
+				A8D66F5A131766F7009801EC /* alephoneinfinity-icon-ipad.png */,
+				A8D66F5B131766F7009801EC /* GenericBackground.png */,
+				A8D66F5C131766F7009801EC /* SplashScreen.png */,
 				A866863213135EE900BE2654 /* M3A1 */,
 				A8FF853C130F798B00A874F8 /* AirshipConfig.plist */,
 			);
@@ -5312,7 +5303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */,
-				A8EB2894125D768900B7EF4A /* Default-Portrait.png in Resources */,
 				A85E68CE11CB1B2300D0FAEF /* Default.png in Resources */,
 				A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */,
 				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
@@ -5341,7 +5331,6 @@
 				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
 				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
-				A81A32911294C3CD00BCEA0C /* SplashScreen.png in Resources */,
 				A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */,
 				A8A4D30712A4B1F900AEE140 /* Settings.bundle in Resources */,
 				A87F55E012A7407E00032ED6 /* help8.png in Resources */,
@@ -5383,7 +5372,6 @@
 				A8AA814512C054A400821170 /* toggleweapons-left-btn.png in Resources */,
 				A8AA814612C054A400821170 /* toggleweapons-right-btn.png in Resources */,
 				A8AA814C12C055B400821170 /* play-btn.png in Resources */,
-				A8811EAB12C06B8700A1A08E /* iTunesArtwork in Resources */,
 				A8811F9812C769F900A1A08E /* internet-btn.png in Resources */,
 				A8811F9D12C76B2200A1A08E /* help11.png in Resources */,
 				A8811F9E12C76B2200A1A08E /* help12.png in Resources */,
@@ -5397,8 +5385,6 @@
 				A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
-				A83DC78B12E939880077C779 /* alephone-icon-512px.png in Resources */,
-				A83DC78C12E939880077C779 /* alephone-icon-ipad.png in Resources */,
 				A8F2383412EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383512EB729B00CBC83D /* zoom_out.png in Resources */,
 				A81C1E2F130B7825002371D5 /* MenuItem-Load.png in Resources */,
@@ -5421,6 +5407,13 @@
 				A8FF81DB130F70C300A874F8 /* UAStoreFrontLocalization.bundle in Resources */,
 				A8FF8556130F7A4300A874F8 /* AirshipConfig.plist in Resources */,
 				A8667C4413135EB700BE2654 /* M1A1 in Resources */,
+				A8D66F4C131766DB009801EC /* alephone-icon-512px.png in Resources */,
+				A8D66F4D131766DB009801EC /* alephone-icon-ipad.png in Resources */,
+				A8D66F4E131766DB009801EC /* alephone-icon-iphone.png in Resources */,
+				A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */,
+				A8D66F50131766DB009801EC /* SplashScreen.png in Resources */,
+				A8D66F6413176834009801EC /* iTunesArtwork in Resources */,
+				A8D66F6B13176936009801EC /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5429,7 +5422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8811FEE12C7816300A1A08E /* ExpandingLabel.png in Resources */,
-				A8811FEF12C7816300A1A08E /* Default-Portrait.png in Resources */,
 				A8811FF012C7816300A1A08E /* Default.png in Resources */,
 				A8811FF112C7816300A1A08E /* download-ipad.png in Resources */,
 				A8811FF212C7816300A1A08E /* DownloadViewController.xib in Resources */,
@@ -5458,7 +5450,6 @@
 				A881200912C7816300A1A08E /* SavedGameCell.xib in Resources */,
 				A881200A12C7816300A1A08E /* SaveGameViewController.xib in Resources */,
 				A881200B12C7816300A1A08E /* secondarytrigger-btn.png in Resources */,
-				A881200C12C7816300A1A08E /* SplashScreen.png in Resources */,
 				A881200D12C7816300A1A08E /* HelpViewController.xib in Resources */,
 				A881200E12C7816300A1A08E /* Settings.bundle in Resources */,
 				A881200F12C7816300A1A08E /* help8.png in Resources */,
@@ -5500,7 +5491,6 @@
 				A881203312C7816300A1A08E /* toggleweapons-left-btn.png in Resources */,
 				A881203412C7816300A1A08E /* toggleweapons-right-btn.png in Resources */,
 				A881203512C7816300A1A08E /* play-btn.png in Resources */,
-				A881203612C7816300A1A08E /* iTunesArtwork in Resources */,
 				A881203712C7816300A1A08E /* internet-btn.png in Resources */,
 				A881203812C7816300A1A08E /* help11.png in Resources */,
 				A881203912C7816300A1A08E /* help12.png in Resources */,
@@ -5514,8 +5504,6 @@
 				A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
-				A83DC78712E939880077C779 /* alephone2-icon-512px.png in Resources */,
-				A83DC78812E939880077C779 /* alephone2-icon-ipad.png in Resources */,
 				A8F2383212EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383312EB729B00CBC83D /* zoom_out.png in Resources */,
 				A81C1E2A130B7825002371D5 /* MenuItem-Load.png in Resources */,
@@ -5538,6 +5526,12 @@
 				A8FF81F2130F70C300A874F8 /* UAStoreFrontLocalization.bundle in Resources */,
 				A8FF8557130F7A4B00A874F8 /* AirshipConfig.plist in Resources */,
 				A866863113135EDA00BE2654 /* M2A1 in Resources */,
+				A8D66F55131766E9009801EC /* alephone2-icon-512px.png in Resources */,
+				A8D66F56131766E9009801EC /* alephone2-icon-ipad.png in Resources */,
+				A8D66F57131766E9009801EC /* GenericBackground.png in Resources */,
+				A8D66F58131766E9009801EC /* SplashScreen.png in Resources */,
+				A8D66F6513176834009801EC /* iTunesArtwork in Resources */,
+				A8D66F691317692A009801EC /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5546,7 +5540,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */,
-				A88121F412C7826300A1A08E /* Default-Portrait.png in Resources */,
 				A88121F512C7826300A1A08E /* Default.png in Resources */,
 				A88121F612C7826300A1A08E /* download-ipad.png in Resources */,
 				A88121F712C7826300A1A08E /* DownloadViewController.xib in Resources */,
@@ -5575,7 +5568,6 @@
 				A881220E12C7826300A1A08E /* SavedGameCell.xib in Resources */,
 				A881220F12C7826300A1A08E /* SaveGameViewController.xib in Resources */,
 				A881221012C7826300A1A08E /* secondarytrigger-btn.png in Resources */,
-				A881221112C7826300A1A08E /* SplashScreen.png in Resources */,
 				A881221212C7826300A1A08E /* HelpViewController.xib in Resources */,
 				A881221312C7826300A1A08E /* Settings.bundle in Resources */,
 				A881221412C7826300A1A08E /* help8.png in Resources */,
@@ -5617,7 +5609,6 @@
 				A881223812C7826300A1A08E /* toggleweapons-left-btn.png in Resources */,
 				A881223912C7826300A1A08E /* toggleweapons-right-btn.png in Resources */,
 				A881223A12C7826300A1A08E /* play-btn.png in Resources */,
-				A881223B12C7826300A1A08E /* iTunesArtwork in Resources */,
 				A881223C12C7826300A1A08E /* internet-btn.png in Resources */,
 				A881223D12C7826300A1A08E /* help11.png in Resources */,
 				A881223E12C7826300A1A08E /* help12.png in Resources */,
@@ -5631,8 +5622,6 @@
 				A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
-				A83DC78212E939880077C779 /* alephoneinfinity-icon-512px.png in Resources */,
-				A83DC78312E939880077C779 /* alephoneinfinity-icon-ipad.png in Resources */,
 				A8F2383012EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383112EB729B00CBC83D /* zoom_out.png in Resources */,
 				A81C1E25130B7825002371D5 /* MenuItem-Load.png in Resources */,
@@ -5655,6 +5644,12 @@
 				A8FF8209130F70C300A874F8 /* UAStoreFrontLocalization.bundle in Resources */,
 				A8FF8558130F7A5000A874F8 /* AirshipConfig.plist in Resources */,
 				A866937413135F0800BE2654 /* M3A1 in Resources */,
+				A8D66F5D131766F7009801EC /* alephoneinfinity-icon-512px.png in Resources */,
+				A8D66F5E131766F7009801EC /* alephoneinfinity-icon-ipad.png in Resources */,
+				A8D66F5F131766F7009801EC /* GenericBackground.png in Resources */,
+				A8D66F60131766F7009801EC /* SplashScreen.png in Resources */,
+				A8D66F6313176831009801EC /* iTunesArtwork in Resources */,
+				A8D66F6D13176941009801EC /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
