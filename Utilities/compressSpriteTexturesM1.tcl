@@ -57,9 +57,9 @@ cd SpriteTextures-$Scenario-Original
 foreach collection [lsort [glob *]] {
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
-  puts "Collection $collection : $InfraVision"
+  puts "\nCollection $collection : $InfraVision"
   foreach clut [lsort [glob *]] {
-    puts "\tCLUT: $clut"
+    puts "\tCLUT: $clut -- "
     foreach file [lsort [glob $clut/*mask.bmp]] {
       set mask $file
       set image [string replace $mask end-7 end-4]

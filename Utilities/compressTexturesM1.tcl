@@ -315,6 +315,13 @@ set IRTextureSize "128x128!"
 set TextureSize "512x512!"
 set TextureSize "256x256!"
 
+# if we are standard textures, make them 128x128 always
+if { $TextureSet == "StandardTextures" } {
+  set TextureSize "128x128!"
+  puts "Limiting to $TextureSize because we are $TextureSet"
+}
+
+
 set SizeLimit 512
 
 proc Rename {} {
@@ -353,12 +360,19 @@ foreach collection [lsort [glob *]] {
   set InfraVision [lindex $Vision($collection) 3]
   puts "Collection $collection : $InfraVision"
   foreach clut [lsort [glob *]] {
-    puts "\tCLUT: $clut"
+    puts -nonewline "\tCLUT: $clut -- "; flush stdout
     foreach image [lsort [glob $clut/bitmap*.*]] {
       # Find bitmap number
       set bitmap [string range $image end-6 end-4]
       set bitmap [string trimleft $bitmap 0]
       if { $bitmap == "" } { set bitmap 0 }
+      if { $bitmap == "ask" } { continue }
+
+      # do we have a mask?
+      set mask ""
+      if { [file exists [file root $image]mask.bmp] } {
+        set mask [file root $image]mask.bmp
+      }
 
       set size [exec identify -format "%w %h" $image]
       set width [lindex $size 0]
@@ -388,13 +402,16 @@ foreach collection [lsort [glob *]] {
         set size "${maxDim}x${maxDim}!"
       }
 
+      # puts "\t\tProcessing $image bitmap: $bitmap"
+      puts -nonewline "$bitmap "
+      flush stdout
+
       # Special sizes
       if { [info exists Size($collection,$clut,$bitmap)] } {
         set size $Size($collection,$clut,$bitmap)
-        puts "\t\t\tSpecial Size!: $size"
+        puts -nonewline "\[Size: $size\] "; flush stdout
       }
 
-      puts "\t\tProcessing $image bitmap: $bitmap"
       set tail [file tail $image]
       set base [file root $tail]
       set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.pvr]
@@ -404,8 +421,13 @@ foreach collection [lsort [glob *]] {
       file mkdir [file dir $TempFile]
 
       # Square, so we resize
-      exec convert $image -resize $size $TempFile
-      puts "\t\tResized to $size"
+      # check if we have a mask or not
+      if { $mask != "" } {
+        exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
+      } else {
+        exec convert $image -resize $size $TempFile
+      }
+      # puts "\t\tResized to $size"
       set extra ""
       if { [info exists ExtraSettings($Scenario,$collection,$bitmap)] } { set extra $ExtraSettings($Scenario,$collection,$bitmap) }
       if { $Compress } {
@@ -418,7 +440,7 @@ foreach collection [lsort [glob *]] {
       }
 
       if { $InfraVision } {
-        puts "\t\t\tCreating Vision file"
+        puts -nonewline "\[Vision\] "; flush stdout
         set R [lindex $Vision($collection) 0]
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
@@ -442,6 +464,7 @@ foreach collection [lsort [glob *]] {
       }
     }
   }
+  puts ""
   cd ..
 }
 

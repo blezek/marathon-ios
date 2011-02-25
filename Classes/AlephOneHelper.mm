@@ -141,7 +141,7 @@ extern GLfloat helperPauseAlpha() {
 }
 
 void helperSetPreferences( bool notify) {
-  [PreferencesViewController setAlephOnePreferences:notify];
+  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
 }
 
 short pRecord[128][2];

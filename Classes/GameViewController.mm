@@ -467,7 +467,7 @@ extern struct view_data *world_view; /* should be static */
 }
 
 - (IBAction) gotoPreferences:(id)sender {
-  [self.preferencesViewController setupUI];
+  [self.preferencesViewController setupUI:mode==MenuMode];
   self.preferencesView.hidden = NO;
   self.preferencesView.alpha = 0.0;
   [UIView beginAnimations:nil context:nil];
@@ -691,7 +691,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)saveFilm {
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kCheatsEnabled] ) {
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode] ) {
     saveFilmCheatWarning = [[UIAlertView alloc] initWithTitle:@"Really save?" message:@"You have enabled cheats, this may interfere with film playback.\nReally save?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
     [saveFilmCheatWarning show];
   } else {

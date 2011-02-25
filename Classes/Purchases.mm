@@ -10,6 +10,7 @@
 #import "Prefs.h"
 #import "Secrets.h"
 #include "XML_Loader_SDL.h"
+#include "XML_ParseTreeRoot.h"
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
 
@@ -46,28 +47,38 @@ extern "C" {
 @implementation Purchases
 
 -(NSString*)purchasesDirectory {
-  return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+  NSString* dir = [NSString stringWithFormat:@"%@/ua/downloads/",
+                   [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
+  return dir;
 }
 
 -(void)checkPurchases {
 
   BOOL isDirectory;
   BOOL haveTTEP = [[NSFileManager defaultManager] 
-                   fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", [self purchasesDirectory], TTEP_FILENAME]
+                   fileExistsAtPath:[NSString stringWithFormat:@"%@/%@TextureEnhancement/%@", 
+                                     [self purchasesDirectory], 
+                                     SCENARIO_DESIGNATION,
+                                     TTEP_FILENAME]
                    isDirectory:&isDirectory];
   BOOL haveVidmaster = [[NSFileManager defaultManager] 
-                        fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", [self purchasesDirectory], VIDMASTER_MODE_FILENAME]
+                        fileExistsAtPath:[NSString stringWithFormat:@"%@/%@VidmasterMode/%@", 
+                                          [self purchasesDirectory], 
+                                          SCENARIO_DESIGNATION,
+                                          VIDMASTER_MODE_FILENAME]
                         isDirectory:&isDirectory];
-  
-  MLog ( @"haveTTEP: %@ haveVidmaster: %@", haveTTEP, haveVidmaster );
+  [[NSUserDefaults standardUserDefaults] setBool:haveTTEP forKey:kHaveTTEP];
+  [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kHaveVidmasterMode];
+  MLog ( @"haveTTEP: %d haveVidmaster: %d", haveTTEP, haveVidmaster );
   
   // Do something about it
-  [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kCheatsEnabled];
+  // [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kUseVidmasterMode];
+  BOOL useTTEP = [[NSUserDefaults standardUserDefaults] boolForKey:kUseTTEP];
+  haveTTEP = YES;
   
   NSString *dataDir = [[AlephOneAppDelegate sharedAppDelegate] getDataDirectory];
   NSString * pathToMML;
-  XML_Loader_SDL loader;
-  if ( haveTTEP ) {
+  if ( haveTTEP && useTTEP ) {
     // Load the new textures...
     pathToMML = [NSString stringWithFormat:@"%@/%@/TTEP-%@/TTEP.mml",
                  dataDir,
@@ -79,8 +90,41 @@ extern "C" {
                  [AlephOneAppDelegate sharedAppDelegate].scenario.path,
                  SCENARIO_DESIGNATION];
   }
-  FileSpecifier file ( (char*)[pathToMML UTF8String] );
-  loader.ParseFile(file);
+  
+  // Install the file
+  
+  // Create the Scripts directory
+  NSString *scriptsDirectory = [NSString stringWithFormat:@"%@/Scripts/", 
+                             [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory]];
+  
+  NSError *error = 0;
+  [[NSFileManager defaultManager] createDirectoryAtPath:scriptsDirectory
+                            withIntermediateDirectories:YES
+                                             attributes:nil
+                                                  error:&error];
+  
+  NSString* outputFile = [NSString stringWithFormat:@"%@/WallTextures.mml", scriptsDirectory];
+  NSLog ( @"Creating saved scripts directory %@", scriptsDirectory );
+  
+  BOOL removeSuccessful = [[NSFileManager defaultManager] removeItemAtPath:outputFile error:&error];
+  if ( !removeSuccessful ) {
+    MLog ( @"Failed to remove old file: %@", error );
+  }
+  
+  BOOL copySuccessful = [[NSFileManager defaultManager] copyItemAtPath:pathToMML toPath:outputFile error:&error];
+  if ( !copySuccessful ) {
+    MLog ( @"Failed to copy!" );
+  }
+  
+  // Force a re-parse
+  LoadBaseMMLScripts();
+  unload_all_collections();
+  /*
+   XML_Loader_SDL loader;
+   FileSpecifier file ( (char*)[pathToMML UTF8String] );
+   loader.CurrentElement = &RootParser;
+   loader.ParseFile(file);
+   */
 }
   
   

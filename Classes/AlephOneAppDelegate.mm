@@ -85,7 +85,6 @@ extern int SDL_main(int argc, char *argv[]);
   // Set the application defaults  
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                               @"NO", kCheatsEnabled,
                                @"2.0", kGamma,
                                @"NO", kTapShoots,
                                @"NO", kSecondTapShoots,
@@ -96,6 +95,10 @@ extern int SDL_main(int argc, char *argv[]);
                                @"0", kEntryLevelNumber,
                                @"NO", kCrosshairs,
                                @"NO", kAutocenter,
+                               @"NO", kHaveTTEP,
+                               @"YES", kUseTTEP,
+                               @"NO", kHaveVidmasterMode,
+                               @"YES", kUseVidmasterMode,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -107,7 +110,7 @@ extern int SDL_main(int argc, char *argv[]);
 #endif
 
 #if defined(A1DEBUG)
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCheatsEnabled];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUseVidmasterMode];
 #endif
     
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
