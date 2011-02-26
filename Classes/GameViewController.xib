@@ -535,7 +535,7 @@
 							<object class="IBUIButton" id="70214282">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{784, 56.5}, {240, 80}}</string>
+								<string key="NSFrame">{{774, 53.5}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -557,7 +557,7 @@
 							<object class="IBUIButton" id="851951514">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{784, 139.5}, {240, 80}}</string>
+								<string key="NSFrame">{{774, 136.5}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -579,7 +579,7 @@
 							<object class="IBUIButton" id="504006047">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{784, 222.5}, {240, 80}}</string>
+								<string key="NSFrame">{{774, 219.5}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -601,7 +601,7 @@
 							<object class="IBUIButton" id="428206114">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{784, 305.5}, {240, 80}}</string>
+								<string key="NSFrame">{{774, 302.5}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -2954,12 +2954,16 @@
 							<string>crosshairs</string>
 							<string>filmsDisabled</string>
 							<string>hSensitivity</string>
+							<string>hiresTextures</string>
+							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
 							<string>secondTapShoots</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
 							<string>vSensitivity</string>
+							<string>vidmasterMode</string>
+							<string>vidmasterModeLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2968,12 +2972,16 @@
 							<string>UISwitch</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
+							<string>UISwitch</string>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
 							<string>UISwitch</string>
 							<string>UISlider</string>
 							<string>UISwitch</string>
 							<string>UISlider</string>
+							<string>UISwitch</string>
+							<string>UILabel</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -2985,12 +2993,16 @@
 							<string>crosshairs</string>
 							<string>filmsDisabled</string>
 							<string>hSensitivity</string>
+							<string>hiresTextures</string>
+							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
 							<string>secondTapShoots</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
 							<string>vSensitivity</string>
+							<string>vidmasterMode</string>
+							<string>vidmasterModeLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3015,6 +3027,14 @@
 								<string key="candidateClassName">UISlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">hiresTextures</string>
+								<string key="candidateClassName">UISwitch</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">hiresTexturesLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">musicLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
@@ -3037,6 +3057,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">vSensitivity</string>
 								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">vidmasterMode</string>
+								<string key="candidateClassName">UISwitch</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">vidmasterModeLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>
@@ -3337,10 +3365,10 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1024, 768}</string>
-				<string>{240, 80}</string>
-				<string>{240, 80}</string>
-				<string>{240, 80}</string>
-				<string>{240, 80}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
 				<string>{512, 512}</string>
 				<string>{1024, 768}</string>
 				<string>{512, 100}</string>

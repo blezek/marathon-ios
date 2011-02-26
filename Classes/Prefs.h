@@ -23,3 +23,6 @@
 #define kUseTTEP @"useTTEP"
 #define kHaveVidmasterMode @"haveVidmasterMode"
 #define kUseVidmasterMode @"useVidmasterMode"
+
+// Tap to shoot timeout in seconds
+#define TapToShootDelta 0.1
