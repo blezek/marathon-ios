@@ -80,7 +80,7 @@ extern "C" {
         // MLog ( @"Might fire here");
         NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
         self.firstTouchTime = nil;
-        if ( delta < 0.3 ) {
+        if ( delta < TapToShootDelta ) {
           Uint8 *key_map = SDL_GetKeyboardState ( NULL );
           key_map[primaryFire] = 1;
           [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
