@@ -146,7 +146,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<object class="IBUIButton" id="646278475">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{213, 315}, {116, 116}}</string>
+						<string key="NSFrame">{{0, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -168,7 +168,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<object class="IBUIButton" id="403985543">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{372, 315}, {116, 116}}</string>
+						<string key="NSFrame">{{258, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -190,7 +190,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<object class="IBUIButton" id="565955628">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{532, 315}, {116, 116}}</string>
+						<string key="NSFrame">{{516, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -212,7 +212,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<object class="IBUIButton" id="694068488">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{688, 315}, {116, 116}}</string>
+						<string key="NSFrame">{{774, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -229,18 +229,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">nightmare-btn.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="940688368">
-						<reference key="NSNextResponder" ref="689605433"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{132, 272}, {760, 197}}</string>
-						<reference key="NSSuperview" ref="689605433"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">buttonsarea-bg.png</string>
 						</object>
 					</object>
 				</object>
@@ -404,15 +392,14 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="928701917"/>
-							<reference ref="694068488"/>
-							<reference ref="565955628"/>
-							<reference ref="403985543"/>
-							<reference ref="646278475"/>
 							<reference ref="381063342"/>
 							<reference ref="443320114"/>
 							<reference ref="1033442337"/>
 							<reference ref="508363884"/>
-							<reference ref="940688368"/>
+							<reference ref="646278475"/>
+							<reference ref="403985543"/>
+							<reference ref="565955628"/>
+							<reference ref="694068488"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -461,11 +448,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 						<reference key="object" ref="694068488"/>
 						<reference key="parent" ref="689605433"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">38</int>
-						<reference key="object" ref="940688368"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -489,8 +471,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					<string>22.IBPluginDependency</string>
 					<string>22.IBViewBoundsToFrameTransform</string>
 					<string>23.IBPluginDependency</string>
-					<string>38.IBPluginDependency</string>
-					<string>38.IBViewBoundsToFrameTransform</string>
+					<string>23.IBViewBoundsToFrameTransform</string>
 					<string>4.IBEditorWindowLastContentRect</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBUserGuides</string>
@@ -519,20 +500,19 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDBAAAw+GAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAw9SAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDnQAAw7oAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDhAAAw9SAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEBkAAw7oAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABD/4AAw9SAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDKgAAw+kAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABEPIAAw9SAAA</bytes>
 					</object>
 					<string>{{345, 355}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -712,7 +692,6 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>GenericBackground.png</string>
-				<string>buttonsarea-bg.png</string>
 				<string>cancel-btn.png</string>
 				<string>easy-btn.png</string>
 				<string>hard-btn.png</string>
@@ -722,12 +701,11 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvYiBhbGl2ZS4nA</string>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1024, 768}</string>
-				<string>{678, 197}</string>
 				<string>{95, 95}</string>
-				<string>{153, 153}</string>
-				<string>{153, 153}</string>
-				<string>{153, 153}</string>
-				<string>{153, 153}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

@@ -21,6 +21,7 @@
 #import "HelpViewController.h"
 #import "NewGameViewController.h"
 #import "FilmViewController.h"
+#import "PurchaseViewController.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -55,6 +56,7 @@ typedef enum {
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
+  IBOutlet UIView *purchaseView;
 
   IBOutlet UIButton *pause;
   IBOutlet UIButton *zoomOutButton;
@@ -99,6 +101,7 @@ typedef enum {
   IBOutlet HelpViewController *helpViewController;
   IBOutlet NewGameViewController *newGameViewController;
   IBOutlet FilmViewController* filmViewController;
+  PurchaseViewController *purchaseViewController;
   
   UITapGestureRecognizer *menuTapGesture;
   UITapGestureRecognizer *controlsOverviewGesture;
@@ -140,8 +143,7 @@ typedef enum {
 - (IBAction)menuLoadGame;
 - (IBAction)menuPreferences;
 - (IBAction)menuStore;
-- (IBAction)menuRestorePurchases;
-
+- (IBAction)cancelStore;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -207,6 +209,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *helpView;
 @property (nonatomic, retain) UIView *replacementMenuView;
 @property (nonatomic, retain) UIView *controlsOverviewView;
+@property (nonatomic, retain) UIView *purchaseView;
 
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
@@ -236,6 +239,7 @@ typedef enum {
 @property (nonatomic, retain) HelpViewController *helpViewController;
 @property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
+@property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

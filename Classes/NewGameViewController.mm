@@ -81,6 +81,7 @@ static vector<entry_point> levels;
  */
 
 - (void)appear {
+  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
   // Get levels
   levels.clear();
   /* Everything!
@@ -111,7 +112,8 @@ static vector<entry_point> levels;
     }
   }
   [self setEntryLevel:nil];
-  BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
+  BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode] 
+           && [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
   self.pledge.hidden = !show;
   self.startLevelSlider.hidden = !show;
   self.startLevelLabel.hidden = !show;

@@ -1393,18 +1393,6 @@
 		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
 		A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
-		A88452D712D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
-		A88452D812D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
-		A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
-		A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
-		A88452DB12D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
-		A88452DC12D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
-		A88452DD12D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
-		A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
-		A88452DF12D9726E006C0F09 /* EasyLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D312D9726E006C0F09 /* EasyLabel.png */; };
-		A88452E012D9726E006C0F09 /* HardLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D412D9726E006C0F09 /* HardLabel.png */; };
-		A88452E112D9726E006C0F09 /* NightmareLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D512D9726E006C0F09 /* NightmareLabel.png */; };
-		A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A88452D612D9726E006C0F09 /* NormalLabel.png */; };
 		A88DBF5312640A7800FCC652 /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC112640A7800FCC652 /* jcapimin.c */; };
 		A88DBF5412640A7800FCC652 /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC212640A7800FCC652 /* jcapistd.c */; };
 		A88DBF5512640A7800FCC652 /* jccoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC312640A7800FCC652 /* jccoefct.c */; };
@@ -1503,6 +1491,18 @@
 		A8AA814512C054A400821170 /* toggleweapons-left-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814312C054A400821170 /* toggleweapons-left-btn.png */; };
 		A8AA814612C054A400821170 /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
 		A8AA814C12C055B400821170 /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
+		A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
+		A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
+		A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
+		A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
+		A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
+		A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
+		A8AB7F04131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7EFF131DF0E80012C23E /* IKPaymentTransactionObserver.m */; };
+		A8AB7F05131DF0E80012C23E /* InventoryKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7F03131DF0E80012C23E /* InventoryKit.m */; };
+		A8AB7F06131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7EFF131DF0E80012C23E /* IKPaymentTransactionObserver.m */; };
+		A8AB7F07131DF0E80012C23E /* InventoryKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7F03131DF0E80012C23E /* InventoryKit.m */; };
+		A8AB7F08131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7EFF131DF0E80012C23E /* IKPaymentTransactionObserver.m */; };
+		A8AB7F09131DF0E80012C23E /* InventoryKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7F03131DF0E80012C23E /* InventoryKit.m */; };
 		A8AD432912220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
 		A8AD432A12220F9500A09383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
@@ -2203,10 +2203,6 @@
 		A88124A312C79E0100A1A08E /* FilmViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilmViewController.mm; path = Classes/FilmViewController.mm; sourceTree = "<group>"; };
 		A881257D12C7B64900A1A08E /* FilmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmCell.xib; path = Resources/FilmCell.xib; sourceTree = "<group>"; };
 		A8828E8111E2DFD500FBBD45 /* Game Screen Shot for Controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Game Screen Shot for Controls.png"; path = "Artwork/Game Screen Shot for Controls.png"; sourceTree = "<group>"; };
-		A88452D312D9726E006C0F09 /* EasyLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EasyLabel.png; path = Artwork/EasyLabel.png; sourceTree = "<group>"; };
-		A88452D412D9726E006C0F09 /* HardLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HardLabel.png; path = Artwork/HardLabel.png; sourceTree = "<group>"; };
-		A88452D512D9726E006C0F09 /* NightmareLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NightmareLabel.png; path = Artwork/NightmareLabel.png; sourceTree = "<group>"; };
-		A88452D612D9726E006C0F09 /* NormalLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NormalLabel.png; path = Artwork/NormalLabel.png; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		A889BBB011C8817400923787 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
@@ -2768,6 +2764,15 @@
 		A8AA814312C054A400821170 /* toggleweapons-left-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toggleweapons-left-btn.png"; path = "Artwork/toggleweapons-left-btn.png"; sourceTree = "<group>"; };
 		A8AA814412C054A400821170 /* toggleweapons-right-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toggleweapons-right-btn.png"; path = "Artwork/toggleweapons-right-btn.png"; sourceTree = "<group>"; };
 		A8AA814B12C055B400821170 /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-btn.png"; path = "Artwork/play-btn.png"; sourceTree = "<group>"; };
+		A8AB7ED5131DF02D0012C23E /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = Classes/PurchaseViewController.h; sourceTree = "<group>"; };
+		A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PurchaseViewController.mm; path = Classes/PurchaseViewController.mm; sourceTree = "<group>"; };
+		A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = Classes/PurchaseViewController.xib; sourceTree = "<group>"; };
+		A8AB7EFE131DF0E80012C23E /* IKPaymentTransactionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKPaymentTransactionObserver.h; sourceTree = "<group>"; };
+		A8AB7EFF131DF0E80012C23E /* IKPaymentTransactionObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKPaymentTransactionObserver.m; sourceTree = "<group>"; };
+		A8AB7F00131DF0E80012C23E /* IKPurchaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKPurchaseDelegate.h; sourceTree = "<group>"; };
+		A8AB7F01131DF0E80012C23E /* IKRestoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKRestoreDelegate.h; sourceTree = "<group>"; };
+		A8AB7F02131DF0E80012C23E /* InventoryKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryKit.h; sourceTree = "<group>"; };
+		A8AB7F03131DF0E80012C23E /* InventoryKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryKit.m; sourceTree = "<group>"; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
 		A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneAppDelegate.h; path = Classes/AlephOneAppDelegate.h; sourceTree = "<group>"; };
 		A8AD432412220F9500A09383 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
@@ -3270,7 +3275,6 @@
 				A8FF8537130F798B00A874F8 /* M1 */,
 				A8FF8539130F798B00A874F8 /* M2 */,
 				A8FF853B130F798B00A874F8 /* M3 */,
-				A88452D212D97258006C0F09 /* Labels */,
 				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
@@ -3415,6 +3419,7 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A8AB7EFD131DF0E80012C23E /* InventoryKit */,
 				A84CA788130E1F9800A3A4F4 /* Secrets.h */,
 				A8EB682512DC1413001D43EA /* Appirater.h */,
 				A8EB682612DC1413001D43EA /* Appirater.m */,
@@ -3473,6 +3478,8 @@
 				A817BDFF12CCC84300C31134 /* AlertPrompt.m */,
 				A8FF85C31310AF4500A874F8 /* Purchases.h */,
 				A8FF85C41310AF4500A874F8 /* Purchases.mm */,
+				A8AB7ED5131DF02D0012C23E /* PurchaseViewController.h */,
+				A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3651,17 +3658,6 @@
 				A87F55DF12A7407E00032ED6 /* help1.png */,
 			);
 			name = Help;
-			sourceTree = "<group>";
-		};
-		A88452D212D97258006C0F09 /* Labels */ = {
-			isa = PBXGroup;
-			children = (
-				A88452D312D9726E006C0F09 /* EasyLabel.png */,
-				A88452D412D9726E006C0F09 /* HardLabel.png */,
-				A88452D512D9726E006C0F09 /* NightmareLabel.png */,
-				A88452D612D9726E006C0F09 /* NormalLabel.png */,
-			);
-			name = Labels;
 			sourceTree = "<group>";
 		};
 		A889BBAD11C8817400923787 /* GLU */ = {
@@ -4590,6 +4586,20 @@
 			path = SettingsIcons;
 			sourceTree = "<group>";
 		};
+		A8AB7EFD131DF0E80012C23E /* InventoryKit */ = {
+			isa = PBXGroup;
+			children = (
+				A8AB7EFE131DF0E80012C23E /* IKPaymentTransactionObserver.h */,
+				A8AB7EFF131DF0E80012C23E /* IKPaymentTransactionObserver.m */,
+				A8AB7F00131DF0E80012C23E /* IKPurchaseDelegate.h */,
+				A8AB7F01131DF0E80012C23E /* IKRestoreDelegate.h */,
+				A8AB7F02131DF0E80012C23E /* InventoryKit.h */,
+				A8AB7F03131DF0E80012C23E /* InventoryKit.m */,
+			);
+			name = InventoryKit;
+			path = Classes/InventoryKit;
+			sourceTree = "<group>";
+		};
 		A8AF814412B7123F00671C11 /* assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -4657,6 +4667,7 @@
 		A8C391F11297845E00E09E32 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */,
 				A8DC94ED12CAD0500055397E /* FilmViewController.xib */,
 				A881257D12C7B64900A1A08E /* FilmCell.xib */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
@@ -5375,10 +5386,6 @@
 				A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */,
-				A88452DF12D9726E006C0F09 /* EasyLabel.png in Resources */,
-				A88452E012D9726E006C0F09 /* HardLabel.png in Resources */,
-				A88452E112D9726E006C0F09 /* NightmareLabel.png in Resources */,
-				A88452E212D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383412EB729B00CBC83D /* zoom_in.png in Resources */,
@@ -5409,6 +5416,7 @@
 				A874B1FA1318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1FB1318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */,
+				A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5491,10 +5499,6 @@
 				A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */,
-				A88452DB12D9726E006C0F09 /* EasyLabel.png in Resources */,
-				A88452DC12D9726E006C0F09 /* HardLabel.png in Resources */,
-				A88452DD12D9726E006C0F09 /* NightmareLabel.png in Resources */,
-				A88452DE12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383212EB729B00CBC83D /* zoom_in.png in Resources */,
@@ -5524,6 +5528,7 @@
 				A874B1E51318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1E61318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1E71318AA68009C4A92 /* MenuItem-Store.png in Resources */,
+				A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5606,10 +5611,6 @@
 				A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */,
-				A88452D712D9726E006C0F09 /* EasyLabel.png in Resources */,
-				A88452D812D9726E006C0F09 /* HardLabel.png in Resources */,
-				A88452D912D9726E006C0F09 /* NightmareLabel.png in Resources */,
-				A88452DA12D9726E006C0F09 /* NormalLabel.png in Resources */,
 				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383012EB729B00CBC83D /* zoom_in.png in Resources */,
@@ -5639,6 +5640,7 @@
 				A874B1D01318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1D11318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1D21318AA68009C4A92 /* MenuItem-Store.png in Resources */,
+				A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6138,6 +6140,9 @@
 				A8FF83DF130F745400A874F8 /* UASubscriptionProduct.m in Sources */,
 				A8FF859F1310AD1100A874F8 /* UA_Reachability.m in Sources */,
 				A8FF85C51310AF4500A874F8 /* Purchases.mm in Sources */,
+				A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
+				A8AB7F04131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
+				A8AB7F05131DF0E80012C23E /* InventoryKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6634,6 +6639,9 @@
 				A8FF8454130F745400A874F8 /* UASubscriptionProduct.m in Sources */,
 				A8FF85A01310AD1100A874F8 /* UA_Reachability.m in Sources */,
 				A8FF85C61310AF4500A874F8 /* Purchases.mm in Sources */,
+				A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
+				A8AB7F08131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
+				A8AB7F09131DF0E80012C23E /* InventoryKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7130,6 +7138,9 @@
 				A8FF84C9130F745400A874F8 /* UASubscriptionProduct.m in Sources */,
 				A8FF85A11310AD1100A874F8 /* UA_Reachability.m in Sources */,
 				A8FF85C71310AF4500A874F8 /* Purchases.mm in Sources */,
+				A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
+				A8AB7F06131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
+				A8AB7F07131DF0E80012C23E /* InventoryKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

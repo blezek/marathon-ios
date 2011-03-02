@@ -19,6 +19,6 @@
 -(void)storeFrontDidHide;
 -(void)storeFrontWillHide;
 -(void)productsDownloadProgress:(float)progress count:(int)count;
-  
+-(void)quickCheckPurchases;  
 
 @end
