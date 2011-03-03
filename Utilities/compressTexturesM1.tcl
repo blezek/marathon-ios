@@ -38,18 +38,18 @@ set Vision(30)  "0 0 1 1"
 set Vision(31)  "1 1 1 0"
 
 set Opacity(17,19,Type) 1
-set Opacity(17,19,Scale) 0.6
+# set Opacity(17,19,Scale) 0.6
 set Opacity(18,12,Type) 1
-set Opacity(18,12,Scale) 0.6
+# set Opacity(18,12,Scale) 0.6
 
 set ExtraSettings(M2,17,16) {opac_type="1"}
-set ExtraSettings(M2,17,19) {opac_type="1" opac_scale="0.6"}
+# set ExtraSettings(M2,17,19) {opac_type="1" opac_scale="0.6"}
 set ExtraSettings(M2,18,9) {opac_type="1"}
-set ExtraSettings(M2,18,12) {opac_type="1" opac_scale="0.6"}
+# set ExtraSettings(M2,18,12) {opac_type="1" opac_scale="0.6"}
 set ExtraSettings(M2,18,29) {opac_type="1"}
-set ExtraSettings(M2,19,9) {opac_type="1" opac_scale="0.6"}
+# set ExtraSettings(M2,19,9) {opac_type="1" opac_scale="0.6"}
 set ExtraSettings(M2,19,13) {opac_type="1"}
-set ExtraSettings(M2,21,5) {opac_type="1" opac_scale="0.6"}
+# set ExtraSettings(M2,21,5) {opac_type="1" opac_scale="0.6"}
 
 lappend Collections(/general/controlpanels01.dds) "17 0"
 lappend Collections(/general/controlpanels01.dds) "18 0"
@@ -315,10 +315,13 @@ set IRTextureSize "128x128!"
 set TextureSize "512x512!"
 set TextureSize "256x256!"
 
+set StandardTextures 0
 # if we are standard textures, make them 128x128 always
 if { $TextureSet == "StandardTextures" } {
   set TextureSize "128x128!"
+  set SpecialSize $TextureSize
   puts "Limiting to $TextureSize because we are $TextureSet"
+  set StandardTextures 1
 }
 
 
@@ -407,7 +410,7 @@ foreach collection [lsort [glob *]] {
       flush stdout
 
       # Special sizes
-      if { [info exists Size($collection,$clut,$bitmap)] } {
+      if { !$StandardTextures && [info exists Size($collection,$clut,$bitmap)] } {
         set size $Size($collection,$clut,$bitmap)
         puts -nonewline "\[Size: $size\] "; flush stdout
       }

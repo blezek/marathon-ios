@@ -13,7 +13,9 @@
 
 - (IBAction) setup {
   // Hide cheats
-  bool cheatsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
+  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
+  bool cheatsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode]
+                    && [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
   for ( UIView *view in self.view.subviews ) {
     if ( view.tag == 1  ) {
       view.hidden = !cheatsEnabled;

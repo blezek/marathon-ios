@@ -752,6 +752,18 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
+					<object class="IBUIView" id="501269846">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{1024, 768}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="240518105"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 					<object class="IBUIView" id="763863770">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
@@ -1162,6 +1174,14 @@
 					</object>
 					<int key="connectionID">157</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">purchaseView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="501269846"/>
+					</object>
+					<int key="connectionID">159</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1201,6 +1221,7 @@
 							<reference ref="485381462"/>
 							<reference ref="763863770"/>
 							<reference ref="464543623"/>
+							<reference ref="501269846"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1561,6 +1582,12 @@
 						<reference key="object" ref="428206114"/>
 						<reference key="parent" ref="464543623"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">158</int>
+						<reference key="object" ref="501269846"/>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Purchase View</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1619,6 +1646,7 @@
 					<string>148.IBViewBoundsToFrameTransform</string>
 					<string>156.IBPluginDependency</string>
 					<string>156.IBViewBoundsToFrameTransform</string>
+					<string>158.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>2.IBViewEditorWindowController.showingBoundsRectangles</string>
@@ -1745,6 +1773,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABEUQAAw5gAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{312, 132}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
@@ -1828,7 +1857,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">157</int>
+			<int key="maxID">159</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2288,6 +2317,7 @@
 							<string>previousWeaponView</string>
 							<string>progressView</string>
 							<string>progressViewController</string>
+							<string>purchaseView</string>
 							<string>replacementMenuView</string>
 							<string>restartView</string>
 							<string>rightFireView</string>
@@ -2329,6 +2359,7 @@
 							<string>ButtonView</string>
 							<string>UIView</string>
 							<string>ProgressViewController</string>
+							<string>UIView</string>
 							<string>UIView</string>
 							<string>ButtonView</string>
 							<string>ButtonView</string>
@@ -2373,6 +2404,7 @@
 							<string>previousWeaponView</string>
 							<string>progressView</string>
 							<string>progressViewController</string>
+							<string>purchaseView</string>
 							<string>replacementMenuView</string>
 							<string>restartView</string>
 							<string>rightFireView</string>
@@ -2500,6 +2532,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">progressViewController</string>
 								<string key="candidateClassName">ProgressViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">purchaseView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">replacementMenuView</string>
@@ -3365,10 +3401,10 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1024, 768}</string>
-				<string>{16, 16}</string>
-				<string>{16, 16}</string>
-				<string>{16, 16}</string>
-				<string>{16, 16}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
+				<string>{250, 86}</string>
 				<string>{512, 512}</string>
 				<string>{1024, 768}</string>
 				<string>{512, 100}</string>

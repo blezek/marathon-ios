@@ -43,6 +43,7 @@ extern "C" {
 #include "vbl.h"
 #include "render.h"
 #include "interface_menus.h"
+#import "InventoryKit.h"
 
 @implementation Purchases
 
@@ -52,29 +53,25 @@ extern "C" {
   return dir;
 }
 
--(void)checkPurchases {
-
-  BOOL isDirectory;
-  BOOL haveTTEP = [[NSFileManager defaultManager] 
-                   fileExistsAtPath:[NSString stringWithFormat:@"%@/%@TextureEnhancement/%@", 
-                                     [self purchasesDirectory], 
-                                     SCENARIO_DESIGNATION,
-                                     TTEP_FILENAME]
-                   isDirectory:&isDirectory];
-  BOOL haveVidmaster = [[NSFileManager defaultManager] 
-                        fileExistsAtPath:[NSString stringWithFormat:@"%@/%@VidmasterMode/%@", 
-                                          [self purchasesDirectory], 
-                                          SCENARIO_DESIGNATION,
-                                          VIDMASTER_MODE_FILENAME]
-                        isDirectory:&isDirectory];
-  [[NSUserDefaults standardUserDefaults] setBool:haveTTEP forKey:kHaveTTEP];
+-(void)quickCheckPurchases {
+  BOOL haveTTEP = [InventoryKit productActivated:HDModeProductID];
+  BOOL haveVidmaster = [InventoryKit productActivated:VidmasterModeProductID];
+  
   [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:haveTTEP forKey:kHaveTTEP];
   MLog ( @"haveTTEP: %d haveVidmaster: %d", haveTTEP, haveVidmaster );
+}  
+
+-(void)checkPurchases {
+  [self quickCheckPurchases];
+  BOOL haveTTEP = [[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP];
   
   // Do something about it
-  // [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kUseVidmasterMode];
   BOOL useTTEP = [[NSUserDefaults standardUserDefaults] boolForKey:kUseTTEP];
-  haveTTEP = YES;
+  
+#if defined(A1DEBUG)
+  // haveTTEP = YES;
+#endif
   
   NSString *dataDir = [[AlephOneAppDelegate sharedAppDelegate] getDataDirectory];
   NSString * pathToMML;

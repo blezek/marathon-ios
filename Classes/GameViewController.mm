@@ -74,6 +74,7 @@ extern struct view_data *world_view; /* should be static */
 @synthesize controlsOverviewView, controlsOverviewGesture;
 @synthesize zoomInButton, zoomOutButton;
 @synthesize replacementMenuView;
+@synthesize purchaseViewController, purchaseView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -123,6 +124,12 @@ extern struct view_data *world_view; /* should be static */
   [self.filmViewController enclosingView];
   [self.filmView addSubview:self.filmViewController.enclosingView];
   
+  self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
+  [self.purchaseViewController view];
+  [self.purchaseView addSubview:self.purchaseViewController.view];
+  
+  
+  
   // Kill a warning
   (void)all_key_definitions;
   mode = MenuMode;
@@ -156,6 +163,7 @@ extern struct view_data *world_view; /* should be static */
                              self.filmView,
                              self.controlsOverviewView,
                              self.replacementMenuView,
+                             self.purchaseView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
@@ -274,9 +282,9 @@ extern struct view_data *world_view; /* should be static */
   self.hud.alpha = 1.0;
   self.restartView.alpha = 0.0;
   self.restartView.hidden = NO;
+  self.hud.alpha = 0.0;
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
-  self.hud.alpha = 0.0;
   self.restartView.alpha = 0.8;
   [UIView commitAnimations];
 }
@@ -770,14 +778,19 @@ extern bool handle_open_replay(FileSpecifier& File);
   MLog ( @"Goto store" );
   // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
   //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
+  /*
   [UAStoreFront displayStoreFront:self animated:YES];
   
   // Specify the sorting of the list of products.
   [UAStoreFront setOrderBy:UAContentsDisplayOrderPrice ascending:YES];
+  */
   
+  self.purchaseView.hidden = NO;
+  [self.purchaseViewController openDoors];
 }
-- (IBAction)menuRestorePurchases {
-  MLog ( @"Restore purchases" );
+- (IBAction)cancelStore {
+  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
+  self.purchaseView.hidden = YES;
 }
 
 
@@ -888,8 +901,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)weaponsCheat:(id)sender {
   short items[]=
   { _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
-    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun,
-    _i_smg };
+    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun
+    // On
+#if SCENARIO == 3
+    , _i_smg
+#endif
+  };
   
   for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
   {

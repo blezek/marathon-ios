@@ -27,7 +27,6 @@
 @synthesize hiresTexturesLabel, hiresTextures;
 
 - (IBAction)closePreferences:(id)sender {
-  
   // Save the back to defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [defaults setBool:[self.tapShoots isOn] forKey:kTapShoots];
@@ -51,6 +50,7 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
+  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   self.tapShoots.on = [defaults boolForKey:kTapShoots];
@@ -104,7 +104,7 @@
   SoundManager::instance()->SetParameters(*sound_preferences);
   
   if ( check ) {
-    [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
+    [[AlephOneAppDelegate sharedAppDelegate].purchases performSelector:@selector(checkPurchases) withObject:nil afterDelay:0.0];
   }
 }
 
