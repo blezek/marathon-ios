@@ -102,6 +102,9 @@
 }
 
 -(void)productWithKey:(NSString*)productKey success:(bool)success {
+  if ( success ) {
+    [InventoryKit activateProduct:productKey];
+  }
   MLog ( @"Bought %@", productKey );
 }
 
