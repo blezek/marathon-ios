@@ -53,17 +53,7 @@ extern "C" {
   return dir;
 }
 
--(void)quickCheckPurchases {
-  BOOL haveTTEP = [InventoryKit productActivated:HDModeProductID];
-  BOOL haveVidmaster = [InventoryKit productActivated:VidmasterModeProductID];
-  
-  [[NSUserDefaults standardUserDefaults] setBool:haveVidmaster forKey:kHaveVidmasterMode];
-  [[NSUserDefaults standardUserDefaults] setBool:haveTTEP forKey:kHaveTTEP];
-  MLog ( @"haveTTEP: %d haveVidmaster: %d", haveTTEP, haveVidmaster );
-}  
-
 -(void)checkPurchases {
-  [self quickCheckPurchases];
   BOOL haveTTEP = [[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP];
   
   // Do something about it
@@ -76,12 +66,14 @@ extern "C" {
   NSString *dataDir = [[AlephOneAppDelegate sharedAppDelegate] getDataDirectory];
   NSString * pathToMML;
   if ( haveTTEP && useTTEP ) {
+    MLog ( @"Loading HD Textures" );
     // Load the new textures...
     pathToMML = [NSString stringWithFormat:@"%@/%@/TTEP-%@/TTEP.mml",
                  dataDir,
                  [AlephOneAppDelegate sharedAppDelegate].scenario.path,
                  SCENARIO_DESIGNATION];
   } else {
+    MLog ( @"Loading SD Textures" );
     pathToMML = [NSString stringWithFormat:@"%@/%@/StandardTextures-%@/StandardTextures.mml",
                  dataDir,
                  [AlephOneAppDelegate sharedAppDelegate].scenario.path,
@@ -112,7 +104,7 @@ extern "C" {
   if ( !copySuccessful ) {
     MLog ( @"Failed to copy!" );
   }
-  
+  MLog ( @"Copied %@ to %@", pathToMML, outputFile );
   // Force a re-parse
   LoadBaseMMLScripts();
   unload_all_collections();
@@ -124,44 +116,5 @@ extern "C" {
    */
 }
   
-  
-#pragma mark -
-#pragma mark StoreFrontDelegate
-
--(void)productPurchased:(UAProduct*) product {
-  MLog(@"[StoreFrontDelegate] Purchased: %@ -- %@", product.productIdentifier, product.title);
-  [self checkPurchases];
-}
-
--(void)storeFrontDidHide {
-  MLog(@"[StoreFrontDelegate] StoreFront quit, do something with content");
-}
-
--(void)storeFrontWillHide {
-  MLog(@"[StoreFrontDelegate] StoreFront will hide");
-  [self checkPurchases];
-}
-
-- (void)productsDownloadProgress:(float)progress count:(int)count {
-  MLog(@"[StoreFrontDelegate] productsDownloadProgress: %f count: %d", progress, count);
-  if (count == 0) {
-    MLog(@"Downloads complete");
-    [self checkPurchases];
-  }
-}
-
-
-/*
-+ (void)ReParse {
- // Unload the collections, the reparse the file.   
- void unload_all_collections(
-
- XML_Loader_SDL loader;
-  // Construct full path name
-  FileSpecifier file_name = dir + i->name;
-  
-  // Parse file
-  ParseFile(file_name);
-*/  
 
 @end

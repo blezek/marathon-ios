@@ -79,7 +79,8 @@ extern int SDL_main(int argc, char *argv[]);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	finishedStartup = NO;
   OpenGLESVersion = 1;
-  purchases = [[Purchases alloc] init];
+  self.purchases = [[Purchases alloc] init];
+  [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 
   // Default preferences
   // Set the application defaults  
@@ -351,6 +352,55 @@ const char* argv[] = { "AlephOneHD" };
 	exit(exit_status);
 }
 
+
+#pragma mark -
+#pragma mark Transactions
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+  for (SKPaymentTransaction *transaction in transactions)
+  {
+    BOOL notifiedOfFailure = NO;
+    switch (transaction.transactionState)
+    {
+      case SKPaymentTransactionStatePurchased:
+      case SKPaymentTransactionStateRestored:
+        MLog ( @"Processing transaction %@", transaction.payment.productIdentifier );
+        if ( [transaction.payment.productIdentifier isEqual:VidmasterModeProductID] ) {
+          MLog ( @"Enable Vidmaster mode!" );
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+          [[NSUserDefaults standardUserDefaults] synchronize];
+          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        }
+        if ( [transaction.payment.productIdentifier isEqual:HDModeProductID] ) {
+          MLog ( @"Enable HD mode!" );
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+          [[NSUserDefaults standardUserDefaults] synchronize];
+          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        }
+        MLog ( @"Transaction completed" );
+        break;
+      case SKPaymentTransactionStateFailed:
+        // Log something [self failedTransaction:transaction];
+        // Pop up a dialog
+        if ( !notifiedOfFailure ) {
+          notifiedOfFailure = YES;
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Purchase failed"
+                                                       message:[NSString stringWithFormat:@"Purchase failed.  Error is: %@", transaction.error]
+                                                    delegate:self
+                                           cancelButtonTitle:@"Ok"
+                                           otherButtonTitles:nil];
+          [av show];
+          [av release];
+        }
+        MLog ( @"Transaction failed" );
+        break;
+      default:
+        break;
+    }
+  }
+  [[GameViewController sharedInstance].purchaseViewController updateView];
+}
 
 #pragma mark -
 #pragma mark Core Data stack

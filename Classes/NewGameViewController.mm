@@ -81,7 +81,9 @@ static vector<entry_point> levels;
  */
 
 - (void)appear {
-  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
+  self.pledge.layer.cornerRadius = 20.0;
+  self.pledge.layer.borderColor = [[UIColor grayColor] CGColor];
+  self.pledge.layer.borderWidth = 1;
   // Get levels
   levels.clear();
   /* Everything!

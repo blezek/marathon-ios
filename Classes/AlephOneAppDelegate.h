@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <StoreKit/StoreKit.h>
 #import "NewGameViewController.h"
 #import "ManagedObjects.h"
 #import "Prefs.h"
@@ -16,7 +17,7 @@
 
 @class GameViewController;
 @class DownloadViewController;
-@interface AlephOneAppDelegate : NSObject <UIApplicationDelegate> {
+@interface AlephOneAppDelegate : NSObject <UIApplicationDelegate, SKPaymentTransactionObserver> {
     
   UIWindow *window;
   NewGameViewController *newGameViewController;
@@ -44,6 +45,10 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) Scenario *scenario;
 @property (nonatomic) int OpenGLESVersion;
+
+
+// Transactions
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
 - (NSString *)applicationDocumentsDirectory;
 - (NSString*)getDataDirectory;

@@ -19,6 +19,7 @@
 @synthesize hdmTitle;
 @synthesize hdmPrice;
 @synthesize hdmDescription;
+@synthesize vmmPurchase, hdmPurchase;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -41,9 +42,11 @@
 - (IBAction)openDoors {
   // Request our list
   [self.activity startAnimating];
+  self.activity.hidden = NO;
   SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithObjects:VidmasterModeProductID, HDModeProductID, nil]];
   request.delegate = self;
   [request start];
+  [self updateView];
 }
 
 - (NSString*)formatCurrency:(SKProduct*)product {
@@ -66,6 +69,7 @@
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
   [self.activity stopAnimating];
+  self.activity.hidden = YES;
   if ( response == nil ) {
     // Pop up a dialog
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
@@ -76,41 +80,92 @@
     [av show];
     [av release];
   }
-    
+   
+  MLog ( @"Found %d invalid Product IDS", respones.invalidProductIdentifiers.count );
+  for ( id *invalidID in response.invalidProductIdentifiers ) {
+    MLog ( @"ID %@ was invalid", invalidID );
+  }
+  
+  
   // populate UI
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
+  MLog ( @"Got %d products back", [response.products count] );
   for ( SKProduct* p in response.products ) {
     [dict setObject:p forKey:p.productIdentifier];
   }
   SKProduct *product;
   product = [dict objectForKey:VidmasterModeProductID];
-  self.vmmTitle.text = product.localizedTitle;
-  self.vmmDescription.text = product.localizedDescription;
-  self.vmmPrice.text = [self formatCurrency:product];
+  if ( product != nil ) {
+    self.vmmTitle.text = product.localizedTitle;
+    self.vmmDescription.text = product.localizedDescription;
+    self.vmmPrice.text = [self formatCurrency:product];
+  }
   
   product = [dict objectForKey:HDModeProductID];
-  self.hdmTitle.text = product.localizedTitle;
-  self.hdmDescription.text = product.localizedDescription;
-  self.hdmPrice.text = [self formatCurrency:product];
-  
+  if ( product != nil ) {
+    self.hdmTitle.text = product.localizedTitle;
+    self.hdmDescription.text = product.localizedDescription;
+    self.hdmPrice.text = [self formatCurrency:product];
+  }
+  [self updateView];
   [request autorelease];
 }
 
 
-- (IBAction)buyHDMode:(id)sender {
-  [InventoryKit purchaseProduct:HDModeProductID delegate:self];
-}
-
--(void)productWithKey:(NSString*)productKey success:(bool)success {
-  if ( success ) {
-    [InventoryKit activateProduct:productKey];
+- (BOOL)canPurchase {
+  if ([SKPaymentQueue canMakePayments]) {
+    return YES;
+  } else {
+    // Pop up a dialog
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Purchases disabled"
+                                               message:@"Purchases are disabled on this device, please enable and try again."
+                                                delegate:self
+                                       cancelButtonTitle:@"Ok"
+                                       otherButtonTitles:nil];
+    [av show];
+    [av release];
+    return NO;
   }
-  MLog ( @"Bought %@", productKey );
+  return NO;
+}  
+
+- (IBAction)restore:(id)sender {
+  if ( [self canPurchase] ) {
+    MLog (@"Starting restore" );
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+  }
 }
 
-- (IBAction)buyVidmasterMode:(id)sender {
-  [InventoryKit purchaseProduct:VidmasterModeProductID delegate:self];
+- (IBAction)buyHDMode:(id)sender {
+  if ( [self canPurchase] ) {
+    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:HDModeProductID];
+    [[SKPaymentQueue defaultQueue] addPayment:tPayment];
+  }
 }
+      
+- (IBAction)buyVidmasterMode:(id)sender {
+  if ( [self canPurchase] ) {
+    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:VidmasterModeProductID];
+    [[SKPaymentQueue defaultQueue] addPayment:tPayment];
+  }
+}
+
+
+- (IBAction)updateView {
+  // see if we need to remove the "purchased" buttons
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP] ) {
+    self.hdmPurchase.hidden = YES;
+    self.hdmPrice.text = @"Installed";
+  } else {
+    self.hdmPurchase.hidden = NO;
+  }
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode] ) {
+    self.vmmPurchase.hidden = YES;
+    self.vmmPrice.text = @"Installed";
+  } else {
+    self.vmmPurchase.hidden = NO;
+  }
+}  
 
 - (IBAction)done:(id)sender {
   [[GameViewController sharedInstance] cancelStore];

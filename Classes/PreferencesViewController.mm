@@ -50,7 +50,6 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
-  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   self.tapShoots.on = [defaults boolForKey:kTapShoots];
@@ -66,13 +65,20 @@
   self.musicLabel.hidden = NO;
   self.musicVolume.hidden = NO;
 #endif
+  self.hiresTexturesLabel.hidden = YES;
+  self.hiresTextures.hidden = YES;
+  self.hiresTextures.on = [defaults boolForKey:kUseTTEP];
+  self.vidmasterModeLabel.hidden = YES;
+  self.vidmasterMode.hidden = YES;
+  self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];  
+  /*
   self.hiresTexturesLabel.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
   self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
   self.hiresTextures.on = [defaults boolForKey:kUseTTEP];
   self.vidmasterModeLabel.hidden = ![defaults boolForKey:kHaveVidmasterMode];
   self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
   self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];
-  
+  */
 }
 
 - (IBAction)updatePreferences:(id)sender {
