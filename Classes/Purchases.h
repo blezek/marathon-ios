@@ -7,18 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UAirship.h"
-#import "UAStoreFrontDelegate.h"
-@interface Purchases : NSObject <UAStoreFrontDelegate> {
+@interface Purchases : NSObject {
 
 }
 
--(NSString*)purchasesDirectory;
 -(void)checkPurchases;
--(void)productPurchased:(UAProduct*) product;
--(void)storeFrontDidHide;
--(void)storeFrontWillHide;
--(void)productsDownloadProgress:(float)progress count:(int)count;
--(void)quickCheckPurchases;  
 
 @end

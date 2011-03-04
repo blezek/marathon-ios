@@ -1484,6 +1484,12 @@
 		A89241E5127FC26300F0A2EE /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CC127FC26300F0A2EE /* vorbisfile.c */; };
 		A89241E6127FC26300F0A2EE /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CD127FC26300F0A2EE /* window.c */; };
 		A89315841267FFD2006DA87E /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.m */; };
+		A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5A132091B5008BBB10 /* HDModeAd.png */; };
+		A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5B132091B5008BBB10 /* VMModeAd.png */; };
+		A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5E132091DB008BBB10 /* HDModeAd.png */; };
+		A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5F132091DB008BBB10 /* VMModeAd.png */; };
+		A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE62132091EB008BBB10 /* HDModeAd.png */; };
+		A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE63132091EB008BBB10 /* VMModeAd.png */; };
 		A8A06C7C1258179E00BE6EF5 /* download-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A06C7B1258179E00BE6EF5 /* download-ipad.png */; };
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
@@ -2753,6 +2759,12 @@
 		A89241C9127FC26300F0A2EE /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Libraries/libvorbis-1.2.0/lib/synthesis.c"; sourceTree = SOURCE_ROOT; };
 		A89241CC127FC26300F0A2EE /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		A89241CD127FC26300F0A2EE /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
+		A899CE5A132091B5008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
+		A899CE5B132091B5008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
+		A899CE5E132091DB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
+		A899CE5F132091DB008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
+		A899CE62132091EB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
+		A899CE63132091EB008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
 		A899FF1611BC96370071BF5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A8A06C7B1258179E00BE6EF5 /* download-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "download-ipad.png"; path = "Artwork/download-ipad.png"; sourceTree = "<group>"; };
 		A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDColoredProgressView.m; path = Classes/PDColoredProgressView.m; sourceTree = "<group>"; };
@@ -4667,10 +4679,9 @@
 		A8C391F11297845E00E09E32 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */,
-				A8DC94ED12CAD0500055397E /* FilmViewController.xib */,
-				A881257D12C7B64900A1A08E /* FilmCell.xib */,
 				A8DC9989123884B300317186 /* DownloadViewController.xib */,
+				A881257D12C7B64900A1A08E /* FilmCell.xib */,
+				A8DC94ED12CAD0500055397E /* FilmViewController.xib */,
 				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
 				A8C3922D129789A100E09E32 /* HelpViewController.xib */,
 				A8AD432512220F9500A09383 /* MainWindow.xib */,
@@ -4678,6 +4689,7 @@
 				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
 				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
 				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
+				A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */,
 				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
 				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
 			);
@@ -5137,6 +5149,8 @@
 		A8FF8537130F798B00A874F8 /* M1 */ = {
 			isa = PBXGroup;
 			children = (
+				A899CE5A132091B5008BBB10 /* HDModeAd.png */,
+				A899CE5B132091B5008BBB10 /* VMModeAd.png */,
 				A874B19E1318A8C5009C4A92 /* iTunesArtwork */,
 				A8D66F6A13176936009801EC /* Default-Portrait.png */,
 				A8D66F47131766DB009801EC /* alephone-icon-512px.png */,
@@ -5154,6 +5168,8 @@
 		A8FF8539130F798B00A874F8 /* M2 */ = {
 			isa = PBXGroup;
 			children = (
+				A899CE5E132091DB008BBB10 /* HDModeAd.png */,
+				A899CE5F132091DB008BBB10 /* VMModeAd.png */,
 				A874B1A01318A8D2009C4A92 /* iTunesArtwork */,
 				A8D66F681317692A009801EC /* Default-Portrait.png */,
 				A8D66F51131766E9009801EC /* alephone2-icon-512px.png */,
@@ -5170,6 +5186,8 @@
 		A8FF853B130F798B00A874F8 /* M3 */ = {
 			isa = PBXGroup;
 			children = (
+				A899CE62132091EB008BBB10 /* HDModeAd.png */,
+				A899CE63132091EB008BBB10 /* VMModeAd.png */,
 				A874B1A21318A8DF009C4A92 /* iTunesArtwork */,
 				A8D66F6C13176941009801EC /* Default-Portrait.png */,
 				A8D66F59131766F7009801EC /* alephoneinfinity-icon-512px.png */,
@@ -5417,6 +5435,8 @@
 				A874B1FB1318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */,
 				A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
+				A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */,
+				A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5529,6 +5549,8 @@
 				A874B1E61318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1E71318AA68009C4A92 /* MenuItem-Store.png in Resources */,
 				A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
+				A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */,
+				A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5641,6 +5663,8 @@
 				A874B1D11318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1D21318AA68009C4A92 /* MenuItem-Store.png in Resources */,
 				A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
+				A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */,
+				A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

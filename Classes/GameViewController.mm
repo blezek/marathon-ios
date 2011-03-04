@@ -789,7 +789,6 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseViewController openDoors];
 }
 - (IBAction)cancelStore {
-  [[AlephOneAppDelegate sharedAppDelegate].purchases quickCheckPurchases];
   self.purchaseView.hidden = YES;
 }
 
