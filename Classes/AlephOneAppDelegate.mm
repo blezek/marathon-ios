@@ -212,14 +212,6 @@ extern int SDL_main(int argc, char *argv[]);
   
   MLog ( @"Loaded view: %@", self.game.view );
   
-  NSMutableDictionary *takeOffOptions = [[[NSMutableDictionary alloc] init] autorelease];
-  [takeOffOptions setValue:launchOptions forKey:UAirshipTakeOffOptionsLaunchOptionsKey];
-  // Create Airship singleton that's used to talk to Urban Airship servers.
-  // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
-  [UAirship takeOff:takeOffOptions];
-  [UAStoreFront useCustomUI:[UAStoreFrontUI class]];//UAStoreFrontUI is the sample implementation
-  
-  
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
   if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
@@ -385,10 +377,10 @@ const char* argv[] = { "AlephOneHD" };
         // Pop up a dialog
         if ( !notifiedOfFailure ) {
           notifiedOfFailure = YES;
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Purchase failed"
-                                                       message:[NSString stringWithFormat:@"Purchase failed.  Error is: %@", transaction.error]
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:transaction.error.localizedDescription
+                                                       message:transaction.error.localizedFailureReason
                                                     delegate:self
-                                           cancelButtonTitle:@"Ok"
+                                           cancelButtonTitle:@"Cancel"
                                            otherButtonTitles:nil];
           [av show];
           [av release];
