@@ -10,6 +10,7 @@
 #import "InventoryKit.h"
 #import "GameViewController.h"
 #import "Secrets.h"
+#import "Effects.h"
 
 @implementation PurchaseViewController
 @synthesize activity;
@@ -20,6 +21,7 @@
 @synthesize hdmPrice;
 @synthesize hdmDescription;
 @synthesize vmmPurchase, hdmPurchase;
+@synthesize loadingView;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -42,7 +44,7 @@
 - (IBAction)openDoors {
   // Request our list
   [self.activity startAnimating];
-  self.activity.hidden = NO;
+  self.loadingView.hidden = NO;
   SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithObjects:VidmasterModeProductID, HDModeProductID, nil]];
   request.delegate = self;
   [request start];
@@ -69,7 +71,7 @@
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
   [self.activity stopAnimating];
-  self.activity.hidden = YES;
+  self.loadingView.hidden = YES;
   if ( response == nil ) {
     // Pop up a dialog
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
@@ -164,6 +166,21 @@
     self.vmmPrice.text = @"Installed";
   } else {
     self.vmmPurchase.hidden = NO;
+  }
+}  
+
+
+- (void)appear {
+  CAAnimation *group = [Effects appearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
+  }
+}
+
+- (void)disappear {
+  CAAnimation *group = [Effects disappearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer addAnimation:group forKey:nil];
   }
 }  
 

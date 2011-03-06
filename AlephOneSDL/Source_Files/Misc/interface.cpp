@@ -1143,7 +1143,7 @@ bool idle_game_state(uint32 time)
         case _revert_game:
           // DJB This is where a game is reverted when the player dies
           helperHideHUD();
-          startProgress ( 1000 );
+          startProgress ( -1 );
           /* Reverting while in the update loop sounds sketchy.. */
           if(revert_game()) {
             game_state.state= _game_in_progress;
