@@ -787,9 +787,11 @@ extern bool handle_open_replay(FileSpecifier& File);
   
   self.purchaseView.hidden = NO;
   [self.purchaseViewController openDoors];
+  [self.purchaseViewController appear];
 }
 - (IBAction)cancelStore {
-  self.purchaseView.hidden = YES;
+  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:2.0];
+  [self.purchaseViewController disappear];
 }
 
 
@@ -1010,6 +1012,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (void) stopProgress {
   self.progressView.hidden = YES;
+  [self.progressViewController progressFinished];
   [self performSelector:@selector(bringUpHUD) withObject:nil afterDelay:0.0];
   MLog ( @"stopProgress" );
 }

@@ -8,10 +8,13 @@
 
 #import "ProgressViewController.h"
 #include "AlephOneHelper.h"
+#import "Prefs.h"
+#include <stdlib.h>
 
 
 @implementation ProgressViewController
 @synthesize progressView, mainView;
+@synthesize vmmAd, hdmAd;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -30,6 +33,31 @@
 }
 
 - (void)startProgress:(int)t {
+  
+  // This is the first progress event
+  if ( t == -1 ) {
+    self.vmmAd.hidden = YES;
+    self.hdmAd.hidden = YES;
+        
+    // See if we need to show something
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:2];
+    if ( NO == [defaults boolForKey:kHaveTTEP] ) {
+      [views addObject:self.vmmAd];
+    }
+    if ( NO == [defaults boolForKey:kHaveVidmasterMode] ) {
+      [views addObject:self.hdmAd];
+    }
+    
+    if ( views.count > 0 ) {
+      // Figure out which one to add
+      int index = arc4random() % views.count;
+      UIView *v = [views objectAtIndex:index];
+      v.hidden = NO;
+    }
+  }
+  
   self.progressView.progress = 0;
   total = t;
   currentProgress = 0;
@@ -42,6 +70,11 @@
   self.progressView.progress = currentProgress / (float)total;
   // Make sure we have a heartbeat
   pumpEvents();
+}
+
+- (void)progressFinished {
+  self.vmmAd.hidden = YES;
+  self.hdmAd.hidden = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

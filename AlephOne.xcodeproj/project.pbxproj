@@ -21,6 +21,18 @@
 		A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
+		A817C0091323311E00964061 /* buy-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0061323311E00964061 /* buy-btn.png */; };
+		A817C00A1323311E00964061 /* done-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0071323311E00964061 /* done-btn.png */; };
+		A817C00B1323311E00964061 /* restore-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0081323311E00964061 /* restore-btn.png */; };
+		A817C00C1323311E00964061 /* buy-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0061323311E00964061 /* buy-btn.png */; };
+		A817C00D1323311E00964061 /* done-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0071323311E00964061 /* done-btn.png */; };
+		A817C00E1323311E00964061 /* restore-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0081323311E00964061 /* restore-btn.png */; };
+		A817C00F1323311E00964061 /* buy-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0061323311E00964061 /* buy-btn.png */; };
+		A817C0101323311E00964061 /* done-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0071323311E00964061 /* done-btn.png */; };
+		A817C0111323311E00964061 /* restore-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0081323311E00964061 /* restore-btn.png */; };
+		A817C0141323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
+		A817C0151323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
+		A817C0161323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
 		A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
 		A81A33081296255300BCEA0C /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
@@ -1998,6 +2010,11 @@
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
 		A817BDFE12CCC84300C31134 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPrompt.h; path = Classes/AlertPrompt.h; sourceTree = "<group>"; };
 		A817BDFF12CCC84300C31134 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = Classes/AlertPrompt.m; sourceTree = "<group>"; };
+		A817C0061323311E00964061 /* buy-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy-btn.png"; sourceTree = "<group>"; };
+		A817C0071323311E00964061 /* done-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done-btn.png"; sourceTree = "<group>"; };
+		A817C0081323311E00964061 /* restore-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restore-btn.png"; sourceTree = "<group>"; };
+		A817C0121323318E00964061 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundedView.h; path = Classes/RoundedView.h; sourceTree = "<group>"; };
+		A817C0131323318E00964061 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundedView.m; path = Classes/RoundedView.m; sourceTree = "<group>"; };
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
 		A81A33071296255300BCEA0C /* Reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reload.png; path = Artwork/Reload.png; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
@@ -3332,6 +3349,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A817C0051323311E00964061 /* store */ = {
+			isa = PBXGroup;
+			children = (
+				A817C0061323311E00964061 /* buy-btn.png */,
+				A817C0071323311E00964061 /* done-btn.png */,
+				A817C0081323311E00964061 /* restore-btn.png */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
 		A82F360811B8A87C0053FE85 /* Lua */ = {
 			isa = PBXGroup;
 			children = (
@@ -3492,6 +3519,8 @@
 				A8FF85C41310AF4500A874F8 /* Purchases.mm */,
 				A8AB7ED5131DF02D0012C23E /* PurchaseViewController.h */,
 				A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */,
+				A817C0121323318E00964061 /* RoundedView.h */,
+				A817C0131323318E00964061 /* RoundedView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4615,6 +4644,7 @@
 		A8AF814412B7123F00671C11 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				A817C0051323311E00964061 /* store */,
 				A8AF814512B7123F00671C11 /* gamelevel */,
 				A8AF816212B7124000671C11 /* pausescreen */,
 				A8AF816C12B7124000671C11 /* preferences */,
@@ -5437,6 +5467,9 @@
 				A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */,
 				A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */,
+				A817C00F1323311E00964061 /* buy-btn.png in Resources */,
+				A817C0101323311E00964061 /* done-btn.png in Resources */,
+				A817C0111323311E00964061 /* restore-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5551,6 +5584,9 @@
 				A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */,
 				A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */,
+				A817C00C1323311E00964061 /* buy-btn.png in Resources */,
+				A817C00D1323311E00964061 /* done-btn.png in Resources */,
+				A817C00E1323311E00964061 /* restore-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5665,6 +5701,9 @@
 				A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */,
 				A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */,
+				A817C0091323311E00964061 /* buy-btn.png in Resources */,
+				A817C00A1323311E00964061 /* done-btn.png in Resources */,
+				A817C00B1323311E00964061 /* restore-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6167,6 +6206,7 @@
 				A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A8AB7F04131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
 				A8AB7F05131DF0E80012C23E /* InventoryKit.m in Sources */,
+				A817C0141323318E00964061 /* RoundedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6666,6 +6706,7 @@
 				A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A8AB7F08131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
 				A8AB7F09131DF0E80012C23E /* InventoryKit.m in Sources */,
+				A817C0161323318E00964061 /* RoundedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7165,6 +7206,7 @@
 				A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A8AB7F06131DF0E80012C23E /* IKPaymentTransactionObserver.m in Sources */,
 				A8AB7F07131DF0E80012C23E /* InventoryKit.m in Sources */,
+				A817C0151323318E00964061 /* RoundedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

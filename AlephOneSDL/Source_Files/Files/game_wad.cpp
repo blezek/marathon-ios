@@ -321,7 +321,7 @@ bool load_level_from_map(
   bool restoring_game= false;
   
   // DJB Start progress
-  startProgress(1000);
+  startProgress(-1);
   if(file_is_set) {
     /* Determine what we are trying to do.. */
     if(level_index==NONE) {

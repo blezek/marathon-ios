@@ -12,13 +12,18 @@
 @interface ProgressViewController : UIViewController {
   PDColoredProgressView *progressView;
   UIView *mainView;
+  IBOutlet UIView *hdmAd;
+  IBOutlet UIView *vmmAd;
   int currentProgress;
   int total;
 }
 
 - (void)startProgress:(int)t;
 - (void)progressCallback:(int)d;  
+- (void)progressFinished;
 
 @property (nonatomic,retain) IBOutlet PDColoredProgressView *progressView;
 @property (nonatomic,retain) IBOutlet UIView *mainView;
+@property (nonatomic,retain) UIView *hdmAd;
+@property (nonatomic,retain) UIView *vmmAd;
 @end
