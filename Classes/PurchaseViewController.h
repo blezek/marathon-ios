@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
-#import "InventoryKit.h"
 #import "RoundedView.h"
 @interface PurchaseViewController : UIViewController<SKProductsRequestDelegate> {
   IBOutlet UIActivityIndicatorView *activity;

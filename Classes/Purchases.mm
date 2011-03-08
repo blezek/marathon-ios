@@ -43,7 +43,6 @@ extern "C" {
 #include "vbl.h"
 #include "render.h"
 #include "interface_menus.h"
-#import "InventoryKit.h"
 
 @implementation Purchases
 
