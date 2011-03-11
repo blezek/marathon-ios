@@ -24,9 +24,6 @@ extern "C" {
 #import "AlephOneHelper.h"
 #include "preferences.h"
 
-#import "UAirship.h"
-#import "UAStoreFront.h"
-#import "UAStoreFrontUI.h"
 
 @implementation AlephOneAppDelegate
 

@@ -47,9 +47,6 @@ extern  int
 #include "vbl.h"
 #include "render.h"
 #include "interface_menus.h"
-#import "UAirship.h"
-#import "UAStoreFront.h"
-#import "UAStoreFrontUI.h"
 
 
 
@@ -551,7 +548,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
   MLog (@"Loading game: %@", game.filename );
-  FileSpecifier FileToLoad ( (char*)[game.filename UTF8String] );
+  FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
   MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
   
@@ -596,7 +593,7 @@ extern SDL_Surface *draw_surface;
   
   draw_surface = old;
   // See here: http://www.bit-101.com/blog/?p=1861
-  SDL_SaveBMP ( map, (char*)[self.currentSavedGame.mapFilename UTF8String] );
+  SDL_SaveBMP ( map, (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String] );
   SDL_FreeSurface ( map );
   
   
@@ -635,7 +632,7 @@ extern SDL_Surface *draw_surface;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
   
   MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
-  FileSpecifier file ( (char*)[self.currentSavedGame.filename UTF8String] );
+  FileSpecifier file ( (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.filename] UTF8String] );
   save_game_file(file);
   
   MLog ( @"Saving game: %@", game );

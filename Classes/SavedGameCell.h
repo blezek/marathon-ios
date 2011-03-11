@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ManagedObjects.h"
 
+@class SaveGameViewController;
 @interface SavedGameCell : UITableViewCell {
   UILabel *subject;
   UILabel *storageDate;
@@ -22,7 +23,7 @@
   UIImageView *screenShot;
 }
 
-- (void)setFields:(SavedGame*) game;
+- (void)setFields:(SavedGame*) game withController:(SaveGameViewController*)controller;
 
 @property (nonatomic, retain) IBOutlet UILabel *subject;
 @property (nonatomic, retain) IBOutlet UILabel *storageDate;
