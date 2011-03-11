@@ -44,10 +44,10 @@
   
     NSMutableArray *views = [NSMutableArray arrayWithCapacity:2];
     if ( NO == [defaults boolForKey:kHaveTTEP] ) {
-      [views addObject:self.vmmAd];
+      [views addObject:self.hdmAd];
     }
     if ( NO == [defaults boolForKey:kHaveVidmasterMode] ) {
-      [views addObject:self.hdmAd];
+      [views addObject:self.vmmAd];
     }
     
     if ( views.count > 0 ) {
