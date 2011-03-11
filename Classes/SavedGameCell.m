@@ -7,7 +7,7 @@
 //
 
 #import "SavedGameCell.h"
-
+#import "SaveGameViewController.h"
 #define secondsPerHour 3600
 
 @implementation SavedGameCell
@@ -16,7 +16,7 @@
 @synthesize damageGiven, damageTaken, shotsFired, accuracy;
 
 
-- (void)setFields:(SavedGame*) game {
+- (void)setFields:(SavedGame*)game withController:(SaveGameViewController*)controller {
   self.subject.text = [NSString stringWithFormat:@"Location: %@", game.level];
   NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
   [formatter setTimeStyle:NSDateFormatterShortStyle];
@@ -39,7 +39,7 @@
   
   // load the Overhead map
   if ( game.mapFilename != nil ) {
-    self.overheadMap.image = [UIImage imageWithContentsOfFile:game.mapFilename];
+    self.overheadMap.image = [UIImage imageWithContentsOfFile:[controller fullPath:game.mapFilename]];
   }
 }
 

@@ -115,7 +115,7 @@
 
 - (IBAction)deleteGame:(id)sender {
   if ( [self selectedIndex] == nil ) { return; }
-  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of pattern"
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of saved game"
                                                   delegate:self
                                          cancelButtonTitle:@"Skip"
                                     destructiveButtonTitle:@"Delete"
@@ -136,8 +136,8 @@
   NSIndexPath* indexPath = [self selectedIndex];
   if ( indexPath != nil ) {
     SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [[NSFileManager defaultManager] removeItemAtPath:game.filename error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:game.mapFilename error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:[self fullPath:game.filename] error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:[self fullPath:game.mapFilename] error:nil];
     [self.managedObjectContext deleteObject:game];
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
@@ -168,8 +168,8 @@
     newGame.mapFilename = mapFilename;    
     
     // Copy file and map
-    [[NSFileManager defaultManager] copyItemAtPath:game.filename toPath:newGame.filename error:nil];
-    [[NSFileManager defaultManager] copyItemAtPath:game.mapFilename toPath:newGame.mapFilename error:nil];
+    [[NSFileManager defaultManager] copyItemAtPath:[self fullPath:game.filename] toPath:[self fullPath:newGame.filename] error:nil];
+    [[NSFileManager defaultManager] copyItemAtPath:[self fullPath:game.mapFilename] toPath:[self fullPath:newGame.mapFilename] error:nil];
   }
   [self.tableView reloadData];
 }
@@ -182,14 +182,24 @@
   }
 }
 
+- (NSString*)getSaveGameDirectory {
+  return [NSString stringWithFormat:@"%@/SaveGames/%@/", 
+          [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory],
+          [AlephOneAppDelegate sharedAppDelegate].scenario.name];
+}
+
+- (NSString*)fullPath:(NSString*)name {
+  if ( [[NSFileManager defaultManager] fileExistsAtPath:name] ) {
+    return name;
+  }
+  NSString* path = [NSString stringWithFormat:@"%@/%@", [self getSaveGameDirectory], name];
+}
 
 - (SavedGame*)createNewGameFile {
   
   // Create the directory
   NSLog ( @"scenario name %@", [AlephOneAppDelegate sharedAppDelegate].scenario.name );
-  NSString *saveGameDirectory = [NSString stringWithFormat:@"%@/SaveGames/%@/", 
-                                 [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory],
-                                 [AlephOneAppDelegate sharedAppDelegate].scenario.name];
+  NSString *saveGameDirectory = [self getSaveGameDirectory];
   NSLog ( @"Creating saved game directory %@", saveGameDirectory );
   [[NSFileManager defaultManager] createDirectoryAtPath:saveGameDirectory
                             withIntermediateDirectories:YES
@@ -211,10 +221,10 @@
   
   
   
-  NSString *filename = [NSString stringWithFormat:@"%@/%@", saveGameDirectory, uuid];
+  NSString *filename = [NSString stringWithFormat:@"%@", uuid];
   NSLog ( @"Filename: %@", filename );
   game.filename = filename;
-  game.mapFilename = [NSString stringWithFormat:@"%@/%@-Map.bmp", saveGameDirectory, uuid];
+  game.mapFilename = [NSString stringWithFormat:@"%@-Map.bmp", uuid];
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
@@ -262,7 +272,7 @@
     
   // Configure the cell...
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
-  [cell setFields:game];
+  [cell setFields:game withController:self];
   return cell;
 }
 
@@ -450,6 +460,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  // Make sure it's real!
+  if ( ![[NSFileManager defaultManager] fileExistsAtPath:[self fullPath:game.filename]] ) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                 message:@"For some reason, this saved game does not exist or is corrupt.  Please delete it."
+                                                delegate:self
+                                       cancelButtonTitle:@"Ok"
+                                       otherButtonTitles:nil];
+    [av show];
+    [av release];
+    return;
+  }
+    
   [[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
   // [[GameViewController sharedInstance] gameChosen:game];
 }

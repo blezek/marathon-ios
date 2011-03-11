@@ -37,6 +37,8 @@
 
 // Create a new game in CoreData, and return
 - (SavedGame*)createNewGameFile;
+- (NSString*)getSaveGameDirectory;
+- (NSString*)fullPath:(NSString*)name;
 
 @property (nonatomic, retain) IBOutlet UIView *uiView;
 @property (nonatomic, retain) IBOutlet SavedGameCell *savedGameCell;
