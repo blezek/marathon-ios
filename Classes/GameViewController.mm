@@ -71,7 +71,7 @@ extern struct view_data *world_view; /* should be static */
 @synthesize controlsOverviewView, controlsOverviewGesture;
 @synthesize zoomInButton, zoomOutButton;
 @synthesize replacementMenuView;
-@synthesize purchaseViewController, purchaseView;
+@synthesize purchaseViewController, purchaseView, aboutView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -161,6 +161,7 @@ extern struct view_data *world_view; /* should be static */
                              self.controlsOverviewView,
                              self.replacementMenuView,
                              self.purchaseView,
+                             self.aboutView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.center = center;
@@ -790,6 +791,24 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:2.0];
   [self.purchaseViewController disappear];
 }
+
+- (IBAction)menuAbout {
+  CAAnimation *group = [Effects appearAnimation];
+  for ( UIView *v in self.aboutView.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:@"Appear"];
+  }
+  self.aboutView.hidden = NO;
+}
+
+- (IBAction)cancelAbout {
+  CAAnimation *group = [Effects disappearAnimation];
+  for ( UIView *v in self.aboutView.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:nil];
+  }
+  [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+}  
 
 
 #pragma mark -

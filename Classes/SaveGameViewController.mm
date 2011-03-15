@@ -193,6 +193,7 @@
     return name;
   }
   NSString* path = [NSString stringWithFormat:@"%@/%@", [self getSaveGameDirectory], name];
+  return path;
 }
 
 - (SavedGame*)createNewGameFile {

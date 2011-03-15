@@ -57,7 +57,8 @@ typedef enum {
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
   IBOutlet UIView *purchaseView;
-
+  IBOutlet UIView *aboutView;
+  
   IBOutlet UIButton *pause;
   IBOutlet UIButton *zoomOutButton;
   IBOutlet UIButton *zoomInButton;
@@ -144,6 +145,8 @@ typedef enum {
 - (IBAction)menuPreferences;
 - (IBAction)menuStore;
 - (IBAction)cancelStore;
+- (IBAction)menuAbout;
+- (IBAction)cancelAbout;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -210,6 +213,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *replacementMenuView;
 @property (nonatomic, retain) UIView *controlsOverviewView;
 @property (nonatomic, retain) UIView *purchaseView;
+@property (nonatomic, retain) UIView *aboutView;
 
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
