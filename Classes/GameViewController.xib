@@ -314,7 +314,7 @@
 							<object class="IBUIView" id="625549939">
 								<reference key="NSNextResponder" ref="485381462"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{405, 643}, {100, 100}}</string>
+								<string key="NSFrame">{{345, 626}, {132, 126}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -326,7 +326,7 @@
 							<object class="IBUIView" id="207012852">
 								<reference key="NSNextResponder" ref="485381462"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{666, 638}, {97, 97}}</string>
+								<string key="NSFrame">{{680, 626}, {116, 130}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -623,8 +623,12 @@
 							<object class="IBUIButton" id="466918567">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 396}, {250, 86}}</string>
+								<string key="NSFrame">{{774, 387}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -743,7 +747,7 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="1019793454">
+						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -838,7 +842,10 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="IBUIBackgroundColor" ref="1019793454"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUIView" id="763863770">
@@ -1321,11 +1328,11 @@
 							<reference ref="1025098478"/>
 							<reference ref="193475027"/>
 							<reference ref="215110741"/>
-							<reference ref="485381462"/>
 							<reference ref="501269846"/>
-							<reference ref="464543623"/>
-							<reference ref="763863770"/>
 							<reference ref="196030530"/>
+							<reference ref="485381462"/>
+							<reference ref="763863770"/>
+							<reference ref="464543623"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1925,7 +1932,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEQYAAw+8AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABEQYAAw/AAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform"/>
@@ -1939,7 +1946,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABD7gAAw+EAAA</bytes>
 					</object>
-					<string>{{312, 132}, {1024, 1024}}</string>
+					<string>{{313, 132}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
 					<string>LookView</string>
