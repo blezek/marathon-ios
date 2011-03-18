@@ -788,7 +788,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseViewController appear];
 }
 - (IBAction)cancelStore {
-  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:2.0];
+  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
   [self.purchaseViewController disappear];
 }
 
