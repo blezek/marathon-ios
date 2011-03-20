@@ -122,6 +122,7 @@ static vector<entry_point> levels;
   
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
   
@@ -131,6 +132,7 @@ static vector<entry_point> levels;
 - (void)disappear {
   CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
 }  

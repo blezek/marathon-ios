@@ -38,7 +38,8 @@ typedef enum {
   MenuMode,
   GameMode,
   CutSceneMode,
-  AutoMapMode
+  AutoMapMode,
+  DeadMode
 } HUDMode;
 
 @interface GameViewController : UIViewController {
@@ -130,6 +131,7 @@ typedef enum {
 - (void)runMainLoopOnce:(id)sender;
 
 - (IBAction)pause:(id)from;
+- (IBAction)pauseForBackground:(id)from;
 - (IBAction)newGame;
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;

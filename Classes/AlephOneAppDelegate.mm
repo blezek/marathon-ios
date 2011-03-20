@@ -65,6 +65,7 @@ extern int SDL_main(int argc, char *argv[]);
 - (void)initAndBegin {
   // Initialize the game
   self.game.splashView.hidden = YES;
+  self.game.splashView = nil;
   MLog ( @"Hiding SplashView and starting animation" );
   // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
   [game startAnimation];
@@ -190,7 +191,7 @@ extern int SDL_main(int argc, char *argv[]);
   }
 
   NSError *setPreferenceError = nil;
-  NSTimeInterval preferredBufferDuration = 0.030;
+  NSTimeInterval preferredBufferDuration = 0.035;
   [[AVAudioSession sharedInstance] setPreferredIOBufferDuration: preferredBufferDuration
                                                           error: &setPreferenceError];
   if ( setPreferenceError ) {
@@ -245,6 +246,7 @@ extern int SDL_main(int argc, char *argv[]);
   // Pause sound
   // MLog ( @"Pause mixer" );
   // SoundManager::instance()->SetStatus ( false );
+  [game pauseForBackground:self];
   [game stopAnimation];
 }
 

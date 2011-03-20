@@ -253,7 +253,7 @@ extern struct view_data *world_view; /* should be static */
 }
 
 - (IBAction)cancelNewGame {
-  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.4];
+  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
   [self.newGameViewController disappear];
 }
 
@@ -277,9 +277,11 @@ extern struct view_data *world_view; /* should be static */
 }
 
 - (void)playerKilled {
+  mode = DeadMode;
   self.hud.alpha = 1.0;
   self.restartView.alpha = 0.0;
   self.restartView.hidden = NO;
+  self.hud.hidden = YES;
   self.hud.alpha = 0.0;
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
@@ -475,18 +477,20 @@ extern struct view_data *world_view; /* should be static */
 - (IBAction) gotoPreferences:(id)sender {
   [self.preferencesViewController setupUI:mode==MenuMode];
   self.preferencesView.hidden = NO;
-  self.preferencesView.alpha = 0.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.5];
-  self.preferencesView.alpha = 1.0;
-  [UIView commitAnimations];
+  
+  CAAnimation *group = [Effects appearAnimation];
+  for ( UIView *v in self.preferencesView.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:nil];
+  }
 }
 - (IBAction) closePreferences:(id)sender {
-  self.preferencesView.alpha = 1.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.5];
-  self.preferencesView.alpha = 0.0;
-  [UIView commitAnimations];
+
+  CAAnimation *group = [Effects disappearAnimation];
+  for ( UIView *v in self.preferencesView.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:nil];
+  }  
   [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
@@ -557,7 +561,7 @@ extern bool load_and_start_game(FileSpecifier& File);
 
 - (IBAction) chooseSaveGameCanceled {
   [self.saveGameViewController disappear];
-  [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+  [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 extern SDL_Surface *draw_surface;
@@ -693,7 +697,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction) chooseFilmCanceled {
   [self.filmViewController disappear];
-  [self.filmView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+  [self.filmView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 - (IBAction)saveFilm {
@@ -788,7 +792,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseViewController appear];
 }
 - (IBAction)cancelStore {
-  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
   [self.purchaseViewController disappear];
 }
 
@@ -807,7 +811,7 @@ extern bool handle_open_replay(FileSpecifier& File);
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:1.0];
+  [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }  
 
 
@@ -822,7 +826,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-  if ( mode == MenuMode || mode == CutSceneMode ) {
+  if ( mode == MenuMode || mode == CutSceneMode || mode == DeadMode ) {
     if ( recognizer == menuTapGesture ) {
       NSLog ( @"Handling menu tap" );
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
@@ -846,7 +850,18 @@ extern bool handle_open_replay(FileSpecifier& File);
 #pragma mark -
 #pragma mark Game controls
 
+// If we are playing, pause...
+- (IBAction)pauseForBackground:(id)from {
+  if ( mode == GameMode && !isPaused ) {
+    [self pause:from];
+  }
+  return;
+}
+  
+
 - (IBAction)pause:(id)from {
+  // If we are dead, don't do anything
+  if ( mode == DeadMode ) { return; }
   // Level name is
   // static_world->level_name
   MLog (@"Camera Polygon Index: %d", local_player->camera_polygon_index );
@@ -895,11 +910,17 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction)ammoCheat:(id)sender {
   short items[]=
-  { _i_assault_rifle_magazine, _i_assault_grenade_magazine,
+  { 
+    // Only get the SMG/Flechette gun in Infinity
+#if SCENARIO == 3
+    _i_smg_ammo,
+#endif
+    _i_assault_rifle_magazine, _i_assault_grenade_magazine,
     _i_magnum_magazine, _i_missile_launcher_magazine,
     _i_flamethrower_canister,
-    _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun,
-    _i_smg_ammo};
+    _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun
+  
+  };
   
   for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)
   {
@@ -917,12 +938,14 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (IBAction)weaponsCheat:(id)sender {
   short items[]=
-  { _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
-    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun
-    // On
+  {
+    // Only get the SMG/Flechette gun in Infinity
 #if SCENARIO == 3
-    , _i_smg
+    _i_smg,
 #endif
+    _i_assault_rifle, _i_magnum, _i_missile_launcher, _i_flamethrower,
+    _i_plasma_pistol, _i_alien_shotgun, _i_shotgun
+
   };
   
   for(unsigned index= 0; index<sizeof(items)/sizeof(short); ++index)

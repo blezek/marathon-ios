@@ -749,7 +749,7 @@
 						<reference key="NSSuperview" ref="766721923"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -2218,6 +2218,7 @@
 							<string>networkPressed</string>
 							<string>newGame</string>
 							<string>pause:</string>
+							<string>pauseForBackground:</string>
 							<string>quitPressed</string>
 							<string>resume:</string>
 							<string>runMainLoopOnce:</string>
@@ -2245,6 +2246,7 @@
 							<string>id</string>
 							<string>Film</string>
 							<string>SavedGame</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2303,6 +2305,7 @@
 							<string>networkPressed</string>
 							<string>newGame</string>
 							<string>pause:</string>
+							<string>pauseForBackground:</string>
 							<string>quitPressed</string>
 							<string>resume:</string>
 							<string>runMainLoopOnce:</string>
@@ -2426,6 +2429,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">pause:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pauseForBackground:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
