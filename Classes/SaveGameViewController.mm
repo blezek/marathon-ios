@@ -93,7 +93,7 @@
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
+  [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 

@@ -90,7 +90,7 @@
   for ( UIView *v in self.enclosingView.subviews ) {
     [v.layer addAnimation:group forKey:nil];
   }
-  [self.enclosingView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.69];
+  [self.enclosingView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 

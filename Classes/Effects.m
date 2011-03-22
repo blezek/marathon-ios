@@ -41,29 +41,29 @@
 + (float) disappearDuration { return 0.65; }
 + (CAAnimation*) disappearAnimation {
   CABasicAnimation *scaleY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleY.duration = 0.8;
+  scaleY.duration = 0.4;
   scaleY.toValue = [NSNumber numberWithFloat:0.01];
   scaleY.fromValue = [NSNumber numberWithFloat:1.0];
   
   CABasicAnimation *scaleX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleX.duration = .8;
+  scaleX.duration = 0.4;
   scaleX.toValue = [NSNumber numberWithFloat:10.0];
   scaleX.fromValue = [NSNumber numberWithFloat:1.0];
   
   CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  opacity.duration = 0.7;
+  opacity.duration = 0.3;
   opacity.toValue = [NSNumber numberWithFloat:0.0];
   opacity.beginTime = 0.1;
   
   CABasicAnimation *blank = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  blank.duration = 2.0;
-  blank.beginTime = 0.6;
+  blank.duration = 5.0;
+  blank.beginTime = 0.4;
   blank.fromValue = [NSNumber numberWithFloat:0.0];
   blank.toValue = [NSNumber numberWithFloat:0.0];
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.animations = [NSArray arrayWithObjects:scaleX, scaleY, opacity, blank, nil];
-  group.duration = 2.7;
+  group.duration = 2.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
   
   return group;

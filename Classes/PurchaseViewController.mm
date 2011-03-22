@@ -80,6 +80,7 @@
                                 otherButtonTitles:nil];
     [av show];
     [av release];
+    return;
   }
    
   MLog ( @"Found %d invalid Product IDS", response.invalidProductIdentifiers.count );
@@ -87,6 +88,18 @@
     MLog ( @"ID %@ was invalid", invalidID );
   }
   
+  if ( response.products.count == 0 && response.invalidProductIdentifiers.count > 0 ) {
+    // Show an error
+    // Pop up a dialog
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
+                                                 message:@"Could not connect to the app store, (invalid response), please try again later."
+                                                delegate:self
+                                       cancelButtonTitle:@"Ok"
+                                       otherButtonTitles:nil];
+    [av show];
+    [av release];
+    return;
+  }
   
   // populate UI
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -172,6 +185,7 @@
 - (void)appear {
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
 }
@@ -179,6 +193,7 @@
 - (void)disappear {
   CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
 }  
