@@ -45,13 +45,13 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   uint32_t formatFlags;
 
   std::string fn ( File.GetPath() );
-  /*
+  
   if ( fn.find ( ".pvr" ) != std::string::npos ) {
     // printf ( "LoadPVRTCFromFile: %s\n", File.GetPath() );
   } else {
     return false;
   }
-
+/*
   if ( fn.find ( "SpriteTextures" ) != std::string::npos ) {
     // printf ( "Loading Sprite Textures!!!!: %s\n", File.GetPath() );
   }
