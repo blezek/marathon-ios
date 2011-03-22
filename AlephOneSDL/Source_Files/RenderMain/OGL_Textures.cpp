@@ -1425,7 +1425,8 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
       case GL_LINEAR_MIPMAP_NEAREST:
       case GL_NEAREST_MIPMAP_LINEAR:
       case GL_LINEAR_MIPMAP_LINEAR:
-      {        
+      {     
+        /*
         int level = 0;
         GLenum format;
         uint32_t blockSize = 0;
@@ -1462,76 +1463,12 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           data += size;
           width >>= 1;
           height >>= 1;
-          
-        }
+          */
+        Image->LoadTexture();
         mipmapsLoaded = true;
         break;
       }
-#if 0
-        
-        if (Image->GetMipMapCount() > 1) {
-          /*
-          for (int level = 0; width > 0 && height > 0; ++level) {
-            GLsizei size = std::max(32, width * height * bitsPerPixel / 8);
-            glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, 
-                                   height, 0, size, data);
-            data += size;
-            width >>= 1; height >>= 1;
-          }
-          */
-          
-          
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
-          printGLError(__PRETTY_FUNCTION__);
-          int i = 0;
-          for (i = 0; i < Image->GetMipMapCount(); i++) {
-            glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
-                                    max(1, Image->GetWidth() >> i), 
-                                    max(1, Image->GetHeight() >> i),
-                                    0,
-                                    GL_RGBA,
-                                    GL_UNSIGNED_BYTE,
-                                    Image->GetMipMapPtr(i));
-            printGLError(__PRETTY_FUNCTION__);
-          }
-          mipmapsLoaded = true;
-        }
-        else {
-            // DJB OpenGL gluBuild2DMipmaps, but don't build for compressed textures
-            // glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-            // printGLError(__PRETTY_FUNCTION__);
-            // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
-            // assert ( internalFormat == GL_RGBA );
-            
-            int level = 0;
-            GLenum format;
-            if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
-              format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
-            }
-            if ( Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
-              format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
-            }
-            
-            int width = Image->GetWidth();
-            int height = Image->GetHeight();
-            unsigned char* data = (unsigned char*)Image->GetBuffer();
-            for ( level = 0; width > 0 && height > 0; level++ ) {
-              GLsizei size = std::max ( 32, width * height * 4 / 8 );
-              glCompressedTexImage2D(GL_TEXTURE_2D, 
-                                     level, 
-                                     format,
-                                     width, 
-                                     height, 
-                                     0, 
-                                     size, 
-                                     data);
-              data += size;
-              width >>= 1;
-              height >>= 1;
-            
-          mipmapsLoaded = true;
-        }
-#endif
+
         
       default:
         assert(false);

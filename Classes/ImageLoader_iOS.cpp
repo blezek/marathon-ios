@@ -10,6 +10,7 @@
 
 #include "ImageLoader.h"
 #include "FileHandler.h"
+#include "AlephOneHelper.h"
 
 #define PVR_TEXTURE_FLAG_TYPE_MASK	0xff
 
@@ -38,19 +39,20 @@ typedef struct _PVRTexHeader
 	uint32_t numSurfs;
 } PVRTexHeader;
 
-
 bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   PVRTexHeader *header = NULL;
   uint32_t flags, pvrTag;
   uint32_t formatFlags;
 
   std::string fn ( File.GetPath() );
-  /*
+  Filename = fn;
   if ( fn.find ( ".pvr" ) != std::string::npos ) {
     // printf ( "LoadPVRTCFromFile: %s\n", File.GetPath() );
+    return true;
   } else {
     return false;
   }
+  /*
 
   if ( fn.find ( "SpriteTextures" ) != std::string::npos ) {
     // printf ( "Loading Sprite Textures!!!!: %s\n", File.GetPath() );
@@ -120,3 +122,84 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   delete[] contents;
   return false;
 }
+
+
+void ImageDescriptor::LoadTexture() const {
+  PVRTexHeader *header = NULL;
+  uint32_t flags, pvrTag;
+  uint32_t formatFlags;
+  
+  FileSpecifier File ( Filename.c_str() );
+  printf ( "LoadTexture: %s\n", Filename.c_str() );
+
+  OpenedFile pvtcFile;
+  if (!File.Open(pvtcFile)) {
+    return;
+  }
+  
+  
+  // Slurp the entire file in
+  int32 length;
+  pvtcFile.GetLength ( length );
+  uint8_t *contents = new uint8_t[length];
+  
+  pvtcFile.Read ( length, contents );
+  
+  
+  header = (PVRTexHeader *)contents;
+  pvrTag = CFSwapInt32LittleToHost(header->pvrTag);
+  
+  if (gPVRTexIdentifier[0] != ((pvrTag >>  0) & 0xff) ||
+      gPVRTexIdentifier[1] != ((pvrTag >>  8) & 0xff) ||
+      gPVRTexIdentifier[2] != ((pvrTag >> 16) & 0xff) ||
+      gPVRTexIdentifier[3] != ((pvrTag >> 24) & 0xff)) {
+    delete[] contents;
+    return;
+  }
+  
+  flags = CFSwapInt32LittleToHost(header->flags);
+  formatFlags = flags & PVR_TEXTURE_FLAG_TYPE_MASK;
+  int width = CFSwapInt32LittleToHost(header->width);
+  int height = CFSwapInt32LittleToHost(header->height);
+    
+ // uint32_t dataLength = CFSwapInt32LittleToHost(header->dataLength);
+  uint8_t *bytes = ((uint8_t *)contents) + sizeof(PVRTexHeader);
+  int level = 0;
+  GLenum format;
+  uint32_t blockSize = 0;
+  uint32_t bpp;
+  if (formatFlags == kPVRTextureFlagTypePVRTC_4) {
+    format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+    blockSize = 4 * 4; // Pixel by pixel block size for 4bpp
+                       // widthBlocks = width / 4;
+                       // heightBlocks = height / 4;
+    bpp = 4;
+  }
+  if (formatFlags == kPVRTextureFlagTypePVRTC_2) {
+    format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+    blockSize = 8 * 4; // Pixel by pixel block size for 2bpp
+                       // widthBlocks = width / 8;
+                       // heightBlocks = height / 4;
+    bpp = 2;
+  }
+  
+  unsigned char* data = (unsigned char*)bytes;
+  for ( level = 0; width > 0 && height > 0; level++ ) {
+    GLsizei size = std::max ( 32u, width * height * bpp / 8 );
+    glCompressedTexImage2D(GL_TEXTURE_2D, 
+                           level, 
+                           format,
+                           width, 
+                           height, 
+                           0, 
+                           size, 
+                           data);
+    printGLError(__PRETTY_FUNCTION__);
+    data += size;
+    width >>= 1;
+    height >>= 1;
+  }
+  pvtcFile.Close();
+  delete[] contents;
+  return;
+}  

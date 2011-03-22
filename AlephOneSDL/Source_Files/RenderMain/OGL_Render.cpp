@@ -3479,8 +3479,8 @@ bool OGL_RenderCrosshairs()
 
   for (int quad = 0; quad < 4; quad++)
   {
-    int WidthMin = offsets[quad][0];
-    int WidthMax = WidthMin + Crosshairs.Thickness;
+    // DJB Warning int WidthMin = offsets[quad][0];
+    // DJB Warning int WidthMax = WidthMin + Crosshairs.Thickness;
     int HeightMin = offsets[quad][1];
     int HeightMax = HeightMin + Crosshairs.Thickness;
 

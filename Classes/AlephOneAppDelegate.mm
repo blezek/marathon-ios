@@ -137,7 +137,7 @@ extern int SDL_main(int argc, char *argv[]);
 #if TARGET_IPHONE_SIMULATOR
     NSString *localhost = @"localhost";
 #else 
-    NSString *localhost = @"10.0.0.10";    
+    // NSString *localhost = @"10.0.0.10";    
     NSString *RemoteURL = Content_Delivery_URL;
     NSString *RemoteHost = Content_Delivery_Host;
 #endif

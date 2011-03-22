@@ -49,7 +49,8 @@ class ImageDescriptor
 
 
   int MipMapCount;
-
+  std::string Filename;
+  
 public:
   // DJB OpenGL support for Compressed textures
   int ContentLength;
@@ -61,6 +62,9 @@ public:
     return (IsPresent() ? PremultipliedAlpha : false);
   }
 
+  // DJB Delayed loading for PVRTC files
+  void LoadTexture() const;
+  
   bool LoadFromFile(FileSpecifier& File, int ImgMode, int flags,
                     int actual_width = 0, int actual_height = 0,
                     int maxSize = 0);
@@ -156,7 +160,9 @@ public:
 
   ~ImageDescriptor()
   {
-    delete [] Pixels;
+    if ( Pixels != NULL ) {
+      delete [] Pixels;
+    }
     Pixels = NULL;
   }
 
