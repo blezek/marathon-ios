@@ -53,6 +53,14 @@
 @property (nonatomic, retain) NSNumber * kills;
 @property (nonatomic, retain) NSManagedObject * scenario;
 
+@property (nonatomic, retain) NSNumber *haveCheated;
+@property (nonatomic, retain) NSNumber *killsByFist;
+@property (nonatomic, retain) NSNumber *killsByPistol;
+@property (nonatomic, retain) NSNumber *numberOfDeaths;
+@property (nonatomic, retain) NSNumber *aliensLeftAlive;
+@property (nonatomic, retain) NSNumber *bobsLeftAlive;
+
+
 @end
 
 // coalesce these into one @interface SavedGame (CoreDataGeneratedAccessors) section

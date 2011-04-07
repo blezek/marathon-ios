@@ -1681,7 +1681,10 @@ void damage_monster(
           if (aggressor_player) {
             aggressor_player->monster_damage_given.kills+= 1;
             team_monster_damage_given[aggressor_player->team].kills += 1;
-
+            
+            // DJB record a hit
+            helperProjectileKill ( projectile_index );
+            
             if (definition->_class&_class_human_civilian) {
               dynamic_world->civilians_killed_by_players+= 1;
             }

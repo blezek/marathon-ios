@@ -9,7 +9,9 @@
 #import "PauseViewController.h"
 #import "AlephOneAppDelegate.h"
 #import "Prefs.h"
+#import "GameViewController.h"
 @implementation PauseViewController
+@synthesize statusLabel;
 
 - (IBAction) setup {
   // Hide cheats
@@ -20,6 +22,9 @@
       view.hidden = !cheatsEnabled;
     }
   }
+  statusLabel.text = [NSString stringWithFormat:@"Living monsters: %d     Living B.O.B.s: %d", 
+                      [[AlephOneAppDelegate sharedAppDelegate].game livingEnemies],
+                      [[AlephOneAppDelegate sharedAppDelegate].game livingBobs]];
 }
 
 - (IBAction) resume:(id)sender {
