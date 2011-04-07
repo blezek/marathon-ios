@@ -36,10 +36,14 @@ extern  int
 #include "shell.h"
 #include "preferences.h"
 #include "mouse.h"
+#include "items.h"
+#include "monsters.h"
+// Uggg... see monster_definitions.h for details
+#define DONT_REPEAT_DEFINITIONS
+#include "monster_definitions.h"
 #include "player.h"
 #include "key_definitions.h"
 #include "tags.h"
-#include "items.h"
 #include "interface.h"
 #import "game_wad.h"
 #include "overhead_map.h"
@@ -48,7 +52,10 @@ extern  int
 #include "render.h"
 #include "interface_menus.h"
 
-
+static int killsByPistol;
+static int killsByFist;
+static int livingBobs;
+static int livingEnemies;
 
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
@@ -216,6 +223,7 @@ extern struct view_data *world_view; /* should be static */
   [self.newGameViewController appear];
   self.newGameView.hidden = NO;
   self.currentSavedGame = nil;
+  [self zeroStats];
 }
 
 - (IBAction)beginGame {
@@ -239,6 +247,7 @@ extern struct view_data *world_view; /* should be static */
   [self menuHideReplacementMenu];
   showControlsOverview = NO;
   self.currentSavedGame = nil;
+  [self zeroStats];
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
   
   // Do we show the overview?
@@ -423,6 +432,10 @@ extern struct view_data *world_view; /* should be static */
     }
   }
   [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.3];
+  
+  // Before we go, change our numbers
+  livingBobs += [self livingBobs];
+  livingEnemies += [self livingEnemies];
 }
 
 - (void)teleportInLevel {
@@ -611,7 +624,12 @@ extern SDL_Surface *draw_surface;
   game.damageGiven = [NSNumber numberWithInt:local_player->monster_damage_given.damage];
   game.damageTaken = [NSNumber numberWithInt:local_player->monster_damage_taken.damage];
   game.kills = [NSNumber numberWithInt:local_player->monster_damage_given.kills];
-  
+  self.currentSavedGame.killsByFist = [NSNumber numberWithInt:(self.currentSavedGame.killsByFist.intValue + killsByFist )];
+  self.currentSavedGame.killsByPistol = [NSNumber numberWithInt:(self.currentSavedGame.killsByPistol.intValue + killsByPistol )];
+  self.currentSavedGame.aliensLeftAlive = [NSNumber numberWithInt:(self.currentSavedGame.aliensLeftAlive.intValue + livingEnemies)];
+  self.currentSavedGame.bobsLeftAlive = [NSNumber numberWithInt:(self.currentSavedGame.bobsLeftAlive.intValue + livingBobs)];
+  [self zeroStats];
+
   // Calculate shots fired and accuracy
   extern player_weapon_data *get_player_weapon_data(const short player_index);
   player_weapon_data* weapon_data = get_player_weapon_data(local_player_index);
@@ -866,6 +884,8 @@ extern bool handle_open_replay(FileSpecifier& File);
   // static_world->level_name
   MLog (@"Camera Polygon Index: %d", local_player->camera_polygon_index );
   MLog (@"Supporting Polygon Index: %d", local_player->supporting_polygon_index );
+  [self livingBobs];
+  [self livingEnemies];
   // Normally would just darken the screen, here we may want to popup a list of things to do.
   if ( isPaused ) {
     self.pauseView.hidden = YES;
@@ -884,20 +904,124 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 #pragma mark -
+#pragma mark Achievements
+- (void)zeroStats {
+  killsByPistol = killsByFist = livingBobs = livingEnemies = 0;
+}
+
+- (void) recordFistKill {
+  killsByFist++;
+}
+- (void) recordPistolKill {
+  killsByPistol++;
+}
+
+- (int) livingEnemies {
+  struct monster_data *monster;
+  short live_alien_count= 0;
+  short monster_index;
+  
+  for (monster_index= 0, monster= monsters;
+       monster_index<MAXIMUM_MONSTERS_PER_MAP; ++monster_index, ++monster)
+  {
+    if (SLOT_IS_USED(monster)) {
+      struct monster_definition *definition= get_monster_definition_external(
+                                                                    monster->type);
+      if ((definition->flags&_monster_is_alien) ||
+          ((static_world->environment_flags&_environment_rebellion) &&
+           !MONSTER_IS_PLAYER(monster))) {
+            live_alien_count+= 1;
+          }
+    }
+  }
+  MLog(@"Live aliens: %d", live_alien_count );
+  return live_alien_count;
+  
+}
+
+
+- (int) livingBobs {
+  MLog (@"Current Bob Causalties: %d count: %d", dynamic_world->current_civilian_causalties, dynamic_world->current_civilian_count );
+  MLog (@"Total Bob Causalties: %d count: %d", dynamic_world->total_civilian_causalties, dynamic_world->total_civilian_count );
+  
+  struct monster_data *monster;
+  short live_alien_count= 0;
+  short monster_index;
+  
+  for (monster_index= 0, monster= monsters;
+       monster_index<MAXIMUM_MONSTERS_PER_MAP; ++monster_index, ++monster)
+  {
+    if (SLOT_IS_USED(monster)) {
+      struct monster_definition *definition= get_monster_definition_external( monster->type);
+      if ( (definition->_class & (_class_human_civilian|_class_madd|_class_possessed_hummer)) && !MONSTER_IS_PLAYER(monster)) {
+        live_alien_count ++;
+      }
+    }
+  }
+  MLog(@"Live bobs: %d", live_alien_count );
+#if SCENARIO == 1
+  // Can't get to the first bob...
+  if ( strcmp ( static_world->level_name, "Arrival" ) == 0 ) {
+    live_alien_count--;
+  }
+#endif
+  return live_alien_count;
+  
+#if 0
+_civilian_crew,
+_civilian_science,
+_civilian_security,
+_civilian_assimilated,
+_civilian_fusion_crew,
+_civilian_fusion_science,
+_civilian_fusion_security,
+_civilian_fusion_assimilated,
+  struct monster_data *monster;
+  short live_alien_count= 0;
+  short LIVE_ALIEN_THRESHHOLD = 8;
+  short threshhold= LIVE_ALIEN_THRESHHOLD;
+  short monster_index;
+  
+  for (monster_index= 0, monster= monsters;
+       monster_index<MAXIMUM_MONSTERS_PER_MAP; ++monster_index, ++monster)
+  {
+    if (SLOT_IS_USED(monster)) {
+      struct monster_definition *definition= get_monster_definition_external(monster->type);
+      if ((definition->flags&_monster_is_alien) ||
+          ((static_world->environment_flags&_environment_rebellion) &&
+           !MONSTER_IS_PLAYER(monster))) {
+            live_alien_count+= 1;
+          }
+    }
+  }
+  
+  if (static_world->environment_flags&_environment_rebellion) {
+    threshhold= 0;
+  }
+  
+  return live_alien_count;
+#endif
+}
+
+
+#pragma mark -
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
   local_player->suit_energy= MAX(local_player->suit_energy, 3*PLAYER_MAXIMUM_SUIT_ENERGY);
   local_player->suit_oxygen = MAX ( local_player->suit_oxygen, PLAYER_MAXIMUM_SUIT_OXYGEN );
   mark_shield_display_as_dirty();  
+  currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
 }
 
 - (IBAction)invincibilityCheat:(id)sender {
   process_player_powerup(local_player_index, _i_invincibility_powerup);
   // process_player_powerup(local_player_index, _i_infravision_powerup );
+  currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
 }
 
 - (IBAction)saveCheat:(id)sender {
+  currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   MLog ( @"Damage given %d (%d kills) Damage taken %d (%d kills)",
         local_player->monster_damage_given.damage,
         local_player->monster_damage_given.kills,
@@ -909,6 +1033,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)ammoCheat:(id)sender {
+  currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
   { 
     // Only get the SMG/Flechette gun in Infinity
@@ -937,6 +1062,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   
 }
 - (IBAction)weaponsCheat:(id)sender {
+  currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
   {
     // Only get the SMG/Flechette gun in Infinity

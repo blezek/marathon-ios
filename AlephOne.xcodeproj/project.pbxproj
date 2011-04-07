@@ -828,7 +828,7 @@
 		A88121A812C7816300A1A08E /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
 		A88121A912C7816300A1A08E /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A88121AA12C7816300A1A08E /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
-		A88121AB12C7816300A1A08E /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.m */; };
+		A88121AB12C7816300A1A08E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
 		A88121AC12C7816300A1A08E /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
 		A88121AD12C7816300A1A08E /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D4127FBB4C00F0A2EE /* bitwise.c */; };
 		A88121AE12C7816300A1A08E /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D5127FBB4C00F0A2EE /* framing.c */; };
@@ -1316,7 +1316,7 @@
 		A88123AD12C7826300A1A08E /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
 		A88123AE12C7826300A1A08E /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A88123AF12C7826300A1A08E /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
-		A88123B012C7826300A1A08E /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.m */; };
+		A88123B012C7826300A1A08E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
 		A88123B112C7826300A1A08E /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
 		A88123B212C7826300A1A08E /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D4127FBB4C00F0A2EE /* bitwise.c */; };
 		A88123B312C7826300A1A08E /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D5127FBB4C00F0A2EE /* framing.c */; };
@@ -1485,7 +1485,7 @@
 		A89241E2127FC26300F0A2EE /* synthesis.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C9127FC26300F0A2EE /* synthesis.c */; };
 		A89241E5127FC26300F0A2EE /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CC127FC26300F0A2EE /* vorbisfile.c */; };
 		A89241E6127FC26300F0A2EE /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CD127FC26300F0A2EE /* window.c */; };
-		A89315841267FFD2006DA87E /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.m */; };
+		A89315841267FFD2006DA87E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
 		A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5A132091B5008BBB10 /* HDModeAd.png */; };
 		A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5B132091B5008BBB10 /* VMModeAd.png */; };
 		A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5E132091DB008BBB10 /* HDModeAd.png */; };
@@ -1922,6 +1922,7 @@
 		A88124A212C79E0100A1A08E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmViewController.h; path = Classes/FilmViewController.h; sourceTree = "<group>"; };
 		A88124A312C79E0100A1A08E /* FilmViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilmViewController.mm; path = Classes/FilmViewController.mm; sourceTree = "<group>"; };
 		A881257D12C7B64900A1A08E /* FilmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmCell.xib; path = Resources/FilmCell.xib; sourceTree = "<group>"; };
+		A882CB7D134ABA450051573D /* SaveGame 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 2.xcdatamodel"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		A889BBB011C8817400923787 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
@@ -2612,7 +2613,7 @@
 		A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PreferencesViewController.mm; path = Classes/PreferencesViewController.mm; sourceTree = "<group>"; };
 		A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesViewController.xib; path = Resources/PreferencesViewController.xib; sourceTree = "<group>"; };
 		A8EB78531266A8510043F0D4 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseViewController.h; path = Classes/PauseViewController.h; sourceTree = "<group>"; };
-		A8EB78541266A8510043F0D4 /* PauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseViewController.m; path = Classes/PauseViewController.m; sourceTree = "<group>"; };
+		A8EB78541266A8510043F0D4 /* PauseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PauseViewController.mm; path = Classes/PauseViewController.mm; sourceTree = "<group>"; };
 		A8EB78551266A8510043F0D4 /* PauseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PauseViewController.xib; path = Resources/PauseViewController.xib; sourceTree = "<group>"; };
 		A8F2382E12EB729B00CBC83D /* zoom_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_in.png; path = Artwork/zoom_in.png; sourceTree = "<group>"; };
 		A8F2382F12EB729B00CBC83D /* zoom_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_out.png; path = Artwork/zoom_out.png; sourceTree = "<group>"; };
@@ -2998,7 +2999,7 @@
 				A8C29C571224BF7B00E79491 /* NewGameViewController.h */,
 				A8C29C581224BF7B00E79491 /* NewGameViewController.mm */,
 				A8EB78531266A8510043F0D4 /* PauseViewController.h */,
-				A8EB78541266A8510043F0D4 /* PauseViewController.m */,
+				A8EB78541266A8510043F0D4 /* PauseViewController.mm */,
 				A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */,
 				A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */,
 				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
@@ -5136,7 +5137,7 @@
 				A88DBFF012640D2F00FCC652 /* jmemmgr.c in Sources */,
 				A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */,
 				A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */,
-				A89315841267FFD2006DA87E /* PauseViewController.m in Sources */,
+				A89315841267FFD2006DA87E /* PauseViewController.mm in Sources */,
 				A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */,
 				A89240D6127FBB4C00F0A2EE /* bitwise.c in Sources */,
 				A89240D7127FBB4C00F0A2EE /* framing.c in Sources */,
@@ -5556,7 +5557,7 @@
 				A88121A812C7816300A1A08E /* jmemmgr.c in Sources */,
 				A88121A912C7816300A1A08E /* ProgressViewController.mm in Sources */,
 				A88121AA12C7816300A1A08E /* PreferencesViewController.mm in Sources */,
-				A88121AB12C7816300A1A08E /* PauseViewController.m in Sources */,
+				A88121AB12C7816300A1A08E /* PauseViewController.mm in Sources */,
 				A88121AC12C7816300A1A08E /* ImageLoader_iOS.cpp in Sources */,
 				A88121AD12C7816300A1A08E /* bitwise.c in Sources */,
 				A88121AE12C7816300A1A08E /* framing.c in Sources */,
@@ -5976,7 +5977,7 @@
 				A88123AD12C7826300A1A08E /* jmemmgr.c in Sources */,
 				A88123AE12C7826300A1A08E /* ProgressViewController.mm in Sources */,
 				A88123AF12C7826300A1A08E /* PreferencesViewController.mm in Sources */,
-				A88123B012C7826300A1A08E /* PauseViewController.m in Sources */,
+				A88123B012C7826300A1A08E /* PauseViewController.mm in Sources */,
 				A88123B112C7826300A1A08E /* ImageLoader_iOS.cpp in Sources */,
 				A88123B212C7826300A1A08E /* bitwise.c in Sources */,
 				A88123B312C7826300A1A08E /* framing.c in Sources */,
@@ -6817,6 +6818,7 @@
 			isa = XCVersionGroup;
 			children = (
 				A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */,
+				A882CB7D134ABA450051573D /* SaveGame 2.xcdatamodel */,
 			);
 			currentVersion = A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */;
 			name = SaveGame.xcdatamodeld;

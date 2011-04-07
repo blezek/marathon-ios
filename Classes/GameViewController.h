@@ -202,6 +202,13 @@ typedef enum {
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
 
 - (CGPoint) transformTouchLocation:(CGPoint)location;
+
+// Achievements
+- (void) recordFistKill;
+- (void) recordPistolKill;
+- (int) livingEnemies;
+- (int) livingBobs;
+- (void) zeroStats;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *hud;

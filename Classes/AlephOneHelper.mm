@@ -160,6 +160,18 @@ void helperProjectileHit ( short projectile_index ) {
   weapon_data->weapons[widx].triggers[tidx].shots_hit++;
 }
 
+void helperProjectileKill ( short projectile_index ) {
+  if ( projectile_index >= 128 ) { return; };
+  short widx = pRecord[projectile_index][0];
+
+  if ( widx == _weapon_fist ) {
+    [[GameViewController sharedInstance] recordFistKill];
+  }
+  if ( widx == _weapon_pistol ) {
+    [[GameViewController sharedInstance] recordPistolKill];
+  }
+}
+
 void helperHandleLoadGame ( ) {
   [[GameViewController sharedInstance] chooseSaveGame];
   return;

@@ -34,6 +34,14 @@
 @dynamic shotsFired;
 @dynamic accuracy;
 @dynamic kills;
+
+// 4-4-2011
+@dynamic haveCheated;
+@dynamic killsByFist;
+@dynamic killsByPistol;
+@dynamic numberOfDeaths;
+@dynamic aliensLeftAlive;
+@dynamic bobsLeftAlive;
 @end
 
 @implementation Film
