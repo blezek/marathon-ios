@@ -1569,6 +1569,10 @@
 		A8D66F691317692A009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F681317692A009801EC /* Default-Portrait.png */; };
 		A8D66F6B13176936009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F6A13176936009801EC /* Default-Portrait.png */; };
 		A8D66F6D13176941009801EC /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F6C13176941009801EC /* Default-Portrait.png */; };
+		A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
+		A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
+		A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
+		A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
 		A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
@@ -2598,6 +2602,9 @@
 		A8D967CA11C72A2500016403 /* SDL_mouse_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse_c.h; sourceTree = "<group>"; };
 		A8D967D511C72AFA00016403 /* SDL_keyboard_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard_c.h; sourceTree = "<group>"; };
 		A8D967D611C72AFA00016403 /* SDL_windowevents_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_windowevents_c.h; sourceTree = "<group>"; };
+		A8DAB89B134E9F5600E4AF10 /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Achievements.h; path = Classes/Achievements.h; sourceTree = "<group>"; };
+		A8DAB89C134E9F5600E4AF10 /* Achievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Achievements.m; path = Classes/Achievements.m; sourceTree = "<group>"; };
+		A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A8DC94ED12CAD0500055397E /* FilmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmViewController.xib; path = Classes/FilmViewController.xib; sourceTree = "<group>"; };
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
@@ -2656,6 +2663,7 @@
 				A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */,
 				A8C4B70612EFCD6900D5D23F /* SystemConfiguration.framework in Frameworks */,
 				A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */,
+				A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2846,6 +2854,7 @@
 				A8C4B70312EFCD6900D5D23F /* StoreKit.framework */,
 				A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */,
 				A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */,
+				A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3021,6 +3030,8 @@
 				A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */,
 				A817C0121323318E00964061 /* RoundedView.h */,
 				A817C0131323318E00964061 /* RoundedView.m */,
+				A8DAB89B134E9F5600E4AF10 /* Achievements.h */,
+				A8DAB89C134E9F5600E4AF10 /* Achievements.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5183,6 +5194,7 @@
 				A8FF85C51310AF4500A874F8 /* Purchases.mm in Sources */,
 				A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0141323318E00964061 /* RoundedView.m in Sources */,
+				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5603,6 +5615,7 @@
 				A8FF85C61310AF4500A874F8 /* Purchases.mm in Sources */,
 				A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0161323318E00964061 /* RoundedView.m in Sources */,
+				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6023,6 +6036,7 @@
 				A8FF85C71310AF4500A874F8 /* Purchases.mm in Sources */,
 				A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0151323318E00964061 /* RoundedView.m in Sources */,
+				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

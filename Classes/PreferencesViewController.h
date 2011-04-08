@@ -50,5 +50,6 @@
 - (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;
 - (IBAction)notifyOfChanges;
+- (IBAction)resetAchievements:(id)sender;
 
 @end

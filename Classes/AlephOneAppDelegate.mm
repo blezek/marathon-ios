@@ -12,6 +12,7 @@
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
+#import "Achievements.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -79,6 +80,7 @@ extern int SDL_main(int argc, char *argv[]);
   OpenGLESVersion = 1;
   self.purchases = [[Purchases alloc] init];
   [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+  [Achievements login];
 
   // Default preferences
   // Set the application defaults  
@@ -391,6 +393,13 @@ const char* argv[] = { "AlephOneHD" };
     }
   }
   [[GameViewController sharedInstance].purchaseViewController updateView];
+}
+
+#pragma mark -
+#pragma mark Achievements
+
+- (void)uploadAchievements {
+  [Achievements uploadAchievements];
 }
 
 #pragma mark -

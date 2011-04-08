@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
+		<string key="IBDocument.SystemVersion">10J869</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">132</string>
@@ -183,7 +183,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor">
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="161201126">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
@@ -392,6 +392,30 @@
 							<string key="NSResourceName">weather_clear.png</string>
 						</object>
 					</object>
+					<object class="IBUIButton" id="885616678">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{49, 669}, {171, 37}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUITag">1000</int>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Reset Achievements</string>
+						<reference key="IBUIHighlightedTitleColor" ref="891544492"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="161201126"/>
+					</object>
 				</object>
 				<string key="NSFrameSize">{1024, 748}</string>
 				<reference key="NSSuperview"/>
@@ -522,6 +546,15 @@
 					</object>
 					<int key="connectionID">59</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">resetAchievements:</string>
+						<reference key="source" ref="885616678"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">63</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -568,6 +601,7 @@
 							<reference ref="462902921"/>
 							<reference ref="144028718"/>
 							<reference ref="506109421"/>
+							<reference ref="885616678"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -680,6 +714,11 @@
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">HiresTextures</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">60</int>
+						<reference key="object" ref="885616678"/>
+						<reference key="parent" ref="766721923"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -729,6 +768,8 @@
 					<string>54.IBViewBoundsToFrameTransform</string>
 					<string>55.IBPluginDependency</string>
 					<string>55.IBViewBoundsToFrameTransform</string>
+					<string>60.IBPluginDependency</string>
+					<string>60.IBViewBoundsToFrameTransform</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -817,6 +858,10 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAADBkAAAxDBAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDlwAAwvoAAA</bytes>
 					</object>
 				</object>
@@ -837,7 +882,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">59</int>
+			<int key="maxID">63</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -851,10 +896,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>closePreferences:</string>
 							<string>notifyOfChanges</string>
+							<string>resetAchievements:</string>
 							<string>updatePreferences:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -866,6 +913,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>closePreferences:</string>
 							<string>notifyOfChanges</string>
+							<string>resetAchievements:</string>
 							<string>updatePreferences:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -876,6 +924,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">notifyOfChanges</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">resetAchievements:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

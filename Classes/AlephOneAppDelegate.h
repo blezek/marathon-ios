@@ -56,6 +56,7 @@
 - (void)startAlephOne;
 - (void)initAndBegin;
 - (void)startSound;
+- (void)uploadAchievements;
 @end
 
 

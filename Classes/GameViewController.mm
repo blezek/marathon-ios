@@ -14,6 +14,7 @@
 #import "Effects.h"
 #import "AlertPrompt.h"
 #import "Appirater.h"
+#import "Achievements.h"
 
 extern "C" {
 extern  int
@@ -278,8 +279,6 @@ extern struct view_data *world_view; /* should be static */
   mode = MenuMode;
 }
 
-
-
 - (void)epilog {
   self.hud.hidden = YES;
   mode = CutSceneMode;
@@ -436,6 +435,25 @@ extern struct view_data *world_view; /* should be static */
   // Before we go, change our numbers
   livingBobs += [self livingBobs];
   livingEnemies += [self livingEnemies];
+  
+  vector<entry_point> levels;
+  const int32 AllPlayableLevels = _single_player_entry_point;
+  
+  if (get_entry_points(levels, AllPlayableLevels)) {
+    // Figure out where we are
+    for ( size_t idx = 0; idx < levels.size(); idx++ ) {
+      if ( strcmp ( static_world->level_name, levels[idx].level_name ) == 0 ) {
+        // OK, we are leaving this level so give the player some credit
+        if ( idx < NumberOfLevels ) {
+          float percentage = 100.0 * (idx+1) / NumberOfLevels;
+          [Achievements reportAchievement:Achievement_Marathon progress:percentage];
+        }
+      }
+    }
+  }
+  
+  
+  
 }
 
 - (void)teleportInLevel {
@@ -905,6 +923,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 #pragma mark -
 #pragma mark Achievements
+- (void) gameFinished {
+  // Need to do much more than this...
+  [Achievements reportAchievement:Achievement_Marathon progress:100.0];
+}
+
+
 - (void)zeroStats {
   killsByPistol = killsByFist = livingBobs = livingEnemies = 0;
 }
