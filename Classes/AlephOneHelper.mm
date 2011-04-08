@@ -172,6 +172,10 @@ void helperProjectileKill ( short projectile_index ) {
   }
 }
 
+void helperGameFinished() {
+  [[GameViewController sharedInstance] gameFinished];
+}
+
 void helperHandleLoadGame ( ) {
   [[GameViewController sharedInstance] chooseSaveGame];
   return;

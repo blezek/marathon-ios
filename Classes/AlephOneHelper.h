@@ -28,6 +28,7 @@ extern void helperHideHUD();
 extern void helperBeginTeleportOut();
 extern void helperTeleportInLevel();
 extern void helperEpilog();
+extern void helperGameFinished();
 extern void helperHandleLoadGame();
 extern void helperDoPreferences();
 extern void printGLError ( const char* message );

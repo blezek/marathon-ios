@@ -9,6 +9,7 @@
 #import "PreferencesViewController.h"
 #import "AlephOneAppDelegate.h"
 #include "preferences.h"
+#import "GameKit/GameKit.h"
 
 @implementation PreferencesViewController
 
@@ -78,13 +79,34 @@
   self.vidmasterModeLabel.hidden = ![defaults boolForKey:kHaveVidmasterMode];
   self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
   self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];
-#endif
   
+#endif
+
+  for ( UIView *view in self.view.subviews ) {
+    if ( view.tag == 1000 ) {
+#if defined(A1DEBUG)
+      view.hidden = NO;
+#else
+      view.hidden = YES;
+#endif
+    }
+  }
 }
 
 - (IBAction)updatePreferences:(id)sender {
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
 }
+
+- (IBAction)resetAchievements:(id)sender {
+  [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error) {
+    if ( error != nil ) {
+      MLog(@"Failed to reset achievements: %@", error );
+    } else {
+      MLog(@"Achievements reset!" );
+    }
+  }];
+}
+
 - (IBAction)notifyOfChanges {
 }
 
