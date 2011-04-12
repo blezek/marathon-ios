@@ -152,24 +152,20 @@ void helperNewProjectile( short projectile_index, short which_weapon, short whic
 }
 
 extern player_weapon_data *get_player_weapon_data(const short player_index);
-void helperProjectileHit ( short projectile_index ) {
+void helperProjectileHit ( short projectile_index, int damage ) {
   if ( projectile_index >= 128 ) { return; };
   player_weapon_data* weapon_data = get_player_weapon_data(local_player_index);
   short widx = pRecord[projectile_index][0];
   short tidx = pRecord[projectile_index][1];
   weapon_data->weapons[widx].triggers[tidx].shots_hit++;
+  [[GameViewController sharedInstance] projectileHit:widx withDamage:damage];
 }
 
 void helperProjectileKill ( short projectile_index ) {
   if ( projectile_index >= 128 ) { return; };
   short widx = pRecord[projectile_index][0];
 
-  if ( widx == _weapon_fist ) {
-    [[GameViewController sharedInstance] recordFistKill];
-  }
-  if ( widx == _weapon_pistol ) {
-    [[GameViewController sharedInstance] recordPistolKill];
-  }
+  [[GameViewController sharedInstance] projectileKill:widx];
 }
 
 void helperGameFinished() {

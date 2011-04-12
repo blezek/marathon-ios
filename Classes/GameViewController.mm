@@ -53,10 +53,25 @@ extern  int
 #include "render.h"
 #include "interface_menus.h"
 
-static int killsByPistol;
-static int killsByFist;
 static int livingBobs;
 static int livingEnemies;
+
+
+/*
+ _weapon_fist,
+ _weapon_pistol,
+ _weapon_plasma_pistol,
+ _weapon_assault_rifle,
+ _weapon_missile_launcher,
+ _weapon_flamethrower,
+ _weapon_alien_shotgun,
+ _weapon_shotgun,
+ _weapon_ball,      
+ _weapon_smg,
+*/
+
+int DamageRecord[MAXIMUM_NUMBER_OF_WEAPONS];
+int KillRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
@@ -192,6 +207,8 @@ extern struct view_data *world_view; /* should be static */
   isPaused = NO;
   animating = NO;
   [super viewDidLoad];
+  statistics = [[Statistics alloc] init];
+  [statistics retain];
 }
 
 #pragma mark -
@@ -632,21 +649,30 @@ extern SDL_Surface *draw_surface;
   SDL_SaveBMP ( map, (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String] );
   SDL_FreeSurface ( map );
   
-  
-  
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
   int seconds = (int) ( dynamic_world->tick_count ) / (float)TICKS_PER_SECOND;
   game.timeInSeconds = [NSNumber numberWithInt:seconds];
+  
+  int damageGiven = game.damageGiven.intValue;
+  int damageTaken = game.damageTaken.intValue;
+  
   game.damageGiven = [NSNumber numberWithInt:local_player->monster_damage_given.damage];
   game.damageTaken = [NSNumber numberWithInt:local_player->monster_damage_taken.damage];
   game.kills = [NSNumber numberWithInt:local_player->monster_damage_given.kills];
-  self.currentSavedGame.killsByFist = [NSNumber numberWithInt:(self.currentSavedGame.killsByFist.intValue + killsByFist )];
-  self.currentSavedGame.killsByPistol = [NSNumber numberWithInt:(self.currentSavedGame.killsByPistol.intValue + killsByPistol )];
+  self.currentSavedGame.killsByFist = [NSNumber numberWithInt:(self.currentSavedGame.killsByFist.intValue + KillRecord[_weapon_fist])];
+  self.currentSavedGame.killsByPistol = [NSNumber numberWithInt:(self.currentSavedGame.killsByPistol.intValue + KillRecord[_weapon_pistol])];
+  self.currentSavedGame.killsByPlasmaPistol = [NSNumber numberWithInt:(self.currentSavedGame.killsByPlasmaPistol.intValue + KillRecord[_weapon_plasma_pistol])];
+  self.currentSavedGame.killsByAssaultRifle = [NSNumber numberWithInt:(self.currentSavedGame.killsByAssaultRifle.intValue + KillRecord[_weapon_assault_rifle])];
+  self.currentSavedGame.killsByMissileLauncher = [NSNumber numberWithInt:(self.currentSavedGame.killsByMissileLauncher.intValue + KillRecord[_weapon_missile_launcher])];
+  self.currentSavedGame.killsByFlamethrower = [NSNumber numberWithInt:(self.currentSavedGame.killsByFlamethrower.intValue + KillRecord[_weapon_flamethrower])];
+  self.currentSavedGame.killsByAlienShotgun = [NSNumber numberWithInt:(self.currentSavedGame.killsByAlienShotgun.intValue + KillRecord[_weapon_alien_shotgun])];
+  self.currentSavedGame.killsByShotgun = [NSNumber numberWithInt:(self.currentSavedGame.killsByShotgun.intValue + KillRecord[_weapon_shotgun])];
+  self.currentSavedGame.killsBySMG = [NSNumber numberWithInt:(self.currentSavedGame.killsBySMG.intValue + KillRecord[_weapon_smg])];
+  
   self.currentSavedGame.aliensLeftAlive = [NSNumber numberWithInt:(self.currentSavedGame.aliensLeftAlive.intValue + livingEnemies)];
   self.currentSavedGame.bobsLeftAlive = [NSNumber numberWithInt:(self.currentSavedGame.bobsLeftAlive.intValue + livingBobs)];
-  [self zeroStats];
 
   // Calculate shots fired and accuracy
   extern player_weapon_data *get_player_weapon_data(const short player_index);
@@ -685,6 +711,44 @@ extern SDL_Surface *draw_surface;
   if (![game.scenario.managedObjectContext save:&error]) {
     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
   }
+  
+  // Calculate our score!
+  int64_t score = dynamic_world->game_information.difficulty_level 
+  * (int)accuracy * (
+                   local_player->monster_damage_given.damage
+                   - 100 * local_player->monster_damage_taken.damage
+                   + 100 * self.currentSavedGame.killsByFist.intValue
+                   + 90 * self.currentSavedGame.killsByPistol.intValue
+                   + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
+                   + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
+                   + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
+                   + 90 * self.currentSavedGame.killsByFlamethrower.intValue
+                   + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
+                   + 130 * self.currentSavedGame.killsByShotgun.intValue
+                   + 90 * self.currentSavedGame.killsBySMG.intValue );
+  score = score / 1000;
+  
+  MLog(@"Found score: %d", score );
+  [Achievements reportScore:Score_Score value:score];
+  [statistics updateLifetimeKills:KillRecord];
+  
+  int64_t delta = dynamic_world->game_information.difficulty_level 
+  * (int)accuracy * (
+                     damageGiven
+                     - 100 * damageTaken
+                     + 100 * KillRecord[_weapon_fist]
+                     + 90 * KillRecord[_weapon_pistol]
+                     + 60 * KillRecord[_weapon_plasma_pistol]
+                     + 30 * KillRecord[_weapon_assault_rifle]
+                     + 30 * KillRecord[_weapon_missile_launcher]
+                     + 90 * KillRecord[_weapon_flamethrower]
+                     + 90 * KillRecord[_weapon_alien_shotgun]
+                     + 130 * KillRecord[_weapon_shotgun]
+                     + 90 * KillRecord[_weapon_smg] );
+                     
+  [statistics updateLifetimeScore:delta];
+  
+  [self zeroStats];
   
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
@@ -928,16 +992,18 @@ extern bool handle_open_replay(FileSpecifier& File);
   [Achievements reportAchievement:Achievement_Marathon progress:100.0];
 }
 
-
 - (void)zeroStats {
-  killsByPistol = killsByFist = livingBobs = livingEnemies = 0;
+  livingBobs = livingEnemies = 0;
+  for ( int i = 0; i < MAXIMUM_NUMBER_OF_WEAPONS; i++ ) {
+    DamageRecord[i] = 0;
+  }
 }
 
-- (void) recordFistKill {
-  killsByFist++;
+- (void) projectileHit:(short)index withDamage:(int)damage {
+  DamageRecord[index] += damage;
 }
-- (void) recordPistolKill {
-  killsByPistol++;
+- (void) projectileKill:(short)index {
+  KillRecord[index]++;
 }
 
 - (int) livingEnemies {

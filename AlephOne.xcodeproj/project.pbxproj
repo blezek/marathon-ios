@@ -44,6 +44,9 @@
 		A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
+		A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
+		A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
+		A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
 		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A85913A012B1DA5A00754DFE /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139E12B1DA5A00754DFE /* left.png */; };
@@ -1835,6 +1838,8 @@
 		A85088B711C1E72600D95436 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		A85088B811C1E72600D95436 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		A85088B911C1E72600D95436 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		A8528B6B1353EBC500EFB947 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Statistics.h; path = Classes/Statistics.h; sourceTree = "<group>"; };
+		A8528B6C1353EBC500EFB947 /* Statistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Statistics.m; path = Classes/Statistics.m; sourceTree = "<group>"; };
 		A85490F411BDEF0C0073554A /* jumphack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jumphack.c; path = Classes/jumphack.c; sourceTree = "<group>"; };
 		A85490F511BDEF0C0073554A /* jumphack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jumphack.h; path = Classes/jumphack.h; sourceTree = "<group>"; };
 		A85490F611BDEF0C0073554A /* keyinfotable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyinfotable.h; path = Classes/keyinfotable.h; sourceTree = "<group>"; };
@@ -3032,6 +3037,8 @@
 				A817C0131323318E00964061 /* RoundedView.m */,
 				A8DAB89B134E9F5600E4AF10 /* Achievements.h */,
 				A8DAB89C134E9F5600E4AF10 /* Achievements.m */,
+				A8528B6B1353EBC500EFB947 /* Statistics.h */,
+				A8528B6C1353EBC500EFB947 /* Statistics.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5195,6 +5202,7 @@
 				A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0141323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
+				A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5616,6 +5624,7 @@
 				A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0161323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
+				A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6037,6 +6046,7 @@
 				A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */,
 				A817C0151323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
+				A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,13 @@
 @dynamic haveCheated;
 @dynamic killsByFist;
 @dynamic killsByPistol;
+@dynamic killsByPlasmaPistol;
+@dynamic killsByAssaultRifle;
+@dynamic killsByMissileLauncher;
+@dynamic killsByFlamethrower;
+@dynamic killsByAlienShotgun;
+@dynamic killsByShotgun;
+@dynamic killsBySMG;
 @dynamic numberOfDeaths;
 @dynamic aliensLeftAlive;
 @dynamic bobsLeftAlive;
