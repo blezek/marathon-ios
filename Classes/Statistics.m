@@ -24,7 +24,9 @@
                   @"AlienShotgun",
                   @"Shotgun",
                   @"Ball",
-                  @"SMG", nil];
+                  @"SMG",
+                  @"Score",
+                  nil];
 
   }
   return self;
@@ -40,10 +42,8 @@
   }
   for ( NSString *key in self.index ) {
     if ( [self.stats objectForKey:key] == nil ) {
-      [self.stats setObject:[NSNumber numberWithInt:0] forKey:key];
+      [self.stats setObject:[NSNumber numberWithFloat:0.0] forKey:key];
     }
-    // Lifetime score
-    [self.stats setObject:[NSNumber numberWithInt:0] forKey:@"Score"];
   }
 }
 
@@ -61,11 +61,11 @@
 }
   
 
-- (void)updateLifetimeKills:(int[])kills {
+- (void)updateLifetimeKills:(int[])kills  withMultiplier:(float)multiplier{
   for ( int idx = 0; idx < self.index.count; idx++ ) {
     NSString *key = [self.index objectAtIndex:idx];
     NSNumber* current = [self.stats objectForKey:key];
-    [self.stats setObject:[NSNumber numberWithInt:(current.intValue + kills[idx])] forKey:key];
+    [self.stats setObject:[NSNumber numberWithFloat:(current.intValue + multiplier * kills[idx])] forKey:key];
   }
   MLog(@"Updated lifetime stats: %@", self.stats);
   [self saveStats];
@@ -74,7 +74,7 @@
 - (void)uploadStats {
   // Create a score for everything
   NSNumber *v = [self.stats objectForKey:@"Score"];
-  [Achievements reportScore:Score_LifetimeScore value:v.intValue];
+  [Achievements reportScore:kSLifetimeScore value:v.intValue];
 }
   
 - (void)downloadStats {

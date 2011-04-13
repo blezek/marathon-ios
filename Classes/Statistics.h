@@ -17,7 +17,7 @@
 - (id)init;
 - (void)loadStats;
 - (void)saveStats;
-- (void)updateLifetimeKills:(int[])kills;
+- (void)updateLifetimeKills:(int[])kills withMultiplier:(float)multiplier;
 - (void)updateLifetimeScore:(int64_t)delta;
 - (void)uploadStats;
 - (void)downloadStats;

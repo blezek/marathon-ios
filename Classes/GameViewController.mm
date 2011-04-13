@@ -713,39 +713,42 @@ extern SDL_Surface *draw_surface;
   }
   
   // Calculate our score!
-  int64_t score = dynamic_world->game_information.difficulty_level 
-  * (int)accuracy * (
-                   local_player->monster_damage_given.damage
-                   - 100 * local_player->monster_damage_taken.damage
-                   + 100 * self.currentSavedGame.killsByFist.intValue
-                   + 90 * self.currentSavedGame.killsByPistol.intValue
-                   + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
-                   + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
-                   + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
-                   + 90 * self.currentSavedGame.killsByFlamethrower.intValue
-                   + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
-                   + 130 * self.currentSavedGame.killsByShotgun.intValue
-                   + 90 * self.currentSavedGame.killsBySMG.intValue );
-  score = score / 1000;
+  double temp = dynamic_world->game_information.difficulty_level / (double) _total_carnage_level
+  * accuracy / 100.0 * (
+                     local_player->monster_damage_given.damage
+                     - 100 * local_player->monster_damage_taken.damage
+                     + 100 * self.currentSavedGame.killsByFist.intValue
+                     + 90 * self.currentSavedGame.killsByPistol.intValue
+                     + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
+                     + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
+                     + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
+                     + 90 * self.currentSavedGame.killsByFlamethrower.intValue
+                     + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
+                     + 130 * self.currentSavedGame.killsByShotgun.intValue
+                     + 90 * self.currentSavedGame.killsBySMG.intValue );
+  
+  int64_t score = (int64_t) temp;
   
   MLog(@"Found score: %d", score );
-  [Achievements reportScore:Score_Score value:score];
-  [statistics updateLifetimeKills:KillRecord];
+  [Achievements reportScore:kSScore value:score];
+  [statistics updateLifetimeKills:KillRecord
+                   withMultiplier:(dynamic_world->game_information.difficulty_level / (float) _total_carnage_level)];
   
-  int64_t delta = dynamic_world->game_information.difficulty_level 
-  * (int)accuracy * (
-                     damageGiven
-                     - 100 * damageTaken
-                     + 100 * KillRecord[_weapon_fist]
-                     + 90 * KillRecord[_weapon_pistol]
-                     + 60 * KillRecord[_weapon_plasma_pistol]
-                     + 30 * KillRecord[_weapon_assault_rifle]
-                     + 30 * KillRecord[_weapon_missile_launcher]
-                     + 90 * KillRecord[_weapon_flamethrower]
-                     + 90 * KillRecord[_weapon_alien_shotgun]
-                     + 130 * KillRecord[_weapon_shotgun]
-                     + 90 * KillRecord[_weapon_smg] );
-                     
+  temp = temp = dynamic_world->game_information.difficulty_level / (double) _total_carnage_level
+  * accuracy / 100.0 * (
+                        damageGiven
+                        - 100 * damageTaken
+                        + 100 * self.currentSavedGame.killsByFist.intValue
+                        + 90 * self.currentSavedGame.killsByPistol.intValue
+                        + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
+                        + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
+                        + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
+                        + 90 * self.currentSavedGame.killsByFlamethrower.intValue
+                        + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
+                        + 130 * self.currentSavedGame.killsByShotgun.intValue
+                        + 90 * self.currentSavedGame.killsBySMG.intValue );
+  
+  int64_t delta = (int64_t)temp;                     
   [statistics updateLifetimeScore:delta];
   
   [self zeroStats];

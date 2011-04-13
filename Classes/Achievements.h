@@ -10,8 +10,8 @@
 
 
 #define Achievement_Marathon @"marathon"
-#define Score_Score @"score"
-#define Score_LifetimeScore @"Lifetime.Score"
+#define kSScore @"score"
+#define kSLifetimeScore @"Lifetime.Score"
 
 @interface Achievements : NSObject {
 
