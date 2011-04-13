@@ -54,8 +54,15 @@
 @property (nonatomic, retain) NSManagedObject * scenario;
 
 @property (nonatomic, retain) NSNumber *haveCheated;
-@property (nonatomic, retain) NSNumber *killsByFist;
-@property (nonatomic, retain) NSNumber *killsByPistol;
+@property (nonatomic,retain) NSNumber *killsByFist;
+@property (nonatomic,retain) NSNumber *killsByPistol;
+@property (nonatomic,retain) NSNumber *killsByPlasmaPistol;
+@property (nonatomic,retain) NSNumber *killsByAssaultRifle;
+@property (nonatomic,retain) NSNumber *killsByMissileLauncher;
+@property (nonatomic,retain) NSNumber *killsByFlamethrower;
+@property (nonatomic,retain) NSNumber *killsByAlienShotgun;
+@property (nonatomic,retain) NSNumber *killsByShotgun;
+@property (nonatomic,retain) NSNumber *killsBySMG;
 @property (nonatomic, retain) NSNumber *numberOfDeaths;
 @property (nonatomic, retain) NSNumber *aliensLeftAlive;
 @property (nonatomic, retain) NSNumber *bobsLeftAlive;

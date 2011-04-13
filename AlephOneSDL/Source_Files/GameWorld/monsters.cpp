@@ -1612,7 +1612,7 @@ void damage_monster(
           team_monster_damage_given[aggressor_player->team].damage += MAX(
             monster->vitality, delta_vitality);
           // DJB record a hit
-          helperProjectileHit ( projectile_index );
+          helperProjectileHit ( projectile_index, MAX(monster->vitality, delta_vitality) );
         }
       }
 

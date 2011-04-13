@@ -22,6 +22,7 @@
 #import "NewGameViewController.h"
 #import "FilmViewController.h"
 #import "PurchaseViewController.h"
+#import "Statistics.h"
 
 // Useful functions
 extern bool save_game(void);
@@ -85,6 +86,7 @@ typedef enum {
   bool haveChoosenSaveGame;
   BOOL isPaused;
   SavedGame *currentSavedGame;
+  Statistics *statistics;
   
   UIAlertView *saveFilmCheatWarning;
   UIAlertView *rateGame;
@@ -204,8 +206,8 @@ typedef enum {
 - (CGPoint) transformTouchLocation:(CGPoint)location;
 
 // Achievements
-- (void) recordFistKill;
-- (void) recordPistolKill;
+- (void) projectileHit:(short)index withDamage:(int)damage;
+- (void) projectileKill:(short)index;
 - (int) livingEnemies;
 - (int) livingBobs;
 - (void) zeroStats;

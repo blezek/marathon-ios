@@ -9,8 +9,10 @@
 #import "Achievements.h"
 #import "AlephOneAppDelegate.h"
 #import "GameKit/GameKit.h"
+#define kAchievements @"Achievements"
+#define kScores @"Scores"
 static bool isAuthenticated = NO;
-static NSMutableArray *cachedAchievements = nil;
+static NSMutableDictionary *cachedAchievements = nil;
 static NSString *cachePath = nil;
 static NSTimer *timer = nil;
 
@@ -20,14 +22,15 @@ static NSTimer *timer = nil;
   cachePath = [NSString stringWithFormat:@"%@/CachedAchievements.plist", 
                [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory] ];
   [cachePath retain];
-  cachedAchievements = [NSMutableArray arrayWithCapacity:0];
-  [cachedAchievements retain];
   if ( [[NSFileManager defaultManager] fileExistsAtPath:cachePath] ) {
-    NSArray *temp = [NSKeyedUnarchiver unarchiveObjectWithFile:cachePath];
-    for ( id obj in temp ) {
-      [cachedAchievements addObject:obj];
-    }
+    cachedAchievements = [NSMutableDictionary dictionaryWithContentsOfFile:cachePath];
+  } else {
+    cachedAchievements = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                          [NSMutableArray arrayWithCapacity:2], kAchievements,
+                          [NSMutableArray arrayWithCapacity:2], kScores, nil];
+                          
   }
+  [cachedAchievements retain];
   
   GKLocalPlayer *player = [GKLocalPlayer localPlayer];
   [player authenticateWithCompletionHandler:^(NSError *error) {
@@ -48,27 +51,50 @@ static NSTimer *timer = nil;
 
 + (void)uploadAchievements {
   MLog(@"Uploading" );
-  for ( GKAchievement *achievement in cachedAchievements ) {
+  for ( GKAchievement *achievement in [cachedAchievements objectForKey:kAchievements] ) {
     [achievement reportAchievementWithCompletionHandler:^(NSError *error) {
       if (error == nil) {
         // Remove it from the list!
         MLog (@"Successfully reported achievement %@ with progress: %f", achievement.identifier, achievement.percentComplete );
-        [cachedAchievements removeObject:achievement];
-        [NSKeyedArchiver archiveRootObject:cachedAchievements toFile:cachePath];
+        [[cachedAchievements objectForKey:kAchievements] removeObject:achievement];
+        [cachedAchievements writeToFile:cachePath atomically:YES];
       } else {
         MLog ( @"Failed to report achievement: %@", error );
       }
     }];
   }
+  for ( GKScore *score in [cachedAchievements objectForKey:kScores] ) {
+    [score reportScoreWithCompletionHandler:^(NSError *error) {
+      if (error == nil) {
+        // Remove it from the list!
+        MLog (@"Successfully reported score %@ with value: %d", score.category, score.value );
+        [[cachedAchievements objectForKey:kScores] removeObject:score];
+        [cachedAchievements writeToFile:cachePath atomically:YES];
+      } else {
+        MLog ( @"Failed to report score: %@", error );
+      }
+    }];
+  }
 }
-
-
 
 + (void)reportAchievement:(NSString*)identifier progress:(float)percent {
   GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
   if ( achievement ) {
     achievement.percentComplete = percent;
-    [cachedAchievements addObject:achievement];
+    [[cachedAchievements objectForKey:kAchievements] addObject:achievement];
+    [cachedAchievements writeToFile:cachePath atomically:YES];
+    [Achievements uploadAchievements];
+  } else {
+    MLog ( @"Couldn't create achievement for %@", identifier );
+  }
+}
+
++ (void)reportScore:(NSString*)identifier value:(int64_t)reportedScore {
+  GKScore *score = [[[GKScore alloc] initWithCategory:identifier] autorelease];
+  if ( score ) {
+    score.value = reportedScore;
+    [[cachedAchievements objectForKey:kScores] addObject:score];
+    [cachedAchievements writeToFile:cachePath atomically:YES];
     [Achievements uploadAchievements];
   } else {
     MLog ( @"Couldn't create achievement for %@", identifier );
