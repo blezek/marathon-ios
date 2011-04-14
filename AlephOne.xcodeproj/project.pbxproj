@@ -52,7 +52,6 @@
 		A85913A012B1DA5A00754DFE /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139E12B1DA5A00754DFE /* left.png */; };
 		A85913A112B1DA5A00754DFE /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139F12B1DA5A00754DFE /* right.png */; };
 		A85A380112178BA50080BBA9 /* ButtonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85A37FF12178BA50080BBA9 /* ButtonView.mm */; };
-		A85E673011CB173A00D0FAEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A85E673311CB173A00D0FAEF /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3411B35CFA00689138 /* error.c */; };
 		A85E673411CB173A00D0FAEF /* http.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3511B35CFA00689138 /* http.c */; };
 		A85E673511CB173A00D0FAEF /* libnat.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3611B35CFA00689138 /* libnat.c */; };
@@ -403,7 +402,6 @@
 		A8811FF212C7816300A1A08E /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8811FF312C7816300A1A08E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A8811FF512C7816300A1A08E /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
-		A8811FF712C7816300A1A08E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A8811FF812C7816300A1A08E /* jconfig.iphoneos in Resources */ = {isa = PBXBuildFile; fileRef = A88DBED212640A7800FCC652 /* jconfig.iphoneos */; };
 		A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
 		A8811FFA12C7816300A1A08E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
@@ -891,7 +889,6 @@
 		A88121F712C7826300A1A08E /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A88121F812C7826300A1A08E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A88121FA12C7826300A1A08E /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
-		A88121FC12C7826300A1A08E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A85E66C811CB0AF200D0FAEF /* Icon.png */; };
 		A88121FD12C7826300A1A08E /* jconfig.iphoneos in Resources */ = {isa = PBXBuildFile; fileRef = A88DBED212640A7800FCC652 /* jconfig.iphoneos */; };
 		A88121FE12C7826300A1A08E /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
 		A88121FF12C7826300A1A08E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
@@ -1398,6 +1395,8 @@
 		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
 		A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
+		A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
+		A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
 		A88DBF5312640A7800FCC652 /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC112640A7800FCC652 /* jcapimin.c */; };
 		A88DBF5412640A7800FCC652 /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC212640A7800FCC652 /* jcapistd.c */; };
 		A88DBF5512640A7800FCC652 /* jccoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC312640A7800FCC652 /* jccoefct.c */; };
@@ -1556,9 +1555,7 @@
 		A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
-		A8D66F4C131766DB009801EC /* alephone-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F47131766DB009801EC /* alephone-icon-512px.png */; };
 		A8D66F4D131766DB009801EC /* alephone-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F48131766DB009801EC /* alephone-icon-ipad.png */; };
-		A8D66F4E131766DB009801EC /* alephone-icon-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F49131766DB009801EC /* alephone-icon-iphone.png */; };
 		A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4A131766DB009801EC /* GenericBackground.png */; };
 		A8D66F50131766DB009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4B131766DB009801EC /* SplashScreen.png */; };
 		A8D66F55131766E9009801EC /* alephone2-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F51131766E9009801EC /* alephone2-icon-512px.png */; };
@@ -1871,7 +1868,6 @@
 		A85A37FE12178BA50080BBA9 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
 		A85A37FF12178BA50080BBA9 /* ButtonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ButtonView.mm; path = Classes/ButtonView.mm; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
-		A85E66C811CB0AF200D0FAEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85E687111CB18FD00D0FAEF /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = png.h; path = "Libraries/libpng-1.2.24/png.h"; sourceTree = SOURCE_ROOT; };
 		A85E687211CB18FD00D0FAEF /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngconf.h; path = "Libraries/libpng-1.2.24/pngconf.h"; sourceTree = SOURCE_ROOT; };
@@ -2702,6 +2698,7 @@
 				A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88121E212C7816300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
+				A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2736,6 +2733,7 @@
 				A8FF817D130F6FE800A874F8 /* SystemConfiguration.framework in Frameworks */,
 				A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */,
 				A8FF817F130F6FED00A874F8 /* OpenGLES.framework in Frameworks */,
+				A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2823,7 +2821,6 @@
 				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
-				A85E66C811CB0AF200D0FAEF /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
@@ -4488,7 +4485,6 @@
 				A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */,
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
 				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
-				A85E673011CB173A00D0FAEF /* Icon.png in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
 				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
 				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
@@ -4559,9 +4555,7 @@
 				A8F2383512EB729B00CBC83D /* zoom_out.png in Resources */,
 				A8FF8556130F7A4300A874F8 /* AirshipConfig.plist in Resources */,
 				A8667C4413135EB700BE2654 /* M1A1 in Resources */,
-				A8D66F4C131766DB009801EC /* alephone-icon-512px.png in Resources */,
 				A8D66F4D131766DB009801EC /* alephone-icon-ipad.png in Resources */,
-				A8D66F4E131766DB009801EC /* alephone-icon-iphone.png in Resources */,
 				A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */,
 				A8D66F50131766DB009801EC /* SplashScreen.png in Resources */,
 				A8D66F6B13176936009801EC /* Default-Portrait.png in Resources */,
@@ -4589,7 +4583,6 @@
 				A8811FF212C7816300A1A08E /* DownloadViewController.xib in Resources */,
 				A8811FF312C7816300A1A08E /* Entitlements.plist in Resources */,
 				A8811FF512C7816300A1A08E /* GameViewController.xib in Resources */,
-				A8811FF712C7816300A1A08E /* Icon.png in Resources */,
 				A8811FF812C7816300A1A08E /* jconfig.iphoneos in Resources */,
 				A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */,
 				A8811FFA12C7816300A1A08E /* MainWindow.xib in Resources */,
@@ -4689,7 +4682,6 @@
 				A88121F712C7826300A1A08E /* DownloadViewController.xib in Resources */,
 				A88121F812C7826300A1A08E /* Entitlements.plist in Resources */,
 				A88121FA12C7826300A1A08E /* GameViewController.xib in Resources */,
-				A88121FC12C7826300A1A08E /* Icon.png in Resources */,
 				A88121FD12C7826300A1A08E /* jconfig.iphoneos in Resources */,
 				A88121FE12C7826300A1A08E /* LoadingLabel.png in Resources */,
 				A88121FF12C7826300A1A08E /* MainWindow.xib in Resources */,
