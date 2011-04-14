@@ -72,9 +72,11 @@ static int livingEnemies;
 
 int DamageRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 int KillRecord[MAXIMUM_NUMBER_OF_WEAPONS];
+float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1/5., 1/2., 1/1. };
 
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
+BOOL StatsDownloaded = NO;
 
 #define kPauseAlphaDefault 0.5;
 
@@ -462,8 +464,24 @@ extern struct view_data *world_view; /* should be static */
       if ( strcmp ( static_world->level_name, levels[idx].level_name ) == 0 ) {
         // OK, we are leaving this level so give the player some credit
         if ( idx < NumberOfLevels ) {
+          
           float percentage = 100.0 * (idx+1) / NumberOfLevels;
           [Achievements reportAchievement:Achievement_Marathon progress:percentage];
+          NSString *setting = [statistics difficultyToString:dynamic_world->game_information.difficulty_level];
+          if ( self.currentSavedGame.bobsLeftAlive == 0 ) {
+            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.BOBBane", setting] progress:percentage];
+          }
+          if ( self.currentSavedGame.aliensLeftAlive == 0 ) {
+            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.CleanSweep", setting] progress:percentage];
+          }   
+          if ( self.currentSavedGame.kills.intValue == self.currentSavedGame.killsByFist.intValue ) {
+            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.Pugilist", setting] progress:percentage];   
+          }
+          if ( self.currentSavedGame.kills.intValue == self.currentSavedGame.killsByPistol.intValue ) {
+            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.Gunslinger", setting] progress:percentage];   
+          }
+          
+          
         }
       }
     }
@@ -713,7 +731,7 @@ extern SDL_Surface *draw_surface;
   }
   
   // Calculate our score!
-  double temp = dynamic_world->game_information.difficulty_level / (double) _total_carnage_level
+  double temp = DifficultyMultiplier[dynamic_world->game_information.difficulty_level]
   * accuracy / 100.0 * (
                      local_player->monster_damage_given.damage
                      - 100 * local_player->monster_damage_taken.damage
@@ -732,9 +750,9 @@ extern SDL_Surface *draw_surface;
   MLog(@"Found score: %d", score );
   [Achievements reportScore:kSScore value:score];
   [statistics updateLifetimeKills:KillRecord
-                   withMultiplier:(dynamic_world->game_information.difficulty_level / (float) _total_carnage_level)];
+                   withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
   
-  temp = temp = dynamic_world->game_information.difficulty_level / (double) _total_carnage_level
+  temp = temp = DifficultyMultiplier[dynamic_world->game_information.difficulty_level]
   * accuracy / 100.0 * (
                         damageGiven
                         - 100 * damageTaken
@@ -748,9 +766,14 @@ extern SDL_Surface *draw_surface;
                         + 130 * self.currentSavedGame.killsByShotgun.intValue
                         + 90 * self.currentSavedGame.killsBySMG.intValue );
   
-  int64_t delta = (int64_t)temp;                     
+  int64_t delta = (int64_t)(temp-score); 
   [statistics updateLifetimeScore:delta];
+  [statistics uploadStats];
   
+  if ( [Achievements isAuthenticated] && !StatsDownloaded ) {
+    StatsDownloaded = YES;
+    [statistics downloadStats];
+  }
   [self zeroStats];
   
   // Animate the saved game message

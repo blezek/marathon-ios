@@ -18,6 +18,10 @@ static NSTimer *timer = nil;
 
 @implementation Achievements
 
++ (BOOL) isAuthenticated {
+  return isAuthenticated;
+}
+
 + (void) login {
   cachePath = [NSString stringWithFormat:@"%@/CachedAchievements.plist", 
                [[AlephOneAppDelegate sharedAppDelegate] applicationDocumentsDirectory] ];
@@ -59,6 +63,10 @@ static NSTimer *timer = nil;
         [[cachedAchievements objectForKey:kAchievements] removeObject:achievement];
         [cachedAchievements writeToFile:cachePath atomically:YES];
       } else {
+#if defined(A1DEBUG)
+        [[cachedAchievements objectForKey:kAchievements] removeObject:achievement];
+        [cachedAchievements writeToFile:cachePath atomically:YES];
+#endif
         MLog ( @"Failed to report achievement: %@", error );
       }
     }];
@@ -72,6 +80,10 @@ static NSTimer *timer = nil;
         [cachedAchievements writeToFile:cachePath atomically:YES];
       } else {
         MLog ( @"Failed to report score: %@", error );
+#if defined(A1DEBUG)
+        [[cachedAchievements objectForKey:kScores] removeObject:score];
+        [cachedAchievements writeToFile:cachePath atomically:YES];
+#endif        
       }
     }];
   }

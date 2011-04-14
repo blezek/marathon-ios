@@ -12,6 +12,7 @@
 @interface Statistics : NSObject {
   NSMutableDictionary *stats;
   NSArray *index;
+  NSArray *prefixList;
 }
 
 - (id)init;
@@ -19,10 +20,14 @@
 - (void)saveStats;
 - (void)updateLifetimeKills:(int[])kills withMultiplier:(float)multiplier;
 - (void)updateLifetimeScore:(int64_t)delta;
+- (void)updateLifetimeDamage:(int[])dammage withMultiplier:(float)multiplier;
+- (void)updateLifetimeStats:(int[])dammage withMultiplier:(float)multiplier forPrefix:(NSString*)prefix;
 - (void)uploadStats;
 - (void)downloadStats;
+- (NSString*)difficultyToString:(int)difficulty;
 
 @property (retain, nonatomic) NSMutableDictionary *stats;
 @property (retain, nonatomic) NSArray *index;
+@property (retain, nonatomic) NSArray *prefixList;
 
 @end
