@@ -45,6 +45,7 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) Scenario *scenario;
 @property (nonatomic) int OpenGLESVersion;
+@property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 
 // Transactions

@@ -342,9 +342,10 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
         data->glLoadIdentity();
         data->glMatrixMode(GL_MODELVIEW);
         data->glLoadIdentity();
+      // DJB...
       // DJB NB: these need to be in the original portrait mode
-        data->glViewport(0, 0, window->h, window->w);
-        data->glOrthof(0.0, (GLfloat) window->h, (GLfloat) window->w, 0.0,
+        data->glViewport(0, 0, window->w, window->h);
+        data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
                        0.0, 1.0);
 
       // Now rotate the view
@@ -356,10 +357,8 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
       // DJB Because this is before we translate, do h,w
       // glTranslatef(-w,-h,0);
 			// glRotatef(90,0,0,1);
-      
-      glRotatef ( 90, 0,0,1);
-      glTranslatef( 0,-window->h,0);
-      
+      // glRotatef ( 90, 0,0,1);
+      // glTranslatef( 0,-window->h,0);
       GLfloat scaleX = 0.66, scaleY = 0.66;
       printf ( "Scale is: %f, %f\n", scaleX, scaleY );
       printf ( "Window size is %d x %d\n", window->w, window->h );

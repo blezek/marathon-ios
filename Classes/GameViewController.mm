@@ -15,6 +15,19 @@
 #import "AlertPrompt.h"
 #import "Appirater.h"
 #import "Achievements.h"
+#include "FileHandler.h"
+
+extern float DifficultyMultiplier[];
+
+// Useful functions
+extern bool save_game(void);
+extern "C" void setOpenGLView ( SDL_uikitopenglview* view );
+
+// For cheats
+#include "game_window.h"
+extern void AddItemsToPlayer(short ItemType, short MaxNumber);
+extern void AddOneItemToPlayer(short ItemType, short MaxNumber);
+
 
 extern "C" {
 extern  int
@@ -72,7 +85,6 @@ static int livingEnemies;
 
 int DamageRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 int KillRecord[MAXIMUM_NUMBER_OF_WEAPONS];
-float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1/5., 1/2., 1/1. };
 
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
@@ -81,7 +93,7 @@ BOOL StatsDownloaded = NO;
 #define kPauseAlphaDefault 0.5;
 
 @implementation GameViewController
-@synthesize view, pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
+@synthesize pause, viewGL, hud, menuView, lookView, moveView, moveGesture, newGameView, preferencesView, pauseView;
 @synthesize rightWeaponSwipe, leftWeaponSwipe, panGesture, menuTapGesture;
 @synthesize rightFireView, leftFireView, mapView, mapView2, actionView;
 @synthesize nextWeaponView, previousWeaponView, inventoryToggleView;
@@ -113,6 +125,7 @@ BOOL StatsDownloaded = NO;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+  [super viewDidLoad];
   self.saveGameViewController = [[SaveGameViewController alloc] initWithNibName:@"SaveGameViewController" bundle:nil];
   self.saveGameViewController.view;
   MLog ( @"Save Game View: %@", self.saveGameViewController.view );
@@ -161,13 +174,14 @@ BOOL StatsDownloaded = NO;
   CGAffineTransform transform = self.hud.transform;
   pauseAlpha = kPauseAlphaDefault;
   
+  /*
   // Use the status bar frame to determine the center point of the window's content area.
   CGRect bounds = CGRectMake(0, 0, 1024, 768);
   CGPoint center = CGPointMake(bounds.size.height / 2.0, bounds.size.width / 2.0);
   // Set the center point of the view to the center point of the window's content area.
   // Rotate the view 90 degrees around its new center point.
   transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
-
+   */
   // self.view.transform = transform;
   // self.view.bounds = CGRectMake(0, 0, 1024, 768);
   
@@ -189,9 +203,11 @@ BOOL StatsDownloaded = NO;
                              self.aboutView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
-    v.center = center;
+    /*
+     v.center = center;
     v.transform = transform;
     v.bounds = CGRectMake(0, 0, 1024, 768);
+     */
     v.hidden = YES;
   }
   self.splashView.hidden = NO;
@@ -465,23 +481,9 @@ BOOL StatsDownloaded = NO;
         // OK, we are leaving this level so give the player some credit
         if ( idx < NumberOfLevels ) {
           
-          float percentage = 100.0 * (idx+1) / NumberOfLevels;
-          [Achievements reportAchievement:Achievement_Marathon progress:percentage];
-          NSString *setting = [statistics difficultyToString:dynamic_world->game_information.difficulty_level];
-          if ( self.currentSavedGame.bobsLeftAlive == 0 ) {
-            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.BOBBane", setting] progress:percentage];
-          }
-          if ( self.currentSavedGame.aliensLeftAlive == 0 ) {
-            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.CleanSweep", setting] progress:percentage];
-          }   
-          if ( self.currentSavedGame.kills.intValue == self.currentSavedGame.killsByFist.intValue ) {
-            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.Pugilist", setting] progress:percentage];   
-          }
-          if ( self.currentSavedGame.kills.intValue == self.currentSavedGame.killsByPistol.intValue ) {
-            [Achievements reportAchievement:[NSString stringWithFormat:@"%@.Gunslinger", setting] progress:percentage];   
-          }
-          
-          
+          // We are leaving level idx...
+          [statistics reportAchievementsLeavingLevel:idx];
+
         }
       }
     }
@@ -673,9 +675,6 @@ extern SDL_Surface *draw_surface;
   int seconds = (int) ( dynamic_world->tick_count ) / (float)TICKS_PER_SECOND;
   game.timeInSeconds = [NSNumber numberWithInt:seconds];
   
-  int damageGiven = game.damageGiven.intValue;
-  int damageTaken = game.damageTaken.intValue;
-  
   game.damageGiven = [NSNumber numberWithInt:local_player->monster_damage_given.damage];
   game.damageTaken = [NSNumber numberWithInt:local_player->monster_damage_taken.damage];
   game.kills = [NSNumber numberWithInt:local_player->monster_damage_given.kills];
@@ -712,6 +711,13 @@ extern SDL_Surface *draw_surface;
   }
   game.accuracy = [NSNumber numberWithFloat:accuracy];
   
+  [statistics updateLifetimeKills:KillRecord
+                   withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
+  [statistics updateLifetimeDamage:DamageRecord
+                    withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
+  
+  [self zeroStats];
+  [statistics reportAchievementsForSaveGame];
   
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
@@ -730,51 +736,6 @@ extern SDL_Surface *draw_surface;
     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
   }
   
-  // Calculate our score!
-  double temp = DifficultyMultiplier[dynamic_world->game_information.difficulty_level]
-  * accuracy / 100.0 * (
-                     local_player->monster_damage_given.damage
-                     - 100 * local_player->monster_damage_taken.damage
-                     + 100 * self.currentSavedGame.killsByFist.intValue
-                     + 90 * self.currentSavedGame.killsByPistol.intValue
-                     + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
-                     + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
-                     + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
-                     + 90 * self.currentSavedGame.killsByFlamethrower.intValue
-                     + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
-                     + 130 * self.currentSavedGame.killsByShotgun.intValue
-                     + 90 * self.currentSavedGame.killsBySMG.intValue );
-  
-  int64_t score = (int64_t) temp;
-  
-  MLog(@"Found score: %d", score );
-  [Achievements reportScore:kSScore value:score];
-  [statistics updateLifetimeKills:KillRecord
-                   withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
-  
-  temp = temp = DifficultyMultiplier[dynamic_world->game_information.difficulty_level]
-  * accuracy / 100.0 * (
-                        damageGiven
-                        - 100 * damageTaken
-                        + 100 * self.currentSavedGame.killsByFist.intValue
-                        + 90 * self.currentSavedGame.killsByPistol.intValue
-                        + 60 * self.currentSavedGame.killsByPlasmaPistol.intValue
-                        + 30 * self.currentSavedGame.killsByAssaultRifle.intValue
-                        + 30 * self.currentSavedGame.killsByMissileLauncher.intValue
-                        + 90 * self.currentSavedGame.killsByFlamethrower.intValue
-                        + 90 * self.currentSavedGame.killsByAlienShotgun.intValue
-                        + 130 * self.currentSavedGame.killsByShotgun.intValue
-                        + 90 * self.currentSavedGame.killsBySMG.intValue );
-  
-  int64_t delta = (int64_t)(temp-score); 
-  [statistics updateLifetimeScore:delta];
-  [statistics uploadStats];
-  
-  if ( [Achievements isAuthenticated] && !StatsDownloaded ) {
-    StatsDownloaded = YES;
-    [statistics downloadStats];
-  }
-  [self zeroStats];
   
   // Animate the saved game message
   self.savedGameMessage.hidden = NO;
@@ -1022,6 +983,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   livingBobs = livingEnemies = 0;
   for ( int i = 0; i < MAXIMUM_NUMBER_OF_WEAPONS; i++ ) {
     DamageRecord[i] = 0;
+    KillRecord[i] = 0;
   }
 }
 
@@ -1326,9 +1288,12 @@ _civilian_fusion_assimilated,
 #pragma mark -
 #pragma mark View Controller Methods
 
+
+// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Overriden to allow any orientation.
-    return ( interfaceOrientation == UIInterfaceOrientationLandscapeRight );
+	// Return YES for supported orientations.
+  MLog ( @"AUTOROTATE!!!!!!!!!\n\n\n\n" );
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 

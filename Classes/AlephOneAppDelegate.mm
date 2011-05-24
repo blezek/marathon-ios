@@ -29,6 +29,7 @@ extern "C" {
 @implementation AlephOneAppDelegate
 
 @synthesize window, scenario, game, downloadViewController, OpenGLESVersion, purchases;
+@synthesize viewController;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -39,7 +40,7 @@ extern int SDL_main(int argc, char *argv[]);
   // Remove the Download manager
   finishedStartup = YES;
   // [window addSubview:self.game.view];
-  [self.downloadViewController.view removeFromSuperview];
+  // [self.downloadViewController.view removeFromSuperview];
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
@@ -200,18 +201,16 @@ extern int SDL_main(int argc, char *argv[]);
     MLog ( @"Error setting preferredBufferDuration" );
   }
   
-  
-  // [window addSubview:newGameViewController.view];
-  [window makeKeyAndVisible];
+  [self.window makeKeyAndVisible];
+  [self.window addSubview:self.viewController.view];  
 
-  // newGameViewController = [[NewGameViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
-  [window addSubview:self.game.view];
+  [self.viewController.view addSubview:game.view];
   
   MLog ( @"Loaded view: %@", self.game.view );
-  
+
   // Create the download view controller
   self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
   if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {

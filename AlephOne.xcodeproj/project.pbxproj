@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80AD37C1382E9C700D456DC /* Info Orientation.plist in Resources */ = {isa = PBXBuildFile; fileRef = A80AD37B1382E9C600D456DC /* Info Orientation.plist */; };
 		A80E9E7C1280F729005371AB /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E701280F729005371AB /* bit.c */; };
 		A80E9E7D1280F729005371AB /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E711280F729005371AB /* decoder.c */; };
 		A80E9E7E1280F729005371AB /* fixed.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E721280F729005371AB /* fixed.c */; };
@@ -359,8 +360,547 @@
 		A85E68A911CB194400D0FAEF /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687311CB18FD00D0FAEF /* png.c */; };
 		A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A8667C4413135EB700BE2654 /* M1A1 in Resources */ = {isa = PBXBuildFile; fileRef = A86676D913135EA900BE2654 /* M1A1 */; };
+		A8667FB913820F0F00C3FAF6 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
 		A866863113135EDA00BE2654 /* M2A1 in Resources */ = {isa = PBXBuildFile; fileRef = A8667C4513135EC800BE2654 /* M2A1 */; };
 		A866937413135F0800BE2654 /* M3A1 in Resources */ = {isa = PBXBuildFile; fileRef = A866863213135EE900BE2654 /* M3A1 */; };
+		A86B405E1381989000AD541B /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
+		A86B405F1381989000AD541B /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
+		A86B40601381989000AD541B /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
+		A86B40611381989000AD541B /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
+		A86B40621381989000AD541B /* jconfig.iphoneos in Resources */ = {isa = PBXBuildFile; fileRef = A88DBED212640A7800FCC652 /* jconfig.iphoneos */; };
+		A86B40631381989000AD541B /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
+		A86B40641381989000AD541B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
+		A86B40651381989000AD541B /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
+		A86B40661381989000AD541B /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
+		A86B40671381989000AD541B /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
+		A86B40681381989000AD541B /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
+		A86B40691381989000AD541B /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
+		A86B406A1381989000AD541B /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
+		A86B406B1381989000AD541B /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
+		A86B406C1381989000AD541B /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
+		A86B406D1381989000AD541B /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
+		A86B406E1381989000AD541B /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
+		A86B406F1381989000AD541B /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
+		A86B40701381989000AD541B /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
+		A86B40711381989000AD541B /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
+		A86B40721381989000AD541B /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
+		A86B40731381989000AD541B /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
+		A86B40741381989000AD541B /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
+		A86B40751381989000AD541B /* help7.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D912A7407E00032ED6 /* help7.png */; };
+		A86B40761381989000AD541B /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DA12A7407E00032ED6 /* help6.png */; };
+		A86B40771381989000AD541B /* help5.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DB12A7407E00032ED6 /* help5.png */; };
+		A86B40781381989000AD541B /* help4.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DC12A7407E00032ED6 /* help4.png */; };
+		A86B40791381989000AD541B /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
+		A86B407A1381989000AD541B /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
+		A86B407B1381989000AD541B /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
+		A86B407C1381989000AD541B /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139E12B1DA5A00754DFE /* left.png */; };
+		A86B407D1381989000AD541B /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139F12B1DA5A00754DFE /* right.png */; };
+		A86B407E1381989000AD541B /* buttonsarea-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814612B7123F00671C11 /* buttonsarea-bg.png */; };
+		A86B407F1381989000AD541B /* buttonsarea-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814712B7123F00671C11 /* buttonsarea-bg2.png */; };
+		A86B40801381989000AD541B /* cancel-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814812B7123F00671C11 /* cancel-btn.png */; };
+		A86B40811381989000AD541B /* easy-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814A12B7123F00671C11 /* easy-btn.png */; };
+		A86B40821381989000AD541B /* easy-btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814B12B7123F00671C11 /* easy-btn2.png */; };
+		A86B40831381989000AD541B /* hard-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814C12B7123F00671C11 /* hard-btn.png */; };
+		A86B40841381989000AD541B /* hard-btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814D12B7123F00671C11 /* hard-btn2.png */; };
+		A86B40851381989000AD541B /* nightmare-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814E12B7123F00671C11 /* nightmare-btn.png */; };
+		A86B40861381989000AD541B /* nightmare-btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814F12B7123F00671C11 /* nightmare-btn2.png */; };
+		A86B40871381989000AD541B /* normal-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF815012B7123F00671C11 /* normal-btn.png */; };
+		A86B40881381989000AD541B /* normal-btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF815112B7123F00671C11 /* normal-btn2.png */; };
+		A86B40891381989000AD541B /* ammunition-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816312B7124000671C11 /* ammunition-btn.png */; };
+		A86B408A1381989000AD541B /* help-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816412B7124000671C11 /* help-btn.png */; };
+		A86B408B1381989000AD541B /* invincibility-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816512B7124000671C11 /* invincibility-btn.png */; };
+		A86B408C1381989000AD541B /* mainmenu-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816612B7124000671C11 /* mainmenu-btn.png */; };
+		A86B408D1381989000AD541B /* preferences-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816712B7124000671C11 /* preferences-btn.png */; };
+		A86B408E1381989000AD541B /* save-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816812B7124000671C11 /* save-btn.png */; };
+		A86B408F1381989000AD541B /* secondarybuttons-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816912B7124000671C11 /* secondarybuttons-bg.png */; };
+		A86B40901381989000AD541B /* sheild-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816A12B7124000671C11 /* sheild-btn.png */; };
+		A86B40911381989000AD541B /* weapons-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF816B12B7124000671C11 /* weapons-btn.png */; };
+		A86B40921381989000AD541B /* complete-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF817012B7124000671C11 /* complete-btn.png */; };
+		A86B40931381989000AD541B /* delete-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF817112B7124000671C11 /* delete-btn.png */; };
+		A86B40941381989000AD541B /* duplicate-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF817212B7124000671C11 /* duplicate-btn.png */; };
+		A86B40951381989000AD541B /* savedgame-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF817312B7124000671C11 /* savedgame-bg.png */; };
+		A86B40961381989000AD541B /* help9.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF81E212B7205400671C11 /* help9.png */; };
+		A86B40971381989000AD541B /* help10.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF81E312B7205400671C11 /* help10.png */; };
+		A86B40981381989000AD541B /* toggleweapons-left-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814312C054A400821170 /* toggleweapons-left-btn.png */; };
+		A86B40991381989000AD541B /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
+		A86B409A1381989000AD541B /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
+		A86B409B1381989000AD541B /* internet-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9712C769F900A1A08E /* internet-btn.png */; };
+		A86B409C1381989000AD541B /* help11.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9B12C76B2200A1A08E /* help11.png */; };
+		A86B409D1381989000AD541B /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
+		A86B409E1381989000AD541B /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A881257D12C7B64900A1A08E /* FilmCell.xib */; };
+		A86B409F1381989000AD541B /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
+		A86B40A01381989000AD541B /* ControlsOverview.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F6012D2125C001CD264 /* ControlsOverview.png */; };
+		A86B40A11381989000AD541B /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
+		A86B40A21381989000AD541B /* weather_clear_night.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCB12E1616100318968 /* weather_clear_night.png */; };
+		A86B40A31381989000AD541B /* weather_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCC12E1616100318968 /* weather_clear.png */; };
+		A86B40A41381989000AD541B /* zoom_in.png in Resources */ = {isa = PBXBuildFile; fileRef = A8F2382E12EB729B00CBC83D /* zoom_in.png */; };
+		A86B40A51381989000AD541B /* zoom_out.png in Resources */ = {isa = PBXBuildFile; fileRef = A8F2382F12EB729B00CBC83D /* zoom_out.png */; };
+		A86B40A61381989000AD541B /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8FF853A130F798B00A874F8 /* AirshipConfig.plist */; };
+		A86B40A71381989000AD541B /* M2A1 in Resources */ = {isa = PBXBuildFile; fileRef = A8667C4513135EC800BE2654 /* M2A1 */; };
+		A86B40A81381989000AD541B /* alephone2-icon-512px.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F51131766E9009801EC /* alephone2-icon-512px.png */; };
+		A86B40A91381989000AD541B /* alephone2-icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F52131766E9009801EC /* alephone2-icon-ipad.png */; };
+		A86B40AA1381989000AD541B /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
+		A86B40AB1381989000AD541B /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F54131766E9009801EC /* SplashScreen.png */; };
+		A86B40AC1381989000AD541B /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F681317692A009801EC /* Default-Portrait.png */; };
+		A86B40AD1381989000AD541B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A01318A8D2009C4A92 /* iTunesArtwork */; };
+		A86B40AE1381989000AD541B /* MenuItem-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1B91318AA68009C4A92 /* MenuItem-Load.png */; };
+		A86B40AF1381989000AD541B /* MenuItem-New.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1BA1318AA68009C4A92 /* MenuItem-New.png */; };
+		A86B40B01381989000AD541B /* MenuItem-Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1BB1318AA68009C4A92 /* MenuItem-Settings.png */; };
+		A86B40B11381989000AD541B /* MenuItem-Store.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1BC1318AA68009C4A92 /* MenuItem-Store.png */; };
+		A86B40B21381989000AD541B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
+		A86B40B31381989000AD541B /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5E132091DB008BBB10 /* HDModeAd.png */; };
+		A86B40B41381989000AD541B /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5F132091DB008BBB10 /* VMModeAd.png */; };
+		A86B40B51381989000AD541B /* buy-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0061323311E00964061 /* buy-btn.png */; };
+		A86B40B61381989000AD541B /* done-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0071323311E00964061 /* done-btn.png */; };
+		A86B40B71381989000AD541B /* restore-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A817C0081323311E00964061 /* restore-btn.png */; };
+		A86B40B81381989000AD541B /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
+		A86B40B91381989000AD541B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7F132F05AF009FBB37 /* about.png */; };
+		A86B40BB1381989000AD541B /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E688311CB18FD00D0FAEF /* pngwutil.c */; };
+		A86B40BC1381989000AD541B /* pngwtran.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E688211CB18FD00D0FAEF /* pngwtran.c */; };
+		A86B40BD1381989000AD541B /* pngwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E688111CB18FD00D0FAEF /* pngwrite.c */; };
+		A86B40BE1381989000AD541B /* pngwio.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E688011CB18FD00D0FAEF /* pngwio.c */; };
+		A86B40BF1381989000AD541B /* pngvcrd.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687F11CB18FD00D0FAEF /* pngvcrd.c */; };
+		A86B40C01381989000AD541B /* pngtrans.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687E11CB18FD00D0FAEF /* pngtrans.c */; };
+		A86B40C11381989000AD541B /* pngset.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687D11CB18FD00D0FAEF /* pngset.c */; };
+		A86B40C21381989000AD541B /* pngrutil.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687C11CB18FD00D0FAEF /* pngrutil.c */; };
+		A86B40C31381989000AD541B /* pngrtran.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687B11CB18FD00D0FAEF /* pngrtran.c */; };
+		A86B40C41381989000AD541B /* pngrio.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687A11CB18FD00D0FAEF /* pngrio.c */; };
+		A86B40C51381989000AD541B /* pngread.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687911CB18FD00D0FAEF /* pngread.c */; };
+		A86B40C61381989000AD541B /* pngpread.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687811CB18FD00D0FAEF /* pngpread.c */; };
+		A86B40C71381989000AD541B /* pngmem.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687711CB18FD00D0FAEF /* pngmem.c */; };
+		A86B40C81381989000AD541B /* pngget.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687611CB18FD00D0FAEF /* pngget.c */; };
+		A86B40C91381989000AD541B /* pnggccrd.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687511CB18FD00D0FAEF /* pnggccrd.c */; };
+		A86B40CA1381989000AD541B /* pngerror.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687411CB18FD00D0FAEF /* pngerror.c */; };
+		A86B40CB1381989000AD541B /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687311CB18FD00D0FAEF /* png.c */; };
+		A86B40CC1381989000AD541B /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3411B35CFA00689138 /* error.c */; };
+		A86B40CD1381989000AD541B /* http.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3511B35CFA00689138 /* http.c */; };
+		A86B40CE1381989000AD541B /* libnat.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3611B35CFA00689138 /* libnat.c */; };
+		A86B40CF1381989000AD541B /* os_common.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3711B35CFA00689138 /* os_common.c */; };
+		A86B40D01381989000AD541B /* os_unix.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3811B35CFA00689138 /* os_unix.c */; };
+		A86B40D11381989000AD541B /* ssdp.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3911B35CFA00689138 /* ssdp.c */; };
+		A86B40D21381989000AD541B /* upnp.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3A11B35CFA00689138 /* upnp.c */; };
+		A86B40D31381989000AD541B /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3B11B35CFA00689138 /* utility.c */; };
+		A86B40D41381989000AD541B /* CommunicationsChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3D11B35CFA00689138 /* CommunicationsChannel.cpp */; };
+		A86B40D51381989000AD541B /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F3F11B35CFA00689138 /* Message.cpp */; };
+		A86B40D61381989000AD541B /* MessageDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F4111B35CFA00689138 /* MessageDispatcher.cpp */; };
+		A86B40D71381989000AD541B /* MessageHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F4311B35CFA00689138 /* MessageHandler.cpp */; };
+		A86B40D81381989000AD541B /* MessageInflater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F4511B35CFA00689138 /* MessageInflater.cpp */; };
+		A86B40D91381989000AD541B /* shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F4D11B35CFA00689138 /* shell.cpp */; };
+		A86B40DA1381989000AD541B /* shell_misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F4E11B35CFA00689138 /* shell_misc.cpp */; };
+		A86B40DB1381989000AD541B /* Model3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F5011B35CFA00689138 /* Model3D.cpp */; };
+		A86B40DC1381989000AD541B /* ModelRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F5211B35CFA00689138 /* ModelRenderer.cpp */; };
+		A86B40DD1381989000AD541B /* StudioLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F5411B35CFA00689138 /* StudioLoader.cpp */; };
+		A86B40DE1381989000AD541B /* WavefrontLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F5611B35CFA00689138 /* WavefrontLoader.cpp */; };
+		A86B40DF1381989000AD541B /* Dim3_Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F5811B35CFA00689138 /* Dim3_Loader.cpp */; };
+		A86B40E01381989000AD541B /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F6B11B35CFA00689138 /* BStream.cpp */; };
+		A86B40E11381989000AD541B /* byte_swapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F6C11B35CFA00689138 /* byte_swapping.cpp */; };
+		A86B40E21381989000AD541B /* csalerts_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F6D11B35CFA00689138 /* csalerts_sdl.cpp */; };
+		A86B40E31381989000AD541B /* cscluts_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F6E11B35CFA00689138 /* cscluts_sdl.cpp */; };
+		A86B40E41381989000AD541B /* csmisc_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F6F11B35CFA00689138 /* csmisc_sdl.cpp */; };
+		A86B40E51381989000AD541B /* csstrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F7011B35CFA00689138 /* csstrings.cpp */; };
+		A86B40E61381989000AD541B /* csdialogs_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F7111B35CFA00689138 /* csdialogs_sdl.cpp */; };
+		A86B40E71381989000AD541B /* mytm_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F7211B35CFA00689138 /* mytm_sdl.cpp */; };
+		A86B40E81381989000AD541B /* snprintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F7311B35CFA00689138 /* snprintf.cpp */; };
+		A86B40E91381989000AD541B /* xmlparse.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F8211B35CFA00689138 /* xmlparse.c */; };
+		A86B40EA1381989000AD541B /* xmlrole.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F8311B35CFA00689138 /* xmlrole.c */; };
+		A86B40EB1381989000AD541B /* xmltok.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F8411B35CFA00689138 /* xmltok.c */; };
+		A86B40EC1381989000AD541B /* xmltok_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F8511B35CFA00689138 /* xmltok_impl.c */; };
+		A86B40ED1381989000AD541B /* xmltok_ns.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C8F8611B35CFA00689138 /* xmltok_ns.c */; };
+		A86B40EE1381989000AD541B /* preferences_widgets_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FA611B35CFA00689138 /* preferences_widgets_sdl.cpp */; };
+		A86B40EF1381989000AD541B /* sdl_dialogs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FA711B35CFA00689138 /* sdl_dialogs.cpp */; };
+		A86B40F01381989000AD541B /* sdl_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FA811B35CFA00689138 /* sdl_widgets.cpp */; };
+		A86B40F11381989000AD541B /* PlayerImage_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FA911B35CFA00689138 /* PlayerImage_sdl.cpp */; };
+		A86B40F21381989000AD541B /* ActionQueues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAA11B35CFA00689138 /* ActionQueues.cpp */; };
+		A86B40F31381989000AD541B /* CircularByteBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAB11B35CFA00689138 /* CircularByteBuffer.cpp */; };
+		A86B40F41381989000AD541B /* Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAC11B35CFA00689138 /* Console.cpp */; };
+		A86B40F51381989000AD541B /* DefaultStringSets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAD11B35CFA00689138 /* DefaultStringSets.cpp */; };
+		A86B40F61381989000AD541B /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAE11B35CFA00689138 /* Logging.cpp */; };
+		A86B40F71381989000AD541B /* preference_dialogs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FAF11B35CFA00689138 /* preference_dialogs.cpp */; };
+		A86B40F81381989000AD541B /* PlayerName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB011B35CFA00689138 /* PlayerName.cpp */; };
+		A86B40F91381989000AD541B /* game_errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB111B35CFA00689138 /* game_errors.cpp */; };
+		A86B40FA1381989000AD541B /* interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB211B35CFA00689138 /* interface.cpp */; };
+		A86B40FB1381989000AD541B /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB311B35CFA00689138 /* preferences.cpp */; };
+		A86B40FC1381989000AD541B /* Scenario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB411B35CFA00689138 /* Scenario.cpp */; };
+		A86B40FD1381989000AD541B /* shared_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB511B35CFA00689138 /* shared_widgets.cpp */; };
+		A86B40FE1381989000AD541B /* vbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB611B35CFA00689138 /* vbl.cpp */; };
+		A86B40FF1381989000AD541B /* thread_priority_sdl_macosx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FB711B35CFA00689138 /* thread_priority_sdl_macosx.cpp */; };
+		A86B41001381989000AD541B /* SdlMetaserverClientUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FBA11B35CFA00689138 /* SdlMetaserverClientUi.cpp */; };
+		A86B41011381989000AD541B /* metaserver_dialogs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FBF11B35CFA00689138 /* metaserver_dialogs.cpp */; };
+		A86B41021381989000AD541B /* metaserver_messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FC011B35CFA00689138 /* metaserver_messages.cpp */; };
+		A86B41031381989000AD541B /* network_metaserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FC111B35CFA00689138 /* network_metaserver.cpp */; };
+		A86B41041381989000AD541B /* ConnectPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDA11B35CFA00689138 /* ConnectPool.cpp */; };
+		A86B41051381989000AD541B /* NetworkGameProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDB11B35CFA00689138 /* NetworkGameProtocol.cpp */; };
+		A86B41061381989000AD541B /* RingGameProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDC11B35CFA00689138 /* RingGameProtocol.cpp */; };
+		A86B41071381989000AD541B /* SDL_netx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDD11B35CFA00689138 /* SDL_netx.cpp */; };
+		A86B41081381989000AD541B /* SSLP_limited.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDE11B35CFA00689138 /* SSLP_limited.cpp */; };
+		A86B41091381989000AD541B /* StarGameProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FDF11B35CFA00689138 /* StarGameProtocol.cpp */; };
+		A86B410A1381989000AD541B /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE011B35CFA00689138 /* network.cpp */; };
+		A86B410B1381989000AD541B /* network_capabilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE111B35CFA00689138 /* network_capabilities.cpp */; };
+		A86B410C1381989000AD541B /* network_data_formats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE211B35CFA00689138 /* network_data_formats.cpp */; };
+		A86B410D1381989000AD541B /* network_dialog_widgets_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE311B35CFA00689138 /* network_dialog_widgets_sdl.cpp */; };
+		A86B410E1381989000AD541B /* network_dialogs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE411B35CFA00689138 /* network_dialogs.cpp */; };
+		A86B410F1381989000AD541B /* network_games.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE611B35CFA00689138 /* network_games.cpp */; };
+		A86B41101381989000AD541B /* network_lookup_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE711B35CFA00689138 /* network_lookup_sdl.cpp */; };
+		A86B41111381989000AD541B /* network_messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FE811B35CFA00689138 /* network_messages.cpp */; };
+		A86B41121381989000AD541B /* network_microphone_shared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FEA11B35CFA00689138 /* network_microphone_shared.cpp */; };
+		A86B41131381989000AD541B /* network_speaker_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FEB11B35CFA00689138 /* network_speaker_sdl.cpp */; };
+		A86B41141381989000AD541B /* network_speaker_shared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FEC11B35CFA00689138 /* network_speaker_shared.cpp */; };
+		A86B41151381989000AD541B /* network_speex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FED11B35CFA00689138 /* network_speex.cpp */; };
+		A86B41161381989000AD541B /* network_star_hub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FEE11B35CFA00689138 /* network_star_hub.cpp */; };
+		A86B41171381989000AD541B /* network_star_spoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FEF11B35CFA00689138 /* network_star_spoke.cpp */; };
+		A86B41181381989000AD541B /* network_udp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FF011B35CFA00689138 /* network_udp.cpp */; };
+		A86B41191381989000AD541B /* Update.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C8FF111B35CFA00689138 /* Update.cpp */; };
+		A86B411A1381989000AD541B /* XML_Loader_SDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C904B11B35CFA00689138 /* XML_Loader_SDL.cpp */; };
+		A86B411B1381989000AD541B /* ColorParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C904C11B35CFA00689138 /* ColorParser.cpp */; };
+		A86B411C1381989000AD541B /* DamageParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C904D11B35CFA00689138 /* DamageParser.cpp */; };
+		A86B411D1381989000AD541B /* Plugins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C904E11B35CFA00689138 /* Plugins.cpp */; };
+		A86B411E1381989000AD541B /* ShapesParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C904F11B35CFA00689138 /* ShapesParser.cpp */; };
+		A86B411F1381989000AD541B /* XML_Configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905011B35CFA00689138 /* XML_Configure.cpp */; };
+		A86B41201381989000AD541B /* XML_DataBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905111B35CFA00689138 /* XML_DataBlock.cpp */; };
+		A86B41211381989000AD541B /* XML_ElementParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905211B35CFA00689138 /* XML_ElementParser.cpp */; };
+		A86B41221381989000AD541B /* XML_LevelScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905311B35CFA00689138 /* XML_LevelScript.cpp */; };
+		A86B41231381989000AD541B /* XML_MakeRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905411B35CFA00689138 /* XML_MakeRoot.cpp */; };
+		A86B41241381989000AD541B /* ReplacementSounds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905611B35CFA00689138 /* ReplacementSounds.cpp */; };
+		A86B41251381989000AD541B /* BasicIFFDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905C11B35CFA00689138 /* BasicIFFDecoder.cpp */; };
+		A86B41261381989000AD541B /* Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905D11B35CFA00689138 /* Decoder.cpp */; };
+		A86B41271381989000AD541B /* MADDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905E11B35CFA00689138 /* MADDecoder.cpp */; };
+		A86B41281381989000AD541B /* SndfileDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C905F11B35CFA00689138 /* SndfileDecoder.cpp */; };
+		A86B41291381989000AD541B /* VorbisDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C906011B35CFA00689138 /* VorbisDecoder.cpp */; };
+		A86B412A1381989000AD541B /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C906111B35CFA00689138 /* Mixer.cpp */; };
+		A86B412B1381989000AD541B /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C906311B35CFA00689138 /* Music.cpp */; };
+		A86B412C1381989000AD541B /* SoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C906511B35CFA00689138 /* SoundFile.cpp */; };
+		A86B412D1381989000AD541B /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C906711B35CFA00689138 /* SoundManager.cpp */; };
+		A86B412E1381989000AD541B /* IMG_savepng.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C906F11B35CFA00689138 /* IMG_savepng.c */; };
+		A86B412F1381989000AD541B /* Shape_Blitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C907011B35CFA00689138 /* Shape_Blitter.cpp */; };
+		A86B41301381989000AD541B /* Image_Blitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C907211B35CFA00689138 /* Image_Blitter.cpp */; };
+		A86B41311381989000AD541B /* HUDRenderer_Lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C907411B35CFA00689138 /* HUDRenderer_Lua.cpp */; };
+		A86B41321381989000AD541B /* OverheadMap_SDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909211B35CFA00689138 /* OverheadMap_SDL.cpp */; };
+		A86B41331381989000AD541B /* sdl_fonts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909311B35CFA00689138 /* sdl_fonts.cpp */; };
+		A86B41341381989000AD541B /* ChaseCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909411B35CFA00689138 /* ChaseCam.cpp */; };
+		A86B41351381989000AD541B /* computer_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909511B35CFA00689138 /* computer_interface.cpp */; };
+		A86B41361381989000AD541B /* fades.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909611B35CFA00689138 /* fades.cpp */; };
+		A86B41371381989000AD541B /* FontHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909711B35CFA00689138 /* FontHandler.cpp */; };
+		A86B41381381989000AD541B /* game_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909811B35CFA00689138 /* game_window.cpp */; };
+		A86B41391381989000AD541B /* HUDRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909911B35CFA00689138 /* HUDRenderer.cpp */; };
+		A86B413A1381989000AD541B /* HUDRenderer_OGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909A11B35CFA00689138 /* HUDRenderer_OGL.cpp */; };
+		A86B413B1381989000AD541B /* HUDRenderer_SW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909B11B35CFA00689138 /* HUDRenderer_SW.cpp */; };
+		A86B413C1381989000AD541B /* images.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909C11B35CFA00689138 /* images.cpp */; };
+		A86B413D1381989000AD541B /* motion_sensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909D11B35CFA00689138 /* motion_sensor.cpp */; };
+		A86B413E1381989000AD541B /* OGL_Blitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909E11B35CFA00689138 /* OGL_Blitter.cpp */; };
+		A86B413F1381989000AD541B /* OGL_LoadScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C909F11B35CFA00689138 /* OGL_LoadScreen.cpp */; };
+		A86B41401381989000AD541B /* overhead_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A011B35CFA00689138 /* overhead_map.cpp */; };
+		A86B41411381989000AD541B /* OverheadMap_OGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A111B35CFA00689138 /* OverheadMap_OGL.cpp */; };
+		A86B41421381989000AD541B /* OverheadMapRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A211B35CFA00689138 /* OverheadMapRenderer.cpp */; };
+		A86B41431381989000AD541B /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A311B35CFA00689138 /* screen.cpp */; };
+		A86B41441381989000AD541B /* screen_drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A411B35CFA00689138 /* screen_drawing.cpp */; };
+		A86B41451381989000AD541B /* TextLayoutHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A511B35CFA00689138 /* TextLayoutHelper.cpp */; };
+		A86B41461381989000AD541B /* TextStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A611B35CFA00689138 /* TextStrings.cpp */; };
+		A86B41471381989000AD541B /* ViewControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A711B35CFA00689138 /* ViewControl.cpp */; };
+		A86B41481381989000AD541B /* Rasterizer_Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90A911B35CFA00689138 /* Rasterizer_Shader.cpp */; };
+		A86B41491381989000AD541B /* RenderRasterize_Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90AB11B35CFA00689138 /* RenderRasterize_Shader.cpp */; };
+		A86B414A1381989000AD541B /* OGL_Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90AE11B35CFA00689138 /* OGL_Shader.cpp */; };
+		A86B414B1381989000AD541B /* ImageLoader_Shared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90B011B35CFA00689138 /* ImageLoader_Shared.cpp */; };
+		A86B414C1381989000AD541B /* Crosshairs_SDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90CE11B35CFA00689138 /* Crosshairs_SDL.cpp */; };
+		A86B414D1381989000AD541B /* ImageLoader_SDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90CF11B35CFA00689138 /* ImageLoader_SDL.cpp */; };
+		A86B414E1381989000AD541B /* AnimatedTextures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D011B35CFA00689138 /* AnimatedTextures.cpp */; };
+		A86B414F1381989000AD541B /* OGL_Faders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D111B35CFA00689138 /* OGL_Faders.cpp */; };
+		A86B41501381989000AD541B /* OGL_Model_Def.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D211B35CFA00689138 /* OGL_Model_Def.cpp */; };
+		A86B41511381989000AD541B /* OGL_Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D311B35CFA00689138 /* OGL_Render.cpp */; };
+		A86B41521381989000AD541B /* OGL_Setup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D411B35CFA00689138 /* OGL_Setup.cpp */; };
+		A86B41531381989000AD541B /* OGL_Subst_Texture_Def.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D511B35CFA00689138 /* OGL_Subst_Texture_Def.cpp */; };
+		A86B41541381989000AD541B /* OGL_Textures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D611B35CFA00689138 /* OGL_Textures.cpp */; };
+		A86B41551381989000AD541B /* render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D711B35CFA00689138 /* render.cpp */; };
+		A86B41561381989000AD541B /* RenderPlaceObjs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D811B35CFA00689138 /* RenderPlaceObjs.cpp */; };
+		A86B41571381989000AD541B /* RenderRasterize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90D911B35CFA00689138 /* RenderRasterize.cpp */; };
+		A86B41581381989000AD541B /* RenderSortPoly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DA11B35CFA00689138 /* RenderSortPoly.cpp */; };
+		A86B41591381989000AD541B /* RenderVisTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DB11B35CFA00689138 /* RenderVisTree.cpp */; };
+		A86B415A1381989000AD541B /* scottish_textures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DC11B35CFA00689138 /* scottish_textures.cpp */; };
+		A86B415B1381989000AD541B /* shapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DD11B35CFA00689138 /* shapes.cpp */; };
+		A86B415C1381989000AD541B /* SW_Texture_Extras.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DE11B35CFA00689138 /* SW_Texture_Extras.cpp */; };
+		A86B415D1381989000AD541B /* textures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90DF11B35CFA00689138 /* textures.cpp */; };
+		A86B415E1381989000AD541B /* joystick_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90E211B35CFA00689138 /* joystick_sdl.cpp */; };
+		A86B415F1381989000AD541B /* mouse_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90E411B35CFA00689138 /* mouse_sdl.cpp */; };
+		A86B41601381989000AD541B /* SDL_rwops_zzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A88C90E611B35CFA00689138 /* SDL_rwops_zzip.c */; };
+		A86B41611381989000AD541B /* find_files_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90F611B35CFA00689138 /* find_files_sdl.cpp */; };
+		A86B41621381989000AD541B /* preprocess_map_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90F711B35CFA00689138 /* preprocess_map_sdl.cpp */; };
+		A86B41631381989000AD541B /* resource_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90F811B35CFA00689138 /* resource_manager.cpp */; };
+		A86B41641381989000AD541B /* wad_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90F911B35CFA00689138 /* wad_sdl.cpp */; };
+		A86B41651381989000AD541B /* FileHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FA11B35CFA00689138 /* FileHandler.cpp */; };
+		A86B41661381989000AD541B /* AStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FB11B35CFA00689138 /* AStream.cpp */; };
+		A86B41671381989000AD541B /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FC11B35CFA00689138 /* crc.cpp */; };
+		A86B41681381989000AD541B /* filetypes_macintosh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FD11B35CFA00689138 /* filetypes_macintosh.cpp */; };
+		A86B41691381989000AD541B /* game_wad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FE11B35CFA00689138 /* game_wad.cpp */; };
+		A86B416A1381989000AD541B /* import_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C90FF11B35CFA00689138 /* import_definitions.cpp */; };
+		A86B416B1381989000AD541B /* Packing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C910011B35CFA00689138 /* Packing.cpp */; };
+		A86B416C1381989000AD541B /* preprocess_map_shared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C910111B35CFA00689138 /* preprocess_map_shared.cpp */; };
+		A86B416D1381989000AD541B /* wad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C910211B35CFA00689138 /* wad.cpp */; };
+		A86B416E1381989000AD541B /* wad_prefs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C910311B35CFA00689138 /* wad_prefs.cpp */; };
+		A86B416F1381989000AD541B /* devices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C911F11B35CFA00689138 /* devices.cpp */; };
+		A86B41701381989000AD541B /* dynamic_limits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912011B35CFA00689138 /* dynamic_limits.cpp */; };
+		A86B41711381989000AD541B /* effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912111B35CFA00689138 /* effects.cpp */; };
+		A86B41721381989000AD541B /* flood_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912211B35CFA00689138 /* flood_map.cpp */; };
+		A86B41731381989000AD541B /* lightsource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912311B35CFA00689138 /* lightsource.cpp */; };
+		A86B41741381989000AD541B /* items.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912411B35CFA00689138 /* items.cpp */; };
+		A86B41751381989000AD541B /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912511B35CFA00689138 /* map.cpp */; };
+		A86B41761381989000AD541B /* map_constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912611B35CFA00689138 /* map_constructors.cpp */; };
+		A86B41771381989000AD541B /* marathon2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912711B35CFA00689138 /* marathon2.cpp */; };
+		A86B41781381989000AD541B /* media.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912811B35CFA00689138 /* media.cpp */; };
+		A86B41791381989000AD541B /* monsters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912911B35CFA00689138 /* monsters.cpp */; };
+		A86B417A1381989000AD541B /* pathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912A11B35CFA00689138 /* pathfinding.cpp */; };
+		A86B417B1381989000AD541B /* physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912B11B35CFA00689138 /* physics.cpp */; };
+		A86B417C1381989000AD541B /* placement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912C11B35CFA00689138 /* placement.cpp */; };
+		A86B417D1381989000AD541B /* platforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912D11B35CFA00689138 /* platforms.cpp */; };
+		A86B417E1381989000AD541B /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912E11B35CFA00689138 /* player.cpp */; };
+		A86B417F1381989000AD541B /* projectiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C912F11B35CFA00689138 /* projectiles.cpp */; };
+		A86B41801381989000AD541B /* scenery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913011B35CFA00689138 /* scenery.cpp */; };
+		A86B41811381989000AD541B /* weapons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913111B35CFA00689138 /* weapons.cpp */; };
+		A86B41821381989000AD541B /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A88C913211B35CFA00689138 /* world.cpp */; };
+		A86B41831381989000AD541B /* AlephOneHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A84254AB11B4A9DA00F4D68F /* AlephOneHelper.mm */; };
+		A86B41841381989000AD541B /* lua_hud_objects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F360911B8A87C0053FE85 /* lua_hud_objects.cpp */; };
+		A86B41851381989000AD541B /* lua_hud_script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F360B11B8A87C0053FE85 /* lua_hud_script.cpp */; };
+		A86B41861381989000AD541B /* lua_serialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F360E11B8A87C0053FE85 /* lua_serialize.cpp */; };
+		A86B41871381989000AD541B /* lua_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F361611B8A87C0053FE85 /* lua_map.cpp */; };
+		A86B41881381989000AD541B /* lua_monsters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F361711B8A87C0053FE85 /* lua_monsters.cpp */; };
+		A86B41891381989000AD541B /* lua_objects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F361811B8A87C0053FE85 /* lua_objects.cpp */; };
+		A86B418A1381989000AD541B /* lua_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F361911B8A87C0053FE85 /* lua_player.cpp */; };
+		A86B418B1381989000AD541B /* lua_projectiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F361A11B8A87C0053FE85 /* lua_projectiles.cpp */; };
+		A86B418C1381989000AD541B /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363511B8A87C0053FE85 /* lapi.c */; };
+		A86B418D1381989000AD541B /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363611B8A87C0053FE85 /* lauxlib.c */; };
+		A86B418E1381989000AD541B /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363711B8A87C0053FE85 /* lbaselib.c */; };
+		A86B418F1381989000AD541B /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363811B8A87C0053FE85 /* lcode.c */; };
+		A86B41901381989000AD541B /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363911B8A87C0053FE85 /* ldblib.c */; };
+		A86B41911381989000AD541B /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363A11B8A87C0053FE85 /* ldebug.c */; };
+		A86B41921381989000AD541B /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363B11B8A87C0053FE85 /* ldo.c */; };
+		A86B41931381989000AD541B /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363C11B8A87C0053FE85 /* ldump.c */; };
+		A86B41941381989000AD541B /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363D11B8A87C0053FE85 /* lfunc.c */; };
+		A86B41951381989000AD541B /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363E11B8A87C0053FE85 /* lgc.c */; };
+		A86B41961381989000AD541B /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F363F11B8A87C0053FE85 /* linit.c */; };
+		A86B41971381989000AD541B /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364011B8A87C0053FE85 /* liolib.c */; };
+		A86B41981381989000AD541B /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364111B8A87C0053FE85 /* llex.c */; };
+		A86B41991381989000AD541B /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364211B8A87C0053FE85 /* lmathlib.c */; };
+		A86B419A1381989000AD541B /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364311B8A87C0053FE85 /* lmem.c */; };
+		A86B419B1381989000AD541B /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364411B8A87C0053FE85 /* lobject.c */; };
+		A86B419C1381989000AD541B /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364511B8A87C0053FE85 /* lopcodes.c */; };
+		A86B419D1381989000AD541B /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364611B8A87C0053FE85 /* loslib.c */; };
+		A86B419E1381989000AD541B /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364711B8A87C0053FE85 /* lparser.c */; };
+		A86B419F1381989000AD541B /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364811B8A87C0053FE85 /* lstate.c */; };
+		A86B41A01381989000AD541B /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364911B8A87C0053FE85 /* lstring.c */; };
+		A86B41A11381989000AD541B /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364A11B8A87C0053FE85 /* lstrlib.c */; };
+		A86B41A21381989000AD541B /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364B11B8A87C0053FE85 /* ltable.c */; };
+		A86B41A31381989000AD541B /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364C11B8A87C0053FE85 /* ltablib.c */; };
+		A86B41A41381989000AD541B /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364D11B8A87C0053FE85 /* ltm.c */; };
+		A86B41A51381989000AD541B /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364E11B8A87C0053FE85 /* lundump.c */; };
+		A86B41A61381989000AD541B /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F364F11B8A87C0053FE85 /* lvm.c */; };
+		A86B41A71381989000AD541B /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = A82F365011B8A87C0053FE85 /* lzio.c */; };
+		A86B41A81381989000AD541B /* lua_script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82F365111B8A87C0053FE85 /* lua_script.cpp */; };
+		A86B41A91381989000AD541B /* jumphack.c in Sources */ = {isa = PBXBuildFile; fileRef = A85490F411BDEF0C0073554A /* jumphack.c */; };
+		A86B41AA1381989000AD541B /* SDL_uikitevents.m in Sources */ = {isa = PBXBuildFile; fileRef = A85490FA11BDEF0C0073554A /* SDL_uikitevents.m */; };
+		A86B41AB1381989000AD541B /* SDL_uikitopengles.m in Sources */ = {isa = PBXBuildFile; fileRef = A85490FD11BDEF0C0073554A /* SDL_uikitopengles.m */; };
+		A86B41AC1381989000AD541B /* SDL_uikitopenglview.m in Sources */ = {isa = PBXBuildFile; fileRef = A85490FF11BDEF0C0073554A /* SDL_uikitopenglview.m */; };
+		A86B41AD1381989000AD541B /* SDL_uikitvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910111BDEF0C0073554A /* SDL_uikitvideo.m */; };
+		A86B41AE1381989000AD541B /* SDL_uikitview.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910311BDEF0C0073554A /* SDL_uikitview.m */; };
+		A86B41AF1381989000AD541B /* SDL_uikitwindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A854910511BDEF0C0073554A /* SDL_uikitwindow.m */; };
+		A86B41B01381989000AD541B /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9611C073AD000AC9E1 /* SDL_sysjoystick.m */; };
+		A86B41B11381989000AD541B /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EAA9811C073AD000AC9E1 /* SDLUIAccelerationDelegate.m */; };
+		A86B41B21381989000AD541B /* SDL_renderer_gles.c in Sources */ = {isa = PBXBuildFile; fileRef = A80EAAE211C07A26000AC9E1 /* SDL_renderer_gles.c */; };
+		A86B41B31381989000AD541B /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886711C1E46500D95436 /* ASIAuthenticationDialog.m */; };
+		A86B41B41381989000AD541B /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886911C1E46500D95436 /* ASIFormDataRequest.m */; };
+		A86B41B51381989000AD541B /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886B11C1E46500D95436 /* ASIHTTPRequest.m */; };
+		A86B41B61381989000AD541B /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A850886E11C1E46500D95436 /* ASIInputStream.m */; };
+		A86B41B71381989000AD541B /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887011C1E46500D95436 /* ASINetworkQueue.m */; };
+		A86B41B81381989000AD541B /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A850887211C1E46500D95436 /* ASINSStringAdditions.m */; };
+		A86B41B91381989000AD541B /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B011C1E72600D95436 /* ioapi.c */; };
+		A86B41BA1381989000AD541B /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B211C1E72600D95436 /* mztools.c */; };
+		A86B41BB1381989000AD541B /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B411C1E72600D95436 /* unzip.c */; };
+		A86B41BC1381989000AD541B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A85088B611C1E72600D95436 /* zip.c */; };
+		A86B41BD1381989000AD541B /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85088B911C1E72600D95436 /* ZipArchive.mm */; };
+		A86B41BE1381989000AD541B /* SDLnet.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FB11C717A700016403 /* SDLnet.c */; };
+		A86B41BF1381989000AD541B /* SDLnetselect.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FC11C717A700016403 /* SDLnetselect.c */; };
+		A86B41C01381989000AD541B /* SDLnetTCP.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FD11C717A700016403 /* SDLnetTCP.c */; };
+		A86B41C11381989000AD541B /* SDLnetUDP.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D966FE11C717A700016403 /* SDLnetUDP.c */; };
+		A86B41C21381989000AD541B /* IMG_bmp.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672111C7186300016403 /* IMG_bmp.c */; };
+		A86B41C31381989000AD541B /* IMG_gif.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672211C7186300016403 /* IMG_gif.c */; };
+		A86B41C41381989000AD541B /* IMG_jpg.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672311C7186300016403 /* IMG_jpg.c */; };
+		A86B41C51381989000AD541B /* IMG_lbm.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672411C7186300016403 /* IMG_lbm.c */; };
+		A86B41C61381989000AD541B /* IMG_pcx.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672511C7186300016403 /* IMG_pcx.c */; };
+		A86B41C71381989000AD541B /* IMG_png.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672611C7186300016403 /* IMG_png.c */; };
+		A86B41C81381989000AD541B /* IMG_pnm.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672711C7186300016403 /* IMG_pnm.c */; };
+		A86B41C91381989000AD541B /* IMG_tga.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672811C7186300016403 /* IMG_tga.c */; };
+		A86B41CA1381989000AD541B /* IMG_tif.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672911C7186300016403 /* IMG_tif.c */; };
+		A86B41CB1381989000AD541B /* IMG_xcf.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672A11C7186300016403 /* IMG_xcf.c */; };
+		A86B41CC1381989000AD541B /* IMG_xpm.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672B11C7186300016403 /* IMG_xpm.c */; };
+		A86B41CD1381989000AD541B /* IMG_xv.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672C11C7186300016403 /* IMG_xv.c */; };
+		A86B41CE1381989000AD541B /* IMG_xxx.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672D11C7186300016403 /* IMG_xxx.c */; };
+		A86B41CF1381989000AD541B /* IMG.c in Sources */ = {isa = PBXBuildFile; fileRef = A8D9672E11C7186300016403 /* IMG.c */; };
+		A86B41D01381989000AD541B /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAE11C8817400923787 /* dict.c */; };
+		A86B41D11381989000AD541B /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBAF11C8817400923787 /* error.c */; };
+		A86B41D21381989000AD541B /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB011C8817400923787 /* geom.c */; };
+		A86B41D31381989000AD541B /* glue.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB211C8817400923787 /* glue.c */; };
+		A86B41D41381989000AD541B /* memalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB411C8817400923787 /* memalloc.c */; };
+		A86B41D51381989000AD541B /* mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB511C8817400923787 /* mesh.c */; };
+		A86B41D61381989000AD541B /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB611C8817400923787 /* normal.c */; };
+		A86B41D71381989000AD541B /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB711C8817400923787 /* priorityq.c */; };
+		A86B41D81381989000AD541B /* project.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB811C8817400923787 /* project.c */; };
+		A86B41D91381989000AD541B /* registry.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBB911C8817400923787 /* registry.c */; };
+		A86B41DA1381989000AD541B /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBA11C8817400923787 /* render.c */; };
+		A86B41DB1381989000AD541B /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBB11C8817400923787 /* sweep.c */; };
+		A86B41DC1381989000AD541B /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBC11C8817400923787 /* tess.c */; };
+		A86B41DD1381989000AD541B /* tessmono.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBD11C8817400923787 /* tessmono.c */; };
+		A86B41DE1381989000AD541B /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
+		A86B41DF1381989000AD541B /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
+		A86B41E01381989000AD541B /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
+		A86B41E11381989000AD541B /* ButtonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85A37FF12178BA50080BBA9 /* ButtonView.mm */; };
+		A86B41E31381989000AD541B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
+		A86B41E41381989000AD541B /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
+		A86B41E51381989000AD541B /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
+		A86B41E61381989000AD541B /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
+		A86B41E71381989000AD541B /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
+		A86B41E81381989000AD541B /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
+		A86B41E91381989000AD541B /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
+		A86B41EA1381989000AD541B /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
+		A86B41EB1381989000AD541B /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
+		A86B41EC1381989000AD541B /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
+		A86B41ED1381989000AD541B /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC112640A7800FCC652 /* jcapimin.c */; };
+		A86B41EE1381989000AD541B /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC212640A7800FCC652 /* jcapistd.c */; };
+		A86B41EF1381989000AD541B /* jccoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC312640A7800FCC652 /* jccoefct.c */; };
+		A86B41F01381989000AD541B /* jccolor.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC412640A7800FCC652 /* jccolor.c */; };
+		A86B41F11381989000AD541B /* jcdctmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC512640A7800FCC652 /* jcdctmgr.c */; };
+		A86B41F21381989000AD541B /* jchuff.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC612640A7800FCC652 /* jchuff.c */; };
+		A86B41F31381989000AD541B /* jcinit.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC812640A7800FCC652 /* jcinit.c */; };
+		A86B41F41381989000AD541B /* jcmainct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC912640A7800FCC652 /* jcmainct.c */; };
+		A86B41F51381989000AD541B /* jcmarker.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBECA12640A7800FCC652 /* jcmarker.c */; };
+		A86B41F61381989000AD541B /* jcmaster.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBECB12640A7800FCC652 /* jcmaster.c */; };
+		A86B41F71381989000AD541B /* jcomapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBECC12640A7800FCC652 /* jcomapi.c */; };
+		A86B41F81381989000AD541B /* jcparam.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEDB12640A7800FCC652 /* jcparam.c */; };
+		A86B41F91381989000AD541B /* jcphuff.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEDC12640A7800FCC652 /* jcphuff.c */; };
+		A86B41FA1381989000AD541B /* jcprepct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEDD12640A7800FCC652 /* jcprepct.c */; };
+		A86B41FB1381989000AD541B /* jcsample.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEDE12640A7800FCC652 /* jcsample.c */; };
+		A86B41FC1381989000AD541B /* jctrans.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEDF12640A7800FCC652 /* jctrans.c */; };
+		A86B41FD1381989000AD541B /* jdapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE012640A7800FCC652 /* jdapimin.c */; };
+		A86B41FE1381989000AD541B /* jdapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE112640A7800FCC652 /* jdapistd.c */; };
+		A86B41FF1381989000AD541B /* jdatadst.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE212640A7800FCC652 /* jdatadst.c */; };
+		A86B42001381989000AD541B /* jdatasrc.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE312640A7800FCC652 /* jdatasrc.c */; };
+		A86B42011381989000AD541B /* jdcoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE412640A7800FCC652 /* jdcoefct.c */; };
+		A86B42021381989000AD541B /* jdcolor.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE512640A7800FCC652 /* jdcolor.c */; };
+		A86B42031381989000AD541B /* jddctmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE712640A7800FCC652 /* jddctmgr.c */; };
+		A86B42041381989000AD541B /* jdhuff.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEE812640A7800FCC652 /* jdhuff.c */; };
+		A86B42051381989000AD541B /* jdinput.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEEA12640A7800FCC652 /* jdinput.c */; };
+		A86B42061381989000AD541B /* jdmainct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEEB12640A7800FCC652 /* jdmainct.c */; };
+		A86B42071381989000AD541B /* jdmarker.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEEC12640A7800FCC652 /* jdmarker.c */; };
+		A86B42081381989000AD541B /* jdmaster.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEED12640A7800FCC652 /* jdmaster.c */; };
+		A86B42091381989000AD541B /* jdmerge.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEEE12640A7800FCC652 /* jdmerge.c */; };
+		A86B420A1381989000AD541B /* jdphuff.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEEF12640A7800FCC652 /* jdphuff.c */; };
+		A86B420B1381989000AD541B /* jdpostct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF012640A7800FCC652 /* jdpostct.c */; };
+		A86B420C1381989000AD541B /* jdsample.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF112640A7800FCC652 /* jdsample.c */; };
+		A86B420D1381989000AD541B /* jdtrans.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF212640A7800FCC652 /* jdtrans.c */; };
+		A86B420E1381989000AD541B /* jerror.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF312640A7800FCC652 /* jerror.c */; };
+		A86B420F1381989000AD541B /* jfdctflt.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF512640A7800FCC652 /* jfdctflt.c */; };
+		A86B42101381989000AD541B /* jfdctfst.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF612640A7800FCC652 /* jfdctfst.c */; };
+		A86B42111381989000AD541B /* jfdctint.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF712640A7800FCC652 /* jfdctint.c */; };
+		A86B42121381989000AD541B /* jidctflt.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF812640A7800FCC652 /* jidctflt.c */; };
+		A86B42131381989000AD541B /* jidctfst.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEF912640A7800FCC652 /* jidctfst.c */; };
+		A86B42141381989000AD541B /* jidctint.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEFA12640A7800FCC652 /* jidctint.c */; };
+		A86B42151381989000AD541B /* jidctred.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEFB12640A7800FCC652 /* jidctred.c */; };
+		A86B42161381989000AD541B /* jmemansi.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEFD12640A7800FCC652 /* jmemansi.c */; };
+		A86B42171381989000AD541B /* jquant1.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF0A12640A7800FCC652 /* jquant1.c */; };
+		A86B42181381989000AD541B /* jquant2.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF0B12640A7800FCC652 /* jquant2.c */; };
+		A86B42191381989000AD541B /* jutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF0C12640A7800FCC652 /* jutils.c */; };
+		A86B421A1381989000AD541B /* rdbmp.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2612640A7800FCC652 /* rdbmp.c */; };
+		A86B421B1381989000AD541B /* rdcolmap.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2712640A7800FCC652 /* rdcolmap.c */; };
+		A86B421C1381989000AD541B /* rdgif.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2812640A7800FCC652 /* rdgif.c */; };
+		A86B421D1381989000AD541B /* rdppm.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2B12640A7800FCC652 /* rdppm.c */; };
+		A86B421E1381989000AD541B /* rdrle.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2C12640A7800FCC652 /* rdrle.c */; };
+		A86B421F1381989000AD541B /* rdswitch.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2D12640A7800FCC652 /* rdswitch.c */; };
+		A86B42201381989000AD541B /* rdtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF2E12640A7800FCC652 /* rdtarga.c */; };
+		A86B42211381989000AD541B /* transupp.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF3712640A7800FCC652 /* transupp.c */; };
+		A86B42221381989000AD541B /* wrbmp.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF3B12640A7800FCC652 /* wrbmp.c */; };
+		A86B42231381989000AD541B /* wrgif.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF3C12640A7800FCC652 /* wrgif.c */; };
+		A86B42241381989000AD541B /* wrppm.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF3F12640A7800FCC652 /* wrppm.c */; };
+		A86B42251381989000AD541B /* wrrle.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4012640A7800FCC652 /* wrrle.c */; };
+		A86B42261381989000AD541B /* wrtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBF4112640A7800FCC652 /* wrtarga.c */; };
+		A86B42271381989000AD541B /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBFEF12640D2F00FCC652 /* jmemmgr.c */; };
+		A86B42281381989000AD541B /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
+		A86B42291381989000AD541B /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
+		A86B422A1381989000AD541B /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
+		A86B422B1381989000AD541B /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
+		A86B422C1381989000AD541B /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D4127FBB4C00F0A2EE /* bitwise.c */; };
+		A86B422D1381989000AD541B /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = A89240D5127FBB4C00F0A2EE /* framing.c */; };
+		A86B422E1381989000AD541B /* analysis.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B5127FC26300F0A2EE /* analysis.c */; };
+		A86B422F1381989000AD541B /* bitrate.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B7127FC26300F0A2EE /* bitrate.c */; };
+		A86B42301381989000AD541B /* block.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B8127FC26300F0A2EE /* block.c */; };
+		A86B42311381989000AD541B /* codebook.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241B9127FC26300F0A2EE /* codebook.c */; };
+		A86B42321381989000AD541B /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BA127FC26300F0A2EE /* envelope.c */; };
+		A86B42331381989000AD541B /* floor0.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BB127FC26300F0A2EE /* floor0.c */; };
+		A86B42341381989000AD541B /* floor1.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BC127FC26300F0A2EE /* floor1.c */; };
+		A86B42351381989000AD541B /* info.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BD127FC26300F0A2EE /* info.c */; };
+		A86B42361381989000AD541B /* lookup.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BE127FC26300F0A2EE /* lookup.c */; };
+		A86B42371381989000AD541B /* lpc.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241BF127FC26300F0A2EE /* lpc.c */; };
+		A86B42381381989000AD541B /* lsp.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C0127FC26300F0A2EE /* lsp.c */; };
+		A86B42391381989000AD541B /* mapping0.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C1127FC26300F0A2EE /* mapping0.c */; };
+		A86B423A1381989000AD541B /* mdct.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C2127FC26300F0A2EE /* mdct.c */; };
+		A86B423B1381989000AD541B /* psy.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C3127FC26300F0A2EE /* psy.c */; };
+		A86B423C1381989000AD541B /* registry.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C5127FC26300F0A2EE /* registry.c */; };
+		A86B423D1381989000AD541B /* res0.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C6127FC26300F0A2EE /* res0.c */; };
+		A86B423E1381989000AD541B /* sharedbook.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C7127FC26300F0A2EE /* sharedbook.c */; };
+		A86B423F1381989000AD541B /* smallft.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C8127FC26300F0A2EE /* smallft.c */; };
+		A86B42401381989000AD541B /* synthesis.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241C9127FC26300F0A2EE /* synthesis.c */; };
+		A86B42411381989000AD541B /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CC127FC26300F0A2EE /* vorbisfile.c */; };
+		A86B42421381989000AD541B /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CD127FC26300F0A2EE /* window.c */; };
+		A86B42431381989000AD541B /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E701280F729005371AB /* bit.c */; };
+		A86B42441381989000AD541B /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E711280F729005371AB /* decoder.c */; };
+		A86B42451381989000AD541B /* fixed.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E721280F729005371AB /* fixed.c */; };
+		A86B42461381989000AD541B /* frame.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E731280F729005371AB /* frame.c */; };
+		A86B42471381989000AD541B /* huffman.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E741280F729005371AB /* huffman.c */; };
+		A86B42481381989000AD541B /* layer3.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E751280F729005371AB /* layer3.c */; };
+		A86B42491381989000AD541B /* layer12.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E761280F729005371AB /* layer12.c */; };
+		A86B424A1381989000AD541B /* stream.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E781280F729005371AB /* stream.c */; };
+		A86B424B1381989000AD541B /* synth.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E791280F729005371AB /* synth.c */; };
+		A86B424C1381989000AD541B /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7A1280F729005371AB /* timer.c */; };
+		A86B424D1381989000AD541B /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7B1280F729005371AB /* version.c */; };
+		A86B424E1381989000AD541B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D9B991296433E002CDE5D /* Reachability.m */; };
+		A86B424F1381989000AD541B /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
+		A86B42501381989000AD541B /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
+		A86B42511381989000AD541B /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
+		A86B42521381989000AD541B /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
+		A86B42531381989000AD541B /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
+		A86B42541381989000AD541B /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
+		A86B42551381989000AD541B /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
+		A86B42561381989000AD541B /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
+		A86B42571381989000AD541B /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
+		A86B42581381989000AD541B /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
+		A86B42591381989000AD541B /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
+		A86B425B1381989000AD541B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
+		A86B425C1381989000AD541B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
+		A86B425D1381989000AD541B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
+		A86B425E1381989000AD541B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
+		A86B425F1381989000AD541B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
+		A86B42601381989000AD541B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
+		A86B42611381989000AD541B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
+		A86B42621381989000AD541B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
+		A86B42631381989000AD541B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
+		A86B42641381989000AD541B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
+		A86B42651381989000AD541B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
+		A86B42661381989000AD541B /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
+		A86B42671381989000AD541B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		A86B42681381989000AD541B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		A86B42691381989000AD541B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A86B426A1381989000AD541B /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
+		A86B426B1381989000AD541B /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
+		A86B426C1381989000AD541B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */; };
+		A86B426D1381989000AD541B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D111B8A70B0053FE85 /* CoreAudio.framework */; };
+		A86B426E1381989000AD541B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D311B8A70B0053FE85 /* CoreGraphics.framework */; };
+		A86B426F1381989000AD541B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D511B8A70B0053FE85 /* OpenAL.framework */; };
+		A86B42701381989000AD541B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A899FF1611BC96370071BF5F /* AudioToolbox.framework */; };
+		A86B42711381989000AD541B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
+		A86B42721381989000AD541B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
+		A86B42731381989000AD541B /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
+		A86B42741381989000AD541B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
+		A86B428A138198E400AD541B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A86B427D138198E300AD541B /* InfoPlist.strings */; };
+		A86B428B138198E400AD541B /* OrientationMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B427F138198E300AD541B /* OrientationMainWindow.xib */; };
+		A86B428C138198E400AD541B /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
+		A86B428E138198E400AD541B /* OrientationTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A86B4284138198E300AD541B /* OrientationTest-Info.plist */; };
+		A86B428F138198E400AD541B /* OrientationTestAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4287138198E300AD541B /* OrientationTestAppDelegate.mm */; };
+		A86B4290138198E400AD541B /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
 		A874B19F1318A8C5009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B19E1318A8C5009C4A92 /* iTunesArtwork */; };
 		A874B1A11318A8D2009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A01318A8D2009C4A92 /* iTunesArtwork */; };
 		A874B1A31318A8DF009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A21318A8DF009C4A92 /* iTunesArtwork */; };
@@ -378,6 +918,12 @@
 		A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1BC1318AA68009C4A92 /* MenuItem-Store.png */; };
 		A87785561270767C009F18D8 /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
 		A87785571270767C009F18D8 /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
+		A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
+		A878204C138ACF2600EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
+		A878204D138ACF2700EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
 		A87C9A83132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
 		A87C9A84132F05AF009FBB37 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7F132F05AF009FBB37 /* about.png */; };
 		A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
@@ -1624,6 +2170,20 @@
 			remoteGlobalIDString = 0064653F107E3D7400183915;
 			remoteInfo = "Generate Header Files";
 		};
+		A86B405A1381989000AD541B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FD6526620DE8FCCB002AD96B;
+			remoteInfo = StaticLibiPhoneOS;
+		};
+		A86B405C1381989000AD541B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0064653F107E3D7400183915;
+			remoteInfo = "Generate Header Files";
+		};
 		A8811FEA12C7816300A1A08E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
@@ -1675,6 +2235,7 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlephOne_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A80AD37B1382E9C600D456DC /* Info Orientation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Orientation.plist"; sourceTree = "<group>"; };
 		A80E9E621280F729005371AB /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bit.h; path = "Libraries/libmad-0.15.1b/bit.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E641280F729005371AB /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = "Libraries/libmad-0.15.1b/decoder.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E651280F729005371AB /* fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixed.h; path = "Libraries/libmad-0.15.1b/fixed.h"; sourceTree = SOURCE_ROOT; };
@@ -1892,6 +2453,17 @@
 		A86676D913135EA900BE2654 /* M1A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M1A1; path = ../CompiledScenarios/M1A1; sourceTree = SOURCE_ROOT; };
 		A8667C4513135EC800BE2654 /* M2A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M2A1; path = ../CompiledScenarios/M2A1; sourceTree = SOURCE_ROOT; };
 		A866863213135EE900BE2654 /* M3A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M3A1; path = ../CompiledScenarios/M3A1; sourceTree = SOURCE_ROOT; };
+		A86B427A1381989000AD541B /* AlephOne:SDG 2 copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne:SDG 2 copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86B427E138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A86B4280138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OrientationMainWindow.xib; sourceTree = "<group>"; };
+		A86B4282138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		A86B4283138198E300AD541B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A86B4284138198E300AD541B /* OrientationTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OrientationTest-Info.plist"; sourceTree = "<group>"; };
+		A86B4285138198E300AD541B /* OrientationTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrientationTest-Prefix.pch"; sourceTree = "<group>"; };
+		A86B4286138198E300AD541B /* OrientationTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationTestAppDelegate.h; sourceTree = "<group>"; };
+		A86B4287138198E300AD541B /* OrientationTestAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OrientationTestAppDelegate.mm; sourceTree = "<group>"; };
+		A86B4288138198E300AD541B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A86B4289138198E300AD541B /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		A874B19E1318A8C5009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1A01318A8D2009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1A21318A8DF009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -2668,6 +3240,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A86B425A1381989000AD541B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86B425B1381989000AD541B /* OpenGLES.framework in Frameworks */,
+				A86B425C1381989000AD541B /* AVFoundation.framework in Frameworks */,
+				A86B425D1381989000AD541B /* CoreTelephony.framework in Frameworks */,
+				A86B425E1381989000AD541B /* CFNetwork.framework in Frameworks */,
+				A86B425F1381989000AD541B /* Foundation.framework in Frameworks */,
+				A86B42601381989000AD541B /* MobileCoreServices.framework in Frameworks */,
+				A86B42611381989000AD541B /* Security.framework in Frameworks */,
+				A86B42621381989000AD541B /* StoreKit.framework in Frameworks */,
+				A86B42631381989000AD541B /* SystemConfiguration.framework in Frameworks */,
+				A86B42641381989000AD541B /* libsqlite3.dylib in Frameworks */,
+				A86B42651381989000AD541B /* CoreData.framework in Frameworks */,
+				A86B42661381989000AD541B /* libSDLiPhoneOS.a in Frameworks */,
+				A86B42671381989000AD541B /* Foundation.framework in Frameworks */,
+				A86B42681381989000AD541B /* UIKit.framework in Frameworks */,
+				A86B42691381989000AD541B /* QuartzCore.framework in Frameworks */,
+				A86B426A1381989000AD541B /* libm.dylib in Frameworks */,
+				A86B426B1381989000AD541B /* libstdc++.6.dylib in Frameworks */,
+				A86B426C1381989000AD541B /* CFNetwork.framework in Frameworks */,
+				A86B426D1381989000AD541B /* CoreAudio.framework in Frameworks */,
+				A86B426E1381989000AD541B /* CoreGraphics.framework in Frameworks */,
+				A86B426F1381989000AD541B /* OpenAL.framework in Frameworks */,
+				A86B42701381989000AD541B /* AudioToolbox.framework in Frameworks */,
+				A86B42711381989000AD541B /* MobileCoreServices.framework in Frameworks */,
+				A86B42721381989000AD541B /* SystemConfiguration.framework in Frameworks */,
+				A86B42731381989000AD541B /* libz.1.2.3.dylib in Frameworks */,
+				A86B425B1381989000AD541B /* OpenGLES.framework in Frameworks */,
+				A86B42741381989000AD541B /* GameKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A88121D212C7816300A1A08E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2762,6 +3368,7 @@
 				A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */,
 				A88121E912C7816300A1A08E /* AlephOne-SDG-2.app */,
 				A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */,
+				A86B427A1381989000AD541B /* AlephOne:SDG 2 copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2769,6 +3376,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A86B427C138198E300AD541B /* OrientationTest */,
 				A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
@@ -2824,6 +3432,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
+				A80AD37B1382E9C600D456DC /* Info Orientation.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3168,6 +3777,23 @@
 				A85E688311CB18FD00D0FAEF /* pngwutil.c */,
 			);
 			name = png;
+			sourceTree = "<group>";
+		};
+		A86B427C138198E300AD541B /* OrientationTest */ = {
+			isa = PBXGroup;
+			children = (
+				A86B427D138198E300AD541B /* InfoPlist.strings */,
+				A86B427F138198E300AD541B /* OrientationMainWindow.xib */,
+				A86B4281138198E300AD541B /* RootViewController.xib */,
+				A86B4283138198E300AD541B /* main.m */,
+				A86B4284138198E300AD541B /* OrientationTest-Info.plist */,
+				A86B4285138198E300AD541B /* OrientationTest-Prefix.pch */,
+				A86B4286138198E300AD541B /* OrientationTestAppDelegate.h */,
+				A86B4287138198E300AD541B /* OrientationTestAppDelegate.mm */,
+				A86B4288138198E300AD541B /* RootViewController.h */,
+				A86B4289138198E300AD541B /* RootViewController.mm */,
+			);
+			path = OrientationTest;
 			sourceTree = "<group>";
 		};
 		A874B1B71318AA68009C4A92 /* MenuItems */ = {
@@ -4386,6 +5012,25 @@
 			productReference = A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A86B40581381989000AD541B /* AlephOne:SDG 2 Orientation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A86B42751381989000AD541B /* Build configuration list for PBXNativeTarget "AlephOne:SDG 2 Orientation" */;
+			buildPhases = (
+				A86B405D1381989000AD541B /* Resources */,
+				A86B40BA1381989000AD541B /* Sources */,
+				A86B425A1381989000AD541B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A86B40591381989000AD541B /* PBXTargetDependency */,
+				A86B405B1381989000AD541B /* PBXTargetDependency */,
+			);
+			name = "AlephOne:SDG 2 Orientation";
+			productName = AlephOne;
+			productReference = A86B427A1381989000AD541B /* AlephOne:SDG 2 copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A8811FE812C7816300A1A08E /* AlephOne:SDG 2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "AlephOne:SDG 2" */;
@@ -4441,6 +5086,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -4455,6 +5101,7 @@
 				A85E672911CB173A00D0FAEF /* AlephOne:SDG */,
 				A8811FE812C7816300A1A08E /* AlephOne:SDG 2 */,
 				A88121ED12C7826300A1A08E /* AlephOne:SDG 3 */,
+				A86B40581381989000AD541B /* AlephOne:SDG 2 Orientation */,
 			);
 		};
 /* End PBXProject section */
@@ -4572,6 +5219,111 @@
 				A817C0111323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A83132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A84132F05AF009FBB37 /* about.png in Resources */,
+				A878204C138ACF2600EA92D5 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A86B405D1381989000AD541B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86B405E1381989000AD541B /* ExpandingLabel.png in Resources */,
+				A86B405F1381989000AD541B /* DownloadViewController.xib in Resources */,
+				A86B40601381989000AD541B /* Entitlements.plist in Resources */,
+				A86B40611381989000AD541B /* GameViewController.xib in Resources */,
+				A86B40621381989000AD541B /* jconfig.iphoneos in Resources */,
+				A86B40631381989000AD541B /* LoadingLabel.png in Resources */,
+				A86B40641381989000AD541B /* MainWindow.xib in Resources */,
+				A86B40651381989000AD541B /* movementboxBase.png in Resources */,
+				A86B40661381989000AD541B /* movementboxKnob.png in Resources */,
+				A86B40671381989000AD541B /* NewGameViewController.xib in Resources */,
+				A86B40681381989000AD541B /* overheadmap.png in Resources */,
+				A86B40691381989000AD541B /* patternbuffers-btn.png in Resources */,
+				A86B406A1381989000AD541B /* pause-btn.png in Resources */,
+				A86B406B1381989000AD541B /* PauseViewController.xib in Resources */,
+				A86B406C1381989000AD541B /* PreferencesViewController.xib in Resources */,
+				A86B406D1381989000AD541B /* primarytrigger-btn.png in Resources */,
+				A86B406E1381989000AD541B /* ProgressViewController.xib in Resources */,
+				A86B406F1381989000AD541B /* Reload.png in Resources */,
+				A86B40701381989000AD541B /* SavedGameCell.xib in Resources */,
+				A86B40711381989000AD541B /* SaveGameViewController.xib in Resources */,
+				A86B40721381989000AD541B /* secondarytrigger-btn.png in Resources */,
+				A86B40731381989000AD541B /* HelpViewController.xib in Resources */,
+				A86B40741381989000AD541B /* help8.png in Resources */,
+				A86B40751381989000AD541B /* help7.png in Resources */,
+				A86B40761381989000AD541B /* help6.png in Resources */,
+				A86B40771381989000AD541B /* help5.png in Resources */,
+				A86B40781381989000AD541B /* help4.png in Resources */,
+				A86B40791381989000AD541B /* help3.png in Resources */,
+				A86B407A1381989000AD541B /* help2.png in Resources */,
+				A86B407B1381989000AD541B /* help1.png in Resources */,
+				A86B407C1381989000AD541B /* left.png in Resources */,
+				A86B407D1381989000AD541B /* right.png in Resources */,
+				A86B407E1381989000AD541B /* buttonsarea-bg.png in Resources */,
+				A86B407F1381989000AD541B /* buttonsarea-bg2.png in Resources */,
+				A86B40801381989000AD541B /* cancel-btn.png in Resources */,
+				A86B40811381989000AD541B /* easy-btn.png in Resources */,
+				A86B40821381989000AD541B /* easy-btn2.png in Resources */,
+				A86B40831381989000AD541B /* hard-btn.png in Resources */,
+				A86B40841381989000AD541B /* hard-btn2.png in Resources */,
+				A86B40851381989000AD541B /* nightmare-btn.png in Resources */,
+				A86B40861381989000AD541B /* nightmare-btn2.png in Resources */,
+				A86B40871381989000AD541B /* normal-btn.png in Resources */,
+				A86B40881381989000AD541B /* normal-btn2.png in Resources */,
+				A86B40891381989000AD541B /* ammunition-btn.png in Resources */,
+				A86B408A1381989000AD541B /* help-btn.png in Resources */,
+				A86B408B1381989000AD541B /* invincibility-btn.png in Resources */,
+				A86B408C1381989000AD541B /* mainmenu-btn.png in Resources */,
+				A86B408D1381989000AD541B /* preferences-btn.png in Resources */,
+				A86B408E1381989000AD541B /* save-btn.png in Resources */,
+				A86B408F1381989000AD541B /* secondarybuttons-bg.png in Resources */,
+				A86B40901381989000AD541B /* sheild-btn.png in Resources */,
+				A86B40911381989000AD541B /* weapons-btn.png in Resources */,
+				A86B40921381989000AD541B /* complete-btn.png in Resources */,
+				A86B40931381989000AD541B /* delete-btn.png in Resources */,
+				A86B40941381989000AD541B /* duplicate-btn.png in Resources */,
+				A86B40951381989000AD541B /* savedgame-bg.png in Resources */,
+				A86B40961381989000AD541B /* help9.png in Resources */,
+				A86B40971381989000AD541B /* help10.png in Resources */,
+				A86B40981381989000AD541B /* toggleweapons-left-btn.png in Resources */,
+				A86B40991381989000AD541B /* toggleweapons-right-btn.png in Resources */,
+				A86B409A1381989000AD541B /* play-btn.png in Resources */,
+				A86B409B1381989000AD541B /* internet-btn.png in Resources */,
+				A86B409C1381989000AD541B /* help11.png in Resources */,
+				A86B409D1381989000AD541B /* help12.png in Resources */,
+				A86B409E1381989000AD541B /* FilmCell.xib in Resources */,
+				A86B409F1381989000AD541B /* FilmViewController.xib in Resources */,
+				A86B40A01381989000AD541B /* ControlsOverview.png in Resources */,
+				A86B40A11381989000AD541B /* TouchToContinue.png in Resources */,
+				A86B40A21381989000AD541B /* weather_clear_night.png in Resources */,
+				A86B40A31381989000AD541B /* weather_clear.png in Resources */,
+				A86B40A41381989000AD541B /* zoom_in.png in Resources */,
+				A86B40A51381989000AD541B /* zoom_out.png in Resources */,
+				A86B40A61381989000AD541B /* AirshipConfig.plist in Resources */,
+				A86B40A71381989000AD541B /* M2A1 in Resources */,
+				A86B40A81381989000AD541B /* alephone2-icon-512px.png in Resources */,
+				A86B40A91381989000AD541B /* alephone2-icon-ipad.png in Resources */,
+				A86B40AA1381989000AD541B /* GenericBackground.png in Resources */,
+				A86B40AB1381989000AD541B /* SplashScreen.png in Resources */,
+				A86B40AC1381989000AD541B /* Default-Portrait.png in Resources */,
+				A86B40AD1381989000AD541B /* iTunesArtwork in Resources */,
+				A86B40AE1381989000AD541B /* MenuItem-Load.png in Resources */,
+				A86B40AF1381989000AD541B /* MenuItem-New.png in Resources */,
+				A86B40B01381989000AD541B /* MenuItem-Settings.png in Resources */,
+				A86B40B11381989000AD541B /* MenuItem-Store.png in Resources */,
+				A86B40B21381989000AD541B /* PurchaseViewController.xib in Resources */,
+				A86B40B31381989000AD541B /* HDModeAd.png in Resources */,
+				A86B40B41381989000AD541B /* VMModeAd.png in Resources */,
+				A86B40B51381989000AD541B /* buy-btn.png in Resources */,
+				A86B40B61381989000AD541B /* done-btn.png in Resources */,
+				A86B40B71381989000AD541B /* restore-btn.png in Resources */,
+				A86B40B81381989000AD541B /* about-btn.png in Resources */,
+				A86B40B91381989000AD541B /* about.png in Resources */,
+				A86B428A138198E400AD541B /* InfoPlist.strings in Resources */,
+				A86B428B138198E400AD541B /* OrientationMainWindow.xib in Resources */,
+				A86B428C138198E400AD541B /* RootViewController.xib in Resources */,
+				A86B428E138198E400AD541B /* OrientationTest-Info.plist in Resources */,
+				A80AD37C1382E9C700D456DC /* Info Orientation.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4671,6 +5423,7 @@
 				A817C00E1323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A8D132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A8E132F05AF009FBB37 /* about.png in Resources */,
+				A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4770,6 +5523,7 @@
 				A817C00B1323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A89132F05AF009FBB37 /* about.png in Resources */,
+				A878204D138ACF2700EA92D5 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5195,6 +5949,431 @@
 				A817C0141323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */,
+				A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A86B40BA1381989000AD541B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86B40BB1381989000AD541B /* pngwutil.c in Sources */,
+				A86B40BC1381989000AD541B /* pngwtran.c in Sources */,
+				A86B40BD1381989000AD541B /* pngwrite.c in Sources */,
+				A86B40BE1381989000AD541B /* pngwio.c in Sources */,
+				A86B40BF1381989000AD541B /* pngvcrd.c in Sources */,
+				A86B40C01381989000AD541B /* pngtrans.c in Sources */,
+				A86B40C11381989000AD541B /* pngset.c in Sources */,
+				A86B40C21381989000AD541B /* pngrutil.c in Sources */,
+				A86B40C31381989000AD541B /* pngrtran.c in Sources */,
+				A86B40C41381989000AD541B /* pngrio.c in Sources */,
+				A86B40C51381989000AD541B /* pngread.c in Sources */,
+				A86B40C61381989000AD541B /* pngpread.c in Sources */,
+				A86B40C71381989000AD541B /* pngmem.c in Sources */,
+				A86B40C81381989000AD541B /* pngget.c in Sources */,
+				A86B40C91381989000AD541B /* pnggccrd.c in Sources */,
+				A86B40CA1381989000AD541B /* pngerror.c in Sources */,
+				A86B40CB1381989000AD541B /* png.c in Sources */,
+				A86B40CC1381989000AD541B /* error.c in Sources */,
+				A86B40CD1381989000AD541B /* http.c in Sources */,
+				A86B40CE1381989000AD541B /* libnat.c in Sources */,
+				A86B40CF1381989000AD541B /* os_common.c in Sources */,
+				A86B40D01381989000AD541B /* os_unix.c in Sources */,
+				A86B40D11381989000AD541B /* ssdp.c in Sources */,
+				A86B40D21381989000AD541B /* upnp.c in Sources */,
+				A86B40D31381989000AD541B /* utility.c in Sources */,
+				A86B40D41381989000AD541B /* CommunicationsChannel.cpp in Sources */,
+				A86B40D51381989000AD541B /* Message.cpp in Sources */,
+				A86B40D61381989000AD541B /* MessageDispatcher.cpp in Sources */,
+				A86B40D71381989000AD541B /* MessageHandler.cpp in Sources */,
+				A86B40D81381989000AD541B /* MessageInflater.cpp in Sources */,
+				A86B40D91381989000AD541B /* shell.cpp in Sources */,
+				A86B40DA1381989000AD541B /* shell_misc.cpp in Sources */,
+				A86B40DB1381989000AD541B /* Model3D.cpp in Sources */,
+				A86B40DC1381989000AD541B /* ModelRenderer.cpp in Sources */,
+				A86B40DD1381989000AD541B /* StudioLoader.cpp in Sources */,
+				A86B40DE1381989000AD541B /* WavefrontLoader.cpp in Sources */,
+				A86B40DF1381989000AD541B /* Dim3_Loader.cpp in Sources */,
+				A86B40E01381989000AD541B /* BStream.cpp in Sources */,
+				A86B40E11381989000AD541B /* byte_swapping.cpp in Sources */,
+				A86B40E21381989000AD541B /* csalerts_sdl.cpp in Sources */,
+				A86B40E31381989000AD541B /* cscluts_sdl.cpp in Sources */,
+				A86B40E41381989000AD541B /* csmisc_sdl.cpp in Sources */,
+				A86B40E51381989000AD541B /* csstrings.cpp in Sources */,
+				A86B40E61381989000AD541B /* csdialogs_sdl.cpp in Sources */,
+				A86B40E71381989000AD541B /* mytm_sdl.cpp in Sources */,
+				A86B40E81381989000AD541B /* snprintf.cpp in Sources */,
+				A86B40E91381989000AD541B /* xmlparse.c in Sources */,
+				A86B40EA1381989000AD541B /* xmlrole.c in Sources */,
+				A86B40EB1381989000AD541B /* xmltok.c in Sources */,
+				A86B40EC1381989000AD541B /* xmltok_impl.c in Sources */,
+				A86B40ED1381989000AD541B /* xmltok_ns.c in Sources */,
+				A86B40EE1381989000AD541B /* preferences_widgets_sdl.cpp in Sources */,
+				A86B40EF1381989000AD541B /* sdl_dialogs.cpp in Sources */,
+				A86B40F01381989000AD541B /* sdl_widgets.cpp in Sources */,
+				A86B40F11381989000AD541B /* PlayerImage_sdl.cpp in Sources */,
+				A86B40F21381989000AD541B /* ActionQueues.cpp in Sources */,
+				A86B40F31381989000AD541B /* CircularByteBuffer.cpp in Sources */,
+				A86B40F41381989000AD541B /* Console.cpp in Sources */,
+				A86B40F51381989000AD541B /* DefaultStringSets.cpp in Sources */,
+				A86B40F61381989000AD541B /* Logging.cpp in Sources */,
+				A86B40F71381989000AD541B /* preference_dialogs.cpp in Sources */,
+				A86B40F81381989000AD541B /* PlayerName.cpp in Sources */,
+				A86B40F91381989000AD541B /* game_errors.cpp in Sources */,
+				A86B40FA1381989000AD541B /* interface.cpp in Sources */,
+				A86B40FB1381989000AD541B /* preferences.cpp in Sources */,
+				A86B40FC1381989000AD541B /* Scenario.cpp in Sources */,
+				A86B40FD1381989000AD541B /* shared_widgets.cpp in Sources */,
+				A86B40FE1381989000AD541B /* vbl.cpp in Sources */,
+				A86B40FF1381989000AD541B /* thread_priority_sdl_macosx.cpp in Sources */,
+				A86B41001381989000AD541B /* SdlMetaserverClientUi.cpp in Sources */,
+				A86B41011381989000AD541B /* metaserver_dialogs.cpp in Sources */,
+				A86B41021381989000AD541B /* metaserver_messages.cpp in Sources */,
+				A86B41031381989000AD541B /* network_metaserver.cpp in Sources */,
+				A86B41041381989000AD541B /* ConnectPool.cpp in Sources */,
+				A86B41051381989000AD541B /* NetworkGameProtocol.cpp in Sources */,
+				A86B41061381989000AD541B /* RingGameProtocol.cpp in Sources */,
+				A86B41071381989000AD541B /* SDL_netx.cpp in Sources */,
+				A86B41081381989000AD541B /* SSLP_limited.cpp in Sources */,
+				A86B41091381989000AD541B /* StarGameProtocol.cpp in Sources */,
+				A86B410A1381989000AD541B /* network.cpp in Sources */,
+				A86B410B1381989000AD541B /* network_capabilities.cpp in Sources */,
+				A86B410C1381989000AD541B /* network_data_formats.cpp in Sources */,
+				A86B410D1381989000AD541B /* network_dialog_widgets_sdl.cpp in Sources */,
+				A86B410E1381989000AD541B /* network_dialogs.cpp in Sources */,
+				A86B410F1381989000AD541B /* network_games.cpp in Sources */,
+				A86B41101381989000AD541B /* network_lookup_sdl.cpp in Sources */,
+				A86B41111381989000AD541B /* network_messages.cpp in Sources */,
+				A86B41121381989000AD541B /* network_microphone_shared.cpp in Sources */,
+				A86B41131381989000AD541B /* network_speaker_sdl.cpp in Sources */,
+				A86B41141381989000AD541B /* network_speaker_shared.cpp in Sources */,
+				A86B41151381989000AD541B /* network_speex.cpp in Sources */,
+				A86B41161381989000AD541B /* network_star_hub.cpp in Sources */,
+				A86B41171381989000AD541B /* network_star_spoke.cpp in Sources */,
+				A86B41181381989000AD541B /* network_udp.cpp in Sources */,
+				A86B41191381989000AD541B /* Update.cpp in Sources */,
+				A86B411A1381989000AD541B /* XML_Loader_SDL.cpp in Sources */,
+				A86B411B1381989000AD541B /* ColorParser.cpp in Sources */,
+				A86B411C1381989000AD541B /* DamageParser.cpp in Sources */,
+				A86B411D1381989000AD541B /* Plugins.cpp in Sources */,
+				A86B411E1381989000AD541B /* ShapesParser.cpp in Sources */,
+				A86B411F1381989000AD541B /* XML_Configure.cpp in Sources */,
+				A86B41201381989000AD541B /* XML_DataBlock.cpp in Sources */,
+				A86B41211381989000AD541B /* XML_ElementParser.cpp in Sources */,
+				A86B41221381989000AD541B /* XML_LevelScript.cpp in Sources */,
+				A86B41231381989000AD541B /* XML_MakeRoot.cpp in Sources */,
+				A86B41241381989000AD541B /* ReplacementSounds.cpp in Sources */,
+				A86B41251381989000AD541B /* BasicIFFDecoder.cpp in Sources */,
+				A86B41261381989000AD541B /* Decoder.cpp in Sources */,
+				A86B41271381989000AD541B /* MADDecoder.cpp in Sources */,
+				A86B41281381989000AD541B /* SndfileDecoder.cpp in Sources */,
+				A86B41291381989000AD541B /* VorbisDecoder.cpp in Sources */,
+				A86B412A1381989000AD541B /* Mixer.cpp in Sources */,
+				A86B412B1381989000AD541B /* Music.cpp in Sources */,
+				A86B412C1381989000AD541B /* SoundFile.cpp in Sources */,
+				A86B412D1381989000AD541B /* SoundManager.cpp in Sources */,
+				A86B412E1381989000AD541B /* IMG_savepng.c in Sources */,
+				A86B412F1381989000AD541B /* Shape_Blitter.cpp in Sources */,
+				A86B41301381989000AD541B /* Image_Blitter.cpp in Sources */,
+				A86B41311381989000AD541B /* HUDRenderer_Lua.cpp in Sources */,
+				A86B41321381989000AD541B /* OverheadMap_SDL.cpp in Sources */,
+				A86B41331381989000AD541B /* sdl_fonts.cpp in Sources */,
+				A86B41341381989000AD541B /* ChaseCam.cpp in Sources */,
+				A86B41351381989000AD541B /* computer_interface.cpp in Sources */,
+				A86B41361381989000AD541B /* fades.cpp in Sources */,
+				A86B41371381989000AD541B /* FontHandler.cpp in Sources */,
+				A86B41381381989000AD541B /* game_window.cpp in Sources */,
+				A86B41391381989000AD541B /* HUDRenderer.cpp in Sources */,
+				A86B413A1381989000AD541B /* HUDRenderer_OGL.cpp in Sources */,
+				A86B413B1381989000AD541B /* HUDRenderer_SW.cpp in Sources */,
+				A86B413C1381989000AD541B /* images.cpp in Sources */,
+				A86B413D1381989000AD541B /* motion_sensor.cpp in Sources */,
+				A86B413E1381989000AD541B /* OGL_Blitter.cpp in Sources */,
+				A86B413F1381989000AD541B /* OGL_LoadScreen.cpp in Sources */,
+				A86B41401381989000AD541B /* overhead_map.cpp in Sources */,
+				A86B41411381989000AD541B /* OverheadMap_OGL.cpp in Sources */,
+				A86B41421381989000AD541B /* OverheadMapRenderer.cpp in Sources */,
+				A86B41431381989000AD541B /* screen.cpp in Sources */,
+				A86B41441381989000AD541B /* screen_drawing.cpp in Sources */,
+				A86B41451381989000AD541B /* TextLayoutHelper.cpp in Sources */,
+				A86B41461381989000AD541B /* TextStrings.cpp in Sources */,
+				A86B41471381989000AD541B /* ViewControl.cpp in Sources */,
+				A86B41481381989000AD541B /* Rasterizer_Shader.cpp in Sources */,
+				A86B41491381989000AD541B /* RenderRasterize_Shader.cpp in Sources */,
+				A86B414A1381989000AD541B /* OGL_Shader.cpp in Sources */,
+				A86B414B1381989000AD541B /* ImageLoader_Shared.cpp in Sources */,
+				A86B414C1381989000AD541B /* Crosshairs_SDL.cpp in Sources */,
+				A86B414D1381989000AD541B /* ImageLoader_SDL.cpp in Sources */,
+				A86B414E1381989000AD541B /* AnimatedTextures.cpp in Sources */,
+				A86B414F1381989000AD541B /* OGL_Faders.cpp in Sources */,
+				A86B41501381989000AD541B /* OGL_Model_Def.cpp in Sources */,
+				A86B41511381989000AD541B /* OGL_Render.cpp in Sources */,
+				A86B41521381989000AD541B /* OGL_Setup.cpp in Sources */,
+				A86B41531381989000AD541B /* OGL_Subst_Texture_Def.cpp in Sources */,
+				A86B41541381989000AD541B /* OGL_Textures.cpp in Sources */,
+				A86B41551381989000AD541B /* render.cpp in Sources */,
+				A86B41561381989000AD541B /* RenderPlaceObjs.cpp in Sources */,
+				A86B41571381989000AD541B /* RenderRasterize.cpp in Sources */,
+				A86B41581381989000AD541B /* RenderSortPoly.cpp in Sources */,
+				A86B41591381989000AD541B /* RenderVisTree.cpp in Sources */,
+				A86B415A1381989000AD541B /* scottish_textures.cpp in Sources */,
+				A86B415B1381989000AD541B /* shapes.cpp in Sources */,
+				A86B415C1381989000AD541B /* SW_Texture_Extras.cpp in Sources */,
+				A86B415D1381989000AD541B /* textures.cpp in Sources */,
+				A86B415E1381989000AD541B /* joystick_sdl.cpp in Sources */,
+				A86B415F1381989000AD541B /* mouse_sdl.cpp in Sources */,
+				A86B41601381989000AD541B /* SDL_rwops_zzip.c in Sources */,
+				A86B41611381989000AD541B /* find_files_sdl.cpp in Sources */,
+				A86B41621381989000AD541B /* preprocess_map_sdl.cpp in Sources */,
+				A86B41631381989000AD541B /* resource_manager.cpp in Sources */,
+				A86B41641381989000AD541B /* wad_sdl.cpp in Sources */,
+				A86B41651381989000AD541B /* FileHandler.cpp in Sources */,
+				A86B41661381989000AD541B /* AStream.cpp in Sources */,
+				A86B41671381989000AD541B /* crc.cpp in Sources */,
+				A86B41681381989000AD541B /* filetypes_macintosh.cpp in Sources */,
+				A86B41691381989000AD541B /* game_wad.cpp in Sources */,
+				A86B416A1381989000AD541B /* import_definitions.cpp in Sources */,
+				A86B416B1381989000AD541B /* Packing.cpp in Sources */,
+				A86B416C1381989000AD541B /* preprocess_map_shared.cpp in Sources */,
+				A86B416D1381989000AD541B /* wad.cpp in Sources */,
+				A86B416E1381989000AD541B /* wad_prefs.cpp in Sources */,
+				A86B416F1381989000AD541B /* devices.cpp in Sources */,
+				A86B41701381989000AD541B /* dynamic_limits.cpp in Sources */,
+				A86B41711381989000AD541B /* effects.cpp in Sources */,
+				A86B41721381989000AD541B /* flood_map.cpp in Sources */,
+				A86B41731381989000AD541B /* lightsource.cpp in Sources */,
+				A86B41741381989000AD541B /* items.cpp in Sources */,
+				A86B41751381989000AD541B /* map.cpp in Sources */,
+				A86B41761381989000AD541B /* map_constructors.cpp in Sources */,
+				A86B41771381989000AD541B /* marathon2.cpp in Sources */,
+				A86B41781381989000AD541B /* media.cpp in Sources */,
+				A86B41791381989000AD541B /* monsters.cpp in Sources */,
+				A86B417A1381989000AD541B /* pathfinding.cpp in Sources */,
+				A86B417B1381989000AD541B /* physics.cpp in Sources */,
+				A86B417C1381989000AD541B /* placement.cpp in Sources */,
+				A86B417D1381989000AD541B /* platforms.cpp in Sources */,
+				A86B417E1381989000AD541B /* player.cpp in Sources */,
+				A86B417F1381989000AD541B /* projectiles.cpp in Sources */,
+				A86B41801381989000AD541B /* scenery.cpp in Sources */,
+				A86B41811381989000AD541B /* weapons.cpp in Sources */,
+				A86B41821381989000AD541B /* world.cpp in Sources */,
+				A86B41831381989000AD541B /* AlephOneHelper.mm in Sources */,
+				A86B41841381989000AD541B /* lua_hud_objects.cpp in Sources */,
+				A86B41851381989000AD541B /* lua_hud_script.cpp in Sources */,
+				A86B41861381989000AD541B /* lua_serialize.cpp in Sources */,
+				A86B41871381989000AD541B /* lua_map.cpp in Sources */,
+				A86B41881381989000AD541B /* lua_monsters.cpp in Sources */,
+				A86B41891381989000AD541B /* lua_objects.cpp in Sources */,
+				A86B418A1381989000AD541B /* lua_player.cpp in Sources */,
+				A86B418B1381989000AD541B /* lua_projectiles.cpp in Sources */,
+				A86B418C1381989000AD541B /* lapi.c in Sources */,
+				A86B418D1381989000AD541B /* lauxlib.c in Sources */,
+				A86B418E1381989000AD541B /* lbaselib.c in Sources */,
+				A86B418F1381989000AD541B /* lcode.c in Sources */,
+				A86B41901381989000AD541B /* ldblib.c in Sources */,
+				A86B41911381989000AD541B /* ldebug.c in Sources */,
+				A86B41921381989000AD541B /* ldo.c in Sources */,
+				A86B41931381989000AD541B /* ldump.c in Sources */,
+				A86B41941381989000AD541B /* lfunc.c in Sources */,
+				A86B41951381989000AD541B /* lgc.c in Sources */,
+				A86B41961381989000AD541B /* linit.c in Sources */,
+				A86B41971381989000AD541B /* liolib.c in Sources */,
+				A86B41981381989000AD541B /* llex.c in Sources */,
+				A86B41991381989000AD541B /* lmathlib.c in Sources */,
+				A86B419A1381989000AD541B /* lmem.c in Sources */,
+				A86B419B1381989000AD541B /* lobject.c in Sources */,
+				A86B419C1381989000AD541B /* lopcodes.c in Sources */,
+				A86B419D1381989000AD541B /* loslib.c in Sources */,
+				A86B419E1381989000AD541B /* lparser.c in Sources */,
+				A86B419F1381989000AD541B /* lstate.c in Sources */,
+				A86B41A01381989000AD541B /* lstring.c in Sources */,
+				A86B41A11381989000AD541B /* lstrlib.c in Sources */,
+				A86B41A21381989000AD541B /* ltable.c in Sources */,
+				A86B41A31381989000AD541B /* ltablib.c in Sources */,
+				A86B41A41381989000AD541B /* ltm.c in Sources */,
+				A86B41A51381989000AD541B /* lundump.c in Sources */,
+				A86B41A61381989000AD541B /* lvm.c in Sources */,
+				A86B41A71381989000AD541B /* lzio.c in Sources */,
+				A86B41A81381989000AD541B /* lua_script.cpp in Sources */,
+				A86B41A91381989000AD541B /* jumphack.c in Sources */,
+				A86B41AA1381989000AD541B /* SDL_uikitevents.m in Sources */,
+				A86B41AB1381989000AD541B /* SDL_uikitopengles.m in Sources */,
+				A86B41AC1381989000AD541B /* SDL_uikitopenglview.m in Sources */,
+				A86B41AD1381989000AD541B /* SDL_uikitvideo.m in Sources */,
+				A86B41AE1381989000AD541B /* SDL_uikitview.m in Sources */,
+				A86B41AF1381989000AD541B /* SDL_uikitwindow.m in Sources */,
+				A86B41B01381989000AD541B /* SDL_sysjoystick.m in Sources */,
+				A86B41B11381989000AD541B /* SDLUIAccelerationDelegate.m in Sources */,
+				A86B41B21381989000AD541B /* SDL_renderer_gles.c in Sources */,
+				A86B41B31381989000AD541B /* ASIAuthenticationDialog.m in Sources */,
+				A86B41B41381989000AD541B /* ASIFormDataRequest.m in Sources */,
+				A86B41B51381989000AD541B /* ASIHTTPRequest.m in Sources */,
+				A86B41B61381989000AD541B /* ASIInputStream.m in Sources */,
+				A86B41B71381989000AD541B /* ASINetworkQueue.m in Sources */,
+				A86B41B81381989000AD541B /* ASINSStringAdditions.m in Sources */,
+				A86B41B91381989000AD541B /* ioapi.c in Sources */,
+				A86B41BA1381989000AD541B /* mztools.c in Sources */,
+				A86B41BB1381989000AD541B /* unzip.c in Sources */,
+				A86B41BC1381989000AD541B /* zip.c in Sources */,
+				A86B41BD1381989000AD541B /* ZipArchive.mm in Sources */,
+				A86B41BE1381989000AD541B /* SDLnet.c in Sources */,
+				A86B41BF1381989000AD541B /* SDLnetselect.c in Sources */,
+				A86B41C01381989000AD541B /* SDLnetTCP.c in Sources */,
+				A86B41C11381989000AD541B /* SDLnetUDP.c in Sources */,
+				A86B41C21381989000AD541B /* IMG_bmp.c in Sources */,
+				A86B41C31381989000AD541B /* IMG_gif.c in Sources */,
+				A86B41C41381989000AD541B /* IMG_jpg.c in Sources */,
+				A86B41C51381989000AD541B /* IMG_lbm.c in Sources */,
+				A86B41C61381989000AD541B /* IMG_pcx.c in Sources */,
+				A86B41C71381989000AD541B /* IMG_png.c in Sources */,
+				A86B41C81381989000AD541B /* IMG_pnm.c in Sources */,
+				A86B41C91381989000AD541B /* IMG_tga.c in Sources */,
+				A86B41CA1381989000AD541B /* IMG_tif.c in Sources */,
+				A86B41CB1381989000AD541B /* IMG_xcf.c in Sources */,
+				A86B41CC1381989000AD541B /* IMG_xpm.c in Sources */,
+				A86B41CD1381989000AD541B /* IMG_xv.c in Sources */,
+				A86B41CE1381989000AD541B /* IMG_xxx.c in Sources */,
+				A86B41CF1381989000AD541B /* IMG.c in Sources */,
+				A86B41D01381989000AD541B /* dict.c in Sources */,
+				A86B41D11381989000AD541B /* error.c in Sources */,
+				A86B41D21381989000AD541B /* geom.c in Sources */,
+				A86B41D31381989000AD541B /* glue.c in Sources */,
+				A86B41D41381989000AD541B /* memalloc.c in Sources */,
+				A86B41D51381989000AD541B /* mesh.c in Sources */,
+				A86B41D61381989000AD541B /* normal.c in Sources */,
+				A86B41D71381989000AD541B /* priorityq.c in Sources */,
+				A86B41D81381989000AD541B /* project.c in Sources */,
+				A86B41D91381989000AD541B /* registry.c in Sources */,
+				A86B41DA1381989000AD541B /* render.c in Sources */,
+				A86B41DB1381989000AD541B /* sweep.c in Sources */,
+				A86B41DC1381989000AD541B /* tess.c in Sources */,
+				A86B41DD1381989000AD541B /* tessmono.c in Sources */,
+				A86B41DE1381989000AD541B /* GameViewController.mm in Sources */,
+				A86B41DF1381989000AD541B /* MovePadView.mm in Sources */,
+				A86B41E01381989000AD541B /* LookView.mm in Sources */,
+				A86B41E11381989000AD541B /* ButtonView.mm in Sources */,
+				A86B41E31381989000AD541B /* main.m in Sources */,
+				A86B41E41381989000AD541B /* SaveGame.xcdatamodeld in Sources */,
+				A86B41E51381989000AD541B /* ManagedObjects.m in Sources */,
+				A86B41E61381989000AD541B /* NewGameViewController.mm in Sources */,
+				A86B41E71381989000AD541B /* SaveGameViewController.mm in Sources */,
+				A86B41E81381989000AD541B /* AlephOneShell.cpp in Sources */,
+				A86B41E91381989000AD541B /* SavedGameCell.m in Sources */,
+				A86B41EA1381989000AD541B /* DownloadViewController.m in Sources */,
+				A86B41EB1381989000AD541B /* PDColoredProgressView.m in Sources */,
+				A86B41EC1381989000AD541B /* drawing.m in Sources */,
+				A86B41ED1381989000AD541B /* jcapimin.c in Sources */,
+				A86B41EE1381989000AD541B /* jcapistd.c in Sources */,
+				A86B41EF1381989000AD541B /* jccoefct.c in Sources */,
+				A86B41F01381989000AD541B /* jccolor.c in Sources */,
+				A86B41F11381989000AD541B /* jcdctmgr.c in Sources */,
+				A86B41F21381989000AD541B /* jchuff.c in Sources */,
+				A86B41F31381989000AD541B /* jcinit.c in Sources */,
+				A86B41F41381989000AD541B /* jcmainct.c in Sources */,
+				A86B41F51381989000AD541B /* jcmarker.c in Sources */,
+				A86B41F61381989000AD541B /* jcmaster.c in Sources */,
+				A86B41F71381989000AD541B /* jcomapi.c in Sources */,
+				A86B41F81381989000AD541B /* jcparam.c in Sources */,
+				A86B41F91381989000AD541B /* jcphuff.c in Sources */,
+				A86B41FA1381989000AD541B /* jcprepct.c in Sources */,
+				A86B41FB1381989000AD541B /* jcsample.c in Sources */,
+				A86B41FC1381989000AD541B /* jctrans.c in Sources */,
+				A86B41FD1381989000AD541B /* jdapimin.c in Sources */,
+				A86B41FE1381989000AD541B /* jdapistd.c in Sources */,
+				A86B41FF1381989000AD541B /* jdatadst.c in Sources */,
+				A86B42001381989000AD541B /* jdatasrc.c in Sources */,
+				A86B42011381989000AD541B /* jdcoefct.c in Sources */,
+				A86B42021381989000AD541B /* jdcolor.c in Sources */,
+				A86B42031381989000AD541B /* jddctmgr.c in Sources */,
+				A86B42041381989000AD541B /* jdhuff.c in Sources */,
+				A86B42051381989000AD541B /* jdinput.c in Sources */,
+				A86B42061381989000AD541B /* jdmainct.c in Sources */,
+				A86B42071381989000AD541B /* jdmarker.c in Sources */,
+				A86B42081381989000AD541B /* jdmaster.c in Sources */,
+				A86B42091381989000AD541B /* jdmerge.c in Sources */,
+				A86B420A1381989000AD541B /* jdphuff.c in Sources */,
+				A86B420B1381989000AD541B /* jdpostct.c in Sources */,
+				A86B420C1381989000AD541B /* jdsample.c in Sources */,
+				A86B420D1381989000AD541B /* jdtrans.c in Sources */,
+				A86B420E1381989000AD541B /* jerror.c in Sources */,
+				A86B420F1381989000AD541B /* jfdctflt.c in Sources */,
+				A86B42101381989000AD541B /* jfdctfst.c in Sources */,
+				A86B42111381989000AD541B /* jfdctint.c in Sources */,
+				A86B42121381989000AD541B /* jidctflt.c in Sources */,
+				A86B42131381989000AD541B /* jidctfst.c in Sources */,
+				A86B42141381989000AD541B /* jidctint.c in Sources */,
+				A86B42151381989000AD541B /* jidctred.c in Sources */,
+				A86B42161381989000AD541B /* jmemansi.c in Sources */,
+				A86B42171381989000AD541B /* jquant1.c in Sources */,
+				A86B42181381989000AD541B /* jquant2.c in Sources */,
+				A86B42191381989000AD541B /* jutils.c in Sources */,
+				A86B421A1381989000AD541B /* rdbmp.c in Sources */,
+				A86B421B1381989000AD541B /* rdcolmap.c in Sources */,
+				A86B421C1381989000AD541B /* rdgif.c in Sources */,
+				A86B421D1381989000AD541B /* rdppm.c in Sources */,
+				A86B421E1381989000AD541B /* rdrle.c in Sources */,
+				A86B421F1381989000AD541B /* rdswitch.c in Sources */,
+				A86B42201381989000AD541B /* rdtarga.c in Sources */,
+				A86B42211381989000AD541B /* transupp.c in Sources */,
+				A86B42221381989000AD541B /* wrbmp.c in Sources */,
+				A86B42231381989000AD541B /* wrgif.c in Sources */,
+				A86B42241381989000AD541B /* wrppm.c in Sources */,
+				A86B42251381989000AD541B /* wrrle.c in Sources */,
+				A86B42261381989000AD541B /* wrtarga.c in Sources */,
+				A86B42271381989000AD541B /* jmemmgr.c in Sources */,
+				A86B42281381989000AD541B /* ProgressViewController.mm in Sources */,
+				A86B42291381989000AD541B /* PreferencesViewController.mm in Sources */,
+				A86B422A1381989000AD541B /* PauseViewController.mm in Sources */,
+				A86B422B1381989000AD541B /* ImageLoader_iOS.cpp in Sources */,
+				A86B422C1381989000AD541B /* bitwise.c in Sources */,
+				A86B422D1381989000AD541B /* framing.c in Sources */,
+				A86B422E1381989000AD541B /* analysis.c in Sources */,
+				A86B422F1381989000AD541B /* bitrate.c in Sources */,
+				A86B42301381989000AD541B /* block.c in Sources */,
+				A86B42311381989000AD541B /* codebook.c in Sources */,
+				A86B42321381989000AD541B /* envelope.c in Sources */,
+				A86B42331381989000AD541B /* floor0.c in Sources */,
+				A86B42341381989000AD541B /* floor1.c in Sources */,
+				A86B42351381989000AD541B /* info.c in Sources */,
+				A86B42361381989000AD541B /* lookup.c in Sources */,
+				A86B42371381989000AD541B /* lpc.c in Sources */,
+				A86B42381381989000AD541B /* lsp.c in Sources */,
+				A86B42391381989000AD541B /* mapping0.c in Sources */,
+				A86B423A1381989000AD541B /* mdct.c in Sources */,
+				A86B423B1381989000AD541B /* psy.c in Sources */,
+				A86B423C1381989000AD541B /* registry.c in Sources */,
+				A86B423D1381989000AD541B /* res0.c in Sources */,
+				A86B423E1381989000AD541B /* sharedbook.c in Sources */,
+				A86B423F1381989000AD541B /* smallft.c in Sources */,
+				A86B42401381989000AD541B /* synthesis.c in Sources */,
+				A86B42411381989000AD541B /* vorbisfile.c in Sources */,
+				A86B42421381989000AD541B /* window.c in Sources */,
+				A86B42431381989000AD541B /* bit.c in Sources */,
+				A86B42441381989000AD541B /* decoder.c in Sources */,
+				A86B42451381989000AD541B /* fixed.c in Sources */,
+				A86B42461381989000AD541B /* frame.c in Sources */,
+				A86B42471381989000AD541B /* huffman.c in Sources */,
+				A86B42481381989000AD541B /* layer3.c in Sources */,
+				A86B42491381989000AD541B /* layer12.c in Sources */,
+				A86B424A1381989000AD541B /* stream.c in Sources */,
+				A86B424B1381989000AD541B /* synth.c in Sources */,
+				A86B424C1381989000AD541B /* timer.c in Sources */,
+				A86B424D1381989000AD541B /* version.c in Sources */,
+				A86B424E1381989000AD541B /* Reachability.m in Sources */,
+				A86B424F1381989000AD541B /* HelpViewController.mm in Sources */,
+				A86B42501381989000AD541B /* Effects.m in Sources */,
+				A86B42511381989000AD541B /* FilmViewController.mm in Sources */,
+				A86B42521381989000AD541B /* FilmCell.m in Sources */,
+				A86B42531381989000AD541B /* AlertPrompt.m in Sources */,
+				A86B42541381989000AD541B /* Appirater.m in Sources */,
+				A86B42551381989000AD541B /* Purchases.mm in Sources */,
+				A86B42561381989000AD541B /* PurchaseViewController.mm in Sources */,
+				A86B42571381989000AD541B /* RoundedView.m in Sources */,
+				A86B42581381989000AD541B /* Achievements.m in Sources */,
+				A86B42591381989000AD541B /* Statistics.m in Sources */,
+				A86B428F138198E400AD541B /* OrientationTestAppDelegate.mm in Sources */,
+				A86B4290138198E400AD541B /* RootViewController.mm in Sources */,
+				A8667FB913820F0F00C3FAF6 /* AlephOneAppDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5617,6 +6796,7 @@
 				A817C0161323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */,
+				A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6039,6 +7219,7 @@
 				A817C0151323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */,
+				A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6054,6 +7235,16 @@
 			isa = PBXTargetDependency;
 			name = "Generate Header Files";
 			targetProxy = A85E672D11CB173A00D0FAEF /* PBXContainerItemProxy */;
+		};
+		A86B40591381989000AD541B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = StaticLibiPhoneOS;
+			targetProxy = A86B405A1381989000AD541B /* PBXContainerItemProxy */;
+		};
+		A86B405B1381989000AD541B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Generate Header Files";
+			targetProxy = A86B405C1381989000AD541B /* PBXContainerItemProxy */;
 		};
 		A8811FE912C7816300A1A08E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6076,6 +7267,33 @@
 			targetProxy = A88121F112C7826300A1A08E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A86B427D138198E300AD541B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B427E138198E300AD541B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A86B427F138198E300AD541B /* OrientationMainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B4280138198E300AD541B /* en */,
+			);
+			name = OrientationMainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A86B4281138198E300AD541B /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B4282138198E300AD541B /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A85E685E11CB173A00D0FAEF /* Debug */ = {
@@ -6172,6 +7390,200 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		A86B42761381989000AD541B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/Classes/UrbanAirship/External\\\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					A1DEBUG,
+					"SCENARIO=2",
+					HAVE_MAD,
+					HAVE_VORBISFILE,
+					HAVE_LUA,
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+				);
+				GCC_THUMB_SUPPORT = YES;
+				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+				);
+				INFOPLIST_FILE = "Info Orientation.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "AlephOne:SDG 2 copy";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		A86B42771381989000AD541B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/Classes/UrbanAirship/External\\\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SCENARIO=2",
+					HAVE_MAD,
+					HAVE_VORBISFILE,
+					HAVE_LUA,
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+				);
+				INFOPLIST_FILE = "Info Orientation.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "AlephOne:SDG 2 copy";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A86B42781381989000AD541B /* AdHocDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/Classes/UrbanAirship/External\\\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SCENARIO=2",
+					HAVE_MAD,
+					HAVE_VORBISFILE,
+					HAVE_LUA,
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+				);
+				INFOPLIST_FILE = "Info Orientation.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "AlephOne:SDG 2 copy";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdHocDistribution;
+		};
+		A86B42791381989000AD541B /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/Classes/UrbanAirship/External\\\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SCENARIO=2",
+					HAVE_MAD,
+					HAVE_VORBISFILE,
+					HAVE_LUA,
+					HAVE_SDL_IMAGE_H,
+					HAVE_UNISTD_H,
+					SDL13,
+					SDL,
+				);
+				GCC_THUMB_SUPPORT = NO;
+				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+				);
+				INFOPLIST_FILE = "Info Orientation.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "AlephOne:SDG 2 copy";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
 		};
 		A88121E612C7816300A1A08E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -6790,6 +8202,17 @@
 				A85E685F11CB173A00D0FAEF /* Release */,
 				A8AE80CE11ED5BD5005DC183 /* AdHocDistribution */,
 				A8A689AA1310C61B0079FD7D /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A86B42751381989000AD541B /* Build configuration list for PBXNativeTarget "AlephOne:SDG 2 Orientation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86B42761381989000AD541B /* Debug */,
+				A86B42771381989000AD541B /* Release */,
+				A86B42781381989000AD541B /* AdHocDistribution */,
+				A86B42791381989000AD541B /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

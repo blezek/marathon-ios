@@ -319,6 +319,9 @@ set StandardTextures 0
 # if we are standard textures, make them 128x128 always
 if { $TextureSet == "StandardTextures" } {
   set TextureSize "128x128!"
+  if { $Scenario == "M2" } {
+    set TextureSize "256x256!"
+  }
   set SpecialSize $TextureSize
   puts "Limiting to $TextureSize because we are $TextureSet"
   set StandardTextures 1

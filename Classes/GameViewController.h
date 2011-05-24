@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SaveGameViewController.h"
+
 #import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
+
 #import "MovePadView.h"
 #import "ButtonView.h"
 #import "LookView.h"
-#include "FileHandler.h"
 #import "ManagedObjects.h"
 #import "ProgressViewController.h"
 #import "PreferencesViewController.h"
@@ -23,16 +24,6 @@
 #import "FilmViewController.h"
 #import "PurchaseViewController.h"
 #import "Statistics.h"
-
-// Useful functions
-extern bool save_game(void);
-extern "C" void setOpenGLView ( SDL_uikitopenglview* view );
-
-// For cheats
-#include "game_window.h"
-extern void AddItemsToPlayer(short ItemType, short MaxNumber);
-extern void AddOneItemToPlayer(short ItemType, short MaxNumber);
-
 
 
 typedef enum {

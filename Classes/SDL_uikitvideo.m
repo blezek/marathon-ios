@@ -135,11 +135,11 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
         mode.format = SDL_PIXELFORMAT_ABGR8888;
       // DJB, swap these for landscape
 #if TARGET_IPHONE_SIMULATOR
-      mode.w = (int) rect.size.width;
-      mode.h = (int) rect.size.height;
-#else
       mode.w = (int) rect.size.height;
       mode.h = (int) rect.size.width;
+#else
+      mode.w = (int) rect.size.width;
+      mode.h = (int) rect.size.height;
 #endif
         mode.refresh_rate = 0;
         mode.driverdata = NULL;
@@ -159,8 +159,8 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
       mode.w = (int) size.height;
       mode.h = (int) size.width;
 #else
-      mode.w = (int) size.width;
-      mode.h = (int) size.height;
+      mode.w = (int) size.height;
+      mode.h = (int) size.width;
 #endif
         mode.refresh_rate = 0;
         mode.driverdata = uimode;
