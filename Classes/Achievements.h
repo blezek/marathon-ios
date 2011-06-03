@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "GameViewController.h"
 
 #define Achievement_Marathon @"marathon"
 #define kSScore @"score"

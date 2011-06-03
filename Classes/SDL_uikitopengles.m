@@ -113,7 +113,12 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   view = getOpenGLView();
   if ( view == nil ) {
      /* construct our view, passing in SDL's OpenGL configuration data */
-    view = [[SDL_uikitopenglview alloc] initWithFrame: [uiwindow bounds] \
+    // DJB: We are rotated, so the bounds have to switch
+    CGRect bounds = [uiwindow bounds];
+    CGFloat tmp = bounds.size.width;
+    bounds.size.width = bounds.size.height;
+    bounds.size.height = tmp;
+    view = [[SDL_uikitopenglview alloc] initWithFrame: bounds \
 									retainBacking: _this->gl_config.retained_backing \
 									rBits: _this->gl_config.red_size \
 									gBits: _this->gl_config.green_size \

@@ -408,7 +408,7 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
 		/* send moved event */
     // DJB  Need to swap x and y because of the rotated OpenGL context
 		// SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
-    SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
+    SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
 		
 		/* send mouse down event */
 		SDL_SendMouseButton(i, SDL_PRESSED, SDL_BUTTON_LEFT);

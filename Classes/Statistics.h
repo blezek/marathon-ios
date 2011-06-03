@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AlephOneAppDelegate.h"
 
+extern float DifficultMultiplier[];
+
 @interface Statistics : NSObject {
   NSMutableDictionary *stats;
   NSArray *index;
@@ -25,6 +27,11 @@
 - (void)uploadStats;
 - (void)downloadStats;
 - (NSString*)difficultyToString:(int)difficulty;
+
+// Called when leaving a level
+- (void)reportAchievementsLeavingLevel:(int)completedLevel;
+// Called when saving a game
+- (void)reportAchievementsForSaveGame;
 
 @property (retain, nonatomic) NSMutableDictionary *stats;
 @property (retain, nonatomic) NSArray *index;

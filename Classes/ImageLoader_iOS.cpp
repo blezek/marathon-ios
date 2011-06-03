@@ -51,7 +51,7 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   } else {
     return false;
   }
-/*
+#if defined(A1DEBUG)
   if ( fn.find ( "SpriteTextures" ) != std::string::npos ) {
     // printf ( "Loading Sprite Textures!!!!: %s\n", File.GetPath() );
   }
@@ -61,7 +61,7 @@ bool ImageDescriptor::LoadPVTCFromFile ( FileSpecifier& File ) {
   if ( fn.find ( "TTEP" ) != std::string::npos ) {
     printf ( "Loading TTEP Textures!!!!: %s\n", File.GetPath() );
   }
-*/  
+#endif
   OpenedFile pvtcFile;
   if (!File.Open(pvtcFile)) {
     return false;

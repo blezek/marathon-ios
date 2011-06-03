@@ -66,6 +66,7 @@
 @property (nonatomic, retain) NSNumber *numberOfDeaths;
 @property (nonatomic, retain) NSNumber *aliensLeftAlive;
 @property (nonatomic, retain) NSNumber *bobsLeftAlive;
+@property (nonatomic, retain) NSNumber *score;
 
 
 @end

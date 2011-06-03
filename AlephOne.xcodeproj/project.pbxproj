@@ -378,6 +378,12 @@
 		A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */ = {isa = PBXBuildFile; fileRef = A874B1BC1318AA68009C4A92 /* MenuItem-Store.png */; };
 		A87785561270767C009F18D8 /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
 		A87785571270767C009F18D8 /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
+		A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A86B4289138198E300AD541B /* RootViewController.mm */; };
+		A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
+		A878204C138ACF2600EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
+		A878204D138ACF2700EA92D5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86B4281138198E300AD541B /* RootViewController.xib */; };
 		A87C9A83132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
 		A87C9A84132F05AF009FBB37 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7F132F05AF009FBB37 /* about.png */; };
 		A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
@@ -1395,8 +1401,8 @@
 		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
 		A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
-		A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
-		A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
+		A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A88DBF5312640A7800FCC652 /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC112640A7800FCC652 /* jcapimin.c */; };
 		A88DBF5412640A7800FCC652 /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC212640A7800FCC652 /* jcapistd.c */; };
 		A88DBF5512640A7800FCC652 /* jccoefct.c in Sources */ = {isa = PBXBuildFile; fileRef = A88DBEC312640A7800FCC652 /* jccoefct.c */; };
@@ -1545,7 +1551,7 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
-		A8C4B6F912EFCD0400D5D23F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
+		A8C4B6F912EFCD0400D5D23F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -1572,7 +1578,7 @@
 		A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
-		A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; };
+		A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
@@ -1601,9 +1607,6 @@
 		A8FF817D130F6FE800A874F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
 		A8FF817F130F6FED00A874F8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
-		A8FF8556130F7A4300A874F8 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8FF8555130F7A4300A874F8 /* AirshipConfig.plist */; };
-		A8FF8557130F7A4B00A874F8 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8FF853A130F798B00A874F8 /* AirshipConfig.plist */; };
-		A8FF8558130F7A5000A874F8 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8FF853C130F798B00A874F8 /* AirshipConfig.plist */; };
 		A8FF85C51310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 		A8FF85C61310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 		A8FF85C71310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
@@ -1675,6 +1678,7 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlephOne_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A80AD37B1382E9C600D456DC /* Info Orientation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Orientation.plist"; sourceTree = "<group>"; };
 		A80E9E621280F729005371AB /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bit.h; path = "Libraries/libmad-0.15.1b/bit.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E641280F729005371AB /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = "Libraries/libmad-0.15.1b/decoder.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E651280F729005371AB /* fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixed.h; path = "Libraries/libmad-0.15.1b/fixed.h"; sourceTree = SOURCE_ROOT; };
@@ -1892,6 +1896,16 @@
 		A86676D913135EA900BE2654 /* M1A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M1A1; path = ../CompiledScenarios/M1A1; sourceTree = SOURCE_ROOT; };
 		A8667C4513135EC800BE2654 /* M2A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M2A1; path = ../CompiledScenarios/M2A1; sourceTree = SOURCE_ROOT; };
 		A866863213135EE900BE2654 /* M3A1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = M3A1; path = ../CompiledScenarios/M3A1; sourceTree = SOURCE_ROOT; };
+		A86B427E138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A86B4280138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OrientationMainWindow.xib; sourceTree = "<group>"; };
+		A86B4282138198E300AD541B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		A86B4283138198E300AD541B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A86B4284138198E300AD541B /* OrientationTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OrientationTest-Info.plist"; sourceTree = "<group>"; };
+		A86B4285138198E300AD541B /* OrientationTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrientationTest-Prefix.pch"; sourceTree = "<group>"; };
+		A86B4286138198E300AD541B /* OrientationTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationTestAppDelegate.h; sourceTree = "<group>"; };
+		A86B4287138198E300AD541B /* OrientationTestAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OrientationTestAppDelegate.mm; sourceTree = "<group>"; };
+		A86B4288138198E300AD541B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A86B4289138198E300AD541B /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		A874B19E1318A8C5009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1A01318A8D2009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1A21318A8DF009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -2626,9 +2640,6 @@
 		A8F2382E12EB729B00CBC83D /* zoom_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_in.png; path = Artwork/zoom_in.png; sourceTree = "<group>"; };
 		A8F2382F12EB729B00CBC83D /* zoom_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_out.png; path = Artwork/zoom_out.png; sourceTree = "<group>"; };
 		A8FEAB361290773200FA55E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		A8FF853A130F798B00A874F8 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = AirshipConfig.plist; sourceTree = "<group>"; };
-		A8FF853C130F798B00A874F8 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = AirshipConfig.plist; sourceTree = "<group>"; };
-		A8FF8555130F7A4300A874F8 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		A8FF85C31310AF4500A874F8 /* Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Purchases.h; path = Classes/Purchases.h; sourceTree = "<group>"; };
 		A8FF85C41310AF4500A874F8 /* Purchases.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Purchases.mm; path = Classes/Purchases.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2769,6 +2780,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A86B427C138198E300AD541B /* OrientationTest */,
 				A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
@@ -2824,6 +2836,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
+				A80AD37B1382E9C600D456DC /* Info Orientation.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3168,6 +3181,23 @@
 				A85E688311CB18FD00D0FAEF /* pngwutil.c */,
 			);
 			name = png;
+			sourceTree = "<group>";
+		};
+		A86B427C138198E300AD541B /* OrientationTest */ = {
+			isa = PBXGroup;
+			children = (
+				A86B427D138198E300AD541B /* InfoPlist.strings */,
+				A86B427F138198E300AD541B /* OrientationMainWindow.xib */,
+				A86B4281138198E300AD541B /* RootViewController.xib */,
+				A86B4283138198E300AD541B /* main.m */,
+				A86B4284138198E300AD541B /* OrientationTest-Info.plist */,
+				A86B4285138198E300AD541B /* OrientationTest-Prefix.pch */,
+				A86B4286138198E300AD541B /* OrientationTestAppDelegate.h */,
+				A86B4287138198E300AD541B /* OrientationTestAppDelegate.mm */,
+				A86B4288138198E300AD541B /* RootViewController.h */,
+				A86B4289138198E300AD541B /* RootViewController.mm */,
+			);
+			path = OrientationTest;
 			sourceTree = "<group>";
 		};
 		A874B1B71318AA68009C4A92 /* MenuItems */ = {
@@ -4322,7 +4352,6 @@
 				A8D66F4A131766DB009801EC /* GenericBackground.png */,
 				A8D66F4B131766DB009801EC /* SplashScreen.png */,
 				A86676D913135EA900BE2654 /* M1A1 */,
-				A8FF8555130F7A4300A874F8 /* AirshipConfig.plist */,
 			);
 			name = M1;
 			path = Resources/M1;
@@ -4340,7 +4369,6 @@
 				A8D66F53131766E9009801EC /* GenericBackground.png */,
 				A8D66F54131766E9009801EC /* SplashScreen.png */,
 				A8667C4513135EC800BE2654 /* M2A1 */,
-				A8FF853A130F798B00A874F8 /* AirshipConfig.plist */,
 			);
 			name = M2;
 			path = Resources/M2;
@@ -4358,7 +4386,6 @@
 				A8D66F5B131766F7009801EC /* GenericBackground.png */,
 				A8D66F5C131766F7009801EC /* SplashScreen.png */,
 				A866863213135EE900BE2654 /* M3A1 */,
-				A8FF853C130F798B00A874F8 /* AirshipConfig.plist */,
 			);
 			name = M3;
 			path = Resources/M3;
@@ -4441,6 +4468,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -4553,7 +4581,6 @@
 				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383412EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383512EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8FF8556130F7A4300A874F8 /* AirshipConfig.plist in Resources */,
 				A8667C4413135EB700BE2654 /* M1A1 in Resources */,
 				A8D66F4D131766DB009801EC /* alephone-icon-ipad.png in Resources */,
 				A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */,
@@ -4572,6 +4599,7 @@
 				A817C0111323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A83132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A84132F05AF009FBB37 /* about.png in Resources */,
+				A878204C138ACF2600EA92D5 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4651,7 +4679,6 @@
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383212EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383312EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8FF8557130F7A4B00A874F8 /* AirshipConfig.plist in Resources */,
 				A866863113135EDA00BE2654 /* M2A1 in Resources */,
 				A8D66F55131766E9009801EC /* alephone2-icon-512px.png in Resources */,
 				A8D66F56131766E9009801EC /* alephone2-icon-ipad.png in Resources */,
@@ -4671,6 +4698,7 @@
 				A817C00E1323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A8D132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A8E132F05AF009FBB37 /* about.png in Resources */,
+				A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4750,7 +4778,6 @@
 				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
 				A8F2383012EB729B00CBC83D /* zoom_in.png in Resources */,
 				A8F2383112EB729B00CBC83D /* zoom_out.png in Resources */,
-				A8FF8558130F7A5000A874F8 /* AirshipConfig.plist in Resources */,
 				A866937413135F0800BE2654 /* M3A1 in Resources */,
 				A8D66F5D131766F7009801EC /* alephoneinfinity-icon-512px.png in Resources */,
 				A8D66F5E131766F7009801EC /* alephoneinfinity-icon-ipad.png in Resources */,
@@ -4770,6 +4797,7 @@
 				A817C00B1323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A89132F05AF009FBB37 /* about.png in Resources */,
+				A878204D138ACF2700EA92D5 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5195,6 +5223,7 @@
 				A817C0141323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */,
+				A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5617,6 +5646,7 @@
 				A817C0161323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */,
+				A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6039,6 +6069,7 @@
 				A817C0151323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */,
+				A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6076,6 +6107,33 @@
 			targetProxy = A88121F112C7826300A1A08E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A86B427D138198E300AD541B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B427E138198E300AD541B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A86B427F138198E300AD541B /* OrientationMainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B4280138198E300AD541B /* en */,
+			);
+			name = OrientationMainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A86B4281138198E300AD541B /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86B4282138198E300AD541B /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A85E685E11CB173A00D0FAEF /* Debug */ = {
@@ -6115,7 +6173,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6162,7 +6220,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6209,7 +6267,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 2.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
@@ -6258,7 +6316,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 2.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6306,7 +6364,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 2.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6355,7 +6413,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6401,7 +6459,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6447,7 +6505,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6528,7 +6586,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0DC15E3E-1F88-4466-B805-23A616D38FE0";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6574,7 +6632,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 2.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6622,7 +6680,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6703,7 +6761,7 @@
 					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

@@ -49,6 +49,7 @@
 @dynamic numberOfDeaths;
 @dynamic aliensLeftAlive;
 @dynamic bobsLeftAlive;
+@dynamic score;
 @end
 
 @implementation Film

@@ -1008,21 +1008,21 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
 #endif
 
   // Do OpenGL bounding
-  // glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
+  glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
   // DJB OpenGL Landscape
-  glViewport(RectBounds[1], RectBounds[0], RectBounds[3], RectBounds[2]);
+  // glViewport(RectBounds[1], RectBounds[0], RectBounds[3], RectBounds[2]);
 
   // Create the screen -> clip (fundamental) matrix; this will be needed
   // for all the other projections
   glMatrixMode(GL_PROJECTION);
   // DJB OpenGL Landscape
   glLoadIdentity();
-  // glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
+  glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
   
   // See if this works... glViewport(0, 0, ScreenHeight(), ScreenWidth());
-  glOrthof(0, ViewHeight, ViewWidth, 0, -1, 1);
-  glRotatef ( 90, 0,0,1);
-  glTranslatef( 0,-ViewHeight,0);
+  // glOrthof(0, ViewHeight, ViewWidth, 0, -1, 1);
+  /// glRotatef ( 90, 0,0,1);
+  // glTranslatef( 0,-ViewHeight,0);
   
   glGetFloatv(GL_PROJECTION_MATRIX,Screen_2_Clip);
 

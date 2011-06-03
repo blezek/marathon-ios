@@ -1020,8 +1020,8 @@ void render_screen(short ticks_elapsed)
     if (!chat_input_mode) {
       update_fps_display(world_pixels);
     }
-    // DJB Always display FPS
-    displaying_fps = true;
+    // DJB Never display FPS
+    displaying_fps = false;
     update_fps_display(world_pixels);
     
     DisplayPosition(world_pixels);
