@@ -159,8 +159,8 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
       mode.w = (int) size.height;
       mode.h = (int) size.width;
 #else
-      mode.w = (int) size.height;
-      mode.h = (int) size.width;
+      mode.w = (int) size.width;
+      mode.h = (int) size.height;
 #endif
         mode.refresh_rate = 0;
         mode.driverdata = uimode;

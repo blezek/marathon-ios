@@ -1,4 +1,3 @@
-
 DEVELOPER = "iPhone Distribution: Daniel Blezek"
 BETADIR = ${PWD}/../BetaTestApps/
 BUILDDIR = ${PWD}/build/AdHocDistribution-iphoneos/
@@ -7,26 +6,28 @@ M1PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M1_Ad_Hoc.mobileprovision
 M2PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M2_Ad_Hoc.mobileprovision
 M3PROFILE = ${PWD}/ProvisioningProfiles/AlephOne_M3_Ad_Hoc.mobileprovision
 
+XB = /Developer4/usr/bin/xcodebuild
+
 DROPBOX_PUBLIC = ${HOME}/Documents/Dropbox/Public
 
 all: release debug adhoc ipa
 
 clean:
-	xcodebuild -alltargets -configuration Release clean
-	xcodebuild -alltargets -configuration Debug clean
-	xcodebuild -alltargets -configuration AdHocDistribution clean
+	${XB} -alltargets -configuration Release clean
+	${XB} -alltargets -configuration Debug clean
+	${XB} -alltargets -configuration AdHocDistribution clean
 
 release:
-	xcodebuild -alltargets -configuration Release -sdk iphoneos4.2
-	xcodebuild -alltargets -configuration Release -sdk iphonesimulator4.2
+	${XB} -alltargets -configuration Release -sdk iphoneos4.3
+	${XB} -alltargets -configuration Release -sdk iphonesimulator4.3
 
 debug:
-	xcodebuild -alltargets -configuration Debug -sdk iphoneos4.2
-	xcodebuild -alltargets -configuration Debug -sdk iphonesimulator4.2
+	${XB} -alltargets -configuration Debug -sdk iphoneos4.3
+	${XB} -alltargets -configuration Debug -sdk iphonesimulator4.3
 
 adhoc:
-	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphoneos4.2
-	xcodebuild -alltargets -configuration AdHocDistribution -sdk iphonesimulator4.2
+	${XB} -alltargets -configuration AdHocDistribution -sdk iphoneos4.3
+	${XB} -alltargets -configuration AdHocDistribution -sdk iphonesimulator4.3
 
 
 ipa: adhoc

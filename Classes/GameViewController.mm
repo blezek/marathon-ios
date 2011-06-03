@@ -1230,8 +1230,9 @@ _civilian_fusion_assimilated,
     self.zoomInButton.hidden = YES;
     self.zoomOutButton.hidden = YES;
   }
-  if ( get_game_state() == _display_main_menu && mode == MenuMode ) {
+  if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
     [self menuShowReplacementMenu];
+    mode = MenuMode;
   }
   if ( !inMainLoop ) {
     inMainLoop = YES;

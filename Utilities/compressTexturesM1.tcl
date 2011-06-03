@@ -307,7 +307,7 @@ set Weighting --channel-weighting-linear
 set BPP        --bits-per-pixel-4
 
 # Try a large size, but 2bpp
-set BPP        --bits-per-pixel-2
+# set BPP        --bits-per-pixel-2
 set TextureSize "512x512!"
 
 set IRTextureSize "256x256!"
@@ -319,13 +319,17 @@ set StandardTextures 0
 # if we are standard textures, make them 128x128 always
 if { $TextureSet == "StandardTextures" } {
   set TextureSize "128x128!"
+  set BPP        --bits-per-pixel-2
   if { $Scenario == "M2" } {
-    set TextureSize "256x256!"
+    # set TextureSize "256x256!"
   }
   set SpecialSize $TextureSize
-  puts "Limiting to $TextureSize because we are $TextureSet"
+  puts "Limiting to $TextureSize because we are $TextureSet (BPP are $BPP)"
   set StandardTextures 1
+} else {
+  puts "Textures are $TextureSize ($TextureSet) (BPP are $BPP)"
 }
+
 
 
 set SizeLimit 512
@@ -446,10 +450,10 @@ foreach collection [lsort [glob *]] {
       }
 
       if { $InfraVision } {
-        puts -nonewline "\[Vision\] "; flush stdout
         set R [lindex $Vision($collection) 0]
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
+        puts -nonewline "\[Vision ($R,$G,$B)\] "; flush stdout
 
         set VisionTempFile [file join $TopDir ${TextureSet}-$Scenario-PNG $collection $clut $base-IR.png]
         exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize $VisionTempFile
