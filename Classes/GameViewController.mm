@@ -16,6 +16,7 @@
 #import "Appirater.h"
 #import "Achievements.h"
 #include "FileHandler.h"
+#import "Tracking.h"
 
 extern float DifficultyMultiplier[];
 
@@ -232,6 +233,27 @@ BOOL StatsDownloaded = NO;
 #pragma mark -
 #pragma mark Game control
 
+- (void)closeEvent {
+  switch ( mode ) {
+    case MenuMode:
+      [Tracking trackPageview:@"/menu"];
+      break;
+    case CutSceneMode:
+      [Tracking trackPageview:@"/cutscene"];
+      break;
+    case AutoMapMode:
+      [Tracking trackPageview:@"/automap"];
+      break;
+    case DeadMode:
+      [Tracking trackPageview:@"/dead"];
+      break;
+    case GameMode:
+    default:
+      [Tracking trackPageview:@"/game"];
+      break;
+  }
+}
+
 - (IBAction)quitPressed {
   rateGame = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
                                                message:@"Quit? Like you have something better to do!  Why not rate the app instead?"
@@ -256,6 +278,7 @@ BOOL StatsDownloaded = NO;
   // Set the preferences, and kick off a new game if needed
   // Bring up the preferences
   // TODO -- nice animation!
+  [Tracking trackPageview:@"/new"];
   [self.newGameViewController appear];
   self.newGameView.hidden = NO;
   self.currentSavedGame = nil;
@@ -290,6 +313,7 @@ BOOL StatsDownloaded = NO;
   if ( dynamic_world->current_level_number == 0 ) {
     showControlsOverview = YES;
   }
+  [Tracking trackPageview:[NSString stringWithFormat:@"/new/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]];
   [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
@@ -298,6 +322,7 @@ BOOL StatsDownloaded = NO;
 }
 
 - (IBAction)cancelNewGame {
+  [self closeEvent];
   [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
   [self.newGameViewController disappear];
 }
@@ -312,6 +337,7 @@ BOOL StatsDownloaded = NO;
   self.hud.hidden = YES;
   self.menuView.hidden = NO;
   mode = MenuMode;
+  [self closeEvent];
 }
 
 - (void)epilog {
@@ -320,6 +346,7 @@ BOOL StatsDownloaded = NO;
 }
 
 - (void)playerKilled {
+  [Tracking trackEvent:@"player" action:@"death" label:@"" value:0];
   mode = DeadMode;
   self.hud.alpha = 1.0;
   self.restartView.alpha = 0.0;
@@ -529,6 +556,7 @@ BOOL StatsDownloaded = NO;
 #pragma mark -
 #pragma mark Pause actions
 - (IBAction) resume:(id)sender {
+  [self closeEvent];
   self.pauseView.hidden = YES;
   [self pause:sender];
 }
@@ -539,10 +567,12 @@ BOOL StatsDownloaded = NO;
   self.hud.hidden = YES;
   self.menuView.hidden = NO;
   mode = MenuMode;
+  [self closeEvent];
   set_game_state(_close_game);
 }
 
 - (IBAction) gotoPreferences:(id)sender {
+  [Tracking trackPageview:@"/settings"];
   [self.preferencesViewController setupUI:mode==MenuMode];
   self.preferencesView.hidden = NO;
   
@@ -553,16 +583,17 @@ BOOL StatsDownloaded = NO;
   }
 }
 - (IBAction) closePreferences:(id)sender {
-
   CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.preferencesView.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }  
-  [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.3];
+  [self closeEvent];
 }
 
 - (IBAction) help:(id)sender {
+  [Tracking trackPageview:@"/help"];
   [self.helpViewController setupUI];
   self.helpView.hidden = NO;
   self.helpView.alpha = 0.0;
@@ -573,6 +604,7 @@ BOOL StatsDownloaded = NO;
   
 }
 - (IBAction) closeHelp:(id)sender {
+  [self closeEvent];
   self.helpView.alpha = 1.0;
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:0.5];
@@ -610,6 +642,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
+  [Tracking trackPageview:@"/load"];
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
@@ -623,11 +656,13 @@ extern bool load_and_start_game(FileSpecifier& File);
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
+  [Tracking trackPageview:[NSString stringWithFormat:@"/load/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]]; 
   MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
   
 }
 
 - (IBAction) chooseSaveGameCanceled {
+  [self closeEvent];
   [self.saveGameViewController disappear];
   [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
@@ -638,7 +673,7 @@ extern SDL_Surface *draw_surface;
   if ( self.currentSavedGame == nil ) {
     self.currentSavedGame = [self.saveGameViewController createNewGameFile];
   }
-  
+  [Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
   // See if we can generate an overhead view
   struct overhead_map_data overhead_data;
   int MapSize = 196;
@@ -752,7 +787,7 @@ extern SDL_Surface *draw_surface;
 #pragma mark Film Methods
 extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)chooseFilm {
-  
+  [Tracking trackPageview:@"/film"];
   if ( [self.filmViewController numberOfSavedFilms] == 0 ) {
     // Pop something up
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No saved films"
@@ -780,9 +815,11 @@ extern bool handle_open_replay(FileSpecifier& File);
   FileSpecifier FileToLoad ( (char*)[film.filename UTF8String] );
   // load_and_start_game(FileToLoad);
   handle_open_replay(FileToLoad);  
+  [Tracking trackPageview:@"/film/load"];
 }
 
 - (IBAction) chooseFilmCanceled {
+  [self closeEvent];
   [self.filmViewController disappear];
   [self.filmView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
@@ -819,7 +856,9 @@ extern bool handle_open_replay(FileSpecifier& File);
       // User hit cancel, so start the game...
       showingHelpBeforeFirstGame = NO;
       [self performSelector:@selector(beginGame) withObject:nil afterDelay:0.0];
+      [Tracking trackEvent:@"player" action:@"firsthelp" label:@"no" value:0];
     } else {
+      [Tracking trackEvent:@"player" action:@"firsthelp" label:@"yes" value:0];
       [self help:self];
     }
     return;
@@ -865,6 +904,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (IBAction)menuStore {
   MLog ( @"Goto store" );
+  [Tracking trackPageview:@"/store"];
   // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
   //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
   /*
@@ -879,11 +919,13 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseViewController appear];
 }
 - (IBAction)cancelStore {
+  [self closeEvent];
   [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
   [self.purchaseViewController disappear];
 }
 
 - (IBAction)menuAbout {
+  [Tracking trackPageview:@"/about"];
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.aboutView.subviews ) {
     [v.layer removeAllAnimations];
@@ -893,6 +935,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)cancelAbout {
+  [self closeEvent];
   CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.aboutView.subviews ) {
     [v.layer removeAllAnimations];
@@ -959,7 +1002,9 @@ extern bool handle_open_replay(FileSpecifier& File);
   if ( isPaused ) {
     self.pauseView.hidden = YES;
     resume_game();
+    [self closeEvent];
   } else {
+    [Tracking trackPageview:@"/pause"];
     pause_game();
     self.pauseView.hidden = NO;
     [self.pauseViewController setup];
@@ -977,6 +1022,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (void) gameFinished {
   // Need to do much more than this...
   [Achievements reportAchievement:Achievement_Marathon progress:100.0];
+  [Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
 }
 
 - (void)zeroStats {
@@ -1086,6 +1132,7 @@ _civilian_fusion_assimilated,
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
+  [Tracking trackEvent:@"player" action:@"cheat" label:@"shield" value:dynamic_world->current_level_number];
   local_player->suit_energy= MAX(local_player->suit_energy, 3*PLAYER_MAXIMUM_SUIT_ENERGY);
   local_player->suit_oxygen = MAX ( local_player->suit_oxygen, PLAYER_MAXIMUM_SUIT_OXYGEN );
   mark_shield_display_as_dirty();  
@@ -1093,12 +1140,15 @@ _civilian_fusion_assimilated,
 }
 
 - (IBAction)invincibilityCheat:(id)sender {
+  [Tracking trackEvent:@"player" action:@"cheat" label:@"invincibility" value:dynamic_world->current_level_number];
   process_player_powerup(local_player_index, _i_invincibility_powerup);
   // process_player_powerup(local_player_index, _i_infravision_powerup );
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
 }
 
 - (IBAction)saveCheat:(id)sender {
+  [Tracking trackEvent:@"player" action:@"cheat" label:@"save" value:dynamic_world->current_level_number];
+
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   MLog ( @"Damage given %d (%d kills) Damage taken %d (%d kills)",
         local_player->monster_damage_given.damage,
@@ -1111,6 +1161,8 @@ _civilian_fusion_assimilated,
 }
 
 - (IBAction)ammoCheat:(id)sender {
+  [Tracking trackEvent:@"player" action:@"cheat" label:@"ammo" value:dynamic_world->current_level_number];
+
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
   { 
@@ -1140,6 +1192,8 @@ _civilian_fusion_assimilated,
   
 }
 - (IBAction)weaponsCheat:(id)sender {
+  [Tracking trackEvent:@"player" action:@"cheat" label:@"weapons" value:dynamic_world->current_level_number];
+
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
   {
@@ -1266,22 +1320,27 @@ _civilian_fusion_assimilated,
 - (IBAction)changeInventory {
   PlayInterfaceButtonSound(Sound_ButtonSuccess());
   scroll_inventory(-1);
+  [Tracking trackEvent:@"player" action:@"inventory" label:@"" value:0];
 }
 
 - (IBAction)zoomMapIn {
   if (zoom_overhead_map_in()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
+    [Tracking trackEvent:@"player" action:@"zoomin" label:@"success" value:0];
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());
+    [Tracking trackEvent:@"player" action:@"zoomin" label:@"failure" value:0];
   }
 }  
 - (IBAction)zoomMapOut {
   if (zoom_overhead_map_out()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
+    [Tracking trackEvent:@"player" action:@"zoomout" label:@"success" value:0];
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());
+    [Tracking trackEvent:@"player" action:@"zoomout" label:@"failure" value:0];
   }
 }  
 

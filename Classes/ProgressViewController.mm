@@ -10,7 +10,7 @@
 #include "AlephOneHelper.h"
 #import "Prefs.h"
 #include <stdlib.h>
-
+#import "Tracking.h"
 
 @implementation ProgressViewController
 @synthesize progressView, mainView;
@@ -36,6 +36,7 @@
   
   // This is the first progress event
   if ( t == -1 ) {
+    [Tracking trackPageview:@"/progress"];
     self.vmmAd.hidden = YES;
     self.hdmAd.hidden = YES;
         
@@ -55,7 +56,8 @@
       int index = arc4random() % views.count;
       UIView *v = [views objectAtIndex:index];
       v.hidden = NO;
-    }
+      [Tracking trackPageview:[NSString stringWithFormat:@"/progress/%d", index]];
+    } 
   }
   
   self.progressView.progress = 0;

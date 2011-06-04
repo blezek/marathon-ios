@@ -9,6 +9,7 @@
 #import "HelpViewController.h"
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
+#import "Tracking.h"
 
 @implementation HelpViewController
 @synthesize scrollView, pageControl;
@@ -116,6 +117,7 @@
 }
 
 - (void)updateUI {
+  [Tracking trackPageview:[NSString stringWithFormat:@"/help/%d", pageControl.currentPage]];
   if ( pageControl.currentPage == 0 ) {
     self.leftButton.hidden = YES;
   } else {

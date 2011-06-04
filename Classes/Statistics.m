@@ -254,7 +254,7 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
   
 }
 
-- (NSString*)difficultyToString:(int)difficulty {
++ (NSString*)difficultyToString:(int)difficulty {
   switch ( difficulty ) {
     case _normal_level: return @"Normal";
     case _major_damage_level: return @"Hard";

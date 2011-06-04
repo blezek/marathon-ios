@@ -26,7 +26,7 @@ extern float DifficultMultiplier[];
 - (void)updateLifetimeStats:(int[])dammage withMultiplier:(float)multiplier forPrefix:(NSString*)prefix;
 - (void)uploadStats;
 - (void)downloadStats;
-- (NSString*)difficultyToString:(int)difficulty;
++ (NSString*)difficultyToString:(int)difficulty;
 
 // Called when leaving a level
 - (void)reportAchievementsLeavingLevel:(int)completedLevel;
