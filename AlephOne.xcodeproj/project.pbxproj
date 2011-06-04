@@ -1586,6 +1586,12 @@
 		A8DC998A123884B300317186 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9988123884B300317186 /* DownloadViewController.m */; };
 		A8DC998B123884B300317186 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9989123884B300317186 /* DownloadViewController.xib */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
+		A8EB5AD313987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
+		A8EB5AD413987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
+		A8EB5AD513987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
+		A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
+		A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
+		A8EB5ADC13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
 		A8EB682712DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682812DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682912DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
@@ -2624,6 +2630,10 @@
 		A8DC9987123884B300317186 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = Classes/DownloadViewController.h; sourceTree = "<group>"; };
 		A8DC9988123884B300317186 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = Classes/DownloadViewController.m; sourceTree = "<group>"; };
 		A8DC9989123884B300317186 /* DownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = Classes/DownloadViewController.xib; sourceTree = "<group>"; };
+		A8EB5AD113987E460090042E /* Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracking.h; path = Classes/Tracking.h; sourceTree = "<group>"; };
+		A8EB5AD213987E460090042E /* Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tracking.m; path = Classes/Tracking.m; sourceTree = "<group>"; };
+		A8EB5AD713987E720090042E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		A8EB5AD813987E720090042E /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		A8EB682512DC1413001D43EA /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
 		A8EB682612DC1413001D43EA /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
 		A8EB7796126697420043F0D4 /* pause-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-btn.png"; path = "Artwork/pause-btn.png"; sourceTree = "<group>"; };
@@ -2649,6 +2659,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
 				A85E684911CB173A00D0FAEF /* libSDLiPhoneOS.a in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
@@ -2697,6 +2708,7 @@
 				A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
 				A88121D512C7816300A1A08E /* Foundation.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
+				A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88121D912C7816300A1A08E /* libm.dylib in Frameworks */,
 				A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */,
@@ -2745,6 +2757,7 @@
 				A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */,
 				A8FF817F130F6FED00A874F8 /* OpenGLES.framework in Frameworks */,
 				A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */,
+				A8EB5ADC13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2754,6 +2767,7 @@
 		080E96DDFE201D6D7F000001 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB5AD613987E720090042E /* GoogleAnalytics */,
 				A8CCD13A1280CA7900A62339 /* MAD */,
 				A89240DA127FBB5400F0A2EE /* Vorbis */,
 				A8924095127FB7AC00F0A2EE /* Ogg */,
@@ -2983,6 +2997,8 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB5AD113987E460090042E /* Tracking.h */,
+				A8EB5AD213987E460090042E /* Tracking.m */,
 				A84CA788130E1F9800A3A4F4 /* Secrets.h */,
 				A8EB682512DC1413001D43EA /* Appirater.h */,
 				A8EB682612DC1413001D43EA /* Appirater.m */,
@@ -4339,6 +4355,16 @@
 			name = SDL_image;
 			sourceTree = "<group>";
 		};
+		A8EB5AD613987E720090042E /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				A8EB5AD713987E720090042E /* GANTracker.h */,
+				A8EB5AD813987E720090042E /* libGoogleAnalytics.a */,
+			);
+			name = GoogleAnalytics;
+			path = Libraries/GoogleAnalytics;
+			sourceTree = SOURCE_ROOT;
+		};
 		A8FF8537130F798B00A874F8 /* M1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5224,6 +5250,7 @@
 				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */,
 				A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */,
+				A8EB5AD313987E460090042E /* Tracking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5647,6 +5674,7 @@
 				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */,
 				A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */,
+				A8EB5AD413987E460090042E /* Tracking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6070,6 +6098,7 @@
 				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */,
 				A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */,
+				A8EB5AD513987E460090042E /* Tracking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6174,6 +6203,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6221,6 +6254,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6268,6 +6305,10 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
@@ -6307,7 +6348,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6317,6 +6358,10 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6355,7 +6400,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6365,6 +6410,10 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6414,6 +6463,10 @@
 				);
 				INFOPLIST_FILE = "Info 3.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6460,6 +6513,10 @@
 				);
 				INFOPLIST_FILE = "Info 3.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6496,7 +6553,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6506,6 +6563,10 @@
 				);
 				INFOPLIST_FILE = "Info 3.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6576,7 +6637,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${UrbanAirship}//**",
@@ -6587,6 +6648,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0DC15E3E-1F88-4466-B805-23A616D38FE0";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6623,7 +6688,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6633,6 +6698,10 @@
 				);
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6671,7 +6740,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SOURCE_ROOT}/../boost_1_43_0/",
@@ -6681,6 +6750,10 @@
 				);
 				INFOPLIST_FILE = "Info 3.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -6751,7 +6824,7 @@
 					SDL13,
 					SDL,
 				);
-				GCC_THUMB_SUPPORT = NO;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
 					"${UrbanAirship}//**",
@@ -6762,6 +6835,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

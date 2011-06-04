@@ -16,7 +16,6 @@
 static bool isAuthenticated = NO;
 static NSMutableDictionary *cachedAchievements = nil;
 static NSString *cachePath = nil;
-static NSTimer *timer = nil;
 
 @implementation Achievements
 
@@ -51,8 +50,7 @@ static NSTimer *timer = nil;
     }
     
   }];
-  timer = [NSTimer timerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
-
+  
 #endif
 }
 

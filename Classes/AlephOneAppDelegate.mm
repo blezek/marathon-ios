@@ -13,6 +13,7 @@
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
 #import "Achievements.h"
+#import "Tracking.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -99,6 +100,7 @@ extern int SDL_main(int argc, char *argv[]);
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
+                               @"YES", kUsageData,
                                @"NO", kHaveVidmasterMode,
                                @"YES", kUseVidmasterMode,
                                [NSNumber numberWithBool:YES], kFirstGame,
@@ -220,6 +222,10 @@ extern int SDL_main(int argc, char *argv[]);
   }
   [self.downloadViewController downloadOrchooseGame];
   [Appirater appLaunched:YES];
+  [Tracking startup];
+  [Tracking trackPageview:@"/startup"];
+  // Tracking and timer
+  [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
   return YES;
 }
 
@@ -249,11 +255,13 @@ extern int SDL_main(int argc, char *argv[]);
   // Pause sound
   // MLog ( @"Pause mixer" );
   // SoundManager::instance()->SetStatus ( false );
+  [Tracking trackPageview:@"/applicationWillResignActive"];
   [game pauseForBackground:self];
   [game stopAnimation];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+  [Tracking trackPageview:@"/applicationDidEnterBackground"];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
@@ -266,6 +274,7 @@ extern int SDL_main(int argc, char *argv[]);
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+  [Tracking trackPageview:@"/applicationWillEnterForeground"];
   [Appirater appEnteredForeground:YES];
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
@@ -277,6 +286,7 @@ extern int SDL_main(int argc, char *argv[]);
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+  [Tracking trackPageview:@"/applicationDidBecomeActive"];
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
@@ -315,7 +325,9 @@ extern int SDL_main(int argc, char *argv[]);
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
 - (void)applicationWillTerminate:(UIApplication *)application {
-    
+  [Tracking trackPageview:@"/applicationWillTerminate"];
+  [Tracking shutdown];
+
     NSError *error = nil;
     if (managedObjectContext_ != nil) {
         if ([managedObjectContext_ hasChanges] && ![managedObjectContext_ save:&error]) {
@@ -400,7 +412,9 @@ const char* argv[] = { "AlephOneHD" };
 #pragma mark Achievements
 
 - (void)uploadAchievements {
+  MLog(@"Tracking & Achievements");
   [Achievements uploadAchievements];
+  [Tracking dispatch];
 }
 
 #pragma mark -

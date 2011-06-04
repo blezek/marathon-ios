@@ -10,10 +10,10 @@
 #import "AlephOneAppDelegate.h"
 #include "preferences.h"
 #import "GameKit/GameKit.h"
-
+#import "Tracking.h"
 @implementation PreferencesViewController
 
-@synthesize tapShoots;
+@synthesize tapShoots, usageData;
 @synthesize secondTapShoots;
 @synthesize sfxVolume;
 @synthesize musicVolume;
@@ -30,18 +30,59 @@
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+  [defaults setBool:[self.usageData isOn] forKey:kUsageData];
+
   [defaults setBool:[self.tapShoots isOn] forKey:kTapShoots];
+  if ( [self.tapShoots isOn] != [defaults boolForKey:kTapShoots] ) {
+    [ Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isOn]];
+  }
   [defaults setBool:[self.crosshairs isOn] forKey:kCrosshairs];
+  if ( [self.crosshairs isOn] != [defaults boolForKey:kCrosshairs] ) {
+    [ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isOn]];
+  }
   [defaults setBool:[self.secondTapShoots isOn] forKey:kSecondTapShoots];
-  [defaults setFloat:self.sfxVolume.value forKey:kSfxVolume];
-  [defaults setFloat:self.musicVolume.value forKey:kMusicVolume];
-  [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
-  [defaults setFloat:self.brightness.value forKey:kGamma];
-  [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
-  [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
+  if ( [self.secondTapShoots isOn] != [defaults boolForKey:kSecondTapShoots] ) {
+    [ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isOn]];
+  }
   [defaults setBool:[self.autoCenter isOn] forKey:kAutocenter];
+  if ( [self.autoCenter isOn] != [defaults boolForKey:kAutocenter] ) {
+    [ Tracking trackEvent:@"settings" action:kAutocenter label:@"" value:[self.autoCenter isOn]];
+  }
   [defaults setBool:[self.vidmasterMode isOn] forKey:kUseVidmasterMode];
+  if ( [self.vidmasterMode isOn] != [defaults boolForKey:kUseVidmasterMode] ) {
+    [ Tracking trackEvent:@"settings" action:kUseVidmasterMode label:@"" value:[self.vidmasterMode isOn]];
+  }
   [defaults setBool:[self.hiresTextures isOn] forKey:kUseTTEP];
+  if ( [self.hiresTextures isOn] != [defaults boolForKey:kUseTTEP] ) {
+    [ Tracking trackEvent:@"settings" action:kUseTTEP label:@"" value:[self.hiresTextures isOn]];
+  }
+  
+  [defaults setFloat:self.sfxVolume.value forKey:kSfxVolume];
+  if ( self.sfxVolume.value != [defaults floatForKey:kSfxVolume] ) {
+    [ Tracking trackEvent:@"settings" action:kSfxVolume label:@"" value: self.sfxVolume.value ];
+  }
+  [defaults setFloat:self.musicVolume.value forKey:kMusicVolume];
+  if ( self.musicVolume.value != [defaults floatForKey:kMusicVolume] ) {
+    [ Tracking trackEvent:@"settings" action:kMusicVolume label:@"" value: self.musicVolume.value ];
+  }
+  [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
+  if ( self.hSensitivity.value != [defaults floatForKey:kHSensitivity] ) {
+    [ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
+  }
+  [defaults setFloat:self.brightness.value forKey:kGamma];
+  if ( self.brightness.value != [defaults floatForKey:kGamma] ) {
+    [ Tracking trackEvent:@"settings" action:kGamma label:@"" value: self.brightness.value ];
+  }
+  [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
+  if ( self.hSensitivity.value != [defaults floatForKey:kHSensitivity] ) {
+    [ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
+  }
+  [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
+  if ( self.vSensitivity.value != [defaults floatForKey:kVSensitivity] ) {
+    [ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
+  }
+  
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
@@ -53,6 +94,7 @@
 - (void)setupUI:(BOOL)inMainMenuFlag {
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  self.usageData.on = [defaults boolForKey:kUsageData];
   self.tapShoots.on = [defaults boolForKey:kTapShoots];
   self.crosshairs.on = [defaults boolForKey:kCrosshairs];
   self.autoCenter.on = [defaults boolForKey:kAutocenter];

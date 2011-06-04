@@ -10,6 +10,7 @@
 #import "GameViewController.h"
 #import "Secrets.h"
 #import "Effects.h"
+#import "Tracking.h"
 
 @implementation PurchaseViewController
 @synthesize activity;
@@ -144,6 +145,7 @@
 }  
 
 - (IBAction)restore:(id)sender {
+  [Tracking trackEvent:@"store" action:@"restore" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     MLog (@"Starting restore" );
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
@@ -151,6 +153,7 @@
 }
 
 - (IBAction)buyHDMode:(id)sender {
+  [Tracking trackEvent:@"store" action:@"hd" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:HDModeProductID];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
@@ -158,6 +161,7 @@
 }
       
 - (IBAction)buyVidmasterMode:(id)sender {
+  [Tracking trackEvent:@"store" action:@"mc" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:VidmasterModeProductID];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];

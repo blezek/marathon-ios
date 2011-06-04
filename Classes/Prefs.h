@@ -13,6 +13,7 @@
 #define kHSensitivity @"horizontalSensitivity"
 #define kVSensitivity @"verticalSensitivity"
 #define kTapShoots @"tapShoots"
+#define kUsageData @"usageData"
 #define kSecondTapShoots @"secondTapShoots"
 #define kEntryLevelNumber @"entryLevelNumber"
 #define kGamma @"gamma"

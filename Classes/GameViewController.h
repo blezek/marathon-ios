@@ -185,6 +185,7 @@ typedef enum {
 - (void)epilog;
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
+- (void)closeEvent;
 
 // Some actions inventory and map
 - (IBAction)changeInventory;
