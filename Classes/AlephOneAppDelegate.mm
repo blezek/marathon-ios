@@ -198,7 +198,7 @@ extern int SDL_main(int argc, char *argv[]);
   }
 
   NSError *setPreferenceError = nil;
-  NSTimeInterval preferredBufferDuration = 0.035;
+  NSTimeInterval preferredBufferDuration = 0.04;
   [[AVAudioSession sharedInstance] setPreferredIOBufferDuration: preferredBufferDuration
                                                           error: &setPreferenceError];
   if ( setPreferenceError ) {

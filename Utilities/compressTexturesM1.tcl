@@ -319,7 +319,6 @@ set StandardTextures 0
 # if we are standard textures, make them 128x128 always
 if { $TextureSet == "StandardTextures" } {
   set TextureSize "128x128!"
-  set BPP        --bits-per-pixel-2
   if { $Scenario == "M2" } {
     # set TextureSize "256x256!"
   }

@@ -17,6 +17,7 @@
 
 #define kNumImages 12
 
+BOOL Pages[kNumImages];
 
 - (IBAction)done {
   [self cleanupUI];
@@ -36,6 +37,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+  for ( int i = 0; i < kNumImages; i++ ) {
+    Pages[i] = NO;
+  }
   pageControlUsed = YES;
   [super viewDidLoad];
 }
@@ -117,7 +121,12 @@
 }
 
 - (void)updateUI {
-  [Tracking trackPageview:[NSString stringWithFormat:@"/help/%d", pageControl.currentPage]];
+  if ( Pages[pageControl.currentPage] == NO ) {
+    // Just send 1 tracking event...
+    Pages[pageControl.currentPage] = YES;
+    [Tracking trackPageview:[NSString stringWithFormat:@"/help/%d", pageControl.currentPage]];    
+  }
+  
   if ( pageControl.currentPage == 0 ) {
     self.leftButton.hidden = YES;
   } else {

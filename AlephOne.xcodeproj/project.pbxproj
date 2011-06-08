@@ -35,6 +35,9 @@
 		A817C0161323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
 		A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
 		A81A33081296255300BCEA0C /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
+		A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
+		A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
+		A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
@@ -1387,7 +1390,6 @@
 		A881258012C7B64900A1A08E /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A881257D12C7B64900A1A08E /* FilmCell.xib */; };
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
-		A883DC7012F5CEE60041543F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
 		A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -1395,7 +1397,6 @@
 		A883DC7512F5CEE60041543F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
-		A883DC7812F5CEFB0041543F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; };
 		A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
@@ -1551,7 +1552,6 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
-		A8C4B6F912EFCD0400D5D23F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -1730,6 +1730,7 @@
 		A817C0131323318E00964061 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundedView.m; path = Classes/RoundedView.m; sourceTree = "<group>"; };
 		A81A31561292475E00BCEA0C /* LoadingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingLabel.png; path = Artwork/LoadingLabel.png; sourceTree = "<group>"; };
 		A81A33071296255300BCEA0C /* Reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reload.png; path = Artwork/Reload.png; sourceTree = "<group>"; };
+		A826E50B139F0C6500EF8605 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
@@ -2567,7 +2568,6 @@
 		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
 		A8C3922C129789A100E09E32 /* HelpViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HelpViewController.mm; path = Classes/HelpViewController.mm; sourceTree = "<group>"; };
 		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
-		A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -2678,7 +2678,6 @@
 				A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */,
 				A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
-				A8C4B6F912EFCD0400D5D23F /* CoreTelephony.framework in Frameworks */,
 				A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */,
 				A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */,
 				A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */,
@@ -2696,7 +2695,6 @@
 			files = (
 				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
-				A883DC7012F5CEE60041543F /* CoreTelephony.framework in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
@@ -2735,7 +2733,6 @@
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
-				A883DC7812F5CEFB0041543F /* CoreTelephony.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
@@ -2841,6 +2838,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A826E50B139F0C6500EF8605 /* Settings.bundle */,
 				A8FF8537130F798B00A874F8 /* M1 */,
 				A8FF8539130F798B00A874F8 /* M2 */,
 				A8FF853B130F798B00A874F8 /* M3 */,
@@ -2875,7 +2873,6 @@
 				A8AD43501222125200A09383 /* CoreData.framework */,
 				A87FF02E12452C7E0033A3EB /* OpenGLES.framework */,
 				A8FEAB361290773200FA55E0 /* AVFoundation.framework */,
-				A8C4B6F812EFCD0400D5D23F /* CoreTelephony.framework */,
 				A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */,
 				A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */,
 				A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */,
@@ -4626,6 +4623,7 @@
 				A87C9A83132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A84132F05AF009FBB37 /* about.png in Resources */,
 				A878204C138ACF2600EA92D5 /* RootViewController.xib in Resources */,
+				A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4725,6 +4723,7 @@
 				A87C9A8D132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A8E132F05AF009FBB37 /* about.png in Resources */,
 				A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */,
+				A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4824,6 +4823,7 @@
 				A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */,
 				A87C9A89132F05AF009FBB37 /* about.png in Resources */,
 				A878204D138ACF2700EA92D5 /* RootViewController.xib in Resources */,
+				A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

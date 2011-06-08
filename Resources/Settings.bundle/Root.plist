@@ -2,52 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>StringsTable</key>
-	<string>Root</string>
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-			<key>Title</key>
-			<string>Version</string>
-			<key>Key</key>
-			<string>version</string>
 			<key>DefaultValue</key>
-			<string>1.0</string>
-		</dict>
-		<dict>
+			<true/>
+			<key>Key</key>
+			<string>usageData</string>
+			<key>Title</key>
+			<string>Send Anonymous Usage Data</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Enable Cheats</string>
-			<key>Key</key>
-			<string>cheatsEnabled</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Brightness</string>
-		</dict>
-		<dict>
-			<key>MinimumValueImage</key>
-			<string>weather_clear_night.png</string>
-			<key>MaximumValueImage</key>
-			<string>weather_clear.png</string>
-			<key>Type</key>
-			<string>PSSliderSpecifier</string>
-			<key>Key</key>
-			<string>gamma</string>
-			<key>DefaultValue</key>
-			<real>1</real>
-			<key>MinimumValue</key>
-			<integer>1</integer>
-			<key>MaximumValue</key>
-			<integer>3</integer>
 		</dict>
 	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
 </dict>
 </plist>

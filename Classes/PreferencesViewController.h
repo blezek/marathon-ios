@@ -14,7 +14,6 @@
   UISwitch *tapShoots;
   UISwitch *crosshairs;
   UISwitch *autoCenter;
-  UISwitch *usageData;
   UISwitch *secondTapShoots;
   UISlider *sfxVolume;
   UISlider *musicVolume;
@@ -30,7 +29,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UISwitch *tapShoots;
-@property (nonatomic, retain) IBOutlet UISwitch *usageData;
 @property (nonatomic, retain) IBOutlet UISwitch *autoCenter;
 @property (nonatomic, retain) IBOutlet UISwitch *crosshairs;
 @property (nonatomic, retain) IBOutlet UISwitch *secondTapShoots;
