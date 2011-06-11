@@ -13,7 +13,7 @@
 #import "Tracking.h"
 @implementation PreferencesViewController
 
-@synthesize tapShoots, usageData;
+@synthesize tapShoots;
 @synthesize secondTapShoots;
 @synthesize sfxVolume;
 @synthesize musicVolume;
@@ -31,7 +31,6 @@
   // Save the back to defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-  [defaults setBool:[self.usageData isOn] forKey:kUsageData];
 
   [defaults setBool:[self.tapShoots isOn] forKey:kTapShoots];
   if ( [self.tapShoots isOn] != [defaults boolForKey:kTapShoots] ) {
@@ -94,7 +93,6 @@
 - (void)setupUI:(BOOL)inMainMenuFlag {
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  self.usageData.on = [defaults boolForKey:kUsageData];
   self.tapShoots.on = [defaults boolForKey:kTapShoots];
   self.crosshairs.on = [defaults boolForKey:kCrosshairs];
   self.autoCenter.on = [defaults boolForKey:kAutocenter];
