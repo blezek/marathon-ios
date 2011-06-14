@@ -26,6 +26,7 @@
   UISwitch *vidmasterMode;
   UILabel *musicLabel;
   UILabel *filmsDisabled;
+  UIView *screenView;
 }
 
 @property (nonatomic, retain) IBOutlet UISwitch *tapShoots;
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
 @property (nonatomic, retain) IBOutlet UISwitch *vidmasterMode;
 @property (nonatomic, retain) IBOutlet UILabel *vidmasterModeLabel;
+@property (nonatomic, retain) IBOutlet UIView *screenView;
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check;
 - (void)setupUI:(BOOL)inMainMenu;

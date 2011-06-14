@@ -27,6 +27,7 @@
 @synthesize filmsDisabled;
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
+@synthesize screenView;
 
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
@@ -132,6 +133,11 @@
 #endif
     }
   }
+  // The BG for M2 is too bright, activate the screens
+  self.screenView.hidden = YES;
+#if SCENARIO == 2
+  self.screenView.hidden = NO;
+#endif
 }
 
 - (IBAction)updatePreferences:(id)sender {

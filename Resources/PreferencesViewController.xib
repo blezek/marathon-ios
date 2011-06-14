@@ -52,13 +52,27 @@
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="786670921"/>
+						<reference key="NSNextKeyView" ref="371028897"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">GenericBackground.png</string>
 						</object>
+					</object>
+					<object class="IBUIView" id="371028897">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{1024, 768}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="786670921"/>
+						<object class="NSColor" key="IBUIBackgroundColor" id="459356631">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.69999998807907104</float>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUILabel" id="786670921">
 						<reference key="NSNextResponder" ref="766721923"/>
@@ -96,7 +110,7 @@
 						<string key="NSFrame">{{517, 72}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="943439420"/>
+						<reference key="NSNextKeyView" ref="588101675"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">Tap Shoots Switch</string>
@@ -135,7 +149,7 @@
 						<string key="NSFrame">{{517, 135}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="204453128"/>
+						<reference key="NSNextKeyView" ref="943439420"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">Tap Shoots Switch</string>
@@ -151,7 +165,7 @@
 						<string key="NSFrame">{{125, 175}, {384, 55}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="588101675"/>
+						<reference key="NSNextKeyView" ref="204453128"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -426,10 +440,7 @@
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="186577385"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="459356631"/>
 						<float key="IBUIAlpha">0.69718307256698608</float>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -646,6 +657,14 @@
 					</object>
 					<int key="connectionID">63</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">screenView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="371028897"/>
+					</object>
+					<int key="connectionID">73</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -694,6 +713,7 @@
 							<reference ref="946349028"/>
 							<reference ref="1060019380"/>
 							<reference ref="971152475"/>
+							<reference ref="371028897"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -827,6 +847,12 @@
 						<reference key="parent" ref="971152475"/>
 						<string key="objectName">Loading</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">72</int>
+						<reference key="object" ref="371028897"/>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Screen View</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -883,6 +909,7 @@
 					<string>67.IBViewBoundsToFrameTransform</string>
 					<string>68.IBPluginDependency</string>
 					<string>68.IBViewBoundsToFrameTransform</string>
+					<string>72.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -983,6 +1010,7 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABCxgAAwmwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDlwAAwvoAAA</bytes>
 					</object>
@@ -1000,7 +1028,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">69</int>
+			<int key="maxID">73</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1067,6 +1095,7 @@
 							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
+							<string>screenView</string>
 							<string>secondTapShoots</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
@@ -1085,6 +1114,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
+							<string>UIView</string>
 							<string>UISwitch</string>
 							<string>UISlider</string>
 							<string>UISwitch</string>
@@ -1106,6 +1136,7 @@
 							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
+							<string>screenView</string>
 							<string>secondTapShoots</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
@@ -1150,6 +1181,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">musicVolume</string>
 								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">screenView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">secondTapShoots</string>
