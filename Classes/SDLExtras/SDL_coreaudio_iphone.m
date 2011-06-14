@@ -33,6 +33,40 @@
 #if defined ( USE_AUDIOQUEUE )
 
 
+@interface AudioQueueThread : NSThread {
+  NSRunLoop *runLoop;
+}
+- (void)main;
+- (void)timerTick:(NSTimer *)timer;
+- (CFRunLoopRef) getRunLoop;
+@end
+
+@implementation AudioQueueThread
+- (void)main {
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  runLoop = [NSRunLoop currentRunLoop];
+  [[NSTimer scheduledTimerWithTimeInterval: 60.0
+                                    target: self
+                                  selector: @selector(timerTick:)
+                                  userInfo: nil
+                                   repeats: YES] retain];
+  
+  [runLoop run];
+  [pool release];
+}
+
+- (void)timerTick:(NSTimer *)timer
+{
+  NSLog(@"Tick!");
+}
+  
+- (CFRunLoopRef)getRunLoop {
+  return [runLoop getCFRunLoop];
+}
+@end
+
+static AudioQueueThread *AQThread = nil;
+
 static void
 COREAUDIO_Deinitialize(void)
 {
@@ -171,22 +205,15 @@ COREAUDIO_CloseDevice(_THIS)
 {
     if (this->hidden != NULL) {
         if (this->hidden->audioUnitOpened) {
-            OSStatus result = noErr;
           AudioQueueStop (                            // 2
-                          
                           this->hidden->mQueue,                        // 3
-                          
                           false                                   // 4
-                          
                           );
           
          this->hidden->mIsRunning = false;                // 5
           AudioQueueDispose (                            // 1
-                             
                              this->hidden->mQueue,                             // 2
-                             
                              true                                       // 3
-                             
                              );
 
         }
@@ -208,9 +235,14 @@ COREAUDIO_CloseDevice(_THIS)
 static int
 COREAUDIO_OpenDevice(_THIS, const char *devname, int iscapture)
 {
-  AudioStreamBasicDescription strdesc;
   SDL_AudioFormat test_format = SDL_FirstAudioFormat(this->spec.format);
   int valid_datatype = 0;
+  
+  // Start up the thread, if needed
+  if ( AQThread == nil ) {
+    AQThread = [[AudioQueueThread alloc] init];
+    [AQThread start];
+  }
   
   /* Initialize all variables that we clean on shutdown */
   this->hidden = (struct SDL_PrivateAudioData *)
@@ -272,8 +304,8 @@ COREAUDIO_OpenDevice(_THIS, const char *devname, int iscapture)
                        &this->hidden->mDataFormat,                             // 2
                        AQOutputCallback,                              // 3
                        this,                                         // 4
-                       CFRunLoopGetCurrent (),                          // 5
-                       kCFRunLoopCommonModes,                           // 6
+                       [AQThread getRunLoop],                          // 5
+                       kCFRunLoopDefaultMode,                           // 6
                        0,                                               // 7
                        &this->hidden->mQueue                                   // 8
                        );
@@ -291,13 +323,9 @@ COREAUDIO_OpenDevice(_THIS, const char *devname, int iscapture)
   for (int i = 0; i < kNumberBuffers; ++i) {                // 2
     
     AudioQueueAllocateBuffer (                            // 3
-                              
                               this->hidden->mQueue,                                    // 4
-                              
                               this->hidden->bufferSize,                            // 5
-                              
                               &this->hidden->mBuffers[i]                               // 6
-                              
                               );
     
     
@@ -326,6 +354,10 @@ COREAUDIO_OpenDevice(_THIS, const char *devname, int iscapture)
                           gain                                                  // 5
                           
                           );
+  OSStatus primeStatus = AudioQueuePrime ( this->hidden->mQueue, 0, NULL );
+  if ( primeStatus ) {
+    fprintf(stderr, "Error priming AudioQueue %ld\n", primeStatus );
+  }
   AudioQueueStart (                                  // 2
                    
                    this->hidden->mQueue,                                 // 3
@@ -333,6 +365,15 @@ COREAUDIO_OpenDevice(_THIS, const char *devname, int iscapture)
                    NULL                                           // 4
                    
                    );
+  CFRunLoopRunInMode (                               // 10
+                      
+                      kCFRunLoopDefaultMode,
+                      
+                      .2,
+                      
+                      false
+                      
+                      );
   /*
   
     if (!prepare_audiounit(this, devname, iscapture, &strdesc)) {
