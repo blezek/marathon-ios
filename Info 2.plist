@@ -5,17 +5,23 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Marathon 2</string>
+	<string>Durandal</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>alephone2-icon-ipad.png</string>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>com.alephonesdg.m2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Marathon_Durandal_Icon-72.png</string>
+		<string>Marathon_Durandal_Icon-Small-50.png</string>
+		<string>Marathon_Durandal_Icon-Small.png</string>
+	</array>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
@@ -28,8 +34,8 @@
 	<string>MainWindow</string>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeRight</string>
-	<key>UILaunchImageFile~ipad</key>
-	<string>Default-Portrait.png</string>
+	<key>UILaunchImageFile</key>
+	<string>Durandal</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>wifi</string>
@@ -40,10 +46,6 @@
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>

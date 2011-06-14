@@ -23,7 +23,6 @@
   NewGameViewController *newGameViewController;
   Scenario *scenario;
   GameViewController *game;
-  DownloadViewController *downloadViewController;
   bool finishedStartup;
   int OpenGLESVersion;
   
@@ -39,7 +38,6 @@
 
 @property (nonatomic, retain) GameViewController *game;
 @property (nonatomic, retain) Purchases *purchases;
-@property (nonatomic, retain) DownloadViewController *downloadViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

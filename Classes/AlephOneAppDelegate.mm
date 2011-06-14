@@ -29,7 +29,7 @@ extern "C" {
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game, downloadViewController, OpenGLESVersion, purchases;
+@synthesize window, scenario, game, OpenGLESVersion, purchases;
 @synthesize viewController;
 
 extern int SDL_main(int argc, char *argv[]);
@@ -186,8 +186,9 @@ extern int SDL_main(int argc, char *argv[]);
 #endif
     
     [self.scenario.managedObjectContext save:nil];
-    self.scenario = nil;
-  } 
+  } else {
+    self.scenario = [list objectAtIndex:0];
+  }
 
   NSError *setCategoryError = nil;
   
@@ -197,13 +198,15 @@ extern int SDL_main(int argc, char *argv[]);
     MLog ( @"Error setting audio category" );
   }
 
+  /*
   NSError *setPreferenceError = nil;
-  NSTimeInterval preferredBufferDuration = 0.04;
+  NSTimeInterval preferredBufferDuration = 0.020;
   [[AVAudioSession sharedInstance] setPreferredIOBufferDuration: preferredBufferDuration
                                                           error: &setPreferenceError];
   if ( setPreferenceError ) {
     MLog ( @"Error setting preferredBufferDuration" );
   }
+   */
   
   [self.window makeKeyAndVisible];
   [self.window addSubview:self.viewController.view];  
@@ -214,18 +217,13 @@ extern int SDL_main(int argc, char *argv[]);
   [self.viewController.view addSubview:game.view];
   
   MLog ( @"Loaded view: %@", self.game.view );
-
-  // Create the download view controller
-  self.downloadViewController = [[DownloadViewController alloc] initWithNibName:nil bundle:nil];
-  if ( [self.downloadViewController isDownloadOrChooseGameNeeded] ) {
-    [window addSubview:self.downloadViewController.view];
-  }
-  [self.downloadViewController downloadOrchooseGame];
+  
   [Appirater appLaunched:YES];
   [Tracking startup];
   [Tracking trackPageview:@"/startup"];
   // Tracking and timer
   [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
+  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
   return YES;
 }
 

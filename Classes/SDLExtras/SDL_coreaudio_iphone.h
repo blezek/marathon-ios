@@ -30,11 +30,12 @@
 #define _THIS	SDL_AudioDevice *this
 
 #define USE_AUDIOQUEUE 1
+
 #if defined ( USE_AUDIOQUEUE )
 
 #include <AudioToolbox/AudioToolbox.h>
 
-#define kNumberBuffers 3
+#define kNumberBuffers 5
 
 typedef struct SDL_PrivateAudioData {
   

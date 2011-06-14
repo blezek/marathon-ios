@@ -9,6 +9,7 @@
 #import "PreferencesViewController.h"
 #import "AlephOneAppDelegate.h"
 #include "preferences.h"
+#include "Mixer.h"
 #import "GameKit/GameKit.h"
 #import "Tracking.h"
 @implementation PreferencesViewController
@@ -169,9 +170,13 @@
   } else {
     input_preferences->modifiers |= _inputmod_dont_auto_recenter;
   }
-  
-  SoundManager::instance()->SetParameters(*sound_preferences);
-  
+  if ( notifySoundManager ) {
+    // Sound ranges from 0-255, but is stored in 8 levels... go figure... 
+    if ( Mixer::instance()->MusicPlaying() ) {
+      Mixer::instance()->SetMusicChannelVolume ( ceil ( [defaults floatForKey:kMusicVolume] * MAXIMUM_SOUND_VOLUME ) );
+    }
+    Mixer::instance()->SetVolume ( ceil ( [defaults floatForKey:kSfxVolume] * MAXIMUM_SOUND_VOLUME ) );
+  }
   if ( check ) {
     [[AlephOneAppDelegate sharedAppDelegate].purchases performSelector:@selector(checkPurchases) withObject:nil afterDelay:0.0];
   }
