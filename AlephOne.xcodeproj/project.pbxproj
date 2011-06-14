@@ -412,7 +412,6 @@
 		A87C9A88132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
 		A87C9A89132F05AF009FBB37 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7F132F05AF009FBB37 /* about.png */; };
 		A87C9A8D132F05AF009FBB37 /* about-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7E132F05AF009FBB37 /* about-btn.png */; };
-		A87C9A8E132F05AF009FBB37 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A87C9A7F132F05AF009FBB37 /* about.png */; };
 		A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
 		A87D9B9A1296433E002CDE5D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D9B991296433E002CDE5D /* Reachability.m */; };
 		A87F55E012A7407E00032ED6 /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
@@ -1573,6 +1572,7 @@
 		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
+		A8C4436813A7CF72002A908B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4436613A7CF72002A908B /* about.png */; };
 		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -2589,7 +2589,7 @@
 		A8AF817312B7124000671C11 /* savedgame-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savedgame-bg.png"; sourceTree = "<group>"; };
 		A8AF81E212B7205400671C11 /* help9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help9.png; path = Artwork/Help/help9.png; sourceTree = "<group>"; };
 		A8AF81E312B7205400671C11 /* help10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help10.png; path = Artwork/Help/help10.png; sourceTree = "<group>"; };
-		A8B19C0A13A457E7008A095D /* Marathon_Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Marathon_Icon-72.png"; path = "../../Marathon_Icon-72.png"; sourceTree = "<group>"; };
+		A8B19C0A13A457E7008A095D /* Marathon_Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Icon-72.png"; sourceTree = "<group>"; };
 		A8B19C1013A459BA008A095D /* Marathon_Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Icon-72.png"; sourceTree = "<group>"; };
 		A8B19C1113A459BA008A095D /* Marathon_Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Icon-Small-50.png"; sourceTree = "<group>"; };
 		A8B19C1213A459BA008A095D /* Marathon_Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Icon-Small.png"; sourceTree = "<group>"; };
@@ -2608,6 +2608,7 @@
 		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
 		A8C3922C129789A100E09E32 /* HelpViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HelpViewController.mm; path = Classes/HelpViewController.mm; sourceTree = "<group>"; };
 		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
+		A8C4436613A7CF72002A908B /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -4415,6 +4416,7 @@
 		A8FF8539130F798B00A874F8 /* M2 */ = {
 			isa = PBXGroup;
 			children = (
+				A8C4436613A7CF72002A908B /* about.png */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
 				A899CE5E132091DB008BBB10 /* HDModeAd.png */,
 				A899CE5F132091DB008BBB10 /* VMModeAd.png */,
@@ -4767,7 +4769,6 @@
 				A817C00D1323311E00964061 /* done-btn.png in Resources */,
 				A817C00E1323311E00964061 /* restore-btn.png in Resources */,
 				A87C9A8D132F05AF009FBB37 /* about-btn.png in Resources */,
-				A87C9A8E132F05AF009FBB37 /* about.png in Resources */,
 				A878204B138ACF2500EA92D5 /* RootViewController.xib in Resources */,
 				A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */,
 				A818BD1A13A464A700DB3828 /* Marathon_Durandal_Icon-72.png in Resources */,
@@ -4778,6 +4779,7 @@
 				A818BD1F13A464A700DB3828 /* Marathon_Durandal_Icon2@2x.png in Resources */,
 				A818BD2213A466F400DB3828 /* Durandal-Landscape~ipad.png in Resources */,
 				A818BD2313A466F400DB3828 /* Durandal-Portrait~ipad.png in Resources */,
+				A8C4436813A7CF72002A908B /* about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
