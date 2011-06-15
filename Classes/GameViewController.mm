@@ -314,7 +314,8 @@ BOOL StatsDownloaded = NO;
     showControlsOverview = YES;
   }
   [Tracking trackPageview:[NSString stringWithFormat:@"/new/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]];
-  [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
+  [self cancelNewGame];
+  // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
   // New menus

@@ -35,7 +35,7 @@
 
 #include <AudioToolbox/AudioToolbox.h>
 
-#define kNumberBuffers 5
+#define kNumberBuffers 3
 
 typedef struct SDL_PrivateAudioData {
   

@@ -45,7 +45,8 @@
 - (void)main {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
   runLoop = [NSRunLoop currentRunLoop];
-  [[NSTimer scheduledTimerWithTimeInterval: 60.0
+  // Scheduled, but will likely never run.
+  [[NSTimer scheduledTimerWithTimeInterval: 6000000.0
                                     target: self
                                   selector: @selector(timerTick:)
                                   userInfo: nil
