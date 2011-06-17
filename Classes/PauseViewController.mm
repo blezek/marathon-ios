@@ -22,7 +22,7 @@
       view.hidden = !cheatsEnabled;
     }
   }
-  statusLabel.text = [NSString stringWithFormat:@"Living monsters: %d     Living B.O.B.s: %d", 
+  statusLabel.text = [NSString stringWithFormat:@"Living monsters: %d     Living BoBs: %d", 
                       [[AlephOneAppDelegate sharedAppDelegate].game livingEnemies],
                       [[AlephOneAppDelegate sharedAppDelegate].game livingBobs]];
 }

@@ -324,7 +324,7 @@ BOOL StatsDownloaded = NO;
 
 - (IBAction)cancelNewGame {
   [self closeEvent];
-  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.3];
   [self.newGameViewController disappear];
 }
 
