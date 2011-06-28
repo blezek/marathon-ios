@@ -672,6 +672,7 @@ bool setup_for_replay_from_file(
   (void)(map_checksum);
 
   FilmFileSpec = File;
+  printf ( "Loading saved film %s\n", File.GetPath() );
   if (FilmFileSpec.Open(FilmFile)) {
     replay.valid= true;
     replay.have_read_last_chunk = false;

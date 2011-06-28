@@ -55,6 +55,8 @@ typedef enum {
   IBOutlet UIButton *pause;
   IBOutlet UIButton *zoomOutButton;
   IBOutlet UIButton *zoomInButton;
+  IBOutlet UIButton *loadFilmButton;
+  IBOutlet UIButton *saveFilmButton;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *mapView2;
   IBOutlet ButtonView *actionView;
@@ -239,6 +241,8 @@ typedef enum {
 @property (nonatomic, retain) UIButton *pause;
 @property (nonatomic, retain) UIButton *zoomInButton;
 @property (nonatomic, retain) UIButton *zoomOutButton;
+@property (nonatomic, retain) UIButton *saveFilmButton;
+@property (nonatomic, retain) UIButton *loadFilmButton;
 
 @property (nonatomic, retain) SaveGameViewController *saveGameViewController;
 @property (nonatomic, retain) ProgressViewController *progressViewController;

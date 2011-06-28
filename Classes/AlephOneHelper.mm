@@ -136,6 +136,16 @@ float helperGamma() {
   return g;
 };
 
+int helperAlwaysPlayIntro () {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  BOOL g = [defaults boolForKey:kAlwaysPlayIntro];
+  if ( g ) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
 extern GLfloat helperPauseAlpha() {
   return [[GameViewController sharedInstance] getPauseAlpha];
 }

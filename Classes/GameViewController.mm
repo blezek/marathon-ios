@@ -110,6 +110,7 @@ BOOL StatsDownloaded = NO;
 @synthesize zoomInButton, zoomOutButton;
 @synthesize replacementMenuView;
 @synthesize purchaseViewController, purchaseView, aboutView;
+@synthesize saveFilmButton, loadFilmButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -211,6 +212,12 @@ BOOL StatsDownloaded = NO;
      */
     v.hidden = YES;
   }
+  
+#if defined(A1DEBUG)
+  self.saveFilmButton.hidden = NO;
+  self.loadFilmButton.hidden = NO;
+#endif
+  
   self.splashView.hidden = NO;
   self.restartView.hidden = YES;
   
@@ -803,6 +810,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   
   [self.filmViewController.tableView reloadData];
   self.filmView.hidden = NO;
+  self.filmView.alpha = 1.0;
   [self.filmViewController appear];
 }
 
@@ -878,6 +886,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   get_recording_filedesc(src_file);
   
   FileSpecifier file ( (char*)[film.filename UTF8String] );
+  MLog(@"Save film %s to %s", src_file.GetPath(), [film.filename UTF8String])
   file.CopyContents(src_file);
 
   MLog ( @"Saving film: %@", film );
@@ -1354,7 +1363,8 @@ _civilian_fusion_assimilated,
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
   MLog ( @"AUTOROTATE!!!!!!!!!\n\n\n\n" );
-	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight
+          || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 

@@ -89,7 +89,7 @@
 					<object class="IBUIButton" id="763154327">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{406, 567}, {95, 95}}</string>
+						<string key="NSFrame">{{768, 174}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="127023456"/>
@@ -124,7 +124,7 @@
 					<object class="IBUIButton" id="93073621">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{285, 567}, {95, 95}}</string>
+						<string key="NSFrame">{{22, 174}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="763154327"/>
@@ -149,7 +149,7 @@
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{523, 567}, {95, 95}}</string>
+						<string key="NSFrame">{{395, 572}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="187019948"/>
@@ -168,13 +168,13 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">cancel-btn.png</string>
+							<string key="NSResourceName">LoadButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="187019948">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{642, 567}, {95, 95}}</string>
+						<string key="NSFrame">{{754, 662}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -193,7 +193,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">complete-btn.png</string>
+							<string key="NSResourceName">BackButton.png</string>
 						</object>
 					</object>
 				</array>
@@ -305,13 +305,13 @@
 						<int key="objectID">12</int>
 						<reference key="object" ref="592514203"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="93073621"/>
 							<reference ref="776278387"/>
-							<reference ref="763154327"/>
-							<reference ref="127023456"/>
-							<reference ref="187019948"/>
 							<reference ref="1053060072"/>
 							<reference ref="968200802"/>
+							<reference ref="187019948"/>
+							<reference ref="93073621"/>
+							<reference ref="763154327"/>
+							<reference ref="127023456"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -516,11 +516,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="BackButton.png">{250, 86}</string>
 			<string key="GenericBackground.png">{1024, 768}</string>
-			<string key="cancel-btn.png">{95, 95}</string>
-			<string key="complete-btn.png">{95, 95}</string>
-			<string key="delete-btn.png">{95, 95}</string>
-			<string key="duplicate-btn.png">{95, 95}</string>
+			<string key="LoadButton.png">{250, 86}</string>
+			<string key="delete-btn.png">{250, 86}</string>
+			<string key="duplicate-btn.png">{250, 86}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>

@@ -39,6 +39,8 @@ extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 
+extern int helperAlwaysPlayIntro();
+
 // Excuses, excuses
 extern void helperQuit();
 extern void helperNetwork();

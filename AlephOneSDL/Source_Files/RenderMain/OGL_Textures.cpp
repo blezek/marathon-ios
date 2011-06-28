@@ -578,6 +578,14 @@ bool TextureManager::Setup()
   // If "Use()" is true, then load, otherwise, assume the texture is loaded and skip
   TxtrStatePtr = &CBTS.CTStates[CTable];
   TextureState &CTState = *TxtrStatePtr;
+
+#if defined(A1DEBUG)
+  // DJB Debugging
+  if ( Collection == 16 && CTState.IsUsed == false) {
+    printf ( "Stop here\n" );
+  }
+#endif
+  
   if (!CTState.IsUsed) {
     // Initial sprite scale/offset
     U_Scale = V_Scale = 1.0;
@@ -591,20 +599,24 @@ bool TextureManager::Setup()
         return false;
       }
     }
-
+    
     // Store sprite scale/offset
     CBTS.U_Scale = U_Scale;
     CBTS.V_Scale = V_Scale;
     CBTS.U_Offset = U_Offset;
     CBTS.V_Offset = V_Offset;
     
+#if defined(A1DEBUG)
+    // DJB debugging
+    printf ( "Sprite: %d, %d Scale: %0.2f, %0.2f Offset: %0.2f, %0.2f\n", Collection, Bitmap, U_Scale, V_Scale, U_Offset, V_Offset );
     // DJB Print if not expected
     if ( CBTS.U_Scale != 1.0 || CBTS.V_Scale != 1.0 ) {
       if ( BaseTxtrWidth == BaseTxtrHeight ) {
         printf ( "Unexpected scale: %f, %f  Collection: %d Bitmap: %d\n", U_Scale, V_Scale, Collection, Bitmap );
       }
     }
-
+#endif
+    
     // This finding of color tables sets the glow state
     if (!substitute) {
       FindColorTables();
@@ -698,7 +710,36 @@ bool TextureManager::Setup()
     // Get glow state
     IsGlowing = CTState.IsGlowing;
   }
-  
+  // DJB Ok, for some reason, we sometimes have a bogus setting for PVR images
+  // Detect this and set scale to 1.0, offset to 0.0
+  if ( TextureType == OGL_Txtr_Inhabitant 
+      && U_Scale != 1.0
+      && ( Collection == 10
+          || Collection == 31
+          || Collection == 11
+          || Collection == 12
+          || Collection == 14
+          || Collection == 15
+          || Collection == 16
+          || Collection == 2
+          || Collection == 3
+          || Collection == 5
+          || Collection == 8
+          || Collection == 9
+          )
+  ) {
+#if defined(A1DEBUG)
+    printf ( "Setting back to defaults for Sprite: %d, %d\n", Collection, Bitmap );
+#endif
+    U_Scale = V_Scale = 1.0;
+    U_Offset = V_Offset = 0.0;
+  }
+
+#if defined(A1DEBUG)
+  if ( Collection == 16 && U_Scale != 1.0 ) {
+    printf ( "Scale is not 1.0 bitmap %d\n", Bitmap );
+  }
+#endif
   // Done!!!
   return true;
 }
@@ -823,6 +864,10 @@ bool TextureManager::LoadSubstituteTexture()
     V_Offset = 0;
     U_Scale = NormalImg.GetUScale();
     U_Offset = 0;
+      // DJB debug statement
+#if defined(A1DEBUG)
+      printf ( "Sprite-Calculated: %d, %d Scale: %0.2f, %0.2f Offset: %0.2f, %0.2f\n", Collection, Bitmap, U_Scale, V_Scale, U_Offset, V_Offset );
+#endif
 
     TxtrOptsPtr->Substitution = true;
     break;
@@ -936,13 +981,6 @@ bool TextureManager::SetupTextureGeometry()
     V_Scale = THtRecip*double(BaseTxtrHeight);
     V_Offset = THtRecip*HeightOffset;
     
-    // DJB Remove
-    if ( U_Scale != 1.0 || V_Scale != 1.0 ) {
-      // Are we square and something we created?
-      if ( Collection >= 8 && BaseTxtrWidth == BaseTxtrHeight ) {
-        printf ( "Unexpected scaling: Collection %d Bitmap %d  (%f, %f)\n", Collection, Bitmap, U_Scale, V_Scale );
-      }
-    }
   }
   break;
   }
@@ -1264,7 +1302,7 @@ uint32 *TextureManager::Shrink(uint32 *Buffer)
   int NumPixels = int(LoadedWidth)*int(LoadedHeight);
   GLuint *NewBuffer = new GLuint[NumPixels];
   // DJB OpenGL no glScaleImage
-  printf ( "******************* gluScaleImage not available in OGL_Textures.cpp *********************\n" );
+  // printf ( "******************* gluScaleImage not available in OGL_Textures.cpp *********************\n" );
 /*
   gluScaleImage(GL_RGBA, TxtrWidth, TxtrHeight, GL_UNSIGNED_BYTE, Buffer,
                 LoadedWidth, LoadedHeight, GL_UNSIGNED_BYTE, NewBuffer);

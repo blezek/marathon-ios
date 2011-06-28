@@ -176,6 +176,11 @@
   } else {
     input_preferences->modifiers |= _inputmod_dont_auto_recenter;
   }
+#if defined(A1DEBUG)
+  // Always autocenter, so we can do films
+  input_preferences->modifiers &= ~_inputmod_dont_auto_recenter;
+#endif
+  
   if ( notifySoundManager ) {
     // Sound ranges from 0-255, but is stored in 8 levels... go figure... 
     if ( Mixer::instance()->MusicPlaying() ) {

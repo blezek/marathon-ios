@@ -1226,8 +1226,11 @@ void display_main_menu(
   display_screen(MAIN_MENU_BASE);
   
   /* Start up the song! */
-  if(!Music::instance()->Playing() && game_state.main_menu_display_count==0) {
-    Music::instance()->RestartIntroMusic();
+  // DJB Handle always playing intro music
+  if(!Music::instance()->Playing() ) {
+    if ( helperAlwaysPlayIntro() || game_state.main_menu_display_count==0) {
+      Music::instance()->RestartIntroMusic();
+    }
   }
   
   // Draw AlephOne Version to screen
@@ -1609,6 +1612,7 @@ static void display_introduction(
   paint_window_black();
   game_state.state= _display_intro_screens;
   game_state.current_screen= 0;
+  // DJB Play intro song only once
   if (screen_data->screen_count) {
     if (game_state.state==_display_intro_screens && game_state.current_screen==
         INTRO_SCREEN_TO_START_SONG_ON) {

@@ -97,12 +97,13 @@ extern int SDL_main(int argc, char *argv[]);
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
                                @"NO", kCrosshairs,
-                               @"NO", kAutocenter,
+                               @"YES", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
                                @"YES", kUsageData,
                                @"NO", kHaveVidmasterMode,
                                @"YES", kUseVidmasterMode,
+                               @"NO", kAlwaysPlayIntro,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];

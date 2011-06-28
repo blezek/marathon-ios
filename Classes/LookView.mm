@@ -97,12 +97,32 @@ extern "C" {
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   // NSLog(@"Touches moved" );
+  if ( [touches count] == 2 ) {
+    MLog(@"2 touches" );
+  }
+  
+  // If first touch goes away, make this one the first
+  if ( firstTouch == nil ) {
+    firstTouch = [touches anyObject];
+    lastPanPoint = [firstTouch locationInView:self];
+  }
   for ( UITouch *touch in [event touchesForView:self] ) {
+    if ( firstTouch != nil 
+        && touch != firstTouch ) {
+      continue;
+    }
     CGPoint currentPoint = [touch locationInView:self];
     int dx, dy;
     dx = currentPoint.x - lastPanPoint.x;
     dy = currentPoint.y - lastPanPoint.y;
     SDL_SendMouseMotion ( true, dx, dy );
+    
+    int big = 50;
+    big = big*big;
+    if ( (dx*dx + dy*dy) > big ) {
+      MLog(@"Big motion!" );
+    }
+    
     // NSLog(@"touches moved, sending delta" );
     lastPanPoint = currentPoint;
     break;

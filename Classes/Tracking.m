@@ -38,23 +38,15 @@
     NSLog(@"error in platform");
   }
   if (![[GANTracker sharedTracker] setCustomVariableAtIndex:2
-                                                       name:@"model"
-                                                      value:[UIDevice currentDevice].model
-                                                      scope:kGANSessionScope
-                                                  withError:&error]) {
-    NSLog(@"error in model");
-  }
-  
-  if (![[GANTracker sharedTracker] setCustomVariableAtIndex:3
-                                                       name:@"systemName"
-                                                      value:[UIDevice currentDevice].systemName
-                                                      scope:kGANSessionScope
-                                                  withError:&error]) {
-    NSLog(@"error in systemName");
-  }
-  if (![[GANTracker sharedTracker] setCustomVariableAtIndex:4
                                                        name:@"systemVersion"
                                                       value:[UIDevice currentDevice].systemVersion
+                                                      scope:kGANSessionScope
+                                                  withError:&error]) {
+    NSLog(@"error in systemVersion");
+  }
+  if (![[GANTracker sharedTracker] setCustomVariableAtIndex:3
+                                                       name:@"marathonVersion"
+                                                      value:A1_RELEASE_STRING
                                                       scope:kGANSessionScope
                                                   withError:&error]) {
     NSLog(@"error in systemVersion");

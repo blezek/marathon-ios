@@ -111,6 +111,10 @@ struct CollBitmapTextureState
   // Sensible default
   CollBitmapTextureState() {
     U_Scale = V_Scale = 1; U_Offset = V_Offset = 0;
+    // DJB Be sure to reset the CTStates...
+    for ( int i = 0; i < NUMBER_OF_OPENGL_BITMAP_SETS; i++ ) {
+      CTStates[i].Reset();
+    }
   }
 };
 

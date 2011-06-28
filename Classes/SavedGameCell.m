@@ -17,7 +17,7 @@
 
 
 - (void)setFields:(SavedGame*)game withController:(SaveGameViewController*)controller {
-  self.subject.text = [NSString stringWithFormat:@"Location: %@", game.level];
+  self.subject.text = [NSString stringWithFormat:@"%@", game.level];
   NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
   [formatter setTimeStyle:NSDateFormatterShortStyle];
   [formatter setDateStyle:NSDateFormatterShortStyle];

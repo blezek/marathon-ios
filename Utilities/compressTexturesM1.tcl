@@ -51,6 +51,17 @@ set ExtraSettings(M2,18,29) {opac_type="1"}
 set ExtraSettings(M2,19,13) {opac_type="1"}
 # set ExtraSettings(M2,21,5) {opac_type="1" opac_scale="0.6"}
 
+set ExtraSettings(M3,17,16) {opac_type="1"}
+set ExtraSettings(M3,17,19) {opac_type="1"}
+set ExtraSettings(M3,18,12) {opac_type="1"}
+set ExtraSettings(M3,18,29) {opac_type="1"}
+set ExtraSettings(M3,19,9) {opac_type="1"}
+set ExtraSettings(M3,19,13) {opac_type="1"}
+set ExtraSettings(M3,20,9) {opac_type="1"}
+set ExtraSettings(M3,20,13) {opac_type="1"}
+set ExtraSettings(M3,21,5) {opac_type="1"}
+set ExtraSettings(M3,21,30) {opac_type="1"}
+
 lappend Collections(/general/controlpanels01.dds) "17 0"
 lappend Collections(/general/controlpanels01.dds) "18 0"
 lappend Collections(/general/controlpanels01.dds) "19 0"
@@ -302,6 +313,8 @@ set Size(19,0,60) $SpecialSize
 set Size(19,0,61) $SpecialSize
 set Size(19,0,62) $SpecialSize
 
+set LandscapeCollections [list 27 28 29 30]
+set LandscapeSize "512x512!"
 
 set Weighting --channel-weighting-linear
 set BPP        --bits-per-pixel-4
@@ -319,9 +332,6 @@ set StandardTextures 0
 # if we are standard textures, make them 128x128 always
 if { $TextureSet == "StandardTextures" } {
   set TextureSize "128x128!"
-  if { $Scenario == "M2" } {
-    # set TextureSize "256x256!"
-  }
   set SpecialSize $TextureSize
   puts "Limiting to $TextureSize because we are $TextureSet (BPP are $BPP)"
   set StandardTextures 1
@@ -404,8 +414,12 @@ foreach collection [lsort [glob *]] {
 
       if { $width == $height } {
         set Compress 1
-        set size "128x128!"
-        set size $TextureSize
+        if { $width == 512 & $StandardTextures } {
+          set size "256x256!"
+        } else {
+          set size "128x128!"
+          set size $TextureSize
+        }
       } else {
         set Compress 1
         set size "${maxDim}x${maxDim}!"
@@ -421,6 +435,10 @@ foreach collection [lsort [glob *]] {
         puts -nonewline "\[Size: $size\] "; flush stdout
       }
 
+      if { [lsearch $LandscapeCollections $collection] != -1 } {
+        set size $LandscapeSize
+        puts -nonewline " --Landscape size-- "; flush stdout
+      }
       set tail [file tail $image]
       set base [file root $tail]
       set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.pvr]

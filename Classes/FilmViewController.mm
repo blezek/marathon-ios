@@ -177,8 +177,13 @@
   // Create a new instance in CoreData with filename
   Film *film;
   film = [NSEntityDescription insertNewObjectForEntityForName:@"Film" inManagedObjectContext:self.managedObjectContext];
-  
-  NSString *filename = [NSString stringWithFormat:@"%@/%@", filmDirectory, [NSDate date]];
+  CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+	NSString* uuid = [NSString stringWithFormat:@"%@", (NSString *)newUniqueIdString];
+	CFRelease(newUniqueId);
+	CFRelease(newUniqueIdString);
+
+  NSString *filename = [NSString stringWithFormat:@"%@/%@", filmDirectory, uuid];
   NSLog ( @"Filename: %@", filename );
   film.filename = filename;
   film.lastSaveTime = [NSDate date];
@@ -437,7 +442,6 @@
   // Find the selected saved game.
   Film *film = [self.fetchedResultsController objectAtIndexPath:indexPath];
   [[GameViewController sharedInstance] performSelector:@selector(filmChosen:) withObject:film afterDelay:0.0];
-  // [[GameViewController sharedInstance] gameChosen:game];
 }
 
 

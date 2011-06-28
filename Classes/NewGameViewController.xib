@@ -51,6 +51,7 @@
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="2952014"/>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -70,6 +71,7 @@
 								<string key="NSFrame">{{11, 58}, {488, 222}}</string>
 								<reference key="NSSuperview" ref="2952014"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="628157624"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -104,6 +106,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 								<string key="NSFrame">{{96, 20}, {317, 39}}</string>
 								<reference key="NSSuperview" ref="2952014"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="646278475"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -131,6 +134,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{278, 28}, {512, 300}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="928701917"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
@@ -142,9 +146,10 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 					<object class="IBUIButton" id="381063342">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{487, 495}, {95, 95}}</string>
+						<string key="NSFrame">{{387, 495}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="443320114"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -166,7 +171,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">cancel-btn.png</string>
+							<string key="NSResourceName">BackButton.png</string>
 						</object>
 					</object>
 					<object class="IBUISlider" id="443320114">
@@ -175,6 +180,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{130, 619}, {764, 23}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1033442337"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -187,6 +193,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{132, 649}, {760, 21}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -208,6 +215,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{0, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="403985543"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -231,6 +239,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{258, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="565955628"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -254,6 +263,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{516, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="694068488"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -277,6 +287,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 						<string key="NSFrame">{{774, 341}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="381063342"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -298,6 +309,7 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="508363884"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
 					<bytes key="NSRGB">MCAwLjAwNzg0MzEzNzcxOSAwLjAxMTc2NDcwNzA0IDAAA</bytes>
@@ -779,8 +791,8 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>BackButton.png</string>
 				<string>GenericBackground.png</string>
-				<string>cancel-btn.png</string>
 				<string>easy-btn.png</string>
 				<string>hard-btn.png</string>
 				<string>nightmare-btn.png</string>
@@ -788,8 +800,8 @@ bmQgdG8gbmV2ZXIsIGV2ZXIsIGxlYXZlIGEgc2luZ2xlIEJvQiBhbGl2ZS4nA</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{250, 86}</string>
 				<string>{1024, 768}</string>
-				<string>{95, 95}</string>
 				<string>{250, 86}</string>
 				<string>{250, 86}</string>
 				<string>{250, 86}</string>
