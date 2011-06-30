@@ -173,20 +173,8 @@ BOOL StatsDownloaded = NO;
   haveNewGamePreferencesBeenSet = NO;
   showControlsOverview = NO;
   showingHelpBeforeFirstGame = NO;
-  CGAffineTransform transform = self.hud.transform;
   pauseAlpha = kPauseAlphaDefault;
-  
-  /*
-  // Use the status bar frame to determine the center point of the window's content area.
-  CGRect bounds = CGRectMake(0, 0, 1024, 768);
-  CGPoint center = CGPointMake(bounds.size.height / 2.0, bounds.size.width / 2.0);
-  // Set the center point of the view to the center point of the window's content area.
-  // Rotate the view 90 degrees around its new center point.
-  transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
-   */
-  // self.view.transform = transform;
-  // self.view.bounds = CGRectMake(0, 0, 1024, 768);
-  
+    
   NSMutableSet *viewList = [[[NSMutableSet alloc] initWithObjects:
                              self.hud,
                              self.menuView,
@@ -205,17 +193,14 @@ BOOL StatsDownloaded = NO;
                              self.aboutView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
-    /*
-     v.center = center;
-    v.transform = transform;
-    v.bounds = CGRectMake(0, 0, 1024, 768);
-     */
     v.hidden = YES;
   }
   
 #if defined(A1DEBUG)
   self.saveFilmButton.hidden = NO;
   self.loadFilmButton.hidden = NO;
+  // joyPad = [[JoyPad alloc] init];
+
 #endif
   
   self.splashView.hidden = NO;
@@ -396,7 +381,10 @@ BOOL StatsDownloaded = NO;
       [self.previousWeaponButton setup:key->offset];
     }
   }
-  
+#if defined(A1DEBUG)
+  // [joyPad startFindingDevices];
+#endif
+
   [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
   bool showAllControls = player_controlling_game();

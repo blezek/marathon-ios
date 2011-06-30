@@ -56,7 +56,7 @@
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1053060072"/>
+						<reference key="NSNextKeyView" ref="93073621"/>
 						<int key="IBUIContentMode">9</int>
 						<int key="IBUITag">100</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -68,7 +68,7 @@
 						<string key="NSFrame">{{280, 174}, {480, 390}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="93073621"/>
+						<reference key="NSNextKeyView" ref="763154327"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MCAwLjAxMTc2NDcwNzA0IDAuMDAzOTIxNTY4ODU5IDAuNQA</bytes>
@@ -127,7 +127,7 @@
 						<string key="NSFrame">{{22, 174}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="763154327"/>
+						<reference key="NSNextKeyView" ref="1053060072"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -149,7 +149,7 @@
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{395, 572}, {250, 86}}</string>
+						<string key="NSFrame">{{754, 662}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="187019948"/>
@@ -168,13 +168,13 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">LoadButton.png</string>
+							<string key="NSResourceName">BackButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="187019948">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{754, 662}, {250, 86}}</string>
+						<string key="NSFrame">{{387, 572}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -193,7 +193,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BackButton.png</string>
+							<string key="NSResourceName">LoadButton.png</string>
 						</object>
 					</object>
 				</array>
@@ -308,10 +308,10 @@
 							<reference ref="776278387"/>
 							<reference ref="1053060072"/>
 							<reference ref="968200802"/>
-							<reference ref="187019948"/>
 							<reference ref="93073621"/>
 							<reference ref="763154327"/>
 							<reference ref="127023456"/>
+							<reference ref="187019948"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -334,6 +334,7 @@
 						<int key="objectID">24</int>
 						<reference key="object" ref="127023456"/>
 						<reference key="parent" ref="592514203"/>
+						<string key="objectName">Button - Cancel</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">26</int>
