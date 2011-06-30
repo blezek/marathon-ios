@@ -84,7 +84,7 @@
 						<string key="NSFrame">{{746, 656}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="660096293"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -108,7 +108,7 @@
 						<string key="NSFrame">{{387, 188}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="801362484"/>
+						<reference key="NSNextKeyView" ref="619836146"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -132,7 +132,7 @@
 						<string key="NSFrame">{{387, 282}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="632838643"/>
+						<reference key="NSNextKeyView" ref="660096293"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -147,7 +147,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="34343493"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">MenuItem-Settings.png</string>
+							<string key="NSResourceName">SettingsButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="660096293">
@@ -156,7 +156,7 @@
 						<string key="NSFrame">{{387, 376}, {250, 86}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="619836146"/>
+						<reference key="NSNextKeyView" ref="557038741"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -181,7 +181,7 @@
 						<string key="NSFrame">{{169, 612}, {686, 36}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="557038741"/>
+						<reference key="NSNextKeyView" ref="801362484"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -228,6 +228,7 @@
 								<string key="NSFrame">{{421, 27}, {74, 74}}</string>
 								<reference key="NSSuperview" ref="557038741"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="632838643"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">1</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -542,6 +543,7 @@
 						<int key="objectID">6</int>
 						<reference key="object" ref="619836146"/>
 						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Button - Preferences</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
@@ -839,8 +841,8 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>HelpButton.png</string>
 				<string>MainMenuButton.png</string>
-				<string>MenuItem-Settings.png</string>
 				<string>ResumeButton.png</string>
+				<string>SettingsButton.png</string>
 				<string>ammunition-btn.png</string>
 				<string>invincibility-btn.png</string>
 				<string>pause-btn.png</string>

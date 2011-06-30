@@ -25,6 +25,8 @@
 #import "PurchaseViewController.h"
 #import "Statistics.h"
 
+#import "JoyPad.h"
+
 
 typedef enum {
   MenuMode,
@@ -72,6 +74,8 @@ typedef enum {
   IBOutlet UIView *savedGameMessage;
 
   HUDMode mode;
+  
+  // JoyPad *joyPad;
   
   bool haveNewGamePreferencesBeenSet;
   bool showingHelpBeforeFirstGame;

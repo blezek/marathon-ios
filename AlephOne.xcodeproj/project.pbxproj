@@ -1506,6 +1506,9 @@
 		A89241E5127FC26300F0A2EE /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CC127FC26300F0A2EE /* vorbisfile.c */; };
 		A89241E6127FC26300F0A2EE /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CD127FC26300F0A2EE /* window.c */; };
 		A89315841267FFD2006DA87E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
+		A898D4B513BC15D100AF6413 /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B413BC15D100AF6413 /* SettingsButton.png */; };
+		A898D4B613BC15D100AF6413 /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B413BC15D100AF6413 /* SettingsButton.png */; };
+		A898D4B713BC15D100AF6413 /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B413BC15D100AF6413 /* SettingsButton.png */; };
 		A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5A132091B5008BBB10 /* HDModeAd.png */; };
 		A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5B132091B5008BBB10 /* VMModeAd.png */; };
 		A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5E132091DB008BBB10 /* HDModeAd.png */; };
@@ -2545,6 +2548,18 @@
 		A89241C9127FC26300F0A2EE /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Libraries/libvorbis-1.2.0/lib/synthesis.c"; sourceTree = SOURCE_ROOT; };
 		A89241CC127FC26300F0A2EE /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		A89241CD127FC26300F0A2EE /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
+		A898D49C13BA81EB00AF6413 /* JoypadConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadConstants.h; sourceTree = "<group>"; };
+		A898D49D13BA81EB00AF6413 /* JoypadControllerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadControllerLayout.h; sourceTree = "<group>"; };
+		A898D49E13BA81EB00AF6413 /* JoypadDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadDevice.h; sourceTree = "<group>"; };
+		A898D49F13BA81EB00AF6413 /* JoypadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadManager.h; sourceTree = "<group>"; };
+		A898D4A013BA81EB00AF6413 /* JoypadSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadSDK.h; sourceTree = "<group>"; };
+		A898D4A113BA81EB00AF6413 /* libJoypadCocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJoypadCocoaTouch.a; path = ../../../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A898D4A513BA824B00AF6413 /* JoypadXIBConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoypadXIBConfigure.h; path = ../JoypadCocoaTouchSample/Classes/JoypadXIBConfigure.h; sourceTree = "<group>"; };
+		A898D4A613BA824B00AF6413 /* JoypadXIBConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoypadXIBConfigure.m; path = ../JoypadCocoaTouchSample/Classes/JoypadXIBConfigure.m; sourceTree = "<group>"; };
+		A898D4AA13BA852A00AF6413 /* JoyPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyPad.h; path = Classes/JoyPad.h; sourceTree = "<group>"; };
+		A898D4AB13BA852A00AF6413 /* JoyPad.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoyPad.mm; path = Classes/JoyPad.mm; sourceTree = "<group>"; };
+		A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DualAnalogSticks.xib; path = "Resources/JoyPad Layouts/DualAnalogSticks.xib"; sourceTree = "<group>"; };
+		A898D4B413BC15D100AF6413 /* SettingsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsButton.png; path = Artwork/SettingsButton.png; sourceTree = "<group>"; };
 		A899CE5A132091B5008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
 		A899CE5B132091B5008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
 		A899CE5E132091DB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
@@ -2811,6 +2826,7 @@
 		080E96DDFE201D6D7F000001 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
+				A898D49B13BA81EB00AF6413 /* JoypadCocoaTouchSDK */,
 				A8EB5AD613987E720090042E /* GoogleAnalytics */,
 				A8CCD13A1280CA7900A62339 /* MAD */,
 				A89240DA127FBB5400F0A2EE /* Vorbis */,
@@ -2888,6 +2904,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A898D4AF13BAB4F000AF6413 /* JoyPad Layouts */,
 				A826E50B139F0C6500EF8605 /* Settings.bundle */,
 				A8FF8537130F798B00A874F8 /* M1 */,
 				A8FF8539130F798B00A874F8 /* M2 */,
@@ -3107,6 +3124,8 @@
 				A8DAB89C134E9F5600E4AF10 /* Achievements.m */,
 				A8528B6B1353EBC500EFB947 /* Statistics.h */,
 				A8528B6C1353EBC500EFB947 /* Statistics.m */,
+				A898D4AA13BA852A00AF6413 /* JoyPad.h */,
+				A898D4AB13BA852A00AF6413 /* JoyPad.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3188,6 +3207,7 @@
 		A8562B5711DAE3850071DFEF /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				A898D4B413BC15D100AF6413 /* SettingsButton.png */,
 				A8FCF11313B60A830084B5C4 /* BackButton.png */,
 				A874B1B71318AA68009C4A92 /* MenuItems */,
 				A8F2382E12EB729B00CBC83D /* zoom_in.png */,
@@ -4228,6 +4248,30 @@
 			name = Vorbis;
 			sourceTree = "<group>";
 		};
+		A898D49B13BA81EB00AF6413 /* JoypadCocoaTouchSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A898D4A513BA824B00AF6413 /* JoypadXIBConfigure.h */,
+				A898D4A613BA824B00AF6413 /* JoypadXIBConfigure.m */,
+				A898D49C13BA81EB00AF6413 /* JoypadConstants.h */,
+				A898D49D13BA81EB00AF6413 /* JoypadControllerLayout.h */,
+				A898D49E13BA81EB00AF6413 /* JoypadDevice.h */,
+				A898D49F13BA81EB00AF6413 /* JoypadManager.h */,
+				A898D4A013BA81EB00AF6413 /* JoypadSDK.h */,
+				A898D4A113BA81EB00AF6413 /* libJoypadCocoaTouch.a */,
+			);
+			name = JoypadCocoaTouchSDK;
+			path = ../../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK;
+			sourceTree = "<group>";
+		};
+		A898D4AF13BAB4F000AF6413 /* JoyPad Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */,
+			);
+			name = "JoyPad Layouts";
+			sourceTree = "<group>";
+		};
 		A8AA814D12C055D800821170 /* SettingsIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -4702,6 +4746,7 @@
 				A8FCF11D13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12013B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12413B60E9C0084B5C4 /* ResumeButton.png in Resources */,
+				A898D4B513BC15D100AF6413 /* SettingsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4810,6 +4855,7 @@
 				A8FCF11E13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12113B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12513B60E9C0084B5C4 /* ResumeButton.png in Resources */,
+				A898D4B613BC15D100AF6413 /* SettingsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4918,6 +4964,7 @@
 				A8FCF11F13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12213B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12613B60E9C0084B5C4 /* ResumeButton.png in Resources */,
+				A898D4B713BC15D100AF6413 /* SettingsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6300,6 +6347,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG";
@@ -6352,6 +6400,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				PROVISIONING_PROFILE = "";
@@ -6401,6 +6450,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -6451,6 +6501,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
@@ -6500,6 +6551,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
@@ -6553,6 +6605,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
@@ -6603,6 +6656,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6653,6 +6707,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6690,6 +6745,8 @@
 				OTHER_LDFLAGS = (
 					"-weak_library",
 					/usr/lib/libSystem.B.dylib,
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
@@ -6743,6 +6800,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				PROVISIONING_PROFILE = "3B320912-1F8E-4275-8E07-75F6467883E5";
@@ -6792,6 +6850,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-2";
@@ -6846,6 +6905,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				PROVISIONING_PROFILE = "73293EEC-9C15-426C-BB87-F404B542CAE9";
@@ -6884,6 +6944,8 @@
 				OTHER_LDFLAGS = (
 					"-weak_library",
 					/usr/lib/libSystem.B.dylib,
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
@@ -6936,6 +6998,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -6972,6 +7035,8 @@
 				OTHER_LDFLAGS = (
 					"-weak_library",
 					/usr/lib/libSystem.B.dylib,
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
@@ -7009,6 +7074,8 @@
 				OTHER_LDFLAGS = (
 					"-weak_library",
 					/usr/lib/libSystem.B.dylib,
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
