@@ -312,6 +312,12 @@ BOOL StatsDownloaded = NO;
   // Start the new game for real!
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
+#if defined(A1DEBUG)
+  [self shieldCheat:nil];
+  [self ammoCheat:nil];
+  [self weaponsCheat:nil];
+#endif
+
 }
 
 - (IBAction)cancelNewGame {
@@ -811,7 +817,12 @@ extern bool handle_open_replay(FileSpecifier& File);
   
   FileSpecifier FileToLoad ( (char*)[film.filename UTF8String] );
   // load_and_start_game(FileToLoad);
-  handle_open_replay(FileToLoad);  
+  handle_open_replay(FileToLoad);
+#if defined(A1DEBUG)
+  [self shieldCheat:nil];
+  [self ammoCheat:nil];
+  [self weaponsCheat:nil];
+#endif
   [Tracking trackPageview:@"/film/load"];
 }
 
