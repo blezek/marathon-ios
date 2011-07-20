@@ -257,6 +257,10 @@ void Screen::Initialize(screen_mode_data* mode)
         }
       }
     }
+    
+    // DJB support for iPhone/Touch
+    m_modes.push_back(std::pair<int, int>(480, 320));
+    m_modes.push_back(std::pair<int, int>(960, 640));
 
     // these are not validated in graphics prefs because
     // SDL is not initialized yet when prefs load, so
@@ -464,19 +468,29 @@ SDL_Rect Screen::hud_rect()
   r.w = 640;
   switch (screen_mode.hud_scale_level)
   {
-  case 1:
-    if (window_height() >= 960 && window_width() >= 1280) {
-      r.w *= 2;
-    }
-    break;
-  case 2:
+    case 1:
+      if (window_height() >= 960 && window_width() >= 1280) {
+        r.w *= 2;
+      }
+      break;
+    case 2:
     r.w = std::min(window_width(), std::max(640, 4 * window_height() / 3));
-    break;
+      break;
   }
   r.h = r.w / 4;
   r.x = (width() - r.w) / 2;
   r.y = window_height() - r.h + (height() - window_height()) / 2;
 
+  // DJB Handle iPhone HUD
+  if ( screen_mode.hud_scale_level == 3 ) {
+    r.w = r.w / 2;
+    r.h = r.h / 2;
+    // window_height() == SDL_GetVideoSurface()->w;
+    // height() == screen_mode.height
+    r.x = (screen_mode.width - r.w) / 2;
+    r.y = (screen_mode.height - r.h);
+  }
+  
   return r;
 }
 
@@ -668,6 +682,8 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
 #endif
 #endif
 
+  
+  
   if (main_surface == NULL) {
     fprintf(stderr, "Can't open video display (%s)\n", SDL_GetError());
 #ifdef HAVE_OPENGL
@@ -733,6 +749,9 @@ static void change_screen_mode(int width, int height, int depth, bool nogl)
     glScissor(0, 0, width, height);
     glViewport(0, 0, width, height);
      */
+    // glViewport(0,0,480,320);
+    // glOrthof(0, width, height, 0, 1, -1);          // OpenGL-style z
+
 #ifdef __WIN32__
     clear_screen();
 #endif

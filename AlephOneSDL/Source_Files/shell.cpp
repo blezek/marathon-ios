@@ -481,8 +481,8 @@ void initialize_application(void)
   }
 
   // DJB Make sure we are properly sized
-  graphics_preferences->screen_mode.width = 1024;
-  graphics_preferences->screen_mode.height = 768;
+  // graphics_preferences->screen_mode.width = 1024;
+  // graphics_preferences->screen_mode.height = 768;
 
 
   write_preferences();

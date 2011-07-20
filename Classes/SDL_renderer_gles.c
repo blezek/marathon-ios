@@ -327,6 +327,7 @@ GLES_CreateRenderer(SDL_Window * window, Uint32 flags)
     return renderer;
 }
 
+#include "AlephOneHelper.h"
 static int
 GLES_ActivateRenderer(SDL_Renderer * renderer)
 {
@@ -344,9 +345,30 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
         data->glLoadIdentity();
       // DJB...
       // DJB NB: these need to be in the original portrait mode
+      
+      // DJB in the iPad, this is a 1:1 mapping
+      // But for the iPhone, we need to figure it out...
+      if ( helperRunningOniPad() ) {
         data->glViewport(0, 0, window->w, window->h);
-      data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
-                     0.0, 1.0);
+        data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
+                       0.0, 1.0);        
+      } else {
+        // Figure it out
+        GLint width = helperOpenGLWidth();
+        GLint height = helperOpenGLHeight();
+        // We're shooting for 640x480 here
+        
+        data->glViewport(0, 0, 480, 320);
+        data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
+                       0.0, 1.0);        
+         
+        
+        /*
+        glOrthof(0, 640, 480, 0,
+                       0, 1);        
+         */
+        
+         }
 
       // Now rotate the view
       /*
@@ -359,10 +381,12 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
 			// glRotatef(90,0,0,1);
       // glRotatef ( 90, 0,0,1);
       // glTranslatef( 0,-window->h,0);
-      GLfloat scaleX = 0.66, scaleY = 0.66;
+      /*
+      GLfloat scaleX = 0.75, scaleY = 0.66;
       printf ( "Scale is: %f, %f\n", scaleX, scaleY );
       printf ( "Window size is %d x %d\n", window->w, window->h );
-      // glScalef ( scaleX, scaleY, 1 );
+      glScalef ( scaleX, scaleY, 1 );
+       */
 			// glTranslatef(-h/scaleX,-w/scaleY,0);
 
       

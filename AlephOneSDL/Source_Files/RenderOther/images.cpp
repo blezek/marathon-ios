@@ -959,6 +959,8 @@ static void draw_picture(LoadedResource &rsrc)
     SDL_FillRect(video, NULL, SDL_MapRGB(video->format, 0, 0, 0));
   }
 
+  // DJB: here is where the iPhone drawing needs to be tweaked
+  
   /*
      // DJB
      dst_rect.w = iWidth;

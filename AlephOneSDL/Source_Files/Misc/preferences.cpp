@@ -2325,8 +2325,6 @@ void read_preferences ()
   printf ( "graphics preferences in read_preferences after loading %d x %d\n",
            graphics_preferences->screen_mode.width,
            graphics_preferences->screen_mode.height );
-  graphics_preferences->screen_mode.width = 1024;
-  graphics_preferences->screen_mode.height = 768;
   printf ( "Resetting screen mode to %d x %d\n",
            graphics_preferences->screen_mode.width,
           graphics_preferences->screen_mode.height );
@@ -2742,20 +2740,28 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
   memset(&preferences->screen_mode, '\0', sizeof(screen_mode_data));
   preferences->screen_mode.gamma_level= DEFAULT_GAMMA_LEVEL;
 
-  // DJB
-#ifdef __IPHONE__
-  preferences->screen_mode.width = 480;
-  preferences->screen_mode.height = 320;
-#else /* iPad */
-  preferences->screen_mode.width = 1024;
-  preferences->screen_mode.height = 768;
-#endif
   printf ( "Set screen mode in preferences %d x %d\n",
-           preferences->screen_mode.width,
-           preferences->screen_mode.height );
+          preferences->screen_mode.width,
+          preferences->screen_mode.height );
   preferences->screen_mode.hud = true;
   preferences->screen_mode.hud_scale_level = 0;
   preferences->screen_mode.term_scale_level = 0;
+
+  // DJB
+  if ( helperRunningOniPad() ) {
+    preferences->screen_mode.width = 1024;
+    preferences->screen_mode.height = 768;
+  } else {
+    preferences->screen_mode.width = helperOpenGLWidth();
+    preferences->screen_mode.height = helperOpenGLHeight();
+    preferences->screen_mode.width = 640;
+    preferences->screen_mode.height = 480;
+    preferences->screen_mode.hud = true;
+    preferences->screen_mode.hud_scale_level = 3;
+    
+  }
+  
+  
 #if defined(__APPLE__) && defined(__MACH__)
   preferences->screen_mode.acceleration = _opengl_acceleration;
 #else

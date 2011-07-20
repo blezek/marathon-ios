@@ -60,6 +60,18 @@
 		A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
+		A82E9BD913D673FE00EC2CAD /* BasicHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.m */; };
+		A82E9BDA13D673FE00EC2CAD /* BasicHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.m */; };
+		A82E9BDB13D673FE00EC2CAD /* BasicHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.m */; };
+		A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */; };
+		A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */; };
+		A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */; };
+		A82E9BE213D6743700EC2CAD /* HUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BE013D6743700EC2CAD /* HUDViewController.mm */; };
+		A82E9BE313D6743700EC2CAD /* HUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BE013D6743700EC2CAD /* HUDViewController.mm */; };
+		A82E9BE413D6743700EC2CAD /* HUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82E9BE013D6743700EC2CAD /* HUDViewController.mm */; };
+		A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BE113D6743700EC2CAD /* HUDViewController.xib */; };
+		A82E9BE613D6743700EC2CAD /* HUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BE113D6743700EC2CAD /* HUDViewController.xib */; };
+		A82E9BE713D6743700EC2CAD /* HUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82E9BE113D6743700EC2CAD /* HUDViewController.xib */; };
 		A82F1CF91214E27C004D0B68 /* MovePadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1CF81214E27C004D0B68 /* MovePadView.mm */; };
 		A82F1DD01214F2E9004D0B68 /* LookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82F1DCF1214F2E9004D0B68 /* LookView.mm */; };
 		A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F6012D2125C001CD264 /* ControlsOverview.png */; };
@@ -71,8 +83,52 @@
 		A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
 		A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
 		A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
+		A853C9BB13CF23A2001E8A25 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AE13CF23A2001E8A25 /* DownloadViewController.xib */; };
+		A853C9BC13CF23A2001E8A25 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AE13CF23A2001E8A25 /* DownloadViewController.xib */; };
+		A853C9BD13CF23A2001E8A25 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AE13CF23A2001E8A25 /* DownloadViewController.xib */; };
+		A853C9BE13CF23A2001E8A25 /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AF13CF23A2001E8A25 /* FilmCell.xib */; };
+		A853C9BF13CF23A2001E8A25 /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AF13CF23A2001E8A25 /* FilmCell.xib */; };
+		A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9AF13CF23A2001E8A25 /* FilmCell.xib */; };
+		A853C9C113CF23A2001E8A25 /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B013CF23A2001E8A25 /* FilmViewController.xib */; };
+		A853C9C213CF23A2001E8A25 /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B013CF23A2001E8A25 /* FilmViewController.xib */; };
+		A853C9C313CF23A2001E8A25 /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B013CF23A2001E8A25 /* FilmViewController.xib */; };
+		A853C9C413CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B113CF23A2001E8A25 /* GameViewController~iPad.xib */; };
+		A853C9C513CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B113CF23A2001E8A25 /* GameViewController~iPad.xib */; };
+		A853C9C613CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B113CF23A2001E8A25 /* GameViewController~iPad.xib */; };
+		A853C9C713CF23A2001E8A25 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B213CF23A2001E8A25 /* HelpViewController.xib */; };
+		A853C9C813CF23A2001E8A25 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B213CF23A2001E8A25 /* HelpViewController.xib */; };
+		A853C9C913CF23A2001E8A25 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B213CF23A2001E8A25 /* HelpViewController.xib */; };
+		A853C9CA13CF23A2001E8A25 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B313CF23A2001E8A25 /* MainWindow.xib */; };
+		A853C9CB13CF23A2001E8A25 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B313CF23A2001E8A25 /* MainWindow.xib */; };
+		A853C9CC13CF23A2001E8A25 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B313CF23A2001E8A25 /* MainWindow.xib */; };
+		A853C9CD13CF23A2001E8A25 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */; };
+		A853C9CE13CF23A2001E8A25 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */; };
+		A853C9CF13CF23A2001E8A25 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */; };
+		A853C9D013CF23A2001E8A25 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B513CF23A2001E8A25 /* PauseViewController.xib */; };
+		A853C9D113CF23A2001E8A25 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B513CF23A2001E8A25 /* PauseViewController.xib */; };
+		A853C9D213CF23A2001E8A25 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B513CF23A2001E8A25 /* PauseViewController.xib */; };
+		A853C9D313CF23A2001E8A25 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */; };
+		A853C9D413CF23A2001E8A25 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */; };
+		A853C9D513CF23A2001E8A25 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */; };
+		A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
+		A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
+		A853C9D813CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
+		A853C9D913CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
+		A853C9DA13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
+		A853C9DB13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
+		A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
+		A853C9DD13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
+		A853C9DE13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
+		A853C9DF13CF23A2001E8A25 /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */; };
+		A853C9E013CF23A2001E8A25 /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */; };
+		A853C9E113CF23A2001E8A25 /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */; };
+		A853C9E413CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E313CF23F1001E8A25 /* GameViewController~iPhone.xib */; };
+		A853C9E513CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E313CF23F1001E8A25 /* GameViewController~iPhone.xib */; };
+		A853C9E613CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E313CF23F1001E8A25 /* GameViewController~iPhone.xib */; };
+		A853C9E813CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E713CF256A001E8A25 /* NewGameViewController~iPhone.xib */; };
+		A853C9E913CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E713CF256A001E8A25 /* NewGameViewController~iPhone.xib */; };
+		A853C9EA13CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9E713CF256A001E8A25 /* NewGameViewController~iPhone.xib */; };
 		A8562A7D11DACF1B0071DFEF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8562A7911DACF1B0071DFEF /* GameViewController.mm */; };
-		A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A85913A012B1DA5A00754DFE /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139E12B1DA5A00754DFE /* left.png */; };
 		A85913A112B1DA5A00754DFE /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = A859139F12B1DA5A00754DFE /* right.png */; };
 		A85A380112178BA50080BBA9 /* ButtonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85A37FF12178BA50080BBA9 /* ButtonView.mm */; };
@@ -428,25 +484,16 @@
 		A8811F9E12C76B2200A1A08E /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
 		A8811FEE12C7816300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
 		A8811FF312C7816300A1A08E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
-		A8811FF512C7816300A1A08E /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A8811FF812C7816300A1A08E /* jconfig.iphoneos in Resources */ = {isa = PBXBuildFile; fileRef = A88DBED212640A7800FCC652 /* jconfig.iphoneos */; };
 		A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
-		A8811FFA12C7816300A1A08E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
 		A8811FFB12C7816300A1A08E /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
 		A8811FFC12C7816300A1A08E /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
-		A8811FFD12C7816300A1A08E /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8811FFE12C7816300A1A08E /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
 		A8811FFF12C7816300A1A08E /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
 		A881200012C7816300A1A08E /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
-		A881200212C7816300A1A08E /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
-		A881200412C7816300A1A08E /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
 		A881200512C7816300A1A08E /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
-		A881200712C7816300A1A08E /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A881200812C7816300A1A08E /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
-		A881200912C7816300A1A08E /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
-		A881200A12C7816300A1A08E /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A881200B12C7816300A1A08E /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
-		A881200D12C7816300A1A08E /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A881200F12C7816300A1A08E /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
 		A881201012C7816300A1A08E /* help7.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D912A7407E00032ED6 /* help7.png */; };
 		A881201112C7816300A1A08E /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DA12A7407E00032ED6 /* help6.png */; };
@@ -911,25 +958,16 @@
 		A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
 		A88121F812C7826300A1A08E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
-		A88121FA12C7826300A1A08E /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8562A7A11DACF1B0071DFEF /* GameViewController.xib */; };
 		A88121FD12C7826300A1A08E /* jconfig.iphoneos in Resources */ = {isa = PBXBuildFile; fileRef = A88DBED212640A7800FCC652 /* jconfig.iphoneos */; };
 		A88121FE12C7826300A1A08E /* LoadingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A31561292475E00BCEA0C /* LoadingLabel.png */; };
-		A88121FF12C7826300A1A08E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
 		A881220012C7826300A1A08E /* movementboxBase.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785541270767C009F18D8 /* movementboxBase.png */; };
 		A881220112C7826300A1A08E /* movementboxKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = A87785551270767C009F18D8 /* movementboxKnob.png */; };
-		A881220212C7826300A1A08E /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A881220312C7826300A1A08E /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7797126697420043F0D4 /* overheadmap.png */; };
 		A881220412C7826300A1A08E /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
 		A881220512C7826300A1A08E /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7796126697420043F0D4 /* pause-btn.png */; };
-		A881220712C7826300A1A08E /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
-		A881220912C7826300A1A08E /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
 		A881220A12C7826300A1A08E /* primarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7798126697420043F0D4 /* primarytrigger-btn.png */; };
-		A881220C12C7826300A1A08E /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A881220D12C7826300A1A08E /* Reload.png in Resources */ = {isa = PBXBuildFile; fileRef = A81A33071296255300BCEA0C /* Reload.png */; };
-		A881220E12C7826300A1A08E /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
-		A881220F12C7826300A1A08E /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A881221012C7826300A1A08E /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
-		A881221212C7826300A1A08E /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A881221412C7826300A1A08E /* help8.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D812A7407E00032ED6 /* help8.png */; };
 		A881221512C7826300A1A08E /* help7.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55D912A7407E00032ED6 /* help7.png */; };
 		A881221612C7826300A1A08E /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DA12A7407E00032ED6 /* help6.png */; };
@@ -1396,9 +1434,6 @@
 		A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
 		A881251412C7B18D00A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
 		A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
-		A881257E12C7B64900A1A08E /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A881257D12C7B64900A1A08E /* FilmCell.xib */; };
-		A881257F12C7B64900A1A08E /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A881257D12C7B64900A1A08E /* FilmCell.xib */; };
-		A881258012C7B64900A1A08E /* FilmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A881257D12C7B64900A1A08E /* FilmCell.xib */; };
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
@@ -1521,17 +1556,12 @@
 		A8AA814612C054A400821170 /* toggleweapons-right-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814412C054A400821170 /* toggleweapons-right-btn.png */; };
 		A8AA814C12C055B400821170 /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AA814B12C055B400821170 /* play-btn.png */; };
 		A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
-		A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
 		A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
-		A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
 		A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
-		A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */; };
 		A8AD432912220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
 		A8AD432A12220F9500A09383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
-		A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD432512220F9500A09383 /* MainWindow.xib */; };
 		A8AD43511222125200A09383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
 		A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
-		A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AE47C71229152F0093110D /* SaveGameViewController.xib */; };
 		A8AF817712B7124000671C11 /* buttonsarea-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814612B7123F00671C11 /* buttonsarea-bg.png */; };
 		A8AF817812B7124000671C11 /* buttonsarea-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814712B7123F00671C11 /* buttonsarea-bg2.png */; };
 		A8AF817912B7124000671C11 /* cancel-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8AF814812B7123F00671C11 /* cancel-btn.png */; };
@@ -1565,13 +1595,10 @@
 		A8B19C1A13A459BA008A095D /* Marathon_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B19C1413A459BA008A095D /* Marathon_Icon.png */; };
 		A8B19C1B13A459BA008A095D /* Marathon_iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B19C1513A459BA008A095D /* Marathon_iTunesArtwork.png */; };
 		A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
-		A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B413931235DE3D000D59A4 /* SavedGameCell.xib */; };
 		A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
 		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
-		A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C29C591224BF7B00E79491 /* NewGameViewController.xib */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
-		A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C3922D129789A100E09E32 /* HelpViewController.xib */; };
 		A8C4436813A7CF72002A908B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4436613A7CF72002A908B /* about.png */; };
 		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
@@ -1584,7 +1611,6 @@
 		A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
-		A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D5AA80126545AE002211FB /* ProgressViewController.xib */; };
 		A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4A131766DB009801EC /* GenericBackground.png */; };
 		A8D66F50131766DB009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4B131766DB009801EC /* SplashScreen.png */; };
 		A8D66F57131766E9009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
@@ -1595,9 +1621,6 @@
 		A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
-		A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
-		A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DC94ED12CAD0500055397E /* FilmViewController.xib */; };
 		A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
 		A8EB5AD313987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
@@ -1615,8 +1638,6 @@
 		A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB7799126697420043F0D4 /* secondarytrigger-btn.png */; };
 		A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EB779A126697420043F0D4 /* patternbuffers-btn.png */; };
 		A8EB77F51266A1130043F0D4 /* PreferencesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */; };
-		A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */; };
-		A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB78551266A8510043F0D4 /* PauseViewController.xib */; };
 		A8F2383012EB729B00CBC83D /* zoom_in.png in Resources */ = {isa = PBXBuildFile; fileRef = A8F2382E12EB729B00CBC83D /* zoom_in.png */; };
 		A8F2383112EB729B00CBC83D /* zoom_out.png in Resources */ = {isa = PBXBuildFile; fileRef = A8F2382F12EB729B00CBC83D /* zoom_out.png */; };
 		A8F2383212EB729B00CBC83D /* zoom_in.png in Resources */ = {isa = PBXBuildFile; fileRef = A8F2382E12EB729B00CBC83D /* zoom_in.png */; };
@@ -1782,6 +1803,12 @@
 		A826E50B139F0C6500EF8605 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
+		A82E9BD613D673FD00EC2CAD /* BasicHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicHUDViewController.h; path = Classes/BasicHUDViewController.h; sourceTree = "<group>"; };
+		A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicHUDViewController.m; path = Classes/BasicHUDViewController.m; sourceTree = "<group>"; };
+		A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicHUDViewController.xib; sourceTree = "<group>"; };
+		A82E9BDF13D6743700EC2CAD /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDViewController.h; sourceTree = "<group>"; };
+		A82E9BE013D6743700EC2CAD /* HUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDViewController.mm; sourceTree = "<group>"; };
+		A82E9BE113D6743700EC2CAD /* HUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HUDViewController.xib; path = ../../HUDViewController.xib; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
 		A82F1CF81214E27C004D0B68 /* MovePadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MovePadView.mm; path = Classes/MovePadView.mm; sourceTree = "<group>"; };
 		A82F1DCE1214F2E9004D0B68 /* LookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookView.h; path = Classes/LookView.h; sourceTree = "<group>"; };
@@ -1897,6 +1924,21 @@
 		A85088B911C1E72600D95436 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		A8528B6B1353EBC500EFB947 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Statistics.h; path = Classes/Statistics.h; sourceTree = "<group>"; };
 		A8528B6C1353EBC500EFB947 /* Statistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Statistics.m; path = Classes/Statistics.m; sourceTree = "<group>"; };
+		A853C9AE13CF23A2001E8A25 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadViewController.xib; sourceTree = "<group>"; };
+		A853C9AF13CF23A2001E8A25 /* FilmCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmCell.xib; sourceTree = "<group>"; };
+		A853C9B013CF23A2001E8A25 /* FilmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmViewController.xib; sourceTree = "<group>"; };
+		A853C9B113CF23A2001E8A25 /* GameViewController~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~iPad.xib"; sourceTree = "<group>"; };
+		A853C9B213CF23A2001E8A25 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
+		A853C9B313CF23A2001E8A25 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewGameViewController.xib; sourceTree = "<group>"; };
+		A853C9B513CF23A2001E8A25 /* PauseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PauseViewController.xib; sourceTree = "<group>"; };
+		A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
+		A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
+		A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
+		A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedGameCell.xib; sourceTree = "<group>"; };
+		A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveGameViewController.xib; sourceTree = "<group>"; };
+		A853C9E313CF23F1001E8A25 /* GameViewController~iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~iPhone.xib"; sourceTree = "<group>"; };
+		A853C9E713CF256A001E8A25 /* NewGameViewController~iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NewGameViewController~iPhone.xib"; sourceTree = "<group>"; };
 		A85490F411BDEF0C0073554A /* jumphack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jumphack.c; path = Classes/jumphack.c; sourceTree = "<group>"; };
 		A85490F511BDEF0C0073554A /* jumphack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jumphack.h; path = Classes/jumphack.h; sourceTree = "<group>"; };
 		A85490F611BDEF0C0073554A /* keyinfotable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyinfotable.h; path = Classes/keyinfotable.h; sourceTree = "<group>"; };
@@ -1922,7 +1964,6 @@
 		A854912E11BDF0D40073554A /* SDL_renderer_gles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_renderer_gles.h; sourceTree = "<group>"; };
 		A8562A7811DACF1B0071DFEF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = Classes/GameViewController.h; sourceTree = "<group>"; };
 		A8562A7911DACF1B0071DFEF /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = Classes/GameViewController.mm; sourceTree = "<group>"; };
-		A8562A7A11DACF1B0071DFEF /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GameViewController.xib; path = Classes/GameViewController.xib; sourceTree = "<group>"; };
 		A859139E12B1DA5A00754DFE /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left.png; path = Artwork/left.png; sourceTree = "<group>"; };
 		A859139F12B1DA5A00754DFE /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right.png; path = Artwork/right.png; sourceTree = "<group>"; };
 		A85A37FE12178BA50080BBA9 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
@@ -1996,7 +2037,6 @@
 		A88124A112C79E0100A1A08E /* FilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmCell.m; path = Classes/FilmCell.m; sourceTree = "<group>"; };
 		A88124A212C79E0100A1A08E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmViewController.h; path = Classes/FilmViewController.h; sourceTree = "<group>"; };
 		A88124A312C79E0100A1A08E /* FilmViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilmViewController.mm; path = Classes/FilmViewController.mm; sourceTree = "<group>"; };
-		A881257D12C7B64900A1A08E /* FilmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmCell.xib; path = Resources/FilmCell.xib; sourceTree = "<group>"; };
 		A882CB7D134ABA450051573D /* SaveGame 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 2.xcdatamodel"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
@@ -2577,18 +2617,15 @@
 		A8AA814B12C055B400821170 /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-btn.png"; path = "Artwork/play-btn.png"; sourceTree = "<group>"; };
 		A8AB7ED5131DF02D0012C23E /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = Classes/PurchaseViewController.h; sourceTree = "<group>"; };
 		A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PurchaseViewController.mm; path = Classes/PurchaseViewController.mm; sourceTree = "<group>"; };
-		A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = Classes/PurchaseViewController.xib; sourceTree = "<group>"; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
 		A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneAppDelegate.h; path = Classes/AlephOneAppDelegate.h; sourceTree = "<group>"; };
 		A8AD432412220F9500A09383 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
-		A8AD432512220F9500A09383 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Classes/MainWindow.xib; sourceTree = "<group>"; };
 		A8AD43501222125200A09383 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8AD43A71222141000A09383 /* SaveGame.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = SaveGame.xcdatamodel; sourceTree = "<group>"; };
 		A8AD43B91222176E00A09383 /* SDL_pixels_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels_c.h; sourceTree = "<group>"; };
 		A8AD43BA122217D700A09383 /* SDL_blit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blit.h; sourceTree = "<group>"; };
 		A8AE47C51229152F0093110D /* SaveGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveGameViewController.h; path = Classes/SaveGameViewController.h; sourceTree = "<group>"; };
 		A8AE47C61229152F0093110D /* SaveGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SaveGameViewController.mm; path = Classes/SaveGameViewController.mm; sourceTree = "<group>"; };
-		A8AE47C71229152F0093110D /* SaveGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveGameViewController.xib; path = Classes/SaveGameViewController.xib; sourceTree = "<group>"; };
 		A8AE80CF11ED5C04005DC183 /* Entitlements.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Entitlements.plist; path = Resources/Entitlements.plist; sourceTree = "<group>"; };
 		A8AF814612B7123F00671C11 /* buttonsarea-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonsarea-bg.png"; sourceTree = "<group>"; };
 		A8AF814712B7123F00671C11 /* buttonsarea-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonsarea-bg2.png"; sourceTree = "<group>"; };
@@ -2625,16 +2662,13 @@
 		A8B19C1513A459BA008A095D /* Marathon_iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marathon_iTunesArtwork.png; sourceTree = "<group>"; };
 		A8B4138F1235DE10000D59A4 /* SavedGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedGameCell.h; path = Classes/SavedGameCell.h; sourceTree = "<group>"; };
 		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
-		A8B413931235DE3D000D59A4 /* SavedGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SavedGameCell.xib; path = Resources/SavedGameCell.xib; sourceTree = "<group>"; };
 		A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageLoader_iOS.cpp; path = Classes/ImageLoader_iOS.cpp; sourceTree = "<group>"; };
 		A8C29BA41224B69600E79491 /* ManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjects.h; path = Classes/ManagedObjects.h; sourceTree = "<group>"; };
 		A8C29BA51224B69600E79491 /* ManagedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjects.m; path = Classes/ManagedObjects.m; sourceTree = "<group>"; };
 		A8C29C571224BF7B00E79491 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameViewController.h; path = Classes/NewGameViewController.h; sourceTree = "<group>"; };
 		A8C29C581224BF7B00E79491 /* NewGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NewGameViewController.mm; path = Classes/NewGameViewController.mm; sourceTree = "<group>"; };
-		A8C29C591224BF7B00E79491 /* NewGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = Classes/NewGameViewController.xib; sourceTree = "<group>"; };
 		A8C3922B129789A100E09E32 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = Classes/HelpViewController.h; sourceTree = "<group>"; };
 		A8C3922C129789A100E09E32 /* HelpViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HelpViewController.mm; path = Classes/HelpViewController.mm; sourceTree = "<group>"; };
-		A8C3922D129789A100E09E32 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
 		A8C4436613A7CF72002A908B /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2652,7 +2686,6 @@
 		A8D3411A11B5E8BC00BC535F /* SW_Texture_Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SW_Texture_Extras.h; sourceTree = "<group>"; };
 		A8D5AA7E126545AE002211FB /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressViewController.h; path = Classes/ProgressViewController.h; sourceTree = "<group>"; };
 		A8D5AA7F126545AE002211FB /* ProgressViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressViewController.mm; path = Classes/ProgressViewController.mm; sourceTree = "<group>"; };
-		A8D5AA80126545AE002211FB /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProgressViewController.xib; path = Classes/ProgressViewController.xib; sourceTree = "<group>"; };
 		A8D66F4A131766DB009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		A8D66F4B131766DB009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 		A8D66F53131766E9009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
@@ -2686,7 +2719,6 @@
 		A8DAB89B134E9F5600E4AF10 /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Achievements.h; path = Classes/Achievements.h; sourceTree = "<group>"; };
 		A8DAB89C134E9F5600E4AF10 /* Achievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Achievements.m; path = Classes/Achievements.m; sourceTree = "<group>"; };
 		A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		A8DC94ED12CAD0500055397E /* FilmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilmViewController.xib; path = Classes/FilmViewController.xib; sourceTree = "<group>"; };
 		A8EB5AD113987E460090042E /* Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracking.h; path = Classes/Tracking.h; sourceTree = "<group>"; };
 		A8EB5AD213987E460090042E /* Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tracking.m; path = Classes/Tracking.m; sourceTree = "<group>"; };
 		A8EB5AD713987E720090042E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
@@ -2700,10 +2732,8 @@
 		A8EB779A126697420043F0D4 /* patternbuffers-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "patternbuffers-btn.png"; path = "Artwork/patternbuffers-btn.png"; sourceTree = "<group>"; };
 		A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesViewController.h; path = Classes/PreferencesViewController.h; sourceTree = "<group>"; };
 		A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PreferencesViewController.mm; path = Classes/PreferencesViewController.mm; sourceTree = "<group>"; };
-		A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesViewController.xib; path = Resources/PreferencesViewController.xib; sourceTree = "<group>"; };
 		A8EB78531266A8510043F0D4 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseViewController.h; path = Classes/PauseViewController.h; sourceTree = "<group>"; };
 		A8EB78541266A8510043F0D4 /* PauseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PauseViewController.mm; path = Classes/PauseViewController.mm; sourceTree = "<group>"; };
-		A8EB78551266A8510043F0D4 /* PauseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PauseViewController.xib; path = Resources/PauseViewController.xib; sourceTree = "<group>"; };
 		A8F2382E12EB729B00CBC83D /* zoom_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_in.png; path = Artwork/zoom_in.png; sourceTree = "<group>"; };
 		A8F2382F12EB729B00CBC83D /* zoom_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_out.png; path = Artwork/zoom_out.png; sourceTree = "<group>"; };
 		A8FCF11313B60A830084B5C4 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackButton.png; path = Artwork/BackButton.png; sourceTree = "<group>"; };
@@ -2904,12 +2934,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A853C9E213CF23C6001E8A25 /* XIB-iPhone */,
+				A853C9AD13CF23A2001E8A25 /* XIB-iPad */,
 				A898D4AF13BAB4F000AF6413 /* JoyPad Layouts */,
 				A826E50B139F0C6500EF8605 /* Settings.bundle */,
 				A8FF8537130F798B00A874F8 /* M1 */,
 				A8FF8539130F798B00A874F8 /* M2 */,
 				A8FF853B130F798B00A874F8 /* M3 */,
-				A8C391F11297845E00E09E32 /* XIB */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
 				A80AD37B1382E9C600D456DC /* Info Orientation.plist */,
@@ -3126,6 +3157,10 @@
 				A8528B6C1353EBC500EFB947 /* Statistics.m */,
 				A898D4AA13BA852A00AF6413 /* JoyPad.h */,
 				A898D4AB13BA852A00AF6413 /* JoyPad.mm */,
+				A82E9BD613D673FD00EC2CAD /* BasicHUDViewController.h */,
+				A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.m */,
+				A82E9BDF13D6743700EC2CAD /* HUDViewController.h */,
+				A82E9BE013D6743700EC2CAD /* HUDViewController.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3176,6 +3211,39 @@
 				A85088B711C1E72600D95436 /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		A853C9AD13CF23A2001E8A25 /* XIB-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				A82E9BE113D6743700EC2CAD /* HUDViewController.xib */,
+				A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */,
+				A853C9AE13CF23A2001E8A25 /* DownloadViewController.xib */,
+				A853C9AF13CF23A2001E8A25 /* FilmCell.xib */,
+				A853C9B013CF23A2001E8A25 /* FilmViewController.xib */,
+				A853C9B113CF23A2001E8A25 /* GameViewController~iPad.xib */,
+				A853C9B213CF23A2001E8A25 /* HelpViewController.xib */,
+				A853C9B313CF23A2001E8A25 /* MainWindow.xib */,
+				A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */,
+				A853C9B513CF23A2001E8A25 /* PauseViewController.xib */,
+				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
+				A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */,
+				A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */,
+				A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */,
+				A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */,
+			);
+			name = "XIB-iPad";
+			path = "Resources/XIB-iPad";
+			sourceTree = "<group>";
+		};
+		A853C9E213CF23C6001E8A25 /* XIB-iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A853C9E313CF23F1001E8A25 /* GameViewController~iPhone.xib */,
+				A853C9E713CF256A001E8A25 /* NewGameViewController~iPhone.xib */,
+			);
+			name = "XIB-iPhone";
+			path = "Resources/XIB-iPhone";
 			sourceTree = "<group>";
 		};
 		A854911011BDEF7D0073554A /* SDLExtras */ = {
@@ -4351,25 +4419,6 @@
 			path = savedgame;
 			sourceTree = "<group>";
 		};
-		A8C391F11297845E00E09E32 /* XIB */ = {
-			isa = PBXGroup;
-			children = (
-				A881257D12C7B64900A1A08E /* FilmCell.xib */,
-				A8DC94ED12CAD0500055397E /* FilmViewController.xib */,
-				A8562A7A11DACF1B0071DFEF /* GameViewController.xib */,
-				A8C3922D129789A100E09E32 /* HelpViewController.xib */,
-				A8AD432512220F9500A09383 /* MainWindow.xib */,
-				A8C29C591224BF7B00E79491 /* NewGameViewController.xib */,
-				A8EB78551266A8510043F0D4 /* PauseViewController.xib */,
-				A8EB77F41266A1130043F0D4 /* PreferencesViewController.xib */,
-				A8D5AA80126545AE002211FB /* ProgressViewController.xib */,
-				A8AB7ED7131DF02D0012C23E /* PurchaseViewController.xib */,
-				A8B413931235DE3D000D59A4 /* SavedGameCell.xib */,
-				A8AE47C71229152F0093110D /* SaveGameViewController.xib */,
-			);
-			name = XIB;
-			sourceTree = "<group>";
-		};
 		A8CCD13A1280CA7900A62339 /* MAD */ = {
 			isa = PBXGroup;
 			children = (
@@ -4646,25 +4695,16 @@
 			files = (
 				A87D9B3012963F5D002CDE5D /* ExpandingLabel.png in Resources */,
 				A8DC9A411238933700317186 /* Entitlements.plist in Resources */,
-				A8562A7E11DACF1B0071DFEF /* GameViewController.xib in Resources */,
 				A88DBF6212640A7800FCC652 /* jconfig.iphoneos in Resources */,
 				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
-				A8AD432B12220F9500A09383 /* MainWindow.xib in Resources */,
 				A87785561270767C009F18D8 /* movementboxBase.png in Resources */,
 				A87785571270767C009F18D8 /* movementboxKnob.png in Resources */,
-				A8C29C5B1224BF7B00E79491 /* NewGameViewController.xib in Resources */,
 				A8EB779D126697420043F0D4 /* overheadmap.png in Resources */,
 				A8EB77A0126697420043F0D4 /* patternbuffers-btn.png in Resources */,
 				A8EB779C126697420043F0D4 /* pause-btn.png in Resources */,
-				A8EB78571266A8510043F0D4 /* PauseViewController.xib in Resources */,
-				A8EB77F61266A1130043F0D4 /* PreferencesViewController.xib in Resources */,
 				A8EB779E126697420043F0D4 /* primarytrigger-btn.png in Resources */,
-				A8D5AA82126545AF002211FB /* ProgressViewController.xib in Resources */,
 				A81A33081296255300BCEA0C /* Reload.png in Resources */,
-				A8B413941235DE3D000D59A4 /* SavedGameCell.xib in Resources */,
-				A8AE47CB1229152F0093110D /* SaveGameViewController.xib in Resources */,
 				A8EB779F126697420043F0D4 /* secondarytrigger-btn.png in Resources */,
-				A8C3922F129789A100E09E32 /* HelpViewController.xib in Resources */,
 				A87F55E012A7407E00032ED6 /* help8.png in Resources */,
 				A87F55E112A7407E00032ED6 /* help7.png in Resources */,
 				A87F55E212A7407E00032ED6 /* help6.png in Resources */,
@@ -4706,8 +4746,6 @@
 				A8811F9812C769F900A1A08E /* internet-btn.png in Resources */,
 				A8811F9D12C76B2200A1A08E /* help11.png in Resources */,
 				A8811F9E12C76B2200A1A08E /* help12.png in Resources */,
-				A881257E12C7B64900A1A08E /* FilmCell.xib in Resources */,
-				A8DC94EE12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */,
 				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
@@ -4722,7 +4760,6 @@
 				A874B1FA1318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1FB1318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A8AB7ED9131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */,
 				A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */,
 				A817C00F1323311E00964061 /* buy-btn.png in Resources */,
@@ -4747,6 +4784,23 @@
 				A8FCF12013B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12413B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A898D4B513BC15D100AF6413 /* SettingsButton.png in Resources */,
+				A853C9BB13CF23A2001E8A25 /* DownloadViewController.xib in Resources */,
+				A853C9BE13CF23A2001E8A25 /* FilmCell.xib in Resources */,
+				A853C9C113CF23A2001E8A25 /* FilmViewController.xib in Resources */,
+				A853C9C413CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */,
+				A853C9C713CF23A2001E8A25 /* HelpViewController.xib in Resources */,
+				A853C9CA13CF23A2001E8A25 /* MainWindow.xib in Resources */,
+				A853C9CD13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
+				A853C9D013CF23A2001E8A25 /* PauseViewController.xib in Resources */,
+				A853C9D313CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
+				A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
+				A853C9D913CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
+				A853C9DF13CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
+				A853C9E413CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */,
+				A853C9E813CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */,
+				A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
+				A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4756,25 +4810,16 @@
 			files = (
 				A8811FEE12C7816300A1A08E /* ExpandingLabel.png in Resources */,
 				A8811FF312C7816300A1A08E /* Entitlements.plist in Resources */,
-				A8811FF512C7816300A1A08E /* GameViewController.xib in Resources */,
 				A8811FF812C7816300A1A08E /* jconfig.iphoneos in Resources */,
 				A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */,
-				A8811FFA12C7816300A1A08E /* MainWindow.xib in Resources */,
 				A8811FFB12C7816300A1A08E /* movementboxBase.png in Resources */,
 				A8811FFC12C7816300A1A08E /* movementboxKnob.png in Resources */,
-				A8811FFD12C7816300A1A08E /* NewGameViewController.xib in Resources */,
 				A8811FFE12C7816300A1A08E /* overheadmap.png in Resources */,
 				A8811FFF12C7816300A1A08E /* patternbuffers-btn.png in Resources */,
 				A881200012C7816300A1A08E /* pause-btn.png in Resources */,
-				A881200212C7816300A1A08E /* PauseViewController.xib in Resources */,
-				A881200412C7816300A1A08E /* PreferencesViewController.xib in Resources */,
 				A881200512C7816300A1A08E /* primarytrigger-btn.png in Resources */,
-				A881200712C7816300A1A08E /* ProgressViewController.xib in Resources */,
 				A881200812C7816300A1A08E /* Reload.png in Resources */,
-				A881200912C7816300A1A08E /* SavedGameCell.xib in Resources */,
-				A881200A12C7816300A1A08E /* SaveGameViewController.xib in Resources */,
 				A881200B12C7816300A1A08E /* secondarytrigger-btn.png in Resources */,
-				A881200D12C7816300A1A08E /* HelpViewController.xib in Resources */,
 				A881200F12C7816300A1A08E /* help8.png in Resources */,
 				A881201012C7816300A1A08E /* help7.png in Resources */,
 				A881201112C7816300A1A08E /* help6.png in Resources */,
@@ -4816,8 +4861,6 @@
 				A881203712C7816300A1A08E /* internet-btn.png in Resources */,
 				A881203812C7816300A1A08E /* help11.png in Resources */,
 				A881203912C7816300A1A08E /* help12.png in Resources */,
-				A881257F12C7B64900A1A08E /* FilmCell.xib in Resources */,
-				A8DC94EF12CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */,
 				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
@@ -4832,7 +4875,6 @@
 				A874B1E51318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1E61318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1E71318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A8AB7EDD131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */,
 				A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */,
 				A817C00C1323311E00964061 /* buy-btn.png in Resources */,
@@ -4856,6 +4898,23 @@
 				A8FCF12113B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12513B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A898D4B613BC15D100AF6413 /* SettingsButton.png in Resources */,
+				A853C9BC13CF23A2001E8A25 /* DownloadViewController.xib in Resources */,
+				A853C9BF13CF23A2001E8A25 /* FilmCell.xib in Resources */,
+				A853C9C213CF23A2001E8A25 /* FilmViewController.xib in Resources */,
+				A853C9C513CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */,
+				A853C9C813CF23A2001E8A25 /* HelpViewController.xib in Resources */,
+				A853C9CB13CF23A2001E8A25 /* MainWindow.xib in Resources */,
+				A853C9CE13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
+				A853C9D113CF23A2001E8A25 /* PauseViewController.xib in Resources */,
+				A853C9D413CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
+				A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
+				A853C9DA13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9DD13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
+				A853C9E013CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
+				A853C9E513CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */,
+				A853C9E913CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */,
+				A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
+				A82E9BE613D6743700EC2CAD /* HUDViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4865,25 +4924,16 @@
 			files = (
 				A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */,
 				A88121F812C7826300A1A08E /* Entitlements.plist in Resources */,
-				A88121FA12C7826300A1A08E /* GameViewController.xib in Resources */,
 				A88121FD12C7826300A1A08E /* jconfig.iphoneos in Resources */,
 				A88121FE12C7826300A1A08E /* LoadingLabel.png in Resources */,
-				A88121FF12C7826300A1A08E /* MainWindow.xib in Resources */,
 				A881220012C7826300A1A08E /* movementboxBase.png in Resources */,
 				A881220112C7826300A1A08E /* movementboxKnob.png in Resources */,
-				A881220212C7826300A1A08E /* NewGameViewController.xib in Resources */,
 				A881220312C7826300A1A08E /* overheadmap.png in Resources */,
 				A881220412C7826300A1A08E /* patternbuffers-btn.png in Resources */,
 				A881220512C7826300A1A08E /* pause-btn.png in Resources */,
-				A881220712C7826300A1A08E /* PauseViewController.xib in Resources */,
-				A881220912C7826300A1A08E /* PreferencesViewController.xib in Resources */,
 				A881220A12C7826300A1A08E /* primarytrigger-btn.png in Resources */,
-				A881220C12C7826300A1A08E /* ProgressViewController.xib in Resources */,
 				A881220D12C7826300A1A08E /* Reload.png in Resources */,
-				A881220E12C7826300A1A08E /* SavedGameCell.xib in Resources */,
-				A881220F12C7826300A1A08E /* SaveGameViewController.xib in Resources */,
 				A881221012C7826300A1A08E /* secondarytrigger-btn.png in Resources */,
-				A881221212C7826300A1A08E /* HelpViewController.xib in Resources */,
 				A881221412C7826300A1A08E /* help8.png in Resources */,
 				A881221512C7826300A1A08E /* help7.png in Resources */,
 				A881221612C7826300A1A08E /* help6.png in Resources */,
@@ -4925,8 +4975,6 @@
 				A881223C12C7826300A1A08E /* internet-btn.png in Resources */,
 				A881223D12C7826300A1A08E /* help11.png in Resources */,
 				A881223E12C7826300A1A08E /* help12.png in Resources */,
-				A881258012C7B64900A1A08E /* FilmCell.xib in Resources */,
-				A8DC94F012CAD0500055397E /* FilmViewController.xib in Resources */,
 				A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */,
 				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
@@ -4941,7 +4989,6 @@
 				A874B1D01318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1D11318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1D21318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A8AB7EDB131DF02D0012C23E /* PurchaseViewController.xib in Resources */,
 				A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */,
 				A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */,
 				A817C0091323311E00964061 /* buy-btn.png in Resources */,
@@ -4965,6 +5012,23 @@
 				A8FCF12213B60DF00084B5C4 /* MainMenuButton.png in Resources */,
 				A8FCF12613B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A898D4B713BC15D100AF6413 /* SettingsButton.png in Resources */,
+				A853C9BD13CF23A2001E8A25 /* DownloadViewController.xib in Resources */,
+				A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */,
+				A853C9C313CF23A2001E8A25 /* FilmViewController.xib in Resources */,
+				A853C9C613CF23A2001E8A25 /* GameViewController~iPad.xib in Resources */,
+				A853C9C913CF23A2001E8A25 /* HelpViewController.xib in Resources */,
+				A853C9CC13CF23A2001E8A25 /* MainWindow.xib in Resources */,
+				A853C9CF13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
+				A853C9D213CF23A2001E8A25 /* PauseViewController.xib in Resources */,
+				A853C9D513CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
+				A853C9D813CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
+				A853C9DB13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9DE13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
+				A853C9E113CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
+				A853C9E613CF23F2001E8A25 /* GameViewController~iPhone.xib in Resources */,
+				A853C9EA13CF256A001E8A25 /* NewGameViewController~iPhone.xib in Resources */,
+				A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
+				A82E9BE713D6743700EC2CAD /* HUDViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5392,6 +5456,8 @@
 				A8782048138ACD8200EA92D5 /* RootViewController.mm in Sources */,
 				A8EB5AD313987E460090042E /* Tracking.m in Sources */,
 				A8090E3B13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
+				A82E9BD913D673FE00EC2CAD /* BasicHUDViewController.m in Sources */,
+				A82E9BE213D6743700EC2CAD /* HUDViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5816,6 +5882,8 @@
 				A8782049138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 				A8EB5AD413987E460090042E /* Tracking.m in Sources */,
 				A8090E3C13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
+				A82E9BDA13D673FE00EC2CAD /* BasicHUDViewController.m in Sources */,
+				A82E9BE313D6743700EC2CAD /* HUDViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6240,6 +6308,8 @@
 				A878204A138ACD8300EA92D5 /* RootViewController.mm in Sources */,
 				A8EB5AD513987E460090042E /* Tracking.m in Sources */,
 				A8090E3D13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
+				A82E9BDB13D673FE00EC2CAD /* BasicHUDViewController.m in Sources */,
+				A82E9BE413D6743700EC2CAD /* HUDViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6310,7 +6380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -6336,7 +6406,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
-					"${UrbanAirship}//**",
 					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
@@ -6350,11 +6419,15 @@
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6364,7 +6437,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -6389,7 +6462,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
-					"${UrbanAirship}//**",
 					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
@@ -6402,12 +6474,16 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6417,7 +6493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -6453,13 +6529,16 @@
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6469,7 +6548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6503,13 +6582,16 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6519,7 +6601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -6553,13 +6635,16 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6569,7 +6654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -6608,11 +6693,15 @@
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
 				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6622,7 +6711,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6658,11 +6747,15 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6672,7 +6765,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -6709,11 +6802,15 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6754,7 +6851,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${UrbanAirship}/** ${SOURCE_ROOT}/Libraries/libogg-1.1.3/include Libraries/**";
 			};
 			name = Distribution;
@@ -6763,7 +6860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Blezek";
@@ -6789,7 +6886,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
-					"${UrbanAirship}//**",
 					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
@@ -6802,12 +6898,16 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				PROVISIONING_PROFILE = "3B320912-1F8E-4275-8E07-75F6467883E5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B320912-1F8E-4275-8E07-75F6467883E5";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6817,7 +6917,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Blezek (64345L7WHP)";
@@ -6852,14 +6952,17 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-2";
 				PROVISIONING_PROFILE = "DE0B3B3C-C7C9-4490-9834-780400722514";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3317B6F8-A99D-46FD-9C3A-C4CE56CD6683";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6869,7 +6972,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Blezek";
@@ -6907,12 +7010,16 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG-3";
 				PROVISIONING_PROFILE = "73293EEC-9C15-426C-BB87-F404B542CAE9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "73293EEC-9C15-426C-BB87-F404B542CAE9";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6953,7 +7060,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${UrbanAirship}/** ${SOURCE_ROOT}/Libraries/libogg-1.1.3/include Libraries/**";
 			};
 			name = AdHocDistribution;
@@ -6962,7 +7069,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -6987,7 +7094,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				HEADER_SEARCH_PATHS = (
-					"${UrbanAirship}//**",
 					"${SOURCE_ROOT}/../boost_1_43_0/",
 					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
 					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
@@ -7000,11 +7106,15 @@
 					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/../JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK\"",
 				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					/Users/blezek/Source/AlephOne/JoypadSDK/CocoaTouch/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a,
+				);
 				PRODUCT_NAME = "AlephOne-SDG";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7043,7 +7153,7 @@
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${UrbanAirship}/** ${SOURCE_ROOT}/Libraries/libogg-1.1.3/include Libraries/**";
 			};
 			name = Debug;
@@ -7083,7 +7193,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${UrbanAirship}/** ${SOURCE_ROOT}/Libraries/libogg-1.1.3/include Libraries/**";
 			};
 			name = Release;

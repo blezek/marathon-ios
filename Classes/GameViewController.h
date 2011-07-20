@@ -25,6 +25,7 @@
 #import "PurchaseViewController.h"
 #import "Statistics.h"
 
+#import "BasicHUDViewController.h"
 #import "JoyPad.h"
 
 

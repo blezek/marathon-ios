@@ -22,7 +22,7 @@ extern char *getDataDir();
 extern char* getLocalDataDir();
 extern void helperBringUpHUD();
 
-extern bool helperNewGame();
+extern int helperNewGame();
 extern void helperSaveGame();
 extern void helperHideHUD();
 extern void helperBeginTeleportOut();
@@ -46,7 +46,7 @@ extern void helperQuit();
 extern void helperNetwork();
 
 extern void helperEndReplay();
-extern void helperSetPreferences(bool notifySoundManager);
+extern void helperSetPreferences(int notifySoundManager);
 
 // Film helpers
 extern void helperHandleSaveFilm();
@@ -66,3 +66,14 @@ extern float helperGamma();
 
 // Pause alpho
 extern GLfloat helperPauseAlpha();
+
+// C linkage
+#if defined(__cplusplus)
+extern "C" {
+#endif
+  int helperRunningOniPad();
+  int helperOpenGLWidth();
+  int helperOpenGLHeight();
+#if defined(__cplusplus)
+}
+#endif

@@ -92,8 +92,9 @@ int getOpenGLESVersion() {
   return [AlephOneAppDelegate sharedAppDelegate].OpenGLESVersion;
 }
 
+
 // Should we start a new game?
-bool helperNewGame () {
+int helperNewGame () {
   if ( [GameViewController sharedInstance].haveNewGamePreferencesBeenSet ) {
     [GameViewController sharedInstance].haveNewGamePreferencesBeenSet = NO;
     return true;
@@ -150,8 +151,9 @@ extern GLfloat helperPauseAlpha() {
   return [[GameViewController sharedInstance] getPauseAlpha];
 }
 
-void helperSetPreferences( bool notify) {
-  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
+void helperSetPreferences( int notify) {
+  BOOL check = notify ? YES : NO;
+  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:check];
 }
 
 short pRecord[128][2];
@@ -233,5 +235,16 @@ void helperHandleSaveFilm() {
 
 void helperHandleLoadFilm() {
   [[GameViewController sharedInstance] chooseFilm];
+}
+
+// C linkage
+extern "C" int helperRunningOniPad() {
+  return [[AlephOneAppDelegate sharedAppDelegate] runningOniPad];
+}
+extern "C" int helperOpenGLWidth() {
+  return [AlephOneAppDelegate sharedAppDelegate].oglWidth;
+}
+extern "C" int helperOpenGLHeight() {
+  return [AlephOneAppDelegate sharedAppDelegate].oglHeight;
 }
 
