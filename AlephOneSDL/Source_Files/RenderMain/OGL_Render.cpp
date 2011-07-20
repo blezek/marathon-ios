@@ -1008,9 +1008,12 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
 #endif
 
   // Do OpenGL bounding
-  glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
-  // DJB OpenGL Landscape
-  // glViewport(RectBounds[1], RectBounds[0], RectBounds[3], RectBounds[2]);
+  if ( helperRunningOniPad() ) {
+    glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
+  } else {
+    // DJB iPhone
+    glViewport(0, 0, 480, 320 );    
+  }
 
   // Create the screen -> clip (fundamental) matrix; this will be needed
   // for all the other projections

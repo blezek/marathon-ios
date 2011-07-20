@@ -51,6 +51,12 @@
 	  depthBits:(int)depthBits \
 {
 	
+  
+  // DJB set to the screens scale factor
+  if ([self respondsToSelector:@selector(setContentScaleFactor:)]){
+    self.contentScaleFactor = [[UIScreen mainScreen] scale];
+  } 
+
 	NSString *colorFormat=nil;
 	GLuint depthBufferFormat;
 	BOOL useDepthBuffer;
@@ -84,6 +90,7 @@
 	if ((self = [super initWithFrame:frame])) {
 		// Get the layer
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
+    MLog(@"Content scale factor %f", self.contentScaleFactor);
 		
 		eaglLayer.opaque = YES;
 		eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -91,6 +98,7 @@
 		
     // DJB OpenGL  Here we decide if we can do GLES 1 or 2
 		context = nil; // [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES2];
+    MLog(@"Content scale factor %f", self.contentScaleFactor);
     if ( context ) {
       [AlephOneAppDelegate sharedAppDelegate].OpenGLESVersion = 2;
     } else {
@@ -109,9 +117,11 @@
 		
 		glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
 		glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+    MLog(@"Content scale factor %f", self.contentScaleFactor);
 		[context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer*)self.layer];
 		glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, viewRenderbuffer);
 		
+    MLog(@"Content scale factor %f", self.contentScaleFactor);
 		glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
 		glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
 		
@@ -121,7 +131,13 @@
 			glRenderbufferStorageOES(GL_RENDERBUFFER_OES, depthBufferFormat, backingWidth, backingHeight);
 			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
 		}
-			
+
+    // Get the renderbuffer size.
+    GLint width;
+    GLint height;
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &width);
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &height);
+    [[AlephOneAppDelegate sharedAppDelegate] oglWidth:width oglHeight:height];
 		if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
 			return NO;
 		}

@@ -121,6 +121,8 @@ The main screen should list a AxB mode for portrait orientation, and then
 
 */
 
+// DJB helper
+#include "AlephOneHelper.h"
 static void
 UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
 {
@@ -152,8 +154,17 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
     NSUInteger i;
     for (i = 0; i < mode_count; i++) {
         UIScreenMode *uimode = (UIScreenMode *) [modes objectAtIndex:i];
-        const CGSize size = [uimode size];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
+      // DJB, for iPhone, fake the size
+      CGSize size = [uimode size];
+      if ( !helperRunningOniPad() ) {
+        size.width = 640;
+        size.height = 480;
+#if TARGET_IPHONE_SIMULATOR
+        size.width = 480;
+        size.height = 640;
+#endif
+      }
       // DJB swap for landscape
 #if TARGET_IPHONE_SIMULATOR
       mode.w = (int) size.height;
@@ -218,11 +229,23 @@ UIKit_VideoInit(_THIS)
         for (i = 0; i < screen_count; i++) {
             // the main screen is the first element in the array.
             UIScreen *uiscreen = (UIScreen *) [screens objectAtIndex:i];
-            const CGSize size = [[uiscreen currentMode] size];
+            CGSize size = [[uiscreen currentMode] size];
           // DJB, OK, the simulator and iPad return different results.  On the simulator, we get
           // Width = 768, Height = 1024.
           // In the device
           // width = 1024, Height = 768.  This could be related to the rotation flag not being honored...
+          
+          // DJB  If we are on the iPhone, fake the display being 640 x 480
+          if ( !helperRunningOniPad() ) {            
+            size.width = 640;
+            size.height = 480;
+#if TARGET_IPHONE_SIMULATOR
+            size.width = 480;
+            size.height = 640;
+#endif
+          }
+          
+          
 #if TARGET_IPHONE_SIMULATOR
           UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
 #else

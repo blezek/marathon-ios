@@ -31,6 +31,7 @@ extern "C" {
 
 @synthesize window, scenario, game, OpenGLESVersion, purchases;
 @synthesize viewController;
+@synthesize oglWidth, oglHeight;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -414,6 +415,22 @@ const char* argv[] = { "AlephOneHD" };
   MLog(@"Tracking & Achievements");
   [Achievements uploadAchievements];
   [Tracking dispatch];
+}
+
+#pragma mark -
+#pragma mark OpenGL
+
+-(void)oglWidth:(GLint)width oglHeight:(GLint)height {
+  oglWidth = width;
+  oglHeight = height;
+  MLog(@"Set OpenGL to %d x %d", oglWidth, oglHeight);
+}
+
+-(BOOL)runningOniPad {
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    return YES;
+  }
+  return NO;
 }
 
 #pragma mark -

@@ -196,6 +196,7 @@ void OGL_Blitter::BoundScreen()
   // DJB OpenGL Landscape
   // glViewport(0, 0, ScreenWidth(), ScreenHeight());
   // glOrthof(0, ScreenWidth(), ScreenHeight(), 0, -1, 1);
+  printf ( "OGL_Blitter::BoundScrene() screen size: %d x %d\n", ScreenWidth(), ScreenHeight() );
   glViewport(0, 0, ScreenHeight(), ScreenWidth());
   glOrthof(0, ScreenHeight(), ScreenWidth(), 0, -1, 1);
   glRotatef ( 90, 0,0,1);

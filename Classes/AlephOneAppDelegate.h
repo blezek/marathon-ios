@@ -25,6 +25,8 @@
   GameViewController *game;
   bool finishedStartup;
   int OpenGLESVersion;
+  int oglWidth;
+  int oglHeight;
   
   Purchases *purchases;
     
@@ -43,6 +45,8 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) Scenario *scenario;
 @property (nonatomic) int OpenGLESVersion;
+@property (nonatomic) int oglHeight;
+@property (nonatomic) int oglWidth;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 
@@ -56,6 +60,8 @@
 - (void)initAndBegin;
 - (void)startSound;
 - (void)uploadAchievements;
+- (void)oglWidth:(GLint)width oglHeight:(GLint)height;
+- (BOOL)runningOniPad;
 @end
 
 

@@ -40,6 +40,7 @@
 #include <Foundation/Foundation.h>
 // DJB Need the app delegate
 #import "AlephOneAppDelegate.h"
+#include "AlephOneHelper.h"
 
 static int SetupWindowData(_THIS, SDL_Window *window, UIWindow *uiwindow, SDL_bool created)
 {
@@ -60,9 +61,15 @@ static int SetupWindowData(_THIS, SDL_Window *window, UIWindow *uiwindow, SDL_bo
     {
         window->x = 0;
         window->y = 0;
-      //DJB Swap width and height for landscape mode
+      if ( helperRunningOniPad() ) {
+        //DJB Swap width and height for landscape mode
         window->w = (int)uiwindow.frame.size.height;
         window->h = (int)uiwindow.frame.size.width;
+      } else {
+        // iphone...
+        window->w = 640;
+        window->h = 480;
+      }
     }
     
     window->driverdata = data;
@@ -94,6 +101,9 @@ int UIKit_CreateWindow(_THIS, SDL_Window *window) {
         
     SDL_VideoDisplay *display = window->display;
     UIScreen *uiscreen = (UIScreen *) display->driverdata;
+  
+  // DJB what is our scale factor?
+  MLog(@"Scale factor %f", uiscreen.scale);
 
     // SDL currently puts this window at the start of display's linked list. We rely on this.
     SDL_assert(display->windows == window);
