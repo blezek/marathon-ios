@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HUDViewController.h"
+#import "LookView.h"
+#import "MovePadView.h"
 
 @interface BasicHUDViewController : HUDViewController {
     
 }
 
+@property (nonatomic,retain) IBOutlet LookView* lookView;
+@property (nonatomic,retain) IBOutlet MovePadView* movePadView;
 @end

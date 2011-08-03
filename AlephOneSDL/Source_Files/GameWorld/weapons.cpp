@@ -2736,6 +2736,8 @@ bool ready_weapon(
           /* update the weapon display */
           if(player_index==current_player_index) {
             mark_weapon_display_as_dirty();
+            // DJB Update the reticule
+            helperSwitchWeapons(weapon_index);
           }
           able_to_ready= true;
         }

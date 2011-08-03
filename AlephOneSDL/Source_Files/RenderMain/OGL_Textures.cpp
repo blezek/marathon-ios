@@ -1486,7 +1486,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         int width = Image->GetWidth();
         int height = Image->GetHeight();
         unsigned char* data = (unsigned char*)Image->GetBuffer();
-        for ( level = 0; width > 0 && height > 0; level++ ) {
+        for ( level = 0; level <= Image->GetMipMapCount() && width > 0 && height > 0; level++ ) {
           GLsizei size = std::max ( 32u, width * height * bpp / 8 );
           glCompressedTexImage2D(GL_TEXTURE_2D, 
                                  level, 
@@ -1502,7 +1502,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           height >>= 1;
           
         }
-        mipmapsLoaded = true;
+        mipmapsLoaded = Image->GetMipMapCount() > 0;
         break;
       }
 #if 0
@@ -1553,7 +1553,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
             int width = Image->GetWidth();
             int height = Image->GetHeight();
             unsigned char* data = (unsigned char*)Image->GetBuffer();
-            for ( level = 0; width > 0 && height > 0; level++ ) {
+            for ( level = 0; level <= Image->GetMipMapCount() && width > 0 && height > 0; level++ ) {
               GLsizei size = std::max ( 32, width * height * 4 / 8 );
               glCompressedTexImage2D(GL_TEXTURE_2D, 
                                      level, 

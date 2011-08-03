@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RoundedView.h"
 
 @interface PauseViewController : UIViewController <UIActionSheetDelegate> {
   UILabel *statusLabel;
@@ -23,7 +23,7 @@
 - (IBAction) ammoCheat:(id)sender;
 - (IBAction) saveCheat:(id)sender;
 - (IBAction) weaponsCheat:(id)sender;
-
+- (IBAction) connectToJoypad:(id)sender;
 - (IBAction)setup;
 
 @end

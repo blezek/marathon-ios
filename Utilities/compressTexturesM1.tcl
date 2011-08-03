@@ -458,7 +458,9 @@ foreach collection [lsort [glob *]] {
       set extra ""
       if { [info exists ExtraSettings($Scenario,$collection,$bitmap)] } { set extra $ExtraSettings($Scenario,$collection,$bitmap) }
       if { $Compress } {
-        exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
+        # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
+        # Try without mipmip (-m)
+        exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $outputFile $TempFile
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\" $extra/>"
       } else {
         set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.png]
@@ -478,7 +480,9 @@ foreach collection [lsort [glob *]] {
 
         if { $Compress } {
           set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
-          exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+          # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+          # Try without mipmapping (-m)
+          exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
           # NB, clut 8 is Infravision, 9 is silhouette
           puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
         } else {

@@ -132,7 +132,8 @@ extern "C" {
 - (void)dealloc {
   // Kill a warning
   (void)all_key_definitions;
-
+  self.lastPrimaryFire = nil;
+  self.firstTouchTime = nil;
     [super dealloc];
 }
 

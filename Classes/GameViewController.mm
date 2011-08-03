@@ -17,6 +17,7 @@
 #import "Achievements.h"
 #include "FileHandler.h"
 #import "Tracking.h"
+#import "FloatingTriggerHUDViewController.h"
 
 extern float DifficultyMultiplier[];
 
@@ -70,20 +71,6 @@ extern  int
 static int livingBobs;
 static int livingEnemies;
 
-
-/*
- _weapon_fist,
- _weapon_pistol,
- _weapon_plasma_pistol,
- _weapon_assault_rifle,
- _weapon_missile_launcher,
- _weapon_flamethrower,
- _weapon_alien_shotgun,
- _weapon_shotgun,
- _weapon_ball,      
- _weapon_smg,
-*/
-
 int DamageRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 int KillRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 
@@ -111,6 +98,8 @@ BOOL StatsDownloaded = NO;
 @synthesize replacementMenuView;
 @synthesize purchaseViewController, purchaseView, aboutView;
 @synthesize saveFilmButton, loadFilmButton;
+@synthesize HUDViewController;
+@synthesize reticule;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -165,8 +154,6 @@ BOOL StatsDownloaded = NO;
   [self.purchaseViewController view];
   [self.purchaseView addSubview:self.purchaseViewController.view];
   
-  
-  
   // Kill a warning
   (void)all_key_definitions;
   mode = MenuMode;
@@ -220,6 +207,18 @@ BOOL StatsDownloaded = NO;
   [super viewDidLoad];
   statistics = [[Statistics alloc] init];
   [statistics retain];
+  reticuleImageNames = [NSMutableArray arrayWithCapacity:MAXIMUM_NUMBER_OF_WEAPONS];
+  [reticuleImageNames insertObject:@"" atIndex:_weapon_fist];
+  [reticuleImageNames insertObject:@"ret_pistol" atIndex:_weapon_pistol];
+  [reticuleImageNames insertObject:@"ret_plasma" atIndex:_weapon_plasma_pistol];
+  [reticuleImageNames insertObject:@"ret_machinegun" atIndex:_weapon_assault_rifle];
+  [reticuleImageNames insertObject:@"ret_rocket" atIndex:_weapon_missile_launcher];
+  [reticuleImageNames insertObject:@"ret_flame" atIndex:_weapon_flamethrower];
+  [reticuleImageNames insertObject:@"ret_alien" atIndex:_weapon_alien_shotgun];
+  [reticuleImageNames insertObject:@"ret_shotgun" atIndex:_weapon_shotgun];
+  [reticuleImageNames insertObject:@"ret_shotgun" atIndex:_weapon_ball];
+  [reticuleImageNames insertObject:@"ret_machinegun" atIndex:_weapon_smg];
+  [reticuleImageNames retain];
 }
 
 #pragma mark -
@@ -364,7 +363,10 @@ BOOL StatsDownloaded = NO;
   // Setup other views
   [self.moveView setup];
   [self menuHideReplacementMenu];
+  [self configureHUD:nil];
+  [self updateReticule:get_player_desired_weapon(current_player_index)];
   
+  /*
   key_definition *key = current_key_definitions;
   for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
     if ( key->action_flag == _left_trigger_state ){
@@ -387,11 +389,12 @@ BOOL StatsDownloaded = NO;
       [self.previousWeaponButton setup:key->offset];
     }
   }
+   */
 #if defined(A1DEBUG)
   // [joyPad startFindingDevices];
 #endif
 
-  [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
+  //  [self.inventoryToggleView setup:input_preferences->shell_keycodes[_key_inventory_left]];
   
   bool showAllControls = player_controlling_game();
   
@@ -619,6 +622,28 @@ BOOL StatsDownloaded = NO;
   }
 }
 
+- (void)configureHUD:(NSString*)HUDType{
+  [self.HUDViewController.view removeFromSuperview];
+  if ( HUDType == nil ) {
+    self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
+    self.HUDViewController = [[FloatingTriggerHUDViewController alloc] initWithNibName:@"FloatingTriggerHUDViewController" bundle:[NSBundle mainBundle]];
+    [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
+    
+  } else {
+    self.HUDViewController = [[JoypadHUDViewController alloc] initWithNibName:@"JoypadHUDViewController" bundle:[NSBundle mainBundle]];
+    [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
+  
+  }
+  
+
+}
+- (IBAction) initiateJoypad:(id)sender {
+  [self configureHUD:@"JoypadHUDViewController"];
+  [((JoypadHUDViewController*) self.HUDViewController) connectToDevice];
+}
+- (IBAction) cancelJoypad:(id)sender {
+  [self configureHUD:nil];
+}
 
 #pragma mark -
 #pragma mark Choose saved game methods
@@ -986,6 +1011,22 @@ extern bool handle_open_replay(FileSpecifier& File);
   return newLocation;
 }
 
+#pragma mark - Reticule
+- (void)updateReticule:(int)index {
+  if ( index < 0 ) {
+    index = get_player_desired_weapon(current_player_index);
+  }
+  
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
+    self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+    self.reticule.hidden = NO;
+  } else {
+    self.reticule.hidden = YES;
+  }
+  
+
+}
+
 #pragma mark -
 #pragma mark Game controls
 
@@ -1023,6 +1064,7 @@ extern bool handle_open_replay(FileSpecifier& File);
     self.pauseView.alpha = 1.0;
     [UIView commitAnimations];    
   }
+  [self updateReticule:get_player_desired_weapon(current_player_index)];
   isPaused = !isPaused;
 }
 
@@ -1289,9 +1331,11 @@ _civilian_fusion_assimilated,
   if (world_view->overhead_map_active) {
     self.zoomInButton.hidden = NO;
     self.zoomOutButton.hidden = NO;
+    self.reticule.hidden = YES;
   } else {
     self.zoomInButton.hidden = YES;
     self.zoomOutButton.hidden = YES;
+    [self updateReticule:get_player_desired_weapon(current_player_index)];
   }
   if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
     [self menuShowReplacementMenu];

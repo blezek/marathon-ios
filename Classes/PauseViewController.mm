@@ -72,7 +72,9 @@
 - (IBAction)weaponsCheat:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game weaponsCheat:sender];
 }
-
+- (IBAction)connectToJoypad:(id)sender {
+  [[GameViewController sharedInstance] initiateJoypad:sender];
+}
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
