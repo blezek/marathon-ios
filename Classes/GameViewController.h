@@ -25,9 +25,9 @@
 #import "PurchaseViewController.h"
 #import "Statistics.h"
 
+#import "HUDViewController.h"
 #import "BasicHUDViewController.h"
-#import "JoyPad.h"
-
+#import "JoypadHUDViewController.h"
 
 typedef enum {
   MenuMode,
@@ -73,7 +73,10 @@ typedef enum {
   IBOutlet ButtonView *nextWeaponButton;
   IBOutlet ButtonView *previousWeaponButton;
   IBOutlet UIView *savedGameMessage;
+  IBOutlet UIImageView *reticule;
 
+  NSMutableArray *reticuleImageNames;
+  
   HUDMode mode;
   
   // JoyPad *joyPad;
@@ -104,6 +107,7 @@ typedef enum {
   IBOutlet NewGameViewController *newGameViewController;
   IBOutlet FilmViewController* filmViewController;
   PurchaseViewController *purchaseViewController;
+  HUDViewController *HUDViewController;
   
   UITapGestureRecognizer *menuTapGesture;
   UITapGestureRecognizer *controlsOverviewGesture;
@@ -158,6 +162,14 @@ typedef enum {
 - (IBAction) help:(id)sender;
 - (IBAction) closeHelp:(id)sender;
 - (GLfloat) getPauseAlpha;
+
+// Joypad
+- (IBAction) cancelJoypad:(id)sender;
+- (IBAction) initiateJoypad:(id)sender;
+- (void)configureHUD:(NSString*)HUDType;
+
+// Reticules
+- (void)updateReticule:(int)index;
 
 // Cheats
 - (IBAction)shieldCheat:(id)sender;
@@ -257,6 +269,8 @@ typedef enum {
 @property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
 @property (nonatomic, retain) PurchaseViewController *purchaseViewController;
+@property (nonatomic, retain) HUDViewController *HUDViewController;
+@property (nonatomic, retain) UIImageView *reticule;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

@@ -104,7 +104,9 @@ foreach collection [lsort [glob *]] {
       puts "\t\t\tResizing to $size"
 
       exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
-      exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
+      # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
+      # no mipmap (-m)
+      exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $outputFile $TempFile
       puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\"/>"
 
       if { $InfraVision } {
@@ -115,7 +117,9 @@ foreach collection [lsort [glob *]] {
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
         exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" $VisionTempFile
-        exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+        # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+        # no mipmap (-m)
+        exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
         # NB, clut 8 is Infravision, 9 is silhouette
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"SpriteTextures-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\"/>"
       }

@@ -52,11 +52,6 @@
 {
 	
   
-  // DJB set to the screens scale factor
-  if ([self respondsToSelector:@selector(setContentScaleFactor:)]){
-    self.contentScaleFactor = [[UIScreen mainScreen] scale];
-  } 
-
 	NSString *colorFormat=nil;
 	GLuint depthBufferFormat;
 	BOOL useDepthBuffer;
@@ -90,7 +85,14 @@
 	if ((self = [super initWithFrame:frame])) {
 		// Get the layer
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
+    // DJB set to the screens scale factor
+    if ([self respondsToSelector:@selector(setContentScaleFactor:)]){
+      self.contentScaleFactor = [[UIScreen mainScreen] scale];
+      eaglLayer.contentsScale = [[UIScreen mainScreen] scale];
+    } 
+    
     MLog(@"Content scale factor %f", self.contentScaleFactor);
+    MLog(@"Layer scale factor %f", eaglLayer.contentsScale);
 		
 		eaglLayer.opaque = YES;
 		eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:

@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 	<key>CFBundleDisplayName</key>
 	<string>Marathon</string>
 	<key>CFBundleExecutable</key>
@@ -15,8 +13,7 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Marathon_Icon-72.png</string>
-		<string>Marathon_Icon-Small-50.png</string>
-		<string>Marathon_Icon-Small.png</string>
+		<string>Marathon_Icon.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.alephonesdg.m1</string>
@@ -36,6 +33,8 @@
 	<string>UIInterfaceOrientationLandscapeRight</string>
 	<key>UILaunchImageFile</key>
 	<string>Marathon</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>wifi</string>

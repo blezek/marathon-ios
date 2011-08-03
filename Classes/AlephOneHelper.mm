@@ -214,6 +214,10 @@ void pumpEvents() {
   
 }
 
+void helperSwitchWeapons ( int weapon ) {
+  [[GameViewController sharedInstance] updateReticule:weapon];
+}
+
 void startProgress ( int t ) {
   [[GameViewController sharedInstance] startProgress:t];
 }

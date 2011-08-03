@@ -86,8 +86,13 @@
   
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
+  [[GameViewController sharedInstance] updateReticule:-1];
+
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
-  Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
+  
+  // Crosshairs are set in the UI layer, not by the engine
+  // Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
+  Crosshairs_SetActive(NO);
 
 }
 
@@ -176,6 +181,9 @@
   } else {
     input_preferences->modifiers |= _inputmod_dont_auto_recenter;
   }
+  // Never autocenter
+  input_preferences->modifiers |= _inputmod_dont_auto_recenter;
+
 #if defined(A1DEBUG)
   // Always autocenter, so we can do films
   input_preferences->modifiers &= ~_inputmod_dont_auto_recenter;

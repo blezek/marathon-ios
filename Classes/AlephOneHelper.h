@@ -41,6 +41,9 @@ extern void helperPlayerKilled();
 
 extern int helperAlwaysPlayIntro();
 
+// Switch weapons
+extern void helperSwitchWeapons(int weapon);
+
 // Excuses, excuses
 extern void helperQuit();
 extern void helperNetwork();

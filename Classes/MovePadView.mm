@@ -168,6 +168,7 @@ extern "C" {
 }
 
 - (void)dealloc {
+  self.knobView = nil;
     [super dealloc];
 }
 

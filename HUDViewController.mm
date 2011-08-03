@@ -34,7 +34,7 @@ extern "C" {
 #include "tags.h"
 
 @implementation HUDViewController
-
+@synthesize primaryFireKey, secondaryFireKey;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,6 +69,12 @@ extern "C" {
     return self;
 }
 
+- (IBAction)stopMoving:(id)sender {
+  [self forwardUp:nil];
+  [self backwardUp:nil];
+  [self leftUp:nil];
+  [self rightUp:nil];
+}
 - (IBAction)primaryFireDown:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState(NULL);
   key_map[primaryFireKey] = 1;

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SDL_uikitopenglview.h"
 #include "SDL_keyboard.h"
 
 @interface HUDViewController : UIViewController {
@@ -25,6 +24,9 @@
   SDLKey runKey;
   SDLKey mapKey;
 }
+
+@property (nonatomic) SDLKey primaryFireKey;
+@property (nonatomic) SDLKey secondaryFireKey;
 
 - (IBAction)primaryFireDown:(id)sender;
 - (IBAction)primaryFireUp:(id)sender;
@@ -50,6 +52,6 @@
 - (IBAction)runUp:(id)sender;
 - (IBAction)mapDown:(id)sender;
 - (IBAction)mapUp:(id)sender;
-
+- (IBAction)stopMoving:(id)sender;
 
 @end

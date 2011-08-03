@@ -10,12 +10,13 @@
 
 
 @implementation BasicHUDViewController
+@synthesize lookView, movePadView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+      // Custom initialization
     }
     return self;
 }
@@ -37,8 +38,12 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
+  self.lookView.primaryFire = self.primaryFireKey;
+  self.lookView.secondaryFire = self.secondaryFireKey;
+  [self.movePadView setup];
+
 }
 
 - (void)viewDidUnload
@@ -46,6 +51,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+  self.lookView = nil;
+  self.movePadView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
