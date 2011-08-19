@@ -43,6 +43,55 @@
 				<int key="NSvFlags">256</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="IBUIView" id="56065301">
+						<reference key="NSNextResponder" ref="776394612"/>
+						<int key="NSvFlags">292</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="275129290">
+								<reference key="NSNextResponder" ref="56065301"/>
+								<int key="NSvFlags">-2147483374</int>
+								<string key="NSFrame">{{202.5, 71}, {75, 75}}</string>
+								<reference key="NSSuperview" ref="56065301"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="1005971842"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage" id="998449580">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">primarytrigger-btn.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="261256991">
+								<reference key="NSNextResponder" ref="56065301"/>
+								<int key="NSvFlags">-2147483374</int>
+								<string key="NSFrame">{{210.5, 0}, {60, 60}}</string>
+								<reference key="NSSuperview" ref="56065301"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="275129290"/>
+								<int key="IBUIContentMode">2</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage" id="635779123">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">secondarytrigger-btn.png</string>
+								</object>
+							</object>
+						</object>
+						<string key="NSFrameSize">{480, 234}</string>
+						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="261256991"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MSAwAA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="715088506">
+								<int key="NSID">2</int>
+							</object>
+						</object>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 					<object class="IBUIView" id="402276250">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
@@ -84,56 +133,8 @@
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="715088506">
-								<int key="NSID">2</int>
-							</object>
-						</object>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-					</object>
-					<object class="IBUIView" id="56065301">
-						<reference key="NSNextResponder" ref="776394612"/>
-						<int key="NSvFlags">292</int>
-						<object class="NSMutableArray" key="NSSubviews">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIImageView" id="275129290">
-								<reference key="NSNextResponder" ref="56065301"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{554, 71}, {0, 0}}</string>
-								<reference key="NSSuperview" ref="56065301"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="261256991"/>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage" id="998449580">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">primarytrigger-btn.png</string>
-								</object>
-							</object>
-							<object class="IBUIImageView" id="261256991">
-								<reference key="NSNextResponder" ref="56065301"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{632, 91}, {0, 0}}</string>
-								<reference key="NSSuperview" ref="56065301"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="1005971842"/>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage" id="635779123">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">secondarytrigger-btn.png</string>
-								</object>
-							</object>
-						</object>
-						<string key="NSFrameSize">{480, 250}</string>
-						<reference key="NSSuperview" ref="776394612"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="275129290"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MSAwAA</bytes>
 							<reference key="NSCustomColorSpace" ref="715088506"/>
 						</object>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUIButton" id="964025369">
@@ -218,7 +219,7 @@
 					<object class="IBUIButton" id="880042888">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{416, 242}, {39, 39}}</string>
+						<string key="NSFrame">{{428, 220}, {39, 39}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="964025369"/>
@@ -238,7 +239,7 @@
 					<object class="IBUIButton" id="291214286">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{363, 237}, {50, 50}}</string>
+						<string key="NSFrame">{{380, 237}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="880042888"/>
@@ -322,6 +323,7 @@
 						<string key="NSFrame">{{680, 626}, {116, 130}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -820,9 +822,9 @@
 							<reference ref="36774145"/>
 							<reference ref="132311445"/>
 							<reference ref="291214286"/>
-							<reference ref="880042888"/>
 							<reference ref="964025369"/>
 							<reference ref="402276250"/>
+							<reference ref="880042888"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">HUD</string>
@@ -832,8 +834,8 @@
 						<reference key="object" ref="56065301"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="261256991"/>
 							<reference ref="275129290"/>
+							<reference ref="261256991"/>
 						</object>
 						<reference key="parent" ref="776394612"/>
 						<string key="objectName">Look</string>
