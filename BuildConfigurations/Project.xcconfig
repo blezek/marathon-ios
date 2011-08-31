@@ -1,0 +1,14 @@
+//
+//  Project.xcconfig
+//  AlephOne
+//
+//  Created by Daniel Blezek on 8/30/11.
+//  Copyright 2011 SDG Productions. All rights reserved.
+//
+
+
+HEADER_SEARCH_PATHS = ${SOURCE_ROOT}/../boost_1_43_0/ ${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include ${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include ${SOURCE_ROOT}/Libraries/libogg-1.1.3/include ${SOURCE_ROOT}/Libraries/freetype-2.4.6/include ${SOURCE_ROOT}/Libraries/SDL_ttf-2.0.10
+
+GCC_PREPROCESSOR_DEFINITIONS = 
+
+GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = HAVE_MAD HAVE_VORBISFILE HAVE_LUA HAVE_SDL_IMAGE_H HAVE_UNISTD_H SDL13 SDL USE_GAMECENTER HAVE_SDL_TTF
