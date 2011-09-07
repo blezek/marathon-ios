@@ -26,20 +26,23 @@ static int counter = 0;
 -(void)connectToDevice {
   // Start finding devices running Joypad.
   [joypadManager startFindingDevices];
-  [[GameViewController sharedInstance] pause:self];
+  // Already paused [[GameViewController sharedInstance] pause:self];
   
   // What to do if the user asks for a manual
+  // Button 0 is cancel
   void (^completion) ( int button ) = ^(int button) {
-    /*
-    AlertPrompt* p = [[AlertPrompt alloc] initWithTitle:@"Device address"
-                                     cancelButtonTitle:@"Cancel"
-                                         okButtonTitle:@"OK"
-                                            completion:^(NSString* s) {
-     
-                                              [self connectByIP:s];
-                                            }];
-    [p show];
-     */
+    if ( button == 0 ) {
+      AlertPrompt* p = [[AlertPrompt alloc] initWithTitle:@"Device address"
+                                        cancelButtonTitle:@"Cancel"
+                                            okButtonTitle:@"OK"
+                                               completion:^(NSString* s) {
+                                                 
+                                                 [self connectByIP:s];
+                                               }];
+      [p show];
+    } else {
+      // Ignore...
+    }
   };
   
   
@@ -48,55 +51,50 @@ static int counter = 0;
                         cancelButtonTitle:@"Cancel"
                             otherButtonTitles:[NSArray arrayWithObject:@"Manual"]
                                 onDismiss:completion                   
-                                 onCancel:^{ }];
+                                 onCancel:^{
+                                   [[GameViewController sharedInstance] configureHUD:nil];
+                                 }];
   [alert show];
 }
 
 - (void)connectByIP:(NSString*)ip {
-  NSError *error = NULL;
-  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([^:]+):([0-9]+)"
-                                                                         options:NSRegularExpressionCaseInsensitive
-                                                                           error:&error];
-  NSArray *matches = [regex matchesInString:ip
-                                    options:0
-                                      range:NSMakeRange(0, [ip length])];
-  for (NSTextCheckingResult *match in matches) {
-    NSRange matchRange = [match range];
-    NSRange firstHalfRange = [match rangeAtIndex:1];
-    NSRange secondHalfRange = [match rangeAtIndex:2];
-  }
+  [joypadManager connectToDeviceAtAddress:ip asPlayer:0];
+  [self connectToDevice];
 }
 
 #pragma mark - Joypad integration
 -(void)joypadManager:(JoypadManager *)manager didFindDevice:(JoypadDevice *)device previouslyConnected:(BOOL)prev
 {
-  NSLog(@"Found a device running Joypad!  Stopping the search and connecting to it.");
-  [alert dismissWithClickedButtonIndex:0 animated:NO];
   [manager stopFindingDevices];
   [manager connectToDevice:device asPlayer:1];
 }
 
 -(void)joypadManager:(JoypadManager *)manager didLoseDevice:(JoypadDevice *)device
 {
-  NSLog(@"Lost a device");
-  [[GameViewController sharedInstance] pause:self];
-  [[[UIAlertView alloc] initWithTitle:@"Lost Joypad connection" 
-                             message:[NSString stringWithFormat:@"Lost connection to device %@", [device name]]
-                            delegate:nil
-                   cancelButtonTitle:@"OK"
-                    otherButtonTitles:nil] show];
+  if ( [manager.connectedDevices containsObject:device] ) {
+    [self joypadManager:manager deviceDidDisconnect:device player:0];
+  }
 }
 
 -(void)joypadManager:(JoypadManager *)manager deviceDidConnect:(JoypadDevice *)device player:(unsigned int)player
 {
   NSLog(@"Device connected as player: %i!", player);
+  NSLog(@"Found a device running Joypad!  Stopping the search and connecting to it.");
+  [alert dismissWithClickedButtonIndex:5 animated:NO];
   [device setDelegate:self];
   [[GameViewController sharedInstance] resume:self];
 }
 
 -(void)joypadManager:(JoypadManager *)manager deviceDidDisconnect:(JoypadDevice *)device player:(unsigned int)player
 {
-  NSLog(@"Player %i disconnected.", player);
+  NSLog(@"Lost a device");
+  [[GameViewController sharedInstance] pause:self];
+  [[[UIAlertView alloc] initWithTitle:@"Lost Joypad connection" 
+                              message:[NSString stringWithFormat:@"Lost connection to device %@", [device name]]
+                             delegate:nil
+                    cancelButtonTitle:@"OK"
+                    otherButtonTitles:nil] show];
+  [[GameViewController sharedInstance] configureHUD:nil];
 }
 
 -(void)joypadDevice:(JoypadDevice *)device buttonDown:(JoyInputIdentifier)button
@@ -110,12 +108,12 @@ static int counter = 0;
   if ( button == kJoyInputBButton ) {
     [self secondaryFireDown:nil];
   }
-  // Map "R"
-  if ( button == kJoyInputRButton ) {
+  // Map "Y"
+  if ( button == kJoyInputYButton ) {
     [self mapDown:nil];
   }
-  // Action "X"
-  if ( button == kJoyInputXButton ) {
+  // Action "C"
+  if ( button == kJoyInputCButton ) {
     [self actionDown:nil];
   }
   // Previous Weapon "L"
@@ -144,8 +142,8 @@ static int counter = 0;
   if ( button == kJoyInputYButton ) {
     [self mapUp:nil];
   }
-  // Action "X"
-  if ( button == kJoyInputXButton ) {
+  // Action "C"
+  if ( button == kJoyInputCButton ) {
     [self actionUp:nil];
   }
   // Previous Weapon "L"
@@ -160,6 +158,12 @@ static int counter = 0;
   if ( button == kJoyInputStartButton ) {
     [[GameViewController sharedInstance] pause:self];
   }
+}
+
+// Helper for any sort of alternative mouse movement
+- (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
+  *dx = deltaX;
+  *dy = deltaY;
 }
 
 -(void)joypadDevice:(JoypadDevice *)device analogStick:(JoyInputIdentifier)stick didMove:(JoypadStickPosition)newPosition
@@ -197,9 +201,37 @@ static int counter = 0;
   }
   // Turn
   if ( stick == kJoyInputAnalogStick2 ) {
-    int dx = 0.1 * newPosition.distance * cos ( newPosition.angle );
-    int dy = -0.1 * newPosition.distance * sin ( newPosition.angle );
-    SDL_SendMouseMotion ( true, dx, dy );
+    deltaX = deltaY = 0;
+    if ( newPosition.distance != 0.0 ) {
+    int dx = 0.3 * newPosition.distance * cos ( newPosition.angle );
+      int dy = -0.3 * newPosition.distance * sin ( newPosition.angle );
+    deltaX = dx;
+    deltaY = dy;
+    }
+//    
+//    // SDL_SendMouseMotion ( true, dx, dy );
+//    
+//    // Which direction should we go?
+//    [self stopLooking:self];
+//    
+//    // Do we move?
+//    if ( newPosition.distance != 0.0 ) {
+//      if ( newPosition.angle >= ( M_PI / 4.0 ) && newPosition.angle < (M_PI * 3.0 / 4.0 ) ) {
+//        // Forward?
+//        [self lookUpDown:nil];
+//      } else if ( newPosition.angle >= (M_PI * 5.0 / 4.0 ) && newPosition.angle < (M_PI * 7.0 / 4.0) ) {
+//        // Backward
+//        [self lookDownDown:nil];
+//      } else if ( newPosition.angle >= ( 3.0 / 4.0 * M_PI) && newPosition.angle < ( 5.0 / 4.0 * M_PI) ) {
+//        // Left
+//        [self lookLeftDown:nil];
+//      } else if ( newPosition.angle >= (7.0 / 4.0 * M_PI) || newPosition.angle < ( 1.0 / 4.0 *M_PI) ) {
+//        // Right
+//        [self lookRightDown:nil];
+//      }
+//    }
+
+    
   }
   NSLog(@"Analog stick distance: %f, angle (rad): %f", newPosition.distance, newPosition.angle);
 }

@@ -1012,7 +1012,9 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
     glViewport(RectBounds[0], RectBounds[1], RectBounds[2], RectBounds[3]);
   } else {
     // DJB iPhone
-    glViewport(0, 0, 480, 320 );    
+    GLint width = helperOpenGLWidth();
+    GLint height = helperOpenGLHeight();
+    glViewport(0, 0, width, height);
   }
 
   // Create the screen -> clip (fundamental) matrix; this will be needed

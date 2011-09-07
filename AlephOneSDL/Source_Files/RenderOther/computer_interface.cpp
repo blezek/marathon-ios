@@ -2815,6 +2815,7 @@ static short calculate_lines_per_page(
   short lines_per_page;
 
   calculate_destination_frame(_100_percent, true, &bounds);
+  int font_line = _get_font_line_height(_computer_interface_font);
   lines_per_page=
     (RECTANGLE_HEIGHT(&bounds)-2*BORDER_HEIGHT)/_get_font_line_height(
       _computer_interface_font);

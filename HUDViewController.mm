@@ -63,10 +63,22 @@ extern "C" {
           rightKey = key->offset;
         } else if ( key->action_flag == _run_dont_walk ) {
           runKey = key->offset;
+        } else if ( key->action_flag == _looking_up ) {
+          lookUpKey = key->offset;
+        } else if ( key->action_flag == _looking_down ) {
+          lookDownKey = key->offset;
+        } else if ( key->action_flag == _looking_left ) {
+          lookLeftKey = key->offset;
+        } else if ( key->action_flag == _looking_right ) {
+          lookRightKey = key->offset;
         }
       }
     }
     return self;
+}
+
+- (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
+  *dx = 0; *dy = 0;
 }
 
 - (IBAction)stopMoving:(id)sender {
@@ -74,6 +86,12 @@ extern "C" {
   [self backwardUp:nil];
   [self leftUp:nil];
   [self rightUp:nil];
+}
+- (IBAction)stopLooking:(id)sender {
+  [self lookUpUp:nil];
+  [self lookDownUp:nil];
+  [self lookLeftUp:nil];
+  [self lookRightUp:nil];
 }
 - (IBAction)primaryFireDown:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState(NULL);
@@ -170,6 +188,40 @@ extern "C" {
 - (IBAction)mapUp:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState(NULL);
   key_map[mapKey] = 0;
+}
+
+// Looking
+- (IBAction)lookUpDown:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookUpKey] = 1;
+}
+- (IBAction)lookUpUp:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookUpKey] = 0;
+}
+- (IBAction)lookDownDown:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookDownKey] = 1;
+}
+- (IBAction)lookDownUp:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookDownKey] = 0;
+}
+- (IBAction)lookLeftDown:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookLeftKey] = 1;
+}
+- (IBAction)lookLeftUp:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookLeftKey] = 0;
+}
+- (IBAction)lookRightDown:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookRightKey] = 1;
+}
+- (IBAction)lookRightUp:(id)sender {
+  Uint8 *key_map = SDL_GetKeyboardState(NULL);
+  key_map[lookRightKey] = 0;
 }
 
 

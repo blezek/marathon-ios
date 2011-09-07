@@ -23,10 +23,18 @@
   SDLKey rightKey;
   SDLKey runKey;
   SDLKey mapKey;
+  
+  SDLKey lookUpKey;
+  SDLKey lookDownKey;
+  SDLKey lookLeftKey;
+  SDLKey lookRightKey;
 }
 
 @property (nonatomic) SDLKey primaryFireKey;
 @property (nonatomic) SDLKey secondaryFireKey;
+
+// Helper for any sort of alternative mouse movement
+- (void)mouseDeltaX:(int*)dx deltaY:(int*)dy;
 
 - (IBAction)primaryFireDown:(id)sender;
 - (IBAction)primaryFireUp:(id)sender;
@@ -53,5 +61,15 @@
 - (IBAction)mapDown:(id)sender;
 - (IBAction)mapUp:(id)sender;
 - (IBAction)stopMoving:(id)sender;
+
+- (IBAction)lookUpDown:(id)sender;
+- (IBAction)lookUpUp:(id)sender;
+- (IBAction)lookDownDown:(id)sender;
+- (IBAction)lookDownUp:(id)sender;
+- (IBAction)lookLeftDown:(id)sender;
+- (IBAction)lookLeftUp:(id)sender;
+- (IBAction)lookRightDown:(id)sender;
+- (IBAction)lookRightUp:(id)sender;
+
 
 @end

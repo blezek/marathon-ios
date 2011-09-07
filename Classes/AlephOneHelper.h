@@ -40,6 +40,8 @@ extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 
 extern int helperAlwaysPlayIntro();
+extern int helperAutocenter();
+extern void helperGetMouseDelta ( int *dx, int *dy );
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);
@@ -75,6 +77,7 @@ extern GLfloat helperPauseAlpha();
 extern "C" {
 #endif
   int helperRunningOniPad();
+  int helperRetinaDisplay();
   int helperOpenGLWidth();
   int helperOpenGLHeight();
 #if defined(__cplusplus)

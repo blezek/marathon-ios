@@ -78,7 +78,7 @@ typedef enum {
   NSMutableArray *reticuleImageNames;
   
   HUDMode mode;
-  
+  int currentReticleImage;
   // JoyPad *joyPad;
   
   bool haveNewGamePreferencesBeenSet;

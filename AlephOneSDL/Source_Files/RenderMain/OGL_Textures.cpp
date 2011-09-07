@@ -731,7 +731,9 @@ bool TextureManager::Setup()
 #if defined(A1DEBUG)
     printf ( "Setting back to defaults for Sprite: %d, %d\n", Collection, Bitmap );
 #endif
-    U_Scale = V_Scale = 1.0;
+    // U_Scale = V_Scale = 1.0;
+    // DJB Try just the height to see if the compilers and hulks look better
+    V_Scale = 1.0;
     U_Offset = V_Offset = 0.0;
   }
 

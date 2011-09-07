@@ -241,10 +241,12 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
         }
         for ( GKScore *score in scores ) {
           // See if the score reported is bigger than our score
-          if ( [self.stats objectForKey:score.category] != nil ) {
-            NSNumber *n = [self.stats objectForKey:score.category];
+          NSString* key = [score.category substringFromIndex:[AchievementPrefix length]];
+          MLog(@"Retrieved score %@ for key %@", score.value, key);
+          if ( [self.stats objectForKey:key] != nil ) {
+            NSNumber *n = [self.stats objectForKey:key];
             if ( n.longValue < score.value ) {
-              [self.stats setObject:[NSNumber numberWithLong:score.value] forKey:score.category];
+              [self.stats setObject:[NSNumber numberWithLong:score.value] forKey:key];
             }
           }
         }

@@ -180,6 +180,9 @@ static Rect *_get_interface_rect(short index);
 #endif
 static void     load_screen_interface_colors(void);
 
+// DJB Helper include
+#include "AlephOneHelper.h"
+
 /* -------- Code */
 void initialize_screen_drawing(
   void)
@@ -192,6 +195,12 @@ void initialize_screen_drawing(
   /* Load the colors */
   load_screen_interface_colors();
 
+  // DJB Change terminal font!
+  if ( !helperRunningOniPad() ) {
+    InterfaceFonts[4].Size = 18;
+    strcpy(InterfaceFonts[4].File, "bankgthd.ttf");
+  }
+  
   /* load the font stuff. */
   for(loop=0; loop<NUMBER_OF_INTERFACE_FONTS; ++loop)
   {

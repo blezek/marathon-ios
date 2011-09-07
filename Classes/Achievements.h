@@ -16,6 +16,17 @@
 
 #define kSCompletionTimeEasy @"Easy.CompletionTime"
 
+#if SCENARIO == 1
+#define AchievementPrefix @""
+#endif
+#if SCENARIO == 2
+#define AchievementPrefix @"M2"
+#endif
+#if SCENARIO == 3
+#define AchievementPrefix @"M3"
+#endif
+
+
 @interface Achievements : NSObject {
 
 }

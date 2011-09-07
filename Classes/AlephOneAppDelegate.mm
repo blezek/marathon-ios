@@ -31,7 +31,7 @@ extern "C" {
 
 @synthesize window, scenario, game, OpenGLESVersion, purchases;
 @synthesize viewController;
-@synthesize oglWidth, oglHeight;
+@synthesize oglWidth, oglHeight, retinaDisplay;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -98,13 +98,14 @@ extern int SDL_main(int argc, char *argv[]);
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
                                @"NO", kCrosshairs,
-                               @"YES", kAutocenter,
+                               @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
                                @"YES", kUsageData,
                                @"NO", kHaveVidmasterMode,
                                @"YES", kUseVidmasterMode,
                                @"NO", kAlwaysPlayIntro,
+                               @"NO", kHaveReticleMode,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -112,12 +113,17 @@ extern int SDL_main(int argc, char *argv[]);
   
 #if TARGET_IPHONE_SIMULATOR
   // Always test on the simulator
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
+  // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
 
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+
+  
 #if defined(A1DEBUG)
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutocenter];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUseVidmasterMode];
 #endif
     
@@ -223,6 +229,8 @@ extern int SDL_main(int argc, char *argv[]);
   [Appirater appLaunched:YES];
   [Tracking startup];
   [Tracking trackPageview:@"/startup"];
+  [Tracking tagEvent:@"startup"];
+
   // Tracking and timer
   [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
@@ -256,12 +264,15 @@ extern int SDL_main(int argc, char *argv[]);
   // MLog ( @"Pause mixer" );
   // SoundManager::instance()->SetStatus ( false );
   [Tracking trackPageview:@"/applicationWillResignActive"];
+  [Tracking tagEvent:@"applicationWillResignActive"];
   [game pauseForBackground:self];
   [game stopAnimation];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
   [Tracking trackPageview:@"/applicationDidEnterBackground"];
+  [Tracking tagEvent:@"applicationDidEnterBackground"];
+
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
@@ -275,6 +286,8 @@ extern int SDL_main(int argc, char *argv[]);
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
   [Tracking trackPageview:@"/applicationWillEnterForeground"];
+  [Tracking tagEvent:@"applicationWillEnterForeground"];
+
   [Appirater appEnteredForeground:YES];
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
@@ -287,31 +300,8 @@ extern int SDL_main(int argc, char *argv[]);
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [Tracking trackPageview:@"/applicationDidBecomeActive"];
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-  //NSLog(@"%@", NSStringFromSelector(_cmd));
-  /*
-  // Send every window on every screen a RESTORED event.
-  SDL_VideoDevice *_this = SDL_GetVideoDevice();
-  if (!_this) {
-    return;
-  }
-  
-  int i;
-  for (i = 0; i < _this->num_displays; i++) {
-    const SDL_VideoDisplay *display = &_this->displays[i];
-    SDL_Window *sdlwindow;
-    for (sdlwindow = display->windows; sdlwindow != nil; sdlwindow = sdlwindow->next) {
-      SDL_SendWindowEvent(sdlwindow, SDL_WINDOWEVENT_RESTORED, 0, 0);
-    }
-  }
-   */
+  [Tracking tagEvent:@"applicationDidBecomeActive"];
   if ( finishedStartup ) {
-    // Restart music
-    // MLog ( @"Starting music" );
-    // SoundManager::instance()->SetStatus(true);
-    // [self performSelector:@selector(startSound) withObject:nil afterDelay:0.5];
     [game startAnimation];
   }
 }
@@ -326,6 +316,7 @@ extern int SDL_main(int argc, char *argv[]);
  */
 - (void)applicationWillTerminate:(UIApplication *)application {
   [Tracking trackPageview:@"/applicationWillTerminate"];
+  [Tracking tagEvent:@"applicationWillTerminate"];
   [Tracking shutdown];
 
     NSError *error = nil;

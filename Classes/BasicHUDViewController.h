@@ -12,7 +12,7 @@
 #import "MovePadView.h"
 
 @interface BasicHUDViewController : HUDViewController {
-    
+  MovePadView *movePadView;
 }
 
 @property (nonatomic,retain) IBOutlet LookView* lookView;

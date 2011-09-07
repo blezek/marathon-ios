@@ -3204,6 +3204,8 @@ bool dont_switch_to_new_weapon() {
 bool
 dont_auto_recenter() {
   if(!sStandardizeModifiers) {
+    // DJB debugging
+    bool v = TEST_FLAG(input_preferences->modifiers, _inputmod_dont_auto_recenter); 
     return TEST_FLAG(input_preferences->modifiers, _inputmod_dont_auto_recenter);
   }
   else{

@@ -91,6 +91,9 @@
 #pragma segment player
 #endif
 
+// DJB Helper functions
+#include "AlephOneHelper.h"
+
 /* ---------- constants */
 
 #define COEFFICIENT_OF_ABSORBTION 2
@@ -753,11 +756,14 @@ static void physics_update(
       break;
 
     default:                     /* recenter head */
+        // DJB Is autocenter on?
+        if ( helperAutocenter() ) {
       variables->head_direction= (variables->head_direction>=0) ?
                                  FLOOR(
         variables->head_direction-constants->fast_angular_velocity, 0) :
                                  CEILING(
         variables->head_direction+constants->fast_angular_velocity, 0);
+        }
     }
   }
 
@@ -782,7 +788,8 @@ static void physics_update(
             without any side-to-side motion, recenter our head vertically */
 
     // ZZZ: only do auto-recentering if the user wants it
-    if(!PLAYER_DOESNT_AUTO_RECENTER(player)) {
+    // DJB check preferences
+    if(!PLAYER_DOESNT_AUTO_RECENTER(player) && helperAutocenter()) {
       if (!(action_flags&FLAGS_WHICH_PREVENT_RECENTERING)) {     /* canÕt recenter if any of these are true */
         if (((action_flags&_moving_forward) &&
              (variables->velocity==constants->maximum_forward_velocity)) ||
@@ -824,15 +831,19 @@ static void physics_update(
                      3) : constants->maximum_angular_velocity);
       break;
 
-    default:                     /* if no key is being held down, decelerate; if the player is moving try and return to phi==0 */
-      variables->vertical_angular_velocity=
-        (variables->vertical_angular_velocity>=0) ?
-        FLOOR(
-          variables->vertical_angular_velocity-constants->angular_deceleration,
-          0) :
-        CEILING(
-          variables->vertical_angular_velocity+constants->angular_deceleration,
-          0);
+    default:                   
+        // DJB autocenter
+        if ( helperAutocenter() ) {
+          /* if no key is being held down, decelerate; if the player is moving try and return to phi==0 */
+          variables->vertical_angular_velocity=
+          (variables->vertical_angular_velocity>=0) ?
+          FLOOR(
+                variables->vertical_angular_velocity-constants->angular_deceleration,
+                0) :
+          CEILING(
+                  variables->vertical_angular_velocity+constants->angular_deceleration,
+                  0);
+        }
       break;
     }
   }

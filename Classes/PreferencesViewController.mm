@@ -36,7 +36,8 @@
 
   [defaults setBool:[self.tapShoots isOn] forKey:kTapShoots];
   if ( [self.tapShoots isOn] != [defaults boolForKey:kTapShoots] ) {
-    [ Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isOn]];
+    [Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isOn]];
+
   }
   [defaults setBool:[self.crosshairs isOn] forKey:kCrosshairs];
   if ( [self.crosshairs isOn] != [defaults boolForKey:kCrosshairs] ) {
@@ -83,7 +84,7 @@
   if ( self.vSensitivity.value != [defaults floatForKey:kVSensitivity] ) {
     [ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
   }
-  
+
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[GameViewController sharedInstance] updateReticule:-1];
@@ -183,10 +184,12 @@
   }
   // Never autocenter
   input_preferences->modifiers |= _inputmod_dont_auto_recenter;
+  bool v = TEST_FLAG(input_preferences->modifiers, _inputmod_dont_auto_recenter); 
+
 
 #if defined(A1DEBUG)
   // Always autocenter, so we can do films
-  input_preferences->modifiers &= ~_inputmod_dont_auto_recenter;
+  // input_preferences->modifiers &= ~_inputmod_dont_auto_recenter;
 #endif
   
   if ( notifySoundManager ) {

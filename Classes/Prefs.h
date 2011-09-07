@@ -25,6 +25,7 @@
 #define kHaveVidmasterMode @"haveVidmasterMode"
 #define kUseVidmasterMode @"useVidmasterMode"
 #define kAlwaysPlayIntro @"alwaysPlayIntro"
+#define kHaveReticleMode @"haveReticleMode"
 
 // Tap to shoot timeout in seconds
 #define TapToShootDelta 0.1

@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10K540</string>
+		<string key="IBDocument.SystemVersion">10K549</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
 		<string key="IBDocument.AppKitVersion">1038.36</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
@@ -615,14 +615,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">movePadView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="402276250"/>
-					</object>
-					<int key="connectionID">103</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">knobView</string>
 						<reference key="source" ref="402276250"/>
 						<reference key="destination" ref="1059818641"/>
@@ -736,6 +728,14 @@
 						<int key="IBEventType">8</int>
 					</object>
 					<int key="connectionID">123</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">movePadView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="402276250"/>
+					</object>
+					<int key="connectionID">124</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -933,7 +933,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">123</int>
+			<int key="maxID">124</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -995,6 +995,14 @@
 							<string>inventoryUp:</string>
 							<string>leftDown:</string>
 							<string>leftUp:</string>
+							<string>lookDownDown:</string>
+							<string>lookDownUp:</string>
+							<string>lookLeftDown:</string>
+							<string>lookLeftUp:</string>
+							<string>lookRightDown:</string>
+							<string>lookRightUp:</string>
+							<string>lookUpDown:</string>
+							<string>lookUpUp:</string>
 							<string>mapDown:</string>
 							<string>mapUp:</string>
 							<string>nextWeaponDown:</string>
@@ -1009,9 +1017,19 @@
 							<string>runUp:</string>
 							<string>secondaryFireDown:</string>
 							<string>secondaryFireUp:</string>
+							<string>stopMoving:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1052,6 +1070,14 @@
 							<string>inventoryUp:</string>
 							<string>leftDown:</string>
 							<string>leftUp:</string>
+							<string>lookDownDown:</string>
+							<string>lookDownUp:</string>
+							<string>lookLeftDown:</string>
+							<string>lookLeftUp:</string>
+							<string>lookRightDown:</string>
+							<string>lookRightUp:</string>
+							<string>lookUpDown:</string>
+							<string>lookUpUp:</string>
 							<string>mapDown:</string>
 							<string>mapUp:</string>
 							<string>nextWeaponDown:</string>
@@ -1066,6 +1092,7 @@
 							<string>runUp:</string>
 							<string>secondaryFireDown:</string>
 							<string>secondaryFireUp:</string>
+							<string>stopMoving:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1107,6 +1134,38 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">leftUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookDownDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookDownUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookLeftDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookLeftUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookRightDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookRightUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookUpDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookUpUp:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1163,6 +1222,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">secondaryFireUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">stopMoving:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

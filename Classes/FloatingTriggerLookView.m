@@ -8,7 +8,8 @@
 
 #import "FloatingTriggerLookView.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "Prefs.h"
+#import "AlephOneAppDelegate.h"
 
 @implementation FloatingTriggerLookView
 @synthesize hudViewController;
@@ -24,6 +25,12 @@
     self.primaryFireButton.center = CGPointMake(-1000, -1000);
     self.secondaryFireButton.center = CGPointMake(-1000, -1000);
     startingAlpha = self.primaryFireButton.alpha;
+    startingAlpha = 0.4;
+    if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
+      deviceMultiplier = 1.0;
+    } else {
+      deviceMultiplier = 1.5;
+    }
   }
   return self;
 }
@@ -33,11 +40,32 @@
 }
 
 - (void)updateButtons:(CGPoint)point {
-  [self.primaryFireButton.layer removeAllAnimations];
-  [self.secondaryFireButton.layer removeAllAnimations];
+  if ( ![[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
+    self.primaryFireButton.hidden = YES;
+    self.secondaryFireButton.hidden = YES;
+    self.primaryFireButton.center = CGPointMake(-1000, -1000);
+    self.secondaryFireButton.center = CGPointMake(-1000, -1000);
+    return;
+  }
+
+  
+  if ( isFadingOut ) {
+    [UIView animateWithDuration:.1
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionOverrideInheritedDuration|UIViewAnimationOptionOverrideInheritedCurve
+                     animations:^{
+                     self.primaryFireButton.alpha = startingAlpha;
+                     self.secondaryFireButton.alpha = startingAlpha;
+                   }
+                   completion:^(BOOL completed) {
+                     if (completed) {
+                     }
+                   }];
+  }
+  isFadingOut = NO;
+  
   self.primaryFireButton.hidden = NO;
   self.secondaryFireButton.hidden = NO;
-  startingAlpha = 0.4;
   self.primaryFireButton.alpha = startingAlpha;
   self.secondaryFireButton.alpha = startingAlpha;
 
@@ -114,9 +142,10 @@
   // Hide if nothing touching
   if ( self.trackingTouch == nil && self.primaryTouch == nil && self.secondaryTouch == nil ) {
     mode = NotTouching;
+    isFadingOut = YES;
     [UIView animateWithDuration:.7
                           delay:.5
-                        options:0
+                        options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                        self.primaryFireButton.alpha = 0.0;
                        self.secondaryFireButton.alpha = 0.0;
@@ -137,7 +166,17 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   if ( self.trackingTouch == nil ) {
-    self.trackingTouch = [touches anyObject];
+    self.trackingTouch = [[event touchesForView:self] anyObject];
+  } else {
+    // Verify that it's in the set!
+    if ( ![[event touchesForView:self] containsObject:self.trackingTouch] ) {
+      NSLog(@"Lost tracking touch!!!!" );
+      self.trackingTouch = [[event touchesForView:self] anyObject];
+    }
+  }
+  if ( self.trackingTouch == nil ) {
+    NSLog(@"Totally lost the tracking...");
+    mode = NotTouching;
   }
   for ( UITouch *touch in [event touchesForView:self] ) {
     if ( touch == self.trackingTouch ) {
@@ -145,8 +184,8 @@
       CGPoint lastPanPoint = [touch previousLocationInView:self];
 
       int dx, dy;
-      dx = currentPoint.x - lastPanPoint.x;
-      dy = currentPoint.y - lastPanPoint.y;
+      dx = deviceMultiplier * ( currentPoint.x - lastPanPoint.x );
+      dy = deviceMultiplier * ( currentPoint.y - lastPanPoint.y );
       SDL_SendMouseMotion ( true, dx, dy );
       // Move the buttons
       [self updateButtons:currentPoint];

@@ -16,6 +16,12 @@ typedef enum TouchMode {
 @interface FloatingTriggerLookView : UIView {
   TouchMode mode;
   float startingAlpha;
+  UIView *primaryFireButton;
+  UIView *secondaryFireButton;
+  UITouch *trackingTouch;
+  UITouch *lookTouch;
+  BOOL isFadingOut;
+  float deviceMultiplier;
 }
 
 @property (nonatomic,retain) IBOutlet HUDViewController *hudViewController;

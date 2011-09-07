@@ -91,7 +91,7 @@ static NSString *cachePath = nil;
 }
 
 + (void)reportAchievement:(NSString*)identifier progress:(float)percent {
-  GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
+  GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier:[NSString stringWithFormat:@"%@%@", AchievementPrefix, identifier]] autorelease];
   if ( achievement ) {
     achievement.percentComplete = percent;
       NSMutableDictionary *dict = [cachedAchievements objectForKey:kAchievements];
@@ -103,7 +103,7 @@ static NSString *cachePath = nil;
 }
 
 + (void)reportScore:(NSString*)identifier value:(int64_t)reportedScore {
-  GKScore *score = [[[GKScore alloc] initWithCategory:identifier] autorelease];
+  GKScore *score = [[[GKScore alloc] initWithCategory:[NSString stringWithFormat:@"%@%@", AchievementPrefix, identifier]] autorelease];
   if ( score ) {
     score.value = reportedScore;
     NSMutableDictionary *dict = [cachedAchievements objectForKey:kScores];

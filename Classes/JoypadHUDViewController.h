@@ -17,9 +17,12 @@
 @interface JoypadHUDViewController : HUDViewController <JoypadManagerDelegate,UIAlertViewDelegate> {
   JoypadManager *joypadManager;
   NSArray *buttonMap;
+  int deltaX, deltaY;
 }
 
 @property (nonatomic,retain) UIAlertView *alert;
+// Helper for any sort of alternative mouse movement
+-(void)mouseDeltaX:(int*)dx deltaY:(int*)dy;
 -(void)connectToDevice;
 -(void)connectByIP:(NSString*)ip;
 @end

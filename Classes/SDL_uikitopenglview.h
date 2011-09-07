@@ -45,6 +45,14 @@
 	
 	/* OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist) */
 	GLuint depthRenderbuffer;
+  
+#define RENDER_MULTISAMPLING
+#if defined(RENDER_MULTISAMPLING)
+  // See http://www.gandogames.com/2010/07/tutorial-using-anti-aliasing-msaa-in-the-iphone/ 
+  // Buffer definitions for the MSAA
+  GLuint msaaFramebuffer, msaaRenderBuffer, msaaDepthBuffer;
+  bool msaaSupported, discardFramebufferSupported;
+#endif
 	
 }
 

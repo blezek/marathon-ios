@@ -97,7 +97,7 @@ void recenter_mouse(void)
 /*
  *  Take a snapshot of the current mouse state
  */
-
+#include "AlephOneHelper.h"
 void mouse_idle(short type)
 {
   if (mouse_active) {
@@ -112,10 +112,18 @@ void mouse_idle(short type)
     int x, y;
     SDL_GetMouseState(&x, &y);
     SDL_WarpMouse(center_x, center_y);
+    
+    // DJB handle mouse differently, if needed
+    int dx, dy;
+    helperGetMouseDelta ( &dx, &dy );
+    if ( dx == 0 && dy == 0 ) {
+      dx = x - center_x;
+      dy = y - center_y;
+    }
 
     // Calculate axis deltas
-    _fixed vx = ((x - center_x) << FIXED_FRACTIONAL_BITS) / ticks_elapsed;
-    _fixed vy = -((y - center_y) << FIXED_FRACTIONAL_BITS) / ticks_elapsed;
+    _fixed vx = (dx << FIXED_FRACTIONAL_BITS) / ticks_elapsed;
+    _fixed vy = -(dy << FIXED_FRACTIONAL_BITS) / ticks_elapsed;
 
     // Mouse inversion
     if (TEST_FLAG(input_preferences->modifiers, _inputmod_invert_mouse)) {

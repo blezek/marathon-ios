@@ -12,7 +12,7 @@
 #import "Prefs.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
-
+#import "LocalyticsSession.h"
 
 @implementation Tracking
 
@@ -51,11 +51,14 @@
                                                   withError:&error]) {
     NSLog(@"error in systemVersion");
   }
+  [[LocalyticsSession sharedLocalyticsSession] startSession:LAAccountID];
+  [[LocalyticsSession sharedLocalyticsSession] setOptIn:[[NSUserDefaults standardUserDefaults] boolForKey:kUsageData]];
   
 }
 + (void)shutdown {
   MLog(@"Stopping tracking");
   [[GANTracker sharedTracker] stopTracker];
+  [[LocalyticsSession sharedLocalyticsSession] close];
 }
 
 
@@ -63,6 +66,22 @@
   MLog(@"Dispatching tracking" );
   if ( [[NSUserDefaults standardUserDefaults] boolForKey:kUsageData] ) {
     [[GANTracker sharedTracker] dispatch];
+    [[LocalyticsSession sharedLocalyticsSession] upload];
+  }
+}
+
+
++ (void)tagEvent:(NSString *)event {
+  [self tagEvent:event attributes:nil];
+}
+   
++ (void)tagEvent:(NSString *)event attributes:(NSDictionary *)attributes {
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kUsageData] ) {
+    if ( attributes == nil ) {
+      [[LocalyticsSession sharedLocalyticsSession] tagEvent:event];
+    } else {
+      [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:attributes];
+    }
   }
 }
 

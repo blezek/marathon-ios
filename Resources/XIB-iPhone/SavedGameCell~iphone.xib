@@ -98,7 +98,7 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">14</float>
 							</object>
 							<object class="IBUILabel" id="1008676964">
 								<reference key="NSNextResponder" ref="800009064"/>
@@ -120,7 +120,7 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">14</float>
 							</object>
 							<object class="IBUILabel" id="657295050">
 								<reference key="NSNextResponder" ref="800009064"/>
@@ -165,14 +165,18 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Damage Given</string>
-								<reference key="IBUIFont" ref="84008487"/>
+								<object class="NSFont" key="IBUIFont" id="429483361">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">12</double>
+									<int key="NSfFlags">16</int>
+								</object>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTk2MDc4NDMxIDAuNzg0MzEzNzI1NSAwLjIyNzQ1MDk4MDQAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="779966377">
 								<reference key="NSNextResponder" ref="800009064"/>
@@ -191,14 +195,14 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Damage Taken</string>
-								<reference key="IBUIFont" ref="84008487"/>
+								<reference key="IBUIFont" ref="429483361"/>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTk2MDc4NDMxIDAuNzg0MzEzNzI1NSAwLjIyNzQ1MDk4MDQAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="434353942">
 								<reference key="NSNextResponder" ref="800009064"/>
@@ -217,14 +221,14 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Shots Fired</string>
-								<reference key="IBUIFont" ref="84008487"/>
+								<reference key="IBUIFont" ref="429483361"/>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTk2MDc4NDMxIDAuNzg0MzEzNzI1NSAwLjIyNzQ1MDk4MDQAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">12</float>
 							</object>
 							<object class="IBUILabel" id="768810668">
 								<reference key="NSNextResponder" ref="800009064"/>
@@ -232,6 +236,7 @@
 								<string key="NSFrame">{{126, 155}, {480, 36}}</string>
 								<reference key="NSSuperview" ref="800009064"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTk2MDc4NDMxIDAuNzg0MzEzNzI1NSAwLjIyNzQ1MDk4MDQgMAA</bytes>
@@ -242,14 +247,14 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Accuracy</string>
-								<reference key="IBUIFont" ref="84008487"/>
+								<reference key="IBUIFont" ref="429483361"/>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTk2MDc4NDMxIDAuNzg0MzEzNzI1NSAwLjIyNzQ1MDk4MDQAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">24</float>
+								<float key="IBUIMinimumFontSize">12</float>
 							</object>
 							<object class="IBUIImageView" id="1052295021">
 								<reference key="NSNextResponder" ref="800009064"/>

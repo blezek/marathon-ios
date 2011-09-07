@@ -357,8 +357,9 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
         // GLint width = helperOpenGLWidth();
         // GLint height = helperOpenGLHeight();
         // We're shooting for 640x480 here
-        
-        data->glViewport(0, 0, 480, 320);
+        GLint width = helperOpenGLWidth();
+        GLint height = helperOpenGLHeight();
+        data->glViewport(0, 0, width, height);
         data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
                        0.0, 1.0);        
          

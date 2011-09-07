@@ -21,4 +21,6 @@
 + (BOOL)trackPageview:(NSString *)pageURL;
 + (void)startup;
 + (void)shutdown;
++ (void)tagEvent:(NSString *)event attributes:(NSDictionary *)attributes;
++ (void)tagEvent:(NSString *)event;
 @end

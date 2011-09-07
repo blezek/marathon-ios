@@ -120,26 +120,63 @@
 		glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
 		glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     MLog(@"Content scale factor %f", self.contentScaleFactor);
+    if ( self.contentScaleFactor > 1 ) {
+      [AlephOneAppDelegate sharedAppDelegate].retinaDisplay = 1;
+    } else {
+      [AlephOneAppDelegate sharedAppDelegate].retinaDisplay = 0;      
+    }
 		[context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer*)self.layer];
 		glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, viewRenderbuffer);
-		
+    
     MLog(@"Content scale factor %f", self.contentScaleFactor);
 		glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
 		glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
-		
-		if (useDepthBuffer) {
+
+    
+    if (useDepthBuffer) {
 			glGenRenderbuffersOES(1, &depthRenderbuffer);
 			glBindRenderbufferOES(GL_RENDERBUFFER_OES, depthRenderbuffer);
 			glRenderbufferStorageOES(GL_RENDERBUFFER_OES, depthBufferFormat, backingWidth, backingHeight);
 			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
 		}
 
+#if defined(RENDER_MULTISAMPLING)
+    const GLubyte *str = glGetString(GL_EXTENSIONS);
+    NSLog(@" OpenGL Extensions: %s",str);
+    msaaSupported = (strstr((const char *)str, "GL_APPLE_framebuffer_multisample") != NULL);
+    discardFramebufferSupported = (strstr((const char *)str, "GL_EXT_discard_framebuffer") != NULL);
+    if ( msaaSupported ) {
+      //Generate our MSAA Frame and Render buffers
+      glGenFramebuffersOES(1, &msaaFramebuffer); 
+      glGenRenderbuffersOES(1, &msaaRenderBuffer);
+      
+      //Bind our MSAA buffers
+      glBindFramebufferOES(GL_FRAMEBUFFER_OES, msaaFramebuffer);
+      glBindRenderbufferOES(GL_RENDERBUFFER_OES, msaaRenderBuffer);   
+      
+      GLint numberOfSamples;
+      glGetIntegerv(GL_MAX_SAMPLES_APPLE, &numberOfSamples);
+      MLog(@"OpenGL supports %d multisamples", numberOfSamples);
+      
+      // Generate the msaaDepthBuffer.
+      // 4 will be the number of pixels that the MSAA buffer will use in order to make one pixel on the render buffer.
+      glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER_OES, numberOfSamples, GL_RGB5_A1_OES, backingWidth, backingHeight); 
+      glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, msaaRenderBuffer);
+      glGenRenderbuffersOES(1, &msaaDepthBuffer);
+      //Bind the msaa depth buffer. 
+      glBindRenderbufferOES(GL_RENDERBUFFER_OES, msaaDepthBuffer);
+      glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER_OES, numberOfSamples, GL_DEPTH_COMPONENT16_OES, backingWidth , backingHeight); 
+      glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, msaaDepthBuffer);
+    }
+#endif
+    
+    
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {      
+      NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+    }
+
     // Get the renderbuffer size.
-    GLint width;
-    GLint height;
-    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &width);
-    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &height);
-    [[AlephOneAppDelegate sharedAppDelegate] oglWidth:width oglHeight:height];
+    [[AlephOneAppDelegate sharedAppDelegate] oglWidth:backingWidth oglHeight:backingHeight];
 		if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
 			return NO;
 		}
@@ -154,10 +191,33 @@
 
 
 - (void)swapBuffers {
+#if defined(RENDER_MULTISAMPLING)
+  if ( msaaSupported ) {
+    // Apple (and the khronos group) encourages you to discard depth
+    // render buffer contents whenever is possible
+    if ( discardFramebufferSupported ) {
+      const GLenum discards[]  = {GL_COLOR_ATTACHMENT0,GL_DEPTH_ATTACHMENT};  
+      glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE,2,discards);
+    }
+    //Bind both MSAA and View FrameBuffers. 
+    glBindFramebufferOES(GL_READ_FRAMEBUFFER_APPLE, msaaFramebuffer);
+    glBindFramebufferOES(GL_DRAW_FRAMEBUFFER_APPLE, viewFramebuffer);   
+    // Call a resolve to combine both buffers
+    glResolveMultisampleFramebufferAPPLE(); 
+  }
+#endif
+  
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
-}
+  
+#if defined(RENDER_MULTISAMPLING)
+  if ( msaaSupported ) {
+    // After we present the buffer, bind the MSAA framebuffer
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, msaaFramebuffer);
+  }
+#endif
 
+}
 
 - (void)layoutSubviews {
 	[EAGLContext setCurrentContext:context];
@@ -174,6 +234,14 @@
 		glDeleteRenderbuffersOES(1, &depthRenderbuffer);
 		depthRenderbuffer = 0;
 	}
+  
+#if defined(RENDER_MULTISAMPLING)
+  if ( msaaSupported ) {
+    glDeleteFramebuffersOES(1, &msaaFramebuffer);
+    glDeleteRenderbuffersOES(1, &msaaRenderBuffer);
+    glDeleteRenderbuffersOES(1, &msaaDepthBuffer);
+  }
+#endif
 }
 
 

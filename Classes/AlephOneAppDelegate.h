@@ -25,6 +25,7 @@
   GameViewController *game;
   bool finishedStartup;
   int OpenGLESVersion;
+  int retinaDisplay;
   int oglWidth;
   int oglHeight;
   
@@ -47,6 +48,7 @@
 @property (nonatomic) int OpenGLESVersion;
 @property (nonatomic) int oglHeight;
 @property (nonatomic) int oglWidth;
+@property (nonatomic) int retinaDisplay;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 

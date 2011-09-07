@@ -117,6 +117,10 @@ BOOL StatsDownloaded = NO;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  // Bogus reticule
+  currentReticleImage = -1000;
+  
   self.saveGameViewController = [[SaveGameViewController alloc] initWithNibName:@"SaveGameViewController" bundle:nil];
   self.saveGameViewController.view;
   MLog ( @"Save Game View: %@", self.saveGameViewController.view );
@@ -194,7 +198,7 @@ BOOL StatsDownloaded = NO;
   self.restartView.hidden = YES;
   
   self.menuTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-  [self.menuView addGestureRecognizer:self.menuTapGesture];
+  [self.restartView addGestureRecognizer:self.menuTapGesture];
 
   self.controlsOverviewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(controlsOverviewTap:)];
   [self.controlsOverviewView addGestureRecognizer:self.controlsOverviewGesture];
@@ -228,19 +232,24 @@ BOOL StatsDownloaded = NO;
   switch ( mode ) {
     case MenuMode:
       [Tracking trackPageview:@"/menu"];
+      [Tracking tagEvent:@"menu"];
       break;
     case CutSceneMode:
       [Tracking trackPageview:@"/cutscene"];
+      [Tracking tagEvent:@"cutsecene"];
       break;
     case AutoMapMode:
       [Tracking trackPageview:@"/automap"];
+      [Tracking tagEvent:@"automap"];
       break;
     case DeadMode:
       [Tracking trackPageview:@"/dead"];
-      break;
+      [Tracking tagEvent:@"dead"];
+     break;
     case GameMode:
     default:
       [Tracking trackPageview:@"/game"];
+      [Tracking tagEvent:@"game"];
       break;
   }
 }
@@ -305,6 +314,11 @@ BOOL StatsDownloaded = NO;
     showControlsOverview = YES;
   }
   [Tracking trackPageview:[NSString stringWithFormat:@"/new/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]];
+  [Tracking tagEvent:@"startup" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty",
+                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                @"level", nil]];
+
   [self cancelNewGame];
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
@@ -345,16 +359,26 @@ BOOL StatsDownloaded = NO;
 
 - (void)playerKilled {
   [Tracking trackEvent:@"player" action:@"death" label:@"" value:0];
+  [Tracking tagEvent:@"died" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                            @"difficulty",
+                                            [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                            @"level", nil]];
+
   mode = DeadMode;
-  self.hud.alpha = 1.0;
-  self.restartView.alpha = 0.0;
-  self.restartView.hidden = NO;
   self.hud.hidden = YES;
-  self.hud.alpha = 0.0;
+  self.HUDViewController.view.hidden = YES;
+  
+  self.restartView.hidden = NO;
+  self.restartView.alpha = 0.6;
+  [UIView animateWithDuration:2.0 animations:^{
+    self.restartView.alpha = 0.8;
+  }];
+  /*
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
   self.restartView.alpha = 0.8;
   [UIView commitAnimations];
+   */
 }
 
 - (void)bringUpHUD {
@@ -398,11 +422,14 @@ BOOL StatsDownloaded = NO;
   
   bool showAllControls = player_controlling_game();
   
+  /*
   if ( player_controlling_game() && [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
     Crosshairs_SetActive(true);
   } else {
-    Crosshairs_SetActive(false);
+   Crosshairs_SetActive(false);
   }
+   */
+  Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   
@@ -625,7 +652,7 @@ BOOL StatsDownloaded = NO;
 - (void)configureHUD:(NSString*)HUDType{
   [self.HUDViewController.view removeFromSuperview];
   if ( HUDType == nil ) {
-    self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
+    // self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
     self.HUDViewController = [[FloatingTriggerHUDViewController alloc] initWithNibName:@"FloatingTriggerHUDViewController" bundle:[NSBundle mainBundle]];
     [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
     
@@ -684,7 +711,14 @@ extern bool load_and_start_game(FileSpecifier& File);
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
   [Tracking trackPageview:[NSString stringWithFormat:@"/load/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]]; 
-  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+
+  [Tracking tagEvent:@"load" attributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                         [Statistics difficultyToString:player_preferences->difficulty_level],
+                                         @"difficulty",
+                                         [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                         @"level",
+                                        nil]]; 
+MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
   
 }
 
@@ -993,6 +1027,10 @@ extern bool handle_open_replay(FileSpecifier& File);
   if ( mode == MenuMode || mode == CutSceneMode || mode == DeadMode ) {
     if ( recognizer == menuTapGesture ) {
       NSLog ( @"Handling menu tap" );
+      // Send an action...
+      [self.HUDViewController actionDown:self];
+      // Delay a bit
+      [self.HUDViewController performSelector:@selector(actionUp:) withObject:self afterDelay:0.2];
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
       location = [recognizer locationInView:self.menuView];
       lastMenuTap = location;
@@ -1013,18 +1051,35 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 #pragma mark - Reticule
 - (void)updateReticule:(int)index {
+  if ( mode == DeadMode ) { return; }
+  if ( world_view->overhead_map_active || world_view->terminal_mode_active ) {
+    self.reticule.hidden = YES;
+    return;
+  }   
+  
+  if ( ![[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
+    self.reticule.hidden = YES;
+    return;
+  }
+  self.reticule.hidden = NO;
+  
   if ( index < 0 ) {
     index = get_player_desired_weapon(current_player_index);
   }
-  
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
-    self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
-    self.reticule.hidden = NO;
-  } else {
-    self.reticule.hidden = YES;
+  if ( index == currentReticleImage ) {
+    return;
   }
+  currentReticleImage = index;
   
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ) {
+    // Fancy reticule
+    self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+  } else {
+    // Basic reticule
+    self.reticule.image = [UIImage imageNamed:@"ret_default"];    
+  }
 
+  return;
 }
 
 #pragma mark -
@@ -1074,6 +1129,9 @@ extern bool handle_open_replay(FileSpecifier& File);
   // Need to do much more than this...
   [Achievements reportAchievement:Achievement_Marathon progress:100.0];
   [Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
+  [Tracking tagEvent:@"finished" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty", nil]];
+
 }
 
 - (void)zeroStats {
@@ -1184,6 +1242,11 @@ _civilian_fusion_assimilated,
 
 - (IBAction)shieldCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"shield" value:dynamic_world->current_level_number];
+  [Tracking tagEvent:@"shieldCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                            @"difficulty",
+                                            [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                            @"level", nil]];
+
   local_player->suit_energy= MAX(local_player->suit_energy, 3*PLAYER_MAXIMUM_SUIT_ENERGY);
   local_player->suit_oxygen = MAX ( local_player->suit_oxygen, PLAYER_MAXIMUM_SUIT_OXYGEN );
   mark_shield_display_as_dirty();  
@@ -1192,6 +1255,10 @@ _civilian_fusion_assimilated,
 
 - (IBAction)invincibilityCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"invincibility" value:dynamic_world->current_level_number];
+  [Tracking tagEvent:@"invincibilityCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty",
+                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                @"level", nil]];
   process_player_powerup(local_player_index, _i_invincibility_powerup);
   // process_player_powerup(local_player_index, _i_infravision_powerup );
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
@@ -1199,6 +1266,11 @@ _civilian_fusion_assimilated,
 
 - (IBAction)saveCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"save" value:dynamic_world->current_level_number];
+  [Tracking tagEvent:@"saveCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                              @"difficulty",
+                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                              @"level", nil]];
+
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   MLog ( @"Damage given %d (%d kills) Damage taken %d (%d kills)",
@@ -1213,6 +1285,10 @@ _civilian_fusion_assimilated,
 
 - (IBAction)ammoCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"ammo" value:dynamic_world->current_level_number];
+  [Tracking tagEvent:@"ammoCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty",
+                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                @"level", nil]];
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
@@ -1244,6 +1320,10 @@ _civilian_fusion_assimilated,
 }
 - (IBAction)weaponsCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"weapons" value:dynamic_world->current_level_number];
+  [Tracking tagEvent:@"weaponsCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty",
+                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                @"level", nil]];
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
@@ -1328,15 +1408,15 @@ _civilian_fusion_assimilated,
 
 - (void)runMainLoopOnce:(id)sender {
   // Do some house keeping here
+
   if (world_view->overhead_map_active) {
     self.zoomInButton.hidden = NO;
     self.zoomOutButton.hidden = NO;
-    self.reticule.hidden = YES;
   } else {
     self.zoomInButton.hidden = YES;
     self.zoomOutButton.hidden = YES;
-    [self updateReticule:get_player_desired_weapon(current_player_index)];
   }
+  [self updateReticule:get_player_desired_weapon(current_player_index)];
   if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
     [self menuShowReplacementMenu];
     mode = MenuMode;
@@ -1374,12 +1454,22 @@ _civilian_fusion_assimilated,
   PlayInterfaceButtonSound(Sound_ButtonSuccess());
   scroll_inventory(-1);
   [Tracking trackEvent:@"player" action:@"inventory" label:@"" value:0];
+  [Tracking tagEvent:@"inventory" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                @"difficulty",
+                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                @"level", nil]];
+
 }
 
 - (IBAction)zoomMapIn {
   if (zoom_overhead_map_in()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
     [Tracking trackEvent:@"player" action:@"zoomin" label:@"success" value:0];
+    [Tracking tagEvent:@"zoomin" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                  @"difficulty",
+                                                  [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                  @"level", nil]];
+
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());
@@ -1390,6 +1480,11 @@ _civilian_fusion_assimilated,
   if (zoom_overhead_map_out()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
     [Tracking trackEvent:@"player" action:@"zoomout" label:@"success" value:0];
+    [Tracking tagEvent:@"zoomout" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+                                                  @"difficulty",
+                                                  [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+                                                  @"level", nil]];
+
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());

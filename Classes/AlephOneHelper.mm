@@ -147,6 +147,23 @@ int helperAlwaysPlayIntro () {
   }
 };
 
+int helperAutocenter () {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  BOOL g = [defaults boolForKey:kAutocenter];
+  if ( g ) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+void helperGetMouseDelta ( int *dx, int *dy ) {
+  // Get the mouse delta from the JoyPad HUD controller, if possible
+  [[GameViewController sharedInstance].HUDViewController mouseDeltaX:dx deltaY:dy];
+}
+
+
+
 extern GLfloat helperPauseAlpha() {
   return [[GameViewController sharedInstance] getPauseAlpha];
 }
@@ -251,4 +268,8 @@ extern "C" int helperOpenGLWidth() {
 extern "C" int helperOpenGLHeight() {
   return [AlephOneAppDelegate sharedAppDelegate].oglHeight;
 }
+extern "C" int helperRetinaDisplay() {
+  return [AlephOneAppDelegate sharedAppDelegate].retinaDisplay;
+}
+
 

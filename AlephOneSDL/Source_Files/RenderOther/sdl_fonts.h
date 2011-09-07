@@ -30,7 +30,7 @@
 
 #include "FileHandler.h"
 #ifdef HAVE_SDL_TTF
-#include <SDL_ttf.h>
+#include "SDL_ttf.h"
 #include <boost/tuple/tuple.hpp>
 #endif
 
