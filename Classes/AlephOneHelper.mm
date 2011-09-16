@@ -258,6 +258,12 @@ void helperHandleLoadFilm() {
   [[GameViewController sharedInstance] chooseFilm];
 }
 
+extern void helperPickedUp ( short itemType ) {
+  // picked something up
+  MLog ( @"Picked something up");
+  [[GameViewController sharedInstance] pickedUp:itemType];
+}
+
 // C linkage
 extern "C" int helperRunningOniPad() {
   return [[AlephOneAppDelegate sharedAppDelegate] runningOniPad];

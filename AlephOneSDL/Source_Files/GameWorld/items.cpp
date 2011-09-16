@@ -509,6 +509,9 @@ short get_item_shape(
   return definition->base_shape;
 }
 
+// DJB Added helper
+#include "AlephOneHelper.h"
+
 bool try_and_add_player_item(
   short player_index,
   short type)
@@ -647,6 +650,8 @@ DONE:
 #ifdef HAVE_LUA
     L_Call_Got_Item(type, player_index);
 #endif
+    // DJB Picked up a new item
+    helperPickedUp ( type );
   }
 
   /* Play the pickup sound */

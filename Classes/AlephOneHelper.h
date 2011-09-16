@@ -66,6 +66,9 @@ extern void helperProjectileKill ( short projectile_index );
 // Starting level
 extern short helperGetEntryLevelNumber();
 
+// Picked something up
+extern void helperPickedUp ( short itemType );
+
 // Gamma from settings
 extern float helperGamma();
 

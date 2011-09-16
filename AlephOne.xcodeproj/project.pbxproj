@@ -2525,7 +2525,7 @@
 		A85A37FE12178BA50080BBA9 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
 		A85A37FF12178BA50080BBA9 /* ButtonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ButtonView.mm; path = Classes/ButtonView.mm; sourceTree = "<group>"; };
 		A85E668611CB085900D0FAEF /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
-		A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85E686011CB173A00D0FAEF /* Marathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85E687111CB18FD00D0FAEF /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = png.h; path = "Libraries/libpng-1.2.24/png.h"; sourceTree = SOURCE_ROOT; };
 		A85E687211CB18FD00D0FAEF /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngconf.h; path = "Libraries/libpng-1.2.24/pngconf.h"; sourceTree = SOURCE_ROOT; };
 		A85E687311CB18FD00D0FAEF /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = png.c; path = "Libraries/libpng-1.2.24/png.c"; sourceTree = SOURCE_ROOT; };
@@ -2600,7 +2600,7 @@
 		A87FF02E12452C7E0033A3EB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A8811F9B12C76B2200A1A08E /* help11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help11.png; path = Artwork/Help/help11.png; sourceTree = "<group>"; };
 		A8811F9C12C76B2200A1A08E /* help12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help12.png; path = Artwork/Help/help12.png; sourceTree = "<group>"; };
-		A88121E912C7816300A1A08E /* AlephOne-SDG-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88121E912C7816300A1A08E /* Durandal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Durandal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88121EB12C7816300A1A08E /* Info 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info 2.plist"; path = "../../Info 2.plist"; sourceTree = "<group>"; };
 		A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88123F012C7826300A1A08E /* Info 3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info 3.plist"; path = "../../Info 3.plist"; sourceTree = "<group>"; };
@@ -3536,8 +3536,8 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */,
-				A88121E912C7816300A1A08E /* AlephOne-SDG-2.app */,
+				A85E686011CB173A00D0FAEF /* Marathon.app */,
+				A88121E912C7816300A1A08E /* Durandal.app */,
 				A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */,
 			);
 			name = Products;
@@ -5480,9 +5480,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A85E672911CB173A00D0FAEF /* AlephOne:SDG */ = {
+		A85E672911CB173A00D0FAEF /* Marathon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOne:SDG" */;
+			buildConfigurationList = A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "Marathon" */;
 			buildPhases = (
 				A85E672E11CB173A00D0FAEF /* Resources */,
 				A85E673111CB173A00D0FAEF /* Sources */,
@@ -5494,14 +5494,14 @@
 				A85E672A11CB173A00D0FAEF /* PBXTargetDependency */,
 				A85E672C11CB173A00D0FAEF /* PBXTargetDependency */,
 			);
-			name = "AlephOne:SDG";
+			name = Marathon;
 			productName = AlephOne;
-			productReference = A85E686011CB173A00D0FAEF /* AlephOne-SDG.app */;
+			productReference = A85E686011CB173A00D0FAEF /* Marathon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A8811FE812C7816300A1A08E /* AlephOne:SDG 2 */ = {
+		A8811FE812C7816300A1A08E /* Durandal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "AlephOne:SDG 2" */;
+			buildConfigurationList = A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "Durandal" */;
 			buildPhases = (
 				A8811FED12C7816300A1A08E /* Resources */,
 				A881203A12C7816300A1A08E /* Sources */,
@@ -5513,14 +5513,14 @@
 				A8811FE912C7816300A1A08E /* PBXTargetDependency */,
 				A8811FEB12C7816300A1A08E /* PBXTargetDependency */,
 			);
-			name = "AlephOne:SDG 2";
+			name = Durandal;
 			productName = AlephOne;
-			productReference = A88121E912C7816300A1A08E /* AlephOne-SDG-2.app */;
+			productReference = A88121E912C7816300A1A08E /* Durandal.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A88121ED12C7826300A1A08E /* AlephOne:SDG 3 */ = {
+		A88121ED12C7826300A1A08E /* Infinity */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A88123EA12C7826300A1A08E /* Build configuration list for PBXNativeTarget "AlephOne:SDG 3" */;
+			buildConfigurationList = A88123EA12C7826300A1A08E /* Build configuration list for PBXNativeTarget "Infinity" */;
 			buildPhases = (
 				A88121F212C7826300A1A08E /* Resources */,
 				A881223F12C7826300A1A08E /* Sources */,
@@ -5532,7 +5532,7 @@
 				A88121EE12C7826300A1A08E /* PBXTargetDependency */,
 				A88121F012C7826300A1A08E /* PBXTargetDependency */,
 			);
-			name = "AlephOne:SDG 3";
+			name = Infinity;
 			productName = AlephOne;
 			productReference = A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */;
 			productType = "com.apple.product-type.application";
@@ -5566,9 +5566,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				A85E672911CB173A00D0FAEF /* AlephOne:SDG */,
-				A8811FE812C7816300A1A08E /* AlephOne:SDG 2 */,
-				A88121ED12C7826300A1A08E /* AlephOne:SDG 3 */,
+				A85E672911CB173A00D0FAEF /* Marathon */,
+				A8811FE812C7816300A1A08E /* Durandal */,
+				A88121ED12C7826300A1A08E /* Infinity */,
 			);
 		};
 /* End PBXProject section */
@@ -7745,12 +7745,11 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG";
+				PRODUCT_NAME = Marathon;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -7780,13 +7779,12 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG";
+				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -7815,13 +7813,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-2";
+				PRODUCT_NAME = Durandal;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -7848,13 +7845,12 @@
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-2";
+				PRODUCT_NAME = Durandal;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -7881,13 +7877,12 @@
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-2";
+				PRODUCT_NAME = Durandal;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHocDistribution;
@@ -8060,13 +8055,12 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG";
+				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "3B320912-1F8E-4275-8E07-75F6467883E5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B320912-1F8E-4275-8E07-75F6467883E5";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -8094,14 +8088,13 @@
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-2";
+				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "DE0B3B3C-C7C9-4490-9834-780400722514";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3317B6F8-A99D-46FD-9C3A-C4CE56CD6683";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -8206,12 +8199,11 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG";
+				PRODUCT_NAME = Marathon;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHocDistribution;
@@ -8294,7 +8286,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "AlephOne:SDG" */ = {
+		A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "Marathon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A85E685E11CB173A00D0FAEF /* Debug */,
@@ -8305,7 +8297,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "AlephOne:SDG 2" */ = {
+		A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "Durandal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A88121E612C7816300A1A08E /* Debug */,
@@ -8316,7 +8308,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A88123EA12C7826300A1A08E /* Build configuration list for PBXNativeTarget "AlephOne:SDG 3" */ = {
+		A88123EA12C7826300A1A08E /* Build configuration list for PBXNativeTarget "Infinity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A88123EB12C7826300A1A08E /* Debug */,

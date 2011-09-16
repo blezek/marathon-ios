@@ -542,7 +542,58 @@ BOOL StatsDownloaded = NO;
           
           // We are leaving level idx...
           [statistics reportAchievementsLeavingLevel:idx];
-
+          if ( !currentSavedGame.haveCheated ) {
+#if SCENARIO==1
+            switch (idx) {
+              case 2:
+                [Achievements reportAchievementNoPrefix:@"Arrival" progress:100];
+                break;
+              case 9:
+                [Achievements reportAchievementNoPrefix:@"Counterattack" progress:100];
+                break;
+              case 11:
+                [Achievements reportAchievementNoPrefix:@"Reprisal" progress:100];
+                break;
+              case 15:
+                [Achievements reportAchievementNoPrefix:@"Durandal" progress:100];
+                break;
+              case 23:
+                [Achievements reportAchievementNoPrefix:@"Pfhor" progress:100];
+                break;
+              case 26:
+                [Achievements reportAchievementNoPrefix:@"Rebellion" progress:100];
+                break;
+            }
+#endif
+#if SCENARIO==2
+            switch (idx) {
+              case 3:
+                [Achievements reportAchievementNoPrefix:@"Lhowon" progress:100];
+                break;
+              case 6:
+                [Achievements reportAchievementNoPrefix:@"Volunteers" progress:100];
+                break;
+              case 9:
+                [Achievements reportAchievementNoPrefix:@"Garrison" progress:100];
+                break;
+              case 13:
+                [Achievements reportAchievementNoPrefix:@"M2Durandal" progress:100];
+                break;
+              case 18:
+                [Achievements reportAchievementNoPrefix:@"Captured" progress:100];
+                break;
+              case 22:
+                [Achievements reportAchievementNoPrefix:@"Blake" progress:100];
+                break;
+              case 25:
+                [Achievements reportAchievementNoPrefix:@"Simulacrums" progress:100];
+                break;
+              case 28:
+                [Achievements reportAchievementNoPrefix:@"SphtKr" progress:100];
+                break;
+            }
+#endif
+          }
         }
       }
     }
@@ -1282,6 +1333,48 @@ _civilian_fusion_assimilated,
   MLog ( @"Ticks at last save: %d", local_player->ticks_at_last_successful_save );
   save_game();
 }
+
+- (void)pickedUp:(short)itemType {
+  switch (itemType) {
+    case _i_smg:
+      [Achievements reportAchievement:@"SMG" progress:100.0];
+      break;
+    case _i_assault_rifle :
+      [Achievements reportAchievement:@"AssaultRifel" progress:100.0];
+      break;
+    case _i_magnum:
+      [Achievements reportAchievement:@"Pistol" progress:100.0];
+      break;
+    case _i_missile_launcher:
+      [Achievements reportAchievement:@"MissileLauncher" progress:100.0];
+      break;
+    case _i_flamethrower:
+      [Achievements reportAchievement:@"Flamethrower" progress:100.0];
+      break;
+    case _i_plasma_pistol:
+      [Achievements reportAchievement:@"PlasmaPistol" progress:100.0];
+      break;
+    case _i_alien_shotgun:
+      [Achievements reportAchievement:@"AlienShotgun" progress:100.0];
+      break;
+    case _i_shotgun:
+      [Achievements reportAchievement:@"Shotgun" progress:100.0];
+      break;
+  }
+}
+short items[]=
+{ 
+  // Only get the SMG/Flechette gun in Infinity
+#if SCENARIO == 3
+  _i_smg_ammo,
+#endif
+  _i_assault_rifle_magazine, _i_assault_grenade_magazine,
+  _i_magnum_magazine, _i_missile_launcher_magazine,
+  _i_flamethrower_canister,
+  _i_plasma_magazine, _i_shotgun_magazine, _i_shotgun
+  
+};
+
 
 - (IBAction)ammoCheat:(id)sender {
   [Tracking trackEvent:@"player" action:@"cheat" label:@"ammo" value:dynamic_world->current_level_number];

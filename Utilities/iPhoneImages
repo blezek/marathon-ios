@@ -1,0 +1,24 @@
+set Images [exec find $env(HOME)/Source/AlephOne/AlephOne -name *.png]
+
+
+set RADIUS 1
+set SIGMA 0.0
+set FILTER Catrom  
+
+foreach fn $Images {
+  if { [string match *~iphone* $fn] } {
+    continue
+  } 
+  set ifn [file root $fn]~iphone.png
+  set i2fn [file root $fn]@2x~iphone.png
+  if { ![file exists $ifn] } {
+    puts "Create $ifn"
+    exec convert $fn -sharpen ${RADIUS}x${SIGMA} -filter ${FILTER} -resize 50% 
+$ifn
+
+  }
+  if { ![file exists $i2fn] } {
+    puts "Create $i2fn"
+    file copy $fn $i2fn
+  }
+}

@@ -90,16 +90,20 @@ static NSString *cachePath = nil;
 #endif
 }
 
-+ (void)reportAchievement:(NSString*)identifier progress:(float)percent {
-  GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier:[NSString stringWithFormat:@"%@%@", AchievementPrefix, identifier]] autorelease];
++ (void)reportAchievementNoPrefix:(NSString*)identifier progress:(float)percent {
+  GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier:identifier] autorelease];
   if ( achievement ) {
     achievement.percentComplete = percent;
-      NSMutableDictionary *dict = [cachedAchievements objectForKey:kAchievements];
+    NSMutableDictionary *dict = [cachedAchievements objectForKey:kAchievements];
     [dict setObject:achievement forKey:achievement.identifier];
     [cachedAchievements writeToFile:cachePath atomically:YES];
   } else {
     MLog ( @"Couldn't create achievement for %@", identifier );
   }
+}
+
++ (void)reportAchievement:(NSString*)identifier progress:(float)percent {
+  [self reportAchievementNoPrefix:[NSString stringWithFormat:@"%@%@", AchievementPrefix, identifier] progress:percent];
 }
 
 + (void)reportScore:(NSString*)identifier value:(int64_t)reportedScore {

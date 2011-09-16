@@ -33,6 +33,7 @@
 
 + (void)login;
 + (void)reportAchievement:(NSString*)identifier progress:(float)percent;
++ (void)reportAchievementNoPrefix:(NSString*)identifier progress:(float)percent;
 + (void)reportScore:(NSString*)identifier value:(int64_t)reportedScore;
 + (void)uploadAchievements;
 + (BOOL)isAuthenticated;

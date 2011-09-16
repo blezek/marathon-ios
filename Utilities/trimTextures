@@ -1,0 +1,9 @@
+#!/usr/bin/env tclsh
+
+set FileList [exec find . -name "*.png"]
+
+foreach fn $FileList {
+  puts $fn
+  exec convert $fn -trim /tmp/foo.png
+  exec mv /tmp/foo.png $fn
+}

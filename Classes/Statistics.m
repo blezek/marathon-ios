@@ -62,29 +62,25 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
   float percentage = 100.0 * (completedLevel+1) / NumberOfLevels;
   [Achievements reportAchievement:Achievement_Marathon progress:percentage];
   
-  // Only earn these on Normal or better
-  if ( [game.difficulty intValue] >= _normal_level ) {
-  
-    if ( [game.bobsLeftAlive intValue] == 0 ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"BOBBane"] progress:percentage];
-    }
-    if ( [game.aliensLeftAlive intValue] == 0 ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"CleanSweep"] progress:percentage];
-    }   
-    if ( [game.kills intValue] == [game.killsByFist intValue] ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"Pugilist"] progress:percentage];   
-    }
-    if ( [game.kills intValue ] == [game.killsByPistol intValue ] ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"Gunslinger"] progress:percentage];   
-    }
+  if ( [game.bobsLeftAlive intValue] == 0 ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"BOBBane"] progress:percentage];
+  }
+  if ( [game.aliensLeftAlive intValue] == 0 ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"CleanSweep"] progress:percentage];
+  }   
+  if ( [game.kills intValue] == [game.killsByFist intValue] ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"Pugilist"] progress:percentage];   
+  }
+  if ( [game.kills intValue ] == [game.killsByPistol intValue ] ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"Gunslinger"] progress:percentage];   
+  }
 #if SCENARIO != 1
-    if ( [game.kills intValue ] == [game.killsByShotgun intValue ] ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"DoubleBarrel"] progress:percentage];   
-    }
+  if ( [game.kills intValue ] == [game.killsByShotgun intValue ] ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"DoubleBarrel"] progress:percentage];   
+  }
 #endif
-    if ( [game.kills intValue ] == [game.killsByMissileLauncher intValue ] ) {
-      [Achievements reportAchievement:[NSString stringWithFormat:@"MissileLauncher"] progress:percentage];   
-    }
+  if ( [game.kills intValue ] == [game.killsByMissileLauncher intValue ] ) {
+    [Achievements reportAchievement:[NSString stringWithFormat:@"MissileLauncher"] progress:percentage];   
   }
   
   // Vidmaster
