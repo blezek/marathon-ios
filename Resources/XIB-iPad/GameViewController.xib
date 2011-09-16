@@ -128,7 +128,7 @@
 								<string key="NSFrame">{{320, 457}, {96, 96}}</string>
 								<reference key="NSSuperview" ref="485381462"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="464543623"/>
+								<reference key="NSNextKeyView" ref="514580227"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<float key="IBUIAlpha">0.5</float>
 								<int key="IBUITag">400</int>
@@ -230,10 +230,24 @@
 						<int key="NSvFlags">292</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="718396711">
+								<reference key="NSNextResponder" ref="464543623"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrameSize">{1024, 768}</string>
+								<reference key="NSSuperview" ref="464543623"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="724514907"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">HomeScreen.png</string>
+								</object>
+							</object>
 							<object class="IBUIButton" id="70214282">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 53.5}, {250, 86}}</string>
+								<string key="NSFrame">{{728, 146}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="851951514"/>
@@ -251,13 +265,13 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">MenuItem-New.png</string>
+									<string key="NSResourceName">NewGameButton.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="851951514">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 136.5}, {250, 86}}</string>
+								<string key="NSFrame">{{728, 230}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="504006047"/>
@@ -275,13 +289,13 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">MenuItem-Load.png</string>
+									<string key="NSResourceName">LoadButton.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="504006047">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 219.5}, {250, 86}}</string>
+								<string key="NSFrame">{{728, 313}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="428206114"/>
@@ -299,13 +313,13 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">MenuItem-Settings.png</string>
+									<string key="NSResourceName">SettingsButton.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="428206114">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 302.5}, {250, 86}}</string>
+								<string key="NSFrame">{{728, 397}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="466918567"/>
@@ -323,16 +337,16 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">MenuItem-Store.png</string>
+									<string key="NSResourceName">StoreButton.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="466918567">
 								<reference key="NSNextResponder" ref="464543623"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{774, 387}, {250, 86}}</string>
+								<string key="NSFrame">{{728, 480}, {250, 86}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="514580227"/>
+								<reference key="NSNextKeyView"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -350,7 +364,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">about-btn.png</string>
+									<string key="NSResourceName">AboutButton.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="329402770">
@@ -399,7 +413,7 @@
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="724514907"/>
+						<reference key="NSNextKeyView" ref="718396711"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -661,7 +675,7 @@
 								<string key="NSFrame">{{256, 334}, {512, 100}}</string>
 								<reference key="NSSuperview" ref="763863770"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="464543623"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">4</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
@@ -1028,9 +1042,9 @@
 							<reference ref="215110741"/>
 							<reference ref="501269846"/>
 							<reference ref="196030530"/>
+							<reference ref="485381462"/>
 							<reference ref="763863770"/>
 							<reference ref="464543623"/>
-							<reference ref="485381462"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1144,6 +1158,7 @@
 							<reference ref="466918567"/>
 							<reference ref="329402770"/>
 							<reference ref="724514907"/>
+							<reference ref="718396711"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Replacement Menu</string>
@@ -1268,6 +1283,12 @@
 						<reference key="object" ref="788459184"/>
 						<reference key="parent" ref="485381462"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">178</int>
+						<reference key="object" ref="718396711"/>
+						<reference key="parent" ref="464543623"/>
+						<string key="objectName">Background</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1323,6 +1344,7 @@
 					<string>168.IBPluginDependency</string>
 					<string>169.IBPluginDependency</string>
 					<string>176.IBPluginDependency</string>
+					<string>178.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>2.IBViewEditorWindowController.showingBoundsRectangles</string>
@@ -1419,6 +1441,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{313, 132}, {1024, 1024}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
@@ -1453,7 +1476,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">177</int>
+			<int key="maxID">178</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3071,16 +3094,17 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>AboutButton.png</string>
 				<string>ControlsOverview.png</string>
 				<string>GenericBackground.png</string>
-				<string>MenuItem-Load.png</string>
-				<string>MenuItem-New.png</string>
-				<string>MenuItem-Settings.png</string>
-				<string>MenuItem-Store.png</string>
+				<string>HomeScreen.png</string>
+				<string>LoadButton.png</string>
+				<string>NewGameButton.png</string>
 				<string>Reload.png</string>
+				<string>SettingsButton.png</string>
 				<string>SplashScreen.png</string>
+				<string>StoreButton.png</string>
 				<string>TouchToContinue.png</string>
-				<string>about-btn.png</string>
 				<string>about.png</string>
 				<string>done-btn.png</string>
 				<string>pause-btn.png</string>
@@ -3090,16 +3114,17 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{290, 74}</string>
 				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
-				<string>{250, 86}</string>
-				<string>{250, 86}</string>
-				<string>{250, 86}</string>
-				<string>{250, 86}</string>
+				<string>{1024, 768}</string>
+				<string>{290, 74}</string>
+				<string>{290, 74}</string>
 				<string>{512, 512}</string>
+				<string>{290, 74}</string>
 				<string>{1024, 768}</string>
+				<string>{290, 74}</string>
 				<string>{512, 100}</string>
-				<string>{250, 86}</string>
 				<string>{1024, 768}</string>
 				<string>{250, 86}</string>
 				<string>{70, 70}</string>

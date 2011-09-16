@@ -377,6 +377,7 @@ foreach collection [lsort [glob *]] {
   if { ![file isdir $collection] } { continue }
   cd $collection
   set InfraVision [lindex $Vision($collection) 3]
+  set InfraVision 0
   puts "Collection $collection : $InfraVision"
   foreach clut [lsort [glob *]] {
     puts -nonewline "\tCLUT: $clut -- "; flush stdout
@@ -450,9 +451,9 @@ foreach collection [lsort [glob *]] {
       # Square, so we resize
       # check if we have a mask or not
       if { $mask != "" } {
-        exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
+        exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size -depth 8 $TempFile
       } else {
-        exec convert $image -resize $size $TempFile
+        exec convert $image -resize $size -depth 8 $TempFile
       }
       # puts "\t\tResized to $size"
       set extra ""
@@ -464,7 +465,7 @@ foreach collection [lsort [glob *]] {
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base.pvr\" clut=\"$clut\" $extra/>"
       } else {
         set outputFile [file join $TopDir ${TextureSet}-$Scenario $collection $clut $base.png]
-        exec convert $TempFile -resize $size $outputFile
+        exec convert $TempFile -resize $size -depth 8 $outputFile
         puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base.png\" clut=\"$clut\" $extra/>"
       }
 
@@ -475,22 +476,25 @@ foreach collection [lsort [glob *]] {
         puts -nonewline "\[Vision ($R,$G,$B)\] "; flush stdout
 
         set VisionTempFile [file join $TopDir ${TextureSet}-$Scenario-PNG $collection $clut $base-IR.png]
-        exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize $VisionTempFile
+        exec convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" -resize $IRTextureSize -depth 8 $VisionTempFile
         # puts [list convert $TempFile $TempFile -channel red -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$R" -channel green -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$G"  -channel blue -fx "(u\[1].r+u\[1].b+u\[1].g)/3.0*$B" $VisionTempFile]
 
-        if { $Compress } {
-          set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
-          # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
-          # Try without mipmapping (-m)
-          exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
-          # NB, clut 8 is Infravision, 9 is silhouette
-          puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
-        } else {
-          # Don't compress, so we don't need to do anything
-          # set VisionFile [file join [file dir $outputFile] $base-IR.png]
-          # exec convert $VisionTempFile -resize $size $outputFile
-          # NB, clut 8 is Infravision, 9 is silhouette
-          # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\" $extra/>"
+        set DoVision 0
+        if { $DoVision } {
+          if { $Compress } {
+            set VisionFile [file join [file dir $outputFile] $base-IR.pvr]
+            # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+            # Try without mipmapping (-m)
+            exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
+            # NB, clut 8 is Infravision, 9 is silhouette
+            puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.pvr\" clut=\"8\" $extra/>"
+          } else {
+            # Don't compress, so we don't need to do anything
+            # set VisionFile [file join [file dir $outputFile] $base-IR.png]
+            # exec convert $VisionTempFile -resize $size $outputFile
+            # NB, clut 8 is Infravision, 9 is silhouette
+            # puts $fid "<texture coll=\"$collection\" bitmap=\"$bitmap\" normal_image=\"${TextureSet}-$Scenario/$collection/$clut/$base-IR.png\" clut=\"8\" $extra/>"
+          }
         }
       }
     }

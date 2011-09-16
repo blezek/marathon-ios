@@ -103,7 +103,7 @@ foreach collection [lsort [glob *]] {
       }
       puts "\t\t\tResizing to $size"
 
-      exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size $TempFile
+      exec convert $image $mask +matte -compose CopyOpacity -composite -filter Catrom -resize $size -depth 8 $TempFile
       # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $outputFile $TempFile
       # no mipmap (-m)
       exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $outputFile $TempFile
@@ -116,7 +116,7 @@ foreach collection [lsort [glob *]] {
         set R [lindex $Vision($collection) 0]
         set G [lindex $Vision($collection) 1]
         set B [lindex $Vision($collection) 2]
-        exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" $VisionTempFile
+        exec convert $TempFile -channel red -fx "(r+b+g)/3.0*$R" -channel green -fx "(r+b+g)/3.0*$G"  -channel blue -fx "(r+b+g)/3.0*$B" -depth 8 $VisionTempFile
         # exec texturetool -e PVRTC -m -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
         # no mipmap (-m)
         exec texturetool -e PVRTC -f PVR $Weighting $BPP -o $VisionFile $VisionTempFile
