@@ -223,6 +223,7 @@ typedef enum {
 - (int) livingBobs;
 - (void) zeroStats;
 - (void) gameFinished;
+- (void)pickedUp:(short)itemType;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *hud;

@@ -1335,6 +1335,7 @@ _civilian_fusion_assimilated,
 }
 
 - (void)pickedUp:(short)itemType {
+  if ( currentSavedGame.haveCheated ) { return; }
   switch (itemType) {
     case _i_smg:
       [Achievements reportAchievement:@"SMG" progress:100.0];
