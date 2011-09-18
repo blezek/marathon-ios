@@ -310,9 +310,9 @@
 		A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
 		A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
 		A853C9D813CF23A2001E8A25 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */; };
-		A853C9D913CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
-		A853C9DA13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
-		A853C9DB13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */; };
+		A853C9D913CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */; };
+		A853C9DA13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */; };
+		A853C9DB13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */; };
 		A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
 		A853C9DD13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
 		A853C9DE13CF23A2001E8A25 /* SavedGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */; };
@@ -2078,6 +2078,9 @@
 		A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
 		A8C4B70612EFCD6900D5D23F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
+		A8C5563A14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
+		A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
+		A8C5563C14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
 		A8CB80EB13A28639004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
@@ -2527,7 +2530,7 @@
 		A853C9B513CF23A2001E8A25 /* PauseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PauseViewController.xib; sourceTree = "<group>"; };
 		A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
 		A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
-		A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
+		A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PurchaseViewController~iphone.xib"; sourceTree = "<group>"; };
 		A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedGameCell.xib; sourceTree = "<group>"; };
 		A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveGameViewController.xib; sourceTree = "<group>"; };
 		A85490F411BDEF0C0073554A /* jumphack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jumphack.c; path = Classes/jumphack.c; sourceTree = "<group>"; };
@@ -2614,7 +2617,7 @@
 		A871817D140DAA7000327BEF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		A874B19E1318A8C5009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1A01318A8D2009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
-		A874B1A21318A8DF009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		A874B1A21318A8DF009C4A92 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
 		A874B1B91318AA68009C4A92 /* MenuItem-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuItem-Load.png"; sourceTree = "<group>"; };
 		A874B1BA1318AA68009C4A92 /* MenuItem-New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuItem-New.png"; sourceTree = "<group>"; };
 		A874B1BB1318AA68009C4A92 /* MenuItem-Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuItem-Settings.png"; sourceTree = "<group>"; };
@@ -3365,6 +3368,7 @@
 		A8C4B70312EFCD6900D5D23F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A8C5563914267C29003D329B /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		A8CB80E913A28638004D6DBD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
@@ -4021,6 +4025,7 @@
 		A853C9AD13CF23A2001E8A25 /* XIB-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				A8C5563914267C29003D329B /* PurchaseViewController.xib */,
 				A82BBD16141015A500CE1F92 /* RootViewController.xib */,
 				A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */,
 				A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */,
@@ -4036,7 +4041,6 @@
 				A853C9B513CF23A2001E8A25 /* PauseViewController.xib */,
 				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */,
-				A853C9B813CF23A2001E8A25 /* PurchaseViewController.xib */,
 				A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */,
 				A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */,
 			);
@@ -4055,6 +4059,7 @@
 				A8B9F9EC13FAE4F500552296 /* PauseViewController~iphone.xib */,
 				A864DDC913FDF69300A0AE0C /* SavedGameCell~iphone.xib */,
 				A82B117313FF40410085C1F7 /* HelpViewController~iphone.xib */,
+				A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */,
 				A864DDCA13FDF69300A0AE0C /* SaveGameViewController~iphone.xib */,
 			);
 			name = "XIB-iPhone";
@@ -5774,7 +5779,7 @@
 				A853C9D013CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D313CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
-				A853C9D913CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9D913CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9DF13CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
@@ -5961,6 +5966,7 @@
 				A8E3B5DF1422E82D004D28A4 /* StoreButton.png in Resources */,
 				A8E3B5E21422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E51422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
+				A8C5563A14267C29003D329B /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6042,7 +6048,7 @@
 				A853C9D113CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D413CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
-				A853C9DA13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9DA13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				A853C9DD13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9E013CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
@@ -6236,6 +6242,7 @@
 				A8E3B5E01422E82D004D28A4 /* StoreButton.png in Resources */,
 				A8E3B5E31422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E61422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
+				A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6319,7 +6326,7 @@
 				A853C9D213CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D513CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D813CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
-				A853C9DB13CF23A2001E8A25 /* PurchaseViewController.xib in Resources */,
+				A853C9DB13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				A853C9DE13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9E113CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
@@ -6501,6 +6508,7 @@
 				A8E3B5E11422E82D004D28A4 /* StoreButton.png in Resources */,
 				A8E3B5E41422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E71422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
+				A8C5563C14267C29003D329B /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

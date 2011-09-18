@@ -64,7 +64,11 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 390.0;
+  if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
+    return 390.0;
+  } else {
+    return 195;
+  }
 }
 
 
