@@ -16,5 +16,7 @@
 }
 @property (nonatomic,retain) IBOutlet FloatingTriggerLookView* lookView;
 @property (nonatomic,retain) IBOutlet MovePadView* movePadView;
+@property (nonatomic,retain) IBOutlet UIButton* actionKeyImageView;
+
 
 @end

@@ -13,8 +13,10 @@
 
 @interface BasicHUDViewController : HUDViewController {
   MovePadView *movePadView;
+  IBOutlet UIButton* actionKeyImageView;
 }
 
 @property (nonatomic,retain) IBOutlet LookView* lookView;
 @property (nonatomic,retain) IBOutlet MovePadView* movePadView;
+@property (nonatomic,retain) IBOutlet UIButton* actionKeyImageView;
 @end
