@@ -99,7 +99,7 @@ BOOL StatsDownloaded = NO;
 @synthesize purchaseViewController, purchaseView, aboutView;
 @synthesize saveFilmButton, loadFilmButton;
 @synthesize HUDViewController;
-@synthesize reticule;
+@synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -223,6 +223,7 @@ BOOL StatsDownloaded = NO;
   [reticuleImageNames insertObject:@"ret_shotgun" atIndex:_weapon_ball];
   [reticuleImageNames insertObject:@"ret_machinegun" atIndex:_weapon_smg];
   [reticuleImageNames retain];
+  
 }
 
 #pragma mark -
@@ -1005,6 +1006,11 @@ extern bool handle_open_replay(FileSpecifier& File);
 #pragma mark -
 #pragma mark Replacement menus
 - (IBAction)menuShowReplacementMenu {
+  self.logoView.hidden = YES;
+  self.episodeImageView.image = nil;
+  self.bungieAerospaceImageView.image = nil;
+  self.splashView.image = nil;
+
   self.replacementMenuView.hidden = NO;
 }
 
@@ -1515,6 +1521,15 @@ short items[]=
     [self menuShowReplacementMenu];
     mode = MenuMode;
   }
+  if ( mode == GameMode ) {
+    short target_type;
+    if ( NONE == find_action_key_target(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type) ) {
+      [self.HUDViewController dimActionKey];
+    } else {
+      [self.HUDViewController lightActionKey];    
+    }
+  }
+  
   if ( !inMainLoop ) {
     inMainLoop = YES;
     AlephOneMainLoop();

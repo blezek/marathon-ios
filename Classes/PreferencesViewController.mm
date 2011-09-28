@@ -7,6 +7,7 @@
 //
 
 #import "PreferencesViewController.h"
+#import "GameViewController.h"
 #import "AlephOneAppDelegate.h"
 #include "preferences.h"
 #include "Mixer.h"
@@ -184,8 +185,6 @@
   }
   // Never autocenter
   input_preferences->modifiers |= _inputmod_dont_auto_recenter;
-  bool v = TEST_FLAG(input_preferences->modifiers, _inputmod_dont_auto_recenter); 
-
 
 #if defined(A1DEBUG)
   // Always autocenter, so we can do films

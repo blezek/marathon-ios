@@ -10,7 +10,7 @@
 
 
 @implementation FloatingTriggerHUDViewController
-@synthesize lookView, movePadView;
+@synthesize lookView, movePadView, actionKeyImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,6 +20,14 @@
     }
     return self;
 }
+
+- (void)dimActionKey {
+  self.actionKeyImageView.alpha = 0.2;
+}
+- (void)lightActionKey {
+  self.actionKeyImageView.alpha = 1.0;
+}
+
 
 - (void)dealloc
 {

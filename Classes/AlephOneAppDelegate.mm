@@ -8,7 +8,6 @@
 
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
-#import "DownloadViewController.h"
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
@@ -39,10 +38,7 @@ extern int SDL_main(int argc, char *argv[]);
 #pragma mark AlephOne startup
 
 - (void)startAlephOne {
-  // Remove the Download manager
   finishedStartup = YES;
-  // [window addSubview:self.game.view];
-  // [self.downloadViewController.view removeFromSuperview];
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
@@ -50,11 +46,6 @@ extern int SDL_main(int argc, char *argv[]);
   // Kick in the purchases
   [self.purchases checkPurchases];
   
-	// Try out the CADisplayLink
-#ifdef USE_SDL_EVENT_LOOP
-  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-#endif
-
 #ifdef USE_CADisplayLoop
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
@@ -206,16 +197,6 @@ extern int SDL_main(int argc, char *argv[]);
     MLog ( @"Error setting audio category" );
   }
 
-  /*
-  NSError *setPreferenceError = nil;
-  NSTimeInterval preferredBufferDuration = 0.020;
-  [[AVAudioSession sharedInstance] setPreferredIOBufferDuration: preferredBufferDuration
-                                                          error: &setPreferenceError];
-  if ( setPreferenceError ) {
-    MLog ( @"Error setting preferredBufferDuration" );
-  }
-   */
-  
   [self.window makeKeyAndVisible];
   [self.window addSubview:self.viewController.view];  
 
@@ -233,7 +214,33 @@ extern int SDL_main(int argc, char *argv[]);
 
   // Tracking and timer
   [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
-  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
+  
+  // Do opening animations
+  self.game.bungieAerospaceImageView.alpha = 1.0;
+  self.game.episodeImageView.alpha = 0.0;
+  self.game.episodeLoadingImageView.alpha = 0.0;
+  self.game.waitingImageView.alpha = 0.0;
+  
+  void (^fadeBungieToLoading) (void) = ^{
+    self.game.episodeLoadingImageView.alpha = 1.0;
+    self.game.bungieAerospaceImageView.alpha = 0.0;    
+  };
+  void (^fadeLoadingToWaiting) (void) = ^{
+    self.game.episodeLoadingImageView.alpha = 0.0;
+    self.game.waitingImageView.alpha = 1.0;
+  };
+  void (^fadeWaitingToLogo) (void) = ^{
+    self.game.waitingImageView.alpha = 0.0;
+    self.game.episodeImageView.alpha = 1.0;
+  };
+    
+  [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
+    self.game.bungieAerospaceImageView = nil;
+    [UIView animateWithDuration:2.0 delay:1.5 options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+      [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
+      [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeWaitingToLogo completion:nil];
+    }];
+  }];
   return YES;
 }
 

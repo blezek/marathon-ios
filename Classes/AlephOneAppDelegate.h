@@ -16,7 +16,6 @@
 #import "Purchases.h"
 
 @class GameViewController;
-@class DownloadViewController;
 @interface AlephOneAppDelegate : NSObject <UIApplicationDelegate, SKPaymentTransactionObserver> {
     
   UIWindow *window;

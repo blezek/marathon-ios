@@ -37,38 +37,25 @@
 					<object class="IBUIImageView" id="776278387">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{1024, 768}</string>
+						<string key="NSFrameSize">{480, 320}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="968200802"/>
-						<int key="IBUIContentMode">2</int>
+						<reference key="NSNextKeyView" ref="1053060072"/>
 						<int key="IBUITag">100</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">GenericBackground.png</string>
+							<string key="NSResourceName">LoadingBackground.png</string>
 						</object>
-					</object>
-					<object class="IBUIImageView" id="968200802">
-						<reference key="NSNextResponder" ref="592514203"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{480, 320}</string>
-						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="93073621"/>
-						<int key="IBUIContentMode">2</int>
-						<int key="IBUITag">100</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUITableView" id="1053060072">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{120, 67.5}, {240, 185}}</string>
+						<string key="NSFrame">{{75, 95.5}, {233, 166}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="187019948"/>
+						<reference key="NSNextKeyView" ref="93073621"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MCAwLjAxMTc2NDcwNzA0IDAuMDAzOTIxNTY4ODU5IDAuNQA</bytes>
@@ -89,10 +76,10 @@
 					<object class="IBUIButton" id="763154327">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{339, 20}, {125, 43}}</string>
+						<string key="NSFrame">{{318, 123}, {137, 36}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1053060072"/>
+						<reference key="NSNextKeyView" ref="187019948"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -118,13 +105,13 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">duplicate-btn.png</string>
+							<string key="NSResourceName">DuplicateButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="93073621">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 20}, {125, 43}}</string>
+						<string key="NSFrame">{{318, 84}, {137, 36}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="763154327"/>
@@ -143,15 +130,16 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">delete-btn.png</string>
+							<string key="NSResourceName">DeleteButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{339, 268}, {125, 43}}</string>
+						<string key="NSFrame">{{318, 204}, {137, 36}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -167,13 +155,13 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BackButton.png</string>
+							<string key="NSResourceName">BackButtonLoad.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="187019948">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 268}, {125, 43}}</string>
+						<string key="NSFrame">{{318, 163}, {137, 36}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="127023456"/>
@@ -305,7 +293,6 @@
 						<reference key="object" ref="592514203"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="776278387"/>
-							<reference ref="968200802"/>
 							<reference ref="1053060072"/>
 							<reference ref="93073621"/>
 							<reference ref="763154327"/>
@@ -345,11 +332,6 @@
 						<reference key="object" ref="187019948"/>
 						<reference key="parent" ref="592514203"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">35</int>
-						<reference key="object" ref="968200802"/>
-						<reference key="parent" ref="592514203"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -378,10 +360,6 @@
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSAffineTransform" key="28.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">P4AAAL+AAABEPMAAw4aAAA</bytes>
-				</object>
-				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<object class="NSAffineTransform" key="35.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxD+AAA</bytes>
 				</object>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
@@ -516,11 +494,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="BackButton.png">{250, 86}</string>
-			<string key="GenericBackground.png">{1024, 768}</string>
-			<string key="LoadButton.png">{250, 86}</string>
-			<string key="delete-btn.png">{250, 86}</string>
-			<string key="duplicate-btn.png">{250, 86}</string>
+			<string key="BackButtonLoad.png">{290, 74}</string>
+			<string key="DeleteButton.png">{290, 74}</string>
+			<string key="DuplicateButton.png">{290, 74}</string>
+			<string key="LoadButton.png">{290, 74}</string>
+			<string key="LoadingBackground.png">{1024, 768}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>

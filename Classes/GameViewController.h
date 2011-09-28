@@ -73,7 +73,12 @@ typedef enum {
   IBOutlet ButtonView *nextWeaponButton;
   IBOutlet ButtonView *previousWeaponButton;
   IBOutlet UIView *savedGameMessage;
+  IBOutlet UIView *logoView;
   IBOutlet UIImageView *reticule;
+  IBOutlet UIImageView *bungieAerospaceImageView;
+  IBOutlet UIImageView *episodeImageView;
+  IBOutlet UIImageView *episodeLoadingImageView;
+  IBOutlet UIImageView *waitingImageView;
 
   NSMutableArray *reticuleImageNames;
   
@@ -241,7 +246,6 @@ typedef enum {
 
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
-@property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) ButtonView *restartView;
 
 @property (nonatomic, retain) ButtonView *mapView;
@@ -272,6 +276,12 @@ typedef enum {
 @property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 @property (nonatomic, retain) HUDViewController *HUDViewController;
 @property (nonatomic, retain) UIImageView *reticule;
+@property (nonatomic, retain) UIImageView *bungieAerospaceImageView;
+@property (nonatomic, retain) UIImageView *episodeImageView;
+@property (nonatomic, retain) UIImageView *episodeLoadingImageView;
+@property (nonatomic, retain) UIImageView *waitingImageView;
+@property (nonatomic, retain) UIImageView *splashView;
+@property (nonatomic, retain) UIView *logoView;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;
