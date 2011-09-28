@@ -8,7 +8,6 @@
 
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
-#import "DownloadViewController.h"
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
@@ -39,10 +38,7 @@ extern int SDL_main(int argc, char *argv[]);
 #pragma mark AlephOne startup
 
 - (void)startAlephOne {
-  // Remove the Download manager
   finishedStartup = YES;
-  // [window addSubview:self.game.view];
-  // [self.downloadViewController.view removeFromSuperview];
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
@@ -50,11 +46,6 @@ extern int SDL_main(int argc, char *argv[]);
   // Kick in the purchases
   [self.purchases checkPurchases];
   
-	// Try out the CADisplayLink
-#ifdef USE_SDL_EVENT_LOOP
-  // [self performSelector:@selector(postFinishLaunch) withObject:nil afterDelay:0.0];
-#endif
-
 #ifdef USE_CADisplayLoop
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];

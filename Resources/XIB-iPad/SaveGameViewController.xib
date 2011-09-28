@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
+		<string key="IBDocument.SystemVersion">10K549</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
+		<string key="IBDocument.AppKitVersion">1038.36</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -39,36 +39,22 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="968200802"/>
+						<reference key="NSNextKeyView"/>
 						<int key="IBUIContentMode">9</int>
 						<int key="IBUITag">100</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">GenericBackground.png</string>
+							<string key="NSResourceName">LoadingBackground.png</string>
 						</object>
-					</object>
-					<object class="IBUIImageView" id="968200802">
-						<reference key="NSNextResponder" ref="592514203"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{1024, 768}</string>
-						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="93073621"/>
-						<int key="IBUIContentMode">9</int>
-						<int key="IBUITag">100</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUITableView" id="1053060072">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{280, 174}, {480, 390}}</string>
+						<string key="NSFrame">{{175, 231}, {480, 390}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="763154327"/>
+						<reference key="NSNextKeyView" ref="93073621"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MCAwLjAxMTc2NDcwNzA0IDAuMDAzOTIxNTY4ODU5IDAuNQA</bytes>
@@ -89,10 +75,9 @@
 					<object class="IBUIButton" id="763154327">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{768, 174}, {250, 86}}</string>
+						<string key="NSFrame">{{698, 326}, {290, 74}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="127023456"/>
+						<reference key="NSNextKeyView" ref="187019948"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -118,16 +103,15 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">duplicate-btn.png</string>
+							<string key="NSResourceName">DuplicateButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="93073621">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{22, 174}, {250, 86}}</string>
+						<string key="NSFrame">{{698, 242}, {290, 74}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1053060072"/>
+						<reference key="NSNextKeyView" ref="763154327"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -143,16 +127,15 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">delete-btn.png</string>
+							<string key="NSResourceName">DeleteButton.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="127023456">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{754, 662}, {250, 86}}</string>
+						<string key="NSFrame">{{698, 496}, {290, 74}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="187019948"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -168,16 +151,15 @@
 						<reference key="IBUINormalTitleShadowColor" ref="32023364"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BackButton.png</string>
+							<string key="NSResourceName">BackButtonLoad.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="187019948">
 						<reference key="NSNextResponder" ref="592514203"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{387, 572}, {250, 86}}</string>
+						<string key="NSFrame">{{698, 411}, {290, 74}}</string>
 						<reference key="NSSuperview" ref="592514203"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="127023456"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">200</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -199,7 +181,6 @@
 				</array>
 				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="776278387"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -306,12 +287,11 @@
 						<reference key="object" ref="592514203"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="776278387"/>
-							<reference ref="1053060072"/>
-							<reference ref="968200802"/>
 							<reference ref="93073621"/>
 							<reference ref="763154327"/>
-							<reference ref="127023456"/>
 							<reference ref="187019948"/>
+							<reference ref="127023456"/>
+							<reference ref="1053060072"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -346,11 +326,6 @@
 						<reference key="object" ref="187019948"/>
 						<reference key="parent" ref="592514203"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">35</int>
-						<reference key="object" ref="968200802"/>
-						<reference key="parent" ref="592514203"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -380,10 +355,6 @@
 				<object class="NSAffineTransform" key="28.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">P4AAAL+AAABEPMAAw4aAAA</bytes>
 				</object>
-				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<object class="NSAffineTransform" key="35.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxD+AAA</bytes>
-				</object>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -391,123 +362,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">35</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">SaveGameViewController</string>
-					<string key="superclassName">UITableViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancel:">id</string>
-						<string key="deleteGame:">id</string>
-						<string key="duplicate:">id</string>
-						<string key="load:">id</string>
-						<string key="reallyDelete">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancel:">
-							<string key="name">cancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="deleteGame:">
-							<string key="name">deleteGame:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="duplicate:">
-							<string key="name">duplicate:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="load:">
-							<string key="name">load:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="reallyDelete">
-							<string key="name">reallyDelete</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="savedGameCell">SavedGameCell</string>
-						<string key="uiView">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="savedGameCell">
-							<string key="name">savedGameCell</string>
-							<string key="candidateClassName">SavedGameCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="uiView">
-							<string key="name">uiView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SaveGameViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SavedGameCell</string>
-					<string key="superclassName">UITableViewCell</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="accuracy">UILabel</string>
-						<string key="damageGiven">UILabel</string>
-						<string key="damageTaken">UILabel</string>
-						<string key="overheadMap">UIImageView</string>
-						<string key="playTime">UILabel</string>
-						<string key="screenShot">UIImageView</string>
-						<string key="shotsFired">UILabel</string>
-						<string key="storageDate">UILabel</string>
-						<string key="storageIdentifier">UILabel</string>
-						<string key="subject">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="accuracy">
-							<string key="name">accuracy</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="damageGiven">
-							<string key="name">damageGiven</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="damageTaken">
-							<string key="name">damageTaken</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="overheadMap">
-							<string key="name">overheadMap</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playTime">
-							<string key="name">playTime</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="screenShot">
-							<string key="name">screenShot</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="shotsFired">
-							<string key="name">shotsFired</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="storageDate">
-							<string key="name">storageDate</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="storageIdentifier">
-							<string key="name">storageIdentifier</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="subject">
-							<string key="name">subject</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SavedGameCell.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
@@ -517,11 +372,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="BackButton.png">{250, 86}</string>
-			<string key="GenericBackground.png">{1024, 768}</string>
-			<string key="LoadButton.png">{250, 86}</string>
-			<string key="delete-btn.png">{250, 86}</string>
-			<string key="duplicate-btn.png">{250, 86}</string>
+			<string key="BackButtonLoad.png">{290, 74}</string>
+			<string key="DeleteButton.png">{290, 74}</string>
+			<string key="DuplicateButton.png">{290, 74}</string>
+			<string key="LoadButton.png">{290, 74}</string>
+			<string key="LoadingBackground.png">{1024, 768}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>

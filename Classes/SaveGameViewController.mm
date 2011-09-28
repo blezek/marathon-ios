@@ -67,7 +67,7 @@
   if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
     return 390.0;
   } else {
-    return 195;
+    return 166.0;
   }
 }
 
