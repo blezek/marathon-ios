@@ -58,7 +58,11 @@
                             identifier:button.tag];      
     } else if ( [item isKindOfClass:[JPAnalogStick class]] ) {
       if ( item.tag == kJoyInputAnalogStick1 || item.tag == kJoyInputAnalogStick2 ) {
-      [customLayout addAnalogStickWithFrame:item.frame identifier:item.tag];
+        [customLayout addAnalogStickWithFrame:item.frame identifier:item.tag recentering:NO];
+      }
+    } else if ( [item isKindOfClass:[JPRecenteringAnalogStick class]] ) {
+      if ( item.tag == kJoyInputAnalogStick1 || item.tag == kJoyInputAnalogStick2 ) {
+        [customLayout addAnalogStickWithFrame:item.frame identifier:item.tag recentering:YES];
       }
     } else {
       NSLog(@"ERROR: Unknown tag (%d)!", item.tag );
@@ -79,6 +83,8 @@
 @synthesize centerView;
 @end
 @implementation JPAnalogStick
+@end
+@implementation JPRecenteringAnalogStick
 @end
 @implementation JPAccelerometer
 @end

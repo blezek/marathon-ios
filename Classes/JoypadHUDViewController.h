@@ -14,7 +14,7 @@
 
 @class JoypadManager;
 
-@interface JoypadHUDViewController : HUDViewController <JoypadManagerDelegate,UIAlertViewDelegate> {
+@interface JoypadHUDViewController : HUDViewController <UIAlertViewDelegate> {
   JoypadManager *joypadManager;
   NSArray *buttonMap;
   int deltaX, deltaY;

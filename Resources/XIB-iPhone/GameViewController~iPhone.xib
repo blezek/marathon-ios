@@ -174,7 +174,7 @@
 										<string key="NSFrame">{{-50, -25}, {200, 100}}</string>
 										<reference key="NSSuperview" ref="585031465"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="514580227"/>
+										<reference key="NSNextKeyView" ref="464543623"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -349,7 +349,7 @@
 								<string key="NSFrame">{{332, 206.5}, {137, 36}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="514580227"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -519,7 +519,7 @@
 						<string key="NSFrameSize">{480, 320}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="196030530"/>
+						<reference key="NSNextKeyView" ref="215110741"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
@@ -537,35 +537,21 @@
 								<string key="NSFrameSize">{480, 320}</string>
 								<reference key="NSSuperview" ref="196030530"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="391373783"/>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">GenericBackground.png</string>
-								</object>
-							</object>
-							<object class="IBUIImageView" id="391373783">
-								<reference key="NSNextResponder" ref="196030530"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{480, 320}</string>
-								<reference key="NSSuperview" ref="196030530"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="358731159"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">about.png</string>
+									<string key="NSResourceName">ThanksBackground.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="358731159">
 								<reference key="NSNextResponder" ref="196030530"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{355, 277}, {125, 43}}</string>
+								<string key="NSFrame">{{329, 277}, {111, 36}}</string>
 								<reference key="NSSuperview" ref="196030530"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="215110741"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -579,7 +565,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">done-btn.png</string>
+									<string key="NSResourceName">DoneButtonThanks.png</string>
 								</object>
 							</object>
 						</object>
@@ -738,7 +724,7 @@
 								<string key="NSFrame">{{256, 334}, {512, 100}}</string>
 								<reference key="NSSuperview" ref="763863770"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="464543623"/>
+								<reference key="NSNextKeyView" ref="196030530"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">4</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
@@ -1142,10 +1128,10 @@
 							<reference ref="501269846"/>
 							<reference ref="485381462"/>
 							<reference ref="128648929"/>
-							<reference ref="196030530"/>
 							<reference ref="936523311"/>
-							<reference ref="763863770"/>
 							<reference ref="464543623"/>
+							<reference ref="763863770"/>
+							<reference ref="196030530"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1306,7 +1292,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="427297561"/>
-							<reference ref="391373783"/>
 							<reference ref="358731159"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
@@ -1315,11 +1300,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">164</int>
 						<reference key="object" ref="427297561"/>
-						<reference key="parent" ref="196030530"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">165</int>
-						<reference key="object" ref="391373783"/>
 						<reference key="parent" ref="196030530"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1469,8 +1449,6 @@
 					<string>162.IBViewBoundsToFrameTransform</string>
 					<string>164.IBPluginDependency</string>
 					<string>164.IBViewBoundsToFrameTransform</string>
-					<string>165.IBPluginDependency</string>
-					<string>165.IBViewBoundsToFrameTransform</string>
 					<string>166.IBPluginDependency</string>
 					<string>166.IBViewBoundsToFrameTransform</string>
 					<string>168.IBPluginDependency</string>
@@ -1566,10 +1544,6 @@
 					<object class="NSAffineTransform"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform"/>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxD+AAA</bytes>
-					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABD7gAAw+EAAA</bytes>
@@ -3272,9 +3246,9 @@
 				<string>AboutButton.png</string>
 				<string>BungieAerospace.png</string>
 				<string>ControlsOverview.png</string>
+				<string>DoneButtonThanks.png</string>
 				<string>EpisodeLoading.png</string>
 				<string>EpisodeLogo.png</string>
-				<string>GenericBackground.png</string>
 				<string>HomeScreen.png</string>
 				<string>LoadButton.png</string>
 				<string>NewGameButton.png</string>
@@ -3282,9 +3256,8 @@
 				<string>SettingsButton.png</string>
 				<string>Somewhere.png</string>
 				<string>StoreButton.png</string>
+				<string>ThanksBackground.png</string>
 				<string>TouchToContinue.png</string>
-				<string>about.png</string>
-				<string>done-btn.png</string>
 				<string>pause-btn.png</string>
 				<string>ret_pistol.png</string>
 				<string>zoom_in.png</string>
@@ -3295,8 +3268,8 @@
 				<string>{290, 74}</string>
 				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
+				<string>{236, 74}</string>
 				<string>{512, 384}</string>
-				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
 				<string>{290, 74}</string>
@@ -3305,9 +3278,8 @@
 				<string>{290, 74}</string>
 				<string>{1024, 768}</string>
 				<string>{290, 74}</string>
-				<string>{512, 100}</string>
 				<string>{1024, 768}</string>
-				<string>{250, 86}</string>
+				<string>{512, 100}</string>
 				<string>{70, 70}</string>
 				<string>{64, 64}</string>
 				<string>{128, 128}</string>

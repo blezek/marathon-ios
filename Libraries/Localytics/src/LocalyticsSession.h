@@ -53,9 +53,9 @@
     NSTimeInterval _lastSessionStartTimestamp;  // The start time of the most recent session.
     NSDate *_sessionResumeTime;                 // Time session was started or resumed.
     NSDate *_sessionCloseTime;              // Time session was closed.
-    NSMutableString *_newFlowEvents;        // Comma-delimited list of app screens and events tagged during this
+    NSMutableString *_unstagedFlowEvents;        // Comma-delimited list of app screens and events tagged during this
                                             // session that have NOT been staged for upload.
-    NSMutableString *_oldFlowEvents;        // App screens and events tagged during this session that HAVE been staged
+    NSMutableString *_stagedFlowEvents;        // App screens and events tagged during this session that HAVE been staged
                                             // for upload.
     NSMutableString *_screens;              // Comma-delimited list of screens tagged during this session.
     NSTimeInterval _sessionActiveDuration;  // Duration that session open.

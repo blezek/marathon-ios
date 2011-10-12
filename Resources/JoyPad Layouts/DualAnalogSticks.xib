@@ -45,7 +45,7 @@
 					<object class="IBUIView" id="617191181">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 96}, {151, 151}}</string>
+						<string key="NSFrame">{{20, 131}, {151, 151}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1061344531"/>
@@ -60,7 +60,7 @@
 					<object class="IBUIView" id="256693691">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{309, 96}, {151, 151}}</string>
+						<string key="NSFrame">{{309, 131}, {151, 151}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -107,7 +107,7 @@
 					<object class="IBUIButton" id="1061344531">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{201, 147}, {78, 49}}</string>
+						<string key="NSFrame">{{186, 46}, {108, 68}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="697898083"/>
@@ -181,7 +181,7 @@
 					<object class="IBUIButton" id="550386582">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{165, 0}, {88, 38}}</string>
+						<string key="NSFrame">{{196, 262}, {88, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="16440858"/>
@@ -203,7 +203,7 @@
 					<object class="IBUIButton" id="697898083">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{183, 243}, {53, 57}}</string>
+						<string key="NSFrame">{{20, 46}, {53, 57}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="395212213"/>
@@ -230,7 +230,7 @@
 					<object class="IBUIButton" id="395212213">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{244, 243}, {53, 57}}</string>
+						<string key="NSFrame">{{81, 46}, {53, 57}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="256693691"/>
@@ -297,13 +297,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="981605378"/>
 							<reference ref="611412421"/>
+							<reference ref="16440858"/>
 							<reference ref="617191181"/>
+							<reference ref="256693691"/>
 							<reference ref="697898083"/>
 							<reference ref="395212213"/>
-							<reference ref="1061344531"/>
-							<reference ref="256693691"/>
-							<reference ref="16440858"/>
 							<reference ref="550386582"/>
+							<reference ref="1061344531"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -414,9 +414,9 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>JPSquareButton</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>JPAnalogStick</string>
+					<string>JPRecenteringAnalogStick</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>JPAnalogStick</string>
+					<string>JPRecenteringAnalogStick</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -438,19 +438,19 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">JPAnalogStick</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/JPAnalogStick.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">JPPillButton</string>
 					<string key="superclassName">UIButton</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/JPPillButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">JPRecenteringAnalogStick</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/JPRecenteringAnalogStick.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

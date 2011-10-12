@@ -1,19 +1,32 @@
-/*
- *  JoypadConstants.h
- *  Joypad SDK
- *
- *  Created by Lou Zell on 6/1/11.
- *  Copyright 2011 Hazelmade. All rights reserved.
- *
- */
+//
+//  JoypadConstants.h
+//  Joypad SDK
+//
+//  Created by Lou Zell on 6/1/11.
+//  Copyright 2011 Hazelmade. All rights reserved.
+//
+//  Please email questions to me, Lou, at lzell11@gmail.com
+//
+
+typedef struct
+{
+  float x;
+  float y;
+  float z;
+}JoypadAcceleration;
+
+typedef struct
+{
+  float angle;    // radians
+  float distance;
+}JoypadStickPosition;
 
 typedef enum
 {
   kJoyInputTypeDpad,
   kJoyInputTypeButton,
   kJoyInputTypeAnalogStick,
-  kJoyInputTypeAccelerometer,
-  kJoyInputTypeWheel
+  kJoyInputTypeAccelerometer
 }JoyInputType;
 
 typedef enum
@@ -36,6 +49,7 @@ typedef enum
   kJoyButtonColorBlue,
   kJoyButtonColorBlack
 }JoyButtonColor;
+
 
 // Numbers are to assist adding tags to the NIB
 typedef enum
