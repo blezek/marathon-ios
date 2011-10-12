@@ -15,6 +15,9 @@
 @interface LocalyticsDatabase ()
     - (int)schemaVersion;
     - (void)createSchema;
+    - (void)upgradeToSchemaV2;
+    - (NSString *)getRandomUUID;
+    - (void)moveDbToCaches;
 @end
 
 @implementation LocalyticsDatabase
@@ -23,10 +26,8 @@
 static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
 
 + (NSString *)localyticsDirectoryPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:LOCALYTICS_DIR];
-    return path;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);    
+    return  [[paths objectAtIndex:0] stringByAppendingPathComponent:LOCALYTICS_DIR];
 }
 
 + (NSString *)localyticsDatabasePath {
@@ -47,10 +48,13 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
 - (LocalyticsDatabase *)init {
 	if((self = [super init])) {
         
-        // Ensure that database access is not concurren and that only one thread has an open
+        // Ensure that database access is not concurrent and that only one thread has an open
         // transaction at any given time.
         _dbLock = [[NSRecursiveLock alloc] init];
         _transactionLock = [[NSRecursiveLock alloc] init];
+        
+        // Mover any data that a previous library may have left in the documents directory
+        [self moveDbToCaches];
         
         // Create directory structure for Localytics.
         NSString *directoryPath = [LocalyticsDatabase localyticsDirectoryPath];
@@ -76,6 +80,11 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
             if ([self schemaVersion] == 0) {
                 [self createSchema];
             }
+        }
+
+        // Perform any Migrations if necessary
+        if ([self schemaVersion] < 2) {
+            [self upgradeToSchemaV2];
         }
     }
     
@@ -126,6 +135,47 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
     return version;
 }
 
+- (NSString *) installId {
+    [_dbLock lock];
+
+    NSString *installId = nil;
+    
+    sqlite3_stmt *selectInstallId;
+    sqlite3_prepare_v2(_databaseConnection, "SELECT install_id FROM localytics_info", -1, &selectInstallId, NULL);
+    int code = sqlite3_step(selectInstallId);
+    if (code == SQLITE_ROW) {                
+        installId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectInstallId, 0)];
+    }
+    sqlite3_finalize(selectInstallId);
+    
+    [_dbLock unlock];    
+    return installId;
+}
+
+// Due to the new iOS storage guidelines it is necessary to move the database out of the documents directory
+// and into the /library/caches directory 
+- (void)moveDbToCaches {
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
+    NSString *localyticsDocumentsDirectory = [[documentPaths objectAtIndex:0] stringByAppendingPathComponent:LOCALYTICS_DIR];    
+    NSArray *cachesPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *localyticsCachesDirectory = [[cachesPaths objectAtIndex:0] stringByAppendingPathComponent:LOCALYTICS_DIR];
+    
+    // If the old directory doesn't exist, there is nothing else to do here
+    if([[NSFileManager defaultManager] fileExistsAtPath:localyticsDocumentsDirectory] == NO) 
+    {
+        return;
+    }
+
+    // Try to move the directory
+    if(NO == [[NSFileManager defaultManager] moveItemAtPath:localyticsDocumentsDirectory 
+                                             toPath:localyticsCachesDirectory 
+                                             error:nil])
+    {
+        // If the move failed try and, delete the old directory
+        [ [NSFileManager defaultManager] removeItemAtPath:localyticsDocumentsDirectory error:nil];
+    }
+}
+
 - (void)createSchema {
     int code = SQLITE_OK;
     
@@ -161,18 +211,87 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
                             "opt_out BOOLEAN, "
                             "last_close_event INTEGER, "
                             "last_flow_event INTEGER, "
-                            "last_session_start REAL)",
+                            "last_session_start REAL, "
+                            "install_id CHAR(40), "
+                            "custom_d0 CHAR(64), "
+                            "custom_d1 CHAR(64), "
+                            "custom_d2 CHAR(64), "
+                            "custom_d3 CHAR(64) "
+                            ")",
+                            NULL, NULL, NULL);
+    }
+
+    if (code == SQLITE_OK) {
+        sqlite3_stmt *insertInfo;
+        sqlite3_prepare_v2(_databaseConnection, "INSERT INTO localytics_info (schema_version, last_upload_number, last_session_number, opt_out, install_id) "
+                           "VALUES (2, 0, 0, 0, ?)", 
+                           -1, 
+                           &insertInfo, 
+                           NULL);
+        sqlite3_bind_text (insertInfo, 1, [[self getRandomUUID] UTF8String], -1, SQLITE_TRANSIENT); 
+        code = sqlite3_step(insertInfo);    
+        sqlite3_finalize(insertInfo);        
+    }
+
+    // Commit transaction.
+    if (code == SQLITE_OK || code == SQLITE_DONE) {
+        sqlite3_exec(_databaseConnection, "COMMIT", NULL, NULL, NULL);
+    } else {
+        sqlite3_exec(_databaseConnection, "ROLLBACK", NULL, NULL, NULL);
+    }
+    [_transactionLock unlock];
+    [_dbLock unlock];
+}
+
+// V2 adds a unique identifier for each installation
+// Also adds storage for custom dimensions
+- (void)upgradeToSchemaV2 {
+    int code = SQLITE_OK;
+    
+    [_dbLock lock];
+    [_transactionLock lock];
+    code = sqlite3_exec(_databaseConnection, "BEGIN", NULL, NULL, NULL);
+
+    if (code == SQLITE_OK) {
+        code = sqlite3_exec(_databaseConnection,
+                            "ALTER TABLE localytics_info ADD install_id CHAR(40)",
+                            NULL, NULL, NULL);
+    }
+
+    if (code == SQLITE_OK) {
+        code = sqlite3_exec(_databaseConnection,
+                            "ALTER TABLE localytics_info ADD custom_d0 CHAR(64)",
                             NULL, NULL, NULL);
     }
     
     if (code == SQLITE_OK) {
         code = sqlite3_exec(_databaseConnection,
-                            "INSERT INTO localytics_info (schema_version, last_upload_number, last_session_number, opt_out)"
-                            "VALUES (1, 0, 0, 0)", NULL, NULL, NULL);
+                            "ALTER TABLE localytics_info ADD custom_d1 CHAR(64)",
+                            NULL, NULL, NULL);
+    }
+    
+    if (code == SQLITE_OK) {
+        code = sqlite3_exec(_databaseConnection,
+                            "ALTER TABLE localytics_info ADD custom_d2 CHAR(64)",
+                            NULL, NULL, NULL);
+    }
+    
+    if (code == SQLITE_OK) {
+        code = sqlite3_exec(_databaseConnection,
+                            "ALTER TABLE localytics_info ADD custom_d3 CHAR(64)",
+                            NULL, NULL, NULL);
+    }
+    
+    if (code == SQLITE_OK) {
+        sqlite3_stmt *updateInstallId;
+        sqlite3_prepare_v2(_databaseConnection, "UPDATE localytics_info set install_id = ?, schema_version = 2 ", -1, &updateInstallId, NULL);
+        sqlite3_bind_text (updateInstallId, 1, [[self getRandomUUID] UTF8String], -1, SQLITE_TRANSIENT); 
+        code = sqlite3_step(updateInstallId);    
+        sqlite3_finalize(updateInstallId);
     }
     
     // Commit transaction.
-    if (code == SQLITE_OK) {
+    if (code == SQLITE_OK || code == SQLITE_DONE) {
         sqlite3_exec(_databaseConnection, "COMMIT", NULL, NULL, NULL);
     } else {
         sqlite3_exec(_databaseConnection, "ROLLBACK", NULL, NULL, NULL);
@@ -535,6 +654,13 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
     return code == SQLITE_OK;
 }
 
+- (NSString *)getRandomUUID {
+	CFUUIDRef theUUID = CFUUIDCreate(NULL);
+	CFStringRef stringUUID = CFUUIDCreateString(NULL, theUUID);
+	CFRelease(theUUID);
+	return [(NSString *)stringUUID autorelease];
+}
+
 #pragma mark - Lifecycle
 
 + (id)allocWithZone:(NSZone *)zone {
@@ -561,7 +687,7 @@ static LocalyticsDatabase *_sharedLocalyticsDatabase = nil;
 	return UINT_MAX;
 }
 
-- (void)release {
+- (oneway void)release {
 	// ignore release commands
 }
 

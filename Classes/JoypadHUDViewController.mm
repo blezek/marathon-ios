@@ -203,34 +203,15 @@ static int counter = 0;
   if ( stick == kJoyInputAnalogStick2 ) {
     deltaX = deltaY = 0;
     if ( newPosition.distance != 0.0 ) {
-    int dx = 0.3 * newPosition.distance * cos ( newPosition.angle );
-      int dy = -0.3 * newPosition.distance * sin ( newPosition.angle );
-    deltaX = dx;
-    deltaY = dy;
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      float normalized = newPosition.distance / radius;
+      float delta = 0.5 * 50.0 * ( 0.1 * normalized + pow(normalized, 2.2));
+      
+      int dx = delta * cos ( newPosition.angle ) * [defaults floatForKey:kHSensitivity];
+      int dy = -delta * sin ( newPosition.angle ) * [defaults floatForKey:kVSensitivity];
+      deltaX = dx;
+      deltaY = dy;
     }
-//    
-//    // SDL_SendMouseMotion ( true, dx, dy );
-//    
-//    // Which direction should we go?
-//    [self stopLooking:self];
-//    
-//    // Do we move?
-//    if ( newPosition.distance != 0.0 ) {
-//      if ( newPosition.angle >= ( M_PI / 4.0 ) && newPosition.angle < (M_PI * 3.0 / 4.0 ) ) {
-//        // Forward?
-//        [self lookUpDown:nil];
-//      } else if ( newPosition.angle >= (M_PI * 5.0 / 4.0 ) && newPosition.angle < (M_PI * 7.0 / 4.0) ) {
-//        // Backward
-//        [self lookDownDown:nil];
-//      } else if ( newPosition.angle >= ( 3.0 / 4.0 * M_PI) && newPosition.angle < ( 5.0 / 4.0 * M_PI) ) {
-//        // Left
-//        [self lookLeftDown:nil];
-//      } else if ( newPosition.angle >= (7.0 / 4.0 * M_PI) || newPosition.angle < ( 1.0 / 4.0 *M_PI) ) {
-//        // Right
-//        [self lookRightDown:nil];
-//      }
-//    }
-
     
   }
   NSLog(@"Analog stick distance: %f, angle (rad): %f", newPosition.distance, newPosition.angle);

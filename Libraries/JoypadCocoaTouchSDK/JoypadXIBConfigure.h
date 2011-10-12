@@ -51,6 +51,9 @@
 @interface JPAnalogStick : UIView {
 }
 @end
+@interface JPRecenteringAnalogStick : UIView {
+}
+@end
 @interface JPAccelerometer : UIView {
 }
 @end

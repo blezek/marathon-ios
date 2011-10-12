@@ -288,14 +288,6 @@ BOOL StatsDownloaded = NO;
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kFirstGame] ) {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kFirstGame];
-    showingHelpBeforeFirstGame = YES;
-    // Popup an alert view
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"View help" message:@"See help screens\nbefore your first game?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    [alert show];
-    return;
-  }
   /*
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
@@ -1347,13 +1339,13 @@ _civilian_fusion_assimilated,
       [Achievements reportAchievement:@"SMG" progress:100.0];
       break;
     case _i_assault_rifle :
-      [Achievements reportAchievement:@"AssaultRifel" progress:100.0];
+      [Achievements reportAchievement:@"AssaultRifle" progress:100.0];
       break;
     case _i_magnum:
       [Achievements reportAchievement:@"Pistol" progress:100.0];
       break;
     case _i_missile_launcher:
-      [Achievements reportAchievement:@"MissileLauncher" progress:100.0];
+      [Achievements reportAchievement:@"MissileLauncherItem" progress:100.0];
       break;
     case _i_flamethrower:
       [Achievements reportAchievement:@"Flamethrower" progress:100.0];

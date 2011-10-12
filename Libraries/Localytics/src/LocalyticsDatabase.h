@@ -43,5 +43,6 @@
 
 - (BOOL)isOptedOut;
 - (BOOL)setOptedOut:(BOOL)optOut;
+- (NSString *) installId;
 
 @end

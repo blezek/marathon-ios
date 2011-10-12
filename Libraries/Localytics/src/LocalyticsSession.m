@@ -15,9 +15,10 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <mach/mach.h>
+#include <CommonCrypto/CommonDigest.h>
 
 #pragma mark Constants
-#define CLIENT_VERSION              @"iOS_2.1"      // The version of this library
+#define CLIENT_VERSION              @"iOS_2.3"      // The version of this library
 #define LOCALYTICS_DIR              @".localytics"	// The directory in which the Localytics database is stored
 #define MAX_DATABASE_SIZE           500000          // The maximum allowed disk size of the primary database file at open, in bytes
 
@@ -36,8 +37,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 @property (nonatomic, assign) NSTimeInterval lastSessionStartTimestamp;
 @property (nonatomic, retain) NSDate *sessionResumeTime;
 @property (nonatomic, retain) NSDate *sessionCloseTime;
-@property (nonatomic, retain) NSMutableString *newFlowEvents;
-@property (nonatomic, retain) NSMutableString *oldFlowEvents;
+@property (nonatomic, retain) NSMutableString *unstagedFlowEvents;
+@property (nonatomic, retain) NSMutableString *stagedFlowEvents;
 @property (nonatomic, retain) NSMutableString *screens;
 @property (nonatomic, assign) NSTimeInterval sessionActiveDuration;
 @property (nonatomic, assign) BOOL sessionHasBeenOpen;
@@ -73,8 +74,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 @synthesize isSessionOpen               = _isSessionOpen;
 @synthesize hasInitialized              = _hasInitialized;
 @synthesize backgroundSessionTimeout    = _backgroundSessionTimeout;
-@synthesize newFlowEvents               = _newFlowEvents;
-@synthesize oldFlowEvents               = _oldFlowEvents;
+@synthesize unstagedFlowEvents          = _unstagedFlowEvents;
+@synthesize stagedFlowEvents               = _stagedFlowEvents;
 @synthesize screens                     = _screens;
 @synthesize sessionActiveDuration       = _sessionActiveDuration;
 @synthesize sessionHasBeenOpen          = _sessionHasBeenOpen;
@@ -98,8 +99,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
         _sessionHasBeenOpen = NO;
         [LocalyticsDatabase sharedLocalyticsDatabase];
     }
-
-	return self;
+    
+    return self;
 }
 
 #pragma mark Public Methods
@@ -112,7 +113,21 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 	}	
     
 	@try {
-
+        
+        if(appKey == (id)[NSNull null] || appKey.length == 0) {
+            [self logMessage:@"App key is null or empty."];
+            self.hasInitialized = NO;
+            return;
+        }
+        
+        // App key should only be alphanumeric chars and dashes.        
+        NSString *trimmedAppKey = [appKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        if([[trimmedAppKey stringByTrimmingCharactersInSet:[NSCharacterSet alphanumericCharacterSet]] isEqualToString:@""] == false) {
+            [self logMessage:@"App key may only contain dashes and alphanumeric characters."];
+            self.hasInitialized = NO;
+            return;
+        }
+        
         if ([LocalyticsDatabase sharedLocalyticsDatabase]) {
             self.applicationKey = appKey;
             self.hasInitialized = YES;            
@@ -128,7 +143,7 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 	[self upload];
 }
 
-- (void)open {
+- (void)open {    
 	// There are a number of conditions in which nothing should be done:
 	if (self.hasInitialized == NO ||  // the session object has not yet initialized
       self.isSessionOpen == YES)  // session has already been opened
@@ -156,8 +171,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 
         self.sessionActiveDuration = 0;
         self.sessionResumeTime = [NSDate date];
-        self.newFlowEvents = [NSMutableString string];
-        self.oldFlowEvents = [NSMutableString string];
+        self.unstagedFlowEvents = [NSMutableString string];
+        self.stagedFlowEvents = [NSMutableString string];
         self.screens = [NSMutableString string];
 
         // Begin transaction for session open.
@@ -240,6 +255,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
     // Update active session duration.
     self.sessionActiveDuration += [self.sessionCloseTime timeIntervalSinceDate:self.sessionResumeTime];
 
+    int sessionLength = (int)[[NSDate date] timeIntervalSince1970] - self.lastSessionStartTimestamp;
+    
     @try {
 		// Create the JSON representing the close blob
 		NSMutableString *closeEventString = [NSMutableString string];
@@ -249,8 +266,12 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
         [closeEventString appendString:[self formatAttributeWithName:PARAM_UUID              value:[self getRandomUUID]      first:NO]];
         [closeEventString appendFormat:@",\"%@\":%u", PARAM_SESSION_START, (long)self.lastSessionStartTimestamp];
         [closeEventString appendFormat:@",\"%@\":%u", PARAM_SESSION_ACTIVE, (long)self.sessionActiveDuration];
-        [closeEventString appendFormat:@",\"%@\":%u", PARAM_SESSION_TOTAL, (long)([[NSDate date] timeIntervalSince1970] - self.lastSessionStartTimestamp)];
         [closeEventString appendFormat:@",\"%@\":%u", PARAM_CLIENT_TIME, (long)[self getTimestamp]];
+        
+        // Avoid recording session lengths of users with unreasonable client times (usually caused by developers testing clock change attacks)
+        if(sessionLength > 0 && sessionLength < 400000) {
+            [closeEventString appendFormat:@",\"%@\":%u", PARAM_SESSION_TOTAL, sessionLength];
+        }
 
         // Open second level - screen flow
         [closeEventString appendFormat:@",\"%@\":[", PARAM_SESSION_SCREENFLOW];
@@ -343,6 +364,12 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
             return; 
         }
 	
+        if(event == (id)[NSNull null] || event.length == 0)
+        {
+            [self logMessage:@"Event tagged without a name. Skipping."];
+            return;
+        }
+        
 		// Create the JSON for the event
 		NSMutableString *eventString = [[[NSMutableString alloc] init] autorelease];
         [eventString appendString:@"{"];
@@ -435,7 +462,7 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
     BOOL success = YES;
     
     // If there are no new events, then there is nothing additional to save.
-    if (self.newFlowEvents.length) {
+    if (self.unstagedFlowEvents.length) {
         // Flows are uploaded as a distinct blob type containing arrays of new and previously-uploaded event and
         // screen names. Write a flow event to the database.
         NSMutableString *flowEventString = [[[NSMutableString alloc] init] autorelease];
@@ -448,13 +475,13 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
         
         // Open second level - new flow events
         [flowEventString appendFormat:@",\"%@\":[", PARAM_NEW_FLOW_EVENTS];
-        [flowEventString appendString:self.newFlowEvents]; // Flow events are escaped in |-addFlowEventWithName:|
+        [flowEventString appendString:self.unstagedFlowEvents]; // Flow events are escaped in |-addFlowEventWithName:|
         // Close second level - new flow events
         [flowEventString appendString:@"]"];
         
         // Open second level - old flow events
         [flowEventString appendFormat:@",\"%@\":[", PARAM_OLD_FLOW_EVENTS];
-        [flowEventString appendString:self.oldFlowEvents];
+        [flowEventString appendString:self.stagedFlowEvents];
         // Close second level - old flow events
         [flowEventString appendString:@"]"];
         
@@ -480,7 +507,7 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
         // Lock on new flow events to ensure that:
         // - The event list for the current session is not modified while an upload is in progress.
         // - New flow events are only transitioned to the "old" list if the upload is staged successfully.
-        @synchronized (_newFlowEvents) {
+        @synchronized (_unstagedFlowEvents) {
             if (success) {
                 // Write flow blob to database. This is for a session in progress and should not be removed upon resume.
                 success = [self saveApplicationFlowAndRemoveOnResume:NO];
@@ -509,13 +536,13 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
                 [db releaseTransaction:t];
 
                 // Move new flow events to the old flow event array.
-                if (self.newFlowEvents.length) {
-                    if (self.oldFlowEvents.length) {
-                        [self.oldFlowEvents appendFormat:@",%@", self.newFlowEvents];
+                if (self.unstagedFlowEvents.length) {
+                    if (self.stagedFlowEvents.length) {
+                        [self.stagedFlowEvents appendFormat:@",%@", self.unstagedFlowEvents];
                     } else {
-                        self.oldFlowEvents = [[self.newFlowEvents mutableCopy] autorelease];
+                        self.stagedFlowEvents = [[self.unstagedFlowEvents mutableCopy] autorelease];
                     }
-                    self.newFlowEvents = [NSMutableString string];
+                    self.unstagedFlowEvents = [NSMutableString string];
                 }
                 
                 // Begin upload.
@@ -564,12 +591,12 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
     
     // Flow events are uploaded as a sequence of key-value pairs. Wrap the above in braces and append to the list.
     // Lock to avoid adding events while an upload is being prepared.
-    @synchronized(_newFlowEvents) {
-        BOOL previousFlowEvents = self.newFlowEvents.length > 0;
+    @synchronized(_unstagedFlowEvents) {
+        BOOL previousFlowEvents = self.unstagedFlowEvents.length > 0;
         if (previousFlowEvents) {
-            [self.newFlowEvents appendString:@","];
+            [self.unstagedFlowEvents appendString:@","];
         }
-        [self.newFlowEvents appendFormat:@"{%@}", eventString];
+        [self.unstagedFlowEvents appendFormat:@"{%@}", eventString];
     }
 }
 
@@ -605,7 +632,12 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
     NSString *device_language = [english displayNameForKey:NSLocaleIdentifier value:device_locale];
 	NSString *locale_country = [english displayNameForKey:NSLocaleCountryCode value:[locale objectForKey:NSLocaleCountryCode]];
     NSString *uuid = [self getRandomUUID];
+    NSString *installId = [[LocalyticsDatabase sharedLocalyticsDatabase] installId];
 
+    NSString *device_uuid = [self getGlobalDeviceId];
+    NSData *stringBytes = [device_uuid dataUsingEncoding: NSUTF8StringEncoding];        
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+    
     // Open first level - blob information
     [headerString appendString:@"{"];
     [headerString appendFormat:@"\"%@\":%d", PARAM_SEQUENCE_NUMBER, nextSequenceNumber];
@@ -618,12 +650,22 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
     [headerString appendString:[self formatAttributeWithName:PARAM_DATA_TYPE    value:@"a"  first:YES]];
     
 	// >>  Application and session information
+    [headerString appendString:[self formatAttributeWithName:PARAM_INSTALL_ID       value:installId first:NO]];
 	[headerString appendString:[self formatAttributeWithName:PARAM_APP_KEY          value:self.applicationKey          first:NO]];
 	[headerString appendString:[self formatAttributeWithName:PARAM_APP_VERSION      value:[self getAppVersion]         first:NO]];
 	[headerString appendString:[self formatAttributeWithName:PARAM_LIBRARY_VERSION  value:CLIENT_VERSION               first:NO]];
 
-	// >>  Other device information
-	[headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_UUID          value:[self getGlobalDeviceId]   first:NO]];
+	// >>  Device UUID. 
+	[headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_UUID          value:device_uuid first:NO]];
+    if (CC_SHA1([stringBytes bytes], [stringBytes length], digest)) {
+        NSMutableString* hashedUUID = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+        for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+            [hashedUUID appendFormat:@"%02x", digest[i]];
+        }        
+        [headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_UUID_HASHED   value:hashedUUID  first:NO]];
+    }
+     
+    // >>  Other Device Information
 	[headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_PLATFORM      value:[thisDevice model]         first:NO]];
 	[headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_OS_VERSION    value:[thisDevice systemVersion] first:NO]];
 	[headerString appendString:[self formatAttributeWithName:PARAM_DEVICE_MODEL         value:[self getDeviceModel]      first:NO]];
@@ -865,7 +907,7 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 	return UINT_MAX;
 }
 
-- (void)release {
+- (oneway void)release {
 	// ignore release commands
 }
 
@@ -879,8 +921,8 @@ static LocalyticsSession *_sharedLocalyticsSession = nil;
 	[_sessionUUID release];
 	[_applicationKey release];
 	[_sessionCloseTime release];
-    [_newFlowEvents release];
-    [_oldFlowEvents release];
+    [_unstagedFlowEvents release];
+    [_stagedFlowEvents release];
     [_screens release];
 	[_sharedLocalyticsSession release];
 

@@ -252,7 +252,7 @@ static UploaderThread *_sharedUploaderThread = nil;
 	return UINT_MAX;
 }
 
-- (void)release {
+- (oneway void)release {
 	// ignore release commands
 }
 
