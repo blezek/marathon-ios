@@ -47,12 +47,14 @@ extern int SDL_main(int argc, char *argv[]);
   [self.purchases checkPurchases];
   
 #ifdef USE_CADisplayLoop
+  /*
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
   // Fade out splash screen
   [self.game.splashView setAlpha:0.0];
   [UIView commitAnimations];
-  [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:2.0];
+   */
+  [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
   
 }

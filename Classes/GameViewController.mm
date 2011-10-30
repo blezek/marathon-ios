@@ -651,20 +651,12 @@ BOOL StatsDownloaded = NO;
   [Tracking trackPageview:@"/settings"];
   [self.preferencesViewController setupUI:mode==MenuMode];
   self.preferencesView.hidden = NO;
-  
-  CAAnimation *group = [Effects appearAnimation];
-  for ( UIView *v in self.preferencesView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:nil];
-  }
+  [self.preferencesViewController appear];
 }
+ 
 - (IBAction) closePreferences:(id)sender {
-  CAAnimation *group = [Effects disappearAnimation];
-  for ( UIView *v in self.preferencesView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:nil];
-  }  
-  [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.3];
+    [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  [self.preferencesViewController disappear];
   [self closeEvent];
 }
 
@@ -696,8 +688,8 @@ BOOL StatsDownloaded = NO;
 - (void)configureHUD:(NSString*)HUDType{
   [self.HUDViewController.view removeFromSuperview];
   if ( HUDType == nil ) {
-    // self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
-    self.HUDViewController = [[FloatingTriggerHUDViewController alloc] initWithNibName:@"FloatingTriggerHUDViewController" bundle:[NSBundle mainBundle]];
+    self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
+    // self.HUDViewController = [[FloatingTriggerHUDViewController alloc] initWithNibName:@"FloatingTriggerHUDViewController" bundle:[NSBundle mainBundle]];
     [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
     
   } else {
@@ -1516,9 +1508,9 @@ short items[]=
   if ( mode == GameMode ) {
     short target_type;
     if ( NONE == find_action_key_target(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type) ) {
-      [self.HUDViewController dimActionKey];
+      [self.HUDViewController dimActionKey:target_type];
     } else {
-      [self.HUDViewController lightActionKey];    
+      [self.HUDViewController lightActionKey:target_type];    
     }
   }
   

@@ -71,8 +71,8 @@
 - (IBAction)lookRightDown:(id)sender;
 - (IBAction)lookRightUp:(id)sender;
 
-- (void)dimActionKey;
-- (void)lightActionKey;
+- (void)dimActionKey:(short)actionType;
+- (void)lightActionKey:(short)actionType;
 
 
 @end

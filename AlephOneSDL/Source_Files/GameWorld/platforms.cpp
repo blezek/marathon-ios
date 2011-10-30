@@ -118,7 +118,7 @@ static void calculate_platform_extrema(short platform_index,
 
 static void play_platform_sound(short platform_index, short sound_code);
 
-static platform_definition *get_platform_definition(const short type);
+platform_definition *get_platform_definition(const short type);
 
 /* ---------- code */
 

@@ -85,7 +85,7 @@
   }
    
   MLog ( @"Found %d invalid Product IDS", response.invalidProductIdentifiers.count );
-  for ( id *invalidID in response.invalidProductIdentifiers ) {
+  for ( id invalidID in response.invalidProductIdentifiers ) {
     MLog ( @"ID %@ was invalid", invalidID );
   }
   

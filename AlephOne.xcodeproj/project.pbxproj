@@ -155,6 +155,9 @@
 		A81EEFB213E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
 		A81EEFB313E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
 		A81EEFB413E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
+		A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
+		A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
+		A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
 		A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
@@ -299,6 +302,149 @@
 		A83E4BB8140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
 		A83E4BB9140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
 		A83E4BBA140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
+		A83FBB72144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
+		A83FBB73144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
+		A83FBB74144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
+		A83FBB75144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */; };
+		A83FBB76144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */; };
+		A83FBB77144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */; };
+		A83FBB78144C95DF00B27426 /* HDModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */; };
+		A83FBB79144C95DF00B27426 /* HDModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */; };
+		A83FBB7A144C95DF00B27426 /* HDModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */; };
+		A83FBB7B144C95DF00B27426 /* HDModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB47144C95DE00B27426 /* HDModeOn.png */; };
+		A83FBB7C144C95DF00B27426 /* HDModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB47144C95DE00B27426 /* HDModeOn.png */; };
+		A83FBB7D144C95DF00B27426 /* HDModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB47144C95DE00B27426 /* HDModeOn.png */; };
+		A83FBB7E144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB48144C95DE00B27426 /* HDModeOn@2x~iphone.png */; };
+		A83FBB7F144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB48144C95DE00B27426 /* HDModeOn@2x~iphone.png */; };
+		A83FBB80144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB48144C95DE00B27426 /* HDModeOn@2x~iphone.png */; };
+		A83FBB81144C95DF00B27426 /* HDModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB49144C95DE00B27426 /* HDModeOn~iphone.png */; };
+		A83FBB82144C95DF00B27426 /* HDModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB49144C95DE00B27426 /* HDModeOn~iphone.png */; };
+		A83FBB83144C95DF00B27426 /* HDModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB49144C95DE00B27426 /* HDModeOn~iphone.png */; };
+		A83FBB84144C95DF00B27426 /* SettingsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB4B144C95DE00B27426 /* SettingsBackground.png */; };
+		A83FBB87144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB4C144C95DE00B27426 /* SettingsBackground@2x~iphone.png */; };
+		A83FBB8A144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB4D144C95DE00B27426 /* SettingsBackground~iphone.png */; };
+		A83FBB8E144C95DF00B27426 /* SettingsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB4F144C95DE00B27426 /* SettingsBackground.png */; };
+		A83FBB91144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB50144C95DE00B27426 /* SettingsBackground@2x~iphone.png */; };
+		A83FBB94144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB51144C95DE00B27426 /* SettingsBackground~iphone.png */; };
+		A83FBB98144C95DF00B27426 /* SettingsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB53144C95DE00B27426 /* SettingsBackground.png */; };
+		A83FBB9B144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB54144C95DE00B27426 /* SettingsBackground@2x~iphone.png */; };
+		A83FBB9E144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB55144C95DE00B27426 /* SettingsBackground~iphone.png */; };
+		A83FBB9F144C95DF00B27426 /* MCModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB56144C95DE00B27426 /* MCModeOff.png */; };
+		A83FBBA0144C95DF00B27426 /* MCModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB56144C95DE00B27426 /* MCModeOff.png */; };
+		A83FBBA1144C95DF00B27426 /* MCModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB56144C95DE00B27426 /* MCModeOff.png */; };
+		A83FBBA2144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB57144C95DE00B27426 /* MCModeOff@2x~iphone.png */; };
+		A83FBBA3144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB57144C95DE00B27426 /* MCModeOff@2x~iphone.png */; };
+		A83FBBA4144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB57144C95DE00B27426 /* MCModeOff@2x~iphone.png */; };
+		A83FBBA5144C95DF00B27426 /* MCModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB58144C95DE00B27426 /* MCModeOff~iphone.png */; };
+		A83FBBA6144C95DF00B27426 /* MCModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB58144C95DE00B27426 /* MCModeOff~iphone.png */; };
+		A83FBBA7144C95DF00B27426 /* MCModeOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB58144C95DE00B27426 /* MCModeOff~iphone.png */; };
+		A83FBBA8144C95DF00B27426 /* MCModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB59144C95DE00B27426 /* MCModeOn.png */; };
+		A83FBBA9144C95DF00B27426 /* MCModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB59144C95DE00B27426 /* MCModeOn.png */; };
+		A83FBBAA144C95DF00B27426 /* MCModeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB59144C95DE00B27426 /* MCModeOn.png */; };
+		A83FBBAB144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5A144C95DE00B27426 /* MCModeOn@2x~iphone.png */; };
+		A83FBBAC144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5A144C95DE00B27426 /* MCModeOn@2x~iphone.png */; };
+		A83FBBAD144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5A144C95DE00B27426 /* MCModeOn@2x~iphone.png */; };
+		A83FBBAE144C95DF00B27426 /* MCModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5B144C95DE00B27426 /* MCModeOn~iphone.png */; };
+		A83FBBAF144C95DF00B27426 /* MCModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5B144C95DE00B27426 /* MCModeOn~iphone.png */; };
+		A83FBBB0144C95DF00B27426 /* MCModeOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5B144C95DE00B27426 /* MCModeOn~iphone.png */; };
+		A83FBBB1144C95DF00B27426 /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5C144C95DE00B27426 /* Notes.txt */; };
+		A83FBBB2144C95DF00B27426 /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5C144C95DE00B27426 /* Notes.txt */; };
+		A83FBBB3144C95DF00B27426 /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5C144C95DE00B27426 /* Notes.txt */; };
+		A83FBBBA144C95DF00B27426 /* SettingsBackgroundLayout in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5F144C95DE00B27426 /* SettingsBackgroundLayout */; };
+		A83FBBBB144C95DF00B27426 /* SettingsBackgroundLayout in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5F144C95DE00B27426 /* SettingsBackgroundLayout */; };
+		A83FBBBC144C95DF00B27426 /* SettingsBackgroundLayout in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB5F144C95DE00B27426 /* SettingsBackgroundLayout */; };
+		A83FBBBD144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB60144C95DE00B27426 /* SettingsBackgroundLayout@2x~iphone.png */; };
+		A83FBBBE144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB60144C95DE00B27426 /* SettingsBackgroundLayout@2x~iphone.png */; };
+		A83FBBBF144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB60144C95DE00B27426 /* SettingsBackgroundLayout@2x~iphone.png */; };
+		A83FBBC0144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB61144C95DE00B27426 /* SettingsBackgroundLayout~iphone.png */; };
+		A83FBBC1144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB61144C95DE00B27426 /* SettingsBackgroundLayout~iphone.png */; };
+		A83FBBC2144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB61144C95DE00B27426 /* SettingsBackgroundLayout~iphone.png */; };
+		A83FBBC9144C95DF00B27426 /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB64144C95DE00B27426 /* SliderBackground.png */; };
+		A83FBBCA144C95DF00B27426 /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB64144C95DE00B27426 /* SliderBackground.png */; };
+		A83FBBCB144C95DF00B27426 /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB64144C95DE00B27426 /* SliderBackground.png */; };
+		A83FBBCC144C95DF00B27426 /* SliderBlackTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB65144C95DE00B27426 /* SliderBlackTrack.png */; };
+		A83FBBCD144C95DF00B27426 /* SliderBlackTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB65144C95DE00B27426 /* SliderBlackTrack.png */; };
+		A83FBBCE144C95DF00B27426 /* SliderBlackTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB65144C95DE00B27426 /* SliderBlackTrack.png */; };
+		A83FBBCF144C95DF00B27426 /* SliderRedTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB66144C95DE00B27426 /* SliderRedTrack.png */; };
+		A83FBBD0144C95DF00B27426 /* SliderRedTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB66144C95DE00B27426 /* SliderRedTrack.png */; };
+		A83FBBD1144C95DF00B27426 /* SliderRedTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB66144C95DE00B27426 /* SliderRedTrack.png */; };
+		A83FBBD2144C95DF00B27426 /* SliderTab.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB67144C95DE00B27426 /* SliderTab.png */; };
+		A83FBBD3144C95DF00B27426 /* SliderTab.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB67144C95DE00B27426 /* SliderTab.png */; };
+		A83FBBD4144C95DF00B27426 /* SliderTab.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB67144C95DE00B27426 /* SliderTab.png */; };
+		A83FBBD5144C95DF00B27426 /* SwitchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB68144C95DE00B27426 /* SwitchOff.png */; };
+		A83FBBD6144C95DF00B27426 /* SwitchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB68144C95DE00B27426 /* SwitchOff.png */; };
+		A83FBBD7144C95DF00B27426 /* SwitchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB68144C95DE00B27426 /* SwitchOff.png */; };
+		A83FBBDB144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6A144C95DE00B27426 /* SwitchOff@2x~iphone.png */; };
+		A83FBBDC144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6A144C95DE00B27426 /* SwitchOff@2x~iphone.png */; };
+		A83FBBDD144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6A144C95DE00B27426 /* SwitchOff@2x~iphone.png */; };
+		A83FBBDE144C95DF00B27426 /* SwitchOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6B144C95DE00B27426 /* SwitchOff~iphone.png */; };
+		A83FBBDF144C95DF00B27426 /* SwitchOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6B144C95DE00B27426 /* SwitchOff~iphone.png */; };
+		A83FBBE0144C95DF00B27426 /* SwitchOff~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6B144C95DE00B27426 /* SwitchOff~iphone.png */; };
+		A83FBBE1144C95DF00B27426 /* SwitchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6C144C95DE00B27426 /* SwitchOn.png */; };
+		A83FBBE2144C95DF00B27426 /* SwitchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6C144C95DE00B27426 /* SwitchOn.png */; };
+		A83FBBE3144C95DF00B27426 /* SwitchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6C144C95DE00B27426 /* SwitchOn.png */; };
+		A83FBBE4144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6D144C95DE00B27426 /* SwitchOn@2x~iphone.png */; };
+		A83FBBE5144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6D144C95DE00B27426 /* SwitchOn@2x~iphone.png */; };
+		A83FBBE6144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6D144C95DE00B27426 /* SwitchOn@2x~iphone.png */; };
+		A83FBBE7144C95DF00B27426 /* SwitchOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6E144C95DE00B27426 /* SwitchOn~iphone.png */; };
+		A83FBBE8144C95DF00B27426 /* SwitchOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6E144C95DE00B27426 /* SwitchOn~iphone.png */; };
+		A83FBBE9144C95DF00B27426 /* SwitchOn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB6E144C95DE00B27426 /* SwitchOn~iphone.png */; };
+		A8421EBD1455DA17008BBF22 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8421EBC1455DA17008BBF22 /* libbz2.dylib */; };
+		A8421EBE1455DDD9008BBF22 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8421EBC1455DA17008BBF22 /* libbz2.dylib */; };
+		A8421ED714565584008BBF22 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC114565583008BBF22 /* MenuButton.png */; };
+		A8421ED814565584008BBF22 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC114565583008BBF22 /* MenuButton.png */; };
+		A8421ED914565584008BBF22 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC114565583008BBF22 /* MenuButton.png */; };
+		A8421EDA14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC214565583008BBF22 /* MenuButton@2x~iphone.png */; };
+		A8421EDB14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC214565583008BBF22 /* MenuButton@2x~iphone.png */; };
+		A8421EDC14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC214565583008BBF22 /* MenuButton@2x~iphone.png */; };
+		A8421EDD14565584008BBF22 /* MenuButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC314565583008BBF22 /* MenuButton~iphone.png */; };
+		A8421EDE14565584008BBF22 /* MenuButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC314565583008BBF22 /* MenuButton~iphone.png */; };
+		A8421EDF14565584008BBF22 /* MenuButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC314565583008BBF22 /* MenuButton~iphone.png */; };
+		A8421EE314565584008BBF22 /* OpenDoor.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC514565583008BBF22 /* OpenDoor.png */; };
+		A8421EE414565584008BBF22 /* OpenDoor.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC514565583008BBF22 /* OpenDoor.png */; };
+		A8421EE514565584008BBF22 /* OpenDoor.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC514565583008BBF22 /* OpenDoor.png */; };
+		A8421EE614565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC614565583008BBF22 /* OpenDoor@2x~iphone.png */; };
+		A8421EE714565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC614565583008BBF22 /* OpenDoor@2x~iphone.png */; };
+		A8421EE814565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC614565583008BBF22 /* OpenDoor@2x~iphone.png */; };
+		A8421EE914565584008BBF22 /* OpenDoor~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC714565583008BBF22 /* OpenDoor~iphone.png */; };
+		A8421EEA14565584008BBF22 /* OpenDoor~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC714565583008BBF22 /* OpenDoor~iphone.png */; };
+		A8421EEB14565584008BBF22 /* OpenDoor~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC714565583008BBF22 /* OpenDoor~iphone.png */; };
+		A8421EEC14565584008BBF22 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC814565583008BBF22 /* ResumeButton.png */; };
+		A8421EED14565584008BBF22 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC814565583008BBF22 /* ResumeButton.png */; };
+		A8421EEE14565584008BBF22 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC814565583008BBF22 /* ResumeButton.png */; };
+		A8421EEF14565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC914565583008BBF22 /* ResumeButton@2x~iphone.png */; };
+		A8421EF014565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC914565583008BBF22 /* ResumeButton@2x~iphone.png */; };
+		A8421EF114565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421EC914565583008BBF22 /* ResumeButton@2x~iphone.png */; };
+		A8421EF214565584008BBF22 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECA14565583008BBF22 /* ResumeButton~iphone.png */; };
+		A8421EF314565584008BBF22 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECA14565583008BBF22 /* ResumeButton~iphone.png */; };
+		A8421EF414565584008BBF22 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECA14565583008BBF22 /* ResumeButton~iphone.png */; };
+		A8421EF514565584008BBF22 /* SaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECB14565583008BBF22 /* SaveGame.png */; };
+		A8421EF614565584008BBF22 /* SaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECB14565583008BBF22 /* SaveGame.png */; };
+		A8421EF714565584008BBF22 /* SaveGame.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECB14565583008BBF22 /* SaveGame.png */; };
+		A8421EF814565584008BBF22 /* SaveGame@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECC14565583008BBF22 /* SaveGame@2x~iphone.png */; };
+		A8421EF914565584008BBF22 /* SaveGame@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECC14565583008BBF22 /* SaveGame@2x~iphone.png */; };
+		A8421EFA14565584008BBF22 /* SaveGame@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECC14565583008BBF22 /* SaveGame@2x~iphone.png */; };
+		A8421EFB14565584008BBF22 /* SaveGame~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECD14565583008BBF22 /* SaveGame~iphone.png */; };
+		A8421EFC14565584008BBF22 /* SaveGame~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECD14565583008BBF22 /* SaveGame~iphone.png */; };
+		A8421EFD14565584008BBF22 /* SaveGame~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECD14565583008BBF22 /* SaveGame~iphone.png */; };
+		A8421EFE14565584008BBF22 /* ThrowSwitch.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECE14565583008BBF22 /* ThrowSwitch.png */; };
+		A8421EFF14565584008BBF22 /* ThrowSwitch.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECE14565583008BBF22 /* ThrowSwitch.png */; };
+		A8421F0014565584008BBF22 /* ThrowSwitch.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECE14565583008BBF22 /* ThrowSwitch.png */; };
+		A8421F0114565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECF14565583008BBF22 /* ThrowSwitch@2x~iphone.png */; };
+		A8421F0214565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECF14565583008BBF22 /* ThrowSwitch@2x~iphone.png */; };
+		A8421F0314565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ECF14565583008BBF22 /* ThrowSwitch@2x~iphone.png */; };
+		A8421F0414565584008BBF22 /* ThrowSwitch~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED014565583008BBF22 /* ThrowSwitch~iphone.png */; };
+		A8421F0514565584008BBF22 /* ThrowSwitch~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED014565583008BBF22 /* ThrowSwitch~iphone.png */; };
+		A8421F0614565584008BBF22 /* ThrowSwitch~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED014565583008BBF22 /* ThrowSwitch~iphone.png */; };
+		A8421F0714565584008BBF22 /* UseComputer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED114565583008BBF22 /* UseComputer.png */; };
+		A8421F0814565584008BBF22 /* UseComputer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED114565583008BBF22 /* UseComputer.png */; };
+		A8421F0914565584008BBF22 /* UseComputer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED114565583008BBF22 /* UseComputer.png */; };
+		A8421F0A14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED214565583008BBF22 /* UseComputer@2x~iphone.png */; };
+		A8421F0B14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED214565583008BBF22 /* UseComputer@2x~iphone.png */; };
+		A8421F0C14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED214565583008BBF22 /* UseComputer@2x~iphone.png */; };
+		A8421F0D14565584008BBF22 /* UseComputer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED314565583008BBF22 /* UseComputer~iphone.png */; };
+		A8421F0E14565584008BBF22 /* UseComputer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED314565583008BBF22 /* UseComputer~iphone.png */; };
+		A8421F0F14565584008BBF22 /* UseComputer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8421ED314565583008BBF22 /* UseComputer~iphone.png */; };
 		A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
 		A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
 		A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A8528B6C1353EBC500EFB947 /* Statistics.m */; };
@@ -698,7 +844,6 @@
 		A85E68A711CB194400D0FAEF /* pnggccrd.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687511CB18FD00D0FAEF /* pnggccrd.c */; };
 		A85E68A811CB194400D0FAEF /* pngerror.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687411CB18FD00D0FAEF /* pngerror.c */; };
 		A85E68A911CB194400D0FAEF /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687311CB18FD00D0FAEF /* png.c */; };
-		A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A864DDAF13FDEFF300A0AE0C /* GenericBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */; };
 		A864DDB213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDA213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png */; };
 		A864DDB913FDF0A800A0AE0C /* VMModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDB513FDF0A800A0AE0C /* VMModeAd~iphone.png */; };
@@ -739,7 +884,6 @@
 		A8718174140D578C00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
 		A8718175140D578D00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
 		A8718176140D578D00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
-		A8718178140D584F00327BEF /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718177140D584F00327BEF /* libbz2.1.0.dylib */; };
 		A874B19F1318A8C5009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B19E1318A8C5009C4A92 /* iTunesArtwork */; };
 		A874B1A11318A8D2009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A01318A8D2009C4A92 /* iTunesArtwork */; };
 		A874B1A31318A8DF009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A21318A8DF009C4A92 /* iTunesArtwork */; };
@@ -1212,7 +1356,6 @@
 		A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D511B8A70B0053FE85 /* OpenAL.framework */; };
 		A88121E012C7816300A1A08E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
 		A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
-		A88121E212C7816300A1A08E /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
@@ -1655,7 +1798,6 @@
 		A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D511B8A70B0053FE85 /* OpenAL.framework */; };
 		A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
 		A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
-		A88123E712C7826300A1A08E /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */; };
 		A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88124A412C79E0100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
@@ -1959,12 +2101,6 @@
 		A8B9FA1D13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F713FB68AF00552296 /* save-btn@2x~iphone.png */; };
 		A8B9FA1E13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F713FB68AF00552296 /* save-btn@2x~iphone.png */; };
 		A8B9FA1F13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F713FB68AF00552296 /* save-btn@2x~iphone.png */; };
-		A8B9FA2013FB68AF00552296 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F813FB68AF00552296 /* ResumeButton~iphone.png */; };
-		A8B9FA2113FB68AF00552296 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F813FB68AF00552296 /* ResumeButton~iphone.png */; };
-		A8B9FA2213FB68AF00552296 /* ResumeButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F813FB68AF00552296 /* ResumeButton~iphone.png */; };
-		A8B9FA2313FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F913FB68AF00552296 /* ResumeButton@2x~iphone.png */; };
-		A8B9FA2413FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F913FB68AF00552296 /* ResumeButton@2x~iphone.png */; };
-		A8B9FA2513FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9F913FB68AF00552296 /* ResumeButton@2x~iphone.png */; };
 		A8B9FA2613FB68AF00552296 /* preferences-btn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9FA13FB68AF00552296 /* preferences-btn~iphone.png */; };
 		A8B9FA2713FB68AF00552296 /* preferences-btn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9FA13FB68AF00552296 /* preferences-btn~iphone.png */; };
 		A8B9FA2813FB68AF00552296 /* preferences-btn~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9FA13FB68AF00552296 /* preferences-btn~iphone.png */; };
@@ -2212,6 +2348,63 @@
 		A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
 		A8DC9A411238933700317186 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
+		A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
+		A8DEE8DA145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
+		A8DEE8DB145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
+		A8DEE8E2145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
+		A8DEE8E3145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
+		A8DEE8E4145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
+		A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
+		A8DEE8E6145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
+		A8DEE8E7145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
+		A8DEE8E8145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */; };
+		A8DEE8E9145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */; };
+		A8DEE8EA145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */; };
+		A8DEE8EB145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */; };
+		A8DEE8EC145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */; };
+		A8DEE8ED145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */; };
+		A8DEE8EE145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */; };
+		A8DEE8EF145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */; };
+		A8DEE8F0145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */; };
+		A8DEE8F1145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
+		A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
+		A8DEE8F3145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
+		A8DEE900145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */; };
+		A8DEE901145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */; };
+		A8DEE902145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */; };
+		A8DEE903145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F5145CEB4100D8608F /* WeaponsButton@2x~iphone.png */; };
+		A8DEE904145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F5145CEB4100D8608F /* WeaponsButton@2x~iphone.png */; };
+		A8DEE905145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F5145CEB4100D8608F /* WeaponsButton@2x~iphone.png */; };
+		A8DEE906145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
+		A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
+		A8DEE908145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
+		A8DEE909145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */; };
+		A8DEE90A145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */; };
+		A8DEE90B145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */; };
+		A8DEE90C145CEB4300D8608F /* SaveButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */; };
+		A8DEE90D145CEB4300D8608F /* SaveButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */; };
+		A8DEE90E145CEB4300D8608F /* SaveButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */; };
+		A8DEE90F145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F9145CEB4100D8608F /* SaveButton@2x~iphone.png */; };
+		A8DEE910145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F9145CEB4100D8608F /* SaveButton@2x~iphone.png */; };
+		A8DEE911145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F9145CEB4100D8608F /* SaveButton@2x~iphone.png */; };
+		A8DEE912145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FA145CEB4200D8608F /* AmmoButton@2x~iphone.png */; };
+		A8DEE913145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FA145CEB4200D8608F /* AmmoButton@2x~iphone.png */; };
+		A8DEE914145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FA145CEB4200D8608F /* AmmoButton@2x~iphone.png */; };
+		A8DEE915145CEB4300D8608F /* AmmoButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FB145CEB4200D8608F /* AmmoButton~iphone.png */; };
+		A8DEE916145CEB4300D8608F /* AmmoButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FB145CEB4200D8608F /* AmmoButton~iphone.png */; };
+		A8DEE917145CEB4300D8608F /* AmmoButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FB145CEB4200D8608F /* AmmoButton~iphone.png */; };
+		A8DEE918145CEB4300D8608F /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FC145CEB4200D8608F /* AmmoButton.png */; };
+		A8DEE919145CEB4300D8608F /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FC145CEB4200D8608F /* AmmoButton.png */; };
+		A8DEE91A145CEB4300D8608F /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FC145CEB4200D8608F /* AmmoButton.png */; };
+		A8DEE91B145CEB4300D8608F /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FD145CEB4200D8608F /* WeaponsButton.png */; };
+		A8DEE91C145CEB4300D8608F /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FD145CEB4200D8608F /* WeaponsButton.png */; };
+		A8DEE91D145CEB4300D8608F /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FD145CEB4200D8608F /* WeaponsButton.png */; };
+		A8DEE91E145CEB4300D8608F /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FE145CEB4200D8608F /* ShieldsButton.png */; };
+		A8DEE91F145CEB4300D8608F /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FE145CEB4200D8608F /* ShieldsButton.png */; };
+		A8DEE920145CEB4300D8608F /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FE145CEB4200D8608F /* ShieldsButton.png */; };
+		A8DEE921145CEB4300D8608F /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FF145CEB4300D8608F /* SaveButton.png */; };
+		A8DEE922145CEB4300D8608F /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FF145CEB4300D8608F /* SaveButton.png */; };
+		A8DEE923145CEB4300D8608F /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8FF145CEB4300D8608F /* SaveButton.png */; };
 		A8E3B5A01422E82D004D28A4 /* AboutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B5851422E82D004D28A4 /* AboutButton.png */; };
 		A8E3B5A11422E82D004D28A4 /* AboutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B5851422E82D004D28A4 /* AboutButton.png */; };
 		A8E3B5A21422E82D004D28A4 /* AboutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B5851422E82D004D28A4 /* AboutButton.png */; };
@@ -2285,9 +2478,6 @@
 		A8FCF12013B60DF00084B5C4 /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */; };
 		A8FCF12113B60DF00084B5C4 /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */; };
 		A8FCF12213B60DF00084B5C4 /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */; };
-		A8FCF12413B60E9C0084B5C4 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF12313B60E9B0084B5C4 /* ResumeButton.png */; };
-		A8FCF12513B60E9C0084B5C4 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF12313B60E9B0084B5C4 /* ResumeButton.png */; };
-		A8FCF12613B60E9C0084B5C4 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF12313B60E9B0084B5C4 /* ResumeButton.png */; };
 		A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A8FF817D130F6FE800A874F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -2470,6 +2660,8 @@
 		A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		A81EEFAA13E4F9660031E870 /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
 		A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		A8225B37144D1280000F5C7A /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		A826E50B139F0C6500EF8605 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A8294BDA1433F74600300CD5 /* DoneButtonThanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneButtonThanks.png; sourceTree = "<group>"; };
 		A8294BDB1433F74600300CD5 /* DoneButtonThanks@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButtonThanks@2x~iphone.png"; sourceTree = "<group>"; };
@@ -2615,6 +2807,60 @@
 		A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJoypadCocoaTouch.a; sourceTree = "<group>"; };
 		A83E4BB6140354A700D1ECDD /* JoypadXIBConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadXIBConfigure.h; sourceTree = "<group>"; };
 		A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoypadXIBConfigure.m; sourceTree = "<group>"; };
+		A83FBB44144C95DE00B27426 /* HDModeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeOff.png; sourceTree = "<group>"; };
+		A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOff@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOff~iphone.png"; sourceTree = "<group>"; };
+		A83FBB47144C95DE00B27426 /* HDModeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeOn.png; sourceTree = "<group>"; };
+		A83FBB48144C95DE00B27426 /* HDModeOn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOn@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB49144C95DE00B27426 /* HDModeOn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOn~iphone.png"; sourceTree = "<group>"; };
+		A83FBB4B144C95DE00B27426 /* SettingsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsBackground.png; sourceTree = "<group>"; };
+		A83FBB4C144C95DE00B27426 /* SettingsBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB4D144C95DE00B27426 /* SettingsBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground~iphone.png"; sourceTree = "<group>"; };
+		A83FBB4F144C95DE00B27426 /* SettingsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsBackground.png; sourceTree = "<group>"; };
+		A83FBB50144C95DE00B27426 /* SettingsBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB51144C95DE00B27426 /* SettingsBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground~iphone.png"; sourceTree = "<group>"; };
+		A83FBB53144C95DE00B27426 /* SettingsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsBackground.png; sourceTree = "<group>"; };
+		A83FBB54144C95DE00B27426 /* SettingsBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB55144C95DE00B27426 /* SettingsBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackground~iphone.png"; sourceTree = "<group>"; };
+		A83FBB56144C95DE00B27426 /* MCModeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MCModeOff.png; sourceTree = "<group>"; };
+		A83FBB57144C95DE00B27426 /* MCModeOff@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeOff@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB58144C95DE00B27426 /* MCModeOff~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeOff~iphone.png"; sourceTree = "<group>"; };
+		A83FBB59144C95DE00B27426 /* MCModeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MCModeOn.png; sourceTree = "<group>"; };
+		A83FBB5A144C95DE00B27426 /* MCModeOn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeOn@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB5B144C95DE00B27426 /* MCModeOn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeOn~iphone.png"; sourceTree = "<group>"; };
+		A83FBB5C144C95DE00B27426 /* Notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
+		A83FBB5F144C95DE00B27426 /* SettingsBackgroundLayout */ = {isa = PBXFileReference; lastKnownFileType = file; path = SettingsBackgroundLayout; sourceTree = "<group>"; };
+		A83FBB60144C95DE00B27426 /* SettingsBackgroundLayout@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackgroundLayout@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB61144C95DE00B27426 /* SettingsBackgroundLayout~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBackgroundLayout~iphone.png"; sourceTree = "<group>"; };
+		A83FBB64144C95DE00B27426 /* SliderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBackground.png; sourceTree = "<group>"; };
+		A83FBB65144C95DE00B27426 /* SliderBlackTrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBlackTrack.png; sourceTree = "<group>"; };
+		A83FBB66144C95DE00B27426 /* SliderRedTrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderRedTrack.png; sourceTree = "<group>"; };
+		A83FBB67144C95DE00B27426 /* SliderTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderTab.png; sourceTree = "<group>"; };
+		A83FBB68144C95DE00B27426 /* SwitchOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchOff.png; sourceTree = "<group>"; };
+		A83FBB6A144C95DE00B27426 /* SwitchOff@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwitchOff@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB6B144C95DE00B27426 /* SwitchOff~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwitchOff~iphone.png"; sourceTree = "<group>"; };
+		A83FBB6C144C95DE00B27426 /* SwitchOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchOn.png; sourceTree = "<group>"; };
+		A83FBB6D144C95DE00B27426 /* SwitchOn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwitchOn@2x~iphone.png"; sourceTree = "<group>"; };
+		A83FBB6E144C95DE00B27426 /* SwitchOn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwitchOn~iphone.png"; sourceTree = "<group>"; };
+		A8421EBC1455DA17008BBF22 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		A8421EC114565583008BBF22 /* MenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuButton.png; sourceTree = "<group>"; };
+		A8421EC214565583008BBF22 /* MenuButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421EC314565583008BBF22 /* MenuButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton~iphone.png"; sourceTree = "<group>"; };
+		A8421EC514565583008BBF22 /* OpenDoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpenDoor.png; sourceTree = "<group>"; };
+		A8421EC614565583008BBF22 /* OpenDoor@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OpenDoor@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421EC714565583008BBF22 /* OpenDoor~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OpenDoor~iphone.png"; sourceTree = "<group>"; };
+		A8421EC814565583008BBF22 /* ResumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeButton.png; sourceTree = "<group>"; };
+		A8421EC914565583008BBF22 /* ResumeButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResumeButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421ECA14565583008BBF22 /* ResumeButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResumeButton~iphone.png"; sourceTree = "<group>"; };
+		A8421ECB14565583008BBF22 /* SaveGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveGame.png; sourceTree = "<group>"; };
+		A8421ECC14565583008BBF22 /* SaveGame@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SaveGame@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421ECD14565583008BBF22 /* SaveGame~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SaveGame~iphone.png"; sourceTree = "<group>"; };
+		A8421ECE14565583008BBF22 /* ThrowSwitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThrowSwitch.png; sourceTree = "<group>"; };
+		A8421ECF14565583008BBF22 /* ThrowSwitch@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ThrowSwitch@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421ED014565583008BBF22 /* ThrowSwitch~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ThrowSwitch~iphone.png"; sourceTree = "<group>"; };
+		A8421ED114565583008BBF22 /* UseComputer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UseComputer.png; sourceTree = "<group>"; };
+		A8421ED214565583008BBF22 /* UseComputer@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UseComputer@2x~iphone.png"; sourceTree = "<group>"; };
+		A8421ED314565583008BBF22 /* UseComputer~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UseComputer~iphone.png"; sourceTree = "<group>"; };
 		A842544111B4A36500F4D68F /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		A842544311B4A36500F4D68F /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A84254AA11B4A9DA00F4D68F /* AlephOneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneHelper.h; path = Classes/AlephOneHelper.h; sourceTree = "<group>"; };
@@ -2709,7 +2955,6 @@
 		A85E688111CB18FD00D0FAEF /* pngwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwrite.c; path = "Libraries/libpng-1.2.24/pngwrite.c"; sourceTree = SOURCE_ROOT; };
 		A85E688211CB18FD00D0FAEF /* pngwtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwtran.c; path = "Libraries/libpng-1.2.24/pngwtran.c"; sourceTree = SOURCE_ROOT; };
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
-		A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground~iphone.png"; sourceTree = "<group>"; };
 		A864DDA213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground@2x~iphone.png"; sourceTree = "<group>"; };
 		A864DDB513FDF0A800A0AE0C /* VMModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VMModeAd~iphone.png"; sourceTree = "<group>"; };
@@ -3446,8 +3691,6 @@
 		A8B9F9F513FB68AF00552296 /* secondarybuttons-bg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondarybuttons-bg@2x~iphone.png"; sourceTree = "<group>"; };
 		A8B9F9F613FB68AF00552296 /* save-btn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-btn~iphone.png"; sourceTree = "<group>"; };
 		A8B9F9F713FB68AF00552296 /* save-btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-btn@2x~iphone.png"; sourceTree = "<group>"; };
-		A8B9F9F813FB68AF00552296 /* ResumeButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResumeButton~iphone.png"; sourceTree = "<group>"; };
-		A8B9F9F913FB68AF00552296 /* ResumeButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResumeButton@2x~iphone.png"; sourceTree = "<group>"; };
 		A8B9F9FA13FB68AF00552296 /* preferences-btn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preferences-btn~iphone.png"; sourceTree = "<group>"; };
 		A8B9F9FB13FB68AF00552296 /* preferences-btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preferences-btn@2x~iphone.png"; sourceTree = "<group>"; };
 		A8B9F9FC13FB68AF00552296 /* MainMenuButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMenuButton~iphone.png"; sourceTree = "<group>"; };
@@ -3575,6 +3818,25 @@
 		A8DAB89B134E9F5600E4AF10 /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Achievements.h; path = Classes/Achievements.h; sourceTree = "<group>"; };
 		A8DAB89C134E9F5600E4AF10 /* Achievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Achievements.m; path = Classes/Achievements.m; sourceTree = "<group>"; };
 		A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BasicHUDViewController~iphone.xib"; sourceTree = "<group>"; };
+		A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTab~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTab@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRedTrack~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBlackTrack~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBlackTrack@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRedTrack@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeaponsButton~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F5145CEB4100D8608F /* WeaponsButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeaponsButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShieldsButton~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShieldsButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SaveButton~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8F9145CEB4100D8608F /* SaveButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SaveButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8FA145CEB4200D8608F /* AmmoButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AmmoButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8FB145CEB4200D8608F /* AmmoButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AmmoButton~iphone.png"; sourceTree = "<group>"; };
+		A8DEE8FC145CEB4200D8608F /* AmmoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AmmoButton.png; sourceTree = "<group>"; };
+		A8DEE8FD145CEB4200D8608F /* WeaponsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeaponsButton.png; sourceTree = "<group>"; };
+		A8DEE8FE145CEB4200D8608F /* ShieldsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShieldsButton.png; sourceTree = "<group>"; };
+		A8DEE8FF145CEB4300D8608F /* SaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveButton.png; sourceTree = "<group>"; };
 		A8E3B5851422E82D004D28A4 /* AboutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutButton.png; sourceTree = "<group>"; };
 		A8E3B5861422E82D004D28A4 /* AboutButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutButton@2x~iphone.png"; sourceTree = "<group>"; };
 		A8E3B5871422E82D004D28A4 /* AboutButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutButton~iphone.png"; sourceTree = "<group>"; };
@@ -3612,7 +3874,6 @@
 		A8FCF11313B60A830084B5C4 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackButton.png; path = Artwork/BackButton.png; sourceTree = "<group>"; };
 		A8FCF11B13B60DEF0084B5C4 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
 		A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenuButton.png; sourceTree = "<group>"; };
-		A8FCF12313B60E9B0084B5C4 /* ResumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeButton.png; sourceTree = "<group>"; };
 		A8FEAB361290773200FA55E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8FF85C31310AF4500A874F8 /* Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Purchases.h; path = Classes/Purchases.h; sourceTree = "<group>"; };
 		A8FF85C41310AF4500A874F8 /* Purchases.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Purchases.mm; path = Classes/Purchases.mm; sourceTree = "<group>"; };
@@ -3623,6 +3884,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8421EBD1455DA17008BBF22 /* libbz2.dylib in Frameworks */,
+				A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
 				A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
@@ -3639,7 +3902,6 @@
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
-				A85E68BF11CB1A6F00D0FAEF /* libz.1.2.3.dylib in Frameworks */,
 				A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
 				A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */,
@@ -3660,7 +3922,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8718178140D584F00327BEF /* libbz2.1.0.dylib in Frameworks */,
+				A8421EBE1455DDD9008BBF22 /* libbz2.dylib in Frameworks */,
+				A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
@@ -3685,7 +3948,6 @@
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				A88121E012C7816300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */,
-				A88121E212C7816300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */,
 				A83E4BB41403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
@@ -3697,9 +3959,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
-				A88123E712C7826300A1A08E /* libz.1.2.3.dylib in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
@@ -3768,6 +4030,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A8421EBC1455DA17008BBF22 /* libbz2.dylib */,
 				A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */,
 				A871817A140DA9E000327BEF /* BuildConfigurations */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
@@ -3817,8 +4080,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A83FBB42144C95DE00B27426 /* SettingsScreen */,
 				A8294BD91433F74600300CD5 /* ThanksScreen */,
 				A89B96181433C65D005E9FF3 /* LoadingScreen */,
+				A8421EBF14565583008BBF22 /* PauseScreen */,
 				A85B584C1433BEC00013CDC9 /* NewGameScreen */,
 				A8E3B5841422E82D004D28A4 /* HomeScreen */,
 				A80498E413DE1CD900F807FB /* Reticules */,
@@ -3852,7 +4117,6 @@
 				A82F35D511B8A70B0053FE85 /* OpenAL.framework */,
 				A850887D11C1E49400D95436 /* MobileCoreServices.framework */,
 				A850887F11C1E49400D95436 /* SystemConfiguration.framework */,
-				A85E68BE11CB1A6F00D0FAEF /* libz.1.2.3.dylib */,
 				A8AD43501222125200A09383 /* CoreData.framework */,
 				A87FF02E12452C7E0033A3EB /* OpenGLES.framework */,
 				A8FEAB361290773200FA55E0 /* AVFoundation.framework */,
@@ -3864,6 +4128,8 @@
 				A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */,
 				A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */,
 				A8718177140D584F00327BEF /* libbz2.1.0.dylib */,
+				A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */,
+				A8225B37144D1280000F5C7A /* libz.1.1.3.dylib */,
 				A8DAB8B9134EA12E00E4AF10 /* GameKit.framework */,
 			);
 			name = Frameworks;
@@ -4208,9 +4474,121 @@
 			path = Libraries/JoypadCocoaTouchSDK;
 			sourceTree = SOURCE_ROOT;
 		};
+		A83FBB42144C95DE00B27426 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A83FBB44144C95DE00B27426 /* HDModeOff.png */,
+				A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */,
+				A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */,
+				A83FBB47144C95DE00B27426 /* HDModeOn.png */,
+				A83FBB48144C95DE00B27426 /* HDModeOn@2x~iphone.png */,
+				A83FBB49144C95DE00B27426 /* HDModeOn~iphone.png */,
+				A83FBB4A144C95DE00B27426 /* M1 */,
+				A83FBB4E144C95DE00B27426 /* M2 */,
+				A83FBB52144C95DE00B27426 /* M3 */,
+				A83FBB56144C95DE00B27426 /* MCModeOff.png */,
+				A83FBB57144C95DE00B27426 /* MCModeOff@2x~iphone.png */,
+				A83FBB58144C95DE00B27426 /* MCModeOff~iphone.png */,
+				A83FBB59144C95DE00B27426 /* MCModeOn.png */,
+				A83FBB5A144C95DE00B27426 /* MCModeOn@2x~iphone.png */,
+				A83FBB5B144C95DE00B27426 /* MCModeOn~iphone.png */,
+				A83FBB5C144C95DE00B27426 /* Notes.txt */,
+				A83FBB5F144C95DE00B27426 /* SettingsBackgroundLayout */,
+				A83FBB60144C95DE00B27426 /* SettingsBackgroundLayout@2x~iphone.png */,
+				A83FBB61144C95DE00B27426 /* SettingsBackgroundLayout~iphone.png */,
+				A83FBB64144C95DE00B27426 /* SliderBackground.png */,
+				A83FBB65144C95DE00B27426 /* SliderBlackTrack.png */,
+				A83FBB66144C95DE00B27426 /* SliderRedTrack.png */,
+				A83FBB67144C95DE00B27426 /* SliderTab.png */,
+				A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */,
+				A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */,
+				A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */,
+				A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */,
+				A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */,
+				A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */,
+				A83FBB68144C95DE00B27426 /* SwitchOff.png */,
+				A83FBB6A144C95DE00B27426 /* SwitchOff@2x~iphone.png */,
+				A83FBB6B144C95DE00B27426 /* SwitchOff~iphone.png */,
+				A83FBB6C144C95DE00B27426 /* SwitchOn.png */,
+				A83FBB6D144C95DE00B27426 /* SwitchOn@2x~iphone.png */,
+				A83FBB6E144C95DE00B27426 /* SwitchOn~iphone.png */,
+			);
+			name = SettingsScreen;
+			path = Resources/SettingsScreen;
+			sourceTree = "<group>";
+		};
+		A83FBB4A144C95DE00B27426 /* M1 */ = {
+			isa = PBXGroup;
+			children = (
+				A83FBB4B144C95DE00B27426 /* SettingsBackground.png */,
+				A83FBB4C144C95DE00B27426 /* SettingsBackground@2x~iphone.png */,
+				A83FBB4D144C95DE00B27426 /* SettingsBackground~iphone.png */,
+			);
+			path = M1;
+			sourceTree = "<group>";
+		};
+		A83FBB4E144C95DE00B27426 /* M2 */ = {
+			isa = PBXGroup;
+			children = (
+				A83FBB4F144C95DE00B27426 /* SettingsBackground.png */,
+				A83FBB50144C95DE00B27426 /* SettingsBackground@2x~iphone.png */,
+				A83FBB51144C95DE00B27426 /* SettingsBackground~iphone.png */,
+			);
+			path = M2;
+			sourceTree = "<group>";
+		};
+		A83FBB52144C95DE00B27426 /* M3 */ = {
+			isa = PBXGroup;
+			children = (
+				A83FBB53144C95DE00B27426 /* SettingsBackground.png */,
+				A83FBB54144C95DE00B27426 /* SettingsBackground@2x~iphone.png */,
+				A83FBB55144C95DE00B27426 /* SettingsBackground~iphone.png */,
+			);
+			path = M3;
+			sourceTree = "<group>";
+		};
+		A8421EBF14565583008BBF22 /* PauseScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A8421EC114565583008BBF22 /* MenuButton.png */,
+				A8421EC214565583008BBF22 /* MenuButton@2x~iphone.png */,
+				A8421EC314565583008BBF22 /* MenuButton~iphone.png */,
+				A8421EC514565583008BBF22 /* OpenDoor.png */,
+				A8421EC614565583008BBF22 /* OpenDoor@2x~iphone.png */,
+				A8421EC714565583008BBF22 /* OpenDoor~iphone.png */,
+				A8421EC814565583008BBF22 /* ResumeButton.png */,
+				A8421EC914565583008BBF22 /* ResumeButton@2x~iphone.png */,
+				A8421ECA14565583008BBF22 /* ResumeButton~iphone.png */,
+				A8421ECB14565583008BBF22 /* SaveGame.png */,
+				A8421ECC14565583008BBF22 /* SaveGame@2x~iphone.png */,
+				A8421ECD14565583008BBF22 /* SaveGame~iphone.png */,
+				A8421ECE14565583008BBF22 /* ThrowSwitch.png */,
+				A8421ECF14565583008BBF22 /* ThrowSwitch@2x~iphone.png */,
+				A8421ED014565583008BBF22 /* ThrowSwitch~iphone.png */,
+				A8421ED114565583008BBF22 /* UseComputer.png */,
+				A8421ED214565583008BBF22 /* UseComputer@2x~iphone.png */,
+				A8421ED314565583008BBF22 /* UseComputer~iphone.png */,
+				A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */,
+				A8DEE8F5145CEB4100D8608F /* WeaponsButton@2x~iphone.png */,
+				A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */,
+				A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */,
+				A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */,
+				A8DEE8F9145CEB4100D8608F /* SaveButton@2x~iphone.png */,
+				A8DEE8FA145CEB4200D8608F /* AmmoButton@2x~iphone.png */,
+				A8DEE8FB145CEB4200D8608F /* AmmoButton~iphone.png */,
+				A8DEE8FC145CEB4200D8608F /* AmmoButton.png */,
+				A8DEE8FD145CEB4200D8608F /* WeaponsButton.png */,
+				A8DEE8FE145CEB4200D8608F /* ShieldsButton.png */,
+				A8DEE8FF145CEB4300D8608F /* SaveButton.png */,
+			);
+			name = PauseScreen;
+			path = Resources/PauseScreen;
+			sourceTree = "<group>";
+		};
 		A853C9AD13CF23A2001E8A25 /* XIB-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A8C5563914267C29003D329B /* PurchaseViewController.xib */,
 				A82BBD16141015A500CE1F92 /* RootViewController.xib */,
 				A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */,
@@ -4224,7 +4602,6 @@
 				A853C9B313CF23A2001E8A25 /* MainWindow.xib */,
 				A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */,
 				A853C9B513CF23A2001E8A25 /* PauseViewController.xib */,
-				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */,
 				A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */,
 				A853C9BA13CF23A2001E8A25 /* SaveGameViewController.xib */,
@@ -4239,6 +4616,7 @@
 				A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */,
 				A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */,
 				A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */,
+				A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */,
 				A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */,
 				A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */,
 				A8B9F9EC13FAE4F500552296 /* PauseViewController~iphone.xib */,
@@ -5546,7 +5924,6 @@
 				A8AFDFCB1402D2B700CC4B31 /* JoyPadButton~iphone.png */,
 				A8AFDFCC1402D2B700CC4B31 /* JoyPadButton@2x~iphone.png */,
 				A8AFDFCD1402D2B700CC4B31 /* JoyPadButton.png */,
-				A8FCF12313B60E9B0084B5C4 /* ResumeButton.png */,
 				A8FCF11B13B60DEF0084B5C4 /* HelpButton.png */,
 				A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */,
 				A8AF816312B7124000671C11 /* ammunition-btn.png */,
@@ -5565,8 +5942,6 @@
 				A8B9F9F513FB68AF00552296 /* secondarybuttons-bg@2x~iphone.png */,
 				A8B9F9F613FB68AF00552296 /* save-btn~iphone.png */,
 				A8B9F9F713FB68AF00552296 /* save-btn@2x~iphone.png */,
-				A8B9F9F813FB68AF00552296 /* ResumeButton~iphone.png */,
-				A8B9F9F913FB68AF00552296 /* ResumeButton@2x~iphone.png */,
 				A8B9F9FA13FB68AF00552296 /* preferences-btn~iphone.png */,
 				A8B9F9FB13FB68AF00552296 /* preferences-btn@2x~iphone.png */,
 				A8B9F9FC13FB68AF00552296 /* MainMenuButton~iphone.png */,
@@ -6053,7 +6428,6 @@
 				A8FCF11413B60A830084B5C4 /* BackButton.png in Resources */,
 				A8FCF11D13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12013B60DF00084B5C4 /* MainMenuButton.png in Resources */,
-				A8FCF12413B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A853C9BE13CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C113CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C413CF23A2001E8A25 /* GameViewController.xib in Resources */,
@@ -6105,8 +6479,6 @@
 				A8B9FA1713FB68AF00552296 /* secondarybuttons-bg@2x~iphone.png in Resources */,
 				A8B9FA1A13FB68AF00552296 /* save-btn~iphone.png in Resources */,
 				A8B9FA1D13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */,
-				A8B9FA2013FB68AF00552296 /* ResumeButton~iphone.png in Resources */,
-				A8B9FA2313FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */,
 				A8B9FA2613FB68AF00552296 /* preferences-btn~iphone.png in Resources */,
 				A8B9FA2913FB68AF00552296 /* preferences-btn@2x~iphone.png in Resources */,
 				A8B9FA2C13FB68AF00552296 /* MainMenuButton~iphone.png in Resources */,
@@ -6310,6 +6682,72 @@
 				A8294BFC1433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C111433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A8294C171433F74700300CD5 /* ThanksScreen960x640.png in Resources */,
+				A83FBB72144C95DF00B27426 /* HDModeOff.png in Resources */,
+				A83FBB75144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */,
+				A83FBB78144C95DF00B27426 /* HDModeOff~iphone.png in Resources */,
+				A83FBB7B144C95DF00B27426 /* HDModeOn.png in Resources */,
+				A83FBB7E144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */,
+				A83FBB81144C95DF00B27426 /* HDModeOn~iphone.png in Resources */,
+				A83FBB84144C95DF00B27426 /* SettingsBackground.png in Resources */,
+				A83FBB87144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
+				A83FBB8A144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
+				A83FBB9F144C95DF00B27426 /* MCModeOff.png in Resources */,
+				A83FBBA2144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */,
+				A83FBBA5144C95DF00B27426 /* MCModeOff~iphone.png in Resources */,
+				A83FBBA8144C95DF00B27426 /* MCModeOn.png in Resources */,
+				A83FBBAB144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */,
+				A83FBBAE144C95DF00B27426 /* MCModeOn~iphone.png in Resources */,
+				A83FBBB1144C95DF00B27426 /* Notes.txt in Resources */,
+				A83FBBBA144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
+				A83FBBBD144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
+				A83FBBC0144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
+				A83FBBC9144C95DF00B27426 /* SliderBackground.png in Resources */,
+				A83FBBCC144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
+				A83FBBCF144C95DF00B27426 /* SliderRedTrack.png in Resources */,
+				A83FBBD2144C95DF00B27426 /* SliderTab.png in Resources */,
+				A83FBBD5144C95DF00B27426 /* SwitchOff.png in Resources */,
+				A83FBBDB144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
+				A83FBBDE144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
+				A83FBBE1144C95DF00B27426 /* SwitchOn.png in Resources */,
+				A83FBBE4144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */,
+				A83FBBE7144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
+				A8421ED714565584008BBF22 /* MenuButton.png in Resources */,
+				A8421EDA14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
+				A8421EDD14565584008BBF22 /* MenuButton~iphone.png in Resources */,
+				A8421EE314565584008BBF22 /* OpenDoor.png in Resources */,
+				A8421EE614565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
+				A8421EE914565584008BBF22 /* OpenDoor~iphone.png in Resources */,
+				A8421EEC14565584008BBF22 /* ResumeButton.png in Resources */,
+				A8421EEF14565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
+				A8421EF214565584008BBF22 /* ResumeButton~iphone.png in Resources */,
+				A8421EF514565584008BBF22 /* SaveGame.png in Resources */,
+				A8421EF814565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
+				A8421EFB14565584008BBF22 /* SaveGame~iphone.png in Resources */,
+				A8421EFE14565584008BBF22 /* ThrowSwitch.png in Resources */,
+				A8421F0114565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				A8421F0414565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
+				A8421F0714565584008BBF22 /* UseComputer.png in Resources */,
+				A8421F0A14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
+				A8421F0D14565584008BBF22 /* UseComputer~iphone.png in Resources */,
+				A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
+				A8DEE8E2145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
+				A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
+				A8DEE8E8145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
+				A8DEE8EB145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				A8DEE8EE145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
+				A8DEE8F1145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
+				A8DEE900145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */,
+				A8DEE903145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */,
+				A8DEE906145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
+				A8DEE909145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
+				A8DEE90C145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
+				A8DEE90F145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
+				A8DEE912145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
+				A8DEE915145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
+				A8DEE918145CEB4300D8608F /* AmmoButton.png in Resources */,
+				A8DEE91B145CEB4300D8608F /* WeaponsButton.png in Resources */,
+				A8DEE91E145CEB4300D8608F /* ShieldsButton.png in Resources */,
+				A8DEE921145CEB4300D8608F /* SaveButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6379,7 +6817,6 @@
 				A8FCF11513B60A830084B5C4 /* BackButton.png in Resources */,
 				A8FCF11E13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12113B60DF00084B5C4 /* MainMenuButton.png in Resources */,
-				A8FCF12513B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A853C9BF13CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C213CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C513CF23A2001E8A25 /* GameViewController.xib in Resources */,
@@ -6431,8 +6868,6 @@
 				A8B9FA1813FB68AF00552296 /* secondarybuttons-bg@2x~iphone.png in Resources */,
 				A8B9FA1B13FB68AF00552296 /* save-btn~iphone.png in Resources */,
 				A8B9FA1E13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */,
-				A8B9FA2113FB68AF00552296 /* ResumeButton~iphone.png in Resources */,
-				A8B9FA2413FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */,
 				A8B9FA2713FB68AF00552296 /* preferences-btn~iphone.png in Resources */,
 				A8B9FA2A13FB68AF00552296 /* preferences-btn@2x~iphone.png in Resources */,
 				A8B9FA2D13FB68AF00552296 /* MainMenuButton~iphone.png in Resources */,
@@ -6632,6 +7067,72 @@
 				A8294C061433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C121433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A8294C181433F74700300CD5 /* ThanksScreen960x640.png in Resources */,
+				A83FBB73144C95DF00B27426 /* HDModeOff.png in Resources */,
+				A83FBB76144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */,
+				A83FBB79144C95DF00B27426 /* HDModeOff~iphone.png in Resources */,
+				A83FBB7C144C95DF00B27426 /* HDModeOn.png in Resources */,
+				A83FBB7F144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */,
+				A83FBB82144C95DF00B27426 /* HDModeOn~iphone.png in Resources */,
+				A83FBB8E144C95DF00B27426 /* SettingsBackground.png in Resources */,
+				A83FBB91144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
+				A83FBB94144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
+				A83FBBA0144C95DF00B27426 /* MCModeOff.png in Resources */,
+				A83FBBA3144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */,
+				A83FBBA6144C95DF00B27426 /* MCModeOff~iphone.png in Resources */,
+				A83FBBA9144C95DF00B27426 /* MCModeOn.png in Resources */,
+				A83FBBAC144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */,
+				A83FBBAF144C95DF00B27426 /* MCModeOn~iphone.png in Resources */,
+				A83FBBB2144C95DF00B27426 /* Notes.txt in Resources */,
+				A83FBBBB144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
+				A83FBBBE144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
+				A83FBBC1144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
+				A83FBBCA144C95DF00B27426 /* SliderBackground.png in Resources */,
+				A83FBBCD144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
+				A83FBBD0144C95DF00B27426 /* SliderRedTrack.png in Resources */,
+				A83FBBD3144C95DF00B27426 /* SliderTab.png in Resources */,
+				A83FBBD6144C95DF00B27426 /* SwitchOff.png in Resources */,
+				A83FBBDC144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
+				A83FBBDF144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
+				A83FBBE2144C95DF00B27426 /* SwitchOn.png in Resources */,
+				A83FBBE5144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */,
+				A83FBBE8144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
+				A8421ED814565584008BBF22 /* MenuButton.png in Resources */,
+				A8421EDB14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
+				A8421EDE14565584008BBF22 /* MenuButton~iphone.png in Resources */,
+				A8421EE414565584008BBF22 /* OpenDoor.png in Resources */,
+				A8421EE714565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
+				A8421EEA14565584008BBF22 /* OpenDoor~iphone.png in Resources */,
+				A8421EED14565584008BBF22 /* ResumeButton.png in Resources */,
+				A8421EF014565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
+				A8421EF314565584008BBF22 /* ResumeButton~iphone.png in Resources */,
+				A8421EF614565584008BBF22 /* SaveGame.png in Resources */,
+				A8421EF914565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
+				A8421EFC14565584008BBF22 /* SaveGame~iphone.png in Resources */,
+				A8421EFF14565584008BBF22 /* ThrowSwitch.png in Resources */,
+				A8421F0214565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				A8421F0514565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
+				A8421F0814565584008BBF22 /* UseComputer.png in Resources */,
+				A8421F0B14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
+				A8421F0E14565584008BBF22 /* UseComputer~iphone.png in Resources */,
+				A8DEE8DA145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
+				A8DEE8E3145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
+				A8DEE8E6145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
+				A8DEE8E9145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
+				A8DEE8EC145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				A8DEE8EF145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
+				A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
+				A8DEE901145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */,
+				A8DEE904145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */,
+				A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
+				A8DEE90A145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
+				A8DEE90D145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
+				A8DEE910145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
+				A8DEE913145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
+				A8DEE916145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
+				A8DEE919145CEB4300D8608F /* AmmoButton.png in Resources */,
+				A8DEE91C145CEB4300D8608F /* WeaponsButton.png in Resources */,
+				A8DEE91F145CEB4300D8608F /* ShieldsButton.png in Resources */,
+				A8DEE922145CEB4300D8608F /* SaveButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6704,7 +7205,6 @@
 				A8FCF11613B60A830084B5C4 /* BackButton.png in Resources */,
 				A8FCF11F13B60DF00084B5C4 /* HelpButton.png in Resources */,
 				A8FCF12213B60DF00084B5C4 /* MainMenuButton.png in Resources */,
-				A8FCF12613B60E9C0084B5C4 /* ResumeButton.png in Resources */,
 				A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C313CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C613CF23A2001E8A25 /* GameViewController.xib in Resources */,
@@ -6756,8 +7256,6 @@
 				A8B9FA1913FB68AF00552296 /* secondarybuttons-bg@2x~iphone.png in Resources */,
 				A8B9FA1C13FB68AF00552296 /* save-btn~iphone.png in Resources */,
 				A8B9FA1F13FB68AF00552296 /* save-btn@2x~iphone.png in Resources */,
-				A8B9FA2213FB68AF00552296 /* ResumeButton~iphone.png in Resources */,
-				A8B9FA2513FB68AF00552296 /* ResumeButton@2x~iphone.png in Resources */,
 				A8B9FA2813FB68AF00552296 /* preferences-btn~iphone.png in Resources */,
 				A8B9FA2B13FB68AF00552296 /* preferences-btn@2x~iphone.png in Resources */,
 				A8B9FA2E13FB68AF00552296 /* MainMenuButton~iphone.png in Resources */,
@@ -6948,6 +7446,72 @@
 				A8294C101433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C131433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A8294C191433F74700300CD5 /* ThanksScreen960x640.png in Resources */,
+				A83FBB74144C95DF00B27426 /* HDModeOff.png in Resources */,
+				A83FBB77144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */,
+				A83FBB7A144C95DF00B27426 /* HDModeOff~iphone.png in Resources */,
+				A83FBB7D144C95DF00B27426 /* HDModeOn.png in Resources */,
+				A83FBB80144C95DF00B27426 /* HDModeOn@2x~iphone.png in Resources */,
+				A83FBB83144C95DF00B27426 /* HDModeOn~iphone.png in Resources */,
+				A83FBB98144C95DF00B27426 /* SettingsBackground.png in Resources */,
+				A83FBB9B144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
+				A83FBB9E144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
+				A83FBBA1144C95DF00B27426 /* MCModeOff.png in Resources */,
+				A83FBBA4144C95DF00B27426 /* MCModeOff@2x~iphone.png in Resources */,
+				A83FBBA7144C95DF00B27426 /* MCModeOff~iphone.png in Resources */,
+				A83FBBAA144C95DF00B27426 /* MCModeOn.png in Resources */,
+				A83FBBAD144C95DF00B27426 /* MCModeOn@2x~iphone.png in Resources */,
+				A83FBBB0144C95DF00B27426 /* MCModeOn~iphone.png in Resources */,
+				A83FBBB3144C95DF00B27426 /* Notes.txt in Resources */,
+				A83FBBBC144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
+				A83FBBBF144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
+				A83FBBC2144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
+				A83FBBCB144C95DF00B27426 /* SliderBackground.png in Resources */,
+				A83FBBCE144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
+				A83FBBD1144C95DF00B27426 /* SliderRedTrack.png in Resources */,
+				A83FBBD4144C95DF00B27426 /* SliderTab.png in Resources */,
+				A83FBBD7144C95DF00B27426 /* SwitchOff.png in Resources */,
+				A83FBBDD144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
+				A83FBBE0144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
+				A83FBBE3144C95DF00B27426 /* SwitchOn.png in Resources */,
+				A83FBBE6144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */,
+				A83FBBE9144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
+				A8421ED914565584008BBF22 /* MenuButton.png in Resources */,
+				A8421EDC14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
+				A8421EDF14565584008BBF22 /* MenuButton~iphone.png in Resources */,
+				A8421EE514565584008BBF22 /* OpenDoor.png in Resources */,
+				A8421EE814565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
+				A8421EEB14565584008BBF22 /* OpenDoor~iphone.png in Resources */,
+				A8421EEE14565584008BBF22 /* ResumeButton.png in Resources */,
+				A8421EF114565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
+				A8421EF414565584008BBF22 /* ResumeButton~iphone.png in Resources */,
+				A8421EF714565584008BBF22 /* SaveGame.png in Resources */,
+				A8421EFA14565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
+				A8421EFD14565584008BBF22 /* SaveGame~iphone.png in Resources */,
+				A8421F0014565584008BBF22 /* ThrowSwitch.png in Resources */,
+				A8421F0314565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				A8421F0614565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
+				A8421F0914565584008BBF22 /* UseComputer.png in Resources */,
+				A8421F0C14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
+				A8421F0F14565584008BBF22 /* UseComputer~iphone.png in Resources */,
+				A8DEE8DB145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
+				A8DEE8E4145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
+				A8DEE8E7145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
+				A8DEE8EA145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
+				A8DEE8ED145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				A8DEE8F0145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
+				A8DEE8F3145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
+				A8DEE902145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */,
+				A8DEE905145CEB4300D8608F /* WeaponsButton@2x~iphone.png in Resources */,
+				A8DEE908145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
+				A8DEE90B145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
+				A8DEE90E145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
+				A8DEE911145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
+				A8DEE914145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
+				A8DEE917145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
+				A8DEE91A145CEB4300D8608F /* AmmoButton.png in Resources */,
+				A8DEE91D145CEB4300D8608F /* WeaponsButton.png in Resources */,
+				A8DEE920145CEB4300D8608F /* ShieldsButton.png in Resources */,
+				A8DEE923145CEB4300D8608F /* SaveButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8271,6 +8835,11 @@
 		A85E685E11CB173A00D0FAEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -8288,7 +8857,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8299,7 +8867,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -8323,7 +8890,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8334,7 +8900,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -8556,6 +9121,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8599,7 +9165,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8610,7 +9175,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B320912-1F8E-4275-8E07-75F6467883E5";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -8701,6 +9265,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8743,7 +9308,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8753,7 +9317,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHocDistribution;
@@ -8773,6 +9336,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8810,6 +9374,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
