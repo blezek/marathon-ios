@@ -25,19 +25,28 @@
 }
 
 @property(nonatomic,retain) UIActivityIndicatorView *activity;
+
 @property(nonatomic,retain) UILabel *vmmTitle;
 @property(nonatomic,retain) UILabel *vmmPrice;
 @property(nonatomic,retain) UITextView *vmmDescription;
+@property(nonatomic,retain) UIButton *vmmPurchase;
+
 @property(nonatomic,retain) UILabel *hdmTitle;
 @property(nonatomic,retain) UILabel *hdmPrice;
 @property(nonatomic,retain) UITextView *hdmDescription;
 @property(nonatomic,retain) UIButton *hdmPurchase;
-@property(nonatomic,retain) UIButton *vmmPurchase;
+
+@property(nonatomic,retain) IBOutlet UILabel *rmTitle;
+@property(nonatomic,retain) IBOutlet UILabel *rmPrice;
+@property(nonatomic,retain) IBOutlet UITextView *rmDescription;
+@property(nonatomic,retain) IBOutlet UIButton *rmPurchase;
+
 @property(nonatomic,retain) UIView *loadingView;
 
 - (IBAction)openDoors;
 - (IBAction)buyHDMode:(id)sender;
 - (IBAction)buyVidmasterMode:(id)sender;
+- (IBAction)buyReticuleMode:(id)sender;
 - (IBAction)done:(id)sender;
 - (IBAction)restore:(id)sender;
 - (BOOL)canPurchase;

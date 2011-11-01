@@ -98,10 +98,6 @@
 		A809FDC2140DE1E90051EA11 /* ret_default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB9140DE1E90051EA11 /* ret_default~iphone.png */; };
 		A80C8DC114129C5D0007DDAC /* GenericBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DBF14129C5D0007DDAC /* GenericBackground@2x~iphone.png */; };
 		A80C8DC214129C5D0007DDAC /* GenericBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DC014129C5D0007DDAC /* GenericBackground~iphone.png */; };
-		A80C8DC514129C8F0007DDAC /* HDModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DC314129C8F0007DDAC /* HDModeAd@2x~iphone.png */; };
-		A80C8DC614129C8F0007DDAC /* HDModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DC414129C8F0007DDAC /* HDModeAd~iphone.png */; };
-		A80C8DC914129CBD0007DDAC /* VMModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DC714129CBC0007DDAC /* VMModeAd@2x~iphone.png */; };
-		A80C8DCA14129CBD0007DDAC /* VMModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80C8DC814129CBC0007DDAC /* VMModeAd~iphone.png */; };
 		A80E9E7C1280F729005371AB /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E701280F729005371AB /* bit.c */; };
 		A80E9E7D1280F729005371AB /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E711280F729005371AB /* decoder.c */; };
 		A80E9E7E1280F729005371AB /* fixed.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E721280F729005371AB /* fixed.c */; };
@@ -113,6 +109,96 @@
 		A80E9E851280F729005371AB /* synth.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E791280F729005371AB /* synth.c */; };
 		A80E9E861280F729005371AB /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7A1280F729005371AB /* timer.c */; };
 		A80E9E871280F729005371AB /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = A80E9E7B1280F729005371AB /* version.c */; };
+		A812AD34145F8D9900196F6B /* StartingLevel~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2E145F8D9900196F6B /* StartingLevel~iphone.png */; };
+		A812AD35145F8D9900196F6B /* StartingLevel~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2E145F8D9900196F6B /* StartingLevel~iphone.png */; };
+		A812AD36145F8D9900196F6B /* StartingLevel~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2E145F8D9900196F6B /* StartingLevel~iphone.png */; };
+		A812AD37145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2F145F8D9900196F6B /* LevelNameBackground~iphone.png */; };
+		A812AD38145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2F145F8D9900196F6B /* LevelNameBackground~iphone.png */; };
+		A812AD39145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD2F145F8D9900196F6B /* LevelNameBackground~iphone.png */; };
+		A812AD3A145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD30145F8D9900196F6B /* StartingLevel@2x~iphone.png */; };
+		A812AD3B145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD30145F8D9900196F6B /* StartingLevel@2x~iphone.png */; };
+		A812AD3C145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD30145F8D9900196F6B /* StartingLevel@2x~iphone.png */; };
+		A812AD3D145F8D9900196F6B /* StartingLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD31145F8D9900196F6B /* StartingLevel.png */; };
+		A812AD3E145F8D9900196F6B /* StartingLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD31145F8D9900196F6B /* StartingLevel.png */; };
+		A812AD3F145F8D9900196F6B /* StartingLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD31145F8D9900196F6B /* StartingLevel.png */; };
+		A812AD40145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD32145F8D9900196F6B /* LevelNameBackground@2x~iphone.png */; };
+		A812AD41145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD32145F8D9900196F6B /* LevelNameBackground@2x~iphone.png */; };
+		A812AD42145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD32145F8D9900196F6B /* LevelNameBackground@2x~iphone.png */; };
+		A812AD43145F8D9900196F6B /* LevelNameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD33145F8D9900196F6B /* LevelNameBackground.png */; };
+		A812AD44145F8D9900196F6B /* LevelNameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD33145F8D9900196F6B /* LevelNameBackground.png */; };
+		A812AD45145F8D9900196F6B /* LevelNameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD33145F8D9900196F6B /* LevelNameBackground.png */; };
+		A812AD5D145F971200196F6B /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD47145F971100196F6B /* AmmoButton.png */; };
+		A812AD5E145F971200196F6B /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD47145F971100196F6B /* AmmoButton.png */; };
+		A812AD5F145F971200196F6B /* AmmoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD47145F971100196F6B /* AmmoButton.png */; };
+		A812AD60145F971200196F6B /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD48145F971100196F6B /* BuyButton.png */; };
+		A812AD61145F971200196F6B /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD48145F971100196F6B /* BuyButton.png */; };
+		A812AD62145F971200196F6B /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD48145F971100196F6B /* BuyButton.png */; };
+		A812AD63145F971200196F6B /* BuyButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD49145F971100196F6B /* BuyButton@2x~iphone.png */; };
+		A812AD64145F971200196F6B /* BuyButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD49145F971100196F6B /* BuyButton@2x~iphone.png */; };
+		A812AD65145F971200196F6B /* BuyButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD49145F971100196F6B /* BuyButton@2x~iphone.png */; };
+		A812AD66145F971200196F6B /* BuyButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4A145F971100196F6B /* BuyButton~iphone.png */; };
+		A812AD67145F971200196F6B /* BuyButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4A145F971100196F6B /* BuyButton~iphone.png */; };
+		A812AD68145F971200196F6B /* BuyButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4A145F971100196F6B /* BuyButton~iphone.png */; };
+		A812AD69145F971200196F6B /* DoneButtonStore.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4B145F971100196F6B /* DoneButtonStore.png */; };
+		A812AD6A145F971200196F6B /* DoneButtonStore.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4B145F971100196F6B /* DoneButtonStore.png */; };
+		A812AD6B145F971200196F6B /* DoneButtonStore.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4B145F971100196F6B /* DoneButtonStore.png */; };
+		A812AD6C145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4C145F971100196F6B /* DoneButtonStore@2x~iphone.png */; };
+		A812AD6D145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4C145F971100196F6B /* DoneButtonStore@2x~iphone.png */; };
+		A812AD6E145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4C145F971100196F6B /* DoneButtonStore@2x~iphone.png */; };
+		A812AD6F145F971200196F6B /* DoneButtonStore~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4D145F971100196F6B /* DoneButtonStore~iphone.png */; };
+		A812AD70145F971200196F6B /* DoneButtonStore~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4D145F971100196F6B /* DoneButtonStore~iphone.png */; };
+		A812AD71145F971200196F6B /* DoneButtonStore~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4D145F971100196F6B /* DoneButtonStore~iphone.png */; };
+		A812AD72145F971200196F6B /* HDChiefModes.psd in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4E145F971100196F6B /* HDChiefModes.psd */; };
+		A812AD73145F971200196F6B /* HDChiefModes.psd in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4E145F971100196F6B /* HDChiefModes.psd */; };
+		A812AD74145F971200196F6B /* HDChiefModes.psd in Resources */ = {isa = PBXBuildFile; fileRef = A812AD4E145F971100196F6B /* HDChiefModes.psd */; };
+		A812AD75145F971200196F6B /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD50145F971100196F6B /* HDModeAd.png */; };
+		A812AD78145F971200196F6B /* StoreBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD51145F971100196F6B /* StoreBackground.png */; };
+		A812AD7F145F971200196F6B /* StoreBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD54145F971100196F6B /* StoreBackground.png */; };
+		A812AD81145F971200196F6B /* MCModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD56145F971100196F6B /* MCModeAd.png */; };
+		A812AD82145F971200196F6B /* MCModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD56145F971100196F6B /* MCModeAd.png */; };
+		A812AD83145F971200196F6B /* MCModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD56145F971100196F6B /* MCModeAd.png */; };
+		A812AD84145F971200196F6B /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD57145F971100196F6B /* RestoreButton.png */; };
+		A812AD85145F971200196F6B /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD57145F971100196F6B /* RestoreButton.png */; };
+		A812AD86145F971200196F6B /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD57145F971100196F6B /* RestoreButton.png */; };
+		A812AD87145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD58145F971100196F6B /* RestoreButton@2x~iphone.png */; };
+		A812AD88145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD58145F971100196F6B /* RestoreButton@2x~iphone.png */; };
+		A812AD89145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD58145F971100196F6B /* RestoreButton@2x~iphone.png */; };
+		A812AD8A145F971200196F6B /* RestoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD59145F971100196F6B /* RestoreButton~iphone.png */; };
+		A812AD8B145F971200196F6B /* RestoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD59145F971100196F6B /* RestoreButton~iphone.png */; };
+		A812AD8C145F971200196F6B /* RestoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD59145F971100196F6B /* RestoreButton~iphone.png */; };
+		A812AD8D145F971200196F6B /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5A145F971100196F6B /* SaveButton.png */; };
+		A812AD8E145F971200196F6B /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5A145F971100196F6B /* SaveButton.png */; };
+		A812AD8F145F971200196F6B /* SaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5A145F971100196F6B /* SaveButton.png */; };
+		A812AD90145F971200196F6B /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5B145F971100196F6B /* ShieldsButton.png */; };
+		A812AD91145F971200196F6B /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5B145F971100196F6B /* ShieldsButton.png */; };
+		A812AD92145F971200196F6B /* ShieldsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5B145F971100196F6B /* ShieldsButton.png */; };
+		A812AD93145F971200196F6B /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5C145F971100196F6B /* WeaponsButton.png */; };
+		A812AD94145F971200196F6B /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5C145F971100196F6B /* WeaponsButton.png */; };
+		A812AD95145F971200196F6B /* WeaponsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD5C145F971100196F6B /* WeaponsButton.png */; };
+		A812AD98145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD96145F97CF00196F6B /* MCModeAd@2x~iphone.png */; };
+		A812AD99145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD96145F97CF00196F6B /* MCModeAd@2x~iphone.png */; };
+		A812AD9A145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD96145F97CF00196F6B /* MCModeAd@2x~iphone.png */; };
+		A812AD9B145F97CF00196F6B /* MCModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD97145F97CF00196F6B /* MCModeAd~iphone.png */; };
+		A812AD9C145F97CF00196F6B /* MCModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD97145F97CF00196F6B /* MCModeAd~iphone.png */; };
+		A812AD9D145F97CF00196F6B /* MCModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD97145F97CF00196F6B /* MCModeAd~iphone.png */; };
+		A812ADA2145F97E200196F6B /* HDModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD9E145F97E100196F6B /* HDModeAd@2x~iphone.png */; };
+		A812ADA3145F97E200196F6B /* HDModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812AD9F145F97E100196F6B /* HDModeAd~iphone.png */; };
+		A812ADA4145F97E200196F6B /* StoreBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA0145F97E100196F6B /* StoreBackground@2x~iphone.png */; };
+		A812ADA5145F97E200196F6B /* StoreBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA1145F97E100196F6B /* StoreBackground~iphone.png */; };
+		A812ADAA145F97F000196F6B /* HDModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA6145F97EF00196F6B /* HDModeAd@2x~iphone.png */; };
+		A812ADAB145F97F000196F6B /* HDModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA7145F97EF00196F6B /* HDModeAd~iphone.png */; };
+		A812ADAC145F97F000196F6B /* StoreBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA8145F97EF00196F6B /* StoreBackground@2x~iphone.png */; };
+		A812ADAD145F97F000196F6B /* StoreBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADA9145F97EF00196F6B /* StoreBackground~iphone.png */; };
+		A812ADAF145F97F700196F6B /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADAE145F97F700196F6B /* HDModeAd.png */; };
+		A812ADB3145F9CE600196F6B /* ReticuleAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB0145F9CE600196F6B /* ReticuleAd.png */; };
+		A812ADB4145F9CE600196F6B /* ReticuleAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB0145F9CE600196F6B /* ReticuleAd.png */; };
+		A812ADB5145F9CE600196F6B /* ReticuleAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB0145F9CE600196F6B /* ReticuleAd.png */; };
+		A812ADB6145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB1145F9CE600196F6B /* ReticuleAd@2x~iphone.png */; };
+		A812ADB7145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB1145F9CE600196F6B /* ReticuleAd@2x~iphone.png */; };
+		A812ADB8145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB1145F9CE600196F6B /* ReticuleAd@2x~iphone.png */; };
+		A812ADB9145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB2145F9CE600196F6B /* ReticuleAd~iphone.png */; };
+		A812ADBA145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB2145F9CE600196F6B /* ReticuleAd~iphone.png */; };
+		A812ADBB145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A812ADB2145F9CE600196F6B /* ReticuleAd~iphone.png */; };
 		A817BE0012CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A817BE0112CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
 		A817BE0212CCC84300C31134 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = A817BDFF12CCC84300C31134 /* AlertPrompt.m */; };
@@ -1938,10 +2024,6 @@
 		A894591814280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
 		A894591914280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
 		A894591A14280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
-		A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5A132091B5008BBB10 /* HDModeAd.png */; };
-		A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5B132091B5008BBB10 /* VMModeAd.png */; };
-		A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5E132091DB008BBB10 /* HDModeAd.png */; };
-		A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE5F132091DB008BBB10 /* VMModeAd.png */; };
 		A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE62132091EB008BBB10 /* HDModeAd.png */; };
 		A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE63132091EB008BBB10 /* VMModeAd.png */; };
 		A89A90221427F996002F8F0F /* Somewhere.png in Resources */ = {isa = PBXBuildFile; fileRef = A89A901F1427F996002F8F0F /* Somewhere.png */; };
@@ -2589,10 +2671,6 @@
 		A809FDB9140DE1E90051EA11 /* ret_default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ret_default~iphone.png"; sourceTree = "<group>"; };
 		A80C8DBF14129C5D0007DDAC /* GenericBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground@2x~iphone.png"; sourceTree = "<group>"; };
 		A80C8DC014129C5D0007DDAC /* GenericBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground~iphone.png"; sourceTree = "<group>"; };
-		A80C8DC314129C8F0007DDAC /* HDModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd@2x~iphone.png"; sourceTree = "<group>"; };
-		A80C8DC414129C8F0007DDAC /* HDModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd~iphone.png"; sourceTree = "<group>"; };
-		A80C8DC714129CBC0007DDAC /* VMModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VMModeAd@2x~iphone.png"; sourceTree = "<group>"; };
-		A80C8DC814129CBC0007DDAC /* VMModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VMModeAd~iphone.png"; sourceTree = "<group>"; };
 		A80E9E621280F729005371AB /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bit.h; path = "Libraries/libmad-0.15.1b/bit.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E641280F729005371AB /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = "Libraries/libmad-0.15.1b/decoder.h"; sourceTree = SOURCE_ROOT; };
 		A80E9E651280F729005371AB /* fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixed.h; path = "Libraries/libmad-0.15.1b/fixed.h"; sourceTree = SOURCE_ROOT; };
@@ -2629,6 +2707,44 @@
 		A80EAAE811C07ACF000AC9E1 /* SDL_glesfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_glesfuncs.h; sourceTree = "<group>"; };
 		A80EAAE911C07ACF000AC9E1 /* SDL_rect_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect_c.h; sourceTree = "<group>"; };
 		A80EAAEA11C07ACF000AC9E1 /* SDL_yuv_sw_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_yuv_sw_c.h; sourceTree = "<group>"; };
+		A812AD2E145F8D9900196F6B /* StartingLevel~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartingLevel~iphone.png"; sourceTree = "<group>"; };
+		A812AD2F145F8D9900196F6B /* LevelNameBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LevelNameBackground~iphone.png"; sourceTree = "<group>"; };
+		A812AD30145F8D9900196F6B /* StartingLevel@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartingLevel@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD31145F8D9900196F6B /* StartingLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartingLevel.png; sourceTree = "<group>"; };
+		A812AD32145F8D9900196F6B /* LevelNameBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LevelNameBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD33145F8D9900196F6B /* LevelNameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelNameBackground.png; sourceTree = "<group>"; };
+		A812AD47145F971100196F6B /* AmmoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AmmoButton.png; sourceTree = "<group>"; };
+		A812AD48145F971100196F6B /* BuyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButton.png; sourceTree = "<group>"; };
+		A812AD49145F971100196F6B /* BuyButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD4A145F971100196F6B /* BuyButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButton~iphone.png"; sourceTree = "<group>"; };
+		A812AD4B145F971100196F6B /* DoneButtonStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneButtonStore.png; sourceTree = "<group>"; };
+		A812AD4C145F971100196F6B /* DoneButtonStore@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButtonStore@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD4D145F971100196F6B /* DoneButtonStore~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButtonStore~iphone.png"; sourceTree = "<group>"; };
+		A812AD4E145F971100196F6B /* HDChiefModes.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = HDChiefModes.psd; sourceTree = "<group>"; };
+		A812AD50145F971100196F6B /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
+		A812AD51145F971100196F6B /* StoreBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreBackground.png; sourceTree = "<group>"; };
+		A812AD54145F971100196F6B /* StoreBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreBackground.png; sourceTree = "<group>"; };
+		A812AD56145F971100196F6B /* MCModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MCModeAd.png; sourceTree = "<group>"; };
+		A812AD57145F971100196F6B /* RestoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButton.png; sourceTree = "<group>"; };
+		A812AD58145F971100196F6B /* RestoreButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RestoreButton@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD59145F971100196F6B /* RestoreButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RestoreButton~iphone.png"; sourceTree = "<group>"; };
+		A812AD5A145F971100196F6B /* SaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveButton.png; sourceTree = "<group>"; };
+		A812AD5B145F971100196F6B /* ShieldsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShieldsButton.png; sourceTree = "<group>"; };
+		A812AD5C145F971100196F6B /* WeaponsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeaponsButton.png; sourceTree = "<group>"; };
+		A812AD96145F97CF00196F6B /* MCModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeAd@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD97145F97CF00196F6B /* MCModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCModeAd~iphone.png"; sourceTree = "<group>"; };
+		A812AD9E145F97E100196F6B /* HDModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd@2x~iphone.png"; sourceTree = "<group>"; };
+		A812AD9F145F97E100196F6B /* HDModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd~iphone.png"; sourceTree = "<group>"; };
+		A812ADA0145F97E100196F6B /* StoreBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A812ADA1145F97E100196F6B /* StoreBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreBackground~iphone.png"; sourceTree = "<group>"; };
+		A812ADA6145F97EF00196F6B /* HDModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd@2x~iphone.png"; sourceTree = "<group>"; };
+		A812ADA7145F97EF00196F6B /* HDModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd~iphone.png"; sourceTree = "<group>"; };
+		A812ADA8145F97EF00196F6B /* StoreBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		A812ADA9145F97EF00196F6B /* StoreBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreBackground~iphone.png"; sourceTree = "<group>"; };
+		A812ADAE145F97F700196F6B /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
+		A812ADB0145F9CE600196F6B /* ReticuleAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReticuleAd.png; sourceTree = "<group>"; };
+		A812ADB1145F9CE600196F6B /* ReticuleAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReticuleAd@2x~iphone.png"; sourceTree = "<group>"; };
+		A812ADB2145F9CE600196F6B /* ReticuleAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReticuleAd~iphone.png"; sourceTree = "<group>"; };
 		A817BDFE12CCC84300C31134 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPrompt.h; path = Classes/AlertPrompt.h; sourceTree = "<group>"; };
 		A817BDFF12CCC84300C31134 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = Classes/AlertPrompt.m; sourceTree = "<group>"; };
 		A817C0061323311E00964061 /* buy-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy-btn.png"; sourceTree = "<group>"; };
@@ -3580,10 +3696,6 @@
 		A898D4AA13BA852A00AF6413 /* JoyPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyPad.h; path = Classes/JoyPad.h; sourceTree = "<group>"; };
 		A898D4AB13BA852A00AF6413 /* JoyPad.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoyPad.mm; path = Classes/JoyPad.mm; sourceTree = "<group>"; };
 		A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DualAnalogSticks.xib; path = "Resources/JoyPad Layouts/DualAnalogSticks.xib"; sourceTree = "<group>"; };
-		A899CE5A132091B5008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
-		A899CE5B132091B5008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
-		A899CE5E132091DB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
-		A899CE5F132091DB008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
 		A899CE62132091EB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
 		A899CE63132091EB008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
 		A89A901F1427F996002F8F0F /* Somewhere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Somewhere.png; sourceTree = "<group>"; };
@@ -4080,6 +4192,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A812AD46145F971100196F6B /* StoreScreen */,
 				A83FBB42144C95DE00B27426 /* SettingsScreen */,
 				A8294BD91433F74600300CD5 /* ThanksScreen */,
 				A89B96181433C65D005E9FF3 /* LoadingScreen */,
@@ -4211,6 +4324,70 @@
 			);
 			name = Reticules;
 			path = Resources/Reticules;
+			sourceTree = "<group>";
+		};
+		A812AD46145F971100196F6B /* StoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A812AD47145F971100196F6B /* AmmoButton.png */,
+				A812AD48145F971100196F6B /* BuyButton.png */,
+				A812AD49145F971100196F6B /* BuyButton@2x~iphone.png */,
+				A812AD4A145F971100196F6B /* BuyButton~iphone.png */,
+				A812AD4B145F971100196F6B /* DoneButtonStore.png */,
+				A812AD4C145F971100196F6B /* DoneButtonStore@2x~iphone.png */,
+				A812AD4D145F971100196F6B /* DoneButtonStore~iphone.png */,
+				A812AD4E145F971100196F6B /* HDChiefModes.psd */,
+				A812AD4F145F971100196F6B /* M1 */,
+				A812AD52145F971100196F6B /* M2 */,
+				A812AD55145F971100196F6B /* M3 */,
+				A812ADB0145F9CE600196F6B /* ReticuleAd.png */,
+				A812ADB1145F9CE600196F6B /* ReticuleAd@2x~iphone.png */,
+				A812ADB2145F9CE600196F6B /* ReticuleAd~iphone.png */,
+				A812AD56145F971100196F6B /* MCModeAd.png */,
+				A812AD96145F97CF00196F6B /* MCModeAd@2x~iphone.png */,
+				A812AD97145F97CF00196F6B /* MCModeAd~iphone.png */,
+				A812AD57145F971100196F6B /* RestoreButton.png */,
+				A812AD58145F971100196F6B /* RestoreButton@2x~iphone.png */,
+				A812AD59145F971100196F6B /* RestoreButton~iphone.png */,
+				A812AD5A145F971100196F6B /* SaveButton.png */,
+				A812AD5B145F971100196F6B /* ShieldsButton.png */,
+				A812AD5C145F971100196F6B /* WeaponsButton.png */,
+			);
+			name = StoreScreen;
+			path = Resources/StoreScreen;
+			sourceTree = "<group>";
+		};
+		A812AD4F145F971100196F6B /* M1 */ = {
+			isa = PBXGroup;
+			children = (
+				A812AD9E145F97E100196F6B /* HDModeAd@2x~iphone.png */,
+				A812AD9F145F97E100196F6B /* HDModeAd~iphone.png */,
+				A812ADA0145F97E100196F6B /* StoreBackground@2x~iphone.png */,
+				A812ADA1145F97E100196F6B /* StoreBackground~iphone.png */,
+				A812AD50145F971100196F6B /* HDModeAd.png */,
+				A812AD51145F971100196F6B /* StoreBackground.png */,
+			);
+			path = M1;
+			sourceTree = "<group>";
+		};
+		A812AD52145F971100196F6B /* M2 */ = {
+			isa = PBXGroup;
+			children = (
+				A812ADAE145F97F700196F6B /* HDModeAd.png */,
+				A812ADA6145F97EF00196F6B /* HDModeAd@2x~iphone.png */,
+				A812ADA7145F97EF00196F6B /* HDModeAd~iphone.png */,
+				A812ADA8145F97EF00196F6B /* StoreBackground@2x~iphone.png */,
+				A812ADA9145F97EF00196F6B /* StoreBackground~iphone.png */,
+				A812AD54145F971100196F6B /* StoreBackground.png */,
+			);
+			path = M2;
+			sourceTree = "<group>";
+		};
+		A812AD55145F971100196F6B /* M3 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M3;
 			sourceTree = "<group>";
 		};
 		A817C0051323311E00964061 /* store */ = {
@@ -4588,8 +4765,9 @@
 		A853C9AD13CF23A2001E8A25 /* XIB-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A8C5563914267C29003D329B /* PurchaseViewController.xib */,
+				A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */,
+				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A82BBD16141015A500CE1F92 /* RootViewController.xib */,
 				A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */,
 				A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */,
@@ -4600,7 +4778,6 @@
 				A853C9B113CF23A2001E8A25 /* GameViewController.xib */,
 				A853C9B213CF23A2001E8A25 /* HelpViewController.xib */,
 				A853C9B313CF23A2001E8A25 /* MainWindow.xib */,
-				A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */,
 				A853C9B513CF23A2001E8A25 /* PauseViewController.xib */,
 				A853C9B713CF23A2001E8A25 /* ProgressViewController.xib */,
 				A853C9B913CF23A2001E8A25 /* SavedGameCell.xib */,
@@ -4613,11 +4790,11 @@
 		A853C9E213CF23C6001E8A25 /* XIB-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */,
 				A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */,
 				A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */,
 				A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */,
 				A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */,
-				A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */,
 				A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */,
 				A8B9F9EC13FAE4F500552296 /* PauseViewController~iphone.xib */,
 				A864DDC913FDF69300A0AE0C /* SavedGameCell~iphone.xib */,
@@ -4676,6 +4853,12 @@
 		A85B584C1433BEC00013CDC9 /* NewGameScreen */ = {
 			isa = PBXGroup;
 			children = (
+				A812AD2E145F8D9900196F6B /* StartingLevel~iphone.png */,
+				A812AD2F145F8D9900196F6B /* LevelNameBackground~iphone.png */,
+				A812AD30145F8D9900196F6B /* StartingLevel@2x~iphone.png */,
+				A812AD31145F8D9900196F6B /* StartingLevel.png */,
+				A812AD32145F8D9900196F6B /* LevelNameBackground@2x~iphone.png */,
+				A812AD33145F8D9900196F6B /* LevelNameBackground.png */,
 				A85B584D1433BEC00013CDC9 /* BackNewGame.png */,
 				A85B584E1433BEC00013CDC9 /* BackNewGame@2x~iphone.png */,
 				A85B584F1433BEC00013CDC9 /* BackNewGame~iphone.png */,
@@ -6183,8 +6366,6 @@
 				A8B19C1213A459BA008A095D /* Marathon_Icon-Small.png */,
 				A8B19C1313A459BA008A095D /* Marathon_Icon-Small@2x.png */,
 				A8B19C1513A459BA008A095D /* Marathon_iTunesArtwork.png */,
-				A899CE5A132091B5008BBB10 /* HDModeAd.png */,
-				A899CE5B132091B5008BBB10 /* VMModeAd.png */,
 				A874B19E1318A8C5009C4A92 /* iTunesArtwork */,
 				A8D66F4A131766DB009801EC /* GenericBackground.png */,
 				A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */,
@@ -6204,12 +6385,6 @@
 			children = (
 				A8C4436613A7CF72002A908B /* about.png */,
 				A88121EB12C7816300A1A08E /* Info 2.plist */,
-				A899CE5E132091DB008BBB10 /* HDModeAd.png */,
-				A80C8DC314129C8F0007DDAC /* HDModeAd@2x~iphone.png */,
-				A80C8DC414129C8F0007DDAC /* HDModeAd~iphone.png */,
-				A899CE5F132091DB008BBB10 /* VMModeAd.png */,
-				A80C8DC714129CBC0007DDAC /* VMModeAd@2x~iphone.png */,
-				A80C8DC814129CBC0007DDAC /* VMModeAd~iphone.png */,
 				A818BD1213A464A700DB3828 /* Marathon_Durandal_Icon-72.png */,
 				A818BD1313A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png */,
 				A818BD1413A464A700DB3828 /* Marathon_Durandal_Icon-Small.png */,
@@ -6412,8 +6587,6 @@
 				A874B1FA1318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1FB1318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1FC1318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A899CE5C132091B5008BBB10 /* HDModeAd.png in Resources */,
-				A899CE5D132091B5008BBB10 /* VMModeAd.png in Resources */,
 				A817C00F1323311E00964061 /* buy-btn.png in Resources */,
 				A817C0101323311E00964061 /* done-btn.png in Resources */,
 				A817C0111323311E00964061 /* restore-btn.png in Resources */,
@@ -6748,6 +6921,38 @@
 				A8DEE91B145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE91E145CEB4300D8608F /* ShieldsButton.png in Resources */,
 				A8DEE921145CEB4300D8608F /* SaveButton.png in Resources */,
+				A812AD34145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
+				A812AD37145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
+				A812AD3A145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
+				A812AD3D145F8D9900196F6B /* StartingLevel.png in Resources */,
+				A812AD40145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
+				A812AD43145F8D9900196F6B /* LevelNameBackground.png in Resources */,
+				A812AD5D145F971200196F6B /* AmmoButton.png in Resources */,
+				A812AD60145F971200196F6B /* BuyButton.png in Resources */,
+				A812AD63145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
+				A812AD66145F971200196F6B /* BuyButton~iphone.png in Resources */,
+				A812AD69145F971200196F6B /* DoneButtonStore.png in Resources */,
+				A812AD6C145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
+				A812AD6F145F971200196F6B /* DoneButtonStore~iphone.png in Resources */,
+				A812AD72145F971200196F6B /* HDChiefModes.psd in Resources */,
+				A812AD75145F971200196F6B /* HDModeAd.png in Resources */,
+				A812AD78145F971200196F6B /* StoreBackground.png in Resources */,
+				A812AD81145F971200196F6B /* MCModeAd.png in Resources */,
+				A812AD84145F971200196F6B /* RestoreButton.png in Resources */,
+				A812AD87145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */,
+				A812AD8A145F971200196F6B /* RestoreButton~iphone.png in Resources */,
+				A812AD8D145F971200196F6B /* SaveButton.png in Resources */,
+				A812AD90145F971200196F6B /* ShieldsButton.png in Resources */,
+				A812AD93145F971200196F6B /* WeaponsButton.png in Resources */,
+				A812AD98145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */,
+				A812AD9B145F97CF00196F6B /* MCModeAd~iphone.png in Resources */,
+				A812ADA2145F97E200196F6B /* HDModeAd@2x~iphone.png in Resources */,
+				A812ADA3145F97E200196F6B /* HDModeAd~iphone.png in Resources */,
+				A812ADA4145F97E200196F6B /* StoreBackground@2x~iphone.png in Resources */,
+				A812ADA5145F97E200196F6B /* StoreBackground~iphone.png in Resources */,
+				A812ADB3145F9CE600196F6B /* ReticuleAd.png in Resources */,
+				A812ADB6145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */,
+				A812ADB9145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6800,8 +7005,6 @@
 				A874B1E51318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1E61318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1E71318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A899CE60132091DB008BBB10 /* HDModeAd.png in Resources */,
-				A899CE61132091DB008BBB10 /* VMModeAd.png in Resources */,
 				A817C00C1323311E00964061 /* buy-btn.png in Resources */,
 				A817C00D1323311E00964061 /* done-btn.png in Resources */,
 				A817C00E1323311E00964061 /* restore-btn.png in Resources */,
@@ -6984,10 +7187,6 @@
 				A82BBD18141015A500CE1F92 /* RootViewController.xib in Resources */,
 				A80C8DC114129C5D0007DDAC /* GenericBackground@2x~iphone.png in Resources */,
 				A80C8DC214129C5D0007DDAC /* GenericBackground~iphone.png in Resources */,
-				A80C8DC514129C8F0007DDAC /* HDModeAd@2x~iphone.png in Resources */,
-				A80C8DC614129C8F0007DDAC /* HDModeAd~iphone.png in Resources */,
-				A80C8DC914129CBD0007DDAC /* VMModeAd@2x~iphone.png in Resources */,
-				A80C8DCA14129CBD0007DDAC /* VMModeAd~iphone.png in Resources */,
 				A8E3B5A11422E82D004D28A4 /* AboutButton.png in Resources */,
 				A8E3B5A41422E82D004D28A4 /* AboutButton@2x~iphone.png in Resources */,
 				A8E3B5A71422E82D004D28A4 /* AboutButton~iphone.png in Resources */,
@@ -7133,6 +7332,38 @@
 				A8DEE91C145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE91F145CEB4300D8608F /* ShieldsButton.png in Resources */,
 				A8DEE922145CEB4300D8608F /* SaveButton.png in Resources */,
+				A812AD35145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
+				A812AD38145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
+				A812AD3B145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
+				A812AD3E145F8D9900196F6B /* StartingLevel.png in Resources */,
+				A812AD41145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
+				A812AD44145F8D9900196F6B /* LevelNameBackground.png in Resources */,
+				A812AD5E145F971200196F6B /* AmmoButton.png in Resources */,
+				A812AD61145F971200196F6B /* BuyButton.png in Resources */,
+				A812AD64145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
+				A812AD67145F971200196F6B /* BuyButton~iphone.png in Resources */,
+				A812AD6A145F971200196F6B /* DoneButtonStore.png in Resources */,
+				A812AD6D145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
+				A812AD70145F971200196F6B /* DoneButtonStore~iphone.png in Resources */,
+				A812AD73145F971200196F6B /* HDChiefModes.psd in Resources */,
+				A812AD7F145F971200196F6B /* StoreBackground.png in Resources */,
+				A812AD82145F971200196F6B /* MCModeAd.png in Resources */,
+				A812AD85145F971200196F6B /* RestoreButton.png in Resources */,
+				A812AD88145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */,
+				A812AD8B145F971200196F6B /* RestoreButton~iphone.png in Resources */,
+				A812AD8E145F971200196F6B /* SaveButton.png in Resources */,
+				A812AD91145F971200196F6B /* ShieldsButton.png in Resources */,
+				A812AD94145F971200196F6B /* WeaponsButton.png in Resources */,
+				A812AD99145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */,
+				A812AD9C145F97CF00196F6B /* MCModeAd~iphone.png in Resources */,
+				A812ADAA145F97F000196F6B /* HDModeAd@2x~iphone.png in Resources */,
+				A812ADAB145F97F000196F6B /* HDModeAd~iphone.png in Resources */,
+				A812ADAC145F97F000196F6B /* StoreBackground@2x~iphone.png in Resources */,
+				A812ADAD145F97F000196F6B /* StoreBackground~iphone.png in Resources */,
+				A812ADAF145F97F700196F6B /* HDModeAd.png in Resources */,
+				A812ADB4145F9CE600196F6B /* ReticuleAd.png in Resources */,
+				A812ADB7145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */,
+				A812ADBA145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7512,6 +7743,32 @@
 				A8DEE91D145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE920145CEB4300D8608F /* ShieldsButton.png in Resources */,
 				A8DEE923145CEB4300D8608F /* SaveButton.png in Resources */,
+				A812AD36145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
+				A812AD39145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
+				A812AD3C145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
+				A812AD3F145F8D9900196F6B /* StartingLevel.png in Resources */,
+				A812AD42145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
+				A812AD45145F8D9900196F6B /* LevelNameBackground.png in Resources */,
+				A812AD5F145F971200196F6B /* AmmoButton.png in Resources */,
+				A812AD62145F971200196F6B /* BuyButton.png in Resources */,
+				A812AD65145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
+				A812AD68145F971200196F6B /* BuyButton~iphone.png in Resources */,
+				A812AD6B145F971200196F6B /* DoneButtonStore.png in Resources */,
+				A812AD6E145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
+				A812AD71145F971200196F6B /* DoneButtonStore~iphone.png in Resources */,
+				A812AD74145F971200196F6B /* HDChiefModes.psd in Resources */,
+				A812AD83145F971200196F6B /* MCModeAd.png in Resources */,
+				A812AD86145F971200196F6B /* RestoreButton.png in Resources */,
+				A812AD89145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */,
+				A812AD8C145F971200196F6B /* RestoreButton~iphone.png in Resources */,
+				A812AD8F145F971200196F6B /* SaveButton.png in Resources */,
+				A812AD92145F971200196F6B /* ShieldsButton.png in Resources */,
+				A812AD95145F971200196F6B /* WeaponsButton.png in Resources */,
+				A812AD9A145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */,
+				A812AD9D145F97CF00196F6B /* MCModeAd~iphone.png in Resources */,
+				A812ADB5145F9CE600196F6B /* ReticuleAd.png in Resources */,
+				A812ADB8145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */,
+				A812ADBB145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,7 @@
 @synthesize startLevelSlider;
 @synthesize startLevelLabel;
 @synthesize pledge;
+@synthesize startLevelView;
 
 static vector<entry_point> levels;
 
@@ -46,7 +47,7 @@ static vector<entry_point> levels;
   int index = (int)self.startLevelSlider.value;
   
   [[NSUserDefaults standardUserDefaults] setInteger:levels[index].level_number forKey:kEntryLevelNumber];
-  self.startLevelLabel.text = [NSString stringWithFormat:@"Starting Level: (%d) %s", levels[self.startLevelSlider.value].level_number, levels[self.startLevelSlider.value].level_name];
+  self.startLevelLabel.text = [NSString stringWithFormat:@"%d. %s", levels[self.startLevelSlider.value].level_number, levels[self.startLevelSlider.value].level_name];
 }
 
 #pragma mark -
@@ -119,6 +120,14 @@ static vector<entry_point> levels;
   self.pledge.hidden = !show;
   self.startLevelSlider.hidden = !show;
   self.startLevelLabel.hidden = !show;
+  self.startLevelView.hidden = !show;
+  
+  [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateNormal];
+  [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateSelected];
+  [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateHighlighted];
+  [self.startLevelSlider setMaximumTrackImage:[UIImage imageNamed:@"SliderBlackTrack"] forState:UIControlStateNormal];
+  [self.startLevelSlider setMinimumTrackImage:[UIImage imageNamed:@"SliderRedTrack"] forState:UIControlStateNormal];
+
   
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {

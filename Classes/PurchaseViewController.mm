@@ -22,6 +22,7 @@
 @synthesize hdmDescription;
 @synthesize vmmPurchase, hdmPurchase;
 @synthesize loadingView;
+@synthesize rmDescription,rmPrice,rmTitle,rmPurchase;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -45,7 +46,7 @@
   // Request our list
   [self.activity startAnimating];
   self.loadingView.hidden = NO;
-  SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithObjects:VidmasterModeProductID, HDModeProductID, nil]];
+  SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithObjects:VidmasterModeProductID, HDModeProductID, ReticulesProductID, nil]];
   request.delegate = self;
   [request start];
   [self updateView];
@@ -122,6 +123,15 @@
     self.hdmDescription.text = product.localizedDescription;
     self.hdmPrice.text = [self formatCurrency:product];
   }
+  
+  product = [dict objectForKey:ReticulesProductID];
+  if ( product != nil ) {
+    self.rmTitle.text = product.localizedTitle;
+    self.rmDescription.text = product.localizedDescription;
+    self.rmPrice.text = [self formatCurrency:product];
+  }
+  
+  
   [self updateView];
   [request autorelease];
 }
@@ -167,6 +177,15 @@
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
   }
 }
+
+- (IBAction)buyReticuleMode:(id)sender {
+  [Tracking trackEvent:@"store" action:@"rm" label:@"" value:[self canPurchase]];
+  if ( [self canPurchase] ) {
+    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:ReticulesProductID];
+    [[SKPaymentQueue defaultQueue] addPayment:tPayment];
+  }
+}
+
 
 
 - (IBAction)updateView {

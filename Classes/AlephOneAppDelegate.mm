@@ -236,11 +236,13 @@ extern int SDL_main(int argc, char *argv[]);
     self.game.episodeImageView.alpha = 1.0;
   };
     
-  [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
+  float duration = 1.2;
+  float delay = 1.2;
+  [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
     self.game.bungieAerospaceImageView = nil;
-    [UIView animateWithDuration:2.0 delay:1.5 options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
       [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
-      [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeWaitingToLogo completion:nil];
+      [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
     }];
   }];
   return YES;
@@ -381,6 +383,12 @@ const char* argv[] = { "AlephOneHD" };
         if ( [transaction.payment.productIdentifier isEqual:HDModeProductID] ) {
           MLog ( @"Enable HD mode!" );
           [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+          [[NSUserDefaults standardUserDefaults] synchronize];
+          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        }
+        if ( [transaction.payment.productIdentifier isEqual:ReticulesProductID] ) {
+          MLog ( @"Enable Reticule mode!" );
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
           [[NSUserDefaults standardUserDefaults] synchronize];
           [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         }

@@ -25,6 +25,7 @@
 @property (nonatomic, retain) IBOutlet UISlider *startLevelSlider;
 @property (nonatomic, retain) IBOutlet UILabel *startLevelLabel;
 @property (nonatomic, retain) IBOutlet UIView *pledge;
+@property (nonatomic, retain) IBOutlet UIView *startLevelView;
 
 
 - (IBAction)start:(id)control;
