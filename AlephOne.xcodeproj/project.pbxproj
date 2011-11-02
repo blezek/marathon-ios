@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -932,10 +932,6 @@
 		A85E68A911CB194400D0FAEF /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = A85E687311CB18FD00D0FAEF /* png.c */; };
 		A864DDAF13FDEFF300A0AE0C /* GenericBackground~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */; };
 		A864DDB213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDA213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png */; };
-		A864DDB913FDF0A800A0AE0C /* VMModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDB513FDF0A800A0AE0C /* VMModeAd~iphone.png */; };
-		A864DDBC13FDF0A800A0AE0C /* VMModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDB613FDF0A800A0AE0C /* VMModeAd@2x~iphone.png */; };
-		A864DDBF13FDF0A800A0AE0C /* HDModeAd~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDB713FDF0A800A0AE0C /* HDModeAd~iphone.png */; };
-		A864DDC213FDF0A800A0AE0C /* HDModeAd@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A864DDB813FDF0A800A0AE0C /* HDModeAd@2x~iphone.png */; };
 		A864DDC613FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */; };
 		A864DDC713FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */; };
 		A864DDC813FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */; };
@@ -999,7 +995,6 @@
 		A87F55E512A7407E00032ED6 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
 		A87F55E612A7407E00032ED6 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
 		A87F55E712A7407E00032ED6 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
-		A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A8811F9D12C76B2200A1A08E /* help11.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9B12C76B2200A1A08E /* help11.png */; };
 		A8811F9E12C76B2200A1A08E /* help12.png in Resources */ = {isa = PBXBuildFile; fileRef = A8811F9C12C76B2200A1A08E /* help12.png */; };
 		A8811FEE12C7816300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
@@ -1431,18 +1426,13 @@
 		A88121D112C7816300A1A08E /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
 		A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
-		A88121D512C7816300A1A08E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88121D912C7816300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
-		A88121DB12C7816300A1A08E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */; };
 		A88121DC12C7816300A1A08E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D111B8A70B0053FE85 /* CoreAudio.framework */; };
 		A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D311B8A70B0053FE85 /* CoreGraphics.framework */; };
 		A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D511B8A70B0053FE85 /* OpenAL.framework */; };
-		A88121E012C7816300A1A08E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
-		A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
-		A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88121F312C7826300A1A08E /* ExpandingLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */; };
 		A88121F812C7826300A1A08E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE80CF11ED5C04005DC183 /* Entitlements.plist */; };
@@ -1873,18 +1863,15 @@
 		A88123D612C7826300A1A08E /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
 		A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
-		A88123DA12C7826300A1A08E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
 		A88123DF12C7826300A1A08E /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544311B4A36500F4D68F /* libstdc++.6.dylib */; };
-		A88123E012C7826300A1A08E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35CF11B8A70B0053FE85 /* CFNetwork.framework */; };
 		A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D111B8A70B0053FE85 /* CoreAudio.framework */; };
 		A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D311B8A70B0053FE85 /* CoreGraphics.framework */; };
 		A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F35D511B8A70B0053FE85 /* OpenAL.framework */; };
 		A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887D11C1E49400D95436 /* MobileCoreServices.framework */; };
 		A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A850887F11C1E49400D95436 /* SystemConfiguration.framework */; };
-		A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
 		A88124A412C79E0100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
@@ -2024,8 +2011,6 @@
 		A894591814280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
 		A894591914280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
 		A894591A14280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */; };
-		A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE62132091EB008BBB10 /* HDModeAd.png */; };
-		A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */ = {isa = PBXBuildFile; fileRef = A899CE63132091EB008BBB10 /* VMModeAd.png */; };
 		A89A90221427F996002F8F0F /* Somewhere.png in Resources */ = {isa = PBXBuildFile; fileRef = A89A901F1427F996002F8F0F /* Somewhere.png */; };
 		A89A90231427F996002F8F0F /* Somewhere.png in Resources */ = {isa = PBXBuildFile; fileRef = A89A901F1427F996002F8F0F /* Somewhere.png */; };
 		A89A90241427F996002F8F0F /* Somewhere.png in Resources */ = {isa = PBXBuildFile; fileRef = A89A901F1427F996002F8F0F /* Somewhere.png */; };
@@ -2406,12 +2391,8 @@
 		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C4436813A7CF72002A908B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4436613A7CF72002A908B /* about.png */; };
-		A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
-		A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
-		A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
 		A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
 		A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70312EFCD6900D5D23F /* StoreKit.framework */; };
-		A8C4B70612EFCD6900D5D23F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
 		A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A8C5563A14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
 		A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
@@ -2541,6 +2522,8 @@
 		A8E3B5E51422E82D004D28A4 /* StoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */; };
 		A8E3B5E61422E82D004D28A4 /* StoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */; };
 		A8E3B5E71422E82D004D28A4 /* StoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */; };
+		A8E3FEFE1460D60C003A90E2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
+		A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		A8EB5AD313987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
 		A8EB5AD413987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
 		A8EB5AD513987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
@@ -2561,9 +2544,6 @@
 		A8FCF12113B60DF00084B5C4 /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */; };
 		A8FCF12213B60DF00084B5C4 /* MainMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A8FCF11C13B60DEF0084B5C4 /* MainMenuButton.png */; };
 		A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FEAB361290773200FA55E0 /* AVFoundation.framework */; };
-		A8FF817D130F6FE800A874F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
-		A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
-		A8FF817F130F6FED00A874F8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		A8FF85C51310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 		A8FF85C61310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 		A8FF85C71310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
@@ -3073,10 +3053,6 @@
 		A85E688311CB18FD00D0FAEF /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pngwutil.c; path = "Libraries/libpng-1.2.24/pngwutil.c"; sourceTree = SOURCE_ROOT; };
 		A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground~iphone.png"; sourceTree = "<group>"; };
 		A864DDA213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericBackground@2x~iphone.png"; sourceTree = "<group>"; };
-		A864DDB513FDF0A800A0AE0C /* VMModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VMModeAd~iphone.png"; sourceTree = "<group>"; };
-		A864DDB613FDF0A800A0AE0C /* VMModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VMModeAd@2x~iphone.png"; sourceTree = "<group>"; };
-		A864DDB713FDF0A800A0AE0C /* HDModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd~iphone.png"; sourceTree = "<group>"; };
-		A864DDB813FDF0A800A0AE0C /* HDModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd@2x~iphone.png"; sourceTree = "<group>"; };
 		A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PreferencesViewController~iphone.xib"; sourceTree = "<group>"; };
 		A864DDC913FDF69300A0AE0C /* SavedGameCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SavedGameCell~iphone.xib"; sourceTree = "<group>"; };
 		A864DDCA13FDF69300A0AE0C /* SaveGameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SaveGameViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -3696,8 +3672,6 @@
 		A898D4AA13BA852A00AF6413 /* JoyPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyPad.h; path = Classes/JoyPad.h; sourceTree = "<group>"; };
 		A898D4AB13BA852A00AF6413 /* JoyPad.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoyPad.mm; path = Classes/JoyPad.mm; sourceTree = "<group>"; };
 		A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DualAnalogSticks.xib; path = "Resources/JoyPad Layouts/DualAnalogSticks.xib"; sourceTree = "<group>"; };
-		A899CE62132091EB008BBB10 /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
-		A899CE63132091EB008BBB10 /* VMModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VMModeAd.png; sourceTree = "<group>"; };
 		A89A901F1427F996002F8F0F /* Somewhere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Somewhere.png; sourceTree = "<group>"; };
 		A89A90201427F996002F8F0F /* Somewhere@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Somewhere@2x~iphone.png"; sourceTree = "<group>"; };
 		A89A90211427F996002F8F0F /* Somewhere~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Somewhere~iphone.png"; sourceTree = "<group>"; };
@@ -4014,14 +3988,9 @@
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
-				A87FF02F12452C7E0033A3EB /* OpenGLES.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
-				A8C4B6FC12EFCD6900D5D23F /* CFNetwork.framework in Frameworks */,
-				A8C4B6FE12EFCD6900D5D23F /* Foundation.framework in Frameworks */,
-				A8C4B70012EFCD6900D5D23F /* MobileCoreServices.framework in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */,
-				A8C4B70612EFCD6900D5D23F /* SystemConfiguration.framework in Frameworks */,
 				A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */,
 				A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */,
 				A83E4BB31403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
@@ -4036,7 +4005,7 @@
 			files = (
 				A8421EBE1455DDD9008BBF22 /* libbz2.dylib in Frameworks */,
 				A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */,
-				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
+				A8E3FEFE1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
@@ -4047,20 +4016,15 @@
 				A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
-				A88121D512C7816300A1A08E /* Foundation.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
 				A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88121D912C7816300A1A08E /* libm.dylib in Frameworks */,
 				A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */,
 				A8CB80EB13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				A88121DB12C7816300A1A08E /* CFNetwork.framework in Frameworks */,
 				A88121DC12C7816300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */,
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
-				A88121E012C7816300A1A08E /* MobileCoreServices.framework in Frameworks */,
-				A88121E112C7816300A1A08E /* SystemConfiguration.framework in Frameworks */,
-				A88121E312C7816300A1A08E /* OpenGLES.framework in Frameworks */,
 				A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */,
 				A83E4BB41403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
 				A8718175140D578D00327BEF /* libfreetype.a in Frameworks */,
@@ -4075,7 +4039,7 @@
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
-				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
+				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
@@ -4083,19 +4047,13 @@
 				A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */,
 				A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */,
 				A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
-				A88123DA12C7826300A1A08E /* Foundation.framework in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */,
 				A88123DF12C7826300A1A08E /* libstdc++.6.dylib in Frameworks */,
-				A88123E012C7826300A1A08E /* CFNetwork.framework in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
-				A88123E812C7826300A1A08E /* OpenGLES.framework in Frameworks */,
-				A8FF817D130F6FE800A874F8 /* SystemConfiguration.framework in Frameworks */,
-				A8FF817E130F6FE900A874F8 /* MobileCoreServices.framework in Frameworks */,
-				A8FF817F130F6FED00A874F8 /* OpenGLES.framework in Frameworks */,
 				A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */,
 				A8EB5ADC13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -6370,10 +6328,6 @@
 				A8D66F4A131766DB009801EC /* GenericBackground.png */,
 				A864DDA113FDEFF300A0AE0C /* GenericBackground~iphone.png */,
 				A864DDA213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png */,
-				A864DDB513FDF0A800A0AE0C /* VMModeAd~iphone.png */,
-				A864DDB613FDF0A800A0AE0C /* VMModeAd@2x~iphone.png */,
-				A864DDB713FDF0A800A0AE0C /* HDModeAd~iphone.png */,
-				A864DDB813FDF0A800A0AE0C /* HDModeAd@2x~iphone.png */,
 				A86676D913135EA900BE2654 /* M1A1 */,
 			);
 			name = M1;
@@ -6413,8 +6367,6 @@
 				A818BD2A13A4778400DB3828 /* Marathon_Infinity_Icon.png */,
 				A818BD2B13A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png */,
 				A88123F012C7826300A1A08E /* Info 3.plist */,
-				A899CE62132091EB008BBB10 /* HDModeAd.png */,
-				A899CE63132091EB008BBB10 /* VMModeAd.png */,
 				A874B1A21318A8DF009C4A92 /* iTunesArtwork */,
 				A8D66F5B131766F7009801EC /* GenericBackground.png */,
 				A8D66F5C131766F7009801EC /* SplashScreen.png */,
@@ -6490,10 +6442,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "SDG Productions";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -6727,10 +6680,6 @@
 				A8B9FB6213FB6CAF00552296 /* Reload~iphone.png in Resources */,
 				A864DDAF13FDEFF300A0AE0C /* GenericBackground~iphone.png in Resources */,
 				A864DDB213FDEFF300A0AE0C /* GenericBackground@2x~iphone.png in Resources */,
-				A864DDB913FDF0A800A0AE0C /* VMModeAd~iphone.png in Resources */,
-				A864DDBC13FDF0A800A0AE0C /* VMModeAd@2x~iphone.png in Resources */,
-				A864DDBF13FDF0A800A0AE0C /* HDModeAd~iphone.png in Resources */,
-				A864DDC213FDF0A800A0AE0C /* HDModeAd@2x~iphone.png in Resources */,
 				A864DDC613FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */,
 				A864DDCB13FDF69300A0AE0C /* SavedGameCell~iphone.xib in Resources */,
 				A864DDCE13FDF69300A0AE0C /* SaveGameViewController~iphone.xib in Resources */,
@@ -7417,8 +7366,6 @@
 				A874B1D01318AA68009C4A92 /* MenuItem-New.png in Resources */,
 				A874B1D11318AA68009C4A92 /* MenuItem-Settings.png in Resources */,
 				A874B1D21318AA68009C4A92 /* MenuItem-Store.png in Resources */,
-				A899CE64132091EB008BBB10 /* HDModeAd.png in Resources */,
-				A899CE65132091EB008BBB10 /* VMModeAd.png in Resources */,
 				A817C0091323311E00964061 /* buy-btn.png in Resources */,
 				A817C00A1323311E00964061 /* done-btn.png in Resources */,
 				A817C00B1323311E00964061 /* restore-btn.png in Resources */,
@@ -9391,7 +9338,6 @@
 					"-force_load",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9535,7 +9481,6 @@
 					"-force_load",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9605,7 +9550,6 @@
 					"-force_load",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -9644,7 +9588,6 @@
 					"-force_load",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK/libJoypadCocoaTouch.a\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "AlephOne HD";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
