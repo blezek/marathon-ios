@@ -202,6 +202,12 @@
   } else {
     self.vmmPurchase.hidden = NO;
   }
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ) {
+    self.rmPurchase.hidden = YES;
+    self.rmPrice.text = @"Installed";
+  } else {
+    self.rmPurchase.hidden = NO;
+  }
 }  
 
 

@@ -141,22 +141,21 @@ extern control_panel_definition *get_control_panel_definition(
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
-    [self.movePadView setup];
-
+  [self.movePadView setup];
+  self.lookView.primaryFire = primaryFireKey;
+  self.lookView.secondaryFire = secondaryFireKey;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+- (void)viewDidUnload {
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
   self.lookView = nil;
   self.movePadView = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  // Return YES for supported orientations
 	return YES;
 }
 

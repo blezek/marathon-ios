@@ -64,6 +64,7 @@ extern int SDL_main(int argc, char *argv[]);
   self.game.splashView.hidden = YES;
   self.game.splashView = nil;
   MLog ( @"Hiding SplashView and starting animation" );
+  [Appirater appLaunched:YES];
   // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
   [game startAnimation];
 }  
@@ -107,9 +108,9 @@ extern int SDL_main(int argc, char *argv[]);
 #if TARGET_IPHONE_SIMULATOR
   // Always test on the simulator
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveReticleMode];
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveTTEP];
 #endif
 
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
@@ -209,7 +210,6 @@ extern int SDL_main(int argc, char *argv[]);
   
   MLog ( @"Loaded view: %@", self.game.view );
   
-  [Appirater appLaunched:YES];
   [Tracking startup];
   [Tracking trackPageview:@"/startup"];
   [Tracking tagEvent:@"startup"];

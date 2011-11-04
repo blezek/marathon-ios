@@ -14,7 +14,7 @@
 
 @implementation ProgressViewController
 @synthesize progressView, mainView;
-@synthesize vmmAd, hdmAd;
+@synthesize vmmAd, hdmAd, rmAd;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -43,12 +43,15 @@
     // See if we need to show something
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
-    NSMutableArray *views = [NSMutableArray arrayWithCapacity:2];
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:3];
     if ( NO == [defaults boolForKey:kHaveTTEP] ) {
       [views addObject:self.hdmAd];
     }
     if ( NO == [defaults boolForKey:kHaveVidmasterMode] ) {
       [views addObject:self.vmmAd];
+    }
+    if ( NO == [defaults boolForKey:kHaveReticleMode] ) {
+      [views addObject:self.rmAd];
     }
     
     if ( views.count > 0 ) {

@@ -63,7 +63,7 @@
 						<string key="NSFrame">{{6, 0}, {468, 171}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="834851412"/>
+						<reference key="NSNextKeyView" ref="646278475"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -167,7 +167,7 @@
 						<string key="NSFrame">{{329, 169}, {135, 50}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="694068488"/>
+						<reference key="NSNextKeyView" ref="834851412"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -252,7 +252,7 @@
 								<string key="NSFrame">{{101, 71}, {190, 21}}</string>
 								<reference key="NSSuperview" ref="834851412"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="646278475"/>
+								<reference key="NSNextKeyView" ref="694068488"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -269,11 +269,11 @@
 								<float key="IBUIMinimumFontSize">17</float>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
-									<double key="pointSize">17</double>
+									<double key="pointSize">14</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica</string>
-									<double key="NSSize">17</double>
+									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
@@ -305,7 +305,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{480, 453}</string>
+				<string key="NSFrameSize">{480, 320}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="508363884"/>
@@ -680,7 +680,6 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>StartLevelView</string>
 							<string>easyButton</string>
 							<string>hardButton</string>
 							<string>nightmareButton</string>
@@ -692,7 +691,6 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -707,7 +705,6 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>StartLevelView</string>
 							<string>easyButton</string>
 							<string>hardButton</string>
 							<string>nightmareButton</string>
@@ -719,10 +716,6 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">StartLevelView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">easyButton</string>
 								<string key="candidateClassName">UIButton</string>
@@ -766,10 +759,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1280" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3100" key="NS.object.0"/>
