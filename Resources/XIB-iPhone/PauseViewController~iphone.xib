@@ -200,7 +200,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="34343493"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">JoyPadButton.png</string>
+							<string key="NSResourceName">JoyPad.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="22785759"/>
 						<reference key="IBUIFont" ref="940102279"/>
@@ -405,6 +405,7 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="278726092"/>
 								<bool key="IBUIOpaque">NO</bool>
+								<int key="IBUIContentMode">4</int>
 								<int key="IBUITag">1</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -643,8 +644,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="44375297"/>
 							<reference ref="974739302"/>
-							<reference ref="995036701"/>
 							<reference ref="278726092"/>
+							<reference ref="995036701"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 					</object>
@@ -890,7 +891,7 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>AmmoButton.png</string>
-				<string>JoyPadButton.png</string>
+				<string>JoyPad.png</string>
 				<string>MenuButton.png</string>
 				<string>ResumeButton.png</string>
 				<string>SaveButton.png</string>
@@ -901,13 +902,13 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{147, 129}</string>
-				<string>{250, 86}</string>
+				<string>{251, 74}</string>
 				<string>{246, 74}</string>
 				<string>{246, 74}</string>
 				<string>{130, 113}</string>
 				<string>{290, 74}</string>
 				<string>{192, 123}</string>
-				<string>{1024, 768}</string>
+				<string>{144, 121}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>

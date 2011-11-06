@@ -157,7 +157,7 @@ BOOL StatsDownloaded = NO;
   self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
   [self.purchaseViewController view];
   [self.purchaseView addSubview:self.purchaseViewController.view];
-  
+    
   // Kill a warning
   (void)all_key_definitions;
   mode = MenuMode;
@@ -380,7 +380,6 @@ BOOL StatsDownloaded = NO;
   // Setup other views
   [self.moveView setup];
   [self menuHideReplacementMenu];
-  [self configureHUD:nil];
   [self updateReticule:get_player_desired_weapon(current_player_index)];
   
   /*
@@ -441,10 +440,15 @@ BOOL StatsDownloaded = NO;
   group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
-  
-  for ( UIView *v in [self.hud subviews] ) {
+  if ( self.HUDViewController == nil ) {
+    [self configureHUD:nil];
+  }
+  NSMutableArray* views = [NSMutableArray arrayWithArray:[self.hud subviews]];
+  [views addObjectsFromArray:[self.HUDViewController.view subviews]];
+
+  for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
-    if ( v == self.savedGameMessage || v.tag == 400 ) { continue; }
+    if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
     v.hidden = NO;
     if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
@@ -511,7 +515,9 @@ BOOL StatsDownloaded = NO;
   group.duration = 4.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
   
-  for ( UIView *v in [self.hud subviews] ) {
+  NSMutableArray* views = [NSMutableArray arrayWithArray:[self.hud subviews]];
+  [views addObjectsFromArray:[self.HUDViewController.view subviews]];
+  for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v != self.savedGameMessage ) {
       [v.layer addAnimation:group forKey:nil];
