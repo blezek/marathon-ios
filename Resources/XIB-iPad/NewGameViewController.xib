@@ -49,6 +49,10 @@
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="454769046"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">4</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -78,7 +82,6 @@
 						<string key="NSFrame">{{733, 649}, {236, 74}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -682,7 +685,6 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>StartLevelView</string>
 							<string>easyButton</string>
 							<string>hardButton</string>
 							<string>nightmareButton</string>
@@ -694,7 +696,6 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -709,7 +710,6 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>StartLevelView</string>
 							<string>easyButton</string>
 							<string>hardButton</string>
 							<string>nightmareButton</string>
@@ -721,10 +721,6 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">StartLevelView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">easyButton</string>
 								<string key="candidateClassName">UIButton</string>

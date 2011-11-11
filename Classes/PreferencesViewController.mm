@@ -135,6 +135,14 @@
   self.vidmasterModeLabel.hidden = YES;
   self.vidmasterMode.hidden = YES;
   [self.vidmasterMode setSelected:[defaults boolForKey:kUseVidmasterMode]]; 
+
+  // MC Mode and HD mode
+  self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
+  [self.hiresTextures setSelected:[defaults boolForKey:kUseTTEP]];
+  self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
+  [self.vidmasterMode setSelected:[defaults boolForKey:kUseVidmasterMode]];
+
+  
 #if defined(A1DEBUG)
   self.hiresTexturesLabel.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
   self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];

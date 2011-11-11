@@ -283,6 +283,7 @@
 						<string key="NSFrame">{{680, 626}, {116, 130}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -341,13 +342,13 @@
 								<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">patternbuffers-btn.png</string>
+									<string key="NSResourceName">UseComputer.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="576645065"/>
 								<reference key="IBUIFont" ref="520788015"/>
 							</object>
 						</object>
-						<string key="NSFrame">{{203, 220}, {75, 75}}</string>
+						<string key="NSFrame">{{203, 240}, {75, 75}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="964025369"/>
@@ -1358,10 +1359,10 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>UseComputer.png</string>
 				<string>movementboxBase.png</string>
 				<string>movementboxKnob.png</string>
 				<string>overheadmap.png</string>
-				<string>patternbuffers-btn.png</string>
 				<string>primarytrigger-btn.png</string>
 				<string>secondarytrigger-btn.png</string>
 				<string>toggleweapons-left-btn.png</string>
@@ -1369,10 +1370,10 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{120, 120}</string>
 				<string>{198, 198}</string>
 				<string>{158, 158}</string>
 				<string>{138, 137}</string>
-				<string>{70, 70}</string>
 				<string>{101, 101}</string>
 				<string>{79, 79}</string>
 				<string>{54, 53}</string>

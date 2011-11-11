@@ -108,12 +108,12 @@ extern int SDL_main(int argc, char *argv[]);
 #if TARGET_IPHONE_SIMULATOR
   // Always test on the simulator
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
-  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveVidmasterMode];
-  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveReticleMode];
-  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHaveTTEP];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
 
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+  // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
 
   
 #if defined(A1DEBUG)
@@ -238,10 +238,16 @@ extern int SDL_main(int argc, char *argv[]);
     
   float duration = 1.2;
   float delay = 1.2;
+  
+  float startDelay = 0.0;
+#if SCENARIO == 12
+  startDelay = 0.7;
+#endif  
+  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
+
   [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
     self.game.bungieAerospaceImageView = nil;
     [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
-      [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
       [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
     }];
   }];
@@ -389,6 +395,7 @@ const char* argv[] = { "AlephOneHD" };
         if ( [transaction.payment.productIdentifier isEqual:ReticulesProductID] ) {
           MLog ( @"Enable Reticule mode!" );
           [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCrosshairs];
           [[NSUserDefaults standardUserDefaults] synchronize];
           [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         }

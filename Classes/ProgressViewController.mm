@@ -39,6 +39,7 @@
     [Tracking trackPageview:@"/progress"];
     self.vmmAd.hidden = YES;
     self.hdmAd.hidden = YES;
+    self.rmAd.hidden = YES;
         
     // See if we need to show something
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
