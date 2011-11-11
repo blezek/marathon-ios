@@ -11,28 +11,28 @@
 
 @interface PreferencesViewController : UIViewController {
   BOOL inMainMenu;
-  UISwitch *tapShoots;
-  UISwitch *crosshairs;
-  UISwitch *autoCenter;
-  UISwitch *secondTapShoots;
+  UIButton *tapShoots;
+  UIButton *crosshairs;
+  UIButton *autoCenter;
+  UIButton *secondTapShoots;
   UISlider *sfxVolume;
   UISlider *musicVolume;
   UISlider *hSensitivity;
   UISlider *vSensitivity;
   UISlider *brightness;
   UILabel *hiresTexturesLabel;
-  UISwitch *hiresTextures;
+  UIButton *hiresTextures;
   UILabel *vidmasterModeLabel;
-  UISwitch *vidmasterMode;
+  UIButton *vidmasterMode;
   UILabel *musicLabel;
   UILabel *filmsDisabled;
   UIView *screenView;
 }
 
-@property (nonatomic, retain) IBOutlet UISwitch *tapShoots;
-@property (nonatomic, retain) IBOutlet UISwitch *autoCenter;
-@property (nonatomic, retain) IBOutlet UISwitch *crosshairs;
-@property (nonatomic, retain) IBOutlet UISwitch *secondTapShoots;
+@property (nonatomic, retain) IBOutlet UIButton *tapShoots;
+@property (nonatomic, retain) IBOutlet UIButton *autoCenter;
+@property (nonatomic, retain) IBOutlet UIButton *crosshairs;
+@property (nonatomic, retain) IBOutlet UIButton *secondTapShoots;
 @property (nonatomic, retain) IBOutlet UISlider *sfxVolume;
 @property (nonatomic, retain) IBOutlet UISlider *musicVolume;
 @property (nonatomic, retain) IBOutlet UILabel *musicLabel;
@@ -41,9 +41,9 @@
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
 
-@property (nonatomic, retain) IBOutlet UISwitch *hiresTextures;
+@property (nonatomic, retain) IBOutlet UIButton *hiresTextures;
 @property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
-@property (nonatomic, retain) IBOutlet UISwitch *vidmasterMode;
+@property (nonatomic, retain) IBOutlet UIButton *vidmasterMode;
 @property (nonatomic, retain) IBOutlet UILabel *vidmasterModeLabel;
 @property (nonatomic, retain) IBOutlet UIView *screenView;
 
@@ -53,5 +53,8 @@
 - (IBAction)closePreferences:(id)sender;
 - (IBAction)notifyOfChanges;
 - (IBAction)resetAchievements:(id)sender;
+-(IBAction) toggleButton:(id)sender;
+- (void)appear;
+- (void)disappear;
 
 @end

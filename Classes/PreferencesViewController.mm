@@ -9,6 +9,7 @@
 #import "PreferencesViewController.h"
 #import "GameViewController.h"
 #import "AlephOneAppDelegate.h"
+#import "Effects.h"
 #include "preferences.h"
 #include "Mixer.h"
 #import "GameKit/GameKit.h"
@@ -35,30 +36,30 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
 
-  [defaults setBool:[self.tapShoots isOn] forKey:kTapShoots];
-  if ( [self.tapShoots isOn] != [defaults boolForKey:kTapShoots] ) {
-    [Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isOn]];
+  [defaults setBool:[self.tapShoots isSelected] forKey:kTapShoots];
+  if ( [self.tapShoots isSelected] != [defaults boolForKey:kTapShoots] ) {
+    [Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isSelected]];
 
   }
-  [defaults setBool:[self.crosshairs isOn] forKey:kCrosshairs];
-  if ( [self.crosshairs isOn] != [defaults boolForKey:kCrosshairs] ) {
-    [ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isOn]];
+  [defaults setBool:[self.crosshairs isSelected] forKey:kCrosshairs];
+  if ( [self.crosshairs isSelected] != [defaults boolForKey:kCrosshairs] ) {
+    [ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isSelected]];
   }
-  [defaults setBool:[self.secondTapShoots isOn] forKey:kSecondTapShoots];
-  if ( [self.secondTapShoots isOn] != [defaults boolForKey:kSecondTapShoots] ) {
-    [ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isOn]];
+  [defaults setBool:[self.secondTapShoots isSelected] forKey:kSecondTapShoots];
+  if ( [self.secondTapShoots isSelected] != [defaults boolForKey:kSecondTapShoots] ) {
+    [ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isSelected]];
   }
-  [defaults setBool:[self.autoCenter isOn] forKey:kAutocenter];
-  if ( [self.autoCenter isOn] != [defaults boolForKey:kAutocenter] ) {
-    [ Tracking trackEvent:@"settings" action:kAutocenter label:@"" value:[self.autoCenter isOn]];
+  [defaults setBool:[self.autoCenter isSelected] forKey:kAutocenter];
+  if ( [self.autoCenter isSelected] != [defaults boolForKey:kAutocenter] ) {
+    [ Tracking trackEvent:@"settings" action:kAutocenter label:@"" value:[self.autoCenter isSelected]];
   }
-  [defaults setBool:[self.vidmasterMode isOn] forKey:kUseVidmasterMode];
-  if ( [self.vidmasterMode isOn] != [defaults boolForKey:kUseVidmasterMode] ) {
-    [ Tracking trackEvent:@"settings" action:kUseVidmasterMode label:@"" value:[self.vidmasterMode isOn]];
+  [defaults setBool:[self.vidmasterMode isSelected] forKey:kUseVidmasterMode];
+  if ( [self.vidmasterMode isSelected] != [defaults boolForKey:kUseVidmasterMode] ) {
+    [ Tracking trackEvent:@"settings" action:kUseVidmasterMode label:@"" value:[self.vidmasterMode isSelected]];
   }
-  [defaults setBool:[self.hiresTextures isOn] forKey:kUseTTEP];
-  if ( [self.hiresTextures isOn] != [defaults boolForKey:kUseTTEP] ) {
-    [ Tracking trackEvent:@"settings" action:kUseTTEP label:@"" value:[self.hiresTextures isOn]];
+  [defaults setBool:[self.hiresTextures isSelected] forKey:kUseTTEP];
+  if ( [self.hiresTextures isSelected] != [defaults boolForKey:kUseTTEP] ) {
+    [ Tracking trackEvent:@"settings" action:kUseTTEP label:@"" value:[self.hiresTextures isSelected]];
   }
   
   [defaults setFloat:self.sfxVolume.value forKey:kSfxVolume];
@@ -100,12 +101,25 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
+  NSArray *sliders = [NSArray arrayWithObjects:self.hSensitivity,
+                     self.vSensitivity,
+                     self.brightness,
+                     self.musicVolume,
+                     self.sfxVolume, nil];
+  for (UISlider *slider in sliders ) {
+    [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateNormal];
+    [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateSelected];
+    [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateHighlighted];
+    [slider setMaximumTrackImage:[UIImage imageNamed:@"SliderBlackTrack"]  forState:UIControlStateNormal];
+    [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderRedTrack"]forState:UIControlStateNormal];
+  }
+  
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  self.tapShoots.on = [defaults boolForKey:kTapShoots];
-  self.crosshairs.on = [defaults boolForKey:kCrosshairs];
-  self.autoCenter.on = [defaults boolForKey:kAutocenter];
-  self.secondTapShoots.on = [defaults boolForKey:kSecondTapShoots];
+  [self.tapShoots setSelected:[defaults boolForKey:kTapShoots]];
+  [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
+  [self.autoCenter setSelected:[defaults boolForKey:kAutocenter]];
+  [self.secondTapShoots setSelected:[defaults boolForKey:kSecondTapShoots]];
   self.sfxVolume.value = [defaults floatForKey:kSfxVolume];
   self.musicVolume.value = [defaults floatForKey:kMusicVolume];
   self.hSensitivity.value = [defaults floatForKey:kHSensitivity];
@@ -117,17 +131,25 @@
 #endif
   self.hiresTexturesLabel.hidden = YES;
   self.hiresTextures.hidden = YES;
-  self.hiresTextures.on = [defaults boolForKey:kUseTTEP];
+  [self.hiresTextures setSelected:[defaults boolForKey:kUseTTEP]];
   self.vidmasterModeLabel.hidden = YES;
   self.vidmasterMode.hidden = YES;
-  self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];  
+  [self.vidmasterMode setSelected:[defaults boolForKey:kUseVidmasterMode]]; 
+
+  // MC Mode and HD mode
+  self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
+  [self.hiresTextures setSelected:[defaults boolForKey:kUseTTEP]];
+  self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
+  [self.vidmasterMode setSelected:[defaults boolForKey:kUseVidmasterMode]];
+
+  
 #if defined(A1DEBUG)
   self.hiresTexturesLabel.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
   self.hiresTextures.hidden = !inMainMenu || ![defaults boolForKey:kHaveTTEP];
-  self.hiresTextures.on = [defaults boolForKey:kUseTTEP];
+  [self.hiresTextures setSelected:[defaults boolForKey:kUseTTEP]];
   self.vidmasterModeLabel.hidden = ![defaults boolForKey:kHaveVidmasterMode];
   self.vidmasterMode.hidden = ![defaults boolForKey:kHaveVidmasterMode];
-  self.vidmasterMode.on = [defaults boolForKey:kUseVidmasterMode];
+  [self.vidmasterMode setSelected:[defaults boolForKey:kUseVidmasterMode]];
   
 #endif
 
@@ -140,11 +162,13 @@
 #endif
     }
   }
-  // The BG for M2 is too bright, activate the screens
-  self.screenView.hidden = YES;
-#if SCENARIO == 2
-  self.screenView.hidden = NO;
-#endif
+}
+
+
+-(IBAction) toggleButton:(id)sender {
+  if ( [sender isKindOfClass:[UIButton class]] ) {
+    [sender setSelected:![sender isSelected]];
+  }
 }
 
 - (IBAction)updatePreferences:(id)sender {
@@ -205,6 +229,22 @@
     [[AlephOneAppDelegate sharedAppDelegate].purchases performSelector:@selector(checkPurchases) withObject:nil afterDelay:0.0];
   }
 }
+
+- (void)appear {
+  CAAnimation *group = [Effects appearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:nil];
+  }
+}
+
+- (void)disappear {
+  CAAnimation *group = [Effects disappearAnimation];
+  for ( UIView *v in self.view.subviews ) {
+    [v.layer removeAllAnimations];
+    [v.layer addAnimation:group forKey:nil];
+  }
+}  
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.

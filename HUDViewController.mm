@@ -224,8 +224,8 @@ extern "C" {
   key_map[lookRightKey] = 0;
 }
 
-- (void)dimActionKey {}
-- (void)lightActionKey {}
+- (void)dimActionKey:(short)actionType {}
+- (void)lightActionKey:(short)actionType {}
 
 
 - (void)dealloc

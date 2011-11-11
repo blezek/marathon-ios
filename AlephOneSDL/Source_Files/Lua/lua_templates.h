@@ -486,8 +486,8 @@ static void Register(lua_State *L, const luaL_reg get[] = 0,
 static index_t ToIndex(lua_State *L, int index);
 static void PushMnemonicTable(lua_State *L);
 protected:
-static bool _lookup(lua_State *L, int index, index_t& to);
 static int _equals(lua_State *L);
+  static bool s_lookup(lua_State *L, int index, index_t& to);
 private:
 static int _get_mnemonic(lua_State *L);
 static int _set_mnemonic(lua_State *L);
@@ -496,6 +496,7 @@ static void _push_mnemonic_key(lua_State *L) {
   lua_pushlightuserdata(L, (void *) (&name[4]));
 }
 };
+
 
 // the justification for this specialization is long
 template<char *name, typename index_t = int16>
@@ -507,7 +508,8 @@ static index_t ToIndex(lua_State *L, int index) {
   if(lua_isnil(L, index)) {
     return -1;
   }
-  else if(_lookup(L, index, to)) {
+  // else if(s_lookup(L, index, to)) {
+  else if ( false ) {
     return to;
   }
   else {
@@ -522,7 +524,7 @@ static index_t ToIndex(lua_State *L, int index) {
   }
 }
 };
-
+ 
 template<char *name, typename index_t>
 void L_Enum<name, index_t>::Register(lua_State *L, const luaL_reg get[],
                                      const luaL_reg set[],
@@ -590,7 +592,7 @@ void L_Enum<name, index_t>::PushMnemonicTable(lua_State *L)
 }
 
 template<char *name, typename index_t>
-bool L_Enum<name, index_t>::_lookup(lua_State *L, int index, index_t& to)
+bool L_Enum<name, index_t>::s_lookup(lua_State *L, int index, index_t& to)
 {
   if (L_Class<name, index_t>::Is(L, index)) {
     to = L_Class<name, index_t>::Index(L, index);
@@ -634,7 +636,7 @@ template<char *name, typename index_t>
 index_t L_Enum<name, index_t>::ToIndex(lua_State *L, int index)
 {
   index_t to;
-  if (_lookup(L, index, to)) {
+  if (s_lookup(L, index, to)) {
     return to;
   }
   else
@@ -655,7 +657,7 @@ template<char *name, typename index_t>
 int L_Enum<name, index_t>::_equals(lua_State *L)
 {
   index_t a, b;
-  lua_pushboolean(L, _lookup(L, 1, a) && _lookup(L, 2, b) && (a == b));
+  lua_pushboolean(L, s_lookup(L, 1, a) && s_lookup(L, 2, b) && (a == b));
   return 1;
 }
 

@@ -47,12 +47,14 @@ extern int SDL_main(int argc, char *argv[]);
   [self.purchases checkPurchases];
   
 #ifdef USE_CADisplayLoop
+  /*
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:2.0];
   // Fade out splash screen
   [self.game.splashView setAlpha:0.0];
   [UIView commitAnimations];
-  [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:2.0];
+   */
+  [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
   
 }
@@ -62,6 +64,7 @@ extern int SDL_main(int argc, char *argv[]);
   self.game.splashView.hidden = YES;
   self.game.splashView = nil;
   MLog ( @"Hiding SplashView and starting animation" );
+  [Appirater appLaunched:YES];
   // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
   [game startAnimation];
 }  
@@ -110,7 +113,7 @@ extern int SDL_main(int argc, char *argv[]);
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
 
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+  // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
 
   
 #if defined(A1DEBUG)
@@ -207,7 +210,6 @@ extern int SDL_main(int argc, char *argv[]);
   
   MLog ( @"Loaded view: %@", self.game.view );
   
-  [Appirater appLaunched:YES];
   [Tracking startup];
   [Tracking trackPageview:@"/startup"];
   [Tracking tagEvent:@"startup"];
@@ -234,11 +236,19 @@ extern int SDL_main(int argc, char *argv[]);
     self.game.episodeImageView.alpha = 1.0;
   };
     
-  [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
+  float duration = 1.2;
+  float delay = 1.2;
+  
+  float startDelay = 0.0;
+#if SCENARIO == 12
+  startDelay = 0.7;
+#endif  
+  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
+
+  [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
     self.game.bungieAerospaceImageView = nil;
-    [UIView animateWithDuration:2.0 delay:1.5 options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
-      [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:0.0];
-      [UIView animateWithDuration:2.0  delay:1.5 options:0 animations:fadeWaitingToLogo completion:nil];
+    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+      [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
     }];
   }];
   return YES;
@@ -379,6 +389,13 @@ const char* argv[] = { "AlephOneHD" };
         if ( [transaction.payment.productIdentifier isEqual:HDModeProductID] ) {
           MLog ( @"Enable HD mode!" );
           [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+          [[NSUserDefaults standardUserDefaults] synchronize];
+          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        }
+        if ( [transaction.payment.productIdentifier isEqual:ReticulesProductID] ) {
+          MLog ( @"Enable Reticule mode!" );
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
+          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCrosshairs];
           [[NSUserDefaults standardUserDefaults] synchronize];
           [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         }

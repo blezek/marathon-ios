@@ -26,4 +26,5 @@
 @property (nonatomic,retain) IBOutlet UIView *mainView;
 @property (nonatomic,retain) UIView *hdmAd;
 @property (nonatomic,retain) UIView *vmmAd;
+@property (nonatomic,retain) IBOutlet UIView *rmAd;
 @end
