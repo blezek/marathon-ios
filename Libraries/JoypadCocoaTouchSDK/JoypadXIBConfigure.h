@@ -39,7 +39,7 @@
 }
 
 @property(nonatomic,retain) UIView* view;
-- (JoypadControllerLayout*) configureLayout:(NSString*)xibName;
+- (JoypadControllerLayout*) configureLayout:(NSString*)xibName name:(NSString*)name;
 
 @end
 

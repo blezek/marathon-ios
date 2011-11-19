@@ -15,7 +15,7 @@
   UIButton *nightmareButton;
   UISlider *startLevelSlider;
   UILabel *startLevelLabel;
-  UIView *pledge;
+  UIImageView *pledge;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *easyButton;
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *nightmareButton;
 @property (nonatomic, retain) IBOutlet UISlider *startLevelSlider;
 @property (nonatomic, retain) IBOutlet UILabel *startLevelLabel;
-@property (nonatomic, retain) IBOutlet UIView *pledge;
+@property (nonatomic, retain) IBOutlet UIImageView *pledge;
 @property (nonatomic, retain) IBOutlet UIView *startLevelView;
 
 

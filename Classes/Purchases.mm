@@ -106,7 +106,7 @@ extern "C" {
   MLog ( @"Copied %@ to %@", pathToMML, outputFile );
   // Force a re-parse
   LoadBaseMMLScripts();
-  unload_all_collections();
+  // unload_all_collections();
   /*
    XML_Loader_SDL loader;
    FileSpecifier file ( (char*)[pathToMML UTF8String] );

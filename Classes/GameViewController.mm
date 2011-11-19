@@ -18,6 +18,7 @@
 #include "FileHandler.h"
 #import "Tracking.h"
 #import "FloatingTriggerHUDViewController.h"
+#import "AlephOneHelper.h"
 
 extern float DifficultyMultiplier[];
 
@@ -100,6 +101,7 @@ BOOL StatsDownloaded = NO;
 @synthesize saveFilmButton, loadFilmButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
+@synthesize HUDTouchViewController, HUDJoypadViewController;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -316,6 +318,9 @@ BOOL StatsDownloaded = NO;
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
+    [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
+
+  
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
 #if defined(A1DEBUG)
@@ -424,7 +429,8 @@ BOOL StatsDownloaded = NO;
   Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
-  
+  self.HUDViewController.view.hidden = NO;
+
   CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
   opacityAnimation.duration = 1.0;
   opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
@@ -443,6 +449,7 @@ BOOL StatsDownloaded = NO;
   if ( self.HUDViewController == nil ) {
     [self configureHUD:nil];
   }
+
   NSMutableArray* views = [NSMutableArray arrayWithArray:[self.hud subviews]];
   [views addObjectsFromArray:[self.HUDViewController.view subviews]];
 
@@ -692,17 +699,20 @@ BOOL StatsDownloaded = NO;
 }
 
 - (void)configureHUD:(NSString*)HUDType{
+  
+  if ( self.HUDTouchViewController == nil ) {
+    self.HUDTouchViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
+    self.HUDJoypadViewController = [[JoypadHUDViewController alloc] initWithNibName:@"JoypadHUDViewController" bundle:[NSBundle mainBundle]];
+  }
+  
   [self.HUDViewController.view removeFromSuperview];
   if ( HUDType == nil ) {
-    self.HUDViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
-    // self.HUDViewController = [[FloatingTriggerHUDViewController alloc] initWithNibName:@"FloatingTriggerHUDViewController" bundle:[NSBundle mainBundle]];
-    [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
-    
+    self.HUDTouchViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
+    self.HUDViewController = self.HUDTouchViewController;
   } else {
-    self.HUDViewController = [[JoypadHUDViewController alloc] initWithNibName:@"JoypadHUDViewController" bundle:[NSBundle mainBundle]];
-    [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
-  
+    self.HUDViewController = self.HUDJoypadViewController;
   }
+  [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
   
 
 }
@@ -749,6 +759,10 @@ extern bool load_and_start_game(FileSpecifier& File);
   int sessions = game.numberOfSessions.intValue + 1;
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
+
+  // load the HD textures if needed
+  [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
+
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
@@ -1009,15 +1023,19 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)menuNewGame {
+  [self PlayInterfaceButtonSound];
   [self newGame];
 }
 - (IBAction)menuLoadGame {
+  [self PlayInterfaceButtonSound];
   do_menu_item_command(mInterface, iLoadGame, false);
 }
 - (IBAction)menuPreferences {
+  [self PlayInterfaceButtonSound];
   do_menu_item_command(mInterface, iPreferences, false);
 }
 - (IBAction)menuStore {
+  [self PlayInterfaceButtonSound];
   MLog ( @"Goto store" );
   [Tracking trackPageview:@"/store"];
   // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
@@ -1034,12 +1052,14 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self.purchaseViewController appear];
 }
 - (IBAction)cancelStore {
+  [self PlayInterfaceButtonSound];
   [self closeEvent];
   [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
   [self.purchaseViewController disappear];
 }
 
 - (IBAction)menuAbout {
+  [self PlayInterfaceButtonSound];
   [Tracking trackPageview:@"/about"];
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.aboutView.subviews ) {
@@ -1050,6 +1070,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)cancelAbout {
+  [self PlayInterfaceButtonSound];
   [self closeEvent];
   CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.aboutView.subviews ) {
@@ -1058,6 +1079,12 @@ extern bool handle_open_replay(FileSpecifier& File);
   }
   [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }  
+
+-(void) PlayInterfaceButtonSound
+{
+    SoundManager::instance()->PlaySound(Sound_ButtonSuccess(), (world_location3d *) NULL,
+                                        NONE);
+}
 
 
 #pragma mark -
@@ -1144,6 +1171,9 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)pause:(id)from {
   // If we are dead, don't do anything
   if ( mode == DeadMode ) { return; }
+  if ( from != nil ) {
+    [self PlayInterfaceButtonSound];
+  }
   // Level name is
   // static_world->level_name
   MLog (@"Camera Polygon Index: %d", local_player->camera_polygon_index );
@@ -1288,6 +1318,9 @@ _civilian_fusion_assimilated,
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
+  [self PlayInterfaceButtonSound];
+
+  // [self invincibilityCheat:sender];
   [Tracking trackEvent:@"player" action:@"cheat" label:@"shield" value:dynamic_world->current_level_number];
   [Tracking tagEvent:@"shieldCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
                                             @"difficulty",
@@ -1312,6 +1345,8 @@ _civilian_fusion_assimilated,
 }
 
 - (IBAction)saveCheat:(id)sender {
+  [self PlayInterfaceButtonSound];
+
   [Tracking trackEvent:@"player" action:@"cheat" label:@"save" value:dynamic_world->current_level_number];
   [Tracking tagEvent:@"saveCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
                                               @"difficulty",
