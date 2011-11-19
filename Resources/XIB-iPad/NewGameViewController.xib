@@ -12,12 +12,12 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUISlider</string>
-			<string>IBUIButton</string>
-			<string>IBUIImageView</string>
-			<string>IBUIView</string>
 			<string>IBUILabel</string>
+			<string>IBUIView</string>
 			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
+			<string>IBUIButton</string>
+			<string>IBUISlider</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -48,7 +48,7 @@
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="454769046"/>
+						<reference key="NSNextKeyView" ref="60648089"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">4</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -61,13 +61,13 @@
 							<string key="NSResourceName">NewGameBackground.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="454769046">
+					<object class="IBUIImageView" id="60648089">
 						<reference key="NSNextResponder" ref="689605433"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{13.5, 40}, {997, 360}}</string>
+						<string key="NSFrame">{{0, 32}, {1024, 374}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="646278475"/>
+						<reference key="NSNextKeyView"/>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -82,6 +82,7 @@
 						<string key="NSFrame">{{733, 649}, {236, 74}}</string>
 						<reference key="NSSuperview" ref="689605433"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -371,14 +372,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pledge</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="454769046"/>
-					</object>
-					<int key="connectionID">47</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">startLevelSlider</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="443320114"/>
@@ -400,6 +393,14 @@
 						<reference key="destination" ref="978326007"/>
 					</object>
 					<int key="connectionID">52</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pledge</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="60648089"/>
+					</object>
+					<int key="connectionID">54</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -484,13 +485,13 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="508363884"/>
-							<reference ref="454769046"/>
 							<reference ref="381063342"/>
 							<reference ref="565955628"/>
 							<reference ref="403985543"/>
 							<reference ref="646278475"/>
 							<reference ref="694068488"/>
 							<reference ref="978326007"/>
+							<reference ref="60648089"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -525,11 +526,6 @@
 						<reference key="parent" ref="689605433"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">46</int>
-						<reference key="object" ref="454769046"/>
-						<reference key="parent" ref="689605433"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
 						<reference key="object" ref="978326007"/>
 						<object class="NSMutableArray" key="children">
@@ -561,6 +557,11 @@
 						<reference key="object" ref="100767252"/>
 						<reference key="parent" ref="978326007"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">53</int>
+						<reference key="object" ref="60648089"/>
+						<reference key="parent" ref="689605433"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -580,10 +581,10 @@
 					<string>23.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBUserGuides</string>
-					<string>46.IBPluginDependency</string>
 					<string>48.IBPluginDependency</string>
 					<string>50.IBPluginDependency</string>
 					<string>51.IBPluginDependency</string>
+					<string>53.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -604,7 +605,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="IBUserGuide">
 							<reference key="view" ref="689605433"/>
-							<double key="location">506</double>
+							<double key="location">520</double>
 							<int key="affinity">1</int>
 						</object>
 					</object>
@@ -627,7 +628,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">52</int>
+			<int key="maxID">54</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -29,7 +29,7 @@
 @synthesize filmsDisabled;
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
-@synthesize screenView;
+@synthesize settingPrefsView;
 
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
@@ -101,11 +101,13 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
+  self.settingPrefsView.hidden = YES;
   NSArray *sliders = [NSArray arrayWithObjects:self.hSensitivity,
                      self.vSensitivity,
                      self.brightness,
                      self.musicVolume,
                      self.sfxVolume, nil];
+
   for (UISlider *slider in sliders ) {
     [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateNormal];
     [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateSelected];
@@ -225,9 +227,11 @@
     }
     Mixer::instance()->SetVolume ( ceil ( [defaults floatForKey:kSfxVolume] * MAXIMUM_SOUND_VOLUME ) );
   }
-  if ( check ) {
-    [[AlephOneAppDelegate sharedAppDelegate].purchases performSelector:@selector(checkPurchases) withObject:nil afterDelay:0.0];
-  }
+  
+  // DJB This seems to cause flickering...
+  // if ( check ) {
+  //    [[AlephOneAppDelegate sharedAppDelegate].purchases performSelector:@selector(checkPurchases) withObject:nil afterDelay:0.2];
+  //  }
 }
 
 - (void)appear {

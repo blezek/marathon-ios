@@ -12,13 +12,13 @@
 @implementation JoypadXIBConfigure
 @synthesize view;
 
-- (JoypadControllerLayout*) configureLayout:(NSString*)nibName {
+- (JoypadControllerLayout*) configureLayout:(NSString*)nibName name:(NSString*)name {
   if ( [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] == NO ) {
     NSLog(@"Error loading nib %@!", nibName);
     return nil;
   }
   JoypadControllerLayout *customLayout = [[JoypadControllerLayout alloc] init];
-  [customLayout setName:nibName];
+  [customLayout setName:name];
 
   for ( UIView* item in view.subviews ) {
     NSLog(@"Found an %@; Tag %d", item, item.tag );

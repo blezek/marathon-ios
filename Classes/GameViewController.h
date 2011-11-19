@@ -229,6 +229,9 @@ typedef enum {
 - (void) zeroStats;
 - (void) gameFinished;
 - (void)pickedUp:(short)itemType;
+
+// Menu Sounds
+- (void) PlayInterfaceButtonSound;
   
 @property (nonatomic, retain) SDL_uikitopenglview *viewGL;
 @property (nonatomic, retain) UIView *hud;
@@ -275,6 +278,8 @@ typedef enum {
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
 @property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 @property (nonatomic, retain) HUDViewController *HUDViewController;
+@property (nonatomic, retain) HUDViewController *HUDTouchViewController;
+@property (nonatomic, retain) HUDViewController *HUDJoypadViewController;
 @property (nonatomic, retain) UIImageView *reticule;
 @property (nonatomic, retain) UIImageView *bungieAerospaceImageView;
 @property (nonatomic, retain) UIImageView *episodeImageView;

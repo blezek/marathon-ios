@@ -144,7 +144,7 @@ bool XML_Loader_SDL::ParseFile(FileSpecifier &file_name)
 /*
  *  Parse all XML files in the specified directory
  */
-
+#include "AlephOneHelper.h"
 bool XML_Loader_SDL::ParseDirectory(FileSpecifier &dir)
 {
   // Get sorted list of files in directory

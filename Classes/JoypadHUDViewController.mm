@@ -288,7 +288,12 @@ static int counter = 0;
   
   JoypadXIBConfigure* config = [[JoypadXIBConfigure alloc] init];
   
-  JoypadControllerLayout *customLayout = [config configureLayout:@"DualAnalogSticks"];
+  NSString* name = @"Marathon";
+#if SCENARIO==2
+  name = @"Durandal";
+#endif
+  
+  JoypadControllerLayout *customLayout = [config configureLayout:@"DualAnalogSticks" name:name];
   [joypadManager useCustomLayout:customLayout];
   [customLayout release];
   [config release];

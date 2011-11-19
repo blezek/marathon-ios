@@ -45,7 +45,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
 @property (nonatomic, retain) IBOutlet UIButton *vidmasterMode;
 @property (nonatomic, retain) IBOutlet UILabel *vidmasterModeLabel;
-@property (nonatomic, retain) IBOutlet UIView *screenView;
+@property (nonatomic, retain) IBOutlet UIView *settingPrefsView;
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check;
 - (void)setupUI:(BOOL)inMainMenu;
