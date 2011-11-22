@@ -100,6 +100,8 @@ extern int SDL_main(int argc, char *argv[]);
                                @"YES", kUseVidmasterMode,
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
+                               @"NO", kInvertY,
+                               @"YES", kAutorecenter,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];

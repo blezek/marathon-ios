@@ -215,6 +215,19 @@
   // Never autocenter
   input_preferences->modifiers |= _inputmod_dont_auto_recenter;
 
+  bool autorecenter = [defaults boolForKey:kAutorecenter];
+  SET_FLAG(input_preferences->modifiers,_inputmod_dont_auto_recenter,!autorecenter);
+  
+  if ( [defaults boolForKey:kInvertY] ) {
+    SET_FLAG(input_preferences->modifiers,_inputmod_invert_mouse, true);
+
+    //  if (TEST_FLAG(input_preferences->modifiers, _inputmod_invert_mouse)) {
+    //    input_preferences->modifiers &= ~_inputmod_invert_mouse;
+  } else {
+    //input_preferences->modifiers |= _inputmod_invert_mouse;
+    SET_FLAG(input_preferences->modifiers,_inputmod_invert_mouse, false);
+  }
+    
 #if defined(A1DEBUG)
   // Always autocenter, so we can do films
   // input_preferences->modifiers &= ~_inputmod_dont_auto_recenter;

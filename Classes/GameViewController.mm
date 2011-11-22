@@ -1082,8 +1082,10 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 -(void) PlayInterfaceButtonSound
 {
+  /*
     SoundManager::instance()->PlaySound(Sound_ButtonSuccess(), (world_location3d *) NULL,
                                         NONE);
+   */
 }
 
 
@@ -1312,6 +1314,33 @@ _civilian_fusion_assimilated,
   return live_alien_count;
 #endif
 }
+
+#pragma mark -
+#pragma mark GameKit
+// Achievements and leader boards
+- (IBAction)displayLeaderboard:(id)sender {
+  GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
+  if (leaderboardController != nil) {
+      leaderboardController.leaderboardDelegate = self;
+      [self presentModalViewController: leaderboardController animated: YES];
+  }
+}
+- (IBAction)displayAchievements:(id)sender {
+  GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
+  if (achievements != nil) {
+    achievements.achievementDelegate = self;
+    [self presentModalViewController: achievements animated: YES];
+  }
+  [achievements release];
+}
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
+  [self dismissModalViewControllerAnimated:YES];
+}
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+
 
 
 #pragma mark -
