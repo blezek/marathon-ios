@@ -205,6 +205,12 @@
 		A817C0141323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
 		A817C0151323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
 		A817C0161323318E00964061 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A817C0131323318E00964061 /* RoundedView.m */; };
+		A8184E7B147CA10B007353E7 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
+		A8184E7C147CA10E007353E7 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
+		A8184E7D147CA10E007353E7 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
+		A8184E7F147CA279007353E7 /* RootViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8184E7E147CA279007353E7 /* RootViewController~iphone.xib */; };
+		A8184E80147CA279007353E7 /* RootViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8184E7E147CA279007353E7 /* RootViewController~iphone.xib */; };
+		A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8184E7E147CA279007353E7 /* RootViewController~iphone.xib */; };
 		A818BD1A13A464A700DB3828 /* Marathon_Durandal_Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD1213A464A700DB3828 /* Marathon_Durandal_Icon-72.png */; };
 		A818BD1B13A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD1313A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png */; };
 		A818BD1C13A464A700DB3828 /* Marathon_Durandal_Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD1413A464A700DB3828 /* Marathon_Durandal_Icon-Small.png */; };
@@ -1168,7 +1174,6 @@
 		A881216412C7816300A1A08E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A881216512C7816300A1A08E /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
 		A881216612C7816300A1A08E /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
-		A881216712C7816300A1A08E /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A881216812C7816300A1A08E /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
 		A881216912C7816300A1A08E /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A881216A12C7816300A1A08E /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
@@ -1574,7 +1579,6 @@
 		A881236912C7826300A1A08E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A881236A12C7826300A1A08E /* SaveGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8DC98E51238799C00317186 /* SaveGame.xcdatamodeld */; };
 		A881236B12C7826300A1A08E /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
-		A881236C12C7826300A1A08E /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A881236D12C7826300A1A08E /* SaveGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AE47C61229152F0093110D /* SaveGameViewController.mm */; };
 		A881236E12C7826300A1A08E /* AlephOneShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */; };
 		A881236F12C7826300A1A08E /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
@@ -2039,7 +2043,6 @@
 		A8B9FB6313FB6CAF00552296 /* Reload~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FB5B13FB6CAF00552296 /* Reload~iphone.png */; };
 		A8B9FB6413FB6CAF00552296 /* Reload~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FB5B13FB6CAF00552296 /* Reload~iphone.png */; };
 		A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C29BA51224B69600E79491 /* ManagedObjects.m */; };
-		A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C29C581224BF7B00E79491 /* NewGameViewController.mm */; };
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C4436813A7CF72002A908B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4436613A7CF72002A908B /* about.png */; };
 		A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
@@ -2387,6 +2390,7 @@
 		A817C0081323311E00964061 /* restore-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restore-btn.png"; sourceTree = "<group>"; };
 		A817C0121323318E00964061 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundedView.h; path = Classes/RoundedView.h; sourceTree = "<group>"; };
 		A817C0131323318E00964061 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundedView.m; path = Classes/RoundedView.m; sourceTree = "<group>"; };
+		A8184E7E147CA279007353E7 /* RootViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RootViewController~iphone.xib"; sourceTree = "<group>"; };
 		A818BD1213A464A700DB3828 /* Marathon_Durandal_Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Durandal_Icon-72.png"; sourceTree = "<group>"; };
 		A818BD1313A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Durandal_Icon-Small-50.png"; sourceTree = "<group>"; };
 		A818BD1413A464A700DB3828 /* Marathon_Durandal_Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Durandal_Icon-Small.png"; sourceTree = "<group>"; };
@@ -4406,6 +4410,7 @@
 		A853C9E213CF23C6001E8A25 /* XIB-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				A8184E7E147CA279007353E7 /* RootViewController~iphone.xib */,
 				A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */,
 				A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */,
 				A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */,
@@ -6449,6 +6454,7 @@
 				A8EEFABE147B4589001B5980 /* LeaderboardsButton.png in Resources */,
 				A8EEFAC1147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC4147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
+				A8184E7F147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6746,6 +6752,7 @@
 				A8EEFABF147B4589001B5980 /* LeaderboardsButton.png in Resources */,
 				A8EEFAC2147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC5147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
+				A8184E80147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7035,6 +7042,7 @@
 				A8EEFAC0147B4589001B5980 /* LeaderboardsButton.png in Resources */,
 				A8EEFAC3147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC6147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
+				A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7333,7 +7341,6 @@
 				A8AD432A12220F9500A09383 /* main.m in Sources */,
 				A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */,
 				A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */,
-				A8C29C5A1224BF7B00E79491 /* NewGameViewController.mm in Sources */,
 				A8AE47CA1229152F0093110D /* SaveGameViewController.mm in Sources */,
 				A82B5BDA122ECAAF00B0316C /* AlephOneShell.cpp in Sources */,
 				A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */,
@@ -7464,6 +7471,7 @@
 				A8718161140C773700327BEF /* UploaderThread.m in Sources */,
 				A871816B140C8EC500327BEF /* SDL_ttf.c in Sources */,
 				A8193C31140EB09C00FFD05A /* RootViewController.mm in Sources */,
+				A8184E7B147CA10B007353E7 /* NewGameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7759,7 +7767,6 @@
 				A881216412C7816300A1A08E /* main.m in Sources */,
 				A881216512C7816300A1A08E /* SaveGame.xcdatamodeld in Sources */,
 				A881216612C7816300A1A08E /* ManagedObjects.m in Sources */,
-				A881216712C7816300A1A08E /* NewGameViewController.mm in Sources */,
 				A881216812C7816300A1A08E /* SaveGameViewController.mm in Sources */,
 				A881216912C7816300A1A08E /* AlephOneShell.cpp in Sources */,
 				A881216A12C7816300A1A08E /* SavedGameCell.m in Sources */,
@@ -7890,6 +7897,7 @@
 				A8718162140C773700327BEF /* UploaderThread.m in Sources */,
 				A871816C140C8EC500327BEF /* SDL_ttf.c in Sources */,
 				A8193C32140EB09C00FFD05A /* RootViewController.mm in Sources */,
+				A8184E7C147CA10E007353E7 /* NewGameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8185,7 +8193,6 @@
 				A881236912C7826300A1A08E /* main.m in Sources */,
 				A881236A12C7826300A1A08E /* SaveGame.xcdatamodeld in Sources */,
 				A881236B12C7826300A1A08E /* ManagedObjects.m in Sources */,
-				A881236C12C7826300A1A08E /* NewGameViewController.mm in Sources */,
 				A881236D12C7826300A1A08E /* SaveGameViewController.mm in Sources */,
 				A881236E12C7826300A1A08E /* AlephOneShell.cpp in Sources */,
 				A881236F12C7826300A1A08E /* SavedGameCell.m in Sources */,
@@ -8316,6 +8323,7 @@
 				A8718163140C773700327BEF /* UploaderThread.m in Sources */,
 				A871816D140C8EC500327BEF /* SDL_ttf.c in Sources */,
 				A8193C33140EB09C00FFD05A /* RootViewController.mm in Sources */,
+				A8184E7D147CA10E007353E7 /* NewGameViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

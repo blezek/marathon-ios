@@ -203,12 +203,17 @@ extern int SDL_main(int argc, char *argv[]);
   }
 
   [self.window makeKeyAndVisible];
-  [self.window addSubview:self.viewController.view];  
 
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
-  [self.viewController.view addSubview:game.view];
+  
+  self.window.rootViewController = self.game;
+  self.viewController = self.game;
+  [self.window addSubview:self.viewController.view];  
+  // [self.viewController.view addSubview:game.view];
+  // [self.window addSubview:game.view];
+
   
   MLog ( @"Loaded view: %@", self.game.view );
   

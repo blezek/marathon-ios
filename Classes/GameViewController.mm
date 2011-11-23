@@ -1319,13 +1319,32 @@ _civilian_fusion_assimilated,
 #pragma mark GameKit
 // Achievements and leader boards
 - (IBAction)displayLeaderboard:(id)sender {
+  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
+                                                    message:@"You are not logged into GameCenter, so I can't show the Leaderboards"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Bummer"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
+
   GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
   if (leaderboardController != nil) {
       leaderboardController.leaderboardDelegate = self;
-      [self presentModalViewController: leaderboardController animated: YES];
+      [self presentModalViewController:leaderboardController animated: YES];
   }
 }
 - (IBAction)displayAchievements:(id)sender {
+  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
+                                                    message:@"You are not logged into GameCenter, so I can't show your Achievements"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Bummer"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
   GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
   if (achievements != nil) {
     achievements.achievementDelegate = self;
@@ -1664,6 +1683,8 @@ short items[]=
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
   MLog ( @"AUTOROTATE!!!!!!!!!\n\n\n\n" );
+
+
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight
           || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
