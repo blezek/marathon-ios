@@ -1701,6 +1701,8 @@
 		A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
+		A883D582148AC5D50000AE37 /* Marathon_Durandal_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A883D581148AC5D40000AE37 /* Marathon_Durandal_Icon.png */; };
+		A883D584148AC5EB0000AE37 /* Marathon_Durandal_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A883D583148AC5E90000AE37 /* Marathon_Durandal_Icon2@2x.png */; };
 		A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -2765,6 +2767,8 @@
 		A88124A212C79E0100A1A08E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmViewController.h; path = Classes/FilmViewController.h; sourceTree = "<group>"; };
 		A88124A312C79E0100A1A08E /* FilmViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilmViewController.mm; path = Classes/FilmViewController.mm; sourceTree = "<group>"; };
 		A882CB7D134ABA450051573D /* SaveGame 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SaveGame 2.xcdatamodel"; sourceTree = "<group>"; };
+		A883D581148AC5D40000AE37 /* Marathon_Durandal_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marathon_Durandal_Icon.png; sourceTree = "<group>"; };
+		A883D583148AC5E90000AE37 /* Marathon_Durandal_Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Durandal_Icon2@2x.png"; sourceTree = "<group>"; };
 		A889BBAE11C8817400923787 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
 		A889BBAF11C8817400923787 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		A889BBB011C8817400923787 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
@@ -3764,6 +3768,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A883D583148AC5E90000AE37 /* Marathon_Durandal_Icon2@2x.png */,
+				A883D581148AC5D40000AE37 /* Marathon_Durandal_Icon.png */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
 				A871817A140DA9E000327BEF /* BuildConfigurations */,
 				A83983DC11F2AB92002E7CF2 /* Classes */,
@@ -6753,6 +6759,8 @@
 				A8EEFAC2147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC5147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E80147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
+				A883D582148AC5D50000AE37 /* Marathon_Durandal_Icon.png in Resources */,
+				A883D584148AC5EB0000AE37 /* Marathon_Durandal_Icon2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8382,7 +8390,7 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8415,7 +8423,7 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8669,7 +8677,7 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8802,7 +8810,7 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
