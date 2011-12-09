@@ -24,6 +24,7 @@
 #import "FilmViewController.h"
 #import "PurchaseViewController.h"
 #import "Statistics.h"
+#import "GameKit/GameKit.h"
 
 #import "HUDViewController.h"
 #import "BasicHUDViewController.h"
@@ -37,7 +38,7 @@ typedef enum {
   DeadMode
 } HUDMode;
 
-@interface GameViewController : UIViewController {
+@interface GameViewController : UIViewController <GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate> {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
@@ -195,6 +196,12 @@ typedef enum {
 - (IBAction)saveFilm;
 - (void)saveFilmForReal;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+// Achievements and leader boards
+- (IBAction)displayLeaderboard:(id)sender;
+- (IBAction)displayAchievements:(id)sender;
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController;
 
 // Progress stuff
 - (void) startProgress:(int)total;
