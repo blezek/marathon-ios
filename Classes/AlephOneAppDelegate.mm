@@ -247,18 +247,27 @@ extern int SDL_main(int argc, char *argv[]);
   float delay = 1.2;
   
   float startDelay = 0.0;
-#if SCENARIO == 12
-  startDelay = 0.7;
+#if SCENARIO == 2
+  startDelay = 0.1;
 #endif  
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
 
+#ifdef BUNGIE_AEROSPACE
   [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
     self.game.bungieAerospaceImageView = nil;
     [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
       [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
     }];
   }];
+#else
+  self.game.bungieAerospaceImageView.hidden = YES;
+
+  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
+  }];
+#endif
   return YES;
+  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
