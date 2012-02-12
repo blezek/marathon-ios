@@ -192,6 +192,12 @@ short new_side(short polygon_index, short line_index)
   side.transparent_texture.texture = UNONE;
 
   short side_index = SideList.size();
+    
+    // DJB
+    if ( side_index == 732 ) {
+        printf ( "Bad side...\n" );
+    }
+    
   SideList.push_back(side);
   dynamic_world->side_count++;
 
@@ -1361,6 +1367,11 @@ uint8 *unpack_side_data(uint8 *Stream, side_data *Objects, size_t Count)
 
   for (size_t k = 0; k < Count; k++, ObjPtr++)
   {
+      // DJB
+      if ( k == 732 ) {
+          printf ( "Bad side...\n" );
+      }
+      
     StreamToValue(S,ObjPtr->type);
     StreamToValue(S,ObjPtr->flags);
 
