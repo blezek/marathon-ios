@@ -58,6 +58,11 @@
     if ( views.count > 0 ) {
       // Figure out which one to add
       int index = arc4random() % views.count;
+#if TARGET_IPHONE_SIMULATOR
+        index = 2;
+#endif
+
+        
       UIView *v = [views objectAtIndex:index];
       v.hidden = NO;
       [Tracking trackPageview:[NSString stringWithFormat:@"/progress/%d", index]];

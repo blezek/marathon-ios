@@ -100,6 +100,8 @@ extern int SDL_main(int argc, char *argv[]);
                                @"YES", kUseVidmasterMode,
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
+                               @"NO", kInvertY,
+                               @"YES", kAutorecenter,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -108,9 +110,11 @@ extern int SDL_main(int argc, char *argv[]);
 #if TARGET_IPHONE_SIMULATOR
   // Always test on the simulator
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
+    /*
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+     */
 #endif
 
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
@@ -201,12 +205,17 @@ extern int SDL_main(int argc, char *argv[]);
   }
 
   [self.window makeKeyAndVisible];
-  [self.window addSubview:self.viewController.view];  
 
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
-  [self.viewController.view addSubview:game.view];
+  
+  self.window.rootViewController = self.game;
+  self.viewController = self.game;
+  [self.window addSubview:self.viewController.view];  
+  // [self.viewController.view addSubview:game.view];
+  // [self.window addSubview:game.view];
+
   
   MLog ( @"Loaded view: %@", self.game.view );
   
@@ -240,18 +249,27 @@ extern int SDL_main(int argc, char *argv[]);
   float delay = 1.2;
   
   float startDelay = 0.0;
-#if SCENARIO == 12
-  startDelay = 0.7;
+#if SCENARIO == 2
+  startDelay = 0.1;
 #endif  
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
 
+#ifdef BUNGIE_AEROSPACE
   [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
     self.game.bungieAerospaceImageView = nil;
     [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
       [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
     }];
   }];
+#else
+  self.game.bungieAerospaceImageView.hidden = YES;
+
+  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
+  }];
+#endif
   return YES;
+  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

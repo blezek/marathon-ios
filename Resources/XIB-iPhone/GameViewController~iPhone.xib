@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.SystemVersion">11C74</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">933</string>
@@ -49,8 +49,8 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="485381462"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4wMTE3NjQ3MDcwNCAwIDAuMDExNzY0NzA3MDQgMAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -179,7 +179,7 @@
 										<string key="NSFrame">{{-50, -25}, {200, 100}}</string>
 										<reference key="NSSuperview" ref="585031465"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="464543623"/>
+										<reference key="NSNextKeyView" ref="514580227"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -188,11 +188,11 @@
 										<string key="IBUIText">Game Saved</string>
 										<object class="NSColor" key="IBUITextColor">
 											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xNDExMjkwMzIzIDEgMC4xMDA4MDY0NTE2AA</bytes>
+											<bytes key="NSRGB">MC4xNDExMjkwMzE4IDEgMC4xMDA4MDY0NTIzAA</bytes>
 										</object>
 										<object class="NSColor" key="IBUIHighlightedColor">
 											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4zNzU0MTA4Njk2IDEgMC4yMzA4OTI5MzIAA</bytes>
+											<bytes key="NSRGB">MC4zNzU0MTA4NTQ4IDEgMC4yMzA4OTI5MjY1AA</bytes>
 										</object>
 										<object class="NSColor" key="IBUIShadowColor">
 											<int key="NSColorSpace">3</int>
@@ -364,7 +364,7 @@
 								<string key="NSFrame">{{332, 206.5}, {137, 36}}</string>
 								<reference key="NSSuperview" ref="464543623"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="514580227"/>
+								<reference key="NSNextKeyView" ref="884324225"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -430,6 +430,60 @@
 								<reference key="IBUIFontDescription" ref="928710429"/>
 								<reference key="IBUIFont" ref="789146010"/>
 							</object>
+							<object class="IBUIButton" id="884324225">
+								<reference key="NSNextResponder" ref="464543623"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{0, 272}, {48, 48}}</string>
+								<reference key="NSSuperview" ref="464543623"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="960177345"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<float key="IBUIAlpha">0.69999998807907104</float>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUINormalTitle">Achievements</string>
+								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">AchievementsButton.png</string>
+								</object>
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="872612806">
+									<int key="type">2</int>
+									<double key="pointSize">15</double>
+								</object>
+								<reference key="IBUIFont" ref="789146010"/>
+							</object>
+							<object class="IBUIButton" id="960177345">
+								<reference key="NSNextResponder" ref="464543623"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{50, 272}, {48, 48}}</string>
+								<reference key="NSSuperview" ref="464543623"/>
+								<reference key="NSWindow"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<float key="IBUIAlpha">0.69999998807907104</float>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUINormalTitle">Leaderboards</string>
+								<reference key="IBUIHighlightedTitleColor" ref="745667818"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="409170853"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">LeaderboardsButton.png</string>
+								</object>
+								<reference key="IBUIFontDescription" ref="872612806"/>
+								<reference key="IBUIFont" ref="789146010"/>
+							</object>
 						</object>
 						<string key="NSFrameSize">{480, 320}</string>
 						<reference key="NSSuperview" ref="766721923"/>
@@ -450,7 +504,7 @@
 						<reference key="NSNextKeyView" ref="1021955798"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAgMC4xMQA</bytes>
+							<bytes key="NSRGB">MCAwIDAgMC4xMDk5OTk5OTk0AA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -539,8 +593,8 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="196030530"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4wMTE3NjQ3MDcwNCAwIDAuMDExNzY0NzA3MDQgMAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -636,8 +690,8 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="936523311"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MCAwLjAxMTc2NDcwNzA0IDAgMAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -691,7 +745,7 @@
 							</object>
 							<object class="IBUIImageView" id="504467090">
 								<reference key="NSNextResponder" ref="936523311"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrameSize">{480, 320}</string>
 								<reference key="NSSuperview" ref="936523311"/>
 								<reference key="NSWindow"/>
@@ -743,7 +797,7 @@
 								<string key="NSFrame">{{256, 334}, {512, 100}}</string>
 								<reference key="NSSuperview" ref="763863770"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="464543623"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">4</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
@@ -1110,6 +1164,24 @@
 					</object>
 					<int key="connectionID">171</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">displayAchievements:</string>
+						<reference key="source" ref="884324225"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">188</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">displayLeaderboard:</string>
+						<reference key="source" ref="960177345"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">189</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1150,8 +1222,8 @@
 							<reference ref="485381462"/>
 							<reference ref="128648929"/>
 							<reference ref="936523311"/>
-							<reference ref="464543623"/>
 							<reference ref="763863770"/>
+							<reference ref="464543623"/>
 							<reference ref="196030530"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -1271,6 +1343,8 @@
 							<reference ref="428206114"/>
 							<reference ref="851951514"/>
 							<reference ref="70214282"/>
+							<reference ref="884324225"/>
+							<reference ref="960177345"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Replacement Menu</string>
@@ -1422,6 +1496,16 @@
 						<reference key="object" ref="731557910"/>
 						<reference key="parent" ref="936523311"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">186</int>
+						<reference key="object" ref="884324225"/>
+						<reference key="parent" ref="464543623"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">187</int>
+						<reference key="object" ref="960177345"/>
+						<reference key="parent" ref="464543623"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1464,6 +1548,8 @@
 					<string>178.IBPluginDependency</string>
 					<string>181.IBPluginDependency</string>
 					<string>183.IBPluginDependency</string>
+					<string>186.IBPluginDependency</string>
+					<string>187.IBPluginDependency</string>
 					<string>2.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>48.IBPluginDependency</string>
@@ -1525,6 +1611,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -1539,7 +1627,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">185</int>
+			<int key="maxID">189</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1713,6 +1801,8 @@
 							<string>chooseSaveGameCanceled</string>
 							<string>closeHelp:</string>
 							<string>closePreferences:</string>
+							<string>displayAchievements:</string>
+							<string>displayLeaderboard:</string>
 							<string>filmChosen:</string>
 							<string>gameChosen:</string>
 							<string>gotoMenu:</string>
@@ -1743,6 +1833,8 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1802,6 +1894,8 @@
 							<string>chooseSaveGameCanceled</string>
 							<string>closeHelp:</string>
 							<string>closePreferences:</string>
+							<string>displayAchievements:</string>
+							<string>displayLeaderboard:</string>
 							<string>filmChosen:</string>
 							<string>gameChosen:</string>
 							<string>gotoMenu:</string>
@@ -1882,6 +1976,14 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">closePreferences:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">displayAchievements:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">displayLeaderboard:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2548,7 +2650,7 @@
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
-							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
 							<string>UIView</string>
@@ -2587,7 +2689,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">pledge</string>
-								<string key="candidateClassName">UIView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">startLevelLabel</string>
@@ -2799,8 +2901,8 @@
 							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
-							<string>screenView</string>
 							<string>secondTapShoots</string>
+							<string>settingPrefsView</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
 							<string>vSensitivity</string>
@@ -2818,8 +2920,8 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
-							<string>UIView</string>
 							<string>UIButton</string>
+							<string>UIView</string>
 							<string>UISlider</string>
 							<string>UIButton</string>
 							<string>UISlider</string>
@@ -2840,8 +2942,8 @@
 							<string>hiresTexturesLabel</string>
 							<string>musicLabel</string>
 							<string>musicVolume</string>
-							<string>screenView</string>
 							<string>secondTapShoots</string>
+							<string>settingPrefsView</string>
 							<string>sfxVolume</string>
 							<string>tapShoots</string>
 							<string>vSensitivity</string>
@@ -2887,12 +2989,12 @@
 								<string key="candidateClassName">UISlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">screenView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">secondTapShoots</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">settingPrefsView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">sfxVolume</string>
@@ -3199,10 +3301,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1280" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3100" key="NS.object.0"/>
@@ -3214,12 +3312,14 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>AboutButton.png</string>
+				<string>AchievementsButton.png</string>
 				<string>BungieAerospace.png</string>
 				<string>ControlsOverview.png</string>
 				<string>DoneButtonThanks.png</string>
 				<string>EpisodeLoading.png</string>
 				<string>EpisodeLogo.png</string>
 				<string>HomeScreen.png</string>
+				<string>LeaderboardsButton.png</string>
 				<string>LoadButton.png</string>
 				<string>NewGameButton.png</string>
 				<string>Reload.png</string>
@@ -3236,12 +3336,14 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{290, 74}</string>
+				<string>{104, 93}</string>
 				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
 				<string>{236, 74}</string>
-				<string>{512, 384}</string>
 				<string>{1024, 768}</string>
 				<string>{1024, 768}</string>
+				<string>{1024, 768}</string>
+				<string>{104, 94}</string>
 				<string>{290, 74}</string>
 				<string>{290, 74}</string>
 				<string>{512, 512}</string>

@@ -26,6 +26,8 @@
 #define kUseVidmasterMode @"useVidmasterMode"
 #define kAlwaysPlayIntro @"alwaysPlayIntro"
 #define kHaveReticleMode @"haveReticleMode"
+#define kInvertY @"invertY"
+#define kAutorecenter @"autorecenter"
 
 // Tap to shoot timeout in seconds
 #define TapToShootDelta 0.1
