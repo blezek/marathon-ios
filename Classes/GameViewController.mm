@@ -1327,6 +1327,7 @@ _civilian_fusion_assimilated,
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+      return;
   }
 
   GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
@@ -1344,6 +1345,7 @@ _civilian_fusion_assimilated,
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+      return;
   }
   GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
   if (achievements != nil) {
@@ -1594,6 +1596,10 @@ short items[]=
     [self menuShowReplacementMenu];
     mode = MenuMode;
   }
+// Causing a bug, always dim
+    [self.HUDViewController dimActionKey:0];
+
+    /*
   if ( mode == GameMode ) {
     short target_type;
     if ( NONE == find_action_key_target(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type) ) {
@@ -1602,6 +1608,7 @@ short items[]=
       [self.HUDViewController lightActionKey:target_type];    
     }
   }
+     */
   
   if ( !inMainLoop ) {
     inMainLoop = YES;

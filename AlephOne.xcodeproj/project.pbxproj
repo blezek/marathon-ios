@@ -822,7 +822,6 @@
 		A85E684511CB173A00D0FAEF /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBB11C8817400923787 /* sweep.c */; };
 		A85E684611CB173A00D0FAEF /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBC11C8817400923787 /* tess.c */; };
 		A85E684711CB173A00D0FAEF /* tessmono.c in Sources */ = {isa = PBXBuildFile; fileRef = A889BBBD11C8817400923787 /* tessmono.c */; };
-		A85E684911CB173A00D0FAEF /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
 		A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		A85E684B11CB173A00D0FAEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A85E684C11CB173A00D0FAEF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
@@ -1287,7 +1286,6 @@
 		A88121D012C7816300A1A08E /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A88121D112C7816300A1A08E /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
-		A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
 		A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88121D912C7816300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
@@ -1692,7 +1690,6 @@
 		A88123D512C7826300A1A08E /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A88123D612C7826300A1A08E /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
-		A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */; };
 		A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A842544111B4A36500F4D68F /* libm.dylib */; };
@@ -1920,6 +1917,12 @@
 		A8B19C1A13A459BA008A095D /* Marathon_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B19C1413A459BA008A095D /* Marathon_Icon.png */; };
 		A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
 		A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
+		A8B60087149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
+		A8B60088149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
+		A8B60089149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
+		A8B6008B149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
+		A8B6008C149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
+		A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
 		A8B9F9DB13FA001700552296 /* GameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */; };
 		A8B9F9DC13FA001700552296 /* GameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */; };
 		A8B9F9DD13FA001700552296 /* GameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */; };
@@ -1956,18 +1959,6 @@
 		A8B9FAF313FB6C1000552296 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FABF13FB6C1000552296 /* overheadmap.png */; };
 		A8B9FAF413FB6C1000552296 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FABF13FB6C1000552296 /* overheadmap.png */; };
 		A8B9FAF513FB6C1000552296 /* overheadmap.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FABF13FB6C1000552296 /* overheadmap.png */; };
-		A8B9FAF613FB6C1000552296 /* PatternBuffer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC013FB6C1000552296 /* PatternBuffer.png */; };
-		A8B9FAF713FB6C1000552296 /* PatternBuffer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC013FB6C1000552296 /* PatternBuffer.png */; };
-		A8B9FAF813FB6C1000552296 /* PatternBuffer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC013FB6C1000552296 /* PatternBuffer.png */; };
-		A8B9FAFC13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC213FB6C1000552296 /* PatternBuffer@2x~iphone.png */; };
-		A8B9FAFD13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC213FB6C1000552296 /* PatternBuffer@2x~iphone.png */; };
-		A8B9FAFE13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC213FB6C1000552296 /* PatternBuffer@2x~iphone.png */; };
-		A8B9FAFF13FB6C1000552296 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC313FB6C1000552296 /* patternbuffers-btn.png */; };
-		A8B9FB0013FB6C1000552296 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC313FB6C1000552296 /* patternbuffers-btn.png */; };
-		A8B9FB0113FB6C1000552296 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC313FB6C1000552296 /* patternbuffers-btn.png */; };
-		A8B9FB0213FB6C1000552296 /* PatternBuffer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC413FB6C1000552296 /* PatternBuffer~iphone.png */; };
-		A8B9FB0313FB6C1000552296 /* PatternBuffer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC413FB6C1000552296 /* PatternBuffer~iphone.png */; };
-		A8B9FB0413FB6C1000552296 /* PatternBuffer~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC413FB6C1000552296 /* PatternBuffer~iphone.png */; };
 		A8B9FB0513FB6C1000552296 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC513FB6C1000552296 /* pause-btn.png */; };
 		A8B9FB0613FB6C1000552296 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC513FB6C1000552296 /* pause-btn.png */; };
 		A8B9FB0713FB6C1000552296 /* pause-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B9FAC513FB6C1000552296 /* pause-btn.png */; };
@@ -2204,65 +2195,6 @@
 		A8FF85C61310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 		A8FF85C71310AF4500A874F8 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8FF85C41310AF4500A874F8 /* Purchases.mm */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A85E672B11CB173A00D0FAEF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FD6526620DE8FCCB002AD96B;
-			remoteInfo = StaticLibiPhoneOS;
-		};
-		A85E672D11CB173A00D0FAEF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0064653F107E3D7400183915;
-			remoteInfo = "Generate Header Files";
-		};
-		A8811FEA12C7816300A1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FD6526620DE8FCCB002AD96B;
-			remoteInfo = StaticLibiPhoneOS;
-		};
-		A8811FEC12C7816300A1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0064653F107E3D7400183915;
-			remoteInfo = "Generate Header Files";
-		};
-		A88121EF12C7826300A1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FD6526620DE8FCCB002AD96B;
-			remoteInfo = StaticLibiPhoneOS;
-		};
-		A88121F112C7826300A1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0064653F107E3D7400183915;
-			remoteInfo = "Generate Header Files";
-		};
-		A8D9669911C712C100016403 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FD6526630DE8FCCB002AD96B;
-			remoteInfo = StaticLibiPhoneOS;
-		};
-		A8D9669B11C712C100016403 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 006E982211955059001DE610;
-			remoteInfo = testsdl;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -3384,7 +3316,6 @@
 		A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDColoredProgressView.h; path = Classes/PDColoredProgressView.h; sourceTree = "<group>"; };
 		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
 		A8A4D31112A4B2C100AEE140 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Classes/Prefs.h; sourceTree = "<group>"; };
-		A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLiPhoneOS.xcodeproj; path = "Xcode-iPhoneOS/SDL/SDLiPhoneOS.xcodeproj"; sourceTree = SDL; };
 		A8A9C7D313D920D00087E0CF /* JoypadHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoypadHUDViewController.h; path = Classes/JoypadHUDViewController.h; sourceTree = "<group>"; };
 		A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoypadHUDViewController.mm; path = Classes/JoypadHUDViewController.mm; sourceTree = "<group>"; };
 		A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoypadHUDViewController.xib; sourceTree = "<group>"; };
@@ -3431,6 +3362,48 @@
 		A8B4138F1235DE10000D59A4 /* SavedGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedGameCell.h; path = Classes/SavedGameCell.h; sourceTree = "<group>"; };
 		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
 		A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageLoader_iOS.cpp; path = Classes/ImageLoader_iOS.cpp; sourceTree = "<group>"; };
+		A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDLiPhoneOS.a; sourceTree = "<group>"; };
+		A8B6005F149D0DB60017A6D8 /* begin_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = begin_code.h; sourceTree = "<group>"; };
+		A8B60060149D0DB60017A6D8 /* close_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = close_code.h; sourceTree = "<group>"; };
+		A8B60061149D0DB60017A6D8 /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
+		A8B60062149D0DB60017A6D8 /* SDL_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_atomic.h; sourceTree = "<group>"; };
+		A8B60063149D0DB60017A6D8 /* SDL_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_audio.h; sourceTree = "<group>"; };
+		A8B60064149D0DB60017A6D8 /* SDL_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_compat.h; sourceTree = "<group>"; };
+		A8B60065149D0DB60017A6D8 /* SDL_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config.h; sourceTree = "<group>"; };
+		A8B60066149D0DB60017A6D8 /* SDL_config_iphoneos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_iphoneos.h; sourceTree = "<group>"; };
+		A8B60067149D0DB60017A6D8 /* SDL_copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_copying.h; sourceTree = "<group>"; };
+		A8B60068149D0DB60017A6D8 /* SDL_cpuinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_cpuinfo.h; sourceTree = "<group>"; };
+		A8B60069149D0DB60017A6D8 /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
+		A8B6006A149D0DB60017A6D8 /* SDL_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_error.h; sourceTree = "<group>"; };
+		A8B6006B149D0DB60017A6D8 /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_events.h; sourceTree = "<group>"; };
+		A8B6006C149D0DB60017A6D8 /* SDL_haptic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_haptic.h; sourceTree = "<group>"; };
+		A8B6006D149D0DB60017A6D8 /* SDL_joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_joystick.h; sourceTree = "<group>"; };
+		A8B6006E149D0DB60017A6D8 /* SDL_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard.h; sourceTree = "<group>"; };
+		A8B6006F149D0DB60017A6D8 /* SDL_keysym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keysym.h; sourceTree = "<group>"; };
+		A8B60070149D0DB60017A6D8 /* SDL_loadso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_loadso.h; sourceTree = "<group>"; };
+		A8B60071149D0DB60017A6D8 /* SDL_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_main.h; sourceTree = "<group>"; };
+		A8B60072149D0DB60017A6D8 /* SDL_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse.h; sourceTree = "<group>"; };
+		A8B60073149D0DB60017A6D8 /* SDL_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mutex.h; sourceTree = "<group>"; };
+		A8B60074149D0DB60017A6D8 /* SDL_name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_name.h; sourceTree = "<group>"; };
+		A8B60075149D0DB60017A6D8 /* SDL_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengl.h; sourceTree = "<group>"; };
+		A8B60076149D0DB60017A6D8 /* SDL_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles.h; sourceTree = "<group>"; };
+		A8B60077149D0DB60017A6D8 /* SDL_pixels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels.h; sourceTree = "<group>"; };
+		A8B60078149D0DB60017A6D8 /* SDL_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_platform.h; sourceTree = "<group>"; };
+		A8B60079149D0DB60017A6D8 /* SDL_power.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_power.h; sourceTree = "<group>"; };
+		A8B6007A149D0DB60017A6D8 /* SDL_quit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_quit.h; sourceTree = "<group>"; };
+		A8B6007B149D0DB60017A6D8 /* SDL_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect.h; sourceTree = "<group>"; };
+		A8B6007C149D0DB60017A6D8 /* SDL_revision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_revision.h; sourceTree = "<group>"; };
+		A8B6007D149D0DB60017A6D8 /* SDL_rwops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rwops.h; sourceTree = "<group>"; };
+		A8B6007E149D0DB60017A6D8 /* SDL_scancode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_scancode.h; sourceTree = "<group>"; };
+		A8B6007F149D0DB60017A6D8 /* SDL_stdinc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_stdinc.h; sourceTree = "<group>"; };
+		A8B60080149D0DB60017A6D8 /* SDL_surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_surface.h; sourceTree = "<group>"; };
+		A8B60081149D0DB60017A6D8 /* SDL_syswm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_syswm.h; sourceTree = "<group>"; };
+		A8B60082149D0DB60017A6D8 /* SDL_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_thread.h; sourceTree = "<group>"; };
+		A8B60083149D0DB60017A6D8 /* SDL_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_timer.h; sourceTree = "<group>"; };
+		A8B60084149D0DB60017A6D8 /* SDL_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_types.h; sourceTree = "<group>"; };
+		A8B60085149D0DB60017A6D8 /* SDL_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_version.h; sourceTree = "<group>"; };
+		A8B60086149D0DB60017A6D8 /* SDL_video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_video.h; sourceTree = "<group>"; };
+		A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patternbuffers-btn.png"; sourceTree = "<group>"; };
 		A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NewGameViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FloatingTriggerHUDViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -3647,7 +3620,6 @@
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
 				A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
-				A85E684911CB173A00D0FAEF /* libSDLiPhoneOS.a in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
 				A85E684B11CB173A00D0FAEF /* UIKit.framework in Frameworks */,
 				A85E684C11CB173A00D0FAEF /* OpenGLES.framework in Frameworks */,
@@ -3668,6 +3640,7 @@
 				A83E4BB31403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
 				A8718174140D578C00327BEF /* libfreetype.a in Frameworks */,
 				A809FDB4140DD73E0051EA11 /* libbz2.1.0.dylib in Frameworks */,
+				A8B60087149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3687,7 +3660,6 @@
 				A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */,
 				A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
-				A88121D412C7816300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
 				A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
@@ -3700,6 +3672,7 @@
 				A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */,
 				A83E4BB41403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
 				A8718175140D578D00327BEF /* libfreetype.a in Frameworks */,
+				A8B60088149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3718,7 +3691,6 @@
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				A883DC7C12F5CEFB0041543F /* StoreKit.framework in Frameworks */,
 				A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */,
-				A88123D912C7826300A1A08E /* libSDLiPhoneOS.a in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */,
@@ -3732,6 +3704,7 @@
 				A83E4BB51403543F00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
 				A8718176140D578D00327BEF /* libfreetype.a in Frameworks */,
 				A809FDB5140DD7480051EA11 /* libbz2.1.0.dylib in Frameworks */,
+				A8B60089149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3752,6 +3725,7 @@
 				A88DBEAD12640A7800FCC652 /* jpeg-6b */,
 				A85E686A11CB18E000D0FAEF /* png */,
 				A889BBAD11C8817400923787 /* GLU */,
+				A8B6005A149D0DB60017A6D8 /* SDL */,
 				A8D9671E11C7184400016403 /* SDL_image */,
 				A8D966F811C7177E00016403 /* SDL_net */,
 			);
@@ -3782,7 +3756,6 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* SDLClasses */,
-				A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -5806,9 +5779,83 @@
 			path = savedgame;
 			sourceTree = "<group>";
 		};
+		A8B6005A149D0DB60017A6D8 /* SDL */ = {
+			isa = PBXGroup;
+			children = (
+				A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */,
+				A8B6005C149D0DB60017A6D8 /* usr */,
+			);
+			name = SDL;
+			path = Libraries/SDL;
+			sourceTree = SOURCE_ROOT;
+		};
+		A8B6005C149D0DB60017A6D8 /* usr */ = {
+			isa = PBXGroup;
+			children = (
+				A8B6005D149D0DB60017A6D8 /* local */,
+			);
+			path = usr;
+			sourceTree = "<group>";
+		};
+		A8B6005D149D0DB60017A6D8 /* local */ = {
+			isa = PBXGroup;
+			children = (
+				A8B6005E149D0DB60017A6D8 /* include */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		A8B6005E149D0DB60017A6D8 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A8B6005F149D0DB60017A6D8 /* begin_code.h */,
+				A8B60060149D0DB60017A6D8 /* close_code.h */,
+				A8B60061149D0DB60017A6D8 /* SDL.h */,
+				A8B60062149D0DB60017A6D8 /* SDL_atomic.h */,
+				A8B60063149D0DB60017A6D8 /* SDL_audio.h */,
+				A8B60064149D0DB60017A6D8 /* SDL_compat.h */,
+				A8B60065149D0DB60017A6D8 /* SDL_config.h */,
+				A8B60066149D0DB60017A6D8 /* SDL_config_iphoneos.h */,
+				A8B60067149D0DB60017A6D8 /* SDL_copying.h */,
+				A8B60068149D0DB60017A6D8 /* SDL_cpuinfo.h */,
+				A8B60069149D0DB60017A6D8 /* SDL_endian.h */,
+				A8B6006A149D0DB60017A6D8 /* SDL_error.h */,
+				A8B6006B149D0DB60017A6D8 /* SDL_events.h */,
+				A8B6006C149D0DB60017A6D8 /* SDL_haptic.h */,
+				A8B6006D149D0DB60017A6D8 /* SDL_joystick.h */,
+				A8B6006E149D0DB60017A6D8 /* SDL_keyboard.h */,
+				A8B6006F149D0DB60017A6D8 /* SDL_keysym.h */,
+				A8B60070149D0DB60017A6D8 /* SDL_loadso.h */,
+				A8B60071149D0DB60017A6D8 /* SDL_main.h */,
+				A8B60072149D0DB60017A6D8 /* SDL_mouse.h */,
+				A8B60073149D0DB60017A6D8 /* SDL_mutex.h */,
+				A8B60074149D0DB60017A6D8 /* SDL_name.h */,
+				A8B60075149D0DB60017A6D8 /* SDL_opengl.h */,
+				A8B60076149D0DB60017A6D8 /* SDL_opengles.h */,
+				A8B60077149D0DB60017A6D8 /* SDL_pixels.h */,
+				A8B60078149D0DB60017A6D8 /* SDL_platform.h */,
+				A8B60079149D0DB60017A6D8 /* SDL_power.h */,
+				A8B6007A149D0DB60017A6D8 /* SDL_quit.h */,
+				A8B6007B149D0DB60017A6D8 /* SDL_rect.h */,
+				A8B6007C149D0DB60017A6D8 /* SDL_revision.h */,
+				A8B6007D149D0DB60017A6D8 /* SDL_rwops.h */,
+				A8B6007E149D0DB60017A6D8 /* SDL_scancode.h */,
+				A8B6007F149D0DB60017A6D8 /* SDL_stdinc.h */,
+				A8B60080149D0DB60017A6D8 /* SDL_surface.h */,
+				A8B60081149D0DB60017A6D8 /* SDL_syswm.h */,
+				A8B60082149D0DB60017A6D8 /* SDL_thread.h */,
+				A8B60083149D0DB60017A6D8 /* SDL_timer.h */,
+				A8B60084149D0DB60017A6D8 /* SDL_types.h */,
+				A8B60085149D0DB60017A6D8 /* SDL_version.h */,
+				A8B60086149D0DB60017A6D8 /* SDL_video.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		A8B9FAB813FB6C0E00552296 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */,
 				A8B9FB5913FB6CAF00552296 /* Reload.png */,
 				A8B9FB5A13FB6CAF00552296 /* Reload@2x~iphone.png */,
 				A8B9FB5B13FB6CAF00552296 /* Reload~iphone.png */,
@@ -5878,15 +5925,6 @@
 				A80E9E7B1280F729005371AB /* version.c */,
 			);
 			name = MAD;
-			sourceTree = "<group>";
-		};
-		A8D9669311C712C100016403 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */,
-				A8D9669C11C712C100016403 /* testsdl.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A8D966F811C7177E00016403 /* SDL_net */ = {
@@ -6077,8 +6115,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A85E672A11CB173A00D0FAEF /* PBXTargetDependency */,
-				A85E672C11CB173A00D0FAEF /* PBXTargetDependency */,
 			);
 			name = Marathon;
 			productName = AlephOne;
@@ -6096,8 +6132,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A8811FE912C7816300A1A08E /* PBXTargetDependency */,
-				A8811FEB12C7816300A1A08E /* PBXTargetDependency */,
 			);
 			name = Durandal;
 			productName = AlephOne;
@@ -6115,8 +6149,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A88121EE12C7826300A1A08E /* PBXTargetDependency */,
-				A88121F012C7826300A1A08E /* PBXTargetDependency */,
 			);
 			name = Infinity;
 			productName = AlephOne;
@@ -6145,12 +6177,6 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A8D9669311C712C100016403 /* Products */;
-					ProjectRef = A8A8A3E611C70CD80067638E /* SDLiPhoneOS.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A85E672911CB173A00D0FAEF /* Marathon */,
@@ -6159,23 +6185,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A8D9669A11C712C100016403 /* libSDLiPhoneOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSDLiPhoneOS.a;
-			remoteRef = A8D9669911C712C100016403 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A8D9669C11C712C100016403 /* testsdl.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = testsdl.app;
-			remoteRef = A8D9669B11C712C100016403 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A85E672E11CB173A00D0FAEF /* Resources */ = {
@@ -6248,10 +6257,6 @@
 				A8B9FAED13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				A8B9FAF013FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF313FB6C1000552296 /* overheadmap.png in Resources */,
-				A8B9FAF613FB6C1000552296 /* PatternBuffer.png in Resources */,
-				A8B9FAFC13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */,
-				A8B9FAFF13FB6C1000552296 /* patternbuffers-btn.png in Resources */,
-				A8B9FB0213FB6C1000552296 /* PatternBuffer~iphone.png in Resources */,
 				A8B9FB0513FB6C1000552296 /* pause-btn.png in Resources */,
 				A8B9FB0813FB6C1000552296 /* pause-btn@2x~iphone.png in Resources */,
 				A8B9FB0B13FB6C1000552296 /* pause-btn~iphone.png in Resources */,
@@ -6473,6 +6478,7 @@
 				A81B703E1491B2BE0058CA3A /* Default-Portrait.png in Resources */,
 				A81B703F1491B2BE0058CA3A /* Default.png in Resources */,
 				A81B70401491B2BE0058CA3A /* Default@2x.png in Resources */,
+				A8B6008B149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6548,10 +6554,6 @@
 				A8B9FAEE13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				A8B9FAF113FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF413FB6C1000552296 /* overheadmap.png in Resources */,
-				A8B9FAF713FB6C1000552296 /* PatternBuffer.png in Resources */,
-				A8B9FAFD13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */,
-				A8B9FB0013FB6C1000552296 /* patternbuffers-btn.png in Resources */,
-				A8B9FB0313FB6C1000552296 /* PatternBuffer~iphone.png in Resources */,
 				A8B9FB0613FB6C1000552296 /* pause-btn.png in Resources */,
 				A8B9FB0913FB6C1000552296 /* pause-btn@2x~iphone.png in Resources */,
 				A8B9FB0C13FB6C1000552296 /* pause-btn~iphone.png in Resources */,
@@ -6773,6 +6775,7 @@
 				A81B703A1491B2B80058CA3A /* Default-Portrait.png in Resources */,
 				A81B703B1491B2B80058CA3A /* Default.png in Resources */,
 				A81B703C1491B2B80058CA3A /* Default@2x.png in Resources */,
+				A8B6008C149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6850,10 +6853,6 @@
 				A8B9FAEF13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				A8B9FAF213FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF513FB6C1000552296 /* overheadmap.png in Resources */,
-				A8B9FAF813FB6C1000552296 /* PatternBuffer.png in Resources */,
-				A8B9FAFE13FB6C1000552296 /* PatternBuffer@2x~iphone.png in Resources */,
-				A8B9FB0113FB6C1000552296 /* patternbuffers-btn.png in Resources */,
-				A8B9FB0413FB6C1000552296 /* PatternBuffer~iphone.png in Resources */,
 				A8B9FB0713FB6C1000552296 /* pause-btn.png in Resources */,
 				A8B9FB0A13FB6C1000552296 /* pause-btn@2x~iphone.png in Resources */,
 				A8B9FB0D13FB6C1000552296 /* pause-btn~iphone.png in Resources */,
@@ -7059,6 +7058,7 @@
 				A8EEFAC3147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC6147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
+				A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8345,39 +8345,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		A85E672A11CB173A00D0FAEF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = StaticLibiPhoneOS;
-			targetProxy = A85E672B11CB173A00D0FAEF /* PBXContainerItemProxy */;
-		};
-		A85E672C11CB173A00D0FAEF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Generate Header Files";
-			targetProxy = A85E672D11CB173A00D0FAEF /* PBXContainerItemProxy */;
-		};
-		A8811FE912C7816300A1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = StaticLibiPhoneOS;
-			targetProxy = A8811FEA12C7816300A1A08E /* PBXContainerItemProxy */;
-		};
-		A8811FEB12C7816300A1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Generate Header Files";
-			targetProxy = A8811FEC12C7816300A1A08E /* PBXContainerItemProxy */;
-		};
-		A88121EE12C7826300A1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = StaticLibiPhoneOS;
-			targetProxy = A88121EF12C7826300A1A08E /* PBXContainerItemProxy */;
-		};
-		A88121F012C7826300A1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Generate Header Files";
-			targetProxy = A88121F112C7826300A1A08E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		A85E685E11CB173A00D0FAEF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -8402,6 +8369,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -8435,6 +8403,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Marathon;
@@ -8463,8 +8432,13 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/SDL\"",
+				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
@@ -8490,8 +8464,13 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/SDL\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8516,8 +8495,13 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/SDL\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8550,6 +8534,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -8584,6 +8569,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
@@ -8618,6 +8604,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
@@ -8689,6 +8676,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Marathon;
@@ -8716,8 +8704,13 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info 2.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/SDL\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8750,6 +8743,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "AlephOne-SDG-3";
@@ -8822,6 +8816,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Marathon;

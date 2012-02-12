@@ -110,9 +110,11 @@ extern int SDL_main(int argc, char *argv[]);
 #if TARGET_IPHONE_SIMULATOR
   // Always test on the simulator
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstGame];
+    /*
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
+     */
 #endif
 
   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];

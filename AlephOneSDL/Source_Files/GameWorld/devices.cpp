@@ -310,6 +310,11 @@ void initialize_control_panels_for_level(
   for (side_index= 0, side= map_sides; side_index<dynamic_world->side_count;
        ++side, ++side_index)
   {
+      
+      // DJB
+      if ( side_index == 732 ) {
+          printf ( "Processing bad side\n" );
+      }
     if (SIDE_IS_CONTROL_PANEL(side)) {
       // LP change: modified previous fix so that it edits the side definition
       struct control_panel_definition *definition= get_control_panel_definition(
@@ -489,6 +494,12 @@ bool untoggled_repair_switches_on_level(
        side_index<dynamic_world->side_count && !untoggled_switch;
        ++side_index, ++side)
   {
+      
+      // DJB
+      if ( side_index == 732 ) {
+          printf ( "Processing bad side\n" );
+      }
+
     if (SIDE_IS_CONTROL_PANEL(side) && SIDE_IS_REPAIR_SWITCH(side)) {
       // LP change: idiot-proofing
       struct control_panel_definition *definition= get_control_panel_definition(
@@ -527,6 +538,11 @@ void assume_correct_switch_position(
   for (side_index= 0, side= map_sides; side_index<dynamic_world->side_count;
        ++side_index, ++side)
   {
+      
+      // DJB
+      if ( side_index == 732 ) {
+          printf ( "Processing bad side\n" );
+      }
     if (SIDE_IS_CONTROL_PANEL(side) && side->control_panel_permutation==
         permutation) {
       struct control_panel_definition *definition= get_control_panel_definition(
@@ -816,6 +832,12 @@ bool line_side_has_control_panel(
     }
   }
 
+    // DJB Debugging
+    if ( side != NULL && side_index == 732) {
+        printf ( "Flag is 0x%04x _side_is_control_panel is 0x%04d\n", side->flags, _side_is_control_panel );
+
+    }
+    
   if (side != NULL && SIDE_IS_CONTROL_PANEL(side)) {
     *side_index_with_panel = side_index;
     has_panel = true;
