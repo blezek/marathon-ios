@@ -289,10 +289,11 @@ static void     somebody_save_full_auto(player_data* inWhoSaved,
 static void     change_panel_state(short player_index, short panel_side_index);
 void set_control_panel_texture(struct side_data *side);
 
-static bool line_is_within_range(short monster_index, short line_index,
+// DJB no longer static
+ bool line_is_within_range(short monster_index, short line_index,
                                  world_distance range);
-
-static bool switch_can_be_toggled(short line_index, bool player_hit);
+// DJB no longer static
+ bool switch_can_be_toggled(short line_index, bool player_hit);
 
 static void play_control_panel_sound(short side_index, short sound_index);
 
@@ -738,8 +739,10 @@ short find_action_key_target(
       short original_polygon;
 
       line= get_line_data(line_index);
+
       original_polygon= current_polygon;
       current_polygon= find_adjacent_polygon(current_polygon, line_index);
+
 
 //			dprintf("leaving polygon #%d through line #%d to polygon #%d", original_polygon, line_index, current_polygon);
 
@@ -751,6 +754,7 @@ short find_action_key_target(
             line_is_within_range(player->monster_index, line_index,
                                  MAXIMUM_PLATFORM_ACTIVATION_RANGE) &&
             platform_is_legal_player_target(polygon->permutation)) {
+
 //					dprintf("found platform #%d in %p", polygon->permutation, polygon);
           itemhit= polygon->permutation;
           *target_type= _target_is_platform;
@@ -765,8 +769,10 @@ short find_action_key_target(
       /* Slammed a wall */
       if (line_is_within_range(player->monster_index, line_index,
                                control_panel_settings.ReachDistance)) {
+
         if (line_side_has_control_panel(line_index, original_polygon,
                                         &itemhit)) {
+
           if (switch_can_be_toggled(itemhit, true)) {
             *target_type= _target_is_control_panel;
             done= true;
@@ -783,7 +789,7 @@ short find_action_key_target(
   return itemhit;
 }
 
-static bool line_is_within_range(
+ bool line_is_within_range(
   short monster_index,
   short line_index,
   world_distance range)
@@ -1036,12 +1042,13 @@ void set_control_panel_texture(
 }
 
 
-static bool switch_can_be_toggled(
+ bool switch_can_be_toggled(
   short side_index,
   bool player_hit)
 {
   bool valid_toggle= true;
   struct side_data *side= get_side_data(side_index);
+    
   struct control_panel_definition *definition= get_control_panel_definition(
     side->control_panel_type);
   // LP change: idiot-proofing
@@ -1049,9 +1056,22 @@ static bool switch_can_be_toggled(
     return false;
   }
 
+    /*
+    if ( SideList[732].flags != 34 ) {
+        printf ( "Suddenly switched in %s %s:%d\n", __FUNCTION__, __FILE__, __LINE__ );        
+    }
+     */
+
+    
   if (side->flags&_side_is_lighted_switch) {
     valid_toggle= get_light_intensity(side->primary_lightsource_index)>
                   (3*FIXED_ONE/4) ? true : false;
+      /*
+      if ( SideList[732].flags != 34 ) {
+          printf ( "Suddenly switched in %s %s:%d\n", __FUNCTION__, __FILE__, __LINE__ );        
+      }
+       */
+
   }
 
   if (definition->item!=NONE && !player_hit) {
@@ -1065,6 +1085,12 @@ static bool switch_can_be_toggled(
   if (valid_toggle && (side->flags&_side_switch_can_be_destroyed)) {
     // destroy switch
     SET_SIDE_CONTROL_PANEL(side, false);
+      /*
+      if ( SideList[732].flags != 34 ) {
+          printf ( "Suddenly switched in %s %s:%d\n", __FUNCTION__, __FILE__, __LINE__ );        
+      }
+       */
+
   }
 
   if (!valid_toggle && player_hit) {

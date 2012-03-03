@@ -58,23 +58,19 @@ extern control_panel_definition *get_control_panel_definition(
     return self;
 }
 
-- (void)dimActionKey:(short)actionType {
+- (void)dimActionKey {
   self.actionKeyImageView.alpha = 0.0;
   self.actionKeyImageView.hidden = YES;
   self.actionBox.hidden = YES;
 }
-- (void)lightActionKey:(short)actionType {
+- (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {
   // From player.h
 //  _target_is_platform,
 //  _target_is_control_panel,
 //  _target_is_unrecognized
   UIImage *image = nil;
 
-  short target_type, object_index;
-  object_index= find_action_key_target(current_player_index, MAXIMUM_ACTIVATION_RANGE,
-                                       &target_type);
-  
-  if(object_index != NONE) {
+    if(object_index != NONE) {
     switch(target_type)
     {
       case _target_is_platform: {
