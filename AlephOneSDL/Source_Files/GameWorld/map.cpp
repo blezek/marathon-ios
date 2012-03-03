@@ -314,10 +314,11 @@ side_data *get_side_data(
   const short side_index)
 {
   assert(map_sides);
-    
-    if ( side_index == 732 && SideList[side_index].flags != 34 ) {
-        printf ( "Suddenly switched!!!!" );
-        
+
+    /*
+    // DJB
+    if ( SideList[732].flags != 34 ) {
+        printf ( "Suddenly switched in %s %s:%d\n", __FUNCTION__, __FILE__, __LINE__ );        
     }
     
     // DJB
@@ -325,6 +326,7 @@ side_data *get_side_data(
         printf ( "Flags directly std... 0x%04x\n", SideList[side_index].flags );
         printf ( "Flags directly... 0x%04x\n", map_sides[side_index].flags );
     }
+     */
   struct side_data *side = GetMemberWithBounds(map_sides,side_index,
                                                dynamic_world->side_count);
 
