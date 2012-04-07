@@ -54,6 +54,7 @@ extern  int
 #include "preferences.h"
 #include "mouse.h"
 #include "items.h"
+#include "platforms.h"
 #include "monsters.h"
 // Uggg... see monster_definitions.h for details
 #define DONT_REPEAT_DEFINITIONS
@@ -78,6 +79,176 @@ int KillRecord[MAXIMUM_NUMBER_OF_WEAPONS];
 extern void PlayInterfaceButtonSound(short SoundID);
 extern struct view_data *world_view; /* should be static */
 BOOL StatsDownloaded = NO;
+extern  bool switch_can_be_toggled(short line_index, bool player_hit);
+extern bool line_is_within_range(
+                                 short monster_index,
+                                 short line_index,
+                                 world_distance range);
+
+enum // control panel sounds
+{
+    _activating_sound,
+    _deactivating_sound,
+    _unusuable_sound,
+    
+    NUMBER_OF_CONTROL_PANEL_SOUNDS
+};
+struct control_panel_definition
+{
+    int16 _class;
+    uint16 flags;
+    
+    int16 collection;
+    int16 active_shape, inactive_shape;
+    
+    int16 sounds[NUMBER_OF_CONTROL_PANEL_SOUNDS];
+    _fixed sound_frequency;
+    
+    int16 item;
+};
+#include "lightsource.h"
+bool local_switch_can_be_toggled(
+                           short side_index,
+                           bool player_hit)
+{
+    bool valid_toggle= true;
+    struct side_data *side= get_side_data(side_index);
+    
+    
+    extern control_panel_definition *get_control_panel_definition(
+                                                                  const short control_panel_type);
+    struct control_panel_definition *definition= get_control_panel_definition(
+                                                                              side->control_panel_type);
+    // LP change: idiot-proofing
+    if (!definition) {
+        return false;
+    }
+    
+    if (side->flags&_side_is_lighted_switch) {
+        valid_toggle= get_light_intensity(side->primary_lightsource_index)>
+        (3*FIXED_ONE/4) ? true : false;        
+    }
+    
+    if (definition->item!=NONE && !player_hit) {
+        valid_toggle= false;
+    }
+    if (player_hit &&
+        (side->flags&_side_switch_can_only_be_hit_by_projectiles)) {
+        valid_toggle= false;
+    }
+    /*
+    if (valid_toggle && (side->flags&_side_switch_can_be_destroyed)) {
+        // destroy switch
+        SET_SIDE_CONTROL_PANEL(side, false);
+        if ( SideList[732].flags != 34 ) {
+            printf ( "Suddenly switched in %s %s:%d\n", __FUNCTION__, __FILE__, __LINE__ );        
+        }
+        
+    }
+    
+    if (!valid_toggle && player_hit) {
+        play_control_panel_sound(side_index, _unusuable_sound);
+    }
+     */
+    
+    return valid_toggle;
+}
+
+short localFindActionTarget(
+                             short player_index,
+                             world_distance range,
+                             short *target_type)
+{
+    struct player_data *player= get_player_data(player_index);
+    short current_polygon= player->camera_polygon_index;
+    world_point2d destination;
+    bool done= false;
+    short itemhit, line_index;
+    struct polygon_data *polygon;
+    
+    // In case we don't hit anything
+    *target_type = _target_is_unrecognized;
+    
+    /* Should we use this one, the physics one, or the object one? */
+    ray_to_line_segment((world_point2d *) &player->location, &destination,
+                        player->facing,
+                        range);
+    
+    //	dprintf("#%d(#%d,#%d) --> (#%d,#%d) (#%d along #%d)", current_polygon, player->location.x, player->location.y, destination.x, destination.y, range, player->facing);
+    
+    itemhit= NONE;
+    while (!done)
+    {
+        line_index=
+        find_line_crossed_leaving_polygon(current_polygon,
+                                          (world_point2d *) &player->location,
+                                          &destination);
+        
+        if (line_index==NONE) {
+            done= true;
+        }
+        else
+        {
+            struct line_data *line;
+            short original_polygon;
+            
+            line= get_line_data(line_index);
+            
+            original_polygon= current_polygon;
+            current_polygon= find_adjacent_polygon(current_polygon, line_index);
+            
+            
+            //			dprintf("leaving polygon #%d through line #%d to polygon #%d", original_polygon, line_index, current_polygon);
+            
+            if (current_polygon!=NONE) {
+                polygon= get_polygon_data(current_polygon);
+#define MAXIMUM_PLATFORM_ACTIVATION_RANGE (3*WORLD_ONE)
+
+                /* We hit a platform */
+                if (polygon->type==_polygon_is_platform &&
+                    line_is_within_range(player->monster_index, line_index,
+                                         MAXIMUM_PLATFORM_ACTIVATION_RANGE) &&
+                    platform_is_legal_player_target(polygon->permutation)) {
+                    
+                    //					dprintf("found platform #%d in %p", polygon->permutation, polygon);
+                    itemhit= polygon->permutation;
+                    *target_type= _target_is_platform;
+                    done= true;
+                }
+            }
+            else
+            {
+                done= true;
+            }
+#define MAXIMUM_CONTROL_ACTIVATION_RANGE (WORLD_ONE+WORLD_ONE_HALF)
+           
+            /* Slammed a wall */
+            if (line_is_within_range(player->monster_index, line_index,
+                                     MAXIMUM_CONTROL_ACTIVATION_RANGE)) {
+                
+                if (line_side_has_control_panel(line_index, original_polygon,
+                                                &itemhit)) {
+                    
+                    if (local_switch_can_be_toggled(itemhit, false)) {
+                        
+                        *target_type= _target_is_control_panel;
+                        done= true;
+                    }
+                    else
+                    {
+                        itemhit= NONE;
+                    }
+                }
+            }
+        }
+    }
+    
+    return itemhit;
+}
+
+
+
+
 
 #define kPauseAlphaDefault 0.5;
 
@@ -1582,39 +1753,37 @@ short items[]=
 }
 
 - (void)runMainLoopOnce:(id)sender {
-  // Do some house keeping here
-
-  if (world_view->overhead_map_active) {
-    self.zoomInButton.hidden = NO;
-    self.zoomOutButton.hidden = NO;
-  } else {
-    self.zoomInButton.hidden = YES;
-    self.zoomOutButton.hidden = YES;
-  }
-  [self updateReticule:get_player_desired_weapon(current_player_index)];
-  if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
-    [self menuShowReplacementMenu];
-    mode = MenuMode;
-  }
-// Causing a bug, always dim
-    [self.HUDViewController dimActionKey:0];
-
-    /*
-  if ( mode == GameMode ) {
-    short target_type;
-    if ( NONE == find_action_key_target(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type) ) {
-      [self.HUDViewController dimActionKey:target_type];
+    // Do some house keeping here
+    
+    if (world_view->overhead_map_active) {
+        self.zoomInButton.hidden = NO;
+        self.zoomOutButton.hidden = NO;
     } else {
-      [self.HUDViewController lightActionKey:target_type];    
+        self.zoomInButton.hidden = YES;
+        self.zoomOutButton.hidden = YES;
     }
-  }
-     */
-  
-  if ( !inMainLoop ) {
-    inMainLoop = YES;
-    AlephOneMainLoop();
-    inMainLoop = NO;
-  }
+    [self updateReticule:get_player_desired_weapon(current_player_index)];
+    if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
+        [self menuShowReplacementMenu];
+        mode = MenuMode;
+    }
+    // Causing a bug, always dim
+    // [self.HUDViewController dimActionKey:0];
+    if ( mode == GameMode ) {
+        short target_type, object_index;
+        object_index = localFindActionTarget(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type);
+        if ( NONE == object_index ) {
+            [self.HUDViewController dimActionKey];
+        } else {
+            [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
+        }
+    }
+    
+    if ( !inMainLoop ) {
+        inMainLoop = YES;
+        AlephOneMainLoop();
+        inMainLoop = NO;
+    }
 }
 
 #pragma mark -

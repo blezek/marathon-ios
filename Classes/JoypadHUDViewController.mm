@@ -49,7 +49,8 @@ static int counter = 0;
   alert = [UIAlertView alertViewWithTitle:@"Searching for Joypad"
                                   message:@"Searching for Joypad device"
                         cancelButtonTitle:@"Cancel"
-                            otherButtonTitles:[NSArray arrayWithObject:@"Manual"]
+                        // otherButtonTitles:[NSArray arrayWithObject:@"Manual"]
+                        otherButtonTitles:nil
                                 onDismiss:completion                   
                                  onCancel:^{
                                    [[GameViewController sharedInstance] configureHUD:nil];
@@ -169,6 +170,7 @@ static int counter = 0;
 -(void)joypadDevice:(JoypadDevice *)device analogStick:(JoyInputIdentifier)stick didMove:(JoypadStickPosition)newPosition
 {
   float radius = 55.0;
+  radius = 1.0;
   float runRadius = radius / 2.0;
   
   // This is the movement stick

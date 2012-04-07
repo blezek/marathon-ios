@@ -1813,6 +1813,10 @@
 		A89241E5127FC26300F0A2EE /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CC127FC26300F0A2EE /* vorbisfile.c */; };
 		A89241E6127FC26300F0A2EE /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A89241CD127FC26300F0A2EE /* window.c */; };
 		A89315841267FFD2006DA87E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
+		A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */; };
+		A893F72E1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */; };
+		A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */; };
+		A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */; };
 		A89458F2142808F200A9ECAC /* EpisodeLoading.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458EF142808F200A9ECAC /* EpisodeLoading.png */; };
 		A89458F3142808F200A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458F0142808F200A9ECAC /* EpisodeLoading@2x~iphone.png */; };
 		A89458F4142808F200A9ECAC /* EpisodeLoading~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458F1142808F200A9ECAC /* EpisodeLoading~iphone.png */; };
@@ -2048,6 +2052,9 @@
 		A8D66F57131766E9009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
 		A8D66F5F131766F7009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5B131766F7009801EC /* GenericBackground.png */; };
 		A8D66F60131766F7009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5C131766F7009801EC /* SplashScreen.png */; };
+		A8D8FC37152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */; };
+		A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */; };
+		A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC3B152E8D8500A54CE4 /* Infinity.png */; };
 		A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
@@ -2075,7 +2082,6 @@
 		A8DEE8F1145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
 		A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
 		A8DEE8F3145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */; };
-		A8DEE902145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */; };
 		A8DEE906145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
 		A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
 		A8DEE908145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */; };
@@ -2407,9 +2413,9 @@
 		A82E9BD613D673FD00EC2CAD /* BasicHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicHUDViewController.h; path = Classes/BasicHUDViewController.h; sourceTree = "<group>"; };
 		A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BasicHUDViewController.mm; path = Classes/BasicHUDViewController.mm; sourceTree = "<group>"; };
 		A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicHUDViewController.xib; sourceTree = "<group>"; };
-		A82E9BDF13D6743700EC2CAD /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDViewController.h; sourceTree = "<group>"; };
-		A82E9BE013D6743700EC2CAD /* HUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDViewController.mm; sourceTree = "<group>"; };
-		A82E9BE113D6743700EC2CAD /* HUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HUDViewController.xib; path = ../../HUDViewController.xib; sourceTree = "<group>"; };
+		A82E9BDF13D6743700EC2CAD /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HUDViewController.h; path = Classes/HUDViewController.h; sourceTree = "<group>"; };
+		A82E9BE013D6743700EC2CAD /* HUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HUDViewController.mm; path = Classes/HUDViewController.mm; sourceTree = "<group>"; };
+		A82E9BE113D6743700EC2CAD /* HUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDViewController.xib; sourceTree = "<group>"; };
 		A82F1CF71214E27C004D0B68 /* MovePadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePadView.h; path = Classes/MovePadView.h; sourceTree = "<group>"; };
 		A82F1CF81214E27C004D0B68 /* MovePadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MovePadView.mm; path = Classes/MovePadView.mm; sourceTree = "<group>"; };
 		A82F1DCE1214F2E9004D0B68 /* LookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookView.h; path = Classes/LookView.h; sourceTree = "<group>"; };
@@ -2695,9 +2701,9 @@
 		A8811F9B12C76B2200A1A08E /* help11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help11.png; path = Artwork/Help/help11.png; sourceTree = "<group>"; };
 		A8811F9C12C76B2200A1A08E /* help12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help12.png; path = Artwork/Help/help12.png; sourceTree = "<group>"; };
 		A88121E912C7816300A1A08E /* Durandal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Durandal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A88121EB12C7816300A1A08E /* Info 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info 2.plist"; path = "../../Info 2.plist"; sourceTree = "<group>"; };
-		A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlephOne-SDG-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A88123F012C7826300A1A08E /* Info 3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info 3.plist"; path = "../../Info 3.plist"; sourceTree = "<group>"; };
+		A88121EB12C7816300A1A08E /* Info2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info2.plist; path = ../../Info2.plist; sourceTree = "<group>"; };
+		A88123EE12C7826300A1A08E /* Infinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88123F012C7826300A1A08E /* Info3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info3.plist; path = ../../Info3.plist; sourceTree = "<group>"; };
 		A88124A012C79E0100A1A08E /* FilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmCell.h; path = Classes/FilmCell.h; sourceTree = "<group>"; };
 		A88124A112C79E0100A1A08E /* FilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmCell.m; path = Classes/FilmCell.m; sourceTree = "<group>"; };
 		A88124A212C79E0100A1A08E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmViewController.h; path = Classes/FilmViewController.h; sourceTree = "<group>"; };
@@ -3255,6 +3261,10 @@
 		A89241C9127FC26300F0A2EE /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Libraries/libvorbis-1.2.0/lib/synthesis.c"; sourceTree = SOURCE_ROOT; };
 		A89241CC127FC26300F0A2EE /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		A89241CD127FC26300F0A2EE /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
+		A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Marathon_Infinity_Icon.png; path = ../../Marathon_Infinity_Icon.png; sourceTree = "<group>"; };
+		A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Marathon_Infinity_Icon2@2x.png"; path = "../../Marathon_Infinity_Icon2@2x.png"; sourceTree = "<group>"; };
+		A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity-Landscape~ipad.png"; path = "../../Infinity-Landscape~ipad.png"; sourceTree = "<group>"; };
+		A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity-Portrait~ipad.png"; path = "../../Infinity-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A89458EF142808F200A9ECAC /* EpisodeLoading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLoading.png; sourceTree = "<group>"; };
 		A89458F0142808F200A9ECAC /* EpisodeLoading@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EpisodeLoading@2x~iphone.png"; sourceTree = "<group>"; };
 		A89458F1142808F200A9ECAC /* EpisodeLoading~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EpisodeLoading~iphone.png"; sourceTree = "<group>"; };
@@ -3517,6 +3527,10 @@
 		A8D66F53131766E9009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		A8D66F5B131766F7009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		A8D66F5C131766F7009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
+		A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinity-Portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinity-Portrait~iphone.png"; sourceTree = "<group>"; };
+		A8D8FC39152E8D7500A54CE4 /* Infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity@2x.png"; path = "../../Infinity@2x.png"; sourceTree = "<group>"; };
+		A8D8FC3B152E8D8500A54CE4 /* Infinity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Infinity.png; path = ../../Infinity.png; sourceTree = "<group>"; };
 		A8D966FB11C717A700016403 /* SDLnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnet.c; path = "Libraries/SDL_net-1.2.7/SDLnet.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FC11C717A700016403 /* SDLnetselect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetselect.c; path = "Libraries/SDL_net-1.2.7/SDLnetselect.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FD11C717A700016403 /* SDLnetTCP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetTCP.c; path = "Libraries/SDL_net-1.2.7/SDLnetTCP.c"; sourceTree = SOURCE_ROOT; };
@@ -3551,7 +3565,6 @@
 		A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBlackTrack~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8E0145CDE9F00D8608F /* SliderBlackTrack@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBlackTrack@2x~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8E1145CDEA000D8608F /* SliderRedTrack@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRedTrack@2x~iphone.png"; sourceTree = "<group>"; };
-		A8DEE8F4145CEB4000D8608F /* WeaponsButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeaponsButton~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8F6145CEB4100D8608F /* ShieldsButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShieldsButton~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8F7145CEB4100D8608F /* ShieldsButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShieldsButton@2x~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8F8145CEB4100D8608F /* SaveButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SaveButton~iphone.png"; sourceTree = "<group>"; };
@@ -3738,7 +3751,7 @@
 			children = (
 				A85E686011CB173A00D0FAEF /* Marathon.app */,
 				A88121E912C7816300A1A08E /* Durandal.app */,
-				A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */,
+				A88123EE12C7826300A1A08E /* Infinity.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3757,8 +3770,11 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* SDLClasses */,
 			);
+			indentWidth = 2;
 			name = CustomTemplate;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			wrapsLines = 0;
 		};
 		29B97315FDCFA39411CA2CEA /* SDLClasses */ = {
 			isa = PBXGroup;
@@ -6063,7 +6079,7 @@
 			isa = PBXGroup;
 			children = (
 				A8C4436613A7CF72002A908B /* about.png */,
-				A88121EB12C7816300A1A08E /* Info 2.plist */,
+				A88121EB12C7816300A1A08E /* Info2.plist */,
 				A818BD1213A464A700DB3828 /* Marathon_Durandal_Icon-72.png */,
 				A818BD1313A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png */,
 				A818BD1413A464A700DB3828 /* Marathon_Durandal_Icon-Small.png */,
@@ -6083,6 +6099,14 @@
 		A8FF853B130F798B00A874F8 /* M3 */ = {
 			isa = PBXGroup;
 			children = (
+				A8D8FC3B152E8D8500A54CE4 /* Infinity.png */,
+				A8D8FC39152E8D7500A54CE4 /* Infinity@2x.png */,
+				A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */,
+				A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */,
+				A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */,
+				A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */,
+				A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */,
+				A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */,
 				A818BD2413A4778400DB3828 /* Infinity-Landscape~ipad.png */,
 				A818BD2513A4778400DB3828 /* Infinity-Portrait~ipad.png */,
 				A818BD2613A4778400DB3828 /* Marathon_Infinity_Icon-72.png */,
@@ -6091,7 +6115,7 @@
 				A818BD2913A4778400DB3828 /* Marathon_Infinity_Icon-Small@2x.png */,
 				A818BD2A13A4778400DB3828 /* Marathon_Infinity_Icon.png */,
 				A818BD2B13A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png */,
-				A88123F012C7826300A1A08E /* Info 3.plist */,
+				A88123F012C7826300A1A08E /* Info3.plist */,
 				A874B1A21318A8DF009C4A92 /* iTunesArtwork */,
 				A8D66F5B131766F7009801EC /* GenericBackground.png */,
 				A8D66F5C131766F7009801EC /* SplashScreen.png */,
@@ -6108,6 +6132,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A85E685D11CB173A00D0FAEF /* Build configuration list for PBXNativeTarget "Marathon" */;
 			buildPhases = (
+				A893F72815019436003A4D28 /* ShellScript */,
 				A85E672E11CB173A00D0FAEF /* Resources */,
 				A85E673111CB173A00D0FAEF /* Sources */,
 				A85E684811CB173A00D0FAEF /* Frameworks */,
@@ -6125,6 +6150,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A88121E512C7816300A1A08E /* Build configuration list for PBXNativeTarget "Durandal" */;
 			buildPhases = (
+				A893F72915019895003A4D28 /* Run Script */,
 				A8811FED12C7816300A1A08E /* Resources */,
 				A881203A12C7816300A1A08E /* Sources */,
 				A88121D212C7816300A1A08E /* Frameworks */,
@@ -6142,6 +6168,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A88123EA12C7826300A1A08E /* Build configuration list for PBXNativeTarget "Infinity" */;
 			buildPhases = (
+				A893F72A1501A3F2003A4D28 /* ShellScript */,
 				A88121F212C7826300A1A08E /* Resources */,
 				A881223F12C7826300A1A08E /* Sources */,
 				A88123D712C7826300A1A08E /* Frameworks */,
@@ -6152,7 +6179,7 @@
 			);
 			name = Infinity;
 			productName = AlephOne;
-			productReference = A88123EE12C7826300A1A08E /* AlephOne-SDG-3.app */;
+			productReference = A88123EE12C7826300A1A08E /* Infinity.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -6161,7 +6188,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "SDG Productions";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
@@ -7014,7 +7041,6 @@
 				A8DEE8ED145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
 				A8DEE8F0145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
 				A8DEE8F3145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
-				A8DEE902145CEB4300D8608F /* WeaponsButton~iphone.png in Resources */,
 				A8DEE908145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
 				A8DEE90B145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
 				A8DEE90E145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
@@ -7059,10 +7085,60 @@
 				A8EEFAC6147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
 				A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
+				A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */,
+				A893F72E1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png in Resources */,
+				A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad.png in Resources */,
+				A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad.png in Resources */,
+				A8D8FC37152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png in Resources */,
+				A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */,
+				A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A893F72815019436003A4D28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "plist=${PROJECT_DIR}/Info.plist\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n";
+		};
+		A893F72915019895003A4D28 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "plist=\"${PROJECT_DIR}/Info2.plist\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n";
+		};
+		A893F72A1501A3F2003A4D28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "plist=\"${PROJECT_DIR}/Info3.plist\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A85E673111CB173A00D0FAEF /* Sources */ = {
@@ -8432,8 +8508,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = "Info 2.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8464,8 +8540,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = "Info 2.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8495,8 +8571,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = "Info 2.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8513,7 +8589,7 @@
 		A88123EB12C7826300A1A08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -8528,8 +8604,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				INFOPLIST_FILE = Info3.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
@@ -8538,11 +8614,10 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-3";
+				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -8550,7 +8625,7 @@
 		A88123EC12C7826300A1A08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -8563,8 +8638,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				INFOPLIST_FILE = Info3.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
@@ -8572,11 +8647,10 @@
 					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-3";
+				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -8584,7 +8658,7 @@
 		A88123ED12C7826300A1A08E /* AdHocDistribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
@@ -8598,8 +8672,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				INFOPLIST_FILE = Info3.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
@@ -8607,11 +8681,10 @@
 					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-3";
+				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHocDistribution;
@@ -8704,8 +8777,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = "Info 2.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8722,12 +8795,12 @@
 		A8A689AC1310C61B0079FD7D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Blezek";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Blezek";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8737,8 +8810,8 @@
 				);
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				INFOPLIST_FILE = "Info 3.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				INFOPLIST_FILE = Info3.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
@@ -8746,12 +8819,11 @@
 					"\"$(SRCROOT)/Libraries/SDL\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "AlephOne-SDG-3";
-				PROVISIONING_PROFILE = "73293EEC-9C15-426C-BB87-F404B542CAE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "73293EEC-9C15-426C-BB87-F404B542CAE9";
+				PRODUCT_NAME = Infinity;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
