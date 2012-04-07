@@ -230,10 +230,26 @@ UIKit_VideoInit(_THIS)
             // the main screen is the first element in the array.
             UIScreen *uiscreen = (UIScreen *) [screens objectAtIndex:i];
             CGSize size = [[uiscreen currentMode] size];
+          
+          // DJB We want the size to be in points, not pixels (which is what [[uiscreen currentMode] size] returns)
+          size = uiscreen.bounds.size;
+          
+          
+          
           // DJB, OK, the simulator and iPad return different results.  On the simulator, we get
           // Width = 768, Height = 1024.
           // In the device
           // width = 1024, Height = 768.  This could be related to the rotation flag not being honored...
+          if ( helperRunningOniPad() ) {            
+            size.width = 1024;
+            size.height = 768;
+#if TARGET_IPHONE_SIMULATOR
+            size.width = 1024;
+            size.height = 768;
+#endif
+          }
+
+          
           
           // DJB  If we are on the iPhone, fake the display being 640 x 480
           if ( !helperRunningOniPad() ) {            

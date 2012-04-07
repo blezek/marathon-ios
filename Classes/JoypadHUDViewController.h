@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "HUDViewController.h"
 #import "JoypadManager.h"
+#import "JoypadDevice.h"
 #import "AlertPrompt.h"
 #import "AlertView.h"
 
 @class JoypadManager;
 
-@interface JoypadHUDViewController : HUDViewController <UIAlertViewDelegate> {
+@interface JoypadHUDViewController : HUDViewController <UIAlertViewDelegate, JoypadManagerDelegate, JoypadDeviceDelegate> {
   JoypadManager *joypadManager;
   NSArray *buttonMap;
   int deltaX, deltaY;

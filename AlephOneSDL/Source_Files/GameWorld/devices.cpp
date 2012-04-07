@@ -312,11 +312,7 @@ void initialize_control_panels_for_level(
        ++side, ++side_index)
   {
       
-      // DJB
-      if ( side_index == 732 ) {
-          printf ( "Processing bad side\n" );
-      }
-    if (SIDE_IS_CONTROL_PANEL(side)) {
+      if (SIDE_IS_CONTROL_PANEL(side)) {
       // LP change: modified previous fix so that it edits the side definition
       struct control_panel_definition *definition= get_control_panel_definition(
         side->control_panel_type);
@@ -497,10 +493,11 @@ bool untoggled_repair_switches_on_level(
   {
       
       // DJB
+    /*
       if ( side_index == 732 ) {
           printf ( "Processing bad side\n" );
       }
-
+*/
     if (SIDE_IS_CONTROL_PANEL(side) && SIDE_IS_REPAIR_SWITCH(side)) {
       // LP change: idiot-proofing
       struct control_panel_definition *definition= get_control_panel_definition(
@@ -541,9 +538,10 @@ void assume_correct_switch_position(
   {
       
       // DJB
-      if ( side_index == 732 ) {
+     /* if ( side_index == 732 ) {
           printf ( "Processing bad side\n" );
       }
+      */
     if (SIDE_IS_CONTROL_PANEL(side) && side->control_panel_permutation==
         permutation) {
       struct control_panel_definition *definition= get_control_panel_definition(

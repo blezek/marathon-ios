@@ -25,6 +25,7 @@
 #import "SDL_uikitopenglview.h"
 // DJB OpenGL Inform the app delegate of GL ES 1.0 or 2.0
 #import "AlephOneAppDelegate.h"
+#import "AlephOneHelper.h"
 
 @interface SDL_uikitopenglview (privateMethods)
 
@@ -86,7 +87,7 @@
 		// Get the layer
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
     // DJB set to the screens scale factor
-    if ([self respondsToSelector:@selector(setContentScaleFactor:)]){
+    if (!helperRunningOniPad() && [self respondsToSelector:@selector(setContentScaleFactor:)]){
       self.contentScaleFactor = [[UIScreen mainScreen] scale];
       eaglLayer.contentsScale = [[UIScreen mainScreen] scale];
     } 
