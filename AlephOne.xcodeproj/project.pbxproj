@@ -1815,8 +1815,8 @@
 		A89315841267FFD2006DA87E /* PauseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8EB78541266A8510043F0D4 /* PauseViewController.mm */; };
 		A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */; };
 		A893F72E1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */; };
-		A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad. in Resources */ = {isa = PBXBuildFile; fileRef = A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad. */; };
-		A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad. in Resources */ = {isa = PBXBuildFile; fileRef = A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad. */; };
+		A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */; };
+		A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */; };
 		A89458F2142808F200A9ECAC /* EpisodeLoading.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458EF142808F200A9ECAC /* EpisodeLoading.png */; };
 		A89458F3142808F200A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458F0142808F200A9ECAC /* EpisodeLoading@2x~iphone.png */; };
 		A89458F4142808F200A9ECAC /* EpisodeLoading~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A89458F1142808F200A9ECAC /* EpisodeLoading~iphone.png */; };
@@ -2052,6 +2052,9 @@
 		A8D66F57131766E9009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
 		A8D66F5F131766F7009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5B131766F7009801EC /* GenericBackground.png */; };
 		A8D66F60131766F7009801EC /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F5C131766F7009801EC /* SplashScreen.png */; };
+		A8D8FC37152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */; };
+		A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */; };
+		A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D8FC3B152E8D8500A54CE4 /* Infinity.png */; };
 		A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
 		A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DAB89C134E9F5600E4AF10 /* Achievements.m */; };
@@ -3258,10 +3261,10 @@
 		A89241C9127FC26300F0A2EE /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Libraries/libvorbis-1.2.0/lib/synthesis.c"; sourceTree = SOURCE_ROOT; };
 		A89241CC127FC26300F0A2EE /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		A89241CD127FC26300F0A2EE /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
-		A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marathon_Infinity_Icon.png; sourceTree = "<group>"; };
-		A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Infinity_Icon2@2x.png"; sourceTree = "<group>"; };
-		A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad. */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Infinity-Landscape~ipad."; sourceTree = "<group>"; };
-		A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad. */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Infinity-Portrait~ipad."; sourceTree = "<group>"; };
+		A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Marathon_Infinity_Icon.png; path = ../../Marathon_Infinity_Icon.png; sourceTree = "<group>"; };
+		A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Marathon_Infinity_Icon2@2x.png"; path = "../../Marathon_Infinity_Icon2@2x.png"; sourceTree = "<group>"; };
+		A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity-Landscape~ipad.png"; path = "../../Infinity-Landscape~ipad.png"; sourceTree = "<group>"; };
+		A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity-Portrait~ipad.png"; path = "../../Infinity-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A89458EF142808F200A9ECAC /* EpisodeLoading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLoading.png; sourceTree = "<group>"; };
 		A89458F0142808F200A9ECAC /* EpisodeLoading@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EpisodeLoading@2x~iphone.png"; sourceTree = "<group>"; };
 		A89458F1142808F200A9ECAC /* EpisodeLoading~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EpisodeLoading~iphone.png"; sourceTree = "<group>"; };
@@ -3524,6 +3527,10 @@
 		A8D66F53131766E9009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		A8D66F5B131766F7009801EC /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		A8D66F5C131766F7009801EC /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
+		A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinity-Portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinity-Portrait~iphone.png"; sourceTree = "<group>"; };
+		A8D8FC39152E8D7500A54CE4 /* Infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity@2x.png"; path = "../../Infinity@2x.png"; sourceTree = "<group>"; };
+		A8D8FC3B152E8D8500A54CE4 /* Infinity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Infinity.png; path = ../../Infinity.png; sourceTree = "<group>"; };
 		A8D966FB11C717A700016403 /* SDLnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnet.c; path = "Libraries/SDL_net-1.2.7/SDLnet.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FC11C717A700016403 /* SDLnetselect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetselect.c; path = "Libraries/SDL_net-1.2.7/SDLnetselect.c"; sourceTree = SOURCE_ROOT; };
 		A8D966FD11C717A700016403 /* SDLnetTCP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SDLnetTCP.c; path = "Libraries/SDL_net-1.2.7/SDLnetTCP.c"; sourceTree = SOURCE_ROOT; };
@@ -3752,10 +3759,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad. */,
-				A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad. */,
-				A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */,
-				A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */,
 				A883D583148AC5E90000AE37 /* Marathon_Durandal_Icon2@2x.png */,
 				A883D581148AC5D40000AE37 /* Marathon_Durandal_Icon.png */,
 				A88C8F2A11B35CFA00689138 /* AlephOne Source */,
@@ -6096,6 +6099,14 @@
 		A8FF853B130F798B00A874F8 /* M3 */ = {
 			isa = PBXGroup;
 			children = (
+				A8D8FC3B152E8D8500A54CE4 /* Infinity.png */,
+				A8D8FC39152E8D7500A54CE4 /* Infinity@2x.png */,
+				A893F7311502CEFD003A4D28 /* Infinity-Portrait~ipad.png */,
+				A893F72F1502CEF7003A4D28 /* Infinity-Landscape~ipad.png */,
+				A893F72D1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png */,
+				A893F72B1502CEC1003A4D28 /* Marathon_Infinity_Icon.png */,
+				A8D8FC35152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png */,
+				A8D8FC36152E8D6300A54CE4 /* Infinity-Portrait~iphone.png */,
 				A818BD2413A4778400DB3828 /* Infinity-Landscape~ipad.png */,
 				A818BD2513A4778400DB3828 /* Infinity-Portrait~ipad.png */,
 				A818BD2613A4778400DB3828 /* Marathon_Infinity_Icon-72.png */,
@@ -6177,7 +6188,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "SDG Productions";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
@@ -7076,8 +7087,11 @@
 				A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 				A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */,
 				A893F72E1502CED0003A4D28 /* Marathon_Infinity_Icon2@2x.png in Resources */,
-				A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad. in Resources */,
-				A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad. in Resources */,
+				A893F7301502CEF8003A4D28 /* Infinity-Landscape~ipad.png in Resources */,
+				A893F7321502CEFD003A4D28 /* Infinity-Portrait~ipad.png in Resources */,
+				A8D8FC37152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png in Resources */,
+				A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */,
+				A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
