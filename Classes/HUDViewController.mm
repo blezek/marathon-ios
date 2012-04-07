@@ -35,6 +35,7 @@ extern "C" {
 
 @implementation HUDViewController
 @synthesize primaryFireKey, secondaryFireKey;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -76,6 +77,11 @@ extern "C" {
     }
     return self;
 }
+
+// Noops
+- (void)dimActionKey {}
+- (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {}
+
 
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
   *dx = 0; *dy = 0;

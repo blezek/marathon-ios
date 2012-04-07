@@ -350,6 +350,7 @@ GLES_ActivateRenderer(SDL_Renderer * renderer)
       // But for the iPhone, we need to figure it out...
       if ( helperRunningOniPad() ) {
         data->glViewport(0, 0, window->w, window->h);
+//        data->glViewport(0,0, helperOpenGLWidth(), helperOpenGLHeight() );
         data->glOrthof(0.0, (GLfloat) window->w, (GLfloat) window->h, 0.0,
                        0.0, 1.0);        
       } else {
