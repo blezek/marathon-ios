@@ -273,6 +273,7 @@ short localFindActionTarget(
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 @synthesize HUDTouchViewController, HUDJoypadViewController;
+@synthesize leaderboardButton, achievementsButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -365,6 +366,11 @@ short localFindActionTarget(
   self.loadFilmButton.hidden = NO;
   // joyPad = [[JoyPad alloc] init];
 
+#endif
+  
+#if SCENARIO == 3
+  self.leaderboardButton.hidden = YES;
+  self.achievementsButton.hidden = YES;
 #endif
   
   self.splashView.hidden = NO;

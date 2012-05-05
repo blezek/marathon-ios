@@ -80,6 +80,9 @@ typedef enum {
   IBOutlet UIImageView *episodeImageView;
   IBOutlet UIImageView *episodeLoadingImageView;
   IBOutlet UIImageView *waitingImageView;
+  
+  IBOutlet UIButton *leaderboardButton;
+  IBOutlet UIButton *achievementsButton;
 
   NSMutableArray *reticuleImageNames;
   
@@ -275,6 +278,8 @@ typedef enum {
 @property (nonatomic, retain) UIButton *zoomOutButton;
 @property (nonatomic, retain) UIButton *saveFilmButton;
 @property (nonatomic, retain) UIButton *loadFilmButton;
+@property (nonatomic, retain) UIButton *leaderboardButton;
+@property (nonatomic, retain) UIButton *achievementsButton;
 
 @property (nonatomic, retain) SaveGameViewController *saveGameViewController;
 @property (nonatomic, retain) ProgressViewController *progressViewController;

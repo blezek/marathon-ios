@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<int key="IBDocument.SystemTarget">1296</int>
+		<string key="IBDocument.SystemVersion">11D50d</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.AppKitVersion">1138.32</string>
+		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -168,7 +168,7 @@
 					<object class="IBUIButton" id="880042888">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{428, 220}, {39, 39}}</string>
+						<string key="NSFrame">{{415, 207}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="132311445"/>
@@ -192,7 +192,7 @@
 					<object class="IBUIButton" id="291214286">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{380, 237}, {50, 50}}</string>
+						<string key="NSFrame">{{339, 213}, {75, 75}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="880042888"/>
@@ -818,10 +818,10 @@
 							<reference ref="56065301"/>
 							<reference ref="36774145"/>
 							<reference ref="132311445"/>
-							<reference ref="291214286"/>
 							<reference ref="402276250"/>
-							<reference ref="880042888"/>
 							<reference ref="103312479"/>
+							<reference ref="291214286"/>
+							<reference ref="880042888"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">HUD</string>
@@ -955,7 +955,7 @@
 					<string>66.IBPluginDependency</string>
 					<string>97.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>BasicHUDViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1011,7 +1011,7 @@
 							<string>lookView</string>
 							<string>movePadView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
 							<string>UIButton</string>
@@ -1028,7 +1028,7 @@
 							<string>lookView</string>
 							<string>movePadView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionBox</string>
@@ -1094,7 +1094,7 @@
 							<string>secondaryFireUp:</string>
 							<string>stopMoving:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
@@ -1169,7 +1169,7 @@
 							<string>secondaryFireUp:</string>
 							<string>stopMoving:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">actionDown:</string>
@@ -1349,6 +1349,10 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3100" key="NS.object.0"/>
@@ -1368,7 +1372,7 @@
 				<string>toggleweapons-left-btn.png</string>
 				<string>toggleweapons-right-btn.png</string>
 			</object>
-			<object class="NSMutableArray" key="dict.values">
+			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{120, 120}</string>
 				<string>{198, 198}</string>
@@ -1380,6 +1384,6 @@
 				<string>{54, 53}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>
