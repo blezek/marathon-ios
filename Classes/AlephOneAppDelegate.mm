@@ -269,6 +269,7 @@ extern int SDL_main(int argc, char *argv[]);
     [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
   }];
 #endif
+  
   return YES;
   
 }

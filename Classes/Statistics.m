@@ -49,6 +49,11 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
                   @"Kills",
                   nil];
     [self loadStats];
+    if ( [Achievements isAuthenticated] && !statsDownloaded ) {
+      statsDownloaded = YES;
+      [self downloadStats];
+    }
+
 
   }
   return self;
@@ -143,10 +148,6 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
   [self updateLifetimeScore:delta];
   [self uploadStats];
   
-  if ( [Achievements isAuthenticated] && !statsDownloaded ) {
-    statsDownloaded = YES;
-    [self downloadStats];
-  }
 
 }
 
@@ -229,15 +230,17 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
   [GKLeaderboard loadCategoriesWithCompletionHandler:^(NSArray *categories, NSArray *titles, NSError *error) {
     for ( NSString *category in categories ) {
       GKLeaderboard *leaderboard = [[GKLeaderboard alloc] initWithPlayerIDs:[NSArray arrayWithObjects:[GKLocalPlayer localPlayer].playerID, nil]];
-      [leaderboard autorelease];
+      [leaderboard autorelease];  
       [leaderboard loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
         if ( scores == nil ) {
           MLog ( @"Error retrieving scores for %@", category );
           return;
         }
         for ( GKScore *score in scores ) {
+          if ( score == nil ) { return; }
           // See if the score reported is bigger than our score
           NSString* key = [score.category substringFromIndex:[AchievementPrefix length]];
+          if ( key == nil ) { return; }
           MLog(@"Retrieved score %@ for key %@", score.value, key);
           if ( [self.stats objectForKey:key] != nil ) {
             NSNumber *n = [self.stats objectForKey:key];
@@ -249,7 +252,6 @@ float DifficultyMultiplier[NUMBER_OF_GAME_DIFFICULTY_LEVELS] = { 1/10., 1/10., 1
       }];
     }
   }];
-  
 }
 
 + (NSString*)difficultyToString:(int)difficulty {
