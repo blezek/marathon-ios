@@ -68,7 +68,7 @@
 								<string key="NSFrame">{{10.5, 10.5}, {79, 79}}</string>
 								<reference key="NSSuperview" ref="402276250"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="103312479"/>
+								<reference key="NSNextKeyView" ref="1010802498"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -357,6 +357,34 @@
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
+					<object class="IBUIButton" id="1010802498">
+						<reference key="NSNextResponder" ref="776394612"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{108, 275}, {40, 40}}</string>
+						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="103312479"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIHighlightedTitleColor" ref="893362460"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">patternbuffers-btn.png</string>
+						</object>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<int key="type">2</int>
+							<double key="pointSize">15</double>
+						</object>
+						<reference key="IBUIFont" ref="520788015"/>
 					</object>
 				</object>
 				<string key="NSFrameSize">{480, 320}</string>
@@ -782,6 +810,42 @@
 					</object>
 					<int key="connectionID">123</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">actionUp:</string>
+						<reference key="source" ref="1010802498"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">134</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">actionUp:</string>
+						<reference key="source" ref="1010802498"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">8</int>
+					</object>
+					<int key="connectionID">135</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">actionUp:</string>
+						<reference key="source" ref="1010802498"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">9</int>
+					</object>
+					<int key="connectionID">136</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">actionDown:</string>
+						<reference key="source" ref="1010802498"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">137</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -822,6 +886,7 @@
 							<reference ref="103312479"/>
 							<reference ref="291214286"/>
 							<reference ref="880042888"/>
+							<reference ref="1010802498"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">HUD</string>
@@ -925,6 +990,11 @@
 						<reference key="parent" ref="103312479"/>
 						<string key="objectName">Action</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">133</int>
+						<reference key="object" ref="1010802498"/>
+						<reference key="parent" ref="776394612"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -940,6 +1010,7 @@
 					<string>115.IBPluginDependency</string>
 					<string>131.CustomClassName</string>
 					<string>131.IBPluginDependency</string>
+					<string>133.IBPluginDependency</string>
 					<string>31.IBPluginDependency</string>
 					<string>36.CustomClassName</string>
 					<string>36.IBPluginDependency</string>
@@ -965,6 +1036,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>RoundedView</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LookView</string>
@@ -994,7 +1066,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">132</int>
+			<int key="maxID">137</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1367,6 +1439,7 @@
 				<string>movementboxBase.png</string>
 				<string>movementboxKnob.png</string>
 				<string>overheadmap.png</string>
+				<string>patternbuffers-btn.png</string>
 				<string>primarytrigger-btn.png</string>
 				<string>secondarytrigger-btn.png</string>
 				<string>toggleweapons-left-btn.png</string>
@@ -1378,6 +1451,7 @@
 				<string>{198, 198}</string>
 				<string>{158, 158}</string>
 				<string>{138, 137}</string>
+				<string>{70, 70}</string>
 				<string>{101, 101}</string>
 				<string>{79, 79}</string>
 				<string>{54, 53}</string>
