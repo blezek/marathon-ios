@@ -168,48 +168,48 @@
 					<object class="IBUIButton" id="880042888">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{415, 207}, {64, 64}}</string>
+						<string key="NSFrame">{{417, 207}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="132311445"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
+						<int key="IBUIContentHorizontalAlignment">3</int>
+						<int key="IBUIContentVerticalAlignment">3</int>
 						<reference key="IBUIHighlightedTitleColor" ref="893362460"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
-						<object class="NSCustomResource" key="IBUINormalImage">
+						<object class="NSCustomResource" key="IBUINormalImage" id="329797861">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">secondarytrigger-btn.png</string>
+							<string key="NSResourceName">primarytrigger-btn.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="576645065"/>
 						<reference key="IBUIFont" ref="520788015"/>
 					</object>
 					<object class="IBUIButton" id="291214286">
 						<reference key="NSNextResponder" ref="776394612"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{339, 213}, {75, 75}}</string>
+						<int key="NSvFlags">310</int>
+						<string key="NSFrame">{{343, 213}, {75, 75}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="880042888"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUIContentMode">2</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
+						<int key="IBUIContentHorizontalAlignment">3</int>
+						<int key="IBUIContentVerticalAlignment">3</int>
 						<reference key="IBUIHighlightedTitleColor" ref="893362460"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
-						<object class="NSCustomResource" key="IBUINormalImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">primarytrigger-btn.png</string>
-						</object>
+						<reference key="IBUINormalImage" ref="329797861"/>
+						<reference key="IBUINormalBackgroundImage" ref="329797861"/>
 						<reference key="IBUIFontDescription" ref="576645065"/>
 						<reference key="IBUIFont" ref="520788015"/>
 					</object>
@@ -361,7 +361,7 @@
 					<object class="IBUIButton" id="1010802498">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{108, 275}, {40, 40}}</string>
+						<string key="NSFrame">{{108, 225}, {40, 40}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="103312479"/>
@@ -1441,7 +1441,6 @@
 				<string>overheadmap.png</string>
 				<string>patternbuffers-btn.png</string>
 				<string>primarytrigger-btn.png</string>
-				<string>secondarytrigger-btn.png</string>
 				<string>toggleweapons-left-btn.png</string>
 				<string>toggleweapons-right-btn.png</string>
 			</object>
@@ -1453,7 +1452,6 @@
 				<string>{138, 137}</string>
 				<string>{70, 70}</string>
 				<string>{101, 101}</string>
-				<string>{79, 79}</string>
 				<string>{54, 53}</string>
 				<string>{54, 53}</string>
 			</object>
