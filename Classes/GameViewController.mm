@@ -111,6 +111,10 @@ bool local_switch_can_be_toggled(
                            short side_index,
                            bool player_hit)
 {
+  
+  // bool temp = switch_can_be_toggled(side_index, player_hit );
+  
+  
     bool valid_toggle= true;
     struct side_data *side= get_side_data(side_index);
     
@@ -129,7 +133,7 @@ bool local_switch_can_be_toggled(
         (3*FIXED_ONE/4) ? true : false;        
     }
     
-    if (definition->item!=NONE && !player_hit) {
+    if ( ( definition->item!=NONE ) && !player_hit) {
         valid_toggle= false;
     }
     if (player_hit &&
@@ -154,11 +158,17 @@ bool local_switch_can_be_toggled(
     return valid_toggle;
 }
 
+extern short find_action_key_target(
+                                    short player_index,
+                                    world_distance range,
+                                    short *target_type);
 short localFindActionTarget(
                              short player_index,
                              world_distance range,
                              short *target_type)
 {
+  // short temp = find_action_key_target( player_index, range, target_type );
+  
     struct player_data *player= get_player_data(player_index);
     short current_polygon= player->camera_polygon_index;
     world_point2d destination;
@@ -229,7 +239,7 @@ short localFindActionTarget(
                 if (line_side_has_control_panel(line_index, original_polygon,
                                                 &itemhit)) {
                     
-                    if (local_switch_can_be_toggled(itemhit, false)) {
+                    if (local_switch_can_be_toggled(itemhit, true)) {
                         
                         *target_type= _target_is_control_panel;
                         done= true;
@@ -273,6 +283,7 @@ short localFindActionTarget(
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 @synthesize HUDTouchViewController, HUDJoypadViewController;
+@synthesize leaderboardButton, achievementsButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -365,6 +376,11 @@ short localFindActionTarget(
   self.loadFilmButton.hidden = NO;
   // joyPad = [[JoyPad alloc] init];
 
+#endif
+  
+#if SCENARIO == 3
+  self.leaderboardButton.hidden = YES;
+  self.achievementsButton.hidden = YES;
 #endif
   
   self.splashView.hidden = NO;

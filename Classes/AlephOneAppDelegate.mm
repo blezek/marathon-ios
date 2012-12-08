@@ -13,6 +13,7 @@
 #import "Appirater.h"
 #import "Achievements.h"
 #import "Tracking.h"
+#import "TestFlight.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -123,6 +124,8 @@ extern int SDL_main(int argc, char *argv[]);
 #if defined(A1DEBUG)
   [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutocenter];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUseVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
     
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
@@ -268,6 +271,10 @@ extern int SDL_main(int argc, char *argv[]);
     [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
   }];
 #endif
+  
+  // TestFlight
+  [TestFlight takeOff:TeamToken];
+  
   return YES;
   
 }
