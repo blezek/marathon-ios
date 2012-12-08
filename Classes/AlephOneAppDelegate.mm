@@ -125,6 +125,7 @@ extern int SDL_main(int argc, char *argv[]);
   [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutocenter];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUseVidmasterMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
     
   NSString *currentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
