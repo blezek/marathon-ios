@@ -125,6 +125,7 @@ extern int SDL_main(int argc, char *argv[]);
   [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAutocenter];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUseVidmasterMode];
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
+
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
 #endif
     
@@ -250,6 +251,11 @@ extern int SDL_main(int argc, char *argv[]);
     
   float duration = 1.2;
   float delay = 1.2;
+  
+#ifdef TARGET_IPHONE_SIMULATOR
+  duration = 0.0;
+  delay = 0.0;
+#endif
   
   float startDelay = 0.0;
 #if SCENARIO == 2
@@ -467,10 +473,7 @@ const char* argv[] = { "AlephOneHD" };
 }
 
 -(BOOL)runningOniPad {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    return YES;
-  }
-  return NO;
+  return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
 }
 
 #pragma mark -

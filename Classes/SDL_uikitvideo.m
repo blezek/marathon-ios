@@ -264,6 +264,8 @@ UIKit_VideoInit(_THIS)
           
 #if TARGET_IPHONE_SIMULATOR
           UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
+          // DJB iPad Mini debugging
+          // UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
 #else
           UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
 #endif

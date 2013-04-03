@@ -1907,6 +1907,9 @@
 		A89B967F1433C97F005E9FF3 /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A89B967B1433C874005E9FF3 /* LoadingScreen.png */; };
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
+		A8A7FC3916BB7937007E7FED /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A7FC3816BB7937007E7FED /* MessageUI.framework */; };
+		A8A7FC3A16BB794C007E7FED /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A7FC3816BB7937007E7FED /* MessageUI.framework */; };
+		A8A7FC3B16BB8067007E7FED /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A7FC3816BB7937007E7FED /* MessageUI.framework */; };
 		A8A9C7D613D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
 		A8A9C7D713D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
 		A8A9C7D813D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
@@ -3342,6 +3345,12 @@
 		A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDColoredProgressView.h; path = Classes/PDColoredProgressView.h; sourceTree = "<group>"; };
 		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
 		A8A4D31112A4B2C100AEE140 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Classes/Prefs.h; sourceTree = "<group>"; };
+		A8A5284516992FD900EF98BE /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A8A5284616992FD900EF98BE /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A8A5284716992FD900EF98BE /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		A8A5284816992FD900EF98BE /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		A8A5284916992FD900EF98BE /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		A8A7FC3816BB7937007E7FED /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8A9C7D313D920D00087E0CF /* JoypadHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoypadHUDViewController.h; path = Classes/JoypadHUDViewController.h; sourceTree = "<group>"; };
 		A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoypadHUDViewController.mm; path = Classes/JoypadHUDViewController.mm; sourceTree = "<group>"; };
 		A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoypadHUDViewController.xib; sourceTree = "<group>"; };
@@ -3532,6 +3541,7 @@
 		A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A8C5563914267C29003D329B /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		A8CB80E913A28638004D6DBD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A8CBBA9F16AF9157009B9C29 /* iPad Mini Screen Debugging.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iPad Mini Screen Debugging.txt"; sourceTree = "<group>"; };
 		A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		A8CD2E6C1558D4FF0056A500 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		A8CD2E6D1558D4FF0056A500 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
@@ -3621,7 +3631,6 @@
 		A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreButton~iphone.png"; sourceTree = "<group>"; };
 		A8EB5AD113987E460090042E /* Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracking.h; path = Classes/Tracking.h; sourceTree = "<group>"; };
 		A8EB5AD213987E460090042E /* Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tracking.m; path = Classes/Tracking.m; sourceTree = "<group>"; };
-		A8EB5AD713987E720090042E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		A8EB5AD813987E720090042E /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		A8EB682512DC1413001D43EA /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
 		A8EB682612DC1413001D43EA /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
@@ -3648,6 +3657,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A7FC3916BB7937007E7FED /* MessageUI.framework in Frameworks */,
 				A8421EBD1455DA17008BBF22 /* libbz2.dylib in Frameworks */,
 				A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -3682,6 +3692,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A7FC3A16BB794C007E7FED /* MessageUI.framework in Frameworks */,
 				A8421EBE1455DDD9008BBF22 /* libbz2.dylib in Frameworks */,
 				A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A8E3FEFE1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
@@ -3715,6 +3726,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A7FC3B16BB8067007E7FED /* MessageUI.framework in Frameworks */,
 				A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
@@ -3783,6 +3795,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A8A7FC3816BB7937007E7FED /* MessageUI.framework */,
+				A8CBBA9F16AF9157009B9C29 /* iPad Mini Screen Debugging.txt */,
 				A8695CAF1563562400D5976B /* Infinity-Landscape~ipad. */,
 				A8695CAD1563561400D5976B /* Infinity-Portrait~ipad. */,
 				A8695CAB1563560900D5976B /* Infinity@2x. */,
@@ -6089,7 +6103,11 @@
 		A8EB5AD613987E720090042E /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				A8EB5AD713987E720090042E /* GANTracker.h */,
+				A8A5284516992FD900EF98BE /* GAI.h */,
+				A8A5284616992FD900EF98BE /* GAITrackedViewController.h */,
+				A8A5284716992FD900EF98BE /* GAITracker.h */,
+				A8A5284816992FD900EF98BE /* GAITransaction.h */,
+				A8A5284916992FD900EF98BE /* GAITransactionItem.h */,
 				A8EB5AD813987E720090042E /* libGoogleAnalytics.a */,
 			);
 			name = GoogleAnalytics;
@@ -8490,7 +8508,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8503,7 +8520,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -8524,7 +8541,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8536,7 +8552,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -8545,7 +8561,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8560,7 +8575,6 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8570,6 +8584,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8580,7 +8595,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8593,7 +8607,6 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8602,6 +8615,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8612,7 +8626,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8625,7 +8638,6 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8634,6 +8646,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8735,7 +8748,6 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEPLOYMENT_POSTPROCESSING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8743,7 +8755,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8761,7 +8773,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Distribution;
@@ -8783,7 +8794,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8795,7 +8805,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -8805,7 +8815,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8818,7 +8827,6 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8827,6 +8835,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8871,7 +8880,6 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEPLOYMENT_POSTPROCESSING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8879,7 +8887,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8897,7 +8905,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = AdHocDistribution;
@@ -8919,7 +8926,6 @@
 				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
@@ -8931,7 +8937,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHocDistribution;
@@ -8943,8 +8949,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEPLOYMENT_POSTPROCESSING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8952,7 +8956,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -8968,7 +8972,6 @@
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -8981,7 +8984,6 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEPLOYMENT_POSTPROCESSING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8989,7 +8991,7 @@
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
@@ -9007,7 +9009,6 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

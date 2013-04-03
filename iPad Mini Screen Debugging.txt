@@ -1,0 +1,24 @@
+SDL_uikitvideo.m
+
+GetDisplayModes
+1024x768
+
+
+SDL_uikitwindow.m
+
+SetupWindowData
+1024x768
+
+CreateWindow
+
+
+SDL_uikitopenglview.m
+
+initWithFrame
+backing store 1024x768
+
+
+screen.cpp
+
+Screen::view_rect()
+should return x, y at 0,0
