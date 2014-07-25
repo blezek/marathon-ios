@@ -416,6 +416,61 @@ short localFindActionTarget(
 }
 
 #pragma mark -
+#pragma mark Debugging info
+- (IBAction)sendDebugInfo:(id)sender {
+  MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+  controller.mailComposeDelegate = self;
+  [controller setSubject:@"Marathon debugging information"];
+  NSMutableString* buffer = [NSMutableString string];
+  [buffer appendFormat:@"Running on iPad: %@\n", [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ? @"YES" : @"NO" ];
+  [buffer appendFormat:@"Retina display: %@\n", helperRetinaDisplay() ? @"YES" : @"NO"];
+  [buffer appendFormat:@"Screen dimensions: %@\n", NSStringFromCGRect([[UIScreen mainScreen] bounds])];
+  [buffer appendFormat:@"View dimensions: %@\n", NSStringFromCGRect([viewGL bounds])];
+  [buffer appendFormat:@"Scale factor: %f\n", [[UIScreen mainScreen] scale]];
+  [buffer appendFormat:@"GL Dimensions: %d,%d\n", helperOpenGLWidth(), helperOpenGLHeight()];
+  [buffer appendFormat:@"GL Version: %d\n", getOpenGLESVersion()];
+  [buffer appendFormat:@"-----\n"];
+  [buffer appendFormat:@"Engine screen size: %d,%d\n", alephone::Screen::instance()->width(), alephone::Screen::instance()->height()];
+  [buffer appendFormat:@"Engine window size: %d,%d\n", alephone::Screen::instance()->window_width(), alephone::Screen::instance()->window_height()];
+  SDL_Rect rect;
+  rect = alephone::Screen::instance()->view_rect();
+  [buffer appendFormat:@"Engine viewRect offset: %d,%d size: %d,%d\n", rect.x, rect.y, rect.w, rect.h];
+  rect = alephone::Screen::instance()->hud_rect();
+  [buffer appendFormat:@"Engine hudRect offset: %d,%d size: %d,%d\n", rect.x, rect.y, rect.w, rect.h];
+  rect = alephone::Screen::instance()->window_rect();
+  [buffer appendFormat:@"Engine windowRect offset: %d,%d size: %d,%d\n", rect.x, rect.y, rect.w, rect.h];
+  [buffer appendFormat:@"Modes\n"];
+  std::vector<std::pair<int, int> > modes = alephone::Screen::instance()->GetModes();
+  for ( int i = 0; i < modes.size(); ++i ) {
+    [buffer appendFormat:@"\t%d, %d\n", modes[i].first, modes[i].second];
+  }
+  
+  [buffer appendFormat:@"-----\nScreenMode:\n"];
+
+  [buffer appendFormat:@"HudScale Level: %d\n", graphics_preferences->screen_mode.hud_scale_level];
+  [buffer appendFormat:@"Width: %d\n", graphics_preferences->screen_mode.width];
+  [buffer appendFormat:@"Height: %d\n", graphics_preferences->screen_mode.height];
+  
+
+  
+  
+  [controller setMessageBody:buffer isHTML:NO];
+  [controller setToRecipients:[NSArray arrayWithObject:@"daniel.blezek@gmail.com"]];
+  if (controller) [self presentModalViewController:controller animated:YES];
+  [controller release];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error
+{
+  if (result == MFMailComposeResultSent) {
+    NSLog(@"It's away!");
+  }
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
 #pragma mark Game control
 
 - (void)closeEvent {

@@ -113,7 +113,10 @@ using namespace alephone;
 
 Screen Screen::m_instance;
 
-
+// DJB OpenGL use our handy SaveState class
+#include "SaveState.h"
+// DJB Use the helper
+#include "AlephOneHelper.h"
 // Prototypes
 static void change_screen_mode(int width, int height, int depth, bool nogl);
 static void build_sdl_color_table(const color_table *color_table,
@@ -261,6 +264,10 @@ void Screen::Initialize(screen_mode_data* mode)
     // DJB support for iPhone/Touch
     m_modes.push_back(std::pair<int, int>(480, 320));
     m_modes.push_back(std::pair<int, int>(960, 640));
+    if ( helperRunningOniPad() ) {
+    // DJB Modes for the iPad Mini
+    m_modes.push_back(std::pair<int, int>(1024, 768));
+    }
 
     // these are not validated in graphics prefs because
     // SDL is not initialized yet when prefs load, so
@@ -394,7 +401,6 @@ SDL_Rect Screen::view_rect()
   r.h = window_height() - hud_rect().h;
   r.x = ( width() - r.w ) / 2;
   r.y = (height() - window_height()) / 2; //  + (available_height - r.h) / 2;
-  
   
   return r;
 }
@@ -998,6 +1004,8 @@ void render_screen(short ticks_elapsed)
   }
 
   // Set OpenGL viewport to world view
+  int height = Screen::instance()->height();
+  int width = Screen::instance()->width();
   Rect sr = {0, 0, Screen::instance()->height(), Screen::instance()->width()};
   Rect vr =
   {ViewRect.y, ViewRect.x, ViewRect.y + ViewRect.h, ViewRect.x + ViewRect.w};
@@ -1431,10 +1439,7 @@ static inline void draw_pattern_rect(T *p, int pitch, uint32 pixel,
   }
 }
 
-// DJB OpenGL use our handy SaveState class
-#include "SaveState.h"
-// DJB Use the helper
-#include "AlephOneHelper.h"
+
 void darken_world_window(void)
 {
   // Get world window bounds

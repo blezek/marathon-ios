@@ -135,7 +135,7 @@ static void shutdown_images_handler(void);
 static void draw_picture(LoadedResource &PictRsrc);
 
 
-#include <SDL_endian.h>
+#include "SDL_endian.h"
 
 #ifdef HAVE_SDL_IMAGE_H
 #include "SDL_image.h"

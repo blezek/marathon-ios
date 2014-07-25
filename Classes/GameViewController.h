@@ -30,6 +30,8 @@
 #import "BasicHUDViewController.h"
 #import "JoypadHUDViewController.h"
 
+#import <MessageUI/MFMailComposeViewController.h>
+
 typedef enum {
   MenuMode,
   GameMode,
@@ -38,7 +40,7 @@ typedef enum {
   DeadMode
 } HUDMode;
 
-@interface GameViewController : UIViewController <GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate> {
+@interface GameViewController : UIViewController <GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate,MFMailComposeViewControllerDelegate> {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
@@ -142,6 +144,12 @@ typedef enum {
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)runMainLoopOnce:(id)sender;
+
+// Send some status info
+- (IBAction)sendDebugInfo:(id)sender;
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
 
 - (IBAction)pause:(id)from;
 - (IBAction)pauseForBackground:(id)from;

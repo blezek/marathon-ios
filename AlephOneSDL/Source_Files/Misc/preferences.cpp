@@ -2758,7 +2758,6 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
     preferences->screen_mode.height = 480;
     preferences->screen_mode.hud = true;
     preferences->screen_mode.hud_scale_level = 3;
-    
   }
   
   

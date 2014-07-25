@@ -30,7 +30,7 @@
 
 #include <stdio.h>
 #include <vector>
-#include <SDL.h>
+#include "SDL.h"
 
 #ifndef NO_STD_NAMESPACE
 using std::vector;

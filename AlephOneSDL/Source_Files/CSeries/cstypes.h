@@ -55,7 +55,7 @@ typedef time_t TimeType;
 
 #elif defined(SDL)
 
-#include <SDL_types.h>
+#include "SDL_types.h"
 #include <time.h>       // for time_t
 typedef Uint8 uint8;
 typedef Sint8 int8;
