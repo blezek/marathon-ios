@@ -64,7 +64,7 @@
 #include "joystick.h"
 
 #include <sstream>
-#include <SDL_events.h>
+#include "SDL_events.h"
 /*
  *  Widget base class
  */

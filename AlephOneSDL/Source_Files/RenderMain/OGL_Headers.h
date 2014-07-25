@@ -35,7 +35,7 @@
 #endif
 
 // DJB
-#include <SDL_opengles.h>
+#include "SDL_opengles.h"
 // #include <glu.h>
 
 #endif

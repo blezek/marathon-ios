@@ -23,7 +23,7 @@
 
  */
 
-#include <SDL.h>
+#include "SDL.h"
 #include "player.h" // for mask_in_absolute_positioning_information
 #include "preferences.h"
 #include "joystick.h"

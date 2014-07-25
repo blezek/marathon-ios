@@ -28,7 +28,7 @@
 #include "CommunicationsChannel.h"
 #include <string>
 #include <memory>
-#include <SDL_thread.h>
+#include "SDL_thread.h"
 
 class NonblockingConnect
 {

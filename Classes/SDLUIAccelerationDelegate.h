@@ -21,7 +21,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <SDL_types.h>
+#import "SDL_types.h"
 
 /* *INDENT-OFF* */
 @interface SDLUIAccelerationDelegate: NSObject <UIAccelerometerDelegate> {
