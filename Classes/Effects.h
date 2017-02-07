@@ -19,4 +19,8 @@
 + (CAAnimation*) disappearAnimation;
 + (float) disappearDuration;
 
+	//DCW
++ (void)disappearHidingView:(UIView*)enclosingView;
++ (void)appearRevealingView:(UIView*)enclosingView;
+
 @end

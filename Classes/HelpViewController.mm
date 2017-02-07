@@ -124,7 +124,7 @@ BOOL Pages[kNumImages];
   if ( Pages[pageControl.currentPage] == NO ) {
     // Just send 1 tracking event...
     Pages[pageControl.currentPage] = YES;
-    [Tracking trackPageview:[NSString stringWithFormat:@"/help/%d", pageControl.currentPage]];    
+    ////[Tracking trackPageview:[NSString stringWithFormat:@"/help/%d", pageControl.currentPage]];    
   }
   
   if ( pageControl.currentPage == 0 ) {

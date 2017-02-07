@@ -39,6 +39,7 @@ extern "C" {
 - (void)viewDidLoad {
   firstTouch = nil;
   secondTouch = nil;
+	
 }
 
 - (void)stopPrimaryFire {
@@ -51,6 +52,12 @@ extern "C" {
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+	//DCW
+	lastForce = 0;
+	primaryForceThreshold = .4;
+	secondaryForceThreshold = .9;
+	
   if ( firstTouch == nil ) {
     // grab the first
     firstTouch = [touches anyObject];
@@ -75,17 +82,23 @@ extern "C" {
   for ( UITouch *touch in touches ) {
     if ( touch == firstTouch ) {
       firstTouch = nil;
+			Uint8 *key_map = SDL_GetKeyboardState ( NULL ); //DCW moved out of if below.
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         // Check the time, fire 
         // MLog ( @"Might fire here");
         NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
         self.firstTouchTime = nil;
         if ( delta < TapToShootDelta ) {
-          Uint8 *key_map = SDL_GetKeyboardState ( NULL );
           key_map[primaryFire] = 1;
           [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
         }
       }
+				//DCW: Release trigger(s) if we were firing using force touch.
+			if (lastForce >= primaryForceThreshold)
+				key_map[primaryFire] = 0;
+			if (lastForce >= secondaryForceThreshold)
+				key_map[secondaryFire] = 0;
+			
     }
     if ( touch == secondTouch && [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
       secondTouch = nil;
@@ -97,10 +110,8 @@ extern "C" {
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   // NSLog(@"Touches moved" );
-  if ( [touches count] == 2 ) {
-    MLog(@"2 touches" );
-  }
-  
+	
+	
   // If first touch goes away, make this one the first
   if ( firstTouch == nil ) {
     firstTouch = [touches anyObject];
@@ -122,7 +133,55 @@ extern "C" {
     if ( (dx*dx + dy*dy) > big ) {
       MLog(@"Big motion!" );
     }
-    
+		
+		//DCW: Fire primary trigger if force is sufficient, otherwise disable trigger.
+		Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+		double forceNormalized = touch.force / touch.maximumPossibleForce;
+
+		if ( [touches count] >= 2 ) {
+			//MLog(@"2 touches" );
+			key_map[primaryFire] = 1;
+		}
+		else {
+			key_map[primaryFire] = 0;
+		}
+		
+		if ( [touches count] >= 3 ) {
+			//MLog(@"3 touches" );
+			key_map[secondaryFire] = 1;
+		}
+		else {
+			key_map[secondaryFire] = 0;
+		}
+		
+		if (lastForce < primaryForceThreshold && forceNormalized >= primaryForceThreshold){
+			key_map[primaryFire] = 1;
+			UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
+			[feedback selectionChanged];
+			[feedback prepare];
+		}
+		if (lastForce < secondaryForceThreshold && forceNormalized >= secondaryForceThreshold){
+			key_map[secondaryFire] = 1;
+			UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
+			[feedback impactOccurred];
+			[feedback prepare];
+
+
+		}
+		if (lastForce >= primaryForceThreshold && forceNormalized < primaryForceThreshold){
+			key_map[primaryFire] = 0;
+			UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
+			[feedback selectionChanged];
+			[feedback prepare];
+		}
+		if (lastForce >= secondaryForceThreshold && forceNormalized < secondaryForceThreshold){
+			key_map[secondaryFire] = 0;
+			UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
+			[feedback impactOccurred];
+			[feedback prepare];
+		}
+		lastForce = forceNormalized;
+		
     // NSLog(@"touches moved, sending delta" );
     lastPanPoint = currentPoint;
     break;

@@ -136,13 +136,13 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
         const CGRect rect = [uiscreen bounds];
         mode.format = SDL_PIXELFORMAT_ABGR8888;
       // DJB, swap these for landscape
-#if TARGET_IPHONE_SIMULATOR
-      mode.w = (int) rect.size.height;
-      mode.h = (int) rect.size.width;
-#else
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//      mode.w = (int) rect.size.height;
+//      mode.h = (int) rect.size.width;
+//#else
       mode.w = (int) rect.size.width;
       mode.h = (int) rect.size.height;
-#endif
+//#endif
         mode.refresh_rate = 0;
         mode.driverdata = NULL;
         SDL_AddDisplayMode(display, &mode);
@@ -160,19 +160,19 @@ UIKit_GetDisplayModes(_THIS, SDL_VideoDisplay * display)
       if ( !helperRunningOniPad() ) {
         size.width = 640;
         size.height = 480;
-#if TARGET_IPHONE_SIMULATOR
-        size.width = 480;
-        size.height = 640;
-#endif
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//        size.width = 480;
+//       size.height = 640;
+//#endif
       }
       // DJB swap for landscape
-#if TARGET_IPHONE_SIMULATOR
-      mode.w = (int) size.height;
-      mode.h = (int) size.width;
-#else
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//     mode.w = (int) size.height;
+//      mode.h = (int) size.width;
+//#else
       mode.w = (int) size.width;
       mode.h = (int) size.height;
-#endif
+//#endif
         mode.refresh_rate = 0;
         mode.driverdata = uimode;
         [uimode retain];
@@ -243,10 +243,10 @@ UIKit_VideoInit(_THIS)
           if ( helperRunningOniPad() ) {            
             size.width = 1024;
             size.height = 768;
-#if TARGET_IPHONE_SIMULATOR
-            size.width = 1024;
-            size.height = 768;
-#endif
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//            size.width = 1024;
+//            size.height = 768;
+//#endif
           }
 
           
@@ -255,18 +255,18 @@ UIKit_VideoInit(_THIS)
           if ( !helperRunningOniPad() ) {            
             size.width = 640;
             size.height = 480;
-#if TARGET_IPHONE_SIMULATOR
-            size.width = 480;
-            size.height = 640;
-#endif
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//            size.width = 480;
+//            size.height = 640;
+//#endif
           }
-          
-          
-#if TARGET_IPHONE_SIMULATOR
-          UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
-#else
+ 
+
+//#if TARGET_IPHONE_SIMULATOR //DCW: Commenting out swap. I don;t think this is neede anymore
+//          UIKit_AddDisplay(uiscreen, (int) size.height, (int) size.width);
+//#else
           UIKit_AddDisplay(uiscreen, (int) size.width, (int) size.height);
-#endif
+//#endif
         }
     }
 

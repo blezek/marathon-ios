@@ -484,7 +484,10 @@ void initialize_application(void)
   // graphics_preferences->screen_mode.width = 1024;
   // graphics_preferences->screen_mode.height = 768;
 
-
+	// DCW lets test setting screen size here....
+	//graphics_preferences->screen_mode.width = 1334;
+	//graphics_preferences->screen_mode.height = 750;
+	
   write_preferences();
 
   Plugins::instance()->load_mml();

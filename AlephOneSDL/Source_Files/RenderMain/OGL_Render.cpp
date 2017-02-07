@@ -946,7 +946,7 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
     return false;
   }
 
-  // Check whether to do update -- only if the bounds had changed
+	// Check whether to do update -- only if the bounds had changed
   // or if the view had been inited
   bool DoUpdate = false;
   if (JustInited) {

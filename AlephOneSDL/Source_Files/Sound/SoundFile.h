@@ -27,7 +27,7 @@
 #include "FileHandler.h"
 #include <memory>
 #include <vector>
-#include <boost/shared_array.hpp>
+#include "boost/shared_array.hpp"
 
 class SoundHeader
 {

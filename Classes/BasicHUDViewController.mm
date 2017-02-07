@@ -46,14 +46,14 @@ struct control_panel_definition
 extern control_panel_definition *get_control_panel_definition(
                                                               const short control_panel_type);
 @implementation BasicHUDViewController
-@synthesize lookView, movePadView, actionKeyImageView, actionBox;
+@synthesize lookView, movePadView, lookPadView, actionKeyImageView, actionBox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
       // Custom initialization
-      [self.movePadView setup];
+      //[self.movePadView setup]; //This might be too soon to work, says DCW, so commenting out
     }
     return self;
 }
@@ -138,6 +138,7 @@ extern control_panel_definition *get_control_panel_definition(
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
   [self.movePadView setup];
+	[self.lookPadView setup]; //DCW
   self.lookView.primaryFire = primaryFireKey;
   self.lookView.secondaryFire = secondaryFireKey;
 }

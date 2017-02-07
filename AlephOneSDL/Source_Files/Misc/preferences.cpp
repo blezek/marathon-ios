@@ -2325,7 +2325,7 @@ void read_preferences ()
   printf ( "graphics preferences in read_preferences after loading %d x %d\n",
            graphics_preferences->screen_mode.width,
            graphics_preferences->screen_mode.height );
-  printf ( "Resetting screen mode to %d x %d\n",
+	printf ( "Resetting screen mode to %d x %d\n",
            graphics_preferences->screen_mode.width,
           graphics_preferences->screen_mode.height );
   graphics_preferences->screen_mode.fill_the_screen = false;
@@ -2754,8 +2754,13 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
   } else {
     preferences->screen_mode.width = helperOpenGLWidth();
     preferences->screen_mode.height = helperOpenGLHeight();
-    preferences->screen_mode.width = 640;
-    preferences->screen_mode.height = 480;
+		preferences->screen_mode.width = 640;
+		preferences->screen_mode.height = 480;
+		
+		//DCW test. For some reason this makes the hud vanish. :(
+		preferences->screen_mode.width = helperLongScreenDimension();
+		preferences->screen_mode.height = helperShortScreenDimension();
+		
     preferences->screen_mode.hud = true;
     preferences->screen_mode.hud_scale_level = 3;
     

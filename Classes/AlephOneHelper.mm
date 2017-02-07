@@ -278,6 +278,13 @@ extern "C" int helperRetinaDisplay() {
   return [AlephOneAppDelegate sharedAppDelegate].retinaDisplay;
 }
 
+	//DCW
+extern "C" int helperLongScreenDimension() {
+  return [AlephOneAppDelegate sharedAppDelegate].longScreenDimension;
+}
+extern "C" int helperShortScreenDimension() {
+	return [AlephOneAppDelegate sharedAppDelegate].shortScreenDimension;
+}
 
 
 

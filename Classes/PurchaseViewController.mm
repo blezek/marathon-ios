@@ -155,7 +155,7 @@
 }  
 
 - (IBAction)restore:(id)sender {
-  [Tracking trackEvent:@"store" action:@"restore" label:@"" value:[self canPurchase]];
+  ////[Tracking trackEvent:@"store" action:@"restore" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     MLog (@"Starting restore" );
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
@@ -163,7 +163,7 @@
 }
 
 - (IBAction)buyHDMode:(id)sender {
-  [Tracking trackEvent:@"store" action:@"hd" label:@"" value:[self canPurchase]];
+  ////[Tracking trackEvent:@"store" action:@"hd" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:HDModeProductID];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
@@ -171,7 +171,7 @@
 }
       
 - (IBAction)buyVidmasterMode:(id)sender {
-  [Tracking trackEvent:@"store" action:@"mc" label:@"" value:[self canPurchase]];
+  ////[Tracking trackEvent:@"store" action:@"mc" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:VidmasterModeProductID];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
@@ -179,7 +179,7 @@
 }
 
 - (IBAction)buyReticuleMode:(id)sender {
-  [Tracking trackEvent:@"store" action:@"rm" label:@"" value:[self canPurchase]];
+  ////[Tracking trackEvent:@"store" action:@"rm" label:@"" value:[self canPurchase]];
   if ( [self canPurchase] ) {
     SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:ReticulesProductID];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];

@@ -22,10 +22,21 @@
   SDLKey leftKey;
   SDLKey rightKey;
   SDLKey runKey;
+	
+		//DCW
+	SDLKey secondaryFireKey;
+	SDLKey actionKey;
+	bool	 useForceTouch;
+
   UIImageView *knobView;
+	
+	UIImpactFeedbackGenerator *feedbackSecondary; //DCW
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *knobView;
+@property (nonatomic,retain) IBOutlet UIButton* actionKeyImageView; //DCW
+
 - (void)setup;
+- (void) actionKeyUp; //DCW
 
 @end

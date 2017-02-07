@@ -36,6 +36,13 @@ extern "C" {
 @synthesize knobView;
 
 - (void)setup {
+	
+	
+	//DCW
+	feedbackSecondary = [[UIImpactFeedbackGenerator alloc] init];
+	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
+	useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+	 
   // Kill a warning
   (void)all_key_definitions;
 
@@ -62,10 +69,29 @@ extern "C" {
     if ( key->action_flag == _run_dont_walk ) {
       runKey = key->offset;
     }
+		
+		//DCW
+		if ( key->action_flag == _right_trigger_state ){
+			secondaryFireKey = key->offset;
+		}
+		if ( key->action_flag == _action_trigger_state ){
+			actionKey = key->offset;
+		}
+		
   }
 }
 
-- (void)handleTouch:(CGPoint)currentPoint {
+	//DCW
+- (void) actionKeyUp {
+	if(actionKey){
+		Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+		key_map[actionKey] = 0;
+	}
+}
+
+	//DCW added withNormalizedForce input with handleTouch. withNormalizedForce must be 0-1.
+- (void)handleTouch:(CGPoint)currentPoint { [self handleTouch: currentPoint withNormalizedForce: 0.0]; }
+- (void)handleTouch:(CGPoint)currentPoint withNormalizedForce:(double)force{
   Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   
   // Doesn't matter where we are in this control, just find the position relative to the center
@@ -93,12 +119,33 @@ extern "C" {
   
   float fdx = fabs ( dx );
   float fdy = fabs ( dy );
+	
   // Are we running?
   if ( fdx > runRadius || fdy > runRadius ) {
     key_map[runKey] = 1;
     // MLog ( @"Running!" );
+		
+			//DCW: If we support forcetouch, and the force is low, invert sink/swim because running is also swim.
+		if(useForceTouch) {
+			if ( force > 0.5 ) {
+				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+			}
+			else {
+				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+			}
+		}
   } else {
     key_map[runKey] = 0;
+		
+			//DCW: If we support forcetouch, and it the force is high, we can invert sink/swim so we will swim under pressure.
+		if(useForceTouch) {
+			if ( force > 0.5 ) {
+				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+			}
+			else {
+				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+			}
+		}
   }
   // Left
   if ( dx < -deadSpaceRadius ) {
@@ -150,6 +197,13 @@ extern "C" {
   key_map[forwardKey] = 0;
   key_map[backwardKey] = 0;
   key_map[runKey] = 0;
+	key_map[secondaryFireKey] = 0; //DCW
+	SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
+	
+	//DCW. Do open/activate key when released
+	key_map[actionKey] = 1;
+	[self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
+
   // Animate the knob returning to home...
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
@@ -162,7 +216,8 @@ extern "C" {
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   // NSLog(@"Touches moved" );
   for ( UITouch *touch in [event touchesForView:self] ) {
-    [self handleTouch:[touch locationInView:self]];
+			//DCW: Added force to handleTouch call
+    [self handleTouch:[touch locationInView:self] withNormalizedForce:touch.force / touch.maximumPossibleForce ];
     break;
   }
 }

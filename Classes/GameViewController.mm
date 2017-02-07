@@ -170,6 +170,13 @@ short localFindActionTarget(
   // short temp = find_action_key_target( player_index, range, target_type );
   
     struct player_data *player= get_player_data(player_index);
+	
+		//DCW
+		if (!player) {
+			NSLog(@"Oh no! player data is null for some reason! I'm outta here.. Hopfully this doesn't break stuff.");
+			return NONE;
+		}
+	
     short current_polygon= player->camera_polygon_index;
     world_point2d destination;
     bool done= false;
@@ -282,7 +289,7 @@ short localFindActionTarget(
 @synthesize saveFilmButton, loadFilmButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
-@synthesize HUDTouchViewController, HUDJoypadViewController;
+////@synthesize HUDTouchViewController, HUDJoypadViewController;
 @synthesize leaderboardButton, achievementsButton;
 
 #pragma mark -
@@ -421,25 +428,25 @@ short localFindActionTarget(
 - (void)closeEvent {
   switch ( mode ) {
     case MenuMode:
-      [Tracking trackPageview:@"/menu"];
-      [Tracking tagEvent:@"menu"];
+      ////[Tracking trackPageview:@"/menu"];
+      ////[Tracking tagEvent:@"menu"];
       break;
     case CutSceneMode:
-      [Tracking trackPageview:@"/cutscene"];
-      [Tracking tagEvent:@"cutsecene"];
+      ////[Tracking trackPageview:@"/cutscene"];
+      ////[Tracking tagEvent:@"cutsecene"];
       break;
     case AutoMapMode:
-      [Tracking trackPageview:@"/automap"];
-      [Tracking tagEvent:@"automap"];
+      ////[Tracking trackPageview:@"/automap"];
+      ////[Tracking tagEvent:@"automap"];
       break;
     case DeadMode:
-      [Tracking trackPageview:@"/dead"];
-      [Tracking tagEvent:@"dead"];
+      ////[Tracking trackPageview:@"/dead"];
+      ////[Tracking tagEvent:@"dead"];
      break;
     case GameMode:
     default:
-      [Tracking trackPageview:@"/game"];
-      [Tracking tagEvent:@"game"];
+      ////[Tracking trackPageview:@"/game"];
+      ////[Tracking tagEvent:@"game"];
       break;
   }
 }
@@ -468,9 +475,10 @@ short localFindActionTarget(
   // Set the preferences, and kick off a new game if needed
   // Bring up the preferences
   // TODO -- nice animation!
-  [Tracking trackPageview:@"/new"];
+  ////[Tracking trackPageview:@"/new"];
   [self.newGameViewController appear];
-  self.newGameView.hidden = NO;
+	//self.newGameView.hidden = NO; //DCW: commenting out; appear function does this itself
+	[Effects appearRevealingView:self.newGameView]; //DCW
   self.currentSavedGame = nil;
   [self zeroStats];
 }
@@ -486,28 +494,28 @@ short localFindActionTarget(
    */
   mode = GameMode;
   [self menuHideReplacementMenu];
-  showControlsOverview = NO;
+	
+	showControlsOverview = NO;
   self.currentSavedGame = nil;
   [self zeroStats];
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
-  
+	
   // Do we show the overview?
   if ( dynamic_world->current_level_number == 0 ) {
     showControlsOverview = YES;
   }
-  [Tracking trackPageview:[NSString stringWithFormat:@"/new/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]];
-  [Tracking tagEvent:@"startup" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty",
-                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                @"level", nil]];
+  ////[Tracking trackPageview:[NSString stringWithFormat:@"/new/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]];
+  ////[Tracking tagEvent:@"startup" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty",
+  ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                              @"level", nil]];
 
-  [self cancelNewGame];
+	[self cancelNewGame];
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
     [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
 
-  
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
 #if defined(A1DEBUG)
@@ -515,13 +523,13 @@ short localFindActionTarget(
   [self ammoCheat:nil];
   [self weaponsCheat:nil];
 #endif
-
 }
 
 - (IBAction)cancelNewGame {
   [self closeEvent];
-  [self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.3];
-  [self.newGameViewController disappear];
+  //[self.newGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.3];
+  [self.newGameViewController disappear]; //DCW
+	[Effects disappearHidingView:self.newGameView]; //DCW
 }
 
 - (void)hideHUD {
@@ -543,11 +551,11 @@ short localFindActionTarget(
 }
 
 - (void)playerKilled {
-  [Tracking trackEvent:@"player" action:@"death" label:@"" value:0];
-  [Tracking tagEvent:@"died" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                            @"difficulty",
-                                            [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                            @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"death" label:@"" value:0];
+  ////[Tracking tagEvent:@"died" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                          @"difficulty",
+  ////                                          [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                          @"level", nil]];
 
   mode = DeadMode;
   self.hud.hidden = YES;
@@ -643,7 +651,7 @@ short localFindActionTarget(
   for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
-    v.hidden = NO;
+		v.hidden = NO;
     if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
     } else {
@@ -654,7 +662,10 @@ short localFindActionTarget(
       }
     }
   }
-  
+	
+	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
+	[self newGameView].hidden = YES;
+	
   if ( showControlsOverview ) {
     [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
   }
@@ -826,6 +837,12 @@ short localFindActionTarget(
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
   self.viewGL.userInteractionEnabled = NO;
+	
+	//NSLog(@"Fuck up the ogl frame for debugging");
+	//[self.viewGL	setFrame:CGRectMake(100, 100, [[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)]; //DCW sizing test
+
+	//NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+	//NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
 }
 
@@ -848,20 +865,20 @@ short localFindActionTarget(
 }
 
 - (IBAction) gotoPreferences:(id)sender {
-  [Tracking trackPageview:@"/settings"];
+  ////[Tracking trackPageview:@"/settings"];
   [self.preferencesViewController setupUI:mode==MenuMode];
-  self.preferencesView.hidden = NO;
-  [self.preferencesViewController appear];
+  //self.preferencesView.hidden = NO; //DCW commenting out after new appear animation
+	[Effects appearRevealingView:self.preferencesView];
 }
  
 - (IBAction) closePreferences:(id)sender {
-    [self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
-  [self.preferencesViewController disappear];
+	//[self.preferencesView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5]; //DCW: commenting out after changing close animation.
+	[Effects disappearHidingView:self.preferencesView]; //DCW
   [self closeEvent];
 }
 
 - (IBAction) help:(id)sender {
-  [Tracking trackPageview:@"/help"];
+  ////[Tracking trackPageview:@"/help"];
   [self.helpViewController setupUI];
   self.helpView.hidden = NO;
   self.helpView.alpha = 0.0;
@@ -889,7 +906,7 @@ short localFindActionTarget(
   
   if ( self.HUDTouchViewController == nil ) {
     self.HUDTouchViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
-    self.HUDJoypadViewController = [[JoypadHUDViewController alloc] initWithNibName:@"JoypadHUDViewController" bundle:[NSBundle mainBundle]];
+   //// self.HUDJoypadViewController = [[JoypadHUDViewController alloc] initWithNibName:@"JoypadHUDViewController" bundle:[NSBundle mainBundle]];
   }
   
   [self.HUDViewController.view removeFromSuperview];
@@ -897,19 +914,19 @@ short localFindActionTarget(
     self.HUDTouchViewController = [[BasicHUDViewController alloc] initWithNibName:@"BasicHUDViewController" bundle:[NSBundle mainBundle]];
     self.HUDViewController = self.HUDTouchViewController;
   } else {
-    self.HUDViewController = self.HUDJoypadViewController;
+   //// self.HUDViewController = self.HUDJoypadViewController;
   }
   [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
   
 
 }
-- (IBAction) initiateJoypad:(id)sender {
+/*- (IBAction) initiateJoypad:(id)sender {
   [self configureHUD:@"JoypadHUDViewController"];
   [((JoypadHUDViewController*) self.HUDViewController) connectToDevice];
 }
 - (IBAction) cancelJoypad:(id)sender {
   [self configureHUD:nil];
-}
+}*/
 
 #pragma mark -
 #pragma mark Choose saved game methods
@@ -935,7 +952,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
-  [Tracking trackPageview:@"/load"];
+  ////[Tracking trackPageview:@"/load"];
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
@@ -953,14 +970,14 @@ extern bool load_and_start_game(FileSpecifier& File);
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
-  [Tracking trackPageview:[NSString stringWithFormat:@"/load/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]]; 
+  ////[Tracking trackPageview:[NSString stringWithFormat:@"/load/%@/%d", [Statistics difficultyToString:player_preferences->difficulty_level], dynamic_world->current_level_number]]; 
 
-  [Tracking tagEvent:@"load" attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                         [Statistics difficultyToString:player_preferences->difficulty_level],
-                                         @"difficulty",
-                                         [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                         @"level",
-                                        nil]]; 
+  ////[Tracking tagEvent:@"load" attributes:[NSDictionary dictionaryWithObjectsAndKeys:
+  ////                                       [Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                       @"difficulty",
+  ////                                       [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                       @"level",
+  ////                                      nil]];
 MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
   
 }
@@ -977,7 +994,7 @@ extern SDL_Surface *draw_surface;
   if ( self.currentSavedGame == nil ) {
     self.currentSavedGame = [self.saveGameViewController createNewGameFile];
   }
-  [Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
+  ////[Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
   // See if we can generate an overhead view
   struct overhead_map_data overhead_data;
   int MapSize = 196;
@@ -1091,7 +1108,7 @@ extern SDL_Surface *draw_surface;
 #pragma mark Film Methods
 extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)chooseFilm {
-  [Tracking trackPageview:@"/film"];
+  ////[Tracking trackPageview:@"/film"];
   if ( [self.filmViewController numberOfSavedFilms] == 0 ) {
     // Pop something up
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No saved films"
@@ -1125,7 +1142,7 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self ammoCheat:nil];
   [self weaponsCheat:nil];
 #endif
-  [Tracking trackPageview:@"/film/load"];
+  ////[Tracking trackPageview:@"/film/load"];
 }
 
 - (IBAction) chooseFilmCanceled {
@@ -1166,9 +1183,9 @@ extern bool handle_open_replay(FileSpecifier& File);
       // User hit cancel, so start the game...
       showingHelpBeforeFirstGame = NO;
       [self performSelector:@selector(beginGame) withObject:nil afterDelay:0.0];
-      [Tracking trackEvent:@"player" action:@"firsthelp" label:@"no" value:0];
+      ////[Tracking trackEvent:@"player" action:@"firsthelp" label:@"no" value:0];
     } else {
-      [Tracking trackEvent:@"player" action:@"firsthelp" label:@"yes" value:0];
+      ////[Tracking trackEvent:@"player" action:@"firsthelp" label:@"yes" value:0];
       [self help:self];
     }
     return;
@@ -1224,7 +1241,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)menuStore {
   [self PlayInterfaceButtonSound];
   MLog ( @"Goto store" );
-  [Tracking trackPageview:@"/store"];
+  ////[Tracking trackPageview:@"/store"];
   // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
   //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
   /*
@@ -1247,7 +1264,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction)menuAbout {
   [self PlayInterfaceButtonSound];
-  [Tracking trackPageview:@"/about"];
+  ////[Tracking trackPageview:@"/about"];
   CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.aboutView.subviews ) {
     [v.layer removeAllAnimations];
@@ -1375,7 +1392,7 @@ extern bool handle_open_replay(FileSpecifier& File);
     resume_game();
     [self closeEvent];
   } else {
-    [Tracking trackPageview:@"/pause"];
+    ////[Tracking trackPageview:@"/pause"];
     pause_game();
     self.pauseView.hidden = NO;
     [self.pauseViewController setup];
@@ -1394,9 +1411,9 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (void) gameFinished {
   // Need to do much more than this...
   [Achievements reportAchievement:Achievement_Marathon progress:100.0];
-  [Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
-  [Tracking tagEvent:@"finished" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty", nil]];
+  ////[Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
+  ////[Tracking tagEvent:@"finished" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty", nil]];
 
 }
 
@@ -1558,11 +1575,11 @@ _civilian_fusion_assimilated,
   [self PlayInterfaceButtonSound];
 
   // [self invincibilityCheat:sender];
-  [Tracking trackEvent:@"player" action:@"cheat" label:@"shield" value:dynamic_world->current_level_number];
-  [Tracking tagEvent:@"shieldCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                            @"difficulty",
-                                            [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                            @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"cheat" label:@"shield" value:dynamic_world->current_level_number];
+  ////[Tracking tagEvent:@"shieldCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+   ////                                         @"difficulty",
+   ////                                         [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+   ////                                         @"level", nil]];
 
   local_player->suit_energy= MAX(local_player->suit_energy, 3*PLAYER_MAXIMUM_SUIT_ENERGY);
   local_player->suit_oxygen = MAX ( local_player->suit_oxygen, PLAYER_MAXIMUM_SUIT_OXYGEN );
@@ -1571,11 +1588,11 @@ _civilian_fusion_assimilated,
 }
 
 - (IBAction)invincibilityCheat:(id)sender {
-  [Tracking trackEvent:@"player" action:@"cheat" label:@"invincibility" value:dynamic_world->current_level_number];
-  [Tracking tagEvent:@"invincibilityCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty",
-                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"cheat" label:@"invincibility" value:dynamic_world->current_level_number];
+  ////[Tracking tagEvent:@"invincibilityCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty",
+  ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                              @"level", nil]];
   process_player_powerup(local_player_index, _i_invincibility_powerup);
   // process_player_powerup(local_player_index, _i_infravision_powerup );
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
@@ -1584,11 +1601,11 @@ _civilian_fusion_assimilated,
 - (IBAction)saveCheat:(id)sender {
   [self PlayInterfaceButtonSound];
 
-  [Tracking trackEvent:@"player" action:@"cheat" label:@"save" value:dynamic_world->current_level_number];
-  [Tracking tagEvent:@"saveCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                              @"difficulty",
-                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                              @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"cheat" label:@"save" value:dynamic_world->current_level_number];
+  ////[Tracking tagEvent:@"saveCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                            @"difficulty",
+  ////                                            [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                            @"level", nil]];
 
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
@@ -1646,11 +1663,11 @@ short items[]=
 
 
 - (IBAction)ammoCheat:(id)sender {
-  [Tracking trackEvent:@"player" action:@"cheat" label:@"ammo" value:dynamic_world->current_level_number];
-  [Tracking tagEvent:@"ammoCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty",
-                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"cheat" label:@"ammo" value:dynamic_world->current_level_number];
+  ////[Tracking tagEvent:@"ammoCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty",
+  ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                              @"level", nil]];
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
@@ -1681,11 +1698,11 @@ short items[]=
   
 }
 - (IBAction)weaponsCheat:(id)sender {
-  [Tracking trackEvent:@"player" action:@"cheat" label:@"weapons" value:dynamic_world->current_level_number];
-  [Tracking tagEvent:@"weaponsCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty",
-                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"cheat" label:@"weapons" value:dynamic_world->current_level_number];
+  ////[Tracking tagEvent:@"weaponsCheat" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty",
+  ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                              @"level", nil]];
 
   currentSavedGame.haveCheated = [NSNumber numberWithBool:YES];
   short items[]=
@@ -1827,42 +1844,42 @@ short items[]=
 - (IBAction)changeInventory {
   PlayInterfaceButtonSound(Sound_ButtonSuccess());
   scroll_inventory(-1);
-  [Tracking trackEvent:@"player" action:@"inventory" label:@"" value:0];
-  [Tracking tagEvent:@"inventory" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                @"difficulty",
-                                                [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                @"level", nil]];
+  ////[Tracking trackEvent:@"player" action:@"inventory" label:@"" value:0];
+  ////[Tracking tagEvent:@"inventory" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+  ////                                              @"difficulty",
+  ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+  ////                                              @"level", nil]];
 
 }
 
 - (IBAction)zoomMapIn {
   if (zoom_overhead_map_in()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
-    [Tracking trackEvent:@"player" action:@"zoomin" label:@"success" value:0];
-    [Tracking tagEvent:@"zoomin" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                  @"difficulty",
-                                                  [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                  @"level", nil]];
+    ////[Tracking trackEvent:@"player" action:@"zoomin" label:@"success" value:0];
+    ////[Tracking tagEvent:@"zoomin" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+    ////                                              @"difficulty",
+   ////                                               [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+    ////                                              @"level", nil]];
 
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());
-    [Tracking trackEvent:@"player" action:@"zoomin" label:@"failure" value:0];
+    ////[Tracking trackEvent:@"player" action:@"zoomin" label:@"failure" value:0];
   }
 }  
 - (IBAction)zoomMapOut {
   if (zoom_overhead_map_out()) {
     PlayInterfaceButtonSound(Sound_ButtonSuccess());
-    [Tracking trackEvent:@"player" action:@"zoomout" label:@"success" value:0];
-    [Tracking tagEvent:@"zoomout" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-                                                  @"difficulty",
-                                                  [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
-                                                  @"level", nil]];
+    ////[Tracking trackEvent:@"player" action:@"zoomout" label:@"success" value:0];
+    ////[Tracking tagEvent:@"zoomout" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
+    ////                                              @"difficulty",
+    ////                                              [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
+    ////                                              @"level", nil]];
 
   }
   else{
     PlayInterfaceButtonSound(Sound_ButtonFailure());
-    [Tracking trackEvent:@"player" action:@"zoomout" label:@"failure" value:0];
+    ////[Tracking trackEvent:@"player" action:@"zoomout" label:@"failure" value:0];
   }
 }  
 

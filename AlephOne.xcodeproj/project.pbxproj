@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5152CB901D948FE100C6E65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5152CB8F1D948FE100C6E65C /* Images.xcassets */; };
+		515303141DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303131DAD68EA00B0F62A /* libSDLiPhoneOS.a */; };
+		515303151DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303131DAD68EA00B0F62A /* libSDLiPhoneOS.a */; };
+		515303161DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303131DAD68EA00B0F62A /* libSDLiPhoneOS.a */; };
+		515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
+		515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
+		5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
+		5176926C1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
+		5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
+		5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
+		518AF40E1D91D25E00DB6B36 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */; };
+		51C7855F1DA0A5540061978B /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C7855E1DA0A5540061978B /* libFreetype2.a */; };
+		51C785601DA0A5540061978B /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C7855E1DA0A5540061978B /* libFreetype2.a */; };
+		51C785611DA0A5540061978B /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C7855E1DA0A5540061978B /* libFreetype2.a */; };
+		51EB1BA81DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */; };
+		51EB1BA91DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */; };
+		51EB1BAA1DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */; };
+		51EB1BAD1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
+		51EB1BAE1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
+		51EB1BAF1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
 		A80498E113DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E213DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E313DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
@@ -306,12 +326,6 @@
 		A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
 		A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */ = {isa = PBXBuildFile; fileRef = A8357F7212D214B0001CD264 /* TouchToContinue.png */; };
-		A83E4BB31403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */; };
-		A83E4BB41403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */; };
-		A83E4BB51403543F00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */; };
-		A83E4BB8140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
-		A83E4BB9140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
-		A83E4BBA140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */; };
 		A83FBB72144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
 		A83FBB73144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
 		A83FBB74144C95DF00B27426 /* HDModeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A83FBB44144C95DE00B27426 /* HDModeOff.png */; };
@@ -891,9 +905,6 @@
 		A871816B140C8EC500327BEF /* SDL_ttf.c in Sources */ = {isa = PBXBuildFile; fileRef = A8718169140C8EC500327BEF /* SDL_ttf.c */; };
 		A871816C140C8EC500327BEF /* SDL_ttf.c in Sources */ = {isa = PBXBuildFile; fileRef = A8718169140C8EC500327BEF /* SDL_ttf.c */; };
 		A871816D140C8EC500327BEF /* SDL_ttf.c in Sources */ = {isa = PBXBuildFile; fileRef = A8718169140C8EC500327BEF /* SDL_ttf.c */; };
-		A8718174140D578C00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
-		A8718175140D578D00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
-		A8718176140D578D00327BEF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718173140D578C00327BEF /* libfreetype.a */; };
 		A874B19F1318A8C5009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B19E1318A8C5009C4A92 /* iTunesArtwork */; };
 		A874B1A11318A8D2009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A01318A8D2009C4A92 /* iTunesArtwork */; };
 		A874B1A31318A8DF009C4A92 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A874B1A21318A8DF009C4A92 /* iTunesArtwork */; };
@@ -1908,14 +1919,10 @@
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
 		A8A9C7D613D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
-		A8A9C7D713D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
 		A8A9C7D813D920D20087E0CF /* JoypadHUDViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8A9C7D413D920D00087E0CF /* JoypadHUDViewController.mm */; };
 		A8A9C7D913D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
 		A8A9C7DA13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
 		A8A9C7DB13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
-		A8A9C7E513DA64080087E0CF /* DualAnalogSticks.xib in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */; };
-		A8A9C7E613DA640B0087E0CF /* DualAnalogSticks.xib in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */; };
-		A8A9C7E713DA640C0087E0CF /* DualAnalogSticks.xib in Resources */ = {isa = PBXBuildFile; fileRef = A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */; };
 		A8AB7ED8131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
 		A8AB7EDA131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
 		A8AB7EDC131DF02D0012C23E /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB7ED6131DF02D0012C23E /* PurchaseViewController.mm */; };
@@ -1930,9 +1937,6 @@
 		A8B19C1A13A459BA008A095D /* Marathon_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B19C1413A459BA008A095D /* Marathon_Icon.png */; };
 		A8B413921235DE10000D59A4 /* SavedGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B413901235DE10000D59A4 /* SavedGameCell.m */; };
 		A8B4AE19126E35D500B5A582 /* ImageLoader_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */; };
-		A8B60087149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
-		A8B60088149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
-		A8B60089149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */; };
 		A8B6008B149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
 		A8B6008C149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
 		A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */; };
@@ -2056,9 +2060,6 @@
 		A8CB80EB13A28639004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
 		A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB80E913A28638004D6DBD /* AudioToolbox.framework */; };
-		A8CD2E6F1558D4FF0056A500 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */; };
-		A8CD2E701558D4FF0056A500 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */; };
-		A8CD2E711558D4FF0056A500 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */; };
 		A8D5AA81126545AE002211FB /* ProgressViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8D5AA7F126545AE002211FB /* ProgressViewController.mm */; };
 		A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F4A131766DB009801EC /* GenericBackground.png */; };
 		A8D66F57131766E9009801EC /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D66F53131766E9009801EC /* GenericBackground.png */; };
@@ -2180,12 +2181,6 @@
 		A8E3B5E71422E82D004D28A4 /* StoreButton~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */; };
 		A8E3FEFE1460D60C003A90E2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87FF02E12452C7E0033A3EB /* OpenGLES.framework */; };
 		A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
-		A8EB5AD313987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
-		A8EB5AD413987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
-		A8EB5AD513987E460090042E /* Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5AD213987E460090042E /* Tracking.m */; };
-		A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
-		A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
-		A8EB5ADC13987E720090042E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB5AD813987E720090042E /* libGoogleAnalytics.a */; };
 		A8EB682712DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682812DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
 		A8EB682912DC1413001D43EA /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB682612DC1413001D43EA /* Appirater.m */; };
@@ -2220,6 +2215,147 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlephOne_Prefix.pch; sourceTree = "<group>"; };
+		5152CB8F1D948FE100C6E65C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Durandal/Images.xcassets; sourceTree = "<group>"; };
+		515303131DAD68EA00B0F62A /* libSDLiPhoneOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDLiPhoneOS.a; sourceTree = "<group>"; };
+		515303171DAD716200B0F62A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		51C785081DA0A5530061978B /* ftconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftconfig.h; sourceTree = "<group>"; };
+		51C785091DA0A5530061978B /* ftheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftheader.h; sourceTree = "<group>"; };
+		51C7850A1DA0A5530061978B /* ftmodule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmodule.h; sourceTree = "<group>"; };
+		51C7850B1DA0A5530061978B /* ftoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftoption.h; sourceTree = "<group>"; };
+		51C7850C1DA0A5530061978B /* ftstdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftstdlib.h; sourceTree = "<group>"; };
+		51C7850D1DA0A5530061978B /* freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = freetype.h; sourceTree = "<group>"; };
+		51C7850E1DA0A5530061978B /* ftadvanc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftadvanc.h; sourceTree = "<group>"; };
+		51C7850F1DA0A5530061978B /* ftbbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftbbox.h; sourceTree = "<group>"; };
+		51C785101DA0A5530061978B /* ftbdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftbdf.h; sourceTree = "<group>"; };
+		51C785111DA0A5530061978B /* ftbitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftbitmap.h; sourceTree = "<group>"; };
+		51C785121DA0A5530061978B /* ftcache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftcache.h; sourceTree = "<group>"; };
+		51C785131DA0A5530061978B /* ftchapters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftchapters.h; sourceTree = "<group>"; };
+		51C785141DA0A5530061978B /* ftcid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftcid.h; sourceTree = "<group>"; };
+		51C785151DA0A5530061978B /* fterrdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fterrdef.h; sourceTree = "<group>"; };
+		51C785161DA0A5530061978B /* fterrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fterrors.h; sourceTree = "<group>"; };
+		51C785171DA0A5530061978B /* ftgasp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftgasp.h; sourceTree = "<group>"; };
+		51C785181DA0A5530061978B /* ftglyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftglyph.h; sourceTree = "<group>"; };
+		51C785191DA0A5530061978B /* ftgxval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftgxval.h; sourceTree = "<group>"; };
+		51C7851A1DA0A5530061978B /* ftgzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftgzip.h; sourceTree = "<group>"; };
+		51C7851B1DA0A5530061978B /* ftimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftimage.h; sourceTree = "<group>"; };
+		51C7851C1DA0A5530061978B /* ftincrem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftincrem.h; sourceTree = "<group>"; };
+		51C7851D1DA0A5530061978B /* ftlcdfil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftlcdfil.h; sourceTree = "<group>"; };
+		51C7851E1DA0A5530061978B /* ftlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftlist.h; sourceTree = "<group>"; };
+		51C7851F1DA0A5530061978B /* ftlzw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftlzw.h; sourceTree = "<group>"; };
+		51C785201DA0A5530061978B /* ftmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmac.h; sourceTree = "<group>"; };
+		51C785211DA0A5530061978B /* ftmm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmm.h; sourceTree = "<group>"; };
+		51C785221DA0A5530061978B /* ftmodapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmodapi.h; sourceTree = "<group>"; };
+		51C785231DA0A5530061978B /* ftmoderr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmoderr.h; sourceTree = "<group>"; };
+		51C785241DA0A5530061978B /* ftotval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftotval.h; sourceTree = "<group>"; };
+		51C785251DA0A5530061978B /* ftoutln.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftoutln.h; sourceTree = "<group>"; };
+		51C785261DA0A5530061978B /* ftpfr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftpfr.h; sourceTree = "<group>"; };
+		51C785271DA0A5530061978B /* ftrender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftrender.h; sourceTree = "<group>"; };
+		51C785281DA0A5530061978B /* ftsizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftsizes.h; sourceTree = "<group>"; };
+		51C785291DA0A5530061978B /* ftsnames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftsnames.h; sourceTree = "<group>"; };
+		51C7852A1DA0A5530061978B /* ftstroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftstroke.h; sourceTree = "<group>"; };
+		51C7852B1DA0A5530061978B /* ftsynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftsynth.h; sourceTree = "<group>"; };
+		51C7852C1DA0A5530061978B /* ftsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftsystem.h; sourceTree = "<group>"; };
+		51C7852D1DA0A5530061978B /* fttrigon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fttrigon.h; sourceTree = "<group>"; };
+		51C7852E1DA0A5530061978B /* fttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fttypes.h; sourceTree = "<group>"; };
+		51C7852F1DA0A5530061978B /* ftwinfnt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftwinfnt.h; sourceTree = "<group>"; };
+		51C785301DA0A5530061978B /* ftxf86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftxf86.h; sourceTree = "<group>"; };
+		51C785321DA0A5530061978B /* autohint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autohint.h; sourceTree = "<group>"; };
+		51C785331DA0A5530061978B /* ftcalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftcalc.h; sourceTree = "<group>"; };
+		51C785341DA0A5530061978B /* ftdebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftdebug.h; sourceTree = "<group>"; };
+		51C785351DA0A5530061978B /* ftdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftdriver.h; sourceTree = "<group>"; };
+		51C785361DA0A5530061978B /* ftgloadr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftgloadr.h; sourceTree = "<group>"; };
+		51C785371DA0A5530061978B /* ftmemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftmemory.h; sourceTree = "<group>"; };
+		51C785381DA0A5530061978B /* ftobjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftobjs.h; sourceTree = "<group>"; };
+		51C785391DA0A5530061978B /* ftpic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftpic.h; sourceTree = "<group>"; };
+		51C7853A1DA0A5530061978B /* ftrfork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftrfork.h; sourceTree = "<group>"; };
+		51C7853B1DA0A5530061978B /* ftserv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftserv.h; sourceTree = "<group>"; };
+		51C7853C1DA0A5530061978B /* ftstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftstream.h; sourceTree = "<group>"; };
+		51C7853D1DA0A5530061978B /* fttrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fttrace.h; sourceTree = "<group>"; };
+		51C7853E1DA0A5530061978B /* ftvalid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftvalid.h; sourceTree = "<group>"; };
+		51C7853F1DA0A5530061978B /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		51C785401DA0A5530061978B /* pcftypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcftypes.h; sourceTree = "<group>"; };
+		51C785411DA0A5530061978B /* psaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = psaux.h; sourceTree = "<group>"; };
+		51C785421DA0A5530061978B /* pshints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pshints.h; sourceTree = "<group>"; };
+		51C785441DA0A5530061978B /* svbdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svbdf.h; sourceTree = "<group>"; };
+		51C785451DA0A5530061978B /* svcid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svcid.h; sourceTree = "<group>"; };
+		51C785461DA0A5530061978B /* svgldict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgldict.h; sourceTree = "<group>"; };
+		51C785471DA0A5530061978B /* svgxval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgxval.h; sourceTree = "<group>"; };
+		51C785481DA0A5530061978B /* svkern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svkern.h; sourceTree = "<group>"; };
+		51C785491DA0A5530061978B /* svmm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svmm.h; sourceTree = "<group>"; };
+		51C7854A1DA0A5530061978B /* svotval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svotval.h; sourceTree = "<group>"; };
+		51C7854B1DA0A5530061978B /* svpfr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svpfr.h; sourceTree = "<group>"; };
+		51C7854C1DA0A5530061978B /* svpostnm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svpostnm.h; sourceTree = "<group>"; };
+		51C7854D1DA0A5530061978B /* svpscmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svpscmap.h; sourceTree = "<group>"; };
+		51C7854E1DA0A5530061978B /* svpsinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svpsinfo.h; sourceTree = "<group>"; };
+		51C7854F1DA0A5530061978B /* svsfnt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svsfnt.h; sourceTree = "<group>"; };
+		51C785501DA0A5540061978B /* svttcmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svttcmap.h; sourceTree = "<group>"; };
+		51C785511DA0A5540061978B /* svtteng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svtteng.h; sourceTree = "<group>"; };
+		51C785521DA0A5540061978B /* svttglyf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svttglyf.h; sourceTree = "<group>"; };
+		51C785531DA0A5540061978B /* svwinfnt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svwinfnt.h; sourceTree = "<group>"; };
+		51C785541DA0A5540061978B /* svxf86nm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svxf86nm.h; sourceTree = "<group>"; };
+		51C785551DA0A5540061978B /* sfnt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfnt.h; sourceTree = "<group>"; };
+		51C785561DA0A5540061978B /* t1types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t1types.h; sourceTree = "<group>"; };
+		51C785571DA0A5540061978B /* tttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tttypes.h; sourceTree = "<group>"; };
+		51C785581DA0A5540061978B /* t1tables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t1tables.h; sourceTree = "<group>"; };
+		51C785591DA0A5540061978B /* ttnameid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttnameid.h; sourceTree = "<group>"; };
+		51C7855A1DA0A5540061978B /* tttables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tttables.h; sourceTree = "<group>"; };
+		51C7855B1DA0A5540061978B /* tttags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tttags.h; sourceTree = "<group>"; };
+		51C7855C1DA0A5540061978B /* ttunpat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttunpat.h; sourceTree = "<group>"; };
+		51C7855D1DA0A5540061978B /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ft2build.h; sourceTree = "<group>"; };
+		51C7855E1DA0A5540061978B /* libFreetype2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2.a; sourceTree = "<group>"; };
+		51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = look_multi_button.png; sourceTree = "<group>"; };
+		51EB1BAB1DAAF01500C3D4B4 /* LookPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookPadView.h; path = Classes/LookPadView.h; sourceTree = "<group>"; };
+		51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LookPadView.mm; path = Classes/LookPadView.mm; sourceTree = "<group>"; };
+		51F98AE01D92EF3200907E5E /* begin_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = begin_code.h; path = Libraries/SDL/include/begin_code.h; sourceTree = SOURCE_ROOT; };
+		51F98AE11D92EF3200907E5E /* close_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = close_code.h; path = Libraries/SDL/include/close_code.h; sourceTree = SOURCE_ROOT; };
+		51F98AE21D92EF3200907E5E /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_assert.h; path = Libraries/SDL/include/SDL_assert.h; sourceTree = SOURCE_ROOT; };
+		51F98AE31D92EF3200907E5E /* SDL_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_atomic.h; path = Libraries/SDL/include/SDL_atomic.h; sourceTree = SOURCE_ROOT; };
+		51F98AE41D92EF3200907E5E /* SDL_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_audio.h; path = Libraries/SDL/include/SDL_audio.h; sourceTree = SOURCE_ROOT; };
+		51F98AE51D92EF3200907E5E /* SDL_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_compat.h; path = Libraries/SDL/include/SDL_compat.h; sourceTree = SOURCE_ROOT; };
+		51F98AE61D92EF3200907E5E /* SDL_config_iphoneos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_iphoneos.h; path = Libraries/SDL/include/SDL_config_iphoneos.h; sourceTree = SOURCE_ROOT; };
+		51F98AE71D92EF3200907E5E /* SDL_config_macosx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_macosx.h; path = Libraries/SDL/include/SDL_config_macosx.h; sourceTree = SOURCE_ROOT; };
+		51F98AE81D92EF3200907E5E /* SDL_config_minimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_minimal.h; path = Libraries/SDL/include/SDL_config_minimal.h; sourceTree = SOURCE_ROOT; };
+		51F98AE91D92EF3200907E5E /* SDL_config_nintendods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_nintendods.h; path = Libraries/SDL/include/SDL_config_nintendods.h; sourceTree = SOURCE_ROOT; };
+		51F98AEA1D92EF3200907E5E /* SDL_config_pandora.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_pandora.h; path = Libraries/SDL/include/SDL_config_pandora.h; sourceTree = SOURCE_ROOT; };
+		51F98AEB1D92EF3200907E5E /* SDL_config_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_win32.h; path = Libraries/SDL/include/SDL_config_win32.h; sourceTree = SOURCE_ROOT; };
+		51F98AEC1D92EF3200907E5E /* SDL_config_wiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config_wiz.h; path = Libraries/SDL/include/SDL_config_wiz.h; sourceTree = SOURCE_ROOT; };
+		51F98AED1D92EF3200907E5E /* SDL_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_config.h; path = Libraries/SDL/include/SDL_config.h; sourceTree = SOURCE_ROOT; };
+		51F98AEE1D92EF3200907E5E /* SDL_copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_copying.h; path = Libraries/SDL/include/SDL_copying.h; sourceTree = SOURCE_ROOT; };
+		51F98AEF1D92EF3200907E5E /* SDL_cpuinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_cpuinfo.h; path = Libraries/SDL/include/SDL_cpuinfo.h; sourceTree = SOURCE_ROOT; };
+		51F98AF01D92EF3200907E5E /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_endian.h; path = Libraries/SDL/include/SDL_endian.h; sourceTree = SOURCE_ROOT; };
+		51F98AF11D92EF3200907E5E /* SDL_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_error.h; path = Libraries/SDL/include/SDL_error.h; sourceTree = SOURCE_ROOT; };
+		51F98AF21D92EF3200907E5E /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_events.h; path = Libraries/SDL/include/SDL_events.h; sourceTree = SOURCE_ROOT; };
+		51F98AF31D92EF3200907E5E /* SDL_haptic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_haptic.h; path = Libraries/SDL/include/SDL_haptic.h; sourceTree = SOURCE_ROOT; };
+		51F98AF41D92EF3200907E5E /* SDL_input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_input.h; path = Libraries/SDL/include/SDL_input.h; sourceTree = SOURCE_ROOT; };
+		51F98AF51D92EF3200907E5E /* SDL_joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_joystick.h; path = Libraries/SDL/include/SDL_joystick.h; sourceTree = SOURCE_ROOT; };
+		51F98AF61D92EF3200907E5E /* SDL_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_keyboard.h; path = Libraries/SDL/include/SDL_keyboard.h; sourceTree = SOURCE_ROOT; };
+		51F98AF71D92EF3200907E5E /* SDL_keysym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_keysym.h; path = Libraries/SDL/include/SDL_keysym.h; sourceTree = SOURCE_ROOT; };
+		51F98AF81D92EF3200907E5E /* SDL_loadso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_loadso.h; path = Libraries/SDL/include/SDL_loadso.h; sourceTree = SOURCE_ROOT; };
+		51F98AF91D92EF3200907E5E /* SDL_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_main.h; path = Libraries/SDL/include/SDL_main.h; sourceTree = SOURCE_ROOT; };
+		51F98AFA1D92EF3200907E5E /* SDL_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_mouse.h; path = Libraries/SDL/include/SDL_mouse.h; sourceTree = SOURCE_ROOT; };
+		51F98AFB1D92EF3200907E5E /* SDL_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_mutex.h; path = Libraries/SDL/include/SDL_mutex.h; sourceTree = SOURCE_ROOT; };
+		51F98AFC1D92EF3200907E5E /* SDL_name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_name.h; path = Libraries/SDL/include/SDL_name.h; sourceTree = SOURCE_ROOT; };
+		51F98AFD1D92EF3200907E5E /* SDL_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_opengl.h; path = Libraries/SDL/include/SDL_opengl.h; sourceTree = SOURCE_ROOT; };
+		51F98AFE1D92EF3200907E5E /* SDL_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_opengles.h; path = Libraries/SDL/include/SDL_opengles.h; sourceTree = SOURCE_ROOT; };
+		51F98AFF1D92EF3200907E5E /* SDL_pixels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_pixels.h; path = Libraries/SDL/include/SDL_pixels.h; sourceTree = SOURCE_ROOT; };
+		51F98B001D92EF3200907E5E /* SDL_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_platform.h; path = Libraries/SDL/include/SDL_platform.h; sourceTree = SOURCE_ROOT; };
+		51F98B011D92EF3200907E5E /* SDL_power.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_power.h; path = Libraries/SDL/include/SDL_power.h; sourceTree = SOURCE_ROOT; };
+		51F98B021D92EF3200907E5E /* SDL_quit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_quit.h; path = Libraries/SDL/include/SDL_quit.h; sourceTree = SOURCE_ROOT; };
+		51F98B031D92EF3200907E5E /* SDL_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_rect.h; path = Libraries/SDL/include/SDL_rect.h; sourceTree = SOURCE_ROOT; };
+		51F98B041D92EF3200907E5E /* SDL_revision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_revision.h; path = Libraries/SDL/include/SDL_revision.h; sourceTree = SOURCE_ROOT; };
+		51F98B051D92EF3200907E5E /* SDL_rwops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_rwops.h; path = Libraries/SDL/include/SDL_rwops.h; sourceTree = SOURCE_ROOT; };
+		51F98B061D92EF3200907E5E /* SDL_scancode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_scancode.h; path = Libraries/SDL/include/SDL_scancode.h; sourceTree = SOURCE_ROOT; };
+		51F98B071D92EF3200907E5E /* SDL_stdinc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_stdinc.h; path = Libraries/SDL/include/SDL_stdinc.h; sourceTree = SOURCE_ROOT; };
+		51F98B081D92EF3200907E5E /* SDL_surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_surface.h; path = Libraries/SDL/include/SDL_surface.h; sourceTree = SOURCE_ROOT; };
+		51F98B091D92EF3200907E5E /* SDL_syswm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_syswm.h; path = Libraries/SDL/include/SDL_syswm.h; sourceTree = SOURCE_ROOT; };
+		51F98B0A1D92EF3200907E5E /* SDL_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_thread.h; path = Libraries/SDL/include/SDL_thread.h; sourceTree = SOURCE_ROOT; };
+		51F98B0B1D92EF3200907E5E /* SDL_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_timer.h; path = Libraries/SDL/include/SDL_timer.h; sourceTree = SOURCE_ROOT; };
+		51F98B0C1D92EF3200907E5E /* SDL_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_types.h; path = Libraries/SDL/include/SDL_types.h; sourceTree = SOURCE_ROOT; };
+		51F98B0D1D92EF3200907E5E /* SDL_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_version.h; path = Libraries/SDL/include/SDL_version.h; sourceTree = SOURCE_ROOT; };
+		51F98B0E1D92EF3200907E5E /* SDL_video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_video.h; path = Libraries/SDL/include/SDL_video.h; sourceTree = SOURCE_ROOT; };
+		51F98B0F1D92EF3200907E5E /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL.h; path = Libraries/SDL/include/SDL.h; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A80498DF13DDC9D500F807FB /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertView.h; path = Classes/AlertView.h; sourceTree = "<group>"; };
 		A80498E013DDC9D500F807FB /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = Classes/AlertView.m; sourceTree = "<group>"; };
@@ -2510,14 +2646,6 @@
 		A82F365211B8A87C0053FE85 /* lua_script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_script.h; sourceTree = "<group>"; };
 		A8357F6012D2125C001CD264 /* ControlsOverview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlsOverview.png; path = Artwork/Help/ControlsOverview.png; sourceTree = "<group>"; };
 		A8357F7212D214B0001CD264 /* TouchToContinue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TouchToContinue.png; path = Artwork/Help/TouchToContinue.png; sourceTree = "<group>"; };
-		A83E4BAD1403543E00D1ECDD /* JoypadConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadConstants.h; sourceTree = "<group>"; };
-		A83E4BAE1403543E00D1ECDD /* JoypadControllerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadControllerLayout.h; sourceTree = "<group>"; };
-		A83E4BAF1403543E00D1ECDD /* JoypadDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadDevice.h; sourceTree = "<group>"; };
-		A83E4BB01403543E00D1ECDD /* JoypadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadManager.h; sourceTree = "<group>"; };
-		A83E4BB11403543E00D1ECDD /* JoypadSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadSDK.h; sourceTree = "<group>"; };
-		A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJoypadCocoaTouch.a; sourceTree = "<group>"; };
-		A83E4BB6140354A700D1ECDD /* JoypadXIBConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoypadXIBConfigure.h; sourceTree = "<group>"; };
-		A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoypadXIBConfigure.m; sourceTree = "<group>"; };
 		A83FBB44144C95DE00B27426 /* HDModeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeOff.png; sourceTree = "<group>"; };
 		A83FBB45144C95DE00B27426 /* HDModeOff@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOff@2x~iphone.png"; sourceTree = "<group>"; };
 		A83FBB46144C95DE00B27426 /* HDModeOff~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeOff~iphone.png"; sourceTree = "<group>"; };
@@ -2693,7 +2821,6 @@
 		A8718154140C773700327BEF /* WebserviceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebserviceConstants.h; sourceTree = "<group>"; };
 		A8718169140C8EC500327BEF /* SDL_ttf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_ttf.c; sourceTree = "<group>"; };
 		A871816A140C8EC500327BEF /* SDL_ttf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ttf.h; sourceTree = "<group>"; };
-		A8718173140D578C00327BEF /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Libraries/freetype-2.4.6/libfreetype.a"; sourceTree = SOURCE_ROOT; };
 		A8718177140D584F00327BEF /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		A871817B140DA9E000327BEF /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		A871817C140DAA2500327BEF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -3298,7 +3425,6 @@
 		A894591114280ABF00A9ECAC /* BungieAerospace~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BungieAerospace~iphone.png"; sourceTree = "<group>"; };
 		A898D4AA13BA852A00AF6413 /* JoyPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyPad.h; path = Classes/JoyPad.h; sourceTree = "<group>"; };
 		A898D4AB13BA852A00AF6413 /* JoyPad.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JoyPad.mm; path = Classes/JoyPad.mm; sourceTree = "<group>"; };
-		A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DualAnalogSticks.xib; path = "Resources/JoyPad Layouts/DualAnalogSticks.xib"; sourceTree = "<group>"; };
 		A8998EFE1550DDFE007FFBAB /* HDModeAd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDModeAd.png; sourceTree = "<group>"; };
 		A8998EFF1550DDFE007FFBAB /* HDModeAd@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd@2x~iphone.png"; sourceTree = "<group>"; };
 		A8998F001550DDFE007FFBAB /* HDModeAd~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HDModeAd~iphone.png"; sourceTree = "<group>"; };
@@ -3388,47 +3514,6 @@
 		A8B4138F1235DE10000D59A4 /* SavedGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedGameCell.h; path = Classes/SavedGameCell.h; sourceTree = "<group>"; };
 		A8B413901235DE10000D59A4 /* SavedGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedGameCell.m; path = Classes/SavedGameCell.m; sourceTree = "<group>"; };
 		A8B4AE18126E35D300B5A582 /* ImageLoader_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageLoader_iOS.cpp; path = Classes/ImageLoader_iOS.cpp; sourceTree = "<group>"; };
-		A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDLiPhoneOS.a; sourceTree = "<group>"; };
-		A8B6005F149D0DB60017A6D8 /* begin_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = begin_code.h; sourceTree = "<group>"; };
-		A8B60060149D0DB60017A6D8 /* close_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = close_code.h; sourceTree = "<group>"; };
-		A8B60061149D0DB60017A6D8 /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
-		A8B60062149D0DB60017A6D8 /* SDL_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_atomic.h; sourceTree = "<group>"; };
-		A8B60063149D0DB60017A6D8 /* SDL_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_audio.h; sourceTree = "<group>"; };
-		A8B60064149D0DB60017A6D8 /* SDL_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_compat.h; sourceTree = "<group>"; };
-		A8B60065149D0DB60017A6D8 /* SDL_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config.h; sourceTree = "<group>"; };
-		A8B60066149D0DB60017A6D8 /* SDL_config_iphoneos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_iphoneos.h; sourceTree = "<group>"; };
-		A8B60067149D0DB60017A6D8 /* SDL_copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_copying.h; sourceTree = "<group>"; };
-		A8B60068149D0DB60017A6D8 /* SDL_cpuinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_cpuinfo.h; sourceTree = "<group>"; };
-		A8B60069149D0DB60017A6D8 /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
-		A8B6006A149D0DB60017A6D8 /* SDL_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_error.h; sourceTree = "<group>"; };
-		A8B6006B149D0DB60017A6D8 /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_events.h; sourceTree = "<group>"; };
-		A8B6006C149D0DB60017A6D8 /* SDL_haptic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_haptic.h; sourceTree = "<group>"; };
-		A8B6006D149D0DB60017A6D8 /* SDL_joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_joystick.h; sourceTree = "<group>"; };
-		A8B6006E149D0DB60017A6D8 /* SDL_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard.h; sourceTree = "<group>"; };
-		A8B6006F149D0DB60017A6D8 /* SDL_keysym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keysym.h; sourceTree = "<group>"; };
-		A8B60070149D0DB60017A6D8 /* SDL_loadso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_loadso.h; sourceTree = "<group>"; };
-		A8B60071149D0DB60017A6D8 /* SDL_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_main.h; sourceTree = "<group>"; };
-		A8B60072149D0DB60017A6D8 /* SDL_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse.h; sourceTree = "<group>"; };
-		A8B60073149D0DB60017A6D8 /* SDL_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mutex.h; sourceTree = "<group>"; };
-		A8B60074149D0DB60017A6D8 /* SDL_name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_name.h; sourceTree = "<group>"; };
-		A8B60075149D0DB60017A6D8 /* SDL_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengl.h; sourceTree = "<group>"; };
-		A8B60076149D0DB60017A6D8 /* SDL_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles.h; sourceTree = "<group>"; };
-		A8B60077149D0DB60017A6D8 /* SDL_pixels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels.h; sourceTree = "<group>"; };
-		A8B60078149D0DB60017A6D8 /* SDL_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_platform.h; sourceTree = "<group>"; };
-		A8B60079149D0DB60017A6D8 /* SDL_power.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_power.h; sourceTree = "<group>"; };
-		A8B6007A149D0DB60017A6D8 /* SDL_quit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_quit.h; sourceTree = "<group>"; };
-		A8B6007B149D0DB60017A6D8 /* SDL_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect.h; sourceTree = "<group>"; };
-		A8B6007C149D0DB60017A6D8 /* SDL_revision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_revision.h; sourceTree = "<group>"; };
-		A8B6007D149D0DB60017A6D8 /* SDL_rwops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rwops.h; sourceTree = "<group>"; };
-		A8B6007E149D0DB60017A6D8 /* SDL_scancode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_scancode.h; sourceTree = "<group>"; };
-		A8B6007F149D0DB60017A6D8 /* SDL_stdinc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_stdinc.h; sourceTree = "<group>"; };
-		A8B60080149D0DB60017A6D8 /* SDL_surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_surface.h; sourceTree = "<group>"; };
-		A8B60081149D0DB60017A6D8 /* SDL_syswm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_syswm.h; sourceTree = "<group>"; };
-		A8B60082149D0DB60017A6D8 /* SDL_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_thread.h; sourceTree = "<group>"; };
-		A8B60083149D0DB60017A6D8 /* SDL_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_timer.h; sourceTree = "<group>"; };
-		A8B60084149D0DB60017A6D8 /* SDL_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_types.h; sourceTree = "<group>"; };
-		A8B60085149D0DB60017A6D8 /* SDL_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_version.h; sourceTree = "<group>"; };
-		A8B60086149D0DB60017A6D8 /* SDL_video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_video.h; sourceTree = "<group>"; };
 		A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patternbuffers-btn.png"; sourceTree = "<group>"; };
 		A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NewGameViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -3532,10 +3617,8 @@
 		A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A8C5563914267C29003D329B /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		A8CB80E913A28638004D6DBD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		A8CD2E6C1558D4FF0056A500 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		A8CD2E6D1558D4FF0056A500 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
-		A8CD2E6E1558D4FF0056A500 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
 		A8D1629F11B6035C00E4B946 /* network_dialog_widgets_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_dialog_widgets_sdl.h; path = AlephOneSDL/Source_Files/Network/network_dialog_widgets_sdl.h; sourceTree = "<group>"; };
 		A8D162A011B603F000E4B946 /* PlayerImage_sdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerImage_sdl.h; path = AlephOneSDL/Source_Files/Misc/PlayerImage_sdl.h; sourceTree = "<group>"; };
@@ -3619,10 +3702,6 @@
 		A8E3B59D1422E82D004D28A4 /* StoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreButton.png; sourceTree = "<group>"; };
 		A8E3B59E1422E82D004D28A4 /* StoreButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreButton@2x~iphone.png"; sourceTree = "<group>"; };
 		A8E3B59F1422E82D004D28A4 /* StoreButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StoreButton~iphone.png"; sourceTree = "<group>"; };
-		A8EB5AD113987E460090042E /* Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracking.h; path = Classes/Tracking.h; sourceTree = "<group>"; };
-		A8EB5AD213987E460090042E /* Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tracking.m; path = Classes/Tracking.m; sourceTree = "<group>"; };
-		A8EB5AD713987E720090042E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
-		A8EB5AD813987E720090042E /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		A8EB682512DC1413001D43EA /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
 		A8EB682612DC1413001D43EA /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
 		A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesViewController.h; path = Classes/PreferencesViewController.h; sourceTree = "<group>"; };
@@ -3651,30 +3730,28 @@
 				A8421EBD1455DA17008BBF22 /* libbz2.dylib in Frameworks */,
 				A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
-				A8EB5ADA13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
 				A85E684B11CB173A00D0FAEF /* UIKit.framework in Frameworks */,
 				A85E684C11CB173A00D0FAEF /* OpenGLES.framework in Frameworks */,
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
+				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A85E684E11CB173A00D0FAEF /* libm.dylib in Frameworks */,
 				A85E684F11CB173A00D0FAEF /* libstdc++.6.dylib in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
 				A85E685711CB173A00D0FAEF /* CoreAudio.framework in Frameworks */,
 				A85E685811CB173A00D0FAEF /* CoreGraphics.framework in Frameworks */,
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
+				515303141DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
+				51C7855F1DA0A5540061978B /* libFreetype2.a in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				A8C4B70412EFCD6900D5D23F /* StoreKit.framework in Frameworks */,
 				A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */,
 				A8DAB8BA134EA12E00E4AF10 /* GameKit.framework in Frameworks */,
-				A83E4BB31403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
-				A8718174140D578C00327BEF /* libfreetype.a in Frameworks */,
 				A809FDB4140DD73E0051EA11 /* libbz2.1.0.dylib in Frameworks */,
-				A8B60087149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
-				A8CD2E6F1558D4FF0056A500 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3684,10 +3761,12 @@
 			files = (
 				A8421EBE1455DDD9008BBF22 /* libbz2.dylib in Frameworks */,
 				A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */,
+				51C785601DA0A5540061978B /* libFreetype2.a in Frameworks */,
 				A8E3FEFE1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
+				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
 				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
 				A883DC7512F5CEE60041543F /* StoreKit.framework in Frameworks */,
@@ -3695,7 +3774,7 @@
 				A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
-				A8EB5ADB13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
+				515303151DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88121D912C7816300A1A08E /* libm.dylib in Frameworks */,
 				A88121DA12C7816300A1A08E /* libstdc++.6.dylib in Frameworks */,
@@ -3704,10 +3783,6 @@
 				A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */,
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				A88C7F0C1356891A000032DB /* GameKit.framework in Frameworks */,
-				A83E4BB41403543E00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
-				A8718175140D578D00327BEF /* libfreetype.a in Frameworks */,
-				A8B60088149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
-				A8CD2E701558D4FF0056A500 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3717,10 +3792,12 @@
 			files = (
 				A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
+				51C785611DA0A5540061978B /* libFreetype2.a in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
+				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
@@ -3728,19 +3805,15 @@
 				A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
+				515303161DAD68EA00B0F62A /* libSDLiPhoneOS.a in Frameworks */,
 				A88123DE12C7826300A1A08E /* libm.dylib in Frameworks */,
 				A88123DF12C7826300A1A08E /* libstdc++.6.dylib in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				A88C7F0D1356891B000032DB /* GameKit.framework in Frameworks */,
-				A8EB5ADC13987E720090042E /* libGoogleAnalytics.a in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				A83E4BB51403543F00D1ECDD /* libJoypadCocoaTouch.a in Frameworks */,
-				A8718176140D578D00327BEF /* libfreetype.a in Frameworks */,
 				A809FDB5140DD7480051EA11 /* libbz2.1.0.dylib in Frameworks */,
-				A8B60089149D0DB60017A6D8 /* libSDLiPhoneOS.a in Frameworks */,
-				A8CD2E711558D4FF0056A500 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3750,8 +3823,8 @@
 		080E96DDFE201D6D7F000001 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
-				A8CD2E6A1558D4FE0056A500 /* TestFlightSDK1.0 */,
-				A8718172140D577900327BEF /* freetype-2.4.6 */,
+				51C785041DA0A5530061978B /* freetype_2.4.4 */,
+				A8CD2E6A1558D4FE0056A500 /* TestFlightSDK3.0 */,
 				A871814A140C773700327BEF /* Localytics */,
 				A83E4BAC1403543E00D1ECDD /* JoypadCocoaTouchSDK */,
 				A8EB5AD613987E720090042E /* GoogleAnalytics */,
@@ -3783,6 +3856,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */,
 				A8695CAF1563562400D5976B /* Infinity-Landscape~ipad. */,
 				A8695CAD1563561400D5976B /* Infinity-Portrait~ipad. */,
 				A8695CAB1563560900D5976B /* Infinity@2x. */,
@@ -3840,6 +3914,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
 				A812AD46145F971100196F6B /* StoreScreen */,
 				A83FBB42144C95DE00B27426 /* SettingsScreen */,
 				A8294BD91433F74600300CD5 /* ThanksScreen */,
@@ -3858,6 +3933,7 @@
 				A8FF853B130F798B00A874F8 /* M3 */,
 				A8AE80CF11ED5C04005DC183 /* Entitlements.plist */,
 				A8562B5711DAE3850071DFEF /* Artwork */,
+				5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3865,6 +3941,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				515303171DAD716200B0F62A /* CoreMotion.framework */,
 				A8421EBC1455DA17008BBF22 /* libbz2.dylib */,
 				A8CB80E913A28638004D6DBD /* AudioToolbox.framework */,
 				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
@@ -3897,6 +3974,139 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		51C785041DA0A5530061978B /* freetype_2.4.4 */ = {
+			isa = PBXGroup;
+			children = (
+				51C785051DA0A5530061978B /* include */,
+				51C7855E1DA0A5540061978B /* libFreetype2.a */,
+			);
+			name = freetype_2.4.4;
+			path = Libraries/freetype_2.4.4;
+			sourceTree = SOURCE_ROOT;
+		};
+		51C785051DA0A5530061978B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				51C785061DA0A5530061978B /* freetype */,
+				51C7855D1DA0A5540061978B /* ft2build.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		51C785061DA0A5530061978B /* freetype */ = {
+			isa = PBXGroup;
+			children = (
+				51C785071DA0A5530061978B /* config */,
+				51C7850D1DA0A5530061978B /* freetype.h */,
+				51C7850E1DA0A5530061978B /* ftadvanc.h */,
+				51C7850F1DA0A5530061978B /* ftbbox.h */,
+				51C785101DA0A5530061978B /* ftbdf.h */,
+				51C785111DA0A5530061978B /* ftbitmap.h */,
+				51C785121DA0A5530061978B /* ftcache.h */,
+				51C785131DA0A5530061978B /* ftchapters.h */,
+				51C785141DA0A5530061978B /* ftcid.h */,
+				51C785151DA0A5530061978B /* fterrdef.h */,
+				51C785161DA0A5530061978B /* fterrors.h */,
+				51C785171DA0A5530061978B /* ftgasp.h */,
+				51C785181DA0A5530061978B /* ftglyph.h */,
+				51C785191DA0A5530061978B /* ftgxval.h */,
+				51C7851A1DA0A5530061978B /* ftgzip.h */,
+				51C7851B1DA0A5530061978B /* ftimage.h */,
+				51C7851C1DA0A5530061978B /* ftincrem.h */,
+				51C7851D1DA0A5530061978B /* ftlcdfil.h */,
+				51C7851E1DA0A5530061978B /* ftlist.h */,
+				51C7851F1DA0A5530061978B /* ftlzw.h */,
+				51C785201DA0A5530061978B /* ftmac.h */,
+				51C785211DA0A5530061978B /* ftmm.h */,
+				51C785221DA0A5530061978B /* ftmodapi.h */,
+				51C785231DA0A5530061978B /* ftmoderr.h */,
+				51C785241DA0A5530061978B /* ftotval.h */,
+				51C785251DA0A5530061978B /* ftoutln.h */,
+				51C785261DA0A5530061978B /* ftpfr.h */,
+				51C785271DA0A5530061978B /* ftrender.h */,
+				51C785281DA0A5530061978B /* ftsizes.h */,
+				51C785291DA0A5530061978B /* ftsnames.h */,
+				51C7852A1DA0A5530061978B /* ftstroke.h */,
+				51C7852B1DA0A5530061978B /* ftsynth.h */,
+				51C7852C1DA0A5530061978B /* ftsystem.h */,
+				51C7852D1DA0A5530061978B /* fttrigon.h */,
+				51C7852E1DA0A5530061978B /* fttypes.h */,
+				51C7852F1DA0A5530061978B /* ftwinfnt.h */,
+				51C785301DA0A5530061978B /* ftxf86.h */,
+				51C785311DA0A5530061978B /* internal */,
+				51C785581DA0A5540061978B /* t1tables.h */,
+				51C785591DA0A5540061978B /* ttnameid.h */,
+				51C7855A1DA0A5540061978B /* tttables.h */,
+				51C7855B1DA0A5540061978B /* tttags.h */,
+				51C7855C1DA0A5540061978B /* ttunpat.h */,
+			);
+			path = freetype;
+			sourceTree = "<group>";
+		};
+		51C785071DA0A5530061978B /* config */ = {
+			isa = PBXGroup;
+			children = (
+				51C785081DA0A5530061978B /* ftconfig.h */,
+				51C785091DA0A5530061978B /* ftheader.h */,
+				51C7850A1DA0A5530061978B /* ftmodule.h */,
+				51C7850B1DA0A5530061978B /* ftoption.h */,
+				51C7850C1DA0A5530061978B /* ftstdlib.h */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		51C785311DA0A5530061978B /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				51C785321DA0A5530061978B /* autohint.h */,
+				51C785331DA0A5530061978B /* ftcalc.h */,
+				51C785341DA0A5530061978B /* ftdebug.h */,
+				51C785351DA0A5530061978B /* ftdriver.h */,
+				51C785361DA0A5530061978B /* ftgloadr.h */,
+				51C785371DA0A5530061978B /* ftmemory.h */,
+				51C785381DA0A5530061978B /* ftobjs.h */,
+				51C785391DA0A5530061978B /* ftpic.h */,
+				51C7853A1DA0A5530061978B /* ftrfork.h */,
+				51C7853B1DA0A5530061978B /* ftserv.h */,
+				51C7853C1DA0A5530061978B /* ftstream.h */,
+				51C7853D1DA0A5530061978B /* fttrace.h */,
+				51C7853E1DA0A5530061978B /* ftvalid.h */,
+				51C7853F1DA0A5530061978B /* internal.h */,
+				51C785401DA0A5530061978B /* pcftypes.h */,
+				51C785411DA0A5530061978B /* psaux.h */,
+				51C785421DA0A5530061978B /* pshints.h */,
+				51C785431DA0A5530061978B /* services */,
+				51C785551DA0A5540061978B /* sfnt.h */,
+				51C785561DA0A5540061978B /* t1types.h */,
+				51C785571DA0A5540061978B /* tttypes.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		51C785431DA0A5530061978B /* services */ = {
+			isa = PBXGroup;
+			children = (
+				51C785441DA0A5530061978B /* svbdf.h */,
+				51C785451DA0A5530061978B /* svcid.h */,
+				51C785461DA0A5530061978B /* svgldict.h */,
+				51C785471DA0A5530061978B /* svgxval.h */,
+				51C785481DA0A5530061978B /* svkern.h */,
+				51C785491DA0A5530061978B /* svmm.h */,
+				51C7854A1DA0A5530061978B /* svotval.h */,
+				51C7854B1DA0A5530061978B /* svpfr.h */,
+				51C7854C1DA0A5530061978B /* svpostnm.h */,
+				51C7854D1DA0A5530061978B /* svpscmap.h */,
+				51C7854E1DA0A5530061978B /* svpsinfo.h */,
+				51C7854F1DA0A5530061978B /* svsfnt.h */,
+				51C785501DA0A5540061978B /* svttcmap.h */,
+				51C785511DA0A5540061978B /* svtteng.h */,
+				51C785521DA0A5540061978B /* svttglyf.h */,
+				51C785531DA0A5540061978B /* svwinfnt.h */,
+				51C785541DA0A5540061978B /* svxf86nm.h */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		A80091A41426873800D8BA81 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -3927,6 +4137,8 @@
 				A82F1DCF1214F2E9004D0B68 /* LookView.mm */,
 				A82F1CF71214E27C004D0B68 /* MovePadView.h */,
 				A82F1CF81214E27C004D0B68 /* MovePadView.mm */,
+				51EB1BAB1DAAF01500C3D4B4 /* LookPadView.h */,
+				51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */,
 				A898D4AA13BA852A00AF6413 /* JoyPad.h */,
 				A898D4AB13BA852A00AF6413 /* JoyPad.mm */,
 				A82E9BD613D673FD00EC2CAD /* BasicHUDViewController.h */,
@@ -4217,8 +4429,6 @@
 			children = (
 				A81EEFA413E4F9660031E870 /* MKAdditions */,
 				A80498DE13DDC97900F807FB /* HUD */,
-				A8EB5AD113987E460090042E /* Tracking.h */,
-				A8EB5AD213987E460090042E /* Tracking.m */,
 				A8193C2F140EB09C00FFD05A /* RootViewController.h */,
 				A8193C30140EB09C00FFD05A /* RootViewController.mm */,
 				A84CA788130E1F9800A3A4F4 /* Secrets.h */,
@@ -4285,14 +4495,6 @@
 		A83E4BAC1403543E00D1ECDD /* JoypadCocoaTouchSDK */ = {
 			isa = PBXGroup;
 			children = (
-				A83E4BB6140354A700D1ECDD /* JoypadXIBConfigure.h */,
-				A83E4BB7140354A700D1ECDD /* JoypadXIBConfigure.m */,
-				A83E4BAD1403543E00D1ECDD /* JoypadConstants.h */,
-				A83E4BAE1403543E00D1ECDD /* JoypadControllerLayout.h */,
-				A83E4BAF1403543E00D1ECDD /* JoypadDevice.h */,
-				A83E4BB01403543E00D1ECDD /* JoypadManager.h */,
-				A83E4BB11403543E00D1ECDD /* JoypadSDK.h */,
-				A83E4BB21403543E00D1ECDD /* libJoypadCocoaTouch.a */,
 			);
 			name = JoypadCocoaTouchSDK;
 			path = Libraries/JoypadCocoaTouchSDK;
@@ -4609,14 +4811,6 @@
 			name = "SDL_ttf-2.0.10";
 			path = "Libraries/SDL_ttf-2.0.10";
 			sourceTree = SOURCE_ROOT;
-		};
-		A8718172140D577900327BEF /* freetype-2.4.6 */ = {
-			isa = PBXGroup;
-			children = (
-				A8718173140D578C00327BEF /* libfreetype.a */,
-			);
-			name = "freetype-2.4.6";
-			sourceTree = "<group>";
 		};
 		A871817A140DA9E000327BEF /* BuildConfigurations */ = {
 			isa = PBXGroup;
@@ -5623,7 +5817,6 @@
 		A898D4AF13BAB4F000AF6413 /* JoyPad Layouts */ = {
 			isa = PBXGroup;
 			children = (
-				A898D4B013BAB54C00AF6413 /* DualAnalogSticks.xib */,
 			);
 			name = "JoyPad Layouts";
 			sourceTree = "<group>";
@@ -5828,7 +6021,7 @@
 		A8B6005A149D0DB60017A6D8 /* SDL */ = {
 			isa = PBXGroup;
 			children = (
-				A8B6005B149D0DB60017A6D8 /* libSDLiPhoneOS.a */,
+				515303131DAD68EA00B0F62A /* libSDLiPhoneOS.a */,
 				A8B6005C149D0DB60017A6D8 /* usr */,
 			);
 			name = SDL;
@@ -5854,46 +6047,54 @@
 		A8B6005E149D0DB60017A6D8 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				A8B6005F149D0DB60017A6D8 /* begin_code.h */,
-				A8B60060149D0DB60017A6D8 /* close_code.h */,
-				A8B60061149D0DB60017A6D8 /* SDL.h */,
-				A8B60062149D0DB60017A6D8 /* SDL_atomic.h */,
-				A8B60063149D0DB60017A6D8 /* SDL_audio.h */,
-				A8B60064149D0DB60017A6D8 /* SDL_compat.h */,
-				A8B60065149D0DB60017A6D8 /* SDL_config.h */,
-				A8B60066149D0DB60017A6D8 /* SDL_config_iphoneos.h */,
-				A8B60067149D0DB60017A6D8 /* SDL_copying.h */,
-				A8B60068149D0DB60017A6D8 /* SDL_cpuinfo.h */,
-				A8B60069149D0DB60017A6D8 /* SDL_endian.h */,
-				A8B6006A149D0DB60017A6D8 /* SDL_error.h */,
-				A8B6006B149D0DB60017A6D8 /* SDL_events.h */,
-				A8B6006C149D0DB60017A6D8 /* SDL_haptic.h */,
-				A8B6006D149D0DB60017A6D8 /* SDL_joystick.h */,
-				A8B6006E149D0DB60017A6D8 /* SDL_keyboard.h */,
-				A8B6006F149D0DB60017A6D8 /* SDL_keysym.h */,
-				A8B60070149D0DB60017A6D8 /* SDL_loadso.h */,
-				A8B60071149D0DB60017A6D8 /* SDL_main.h */,
-				A8B60072149D0DB60017A6D8 /* SDL_mouse.h */,
-				A8B60073149D0DB60017A6D8 /* SDL_mutex.h */,
-				A8B60074149D0DB60017A6D8 /* SDL_name.h */,
-				A8B60075149D0DB60017A6D8 /* SDL_opengl.h */,
-				A8B60076149D0DB60017A6D8 /* SDL_opengles.h */,
-				A8B60077149D0DB60017A6D8 /* SDL_pixels.h */,
-				A8B60078149D0DB60017A6D8 /* SDL_platform.h */,
-				A8B60079149D0DB60017A6D8 /* SDL_power.h */,
-				A8B6007A149D0DB60017A6D8 /* SDL_quit.h */,
-				A8B6007B149D0DB60017A6D8 /* SDL_rect.h */,
-				A8B6007C149D0DB60017A6D8 /* SDL_revision.h */,
-				A8B6007D149D0DB60017A6D8 /* SDL_rwops.h */,
-				A8B6007E149D0DB60017A6D8 /* SDL_scancode.h */,
-				A8B6007F149D0DB60017A6D8 /* SDL_stdinc.h */,
-				A8B60080149D0DB60017A6D8 /* SDL_surface.h */,
-				A8B60081149D0DB60017A6D8 /* SDL_syswm.h */,
-				A8B60082149D0DB60017A6D8 /* SDL_thread.h */,
-				A8B60083149D0DB60017A6D8 /* SDL_timer.h */,
-				A8B60084149D0DB60017A6D8 /* SDL_types.h */,
-				A8B60085149D0DB60017A6D8 /* SDL_version.h */,
-				A8B60086149D0DB60017A6D8 /* SDL_video.h */,
+				51F98AE01D92EF3200907E5E /* begin_code.h */,
+				51F98AE11D92EF3200907E5E /* close_code.h */,
+				51F98AE21D92EF3200907E5E /* SDL_assert.h */,
+				51F98AE31D92EF3200907E5E /* SDL_atomic.h */,
+				51F98AE41D92EF3200907E5E /* SDL_audio.h */,
+				51F98AE51D92EF3200907E5E /* SDL_compat.h */,
+				51F98AE61D92EF3200907E5E /* SDL_config_iphoneos.h */,
+				51F98AE71D92EF3200907E5E /* SDL_config_macosx.h */,
+				51F98AE81D92EF3200907E5E /* SDL_config_minimal.h */,
+				51F98AE91D92EF3200907E5E /* SDL_config_nintendods.h */,
+				51F98AEA1D92EF3200907E5E /* SDL_config_pandora.h */,
+				51F98AEB1D92EF3200907E5E /* SDL_config_win32.h */,
+				51F98AEC1D92EF3200907E5E /* SDL_config_wiz.h */,
+				51F98AED1D92EF3200907E5E /* SDL_config.h */,
+				51F98AEE1D92EF3200907E5E /* SDL_copying.h */,
+				51F98AEF1D92EF3200907E5E /* SDL_cpuinfo.h */,
+				51F98AF01D92EF3200907E5E /* SDL_endian.h */,
+				51F98AF11D92EF3200907E5E /* SDL_error.h */,
+				51F98AF21D92EF3200907E5E /* SDL_events.h */,
+				51F98AF31D92EF3200907E5E /* SDL_haptic.h */,
+				51F98AF41D92EF3200907E5E /* SDL_input.h */,
+				51F98AF51D92EF3200907E5E /* SDL_joystick.h */,
+				51F98AF61D92EF3200907E5E /* SDL_keyboard.h */,
+				51F98AF71D92EF3200907E5E /* SDL_keysym.h */,
+				51F98AF81D92EF3200907E5E /* SDL_loadso.h */,
+				51F98AF91D92EF3200907E5E /* SDL_main.h */,
+				51F98AFA1D92EF3200907E5E /* SDL_mouse.h */,
+				51F98AFB1D92EF3200907E5E /* SDL_mutex.h */,
+				51F98AFC1D92EF3200907E5E /* SDL_name.h */,
+				51F98AFD1D92EF3200907E5E /* SDL_opengl.h */,
+				51F98AFE1D92EF3200907E5E /* SDL_opengles.h */,
+				51F98AFF1D92EF3200907E5E /* SDL_pixels.h */,
+				51F98B001D92EF3200907E5E /* SDL_platform.h */,
+				51F98B011D92EF3200907E5E /* SDL_power.h */,
+				51F98B021D92EF3200907E5E /* SDL_quit.h */,
+				51F98B031D92EF3200907E5E /* SDL_rect.h */,
+				51F98B041D92EF3200907E5E /* SDL_revision.h */,
+				51F98B051D92EF3200907E5E /* SDL_rwops.h */,
+				51F98B061D92EF3200907E5E /* SDL_scancode.h */,
+				51F98B071D92EF3200907E5E /* SDL_stdinc.h */,
+				51F98B081D92EF3200907E5E /* SDL_surface.h */,
+				51F98B091D92EF3200907E5E /* SDL_syswm.h */,
+				51F98B0A1D92EF3200907E5E /* SDL_thread.h */,
+				51F98B0B1D92EF3200907E5E /* SDL_timer.h */,
+				51F98B0C1D92EF3200907E5E /* SDL_types.h */,
+				51F98B0D1D92EF3200907E5E /* SDL_version.h */,
+				51F98B0E1D92EF3200907E5E /* SDL_video.h */,
+				51F98B0F1D92EF3200907E5E /* SDL.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -5937,6 +6138,7 @@
 				A8B9FADD13FB6C1000552296 /* zoom_out.png */,
 				A8B9FADF13FB6C1000552296 /* zoom_out@2x~iphone.png */,
 				A8B9FAE013FB6C1000552296 /* zoom_out~iphone.png */,
+				51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */,
 			);
 			name = HUD;
 			path = Artwork/HUD;
@@ -5973,15 +6175,13 @@
 			name = MAD;
 			sourceTree = "<group>";
 		};
-		A8CD2E6A1558D4FE0056A500 /* TestFlightSDK1.0 */ = {
+		A8CD2E6A1558D4FE0056A500 /* TestFlightSDK3.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A8CD2E6B1558D4FE0056A500 /* libTestFlight.a */,
 				A8CD2E6C1558D4FF0056A500 /* README.txt */,
 				A8CD2E6D1558D4FF0056A500 /* release_notes.txt */,
-				A8CD2E6E1558D4FF0056A500 /* TestFlight.h */,
 			);
-			name = TestFlightSDK1.0;
+			name = TestFlightSDK3.0;
 			path = Libraries/TestFlightSDK1.0;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -6089,8 +6289,6 @@
 		A8EB5AD613987E720090042E /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				A8EB5AD713987E720090042E /* GANTracker.h */,
-				A8EB5AD813987E720090042E /* libGoogleAnalytics.a */,
 			);
 			name = GoogleAnalytics;
 			path = Libraries/GoogleAnalytics;
@@ -6229,8 +6427,19 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "SDG Productions";
+				TargetAttributes = {
+					A85E672911CB173A00D0FAEF = {
+						DevelopmentTeam = TZ45ZW2588;
+					};
+					A8811FE812C7816300A1A08E = {
+						DevelopmentTeam = TZ45ZW2588;
+					};
+					A88121ED12C7826300A1A08E = {
+						DevelopmentTeam = TZ45ZW2588;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -6290,7 +6499,6 @@
 				A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				A8A9C7D913D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
-				A8A9C7E513DA64080087E0CF /* DualAnalogSticks.xib in Resources */,
 				A80498FA13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FD13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
 				A804990013DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
@@ -6429,6 +6637,7 @@
 				A89B96511433C65D005E9FF3 /* LoadButton@2x~iphone.png in Resources */,
 				A89B96541433C65D005E9FF3 /* LoadButton~iphone.png in Resources */,
 				A89B965D1433C65D005E9FF3 /* LoadingBackground.png in Resources */,
+				51EB1BA81DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A89B96601433C65D005E9FF3 /* LoadingBackground@2x~iphone.png in Resources */,
 				A89B96631433C65D005E9FF3 /* LoadingBackground~iphone.png in Resources */,
 				A89B967F1433C97F005E9FF3 /* LoadingScreen.png in Resources */,
@@ -6499,6 +6708,7 @@
 				A8DEE90F145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
 				A8DEE912145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
 				A8DEE915145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
+				5176926C1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */,
 				A8DEE918145CEB4300D8608F /* AmmoButton.png in Resources */,
 				A8DEE91B145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE91E145CEB4300D8608F /* ShieldsButton.png in Resources */,
@@ -6555,6 +6765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8811FF312C7816300A1A08E /* Entitlements.plist in Resources */,
+				5152CB901D948FE100C6E65C /* Images.xcassets in Resources */,
 				A8811FF812C7816300A1A08E /* jconfig.iphoneos in Resources */,
 				A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */,
 				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
@@ -6587,7 +6798,6 @@
 				A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE613D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				A8A9C7DA13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
-				A8A9C7E613DA640B0087E0CF /* DualAnalogSticks.xib in Resources */,
 				A80498FB13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FE13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
 				A804990113DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
@@ -6688,6 +6898,7 @@
 				A894590C1428097700A9ECAC /* EpisodeLoading.png in Resources */,
 				A894590D1428097700A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */,
 				A894590E1428097700A9ECAC /* EpisodeLoading~iphone.png in Resources */,
+				518AF40E1D91D25E00DB6B36 /* Default-568h@2x.png in Resources */,
 				A894591314280ABF00A9ECAC /* BungieAerospace.png in Resources */,
 				A894591614280ABF00A9ECAC /* BungieAerospace@2x~iphone.png in Resources */,
 				A894591914280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
@@ -6730,6 +6941,7 @@
 				A8294C001433F74700300CD5 /* ThanksBackground.png in Resources */,
 				A8294C031433F74700300CD5 /* ThanksBackground@2x~iphone.png in Resources */,
 				A8294C061433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
+				51EB1BA91DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A8294C121433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A83FBB73144C95DF00B27426 /* HDModeOff.png in Resources */,
 				A83FBB76144C95DF00B27426 /* HDModeOff@2x~iphone.png in Resources */,
@@ -6770,6 +6982,7 @@
 				A8421EF014565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
 				A8421EF314565584008BBF22 /* ResumeButton~iphone.png in Resources */,
 				A8421EF614565584008BBF22 /* SaveGame.png in Resources */,
+				5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */,
 				A8421EF914565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
 				A8421EFC14565584008BBF22 /* SaveGame~iphone.png in Resources */,
 				A8421EFF14565584008BBF22 /* ThrowSwitch.png in Resources */,
@@ -6886,7 +7099,6 @@
 				A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE713D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				A8A9C7DB13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
-				A8A9C7E713DA640C0087E0CF /* DualAnalogSticks.xib in Resources */,
 				A80498FC13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FF13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
 				A804990213DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
@@ -6921,6 +7133,7 @@
 				A8B9FAEF13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				A8B9FAF213FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF513FB6C1000552296 /* overheadmap.png in Resources */,
+				5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */,
 				A8B9FB0713FB6C1000552296 /* pause-btn.png in Resources */,
 				A8B9FB0A13FB6C1000552296 /* pause-btn@2x~iphone.png in Resources */,
 				A8B9FB0D13FB6C1000552296 /* pause-btn~iphone.png in Resources */,
@@ -7097,6 +7310,7 @@
 				A812AD3C145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
 				A812AD3F145F8D9900196F6B /* StartingLevel.png in Resources */,
 				A812AD42145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
+				51EB1BAA1DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A812AD45145F8D9900196F6B /* LevelNameBackground.png in Resources */,
 				A812AD62145F971200196F6B /* BuyButton.png in Resources */,
 				A812AD65145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
@@ -7428,6 +7642,7 @@
 				A85E680811CB173A00D0FAEF /* lstrlib.c in Sources */,
 				A85E680911CB173A00D0FAEF /* ltable.c in Sources */,
 				A85E680A11CB173A00D0FAEF /* ltablib.c in Sources */,
+				51EB1BAD1DAAF01500C3D4B4 /* LookPadView.mm in Sources */,
 				A85E680B11CB173A00D0FAEF /* ltm.c in Sources */,
 				A85E680C11CB173A00D0FAEF /* lundump.c in Sources */,
 				A85E680D11CB173A00D0FAEF /* lvm.c in Sources */,
@@ -7596,7 +7811,6 @@
 				A817C0141323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89E134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6D1353EBC500EFB947 /* Statistics.m in Sources */,
-				A8EB5AD313987E460090042E /* Tracking.m in Sources */,
 				A8090E3B13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
 				A82E9BD913D673FE00EC2CAD /* BasicHUDViewController.mm in Sources */,
 				A82E9BE213D6743700EC2CAD /* HUDViewController.mm in Sources */,
@@ -7607,7 +7821,6 @@
 				A81EEFAC13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
 				A81EEFAF13E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				A81EEFB213E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
-				A83E4BB8140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */,
 				A871815B140C773700327BEF /* LocalyticsDatabase.m in Sources */,
 				A871815E140C773700327BEF /* LocalyticsSession.m in Sources */,
 				A8718161140C773700327BEF /* UploaderThread.m in Sources */,
@@ -7731,6 +7944,7 @@
 				A88120A612C7816300A1A08E /* Decoder.cpp in Sources */,
 				A88120A712C7816300A1A08E /* MADDecoder.cpp in Sources */,
 				A88120A812C7816300A1A08E /* SndfileDecoder.cpp in Sources */,
+				51EB1BAE1DAAF01500C3D4B4 /* LookPadView.mm in Sources */,
 				A88120A912C7816300A1A08E /* VorbisDecoder.cpp in Sources */,
 				A88120AA12C7816300A1A08E /* Mixer.cpp in Sources */,
 				A88120AB12C7816300A1A08E /* Music.cpp in Sources */,
@@ -8022,18 +8236,15 @@
 				A817C0161323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89D134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6F1353EBC500EFB947 /* Statistics.m in Sources */,
-				A8EB5AD413987E460090042E /* Tracking.m in Sources */,
 				A8090E3C13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
 				A82E9BDA13D673FE00EC2CAD /* BasicHUDViewController.mm in Sources */,
 				A82E9BE313D6743700EC2CAD /* HUDViewController.mm in Sources */,
-				A8A9C7D713D920D20087E0CF /* JoypadHUDViewController.mm in Sources */,
 				A80498E213DDC9D500F807FB /* AlertView.m in Sources */,
 				A807A70A13E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */,
 				A807A71313E17CA90038AB8C /* FloatingTriggerLookView.m in Sources */,
 				A81EEFAD13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
 				A81EEFB013E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				A81EEFB313E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
-				A83E4BB9140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */,
 				A871815C140C773700327BEF /* LocalyticsDatabase.m in Sources */,
 				A871815F140C773700327BEF /* LocalyticsSession.m in Sources */,
 				A8718162140C773700327BEF /* UploaderThread.m in Sources */,
@@ -8280,6 +8491,7 @@
 				A881232612C7826300A1A08E /* lstrlib.c in Sources */,
 				A881232712C7826300A1A08E /* ltable.c in Sources */,
 				A881232812C7826300A1A08E /* ltablib.c in Sources */,
+				51EB1BAF1DAAF01500C3D4B4 /* LookPadView.mm in Sources */,
 				A881232912C7826300A1A08E /* ltm.c in Sources */,
 				A881232A12C7826300A1A08E /* lundump.c in Sources */,
 				A881232B12C7826300A1A08E /* lvm.c in Sources */,
@@ -8448,7 +8660,6 @@
 				A817C0151323318E00964061 /* RoundedView.m in Sources */,
 				A8DAB89F134E9F5600E4AF10 /* Achievements.m in Sources */,
 				A8528B6E1353EBC500EFB947 /* Statistics.m in Sources */,
-				A8EB5AD513987E460090042E /* Tracking.m in Sources */,
 				A8090E3D13A3221F00D5B52B /* SDL_coreaudio_iphone.m in Sources */,
 				A82E9BDB13D673FE00EC2CAD /* BasicHUDViewController.mm in Sources */,
 				A82E9BE413D6743700EC2CAD /* HUDViewController.mm in Sources */,
@@ -8459,7 +8670,6 @@
 				A81EEFAE13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
 				A81EEFB113E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				A81EEFB413E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
-				A83E4BBA140354A700D1ECDD /* JoypadXIBConfigure.m in Sources */,
 				A871815D140C773700327BEF /* LocalyticsDatabase.m in Sources */,
 				A8718160140C773700327BEF /* LocalyticsSession.m in Sources */,
 				A8718163140C773700327BEF /* UploaderThread.m in Sources */,
@@ -8487,18 +8697,23 @@
 					"SCENARIO=1",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8521,17 +8736,22 @@
 					"SCENARIO=1",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8545,7 +8765,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8556,18 +8778,22 @@
 					"SCENARIO=2",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
@@ -8579,8 +8805,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8589,17 +8817,21 @@
 					"SCENARIO=2",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
@@ -8611,8 +8843,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8621,17 +8855,21 @@
 					"SCENARIO=2",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
@@ -8652,7 +8890,7 @@
 					"SCENARIO=3",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -8661,8 +8899,13 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_CFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8681,7 +8924,7 @@
 					"SCENARIO=3",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -8690,7 +8933,12 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8710,7 +8958,7 @@
 					"SCENARIO=3",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -8719,7 +8967,12 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8732,22 +8985,53 @@
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"/**",
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+					"${SOURCE_ROOT}/Libraries/SDL_ttf-2.0.10",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/Sound/boost_1_53_0\"",
+					"\"$(SRCROOT)/Libraries/SDL/include\"",
+					"\"$(SRCROOT)/Libraries/TestFlight\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
-					"${SOURCE_ROOT}/Libraries/freetype-2.4.6",
+					"${SOURCE_ROOT}/Libraries/freetype-2.4.4",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -8780,17 +9064,22 @@
 					"SCENARIO=1",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8804,8 +9093,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8814,17 +9105,21 @@
 					"SCENARIO=2",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
@@ -8845,7 +9140,7 @@
 					"SCENARIO=3",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -8854,7 +9149,12 @@
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8868,22 +9168,52 @@
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"/**",
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+					"${SOURCE_ROOT}/Libraries/SDL_ttf-2.0.10",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/Sound/boost_1_53_0\"",
+					"\"$(SRCROOT)/Libraries/SDL/include\"",
+					"\"$(SRCROOT)/Libraries/TestFlight\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
-					"${SOURCE_ROOT}/Libraries/freetype-2.4.6",
+					"${SOURCE_ROOT}/Libraries/freetype-2.4.4",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -8916,17 +9246,22 @@
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
 					"SCENARIO=1",
 				);
-				GCC_THUMB_SUPPORT = YES;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
 					"\"$(SRCROOT)/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
+					"$(PROJECT_DIR)/Libraries/TestFlight",
+					"$(PROJECT_DIR)/Libraries/SDL",
+					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/Classes/TapittyTapTap",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8941,23 +9276,57 @@
 			baseConfigurationReference = A871817B140DA9E000327BEF /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"/**",
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+					"${SOURCE_ROOT}/Libraries/SDL_ttf-2.0.10",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/Sound/boost_1_53_0\"",
+					"\"$(SRCROOT)/Libraries/SDL/include\"",
+					"\"$(SRCROOT)/Libraries/TestFlight\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
-					"${SOURCE_ROOT}/Libraries/freetype-2.4.6",
+					"${SOURCE_ROOT}/Libraries/freetype-2.4.4",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_library",
 					/usr/lib/libSystem.B.dylib,
@@ -8978,22 +9347,52 @@
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SDL)/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"/**",
+					"${SOURCE_ROOT}/../boost_1_43_0/",
+					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
+					"${SOURCE_ROOT}/Libraries/libvorbis-1.2.0/include",
+					"${SOURCE_ROOT}/Libraries/libogg-1.1.3/include",
+					"${SOURCE_ROOT}/Libraries/SDL_ttf-2.0.10",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/Sound/boost_1_53_0\"",
+					"\"$(SRCROOT)/Libraries/SDL/include\"",
+					"\"$(SRCROOT)/Libraries/TestFlight\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libraries/GoogleAnalytics",
 					"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK",
-					"${SOURCE_ROOT}/Libraries/freetype-2.4.6",
+					"${SOURCE_ROOT}/Libraries/freetype-2.4.4",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (

@@ -113,11 +113,17 @@ SDL_GLContext UIKit_GL_CreateContext(_THIS, SDL_Window * window)
   view = getOpenGLView();
   if ( view == nil ) {
      /* construct our view, passing in SDL's OpenGL configuration data */
-    // DJB: We are rotated, so the bounds have to switch
-    CGRect bounds = [uiwindow bounds];
-    CGFloat tmp = bounds.size.width;
+		
+		////DCW: Good news, DJB... Flipping the bounds like that doesn't work on later versions of ios; possibly because the startup methods in the controller are in portrait at launch. Commenting out.
+		////DCW: Also, why is the aspect ratio a little streched horizontally? It makes the hud look funnny.
+		// DJB: We are rotated, so the bounds have to switch
+    CGRect bounds = [uiwindow bounds]; //DCW: Why does this not always match the device screen size?
+		NSLog(@"sdl window bounds w: %f h:%f", bounds.size.width, bounds.size.height);
+    /*CGFloat tmp = bounds.size.width;
     bounds.size.width = bounds.size.height;
     bounds.size.height = tmp;
+		*/
+		
     view = [[SDL_uikitopenglview alloc] initWithFrame: bounds \
 									retainBacking: _this->gl_config.retained_backing \
 									rBits: _this->gl_config.red_size \

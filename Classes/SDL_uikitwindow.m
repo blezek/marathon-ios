@@ -71,7 +71,7 @@ static int SetupWindowData(_THIS, SDL_Window *window, UIWindow *uiwindow, SDL_bo
         window->h = 480;
       }
     }
-    
+
     window->driverdata = data;
     
     window->flags &= ~SDL_WINDOW_RESIZABLE;        /* window is NEVER resizeable */

@@ -1252,6 +1252,7 @@ void display_main_menu(
 #elif defined(SDL)
   // JTP: This works, but I don't know correctness
   SDL_Surface *world_pixels = SDL_GetVideoSurface();
+	printf ( "World pixel size: %d x %d\n", world_pixels->w, world_pixels->h );//DCW
   short X0 = world_pixels->w;
   short Y0 = world_pixels->h;
 #endif
