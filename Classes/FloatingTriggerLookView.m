@@ -11,6 +11,9 @@
 #import "Prefs.h"
 #import "AlephOneAppDelegate.h"
 
+
+int SDL_SendMouseMotion(int relative, int x, int y); //DCW for C99
+
 @implementation FloatingTriggerLookView
 @synthesize hudViewController;
 @synthesize primaryFireButton, secondaryFireButton;
@@ -186,7 +189,7 @@
       int dx, dy;
       dx = deviceMultiplier * ( currentPoint.x - lastPanPoint.x );
       dy = deviceMultiplier * ( currentPoint.y - lastPanPoint.y );
-      SDL_SendMouseMotion ( true, dx, dy );
+			SDL_SendMouseMotion ( true, dx, dy );
       // Move the buttons
       [self updateButtons:currentPoint];
     }

@@ -186,6 +186,12 @@ void Screen::Initialize(screen_mode_data* mode)
 #if SDL_VERSION_ATLEAST(1, 2, 10)
     desktop_height = SDL_GetVideoInfo()->current_h;
     desktop_width = SDL_GetVideoInfo()->current_w;
+		
+		//DCW: on iphone 6, we really want SDL_GetVideoInfo()->current_w to return 1334
+		//DCW: We may need to divide by two because this is a retina display, and the desktop will be too big otherwise.
+		//desktop_height = 750/2;
+		//desktop_width = 1334/2;
+		
     printf ( "Desktop size: %d x %d\n", desktop_width, desktop_height );
 #endif
 
@@ -259,9 +265,16 @@ void Screen::Initialize(screen_mode_data* mode)
     }
     
     // DJB support for iPhone/Touch
-    m_modes.push_back(std::pair<int, int>(480, 320));
-    m_modes.push_back(std::pair<int, int>(960, 640));
-
+    m_modes.push_back(std::pair<int, int>(480, 320));	//iphone 1
+    m_modes.push_back(std::pair<int, int>(960, 640));	//iphone 4
+		
+		//DCW
+		m_modes.push_back(std::pair<int, int>(1136, 640)); //iphone 5
+		m_modes.push_back(std::pair<int, int>(1334, 750)); //iphone 6
+		m_modes.push_back(std::pair<int, int>(1920, 1080)); //iphone 6+
+		m_modes.push_back(std::pair<int, int>(2048, 1538)); //ipad air 2
+		
+		
     // these are not validated in graphics prefs because
     // SDL is not initialized yet when prefs load, so
     // validate them here
@@ -270,7 +283,12 @@ void Screen::Initialize(screen_mode_data* mode)
         < 0) {
       graphics_preferences->screen_mode.width = 640;
       graphics_preferences->screen_mode.height = 480;
-      write_preferences();
+			
+				//DCW Test
+			graphics_preferences->screen_mode.width = 1334;
+			graphics_preferences->screen_mode.height = 750;
+			
+			write_preferences();
     }
   }
   else {
@@ -283,7 +301,6 @@ void Screen::Initialize(screen_mode_data* mode)
 
   // Set screen to 640x480 without OpenGL for menu
   screen_mode = *mode;
-  //
   change_screen_mode(640, 480, bit_depth, true);
   screen_initialized = true;
 }
@@ -348,7 +365,8 @@ SDL_Rect Screen::window_rect()
 SDL_Rect Screen::view_rect()
 {
   SDL_Rect r;
-  if (lua_hud()) {
+
+	if (lua_hud()) {
     r.x = lua_view_rect.x + (width() - window_width()) / 2;
     r.y = lua_view_rect.y + (height() - window_height()) / 2;
     r.w = MIN(lua_view_rect.w, window_width() - lua_view_rect.x);
@@ -483,8 +501,8 @@ SDL_Rect Screen::hud_rect()
 
   // DJB Handle iPhone HUD
   if ( screen_mode.hud_scale_level == 3 ) {
-    r.w = r.w / 2;
-    r.h = r.h / 2;
+		r.w = r.w / 2;
+		r.h = r.h / 2;
     // window_height() == SDL_GetVideoSurface()->w;
     // height() == screen_mode.height
     r.x = (screen_mode.width - r.w) / 2;

@@ -1,4 +1,4 @@
-    //
+     //
 //  NewGameViewController.m
 //  AlephOne
 //
@@ -131,21 +131,31 @@ static vector<entry_point> levels;
   [self.startLevelSlider setMinimumTrackImage:[UIImage imageNamed:@"SliderRedTrack"] forState:UIControlStateNormal];
 
   
-  CAAnimation *group = [Effects appearAnimation];
+  /*CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
-  }
+  }*/
+	
+	[Effects appearRevealingView:self.view];
+	/*
+	self.view.layer.transform = CATransform3DMakeScale(100.0,0.0,1.0);
+	[UIView animateWithDuration:1.5
+												delay:0.0
+											options: UIViewAnimationOptionCurveEaseInOut
+									 animations:^{
+										 self.view.layer.transform = CATransform3DMakeScale(1,1,1);
+									 }
+									 completion:^(BOOL finished){
+										 [self.view setHidden:NO];
+									 }];
+*/
   
   
 }  
 
 - (void)disappear {
-  CAAnimation *group = [Effects disappearAnimation];
-  for ( UIView *v in self.view.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:nil];
-  }
+	[Effects disappearHidingView:self.view];
 }  
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

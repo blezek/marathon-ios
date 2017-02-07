@@ -13,7 +13,7 @@
 #import "Appirater.h"
 #import "Achievements.h"
 #import "Tracking.h"
-#import "TestFlight.h"
+////#import "TestFlight.h"
 
 extern "C" {
 #import "SDL_sysvideo.h"
@@ -31,7 +31,7 @@ extern "C" {
 
 @synthesize window, scenario, game, OpenGLESVersion, purchases;
 @synthesize viewController;
-@synthesize oglWidth, oglHeight, retinaDisplay;
+@synthesize oglWidth, oglHeight, retinaDisplay, longScreenDimension, shortScreenDimension;
 
 extern int SDL_main(int argc, char *argv[]);
 
@@ -74,12 +74,17 @@ extern int SDL_main(int argc, char *argv[]);
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+	
 	finishedStartup = NO;
   OpenGLESVersion = 1;
   self.purchases = [[Purchases alloc] init];
   [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
   [Achievements login];
 
+	//DCW: provide a comman way to get the current screen dimensions for landscape.
+	longScreenDimension = max([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
+	shortScreenDimension = min([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
+	
   // Default preferences
   // Set the application defaults  
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -206,25 +211,35 @@ extern int SDL_main(int argc, char *argv[]);
     /* handle the error condition */ 
     MLog ( @"Error setting audio category" );
   }
+	
+	[self.window setFrame:[[UIScreen mainScreen] bounds]]; ///DCW testing
 
+	CGRect portraitBounds = [[UIScreen mainScreen] bounds]; // portrait bounds
+	CGRect landscapeBounds = portraitBounds;
+	landscapeBounds.size = CGSizeMake(portraitBounds.size.height, portraitBounds.size.width);
+
+
+	
+	
   [self.window makeKeyAndVisible];
-
+	
   self.game = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:[NSBundle mainBundle]];
   [[NSBundle mainBundle] loadNibNamed:@"GameViewController" owner:self.game options:nil];
   [self.game viewDidLoad];
-  
-  self.window.rootViewController = self.game;
+
+	self.window.rootViewController = self.game;
+
   self.viewController = self.game;
-  [self.window addSubview:self.viewController.view];  
+  [self.window addSubview:self.viewController.view];
   // [self.viewController.view addSubview:game.view];
   // [self.window addSubview:game.view];
 
-  
+	MLog ( @"This is wrong on iphone 6!" ); //DCW
   MLog ( @"Loaded view: %@", self.game.view );
   
-  [Tracking startup];
-  [Tracking trackPageview:@"/startup"];
-  [Tracking tagEvent:@"startup"];
+////  [Tracking startup];
+////  [Tracking trackPageview:@"/startup"];
+////  [Tracking tagEvent:@"startup"];
 
   // Tracking and timer
   [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
@@ -273,7 +288,7 @@ extern int SDL_main(int argc, char *argv[]);
 #endif
   
   // TestFlight
-  [TestFlight takeOff:TeamToken];
+ //// [TestFlight takeOff:TeamToken];
   
   return YES;
   
@@ -305,15 +320,15 @@ extern int SDL_main(int argc, char *argv[]);
   // Pause sound
   // MLog ( @"Pause mixer" );
   // SoundManager::instance()->SetStatus ( false );
-  [Tracking trackPageview:@"/applicationWillResignActive"];
-  [Tracking tagEvent:@"applicationWillResignActive"];
+////  [Tracking trackPageview:@"/applicationWillResignActive"];
+////  [Tracking tagEvent:@"applicationWillResignActive"];
   [game pauseForBackground:self];
   [game stopAnimation];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-  [Tracking trackPageview:@"/applicationDidEnterBackground"];
-  [Tracking tagEvent:@"applicationDidEnterBackground"];
+////  [Tracking trackPageview:@"/applicationDidEnterBackground"];
+////  [Tracking tagEvent:@"applicationDidEnterBackground"];
 
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
@@ -327,8 +342,8 @@ extern int SDL_main(int argc, char *argv[]);
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-  [Tracking trackPageview:@"/applicationWillEnterForeground"];
-  [Tracking tagEvent:@"applicationWillEnterForeground"];
+////  [Tracking trackPageview:@"/applicationWillEnterForeground"];
+////  [Tracking tagEvent:@"applicationWillEnterForeground"];
 
   [Appirater appEnteredForeground:YES];
     /*
@@ -341,8 +356,8 @@ extern int SDL_main(int argc, char *argv[]);
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  [Tracking trackPageview:@"/applicationDidBecomeActive"];
-  [Tracking tagEvent:@"applicationDidBecomeActive"];
+////  [Tracking trackPageview:@"/applicationDidBecomeActive"];
+////  [Tracking tagEvent:@"applicationDidBecomeActive"];
   if ( finishedStartup ) {
     [game startAnimation];
   }
@@ -357,9 +372,9 @@ extern int SDL_main(int argc, char *argv[]);
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
 - (void)applicationWillTerminate:(UIApplication *)application {
-  [Tracking trackPageview:@"/applicationWillTerminate"];
-  [Tracking tagEvent:@"applicationWillTerminate"];
-  [Tracking shutdown];
+////  [Tracking trackPageview:@"/applicationWillTerminate"];
+////  [Tracking tagEvent:@"applicationWillTerminate"];
+////  [Tracking shutdown];
 
     NSError *error = nil;
     if (managedObjectContext_ != nil) {
@@ -454,7 +469,7 @@ const char* argv[] = { "AlephOneHD" };
 - (void)uploadAchievements {
   MLog(@"Tracking & Achievements");
   [Achievements uploadAchievements];
-  [Tracking dispatch];
+////  [Tracking dispatch];
 }
 
 #pragma mark -

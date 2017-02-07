@@ -13,7 +13,7 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import "LocalyticsSession.h"
-#import "TestFlight.h"
+////#import "TestFlight.h"
 
 @implementation Tracking
 

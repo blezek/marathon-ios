@@ -73,7 +73,7 @@
       
       CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
       NSLog(@"touchesBegan location: %@", NSStringFromCGPoint(location));
-      SDL_SendMouseMotion(0, location.x, location.y); \
+      SDL_SendMouseMotion(0, location.x, location.y);
       SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
       SDL_GetRelativeMouseState(NULL, NULL);
     }
@@ -408,7 +408,7 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
 		/* send moved event */
     // DJB  Need to swap x and y because of the rotated OpenGL context
 		// SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
-    SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
+		SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
 		
 		/* send mouse down event */
 		SDL_SendMouseButton(i, SDL_PRESSED, SDL_BUTTON_LEFT);
@@ -461,8 +461,8 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
   for ( UITouch *touch in touches ) {
     CGPoint location = [self transformTouchLocation:[touch locationInView:self]];
     NSLog(@"Sending mouse motion to point %@", NSStringFromCGPoint(location));
-    SDL_SendMouseMotion(0, location.y, location.x);
-  }
+		SDL_SendMouseMotion(0, location.y, location.x);
+	}
   
 	NSEnumerator *enumerator = [touches objectEnumerator];
 	UITouch *touch=nil;
@@ -478,7 +478,7 @@ int SDL_iPhoneKeyboardToggle(SDL_Window * window) {
 				/* send moved event */
 				// DJB  Need to swap touch locations!
         // SDL_SendMouseMotion(i, 0, locationInView.x, locationInView.y, 0);
-        SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
+				SDL_SendMouseMotion(i, 0, locationInView.y, locationInView.x, 0);
 				/* discontinue search */
 				found = YES;
 			}

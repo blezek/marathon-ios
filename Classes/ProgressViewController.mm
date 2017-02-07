@@ -36,7 +36,7 @@
   
   // This is the first progress event
   if ( t == -1 ) {
-    [Tracking trackPageview:@"/progress"];
+    ////[Tracking trackPageview:@"/progress"];
     self.vmmAd.hidden = YES;
     self.hdmAd.hidden = YES;
     self.rmAd.hidden = YES;
@@ -60,7 +60,7 @@
       int index = arc4random() % views.count;        
       UIView *v = [views objectAtIndex:index];
       v.hidden = NO;
-      [Tracking trackPageview:[NSString stringWithFormat:@"/progress/%d", index]];
+      ////[Tracking trackPageview:[NSString stringWithFormat:@"/progress/%d", index]];
     } 
   }
   

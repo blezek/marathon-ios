@@ -18,6 +18,8 @@
   UITouch *firstTouch;
   NSDate *firstTouchTime;
   NSDate *lastPrimaryFire;
+
+	double lastForce, primaryForceThreshold, secondaryForceThreshold; //DCW
 }
 
 @property (nonatomic) SDLKey primaryFire;

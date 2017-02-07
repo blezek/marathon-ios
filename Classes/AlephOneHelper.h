@@ -83,6 +83,9 @@ extern "C" {
   int helperRetinaDisplay();
   int helperOpenGLWidth();
   int helperOpenGLHeight();
+	
+	int helperLongScreenDimension(); //DCW
+	int helperShortScreenDimension(); //DCW
 #if defined(__cplusplus)
 }
 #endif

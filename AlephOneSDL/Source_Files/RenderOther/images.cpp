@@ -934,11 +934,12 @@ static void draw_picture(LoadedResource &rsrc)
 
   // Default source rectangle
   SDL_Rect src_rect = {0, 0, MIN(s->w, 640), MIN(s->h, 480)};
-
+	//SDL_Rect src_rect = {0, 0, MAX(s->w, video->w), MAX(s->h, video->h)}; //DCW changing this to be larget to avoid clipping at higher res.
+	
   // Center picture on screen
   SDL_Rect dst_rect =
   {(video->w - src_rect.w) / 2, (video->h - src_rect.h) / 2, s->w, s->h};
-  if (dst_rect.x < 0) {
+	if (dst_rect.x < 0) {
     dst_rect.x = 0;
   }
   if (dst_rect.y < 0) {
@@ -960,18 +961,19 @@ static void draw_picture(LoadedResource &rsrc)
   }
 
   // DJB: here is where the iPhone drawing needs to be tweaked
-  
   /*
      // DJB
      dst_rect.w = iWidth;
      dst_rect.h = iHeight;
    */
-
+	//DCW: SDL_BlitSurface ignores and changes w/h of dst_rect, but the thing below it might not.
+	
+	
   // Blit picture to screen
-  SDL_BlitSurface(s, &src_rect, video, &dst_rect);
+  SDL_BlitSurface(s, &src_rect, video, &dst_rect); //DCW Why the fuch does dst_rect change to 640x480 here?
   SDL_FreeSurface(s);
-
-  // Update display and free picture surface
+	
+	  // Update display and free picture surface
   SDL_UpdateRects(video, 1, &dst_rect);
 #ifdef HAVE_OPENGL
   if (video->flags & SDL_OPENGL) {

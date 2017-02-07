@@ -28,7 +28,7 @@
 
 #import "HUDViewController.h"
 #import "BasicHUDViewController.h"
-#import "JoypadHUDViewController.h"
+//#import "JoypadHUDViewController.h"
 
 typedef enum {
   MenuMode,
@@ -88,8 +88,7 @@ typedef enum {
   
   HUDMode mode;
   int currentReticleImage;
-  // JoyPad *joyPad;
-  
+	
   bool haveNewGamePreferencesBeenSet;
   bool showingHelpBeforeFirstGame;
   bool showControlsOverview;
@@ -173,9 +172,9 @@ typedef enum {
 - (GLfloat) getPauseAlpha;
 
 // Joypad
-- (IBAction) cancelJoypad:(id)sender;
-- (IBAction) initiateJoypad:(id)sender;
-- (void)configureHUD:(NSString*)HUDType;
+////- (IBAction) cancelJoypad:(id)sender;
+////- (IBAction) initiateJoypad:(id)sender;
+////- (void)configureHUD:(NSString*)HUDType;
 
 // Reticules
 - (void)updateReticule:(int)index;
@@ -292,7 +291,7 @@ typedef enum {
 @property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 @property (nonatomic, retain) HUDViewController *HUDViewController;
 @property (nonatomic, retain) HUDViewController *HUDTouchViewController;
-@property (nonatomic, retain) HUDViewController *HUDJoypadViewController;
+////@property (nonatomic, retain) HUDViewController *HUDJoypadViewController;
 @property (nonatomic, retain) UIImageView *reticule;
 @property (nonatomic, retain) UIImageView *bungieAerospaceImageView;
 @property (nonatomic, retain) UIImageView *episodeImageView;

@@ -212,8 +212,8 @@ void Image_Blitter::Draw(SDL_Surface *dst_surface, SDL_Rect& dst, SDL_Rect& src)
     }
     src_surface = m_scaled_surface;
   }
-
-  if (!src_surface) {
+	
+	if (!src_surface) {
     return;
   }
 

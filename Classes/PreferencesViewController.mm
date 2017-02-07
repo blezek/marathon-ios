@@ -13,7 +13,7 @@
 #include "preferences.h"
 #include "Mixer.h"
 #import "GameKit/GameKit.h"
-#import "Tracking.h"
+////#import "Tracking.h"
 @implementation PreferencesViewController
 
 @synthesize tapShoots;
@@ -38,53 +38,53 @@
 
   [defaults setBool:[self.tapShoots isSelected] forKey:kTapShoots];
   if ( [self.tapShoots isSelected] != [defaults boolForKey:kTapShoots] ) {
-    [Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isSelected]];
+    ////[Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isSelected]];
 
   }
   [defaults setBool:[self.crosshairs isSelected] forKey:kCrosshairs];
   if ( [self.crosshairs isSelected] != [defaults boolForKey:kCrosshairs] ) {
-    [ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isSelected]];
+    ////[ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isSelected]];
   }
   [defaults setBool:[self.secondTapShoots isSelected] forKey:kSecondTapShoots];
   if ( [self.secondTapShoots isSelected] != [defaults boolForKey:kSecondTapShoots] ) {
-    [ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isSelected]];
+    ////[ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isSelected]];
   }
   [defaults setBool:[self.autoCenter isSelected] forKey:kAutocenter];
   if ( [self.autoCenter isSelected] != [defaults boolForKey:kAutocenter] ) {
-    [ Tracking trackEvent:@"settings" action:kAutocenter label:@"" value:[self.autoCenter isSelected]];
+    ////[ Tracking trackEvent:@"settings" action:kAutocenter label:@"" value:[self.autoCenter isSelected]];
   }
   [defaults setBool:[self.vidmasterMode isSelected] forKey:kUseVidmasterMode];
   if ( [self.vidmasterMode isSelected] != [defaults boolForKey:kUseVidmasterMode] ) {
-    [ Tracking trackEvent:@"settings" action:kUseVidmasterMode label:@"" value:[self.vidmasterMode isSelected]];
+    ////[ Tracking trackEvent:@"settings" action:kUseVidmasterMode label:@"" value:[self.vidmasterMode isSelected]];
   }
   [defaults setBool:[self.hiresTextures isSelected] forKey:kUseTTEP];
   if ( [self.hiresTextures isSelected] != [defaults boolForKey:kUseTTEP] ) {
-    [ Tracking trackEvent:@"settings" action:kUseTTEP label:@"" value:[self.hiresTextures isSelected]];
+    ////[ Tracking trackEvent:@"settings" action:kUseTTEP label:@"" value:[self.hiresTextures isSelected]];
   }
   
   [defaults setFloat:self.sfxVolume.value forKey:kSfxVolume];
   if ( self.sfxVolume.value != [defaults floatForKey:kSfxVolume] ) {
-    [ Tracking trackEvent:@"settings" action:kSfxVolume label:@"" value: self.sfxVolume.value ];
+    ////[ Tracking trackEvent:@"settings" action:kSfxVolume label:@"" value: self.sfxVolume.value ];
   }
   [defaults setFloat:self.musicVolume.value forKey:kMusicVolume];
   if ( self.musicVolume.value != [defaults floatForKey:kMusicVolume] ) {
-    [ Tracking trackEvent:@"settings" action:kMusicVolume label:@"" value: self.musicVolume.value ];
+    ////[ Tracking trackEvent:@"settings" action:kMusicVolume label:@"" value: self.musicVolume.value ];
   }
   [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
   if ( self.hSensitivity.value != [defaults floatForKey:kHSensitivity] ) {
-    [ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
+    ////[ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
   }
   [defaults setFloat:self.brightness.value forKey:kGamma];
   if ( self.brightness.value != [defaults floatForKey:kGamma] ) {
-    [ Tracking trackEvent:@"settings" action:kGamma label:@"" value: self.brightness.value ];
+    ////[ Tracking trackEvent:@"settings" action:kGamma label:@"" value: self.brightness.value ];
   }
   [defaults setFloat:self.hSensitivity.value forKey:kHSensitivity];
   if ( self.hSensitivity.value != [defaults floatForKey:kHSensitivity] ) {
-    [ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
+    ////[ Tracking trackEvent:@"settings" action:kHSensitivity label:@"" value: self.hSensitivity.value ];
   }
   [defaults setFloat:self.vSensitivity.value forKey:kVSensitivity];
   if ( self.vSensitivity.value != [defaults floatForKey:kVSensitivity] ) {
-    [ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
+    ////[ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
   }
 
   [defaults synchronize];
@@ -101,7 +101,7 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
-  self.settingPrefsView.hidden = YES;
+  //self.settingPrefsView.hidden = YES; //DCW commented out after changinc appear/disappear animations.
   NSArray *sliders = [NSArray arrayWithObjects:self.hSensitivity,
                      self.vSensitivity,
                      self.brightness,
@@ -248,15 +248,16 @@
 }
 
 - (void)appear {
-  CAAnimation *group = [Effects appearAnimation];
+	
+	CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
   }
 }
 
-- (void)disappear {
-  CAAnimation *group = [Effects disappearAnimation];
+- (void)disappear:(UIView*)enclosingView {
+	CAAnimation *group = [Effects disappearAnimation];
   for ( UIView *v in self.view.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
