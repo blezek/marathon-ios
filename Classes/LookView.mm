@@ -138,12 +138,15 @@ extern "C" {
 		Uint8 *key_map = SDL_GetKeyboardState ( NULL );
 		double forceNormalized = touch.force / touch.maximumPossibleForce;
 
-		if ( [touches count] >= 2 ) {
+		//This needs to track whether it activated triggers, otherwise is shuts down triggers from other controls. Maybe just yank it. it sucks anyway.
+    /*
+    if ( [touches count] >= 2 ) {
 			//MLog(@"2 touches" );
 			key_map[primaryFire] = 1;
 		}
 		else {
 			key_map[primaryFire] = 0;
+      MLog(@"DEBUGGING PRIMARY STOP1" );
 		}
 		
 		if ( [touches count] >= 3 ) {
@@ -152,7 +155,7 @@ extern "C" {
 		}
 		else {
 			key_map[secondaryFire] = 0;
-		}
+		}*/
 		
 		if (lastForce < primaryForceThreshold && forceNormalized >= primaryForceThreshold){
 			key_map[primaryFire] = 1;

@@ -41,8 +41,7 @@ extern "C" {
 	//DCW
 	feedbackSecondary = [[UIImpactFeedbackGenerator alloc] init];
 	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
-	useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
-	 
+	
   // Kill a warning
   (void)all_key_definitions;
 
@@ -181,6 +180,8 @@ extern "C" {
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable; //DCW: force capability must be checked often, because it fails when view is not in the view hierarchy.
+  
   for ( UITouch *touch in [event touchesForView:self] ) {
     [self handleTouch:[touch locationInView:self]];
     break;

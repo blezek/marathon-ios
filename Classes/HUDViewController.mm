@@ -105,7 +105,7 @@ extern "C" {
 }
 - (IBAction)primaryFireUp:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[primaryFireKey] = 0;
+  key_map[primaryFireKey] = 0;  
 }
 - (IBAction)secondaryFireDown:(id)sender {
   Uint8 *key_map = SDL_GetKeyboardState(NULL);

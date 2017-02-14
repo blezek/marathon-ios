@@ -72,18 +72,14 @@ extern "C" {
 	
 	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x < width * (2.0/3.0)) {
 		key_map[primaryFireKey] = 1;
-		NSLog(@"fire!");
 	} else {
 		key_map[primaryFireKey] = 0;
-		NSLog(@"stop firing!");
 	}
 	
 	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x > width * (1.0/3.0)) {
 		key_map[secondaryFireKey] = 1;
-		NSLog(@"fire 2!");
 	} else {
 		key_map[secondaryFireKey] = 0;
-		NSLog(@"stop firing 2!");
 	}
 	
 	if ( !specialGyroModeActive ) {
@@ -94,7 +90,6 @@ extern "C" {
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	
 	for ( UITouch *touch in [event touchesForView:self] ) {
 		[self handleTouch:[touch locationInView:self]];
 		break;

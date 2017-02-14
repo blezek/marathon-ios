@@ -321,6 +321,7 @@ short localFindActionTarget(
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
   [self.progressViewController mainView];
+  [self.progressViewController.mainView setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.progressView addSubview:self.progressViewController.mainView];
   // self.progressView.hidden = YES;
   
@@ -334,6 +335,7 @@ short localFindActionTarget(
   
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
+  [self.pauseViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.pauseView addSubview:self.pauseViewController.view];
   
   self.newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:[NSBundle mainBundle]];
@@ -916,9 +918,8 @@ short localFindActionTarget(
   } else {
    //// self.HUDViewController = self.HUDJoypadViewController;
   }
+  [self.HUDViewController.view setFrame:self.hud.bounds];//DCW: the inserted subview needs to be the same size as the superview.
   [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
-  
-
 }
 /*- (IBAction) initiateJoypad:(id)sender {
   [self configureHUD:@"JoypadHUDViewController"];
