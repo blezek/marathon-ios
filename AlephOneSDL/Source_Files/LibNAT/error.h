@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: error.h 2615 2006-03-12 06:14:59Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -81,4 +81,4 @@
 void LNat_Print_Internal_Error(int error);
 
 
-#endif
+#endif 

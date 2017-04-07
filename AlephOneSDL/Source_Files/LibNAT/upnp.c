@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: upnp.c 3332 2008-04-12 00:50:30Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -116,6 +116,7 @@
 
 /************************************************************************
 ** Internal Structures 
+*************************************************************************/
 
 /* data to pass to xml description parse events */
 struct XmlDescData
@@ -145,7 +146,7 @@ static int Send_Ssdp_Discover(UpnpController * c, char ** ssdp_response);
 static int Get_Description_Url(const char * ssdp_response, char ** desc_url);
 static int Get_Description(const char * desc_url, char ** description);
 static int Get_Control_Url(UpnpController * c, const char * desc_url, const char * description);
-static int Parse_Url(const char * desc_url, char * host, char * resource, short int * port);
+static int Parse_Url(const char * desc_url, char * host, char * resource, unsigned short int * port);
 static void Start_Desc_Element(void * userData, const char * name, const char ** atts);
 static void End_Desc_Element(void * userData, const char * name);
 static void Data_Desc_Handler(void * userData, const char * s, int len);
@@ -179,7 +180,7 @@ int LNat_Upnp_Discover(UpnpController ** c)
 {
   int ret;
   char * ssdp_response;
-  char * desc_url;
+  char * desc_url = NULL;
   char * description;
 
   /* allocate space for our controller object, and initialize it's members */
@@ -241,7 +242,6 @@ static int Send_Ssdp_Discover(UpnpController * c, char ** ssdp_response)
                                         strlen(WANPPP_TARGET)+
                                         NULL_TERM_LEN);
   if(NULL == search_target) {
-    free(c);
     return BAD_MALLOC;
   }
 
@@ -340,7 +340,7 @@ static int Get_Description_Url(const char * ssdp_response, char ** desc_url)
   free(ssdp_upper_response);
 
   /* now make sure that the url size is appropriate */
-  if(strlen(*desc_url)+NULL_TERM_LEN > MAX_URL_LEN) {
+  if(*desc_url && strlen(*desc_url)+NULL_TERM_LEN > MAX_URL_LEN) {
     free(*desc_url);
     return UPNP_URL_OVER_MAX_LEN;
   }
@@ -354,7 +354,7 @@ static int Get_Description(const char * desc_url, char ** description)
 {
   int ret = 0;
   char host[MAX_HOST_LEN];
-  short int port;
+  unsigned short int port;
   char resource[MAX_RESOURCE_LEN];
   GetMessage * gm;
 
@@ -383,7 +383,7 @@ static int Get_Control_Url(UpnpController * c, const char * desc_url,
   int ret;
   char host[MAX_HOST_LEN];
   char host_port[MAX_HOST_LEN];
-  short int port;
+  unsigned short int port;
   XML_Parser parser;
   XmlDescData xdescdat = {0, 0, 0, 0, 0, 0, 0};
 
@@ -404,6 +404,12 @@ static int Get_Control_Url(UpnpController * c, const char * desc_url,
 
   if(!XML_Parse(parser, description, (int)strlen(description), 1)) {
     XML_ParserFree(parser);
+    XmlDescData_Free(xdescdat);
+    return UPNP_BAD_DESCRIPTION;
+  }
+
+  /* if we didn't find a control url, then bail */
+  if(NULL == xdescdat.control_url) {
     XmlDescData_Free(xdescdat);
     return UPNP_BAD_DESCRIPTION;
   }
@@ -443,6 +449,7 @@ static int Get_Control_Url(UpnpController * c, const char * desc_url,
   /* now make sure that the url size is appropriate */
   if(strlen(c->control_url)+NULL_TERM_LEN > MAX_URL_LEN) {
     free(c->control_url);
+    c->control_url = NULL;
     return UPNP_URL_OVER_MAX_LEN;
   }
   return OK;
@@ -684,7 +691,6 @@ int LNat_Upnp_Set_Port_Mapping(const UpnpController * c,
   char * response;
   char * params;
   char * local_ip = NULL;
-  int retreived_local_ip = 0;
 
   /* if ipMap is null, attempt to get own ip address */
   if(ip_map == NULL) {
@@ -692,7 +698,6 @@ int LNat_Upnp_Set_Port_Mapping(const UpnpController * c,
       return ret;
     }
     ip_map = local_ip;
-    retreived_local_ip = 1;
   }
 
   params = (char *)malloc(strlen(SET_PORT_MAPPING_PARAMS) + 
@@ -736,7 +741,7 @@ static int Get_Local_Ip(const UpnpController * c, char ** ip_map)
   OsSocket * s;
   char host[MAX_HOST_LEN];
   char resource[MAX_RESOURCE_LEN];
-  short int port;
+  unsigned short int port;
 
   /* parse the host, resource, and port out of the url */
   ret = Parse_Url(c->control_url, host, resource, &port);
@@ -846,7 +851,7 @@ static int Send_Action_Message(const UpnpController * c,
   int ret;
   char host[MAX_HOST_LEN];
   char resource[MAX_RESOURCE_LEN];
-  short int port;
+  unsigned short int port;
   char * soap_action_header;
   char * content_length_header;
   PostMessage * pm;
@@ -942,7 +947,7 @@ static int Create_Action_Message(const char * service_type,
 
 
 static int Parse_Url(const char * url, char * host, 
-                     char * resource, short int * port)
+                     char * resource, unsigned short int * port)
 {
   char * loc_of_semicolon;
   char * loc_of_slash;
@@ -991,10 +996,10 @@ static int Parse_Url(const char * url, char * host,
   }
   /* extract the port */
   if(NULL != loc_of_semicolon) {
-    if(sscanf(loc_of_port, "%hd", port) != 1) {
+    if(sscanf(loc_of_port, "%hu", port) != 1) {
       *port = DEFAULT_HTTP_PORT;
     }
-    if(*port < 0 || *port > MAX_PORT_SIZE) {
+    if(*port > MAX_PORT_SIZE) {
       return HTTP_INVALID_URL;
     }
   }

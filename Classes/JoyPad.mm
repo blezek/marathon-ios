@@ -8,10 +8,7 @@
 
 #import "JoyPad.h"
 #import "JoypadXIBConfigure.h"
-extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
-  
+extern "C" { 
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
 #include "SDL_stdinc.h"
@@ -32,6 +29,7 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
+#import "AlephOneHelper.h"
 
 static int counter = 0;
 @implementation JoyPad
@@ -71,7 +69,7 @@ static int counter = 0;
     [customLayout release];
     [config release];
     
-    key_definition *key = current_key_definitions;
+    key_definition *key = standard_key_definitions;
     for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
       if ( key->action_flag == _moving_forward ) {
         forwardKey = key->offset;
@@ -150,7 +148,7 @@ static int counter = 0;
 }
 
 -(void)setButtonState:(JoyInputIdentifier)button toState:(int)state {
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  //Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   if ( state ) {
     NSLog(@"Button %@ is down", [buttonMap objectAtIndex:button]);
   } else {
@@ -158,22 +156,22 @@ static int counter = 0;
   }
   switch (button) {
     case kJoyInputAButton:
-      key_map[primaryFire] = state;
+      setKe[primaryFire] = state;
       break;
     case kJoyInputBButton:
-      key_map[secondaryFire] = state;
+      fake_key_map[secondaryFire] = state;
       break;
     case kJoyInputXButton:
-      key_map[mapKey] = state;
+      fake_key_map[mapKey] = state;
       break;
     case kJoyInputYButton:
-      key_map[actionKey] = state;
+      fake_key_map[actionKey] = state;
       break;
     case kJoyInputRButton:
-      key_map[nextWeapon] = state;
+      fake_key_map[nextWeapon] = state;
       break;
     case kJoyInputLButton:
-      key_map[previousWeapon] = state;
+      fake_key_map[previousWeapon] = state;
       break;
     case kJoyInputStartButton:
       // Pause...

@@ -1,6 +1,6 @@
 /* Copyright (c) 1998, 1999 Thai Open Source Software Center Ltd
    See the file COPYING for copying permission.
- */
+*/
 
 #ifndef XmlTok_INCLUDED
 #define XmlTok_INCLUDED 1
@@ -14,7 +14,7 @@ extern "C" {
                                     start of illegal ]]> sequence */
 /* The following tokens may be returned by both XmlPrologTok and
    XmlContentTok.
- */
+*/
 #define XML_TOK_NONE -4          /* The string to be scanned is empty */
 #define XML_TOK_TRAILING_CR -3   /* A CR at the end of the scan;
                                     might be part of CRLF sequence */
@@ -24,7 +24,7 @@ extern "C" {
 
 /* The following tokens are returned by XmlContentTok; some are also
    returned by XmlAttributeValueTok, XmlEntityTok, XmlCdataSectionTok.
- */
+*/
 #define XML_TOK_START_TAG_WITH_ATTS 1
 #define XML_TOK_START_TAG_NO_ATTS 2
 #define XML_TOK_EMPTY_ELEMENT_WITH_ATTS 3 /* empty element tag <e/> */
@@ -38,7 +38,7 @@ extern "C" {
 
 /* The following tokens may be returned by both XmlPrologTok and
    XmlContentTok.
- */
+*/
 #define XML_TOK_PI 11                     /* processing instruction */
 #define XML_TOK_XML_DECL 12               /* XML decl or text decl */
 #define XML_TOK_COMMENT 13
@@ -80,7 +80,7 @@ extern "C" {
 
 /* With namespace processing this is returned by XmlPrologTok for a
    name with a colon.
- */
+*/
 #define XML_TOK_PREFIXED_NAME 41
 
 #ifdef XML_DTD
@@ -192,39 +192,39 @@ struct encoding {
    Each data character counts as a single token, but adjacent data
    characters may be returned together.  Similarly for characters in
    the prolog outside literals, comments and processing instructions.
- */
+*/
 
 
 #define XmlTok(enc, state, ptr, end, nextTokPtr) \
   (((enc)->scanners[state])(enc, ptr, end, nextTokPtr))
 
 #define XmlPrologTok(enc, ptr, end, nextTokPtr) \
-  XmlTok(enc, XML_PROLOG_STATE, ptr, end, nextTokPtr)
+   XmlTok(enc, XML_PROLOG_STATE, ptr, end, nextTokPtr)
 
 #define XmlContentTok(enc, ptr, end, nextTokPtr) \
-  XmlTok(enc, XML_CONTENT_STATE, ptr, end, nextTokPtr)
+   XmlTok(enc, XML_CONTENT_STATE, ptr, end, nextTokPtr)
 
 #define XmlCdataSectionTok(enc, ptr, end, nextTokPtr) \
-  XmlTok(enc, XML_CDATA_SECTION_STATE, ptr, end, nextTokPtr)
+   XmlTok(enc, XML_CDATA_SECTION_STATE, ptr, end, nextTokPtr)
 
 #ifdef XML_DTD
 
 #define XmlIgnoreSectionTok(enc, ptr, end, nextTokPtr) \
-  XmlTok(enc, XML_IGNORE_SECTION_STATE, ptr, end, nextTokPtr)
+   XmlTok(enc, XML_IGNORE_SECTION_STATE, ptr, end, nextTokPtr)
 
 #endif /* XML_DTD */
 
 /* This is used for performing a 2nd-level tokenization on the content
    of a literal that has already been returned by XmlTok.
- */
+*/
 #define XmlLiteralTok(enc, literalType, ptr, end, nextTokPtr) \
   (((enc)->literalScanners[literalType])(enc, ptr, end, nextTokPtr))
 
 #define XmlAttributeValueTok(enc, ptr, end, nextTokPtr) \
-  XmlLiteralTok(enc, XML_ATTRIBUTE_VALUE_LITERAL, ptr, end, nextTokPtr)
+   XmlLiteralTok(enc, XML_ATTRIBUTE_VALUE_LITERAL, ptr, end, nextTokPtr)
 
 #define XmlEntityValueTok(enc, ptr, end, nextTokPtr) \
-  XmlLiteralTok(enc, XML_ENTITY_VALUE_LITERAL, ptr, end, nextTokPtr)
+   XmlLiteralTok(enc, XML_ENTITY_VALUE_LITERAL, ptr, end, nextTokPtr)
 
 #define XmlSameName(enc, ptr1, ptr2) (((enc)->sameName)(enc, ptr1, ptr2))
 
@@ -282,7 +282,7 @@ int FASTCALL XmlUtf16Encode(int charNumber, unsigned short *buf);
 int XmlSizeOfUnknownEncoding(void);
 
 
-typedef int (XMLCALL *CONVERTER)(void *userData, const char *p);
+typedef int (XMLCALL *CONVERTER) (void *userData, const char *p);
 
 ENCODING *
 XmlInitUnknownEncoding(void *mem,

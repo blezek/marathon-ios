@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,30 +27,10 @@
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36" userLabel="Look" customClass="LookView">
                     <rect key="frame" x="-1" y="0.0" width="569" height="293"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="133">
-                            <rect key="frame" x="38" y="0.0" width="40" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="patternbuffers-btn.png">
-                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="actionDown:" destination="-1" eventType="touchDown" id="137"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchUpInside" id="134"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchUpOutside" id="135"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchCancel" id="136"/>
-                            </connections>
-                        </button>
-                    </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62" userLabel="Map">
-                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                    <rect key="frame" x="0.0" y="0.0" width="44" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="overheadmap.png">
@@ -138,8 +119,8 @@
                         <action selector="inventoryUp:" destination="-1" eventType="touchUpOutside" id="123"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131" customClass="RoundedView">
-                    <rect key="frame" x="242" y="225" width="77" height="68"/>
+                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131" customClass="RoundedView">
+                    <rect key="frame" x="242" y="251" width="77" height="68"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59" userLabel="Action">
@@ -163,47 +144,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64" userLabel="NextWeapon">
-                    <rect key="frame" x="500" y="287" width="29" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal" image="toggleweapons-right-btn.png">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="nextWeaponDown:" destination="-1" eventType="touchDown" id="86"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchCancel" id="85"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchUpInside" id="87"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchUpOutside" id="88"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63" userLabel="PreviousWeapon">
-                    <rect key="frame" x="445" y="287" width="29" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal" image="toggleweapons-left-btn.png">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="previousWeaponDown:" destination="-1" eventType="touchDown" id="82"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchCancel" id="81"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchUpInside" id="83"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchUpOutside" id="84"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9e-7F-7Dx" customClass="LookPadView">
                     <rect key="frame" x="425" y="140" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="look_multi_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-lX-sG8">
+                        <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="look_multi_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-lX-sG8">
                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -231,7 +176,7 @@
             </subviews>
             <color key="backgroundColor" red="0.98556053638458252" green="1" blue="0.99009859561920166" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="33.5" y="117.5"/>
+            <point key="canvasLocation" x="33" y="117"/>
         </view>
         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="66" userLabel="Primary Fire">
             <rect key="frame" x="0.0" y="0.0" width="74" height="76"/>
@@ -271,6 +216,44 @@
             </connections>
             <point key="canvasLocation" x="331" y="408"/>
         </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="64" userLabel="NextWeapon">
+            <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+            <state key="normal" image="toggleweapons-right-btn.png">
+                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <state key="highlighted">
+                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <connections>
+                <action selector="nextWeaponDown:" destination="-1" eventType="touchDown" id="86"/>
+                <action selector="nextWeaponUp:" destination="-1" eventType="touchCancel" id="85"/>
+                <action selector="nextWeaponUp:" destination="-1" eventType="touchUpInside" id="87"/>
+                <action selector="nextWeaponUp:" destination="-1" eventType="touchUpOutside" id="88"/>
+            </connections>
+            <point key="canvasLocation" x="260" y="372"/>
+        </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="63" userLabel="PreviousWeapon">
+            <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+            <state key="normal" image="toggleweapons-left-btn.png">
+                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <state key="highlighted">
+                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <connections>
+                <action selector="previousWeaponDown:" destination="-1" eventType="touchDown" id="82"/>
+                <action selector="previousWeaponUp:" destination="-1" eventType="touchCancel" id="81"/>
+                <action selector="previousWeaponUp:" destination="-1" eventType="touchUpInside" id="83"/>
+                <action selector="previousWeaponUp:" destination="-1" eventType="touchUpOutside" id="84"/>
+            </connections>
+            <point key="canvasLocation" x="205" y="372"/>
+        </button>
     </objects>
     <resources>
         <image name="UseComputer.png" width="60" height="60"/>
@@ -278,7 +261,6 @@
         <image name="movementboxBase.png" width="99" height="99"/>
         <image name="movementboxKnob.png" width="79" height="79"/>
         <image name="overheadmap.png" width="138" height="137"/>
-        <image name="patternbuffers-btn.png" width="70" height="70"/>
         <image name="primarytrigger-btn.png" width="50" height="50"/>
         <image name="toggleweapons-left-btn.png" width="27" height="26"/>
         <image name="toggleweapons-right-btn.png" width="27" height="26"/>

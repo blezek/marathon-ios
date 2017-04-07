@@ -2,26 +2,26 @@
 #define __LUA_MAP_H
 
 /*
-   LUA_MAP.H
+LUA_MAP.H
 
-        Copyright (C) 2008 by Gregory Smith
+	Copyright (C) 2008 by Gregory Smith
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
-
-        Implements Lua map classes
- */
+	Implements Lua map classes
+*/
 
 #include "cseries.h"
 
@@ -38,6 +38,12 @@ extern "C"
 
 #include "lua_templates.h"
 
+extern char Lua_AmbientSound_Name[]; // "ambient sound"
+typedef L_Enum<Lua_AmbientSound_Name> Lua_AmbientSound;
+
+extern char Lua_AmbientSounds_Name[]; // "AmbientSounds"
+typedef L_EnumContainer<Lua_AmbientSounds_Name, Lua_AmbientSound> Lua_AmbientSounds;
+
 extern char Lua_Collection_Name[]; // "collection"
 typedef L_Enum<Lua_Collection_Name> Lua_Collection;
 
@@ -48,15 +54,13 @@ extern char Lua_ControlPanelClass_Name[]; // "control_panel_class"
 typedef L_Enum<Lua_ControlPanelClass_Name> Lua_ControlPanelClass;
 
 extern char Lua_ControlPanelClasses_Name[]; // "ControlPanelClasses"
-typedef L_EnumContainer<Lua_ControlPanelClasses_Name,
-                        Lua_ControlPanelClass> Lua_ControlPanelClasses;
+typedef L_EnumContainer<Lua_ControlPanelClasses_Name, Lua_ControlPanelClass> Lua_ControlPanelClasses;
 
 extern char Lua_ControlPanelType_Name[]; // "control_panel_type"
 typedef L_Enum<Lua_ControlPanelType_Name> Lua_ControlPanelType;
 
 extern char Lua_ControlPanelTypes_Name[]; // "ControlPanelTypes"
-typedef L_EnumContainer<Lua_ControlPanelTypes_Name,
-                        Lua_ControlPanelType> Lua_ControlPanelTypes;
+typedef L_EnumContainer<Lua_ControlPanelTypes_Name, Lua_ControlPanelType> Lua_ControlPanelTypes;
 
 extern char Lua_DamageType_Name[]; // "damage_type"
 typedef L_Enum<Lua_DamageType_Name> Lua_DamageType;
@@ -86,8 +90,7 @@ extern char Lua_PlatformType_Name[]; // "platform_type"
 typedef L_Enum<Lua_PlatformType_Name> Lua_PlatformType;
 
 extern char Lua_PlatformTypes_Name[]; // "PlatformTypes"
-typedef L_EnumContainer<Lua_PlatformTypes_Name,
-                        Lua_PlatformType> Lua_PlatformTypes;
+typedef L_EnumContainer<Lua_PlatformTypes_Name, Lua_PlatformType> Lua_PlatformTypes;
 
 extern char Lua_Polygon_Name[]; // "polygon"
 typedef L_Class<Lua_Polygon_Name> Lua_Polygon;
@@ -117,8 +120,7 @@ extern char Lua_TransferMode_Name[]; // "transfer_mode"
 typedef L_Enum<Lua_TransferMode_Name> Lua_TransferMode;
 
 extern char Lua_TransferModes_Name[]; // "TransferModes"
-typedef L_EnumContainer<Lua_TransferModes_Name,
-                        Lua_TransferMode> Lua_TransferModes;
+typedef L_EnumContainer<Lua_TransferModes_Name, Lua_TransferMode> Lua_TransferModes;
 
 extern char Lua_Side_Name[]; // "side"
 typedef L_Class<Lua_Side_Name> Lua_Side;

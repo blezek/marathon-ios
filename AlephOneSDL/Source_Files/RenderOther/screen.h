@@ -1,144 +1,156 @@
 #ifndef _SCREEN_H_
 #define _SCREEN_H_
 /*
-   SCREEN.H
+SCREEN.H
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
+Thursday, August 24, 1995 5:36:27 PM  (Jason)
 
-   Thursday, August 24, 1995 5:36:27 PM  (Jason)
+Feb 13, 2000 (Loren Petrich):
+	Added screendump capability: dump_screen()
 
-   Feb 13, 2000 (Loren Petrich):
-        Added screendump capability: dump_screen()
+Mar 5, 2000 (Loren Petrich):
+	Added reset_screen() function,
+	for the purpose of resetting its state when starting a game
 
-   Mar 5, 2000 (Loren Petrich):
-        Added reset_screen() function,
-        for the purpose of resetting its state when starting a game
+Mar 18, 2000 (Loren Petrich):
+	Added OpenGL support, including OpenGL-acceleration mode
 
-   Mar 18, 2000 (Loren Petrich):
-        Added OpenGL support, including OpenGL-acceleration mode
+Jun 15, 2000 (Loren Petrich):
+	Added support for Chris Pruett's Pfhortran
 
-   Jun 15, 2000 (Loren Petrich):
-        Added support for Chris Pruett's Pfhortran
+July 2, 2000 (Loren Petrich):
+	Reversed the order of the screen-size symbolic constants, in preparation for really big
+	screen sizes.
+	
+	The HUD is now always buffered
 
-   July 2, 2000 (Loren Petrich):
-        Reversed the order of the screen-size symbolic constants, in preparation for really big
-        screen sizes.
+Jul 5, 2000 (Loren Petrich):
+	Prepared for expanding the number of resolutions available
+	by defining a number of view sizes
 
-        The HUD is now always buffered
+Dec 2, 2000 (Loren Petrich):
+	Added support for hiding and re-showing the app
 
-   Jul 5, 2000 (Loren Petrich):
-        Prepared for expanding the number of resolutions available
-        by defining a number of view sizes
+Mar 19, 2001 (Loren Petrich):
+	Added some even bigger screen resolutions
 
-   Dec 2, 2000 (Loren Petrich):
-        Added support for hiding and re-showing the app
+Sept 9, 2001 (Loren Petrich):
+	Eliminated the Valkyrie-acceleration option once and for all;
+	will take care of any side effects elsewhere in the code
 
-   Mar 19, 2001 (Loren Petrich):
-        Added some even bigger screen resolutions
-
-   Sept 9, 2001 (Loren Petrich):
-        Eliminated the Valkyrie-acceleration option once and for all;
-        will take care of any side effects elsewhere in the code
-
-   Jan 25, 2002 (Br'fin (Jeremy Parsons)):
-        Included Steve Bytnar's OSX QDPort flushing code
- */
+Jan 25, 2002 (Br'fin (Jeremy Parsons)):
+	Included Steve Bytnar's OSX QDPort flushing code
+*/
 
 #include <utility>
 #include <vector>
+#include <SDL.h>
+
+struct Rect;
 
 struct screen_mode_data;
 namespace alephone
 {
-class Screen
-{
-public:
-static inline Screen* instance() {
-  return &m_instance;
+	class Screen
+	{
+	public:
+		static inline Screen* instance() {
+			return &m_instance;
+		}
+
+		void Initialize(screen_mode_data* mode);
+		const std::vector<std::pair<int, int> >& GetModes() { return m_modes; };
+		int FindMode(int width, int height) {
+			for (int i = 0; i < m_modes.size(); ++i)
+			{
+				if (m_modes[i].first == width &&
+				    m_modes[i].second == height)
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+		int ModeHeight(int mode) { return m_modes[mode].second; }
+		int ModeWidth(int mode) { return m_modes[mode].first; }
+
+		int height();
+		int width();
+		float pixel_scale();
+		int window_height();
+		int window_width();
+		bool hud();
+		bool lua_hud();
+		bool openGL();
+		bool fifty_percent();
+		bool seventyfive_percent();
+		SDL_Rect window_rect(); // 3D view + interface
+		SDL_Rect view_rect(); // main 3D view
+		SDL_Rect map_rect();
+		SDL_Rect term_rect();
+		SDL_Rect hud_rect();
+		
+		void bound_screen(bool in_game = true);
+		void bound_screen_to_rect(SDL_Rect &r, bool in_game = true);
+		void window_to_screen(int &x, int &y);
+		
+		SDL_Rect lua_clip_rect;
+		SDL_Rect lua_view_rect;
+		SDL_Rect lua_map_rect;
+		SDL_Rect lua_term_rect;
+
+	private:
+		Screen() : m_initialized(false) { }
+		static Screen m_instance;
+		bool m_initialized;
+
+		std::vector<std::pair<int, int> > m_modes;
+	};
 }
 
-void Initialize(screen_mode_data* mode);
-const std::vector<std::pair<int, int> >& GetModes() {
-  return m_modes;
-};
-int FindMode(int width, int height) {
-  for (int i = 0; i < m_modes.size(); ++i)
-  {
-    if (m_modes[i].first == width &&
-        m_modes[i].second == height) {
-      return i;
-    }
-  }
-  return -1;
-}
-int ModeHeight(int mode) {
-  return m_modes[mode].second;
-}
-int ModeWidth(int mode) {
-  return m_modes[mode].first;
-}
-
-int height();
-int width();
-int window_height();
-int window_width();
-bool hud();
-bool lua_hud();
-bool openGL();
-bool fifty_percent();
-bool seventyfive_percent();
-SDL_Rect window_rect();                 // 3D view + interface
-SDL_Rect view_rect();                 // main 3D view
-SDL_Rect map_rect();
-SDL_Rect term_rect();
-SDL_Rect hud_rect();
-
-SDL_Rect lua_clip_rect;
-SDL_Rect lua_view_rect;
-SDL_Rect lua_map_rect;
-SDL_Rect lua_term_rect;
-
-private:
-Screen() : m_initialized(false) {
-}
-static Screen m_instance;
-bool m_initialized;
-
-std::vector<std::pair<int, int> > m_modes;
-};
-}
+extern SDL_PixelFormat pixel_format_16;
+extern SDL_PixelFormat pixel_format_32;
 
 /* ---------- constants */
 
 // Original screen-size definitions
 enum /* screen sizes */
 {
-  _50_percent,
-  _75_percent,
-  _100_percent,
-  _full_screen,
+	_50_percent,
+	_75_percent,
+	_100_percent,
+	_full_screen,
 };
 
 enum /* hardware acceleration codes */
 {
-  _no_acceleration,
-  _opengl_acceleration,
-  _shader_acceleration
+	_no_acceleration,
+	_opengl_acceleration,
+	_shader_acceleration
+};
+
+enum /* screen selection based on game state */
+{
+	_screentype_level,
+	_screentype_menu,
+	_screentype_chapter
 };
 
 /* ---------- missing from QUICKDRAW.H */
@@ -150,13 +162,11 @@ enum /* hardware acceleration codes */
 
 /* ---------- globals */
 
-extern struct color_table *world_color_table, *visible_color_table,
-*interface_color_table;
+extern struct color_table *world_color_table, *visible_color_table, *interface_color_table;
 
 /* ---------- prototypes/SCREEN.C */
 
 void initialize_gamma(void);
-void restore_gamma(void);
 
 void change_screen_clut(struct color_table *color_table);
 void change_interface_clut(struct color_table *color_table);
@@ -175,6 +185,8 @@ void toggle_overhead_map_display_status(void);
 bool zoom_overhead_map_out(void);
 bool zoom_overhead_map_in(void);
 
+bool map_is_translucent(void);
+
 void enter_screen(void);
 void exit_screen(void);
 
@@ -183,8 +195,7 @@ void validate_world_window(void);
 
 void change_gamma_level(short gamma_level);
 
-void assert_world_color_table(struct color_table *world_color_table,
-                              struct color_table *interface_color_table);
+void assert_world_color_table(struct color_table *world_color_table, struct color_table *interface_color_table);
 
 // LP change: added function for resetting the screen state when starting a game
 void reset_screen();
@@ -195,6 +206,7 @@ screen_mode_data *get_screen_mode(void);
 // LP: when initing, ask whether to show the monitor-frequency dialog
 //void initialize_screen(struct screen_mode_data *mode, bool ShowFreqDialog);
 void change_screen_mode(struct screen_mode_data *mode, bool redraw);
+void change_screen_mode(short screentype);
 
 void toggle_fullscreen(bool fs);
 void toggle_fullscreen();
@@ -215,6 +227,8 @@ bool SetTunnelVision(bool TunnelVisionOn);
 void RequestDrawingHUD();
 // Request for drawing the terminal
 void RequestDrawingTerm();
+// Request for drawing (or redrawing) a menu or intro screen
+void draw_intro_screen();
 
 // Corresponding with-and-without-HUD sizes for some view-size index,
 // for the convenience of Pfhortran scripting;
@@ -227,18 +241,32 @@ void ShowMessage(char *Text);
 
 /* SB: Custom Blizzard-style overlays */
 #define MAXIMUM_NUMBER_OF_SCRIPT_HUD_ELEMENTS 6
-/* This is rather high for people who play at 320x240. Yes, I DO exist!
-   However, since text in general doesn't work too well for us... :'( */
-#define SCRIPT_HUD_ELEMENT_SPACING (640/MAXIMUM_NUMBER_OF_SCRIPT_HUD_ELEMENTS)
+bool IsScriptHUDNonlocal();
+void SetScriptHUDNonlocal(bool nonlocal = true);
 /* color is a terminal color */
-void SetScriptHUDColor(int idx, int color);
+void SetScriptHUDColor(int player, int idx, int color);
 /* text == NULL or "" removes that HUD element
    to turn HUD elements off, set all elements NULL or "" */
-void SetScriptHUDText(int idx, const char* text);
+void SetScriptHUDText(int player, int idx, const char* text);
 /* icon == NULL turns the icon off
    someday I'll document the format */
-bool SetScriptHUDIcon(int idx, const char* icon, size_t length);
+bool SetScriptHUDIcon(int player, int idx, const char* icon, size_t length);
 /* sets the icon for that HUD to a colored square (same colors as SetScriptHUDColor) */
-void SetScriptHUDSquare(int idx, int color);
+void SetScriptHUDSquare(int player, int idx, int color);
+
+bool MainScreenVisible();
+int MainScreenLogicalWidth();
+int MainScreenLogicalHeight();
+int MainScreenWindowWidth();
+int MainScreenWindowHeight();
+int MainScreenPixelWidth();
+int MainScreenPixelHeight();
+float MainScreenPixelScale();
+bool MainScreenIsOpenGL();
+void MainScreenSwap();
+void MainScreenCenterMouse();
+SDL_Surface *MainScreenSurface();
+void MainScreenUpdateRect(int x, int y, int w, int h);
+void MainScreenUpdateRects(size_t count, const SDL_Rect *rects);
 
 #endif

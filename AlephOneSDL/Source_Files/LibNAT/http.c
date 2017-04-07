@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: http.c 3693 2008-12-18 03:15:27Z treellama $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -142,10 +142,10 @@ struct PostMessage
 */
 int LNat_Generate_Http_Get(const char * host,
                            const char * resource,
-                           short int port,
+                           unsigned short int port,
                            GetMessage ** gm)
 {
-  if(NULL == host || NULL == resource || port < 0 || NULL == gm) {
+  if(NULL == host || NULL == resource || NULL == gm) {
     return BAD_PARAMS;
   }
 
@@ -205,11 +205,11 @@ int LNat_Destroy_Http_Get(GetMessage ** gm)
 */
 int LNat_Generate_Http_Post(const char * host,
                             const char * resource,
-                            short int port,
+                            unsigned short int port,
                             const char * body,
                             PostMessage ** pm)
 {
-  if(NULL == host || NULL == resource || port < 0 || NULL == body || NULL == pm) {
+  if(NULL == host || NULL == resource || NULL == body || NULL == pm) {
     return BAD_PARAMS;
   }
 

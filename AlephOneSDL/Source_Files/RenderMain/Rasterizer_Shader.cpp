@@ -5,7 +5,7 @@
  *
  *  http://www.gnu.org/licenses/gpl.html
  */
-#ifdef HAVE_OPENGL
+
 #include "OGL_Headers.h"
 
 #include <iostream>
@@ -18,53 +18,143 @@
 #include "weapons.h"
 #include "AnimatedTextures.h"
 #include "OGL_Faders.h"
+#include "OGL_FBO.h"
 #include "OGL_Textures.h"
 #include "OGL_Shader.h"
 #include "ChaseCam.h"
-// DJB OpenGL
-#include "glu.h"
+#include "preferences.h"
+#include "fades.h"
+#include "screen.h"
 
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
 
 const GLfloat kViewBaseMatrix[16] = {
-  0,      0,      -1,     0,
-  1,      0,      0,      0,
-  0,      1,      0,      0,
-  0,      0,      0,      1
+	0,	0,	-1,	0,
+	1,	0,	0,	0,
+	0,	1,	0,	0,
+	0,	0,	0,	1
+};
+
+const GLfloat kViewBaseMatrixInverse[16] = {
+	0,	1,	0,	0,
+	0,	0,	1,	0,
+	-1,	0,	0,	0,
+	0,	0,	0,	1
 };
 
 void Rasterizer_Shader_Class::SetView(view_data& view) {
-  OGL_SetView(view);
-  float aspect = view.screen_width / float(view.screen_height);
-  float yfov = view.field_of_view /
-               (View_FOV_FixHorizontalNotVertical() ? aspect : 2.0);
-  float xfov = yfov * aspect;
+	OGL_SetView(view);
+	
+	if (view.screen_width != view_width || view.screen_height != view_height) {
+		view_width = view.screen_width;
+		view_height = view.screen_height;
+		swapper.reset();
+		swapper.reset(new FBOSwapper(view_width * MainScreenPixelScale(), view_height * MainScreenPixelScale(), false));
+	}
+	
+	float aspect = view.screen_width / float(view.screen_height);
+	float deg2rad = 8.0 * atan(1.0) / 360.0;
+	float xtan, ytan;
+	if (View_FOV_FixHorizontalNotVertical()) {
+		xtan = tan(view.field_of_view * deg2rad / 2.0);
+		ytan = xtan / aspect;
+	} else {
+		ytan = tan(view.field_of_view * deg2rad / 2.0) / 2.0;
+		xtan = ytan * aspect;
+	}
+	
+	// Adjust for view distortion during teleport effect
+	ytan *= view.real_world_to_screen_y / double(view.world_to_screen_y);
+	xtan *= view.real_world_to_screen_x / double(view.world_to_screen_x);
+	
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	float nearVal = 64.0;
+	float farVal = 128.0 * 1024.0;
+	float x = xtan * nearVal;
+	float y = ytan * nearVal;
+	glFrustumf(-x, x, -y, y, nearVal, farVal);
 
-  // Adjust for view distortion during teleport effect
-  yfov *= view.real_world_to_screen_y / float(view.world_to_screen_y);
-  xfov *= view.real_world_to_screen_x / float(view.world_to_screen_x);
+	glMatrixMode(GL_MODELVIEW);
+	double yaw = view.yaw * 360.0 / float(NUMBER_OF_ANGLES);
+	double pitch = view.pitch * 360.0 / float(NUMBER_OF_ANGLES);
+	pitch = (pitch > 180.0 ? pitch -360.0 : pitch);
 
-  // The view flips or shrinks when the FOV goes too far out
-  // of normal bounds, so this limit keeps the teleporting
-  // effect from getting distorted in annoying ways.
-  if (yfov > 119.9) {
-    yfov = 119.9;
-  }
+	// setup a rotation matrix for the landscape texture shader
+	// this aligns the landscapes to the center of the screen for standard
+	// pitch ranges, so that they don't need to be stretched
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(yfov, xfov / yfov, 64, 128*1024);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadMatrixf(kViewBaseMatrix);
-  float pitch = view.pitch * 360.0 / float(NUMBER_OF_ANGLES);
-  float yaw = view.yaw * 360.0 / float(NUMBER_OF_ANGLES);
-  glRotatef(pitch, 0.0, 1.0, 0.0);
+	glLoadIdentity();
+	glTranslatef(view.origin.x, view.origin.y, view.origin.z);
+	glRotatef(yaw, 0.0, 0.0, 1.0);
+	glRotatef(-pitch, 0.0, 1.0, 0.0);
+	glMultMatrixf(kViewBaseMatrixInverse);
+
+	GLfloat landscapeInverseMatrix[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX, landscapeInverseMatrix);
+
+	Shader *s;
+
+	s = Shader::get(Shader::S_Landscape);
+	s->enable();
+	s->setMatrix4(Shader::U_LandscapeInverseMatrix, landscapeInverseMatrix);
+
+	s = Shader::get(Shader::S_LandscapeBloom);
+	s->enable();
+	s->setMatrix4(Shader::U_LandscapeInverseMatrix, landscapeInverseMatrix);
+
+	Shader::disable();
+
+	// setup the normal view matrix
+
+	glLoadMatrixf(kViewBaseMatrix);
+	glRotatef(pitch, 0.0, 1.0, 0.0);
 //	apperently 'roll' is not what i think it is
 //	rubicon sets it to some strange value
-//	float roll = view.roll * 360.0 / float(NUMBER_OF_ANGLES);
+//	double roll = view.roll * 360.0 / float(NUMBER_OF_ANGLES);
 //	glRotated(roll, 1.0, 0.0, 0.0);
-  glRotatef(yaw, 0.0, 0.0, -1.0);
-
-  glTranslatef(-view.origin.x, -view.origin.y, -view.origin.z);
+	glRotatef(-yaw, 0.0, 0.0, 1.0);
+	glTranslatef(-view.origin.x, -view.origin.y, -view.origin.z);
 }
-#endif
+
+void Rasterizer_Shader_Class::setupGL()
+{
+	view_width = 0;
+	view_height = 0;
+	swapper.reset();
+	
+	smear_the_void = false;
+	OGL_ConfigureData& ConfigureData = Get_OGL_ConfigureData();
+	if (!TEST_FLAG(ConfigureData.Flags,OGL_Flag_VoidColor))
+		smear_the_void = true;
+}
+
+void Rasterizer_Shader_Class::Begin()
+{
+	Rasterizer_OGL_Class::Begin();
+	swapper->activate();
+	if (smear_the_void)
+		swapper->current_contents().draw_full();
+}
+
+void Rasterizer_Shader_Class::End()
+{
+	swapper->deactivate();
+	swapper->swap();
+	
+	float gamma_adj = get_actual_gamma_adjust(graphics_preferences->screen_mode.gamma_level);
+	if (gamma_adj < 0.99f || gamma_adj > 1.01f) {
+		Shader *s = Shader::get(Shader::S_Gamma);
+		s->enable();
+		s->setFloat(Shader::U_GammaAdjust, gamma_adj);
+	}
+	swapper->draw();
+	Shader::disable();
+	
+	SetForeground();
+	SglColor3f(0, 0, 0); //DCW
+	OGL_RenderFrame(0, 0, view_width, view_height, 1);
+	
+	Rasterizer_OGL_Class::End();
+}
+

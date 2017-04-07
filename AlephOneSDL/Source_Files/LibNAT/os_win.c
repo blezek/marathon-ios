@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: os_win.c 2615 2006-03-12 06:14:59Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -228,7 +228,7 @@ static int Initialize_Winsock_Library()
    set during the WSAStartup phase, and detect if we
    are using the winsock 1.1 version of the library or
    newer */
-static Is_Valid_Library(WSADATA * wsaData)
+static int Is_Valid_Library(WSADATA * wsaData)
 {
   float socklib_ver;
   socklib_ver = HIBYTE(wsaData->wVersion)/10.0F;

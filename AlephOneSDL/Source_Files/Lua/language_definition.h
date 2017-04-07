@@ -9,6 +9,21 @@
  *	Old names are retained for backwards compatability.
  *
  * Falko 02/21/05 - added mnemonics for polygon types and powerups
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
+
  */
 
 // Items
@@ -647,7 +662,7 @@
 {"_projectile_sewage_yeti", 0x24},
 {"_projectile_lava_yeti", 0x25},
 {"_projectile_smg_bullet", 0x26},
-
+        
 // polygon types
 {"_polygon_is_normal", 0x00},
 {"_polygon_is_item_impassable", 0x01},
@@ -696,7 +711,7 @@
 {"_game_of_most_time", _game_of_most_time},
 {"_game_of_least_points", _game_of_least_points},
 {"_game_of_least_time", _game_of_least_time},
-
+		
 {"_refuel_oxygen", _panel_is_oxygen_refuel},
 {"_refuel_single_shield", _panel_is_shield_refuel},
 {"_refuel_double_shield", _panel_is_double_shield_refuel},

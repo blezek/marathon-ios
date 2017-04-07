@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: os_common.c 4039 2009-11-23 01:24:27Z treellama $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -259,7 +259,6 @@ int Select_Till_Readywrite(OsSocket * s,
 int LNat_Common_Get_Local_Ip(OsSocket * s, char ** local_ip)
 {
   struct sockaddr_in local;
-  // DJB Removing warning
   socklen_t saSize = sizeof(struct sockaddr);
   if(getsockname(s->sock,(struct sockaddr *)&local,&saSize)) {
     return SOCKET_GETSOCKNAME_FAILED;

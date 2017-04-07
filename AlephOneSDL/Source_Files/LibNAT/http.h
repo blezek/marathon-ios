@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: http.h 2615 2006-03-12 06:14:59Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -40,15 +40,15 @@ typedef struct PostMessage PostMessage;
 
    Caller must call LNat_Destroy_Http_Get to destroy the GetMessage
    stucture when done with it.
- */
+*/
 int LNat_Generate_Http_Get(const char * host,
                            const char * resource,
-                           short int port,
+                           unsigned short int port,
                            GetMessage ** gm);
 
 /* Destroys a GetMessage structure that was allocated by
    LNat_Generate_Http_Get.
- */
+*/
 int LNat_Destroy_Http_Get(GetMessage ** gm);
 
 /* This function will generate a PostMessage structure and return
@@ -58,10 +58,10 @@ int LNat_Destroy_Http_Get(GetMessage ** gm);
    Caller must call LNat_Destroy_Http_Post to destroy the PostMessage
    structure when done with it. The caller can also add Request
    Header Fields and Entity Header Fields to the post message.
- */
+*/
 int LNat_Generate_Http_Post(const char * host,
                             const char * resource,
-                            short int port,
+                            unsigned short int port,
                             const char * body,
                             PostMessage ** pm);
 
@@ -77,19 +77,19 @@ int LNat_Http_Post_Add_Entity_Header(PostMessage * pm,
 
 /* Destroy a PostMessage structure that was allocated by
    LNat_Generate_Http_Post.
- */
+*/
 int LNat_Destroy_Http_Post(PostMessage ** pm);
 
 
 /* This function makes an HTTP Get request to a particular ip
    address and port that is stored in the GetMessage struct. One must
    generate the GetMessage before calling this function using the
-   LNat_Generate_Http_Get function.
-
+   LNat_Generate_Http_Get function. 
+   
    This function allocates space for the response, and returns it
    in the response parameter. The caller must free this space with
    free(). Return OK on success.
- */
+*/
 int LNat_Http_Request_Get(GetMessage * gm,
                           char ** response);
 
@@ -101,7 +101,7 @@ int LNat_Http_Request_Get(GetMessage * gm,
    This function allocates space for the response, and returns it
    in the response parameter. The caller must free this space with
    free(). Return OK on success.
- */
+*/
 int LNat_Http_Request_Post(PostMessage * pm,
                            char ** response);
 

@@ -2,78 +2,86 @@
 #define __SHELL_H
 
 /*
-   SHELL.H
+SHELL.H
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
+Saturday, August 22, 1992 2:18:48 PM
 
-   Saturday, August 22, 1992 2:18:48 PM
+Saturday, January 2, 1993 10:22:46 PM
+	thank god c doesn’t choke on incomplete structure references.
 
-   Saturday, January 2, 1993 10:22:46 PM
-        thank god c doesn’t choke on incomplete structure references.
+Jul 5, 2000 (Loren Petrich):
+	Added XML support for controlling the cheats
 
-   Jul 5, 2000 (Loren Petrich):
-        Added XML support for controlling the cheats
+Jul 7, 2000 (Loren Petrich):
+	Added Ben Thompson's change: an Input-Sprocket-only input mode
 
-   Jul 7, 2000 (Loren Petrich):
-        Added Ben Thompson's change: an Input-Sprocket-only input mode
+Aug 12, 2000 (Loren Petrich):
+	Using object-oriented file handler
 
-   Aug 12, 2000 (Loren Petrich):
-        Using object-oriented file handler
+Dec 29, 2000 (Loren Petrich):
+	Added function for showing text messages on the screen
+*/
 
-   Dec 29, 2000 (Loren Petrich):
-        Added function for showing text messages on the screen
- */
+#include "cstypes.h"
 
 class FileSpecifier;
+struct RGBColor;
+struct SDL_Color;
+struct SDL_Surface;
 
 /* ---------- constants */
-
-#include "XML_ElementParser.h"
 
 /* ---------- resources */
 
 enum {
-  strPROMPTS= 131,
-  _save_game_prompt= 0,
-  _save_replay_prompt,
-  _select_replay_prompt,
-  _default_prompt
+	strPROMPTS= 131,
+	_save_game_prompt= 0,
+	_save_replay_prompt,
+	_select_replay_prompt,
+	_default_prompt
 };
 
 /* ---------- structures */
 
 struct screen_mode_data
 {
-  short acceleration;
+	short acceleration;
+	
+	bool high_resolution;
+	bool fullscreen;
+	bool draw_every_other_line;
+	
+	short bit_depth;  // currently 8 or 16
+	short gamma_level;
 
-  bool high_resolution;
-  bool fullscreen, fill_the_screen;
-  bool draw_every_other_line;
-
-  short bit_depth;        // currently 8 or 16
-  short gamma_level;
-
-  short width;
-  short height;
-  bool hud;
-  short hud_scale_level;
-  short term_scale_level;
-  bool fix_h_not_v;
+	short width;
+	short height;
+	bool auto_resolution;
+	bool high_dpi;
+	bool hud;
+	short hud_scale_level;
+	short term_scale_level;
+	bool fix_h_not_v;
+	bool translucent_map;
+	bool camera_bob;
+	
 };
 
 #define NUMBER_OF_KEYS 21
@@ -81,11 +89,8 @@ struct screen_mode_data
 
 enum // input devices
 {
-  _keyboard_or_game_pad,
-  _mouse_yaw_pitch,
-  _mouse_yaw_velocity,
-  _cybermaxx_input,        // only put "_input" here because it was defined elsewhere.
-  _input_sprocket_only
+	_keyboard_or_game_pad,
+	_mouse_yaw_pitch
 };
 
 #define PREFERENCES_NAME_LENGTH 32
@@ -94,11 +99,17 @@ enum // input devices
 
 void global_idle_proc(void);
 
-// LP addition for handling XML stuff:
-XML_ElementParser *Cheats_GetParser();
+class InfoTree;
+void parse_mml_cheats(const InfoTree& root);
+void reset_mml_cheats();
 
 // Load the base MML scripts:
 void LoadBaseMMLScripts();
+
+// Application and directory info:
+const char *get_application_name(void);
+char *expand_symbolic_paths(char *dest, const char *src, int maxlen);
+char *contract_symbolic_paths(char *dest, const char *src, int maxlen);
 
 /* ---------- prototypes/SHAPES.C */
 
@@ -118,10 +129,7 @@ void initialize_shape_handler(void);
 // low-level shape index).
 // Sigh, the extensions keep piling up... now we can also provide a quarter-sized surface from a shape.  It's hacky -
 // the shape is shrunk by nearest-neighbor-style scaling (no smoothing), even at 16-bit and above, and it only works for RLE shapes.
-SDL_Surface *get_shape_surface(int shape, int collection = NONE,
-                               byte** outPointerToPixelData = NULL,
-                               float inIllumination = -1.0f,
-                               bool inShrinkImage = false);
+SDL_Surface *get_shape_surface(int shape, int collection = NONE, byte** outPointerToPixelData = NULL, float inIllumination = -1.0f, bool inShrinkImage = false);
 
 void open_shapes_file(FileSpecifier& File);
 

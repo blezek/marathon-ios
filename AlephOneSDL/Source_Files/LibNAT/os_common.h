@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: os_common.h 2636 2006-03-24 23:11:52Z jkvw $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -30,15 +30,15 @@
 
 /* declaration of the operating system specific socket structures. This
    needs to be included in this file because many of the functions in
-   here will need to operate on these structures
-
+   here will need to operate on these structures 
+   
    because structures are used that are defined in operating system specific
    locations, we need to include the appropriate headers where those are
    defined. These headers are platform dependent, so depending on the platform,
    choose the right one.
- */
+*/
 #if OS_UNIX
-/* defines for unix */
+  /* defines for unix */
   #include <fcntl.h>
   #include <time.h>
   #include <sys/types.h>
@@ -49,52 +49,49 @@
   #include <netdb.h>
   #include <stdlib.h>
   #include <unistd.h>
-
+  
   #include <sys/time.h>
   #include <string.h>
-
-/* this is the unix version of the OsSocket struct */
-struct OsSocket {
-  int sock;
-};
+  
+  /* this is the unix version of the OsSocket struct */
+  struct OsSocket {
+    int sock;
+  };
 #endif
 #if OS_WIN
-/* defines for win32 */
+  /* defines for win32 */
   #include <windows.h>
   #include <winsock.h>
-
-/* this is the win32 version of the OsSocket struct */
-struct OsSocket {
-  SOCKET sock;
-};
+  typedef int socklen_t;
+  
+  /* this is the win32 version of the OsSocket struct */
+  struct OsSocket {
+    SOCKET sock;
+  };
 #endif
 
 
 /* This function will send data over a udp socket to address host_addr,
    and port port. You need to specify the buffer */
-int LNat_Common_Socket_Udp_Send(OsSocket * s, const char * host_addr,
-                                short int port,
-                                char * buf, int amt,
-                                int * amt_sent);
-
+int LNat_Common_Socket_Udp_Send(OsSocket * s, const char * host_addr, short int port, 
+                                char * buf, int amt, int * amt_sent);
+                                
 /* This function will recieve data over a udp socket form address host_addr,
    and port port. You need to specify the buffer to store it in, and the
    amt you are expecting to receive.
- */
-int LNat_Common_Socket_Udp_Recv(OsSocket * s, const char * host_addr,
-                                short int port,
-                                char * buf, int amt, int * amt_recv,
-                                int timeout_sec);
-
+*/
+int LNat_Common_Socket_Udp_Recv(OsSocket * s, const char * host_addr, short int port,
+                                char * buf, int amt, int * amt_recv, int timeout_sec);
+                                
 /* function to send the data of length amt, in buffer buf, over a connected
-   socket s. If send is successful, return OK. set the amount actually sent in
-   amt_sent parameter */
+socket s. If send is successful, return OK. set the amount actually sent in
+amt_sent parameter */
 int LNat_Common_Socket_Send(OsSocket * s, char * buf, int amt, int * amt_sent);
 
 /* function to recv the data of length amt, into an already allocated buffer
-   buf, over a connected socket s. If recv is successful, return oK. Set the
-   amount actually recieved in amt_recv parameter */
-int LNat_Common_Socket_Recv(OsSocket * s, char * buf, int amt,
+buf, over a connected socket s. If recv is successful, return oK. Set the
+amount actually recieved in amt_recv parameter */
+int LNat_Common_Socket_Recv(OsSocket * s, char * buf, int amt, 
                             int * amt_recv, int timeout_sec);
 
 
@@ -109,7 +106,7 @@ int Common_Initialize_Sockaddr_in(struct sockaddr_in* server,
                                   const char * host_addr,
                                   short int port);
 
-/* This function will call select which will block till timeout,
+/* This function will call select which will block till timeout, 
    or until there is data ready to be read on the socket */
 int Select_Till_Readyread(OsSocket * s, int timeout_sec);
 

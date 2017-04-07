@@ -1,536 +1,265 @@
 /*
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
-
-        Text-String Collection
-        by Loren Petrich,
-        April 20, 2000
-
-        This is the implementation of my replacement for MacOS STR# resources
- */
+	Text-String Collection
+	by Loren Petrich,
+	April 20, 2000
+	
+	This is the implementation of my replacement for MacOS STR# resources
+*/
 
 
-#include <string.h>
+#include <string>
+#include <map>
 #include "cseries.h"
 #include "TextStrings.h"
+#include "InfoTree.h"
 
-#include "XML_ElementParser.h"
+typedef std::map<short, std::string> StringSet;
+typedef std::map<short, StringSet> StringSetMap;
 
-
-// Private objects: the string collections, which form a linked list.
-class StringSet
-{
-short ID;
-size_t NumStrings;
-// Pointer to string pointers:
-unsigned char **Strings;
-
-public:
-// What's the ID
-short GetID() {
-  return ID;
-}
-
-// How many strings (contiguous from index zero)
-size_t CountStrings();
-
-// Create a stringset with some ID
-StringSet(short _ID);
-~StringSet();
-
-// Assumes a MacOS Pascal string; the resulting string will have
-// a null byte at the end.
-void Add(size_t Index, unsigned char *String);
-
-// Get a string; return NULL if not found
-unsigned char *GetString(size_t Index);
-
-// Delete a string
-void Delete(size_t Index);
-
-// For making a linked list (I'll let Rhys Hill find more efficient data structures)
-StringSet *Next;
-};
-
-
-// How many strings (contiguous from index zero)
-size_t StringSet::CountStrings()
-{
-  size_t StringCount = 0;
-
-  for (size_t k=0; k<NumStrings; k++)
-  {
-    if (Strings[k]) {
-      StringCount++;
-    }
-    else{
-      break;
-    }
-  }
-
-  return StringCount;
-}
-
-
-StringSet::StringSet(short _ID)
-{
-  // Of course
-  ID = _ID;
-
-  NumStrings = 16;              // Reasonable starting number; what Sun uses in Java
-  Strings = new unsigned char *[NumStrings];
-
-  // Set all the string pointers to NULL
-  objlist_clear(Strings,NumStrings);
-
-  // Last, but not least:
-  Next = NULL;
-}
-
-StringSet::~StringSet()
-{
-  for (size_t k=0; k<NumStrings; k++)
-  {
-    unsigned char *StringPtr = Strings[k];
-    if (StringPtr) {
-      delete [] StringPtr;
-    }
-  }
-  delete [] Strings;
-}
-
-// Assumes a MacOS Pascal string; the resulting string will have
-// a null byte at the end.
-void StringSet::Add(size_t Index, unsigned char *String)
-{
-  if (Index < 0) {
-    return;
-  }
-
-  // Replace string list with longer one if necessary
-  size_t NewNumStrings = NumStrings;
-  while (Index >= NewNumStrings) {NewNumStrings <<= 1; }
-
-  if (NewNumStrings > NumStrings) {
-    unsigned char **NewStrings = new unsigned char *[NewNumStrings];
-    objlist_clear(NewStrings+NumStrings,(NewNumStrings-NumStrings));
-    objlist_copy(NewStrings,Strings,NumStrings);
-    delete [] Strings;
-    Strings = NewStrings;
-    NumStrings = NewNumStrings;
-  }
-
-  // Delete the old string if necessary
-  if (Strings[Index]) {
-    delete [] Strings[Index];
-  }
-
-  unsigned short Length = String[0];
-  unsigned char *_String = new unsigned char[Length+2];
-  memcpy(_String,String,Length+2);
-  _String[Length+1] = 0;        //  for making an in-place C string
-
-  Strings[Index] = _String;
-}
-
-// Get a string; return NULL if not found
-unsigned char *StringSet::GetString(size_t Index)
-{
-  if (Index < 0 || Index >= NumStrings) {
-    return NULL;
-  }
-
-  return Strings[Index];
-}
-
-// Delete a string
-void StringSet::Delete(size_t Index)
-{
-  if (Index < 0 || Index >= NumStrings) {
-    return;
-  }
-
-  unsigned char *StringPtr = Strings[Index];
-  if (StringPtr) {
-    delete [] StringPtr; Strings[Index] = 0;
-  }
-}
-
-static StringSet *StringSetRoot = NULL;
-
-static StringSet *FindStringSet(short ID)
-{
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-  while(CurrStringSet)
-  {
-    PrevStringSet = CurrStringSet;
-    if (CurrStringSet->GetID() == ID) {
-      break;
-    }
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  // Add to the end if not found
-  if (!CurrStringSet) {
-    StringSet *NewStringSet = new StringSet(ID);
-    assert(NewStringSet);
-    if (PrevStringSet) {
-      PrevStringSet->Next = NewStringSet;
-    }
-    else{
-      StringSetRoot = NewStringSet;
-    }
-    CurrStringSet = NewStringSet;
-  }
-
-  return CurrStringSet;
-}
-
-// Error strings
-static const char IndexNotFound[] = "\"index\" attribute not found";
-
-
-// Parser of a set of strings
-
-class XML_StringSetParser : public XML_ElementParser
-{
-public:
-// Pointer to current stringset
-StringSet *CurrStringSet;
-
-// Callbacks
-bool Start() {
-  CurrStringSet = NULL; return true;
-}
-bool HandleAttribute(const char *Tag, const char *Value);
-bool AttributesDone();
-
-XML_StringSetParser() : XML_ElementParser("stringset") {
-}
-};
-
-bool XML_StringSetParser::HandleAttribute(const char *Tag, const char *Value)
-{
-  if (StringsEqual(Tag,"index")) {
-    short ID;
-    if (ReadInt16Value(Value,ID)) {
-      CurrStringSet = FindStringSet(ID);
-      return true;
-    }
-    else{ return false; }
-  }
-  UnrecognizedTag();
-  return false;
-}
-
-bool XML_StringSetParser::AttributesDone()
-{
-  if (!CurrStringSet) {
-    ErrorString = IndexNotFound;
-    return false;
-  }
-  return true;
-}
-
-static XML_StringSetParser StringSetParser;
-
-
-// Parser of a single string
-
-
-class XML_StringParser : public XML_ElementParser
-{
-// Check presence of index; having a DTD-using XML parser would
-// make this check unnecessary
-bool IndexPresent;
-
-// Was the string loaded? If not, then load a blank string at the end
-bool StringLoaded;
-
-public:
-// Callbacks
-bool Start();
-bool End();
-bool HandleAttribute(const char *Tag, const char *Value);
-bool AttributesDone();
-bool HandleString(const char *String, int Length);
-
-// The string's index value
-short Index;
-
-XML_StringParser() : XML_ElementParser("string") {
-}
-};
-
-
-bool XML_StringParser::Start() {
-  IndexPresent = false;
-  StringLoaded = false;
-  return true;
-}
-
-bool XML_StringParser::HandleAttribute(const char *Tag, const char *Value)
-{
-  if (StringsEqual(Tag,"index")) {
-    if (ReadInt16Value(Value,Index)) {
-      IndexPresent = true;
-      return true;
-    }
-    else{ return false; }
-  }
-  UnrecognizedTag();
-  return false;
-}
-
-bool XML_StringParser::HandleString(const char *String, int Length)
-{
-  // Copy into Pascal string
-  Str255 StringBuffer;
-  DeUTF8_Pas(String,Length,StringBuffer,255);
-
-  // Load!
-  assert(StringSetParser.CurrStringSet);
-  StringSetParser.CurrStringSet->Add(Index,StringBuffer);
-
-  StringLoaded = true;
-  return true;
-}
-
-bool XML_StringParser::AttributesDone()
-{
-  if (!IndexPresent) {
-    ErrorString = IndexNotFound;
-    return false;
-  }
-  return true;
-}
-
-bool XML_StringParser::End()
-{
-  if (!StringLoaded) {
-    // Load an empty string
-    unsigned char StringBuffer[1];
-    StringBuffer[0] = 0;
-    assert(StringSetParser.CurrStringSet);
-    StringSetParser.CurrStringSet->Add(Index,StringBuffer);
-  }
-
-  return true;
-}
-
-static XML_StringParser StringParser;
+static StringSetMap StringSetRoot;
 
 
 // Public routines:
 
 
 // Set up a string in the repository; a repeated call will replace an old string
-void TS_PutString(short ID, short Index, unsigned char *String)
-{
-  // Search for string set:
-  StringSet *CurrStringSet = FindStringSet(ID);
-  CurrStringSet->Add(Index,String);
-}
-
-
-// ZZZ: Set up a C-string in the repository; a repeated call will replace an old string
 void TS_PutCString(short ID, short Index, const char *String)
 {
-  // Search for string set: (FindStringSet() creates a new one if necessary)
-  StringSet *CurrStringSet = FindStringSet(ID);
-
-  // Create a PString of the incoming CString, truncate to fit
-  unsigned char thePStringStagingBuffer[256];
-
-  size_t theStringLength = strlen(String);
-
-  if(theStringLength > 255) {
-    theStringLength = 255;
-  }
-
-  // Fill in the string length.
-  thePStringStagingBuffer[0] = (char)theStringLength;
-
-  // Copy exactly the string bytes (no termination etc.)
-  memcpy(&(thePStringStagingBuffer[1]), String, theStringLength);
-
-  // Add() copies the string, so using the stack here is OK.
-  CurrStringSet->Add(Index,thePStringStagingBuffer);
+	if (Index >= 0)
+	{
+		StringSetRoot[ID][Index] = String;
+	}
 }
 
 
 // Returns a pointer to a string; if the ID and the index do not point to a valid string,
 // this function will then return NULL
-unsigned char *TS_GetString(short ID, size_t Index)
+const char *TS_GetCString(short ID, short Index)
 {
-  // Search for string set:
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    if (CurrStringSet->GetID() == ID) {
-      break;
-    }
-    PrevStringSet = CurrStringSet;
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  if (!CurrStringSet) {
-    return NULL;
-  }
-
-  return CurrStringSet->GetString(Index);
-}
-
-
-// Here is that string in C form
-char *TS_GetCString(short ID, size_t Index)
-{
-  unsigned char *String = TS_GetString(ID,Index);
-  if (!String) {
-    return NULL;
-  }
-
-  // Move away from the length byte to the first content byte
-  return (char *)(String+1);
+	StringSetMap::const_iterator setIter = StringSetRoot.find(ID);
+	if (setIter == StringSetRoot.end())
+		return NULL;
+	StringSet::const_iterator strIter = setIter->second.find(Index);
+	if (strIter == setIter->second.end())
+		return NULL;
+	return strIter->second.c_str();
 }
 
 
 // Checks on the presence of a string set
 bool TS_IsPresent(short ID)
 {
-  // Search for string set:
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    if (CurrStringSet->GetID() == ID) {
-      return true;
-    }
-    PrevStringSet = CurrStringSet;
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  return false;
+	return StringSetRoot.count(ID);
 }
 
 
 // Count the strings (contiguous from index zero)
 size_t TS_CountStrings(short ID)
 {
-  // Search for string set:
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    if (CurrStringSet->GetID() == ID) {
-      break;
-    }
-    PrevStringSet = CurrStringSet;
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  if (!CurrStringSet) {
-    return 0;
-  }
-
-  return CurrStringSet->CountStrings();
+	StringSetMap::const_iterator setIter = StringSetRoot.find(ID);
+	if (setIter == StringSetRoot.end())
+		return 0;
+	return setIter->second.size();
 }
 
 
 // Deletes a string, should one ever want to do that
 void TS_DeleteString(short ID, short Index)
 {
-  // Search for string set:
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    if (CurrStringSet->GetID() == ID) {
-      break;
-    }
-    PrevStringSet = CurrStringSet;
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  if (!CurrStringSet) {
-    return;
-  }
-
-  CurrStringSet->Delete(Index);
+	StringSetMap::iterator setIter = StringSetRoot.find(ID);
+	if (setIter == StringSetRoot.end())
+		return;
+	setIter->second.erase(Index);
 }
 
 
 // Deletes the stringset with some ID
 void TS_DeleteStringSet(short ID)
 {
-  // Search for string set:
-  StringSet *PrevStringSet = NULL, *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    if (CurrStringSet->GetID() == ID) {
-      break;
-    }
-    PrevStringSet = CurrStringSet;
-    CurrStringSet = CurrStringSet->Next;
-  }
-
-  if (!CurrStringSet) {
-    return;
-  }
-
-  // Get the next string set:
-  StringSet *NextStringSet = CurrStringSet->Next;
-
-  // Clip out that string set
-  if (PrevStringSet) {
-    PrevStringSet->Next = NextStringSet;
-  }
-  else{
-    StringSetRoot = NextStringSet;
-  }
-
-  delete CurrStringSet;
+	StringSetRoot.erase(ID);
 }
 
 
 // Deletes all of the stringsets
 void TS_DeleteAllStrings()
 {
-  StringSet *CurrStringSet = StringSetRoot;
-
-  while(CurrStringSet)
-  {
-    StringSet *NextStringSet = CurrStringSet->Next;
-    delete CurrStringSet;
-    CurrStringSet = NextStringSet;
-  }
-
-  StringSetRoot = NULL;
+	StringSetRoot.clear();
 }
 
 
-// Set up a text-string XML parser and return a pointer to it
-// Don't try to delete it when one is finished with it
-XML_ElementParser *TS_GetParser()
+void reset_mml_stringset()
 {
-  StringSetParser.AddChild(&StringParser);
-  return &StringSetParser;
+	// no reset
 }
 
+void parse_mml_stringset(const InfoTree& root)
+{
+	int16 index;
+	if (!root.read_attr("index", index))
+		return;
+	
+	BOOST_FOREACH(InfoTree child, root.children_named("string"))
+	{
+		int16 cindex;
+		if (!child.read_indexed("index", cindex, INT16_MAX))
+			continue;
+		
+		std::string val = child.get_value<std::string>("");
+		char cbuf[256];
+		DeUTF8_C(val.c_str(), val.size(), cbuf, 255);
+		StringSetRoot[index][cindex] = std::string(cbuf);
+	}
+}
+
+// For turning UTF-8 strings into plain ASCII ones;
+// needs at least (OutMaxLen) characters preallocated.
+// Will not null-terminate the string or Pascalify it.
+// Returns how many characters resulted.
+
+static size_t DeUTF8(const char *InString, size_t InLen, char *OutString, size_t OutMaxLen)
+{
+	// Character and masked version for bit tests;
+	// unsigned char to avoid problems with interpreting the sign bit
+	uint8 c, cmsk;
+	
+	// Result character, in its full glory
+	uint32 uc;
+	
+	int NumExtra = 0;	// Initial: as if previous string had ended
+	const int BAD_CHARACTER = -1; // NumExtra value that means
+	// "end string, but don't emit the character"
+	// Won't try to test for overlong characters.
+	
+	// How many characters processed
+	size_t Len = 0;
+	
+	for (size_t ic=0; ic<InLen; ic++)
+	{
+		c = uint8(InString[ic]);
+		
+		if (NumExtra <= 0)
+		{
+			// Start character string if previous one had ended or was bad
+			// Note that cmsk is calculated in each if() statement,
+			// so it can be used inside of its statement block,
+			// and so as to get a more elegant overall organization.
+			if ((cmsk = c & 0x80) != 0x80)
+			{
+				// 0 to 7 bits long: straight ASCII
+				uc = uint32(c & 0x7f);
+				NumExtra = 0;
+			}
+			else if ((cmsk = c & 0xe0) != 0xe0)
+			{
+				if (cmsk == 0xc0)
+				{
+					// 8 to 11 bits long
+					uc = uint32(c & 0x1f);
+					NumExtra = 1;
+				}
+				else
+					NumExtra = BAD_CHARACTER;
+			}
+			else if ((cmsk = c & 0xf0) != 0xf0)
+			{
+				if (cmsk == 0xe0)
+				{
+					// 12 to 16 bits long
+					uc = uint32(c & 0x0f);
+					NumExtra = 2;
+				}
+				else
+					NumExtra = BAD_CHARACTER;
+			}
+			else if ((cmsk = c & 0xf8) != 0xf8)
+			{
+				if (cmsk == 0xf0)
+				{
+					// 17 to 21 bits long
+					uc = uint32(c & 0x07);
+					NumExtra = 3;
+				}
+				else
+					NumExtra = BAD_CHARACTER;
+			}
+			else if ((cmsk = c & 0xfc) != 0xfc)
+			{
+				if (cmsk == 0xf8)
+				{
+					// 22 to 26 bits long
+					uc = uint32(c & 0x03);
+					NumExtra = 4;
+				}
+				else
+					NumExtra = BAD_CHARACTER;
+			}
+			else if ((cmsk = c & 0xfe) != 0xfe)
+			{
+				if (cmsk == 0xfc)
+				{
+					// 27 to 31 bits long
+					uc = uint32(c & 0x01);
+					NumExtra = 5;
+				}
+				else
+					NumExtra = BAD_CHARACTER;
+			}
+			else
+				NumExtra = BAD_CHARACTER;
+		}
+		else
+		{
+			cmsk = c & 0xc0;
+			if (cmsk == 0x80)
+			{
+				uc <<= 6;
+				uc |= uint32(c & 0x3f);
+				NumExtra--;
+			}
+			else
+				NumExtra = BAD_CHARACTER;
+		}
+		
+		// Overlong test would go here
+		
+		if (NumExtra == 0)
+		{
+			// Bad characters become a dollar sign
+			//			uint8 oc = (uc >= 0x20 && uc != 0x7f && uc <= 0xff) ? uint8(uc) : '$';
+			uint8 oc = (uc >= 0x20 && uc != 0x7f && uc < 0x10000) ? unicode_to_mac_roman((uint16) uc) : '$';
+			OutString[Len++] = char(oc);
+			if (Len >= OutMaxLen) break;
+		}
+	}
+	
+	return Len;
+}
+
+// Write output as a C string;
+// Returns how many characters resulted.
+// Needs at least (OutMaxLen + 1) characters allocated.
+
+size_t DeUTF8_C(const char *InString, size_t InLen, char *OutString, size_t OutMaxLen)
+{
+	size_t Len = DeUTF8(InString,InLen,OutString,OutMaxLen);
+	OutString[Len] = 0;
+	return Len;
+}

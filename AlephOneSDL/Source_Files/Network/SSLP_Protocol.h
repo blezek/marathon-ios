@@ -33,37 +33,26 @@
  *	I'm sure there's something better already out there that's designed for heavyweight application.
  *
  *  Created by Woody Zenfell, III on Tue Sep 11 2001.
-
-   June 15, 2002 (Loren Petrich):
-        Added a packed size, so as to avoid compiler dependency
+ 
+ June 15, 2002 (Loren Petrich):
+ 	Added a packed size, so as to avoid compiler dependency
  */
 
 #ifndef SSLP_PROTOCOL_H
-#define SSLP_PROTOCOL_H
+#define	SSLP_PROTOCOL_H
 
-#include        "SDL_net.h"
-
-#ifdef OBSOLETE
-#ifdef __GNUC__
-#define PACKED_ATTRIBUTE __attribute__ ((packed))
-#else
-#define PACKED_ATTRIBUTE
-#ifndef _MSC_VER
-#error You must arrange for struct SSLP_Packet to be close-packed.
-#endif
-#endif
-#endif
+#include	"SDL_net.h"
 
 
 #ifndef SSLP_PORT
-#define SSLP_PORT               15367           // I made this up, change if it sucks
+#define	SSLP_PORT		15367		// I made this up, change if it sucks
 #endif
 
-#define SSLPP_MAGIC             0x73736c70      // 'sslp' (when in network byte order)
-#define SSLPP_VERSION           1               // change this number if you change the protocol or packet format
-#define SSLPP_MESSAGE_FIND      0x66696e64      // 'find'
-#define SSLPP_MESSAGE_HAVE      0x68617665      // 'have'
-#define SSLPP_MESSAGE_LOST      0x6c6f7374      // you guessed it, 'lost'
+#define	SSLPP_MAGIC		0x73736c70	// 'sslp' (when in network byte order)
+#define	SSLPP_VERSION		1		// change this number if you change the protocol or packet format
+#define	SSLPP_MESSAGE_FIND	0x66696e64	// 'find'
+#define	SSLPP_MESSAGE_HAVE	0x68617665	// 'have'
+#define	SSLPP_MESSAGE_LOST	0x6c6f7374	// you guessed it, 'lost'
 
 // note: Marathon game protocol has its own version independent of SSLP version - don't adjust SSLPP_VERSION
 // if changing only the Marathon protocol.
@@ -113,49 +102,34 @@
 // ought to age and discard found services for which no HAVE has been received for some time, but LOST in most cases
 // should help the FINDer keep his lists better up-to-date.
 // Typically, Aleph One would send this when a player cancels "Join Network Game" after "committing", or when
-// the player has been gathered (and thus no longer needs to be "discovered").
+// the player has been gathered (and thus no longer needs to be "discovered"). 
 
 // Ugly laziness here, using same constants for network protocol format as for API.  Oh well.
 #ifndef SSLP_MAX_TYPE_LENGTH
-#define SSLP_MAX_TYPE_LENGTH    32
+#define	SSLP_MAX_TYPE_LENGTH	32
 #endif
 #ifndef SSLP_MAX_NAME_LENGTH
-#define SSLP_MAX_NAME_LENGTH    32
+#define	SSLP_MAX_NAME_LENGTH	32
 #endif
 
-#ifdef OBSOLETE
-#ifdef _MSC_VER
-#pragma pack(push,1)
-#endif
-#endif
-
-// ASSUMPTION: if we tell the compiler this should be "packed", it will have the same alignment/padding
-// on all platforms.  Numeric fields must always be in network ("big-endian") order when placed on the wire.
 struct SSLP_Packet {
-  Uint32 sslpp_magic;                   // should always be SSLPP_MAGIC
-  Uint32 sslpp_version;                 // set to SSLPP_VERSION, for catching version mismatch
-  Uint32 sslpp_message;                 // set to SSLPP_MESSAGE_*
-  Uint16 sslpp_service_port;            // only valid in HAVE messages, states on which port the service can be contacted.
-  Uint16 sslpp_reserved;                // should always be 0
-  char sslpp_service_type[SSLP_MAX_TYPE_LENGTH];                // type desired, for FIND; type provided or no longer provided on HAVE or LOST
-  char sslpp_service_name[SSLP_MAX_NAME_LENGTH];                // name of the service instance.  meaningless in FIND.
-}; // PACKED_ATTRIBUTE ;
+    Uint32	sslpp_magic;		// should always be SSLPP_MAGIC
+    Uint32	sslpp_version;		// set to SSLPP_VERSION, for catching version mismatch
+    Uint32	sslpp_message;		// set to SSLPP_MESSAGE_*
+    Uint16	sslpp_service_port;	// only valid in HAVE messages, states on which port the service can be contacted.
+    Uint16	sslpp_reserved;		// should always be 0
+    char	sslpp_service_type[SSLP_MAX_TYPE_LENGTH];	// type desired, for FIND; type provided or no longer provided on HAVE or LOST
+    char	sslpp_service_name[SSLP_MAX_NAME_LENGTH];	// name of the service instance.  meaningless in FIND.
+};
 
 // The packed size and packed-packet type
-const int SIZEOF_SSLP_Packet = 3*4 + 2*2 + SSLP_MAX_TYPE_LENGTH +
-                               SSLP_MAX_NAME_LENGTH;
+const int SIZEOF_SSLP_Packet = 3*4 + 2*2 + SSLP_MAX_TYPE_LENGTH + SSLP_MAX_NAME_LENGTH;
 
 // service_type and service_name are treated as C-strings in comparisons - i.e. it's a match if all the bytes up to the first '\0'
 // are equal.  also, whenever a name or type is copied, only the bytes up to and including the first '\0' are copied.
 // Note that it's not an error for all SSLP_MAX_*_LENGTH bytes of name or type storage to be filled with data - a terminating
 // NULL is _not_ required if all SSLP_MAX_*_LENGTH bytes are used.
 
-#ifdef OBSOLETE
-#ifdef _MSC_VER
-#pragma pack(pop)
-#endif
-#endif
-
 // sizeof(struct SSLP_Packet) == 80
 
-#endif //SSLP_PROTOCOL_H
+#endif//SSLP_PROTOCOL_H

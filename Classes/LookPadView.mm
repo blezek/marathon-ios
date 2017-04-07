@@ -6,11 +6,9 @@
 //
 
 #import "LookPadView.h"
+#import "AlephOneHelper.h"
 #import "GameViewController.h"
 extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
-  
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
 #include "SDL_stdinc.h"
@@ -31,7 +29,6 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
-
 @implementation LookPadView
 
 @synthesize rotationRate;
@@ -45,7 +42,7 @@ extern "C" {
   (void)all_key_definitions;
 
   // Initialization code
-	key_definition *key = current_key_definitions;
+	key_definition *key = standard_key_definitions;
 	for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
 		if ( key->action_flag == _left_trigger_state ){
 			primaryFireKey = key->offset;
@@ -53,16 +50,22 @@ extern "C" {
 		if ( key->action_flag == _right_trigger_state ){
 			secondaryFireKey = key->offset;
 		}
+    if ( key->action_flag == _cycle_weapons_forward ){
+			nextWeaponKey = key->offset;
+		}
+    if ( key->action_flag == _cycle_weapons_backward ){
+      previousWeaponKey = key->offset;
+    }
   }
 	
+  SDL_MouseInit();
+  
 	specialGyroModeActive = 0;
 	[self startGyro];
 
 }
 
-- (void)handleTouch:(CGPoint)currentPoint {	
-	Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-  
+- (void)handleTouch:(CGPoint)currentPoint {
 	double height = [self bounds].size.height;
 	double width = [self bounds].size.width;
 
@@ -71,26 +74,44 @@ extern "C" {
 	dy = currentPoint.y;
 	
 	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x < width * (2.0/3.0)) {
-		key_map[primaryFireKey] = 1;
+		setKey(primaryFireKey, 1);
 	} else {
-		key_map[primaryFireKey] = 0;
+		setKey(primaryFireKey, 0);
 	}
 	
 	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x > width * (1.0/3.0)) {
-		key_map[secondaryFireKey] = 1;
+    setKey(secondaryFireKey, 1);
 	} else {
-		key_map[secondaryFireKey] = 0;
+    setKey(secondaryFireKey, 0);
 	}
 	
 	if ( !specialGyroModeActive ) {
 		[self resetGyro];
 		specialGyroModeActive = 1;
 	}
+  
+  //If the make the transition from on button to off in the lower half of the control, switch weapons.
+  if (currentPoint.y > height/2 && currentPoint.x < 0 && lastMovedPoint.x >= 0) {
+    setKey(previousWeaponKey, 1);
+    [self performSelector:@selector(previousWeaponKeyUp) withObject:nil afterDelay:0.1];
+  }
+  if (currentPoint.y > height/2 && currentPoint.x > width && lastMovedPoint.x <= width) {
+    setKey(nextWeaponKey, 1);
+    [self performSelector:@selector(nextWeaponKeyUp) withObject:nil afterDelay:0.1];
+  }
 	
+}
+
+- (void) nextWeaponKeyUp {
+  setKey(nextWeaponKey, 0);
+}
+- (void) previousWeaponKeyUp {
+    setKey(previousWeaponKey, 0);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	for ( UITouch *touch in [event touchesForView:self] ) {
+    lastMovedPoint=[touch locationInView:self];
 		[self handleTouch:[touch locationInView:self]];
 		break;
 	}
@@ -127,61 +148,56 @@ extern "C" {
 
 - (void)handleGyro {
 
+  
+  if ([[GameViewController sharedInstance] mode] != GameMode) {
+    [self resetGyro]; //If we are not in a game, keep the gyro clear.
+    return;
+  }
+  
 	double elapsedtime = 0.0 - [lastGyroUpdate timeIntervalSinceNow];
 	[self setLastGyroUpdate:[NSDate date]];
 	double tiltFactor = 300; //Arbitrary number multiplied by the amount of rotation used for aiming/look.
 	double turnFactor = 900; //Arbitrary number multiplied by the amount of rotation used for tilt turning.
 	
 	
-	//double acceleration = 10;
-	double cutoff = 0.01 * elapsedtime; //Gyro movements below this threshold will be ignored.
+	double cutoff = 5 * elapsedtime; //Noise filter. Gyro movements below this threshold will be ignored.
 	
-	//double accelerationDeadband = 50;
 	
 		//How much we rotated on this call. Small rotations don't count.
 	double rotatedX = abs(rotationRate.x) < cutoff ? 0.0 : rotationRate.x * elapsedtime;
 	double rotatedY = abs(rotationRate.y) < cutoff ? 0.0 : rotationRate.y * elapsedtime;
 	double rotatedZ = abs(rotationRate.z) < cutoff ? 0.0 : rotationRate.z * elapsedtime;
-
+  
 	//Apply comfortable rotation rate adjustment.
 	gyroDeltaX = rotatedX  * tiltFactor;
 	gyroDeltaY = rotatedY  * tiltFactor;
 	gyroDeltaZ = rotatedZ  * turnFactor;
-
-
-		//the x axis is accelerated as lookDeltaX increases.
-		//Calculate the amount of turn accleleration we may want to apply
-	//double xAccelerationAmount = (rotatedX * abs(lookDeltaX) * acceleration);
-	
-	//Track total look delta since last reset.
-	//lookDeltaX += gyroDeltaX;
-	//lookDeltaY += gyroDeltaY;
-	
 	
 	//If specialGyroModeActive is set, then we only look when turning in the direction we've already moved from zero.
 	//If specialGyroModeActive is not set, just look normally using the gyro.
 
-	int mouseMovementX = gyroDeltaX;
+	double mouseMovementX = gyroDeltaX;
 	gyroDeltaX -= (double)mouseMovementX;
 	
-	int mouseMovementY = gyroDeltaY;
+	double mouseMovementY = gyroDeltaY;
 	gyroDeltaY -= (double)mouseMovementY;
 	
-	int mouseMovementZ = 0; //This is actually going to become X movement below.
+	double mouseMovementZ = 0; //This is actually going to become X movement below.
 	if (specialGyroModeActive ){
 		mouseMovementZ = gyroDeltaZ;
 		gyroDeltaZ -= (double)mouseMovementZ;
 	}
-	
-	SDL_SendMouseMotion ( true, 0 - (mouseMovementX + mouseMovementZ), mouseMovementY );
+
+  moveMouseRelative(0 - (mouseMovementX + mouseMovementZ), mouseMovementY);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
-	Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+	const Uint8 *key_map = SDL_GetKeyboardState ( NULL );
 	
-	key_map[primaryFireKey] = 0;
-	key_map[secondaryFireKey] = 0;
+  setKey(primaryFireKey, 0);
+  setKey(secondaryFireKey, 0);
+
 	specialGyroModeActive = 0;
 	return;
 }

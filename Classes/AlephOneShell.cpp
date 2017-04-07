@@ -87,7 +87,7 @@
 #endif
 
 #ifdef HAVE_SDL_IMAGE
-#include <SDL_image.h>
+#include "SDL_image.h"
 #if defined(__WIN32__)
 #include "alephone32.xpm"
 #elif !(defined(__APPLE__) && defined(__MACH__)) && !defined(__MACOS__)
@@ -109,7 +109,7 @@ extern void process_event(const SDL_Event &event);
 extern void execute_timer_tasks(uint32 time);
 
 
-extern void initialize_application(void);
+void initialize_application(void);
 void AlephOneInitialize() {
   initialize_application();
 }
@@ -168,39 +168,38 @@ void AlephOneMainLoop()
     
     while (true) {
       SDL_Event event;
-      event.type = SDL_FIRSTEVENT;
-      SDL_PollEvent(&event);
-      yield_time = false;
-        if (yield_time) {
-          // The game is not in a "hot" state, yield time to other
-          // processes by calling SDL_Delay() but only try for a maximum
-          // of 30ms
-          int num_tries = 0;
-          while (event.type == SDL_FIRSTEVENT && num_tries < 3) {
-            SDL_Delay(10);
-            SDL_PollEvent(&event);
-            num_tries++;
-          }
-          yield_time = false;
-        }
-        else if (event.type == SDL_FIRSTEVENT) {
-          break;
-        }
+      bool found_event = SDL_PollEvent(&event);
       
-      process_event(event);
-      }
+      if (yield_time) {
+        // The game is not in a "hot" state, yield time to other
+        // processes by calling SDL_Delay() but only try for a maximum
+        // of 30ms
+        int num_tries = 0;
+        while (!found_event && num_tries < 3) {
+          SDL_Delay(10);
+          found_event = SDL_PollEvent(&event);
+          num_tries++;
+        }
+        yield_time = false;
+      } else if (!found_event)
+        break;
+      
+      if (found_event)
+        process_event(event); 
+    }
+    
   }
   
   execute_timer_tasks(SDL_GetTicks());
     idle_game_state(SDL_GetTicks());
   
-#ifndef __MACOS__
   if (game_state == _game_in_progress &&
       !graphics_preferences->hog_the_cpu &&
       (TICKS_PER_SECOND - (SDL_GetTicks() - cur_time)) > 10) {
     SDL_Delay(1);
   }
-#endif
+
+  
   if ( cur_time - lastTimeThroughLoop > 1000 ) {
     // printf( "This time took %d ticks\n", SDL_GetTicks() - cur_time );
     lastTimeThroughLoop = cur_time;

@@ -1,22 +1,22 @@
 /*
  *  sdl_network.h - Definitions for SDL implementation of networking
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
-
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
  *  Definitions for SDL implementation of networking
  *
@@ -29,6 +29,7 @@
 #define __SDL__NETWORK_H
 
 #include "SDL_net.h"
+#include <string>
 
 #include "cseries.h"
 
@@ -49,19 +50,19 @@ typedef IPaddress NetAddrBlock;
 
 struct DDPFrame
 {
-  uint16 data_size;
-  byte data[ddpMaxData];
-  UDPsocket socket;
+	uint16 data_size;
+	byte data[ddpMaxData];
+	UDPsocket socket;
 };
 typedef struct DDPFrame DDPFrame, *DDPFramePtr;
 
 struct DDPPacketBuffer
 {
-  byte protocolType;
-  NetAddrBlock sourceAddress;
-
-  uint16 datagramSize;
-  byte datagramData[ddpMaxData];
+	byte protocolType;
+	NetAddrBlock sourceAddress;
+	
+	uint16 datagramSize;
+	byte datagramData[ddpMaxData];
 };
 typedef struct DDPPacketBuffer DDPPacketBuffer, *DDPPacketBufferPtr;
 
@@ -69,9 +70,9 @@ typedef struct DDPPacketBuffer DDPPacketBuffer, *DDPPacketBufferPtr;
 
 struct ConnectionEnd
 {
-  TCPsocket socket;
-  TCPsocket server_socket;
-  SDLNet_SocketSet server_socket_set;
+	TCPsocket		socket;
+        TCPsocket		server_socket;
+        SDLNet_SocketSet	server_socket_set;
 };
 typedef struct ConnectionEnd ConnectionEnd, *ConnectionEndPtr;
 
@@ -80,13 +81,13 @@ typedef struct ConnectionEnd ConnectionEnd, *ConnectionEndPtr;
 typedef NetEntityName *NetEntityNamePtr;
 
 typedef void (*lookupUpdateProcPtr)(short message, short index);
-typedef bool (*lookupFilterProcPtr)(NetEntityName *entity,
-                                    NetAddrBlock *address);
+typedef bool (*lookupFilterProcPtr)(NetEntityName *entity, NetAddrBlock *address);
 typedef void (*PacketHandlerProcPtr)(DDPPacketBufferPtr packet);
 
 /* ---------- prototypes/NETWORK.C */
 
 short NetState(void);
+std::string NetSessionIdentifier(void);
 
 void NetSetServerIdentifier(short identifier);
 
@@ -117,9 +118,7 @@ OSErr NetDDPCloseSocket(short ignored);
 DDPFramePtr NetDDPNewFrame(void);
 void NetDDPDisposeFrame(DDPFramePtr frame);
 
-OSErr NetDDPSendFrame(DDPFramePtr frame, NetAddrBlock *address,
-                      short protocolType,
-                      short socket);
+OSErr NetDDPSendFrame(DDPFramePtr frame, NetAddrBlock *address, short protocolType, short socket);
 
 /* ---------- prototypes/NETWORK_ADSP.C */
 

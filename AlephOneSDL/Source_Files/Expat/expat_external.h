@@ -1,6 +1,6 @@
 /* Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd
    See the file COPYING for copying permission.
- */
+*/
 
 #ifndef Expat_External_INCLUDED
 #define Expat_External_INCLUDED 1
@@ -32,7 +32,7 @@
    Note that on at least some Unix versions, the Expat library must be
    compiled with the cdecl calling convention as the default since
    system headers may assume the cdecl convention.
- */
+*/
 #ifndef XMLCALL
 #if defined(_MSC_VER)
 #define XMLCALL __cdecl
@@ -48,7 +48,7 @@
    with information on how to identify your platform via the C
    pre-processor and how to specify the same calling convention as the
    platform's malloc() implementation.
- */
+*/
 #define XMLCALL
 #endif
 #endif  /* not defined XMLCALL */
@@ -97,7 +97,7 @@ typedef char XML_LChar;
 
 #ifdef XML_LARGE_SIZE  /* Use large integers for file/stream positions. */
 #if defined(XML_USE_MSC_EXTENSIONS) && _MSC_VER < 1400
-typedef __int64 XML_Index;
+typedef __int64 XML_Index; 
 typedef unsigned __int64 XML_Size;
 #else
 typedef long long XML_Index;

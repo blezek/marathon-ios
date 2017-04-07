@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,8 +18,10 @@
                 <outlet property="episodeImageView" destination="178" id="179"/>
                 <outlet property="episodeLoadingImageView" destination="109" id="185"/>
                 <outlet property="filmView" destination="126" id="127"/>
+                <outlet property="gatherNetworkGameButton" destination="Y09-Og-LZx" id="CIR-Mp-bSH"/>
                 <outlet property="helpView" destination="116" id="117"/>
                 <outlet property="hud" destination="9" id="10"/>
+                <outlet property="joinNetworkGameButton" destination="Rqu-bu-D0A" id="fIc-HH-lyo"/>
                 <outlet property="leaderboardButton" destination="187" id="190"/>
                 <outlet property="loadFilmButton" destination="169" id="173"/>
                 <outlet property="loadGameView" destination="61" id="76"/>
@@ -37,7 +40,7 @@
                 <outlet property="savedGameMessage" destination="83" id="86"/>
                 <outlet property="splashView" destination="109" id="110"/>
                 <outlet property="view" destination="2" id="22"/>
-                <outlet property="waitingImageView" destination="183" id="184"/>
+                <outlet property="waitingImageView" destination="ev8-GW-ZAQ" id="atr-bK-elk"/>
                 <outlet property="zoomInButton" destination="134" id="140"/>
                 <outlet property="zoomOutButton" destination="135" id="141"/>
             </connections>
@@ -221,6 +224,34 @@
                                 <action selector="saveFilm" destination="-1" eventType="touchUpInside" id="170"/>
                             </connections>
                         </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqu-bu-D0A" userLabel="Join Network Game">
+                            <rect key="frame" x="30" y="100" width="150" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                            <state key="normal" title="Join Network Game">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="menuJoinNetworkGame" destination="-1" eventType="touchUpInside" id="3Eg-Sn-Vbs"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y09-Og-LZx" userLabel="Gather Network Game">
+                            <rect key="frame" x="30" y="150" width="150" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                            <state key="normal" title="Gather Network Game">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="menuGatherNetworkGame" destination="-1" eventType="touchUpInside" id="tkH-Sp-D3U"/>
+                            </connections>
+                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
                             <rect key="frame" x="30" y="0.0" width="150" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -351,9 +382,13 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="EpisodeLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="178" userLabel="EpisodeLogo">
                             <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="183">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="powered-by-alephone.png" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-GW-ZAQ" userLabel="Powered By A1 Image View">
+                            <rect key="frame" x="360" y="256" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="183">
                             <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
@@ -411,6 +446,7 @@
         <image name="ThanksBackground.png" width="480" height="320"/>
         <image name="TouchToContinue.png" width="256" height="50"/>
         <image name="pause-btn.png" width="35" height="35"/>
+        <image name="powered-by-alephone.png" width="640" height="320"/>
         <image name="ret_pistol.png" width="32" height="32"/>
         <image name="zoom_in.png" width="64" height="64"/>
         <image name="zoom_out.png" width="64" height="64"/>

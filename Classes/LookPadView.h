@@ -14,14 +14,16 @@
 
 @interface LookPadView : UIView {
 
-		SDLKey primaryFireKey;
-		SDLKey secondaryFireKey;
+		SDL_Keycode primaryFireKey;
+		SDL_Keycode secondaryFireKey;
+    SDL_Keycode nextWeaponKey;
+    SDL_Keycode previousWeaponKey;
 	
 		CMMotionManager *motionManager;
 		CMRotationRate rotationRate;
 	  double gyroDeltaX, gyroDeltaY, gyroDeltaZ; //Accumulated change in gyro rotation, minus any mouselook that ocurred. Will typically be less than 1.
-		//double lookDeltaX, lookDeltaY;
-		NSDate *lastGyroUpdate;
+		CGPoint lastMovedPoint;
+    NSDate *lastGyroUpdate;
 		bool specialGyroModeActive;
 		bool gyroActive;
 
@@ -35,6 +37,9 @@
 	- (void) stopGyro;
 	- (void) resetGyro;
 	- (void) startGyro;
+  - (void) nextWeaponKeyUp;
+  - (void) previousWeaponKeyUp;
+
 
 	
 @end

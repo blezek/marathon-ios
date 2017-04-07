@@ -5,10 +5,12 @@
  *      (this example uses errno which might not be multithreaded everywhere)
  */
 
+// DJB
 // #ifndef __IPHONE__
 #if 0
 
-#include <SDL_rwops_zzip.h>
+
+#include "SDL_rwops_zzip.h"
 #include <zzip/zzip.h>
 #include <string.h> /* strchr */
 
@@ -18,17 +20,23 @@
 #define SDL_RWOPS_ZZIP_FILE(_context)  (ZZIP_FILE*) \
              ((_context)->hidden.unknown.data1)
 
-static int _zzip_seek(SDL_RWops *context, int offset, int whence)
+static Sint64 _zzip_size(SDL_RWops *context)
+{
+    return -1;
+}
+
+static Sint64 _zzip_seek(SDL_RWops *context, Sint64 offset, int whence)
 {
     return zzip_seek(SDL_RWOPS_ZZIP_FILE(context), offset, whence);
 }
 
-static int _zzip_rwread(SDL_RWops *context, void *ptr, int size, int maxnum)
+static size_t _zzip_rwread(SDL_RWops *context, void *ptr, size_t size, size_t maxnum)
 {
+    if (!size) return 0;
     return zzip_read(SDL_RWOPS_ZZIP_FILE(context), ptr, size*maxnum) / size;
 }
 
-static int _zzip_rwwrite(SDL_RWops *context, const void *ptr, int size, int num)
+static size_t _zzip_rwwrite(SDL_RWops *context, const void *ptr, size_t size, size_t num)
 {
     return 0; /* ignored */
 }
@@ -57,6 +65,7 @@ SDL_RWops *SDL_RWFromZZIP(const char* file, const char* mode)
     if (! rwops) { errno=ENOMEM; zzip_close (zzip_file); return 0; }
 
     SDL_RWOPS_ZZIP_DATA(rwops) = zzip_file;
+    rwops->size = _zzip_size;
     rwops->read = _zzip_rwread;
     rwops->write = _zzip_rwwrite;
     rwops->seek = _zzip_seek;

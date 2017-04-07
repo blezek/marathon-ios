@@ -33,8 +33,6 @@ extern void AddOneItemToPlayer(short ItemType, short MaxNumber);
 
 
 extern "C" {
-extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
 
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
@@ -169,6 +167,12 @@ short localFindActionTarget(
 {
   // short temp = find_action_key_target( player_index, range, target_type );
   
+    //DCW
+		if (!dynamic_world->player_count) {
+      NSLog(@"Oh no! player_count is zero for some reason! I'm outta here.. Hopfully this doesn't break stuff.");
+      return NONE;
+    }
+  
     struct player_data *player= get_player_data(player_index);
 	
 		//DCW
@@ -176,7 +180,8 @@ short localFindActionTarget(
 			NSLog(@"Oh no! player data is null for some reason! I'm outta here.. Hopfully this doesn't break stuff.");
 			return NONE;
 		}
-	
+  
+  
     short current_polygon= player->camera_polygon_index;
     world_point2d destination;
     bool done= false;
@@ -287,6 +292,7 @@ short localFindActionTarget(
 @synthesize replacementMenuView;
 @synthesize purchaseViewController, purchaseView, aboutView;
 @synthesize saveFilmButton, loadFilmButton;
+@synthesize joinNetworkGameButton, gatherNetworkGameButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 ////@synthesize HUDTouchViewController, HUDJoypadViewController;
@@ -321,12 +327,12 @@ short localFindActionTarget(
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
   [self.progressViewController mainView];
-  [self.progressViewController.mainView setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+  [self.progressViewController.mainView setFrame:[UIScreen mainScreen].bounds];//DCW: this subview needs to be the same size as the screen.
   [self.progressView addSubview:self.progressViewController.mainView];
-  // self.progressView.hidden = YES;
   
   self.preferencesViewController = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:[NSBundle mainBundle]];
   [self.preferencesViewController view];
+  [self.preferencesViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
   [self.preferencesView addSubview:self.preferencesViewController.view];
   
@@ -383,6 +389,9 @@ short localFindActionTarget(
 #if defined(A1DEBUG)
   self.saveFilmButton.hidden = NO;
   self.loadFilmButton.hidden = NO;
+  self.joinNetworkGameButton.hidden = NO;
+  self.gatherNetworkGameButton.hidden = NO;
+
   // joyPad = [[JoyPad alloc] init];
 
 #endif
@@ -427,9 +436,18 @@ short localFindActionTarget(
 #pragma mark -
 #pragma mark Game control
 
+
+- (HUDMode)mode {
+  return mode;
+}
+
 - (void)closeEvent {
   switch ( mode ) {
     case MenuMode:
+      ////[Tracking trackPageview:@"/menu"];
+      ////[Tracking tagEvent:@"menu"];
+      break;
+    case SDLMenuMode:
       ////[Tracking trackPageview:@"/menu"];
       ////[Tracking tagEvent:@"menu"];
       break;
@@ -485,8 +503,38 @@ short localFindActionTarget(
   [self zeroStats];
 }
 
+- (IBAction)joinNetworkGame {
+  [self switchToSDLMenu];
+  do_menu_item_command(mInterface, iJoinGame, false);
+}
+
+- (IBAction)gatherNetworkGame {
+  [self switchToSDLMenu];
+  do_menu_item_command(mInterface, iGatherGame, false);
+}
+
+- (IBAction)switchBackToGameView {
+  [self menuShowReplacementMenu];
+  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or dialog is cancelled!
+  mode=GameMode;
+  //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
+}
+
+- (IBAction)switchToSDLMenu {
+  self.currentSavedGame = nil;
+  [self zeroStats];
+  haveNewGamePreferencesBeenSet = YES;
+  self.hud.hidden = YES;
+  [self menuHideReplacementMenu];
+  showControlsOverview = NO;
+  [self cancelNewGame];
+  self.viewGL.userInteractionEnabled = YES; //This must be disabled after the game starts or dialog is cancelled!
+  mode=SDLMenuMode;
+}
+
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
+  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or a dialog is cancelled!
   /*
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
@@ -520,6 +568,8 @@ short localFindActionTarget(
 
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
+  
+  
 #if defined(A1DEBUG)
   [self shieldCheat:nil];
   [self ammoCheat:nil];
@@ -667,10 +717,13 @@ short localFindActionTarget(
 	
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
-	
+
+  #if !defined(A1DEBUG) //DCW
   if ( showControlsOverview ) {
     [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
   }
+  #endif
+
   
 }
 
@@ -839,7 +892,7 @@ short localFindActionTarget(
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
   self.viewGL.userInteractionEnabled = NO;
-	
+  
 	//NSLog(@"Fuck up the ogl frame for debugging");
 	//[self.viewGL	setFrame:CGRectMake(100, 100, [[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)]; //DCW sizing test
 
@@ -1001,7 +1054,7 @@ extern SDL_Surface *draw_surface;
   int MapSize = 196;
   // Create a buffer to render into
   SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 8, 0xff, 0xff, 0xff, 0xff);
-  SDL_Surface *map = SDL_DisplayFormat(s);
+  SDL_Surface *map = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 8, 0xff, 0xff, 0xff, 0xff); //SDL_DisplayFormat(s); //DCW SDL_DisplayFormat is gone in SDL2. NOt sure what a good replacement is.
   SDL_FreeSurface(s);
   
   SDL_Surface *old = draw_surface;
@@ -1081,7 +1134,10 @@ extern SDL_Surface *draw_surface;
   
   MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
   FileSpecifier file ( (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.filename] UTF8String] );
-  save_game_file(file);
+  //save_game_file(file);
+  MLog ( @"To Do: Add metadata and image to saved game" ); //DCW
+  save_game_file(file, nil, nil);
+
   
   MLog ( @"Saving game: %@", game );
   NSError *error = nil;
@@ -1231,6 +1287,14 @@ extern bool handle_open_replay(FileSpecifier& File);
   [self PlayInterfaceButtonSound];
   [self newGame];
 }
+- (IBAction)menuJoinNetworkGame {
+  [self PlayInterfaceButtonSound];
+  [self joinNetworkGame];
+}
+- (IBAction)menuGatherNetworkGame {
+  [self PlayInterfaceButtonSound];
+  [self gatherNetworkGame];
+}
 - (IBAction)menuLoadGame {
   [self PlayInterfaceButtonSound];
   do_menu_item_command(mInterface, iLoadGame, false);
@@ -1315,9 +1379,9 @@ extern bool handle_open_replay(FileSpecifier& File);
       CGPoint location = [self transformTouchLocation:[recognizer locationInView:self.menuView]];
       location = [recognizer locationInView:self.menuView];
       lastMenuTap = location;
-      SDL_SendMouseMotion(0, location.x, location.y);
-      SDL_SendMouseButton(SDL_PRESSED, SDL_BUTTON_LEFT);
-      SDL_SendMouseButton(SDL_RELEASED, SDL_BUTTON_LEFT);
+      SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, 0, location.x, location.y);
+      SDL_SendMouseButton(NULL, SDL_TOUCH_MOUSEID, SDL_PRESSED, SDL_BUTTON_LEFT);
+      SDL_SendMouseButton(NULL, SDL_TOUCH_MOUSEID, SDL_RELEASED, SDL_BUTTON_LEFT);
       SDL_GetRelativeMouseState(NULL, NULL);
     }
   }
@@ -1756,9 +1820,9 @@ short items[]=
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
       // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
       // not be called in system versions earlier than 3.1.
-      displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
-      [displayLink setFrameInterval:animationFrameInterval];
-      [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
+        [displayLink setFrameInterval:animationFrameInterval];
+        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
       animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
     }
@@ -1797,8 +1861,9 @@ short items[]=
         self.zoomOutButton.hidden = YES;
     }
     [self updateReticule:get_player_desired_weapon(current_player_index)];
-    if ( get_game_state() == _display_main_menu && ( mode == MenuMode || mode == CutSceneMode ) ) {
+    if ( get_game_state() == _display_main_menu && ( mode == SDLMenuMode || mode == MenuMode || mode == CutSceneMode ) ) {
         [self menuShowReplacementMenu];
+        self.viewGL.userInteractionEnabled = NO; //DCW
         mode = MenuMode;
     }
     // Causing a bug, always dim
@@ -1812,8 +1877,9 @@ short items[]=
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }
     }
-    
-    if ( !inMainLoop ) {
+  
+    //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
+    if ( !inMainLoop && mode != SDLMenuMode) {
         inMainLoop = YES;
         AlephOneMainLoop();
         inMainLoop = NO;

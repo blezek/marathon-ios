@@ -12,9 +12,9 @@
 
 
 @interface ButtonView : UIView {
-  SDLKey key;
+  SDL_Keycode key;
 }
 
-- (void)setup:(SDLKey)k;
+- (void)setup:(SDL_Keycode)k;
 
 @end

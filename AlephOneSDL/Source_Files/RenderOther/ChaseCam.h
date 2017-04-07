@@ -1,27 +1,27 @@
 /*
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
+	March 2, 2000 (Loren Petrich)
 
-        March 2, 2000 (Loren Petrich)
+	Chase-Cam Interface; this makes Marathon something like Halo.
 
-        Chase-Cam Interface; this makes Marathon something like Halo.
-
- */
+*/
 
 #ifndef _CHASE_CAM
 #define _CHASE_CAM
@@ -31,20 +31,20 @@
 enum // Chase-cam flags
 
 {
-  _ChaseCam_OnWhenEntering = 0x0004,
-  _ChaseCam_NeverActive = 0x0002,
-  _ChaseCam_ThroughWalls = 0x0001
+	_ChaseCam_OnWhenEntering = 0x0004,
+	_ChaseCam_NeverActive = 0x0002,
+	_ChaseCam_ThroughWalls = 0x0001
 };
 
 struct ChaseCamData
 {
-  short Behind;
-  short Upward;
-  short Rightward;
-  short Flags;
-  float Damping;
-  float Spring;
-  float Opacity;
+	short Behind;
+	short Upward;
+	short Rightward;
+	short Flags;
+	float Damping;
+	float Spring;
+	float Opacity;
 };
 
 // True for OK, false for cancel;
@@ -83,7 +83,7 @@ bool ChaseCam_SwitchSides();
 // This function calls everything as references; it does not change the outputs
 // if the chase-cam is inactive. It will return everything necessary to set the chase-cam's view.
 bool ChaseCam_GetPosition(world_point3d &position,
-                          short &polygon_index, angle &yaw, angle &pitch);
+	short &polygon_index, angle &yaw, angle &pitch);
 
 #endif
 

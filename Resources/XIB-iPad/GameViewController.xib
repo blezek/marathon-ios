@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,7 +38,7 @@
                 <outlet property="savedGameMessage" destination="83" id="86"/>
                 <outlet property="splashView" destination="109" id="110"/>
                 <outlet property="view" destination="2" id="22"/>
-                <outlet property="waitingImageView" destination="180" id="188"/>
+                <outlet property="waitingImageView" destination="m0u-B4-O9o" id="TuD-XH-0GO"/>
                 <outlet property="zoomInButton" destination="134" id="140"/>
                 <outlet property="zoomOutButton" destination="135" id="141"/>
             </connections>
@@ -45,16 +49,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9" userLabel="HUD">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4" userLabel="Pause">
-                            <frame key="frameInset" minX="953" width="70" height="70"/>
+                            <rect key="frame" x="953" y="0.0" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" image="pause-btn.png">
@@ -69,7 +73,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.5" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="134">
-                            <frame key="frameInset" minX="216" minY="457" width="96" height="96"/>
+                            <rect key="frame" x="216" y="457" width="96" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Zoom In" image="zoom_in.png">
@@ -84,7 +88,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.5" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="135">
-                            <frame key="frameInset" minX="320" minY="457" width="96" height="96"/>
+                            <rect key="frame" x="320" y="457" width="96" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Zoom Out" image="zoom_out.png">
@@ -99,15 +103,15 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="ret_pistol.png" translatesAutoresizingMaskIntoConstraints="NO" id="176">
-                            <frame key="frameInset" minX="480" minY="272" width="64" height="64"/>
+                            <rect key="frame" x="480" y="272" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83" userLabel="Game Saved">
-                            <frame key="frameInset" minX="412" minY="320" width="200" height="100"/>
+                            <rect key="frame" x="412" y="320" width="200" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Game Saved" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="30" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84">
-                                    <frame key="frameInset" minX="2" width="200" height="100"/>
+                                    <rect key="frame" x="2" y="0.0" width="200" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
                                     <color key="textColor" red="0.1411290318" green="1" blue="0.1008064523" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,15 +125,15 @@
                     <color key="backgroundColor" red="0.98556053638458252" green="1" blue="0.99009859561920166" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="145" userLabel="Replacement Menu">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="HomeScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="178" userLabel="Background">
-                            <frame key="frameInset" width="1024" height="768"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="146">
-                            <frame key="frameInset" minX="710" minY="155" width="290" height="74"/>
+                            <rect key="frame" x="710" y="155" width="290" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="New" image="NewGameButton.png">
@@ -144,7 +148,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="147">
-                            <frame key="frameInset" minX="710" minY="239" width="290" height="74"/>
+                            <rect key="frame" x="710" y="239" width="290" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Load" image="LoadButton.png">
@@ -159,7 +163,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="156">
-                            <frame key="frameInset" minX="710" minY="322" width="290" height="74"/>
+                            <rect key="frame" x="710" y="322" width="290" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Preferences" image="SettingsButton.png">
@@ -174,7 +178,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="148">
-                            <frame key="frameInset" minX="710" minY="406" width="290" height="74"/>
+                            <rect key="frame" x="710" y="406" width="290" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Store" image="StoreButton.png">
@@ -189,7 +193,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160" userLabel="About">
-                            <frame key="frameInset" minX="710" minY="489" width="290" height="74"/>
+                            <rect key="frame" x="710" y="489" width="290" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -205,7 +209,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="189">
-                            <frame key="frameInset" minX="-13" minY="655" width="128" height="128"/>
+                            <rect key="frame" x="-13" y="655" width="128" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Achievements" image="AchievementsButton.png">
@@ -220,7 +224,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="190">
-                            <frame key="frameInset" minX="88" minY="655" width="128" height="128"/>
+                            <rect key="frame" x="88" y="655" width="128" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Leaderboards" image="LeaderboardsButton.png">
@@ -235,7 +239,7 @@
                             </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168">
-                            <frame key="frameInset" minX="30" minY="50" width="150" height="37"/>
+                            <rect key="frame" x="30" y="50" width="150" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Save Film">
@@ -249,7 +253,7 @@
                             </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
-                            <frame key="frameInset" minX="30" width="150" height="37"/>
+                            <rect key="frame" x="30" y="0.0" width="150" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Load Saved Film">
@@ -266,51 +270,51 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61" userLabel="Load Game">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10999999940000001" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="87" userLabel="Progress">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.98553907871246338" green="1" blue="0.99996650218963623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101" userLabel="Pause">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="102" userLabel="Preferences">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view autoresizesSubviews="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="111" userLabel="Restart View" customClass="ButtonView">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="Reload.png" translatesAutoresizingMaskIntoConstraints="NO" id="113">
-                            <frame key="frameInset"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50" userLabel="New Game">
-                    <frame key="frameInset"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="162" userLabel="About View">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="ThanksBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="164">
-                            <frame key="frameInset"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="166" userLabel="Done">
-                            <frame key="frameInset" minX="702" minY="680" width="236" height="74"/>
+                            <rect key="frame" x="702" y="680" width="236" height="74"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Done" image="DoneButtonThanks.png">
@@ -328,54 +332,58 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116" userLabel="Help">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="126" userLabel="Film View">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="158" userLabel="Purchase View">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="179" userLabel="LogoView">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="EpisodeLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="183" userLabel="EpisodeLogo">
-                            <frame key="frameInset" width="1024" height="768"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="powered-by-alephone.png" translatesAutoresizingMaskIntoConstraints="NO" id="m0u-B4-O9o" userLabel="Powered By A1 Image View">
+                            <rect key="frame" x="392" y="320" width="240" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="180">
-                            <frame key="frameInset" width="1024" height="768"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="180">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="EpisodeLoading.png" translatesAutoresizingMaskIntoConstraints="NO" id="109" userLabel="EpisodeLoading">
-                            <frame key="frameInset" width="1024" height="768"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="BungieAerospace.png" translatesAutoresizingMaskIntoConstraints="NO" id="182" userLabel="Bungie Aerospace">
-                            <frame key="frameInset" width="1024" height="768"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="130" userLabel="Controls Overview">
-                    <frame key="frameInset" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="ControlsOverview.png" translatesAutoresizingMaskIntoConstraints="NO" id="131">
-                            <frame key="frameInset"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" image="TouchToContinue.png" translatesAutoresizingMaskIntoConstraints="NO" id="132" userLabel="Touch to Continue">
-                            <frame key="frameInset" minX="256" minY="334" width="512" height="100"/>
+                            <rect key="frame" x="256" y="334" width="512" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
@@ -390,26 +398,27 @@
         </view>
     </objects>
     <resources>
-        <image name="AboutButton.png" width="290" height="74"/>
-        <image name="AchievementsButton.png" width="104" height="93"/>
-        <image name="BungieAerospace.png" width="1024" height="768"/>
+        <image name="AboutButton.png" width="136" height="36"/>
+        <image name="AchievementsButton.png" width="52" height="46"/>
+        <image name="BungieAerospace.png" width="480" height="320"/>
         <image name="ControlsOverview.png" width="1024" height="768"/>
-        <image name="DoneButtonThanks.png" width="236" height="74"/>
-        <image name="EpisodeLoading.png" width="1024" height="768"/>
-        <image name="EpisodeLogo.png" width="1024" height="768"/>
-        <image name="HomeScreen.png" width="1024" height="768"/>
-        <image name="LeaderboardsButton.png" width="104" height="94"/>
-        <image name="LoadButton.png" width="290" height="74"/>
-        <image name="NewGameButton.png" width="290" height="74"/>
-        <image name="Reload.png" width="512" height="512"/>
-        <image name="SettingsButton.png" width="290" height="74"/>
-        <image name="Somewhere.png" width="1024" height="768"/>
-        <image name="StoreButton.png" width="290" height="74"/>
-        <image name="ThanksBackground.png" width="1024" height="768"/>
-        <image name="TouchToContinue.png" width="512" height="100"/>
-        <image name="pause-btn.png" width="70" height="70"/>
-        <image name="ret_pistol.png" width="64" height="64"/>
-        <image name="zoom_in.png" width="128" height="128"/>
-        <image name="zoom_out.png" width="128" height="128"/>
+        <image name="DoneButtonThanks.png" width="111" height="35"/>
+        <image name="EpisodeLoading.png" width="480" height="320"/>
+        <image name="EpisodeLogo.png" width="480" height="320"/>
+        <image name="HomeScreen.png" width="480" height="320"/>
+        <image name="LeaderboardsButton.png" width="52" height="47"/>
+        <image name="LoadButton.png" width="136" height="36"/>
+        <image name="NewGameButton.png" width="136" height="36"/>
+        <image name="Reload.png" width="256" height="256"/>
+        <image name="SettingsButton.png" width="136" height="36"/>
+        <image name="Somewhere.png" width="480" height="320"/>
+        <image name="StoreButton.png" width="136" height="36"/>
+        <image name="ThanksBackground.png" width="480" height="320"/>
+        <image name="TouchToContinue.png" width="256" height="50"/>
+        <image name="pause-btn.png" width="35" height="35"/>
+        <image name="powered-by-alephone.png" width="640" height="320"/>
+        <image name="ret_pistol.png" width="32" height="32"/>
+        <image name="zoom_in.png" width="64" height="64"/>
+        <image name="zoom_out.png" width="64" height="64"/>
     </resources>
 </document>

@@ -50,6 +50,7 @@
 @property (nonatomic) int retinaDisplay;
 @property (nonatomic) int longScreenDimension; //DCW
 @property (nonatomic) int shortScreenDimension; //DCW
+
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 

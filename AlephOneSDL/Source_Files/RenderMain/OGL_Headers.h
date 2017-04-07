@@ -3,25 +3,25 @@
 
 /*
 
-        Copyright (C) 2009 by Gregory Smith
-        and the "Aleph One" developers.
+	Copyright (C) 2009 by Gregory Smith
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
-
-        Uniform header for all Aleph One OpenGL users
- */
+	Uniform header for all Aleph One OpenGL users
+*/
 
 #ifdef __WIN32__
 
@@ -34,9 +34,24 @@
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 
-// DJB
+#include "SDL_opengl.h"
+
+
+  //DCW
+#include <OpenGLES/ES1/gl.h>    
+#include <OpenGLES/ES2/gl.h>
+#include <OpenGLES/ES3/gl.h>
+typedef double GLdouble; //DCW Not defined in GLES
+typedef double GLclampd;  //DCW Not defined in GLES
+#include "SDL_opengl_glext.h" //DCW
 #include "SDL_opengles.h"
-// #include <glu.h>
+
+
+#if defined (__APPLE__) && defined(__MACH__)
+//#include <OpenGL/glu.h> //DCW Commenting out for iOS
+#else
+#include <GL/glu.h>
+#endif
 
 #endif
 

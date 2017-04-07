@@ -9,9 +9,6 @@
 #import "ButtonView.h"
 #import "GameViewController.h"
 extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
-  
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
 #include "SDL_stdinc.h"
@@ -32,26 +29,25 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
+#include "AlephOneHelper.h"
 
 @implementation ButtonView
 
-- (void)setup:(SDLKey)k {
+- (void)setup:(SDL_Keycode)k {
   key = k;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   for ( UITouch *touch in [event touchesForView:self] ) {
-    key_map[key] = 1;
+    setKey(key, 1);
   }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-  
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {  
   for ( UITouch *touch in [event touchesForView:self] ) {
     // NSLog(@"Touch ended in fire button");
-    key_map[key] = 0;
+    setKey(key, 0);
+    
   }
   return;
   

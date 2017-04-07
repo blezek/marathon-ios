@@ -8,10 +8,7 @@
 
 #import "HUDViewController.h"
 
-extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
-  
+extern "C" { 
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
 #include "SDL_stdinc.h"
@@ -33,6 +30,8 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
+#include "AlephOneHelper.h"
+
 @implementation HUDViewController
 @synthesize primaryFireKey, secondaryFireKey;
 
@@ -40,7 +39,7 @@ extern "C" {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {      
-      key_definition *key = current_key_definitions;
+      key_definition *key = standard_key_definitions;
       for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
         if ( key->action_flag == _left_trigger_state ){
           primaryFireKey = key->offset;
@@ -100,134 +99,103 @@ extern "C" {
   [self lookRightUp:nil];
 }
 - (IBAction)primaryFireDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[primaryFireKey] = 1;
+  setKey(primaryFireKey, 1);
 }
 - (IBAction)primaryFireUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[primaryFireKey] = 0;  
+  setKey(primaryFireKey, 0);
+
 }
 - (IBAction)secondaryFireDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[secondaryFireKey] = 1;
+  setKey(secondaryFireKey, 1);
 }
 - (IBAction)secondaryFireUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[secondaryFireKey] = 0;
+  setKey(secondaryFireKey, 0);
 }
 - (IBAction)nextWeaponDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[nextWeaponKey] = 1;
+  setKey(nextWeaponKey, 1);
 }
 - (IBAction)nextWeaponUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[nextWeaponKey] = 0;
+  setKey(nextWeaponKey, 0);
 }
 - (IBAction)previousWeaponDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[previousWeaponKey] = 1;
+  setKey(previousWeaponKey, 1);
 }
 - (IBAction)previousWeaponUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[previousWeaponKey] = 0;
+  setKey(previousWeaponKey, 0);
 }
 - (IBAction)inventoryDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[inventoryKey] = 1;
+  setKey(inventoryKey, 1);
 }
 - (IBAction)inventoryUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[inventoryKey] = 0;
+  setKey(inventoryKey, 0);
 }
 - (IBAction)actionDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[actionKey] = 1;
+  setKey(actionKey, 1);
 }
 - (IBAction)actionUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[actionKey] = 0;
+  setKey(actionKey, 0);
 }
 - (IBAction)forwardDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[forwardKey] = 1;
+  setKey(forwardKey, 1);
 }
 - (IBAction)forwardUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[forwardKey] = 0;
+  setKey(forwardKey, 0);
 }
 - (IBAction)backwardDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[backwardKey] = 1;
+  setKey(backwardKey, 1);
 }
 - (IBAction)backwardUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[backwardKey] = 0;
+  setKey(backwardKey, 0);
 }
 - (IBAction)leftDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[leftKey] = 1;
+  setKey(leftKey, 1);
 }
 - (IBAction)leftUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[leftKey] = 0;
+  setKey(leftKey, 0);
 }
 - (IBAction)rightDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[rightKey] = 1;
+  setKey(rightKey, 1);
 }
 - (IBAction)rightUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[rightKey] = 0;
+  setKey(rightKey, 0);
 }
 - (IBAction)runDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[runKey] = 1;
+  setKey(runKey, 1);
 }
 - (IBAction)runUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[runKey] = 0;
+  setKey(runKey, 0);
 }
 - (IBAction)mapDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[mapKey] = 1;
+  setKey(mapKey, 1);
 }
 - (IBAction)mapUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[mapKey] = 0;
+  setKey(mapKey, 0);
 }
 
 // Looking
 - (IBAction)lookUpDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookUpKey] = 1;
+  setKey(lookUpKey, 1);
 }
 - (IBAction)lookUpUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookUpKey] = 0;
+  setKey(lookUpKey, 0);
 }
 - (IBAction)lookDownDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookDownKey] = 1;
+  setKey(lookDownKey, 1);
 }
 - (IBAction)lookDownUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookDownKey] = 0;
+  setKey(lookDownKey, 0);
 }
 - (IBAction)lookLeftDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookLeftKey] = 1;
+  setKey(lookLeftKey, 1);
 }
 - (IBAction)lookLeftUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookLeftKey] = 0;
+  setKey(lookLeftKey, 0);
 }
 - (IBAction)lookRightDown:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookRightKey] = 1;
+  setKey(lookRightKey, 1);
 }
 - (IBAction)lookRightUp:(id)sender {
-  Uint8 *key_map = SDL_GetKeyboardState(NULL);
-  key_map[lookRightKey] = 0;
+  setKey(lookRightKey, 0);
 }
 
 - (void)dimActionKey:(short)actionType {}

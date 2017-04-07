@@ -153,7 +153,7 @@ static UploaderThread *_sharedUploaderThread = nil;
 	// so it is not deleted.  In the event that we accidently store data which was succesfully uploaded, the
 	// duplicate data will be ignored by the server when it is next uploaded.
 	[self logMessage:[NSString stringWithFormat: 
-					  @"Error Uploading.  Code: %d,  Description: %s", 
+					  @"Error Uploading.  Code: %d,  Description: %@", 
 					  [error code], 
 					  [error localizedDescription]]];
 

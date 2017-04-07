@@ -17,15 +17,15 @@
   CGFloat moveRadius2;
   CGFloat deadSpaceRadius;
   CGFloat runRadius;
-  SDLKey forwardKey;
-  SDLKey backwardKey;
-  SDLKey leftKey;
-  SDLKey rightKey;
-  SDLKey runKey;
+  SDL_Keycode forwardKey;
+  SDL_Keycode backwardKey;
+  SDL_Keycode leftKey;
+  SDL_Keycode rightKey;
+  SDL_Keycode runKey;
 	
 		//DCW
-	SDLKey secondaryFireKey;
-	SDLKey actionKey;
+	SDL_Keycode secondaryFireKey;
+	SDL_Keycode actionKey;
 	bool	 useForceTouch;
 
   UIImageView *knobView;

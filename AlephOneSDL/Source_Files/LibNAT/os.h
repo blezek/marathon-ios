@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: os.h 2615 2006-03-12 06:14:59Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -33,8 +33,7 @@
 */
 #if !defined(OS_UNIX)
 # ifndef OS_WIN
-#   if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || \
-  defined(__MINGW32__) || defined(__BORLANDC__)
+#   if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) || defined(__BORLANDC__)
 #     define OS_WIN 1
 #     define OS_UNIX 0
 #   else
@@ -101,23 +100,19 @@ typedef struct OsSocket OsSocket;
 */
 int LNat_Os_Socket_Udp_Setup(OsSocket ** s);
 int LNat_Os_Socket_Udp_Close(OsSocket ** s);
-int LNat_Os_Socket_Udp_Send(OsSocket * s, const char * host_addr,
-                            short int port,
-                            char * buf, int amt,
-                            int * amt_sent);
-int LNat_Os_Socket_Udp_Recv(OsSocket * s, const char * host_addr,
-                            short int port,
-                            char * buf, int amt, int * amt_recv,
-                            int timeout_sec);
+int LNat_Os_Socket_Udp_Send(OsSocket * s, const char * host_addr, short int port, 
+                            char * buf, int amt, int * amt_sent);
+int LNat_Os_Socket_Udp_Recv(OsSocket * s, const char * host_addr, short int port,
+                            char * buf, int amt, int * amt_recv, int timeout_sec);
 
 /*
 ** TCP Socket Interface
 */
-int LNat_Os_Socket_Connect(OsSocket ** s, const char * host_addr,
+int LNat_Os_Socket_Connect(OsSocket ** s, const char * host_addr, 
                            short int port, int timeout_sec);
 int LNat_Os_Socket_Close(OsSocket **);
 int LNat_Os_Socket_Send(OsSocket *, char * buf, int amt, int * amt_sent);
-int LNat_Os_Socket_Recv(OsSocket *, char * buf, int amt,
+int LNat_Os_Socket_Recv(OsSocket *, char * buf, int amt, 
                         int * amt_recv, int timeout_sec);
 
 /*

@@ -16,7 +16,10 @@
 ////#import "TestFlight.h"
 
 extern "C" {
-#import "SDL_sysvideo.h"
+#import "SDL.h" //DCW include main for SDL
+#include "SDL_hints.h" //DCW
+
+//#import "SDL_sysvideo.h" //DCW not sure if this is needed in SDL2
 #import "SDL_events_c.h"
 #import "jumphack.h"
 }
@@ -27,23 +30,51 @@ extern "C" {
 #include "preferences.h"
 
 
+  //DCW
+static void
+SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldValue, const char *hint)
+{
+  BOOL disable = (hint && *hint != '0');
+  [UIApplication sharedApplication].idleTimerDisabled = disable;
+}
+
 @implementation AlephOneAppDelegate
 
 @synthesize window, scenario, game, OpenGLESVersion, purchases;
 @synthesize viewController;
 @synthesize oglWidth, oglHeight, retinaDisplay, longScreenDimension, shortScreenDimension;
 
-extern int SDL_main(int argc, char *argv[]);
-
 #pragma mark -
 #pragma mark AlephOne startup
 
 - (void)startAlephOne {
   finishedStartup = YES;
+
+  
+    //DCW bypass sdl main
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+  SDL_AddHintCallback(SDL_HINT_IDLE_TIMER_DISABLED, SDL_IdleTimerDisabledChanged, NULL);
+  SDL_SetMainReady();
+  SDL_iPhoneSetEventPump(SDL_TRUE);
+
+  
+  UIWindow *appMenuWindow = [[UIApplication sharedApplication] keyWindow]; //Grab a reference to the current key window
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
-
+  
+  SDL_iPhoneSetEventPump(SDL_TRUE);
+  
+  //DCW
+  //If SDL initialized correctly, it will now be the key window. We don't really want that, but instead want it's view to be a subview of the game view.
+  //This is a bit fragile. In the future, maybe vberify that the key window is actually an SDL window as we expect.
+  UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
+  UIView *a1View = [a1Window rootViewController].view;
+  [game setOpenGLView:a1View];
+    
+  [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
+  
+  
   // Kick in the purchases
   [self.purchases checkPurchases];
   
@@ -60,6 +91,23 @@ extern int SDL_main(int argc, char *argv[]);
   
 }
 
+//Borrowed from DLudwig
+// Retrieve SDL's root UIViewController (iOS only!)
+// This function is completely NOT guaranteed to work in the future.
+// Use it at your own risk!
+/*UIViewController * GetSDLViewController(SDL_Window * sdlWindow)
+{
+  SDL_SysWMinfo systemWindowInfo;
+  SDL_VERSION(&systemWindowInfo.version);
+  if ( ! SDL_GetWindowWMInfo(sdlWindow, &systemWindowInfo)) {
+    // consider doing some kind of error handling here
+    return nil;
+  }
+  UIWindow * appWindow = mainWindowWMInfo.info.uikit.window;
+  UIViewController * rootViewController = appWindow.rootViewController;
+  return rootViewController;
+}*/
+
 - (void)initAndBegin {
   // Initialize the game
   self.game.splashView.hidden = YES;
@@ -68,7 +116,7 @@ extern int SDL_main(int argc, char *argv[]);
   [Appirater appLaunched:YES];
   // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
   [game startAnimation];
-}  
+}
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -81,10 +129,14 @@ extern int SDL_main(int argc, char *argv[]);
   [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
   [Achievements login];
 
-	//DCW: provide a comman way to get the current screen dimensions for landscape.
+	//DCW: provide a common way to get the current screen dimensions for landscape.
 	longScreenDimension = max([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
 	shortScreenDimension = min([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
 	
+  //DCW clear fake key map:
+  for(int i=0; i<SDL_NUM_SCANCODES; ++i)
+    fake_key_map[i]=0;
+  
   // Default preferences
   // Set the application defaults  
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -267,6 +319,8 @@ extern int SDL_main(int argc, char *argv[]);
   float delay = 1.2;
   
   float startDelay = 0.0;
+  
+  
 #if SCENARIO == 2
   startDelay = 0.1;
 #endif  
@@ -400,8 +454,10 @@ const char* argv[] = { "AlephOneHD" };
 - (void)postFinishLaunch {
   
 	/* run the user's application, passing argc and argv */
-	int exit_status = SDL_main(1, (char**)argv);
-	
+  int exit_status =0; //DCW
+
+  //int exit_status = SDL_main(1, (char**)argv);  //DCW may no longer be needed
+
 	/* exit, passing the return status from the user's application */
 	exit(exit_status);
 }
