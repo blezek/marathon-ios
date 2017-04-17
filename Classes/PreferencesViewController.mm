@@ -13,9 +13,12 @@
 #include "preferences.h"
 #include "Mixer.h"
 #import "GameKit/GameKit.h"
+#import "KeychainItemWrapper.h"
+
 ////#import "Tracking.h"
 @implementation PreferencesViewController
 
+@synthesize login, password;
 @synthesize tapShoots;
 @synthesize secondTapShoots;
 @synthesize sfxVolume;
@@ -35,7 +38,10 @@
   // Save the back to defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-
+  KeychainItemWrapper *keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"metaserver" accessGroup:nil] autorelease];
+  [keychain setObject:[login text] forKey:(id)kSecAttrAccount];
+  [keychain setObject:[password text] forKey:(id)kSecValueData];
+  
   [defaults setBool:[self.tapShoots isSelected] forKey:kTapShoots];
   if ( [self.tapShoots isSelected] != [defaults boolForKey:kTapShoots] ) {
     ////[Tracking trackEvent:@"settings" action:kTapShoots label:@"" value:[self.tapShoots isSelected]];
@@ -112,10 +118,15 @@
     [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateNormal];
     [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateSelected];
     [slider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateHighlighted];
-    [slider setMaximumTrackImage:[UIImage imageNamed:@"SliderBlackTrack"]  forState:UIControlStateNormal];
-    [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderRedTrack"]forState:UIControlStateNormal];
+    [slider setMaximumTrackImage:[UIImage imageNamed:@"SliderGreyTrack"]  forState:UIControlStateNormal];
+    [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderWhiteTrack"]forState:UIControlStateNormal];
   }
   
+  
+  KeychainItemWrapper *keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"metaserver" accessGroup:nil] autorelease];
+  [login setText:[keychain objectForKey:(id)kSecAttrAccount]];
+  [password setText:[keychain objectForKey:(id)kSecValueData]];
+
   inMainMenu = inMainMenuFlag;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [self.tapShoots setSelected:[defaults boolForKey:kTapShoots]];
@@ -197,6 +208,20 @@
   sound_preferences->volume = ceil ( (double)[defaults floatForKey:kSfxVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
   SoundManager::instance()->parameters.music = sound_preferences->music;
   SoundManager::instance()->parameters.volume = sound_preferences->volume;
+  
+  KeychainItemWrapper *keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"metaserver" accessGroup:nil] autorelease];
+  NSString *loginName=[keychain objectForKey:(id)kSecAttrAccount];
+  NSString *pass=[keychain objectForKey:(id)kSecValueData];
+  
+  network_preferences->metaserver_login[0] = '\0';
+  network_preferences->metaserver_password[0] = '\0';
+
+  for (int i = 0; i < network_preferences_data::kMetaserverLoginLength && i < [loginName length]; ++i ) {
+    network_preferences->metaserver_login[i] = [loginName characterAtIndex:i];
+  }
+  for (int i = 0; i < network_preferences_data::kMetaserverLoginLength && i < [pass length]; ++i ) {
+    network_preferences->metaserver_password[i] = [pass characterAtIndex:i];
+  }
   
   float sens;
   sens = [defaults floatForKey:kVSensitivity];

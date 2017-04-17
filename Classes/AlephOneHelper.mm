@@ -200,6 +200,17 @@ void getSomeTextFromIOS(char *label, const char *currentText)  {
                                                          event.type = SDL_TEXTINPUT;
                                                          SDL_utf8strlcpy(event.text.text, [currentNString cStringUsingEncoding:NSUTF8StringEncoding], SDL_arraysize(event.text.text));
                                                          SDL_PushEvent(&event);
+                                                         
+                                                         //Simulate SDLK_KP_ENTER key pressed, (Because SDLK_RETURN gets wedged for some reason) in case this is a Say: box or something.
+                                                         SDL_Event enter, unenter;
+                                                         enter.type = SDL_KEYDOWN;
+                                                         SDL_utf8strlcpy(enter.text.text, "E", SDL_arraysize(enter.text.text));
+                                                         enter.key.keysym.sym=SDLK_KP_ENTER;
+                                                         SDL_PushEvent(&enter);
+                                                         unenter.type = SDL_KEYUP;
+                                                         SDL_utf8strlcpy(unenter.text.text, "E", SDL_arraysize(unenter.text.text));
+                                                         unenter.key.keysym.sym=SDLK_KP_ENTER;
+                                                         SDL_PushEvent(&unenter);
                                                        }];
   [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
     //Set the text field to whatever the current text is:

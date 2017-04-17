@@ -71,6 +71,8 @@ extern "C" {
           lookLeftKey = key->offset;
         } else if ( key->action_flag == _looking_right ) {
           lookRightKey = key->offset;
+        } else if ( key->action_flag == _key_activate_console ) {
+          consoleKey = key->offset;
         }
       }
     }
@@ -171,6 +173,26 @@ extern "C" {
 - (IBAction)mapUp:(id)sender {
   setKey(mapKey, 0);
 }
+
+- (IBAction)consoleDown:(id)sender {
+  setKey(consoleKey, 1);
+}
+- (IBAction)consoleUp:(id)sender{
+  setKey(consoleKey, 0);
+  
+  SDL_Event enter, unenter;
+  enter.type = SDL_KEYDOWN;
+  SDL_utf8strlcpy(enter.text.text, "\\", SDL_arraysize(enter.text.text));
+  enter.key.keysym.sym=SDLK_BACKSLASH;
+  SDL_PushEvent(&enter);
+  unenter.type = SDL_KEYUP;
+  SDL_utf8strlcpy(unenter.text.text, "\\", SDL_arraysize(unenter.text.text));
+  unenter.key.keysym.sym=SDLK_BACKSLASH;
+  SDL_PushEvent(&unenter);
+
+  
+}
+
 
 // Looking
 - (IBAction)lookUpDown:(id)sender {

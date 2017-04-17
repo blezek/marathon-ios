@@ -23,6 +23,8 @@
   SDL_Keycode rightKey;
   SDL_Keycode runKey;
   SDL_Keycode mapKey;
+  SDL_Keycode consoleKey;
+
   
   SDL_Keycode lookUpKey;
   SDL_Keycode lookDownKey;
@@ -60,6 +62,8 @@
 - (IBAction)runUp:(id)sender;
 - (IBAction)mapDown:(id)sender;
 - (IBAction)mapUp:(id)sender;
+- (IBAction)consoleDown:(id)sender;
+- (IBAction)consoleUp:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
 - (IBAction)lookUpDown:(id)sender;

@@ -194,7 +194,7 @@ extern "C" {
   setKey(forwardKey, 0);
   setKey(backwardKey, 0);
   setKey(runKey, 0);
-  setKey(secondaryFireKey, 0);
+
   SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
 	
 	//DCW. Do open/activate key when released

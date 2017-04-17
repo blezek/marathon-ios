@@ -2575,6 +2575,17 @@ void read_preferences ()
 			alert_user(expand_app_variables("There were preferences-file parsing errors (see $appLogFile$ for details)").c_str(), infoError);
 	}
 
+  helperSetPreferences( false); //DJB
+  
+  // Print out some things...
+  printf ( "Metaserver Login: %d\n", network_preferences->metaserver_login );
+  printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
+  printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
+  printf ( "VSen (int): %d\n", FIXED_INTEGERAL_PART(input_preferences->sens_vertical) );
+  printf ( "Sound channels: %hd\n", sound_preferences->channel_count );
+  printf ( "Music Volume: %hd\n", sound_preferences->music );
+  
+  
 	// Check on the read-in prefs
 	validate_graphics_preferences(graphics_preferences);
 	validate_serial_number_preferences(serial_preferences);

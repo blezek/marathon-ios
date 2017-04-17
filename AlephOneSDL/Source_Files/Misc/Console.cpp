@@ -290,6 +290,8 @@ void Console::line_end() {
 	m_cursor_position = m_buffer.length();
 }
 
+#include "AlephOneHelper.h"
+
 void Console::activate_input(boost::function<void (const std::string&)> callback,
 			     const std::string& prompt)
 {
@@ -301,7 +303,15 @@ void Console::activate_input(boost::function<void (const std::string&)> callback
 	m_active = true;
 	m_cursor_position = 0;
 	
-	SDL_StartTextInput();
+  //DCW Alternate ios input.
+  if(game_is_networked)
+    getSomeTextFromIOS("Chat", "");
+  else
+    getSomeTextFromIOS("Console", "");
+  return;
+
+  
+  SDL_StartTextInput();
 }
 
 void Console::deactivate_input() {

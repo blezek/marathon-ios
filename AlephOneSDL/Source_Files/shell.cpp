@@ -857,7 +857,6 @@ static void main_event_loop(void)
 					poll_event = true;
 					last_event_poll = cur_time;
 			  } else {				  
-					//DCW commenting out for ios
           SDL_PumpEvents ();	// This ensures a responsive keyboard control
 			  }
 				break;
@@ -952,7 +951,7 @@ static void handle_game_key(const SDL_Event &event)
 	SDL_Scancode sc = event.key.keysym.scancode;
 	bool changed_screen_mode = false;
 	bool changed_prefs = false;
-
+  
 	if (!game_is_networked && (event.key.keysym.mod & KMOD_CTRL) && CheatsActive) {
 		int type_of_cheat = process_keyword_key(key);
 		if (type_of_cheat != NONE)
@@ -1111,7 +1110,7 @@ static void handle_game_key(const SDL_Event &event)
 			extern bool displaying_fps;
 			displaying_fps = !displaying_fps;
 		}
-		else if (input_preferences->shell_key_bindings[_key_activate_console].count(sc))
+		else if (input_preferences->shell_key_bindings[_key_activate_console].count(sc) || key == SDLK_BACKSLASH ) //DCW Adding check for || key == SDLK_BACKSLASH
 		{
 			if (game_is_networked) {
 #if !defined(DISABLE_NETWORKING)
