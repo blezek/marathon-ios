@@ -2495,6 +2495,13 @@ void read_preferences ()
 	*sound_preferences = SoundManager::Parameters();
 	default_environment_preferences(environment_preferences);
 
+    //DCW lets add some more options
+  graphics_preferences->OGL_Configure.Flags  |=
+    OGL_Flag_Blur
+  | OGL_Flag_BumpMap
+  | OGL_Flag_Fader;
+
+  
 	// Slurp in the file and parse it
 
 	FileSpecifier FileSpec;
