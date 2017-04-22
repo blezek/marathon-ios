@@ -380,6 +380,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [game stopAnimation];
 }
 
+UIBackgroundTaskIdentifier bgTask;
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationDidEnterBackground"];
 ////  [Tracking tagEvent:@"applicationDidEnterBackground"];
@@ -392,6 +393,19 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   // Pause sound
   // SoundManager::instance()->SetStatus(false);
   // [game stopAnimation];
+  
+  NSLog(@"Did enter background. Someday, we should probably put a reasonable time limit on this.");
+  bgTask = [[UIApplication  sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+    NSLog(@"End of tolerate time. Application should be suspended now if we do not ask more 'tolerance'");
+    // [self askToRunMoreBackgroundTask]; This code seems to be unnecessary. I'll verify it.
+  }];
+  
+  if (bgTask == UIBackgroundTaskInvalid) {
+    NSLog(@"This application does not support background mode");
+  } else {
+    NSLog(@"Application will continue to run in background");
+  }
+  
 }
 
 
