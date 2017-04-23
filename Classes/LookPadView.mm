@@ -138,12 +138,19 @@ extern "C" {
 	[self resetGyro];
 	gyroActive = 1;
 	
-	[motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMGyroData *gyro, NSError *error)
+    //Raw gyro data sucks on older devices because there is too much drift.
+	/*[motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMGyroData *gyro, NSError *error)
 						 {
 							 
 							 [(id) self setRotationRate:gyro.rotationRate];
 							 [self performSelectorOnMainThread:@selector(handleGyro) withObject:nil waitUntilDone:NO];
-						 }];
+						 }];*/
+  
+  [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error)
+   {
+     [(id) self setRotationRate:motion.rotationRate];
+     [self performSelectorOnMainThread:@selector(handleGyro) withObject:nil waitUntilDone:NO];
+   }];
 }
 
 - (void)handleGyro {
@@ -160,8 +167,8 @@ extern "C" {
 	double turnFactor = 900; //Arbitrary number multiplied by the amount of rotation used for tilt turning.
 	
 	
-	double cutoff = 5 * elapsedtime; //Noise filter. Gyro movements below this threshold will be ignored.
-	
+  double cutoff = 2 * elapsedtime; //Drift/noise filter. Gyro movements below this threshold will be ignored.
+
 	
 		//How much we rotated on this call. Small rotations don't count.
 	double rotatedX = abs(rotationRate.x) < cutoff ? 0.0 : rotationRate.x * elapsedtime;

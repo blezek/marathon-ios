@@ -28,6 +28,7 @@ extern "C" {
 #import "AlephOneShell.h"
 #import "AlephOneHelper.h"
 #include "preferences.h"
+#include "map.h" //Needed for detecting whether we are networked when going into background.
 
 
   //DCW
@@ -376,11 +377,13 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   // SoundManager::instance()->SetStatus ( false );
 ////  [Tracking trackPageview:@"/applicationWillResignActive"];
 ////  [Tracking tagEvent:@"applicationWillResignActive"];
+  
   [game pauseForBackground:self];
-  [game stopAnimation];
+  if(!game_is_networked) {
+    [game stopAnimation];
+  }
 }
 
-UIBackgroundTaskIdentifier bgTask;
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationDidEnterBackground"];
 ////  [Tracking tagEvent:@"applicationDidEnterBackground"];
@@ -395,19 +398,26 @@ UIBackgroundTaskIdentifier bgTask;
   // [game stopAnimation];
   
   NSLog(@"Did enter background. Someday, we should probably put a reasonable time limit on this.");
+  UIBackgroundTaskIdentifier bgTask;
   bgTask = [[UIApplication  sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
     NSLog(@"End of tolerate time. Application should be suspended now if we do not ask more 'tolerance'");
     // [self askToRunMoreBackgroundTask]; This code seems to be unnecessary. I'll verify it.
   }];
-  
+
   if (bgTask == UIBackgroundTaskInvalid) {
     NSLog(@"This application does not support background mode");
   } else {
-    NSLog(@"Application will continue to run in background");
+    NSLog(@"Application will continue to run in background as task %lu", bgTask );
+    
+    [self performSelector:@selector(endBackgroundTask:) withObject:[NSNumber numberWithUnsignedLong: bgTask] afterDelay:240];
   }
   
 }
 
+- (void)endBackgroundTask:(NSNumber *)taskID {
+  NSLog(@"Ending background task %lu", [taskID unsignedLongValue] );
+  [[UIApplication  sharedApplication] endBackgroundTask:[taskID unsignedLongValue]];
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationWillEnterForeground"];

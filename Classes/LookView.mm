@@ -49,12 +49,17 @@ extern "C" {
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	
+  //NSLog ( @"Touch started");
+
 	//DCW
 	lastForce = 0;
 	primaryForceThreshold = .4;
 	secondaryForceThreshold = .9;
-	
+
+  //DCW clear mouse deltas.
+  float dx, dy;
+  slurpMouseDelta(&dx, &dy);
+  
   if ( firstTouch == nil ) {
     // grab the first
     firstTouch = [touches anyObject];
@@ -103,8 +108,7 @@ extern "C" {
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  // NSLog(@"Touches moved" );
-	
+  //NSLog(@"Touches moved" );
 	
   // If first touch goes away, make this one the first
   if ( firstTouch == nil ) {

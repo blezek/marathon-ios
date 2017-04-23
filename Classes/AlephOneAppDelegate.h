@@ -66,6 +66,7 @@
 - (void)uploadAchievements;
 - (void)oglWidth:(GLint)width oglHeight:(GLint)height;
 - (BOOL)runningOniPad;
+- (void)endBackgroundTask:(NSNumber *)taskID;
 @end
 
 
