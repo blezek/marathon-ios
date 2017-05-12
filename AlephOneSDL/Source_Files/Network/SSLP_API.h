@@ -36,9 +36,9 @@
  */
 
 #ifndef SSLP_API_H
-#define SSLP_API_H
+#define	SSLP_API_H
 
-#include        "SDL_net.h"
+#include	"SDL_net.h"
 
 // SSLP does not "guarantee" anything about its findings - it's intended merely as an aid.  This means (in particular)
 // a host that found a service via SSLP cannot assume that the service definitely exists at the host and port provided...
@@ -47,15 +47,15 @@
 // Note: here's one sticky part, at the moment, for the sake of laziness, I share these constants between
 // the ServiceInstance (part of the API) and the SSLP_Packet network data format.  Really, they should be
 // disentangled, but then I'd have to worry about them being different.  ;)
-#define SSLP_MAX_TYPE_LENGTH    32
-#define SSLP_MAX_NAME_LENGTH    32
+#define	SSLP_MAX_TYPE_LENGTH	32
+#define	SSLP_MAX_NAME_LENGTH	32
 
 // SSLP_ServiceInstance does not get written to network or file, so struct alignment no big whoop
 // sslps_address must have both parts in network (big-endian) byte order, though.
 struct SSLP_ServiceInstance {
-  char sslps_type[SSLP_MAX_TYPE_LENGTH];
-  char sslps_name[SSLP_MAX_NAME_LENGTH];
-  IPaddress sslps_address;              // "host" part ignored by SSLP_*_Service_Discovery()
+    char		sslps_type[SSLP_MAX_TYPE_LENGTH];
+    char		sslps_name[SSLP_MAX_NAME_LENGTH];
+    IPaddress		sslps_address;	// "host" part ignored by SSLP_*_Service_Discovery()
 };
 
 
@@ -97,18 +97,12 @@ SSLP_Pump();
 
 // One more note: in the single-threaded SSLP implementation, callbacks will occur in whatever thread calls
 // SSLP_Pump(), so synchronization is much less of an issue.
-typedef void (*SSLP_Service_Instance_Status_Changed_Callback)(const
-                                                              SSLP_ServiceInstance
-                                                              * inService);
+typedef	void (*SSLP_Service_Instance_Status_Changed_Callback)(const SSLP_ServiceInstance* inService);
 
 void
-SSLP_Locate_Service_Instances(
-  const char* inServiceType,
-  SSLP_Service_Instance_Status_Changed_Callback inFoundCallback,
-  SSLP_Service_Instance_Status_Changed_Callback
-  inLostCallback,
-  SSLP_Service_Instance_Status_Changed_Callback
-  inNameChangedCallback);
+SSLP_Locate_Service_Instances(const char* inServiceType, SSLP_Service_Instance_Status_Changed_Callback inFoundCallback,
+        SSLP_Service_Instance_Status_Changed_Callback inLostCallback,
+        SSLP_Service_Instance_Status_Changed_Callback inNameChangedCallback);
 
 
 
@@ -148,12 +142,11 @@ SSLP_Allow_Service_Discovery(const SSLP_ServiceInstance* inServiceInstance);
 // The data you provide are copied, so you may do whatever you like with your own storage afterwards.
 // NB!! in the current (limited) implementation, a call to this function with a service-instance that differs
 // from the one provided to Allow_Service_Discovery is an ERROR and may lead to odd results.
-// (calling this without having called Allow_Service_Discovery is ok, and makes the other call for you.)
+// (calling this without having called Allow_Service_Discovery is ok, and makes the other call for you.) 
 // Calling this with a different serviceInstance or remote address will change the hinting behavior to reflect
 // your wishes.
 void
-SSLP_Hint_Service_Discovery(const SSLP_ServiceInstance* inServiceInstance,
-                            const IPaddress* inRemoteHost);
+SSLP_Hint_Service_Discovery(const SSLP_ServiceInstance* inServiceInstance, const IPaddress* inRemoteHost);
 
 
 
@@ -168,4 +161,4 @@ void
 SSLP_Disallow_Service_Discovery(const SSLP_ServiceInstance* inServiceInstance);
 
 
-#endif //SSLP_API_H
+#endif//SSLP_API_H

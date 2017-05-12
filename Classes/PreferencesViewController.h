@@ -11,6 +11,8 @@
 
 @interface PreferencesViewController : UIViewController {
   BOOL inMainMenu;
+  UITextField *login;
+  UITextField *password;
   UIButton *tapShoots;
   UIButton *crosshairs;
   UIButton *autoCenter;
@@ -29,6 +31,8 @@
   UIView *screenView;
 }
 
+@property (nonatomic, retain) IBOutlet UITextField *login;
+@property (nonatomic, retain) IBOutlet UITextField *password;
 @property (nonatomic, retain) IBOutlet UIButton *tapShoots;
 @property (nonatomic, retain) IBOutlet UIButton *autoCenter;
 @property (nonatomic, retain) IBOutlet UIButton *crosshairs;

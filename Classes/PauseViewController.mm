@@ -10,6 +10,10 @@
 #import "AlephOneAppDelegate.h"
 #import "Prefs.h"
 #import "GameViewController.h"
+
+#include "interface.h" //DCW
+
+
 @implementation PauseViewController
 @synthesize statusLabel;
 
@@ -32,13 +36,24 @@
 }
 
 - (IBAction) gotoMenu:(id)sender {
+  
+    //DCW If we are in a multiplayer game, exit immediately. Otherwise, the postgame report takes over and hoses the UIActionSheet.
+#if !defined(DISABLE_NETWORKING)
+  short state =get_game_state();
+  if ( state == _displaying_network_game_dialogs || get_game_controller() == _network_player )
+  {
+    [[AlephOneAppDelegate sharedAppDelegate].game gotoMenu:self];
+    return;
+  }
+#endif
+    
   UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Return to menu"
                                                   delegate:self 
                                          cancelButtonTitle:nil
                                     destructiveButtonTitle:@"Yes"
                                          otherButtonTitles:@"No", nil];
   [as showInView:self.view];
-  [as release];
+  [as autorelease]; //DCW changed to autorelease
 }
 
 

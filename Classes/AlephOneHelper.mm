@@ -13,10 +13,19 @@
 #include "projectiles.h"
 #include "player.h"
 #import "Prefs.h"
+#include "screen.h"
+
+extern "C" {
+  #include "SDL_mouse_c.h"
+}
+
+//DCW
+float iosDeltaX;
+float iosDeltaY;
+
+
 
 NSString *dataDir;
-
-
 
 void printGLError( const char* message ) {
   switch ( glGetError() ) {
@@ -66,6 +75,22 @@ char* getLocalDataDir() {
   return (char*)[docsDir UTF8String];
 }
 
+char* getLocalPrefsDir() {
+  NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+  return (char*)[docsDir UTF8String];
+}
+
+void  setDefaultA1PrefsIfNeeded() {
+  char temporary[256];
+  getcstr(temporary, strFILENAMES, filenamePREFERENCES);
+  
+  NSString *A1DefaultPrefs = [NSString stringWithFormat:@"%s/%s", getDataDir(), temporary];
+  NSString *A1TargetPrefs = [NSString stringWithFormat:@"%s/%s", getLocalPrefsDir(), temporary];
+
+  //Copy fresh preferences into place. won't overwrite existing prefs.
+    [[NSFileManager defaultManager] copyItemAtPath:A1DefaultPrefs toPath:A1TargetPrefs error:nil];
+ }
+
 void helperQuit() {
   MLog ( @"helperQuit()" );
   [[GameViewController sharedInstance] quitPressed];
@@ -108,6 +133,104 @@ int helperNewGame () {
 void helperPlayerKilled() {
   [[GameViewController sharedInstance] playerKilled];
 }
+
+void switchBackToGameView() {
+  [[GameViewController sharedInstance] switchBackToGameView];
+}
+
+void gotoMenu() {
+  [[GameViewController sharedInstance] gotoMenu:nil];
+}
+
+void switchToSDLMenu() {
+  [[GameViewController sharedInstance] switchToSDLMenu];
+}
+
+//This is an iOS text input dialog, to replace the crappy SDL keyboard handling. It just simulates keystrokes, based on what the user enters.
+void getSomeTextFromIOS(char *label, const char *currentText)  {
+
+  NSString *currentNString = [NSString stringWithUTF8String:currentText];
+  NSString *labelNSString=[NSString stringWithUTF8String:label];
+  NSString *actionTitle=@"Done";
+  NSString *messageText=nil;
+  
+  if( [labelNSString isEqualToString:@"Say:"]) {
+    actionTitle = @"Say it";
+    messageText = @"Sent a message to chat";
+  }
+  if( [labelNSString isEqualToString:@"Join address"]) {
+    messageText = @"Enter the IP Address of the host you wish to connect to.";
+  }
+  
+  
+  
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:labelNSString
+                                                                 message:messageText
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+  
+  UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                          NSString *inputText=alert.textFields[0].text;
+                                                          int length = [inputText length];
+                                                          int chunksize = 10; //Arbitrary string chunk size
+                                                          for(int i = 0; i < length; i+=chunksize) {
+                                                            NSRange range = NSMakeRange(i, min(chunksize, length-i));
+                                                            NSString *chunk=[inputText substringWithRange:range];
+                                                            NSLog(@"Sending chunk as input: %@" , chunk);
+                                                            //Convert the first text field to a c string and copy it's data into a new text input event that gets fed into the dialog event loop.
+                                                            SDL_Event event;
+                                                            event.type = SDL_TEXTINPUT;
+                                                            SDL_utf8strlcpy(event.text.text, [chunk cStringUsingEncoding:NSUTF8StringEncoding], SDL_arraysize(event.text.text));
+                                                            SDL_PushEvent(&event);
+                                                          }
+                                                          //Simulate SDLK_KP_ENTER key pressed, (Because SDLK_RETURN gets wedged for some reason) in case this is a Say: box or something.
+                                                          SDL_Event enter, unenter;
+                                                          enter.type = SDL_KEYDOWN;
+                                                          SDL_utf8strlcpy(enter.text.text, "E", SDL_arraysize(enter.text.text));
+                                                          enter.key.keysym.sym=SDLK_KP_ENTER;
+                                                          SDL_PushEvent(&enter);
+                                                          unenter.type = SDL_KEYUP;
+                                                          SDL_utf8strlcpy(unenter.text.text, "E", SDL_arraysize(unenter.text.text));
+                                                          unenter.key.keysym.sym=SDLK_KP_ENTER;
+                                                          SDL_PushEvent(&unenter);
+                                                        }];
+  UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                         //User cancelled, so send the same text as was sent in:
+                                                         SDL_Event event;
+                                                         event.type = SDL_TEXTINPUT;
+                                                         SDL_utf8strlcpy(event.text.text, [currentNString cStringUsingEncoding:NSUTF8StringEncoding], SDL_arraysize(event.text.text));
+                                                         SDL_PushEvent(&event);
+                                                         
+                                                         //Simulate SDLK_KP_ENTER key pressed, (Because SDLK_RETURN gets wedged for some reason) in case this is a Say: box or something.
+                                                         SDL_Event enter, unenter;
+                                                         enter.type = SDL_KEYDOWN;
+                                                         SDL_utf8strlcpy(enter.text.text, "E", SDL_arraysize(enter.text.text));
+                                                         enter.key.keysym.sym=SDLK_KP_ENTER;
+                                                         SDL_PushEvent(&enter);
+                                                         unenter.type = SDL_KEYUP;
+                                                         SDL_utf8strlcpy(unenter.text.text, "E", SDL_arraysize(unenter.text.text));
+                                                         unenter.key.keysym.sym=SDLK_KP_ENTER;
+                                                         SDL_PushEvent(&unenter);
+                                                       }];
+  [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    //Set the text field to whatever the current text is:
+    [textField setText:currentNString];
+    
+      //Pick a special keyboard type, if we want one.
+    if( [labelNSString isEqualToString:@"Join address"])
+      textField.keyboardType=UIKeyboardTypeDecimalPad;
+    
+  }];
+  [alert addAction:defaultAction];
+  [alert addAction:cancelAction];
+
+  
+  
+  [[[[UIApplication sharedApplication] keyWindow] rootViewController]  presentViewController:alert animated:YES completion:nil];
+  
+}
+
 
 void helperHideHUD() {
   [[GameViewController sharedInstance] hideHUD];
@@ -156,6 +279,45 @@ int helperAutocenter () {
     return 0;
   }
 };
+
+  //DCW
+Uint8 fake_key_map[SDL_NUM_SCANCODES];
+void setKey(SDL_Keycode key, bool down) {
+  /*SDL_Event sdlevent;
+  sdlevent.type = down?SDL_KEYDOWN:SDL_KEYUP;
+  sdlevent.key.keysym.sym = key;
+  
+  SDL_PushEvent(&sdlevent);*/
+  
+  fake_key_map[key] = down;
+}
+
+//DCW
+void moveMouseRelative(float dx, float dy)
+{
+    //DCW Amplify our input by 100 we don't lose as much precision in the int conversion below
+    //DCW This must be de-amplified in mouse_idle() later on.
+  //dx *= 100;
+  //dy *= 100;
+  
+  float w, h;
+  w = MainScreenWindowWidth();
+  h = MainScreenWindowHeight();
+  
+  iosDeltaX+=dx;
+  iosDeltaY+=dy;
+
+  //SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, true, dx + w/2.0, dy + h/2.0); //Movement is relative to center of screen
+  
+  return;
+}
+
+void slurpMouseDelta(float *dx, float *dy) {
+  *dx=iosDeltaX;
+  *dy=-iosDeltaY;
+  iosDeltaX=0;
+  iosDeltaY=0;
+}
 
 void helperGetMouseDelta ( int *dx, int *dy ) {
   // Get the mouse delta from the JoyPad HUD controller, if possible

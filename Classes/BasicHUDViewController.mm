@@ -53,7 +53,6 @@ extern control_panel_definition *get_control_panel_definition(
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
       // Custom initialization
-      //[self.movePadView setup]; //This might be too soon to work, says DCW, so commenting out
     }
     return self;
 }

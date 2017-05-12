@@ -23,8 +23,8 @@
  *  Created by Woody Zenfell, III on Mon Sep 24 2001.
  */
 
-#ifndef SDL_NETX_H
-#define SDL_NETX_H
+#ifndef	SDL_NETX_H
+#define	SDL_NETX_H
 
 // Officially, to be more SDL-like, we ought to arrange our structures with particular alignment,
 // specify C-style linkage, etc.  I don't think that's important at this point, but should anyone be
@@ -36,12 +36,12 @@
 // SDLNetx_EnableBroadcast - allow SDLNetx_UDP_Broadcast to succeed on inSocket
 //   inputs: UDPsocket inSocket - socket for which broadcasting should be enabled
 //   outputs: return value - positive if broadcasting was enabled; 0 if not
-int     SDLNetx_EnableBroadcast(UDPsocket inSocket);
+int	SDLNetx_EnableBroadcast(UDPsocket inSocket);
 
 // SDLNetx_DisableBroadcast - disallow SDLNetx_UDP_Broadcast to succeed on inSocket
 //   inputs: UDPsocket inSocket - socket for which broadcasting should be disabled
 //   outputs: return value - positive if broadcasting was disabled; 0 if not
-int     SDLNetx_DisableBroadcast(UDPsocket inSocket);
+int	SDLNetx_DisableBroadcast(UDPsocket inSocket);
 
 
 // SDLNetx_UDP_Broadcast - attempt to send inPacket to the broadcast address of each available
@@ -52,7 +52,7 @@ int     SDLNetx_DisableBroadcast(UDPsocket inSocket);
 //              the port-part is used.
 //   outputs: return value - number of interfaces packet was broadcast on; 0 if not broadcast
 //            inPacket->status - status result of the broadcast Send call on the last interface
-int     SDLNetx_UDP_Broadcast(UDPsocket inSocket, UDPpacket* inPacket);
+int	SDLNetx_UDP_Broadcast(UDPsocket inSocket, UDPpacket* inPacket);
 
 
-#endif //SDL_NETX_H
+#endif//SDL_NETX_H

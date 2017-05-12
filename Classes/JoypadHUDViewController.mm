@@ -14,8 +14,8 @@
 #import "UIAlertView+MKBlockAdditions.h"
 
 extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
+//  extern  int
+//  SDL_SendMouseMotion(int relative, int x, int y);
 }
 
 

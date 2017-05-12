@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: libnat.h 2618 2006-03-12 06:41:54Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,12 @@
 #ifndef _LNAT_LIBNAT_H_
 #define _LNAT_LIBNAT_H_
 
-/* The following ifdef block is the standard way of creating macros which make exporting
-   // from a DLL simpler. All files within this DLL are compiled with the LIBNAT_EXPORTS
-   // symbol defined on the command line. this symbol should not be defined on any project
-   // that uses this DLL. This way any other project whose source files include this file see
-   // LIBNAT_API functions as being imported from a DLL, whereas this DLL sees symbols
-   // defined with this macro as being exported.*/
+/* The following ifdef block is the standard way of creating macros which make exporting 
+// from a DLL simpler. All files within this DLL are compiled with the LIBNAT_EXPORTS
+// symbol defined on the command line. this symbol should not be defined on any project
+// that uses this DLL. This way any other project whose source files include this file see 
+// LIBNAT_API functions as being imported from a DLL, whereas this DLL sees symbols
+// defined with this macro as being exported.*/
 //#ifdef WIN32 0
 #if 0
   #ifdef LIBNAT_EXPORTS
@@ -64,14 +64,14 @@ extern "C" {
 
 /**
  * Sends a discovery request to search for a UPnP enabled IGD that
- * contains the WANIPConnection service or WANPPPConnection that will
- * allow us to recieve the public IP address of the IGD, and control
+ * contains the WANIPConnection service or WANPPPConnection that will 
+ * allow us to recieve the public IP address of the IGD, and control 
  * it for forwarding ports.
  *
  * Return the UpnpController for the IGD in the c parameter.
  * User should call LNat_Upnp_Free() to free the memory allocated for
  * this UpnpController object.
- *
+ * 
  * Return 0 if everything was successful.
  */
 LIBNAT_API
@@ -103,7 +103,7 @@ int LNat_Upnp_Get_Public_Ip(const UpnpController * controller,
 
 /**
  * Maps Ports in a UPnP enabled IGD that sits on the local network to.
- * Essentially, this function takes care of the port forwarding so things
+ * Essentially, this function takes care of the port forwarding so things 
  * like file transfers can work behind NAT firewalls.
  *
  * controller: The UpnpController retrieved from LNat_Upnp_Discover.
@@ -115,15 +115,15 @@ int LNat_Upnp_Get_Public_Ip(const UpnpController * controller,
  * return 0 if successful.
  */
 LIBNAT_API
-int LNat_Upnp_Set_Port_Mapping(const UpnpController * controller,
+int LNat_Upnp_Set_Port_Mapping(const UpnpController * controller, 
                                const char * ip_map,
                                short int port_map,
                                const char* protocol);
 
 /**
  * Deletes a port mapping in a UPnP enabled IGD that sits on the local network.
- * Essentially, this function takes care of deleting the port forwarding after
- * they have completed a connection so another client on the local network can
+ * Essentially, this function takes care of deleting the port forwarding after 
+ * they have completed a connection so another client on the local network can 
  * take advantage of the port forwarding
  *
  * controller: The UpnpController retrieved from LNat_Upnp_Discover.

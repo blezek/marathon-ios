@@ -1,5 +1,5 @@
 /* Copyright (c) 2006 Adam Warrington
-** $Id: utility.h 2615 2006-03-12 06:14:59Z ghs $
+** $Id$
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 #define NULL_TERM                     '\0'
 
 /* maximum size of a port number */
-#define MAX_PORT_SIZE                 16383
+#define MAX_PORT_SIZE                 65535
 /* maximum string length of a port number string */
 #define MAX_PORT_STRING_LEN           5
 

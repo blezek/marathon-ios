@@ -9,8 +9,8 @@
 #import "Purchases.h"
 #import "Prefs.h"
 #import "Secrets.h"
-#include "XML_Loader_SDL.h"
-#include "XML_ParseTreeRoot.h"
+//#include "XML_Loader_SDL.h" //DCW do we need this?
+//#include "XML_ParseTreeRoot.h" //DCW do we need this?
 #import "AlephOneAppDelegate.h"
 #import "GameViewController.h"
 

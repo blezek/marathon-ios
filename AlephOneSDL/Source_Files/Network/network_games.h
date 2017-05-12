@@ -2,32 +2,34 @@
 #define __NETWORK_GAMES_H
 
 /*
-        network_games.h
+	network_games.h
 
-        Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
-        and the "Aleph One" developers.
+	Copyright (C) 1991-2001 and beyond by Bungie Studios, Inc.
+	and the "Aleph One" developers.
+ 
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 2 of the License, or
-        (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	This license is contained in the file "COPYING",
+	which is included with this source code; it is available online at
+	http://www.gnu.org/licenses/gpl.html
 
-        This license is contained in the file "COPYING",
-        which is included with this source code; it is available online at
-        http://www.gnu.org/licenses/gpl.html
+	Wednesday, July 19, 1995 11:03:09 AM- rdm created.
 
-        Wednesday, July 19, 1995 11:03:09 AM- rdm created.
+*/
 
- */
 #include "player.h"
+
 struct player_ranking_data {
-  short player_index;
-  long ranking;
+	short player_index;
+	long ranking;
 };
 
 extern int32 team_netgame_parameters[NUMBER_OF_TEAM_COLORS][2];
@@ -39,9 +41,9 @@ bool update_net_game(void);
 
 /* Returns the player net ranking, which may mean different things */
 long get_player_net_ranking(short player_index, short *kills, short *deaths,
-                            bool game_is_over);
+	bool game_is_over);
 long get_team_net_ranking(short team, short *kills, short *deaths,
-                          bool game_is_over);
+			  bool game_is_over);
 
 void calculate_player_rankings(struct player_ranking_data *rankings);
 void calculate_ranking_text(char *buffer, long ranking);
@@ -58,16 +60,16 @@ bool game_is_over(void);
 
 enum
 {
-  _network_compass_all_off= 0,
-
-  _network_compass_nw= 0x0001,
-  _network_compass_ne= 0x0002,
-  _network_compass_sw= 0x0004,
-  _network_compass_se= 0x0008,
-
-  _network_compass_all_on= 0x000f,
-
-  _network_compass_use_beacon = 0x0010
+	_network_compass_all_off= 0,
+	
+	_network_compass_nw= 0x0001,
+	_network_compass_ne= 0x0002,
+	_network_compass_sw= 0x0004,
+	_network_compass_se= 0x0008,
+	
+	_network_compass_all_on= 0x000f,
+	
+	_network_compass_use_beacon = 0x0010
 };
 
 short get_network_compass_state(short player_index);

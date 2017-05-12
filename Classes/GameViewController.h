@@ -35,7 +35,8 @@ typedef enum {
   GameMode,
   CutSceneMode,
   AutoMapMode,
-  DeadMode
+  DeadMode,
+  SDLMenuMode
 } HUDMode;
 
 @interface GameViewController : UIViewController <GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate> {
@@ -61,6 +62,8 @@ typedef enum {
   IBOutlet UIButton *zoomInButton;
   IBOutlet UIButton *loadFilmButton;
   IBOutlet UIButton *saveFilmButton;
+  IBOutlet UIButton *joinNetworkGameButton;
+  IBOutlet UIButton *gatherNetworkGameButton;
   IBOutlet ButtonView *mapView;
   IBOutlet ButtonView *mapView2;
   IBOutlet ButtonView *actionView;
@@ -80,6 +83,12 @@ typedef enum {
   IBOutlet UIImageView *episodeImageView;
   IBOutlet UIImageView *episodeLoadingImageView;
   IBOutlet UIImageView *waitingImageView;
+  
+  IBOutlet UIView *mainMenuBackground;
+  IBOutlet UIView *mainMenuLogo;
+  IBOutlet UIView *mainMenuSubLogo;
+  IBOutlet UIView *mainMenuButtons;
+
   
   IBOutlet UIButton *leaderboardButton;
   IBOutlet UIButton *achievementsButton;
@@ -104,8 +113,8 @@ typedef enum {
   
   GLfloat pauseAlpha;
   
-  SDLKey leftFireKey;
-  SDLKey rightFireKey;
+  SDL_Keycode leftFireKey;
+  SDL_Keycode rightFireKey;
   
   IBOutlet SaveGameViewController *saveGameViewController;
   IBOutlet ProgressViewController *progressViewController;
@@ -138,6 +147,7 @@ typedef enum {
 +(GameViewController*)sharedInstance;
 +(GameViewController*)createNewSharedInstance;
 
+- (HUDMode)mode;
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)runMainLoopOnce:(id)sender;
@@ -145,6 +155,10 @@ typedef enum {
 - (IBAction)pause:(id)from;
 - (IBAction)pauseForBackground:(id)from;
 - (IBAction)newGame;
+- (IBAction)joinNetworkGame;
+- (IBAction)gatherNetworkGame;
+- (IBAction)switchBackToGameView;
+- (IBAction)switchToSDLMenu;
 - (IBAction)beginGame;
 - (IBAction)cancelNewGame;
 - (void)playerKilled;
@@ -156,11 +170,14 @@ typedef enum {
 - (IBAction)menuHideReplacementMenu;
 - (IBAction)menuNewGame;
 - (IBAction)menuLoadGame;
+- (IBAction)menuJoinNetworkGame;
+- (IBAction)gatherJoinNetworkGame;
 - (IBAction)menuPreferences;
 - (IBAction)menuStore;
 - (IBAction)cancelStore;
 - (IBAction)menuAbout;
 - (IBAction)cancelAbout;
+- (IBAction)finishIntro:(id)sender;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -277,6 +294,8 @@ typedef enum {
 @property (nonatomic, retain) UIButton *zoomInButton;
 @property (nonatomic, retain) UIButton *zoomOutButton;
 @property (nonatomic, retain) UIButton *saveFilmButton;
+@property (nonatomic, retain) UIButton *joinNetworkGameButton;
+@property (nonatomic, retain) UIButton *gatherNetworkGameButton;
 @property (nonatomic, retain) UIButton *loadFilmButton;
 @property (nonatomic, retain) UIButton *leaderboardButton;
 @property (nonatomic, retain) UIButton *achievementsButton;
@@ -299,6 +318,10 @@ typedef enum {
 @property (nonatomic, retain) UIImageView *waitingImageView;
 @property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) UIView *logoView;
+@property (nonatomic, retain) UIView *mainMenuBackground;
+@property (nonatomic, retain) UIView *mainMenuLogo;
+@property (nonatomic, retain) UIView *mainMenuSubLogo;
+@property (nonatomic, retain) UIView *mainMenuButtons;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

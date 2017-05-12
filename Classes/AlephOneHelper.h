@@ -6,6 +6,8 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#include "SDL.h"
+
 #ifdef __IPAD__
 // #define iWidth 1024
 // #define iHeight 768
@@ -20,6 +22,8 @@
 
 extern char *getDataDir();
 extern char* getLocalDataDir();
+extern char* getLocalPrefsDir(); //DCW
+extern void  setDefaultA1PrefsIfNeeded();//DCW 
 extern void helperBringUpHUD();
 
 extern int helperNewGame();
@@ -38,9 +42,15 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
+extern void switchToSDLMenu(); //DCW
+extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
+
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();
+extern void setKey(SDL_Keycode key, bool down);
+extern void moveMouseRelative(float dx, float dy);
+extern void slurpMouseDelta(float *dx, float *dy);
 extern void helperGetMouseDelta ( int *dx, int *dy );
 
 // Switch weapons
@@ -74,6 +84,9 @@ extern float helperGamma();
 
 // Pause alpho
 extern GLfloat helperPauseAlpha();
+
+  //DCW
+extern Uint8 fake_key_map[SDL_NUM_SCANCODES];
 
 // C linkage
 #if defined(__cplusplus)

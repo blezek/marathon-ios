@@ -13,10 +13,14 @@
 #import "Appirater.h"
 #import "Achievements.h"
 #import "Tracking.h"
+#import "Effects.h"
 ////#import "TestFlight.h"
 
 extern "C" {
-#import "SDL_sysvideo.h"
+#import "SDL.h" //DCW include main for SDL
+#include "SDL_hints.h" //DCW
+
+//#import "SDL_sysvideo.h" //DCW not sure if this is needed in SDL2
 #import "SDL_events_c.h"
 #import "jumphack.h"
 }
@@ -25,7 +29,16 @@ extern "C" {
 #import "AlephOneShell.h"
 #import "AlephOneHelper.h"
 #include "preferences.h"
+#include "map.h" //Needed for detecting whether we are networked when going into background.
 
+
+  //DCW
+static void
+SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldValue, const char *hint)
+{
+  BOOL disable = (hint && *hint != '0');
+  [UIApplication sharedApplication].idleTimerDisabled = disable;
+}
 
 @implementation AlephOneAppDelegate
 
@@ -33,17 +46,37 @@ extern "C" {
 @synthesize viewController;
 @synthesize oglWidth, oglHeight, retinaDisplay, longScreenDimension, shortScreenDimension;
 
-extern int SDL_main(int argc, char *argv[]);
-
 #pragma mark -
 #pragma mark AlephOne startup
 
 - (void)startAlephOne {
   finishedStartup = YES;
+
+  
+    //DCW bypass sdl main
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+  SDL_AddHintCallback(SDL_HINT_IDLE_TIMER_DISABLED, SDL_IdleTimerDisabledChanged, NULL);
+  SDL_SetMainReady();
+  SDL_iPhoneSetEventPump(SDL_TRUE);
+
+  
+  UIWindow *appMenuWindow = [[UIApplication sharedApplication] keyWindow]; //Grab a reference to the current key window
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
-
+  
+  SDL_iPhoneSetEventPump(SDL_TRUE);
+  
+  //DCW
+  //If SDL initialized correctly, it will now be the key window. We don't really want that, but instead want it's view to be a subview of the game view.
+  //This is a bit fragile. In the future, maybe vberify that the key window is actually an SDL window as we expect.
+  UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
+  UIView *a1View = [a1Window rootViewController].view;
+  [game setOpenGLView:a1View];
+    
+  [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
+  
+  
   // Kick in the purchases
   [self.purchases checkPurchases];
   
@@ -60,6 +93,23 @@ extern int SDL_main(int argc, char *argv[]);
   
 }
 
+//Borrowed from DLudwig
+// Retrieve SDL's root UIViewController (iOS only!)
+// This function is completely NOT guaranteed to work in the future.
+// Use it at your own risk!
+/*UIViewController * GetSDLViewController(SDL_Window * sdlWindow)
+{
+  SDL_SysWMinfo systemWindowInfo;
+  SDL_VERSION(&systemWindowInfo.version);
+  if ( ! SDL_GetWindowWMInfo(sdlWindow, &systemWindowInfo)) {
+    // consider doing some kind of error handling here
+    return nil;
+  }
+  UIWindow * appWindow = mainWindowWMInfo.info.uikit.window;
+  UIViewController * rootViewController = appWindow.rootViewController;
+  return rootViewController;
+}*/
+
 - (void)initAndBegin {
   // Initialize the game
   self.game.splashView.hidden = YES;
@@ -68,23 +118,28 @@ extern int SDL_main(int argc, char *argv[]);
   [Appirater appLaunched:YES];
   // [game performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0];
   [game startAnimation];
-}  
+}
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
+  introFinished = NO;
 	finishedStartup = NO;
   OpenGLESVersion = 1;
   self.purchases = [[Purchases alloc] init];
   [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
   [Achievements login];
 
-	//DCW: provide a comman way to get the current screen dimensions for landscape.
+	//DCW: provide a common way to get the current screen dimensions for landscape.
 	longScreenDimension = max([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
 	shortScreenDimension = min([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
 	
+  //DCW clear fake key map:
+  for(int i=0; i<SDL_NUM_SCANCODES; ++i)
+    fake_key_map[i]=0;
+  
   // Default preferences
   // Set the application defaults  
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -234,7 +289,6 @@ extern int SDL_main(int argc, char *argv[]);
   // [self.viewController.view addSubview:game.view];
   // [self.window addSubview:game.view];
 
-	MLog ( @"This is wrong on iphone 6!" ); //DCW
   MLog ( @"Loaded view: %@", self.game.view );
   
 ////  [Tracking startup];
@@ -267,10 +321,13 @@ extern int SDL_main(int argc, char *argv[]);
   float delay = 1.2;
   
   float startDelay = 0.0;
+  
+  
 #if SCENARIO == 2
   startDelay = 0.1;
-#endif  
-  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
+#endif 
+    //DCW moving to finish intro
+  //[[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
 
 #ifdef BUNGIE_AEROSPACE
   [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
@@ -282,9 +339,23 @@ extern int SDL_main(int argc, char *argv[]);
 #else
   self.game.bungieAerospaceImageView.hidden = YES;
 
-  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
-    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
-  }];
+  NSString *filepath = [[NSBundle mainBundle] pathForResource:@"A1_fade_in.mp4" ofType:nil inDirectory:nil];
+  NSURL *fileURL = [NSURL fileURLWithPath:filepath];
+  self.avPlayer = [AVPlayer playerWithURL:fileURL];
+  self.avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+  
+  AVPlayerLayer *videoLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
+  videoLayer.frame = self.game.waitingImageView.bounds;
+  videoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+  [self.game.waitingImageView.layer addSublayer:videoLayer];
+  self.game.waitingImageView.alpha = 1.0;
+  [self.avPlayer play];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.avPlayer currentItem]];
+
+  
+  //[UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+  //  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
+  //}];
 #endif
   
   // TestFlight
@@ -292,6 +363,48 @@ extern int SDL_main(int argc, char *argv[]);
   
   return YES;
   
+}
+
+- (void)itemDidFinishPlaying:(NSNotification *)notification {
+  AVPlayerItem *player = [notification object];
+  [self finishIntro:self];
+}
+
+- (IBAction)finishIntro:(id)sender {
+  //Only finish intro once!
+  if ( !introFinished ) {
+    introFinished=YES;
+    
+    self.game.mainMenuBackground.alpha = 0;
+    
+    float logoZoomScale = .66;
+    CGRect endlogo = self.game.mainMenuLogo.bounds;
+    CGRect startlogo = self.game.mainMenuLogo.bounds; //will be .66 of original size
+    startlogo.origin.y += (startlogo.size.width - startlogo.size.width*logoZoomScale)/2;
+    startlogo.size.width *=logoZoomScale;
+    startlogo.size.height *=logoZoomScale;
+    self.game.mainMenuLogo.bounds=startlogo;
+    
+    self.game.mainMenuLogo.alpha = 1.0;
+    self.game.mainMenuSubLogo.alpha = 1.0;
+    self.game.mainMenuButtons.alpha = 0;
+    
+    void (^growLogo) (void) = ^{
+      self.game.mainMenuLogo.bounds=endlogo;
+    };
+    void (^fadeInBackground) (void) = ^{
+      self.game.mainMenuBackground.alpha = 1.0;
+    };
+    
+    [UIView animateWithDuration:5 delay:0 options:0 animations:growLogo completion:nil];
+    
+    [UIView animateWithDuration:1 delay:1 options:0 animations:fadeInBackground completion:nil];
+    [Effects performSelector:@selector(appearRevealingView:) withObject:self.game.mainMenuButtons afterDelay:2];
+    
+    [self.game menuShowReplacementMenu];
+    self.game.logoView.hidden = YES;
+    [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil];
+  }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -322,8 +435,11 @@ extern int SDL_main(int argc, char *argv[]);
   // SoundManager::instance()->SetStatus ( false );
 ////  [Tracking trackPageview:@"/applicationWillResignActive"];
 ////  [Tracking tagEvent:@"applicationWillResignActive"];
+  
   [game pauseForBackground:self];
-  [game stopAnimation];
+  if(!game_is_networked) {
+    [game stopAnimation];
+  }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -338,8 +454,28 @@ extern int SDL_main(int argc, char *argv[]);
   // Pause sound
   // SoundManager::instance()->SetStatus(false);
   // [game stopAnimation];
+  
+  NSLog(@"Did enter background. Someday, we should probably put a reasonable time limit on this.");
+  UIBackgroundTaskIdentifier bgTask;
+  bgTask = [[UIApplication  sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+    NSLog(@"End of tolerate time. Application should be suspended now if we do not ask more 'tolerance'");
+    // [self askToRunMoreBackgroundTask]; This code seems to be unnecessary. I'll verify it.
+  }];
+
+  if (bgTask == UIBackgroundTaskInvalid) {
+    NSLog(@"This application does not support background mode");
+  } else {
+    NSLog(@"Application will continue to run in background as task %lu", bgTask );
+    
+    [self performSelector:@selector(endBackgroundTask:) withObject:[NSNumber numberWithUnsignedLong: bgTask] afterDelay:240];
+  }
+  
 }
 
+- (void)endBackgroundTask:(NSNumber *)taskID {
+  NSLog(@"Ending background task %lu", [taskID unsignedLongValue] );
+  [[UIApplication  sharedApplication] endBackgroundTask:[taskID unsignedLongValue]];
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationWillEnterForeground"];
@@ -400,8 +536,10 @@ const char* argv[] = { "AlephOneHD" };
 - (void)postFinishLaunch {
   
 	/* run the user's application, passing argc and argv */
-	int exit_status = SDL_main(1, (char**)argv);
-	
+  int exit_status =0; //DCW
+
+  //int exit_status = SDL_main(1, (char**)argv);  //DCW may no longer be needed
+
 	/* exit, passing the return status from the user's application */
 	exit(exit_status);
 }

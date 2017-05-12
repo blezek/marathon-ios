@@ -11,27 +11,29 @@
 #include "SDL_keyboard.h"
 
 @interface HUDViewController : UIViewController {
-  SDLKey primaryFireKey;
-  SDLKey secondaryFireKey;
-  SDLKey nextWeaponKey;
-  SDLKey previousWeaponKey;
-  SDLKey inventoryKey;
-  SDLKey actionKey;
-  SDLKey forwardKey;
-  SDLKey backwardKey;
-  SDLKey leftKey;
-  SDLKey rightKey;
-  SDLKey runKey;
-  SDLKey mapKey;
+  SDL_Keycode primaryFireKey;
+  SDL_Keycode secondaryFireKey;
+  SDL_Keycode nextWeaponKey;
+  SDL_Keycode previousWeaponKey;
+  SDL_Keycode inventoryKey;
+  SDL_Keycode actionKey;
+  SDL_Keycode forwardKey;
+  SDL_Keycode backwardKey;
+  SDL_Keycode leftKey;
+  SDL_Keycode rightKey;
+  SDL_Keycode runKey;
+  SDL_Keycode mapKey;
+  SDL_Keycode consoleKey;
+
   
-  SDLKey lookUpKey;
-  SDLKey lookDownKey;
-  SDLKey lookLeftKey;
-  SDLKey lookRightKey;
+  SDL_Keycode lookUpKey;
+  SDL_Keycode lookDownKey;
+  SDL_Keycode lookLeftKey;
+  SDL_Keycode lookRightKey;
 }
 
-@property (nonatomic) SDLKey primaryFireKey;
-@property (nonatomic) SDLKey secondaryFireKey;
+@property (nonatomic) SDL_Keycode primaryFireKey;
+@property (nonatomic) SDL_Keycode secondaryFireKey;
 
 // Helper for any sort of alternative mouse movement
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy;
@@ -60,6 +62,8 @@
 - (IBAction)runUp:(id)sender;
 - (IBAction)mapDown:(id)sender;
 - (IBAction)mapUp:(id)sender;
+- (IBAction)consoleDown:(id)sender;
+- (IBAction)consoleUp:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
 - (IBAction)lookUpDown:(id)sender;

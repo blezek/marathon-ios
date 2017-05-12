@@ -8,10 +8,7 @@
 
 #import "MovePadView.h"
 #import "GameViewController.h"
-extern "C" {
-  extern  int
-  SDL_SendMouseMotion(int relative, int x, int y);
-  
+extern "C" {  
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
 #include "SDL_stdinc.h"
@@ -32,6 +29,8 @@ extern "C" {
 #include "key_definitions.h"
 #include "tags.h"
 
+#include "AlephOneHelper.h"
+
 @implementation MovePadView
 @synthesize knobView;
 
@@ -41,8 +40,7 @@ extern "C" {
 	//DCW
 	feedbackSecondary = [[UIImpactFeedbackGenerator alloc] init];
 	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
-	useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
-	 
+	
   // Kill a warning
   (void)all_key_definitions;
 
@@ -52,7 +50,7 @@ extern "C" {
   moveRadius2 = moveRadius * moveRadius;
   runRadius = moveRadius / 2.0;
   deadSpaceRadius = moveRadius / 5.0;
-  key_definition *key = current_key_definitions;
+  key_definition *key = standard_key_definitions;
   for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
     if ( key->action_flag == _moving_forward ) {
       forwardKey = key->offset;
@@ -84,15 +82,14 @@ extern "C" {
 	//DCW
 - (void) actionKeyUp {
 	if(actionKey){
-		Uint8 *key_map = SDL_GetKeyboardState ( NULL );
-		key_map[actionKey] = 0;
+		setKey(actionKey, 0);
 	}
 }
 
 	//DCW added withNormalizedForce input with handleTouch. withNormalizedForce must be 0-1.
 - (void)handleTouch:(CGPoint)currentPoint { [self handleTouch: currentPoint withNormalizedForce: 0.0]; }
 - (void)handleTouch:(CGPoint)currentPoint withNormalizedForce:(double)force{
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
+  const Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   
   // Doesn't matter where we are in this control, just find the position relative to the center
   
@@ -122,7 +119,7 @@ extern "C" {
 	
   // Are we running?
   if ( fdx > runRadius || fdy > runRadius ) {
-    key_map[runKey] = 1;
+    setKey(runKey, 1);
     // MLog ( @"Running!" );
 		
 			//DCW: If we support forcetouch, and the force is low, invert sink/swim because running is also swim.
@@ -135,8 +132,7 @@ extern "C" {
 			}
 		}
   } else {
-    key_map[runKey] = 0;
-		
+		setKey(runKey, 0);
 			//DCW: If we support forcetouch, and it the force is high, we can invert sink/swim so we will swim under pressure.
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
@@ -151,36 +147,38 @@ extern "C" {
   if ( dx < -deadSpaceRadius ) {
     // Just move for now
     // NSLog ( @"Move left" );
-    key_map[leftKey] = 1;
+    setKey(leftKey, 1);
   } else {
-    key_map[leftKey] = 0;
+    setKey(leftKey, 0);
   }
   // Right
   if ( dx > deadSpaceRadius ) {
     // NSLog(@"Move right" );
-    key_map[rightKey] = 1;
+    setKey(rightKey, 1);
   } else {
-    key_map[rightKey] = 0;
+    setKey(rightKey, 0);
   }
   
   // Forward, remember that y is increasing up
   if ( dy < -deadSpaceRadius ) {
     // NSLog(@"Move forward");
-    key_map[forwardKey] = 1;
+    setKey(forwardKey, 1);
   } else {
-    key_map[forwardKey] = 0;    
+    setKey(forwardKey, 0);
   }
   // Backward
   if ( dy > deadSpaceRadius ) {
     // NSLog(@"Move backward");
-    key_map[backwardKey] = 1;
+    setKey(backwardKey, 1);
   } else {
-    key_map[backwardKey] = 0;    
+    setKey(backwardKey, 0);
   }
   
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable; //DCW: force capability must be checked often, because it fails when view is not in the view hierarchy.
+  
   for ( UITouch *touch in [event touchesForView:self] ) {
     [self handleTouch:[touch locationInView:self]];
     break;
@@ -188,20 +186,19 @@ extern "C" {
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   // See if there are still touches in the
-  Uint8 *key_map = SDL_GetKeyboardState ( NULL );
 
  // NSLog(@"Touches ended");
   // lift up on all the keys
-  key_map[leftKey] = 0;
-  key_map[rightKey] = 0;
-  key_map[forwardKey] = 0;
-  key_map[backwardKey] = 0;
-  key_map[runKey] = 0;
-	key_map[secondaryFireKey] = 0; //DCW
-	SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
+  setKey(leftKey, 0);
+  setKey(rightKey, 0);
+  setKey(forwardKey, 0);
+  setKey(backwardKey, 0);
+  setKey(runKey, 0);
+
+  SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
 	
 	//DCW. Do open/activate key when released
-	key_map[actionKey] = 1;
+  setKey(actionKey, 1);
 	[self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
 
   // Animate the knob returning to home...
