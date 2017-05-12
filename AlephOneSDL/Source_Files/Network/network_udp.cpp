@@ -40,6 +40,27 @@
 #include "thread_priority_sdl.h"
 #include "mytm.h" // mytm_mutex stuff
 
+//DCW
+//DCW
+#include <sys/socket.h>
+#include "SDLnetsys.h"
+struct UDP_channel {
+  int numbound;
+  IPaddress address[SDLNET_MAX_UDPADDRESSES];
+};
+struct _UDPsocket {
+  int ready;
+  SOCKET channel;
+  IPaddress address;
+  
+  struct UDP_channel binding[SDLNET_MAX_UDPCHANNELS];
+  
+  /* For debugging purposes */
+  int packetloss;
+};
+
+
+
 // Global variables (most comments and "sSomething" variables are ZZZ)
 // Storage for incoming packet data
 static UDPpacket*		sUDPPacketBuffer	= NULL;
@@ -145,6 +166,11 @@ OSErr NetDDPOpenSocket(short *ioPortNumber, PacketHandlerProcPtr packetHandler)
 		sUDPPacketBuffer = NULL;
 		return -1;
 	}
+  
+  //DCW Set an appropriate network socket service type.
+  int st = NET_SERVICE_TYPE_VI;
+  setsockopt((int)(sSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
+
 
         // Set up socket set
         sSocketSet = SDLNet_AllocSocketSet(1);

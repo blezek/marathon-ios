@@ -1503,7 +1503,8 @@ void w_number_entry::event(SDL_Event &e)
 		}
 	}
 
-	w_text_entry::event(e);
+    //DCW commenting this out, because it causes extra numbers to get stuffed into the widget. WTF, people?
+	//w_text_entry::event(e);
 }
 
 void w_number_entry::set_number(int number)

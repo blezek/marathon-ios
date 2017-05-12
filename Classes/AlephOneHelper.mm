@@ -176,6 +176,7 @@ void getSomeTextFromIOS(char *label, const char *currentText)  {
                                                           for(int i = 0; i < length; i+=chunksize) {
                                                             NSRange range = NSMakeRange(i, min(chunksize, length-i));
                                                             NSString *chunk=[inputText substringWithRange:range];
+                                                            NSLog(@"Sending chunk as input: %@" , chunk);
                                                             //Convert the first text field to a c string and copy it's data into a new text input event that gets fed into the dialog event loop.
                                                             SDL_Event event;
                                                             event.type = SDL_TEXTINPUT;

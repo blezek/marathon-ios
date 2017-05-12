@@ -56,10 +56,6 @@ extern "C" {
 	primaryForceThreshold = .4;
 	secondaryForceThreshold = .9;
 
-  //DCW clear mouse deltas.
-  float dx, dy;
-  slurpMouseDelta(&dx, &dy);
-  
   if ( firstTouch == nil ) {
     // grab the first
     firstTouch = [touches anyObject];

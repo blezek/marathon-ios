@@ -20,6 +20,10 @@
 #import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
 
+#include "QuickSave.h" //DCW Used for metadata generation
+#include <fstream>
+#include <sstream>
+
 extern float DifficultyMultiplier[];
 
 // Useful functions
@@ -295,6 +299,7 @@ short localFindActionTarget(
 @synthesize joinNetworkGameButton, gatherNetworkGameButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
+@synthesize mainMenuBackground, mainMenuLogo, mainMenuSubLogo, mainMenuButtons;
 ////@synthesize HUDTouchViewController, HUDJoypadViewController;
 @synthesize leaderboardButton, achievementsButton;
 
@@ -1048,13 +1053,62 @@ extern SDL_Surface *draw_surface;
   if ( self.currentSavedGame == nil ) {
     self.currentSavedGame = [self.saveGameViewController createNewGameFile];
   }
+  
+  //DCW Copy and paste of metadata generation from the quicksaver, to permit calling the normal savegame code.
+  //We need to do this first, so that the map stuff is initialized so we can create the preview for ourself.
+  //The map preview generation is redundant, so maybe we can do this more efficiently later.
+  QuickSave save;
+  time(&(save.save_time));
+  char fmt_time[256];
+  tm *time_info = localtime(&(save.save_time));
+  strftime(fmt_time, 256, "%x %R", time_info);
+  save.formatted_time = fmt_time;
+  save.level_name = mac_roman_to_utf8(static_world->level_name);
+  save.players = dynamic_world->player_count;
+  save.ticks = dynamic_world->tick_count;
+  char fmt_ticks[256];
+  if (save.ticks < 60*TICKS_PER_MINUTE)
+    sprintf(fmt_ticks, "%d:%02d",
+            save.ticks/TICKS_PER_MINUTE,
+            (save.ticks/TICKS_PER_SECOND) % 60);
+  else
+    sprintf(fmt_ticks, "%d:%02d:%02d",
+            save.ticks/(60*TICKS_PER_MINUTE),
+            (save.ticks/TICKS_PER_MINUTE) % 60,
+            (save.ticks/TICKS_PER_SECOND) % 60);
+  save.formatted_ticks = fmt_ticks;
+  DirectorySpecifier quicksave_dir;
+  quicksave_dir.SetToQuickSavesDir();
+  std::ostringstream oss;
+  oss << save.save_time;
+  std::string base = oss.str();
+  save.save_file.FromDirectory(quicksave_dir);
+  save.save_file.AddPart(base + ".sgaA");
+  std::string metadata = build_save_metadata(save);
+  std::ostringstream image_stream;
+  bool success = build_map_preview(image_stream);
+  
+  
+  
   ////[Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
   // See if we can generate an overhead view
   struct overhead_map_data overhead_data;
   int MapSize = 196;
   // Create a buffer to render into
-  SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 8, 0xff, 0xff, 0xff, 0xff);
-  SDL_Surface *map = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 8, 0xff, 0xff, 0xff, 0xff); //SDL_DisplayFormat(s); //DCW SDL_DisplayFormat is gone in SDL2. NOt sure what a good replacement is.
+  Uint32 rmask, gmask, bmask, amask;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+  rmask = 0xff000000;
+  gmask = 0x00ff0000;
+  bmask = 0x0000ff00;
+  amask = 0x000000ff;
+#else
+  rmask = 0x000000ff;
+  gmask = 0x0000ff00;
+  bmask = 0x00ff0000;
+  amask = 0xff000000;
+#endif
+  SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 32, rmask, gmask, bmask, amask); //DCW format used to be 8
+  SDL_Surface *map = SDL_ConvertSurfaceFormat(s,s->format->format,0); //SDL_DisplayFormat(s); //DCW SDL_DisplayFormat is gone in SDL2. NOt sure what a good replacement is.
   SDL_FreeSurface(s);
   
   SDL_Surface *old = draw_surface;
@@ -1135,9 +1189,9 @@ extern SDL_Surface *draw_surface;
   MLog ( @"Saving game to %@", self.currentSavedGame.filename); 
   FileSpecifier file ( (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.filename] UTF8String] );
   //save_game_file(file);
-  MLog ( @"To Do: Add metadata and image to saved game" ); //DCW
-  save_game_file(file, nil, nil);
-
+  
+  success = save_game_file(file, metadata, image_stream.str());
+  
   
   MLog ( @"Saving game: %@", game );
   NSError *error = nil;
@@ -1348,6 +1402,11 @@ extern bool handle_open_replay(FileSpecifier& File);
   }
   [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }  
+
+- (IBAction)finishIntro:(id)sender {
+  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(finishIntro:) withObject:nil afterDelay:0];
+  NSLog(@"Stopping intro early");
+}
 
 -(void) PlayInterfaceButtonSound
 {

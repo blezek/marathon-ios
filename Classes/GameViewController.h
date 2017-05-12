@@ -84,6 +84,12 @@ typedef enum {
   IBOutlet UIImageView *episodeLoadingImageView;
   IBOutlet UIImageView *waitingImageView;
   
+  IBOutlet UIView *mainMenuBackground;
+  IBOutlet UIView *mainMenuLogo;
+  IBOutlet UIView *mainMenuSubLogo;
+  IBOutlet UIView *mainMenuButtons;
+
+  
   IBOutlet UIButton *leaderboardButton;
   IBOutlet UIButton *achievementsButton;
 
@@ -171,6 +177,7 @@ typedef enum {
 - (IBAction)cancelStore;
 - (IBAction)menuAbout;
 - (IBAction)cancelAbout;
+- (IBAction)finishIntro:(id)sender;
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -311,6 +318,10 @@ typedef enum {
 @property (nonatomic, retain) UIImageView *waitingImageView;
 @property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) UIView *logoView;
+@property (nonatomic, retain) UIView *mainMenuBackground;
+@property (nonatomic, retain) UIView *mainMenuLogo;
+@property (nonatomic, retain) UIView *mainMenuSubLogo;
+@property (nonatomic, retain) UIView *mainMenuButtons;
 
 
 @property (nonatomic, retain) UISwipeGestureRecognizer *leftWeaponSwipe;

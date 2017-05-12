@@ -69,4 +69,8 @@ bool delete_quick_save(QuickSave& save);
 bool load_quick_save_dialog(FileSpecifier& saved_game);
 size_t saved_game_was_networked(FileSpecifier& saved_game);
 
+//DCW adding definitions here wo we can access these externally
+std::string build_save_metadata(QuickSave& save);
+bool build_map_preview(std::ostringstream& ostream);
+
 #endif

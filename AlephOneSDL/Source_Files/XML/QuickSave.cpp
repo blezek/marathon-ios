@@ -500,7 +500,8 @@ bool load_quick_save_dialog(FileSpecifier& saved_game)
 extern SDL_Surface *draw_surface;
 extern bool OGL_MapActive;
 
-static bool build_map_preview(std::ostringstream& ostream)
+//DCW making non-static
+bool build_map_preview(std::ostringstream& ostream)
 {
     SDL_Rect r = {0, 0, RENDER_WIDTH, RENDER_HEIGHT};
     SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, r.w, r.h, 32, 0xff0000, 0x00ff00, 0x0000ff, 0);

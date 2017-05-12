@@ -55,6 +55,24 @@
 // We use the A1 logging facilities
 #include	"Logging.h"
 
+//DCW
+#include <sys/socket.h>
+#include "SDLnetsys.h"
+struct UDP_channel {
+  int numbound;
+  IPaddress address[SDLNET_MAX_UDPADDRESSES];
+};
+struct _UDPsocket {
+  int ready;
+  SOCKET channel;
+  IPaddress address;
+  
+  struct UDP_channel binding[SDLNET_MAX_UDPCHANNELS];
+  
+  /* For debugging purposes */
+  int packetloss;
+};
+
 
 // FILE-LOCAL CONSTANTS
 // flags for sBehaviorsDesired (tracks what should be going on)
@@ -473,7 +491,12 @@ SSLPint_Enter() {
         if(!sSocketDescriptor)
             return sSocketDescriptor != NULL;
     }
-    
+  
+    //DCW Set an appropriate network socket service type.
+    int st = NET_SERVICE_TYPE_VI;
+    setsockopt((int)(sSocketDescriptor->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
+
+  
     // Set up broadcast on that socket
     SDLNetx_EnableBroadcast(sSocketDescriptor);
     

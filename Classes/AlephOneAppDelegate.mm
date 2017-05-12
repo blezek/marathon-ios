@@ -13,6 +13,7 @@
 #import "Appirater.h"
 #import "Achievements.h"
 #import "Tracking.h"
+#import "Effects.h"
 ////#import "TestFlight.h"
 
 extern "C" {
@@ -124,6 +125,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
+  introFinished = NO;
 	finishedStartup = NO;
   OpenGLESVersion = 1;
   self.purchases = [[Purchases alloc] init];
@@ -287,7 +289,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   // [self.viewController.view addSubview:game.view];
   // [self.window addSubview:game.view];
 
-	MLog ( @"This is wrong on iphone 6!" ); //DCW
   MLog ( @"Loaded view: %@", self.game.view );
   
 ////  [Tracking startup];
@@ -324,8 +325,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   
 #if SCENARIO == 2
   startDelay = 0.1;
-#endif  
-  [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
+#endif 
+    //DCW moving to finish intro
+  //[[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil afterDelay:startDelay];
 
 #ifdef BUNGIE_AEROSPACE
   [UIView animateWithDuration:duration  delay:delay options:0 animations:fadeBungieToLoading completion:^(BOOL dummy) {
@@ -337,9 +339,23 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 #else
   self.game.bungieAerospaceImageView.hidden = YES;
 
-  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
-    [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
-  }];
+  NSString *filepath = [[NSBundle mainBundle] pathForResource:@"A1_fade_in.mp4" ofType:nil inDirectory:nil];
+  NSURL *fileURL = [NSURL fileURLWithPath:filepath];
+  self.avPlayer = [AVPlayer playerWithURL:fileURL];
+  self.avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+  
+  AVPlayerLayer *videoLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
+  videoLayer.frame = self.game.waitingImageView.bounds;
+  videoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+  [self.game.waitingImageView.layer addSublayer:videoLayer];
+  self.game.waitingImageView.alpha = 1.0;
+  [self.avPlayer play];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.avPlayer currentItem]];
+
+  
+  //[UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
+  //  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
+  //}];
 #endif
   
   // TestFlight
@@ -347,6 +363,48 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   
   return YES;
   
+}
+
+- (void)itemDidFinishPlaying:(NSNotification *)notification {
+  AVPlayerItem *player = [notification object];
+  [self finishIntro:self];
+}
+
+- (IBAction)finishIntro:(id)sender {
+  //Only finish intro once!
+  if ( !introFinished ) {
+    introFinished=YES;
+    
+    self.game.mainMenuBackground.alpha = 0;
+    
+    float logoZoomScale = .66;
+    CGRect endlogo = self.game.mainMenuLogo.bounds;
+    CGRect startlogo = self.game.mainMenuLogo.bounds; //will be .66 of original size
+    startlogo.origin.y += (startlogo.size.width - startlogo.size.width*logoZoomScale)/2;
+    startlogo.size.width *=logoZoomScale;
+    startlogo.size.height *=logoZoomScale;
+    self.game.mainMenuLogo.bounds=startlogo;
+    
+    self.game.mainMenuLogo.alpha = 1.0;
+    self.game.mainMenuSubLogo.alpha = 1.0;
+    self.game.mainMenuButtons.alpha = 0;
+    
+    void (^growLogo) (void) = ^{
+      self.game.mainMenuLogo.bounds=endlogo;
+    };
+    void (^fadeInBackground) (void) = ^{
+      self.game.mainMenuBackground.alpha = 1.0;
+    };
+    
+    [UIView animateWithDuration:5 delay:0 options:0 animations:growLogo completion:nil];
+    
+    [UIView animateWithDuration:1 delay:1 options:0 animations:fadeInBackground completion:nil];
+    [Effects performSelector:@selector(appearRevealingView:) withObject:self.game.mainMenuButtons afterDelay:2];
+    
+    [self.game menuShowReplacementMenu];
+    self.game.logoView.hidden = YES;
+    [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil];
+  }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

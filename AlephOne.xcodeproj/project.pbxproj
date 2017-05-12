@@ -301,6 +301,9 @@
 		51B684FA1EAAFA0400CB1628 /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B684B11EAAFA0400CB1628 /* window.c */; };
 		51B684FB1EAAFA0400CB1628 /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B684B11EAAFA0400CB1628 /* window.c */; };
 		51B684FC1EAAFA0400CB1628 /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B684B11EAAFA0400CB1628 /* window.c */; };
+		51B684FE1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */; };
+		51B684FF1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */; };
+		51B685001EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */; };
 		51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
@@ -2331,6 +2334,8 @@
 		51B684AD1EAAFA0400CB1628 /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "submodules/Libraries/libvorbis-1.2.0/lib/synthesis.c"; sourceTree = SOURCE_ROOT; };
 		51B684B01EAAFA0400CB1628 /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "submodules/Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		51B684B11EAAFA0400CB1628 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "submodules/Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
+		51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = A1_fade_in.mp4; path = Resources/A1_fade_in.mp4; sourceTree = "<group>"; };
+		51B685011EB92D0A00CB1628 /* SDLnetsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLnetsys.h; path = "submodules/Libraries/SDL2_net-2.0.1/SDLnetsys.h"; sourceTree = SOURCE_ROOT; };
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		51EAD2031E58B13600611EFF /* BStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BStream.cpp; sourceTree = "<group>"; };
 		51EAD2041E58B13600611EFF /* BStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BStream.h; sourceTree = "<group>"; };
@@ -3590,6 +3595,7 @@
 				51C72FA11E58EE4700558D7D /* FFmpeg-iOS */,
 				51324AAA1EAAE3C400BA8D8F /* libSDL2_net.a */,
 				51324AA91EAAE3B100BA8D8F /* SDL_net.h */,
+				51B685011EB92D0A00CB1628 /* SDLnetsys.h */,
 				51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */,
 				51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */,
 				51C785041DA0A5530061978B /* freetype_2.4.4 */,
@@ -3642,6 +3648,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
 				519FCAC31E9FFC500066EE69 /* bankgthd.ttf */,
 				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
@@ -6172,6 +6179,7 @@
 				A8421EFB14565584008BBF22 /* SaveGame~iphone.png in Resources */,
 				A8421EFE14565584008BBF22 /* ThrowSwitch.png in Resources */,
 				A8421F0114565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				51B684FE1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
 				A8421F0414565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
 				519FCB1C1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
 				A8421F0714565584008BBF22 /* UseComputer.png in Resources */,
@@ -6518,6 +6526,7 @@
 				A812AD41145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
 				A812AD44145F8D9900196F6B /* LevelNameBackground.png in Resources */,
 				A812AD61145F971200196F6B /* BuyButton.png in Resources */,
+				51B684FF1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
 				A812AD64145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
 				A812AD67145F971200196F6B /* BuyButton~iphone.png in Resources */,
 				A812AD6A145F971200196F6B /* DoneButtonStore.png in Resources */,
@@ -6730,6 +6739,7 @@
 				519FCB1E1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
 				A85B58991433BEC00013CDC9 /* Normal~iphone.png in Resources */,
 				A85B58A21433BEC00013CDC9 /* VidmasterOath.png in Resources */,
+				51B685001EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
 				A85B58A51433BEC00013CDC9 /* VidmasterOath@2x~iphone.png in Resources */,
 				A85B58A81433BEC00013CDC9 /* VidmasterOath~iphone.png in Resources */,
 				A89B96351433C65D005E9FF3 /* BackButtonLoad.png in Resources */,
@@ -8414,8 +8424,9 @@
 					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
 					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"\"$(SRCROOT)/submodules//Libraries/SDL2-2.0.5/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
+					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -8669,8 +8680,9 @@
 					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
 					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"\"$(SRCROOT)/submodules//Libraries/SDL2-2.0.5/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
+					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -8821,8 +8833,9 @@
 					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
 					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"\"$(SRCROOT)/submodules//Libraries/SDL2-2.0.5/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
+					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -8908,8 +8921,9 @@
 					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
 					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"\"$(SRCROOT)/submodules//Libraries/SDL2-2.0.5/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
+					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
+					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (

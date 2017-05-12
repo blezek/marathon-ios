@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <StoreKit/StoreKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "NewGameViewController.h"
 #import "ManagedObjects.h"
 #import "Prefs.h"
@@ -23,6 +24,7 @@
   Scenario *scenario;
   GameViewController *game;
   bool finishedStartup;
+  bool introFinished;
   int OpenGLESVersion;
   int retinaDisplay;
   int oglWidth;
@@ -48,11 +50,18 @@
 @property (nonatomic) int oglHeight;
 @property (nonatomic) int oglWidth;
 @property (nonatomic) int retinaDisplay;
-@property (nonatomic) int longScreenDimension; //DCW
-@property (nonatomic) int shortScreenDimension; //DCW
+
+  //DCW
+@property (nonatomic) int longScreenDimension;
+@property (nonatomic) int shortScreenDimension;
+@property (nonatomic, retain) AVPlayer *avPlayer;
 
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
+
+//Intro methods
+- (void)itemDidFinishPlaying:(NSNotification *)notification;
+- (IBAction)finishIntro:(id)sender;
 
 // Transactions
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;

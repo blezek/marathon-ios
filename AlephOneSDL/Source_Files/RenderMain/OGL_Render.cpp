@@ -3147,7 +3147,13 @@ void OGL_RenderRect(const SDL_Rect& rect)
 }
 
 void OGL_RenderTexturedRect(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
-{	
+{
+  //DCW debugging
+  /*GLfloat m[16];
+  glGetFloatv (GL_MODELVIEW_MATRIX, m);
+  printf ( "Modelview OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);*/
+
 	GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
 	GLfloat texcoords[8] = { tleft, ttop, tright, ttop, tright, tbottom, tleft, tbottom };
     glVertexPointer(2, GL_FLOAT, 0, vertices);

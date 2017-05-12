@@ -44,6 +44,17 @@
 #endif
 #include <algorithm>
 
+  //DCW we need to set socket options; defining the needed struct here. If SDLnet ever changes this, we are hosed.
+#include "SDLnetsys.h"
+struct _TCPsocket {
+  int ready;
+  SOCKET channel;
+  IPaddress remoteAddress;
+  IPaddress localAddress;
+  int sflag;
+};
+
+
 enum
 {
 	// If any incoming message claims to be longer than this, we bail
@@ -467,6 +478,10 @@ CommunicationsChannel::connect(const IPaddress& inAddress)
 
 	if(mSocket != NULL)
 	{
+      //DCW Set an appropriate network socket service type.
+    int st = NET_SERVICE_TYPE_VI;
+    setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
+    
 		mConnected = true;
 
 		mTicksAtLastReceive = SDL_GetTicks();
@@ -663,6 +678,10 @@ CommunicationsChannelFactory::CommunicationsChannelFactory(uint16 inPort)
 	theAddress.port = SDL_SwapBE16(inPort);
 
 	mSocket = SDLNet_TCP_Open(&theAddress);
+
+  //DCW Set an appropriate network socket service type.
+  int st = NET_SERVICE_TYPE_VI;
+  setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 }
 
 
