@@ -2346,6 +2346,7 @@ void display_net_game_stats(void)
 {
 //printf("display_net_game_stats\n");
 
+  glLoadIdentity(); //DCW Sometimes the modelview matrix is weird after a match and the dialog is off the edge of the screen. Set identity here to fix.
   switchToSDLMenu(); //DCW
   
 	if (gMetaserverClient) 
