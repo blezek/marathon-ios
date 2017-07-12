@@ -17,6 +17,7 @@
 @private
   NSFetchedResultsController *fetchedResultsController_;
   NSManagedObjectContext *managedObjectContext_;
+  int selectedRow;
 }
 
 - (IBAction)cancel:(id)sender;

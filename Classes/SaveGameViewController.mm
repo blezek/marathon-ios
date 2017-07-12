@@ -29,6 +29,7 @@
     MLog ( @"inside initWithNib" );
     self.managedObjectContext = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
   }
+  selectedRow=-1;
   return self;
 }
            
@@ -67,7 +68,7 @@
   if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
     return 390.0;
   } else {
-    return 166.0;
+    return 126.0;
   }
 }
 
@@ -91,12 +92,12 @@
 }
   
 - (void)disappear {
-  CAAnimation* group = [Effects disappearAnimation];
+ /* CAAnimation* group = [Effects disappearAnimation];
 
   for ( UIView *v in self.uiView.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
-  }
+  }*/
   [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
@@ -109,12 +110,7 @@
 }
 
 - (NSIndexPath*)selectedIndex {
-  NSArray *paths = [self.tableView indexPathsForVisibleRows];
-  if ( [paths count] > 0 ) {
-    return [paths objectAtIndex:0];
-  } else {
-    return nil;
-  }
+  return [self.tableView indexPathForSelectedRow];
 }
 
 - (IBAction)deleteGame:(id)sender {
@@ -230,7 +226,7 @@
   NSString *filename = [NSString stringWithFormat:@"%@", uuid];
   NSLog ( @"Filename: %@", filename );
   game.filename = filename;
-  game.mapFilename = [NSString stringWithFormat:@"%@-Map.bmp", uuid];
+  game.mapFilename = [NSString stringWithFormat:@"%@-Map.png", uuid];
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
@@ -279,6 +275,12 @@
   // Configure the cell...
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
   [cell setFields:game withController:self];
+  
+  //Only color selected cell, if any.
+  if( [indexPath indexAtPosition:1] == selectedRow) {
+    [cell setBackgroundColor:UIColor.greenColor];
+  }
+  
   return cell;
 }
 
@@ -464,6 +466,25 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  //If this is not the selected row, make it the selected row. If it's already selected, load the game.
+  if ( [indexPath indexAtPosition:1] != selectedRow ) {
+    
+    //un-highlight all rows
+    for (NSInteger j = 0; j < [tableView numberOfSections]; ++j)
+    {
+      for (NSInteger i = 0; i < [tableView numberOfRowsInSection:j]; ++i)
+      {
+        [[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]] setBackgroundColor:UIColor.clearColor];
+      }
+    }
+      
+    selectedRow =[indexPath indexAtPosition:1];
+    NSLog(@"Selecting row %d",selectedRow);
+    [[tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:UIColor.greenColor];
+    return;
+  }
+  
+  
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
   // Make sure it's real!

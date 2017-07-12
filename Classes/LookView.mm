@@ -38,11 +38,16 @@ extern "C" {
 - (void)viewDidLoad {
   firstTouch = nil;
   secondTouch = nil;
+  tapID=0;
 	
 }
 
-- (void)stopPrimaryFire {
-  setKey(primaryFire, 0);
+- (void)stopPrimaryFire: (NSNumber *) thisTapID {
+  
+  if ( tapID <= [thisTapID shortValue] ) {
+    setKey(primaryFire, 0);
+    tapID = 0;
+  }
 }
 - (void)stopSecondaryFire {
   setKey(secondaryFire, 0);
@@ -55,7 +60,9 @@ extern "C" {
 	lastForce = 0;
 	primaryForceThreshold = .4;
 	secondaryForceThreshold = .9;
-
+  swipePrimaryFiring=0;
+  swipeSecondaryFiring=0;
+  
   if ( firstTouch == nil ) {
     // grab the first
     firstTouch = [touches anyObject];
@@ -64,6 +71,9 @@ extern "C" {
     secondTouch = [touches anyObject];
   }
   
+  startSwipe.x = [firstTouch locationInView: self].x;
+  startSwipe.y = [firstTouch locationInView: self].y;
+
   for ( UITouch *touch in [event touchesForView:self] ) {
     if ( touch == firstTouch ) {
       lastPanPoint = [touch locationInView:self];
@@ -81,12 +91,13 @@ extern "C" {
       firstTouch = nil;
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         // Check the time, fire 
-        // MLog ( @"Might fire here");
+         MLog ( @"Might fire here");
         NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
         self.firstTouchTime = nil;
         if ( delta < TapToShootDelta ) {
           setKey(primaryFire, 1);
-          [self performSelector:@selector(stopPrimaryFire) withObject:nil afterDelay:0.2];
+          tapID ++;
+          [self performSelector:@selector(stopPrimaryFire:) withObject:[NSNumber numberWithShort:tapID] afterDelay:0.35]; //DCW: was originally .2
         }
       }
 				//DCW: Release trigger(s) if we were firing using force touch.
@@ -94,6 +105,11 @@ extern "C" {
         setKey(primaryFire, 0);
 			if (lastForce >= secondaryForceThreshold)
         setKey(secondaryFire, 0);
+      
+      if(swipePrimaryFiring)
+         setKey(primaryFire, 0);
+      if(swipeSecondaryFiring)
+         setKey(secondaryFire, 0);
 			
     }
     if ( touch == secondTouch && [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
@@ -121,7 +137,29 @@ extern "C" {
     dx = currentPoint.x - lastPanPoint.x;
     dy = currentPoint.y - lastPanPoint.y;
     
-    dy *=2; //DCW Lets bump up the vertical sensitivity.
+    
+    if ( [[NSUserDefaults standardUserDefaults] boolForKey:kswipeToFire] ) {
+      dy = 0;
+      double swipeFireDelta = 30;
+      if (startSwipe.y - currentPoint.y > swipeFireDelta ){
+        swipePrimaryFiring=1;
+        setKey(primaryFire, 1);
+      }
+      else if(swipePrimaryFiring) {
+        swipePrimaryFiring=0;
+        setKey(primaryFire, 0);
+      }
+      
+      if (currentPoint.y - startSwipe.y > swipeFireDelta ){
+        swipeSecondaryFiring=1;
+        setKey(secondaryFire, 1);
+      }
+      else if(swipeSecondaryFiring) {
+        swipeSecondaryFiring=0;
+        setKey(secondaryFire, 0);
+      }
+    }
+    dy *=4; //DCW Lets bump up the vertical sensitivity.
     moveMouseRelative(dx,dy);
     
     lastPanPoint = currentPoint;

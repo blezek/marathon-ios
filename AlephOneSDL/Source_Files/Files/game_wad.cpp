@@ -267,6 +267,7 @@ bool use_map_file(
 	return success;
 }
 
+#import "AlephOneHelper.h"
 bool load_level_from_map(
 	short level_index)
 {
@@ -276,6 +277,9 @@ bool load_level_from_map(
 	short index_to_load;
 	bool restoring_game= false;
 
+  // DJB Start progress
+  //startProgress(-1); //DCW: I'm not super keen on this progress thing.
+  
 	if(file_is_set)
 	{
 		/* Determine what we are trying to do.. */

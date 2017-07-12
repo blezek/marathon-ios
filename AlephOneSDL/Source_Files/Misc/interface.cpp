@@ -3346,6 +3346,10 @@ size_t should_restore_game_networked(FileSpecifier& file)
 
 	d.set_widget_placer(placer);
 
+  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shopwn.
+  printf("TODO: enable multiplayer restore.\n");
+  return 0; //DCW temporary
+  
         if(d.run() == 0)
         {
                 theResult = theRestoreAsNetgameToggle->get_selection();

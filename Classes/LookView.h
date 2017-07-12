@@ -18,6 +18,10 @@
   UITouch *firstTouch;
   NSDate *firstTouchTime;
   NSDate *lastPrimaryFire;
+  CGPoint startSwipe;
+  bool swipePrimaryFiring;
+  bool swipeSecondaryFiring;
+  short tapID;
 
 	double lastForce, primaryForceThreshold, secondaryForceThreshold; //DCW
 }
@@ -27,7 +31,7 @@
 @property (nonatomic,retain) NSDate *firstTouchTime;
 @property (nonatomic,retain) NSDate *lastPrimaryFire;
 
-- (void)stopPrimaryFire;
+- (void)stopPrimaryFire: (NSNumber *) thisTapID;
 - (void)stopSecondaryFire;
 
 @end

@@ -132,6 +132,9 @@
 		5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238F1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		518AF40E1D91D25E00DB6B36 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */; };
+		519D71291F035FE400C30102 /* OpacityGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 519D71281F035FE400C30102 /* OpacityGradient.png */; };
+		519D712A1F035FE400C30102 /* OpacityGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 519D71281F035FE400C30102 /* OpacityGradient.png */; };
+		519D712B1F035FE400C30102 /* OpacityGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 519D71281F035FE400C30102 /* OpacityGradient.png */; };
 		519FCAC41E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
 		519FCAC51E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
 		519FCAC61E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
@@ -2243,6 +2246,7 @@
 		517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		5189238C1E92C26B009BFB67 /* powered-by-alephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "powered-by-alephone.png"; path = "Resources/Splash/powered-by-alephone.png"; sourceTree = SOURCE_ROOT; };
 		518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		519D71281F035FE400C30102 /* OpacityGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OpacityGradient.png; path = Resources/GUI/OpacityGradient.png; sourceTree = "<group>"; };
 		519FCAC31E9FFC500066EE69 /* bankgthd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = bankgthd.ttf; path = Resources/bankgthd.ttf; sourceTree = "<group>"; };
 		519FCAC71E9FFD9A0066EE69 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericBackground.png; path = Resources/GUI/GenericBackground.png; sourceTree = "<group>"; };
 		519FCACB1EA06A450066EE69 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainItemWrapper.h; path = Classes/KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -3649,6 +3653,7 @@
 			isa = PBXGroup;
 			children = (
 				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
+				519D71281F035FE400C30102 /* OpacityGradient.png */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
 				519FCAC31E9FFC500066EE69 /* bankgthd.ttf */,
 				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
@@ -6187,6 +6192,7 @@
 				A8421F0D14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
 				A8DEE8E2145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
+				519D71291F035FE400C30102 /* OpacityGradient.png in Resources */,
 				A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8E8145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
 				519FCB101EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */,
@@ -6293,6 +6299,7 @@
 				A853C9CE13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
 				519FCB1D1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
 				A853C9D113CF23A2001E8A25 /* PauseViewController.xib in Resources */,
+				519D712A1F035FE400C30102 /* OpacityGradient.png in Resources */,
 				A853C9D413CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
 				A853C9DA13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
@@ -6750,6 +6757,7 @@
 				A89B96411433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
 				A89B96441433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
 				A89B96471433C65D005E9FF3 /* DuplicateButton.png in Resources */,
+				519D712B1F035FE400C30102 /* OpacityGradient.png in Resources */,
 				A89B964A1433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
 				A89B964D1433C65D005E9FF3 /* DuplicateButton~iphone.png in Resources */,
 				A89B96501433C65D005E9FF3 /* LoadButton.png in Resources */,

@@ -324,11 +324,20 @@ short localFindActionTarget(
   currentReticleImage = -1000;
   
   self.saveGameViewController = [[SaveGameViewController alloc] initWithNibName:@"SaveGameViewController" bundle:nil];
-  self.saveGameViewController.view;
+ // self.saveGameViewController.view;
+  //[self.saveGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+  //[self.saveGameViewController.uiView setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+
   MLog ( @"Save Game View: %@", self.saveGameViewController.view );
   // Since the SaveGameViewController was initialized from a nib, add it's view to the proper place
+  //[self.loadGameView setFrame:[UIScreen mainScreen].bounds];//DCW: this subview needs to be the same size as the screen.
+  //[self.saveGameViewController.view setFrame:[UIScreen mainScreen].bounds];//DCW: this subview needs to be the same size as the screen.
+  [self.saveGameViewController.uiView setFrame:self.loadGameView.frame];//DCW: this subview needs to be the same size as the superview.
   [self.loadGameView addSubview:self.saveGameViewController.uiView];
-  
+  MLog ( @"self.loadGameView = %@", self.loadGameView);
+  MLog ( @"self.saveGameViewController.uiView = %@", self.saveGameViewController.uiView);
+
+
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
   [self.progressViewController mainView];
@@ -678,6 +687,7 @@ short localFindActionTarget(
    Crosshairs_SetActive(false);
   }
    */
+  
   Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
@@ -720,6 +730,10 @@ short localFindActionTarget(
     }
   }
 	
+  //DCW refresh preferences to update hud prefs.
+  helperSetPreferences(true);
+
+  
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
 
@@ -1037,8 +1051,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   ////                                       [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
   ////                                       @"level",
   ////                                      nil]];
-MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
-  
+  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
 }
 
 - (IBAction) chooseSaveGameCanceled {
@@ -1086,52 +1099,13 @@ extern SDL_Surface *draw_surface;
   save.save_file.AddPart(base + ".sgaA");
   std::string metadata = build_save_metadata(save);
   std::ostringstream image_stream;
+  
   bool success = build_map_preview(image_stream);
   
-  
-  
-  ////[Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
-  // See if we can generate an overhead view
-  struct overhead_map_data overhead_data;
-  int MapSize = 196;
-  // Create a buffer to render into
-  Uint32 rmask, gmask, bmask, amask;
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  rmask = 0xff000000;
-  gmask = 0x00ff0000;
-  bmask = 0x0000ff00;
-  amask = 0x000000ff;
-#else
-  rmask = 0x000000ff;
-  gmask = 0x0000ff00;
-  bmask = 0x00ff0000;
-  amask = 0xff000000;
-#endif
-  SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 32, rmask, gmask, bmask, amask); //DCW format used to be 8
-  SDL_Surface *map = SDL_ConvertSurfaceFormat(s,s->format->format,0); //SDL_DisplayFormat(s); //DCW SDL_DisplayFormat is gone in SDL2. NOt sure what a good replacement is.
-  SDL_FreeSurface(s);
-  
-  SDL_Surface *old = draw_surface;
-  draw_surface = map;
-  
-  MLog ( @"Saving game in position %d, %d", local_player->location.x, local_player->location.y );
-  
-  overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE; // This is 1, let's go a little larger
-  overhead_data.scale= 3;
-  overhead_data.origin.x= local_player->location.x;
-  overhead_data.origin.y= local_player->location.y;
-  overhead_data.half_width= 196/2;
-  overhead_data.half_height= 196/2;
-  overhead_data.width= 196;
-  overhead_data.height= 196;
-  overhead_data.mode= _rendering_saved_game_preview;
-  
-  _render_overhead_map(&overhead_data);
-  
-  draw_surface = old;
-  // See here: http://www.bit-101.com/blog/?p=1861
-  SDL_SaveBMP ( map, (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String] );
-  SDL_FreeSurface ( map );
+  ofstream thumbFile;
+  thumbFile.open ((char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String]);
+  thumbFile << image_stream.str();
+  thumbFile.close();
   
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];

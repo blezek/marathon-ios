@@ -153,6 +153,10 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
                                @"NO", kCrosshairs,
+                               @"YES", kOnScreenTrigger,
+                               @"NO",  kswipeToFire,
+                               @"YES", kGyroAiming,
+                               @"YES", kTiltTurning,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
@@ -377,9 +381,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     
     self.game.mainMenuBackground.alpha = 0;
     
-    float logoZoomScale = .66;
+    float logoZoomScale = .8; //Fraction to start intro logo zoom from
     CGRect endlogo = self.game.mainMenuLogo.bounds;
-    CGRect startlogo = self.game.mainMenuLogo.bounds; //will be .66 of original size
+    CGRect startlogo = self.game.mainMenuLogo.bounds;
     startlogo.origin.y += (startlogo.size.width - startlogo.size.width*logoZoomScale)/2;
     startlogo.size.width *=logoZoomScale;
     startlogo.size.height *=logoZoomScale;

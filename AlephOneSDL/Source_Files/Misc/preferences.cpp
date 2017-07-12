@@ -3094,6 +3094,10 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 #else
 	preferences->screen_mode.acceleration = _no_acceleration;
 #endif
+  
+  //DCW we pretty much always want shader accelerartion.
+  preferences->screen_mode.acceleration = _shader_acceleration;
+  
 	preferences->screen_mode.high_resolution = true;
 	preferences->screen_mode.fullscreen = true;
 	preferences->screen_mode.fix_h_not_v = true;

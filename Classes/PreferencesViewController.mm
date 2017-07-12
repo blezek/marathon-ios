@@ -8,6 +8,7 @@
 
 #import "PreferencesViewController.h"
 #import "GameViewController.h"
+#import "BasicHUDViewController.h"
 #import "AlephOneAppDelegate.h"
 #import "Effects.h"
 #include "preferences.h"
@@ -27,6 +28,10 @@
 @synthesize vSensitivity;
 @synthesize musicLabel;
 @synthesize crosshairs;
+@synthesize onScreenTrigger;
+@synthesize swipeToFire;
+@synthesize gyroAiming;
+@synthesize tiltTurning;
 @synthesize brightness;
 @synthesize autoCenter;
 @synthesize filmsDisabled;
@@ -51,6 +56,12 @@
   if ( [self.crosshairs isSelected] != [defaults boolForKey:kCrosshairs] ) {
     ////[ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isSelected]];
   }
+  
+  [defaults setBool:[self.onScreenTrigger isSelected] forKey:kOnScreenTrigger];
+  [defaults setBool:[self.swipeToFire isSelected] forKey:kswipeToFire];
+  [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
+  [defaults setBool:[self.tiltTurning isSelected] forKey:kTiltTurning];
+  
   [defaults setBool:[self.secondTapShoots isSelected] forKey:kSecondTapShoots];
   if ( [self.secondTapShoots isSelected] != [defaults boolForKey:kSecondTapShoots] ) {
     ////[ Tracking trackEvent:@"settings" action:kSecondTapShoots label:@"" value:[self.secondTapShoots isSelected]];
@@ -131,6 +142,12 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [self.tapShoots setSelected:[defaults boolForKey:kTapShoots]];
   [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
+  
+  [self.onScreenTrigger setSelected:[defaults boolForKey:kOnScreenTrigger]];
+  [self.swipeToFire setSelected:[defaults boolForKey:kswipeToFire]];
+  [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
+  [self.tiltTurning setSelected:[defaults boolForKey:kTiltTurning]];
+  
   [self.autoCenter setSelected:[defaults boolForKey:kAutocenter]];
   [self.secondTapShoots setSelected:[defaults boolForKey:kSecondTapShoots]];
   self.sfxVolume.value = [defaults floatForKey:kSfxVolume];
@@ -222,6 +239,9 @@
   for (int i = 0; i < network_preferences_data::kMetaserverLoginLength && i < [pass length]; ++i ) {
     network_preferences->metaserver_password[i] = [pass characterAtIndex:i];
   }
+  
+  [[(BasicHUDViewController*)([[GameViewController sharedInstance] HUDViewController]) lookPadView] setHidden: ![defaults boolForKey:kOnScreenTrigger]];
+
   
   float sens;
   sens = [defaults floatForKey:kVSensitivity];

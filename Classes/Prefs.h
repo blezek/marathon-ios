@@ -20,6 +20,10 @@
 #define kFirstGame @"firstGame"
 #define kCrosshairs @"crossHairs"
 #define kAutocenter @"autoCenter"
+#define kOnScreenTrigger @"onScreenTrigger"
+#define kswipeToFire @"swipeToFire"
+#define kGyroAiming @"gyroAiming"
+#define kTiltTurning @"tiltTurning"
 #define kHaveTTEP @"haveTTEP"
 #define kUseTTEP @"useTTEP"
 #define kHaveVidmasterMode @"haveVidmasterMode"
@@ -30,4 +34,4 @@
 #define kAutorecenter @"autorecenter"
 
 // Tap to shoot timeout in seconds
-#define TapToShootDelta 0.1
+#define TapToShootDelta 0.2 //DCW was originally 0.1
