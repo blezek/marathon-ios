@@ -152,21 +152,22 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"1.0", kSfxVolume,
                                @"1.0", kMusicVolume,
                                @"0", kEntryLevelNumber,
-                               @"NO", kCrosshairs,
-                               @"YES", kOnScreenTrigger,
-                               @"NO",  kswipeToFire,
+                               @"YES", kCrosshairs,
+                               @"NO", kOnScreenTrigger,
+                               @"YES",  kHiLowTapsAltFire,
                                @"YES", kGyroAiming,
                                @"YES", kTiltTurning,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
                                @"YES", kUsageData,
-                               @"NO", kHaveVidmasterMode,
-                               @"YES", kUseVidmasterMode,
+                               @"YES", kHaveVidmasterMode,
+                               @"NO", kUseVidmasterMode,
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
                                @"NO", kInvertY,
                                @"YES", kAutorecenter,
+                               @"YES", kAlwaysRun,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -441,7 +442,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking tagEvent:@"applicationWillResignActive"];
   
   [game pauseForBackground:self];
-  if(!game_is_networked) {
+  if(![self gameIsNetworked]) {
     [game stopAnimation];
   }
 }
@@ -469,7 +470,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   if (bgTask == UIBackgroundTaskInvalid) {
     NSLog(@"This application does not support background mode");
   } else {
-    NSLog(@"Application will continue to run in background as task %lu", bgTask );
+    //NSLog(@"Application will continue to run in background as task %lu", bgTask );
     
     [self performSelector:@selector(endBackgroundTask:) withObject:[NSNumber numberWithUnsignedLong: bgTask] afterDelay:240];
   }
@@ -494,12 +495,18 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   // [game startAnimation];
 }
 
+- (bool)gameIsNetworked {
+  return game_is_networked;
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationDidBecomeActive"];
 ////  [Tracking tagEvent:@"applicationDidBecomeActive"];
+  
   if ( finishedStartup ) {
     [game startAnimation];
+  } else if (!introFinished && self.avPlayer) {
+    [self.avPlayer play]; //We need to play because the avplayer pauses in the background.
   }
 }
 
