@@ -31,6 +31,8 @@
 
   @property (nonatomic, retain) NSDate *lastGyroUpdate;
 	@property (nonatomic) CMRotationRate rotationRate;
+  @property (nonatomic) bool specialGyroModeActive;
+
 
 
 	- (void)setup;

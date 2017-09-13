@@ -33,6 +33,7 @@ extern "C" {
 
 @synthesize rotationRate;
 @synthesize lastGyroUpdate;
+@synthesize specialGyroModeActive;
 
 - (void)setup {
 	
@@ -189,6 +190,11 @@ extern "C" {
 	double mouseMovementY = gyroDeltaY;
 	gyroDeltaY -= (double)mouseMovementY;
 	
+  if( ![[NSUserDefaults standardUserDefaults] boolForKey:kGyroAiming] ) {
+    mouseMovementX = 0;
+    mouseMovementY = 0;
+  }
+  
 	double mouseMovementZ = 0; //This is actually going to become X movement below.
 	if (specialGyroModeActive ){
 		mouseMovementZ = gyroDeltaZ;
