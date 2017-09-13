@@ -29,12 +29,13 @@
 @synthesize musicLabel;
 @synthesize crosshairs;
 @synthesize onScreenTrigger;
-@synthesize swipeToFire;
+@synthesize hiLowTapsAltFire;
 @synthesize gyroAiming;
 @synthesize tiltTurning;
 @synthesize brightness;
 @synthesize autoCenter;
 @synthesize filmsDisabled;
+@synthesize alwaysRun;
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
 @synthesize settingPrefsView;
@@ -57,8 +58,9 @@
     ////[ Tracking trackEvent:@"settings" action:kCrosshairs label:@"" value:[self.crosshairs isSelected]];
   }
   
+  [defaults setBool:[self.alwaysRun isSelected] forKey:kAlwaysRun];
   [defaults setBool:[self.onScreenTrigger isSelected] forKey:kOnScreenTrigger];
-  [defaults setBool:[self.swipeToFire isSelected] forKey:kswipeToFire];
+  [defaults setBool:[self.hiLowTapsAltFire isSelected] forKey:kHiLowTapsAltFire];
   [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
   [defaults setBool:[self.tiltTurning isSelected] forKey:kTiltTurning];
   
@@ -143,8 +145,9 @@
   [self.tapShoots setSelected:[defaults boolForKey:kTapShoots]];
   [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
   
+  [self.alwaysRun setSelected:[defaults boolForKey:kAlwaysRun]];
   [self.onScreenTrigger setSelected:[defaults boolForKey:kOnScreenTrigger]];
-  [self.swipeToFire setSelected:[defaults boolForKey:kswipeToFire]];
+  [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
   [self.tiltTurning setSelected:[defaults boolForKey:kTiltTurning]];
   
