@@ -33,24 +33,32 @@ extern "C" {
 #import "Prefs.h"
 
 @implementation LookView
+@synthesize lookPadView;
 @synthesize primaryFire, secondaryFire;
-@synthesize firstTouchTime, lastPrimaryFire;
+@synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime;
 - (void)viewDidLoad {
   firstTouch = nil;
   secondTouch = nil;
   tapID=0;
-	
+	self.touchesEndedTime = [NSDate date];
 }
 
-- (void)stopPrimaryFire: (NSNumber *) thisTapID {
+- (void)stopAllFire: (NSNumber *) thisTapID {
   
-  if ( tapID <= [thisTapID shortValue] ) {
+  if ( autoFireShouldStop && tapID <= [thisTapID shortValue] ) {
+    setKey(secondaryFire, 0);
     setKey(primaryFire, 0);
     tapID = 0;
   }
 }
+
 - (void)stopSecondaryFire {
   setKey(secondaryFire, 0);
+}
+
+- (float)distanceFromPoint:(CGPoint)p1 to:(CGPoint)p2
+{
+  return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p1.y,2));
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -62,6 +70,8 @@ extern "C" {
 	secondaryForceThreshold = .9;
   swipePrimaryFiring=0;
   swipeSecondaryFiring=0;
+  autoFireShouldStop=0;
+  
   
   if ( firstTouch == nil ) {
     // grab the first
@@ -74,9 +84,23 @@ extern "C" {
   startSwipe.x = [firstTouch locationInView: self].x;
   startSwipe.y = [firstTouch locationInView: self].y;
 
+  if(lookPadView && [[NSUserDefaults standardUserDefaults] boolForKey:kTiltTurning]){
+    [lookPadView startGyro];
+    lookPadView.specialGyroModeActive = YES;
+  }
+  
   for ( UITouch *touch in [event touchesForView:self] ) {
     if ( touch == firstTouch ) {
       lastPanPoint = [touch locationInView:self];
+      
+      CGPoint p1 = lastTapPoint;
+      CGPoint p2 = lastPanPoint;
+      NSLog(@"last Tap: %f %f  Last Pan: %f %f", p1.x, p1.y, p2.x, p2.y);
+      
+      if( [self distanceFromPoint:lastPanPoint to:lastTapPoint] > TapContinuousFireDistance ) {
+        autoFireShouldStop = 1;
+      }
+      
     } else {
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
         // start the second fire
@@ -86,18 +110,49 @@ extern "C" {
   }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  
   for ( UITouch *touch in touches ) {
     if ( touch == firstTouch ) {
       firstTouch = nil;
+      autoFireShouldStop=1;
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         // Check the time, fire 
          MLog ( @"Might fire here");
         NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
+        NSTimeInterval touchEndDelta = [[NSDate date] timeIntervalSinceDate:self.touchesEndedTime];
+        CGPoint thisTouch = [touch locationInView:self];
         self.firstTouchTime = nil;
-        if ( delta < TapToShootDelta ) {
-          setKey(primaryFire, 1);
+        
+        if ( delta < TapToShootDelta && [self distanceFromPoint:startSwipe to:thisTouch] < 20 ) {
+          lastTapPoint=thisTouch;
           tapID ++;
-          [self performSelector:@selector(stopPrimaryFire:) withObject:[NSNumber numberWithShort:tapID] afterDelay:0.35]; //DCW: was originally .2
+          
+          if(touchEndDelta < HiLowTapReset &&
+             ((thisTouch.y > lastNonTapPoint.y + HiLowTapDistance) || (thisTouch.y < lastNonTapPoint.y - HiLowTapDistance)) &&
+               [[NSUserDefaults standardUserDefaults] boolForKey:kHiLowTapsAltFire] )
+          {
+            //High touch does secondary+primary fire, and low touch does secondary only.
+            if (thisTouch.y < lastNonTapPoint.y - HiLowTapDistance) {
+              //MLog ( @"HIGH TAP");
+              setKey(primaryFire, 1);
+              setKey(secondaryFire, 1);
+              [self performSelector:@selector(stopAllFire:) withObject:[NSNumber numberWithShort:tapID] afterDelay:0.20];
+            } else {
+              //MLog ( @"LOW TAP");
+              setKey(secondaryFire, 1);
+              [self performSelector:@selector(stopAllFire:) withObject:[NSNumber numberWithShort:tapID] afterDelay:0.20];
+            }
+          } else {
+            //MLog ( @"MIDDLE TAP");
+            lastNonTapPoint = thisTouch; //Middle taps always re-center the non-tap point.
+            setKey(primaryFire, 1);
+            [self performSelector:@selector(stopAllFire:) withObject:[NSNumber numberWithShort:tapID] afterDelay:0.20]; //DCW: was originally .2
+          }
+        }
+        else
+        {
+          lastNonTapPoint = thisTouch;
+          [self stopAllFire:[NSNumber numberWithShort:tapID]];
         }
       }
 				//DCW: Release trigger(s) if we were firing using force touch.
@@ -117,6 +172,13 @@ extern "C" {
       setKey(secondaryFire, 0);
     }
   }
+  
+  if(lookPadView){
+    [lookPadView stopGyro];
+    lookPadView.specialGyroModeActive = NO;
+  }
+  
+  self.touchesEndedTime = [NSDate date];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -132,33 +194,13 @@ extern "C" {
         && touch != firstTouch ) {
       continue;
     }
+    
+    double forceNormalized = touch.force / touch.maximumPossibleForce;
     CGPoint currentPoint = [touch locationInView:self];
     float dx, dy;
     dx = currentPoint.x - lastPanPoint.x;
     dy = currentPoint.y - lastPanPoint.y;
     
-    
-    if ( [[NSUserDefaults standardUserDefaults] boolForKey:kswipeToFire] ) {
-      dy = 0;
-      double swipeFireDelta = 30;
-      if (startSwipe.y - currentPoint.y > swipeFireDelta ){
-        swipePrimaryFiring=1;
-        setKey(primaryFire, 1);
-      }
-      else if(swipePrimaryFiring) {
-        swipePrimaryFiring=0;
-        setKey(primaryFire, 0);
-      }
-      
-      if (currentPoint.y - startSwipe.y > swipeFireDelta ){
-        swipeSecondaryFiring=1;
-        setKey(secondaryFire, 1);
-      }
-      else if(swipeSecondaryFiring) {
-        swipeSecondaryFiring=0;
-        setKey(secondaryFire, 0);
-      }
-    }
     dy *=4; //DCW Lets bump up the vertical sensitivity.
     moveMouseRelative(dx,dy);
     
@@ -171,7 +213,6 @@ extern "C" {
     }
 		
 		//DCW: Fire primary trigger if force is sufficient, otherwise disable trigger.
-		double forceNormalized = touch.force / touch.maximumPossibleForce;
 
 		//This needs to track whether it activated triggers, otherwise is shuts down triggers from other controls. Maybe just yank it. it sucks anyway.
     /*
