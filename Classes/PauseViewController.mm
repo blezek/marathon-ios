@@ -23,7 +23,7 @@
                     && [[NSUserDefaults standardUserDefaults] boolForKey:kUseVidmasterMode];
   for ( UIView *view in self.view.subviews ) {
     if ( view.tag == 1  ) {
-      view.hidden = !cheatsEnabled;
+      view.hidden = [[AlephOneAppDelegate sharedAppDelegate] gameIsNetworked] ? 1 : !cheatsEnabled;
     }
   }
   statusLabel.text = [NSString stringWithFormat:@"Living monsters: %d     Living BoBs: %d", 
