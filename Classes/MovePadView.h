@@ -17,6 +17,9 @@
   CGFloat moveRadius2;
   CGFloat deadSpaceRadius;
   CGFloat runRadius;
+  CGPoint lastLocation; //Location of touch previously observed.
+  CGPoint knobLocation;
+  CGRect originalFrame;
   SDL_Keycode forwardKey;
   SDL_Keycode backwardKey;
   SDL_Keycode leftKey;

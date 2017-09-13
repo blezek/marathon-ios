@@ -40,7 +40,8 @@ extern "C" {
 	//DCW
 	feedbackSecondary = [[UIImpactFeedbackGenerator alloc] init];
 	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
-	
+  originalFrame=CGRectMake(0, 0, 0, 0);
+
   // Kill a warning
   (void)all_key_definitions;
 
@@ -91,11 +92,17 @@ extern "C" {
 - (void)handleTouch:(CGPoint)currentPoint withNormalizedForce:(double)force{
   const Uint8 *key_map = SDL_GetKeyboardState ( NULL );
   
-  // Doesn't matter where we are in this control, just find the position relative to the center
+    //Move our desired knob location based on movement delta.
+    //We will limit the knob location to stay within our run limit.
+    //The reason for doing this is to provide a consistent swipe distance for a "stop/change-direction" operation.
+  knobLocation.x += currentPoint.x - lastLocation.x;
+  knobLocation.y += currentPoint.y - lastLocation.y;
+
   
+  // Doesn't matter where we are in this control, just find the position relative to the center
   float dx, dy;
-  dx = currentPoint.x - moveCenterPoint.x;
-  dy = currentPoint.y - moveCenterPoint.y;
+  dx = knobLocation.x - moveCenterPoint.x;
+  dy = knobLocation.y - moveCenterPoint.y;
   
   // Move the knob...
   float distance2 = dx * dx + dy * dy;
@@ -109,16 +116,21 @@ extern "C" {
     ty = moveCenterPoint.y + ty * moveRadius;
     self.knobView.center = CGPointMake(tx, ty);
   } else {
-    self.knobView.center = currentPoint;
+    self.knobView.center = knobLocation;
   }
   // NSLog ( @"Move delta: %f, %f", dx, dy );
   // Do we move left or right?
   
   float fdx = fabs ( dx );
   float fdy = fabs ( dy );
-	
+  
+  bool alwaysRun =[[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun];
+  float tightClamp = alwaysRun && useForceTouch; //Whether to clamp the knob close to center or not. non
+  bool running = ( fdx > runRadius || fdy > runRadius || alwaysRun);
+  float runThresholdBuffer=20; //How far we let the knob move into the run delta threshold.
+  
   // Are we running?
-  if ( fdx > runRadius || fdy > runRadius ) {
+  if ( running ) {
     setKey(runKey, 1);
     // MLog ( @"Running!" );
 		
@@ -132,7 +144,8 @@ extern "C" {
 			}
 		}
   } else {
-		setKey(runKey, 0);
+      setKey(runKey, 0);
+    
 			//DCW: If we support forcetouch, and it the force is high, we can invert sink/swim so we will swim under pressure.
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
@@ -148,6 +161,10 @@ extern "C" {
     // Just move for now
     // NSLog ( @"Move left" );
     setKey(leftKey, 1);
+    
+    if (dx < 0.0-deadSpaceRadius-runThresholdBuffer-((!tightClamp)*runRadius)) {
+      knobLocation.x=moveCenterPoint.x-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBuffer;
+    }
   } else {
     setKey(leftKey, 0);
   }
@@ -155,6 +172,9 @@ extern "C" {
   if ( dx > deadSpaceRadius ) {
     // NSLog(@"Move right" );
     setKey(rightKey, 1);
+    if (dx > deadSpaceRadius+runThresholdBuffer+((!tightClamp)*runRadius)) {
+      knobLocation.x=moveCenterPoint.x+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBuffer;
+    }
   } else {
     setKey(rightKey, 0);
   }
@@ -163,6 +183,11 @@ extern "C" {
   if ( dy < -deadSpaceRadius ) {
     // NSLog(@"Move forward");
     setKey(forwardKey, 1);
+    
+    
+    if (dy < 0.0-deadSpaceRadius-runThresholdBuffer-((!tightClamp)*runRadius)) {
+      knobLocation.y=moveCenterPoint.y-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBuffer;
+    }
   } else {
     setKey(forwardKey, 0);
   }
@@ -170,6 +195,10 @@ extern "C" {
   if ( dy > deadSpaceRadius ) {
     // NSLog(@"Move backward");
     setKey(backwardKey, 1);
+    
+    if (dy > deadSpaceRadius+runThresholdBuffer+((!tightClamp)*runRadius)) {
+      knobLocation.y=moveCenterPoint.y+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBuffer;
+    }
   } else {
     setKey(backwardKey, 0);
   }
@@ -178,11 +207,24 @@ extern "C" {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   useForceTouch = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable; //DCW: force capability must be checked often, because it fails when view is not in the view hierarchy.
+  if (originalFrame.size.width == 0) {
+    originalFrame=[self frame];
+  }
   
   for ( UITouch *touch in [event touchesForView:self] ) {
-    [self handleTouch:[touch locationInView:self]];
+    //DCW: I think I'm going to auto-center the view under the touch to prevent immediate movement.
+    
+    CGRect newFrame=[self frame];
+    CGPoint center = CGPointMake(newFrame.size.width/2,newFrame.size.height/2 );
+    lastLocation=[touch locationInView:self];
+    knobLocation=lastLocation;
+    newFrame.origin.x -= center.x-lastLocation.x;
+    newFrame.origin.y -= center.y-lastLocation.y;
+    [self setFrame:newFrame];
+    //[self handleTouch:[touch locationInView:self]];
     break;
   }
+  
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   // See if there are still touches in the
@@ -207,6 +249,14 @@ extern "C" {
   [UIView setAnimationDuration:0.2];
   self.knobView.center = moveCenterPoint;
   [UIView commitAnimations];
+  
+  //Animate entire control returning to default location.
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+  [UIView setAnimationDuration:0.1];
+  self.frame = originalFrame;
+  [UIView commitAnimations];
+
   return;
   
 }
@@ -215,6 +265,7 @@ extern "C" {
   for ( UITouch *touch in [event touchesForView:self] ) {
 			//DCW: Added force to handleTouch call
     [self handleTouch:[touch locationInView:self] withNormalizedForce:touch.force / touch.maximumPossibleForce ];
+    lastLocation=[touch locationInView:self];
     break;
   }
 }
