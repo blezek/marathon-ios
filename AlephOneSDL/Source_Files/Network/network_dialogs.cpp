@@ -2346,7 +2346,6 @@ void display_net_game_stats(void)
 {
 //printf("display_net_game_stats\n");
 
-  glLoadIdentity(); //DCW Sometimes the modelview matrix is weird after a match and the dialog is off the edge of the screen. Set identity here to fix.
   switchToSDLMenu(); //DCW
   
 	if (gMetaserverClient) 
@@ -2411,6 +2410,7 @@ void display_net_game_stats(void)
     }
     
     d.set_widget_placer(placer);
+    
     d.run();
 }
 
@@ -2430,8 +2430,9 @@ public:
 	
 		horizontal_placer *autogather_placer = new horizontal_placer(get_theme_space(ITEM_WIDGET), true);
 		w_toggle* autogather_w = new w_toggle(false);
-		autogather_placer->dual_add(autogather_w->label("Auto-Gather"), m_dialog);
-		autogather_placer->dual_add(autogather_w, m_dialog);
+//		autogather_placer->dual_add(autogather_w->label("Auto-Gather"), m_dialog);
+    autogather_placer->dual_add(autogather_w->label(LANIP("Local IP: ", "           Auto-Gather:")), m_dialog);
+    autogather_placer->dual_add(autogather_w, m_dialog);
 
 		placer->add(autogather_placer, true);
 		placer->add(new w_spacer(), true);

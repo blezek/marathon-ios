@@ -302,7 +302,7 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
 				render_object= &RenderObjects[Length];
 				
 				render_object->rectangle.flags= 0;
-				
+        
 				// Clamp to short values
 				render_object->rectangle.x0= PIN(x0,SHRT_MIN,SHRT_MAX);
 				render_object->rectangle.x1= PIN(x1,SHRT_MIN,SHRT_MAX);

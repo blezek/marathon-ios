@@ -347,7 +347,7 @@ short localFindActionTarget(
   self.preferencesViewController = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:[NSBundle mainBundle]];
   [self.preferencesViewController view];
   [self.preferencesViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
-  MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
+  //MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
   [self.preferencesView addSubview:self.preferencesViewController.view];
   
   self.helpViewController = [[HelpViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
@@ -360,6 +360,7 @@ short localFindActionTarget(
   
   self.newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:[NSBundle mainBundle]];
   [self.newGameViewController view];
+  [self.newGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.newGameView addSubview:self.newGameViewController.view];
   
   self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
@@ -1025,6 +1026,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
+  [Effects appearRevealingView:self.loadGameView];
   ////[Tracking trackPageview:@"/load"];
 }
 
@@ -1039,7 +1041,7 @@ extern bool load_and_start_game(FileSpecifier& File);
 
   // load the HD textures if needed
   [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
-
+    
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
@@ -1051,13 +1053,19 @@ extern bool load_and_start_game(FileSpecifier& File);
   ////                                       [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
   ////                                       @"level",
   ////                                      nil]];
-  MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+  if(local_player) {
+    MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+  } else {
+     MLog ( @"Game loading cancelled.");
+    
+  }
 }
 
 - (IBAction) chooseSaveGameCanceled {
   [self closeEvent];
+  [Effects disappearHidingView:self.loadGameView];
   [self.saveGameViewController disappear];
-  [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  //[self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 extern SDL_Surface *draw_surface;

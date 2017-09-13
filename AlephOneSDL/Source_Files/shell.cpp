@@ -142,7 +142,7 @@ extern char *app_preferences_directory;
 extern char *app_support_directory;
 //extern char *app_screenshots_directory; //dcw
 char app_screenshots_directory[] = "/tmp/"; //DCW TODO should be dynamic
-//DCW Adding for ios. TODO Should probgably be dynamic.
+//DCW Adding for ios. TODO Should probably be dynamic.
 char application_name[] = A1_DISPLAY_NAME;
 char application_identifier[] = "org.bungie.source.AlephOne";
 

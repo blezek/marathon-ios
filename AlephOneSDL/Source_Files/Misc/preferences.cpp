@@ -2495,11 +2495,11 @@ void read_preferences ()
 	*sound_preferences = SoundManager::Parameters();
 	default_environment_preferences(environment_preferences);
 
-    //DCW lets add some more options
-  graphics_preferences->OGL_Configure.Flags  |=
-    OGL_Flag_Blur
-  | OGL_Flag_BumpMap
-  | OGL_Flag_Fader;
+    //DCW playing around with some more options
+//  graphics_preferences->OGL_Configure.Flags  |=
+//    OGL_Flag_Blur
+//  | OGL_Flag_BumpMap
+//  | OGL_Flag_Fader;
 
   
 	// Slurp in the file and parse it
@@ -2512,9 +2512,14 @@ void read_preferences ()
 	OpenedFile OFile;
 	bool defaults = false;
   
+  
+//May no longer be Needed!
     //DCW Create new prefs file if it doesn't exist, but leave any existing file in place.
-  setDefaultA1PrefsIfNeeded();
- // SDL_RWops *pfile = SDL_RWFromFile(FileSpec.GetPath(), "a+");
+ // setDefaultA1PrefsIfNeeded();
+
+  
+  
+  // SDL_RWops *pfile = SDL_RWFromFile(FileSpec.GetPath(), "a+");
   //if(pfile) { SDL_RWclose (pfile); }
   
 	bool opened = FileSpec.Open(OFile);

@@ -388,10 +388,13 @@ void FontSpecifier::OGL_Render(const char *Text)
 	glBindTexture(GL_TEXTURE_2D,TxtrID);
 	
   glVertexPointer(2, GL_SHORT, 0, VertexCache);
-  printGLError(__PRETTY_FUNCTION__);
+
+    //DCW These OpenGl errors are a bit spammy. Turning them off for now.
+  //printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_VERTEX_ARRAY);
   glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
-  printGLError(__PRETTY_FUNCTION__);
+
+  //printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   
 	size_t Len = MIN(strlen(Text),255);
@@ -401,11 +404,13 @@ void FontSpecifier::OGL_Render(const char *Text)
     
     // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
     glTranslatef(-PadCache,0,0);
-    printGLError(__PRETTY_FUNCTION__);
+
+    //printGLError(__PRETTY_FUNCTION__);
     
     glDrawArrays(GL_TRIANGLE_FAN, c*4, 4);
     glTranslatef(WidthCache[c]-PadCache,0,0);
-    printGLError(__PRETTY_FUNCTION__);
+
+    //printGLError(__PRETTY_FUNCTION__);
 
     
 		//glCallList(DispList+c);

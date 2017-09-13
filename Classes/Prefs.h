@@ -21,7 +21,7 @@
 #define kCrosshairs @"crossHairs"
 #define kAutocenter @"autoCenter"
 #define kOnScreenTrigger @"onScreenTrigger"
-#define kswipeToFire @"swipeToFire"
+#define kHiLowTapsAltFire @"hiLowTapsAltFire"
 #define kGyroAiming @"gyroAiming"
 #define kTiltTurning @"tiltTurning"
 #define kHaveTTEP @"haveTTEP"
@@ -32,6 +32,11 @@
 #define kHaveReticleMode @"haveReticleMode"
 #define kInvertY @"invertY"
 #define kAutorecenter @"autorecenter"
+#define kAlwaysRun @"alwaysRun"
 
 // Tap to shoot timeout in seconds
 #define TapToShootDelta 0.2 //DCW was originally 0.1
+#define HiLowTapDistance 50 //How far up or down the user must tap for alt fire.
+#define TapContinuousFireDistance 50 //How far up or down the user must tap for alt fire.
+#define HiLowTapReset 10.0 //Hi/Low tap alt fire option stops after this amount of time after touch ended.
+

@@ -2212,15 +2212,29 @@ void dialog::event(SDL_Event &e)
 
 int dialog::run(bool intro_exit_sounds)
 {
+  
+  //DCW Sometimes the modelview matrix is weird after a match and the dialog is off the edge of the screen. Set identity here to fix.
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glTranslatef(0.0, 0.0, 0.0);
+
 	// Put dialog on screen
 	start(intro_exit_sounds);
-
+  
 	// Run dialog loop
 	while (!done) {
 		// Process events
 		process_events();
 		if (done)
 			break;
+    
+    //DCW Sometimes the modelview matrix is weird after a match and the dialog is off the edge of the screen. Set identity here to fix.
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(0.0, 0.0, 0.0);
+
     
 		if (SDL_GetTicks() > last_redraw + TICKS_PER_SECOND / 30)
 		{
