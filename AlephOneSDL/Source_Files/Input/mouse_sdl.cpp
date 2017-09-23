@@ -216,6 +216,30 @@ void mouse_idle(short type)
 float lostMousePrecisionX() { return (lost_x*(float)FIXED_ONE)/512.0; }
 float lostMousePrecisionY() { return (lost_y*(float)FIXED_ONE)/2048.0; }
 
+
+double interpolateAngleTable( int16 *theTable, int16 yaw ){
+  //DCW mouselook smoothing test
+  double xPercentage = fabs(lostMousePrecisionX());
+  double table_value = double(theTable[yaw]);
+  double adjacent_table_value;
+  
+  if (lostMousePrecisionX() > 0){
+    if( (yaw + 1) == NUMBER_OF_ANGLES ) {
+      adjacent_table_value= theTable[0];
+    } else {
+      adjacent_table_value= theTable[yaw + 1];
+    }
+    
+  } else {
+    if( (yaw - 1) < 0 ) {
+      adjacent_table_value= theTable[NUMBER_OF_ANGLES-1];
+    } else {
+      adjacent_table_value= theTable[yaw - 1];
+    }
+  }
+  return(xPercentage*adjacent_table_value + (1.0-xPercentage)*table_value);
+}
+
 /*
  *  Return mouse state
  */

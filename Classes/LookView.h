@@ -20,6 +20,7 @@
   UITouch *secondTouch;
   UITouch *firstTouch;
   NSDate *firstTouchTime;
+  NSDate *lastMovementTime;
   NSDate *lastPrimaryFire;
   NSDate *touchesEndedTime;
   CGPoint startSwipe;
@@ -38,6 +39,8 @@
 @property (nonatomic,retain) NSDate *firstTouchTime;
 @property (nonatomic,retain) NSDate *lastPrimaryFire;
 @property (nonatomic,retain) NSDate *touchesEndedTime;
+@property (nonatomic,retain) NSDate *lastMovementTime;
+
 
 - (void)stopAllFire: (NSNumber *) thisTapID;
 - (void)stopSecondaryFire;

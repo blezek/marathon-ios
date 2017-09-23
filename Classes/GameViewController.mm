@@ -1365,25 +1365,13 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction)menuAbout {
   [self PlayInterfaceButtonSound];
-  ////[Tracking trackPageview:@"/about"];
-  CAAnimation *group = [Effects appearAnimation];
-  for ( UIView *v in self.aboutView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:@"Appear"];
-  }
-  self.aboutView.hidden = NO;
+  [Effects appearRevealingView:self.aboutView];
 }
 
 - (IBAction)cancelAbout {
   [self PlayInterfaceButtonSound];
-  [self closeEvent];
-  CAAnimation *group = [Effects disappearAnimation];
-  for ( UIView *v in self.aboutView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:nil];
-  }
-  [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
-}  
+  [Effects disappearHidingView:self.aboutView];
+}
 
 - (IBAction)finishIntro:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(finishIntro:) withObject:nil afterDelay:0];
@@ -1959,6 +1947,20 @@ short items[]=
   ////                                              @"level", nil]];
 
 }
+
+- (IBAction)startPrimaryFire {
+  [HUDViewController primaryFireDown:self];
+}
+- (IBAction)stopPrimaryFire{
+  [HUDViewController primaryFireUp:self];
+}
+- (IBAction)startSecondaryFire{
+  [HUDViewController secondaryFireDown:self];
+}
+- (IBAction)stopSecondaryFire{
+  [HUDViewController secondaryFireUp:self];
+}
+
 
 - (IBAction)zoomMapIn {
   if (zoom_overhead_map_in()) {

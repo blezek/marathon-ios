@@ -124,7 +124,7 @@ extern "C" {
   float fdx = fabs ( dx );
   float fdy = fabs ( dy );
   
-  bool alwaysRun =[[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun];
+  bool alwaysRun =[[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun] && !headBelowMedia(); //Can't run below media (without checking that, it screws up swimming).
   float tightClamp = alwaysRun && useForceTouch; //Whether to clamp the knob close to center or not. non
   bool running = ( fdx > runRadius || fdy > runRadius || alwaysRun);
   float runThresholdBuffer=20; //How far we let the knob move into the run delta threshold.

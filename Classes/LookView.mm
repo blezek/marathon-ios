@@ -35,7 +35,8 @@ extern "C" {
 @implementation LookView
 @synthesize lookPadView;
 @synthesize primaryFire, secondaryFire;
-@synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime;
+@synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime, lastMovementTime;
+
 - (void)viewDidLoad {
   firstTouch = nil;
   secondTouch = nil;
@@ -71,7 +72,7 @@ extern "C" {
   swipePrimaryFiring=0;
   swipeSecondaryFiring=0;
   autoFireShouldStop=0;
-  
+  self.lastMovementTime=[NSDate date];
   
   if ( firstTouch == nil ) {
     // grab the first
@@ -95,10 +96,13 @@ extern "C" {
       
       CGPoint p1 = lastTapPoint;
       CGPoint p2 = lastPanPoint;
-      NSLog(@"last Tap: %f %f  Last Pan: %f %f", p1.x, p1.y, p2.x, p2.y);
+      //NSLog(@"last Tap: %f %f  Last Pan: %f %f", p1.x, p1.y, p2.x, p2.y);
       
       if( [self distanceFromPoint:lastPanPoint to:lastTapPoint] > TapContinuousFireDistance ) {
         autoFireShouldStop = 1;
+      } else {
+        setSmartFirePrimary(YES);
+        autoFireShouldStop = 1; //remove this to just fire continuously
       }
       
     } else {
@@ -178,6 +182,9 @@ extern "C" {
     lookPadView.specialGyroModeActive = NO;
   }
   
+  setSmartFirePrimary(NO);
+  setSmartFireSecondary(NO);
+  
   self.touchesEndedTime = [NSDate date];
 }
 
@@ -202,8 +209,12 @@ extern "C" {
     dy = currentPoint.y - lastPanPoint.y;
     
     dy *=4; //DCW Lets bump up the vertical sensitivity.
-    moveMouseRelative(dx,dy);
     
+    //moveMouseRelative(dx,dy);
+    NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.lastMovementTime];
+    moveMouseRelativeAcceleratedOverTime(dx, dy, delta);
+    self.lastMovementTime=[NSDate date];
+
     lastPanPoint = currentPoint;
     
     int big = 50;
@@ -212,6 +223,9 @@ extern "C" {
       MLog(@"Big motion!" );
     }
 		
+    //setSmartFirePrimary(NO);
+    //setSmartFireSecondary(NO);
+    
 		//DCW: Fire primary trigger if force is sufficient, otherwise disable trigger.
 
 		//This needs to track whether it activated triggers, otherwise is shuts down triggers from other controls. Maybe just yank it. it sucks anyway.

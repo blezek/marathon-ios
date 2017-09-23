@@ -242,6 +242,11 @@ typedef enum {
 - (IBAction)changeInventory;
 - (IBAction)zoomMapIn;
 - (IBAction)zoomMapOut;
+- (IBAction)startPrimaryFire;
+- (IBAction)stopPrimaryFire;
+- (IBAction)startSecondaryFire;
+- (IBAction)stopSecondaryFire;
+
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;

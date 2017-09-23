@@ -1451,10 +1451,12 @@ void render_screen(short ticks_elapsed)
     // (GL must do this before render_view)
     if (screen_mode.acceleration != _no_acceleration)
         clear_screen_margin();
-    
+  
+  clearSmartTrigger();
+  
 	// Render world view
 	render_view(world_view, world_pixels_structure);
-
+    
     // clear Lua drawing from previous frame
     // (SDL is slower if we do this before render_view)
     if (screen_mode.acceleration == _no_acceleration &&

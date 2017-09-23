@@ -25,6 +25,10 @@ extern "C" {
 //DCW
 float iosDeltaX;
 float iosDeltaY;
+bool smartTriggerActive;
+bool canSmartFirePrimary;
+bool canSmartFireSecondary;
+
 
 
 
@@ -332,19 +336,38 @@ void setKey(SDL_Keycode key, bool down) {
 //DCW
 void moveMouseRelative(float dx, float dy)
 {
-    //DCW Amplify our input by 100 we don't lose as much precision in the int conversion below
-    //DCW This must be de-amplified in mouse_idle() later on.
-  //dx *= 100;
-  //dy *= 100;
   
-  float w, h;
-  w = MainScreenWindowWidth();
-  h = MainScreenWindowHeight();
+  //float w, h;
+  //w = MainScreenWindowWidth();
+  //h = MainScreenWindowHeight();
   
   iosDeltaX+=dx;
   iosDeltaY+=dy;
 
   //SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, true, dx + w/2.0, dy + h/2.0); //Movement is relative to center of screen
+  
+  return;
+}
+void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval)
+{
+  
+  moveMouseRelative(dx, dy);
+  return;
+  //This is currently broken. :(
+  
+  float xRate = fabs(dx/timeInterval);
+  float yRate = fabs(dy/timeInterval);
+  
+  float ax = .1 * dx * xRate;// / timeInterval;
+  float ay = .1 * dy * yRate;// / timeInterval;
+  
+  
+  //NSLog(@"Original: %f Acceleration: %f", dx, .01 * dx / timeInterval );
+  
+  dx += ax;
+  dy += ay;
+  
+  moveMouseRelative(dx, dy);
   
   return;
 }
@@ -361,6 +384,43 @@ void helperGetMouseDelta ( int *dx, int *dy ) {
   [[GameViewController sharedInstance].HUDViewController mouseDeltaX:dx deltaY:dy];
 }
 
+void clearSmartTrigger() {
+  
+  if(smartTriggerActive){
+    //Stop firing!
+    [[GameViewController sharedInstance] stopPrimaryFire];
+    [[GameViewController sharedInstance] stopSecondaryFire];
+  }
+  smartTriggerActive=0;
+}
+bool smartTriggerEngaged(){
+  MLog(@"Smart trigger: %d", smartTriggerActive);
+  return smartTriggerActive;
+}
+void collectionInReticle ( short collection ) {
+  if(canSmartFirePrimary || canSmartFireSecondary)
+  {
+    if (collection >= _collection_juggernaut && collection <= _collection_tick ) {smartTriggerActive = 1;}
+    else if (collection >= _collection_hunter && collection <= _collection_player ) {smartTriggerActive = 1;}
+    else if (collection >= _collection_trooper && collection <= _collection_compiler ) {smartTriggerActive = 1;}
+    else if (collection == _collection_cyborg ) {smartTriggerActive = 1;}
+  }
+  
+  if (smartTriggerActive && canSmartFirePrimary ){
+    [[GameViewController sharedInstance] startPrimaryFire];
+  }
+  if (smartTriggerActive && canSmartFireSecondary ){
+    [[GameViewController sharedInstance] startSecondaryFire];
+  }
+  
+  return;
+}
+void setSmartFirePrimary(bool fire){
+  canSmartFirePrimary=fire;
+}
+void setSmartFireSecondary(bool fire){
+  canSmartFireSecondary=fire;
+}
 
 
 extern GLfloat helperPauseAlpha() {
@@ -370,6 +430,10 @@ extern GLfloat helperPauseAlpha() {
 void helperSetPreferences( int notify) {
   BOOL check = notify ? YES : NO;
   [PreferencesViewController setAlephOnePreferences:notify checkPurchases:check];
+}
+
+bool headBelowMedia () {
+  return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
 }
 
 short pRecord[128][2];

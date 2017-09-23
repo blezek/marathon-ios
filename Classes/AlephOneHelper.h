@@ -45,14 +45,20 @@ extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
-
+extern bool headBelowMedia ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();
 extern void setKey(SDL_Keycode key, bool down);
 extern void moveMouseRelative(float dx, float dy);
+void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval);
 extern void slurpMouseDelta(float *dx, float *dy);
 extern void helperGetMouseDelta ( int *dx, int *dy );
+extern void clearSmartTrigger();
+extern bool smartTriggerEngaged();
+extern void collectionInReticle ( short collection );
+extern void setSmartFirePrimary(bool fire);
+extern void setSmartFireSecondary(bool fire);
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);

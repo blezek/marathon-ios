@@ -614,7 +614,7 @@ static void update_view_data(
 	
 	/* calculate world_to_screen_y*tan(pitch) */
 	view->dtanpitch= (view->world_to_screen_y*sine_table[view->pitch])/cosine_table[view->pitch];
-
+  
 	/* calculate left cone vector */
 	theta= NORMALIZE_ANGLE(view->yaw-view->half_cone);
 	view->left_edge.i= cosine_table[theta], view->left_edge.j= sine_table[theta];

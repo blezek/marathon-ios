@@ -38,6 +38,7 @@ void recenter_mouse(void);
 //DCW
 float lostMousePrecisionX();
 float lostMousePrecisionY();
+double interpolateAngleTable( int16 *theTable, int16 yaw );
 
 // ZZZ: stuff of various hackiness levels to pretend mouse buttons are keys
 void mouse_buttons_become_keypresses(Uint8* ioKeyMap);

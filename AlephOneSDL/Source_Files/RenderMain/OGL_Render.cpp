@@ -140,6 +140,9 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include "shell.h"
 #include "preferences.h"
 
+//DCW Used for mouse smoothing
+#include "mouse.h"
+
 #include <OpenGLES/ES1/gl.h> //DCW
 
 #ifdef HAVE_OPENGL
@@ -318,6 +321,10 @@ inline void Screen2Ray(point2d& Pt, GLfloat* Ray)
 	Ray[0] = XScaleRecip*(Pt.x - XOffset);
 	Ray[1] = YScaleRecip*(Pt.y - YOffset);
 	Ray[2] = -1;
+  
+  //DCW mouselook smoothing test
+  /*Ray[0] = XScaleRecip*(Pt.x -(lostMousePrecisionX()*5)- XOffset);
+  Ray[1] = YScaleRecip*(Pt.y +(lostMousePrecisionY()*5)- YOffset);*/
 }
 
 
@@ -1044,6 +1051,10 @@ bool OGL_SetView(view_data &View)
 	double Cosine = TrigMagReciprocal*double(cosine_table[View.yaw]);
 	double Sine = TrigMagReciprocal*double(sine_table[View.yaw]);
   
+  //DCW mouselook smoothing test
+  /*Cosine = TrigMagReciprocal*interpolateAngleTable(cosine_table, View.yaw);
+  Sine = TrigMagReciprocal*interpolateAngleTable(sine_table, View.yaw);*/
+  
 	CenteredWorld_2_MaraEye[0] = Cosine;
 	CenteredWorld_2_MaraEye[1] = - Sine;
 	CenteredWorld_2_MaraEye[4] = Sine;
@@ -1350,7 +1361,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 		// Create some convenient references
 		point2d& Vertex = RenderPolygon.vertices[k];
 		ExtendedVertexData& EVData = ExtendedVertexList[k];
-		
+
 		// Emit a ray from the vertex in OpenGL eye coords;
 		// it had been specified in screen coordinates
 		GLfloat VertexRay[3];
@@ -2111,7 +2122,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 			return true;
 		}
 	}
-	
+  
 	// Find texture coordinates
 	ExtendedVertexData ExtendedVertexList[4];
 	
@@ -2217,7 +2228,29 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
 	glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
 	glEnable(GL_TEXTURE_2D);
-		
+  
+    //DCW enemy location identification test
+  short CollColor = GET_DESCRIPTOR_COLLECTION(RenderRectangle.ShapeDesc);
+  short Collection = GET_COLLECTION(CollColor);
+ /* if (Collection = 15) {
+    printf ( "model collection: %d\n %f, %f, %f   %f, %f, %f\n",Collection,
+            ExtendedVertexList[1].Vertex[0],
+            ExtendedVertexList[1].Vertex[1],
+            ExtendedVertexList[1].Vertex[2],
+
+            ExtendedVertexList[3].Vertex[0],
+            ExtendedVertexList[3].Vertex[1],
+            ExtendedVertexList[3].Vertex[2]
+            );
+  }*/
+  if( IsInhabitant &&
+     ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0) )/* &&
+     ( (ExtendedVertexList[1].Vertex[1] > 0 &&ExtendedVertexList[3].Vertex[1] < 0) || (ExtendedVertexList[1].Vertex[1] < 0 && ExtendedVertexList[3].Vertex[1] > 0) )*/
+     ) {
+    //Sorry... I can't make a good up/down conditoon for this yet.
+    collectionInReticle(Collection);
+  }
+  
 	// Go!
 	TMgr.SetupTextureMatrix();
 	TMgr.RenderNormal();	// Always do this, of course
@@ -2410,8 +2443,9 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
 	short Collection = GET_COLLECTION(CollColor);
 	short CLUT = ModifyCLUT(RenderRectangle.transfer_mode,GET_COLLECTION_CLUT(CollColor));
 	bool ModelRendered = RenderModel(RenderRectangle,Collection,CLUT);
-	
-	glPopMatrix();
+  //printf ( "model collection: %d CollCOlor: %d\n",Collection, CollColor );
+
+  glPopMatrix();
 	
 	// No need for the clip planes anymore
 	if (ClipLeft) glDisable(GL_CLIP_PLANE0);
@@ -2443,11 +2477,16 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 	ShaderData.SkinPtr = SkinPtr;
 	ShaderData.Collection = Collection;
 	ShaderData.CLUT = CLUT;
-	
+
 	// Don't care about the magnitude of this vector
 	short Azimuth = normalize_angle(RenderRectangle.Azimuth);
 	GLfloat Cosine = cosine_table[Azimuth];
 	GLfloat Sine = sine_table[Azimuth];
+  
+  //DCW mouselook smoothing test
+  /*Cosine = interpolateAngleTable(cosine_table, Azimuth);
+  Sine = interpolateAngleTable(sine_table, Azimuth);*/
+  
 	ModelRenderObject.ViewDirection[0] =   ViewDir[0]*Cosine + ViewDir[1]*Sine;
 	ModelRenderObject.ViewDirection[1] = - ViewDir[0]*Sine + ViewDir[1]*Cosine;
 	// The z-component is already set -- to 0
