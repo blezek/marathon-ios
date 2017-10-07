@@ -301,6 +301,14 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
 				}
 				render_object= &RenderObjects[Length];
 				
+        //DCW smart trigger test
+        render_object->rectangle.isMonster= 0;
+        object_data *object = get_object_data(object_index);
+        if (GET_OBJECT_OWNER(object) == _object_is_monster)
+        {
+          render_object->rectangle.isMonster=1;
+        }
+        
 				render_object->rectangle.flags= 0;
         
 				// Clamp to short values

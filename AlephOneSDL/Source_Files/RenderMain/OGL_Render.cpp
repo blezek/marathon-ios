@@ -2229,7 +2229,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
 	glEnable(GL_TEXTURE_2D);
   
-    //DCW enemy location identification test
+    //DCW Smart trigger test
   short CollColor = GET_DESCRIPTOR_COLLECTION(RenderRectangle.ShapeDesc);
   short Collection = GET_COLLECTION(CollColor);
  /* if (Collection = 15) {
@@ -2248,7 +2248,9 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
      ( (ExtendedVertexList[1].Vertex[1] > 0 &&ExtendedVertexList[3].Vertex[1] < 0) || (ExtendedVertexList[1].Vertex[1] < 0 && ExtendedVertexList[3].Vertex[1] > 0) )*/
      ) {
     //Sorry... I can't make a good up/down conditoon for this yet.
-    collectionInReticle(Collection);
+    if( RenderRectangle.isMonster ) {
+      collectionInReticle(Collection);
+    }
   }
   
 	// Go!

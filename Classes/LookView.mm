@@ -34,6 +34,7 @@ extern "C" {
 
 @implementation LookView
 @synthesize lookPadView;
+@synthesize autoFireIndicator;
 @synthesize primaryFire, secondaryFire;
 @synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime, lastMovementTime;
 
@@ -102,6 +103,7 @@ extern "C" {
         autoFireShouldStop = 1;
       } else {
         setSmartFirePrimary(YES);
+        [autoFireIndicator setHidden:NO];
         autoFireShouldStop = 1; //remove this to just fire continuously
       }
       
@@ -119,6 +121,7 @@ extern "C" {
     if ( touch == firstTouch ) {
       firstTouch = nil;
       autoFireShouldStop=1;
+      [autoFireIndicator setHidden:YES];
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         // Check the time, fire 
          MLog ( @"Might fire here");
@@ -127,7 +130,7 @@ extern "C" {
         CGPoint thisTouch = [touch locationInView:self];
         self.firstTouchTime = nil;
         
-        if ( delta < TapToShootDelta && [self distanceFromPoint:startSwipe to:thisTouch] < 20 ) {
+        if ( delta < TapToShootDelta && [self distanceFromPoint:startSwipe to:thisTouch] < 5 ) {
           lastTapPoint=thisTouch;
           tapID ++;
           

@@ -29,11 +29,13 @@
   bool autoFireShouldStop;
   short tapID;
   LookPadView *lookPadView;
+  UIView *autoFireIndicator;
 
 	double lastForce, primaryForceThreshold, secondaryForceThreshold;
 }
 
-@property (nonatomic,retain) IBOutlet LookPadView* lookPadView;
+@property (nonatomic,retain) IBOutlet LookPadView *lookPadView;
+@property (nonatomic,retain) IBOutlet UIView *autoFireIndicator;
 @property (nonatomic) SDL_Keycode primaryFire;
 @property (nonatomic) SDL_Keycode secondaryFire;
 @property (nonatomic,retain) NSDate *firstTouchTime;
