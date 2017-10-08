@@ -26,6 +26,7 @@
     NSDate *lastGyroUpdate;
 		bool specialGyroModeActive;
 		bool gyroActive;
+    bool gyroPaused;
 
 	}
 
@@ -35,10 +36,12 @@
 
 
 
-	- (void)setup;
+	- (void) setup;
 	- (void) stopGyro;
 	- (void) resetGyro;
 	- (void) startGyro;
+  - (void) pauseGyro;
+  - (void) unPauseGyro;
   - (void) nextWeaponKeyUp;
   - (void) previousWeaponKeyUp;
 

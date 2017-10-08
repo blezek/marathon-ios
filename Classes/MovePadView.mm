@@ -125,7 +125,7 @@ extern "C" {
   float fdy = fabs ( dy );
   
   bool alwaysRun =[[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun] && !headBelowMedia(); //Can't run below media (without checking that, it screws up swimming).
-  float tightClamp = alwaysRun && useForceTouch; //Whether to clamp the knob close to center or not. non
+  float tightClamp = alwaysRun && (useForceTouch || !headBelowMedia()); //Whether to clamp the knob close to center or not.
   bool running = ( fdx > runRadius || fdy > runRadius || alwaysRun);
   float runThresholdBuffer=20; //How far we let the knob move into the run delta threshold.
   
@@ -241,6 +241,9 @@ extern "C" {
 	
 	//DCW. Do open/activate key when released
   setKey(actionKey, 1);
+  if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+    [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+  }
 	[self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
 
   // Animate the knob returning to home...

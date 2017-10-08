@@ -34,7 +34,7 @@ extern "C" {
 
 @implementation LookView
 @synthesize lookPadView;
-@synthesize autoFireIndicator;
+@synthesize smartFireIndicator;
 @synthesize primaryFire, secondaryFire;
 @synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime, lastMovementTime;
 
@@ -42,7 +42,9 @@ extern "C" {
   firstTouch = nil;
   secondTouch = nil;
   tapID=0;
+  lastTouchWasTap=NO;
 	self.touchesEndedTime = [NSDate date];
+  [smartFireIndicator setHidden:YES];
 }
 
 - (void)stopAllFire: (NSNumber *) thisTapID {
@@ -65,6 +67,8 @@ extern "C" {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   //NSLog ( @"Touch started");
+  
+  [lookPadView unPauseGyro];
 
 	//DCW
 	lastForce = 0;
@@ -102,8 +106,12 @@ extern "C" {
       if( [self distanceFromPoint:lastPanPoint to:lastTapPoint] > TapContinuousFireDistance ) {
         autoFireShouldStop = 1;
       } else {
-        setSmartFirePrimary(YES);
-        [autoFireIndicator setHidden:NO];
+          //If last touch was a tap, activate smart fire.
+        if ( lastTouchWasTap > 0 ) {
+          setSmartFirePrimary(YES);
+          [smartFireIndicator setHidden:NO];
+        }
+        
         autoFireShouldStop = 1; //remove this to just fire continuously
       }
       
@@ -119,19 +127,22 @@ extern "C" {
   
   for ( UITouch *touch in touches ) {
     if ( touch == firstTouch ) {
+      
+      NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
+      NSTimeInterval touchEndDelta = [[NSDate date] timeIntervalSinceDate:self.touchesEndedTime];
+      CGPoint thisTouch = [touch locationInView:self];
+      self.firstTouchTime = nil;
+      
+      lastTouchWasTap = ( delta < TapToShootDelta && [self distanceFromPoint:startSwipe to:thisTouch] < 20 );
+      if ( lastTouchWasTap ) {
+        lastTapPoint=thisTouch;
+      }
+      
       firstTouch = nil;
       autoFireShouldStop=1;
-      [autoFireIndicator setHidden:YES];
+      [smartFireIndicator setHidden:YES];
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
-        // Check the time, fire 
-         MLog ( @"Might fire here");
-        NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.firstTouchTime];
-        NSTimeInterval touchEndDelta = [[NSDate date] timeIntervalSinceDate:self.touchesEndedTime];
-        CGPoint thisTouch = [touch locationInView:self];
-        self.firstTouchTime = nil;
-        
-        if ( delta < TapToShootDelta && [self distanceFromPoint:startSwipe to:thisTouch] < 5 ) {
-          lastTapPoint=thisTouch;
+        if ( lastTouchWasTap ) {
           tapID ++;
           
           if(touchEndDelta < HiLowTapReset &&
@@ -194,6 +205,8 @@ extern "C" {
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   //NSLog(@"Touches moved" );
 	
+  [lookPadView unPauseGyro];
+  
   // If first touch goes away, make this one the first
   if ( firstTouch == nil ) {
     firstTouch = [touches anyObject];

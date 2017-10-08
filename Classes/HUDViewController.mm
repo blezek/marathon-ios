@@ -33,7 +33,7 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation HUDViewController
-@synthesize primaryFireKey, secondaryFireKey;
+@synthesize primaryFireKey, secondaryFireKey, lookingAtRefuel, lookPadView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

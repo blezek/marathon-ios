@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #include "SDL_keyboard.h"
+#import "LookPadView.h" //DCW
+
 
 @interface HUDViewController : UIViewController {
   SDL_Keycode primaryFireKey;
@@ -30,10 +32,19 @@
   SDL_Keycode lookDownKey;
   SDL_Keycode lookLeftKey;
   SDL_Keycode lookRightKey;
+  
+     //DCW
+  LookPadView *lookPadView;
+  bool lookingAtRefuel;
 }
 
 @property (nonatomic) SDL_Keycode primaryFireKey;
 @property (nonatomic) SDL_Keycode secondaryFireKey;
+
+  //DCW
+@property (nonatomic) bool lookingAtRefuel;
+@property (nonatomic,retain) IBOutlet LookPadView* lookPadView;
+
 
 // Helper for any sort of alternative mouse movement
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy;

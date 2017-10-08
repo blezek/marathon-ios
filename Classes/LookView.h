@@ -24,18 +24,19 @@
   NSDate *lastPrimaryFire;
   NSDate *touchesEndedTime;
   CGPoint startSwipe;
+  bool lastTouchWasTap;
   bool swipePrimaryFiring;
   bool swipeSecondaryFiring;
   bool autoFireShouldStop;
   short tapID;
   LookPadView *lookPadView;
-  UIView *autoFireIndicator;
+  UIView *smartFireIndicator;
 
 	double lastForce, primaryForceThreshold, secondaryForceThreshold;
 }
 
 @property (nonatomic,retain) IBOutlet LookPadView *lookPadView;
-@property (nonatomic,retain) IBOutlet UIView *autoFireIndicator;
+@property (nonatomic,retain) IBOutlet UIView *smartFireIndicator;
 @property (nonatomic) SDL_Keycode primaryFire;
 @property (nonatomic) SDL_Keycode secondaryFire;
 @property (nonatomic,retain) NSDate *firstTouchTime;
