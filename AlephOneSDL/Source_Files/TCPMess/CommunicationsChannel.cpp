@@ -479,7 +479,7 @@ CommunicationsChannel::connect(const IPaddress& inAddress)
 	if(mSocket != NULL)
 	{
       //DCW Set an appropriate network socket service type.
-    int st = NET_SERVICE_TYPE_VI;
+    int st = NET_SERVICE_TYPE_VO;
     setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
     
 		mConnected = true;
@@ -680,7 +680,7 @@ CommunicationsChannelFactory::CommunicationsChannelFactory(uint16 inPort)
 	mSocket = SDLNet_TCP_Open(&theAddress);
 
   //DCW Set an appropriate network socket service type.
-  int st = NET_SERVICE_TYPE_VI;
+  int st = NET_SERVICE_TYPE_VO;
   setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 }
 

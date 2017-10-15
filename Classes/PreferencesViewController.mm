@@ -13,7 +13,6 @@
 #import "Effects.h"
 #include "preferences.h"
 #include "Mixer.h"
-#import "GameKit/GameKit.h"
 #import "KeychainItemWrapper.h"
 
 ////#import "Tracking.h"
@@ -209,13 +208,6 @@
 }
 
 - (IBAction)resetAchievements:(id)sender {
-  [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error) {
-    if ( error != nil ) {
-      MLog(@"Failed to reset achievements: %@", error );
-    } else {
-      MLog(@"Achievements reset!" );
-    }
-  }];
 }
 
 - (IBAction)notifyOfChanges {

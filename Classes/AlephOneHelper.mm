@@ -429,7 +429,6 @@ extern GLfloat helperPauseAlpha() {
 
 void helperSetPreferences( int notify) {
   BOOL check = notify ? YES : NO;
-  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:check];
 }
 
 bool headBelowMedia () {

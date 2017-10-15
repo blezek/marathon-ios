@@ -14,11 +14,11 @@
 #import "Effects.h"
 #import "AlertPrompt.h"
 #import "Appirater.h"
-#import "Achievements.h"
 #include "FileHandler.h"
 #import "Tracking.h"
 #import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
+#import "alephversion.h"
 
 #include "QuickSave.h" //DCW Used for metadata generation
 #include <fstream>
@@ -289,19 +289,17 @@ short localFindActionTarget(
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
+@synthesize A1Version;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
 @synthesize controlsOverviewView, controlsOverviewGesture;
 @synthesize zoomInButton, zoomOutButton;
 @synthesize replacementMenuView;
-@synthesize purchaseViewController, purchaseView, aboutView;
 @synthesize saveFilmButton, loadFilmButton;
 @synthesize joinNetworkGameButton, gatherNetworkGameButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 @synthesize mainMenuBackground, mainMenuLogo, mainMenuSubLogo, mainMenuButtons;
-////@synthesize HUDTouchViewController, HUDJoypadViewController;
-@synthesize leaderboardButton, achievementsButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -337,6 +335,7 @@ short localFindActionTarget(
   MLog ( @"self.loadGameView = %@", self.loadGameView);
   MLog ( @"self.saveGameViewController.uiView = %@", self.saveGameViewController.uiView);
 
+  [A1Version setText: [NSString stringWithFormat:@"Engine Version: %@", @A1_DISPLAY_VERSION]];
 
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
@@ -368,10 +367,6 @@ short localFindActionTarget(
   [self.filmViewController enclosingView];
   [self.filmView addSubview:self.filmViewController.enclosingView];
   
-  self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
-  [self.purchaseViewController view];
-  [self.purchaseView addSubview:self.purchaseViewController.view];
-    
   // Kill a warning
   (void)all_key_definitions;
   mode = MenuMode;
@@ -394,7 +389,6 @@ short localFindActionTarget(
                              self.filmView,
                              self.controlsOverviewView,
                              self.replacementMenuView,
-                             self.purchaseView,
                              self.aboutView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
@@ -409,11 +403,6 @@ short localFindActionTarget(
 
   // joyPad = [[JoyPad alloc] init];
 
-#endif
-  
-#if SCENARIO == 3
-  self.leaderboardButton.hidden = YES;
-  self.achievementsButton.hidden = YES;
 #endif
   
   self.splashView.hidden = NO;
@@ -579,7 +568,6 @@ short localFindActionTarget(
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
-    [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
 
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
@@ -812,74 +800,6 @@ short localFindActionTarget(
   vector<entry_point> levels;
   const int32 AllPlayableLevels = _single_player_entry_point;
   
-  if (get_entry_points(levels, AllPlayableLevels)) {
-    // Figure out where we are
-    for ( size_t idx = 0; idx < levels.size(); idx++ ) {
-      if ( strcmp ( static_world->level_name, levels[idx].level_name ) == 0 ) {
-        // OK, we are leaving this level so give the player some credit
-        if ( idx < NumberOfLevels ) {
-          
-          // We are leaving level idx...
-          [statistics reportAchievementsLeavingLevel:idx];
-          if ( !currentSavedGame.haveCheated ) {
-#if SCENARIO==1
-            switch (idx) {
-              case 2:
-                [Achievements reportAchievementNoPrefix:@"Arrival" progress:100];
-                break;
-              case 9:
-                [Achievements reportAchievementNoPrefix:@"Counterattack" progress:100];
-                break;
-              case 11:
-                [Achievements reportAchievementNoPrefix:@"Reprisal" progress:100];
-                break;
-              case 15:
-                [Achievements reportAchievementNoPrefix:@"Durandal" progress:100];
-                break;
-              case 23:
-                [Achievements reportAchievementNoPrefix:@"Pfhor" progress:100];
-                break;
-              case 26:
-                [Achievements reportAchievementNoPrefix:@"Rebellion" progress:100];
-                break;
-            }
-#endif
-#if SCENARIO==2
-            switch (idx) {
-              case 3:
-                [Achievements reportAchievementNoPrefix:@"Lhowon" progress:100];
-                break;
-              case 6:
-                [Achievements reportAchievementNoPrefix:@"Volunteers" progress:100];
-                break;
-              case 9:
-                [Achievements reportAchievementNoPrefix:@"Garrison" progress:100];
-                break;
-              case 13:
-                [Achievements reportAchievementNoPrefix:@"M2Durandal" progress:100];
-                break;
-              case 18:
-                [Achievements reportAchievementNoPrefix:@"Captured" progress:100];
-                break;
-              case 22:
-                [Achievements reportAchievementNoPrefix:@"Blake" progress:100];
-                break;
-              case 25:
-                [Achievements reportAchievementNoPrefix:@"Simulacrums" progress:100];
-                break;
-              case 28:
-                [Achievements reportAchievementNoPrefix:@"SphtKr" progress:100];
-                break;
-            }
-#endif
-          }
-        }
-      }
-    }
-  }
-  
-  
-  
 }
 
 - (void)teleportInLevel {
@@ -1039,9 +959,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
 
-  // load the HD textures if needed
-  [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
-    
+  
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
@@ -1163,7 +1081,6 @@ extern SDL_Surface *draw_surface;
                     withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
   
   [self zeroStats];
-  [statistics reportAchievementsForSaveGame];
   
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
@@ -1342,25 +1259,9 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)menuStore {
   [self PlayInterfaceButtonSound];
   MLog ( @"Goto store" );
-  ////[Tracking trackPageview:@"/store"];
-  // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
-  //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
-  /*
-  [UAStoreFront displayStoreFront:self animated:YES];
-  
-  // Specify the sorting of the list of products.
-  [UAStoreFront setOrderBy:UAContentsDisplayOrderPrice ascending:YES];
-  */
-  
-  self.purchaseView.hidden = NO;
-  [self.purchaseViewController openDoors];
-  [self.purchaseViewController appear];
 }
+
 - (IBAction)cancelStore {
-  [self PlayInterfaceButtonSound];
-  [self closeEvent];
-  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
-  [self.purchaseViewController disappear];
 }
 
 - (IBAction)menuAbout {
@@ -1500,17 +1401,6 @@ extern bool handle_open_replay(FileSpecifier& File);
   isPaused = !isPaused;
 }
 
-#pragma mark -
-#pragma mark Achievements
-- (void) gameFinished {
-  // Need to do much more than this...
-  [Achievements reportAchievement:Achievement_Marathon progress:100.0];
-  ////[Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
-  ////[Tracking tagEvent:@"finished" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-  ////                                              @"difficulty", nil]];
-
-}
-
 - (void)zeroStats {
   livingBobs = livingEnemies = 0;
   for ( int i = 0; i < MAXIMUM_NUMBER_OF_WEAPONS; i++ ) {
@@ -1614,55 +1504,6 @@ _civilian_fusion_assimilated,
 }
 
 #pragma mark -
-#pragma mark GameKit
-// Achievements and leader boards
-- (IBAction)displayLeaderboard:(id)sender {
-  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
-                                                    message:@"You are not logged into GameCenter, so I can't show the Leaderboards"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Bummer"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-      return;
-  }
-
-  GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
-  if (leaderboardController != nil) {
-      leaderboardController.leaderboardDelegate = self;
-      [self presentModalViewController:leaderboardController animated: YES];
-  }
-}
-- (IBAction)displayAchievements:(id)sender {
-  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
-                                                    message:@"You are not logged into GameCenter, so I can't show your Achievements"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Bummer"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-      return;
-  }
-  GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
-  if (achievements != nil) {
-    achievements.achievementDelegate = self;
-    [self presentModalViewController: achievements animated: YES];
-  }
-  [achievements release];
-}
-- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
-  [self dismissModalViewControllerAnimated:YES];
-}
-- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
-  [self dismissModalViewControllerAnimated:YES];
-}
-
-
-
-
-#pragma mark -
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
@@ -1714,33 +1555,7 @@ _civilian_fusion_assimilated,
 }
 
 - (void)pickedUp:(short)itemType {
-  if ( currentSavedGame.haveCheated ) { return; }
-  switch (itemType) {
-    case _i_smg:
-      [Achievements reportAchievement:@"SMG" progress:100.0];
-      break;
-    case _i_assault_rifle :
-      [Achievements reportAchievement:@"AssaultRifle" progress:100.0];
-      break;
-    case _i_magnum:
-      [Achievements reportAchievement:@"Pistol" progress:100.0];
-      break;
-    case _i_missile_launcher:
-      [Achievements reportAchievement:@"MissileLauncherItem" progress:100.0];
-      break;
-    case _i_flamethrower:
-      [Achievements reportAchievement:@"Flamethrower" progress:100.0];
-      break;
-    case _i_plasma_pistol:
-      [Achievements reportAchievement:@"PlasmaPistol" progress:100.0];
-      break;
-    case _i_alien_shotgun:
-      [Achievements reportAchievement:@"AlienShotgun" progress:100.0];
-      break;
-    case _i_shotgun:
-      [Achievements reportAchievement:@"Shotgun" progress:100.0];
-      break;
-  }
+  
 }
 short items[]=
 { 

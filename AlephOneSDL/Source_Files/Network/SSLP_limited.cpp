@@ -493,7 +493,7 @@ SSLPint_Enter() {
     }
   
     //DCW Set an appropriate network socket service type.
-    int st = NET_SERVICE_TYPE_VI;
+    int st = NET_SERVICE_TYPE_VO;
     setsockopt((int)(sSocketDescriptor->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 
   

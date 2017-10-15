@@ -11,7 +11,7 @@
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
-#import "Achievements.h"
+
 #import "Tracking.h"
 #import "Effects.h"
 ////#import "TestFlight.h"
@@ -42,7 +42,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game, OpenGLESVersion, purchases;
+@synthesize window, scenario, game, OpenGLESVersion;
 @synthesize viewController;
 @synthesize oglWidth, oglHeight, retinaDisplay, longScreenDimension, shortScreenDimension;
 
@@ -76,9 +76,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     
   [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
   
-  
-  // Kick in the purchases
-  [self.purchases checkPurchases];
   
 #ifdef USE_CADisplayLoop
   /*
@@ -128,9 +125,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   introFinished = NO;
 	finishedStartup = NO;
   OpenGLESVersion = 1;
-  self.purchases = [[Purchases alloc] init];
-  [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-  [Achievements login];
 
 	//DCW: provide a common way to get the current screen dimensions for landscape.
 	longScreenDimension = max([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
@@ -145,18 +139,18 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"2.0", kGamma,
-                               @"NO", kTapShoots,
+                               @"YES", kTapShoots,
                                @"NO", kSecondTapShoots,
                                @"0.5", kHSensitivity,
                                @"0.5", kVSensitivity,
                                @"1.0", kSfxVolume,
-                               @"1.0", kMusicVolume,
+                               @"0.8", kMusicVolume,
                                @"0", kEntryLevelNumber,
                                @"YES", kCrosshairs,
                                @"NO", kOnScreenTrigger,
                                @"YES",  kHiLowTapsAltFire,
                                @"YES", kGyroAiming,
-                               @"YES", kTiltTurning,
+                               @"NO", kTiltTurning,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
@@ -300,9 +294,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking trackPageview:@"/startup"];
 ////  [Tracking tagEvent:@"startup"];
 
-  // Tracking and timer
-  [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
-  
+
   // Do opening animations
   self.game.bungieAerospaceImageView.alpha = 1.0;
   self.game.episodeImageView.alpha = 0.0;
@@ -556,70 +548,6 @@ const char* argv[] = { "AlephOneHD" };
 }
 
 
-#pragma mark -
-#pragma mark Transactions
-
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
-  for (SKPaymentTransaction *transaction in transactions)
-  {
-    BOOL notifiedOfFailure = NO;
-    switch (transaction.transactionState)
-    {
-      case SKPaymentTransactionStatePurchased:
-      case SKPaymentTransactionStateRestored:
-        MLog ( @"Processing transaction %@", transaction.payment.productIdentifier );
-        if ( [transaction.payment.productIdentifier isEqual:VidmasterModeProductID] ) {
-          MLog ( @"Enable Vidmaster mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        if ( [transaction.payment.productIdentifier isEqual:HDModeProductID] ) {
-          MLog ( @"Enable HD mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        if ( [transaction.payment.productIdentifier isEqual:ReticulesProductID] ) {
-          MLog ( @"Enable Reticule mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCrosshairs];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        MLog ( @"Transaction completed" );
-        break;
-      case SKPaymentTransactionStateFailed:
-        // Log something [self failedTransaction:transaction];
-        // Pop up a dialog
-        if ( !notifiedOfFailure ) {
-          notifiedOfFailure = YES;
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:transaction.error.localizedDescription
-                                                       message:transaction.error.localizedFailureReason
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                           otherButtonTitles:nil];
-          [av show];
-          [av release];
-        }
-        MLog ( @"Transaction failed" );
-        break;
-      default:
-        break;
-    }
-  }
-  [[GameViewController sharedInstance].purchaseViewController updateView];
-}
-
-#pragma mark -
-#pragma mark Achievements
-
-- (void)uploadAchievements {
-  MLog(@"Tracking & Achievements");
-  [Achievements uploadAchievements];
-////  [Tracking dispatch];
-}
 
 #pragma mark -
 #pragma mark OpenGL

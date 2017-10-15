@@ -38,5 +38,5 @@
 #define TapToShootDelta 0.2 //DCW was originally 0.1
 #define HiLowTapDistance 50 //How far up or down the user must tap for alt fire.
 #define TapContinuousFireDistance 50 //How far up or down the user must tap for alt fire.
-#define HiLowTapReset 10.0 //Hi/Low tap alt fire option stops after this amount of time after touch ended.
+#define HiLowTapReset 120.0 //Hi/Low tap alt fire option stops after this amount of time after touch ended.
 

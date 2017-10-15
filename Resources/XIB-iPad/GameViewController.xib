@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+            <string>Helvetica-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
                 <outlet property="aboutView" destination="162" id="163"/>
-                <outlet property="achievementsButton" destination="186" id="192"/>
                 <outlet property="bungieAerospaceImageView" destination="177" id="180"/>
                 <outlet property="controlsOverviewView" destination="130" id="133"/>
                 <outlet property="episodeImageView" destination="178" id="179"/>
@@ -22,7 +27,6 @@
                 <outlet property="helpView" destination="116" id="117"/>
                 <outlet property="hud" destination="9" id="10"/>
                 <outlet property="joinNetworkGameButton" destination="Rqu-bu-D0A" id="fIc-HH-lyo"/>
-                <outlet property="leaderboardButton" destination="187" id="190"/>
                 <outlet property="loadFilmButton" destination="169" id="173"/>
                 <outlet property="loadGameView" destination="61" id="76"/>
                 <outlet property="logoView" destination="181" id="182"/>
@@ -36,7 +40,6 @@
                 <outlet property="pauseView" destination="101" id="104"/>
                 <outlet property="preferencesView" destination="102" id="105"/>
                 <outlet property="progressView" destination="87" id="89"/>
-                <outlet property="purchaseView" destination="158" id="159"/>
                 <outlet property="replacementMenuView" destination="145" id="150"/>
                 <outlet property="restartView" destination="111" id="114"/>
                 <outlet property="reticule" destination="174" id="175"/>
@@ -1206,7 +1209,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                             </attributes>
                                         </fragment>
                                         <fragment>
-                                            <mutableString key="content">	Hardgrove
+                                            <string key="content">	Hardgrove
 	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
@@ -1252,7 +1255,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </mutableString>
+ </string>
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -1948,14 +1951,14 @@ Cgo
         <image name="GatherNetworkGame.png" width="500" height="56"/>
         <image name="GatherNetworkGameHighlighted.png" width="500" height="56"/>
         <image name="GenericBackground.png" width="480" height="320"/>
-        <image name="HomeScreen.png" width="480" height="320"/>
+        <image name="HomeScreen.png" width="1024" height="768"/>
         <image name="JoinNetworkGame.png" width="418" height="56"/>
         <image name="JoinNetworkGameHighlighted.png" width="418" height="56"/>
         <image name="LeaderboardsButton.png" width="52" height="47"/>
-        <image name="Preferences.png" width="305" height="56"/>
-        <image name="PreferencesHighlighted.png" width="305" height="56"/>
+        <image name="Preferences.png" width="269" height="56"/>
+        <image name="PreferencesHighlighted.png" width="269" height="56"/>
         <image name="Reload.png" width="256" height="256"/>
-        <image name="Somewhere.png" width="480" height="320"/>
+        <image name="Somewhere.png" width="1024" height="768"/>
         <image name="StoreButton.png" width="136" height="36"/>
         <image name="TouchToContinue.png" width="256" height="50"/>
         <image name="mainlogo.png" width="512" height="512"/>
