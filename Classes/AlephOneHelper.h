@@ -24,7 +24,7 @@ extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
 extern char* LANIP( char *prefix, char *suffix);
-extern void  setDefaultA1PrefsIfNeeded();//DCW 
+extern void  overrideSomeA1Prefs();//DCW 
 extern void helperBringUpHUD();
 
 extern int helperNewGame();

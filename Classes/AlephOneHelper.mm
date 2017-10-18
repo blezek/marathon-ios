@@ -17,6 +17,8 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
+#import "PreferencesViewController.h"
+
 
 extern "C" {
   #include "SDL_mouse_c.h"
@@ -119,17 +121,8 @@ char* LANIP( char *prefix, char *suffix) {
   return (char*)[[NSString stringWithFormat:@"%@%@%@", [NSString stringWithCString:prefix],address,[NSString stringWithCString:suffix]] UTF8String];
 }
 
-void  setDefaultA1PrefsIfNeeded() {
-  
-  //MAY NO LONGER BE WANTED
-  /*char temporary[256];
-  getcstr(temporary, strFILENAMES, filenamePREFERENCES);
-  
-  NSString *A1DefaultPrefs = [NSString stringWithFormat:@"%s/%s", getDataDir(), temporary];
-  NSString *A1TargetPrefs = [NSString stringWithFormat:@"%s/%s", getLocalPrefsDir(), temporary];
-
-  //Copy fresh preferences into place. won't overwrite existing prefs.
-    [[NSFileManager defaultManager] copyItemAtPath:A1DefaultPrefs toPath:A1TargetPrefs error:nil];*/
+void  overrideSomeA1Prefs() {
+  [PreferencesViewController setAlephOnePreferences:NO checkPurchases:YES]; //DCW write prefs; do this first in case this is the initial launch of the app and there is no prefs file on disk yet.
  }
 
 void helperQuit() {

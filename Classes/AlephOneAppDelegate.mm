@@ -52,7 +52,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 - (void)startAlephOne {
   finishedStartup = YES;
 
-  
     //DCW bypass sdl main
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_AddHintCallback(SDL_HINT_IDLE_TIMER_DISABLED, SDL_IdleTimerDisabledChanged, NULL);
@@ -64,7 +63,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
-  
+
   SDL_iPhoneSetEventPump(SDL_TRUE);
   
   //DCW

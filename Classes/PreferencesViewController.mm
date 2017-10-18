@@ -216,8 +216,14 @@
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check{
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
   sound_preferences->music = ceil ( (double)[defaults floatForKey:kMusicVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
   sound_preferences->volume = ceil ( (double)[defaults floatForKey:kSfxVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  
+    //DCW I don't think we need preferences for sound volumes on iOS. I'll just set somthing reasonable here, and let the rocker buttons do the rest.
+  sound_preferences->music = ceil ( (double).1 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  sound_preferences->volume = ceil ( (double).1 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+
   SoundManager::instance()->parameters.music = sound_preferences->music;
   SoundManager::instance()->parameters.volume = sound_preferences->volume;
   
@@ -274,11 +280,16 @@
 #endif
   
   if ( notifySoundManager ) {
-    // Sound ranges from 0-255, but is stored in 8 levels... go figure... 
+    // MAXIMUM_SOUND_VOLUME is 256, NUMBER_OF_SOUND_VOLUME_LEVELS is 8
+    int MAXIMUM_OUTPUT_SOUND_VOLUME = 2 * MAXIMUM_SOUND_VOLUME; // 2*256
+    int SOUND_VOLUME_DELTA = MAXIMUM_OUTPUT_SOUND_VOLUME / NUMBER_OF_SOUND_VOLUME_LEVELS; //(512/8)
+
+    // Sound ranges from 0-255, but is stored in 8 levels... go figure...
+    Mixer::instance()->SetVolume ( sound_preferences->volume * SOUND_VOLUME_DELTA );
     if ( Mixer::instance()->MusicPlaying() ) {
-      Mixer::instance()->SetMusicChannelVolume ( ceil ( [defaults floatForKey:kMusicVolume] * MAXIMUM_SOUND_VOLUME ) );
+      //Mixer::instance()->SetMusicChannelVolume ( sound_preferences->music * SOUND_VOLUME_DELTA );
+      Mixer::instance()->SetMusicChannelVolume (SoundManager::instance()->parameters.music * MAXIMUM_SOUND_VOLUME / NUMBER_OF_SOUND_VOLUME_LEVELS); //I don't know why this is the startup defaults, but whatever.
     }
-    Mixer::instance()->SetVolume ( ceil ( [defaults floatForKey:kSfxVolume] * MAXIMUM_SOUND_VOLUME ) );
   }
   
   // DJB This seems to cause flickering...

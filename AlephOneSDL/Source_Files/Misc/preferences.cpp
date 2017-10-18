@@ -2513,11 +2513,6 @@ void read_preferences ()
 	bool defaults = false;
   
   
-//May no longer be Needed!
-    //DCW Create new prefs file if it doesn't exist, but leave any existing file in place.
- // setDefaultA1PrefsIfNeeded();
-
-  
   
   // SDL_RWops *pfile = SDL_RWFromFile(FileSpec.GetPath(), "a+");
   //if(pfile) { SDL_RWclose (pfile); }
@@ -2528,6 +2523,12 @@ void read_preferences ()
 		defaults = true;
 		FileSpec.SetNameWithPath(getcstr(temporary, strFILENAMES, filenamePREFERENCES));
 		opened = FileSpec.Open(OFile);
+    
+      //DCW if we still can't open, write prefs and try one more time.
+    if (!opened) {
+      write_preferences();
+      opened = FileSpec.Open(OFile);
+    }
 	}
 	
 	bool parse_error = false;
@@ -2555,8 +2556,8 @@ void read_preferences ()
 				parse_player_preferences(child, version);
 //			BOOST_FOREACH(InfoTree child, root.children_named("input"))
 //				parse_input_preferences(child, version);
-//			BOOST_FOREACH(InfoTree child, root.children_named("sound"))
-//				parse_sound_preferences(child, version);
+			BOOST_FOREACH(InfoTree child, root.children_named("sound"))
+				parse_sound_preferences(child, version);
 #if !defined(DISABLE_NETWORKING)
 			BOOST_FOREACH(InfoTree child, root.children_named("network"))
 				parse_network_preferences(child, version);
@@ -2588,15 +2589,17 @@ void read_preferences ()
 	}
 
   helperSetPreferences( false); //DJB
-  
+  overrideSomeA1Prefs(); //DCW
+
   // Print out some things...
   printf ( "Metaserver Login: %d\n", network_preferences->metaserver_login );
   printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
   printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
   printf ( "VSen (int): %d\n", FIXED_INTEGERAL_PART(input_preferences->sens_vertical) );
   printf ( "Sound channels: %hd\n", sound_preferences->channel_count );
+  printf ( "Main Volume: %hd\n", sound_preferences->volume );
   printf ( "Music Volume: %hd\n", sound_preferences->music );
-  
+
   
 	// Check on the read-in prefs
 	validate_graphics_preferences(graphics_preferences);
