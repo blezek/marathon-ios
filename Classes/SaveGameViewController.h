@@ -14,10 +14,12 @@
 @interface SaveGameViewController : UITableViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UIView *uiView;
   IBOutlet SavedGameCell *savedGameCell;
+  IBOutlet UIButton *loadButton;
+  IBOutlet UIButton *duplicateButton;
+  IBOutlet UIButton *deleteButton;
 @private
   NSFetchedResultsController *fetchedResultsController_;
   NSManagedObjectContext *managedObjectContext_;
-  int selectedRow;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -29,6 +31,7 @@
 
 - (void)appear;
 - (void)disappear;
+- (void)setButtonsEnabled:(bool)shouldEnable;
 
 - (int)numberOfSavedGames;
 
@@ -43,6 +46,9 @@
 
 @property (nonatomic, retain) IBOutlet UIView *uiView;
 @property (nonatomic, retain) IBOutlet SavedGameCell *savedGameCell;
+@property (nonatomic, retain) IBOutlet UIButton *loadButton;
+@property (nonatomic, retain) IBOutlet UIButton *duplicateButton;
+@property (nonatomic, retain) IBOutlet UIButton *deleteButton;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

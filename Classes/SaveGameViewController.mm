@@ -18,7 +18,7 @@
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize uiView;
 @synthesize savedGameCell;
-
+@synthesize loadButton, duplicateButton, deleteButton;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -29,7 +29,8 @@
     MLog ( @"inside initWithNib" );
     self.managedObjectContext = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
   }
-  selectedRow=-1;
+  
+  [self setButtonsEnabled:NO];
   return self;
 }
            
@@ -65,11 +66,7 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
-    return 390.0;
-  } else {
     return 126.0;
-  }
 }
 
 
@@ -99,6 +96,12 @@
     [v.layer addAnimation:group forKey:nil];
   }*/
   //[self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+}
+
+- (void)setButtonsEnabled:(bool)shouldEnable {
+  [loadButton setEnabled:shouldEnable];
+  [duplicateButton setEnabled:shouldEnable];
+  [deleteButton setEnabled:shouldEnable];
 }
 
 
@@ -150,6 +153,7 @@
     [self.managedObjectContext deleteObject:game];
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
+    [self setButtonsEnabled:NO];
   }
 }
 
@@ -181,6 +185,7 @@
     [[NSFileManager defaultManager] copyItemAtPath:[self fullPath:game.mapFilename] toPath:[self fullPath:newGame.mapFilename] error:nil];
   }
   [self.tableView reloadData];
+  [self setButtonsEnabled:NO];
 }
 
 - (IBAction)load:(id)sender {
@@ -192,6 +197,8 @@
   } else{
     MLog(@"Load");
   }
+  
+  [self setButtonsEnabled:NO];
   
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -504,12 +511,12 @@
   }
   
   //highlight touched row
-  selectedRow =[indexPath indexAtPosition:1];
   NSLog(@"Selected row %d",[[self selectedIndex] indexAtPosition:1]);
   [[tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5]];
 
   [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
   
+  [self setButtonsEnabled:YES];
   
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
