@@ -350,8 +350,11 @@ short localFindActionTarget(
   [self.preferencesView addSubview:self.preferencesViewController.view];
   
   self.helpViewController = [[HelpViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  [self.helpView addSubview:self.helpViewController.view];
-  
+  [self.helpViewController view];
+  [self.helpViewController.view setFrame:[UIScreen mainScreen].bounds];
+	[self.helpView addSubview:self.helpViewController.view];
+	[self.helpView setFrame:[UIScreen mainScreen].bounds];
+
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
   [self.pauseViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
@@ -519,7 +522,7 @@ short localFindActionTarget(
 
 - (IBAction)switchBackToGameView {
   [self menuShowReplacementMenu];
-  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or dialog is cancelled!
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or dialog is cancelled!
   mode=GameMode;
   //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
 }
@@ -538,7 +541,7 @@ short localFindActionTarget(
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
-  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or a dialog is cancelled!
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or a dialog is cancelled!
   /*
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
@@ -831,11 +834,8 @@ short localFindActionTarget(
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
-  self.viewGL.userInteractionEnabled = NO;
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO;
   
-	//NSLog(@"Fuck up the ogl frame for debugging");
-	//[self.viewGL	setFrame:CGRectMake(100, 100, [[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)]; //DCW sizing test
-
 	//NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
 	//NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
@@ -875,13 +875,7 @@ short localFindActionTarget(
 - (IBAction) help:(id)sender {
   ////[Tracking trackPageview:@"/help"];
   [self.helpViewController setupUI];
-  self.helpView.hidden = NO;
-  self.helpView.alpha = 0.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.5];
-  self.helpView.alpha = 1.0;
-  [UIView commitAnimations];
-  
+  [Effects appearRevealingView:helpView];
 }
 - (IBAction) closeHelp:(id)sender {
   [self closeEvent];
@@ -1707,7 +1701,7 @@ short items[]=
     [self updateReticule:get_player_desired_weapon(current_player_index)];
     if ( get_game_state() == _display_main_menu && ( mode == SDLMenuMode || mode == MenuMode || mode == CutSceneMode ) ) {
         [self menuShowReplacementMenu];
-        self.viewGL.userInteractionEnabled = NO; //DCW
+      self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
         mode = MenuMode;
     }
     // Causing a bug, always dim
