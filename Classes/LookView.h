@@ -31,11 +31,13 @@
   short tapID;
   LookPadView *lookPadView;
   UIView *smartFireIndicator;
-
+  UIView *tapLocationIndicator;
+  
 	double lastForce, primaryForceThreshold, secondaryForceThreshold;
 }
 
 @property (nonatomic,retain) IBOutlet LookPadView *lookPadView;
+@property (nonatomic,retain) IBOutlet UIView *tapLocationIndicator;
 @property (nonatomic,retain) IBOutlet UIView *smartFireIndicator;
 @property (nonatomic) SDL_Keycode primaryFire;
 @property (nonatomic) SDL_Keycode secondaryFire;
@@ -44,7 +46,7 @@
 @property (nonatomic,retain) NSDate *touchesEndedTime;
 @property (nonatomic,retain) NSDate *lastMovementTime;
 
-
+- (void)alignTLIWithPoint:(CGPoint) location;
 - (void)stopAllFire: (NSNumber *) thisTapID;
 - (void)stopSecondaryFire;
 - (float)distanceFromPoint:(CGPoint)p1 to:(CGPoint)p2;

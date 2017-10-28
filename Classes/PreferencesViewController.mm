@@ -221,8 +221,8 @@
   sound_preferences->volume = ceil ( (double)[defaults floatForKey:kSfxVolume] * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
   
     //DCW I don't think we need preferences for sound volumes on iOS. I'll just set somthing reasonable here, and let the rocker buttons do the rest.
-  sound_preferences->music = ceil ( (double).1 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
-  sound_preferences->volume = ceil ( (double).1 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  sound_preferences->music = ceil ( (double).5 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  sound_preferences->volume = ceil ( (double).3 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
 
   SoundManager::instance()->parameters.music = sound_preferences->music;
   SoundManager::instance()->parameters.volume = sound_preferences->volume;

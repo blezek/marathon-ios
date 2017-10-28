@@ -126,7 +126,8 @@ extern "C" {
   
   float tightClamp = [[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun] && (useForceTouch || !headBelowMedia()); //Whether to clamp the knob close to center or not.
   bool running = ( fdx > runRadius || fdy > runRadius || tightClamp);
-  float runThresholdBuffer=20; //How far we let the knob move into the run delta threshold.
+  float runThresholdBufferX=5; //How far we let the knob move into the run delta threshold for strafing.
+  float runThresholdBufferY=30; //How far we let the knob move into the run delta threshold for forward/back movement.
   
   // Are we running?
   if ( running ) {
@@ -161,8 +162,8 @@ extern "C" {
     // NSLog ( @"Move left" );
     setKey(leftKey, 1);
     
-    if (dx < 0.0-deadSpaceRadius-runThresholdBuffer-((!tightClamp)*runRadius)) {
-      knobLocation.x=moveCenterPoint.x-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBuffer;
+    if (dx < 0.0-deadSpaceRadius-runThresholdBufferX-((!tightClamp)*runRadius)) {
+      knobLocation.x=moveCenterPoint.x-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBufferX;
     }
   } else {
     setKey(leftKey, 0);
@@ -171,8 +172,8 @@ extern "C" {
   if ( dx > deadSpaceRadius ) {
     // NSLog(@"Move right" );
     setKey(rightKey, 1);
-    if (dx > deadSpaceRadius+runThresholdBuffer+((!tightClamp)*runRadius)) {
-      knobLocation.x=moveCenterPoint.x+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBuffer;
+    if (dx > deadSpaceRadius+runThresholdBufferX+((!tightClamp)*runRadius)) {
+      knobLocation.x=moveCenterPoint.x+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBufferX;
     }
   } else {
     setKey(rightKey, 0);
@@ -184,8 +185,8 @@ extern "C" {
     setKey(forwardKey, 1);
     
     
-    if (dy < 0.0-deadSpaceRadius-runThresholdBuffer-((!tightClamp)*runRadius)) {
-      knobLocation.y=moveCenterPoint.y-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBuffer;
+    if (dy < 0.0-deadSpaceRadius-runThresholdBufferY-((!tightClamp)*runRadius)) {
+      knobLocation.y=moveCenterPoint.y-deadSpaceRadius-((!tightClamp)*runRadius)-runThresholdBufferY;
     }
   } else {
     setKey(forwardKey, 0);
@@ -195,8 +196,8 @@ extern "C" {
     // NSLog(@"Move backward");
     setKey(backwardKey, 1);
     
-    if (dy > deadSpaceRadius+runThresholdBuffer+((!tightClamp)*runRadius)) {
-      knobLocation.y=moveCenterPoint.y+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBuffer;
+    if (dy > deadSpaceRadius+runThresholdBufferY+((!tightClamp)*runRadius)) {
+      knobLocation.y=moveCenterPoint.y+deadSpaceRadius+((!tightClamp)*runRadius)+runThresholdBufferY;
     }
   } else {
     setKey(backwardKey, 0);

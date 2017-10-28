@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica-Bold</string>
+        </array>
         <array key="bankgthd.ttf">
             <string>BankGothicBT-Medium</string>
         </array>
@@ -35,7 +38,7 @@
                 <userLayoutGuide location="463" affinity="minY"/>
             </userGuides>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" image="BlackHole.png" translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" image="NewGameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="14" userLabel="Background">
                     <rect key="frame" x="0.0" y="0.0" width="677" height="372"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -158,11 +161,11 @@
     <resources>
         <image name="BackButton.png" width="124" height="56"/>
         <image name="BackButtonHighlighted.png" width="124" height="56"/>
-        <image name="BlackHole.png" width="1820" height="1024"/>
         <image name="Difficulty-Easy.png" width="115" height="56"/>
         <image name="Difficulty-Major Damage.png" width="280" height="56"/>
         <image name="Difficulty-Normal.png" width="169" height="56"/>
         <image name="Difficulty-Total Carnage.png" width="283" height="56"/>
+        <image name="NewGameBackground.png" width="3000" height="2400"/>
         <image name="VidmasterOath.png" width="467" height="170"/>
     </resources>
 </document>

@@ -34,6 +34,7 @@ extern "C" {
 
 @implementation LookView
 @synthesize lookPadView;
+@synthesize tapLocationIndicator;
 @synthesize smartFireIndicator;
 @synthesize primaryFire, secondaryFire;
 @synthesize firstTouchTime, lastPrimaryFire, touchesEndedTime, lastMovementTime;
@@ -45,6 +46,15 @@ extern "C" {
   lastTouchWasTap=NO;
 	self.touchesEndedTime = [NSDate date];
   [smartFireIndicator setHidden:YES];
+  
+}
+
+- (void)alignTLIWithPoint:(CGPoint) location; {
+  CGRect TLIframe=[tapLocationIndicator frame];
+  TLIframe.size.height=HiLowTapDistance;
+  TLIframe.origin.y = location.y-(float)HiLowTapDistance/2.0;
+  [tapLocationIndicator setFrame:TLIframe];
+  [tapLocationIndicator setNeedsLayout];
 }
 
 - (void)stopAllFire: (NSNumber *) thisTapID {
@@ -115,12 +125,12 @@ extern "C" {
         autoFireShouldStop = 1; //remove this to just fire continuously
       }
       
-    } else {
+    } /*else {
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
         // start the second fire
         setKey(secondaryFire, 1);
       }
-    }
+    }*/
   }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -141,6 +151,9 @@ extern "C" {
       firstTouch = nil;
       autoFireShouldStop=1;
       [smartFireIndicator setHidden:YES];
+      setSmartFirePrimary(NO);
+      setSmartFireSecondary(NO);
+      
       if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         if ( lastTouchWasTap ) {
           tapID ++;
@@ -185,19 +198,16 @@ extern "C" {
          setKey(secondaryFire, 0);
 			
     }
-    if ( touch == secondTouch && [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
+    /*if ( touch == secondTouch && [[NSUserDefaults standardUserDefaults] boolForKey:kSecondTapShoots] ) {
       secondTouch = nil;
       setKey(secondaryFire, 0);
-    }
+    }*/
   }
   
   if(lookPadView){
     [lookPadView stopGyro];
     lookPadView.specialGyroModeActive = NO;
   }
-  
-  setSmartFirePrimary(NO);
-  setSmartFireSecondary(NO);
   
   self.touchesEndedTime = [NSDate date];
 }
@@ -238,7 +248,9 @@ extern "C" {
     if ( (dx*dx + dy*dy) > big ) {
       MLog(@"Big motion!" );
     }
-		
+    if ( (dx || dy) && [[NSDate date] timeIntervalSinceDate:self.firstTouchTime] > TapToShootDelta ) { //Only update TLI when we actually pan, and that pan was longer than the tap-to-fire timer.
+      [self alignTLIWithPoint: currentPoint];
+    }
     //setSmartFirePrimary(NO);
     //setSmartFireSecondary(NO);
     
