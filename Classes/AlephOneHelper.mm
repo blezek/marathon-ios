@@ -390,13 +390,10 @@ bool smartTriggerEngaged(){
   MLog(@"Smart trigger: %d", smartTriggerActive);
   return smartTriggerActive;
 }
-void collectionInReticle ( short collection ) {
+void monsterIsCentered () {
   if(canSmartFirePrimary || canSmartFireSecondary)
   {
-    if (collection >= _collection_juggernaut && collection <= _collection_tick ) {smartTriggerActive = 1;}
-    else if (collection >= _collection_hunter && collection <= _collection_player ) {smartTriggerActive = 1;}
-    else if (collection >= _collection_trooper && collection <= _collection_compiler ) {smartTriggerActive = 1;}
-    else if (collection == _collection_cyborg ) {smartTriggerActive = 1;}
+    smartTriggerActive = 1;
   }
   
   if (smartTriggerActive && canSmartFirePrimary ){
@@ -421,7 +418,7 @@ extern GLfloat helperPauseAlpha() {
 }
 
 void helperSetPreferences( int notify) {
-  BOOL check = notify ? YES : NO;
+  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
 }
 
 bool headBelowMedia () {

@@ -56,7 +56,7 @@ extern void slurpMouseDelta(float *dx, float *dy);
 extern void helperGetMouseDelta ( int *dx, int *dy );
 extern void clearSmartTrigger();
 extern bool smartTriggerEngaged();
-extern void collectionInReticle ( short collection );
+extern void monsterIsCentered ();
 extern void setSmartFirePrimary(bool fire);
 extern void setSmartFireSecondary(bool fire);
 

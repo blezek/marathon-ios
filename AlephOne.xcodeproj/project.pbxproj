@@ -106,6 +106,13 @@
 		51324AAF1EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB01EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB11EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
+		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
+		513F282B1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
+		513F282C1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
+		513F282D1F998F4F00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
+		513F282E1F998F5200A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
+		513F282F1F998F5200A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
+		513F28301F998F5300A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
 		51451B6E1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
 		51451B6F1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
 		51451B701F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
@@ -183,7 +190,6 @@
 		517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
-		517FB4921F89C3CB009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4911F89C3CB009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
 		517FB4991F89CA93009F6DCE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4951F89CA93009F6DCE /* Menu.png */; };
 		517FB49A1F89CA93009F6DCE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4951F89CA93009F6DCE /* Menu.png */; };
@@ -1916,9 +1922,6 @@
 		A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
 		A8DEE8DA145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
 		A8DEE8DB145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */; };
-		A8DEE8E2145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
-		A8DEE8E3145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
-		A8DEE8E4145CDEA000D8608F /* SliderTab~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */; };
 		A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
 		A8DEE8E6145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
 		A8DEE8E7145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */; };
@@ -2267,6 +2270,9 @@
 		51324AAA1EAAE3C400BA8D8F /* libSDL2_net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_net.a; sourceTree = "<group>"; };
 		51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
 		51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ttf.h; sourceTree = "<group>"; };
+		513F28261F97CAF100A23C93 /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
+		513F28291F998C3100A23C93 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButtonHighlighted.png; sourceTree = "<group>"; };
 		51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Delete.png"; sourceTree = "<group>"; };
 		51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DeleteHighlighted.png"; sourceTree = "<group>"; };
 		51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
@@ -2294,7 +2300,6 @@
 		517BC97F1E5A2478004B42FF /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		517FB48F1F89C379009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
-		517FB4911F89C3CB009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4931F89C408009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4951F89CA93009F6DCE /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
 		517FB4961F89CA93009F6DCE /* MenuHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuHighlighted.png; sourceTree = "<group>"; };
@@ -3439,7 +3444,6 @@
 		A8D8FC39152E8D7500A54CE4 /* Infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Infinity@2x.png"; path = "../../Infinity@2x.png"; sourceTree = "<group>"; };
 		A8D8FC3B152E8D8500A54CE4 /* Infinity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Infinity.png; path = ../../Infinity.png; sourceTree = "<group>"; };
 		A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BasicHUDViewController~iphone.xib"; sourceTree = "<group>"; };
-		A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTab~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTab@2x~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRedTrack~iphone.png"; sourceTree = "<group>"; };
 		A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBlackTrack~iphone.png"; sourceTree = "<group>"; };
@@ -4065,6 +4069,8 @@
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				513F28291F998C3100A23C93 /* HelpButton.png */,
+				513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */,
 				51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */,
 				51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */,
 				51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */,
@@ -5079,7 +5085,6 @@
 				A83FBB67144C95DE00B27426 /* SliderTab.png */,
 				519FCAD41EA1CEA40066EE69 /* SliderGreyTrack.png */,
 				519FCAD81EA1CEAE0066EE69 /* SliderWhiteTrack.png */,
-				A8DEE8DC145CDE9E00D8608F /* SliderTab~iphone.png */,
 				A8DEE8DD145CDE9E00D8608F /* SliderTab@2x~iphone.png */,
 				A8DEE8DE145CDE9E00D8608F /* SliderRedTrack~iphone.png */,
 				A8DEE8DF145CDE9F00D8608F /* SliderBlackTrack~iphone.png */,
@@ -5204,9 +5209,9 @@
 				A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */,
 				A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */,
 				A8B9F9EC13FAE4F500552296 /* PauseViewController~iphone.xib */,
+				A864DDCA13FDF69300A0AE0C /* SaveGameViewController~iphone.xib */,
 				A864DDC913FDF69300A0AE0C /* SavedGameCell~iphone.xib */,
 				A82B117313FF40410085C1F7 /* HelpViewController~iphone.xib */,
-				A864DDCA13FDF69300A0AE0C /* SaveGameViewController~iphone.xib */,
 			);
 			name = "XIB-iPhone";
 			path = "Resources/XIB-iPhone";
@@ -5813,7 +5818,7 @@
 		A8FF8537130F798B00A874F8 /* M1 */ = {
 			isa = PBXGroup;
 			children = (
-				517FB4911F89C3CB009F6DCE /* NewGameBackground.png */,
+				513F28261F97CAF100A23C93 /* NewGameBackground.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				A8B19C1413A459BA008A095D /* Marathon_Icon.png */,
 				A864DDD713FDFFDC00A0AE0C /* Marathon_Icon@2x.png */,
@@ -6160,6 +6165,7 @@
 				518EA00A1F72F9B40039960A /* EpisodeLogoAlpha.png in Resources */,
 				A85B58881433BEC00013CDC9 /* Nightmare.png in Resources */,
 				A85B588B1433BEC00013CDC9 /* Nightmare@2x~iphone.png in Resources */,
+				513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */,
 				A85B588E1433BEC00013CDC9 /* Nightmare~iphone.png in Resources */,
 				A85B58911433BEC00013CDC9 /* Normal.png in Resources */,
 				A85B58941433BEC00013CDC9 /* Normal@2x~iphone.png in Resources */,
@@ -6202,6 +6208,7 @@
 				516ECEA11F4E086200D38BB2 /* D-pad.png in Resources */,
 				519FCB011EA53FB90066EE69 /* About.png in Resources */,
 				519FCADE1EA1D39F0066EE69 /* checkbox.png in Resources */,
+				513F282E1F998F5200A23C93 /* HelpButton.png in Resources */,
 				A83FBB9F144C95DF00B27426 /* MCModeOff.png in Resources */,
 				A83FBBA8144C95DF00B27426 /* MCModeOn.png in Resources */,
 				A83FBBB1144C95DF00B27426 /* Notes.txt in Resources */,
@@ -6245,7 +6252,6 @@
 				A8421F0A14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
 				A8421F0D14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
-				A8DEE8E2145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
 				A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8E8145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
 				519FCB101EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */,
@@ -6274,6 +6280,7 @@
 				A812AD60145F971200196F6B /* BuyButton.png in Resources */,
 				A812AD63145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
 				A812AD66145F971200196F6B /* BuyButton~iphone.png in Resources */,
+				513F282B1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */,
 				519FCB0D1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */,
 				A812AD69145F971200196F6B /* DoneButtonStore.png in Resources */,
 				A812AD6C145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
@@ -6299,7 +6306,6 @@
 				A812ADB6145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */,
 				A812ADB9145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */,
 				A80B316C1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
-				517FB4921F89C3CB009F6DCE /* NewGameBackground.png in Resources */,
 				A80B31731463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
 				519FCB191EA53FB90066EE69 /* JoinNetworkGame.png in Resources */,
 				517FB49F1F89CA93009F6DCE /* Resume.png in Resources */,
@@ -6497,6 +6503,7 @@
 				51EAD58E1E58B13700611EFF /* alephone32.xpm in Resources */,
 				A85B587A1433BEC00013CDC9 /* Hard@2x~iphone.png in Resources */,
 				A85B587D1433BEC00013CDC9 /* Hard~iphone.png in Resources */,
+				513F282C1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */,
 				519FCB051EA53FB90066EE69 /* AboutHighlighted.png in Resources */,
 				516ECEB81F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */,
 				A85B58891433BEC00013CDC9 /* Nightmare.png in Resources */,
@@ -6578,10 +6585,10 @@
 				A8421F0B14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
 				A8421F0E14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				A8DEE8DA145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
-				A8DEE8E3145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
 				A8DEE8E6145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8E9145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
 				A8DEE8EC145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				513F282F1F998F5200A23C93 /* HelpButton.png in Resources */,
 				A8DEE8EF145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
 				A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
 				A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
@@ -6897,7 +6904,6 @@
 				A8421F0F14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				519FCB061EA53FB90066EE69 /* AboutHighlighted.png in Resources */,
 				A8DEE8DB145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
-				A8DEE8E4145CDEA000D8608F /* SliderTab~iphone.png in Resources */,
 				A8DEE8E7145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8EA145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
 				A8DEE8ED145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
@@ -6958,6 +6964,7 @@
 				A8EEFAC3147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC6147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
+				513F28301F998F5300A23C93 /* HelpButton.png in Resources */,
 				A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 				519FCADB1EA1CEAE0066EE69 /* SliderWhiteTrack.png in Resources */,
 				A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */,
@@ -6967,6 +6974,7 @@
 				A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */,
 				518E9FF61F69AEAF0039960A /* mainlogo.png in Resources */,
 				A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */,
+				513F282D1F998F4F00A23C93 /* HelpButtonHighlighted.png in Resources */,
 				A8998F041550DE11007FFBAB /* StoreBackground@2x~iphone.png in Resources */,
 				51451B701F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */,
 				519FCAE01EA1D39F0066EE69 /* checkbox.png in Resources */,
@@ -8492,7 +8500,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					HAVE_LUA,
 					HAVE_VORBISFILE,
-					HAVE_MAD,
 					HAVE_SDL_IMAGE_H,
 					HAVE_UNISTD_H,
 					SDL,
@@ -8504,6 +8511,7 @@
 					SDL_VIDEO_DRIVER_UIKIT,
 					SDL_MAIN_HANDLED,
 					HAVE_SDL_IMAGE,
+					HAVE_MAD,
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
@@ -8754,7 +8762,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					HAVE_LUA,
 					HAVE_VORBISFILE,
-					HAVE_MAD,
 					HAVE_SDL_IMAGE_H,
 					HAVE_UNISTD_H,
 					SDL,
@@ -8766,6 +8773,7 @@
 					SDL_VIDEO_DRIVER_UIKIT,
 					SDL_MAIN_HANDLED,
 					HAVE_SDL_IMAGE,
+					HAVE_MAD,
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
@@ -8913,7 +8921,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					HAVE_LUA,
 					HAVE_VORBISFILE,
-					HAVE_MAD,
 					HAVE_SDL_IMAGE_H,
 					HAVE_UNISTD_H,
 					SDL,
@@ -8925,6 +8932,7 @@
 					SDL_VIDEO_DRIVER_UIKIT,
 					SDL_MAIN_HANDLED,
 					HAVE_SDL_IMAGE,
+					HAVE_MAD,
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;
@@ -9001,7 +9009,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					HAVE_LUA,
 					HAVE_VORBISFILE,
-					HAVE_MAD,
 					HAVE_SDL_IMAGE_H,
 					HAVE_UNISTD_H,
 					SDL,
@@ -9013,6 +9020,7 @@
 					SDL_VIDEO_DRIVER_UIKIT,
 					SDL_MAIN_HANDLED,
 					HAVE_SDL_IMAGE,
+					HAVE_MAD,
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = YES;

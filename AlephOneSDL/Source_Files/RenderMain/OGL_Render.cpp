@@ -2229,27 +2229,14 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
 	glEnable(GL_TEXTURE_2D);
   
-    //DCW Smart trigger test
-  short CollColor = GET_DESCRIPTOR_COLLECTION(RenderRectangle.ShapeDesc);
-  short Collection = GET_COLLECTION(CollColor);
- /* if (Collection = 15) {
-    printf ( "model collection: %d\n %f, %f, %f   %f, %f, %f\n",Collection,
-            ExtendedVertexList[1].Vertex[0],
-            ExtendedVertexList[1].Vertex[1],
-            ExtendedVertexList[1].Vertex[2],
-
-            ExtendedVertexList[3].Vertex[0],
-            ExtendedVertexList[3].Vertex[1],
-            ExtendedVertexList[3].Vertex[2]
-            );
-  }*/
+    //DCW Smart trigger
   if( IsInhabitant &&
      ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0) )/* &&
      ( (ExtendedVertexList[1].Vertex[1] > 0 &&ExtendedVertexList[3].Vertex[1] < 0) || (ExtendedVertexList[1].Vertex[1] < 0 && ExtendedVertexList[3].Vertex[1] > 0) )*/
      ) {
-    //Sorry... I can't make a good up/down conditoon for this yet.
+    //Sorry... I can't make a good up/down condition for this yet.
     if( RenderRectangle.isMonster ) {
-      collectionInReticle(Collection);
+      monsterIsCentered();
     }
   }
   
