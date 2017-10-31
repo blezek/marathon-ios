@@ -32,7 +32,7 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation MovePadView
-@synthesize knobView;
+@synthesize dPadView, knobView;
 
 - (void)setup {
 	
@@ -46,8 +46,10 @@ extern "C" {
   (void)all_key_definitions;
 
   // Initialization code
-  moveCenterPoint = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0 );
-  moveRadius = ( moveCenterPoint.x + moveCenterPoint.y ) / 2.0;
+  //moveCenterPoint = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0 );
+  moveCenterPoint = CGPointMake(dPadView.frame.origin.x + dPadView.bounds.size.width / 2.0, dPadView.frame.origin.y + dPadView.bounds.size.height / 2.0 );
+  //moveRadius = ( moveCenterPoint.x + moveCenterPoint.y ) / 2.0;
+  moveRadius = dPadView.bounds.size.width / 2.0; //DCW?
   moveRadius2 = moveRadius * moveRadius;
   runRadius = moveRadius / 2.0;
   deadSpaceRadius = moveRadius / 5.0;
@@ -212,16 +214,18 @@ extern "C" {
   }
   
   for ( UITouch *touch in [event touchesForView:self] ) {
-    //DCW: I think I'm going to auto-center the view under the touch to prevent immediate movement.
+    //DCW: I think I'm going to auto-center the control under the touch to prevent immediate movement.
     
-    CGRect newFrame=[self frame];
+    CGRect newFrame=[dPadView frame];
     CGPoint center = CGPointMake(newFrame.size.width/2,newFrame.size.height/2 );
     lastLocation=[touch locationInView:self];
     knobLocation=lastLocation;
-    newFrame.origin.x -= center.x-lastLocation.x;
-    newFrame.origin.y -= center.y-lastLocation.y;
-    [self setFrame:newFrame];
-    //[self handleTouch:[touch locationInView:self]];
+    newFrame.origin.x = lastLocation.x-center.x;
+    newFrame.origin.y = lastLocation.y-center.y;
+    [dPadView setFrame:newFrame];
+    
+    moveCenterPoint = CGPointMake(dPadView.frame.origin.x + dPadView.bounds.size.width / 2.0, dPadView.frame.origin.y + dPadView.bounds.size.height / 2.0 );
+    //[self handleTouch:[touch locationInView:self]]; //Irrelevant when control is centered.
     break;
   }
   
