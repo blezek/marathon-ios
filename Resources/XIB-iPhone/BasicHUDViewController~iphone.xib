@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,11 +33,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36" userLabel="Look" customClass="LookView">
-                    <rect key="frame" x="-1" y="0.0" width="569" height="293"/>
+                    <rect key="frame" x="-1" y="0.0" width="569" height="279"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64" userLabel="NextWeapon">
-                            <rect key="frame" x="520" y="50" width="35" height="35"/>
+                            <rect key="frame" x="537" y="64" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" image="NextWeapon.png">
@@ -48,14 +48,11 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="nextWeaponDown:" destination="-1" eventType="touchDown" id="86"/>
-                                <action selector="nextWeaponUp:" destination="-1" eventType="touchCancel" id="85"/>
-                                <action selector="nextWeaponUp:" destination="-1" eventType="touchUpInside" id="87"/>
-                                <action selector="nextWeaponUp:" destination="-1" eventType="touchUpOutside" id="88"/>
+                                <action selector="doNextWeapon:" destination="-1" eventType="touchUpInside" id="rAM-iO-P0x"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63" userLabel="PreviousWeapon">
-                            <rect key="frame" x="520" y="97" width="35" height="35"/>
+                            <rect key="frame" x="537" y="107" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" image="PreviousWeapon.png">
@@ -66,10 +63,7 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="previousWeaponDown:" destination="-1" eventType="touchDown" id="82"/>
-                                <action selector="previousWeaponUp:" destination="-1" eventType="touchCancel" id="81"/>
-                                <action selector="previousWeaponUp:" destination="-1" eventType="touchUpInside" id="83"/>
-                                <action selector="previousWeaponUp:" destination="-1" eventType="touchUpOutside" id="84"/>
+                                <action selector="doPreviousWeapon:" destination="-1" eventType="touchUpInside" id="UrO-kx-cOC"/>
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="💥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-la-EWL" userLabel="Auto Trigger Active">
@@ -79,8 +73,8 @@
                             <color key="textColor" red="0.09610135660215624" green="1" blue="0.054870292114270192" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwX-FH-08D">
-                            <rect key="frame" x="550" y="200" width="19" height="60"/>
+                        <view alpha="0.34999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwX-FH-08D">
+                            <rect key="frame" x="550" y="110" width="19" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0F-Mu-Te5" userLabel="Vertical bar">
@@ -231,17 +225,32 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46" userLabel="MovePad" customClass="MovePadView">
-                    <rect key="frame" x="0.0" y="0.0" width="130" height="268"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="214" height="268"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="D-pad.png" translatesAutoresizingMaskIntoConstraints="NO" id="49">
-                            <rect key="frame" x="14" y="84.5" width="100" height="100"/>
+                            <rect key="frame" x="3" y="84" width="98" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="D-pad-knob.png" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                            <rect key="frame" x="45" y="114.5" width="40" height="40"/>
+                            <rect key="frame" x="32" y="114" width="41" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62" userLabel="Map">
+                            <rect key="frame" x="0.0" y="28" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                            <state key="normal" image="Map.png">
+                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doMap:" destination="-1" eventType="touchUpInside" id="o6e-Vh-b5j"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -250,7 +259,7 @@
                     </connections>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBa-Ng-6xP" userLabel="Console">
-                    <rect key="frame" x="6" y="280" width="35" height="35"/>
+                    <rect key="frame" x="-1" y="267" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="console.png">
@@ -261,28 +270,7 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="consoleDown:" destination="-1" eventType="touchDown" id="LlC-96-eVx"/>
-                        <action selector="consoleUp:" destination="-1" eventType="touchUpOutside" id="Bmo-Mj-iYL"/>
-                        <action selector="consoleUp:" destination="-1" eventType="touchUpInside" id="gJ3-KY-qNk"/>
-                        <action selector="consoleUp:" destination="-1" eventType="touchCancel" id="gfT-8u-YFa"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62" userLabel="Map">
-                    <rect key="frame" x="89" y="281" width="35" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal" image="Map.png">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="mapDown:" destination="-1" eventType="touchDown" id="78"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchCancel" id="77"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchUpInside" id="79"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchUpOutside" id="80"/>
+                        <action selector="doConsole:" destination="-1" eventType="touchUpInside" id="XQt-8z-ucF"/>
                     </connections>
                 </button>
             </subviews>

@@ -55,8 +55,10 @@
 - (IBAction)secondaryFireUp:(id)sender;
 - (IBAction)nextWeaponDown:(id)sender;
 - (IBAction)nextWeaponUp:(id)sender;
+- (IBAction)doNextWeapon:(id)sender;
 - (IBAction)previousWeaponDown:(id)sender;
 - (IBAction)previousWeaponUp:(id)sender;
+- (IBAction)doPreviousWeapon:(id)sender;
 - (IBAction)inventoryDown:(id)sender;
 - (IBAction)inventoryUp:(id)sender;
 - (IBAction)actionDown:(id)sender;
@@ -73,8 +75,10 @@
 - (IBAction)runUp:(id)sender;
 - (IBAction)mapDown:(id)sender;
 - (IBAction)mapUp:(id)sender;
+- (IBAction)doMap:(id)sender;
 - (IBAction)consoleDown:(id)sender;
 - (IBAction)consoleUp:(id)sender;
+- (IBAction)doConsole:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
 - (IBAction)lookUpDown:(id)sender;

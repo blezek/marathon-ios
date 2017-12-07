@@ -41,12 +41,16 @@
 @property (nonatomic,retain) IBOutlet UIView *smartFireIndicator;
 @property (nonatomic) SDL_Keycode primaryFire;
 @property (nonatomic) SDL_Keycode secondaryFire;
+@property (nonatomic,retain) UITouch *firstTouch;
 @property (nonatomic,retain) NSDate *firstTouchTime;
 @property (nonatomic,retain) NSDate *lastPrimaryFire;
 @property (nonatomic,retain) NSDate *touchesEndedTime;
 @property (nonatomic,retain) NSDate *lastMovementTime;
 
 - (void)alignTLIWithPoint:(CGPoint) location;
+- (bool) touchInPrimaryFireZone:(UITouch*)touch;
+- (bool) touchInSecondaryFireZone:(UITouch*)touch;
+- (bool) touchInPrimaryPlusSecondaryFireZone:(UITouch*)touch;
 - (void)stopAllFire: (NSNumber *) thisTapID;
 - (void)stopSecondaryFire;
 - (float)distanceFromPoint:(CGPoint)p1 to:(CGPoint)p2;

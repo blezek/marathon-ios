@@ -119,11 +119,19 @@ extern "C" {
 - (IBAction)nextWeaponUp:(id)sender {
   setKey(nextWeaponKey, 0);
 }
+- (IBAction)doNextWeapon:(id)sender{
+  [self nextWeaponDown:self];
+  [self performSelector:@selector(nextWeaponUp:) withObject:self afterDelay:0.10];
+}
 - (IBAction)previousWeaponDown:(id)sender {
   setKey(previousWeaponKey, 1);
 }
 - (IBAction)previousWeaponUp:(id)sender {
   setKey(previousWeaponKey, 0);
+}
+- (IBAction)doPreviousWeapon:(id)sender{
+  [self previousWeaponDown:self];
+  [self performSelector:@selector(previousWeaponUp:) withObject:self afterDelay:0.10];
 }
 - (IBAction)inventoryDown:(id)sender {
   setKey(inventoryKey, 1);
@@ -174,6 +182,11 @@ extern "C" {
   setKey(mapKey, 0);
 }
 
+- (IBAction)doMap:(id)sender{
+  [self mapDown:self];
+  [self performSelector:@selector(mapUp:) withObject:self afterDelay:0.10];
+}
+
 - (IBAction)consoleDown:(id)sender {
   setKey(consoleKey, 1);
 }
@@ -190,9 +203,12 @@ extern "C" {
   unenter.key.keysym.sym=SDLK_BACKSLASH;
   SDL_PushEvent(&unenter);
 
-  
 }
 
+- (IBAction)doConsole:(id)sender{
+  [self consoleDown:self];
+  [self performSelector:@selector(consoleUp:) withObject:self afterDelay:0.10];
+}
 
 // Looking
 - (IBAction)lookUpDown:(id)sender {
