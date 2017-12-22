@@ -15,6 +15,7 @@
 @synthesize scrollView, pageControl;
 @synthesize leftButton, rightButton;
 
+//DCW for the record, I think using a constant for the number of pages is stupid.
 #define kNumImages 12
 
 BOOL Pages[kNumImages];
@@ -41,10 +42,14 @@ BOOL Pages[kNumImages];
     Pages[i] = NO;
   }
   pageControlUsed = YES;
+
+  [scrollView setContentMode:UIViewContentModeScaleAspectFit]; //DCW for some reason, this keeps the scrollview at the right aspect ratio.
+
   [super viewDidLoad];
 }
-
 - (void)setupUI {
+  
+  
   CGFloat kScrollObjHeight = scrollView.bounds.size.height;
   CGFloat kScrollObjWidth = scrollView.bounds.size.width;
   

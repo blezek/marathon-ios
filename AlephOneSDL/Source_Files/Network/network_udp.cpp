@@ -160,14 +160,14 @@ OSErr NetDDPOpenSocket(short *ioPortNumber, PacketHandlerProcPtr packetHandler)
 	// Open socket (SDLNet_Open seems to like port in host byte order)
         // NOTE: only SDLNet_UDP_Open wants port in host byte order.  All other uses of port in SDL_net
         // are in network byte order.
-	sSocket = SDLNet_UDP_Open(SDL_SwapBE16(*ioPortNumber));
+	sSocket = SDLNet_UDP_Open(SDL_SwapBE16(*ioPortNumber)); 
 	if (sSocket == NULL) {
 		SDLNet_FreePacket(sUDPPacketBuffer);
 		sUDPPacketBuffer = NULL;
 		return -1;
 	}
   
-  //DCW Set an appropriate network socket service type.
+  //DCW Set an appropriate network socket service type. First connection listening when hosting
   int st = NET_SERVICE_TYPE_VO;
   setsockopt((int)(sSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 

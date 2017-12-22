@@ -605,7 +605,7 @@ void Client::handleAcceptJoinMessage(AcceptJoinMessage* acceptJoinMessage,
       player.stream_id = topology->players[topology->player_count].stream_id;
       topology->players[topology->player_count].dspAddress = channel->peerAddress();
       topology->players[topology->player_count].ddpAddress.host = channel->peerAddress().host;
-      
+
       topology->player_count += 1;
       check_player(topology->player_count - 1, topology->player_count);
       NetUpdateTopology();
@@ -988,8 +988,8 @@ static void handleTopologyMessage(TopologyMessage* topologyMessage, Communicatio
       
       topology->players[theServerIndex].dspAddress= address;
       topology->players[theServerIndex].ddpAddress.host = address.host;
-      
-      NetUpdateTopology();
+
+    NetUpdateTopology();
     
     switch (topology->tag)
       {

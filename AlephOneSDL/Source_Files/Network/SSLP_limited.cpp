@@ -785,7 +785,9 @@ SSLP_Pump() {
     if(sBehaviorsDesired & (SSLPINT_LOCATING | SSLPINT_HINTING)) {
 
         // Do some work only once every five seconds
-        if(theCurrentTime - theTimeLastWorked >= 5000) {
+        //if(theCurrentTime - theTimeLastWorked >= 5000) {
+        //DCW how about every second?
+      if(theCurrentTime - theTimeLastWorked >= 1000) {
 
             // Do broadcasting work
             if(sBehaviorsDesired & SSLPINT_LOCATING) {

@@ -351,9 +351,9 @@ short localFindActionTarget(
   
   self.helpViewController = [[HelpViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
   [self.helpViewController view];
-  [self.helpViewController.view setFrame:[UIScreen mainScreen].bounds];
+  [self.helpViewController.view setFrame:self.hud.bounds];
+  //[self.helpView setFrame:self.hud.bounds];
 	[self.helpView addSubview:self.helpViewController.view];
-	[self.helpView setFrame:[UIScreen mainScreen].bounds];
 
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
@@ -401,12 +401,11 @@ short localFindActionTarget(
 #if defined(A1DEBUG)
   self.saveFilmButton.hidden = NO;
   self.loadFilmButton.hidden = NO;
-  self.joinNetworkGameButton.hidden = NO;
-  self.gatherNetworkGameButton.hidden = NO;
-
   // joyPad = [[JoyPad alloc] init];
 
 #endif
+  self.joinNetworkGameButton.hidden = NO;
+  self.gatherNetworkGameButton.hidden = NO;
   
   self.splashView.hidden = NO;
   self.restartView.hidden = YES;
@@ -729,11 +728,11 @@ short localFindActionTarget(
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
 
-  #if !defined(A1DEBUG) //DCW
-  if ( showControlsOverview ) {
-    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
-  }
-  #endif
+  //DCW This sucks. Commenting out.
+  //if ( showControlsOverview ) {
+  //    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
+  //}
+  //#endif
 
   
 }
