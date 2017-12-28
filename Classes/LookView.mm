@@ -94,7 +94,9 @@ extern "C" {
   
   [tapLocationIndicator setHidden:![[NSUserDefaults standardUserDefaults] boolForKey:kHiLowTapsAltFire]];
   
-  if ( firstTouch == nil ) {
+    //Assign firstTouch, if needed.
+    //Also, if there is only one touch and firstTouch appears wrong, re-assign in. We can get in this state if control center is brought up and we never get a touches-ended event.
+  if ( firstTouch == nil || (anything != firstTouch && [[event touchesForView:self] count] == 1)) {
     // grab the first
     [self setFirstTouch: (UITouch*)anything];
     self.firstTouchTime = [NSDate date];
