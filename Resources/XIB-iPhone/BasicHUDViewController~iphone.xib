@@ -24,6 +24,7 @@
                 <outlet property="lookPadView" destination="Q9e-7F-7Dx" id="Cif-Mz-WuS"/>
                 <outlet property="lookView" destination="36" id="102"/>
                 <outlet property="movePadView" destination="46" id="103"/>
+                <outlet property="netStats" destination="umu-a7-8HE" id="bxh-Py-617"/>
                 <outlet property="view" destination="31" id="128"/>
             </connections>
         </placeholder>
@@ -286,6 +287,17 @@
                     </state>
                     <connections>
                         <action selector="doPreviousWeapon:" destination="-1" eventType="touchUpInside" id="UrO-kx-cOC"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umu-a7-8HE" userLabel="Net Stats">
+                    <rect key="frame" x="46" y="290" width="55" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="17"/>
+                    <state key="normal" title="stats">
+                        <color key="titleColor" red="1" green="0.0" blue="0.028639300027591297" alpha="0.65732284330985913" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="doNetStats:" destination="-1" eventType="touchUpInside" id="s31-H5-9qe"/>
                     </connections>
                 </button>
             </subviews>

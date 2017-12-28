@@ -1128,7 +1128,7 @@ static void handle_game_key(const SDL_Event &event)
 				PlayInterfaceButtonSound(Sound_ButtonFailure());
 			}
 		} 
-		else if (input_preferences->shell_key_bindings[_key_show_scores].count(sc))
+		else if (input_preferences->shell_key_bindings[_key_show_scores].count(sc) || key == SDLK_1) //DCW Adding check for || key == SDLK_1
 		{
 			PlayInterfaceButtonSound(Sound_ButtonSuccess());
 			{

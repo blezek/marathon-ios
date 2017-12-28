@@ -709,7 +709,7 @@ short localFindActionTarget(
   for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
-		v.hidden = NO;
+		//v.hidden = NO; //DCW Commenting out. Some views we need control over visibility instead of setting everything to not hidden.
     if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
     } else {

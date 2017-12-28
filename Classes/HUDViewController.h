@@ -26,7 +26,6 @@
   SDL_Keycode runKey;
   SDL_Keycode mapKey;
   SDL_Keycode consoleKey;
-
   
   SDL_Keycode lookUpKey;
   SDL_Keycode lookDownKey;
@@ -36,6 +35,7 @@
      //DCW
   LookPadView *lookPadView;
   bool lookingAtRefuel;
+  UIButton *netStats;
 }
 
 @property (nonatomic) SDL_Keycode primaryFireKey;
@@ -44,7 +44,7 @@
   //DCW
 @property (nonatomic) bool lookingAtRefuel;
 @property (nonatomic,retain) IBOutlet LookPadView* lookPadView;
-
+@property (nonatomic,retain) IBOutlet UIButton *netStats;
 
 // Helper for any sort of alternative mouse movement
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy;
@@ -79,6 +79,7 @@
 - (IBAction)consoleDown:(id)sender;
 - (IBAction)consoleUp:(id)sender;
 - (IBAction)doConsole:(id)sender;
+- (IBAction)doNetStats:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
 - (IBAction)lookUpDown:(id)sender;
