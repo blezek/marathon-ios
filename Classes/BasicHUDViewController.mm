@@ -62,6 +62,7 @@ extern control_panel_definition *get_control_panel_definition(
   self.actionKeyImageView.alpha = 0.0;
   self.actionKeyImageView.hidden = YES;
   self.actionBox.hidden = YES;
+  lookingAtRefuel=NO;
 }
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {
   // From player.h
