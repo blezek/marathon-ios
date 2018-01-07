@@ -2396,6 +2396,9 @@ short NetUpdateJoinState(
 		    }
 
 		    next_join_attempt = machine_tick_count() + 5*MACHINE_TICKS_PER_SECOND;
+        //DCW hey, can I speed this up to less than 5 seconds?
+        next_join_attempt = machine_tick_count() + MACHINE_TICKS_PER_SECOND;
+        
 	    }
 	    break;
       

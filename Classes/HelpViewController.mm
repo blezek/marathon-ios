@@ -16,7 +16,7 @@
 @synthesize leftButton, rightButton;
 
 //DCW for the record, I think using a constant for the number of pages is stupid.
-#define kNumImages 12
+#define kNumImages 5
 
 BOOL Pages[kNumImages];
 
@@ -43,7 +43,7 @@ BOOL Pages[kNumImages];
   }
   pageControlUsed = YES;
 
-  [scrollView setContentMode:UIViewContentModeScaleAspectFit]; //DCW for some reason, this keeps the scrollview at the right aspect ratio.
+  [scrollView setContentMode:UIViewContentModeScaleAspectFill]; //DCW for some reason, this keeps the scrollview at the right aspect ratio.
 
   [super viewDidLoad];
 }
@@ -60,10 +60,14 @@ BOOL Pages[kNumImages];
     UIImage *image = [UIImage imageNamed:imageName];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     
-    // setup each frame to a default height and width, it will be properly placed when we call "updateScrollList"
+    // setup each frame to a default height and correct-aspect width, it will be properly placed when we call "updateScrollList"
     CGRect rect = imageView.frame;
+    if(imageView && rect.size.height) {
+      rect.size.width = kScrollObjHeight * (rect.size.width/rect.size.height);//kScrollObjWidth;
+    } else {
+      rect.size.width = kScrollObjWidth;
+    }
     rect.size.height = kScrollObjHeight;
-    rect.size.width = kScrollObjWidth;
     imageView.frame = rect;
     imageView.tag = i;  // tag our images for later use when we place them in serial fashion
     [scrollView addSubview:imageView];
@@ -72,21 +76,24 @@ BOOL Pages[kNumImages];
   UIImageView *view = nil;
   NSArray *subviews = [scrollView subviews];
   
-  // reposition all image subviews in a horizontal serial fashion
-  CGFloat curXLoc = 0;
-  for (view in subviews) {
-    if ([view isKindOfClass:[UIImageView class]] && view.tag > 0) {
-      CGRect frame = view.frame;
-      frame.origin = CGPointMake(curXLoc, 0);
-      view.frame = frame;
-      
-      curXLoc += (kScrollObjWidth);
-    }
-  }
+  // reposition all image subviews in a vertical serial fashion
+  CGFloat curYLoc = 0;
+   for (view in subviews) {
+     if ([view isKindOfClass:[UIImageView class]] && view.tag > 0) {
+     CGRect frame = view.frame;
+     frame.origin = CGPointMake(scrollView.bounds.size.width/2 - frame.size.width/2, curYLoc);
+     view.frame = frame;
+     
+     curYLoc += (kScrollObjHeight);
+     }
+   }
+  
   pageControl.numberOfPages = kNumImages;
+  
   // set the content size so it can be scrollable
-  [scrollView setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView bounds].size.height)];
-  [self changePage:nil];  
+  [scrollView setContentSize:CGSizeMake([scrollView bounds].size.height, (kNumImages * kScrollObjHeight) )];
+
+  [self changePage:nil];
 }
 
 - (void)cleanupUI {
@@ -165,9 +172,14 @@ BOOL Pages[kNumImages];
   int page = pageControl.currentPage;
 	  
 	// update the scroll view to the appropriate page
-  CGRect frame = scrollView.frame;
+  /*CGRect frame = scrollView.frame;
   frame.origin.x = frame.size.width * page;
-  frame.origin.y = 0;
+  frame.origin.y = 0;*/
+   CGRect frame = scrollView.frame;
+   frame.origin.y = frame.size.height * page;
+   frame.origin.x = 0;
+   
+   
   [scrollView scrollRectToVisible:frame animated:YES];
   [self updateUI];
 

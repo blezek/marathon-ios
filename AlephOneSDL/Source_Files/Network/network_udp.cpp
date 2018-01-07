@@ -37,6 +37,9 @@
 
 #include <SDL_thread.h>
 
+#include <sched.h> //DCW needed for setting self QOS
+#include <pthread.h> //DCW needed for setting self QOS
+
 #include "thread_priority_sdl.h"
 #include "mytm.h" // mytm_mutex stuff
 
@@ -88,6 +91,10 @@ static volatile bool		sKeepListening		= false;
 // packet handler when it gets something.
 static int
 receive_thread_function(void*) {
+  
+    //DCW Set iOS interactive QOS
+    pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE,0);
+  
     while(true) {
         // We listen with a timeout so we can shut ourselves down when needed.
         int theResult = SDLNet_CheckSockets(sSocketSet, 1000);
@@ -182,9 +189,10 @@ OSErr NetDDPOpenSocket(short *ioPortNumber, PacketHandlerProcPtr packetHandler)
         sReceivingThread	= SDL_CreateThread(receive_thread_function, "NetDDPOpenSocket_ReceivingThread", NULL);
 
         // Set receiving thread priority very high
-        bool	theResult = BoostThreadPriority(sReceivingThread);
-        if(theResult == false)
-            fdprintf("warning: BoostThreadPriority() failed; network performance may suffer\n");
+  //DCW Prevent setting scheduler parameters to permit QOS on iOS
+  //bool	theResult = BoostThreadPriority(sReceivingThread);
+  //      if(theResult == false)
+  //          fdprintf("warning: BoostThreadPriority() failed; network performance may suffer\n");
         
         //PORTGUESS but we should generally keep port in network order, I think?
 	// We really ought to return the "real" port we bound to in *ioPortNumber...

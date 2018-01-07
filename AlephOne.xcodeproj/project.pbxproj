@@ -147,6 +147,18 @@
 		5146D7D01FE06F0900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
 		5146D7D11FE06F0A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
 		5146D7D51FE08CC100B89738 /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7D41FE08CC000B89738 /* GenericBackground.png */; };
+		51482D662001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
+		51482D672001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
+		51482D682001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
+		51482D6A2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
+		51482D6B2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
+		51482D6C2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
+		51482D6D2001CA5900690752 /* help4.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DC12A7407E00032ED6 /* help4.png */; };
+		51482D6E2001CA5A00690752 /* help4.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DC12A7407E00032ED6 /* help4.png */; };
+		51482D6F2001CA5A00690752 /* help4.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DC12A7407E00032ED6 /* help4.png */; };
+		51482D702001CA5E00690752 /* help5.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DB12A7407E00032ED6 /* help5.png */; };
+		51482D712001CA5F00690752 /* help5.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DB12A7407E00032ED6 /* help5.png */; };
+		51482D722001CA6000690752 /* help5.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DB12A7407E00032ED6 /* help5.png */; };
 		514D348E1E5965580011BAFD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D348D1E5965580011BAFD /* CoreMedia.framework */; };
 		514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D348D1E5965580011BAFD /* CoreMedia.framework */; };
 		514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D348D1E5965580011BAFD /* CoreMedia.framework */; };
@@ -2278,6 +2290,8 @@
 		5146D7BD1FDF1A2F00B89738 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
 		5146D7C11FDF1A4400B89738 /* Console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Console.png; sourceTree = "<group>"; };
 		5146D7D41FE08CC000B89738 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
+		51482D652001C2A200690752 /* powered-by-alephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "powered-by-alephone.png"; path = "Resources/GUI/powered-by-alephone.png"; sourceTree = "<group>"; };
+		51482D692001C85F00690752 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = Resources/GUI/github.png; sourceTree = "<group>"; };
 		514D348D1E5965580011BAFD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		514D34991E5966F40011BAFD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		514D349D1E59678A0011BAFD /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -3681,6 +3695,8 @@
 			isa = PBXGroup;
 			children = (
 				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
+				51482D652001C2A200690752 /* powered-by-alephone.png */,
+				51482D692001C85F00690752 /* github.png */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
 				519FCAC31E9FFC500066EE69 /* bankgthd.ttf */,
 				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
@@ -5946,6 +5962,7 @@
 					};
 					A8811FE812C7816300A1A08E = {
 						DevelopmentTeam = TZ45ZW2588;
+						ProvisioningStyle = Automatic;
 					};
 					A88121ED12C7826300A1A08E = {
 						DevelopmentTeam = TZ45ZW2588;
@@ -6064,8 +6081,10 @@
 				A8B9FAF013FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF313FB6C1000552296 /* overheadmap.png in Resources */,
 				A8B9FB0E13FB6C1000552296 /* primarytrigger-btn.png in Resources */,
+				51482D6A2001C86000690752 /* github.png in Resources */,
 				A8B9FB1113FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1413FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
+				51482D662001C2A300690752 /* powered-by-alephone.png in Resources */,
 				A8B9FB1713FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
 				A8B9FB1A13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1D13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
@@ -6173,8 +6192,10 @@
 				A89B96601433C65D005E9FF3 /* LoadingBackground@2x~iphone.png in Resources */,
 				A89B96631433C65D005E9FF3 /* LoadingBackground~iphone.png in Resources */,
 				A89B967F1433C97F005E9FF3 /* LoadingScreen.png in Resources */,
+				51482D6F2001CA5A00690752 /* help4.png in Resources */,
 				A8294BED1433F74700300CD5 /* DoneButtonThanks.png in Resources */,
 				A8294BF61433F74700300CD5 /* ThanksBackground.png in Resources */,
+				51482D722001CA6000690752 /* help5.png in Resources */,
 				A8294BF91433F74700300CD5 /* ThanksBackground@2x~iphone.png in Resources */,
 				A8294BFC1433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C111433F74700300CD5 /* ThanksScreen.png in Resources */,
@@ -6419,10 +6440,12 @@
 				A8B9FB4E13FB6C1000552296 /* zoom_out.png in Resources */,
 				A8B9FB5413FB6C1000552296 /* zoom_out@2x~iphone.png in Resources */,
 				A8B9FB5713FB6C1000552296 /* zoom_out~iphone.png in Resources */,
+				51482D6B2001C86000690752 /* github.png in Resources */,
 				517FB49A1F89CA93009F6DCE /* Menu.png in Resources */,
 				517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */,
 				516ECE9A1F4E063600D38BB2 /* Map.png in Resources */,
 				A8B9FB5D13FB6CAF00552296 /* Reload.png in Resources */,
+				51482D6E2001CA5A00690752 /* help4.png in Resources */,
 				A8B9FB6013FB6CAF00552296 /* Reload@2x~iphone.png in Resources */,
 				A8B9FB6313FB6CAF00552296 /* Reload~iphone.png in Resources */,
 				51451B751F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */,
@@ -6521,6 +6544,7 @@
 				A8294C121433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A83FBB73144C95DF00B27426 /* HDModeOff.png in Resources */,
 				A83FBB7C144C95DF00B27426 /* HDModeOn.png in Resources */,
+				51482D712001CA5F00690752 /* help5.png in Resources */,
 				A83FBB8E144C95DF00B27426 /* SettingsBackground.png in Resources */,
 				516ECEB21F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */,
 				A83FBB91144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
@@ -6627,6 +6651,7 @@
 				A8EEFAB9147B4589001B5980 /* AchievementsButton@2x~iphone.png in Resources */,
 				A8EEFABC147B4589001B5980 /* AchievementsButton~iphone.png in Resources */,
 				A8EEFABF147B4589001B5980 /* LeaderboardsButton.png in Resources */,
+				51482D672001C2A300690752 /* powered-by-alephone.png in Resources */,
 				A8EEFAC2147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC5147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				519FCB021EA53FB90066EE69 /* About.png in Resources */,
@@ -6724,8 +6749,10 @@
 				51451B761F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */,
 				A8B9F9E413FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9EB13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */,
+				51482D6C2001C86000690752 /* github.png in Resources */,
 				A8B9F9EF13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE313FB6C1000552296 /* movementboxBase.png in Resources */,
+				51482D682001C2A300690752 /* powered-by-alephone.png in Resources */,
 				A8B9FAE613FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
 				A8B9FAE913FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				5146D7C71FE0588B00B89738 /* help1.png in Resources */,
@@ -6833,8 +6860,10 @@
 				A89B96741433C65D005E9FF3 /* LoadingBackground@2x~iphone.png in Resources */,
 				A89B96771433C65D005E9FF3 /* LoadingBackground~iphone.png in Resources */,
 				516ECE941F4B75FE00D38BB2 /* NextWeapon.png in Resources */,
+				51482D6D2001CA5900690752 /* help4.png in Resources */,
 				A8294BEF1433F74700300CD5 /* DoneButtonThanks.png in Resources */,
 				A8294C0A1433F74700300CD5 /* ThanksBackground.png in Resources */,
+				51482D702001CA5E00690752 /* help5.png in Resources */,
 				A8294C0D1433F74700300CD5 /* ThanksBackground@2x~iphone.png in Resources */,
 				A8294C101433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C131433F74700300CD5 /* ThanksScreen.png in Resources */,
@@ -8134,6 +8163,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8176,6 +8206,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
+				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8188,7 +8219,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8228,6 +8260,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
+				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8240,6 +8273,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8279,6 +8313,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
+				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8293,6 +8328,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8349,8 +8385,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8403,6 +8440,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8612,6 +8650,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8651,6 +8690,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
 				PRODUCT_NAME = Durandal;
+				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8666,6 +8706,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -31,10 +31,11 @@ bool smartTriggerActive;
 bool canSmartFirePrimary;
 bool canSmartFireSecondary;
 
-
-
-
 NSString *dataDir;
+
+void mlogString( const char* message ) {
+  MLog ( @"%s", message );
+}
 
 void printGLError( const char* message ) {
   switch ( glGetError() ) {

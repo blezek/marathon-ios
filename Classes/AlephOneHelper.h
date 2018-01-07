@@ -20,6 +20,7 @@
 // #define USE_SDL_EVENT_LOOP 1
 #define USE_CADisplayLoop 1
 
+extern void mlogString( const char* message );
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
