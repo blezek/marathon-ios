@@ -472,7 +472,7 @@ bool new_game(
 	/* Make sure our code is synchronized.. */
 	assert(MAXIMUM_PLAYER_START_NAME_LENGTH==MAXIMUM_PLAYER_NAME_LENGTH);
 
-	/* Initialize the global network going flag... */
+  /* Initialize the global network going flag... */
 	game_is_networked= network;
 	
 	/* If we want to save it, this is an untitled map.. */

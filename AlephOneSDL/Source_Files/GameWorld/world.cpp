@@ -60,6 +60,8 @@ Jul 1, 2000 (Loren Petrich):
 #include <math.h>
 #include <limits.h>
 
+//DCW Used for mouse smoothing
+#include "mouse.h"
 
 
 
@@ -681,7 +683,7 @@ world_point2d *transform_overflow_point2d(
 {
 	// LP change: lengthening the values for more precise calculations
 	long_vector2d temp, tempr;
-	
+  
 	theta = normalize_angle(theta);
 	fc_assert(cosine_table[0]==TRIG_MAGNITUDE);
 	
@@ -690,8 +692,31 @@ world_point2d *transform_overflow_point2d(
 		
 	tempr.i= ((temp.i*cosine_table[theta])>>TRIG_SHIFT) + ((temp.j*sine_table[theta])>>TRIG_SHIFT);
 	tempr.j= ((temp.j*cosine_table[theta])>>TRIG_SHIFT) - ((temp.i*sine_table[theta])>>TRIG_SHIFT);
-	
+
 	long_to_overflow_short_2d(tempr,*point,*flags);
 	
 	return point;
+}
+
+world_point2d *transform_overflow_point2d_smoothed(
+                                          world_point2d *point,
+                                          world_point2d *origin,
+                                          angle theta,
+                                          uint16 *flags)
+{
+  // LP change: lengthening the values for more precise calculations
+  long_vector2d temp, tempr;
+  
+  theta = normalize_angle(theta);
+  fc_assert(cosine_table[0]==TRIG_MAGNITUDE);
+  
+  temp.i= int32(point->x)-int32(origin->x);
+  temp.j= int32(point->y)-int32(origin->y);
+  
+  tempr.i= ((temp.i*(int)cosine_table_calculated(theta + lostMousePrecisionX()) )>>TRIG_SHIFT) + ((temp.j*(int)sine_table_calculated(theta + lostMousePrecisionX()))>>TRIG_SHIFT);
+  tempr.j= ((temp.j*(int)cosine_table_calculated(theta + lostMousePrecisionX()) )>>TRIG_SHIFT) - ((temp.i*(int)sine_table_calculated(theta + lostMousePrecisionX()))>>TRIG_SHIFT);
+  
+  long_to_overflow_short_2d(tempr,*point,*flags);
+  
+  return point;
 }

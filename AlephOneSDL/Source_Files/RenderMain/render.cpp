@@ -242,6 +242,9 @@ extern WindowPtr screen_window;
 #include "preferences.h"
 #include "screen.h"
 
+//DCW Used for mouse smoothing
+#include "mouse.h"
+
 /* use native alignment */
 #if defined (powerc) || defined (__powerc)
 #pragma options align=power
@@ -615,14 +618,25 @@ static void update_view_data(
 	/* calculate world_to_screen_y*tan(pitch) */
 	view->dtanpitch= (view->world_to_screen_y*sine_table[view->pitch])/cosine_table[view->pitch];
   
+  //DCW mouselook smoothing test. Works for smoothing pitch.
+  if ( shouldSmoothMouselook() ) {
+    view->dtanpitch= (view->world_to_screen_y*sine_table_calculated(view->pitch + lostMousePrecisionY()) )/cosine_table_calculated(view->pitch + lostMousePrecisionY());
+  }
+  
 	/* calculate left cone vector */
 	theta= NORMALIZE_ANGLE(view->yaw-view->half_cone);
 	view->left_edge.i= cosine_table[theta], view->left_edge.j= sine_table[theta];
-	
+  
+  //DCW mouselook smoothing test
+  //view->left_edge.i= interpolateAngleTable(cosine_table, theta), view->left_edge.j= interpolateAngleTable(sine_table, theta);
+
 	/* calculate right cone vector */
 	theta= NORMALIZE_ANGLE(view->yaw+view->half_cone);
 	view->right_edge.i= cosine_table[theta], view->right_edge.j= sine_table[theta];
-	
+
+  //DCW mouselook smoothing test
+  //view->right_edge.i= interpolateAngleTable(cosine_table, theta), view->right_edge.j= interpolateAngleTable(sine_table, theta);
+
 	/* calculate top cone vector (negative to clip the right direction) */
 	view->top_edge.i= - view->world_to_screen_y;
 	view->top_edge.j= - (view->half_screen_height + view->dtanpitch); /* ==k */

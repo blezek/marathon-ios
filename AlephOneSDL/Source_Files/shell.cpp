@@ -456,6 +456,7 @@ void initialize_application(void)
 #if TARGET_OS_IPHONE
   default_data_dir = getDataDir();
   local_data_dir = getLocalDataDir();
+  //log_dir = getLocalTmpDir(); //DCW ok, this is not great because the log file grows forever. Commenting out.
 #elif defined(unix) || defined(__NetBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__) && !defined(HAVE_BUNDLE_NAME))
 
 	default_data_dir = PKGDATADIR;

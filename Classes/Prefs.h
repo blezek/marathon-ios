@@ -33,6 +33,7 @@
 #define kInvertY @"invertY"
 #define kAutorecenter @"autorecenter"
 #define kAlwaysRun @"alwaysRun"
+#define kSmoothMouselook @"smoothMouselook"
 
 // Tap to shoot timeout in seconds
 #define TapToShootDelta 0.2 //DCW was originally 0.1

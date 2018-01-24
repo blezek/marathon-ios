@@ -121,6 +121,7 @@ typedef enum {
 
   HUDViewController *HUDViewController;
   IBOutlet UILabel* A1Version;
+  IBOutlet UITextView* aboutText;
   
   UITapGestureRecognizer *menuTapGesture;
   UITapGestureRecognizer *controlsOverviewGesture;
@@ -268,6 +269,7 @@ typedef enum {
 
 @property (nonatomic, retain) UIView *aboutView;
 @property (nonatomic, retain) UILabel* A1Version;
+@property (nonatomic, retain) UITextView* aboutText;
 
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;

@@ -33,10 +33,6 @@ bool canSmartFireSecondary;
 
 NSString *dataDir;
 
-void mlogString( const char* message ) {
-  MLog ( @"%s", message );
-}
-
 void printGLError( const char* message ) {
   switch ( glGetError() ) {
   case GL_NO_ERROR: {
@@ -88,6 +84,11 @@ char* getLocalDataDir() {
 char* getLocalPrefsDir() {
   NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
   return (char*)[docsDir UTF8String];
+}
+
+char* getLocalTmpDir() {
+  NSString *tmpDir = NSTemporaryDirectory();
+  return (char*)[tmpDir UTF8String];
 }
 
 char* LANIP( char *prefix, char *suffix) {
@@ -294,6 +295,10 @@ float helperGamma() {
   float g = [defaults floatForKey:kGamma];
   return g;
 };
+
+bool smoothMouselookPreference() {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:kSmoothMouselook];
+}
 
 int helperAlwaysPlayIntro () {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -79,9 +79,6 @@
 		51324A191EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
 		51324A1A1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
 		51324A1B1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
-		51324A251EAAE33E00BA8D8F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1E1EAAE33E00BA8D8F /* libavcodec.a */; };
-		51324A261EAAE33E00BA8D8F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1E1EAAE33E00BA8D8F /* libavcodec.a */; };
-		51324A271EAAE33E00BA8D8F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1E1EAAE33E00BA8D8F /* libavcodec.a */; };
 		51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1F1EAAE33E00BA8D8F /* libavdevice.a */; };
 		51324A291EAAE33E00BA8D8F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1F1EAAE33E00BA8D8F /* libavdevice.a */; };
 		51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A1F1EAAE33E00BA8D8F /* libavdevice.a */; };
@@ -241,8 +238,6 @@
 		518E9FFC1F69AF6D0039960A /* EpisodeLogoAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 518E9FF91F69AF6D0039960A /* EpisodeLogoAlpha.png */; };
 		518E9FFD1F69AF6D0039960A /* HomeScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 518E9FFA1F69AF6D0039960A /* HomeScreen.png */; };
 		518E9FFE1F69AF6D0039960A /* mainlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 518E9FFB1F69AF6D0039960A /* mainlogo.png */; };
-		518EA0001F69B0000039960A /* Marathon_Durandal_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 518E9FFF1F69B0000039960A /* Marathon_Durandal_Icon.png */; };
-		518EA0021F69B04C0039960A /* Marathon_Durandal_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518EA0011F69B04C0039960A /* Marathon_Durandal_Icon2@2x.png */; };
 		518EA0051F6AFDC20039960A /* SDL_ffmpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */; };
 		518EA0061F6AFDC20039960A /* SDL_ffmpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */; };
 		518EA0071F6AFDC20039960A /* SDL_ffmpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */; };
@@ -407,6 +402,12 @@
 		51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
+		51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
+		51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
+		51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
+		51E9FD6E2007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
+		51E9FD6F2007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
+		51E9FD702007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
 		51EAD4251E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
 		51EAD4261E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
 		51EAD4271E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
@@ -2164,7 +2165,6 @@
 		51324A141EAAE29100BA8D8F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "submodules/Libraries/SDL2-2.0.5/libSDL2.a"; sourceTree = "<group>"; };
 		51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
 		51324A1C1EAAE2CC00BA8D8F /* SDL_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_image.h; sourceTree = "<group>"; };
-		51324A1E1EAAE33E00BA8D8F /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavcodec.a"; sourceTree = SOURCE_ROOT; };
 		51324A1F1EAAE33E00BA8D8F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavdevice.a"; sourceTree = SOURCE_ROOT; };
 		51324A201EAAE33E00BA8D8F /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavfilter.a"; sourceTree = SOURCE_ROOT; };
 		51324A211EAAE33E00BA8D8F /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavformat.a"; sourceTree = SOURCE_ROOT; };
@@ -2421,6 +2421,8 @@
 		51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = A1_fade_in.mp4; path = Resources/A1_fade_in.mp4; sourceTree = "<group>"; };
 		51B685011EB92D0A00CB1628 /* SDLnetsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLnetsys.h; path = "submodules/Libraries/SDL2_net-2.0.1/SDLnetsys.h"; sourceTree = SOURCE_ROOT; };
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		51E9FD692006A0C500ADD38A /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavcodec.a"; sourceTree = SOURCE_ROOT; };
+		51E9FD6D2007F86600ADD38A /* bungie-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bungie-logo.png"; path = "Resources/GUI/bungie-logo.png"; sourceTree = "<group>"; };
 		51EAD2031E58B13600611EFF /* BStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BStream.cpp; sourceTree = "<group>"; };
 		51EAD2041E58B13600611EFF /* BStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BStream.h; sourceTree = "<group>"; };
 		51EAD2061E58B13600611EFF /* byte_swapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = byte_swapping.cpp; sourceTree = "<group>"; };
@@ -3068,16 +3070,6 @@
 		A82B118C13FF41000085C1F7 /* help6~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help6~iphone.png"; path = "Artwork/Help/help6~iphone.png"; sourceTree = "<group>"; };
 		A82B118D13FF41000085C1F7 /* help5~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help5~iphone.png"; path = "Artwork/Help/help5~iphone.png"; sourceTree = "<group>"; };
 		A82B118E13FF41000085C1F7 /* help5@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help5@2x~iphone.png"; path = "Artwork/Help/help5@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118F13FF41000085C1F7 /* help4~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help4~iphone.png"; path = "Artwork/Help/help4~iphone.png"; sourceTree = "<group>"; };
-		A82B119013FF41000085C1F7 /* help4@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help4@2x~iphone.png"; path = "Artwork/Help/help4@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B119113FF41000085C1F7 /* help3@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help3@2x~iphone.png"; path = "Artwork/Help/help3@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B119213FF41000085C1F7 /* help3~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help3~iphone.png"; path = "Artwork/Help/help3~iphone.png"; sourceTree = "<group>"; };
-		A82B119313FF41000085C1F7 /* help2~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help2~iphone.png"; path = "Artwork/Help/help2~iphone.png"; sourceTree = "<group>"; };
-		A82B119413FF41000085C1F7 /* help2@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help2@2x~iphone.png"; path = "Artwork/Help/help2@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B119513FF41000085C1F7 /* help1~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help1~iphone.png"; path = "Artwork/Help/help1~iphone.png"; sourceTree = "<group>"; };
-		A82B119613FF41000085C1F7 /* help1@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help1@2x~iphone.png"; path = "Artwork/Help/help1@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B119713FF41000085C1F7 /* help0@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help0@2x~iphone.png"; path = "Artwork/Help/help0@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B119813FF41000085C1F7 /* help0~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help0~iphone.png"; path = "Artwork/Help/help0~iphone.png"; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
 		A82BBD16141015A500CE1F92 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -3534,11 +3526,11 @@
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A371EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
+				51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208C1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A151EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */,
 				A809FDB4140DD73E0051EA11 /* libbz2.1.0.dylib in Frameworks */,
-				51324A251EAAE33E00BA8D8F /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3579,9 +3571,9 @@
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				5104208D1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
-				51324A261EAAE33E00BA8D8F /* libavcodec.a in Frameworks */,
 				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
+				51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3622,11 +3614,11 @@
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
+				51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208E1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A171EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
 				A809FDB5140DD7480051EA11 /* libbz2.1.0.dylib in Frameworks */,
-				51324A271EAAE33E00BA8D8F /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3645,7 +3637,6 @@
 				51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */,
 				51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */,
 				51C785041DA0A5530061978B /* freetype_2.4.4 */,
-				A871814A140C773700327BEF /* Localytics */,
 				A8CCD13A1280CA7900A62339 /* MAD */,
 				A89240DA127FBB5400F0A2EE /* Vorbis */,
 				A8924095127FB7AC00F0A2EE /* Ogg */,
@@ -3697,6 +3688,7 @@
 				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
 				51482D652001C2A200690752 /* powered-by-alephone.png */,
 				51482D692001C85F00690752 /* github.png */,
+				51E9FD6D2007F86600ADD38A /* bungie-logo.png */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
 				519FCAC31E9FFC500066EE69 /* bankgthd.ttf */,
 				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
@@ -3888,7 +3880,7 @@
 		51324A1D1EAAE33000BA8D8F /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				51324A1E1EAAE33E00BA8D8F /* libavcodec.a */,
+				51E9FD692006A0C500ADD38A /* libavcodec.a */,
 				51324A1F1EAAE33E00BA8D8F /* libavdevice.a */,
 				51324A201EAAE33E00BA8D8F /* libavfilter.a */,
 				51324A211EAAE33E00BA8D8F /* libavformat.a */,
@@ -4124,7 +4116,7 @@
 				51324A1D1EAAE33000BA8D8F /* lib */,
 			);
 			name = "FFmpeg-iOS";
-			path = "Libraries/FFmpeg-iOS";
+			path = "submodules/Libraries/FFmpeg-iOS";
 			sourceTree = SOURCE_ROOT;
 		};
 		51C785041DA0A5530061978B /* freetype_2.4.4 */ = {
@@ -4134,7 +4126,7 @@
 				51041DD51EAAF03C00129201 /* include */,
 			);
 			name = freetype_2.4.4;
-			path = Libraries/freetype_2.4.4;
+			path = submodules/Libraries/freetype_2.4.4;
 			sourceTree = SOURCE_ROOT;
 		};
 		51EAD2011E58B13600611EFF /* AlephOne Source_Files */ = {
@@ -5314,22 +5306,6 @@
 			path = Resources/LoadingScreen/M2;
 			sourceTree = SOURCE_ROOT;
 		};
-		A871814A140C773700327BEF /* Localytics */ = {
-			isa = PBXGroup;
-			children = (
-				A871814D140C773700327BEF /* src */,
-			);
-			name = Localytics;
-			path = Libraries/Localytics;
-			sourceTree = SOURCE_ROOT;
-		};
-		A871814D140C773700327BEF /* src */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		A871817A140DA9E000327BEF /* BuildConfigurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -5400,16 +5376,6 @@
 				A82B118C13FF41000085C1F7 /* help6~iphone.png */,
 				A82B118D13FF41000085C1F7 /* help5~iphone.png */,
 				A82B118E13FF41000085C1F7 /* help5@2x~iphone.png */,
-				A82B118F13FF41000085C1F7 /* help4~iphone.png */,
-				A82B119013FF41000085C1F7 /* help4@2x~iphone.png */,
-				A82B119113FF41000085C1F7 /* help3@2x~iphone.png */,
-				A82B119213FF41000085C1F7 /* help3~iphone.png */,
-				A82B119313FF41000085C1F7 /* help2~iphone.png */,
-				A82B119413FF41000085C1F7 /* help2@2x~iphone.png */,
-				A82B119513FF41000085C1F7 /* help1~iphone.png */,
-				A82B119613FF41000085C1F7 /* help1@2x~iphone.png */,
-				A82B119713FF41000085C1F7 /* help0@2x~iphone.png */,
-				A82B119813FF41000085C1F7 /* help0~iphone.png */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -5953,7 +5919,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "SDG Productions";
 				TargetAttributes = {
 					A85E672911CB173A00D0FAEF = {
@@ -6290,6 +6256,7 @@
 				A812AD6C145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
 				517FB4A21F89CA93009F6DCE /* ResumeHighlighted.png in Resources */,
 				A812AD6F145F971200196F6B /* DoneButtonStore~iphone.png in Resources */,
+				51E9FD6E2007F86700ADD38A /* bungie-logo.png in Resources */,
 				A812AD75145F971200196F6B /* HDModeAd.png in Resources */,
 				A812AD78145F971200196F6B /* StoreBackground.png in Resources */,
 				A812AD81145F971200196F6B /* MCModeAd.png in Resources */,
@@ -6396,7 +6363,6 @@
 				A804992513DE1CDA00F807FB /* ret_plasma~iphone.png in Resources */,
 				A804992813DE1CDA00F807FB /* ret_rocket.png in Resources */,
 				A804992B13DE1CDA00F807FB /* ret_rocket@2x~iphone.png in Resources */,
-				518EA0021F69B04C0039960A /* Marathon_Durandal_Icon2@2x.png in Resources */,
 				A804992E13DE1CDA00F807FB /* ret_rocket~iphone.png in Resources */,
 				A804993113DE1CDA00F807FB /* ret_shotgun.png in Resources */,
 				A804993413DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
@@ -6604,6 +6570,7 @@
 				A8DEE913145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
 				516ECE931F4B75FE00D38BB2 /* NextWeapon.png in Resources */,
 				A8DEE916145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
+				51E9FD6F2007F86700ADD38A /* bungie-logo.png in Resources */,
 				A8DEE919145CEB4300D8608F /* AmmoButton.png in Resources */,
 				A8DEE91C145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE91F145CEB4300D8608F /* ShieldsButton.png in Resources */,
@@ -6642,7 +6609,6 @@
 				517FB4A01F89CA93009F6DCE /* Resume.png in Resources */,
 				A80B316D1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
 				A80B31741463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
-				518EA0001F69B0000039960A /* Marathon_Durandal_Icon.png in Resources */,
 				516ECE9F1F4E086200D38BB2 /* D-pad-knob.png in Resources */,
 				A80B317A14638CC300E07A08 /* JoyPad.png in Resources */,
 				A80B317D14638CC300E07A08 /* JoyPad@2x~iphone.png in Resources */,
@@ -6958,6 +6924,7 @@
 				A812ADB8145F9CE600196F6B /* ReticuleAd@2x~iphone.png in Resources */,
 				518E9FF41F69AEA10039960A /* EpisodeLogoAlpha.png in Resources */,
 				516ECE971F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */,
+				51E9FD702007F86700ADD38A /* bungie-logo.png in Resources */,
 				A812ADBB145F9CE600196F6B /* ReticuleAd~iphone.png in Resources */,
 				A80B316E1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
 				A80B31751463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
@@ -8333,7 +8300,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8349,24 +8315,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
@@ -8391,7 +8357,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8404,19 +8369,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
@@ -8444,7 +8408,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8458,19 +8421,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
@@ -8492,17 +8454,24 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = NO;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -8540,7 +8509,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
@@ -8710,7 +8679,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8724,19 +8692,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
 					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
@@ -8758,16 +8725,24 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = NO;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -8805,7 +8780,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
@@ -8919,14 +8894,20 @@
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = NO;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -8964,7 +8945,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
@@ -9005,16 +8986,24 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = NO;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -9052,7 +9041,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",

@@ -561,7 +561,7 @@ bool OGL_StartRun()
 	  else
 	    npotTextures = true;
 	}
-
+   
 	FBO_Allowed = false;
 	if (!OGL_CheckExtension("GL_EXT_framebuffer_object"))
 	{
@@ -1051,9 +1051,11 @@ bool OGL_SetView(view_data &View)
 	double Cosine = TrigMagReciprocal*double(cosine_table[View.yaw]);
 	double Sine = TrigMagReciprocal*double(sine_table[View.yaw]);
   
-  //DCW mouselook smoothing test
-  /*Cosine = TrigMagReciprocal*interpolateAngleTable(cosine_table, View.yaw);
-  Sine = TrigMagReciprocal*interpolateAngleTable(sine_table, View.yaw);*/
+  //DCW mouselook smoothing test. Smooths ceiling texture placement.
+  if (shouldSmoothMouselook()) {
+    Cosine = TrigMagReciprocal*cosine_table_calculated(View.yaw + lostMousePrecisionX());
+    Sine = TrigMagReciprocal*sine_table_calculated(View.yaw + lostMousePrecisionX());
+  }
   
 	CenteredWorld_2_MaraEye[0] = Cosine;
 	CenteredWorld_2_MaraEye[1] = - Sine;
@@ -1129,7 +1131,6 @@ bool OGL_SetView(view_data &View)
 	OrigVec[3] = 0;
 	GL_MatrixTimesVector(CenteredWorld_2_OGLEye,OrigVec,HorizCoords.V_Vec);
 	
-  //DCW for some reason u_vec and v_vec are zero
 	bool found_complements= HorizCoords.FindComplements();
 	if(!found_complements) assert(found_complements);
 	
@@ -1652,7 +1653,7 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 	
 	// Proper projection
 	SetProjectionType(Projection_OpenGL_Eye);
-	
+  
 	// Location of data:
 	glVertexPointer(4,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
 	glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
@@ -1922,6 +1923,10 @@ static bool RenderAsLandscape(polygon_definition& RenderPolygon)
 	// Adjusted using the texture azimuth (yaw)
 	double AdjustedYaw = Yaw + FullCircleReciprocal*(LandOpts->Azimuth);
 	
+  if( shouldSmoothMouselook() ) {
+    AdjustedYaw += FullCircleReciprocal*(lostMousePrecisionX());
+  }
+  
 	// Horizontal is straightforward
 	double HorizScale = double(1 << LandOpts->HorizExp);
 	// Vertical requires adjustment for aspect ratio;
@@ -2472,7 +2477,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 	GLfloat Cosine = cosine_table[Azimuth];
 	GLfloat Sine = sine_table[Azimuth];
   
-  //DCW mouselook smoothing test
+  //DCW mouselook smoothing test.
   /*Cosine = interpolateAngleTable(cosine_table, Azimuth);
   Sine = interpolateAngleTable(sine_table, Azimuth);*/
   

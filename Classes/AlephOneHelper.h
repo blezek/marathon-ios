@@ -20,10 +20,10 @@
 // #define USE_SDL_EVENT_LOOP 1
 #define USE_CADisplayLoop 1
 
-extern void mlogString( const char* message );
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
+extern char* getLocalTmpDir(); //DCW
 extern char* LANIP( char *prefix, char *suffix);
 extern void  overrideSomeA1Prefs();//DCW 
 extern void helperBringUpHUD();
@@ -89,6 +89,9 @@ extern void helperPickedUp ( short itemType );
 
 // Gamma from settings
 extern float helperGamma();
+
+//Acessor for mouse smoothing preference
+extern bool smoothMouselookPreference();
 
 // Pause alpho
 extern GLfloat helperPauseAlpha();

@@ -61,6 +61,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include <string.h>
 #include <limits.h>
 
+#include "mouse.h" //DCW Mouse smoothing
 
 // LP: "recommended" sizes of stuff in growable lists
 #define MAXIMUM_RENDER_OBJECTS 72
@@ -177,8 +178,13 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
 			temp_tfm_origin.y = object->location.y;
 			transformed_origin.z = object->location.z - view->origin.z;
 			uint16 tfm_origin_flags;
-			transform_overflow_point2d(&temp_tfm_origin, (world_point2d *)&view->origin, view->yaw, &tfm_origin_flags);
-			long_vector2d *tfm_origin_ptr = (long_vector2d *)(&transformed_origin);
+      if( shouldSmoothMouselook() ){
+        transform_overflow_point2d_smoothed(&temp_tfm_origin, (world_point2d *)&view->origin, view->yaw, &tfm_origin_flags); //DCW mouselook smoothing test. Works for smoothing horizontal sprite placement.
+      } else {
+        transform_overflow_point2d(&temp_tfm_origin, (world_point2d *)&view->origin, view->yaw, &tfm_origin_flags);
+      }
+        
+      long_vector2d *tfm_origin_ptr = (long_vector2d *)(&transformed_origin);
 			overflow_short_to_long_2d(temp_tfm_origin,tfm_origin_flags,*tfm_origin_ptr);
 		}
 		

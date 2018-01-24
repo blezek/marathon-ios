@@ -2204,7 +2204,7 @@ static bool begin_game(
 		/* Begin the game! */
     // DJB Clear any existing errors
     clear_game_error();
-		success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
+    success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
 		if(success)
 		{
 			start_game(user, false);

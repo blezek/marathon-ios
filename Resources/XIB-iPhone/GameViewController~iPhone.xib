@@ -21,6 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
                 <outlet property="A1Version" destination="nUt-dW-zMR" id="mAg-DO-fa6"/>
+                <outlet property="aboutText" destination="Dlm-NF-svl" id="oE2-0b-dCO"/>
                 <outlet property="aboutView" destination="162" id="163"/>
                 <outlet property="bungieAerospaceImageView" destination="177" id="180"/>
                 <outlet property="controlsOverviewView" destination="130" id="133"/>
@@ -489,7 +490,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Engine Version" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUt-dW-zMR" userLabel="Engine Version">
-                            <rect key="frame" x="791" y="549" width="151" height="21"/>
+                            <rect key="frame" x="784" y="576" width="151" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <accessibility key="accessibilityConfiguration" label="Engine Version"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="10"/>
@@ -1234,7 +1235,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">	Hardgrove
+                                    <string key="content">	Hardgrove
 	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
@@ -1280,7 +1281,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </mutableString>
+ </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -1381,9 +1382,13 @@ Cg
                             <rect key="frame" x="766" y="28" width="200" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="github.png" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-D1-NA5" userLabel="Powered by A1">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="github.png" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-D1-NA5" userLabel="github">
                             <rect key="frame" x="794" y="136" width="151" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bungie-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-Pa-WIC" userLabel="bungie">
+                            <rect key="frame" x="791" y="516" width="151" height="66"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1436,6 +1441,7 @@ Cg
         <image name="Somewhere.png" width="1024" height="768"/>
         <image name="StoreButton.png" width="136" height="36"/>
         <image name="TouchToContinue.png" width="256" height="50"/>
+        <image name="bungie-logo.png" width="685" height="300"/>
         <image name="github.png" width="400" height="200"/>
         <image name="mainlogo.png" width="512" height="512"/>
         <image name="powered-by-alephone.png" width="640" height="320"/>

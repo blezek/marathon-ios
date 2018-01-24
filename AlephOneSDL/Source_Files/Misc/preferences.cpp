@@ -2592,7 +2592,7 @@ void read_preferences ()
   overrideSomeA1Prefs(); //DCW
 
   // Print out some things...
-  printf ( "Metaserver Login: %d\n", network_preferences->metaserver_login );
+  printf ( "Metaserver Login: %s\n", network_preferences->metaserver_login );
   printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
   printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
   printf ( "VSen (int): %d\n", FIXED_INTEGERAL_PART(input_preferences->sens_vertical) );

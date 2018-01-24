@@ -35,6 +35,7 @@
 @synthesize autoCenter;
 @synthesize filmsDisabled;
 @synthesize alwaysRun;
+@synthesize smoothMouselook;
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
 @synthesize settingPrefsView;
@@ -58,6 +59,7 @@
   }
   
   [defaults setBool:[self.alwaysRun isSelected] forKey:kAlwaysRun];
+  [defaults setBool:[self.smoothMouselook isSelected] forKey:kSmoothMouselook];
   [defaults setBool:[self.onScreenTrigger isSelected] forKey:kOnScreenTrigger];
   [defaults setBool:[self.hiLowTapsAltFire isSelected] forKey:kHiLowTapsAltFire];
   [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
@@ -145,6 +147,7 @@
   [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
   
   [self.alwaysRun setSelected:[defaults boolForKey:kAlwaysRun]];
+  [self.smoothMouselook setSelected:[defaults boolForKey:kSmoothMouselook]];
   [self.onScreenTrigger setSelected:[defaults boolForKey:kOnScreenTrigger]];
   [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];

@@ -289,7 +289,7 @@ short localFindActionTarget(
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
-@synthesize A1Version;
+@synthesize A1Version, aboutText;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
 @synthesize controlsOverviewView, controlsOverviewGesture;
@@ -336,7 +336,7 @@ short localFindActionTarget(
   MLog ( @"self.saveGameViewController.uiView = %@", self.saveGameViewController.uiView);
 
   [A1Version setText: [NSString stringWithFormat:@"Engine Version: %@", @A1_DISPLAY_VERSION]];
-
+  
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
   [self.progressViewController mainView];
@@ -614,21 +614,16 @@ short localFindActionTarget(
   ////                                          [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
   ////                                          @"level", nil]];
 
-  mode = DeadMode;
-  self.hud.hidden = YES;
-  self.HUDViewController.view.hidden = YES;
+  //mode = DeadMode;
+ /* self.hud.hidden = YES;
+  self.HUDViewController.view.hidden = YES;*/
   
-  self.restartView.hidden = NO;
+/*  self.restartView.hidden = NO;
   self.restartView.alpha = 0.6;
   [UIView animateWithDuration:2.0 animations:^{
     self.restartView.alpha = 0.8;
-  }];
-  /*
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:2.0];
-  self.restartView.alpha = 0.8;
-  [UIView commitAnimations];
-   */
+  }];*/
+
 }
 
 - (void)bringUpHUD {
@@ -1259,6 +1254,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction)menuAbout {
   [self PlayInterfaceButtonSound];
+  [aboutText scrollRangeToVisible:NSMakeRange(0,1)]; //Scroll text to top.
   [Effects appearRevealingView:self.aboutView];
 }
 

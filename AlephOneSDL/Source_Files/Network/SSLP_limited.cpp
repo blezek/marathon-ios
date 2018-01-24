@@ -213,7 +213,6 @@ SSLPint_FoundAnInstance(struct SSLP_ServiceInstance* inInstance) {
 void
 SSLPint_RemoveTimedOutInstances() {
     logContext("removing stale SSLP service instances");
-    mlogString ( "removing stale SSLP service instances");
 
     struct SSLPint_FoundInstance* theCurrentInstance = sFoundInstances;
     struct SSLPint_FoundInstance* thePreviousInstance = NULL;
@@ -313,7 +312,6 @@ SSLPint_FlushAllFoundInstances() {
 static void
 SSLPint_ReceivedPacket() {
     logContext("processing a received SSLP packet");
-    mlogString("processing a received SSLP packet");
   
     if(sReceivingPacket == NULL) {
         logAnomaly("sReceivingPacket is NULL");
@@ -501,10 +499,7 @@ SSLPint_Enter() {
 
   
     // Set up broadcast on that socket
-    if (SDLNetx_EnableBroadcast(sSocketDescriptor))
-      mlogString("SDLNetx_EnableBroadcast success");
-    else
-      mlogString("SDLNetx_EnableBroadcast fail");
+    SDLNetx_EnableBroadcast(sSocketDescriptor);
     
     // (note: if EnableBroadcast failed, it's not the end of the world... but it will be harder to locate services)
     
@@ -628,7 +623,6 @@ SSLP_Stop_Locating_Service_Instances(const char* inServiceType) {
 void
 SSLP_Allow_Service_Discovery(const struct SSLP_ServiceInstance* inServiceInstance) {
     logContext("starting to allow SSLP service discovery");
-    mlogString("starting to allow SSLP service discovery");
 
     assert(inServiceInstance != NULL);
     
@@ -673,7 +667,6 @@ SSLP_Allow_Service_Discovery(const struct SSLP_ServiceInstance* inServiceInstanc
 void
 SSLP_Hint_Service_Discovery(const struct SSLP_ServiceInstance* inServiceInstance, const IPaddress* inAddress) {
     logContext("starting to hint SSLP service discovery");
-    mlogString("starting to hint SSLP service discovery");
 
     // If we're not already allowing discovery, start doing it
     if(!(sBehaviorsDesired & SSLPINT_RESPONDING))
@@ -801,13 +794,11 @@ SSLP_Pump() {
             if(sBehaviorsDesired & SSLPINT_LOCATING) {
                 SDLNetx_UDP_Broadcast(sSocketDescriptor, sFindPacket);
                 SSLPint_RemoveTimedOutInstances();
-                mlogString ( "Doing SSLPINT_LOCATING");
             }
             
             // Do hinting work
         if(sBehaviorsDesired & SSLPINT_HINTING) {
                 SDLNet_UDP_Send(sSocketDescriptor, -1, sHintPacket);
-                mlogString ( "Doing SSLPINT_HINTING");
         }
 
             theTimeLastWorked = theCurrentTime;
