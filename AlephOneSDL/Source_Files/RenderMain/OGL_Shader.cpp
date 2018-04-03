@@ -27,6 +27,7 @@
 #include "OGL_Setup.h"
 #include "InfoTree.h"
 
+#include "AlephOneHelper.h"
 
 // gl_ClipVertex workaround
 // In Mac OS X 10.4 and Mesa, setting gl_ClipVertex causes a black screen.
@@ -49,6 +50,15 @@ inline bool DisableClipVertex() {
 	return (renderer && strncmp(reinterpret_cast<const char*>(renderer), "Mesa", 4) == 0);
 }
 #endif
+
+//Global pointer to the last shader object enabled. May be NULL. extern is redundant, but included for clarity.
+Shader* lastEnabledShaderRef;
+Shader* lastEnabledShader() {
+  return lastEnabledShaderRef;
+}
+void setLastEnabledShader(Shader* theShader) {
+  lastEnabledShaderRef = theShader;
+}
 
 
 static std::map<std::string, std::string> defaultVertexPrograms;
@@ -85,7 +95,14 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
 	"yaw",
 	"pitch",
 	"selfLuminosity",
-	"gammaAdjust"
+	"gammaAdjust",
+  "MS_ModelViewProjectionMatrix",
+  "MS_ModelViewMatrix",
+  "MS_ModelViewMatrixInverse",
+  "MS_TextureMatrix",
+  "vColor",
+  "vFogColor",
+  "vTexCoord4"
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -104,7 +121,8 @@ const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] =
 	"wall_bloom",
 	"bump",
 	"bump_bloom",
-	"gamma"
+	"gamma",
+  "debug"
 };
 
 
@@ -204,6 +222,18 @@ GLuint parseShader(const GLcharARB* str, GLenum shaderType) {
 	if(status) {
 		return shader;
 	} else {
+   
+      //DCW We could really use some feedback here when the shader won't compile.
+    GLint infoLen = 0;
+    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+    if(infoLen > 1)
+    {
+      char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+      glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
+      printf("Error compiling shader:\n%s\n", infoLog);
+      free(infoLog);
+    }
+    
 		glDeleteShader(shader);
 		return 0;
 	}
@@ -229,7 +259,16 @@ void Shader::unloadAll() {
 }
 
 Shader::Shader(const std::string& name) : _programObj(0), _passes(-1), _loaded(false) {
-    initDefaultPrograms();
+  nameIndex = -1;
+  initDefaultPrograms();
+  
+    //DCW track name index.
+  for (int i = 0; i < Shader::NUMBER_OF_SHADER_TYPES; ++i) {
+    if (name == Shader::_shader_names[i]) {
+      nameIndex = i;
+    }
+  }
+  
     if (defaultVertexPrograms.count(name) > 0) {
 	    _vert = defaultVertexPrograms[name];
     }
@@ -239,7 +278,8 @@ Shader::Shader(const std::string& name) : _programObj(0), _passes(-1), _loaded(f
 }    
 
 Shader::Shader(const std::string& name, FileSpecifier& vert, FileSpecifier& frag, int16& passes) : _programObj(0), _passes(passes), _loaded(false) {
-	initDefaultPrograms();
+  nameIndex = -1;
+  initDefaultPrograms();
 	
 	parseFile(vert,  _vert);
 	if (_vert.empty() && defaultVertexPrograms.count(name) > 0) 
@@ -255,33 +295,57 @@ Shader::Shader(const std::string& name, FileSpecifier& vert, FileSpecifier& frag
 }
 
 void Shader::init() {
-
 	std::fill_n(_uniform_locations, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), -1);
 	std::fill_n(_cached_floats, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), 0.0);
-
-	_loaded = true;
-
-	//_programObj = glCreateProgramObjectARB(); //DCW no ARB in ios
-  _programObj = glCreateProgram(); //DCW
+  GLint linked;
   
+	_loaded = true;
+  
+  printGLError(__PRETTY_FUNCTION__);
+  
+	//_programObj = glCreateProgramObjectARB(); //DCW no ARB in ios
+  _programObj = glCreateProgram();//DCW
+  printGLError(__PRETTY_FUNCTION__);
 
 	assert(!_vert.empty());
-	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);
+	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);  printGLError(__PRETTY_FUNCTION__);
 	assert(vertexShader);
-	glAttachShader(_programObj, vertexShader); //DCW no ARB in ios
-	glDeleteShader(vertexShader); //DCW no ARB in ios
+	glAttachShader(_programObj, vertexShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
+	glDeleteShader(vertexShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
 
 	assert(!_frag.empty());
-	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);
+	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);  printGLError(__PRETTY_FUNCTION__);
 	assert(fragmentShader);
-	glAttachShader(_programObj, fragmentShader); //DCW no ARB in ios
-	glDeleteShader(fragmentShader); //DCW no ARB in ios
-	
-	glLinkProgram(_programObj); //DCW no ARB in ios
+	glAttachShader(_programObj, fragmentShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
+	glDeleteShader(fragmentShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
+  
+  // DCW Bind enum attributes to program
+  glBindAttribLocation(_programObj, Shader::ATTRIB_VERTEX, "vPosition"); printGLError(__PRETTY_FUNCTION__);
+  glBindAttribLocation(_programObj, Shader::ATTRIB_TEXCOORDS, "vTexCoord"); printGLError(__PRETTY_FUNCTION__);
+  glBindAttribLocation(_programObj, Shader::ATTRIB_NORMAL, "vNormal"); printGLError(__PRETTY_FUNCTION__);
+  
+  glLinkProgram(_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
+  
+  glGetProgramiv(_programObj, GL_LINK_STATUS, &linked);
+  
+  if(!linked)
+  {
+    GLint infoLen = 0;
+    glGetProgramiv(_programObj, GL_INFO_LOG_LENGTH, &infoLen);
+    if(infoLen > 1)
+    {
+      char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+      glGetProgramInfoLog(_programObj, infoLen, NULL, infoLog);
+      printf("Error linking program:\n%s\n", infoLog);
+      free(infoLog);
+    }
+    glDeleteProgram(_programObj);
+  }
 
+  
 	assert(_programObj);
 
-	glUseProgram(_programObj); //DCW no ARB in ios
+  glUseProgram(_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
 
 	glUniform1i(getUniformLocation(U_Texture0), 0);
 	glUniform1i(getUniformLocation(U_Texture1), 1);
@@ -302,8 +366,15 @@ void Shader::setFloat(UniformName name, float f) {
 }
 
 void Shader::setMatrix4(UniformName name, float *f) {
-
+  glPushGroupMarkerEXT(0, "Shader setMatrix4");
 	glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
+  glPopGroupMarkerEXT();
+}
+
+void Shader::setVec4(UniformName name, float *f) {
+  glPushGroupMarkerEXT(0, "Shader setVec4");
+  glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
+  glPopGroupMarkerEXT();
 }
 
 Shader::~Shader() {
@@ -312,11 +383,41 @@ Shader::~Shader() {
 
 void Shader::enable() {
 	if(!_loaded) { init(); }
+  glGetError();
+  if(nameIndex >=0){ glPushGroupMarkerEXT(0, _shader_names[nameIndex]);} else {
+    glPushGroupMarkerEXT(0, "non-default shader");
+  }
 	glUseProgram(_programObj); //DCW no ARB in ios
+  setLastEnabledShader(this);
+  glPopGroupMarkerEXT();
 }
 
 void Shader::disable() {
 	glUseProgram(0);//DCW no ARB in ios
+  Shader *enabledShader = lastEnabledShader();
+  setLastEnabledShader(NULL);
+}
+
+void Shader::drawDebugRect() {
+  Shader *s = Shader::get(Shader::S_Debug);
+  s->enable();
+  /*GLfloat vVertices[12] = { -.5, .5, 0,
+    .5, .5, 0,
+    .5, -.5, 0,
+    -.5, -.5, 0};*/
+  GLfloat vVertices[12] = { -1, 1, 0,
+    1, 1, 0,
+    1, -1, 0,
+    -1, -1, 0};
+  
+  GLubyte indices[] =   {0,1,2,
+    0,2,3};
+  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  glPushGroupMarkerEXT(0, "Draw Debug Rect");
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  glPopGroupMarkerEXT();
+  Shader::disable();
 }
 
 void Shader::unload() {
@@ -325,6 +426,11 @@ void Shader::unload() {
     glDeleteProgram(_programObj); //DCW maybe this needs to be a createshader()?
 		_programObj = 0;
 		_loaded = false;
+     if(lastEnabledShader() == this) {
+       setLastEnabledShader(NULL);
+       
+       Shader *enablementTest = lastEnabledShader();
+     }
 	}
 }
 
@@ -335,30 +441,64 @@ int16 Shader::passes() {
 void initDefaultPrograms() {
     if (defaultVertexPrograms.size() > 0)
         return;
+
+    defaultVertexPrograms["debug"] = ""
+    "attribute vec4 vPosition;   \n"
+    "void main()                 \n"
+    "{                           \n"
+    " gl_Position = vPosition;  \n"
+    "}                           \n";
+    defaultFragmentPrograms["debug"] = ""
+    "void main()                                \n"
+    "{                                          \n"
+    "  gl_FragColor = vec4(0.0, 1.0, 0.0, .25); \n"
+    "}                                          \n";
     
 	defaultVertexPrograms["gamma"] = ""
+  "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+  "uniform mat4 MS_ModelViewMatrix;\n"
+  "attribute vec4 vPosition;\n"
+  "uniform vec4 vColor;\n"
+  "uniform vec4 vFogColor;\n"
+  "attribute vec2 vTexCoord;   \n"
+  "varying vec2 textureUV;   \n"
+  "varying vec4 fogColor;\n"
 	"varying vec4 vertexColor;\n"
 	"void main(void) {\n"
-	"	gl_TexCoord[0] = gl_MultiTexCoord0;\n"
-	"	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
-	"	vertexColor = gl_Color;\n"
+	"	textureUV = vTexCoord;\n"
+	"	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
+	"	vertexColor = vColor;\n"
 	"}\n";
 	defaultFragmentPrograms["gamma"] = ""
+  "precision highp float;\n"
+  "varying highp vec2 textureUV; \n"
 	"uniform sampler2DRect texture0;\n"
 	"uniform float gammaAdjust;\n"
 	"void main (void) {\n"
-	"	vec4 color0 = texture2DRect(texture0, gl_TexCoord[0].xy);\n"
+	"	vec4 color0 = texture2DRect(texture0, textureUV.xy);\n"
 	"	gl_FragColor = vec4(pow(color0.r, gammaAdjust), pow(color0.g, gammaAdjust), pow(color0.b, gammaAdjust), 1.0);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
 	"}\n";
 	
     defaultVertexPrograms["blur"] = ""
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
+        "attribute vec4 vPosition;\n"
+        "uniform vec4 vColor;\n"
+        "uniform vec4 vFogColor;\n"
+        "attribute vec2 vTexCoord;   \n"
+        "varying vec2 textureUV;   \n"
+        "varying vec4 fogColor;\n"
         "varying vec4 vertexColor;\n"
         "void main(void) {\n"
-        "	gl_TexCoord[0] = gl_MultiTexCoord0;\n"
-        "	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
-        "	vertexColor = gl_Color;\n"
+        "	textureUV = vTexCoord;\n"
+        "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
+        "	vertexColor = vColor;\n"
         "}\n";
     defaultFragmentPrograms["blur"] = ""
+        "precision highp float;\n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2DRect texture0;\n"
         "uniform float offsetx;\n"
         "uniform float offsety;\n"
@@ -381,26 +521,42 @@ void initDefaultPrograms() {
         "void main (void) {\n"
         "	vec2 s = vec2(offsetx, offsety);\n"
         "	// Thanks to Renaud Bedard - http://theinstructionlimit.com/?p=43\n"
-        "	vec3 c = s2l(texture2DRect(texture0, gl_TexCoord[0].xy).rgb);\n"
+        "	vec3 c = s2l(texture2DRect(texture0, textureUV.xy).rgb);\n"
         "	vec3 t = f0 * c;\n"
-        "	t += f1 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy - o1*s).rgb);\n"
-        "	t += f1 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy + o1*s).rgb);\n"
-        "	t += f2 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy - o2*s).rgb);\n"
-        "	t += f2 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy + o2*s).rgb);\n"
-        "	t += f3 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy - o3*s).rgb);\n"
-        "	t += f3 * s2l(texture2DRect(texture0, gl_TexCoord[0].xy + o3*s).rgb);\n"
+        "	t += f1 * s2l(texture2DRect(texture0, textureUV.xy - o1*s).rgb);\n"
+        "	t += f1 * s2l(texture2DRect(texture0, textureUV.xy + o1*s).rgb);\n"
+        "	t += f2 * s2l(texture2DRect(texture0, textureUV.xy - o2*s).rgb);\n"
+        "	t += f2 * s2l(texture2DRect(texture0, textureUV.xy + o2*s).rgb);\n"
+        "	t += f3 * s2l(texture2DRect(texture0, textureUV.xy - o3*s).rgb);\n"
+        "	t += f3 * s2l(texture2DRect(texture0, textureUV.xy + o3*s).rgb);\n"
         "	gl_FragColor = vec4(l2s(t), 1.0) * vertexColor;\n"
-        "}\n";    
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
+        "}\n";
     
     defaultVertexPrograms["bloom"] = ""
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
+        "attribute vec4 vPosition;\n"
+        "uniform vec4 vColor;\n"
+        "uniform vec4 vFogColor;\n"
+        "attribute vec2 vTexCoord;   \n"
+        "uniform vec4 vTexCoord4;   \n"
+        "varying vec2 textureUV;   \n"
+        "varying vec2 textureUV2;   \n"
+        "varying vec4 fogColor;\n"
         "varying vec4 vertexColor;\n"
         "void main(void) {\n"
-        "	gl_TexCoord[0] = gl_MultiTexCoord0;\n"
-        "	gl_TexCoord[1] = gl_MultiTexCoord1;\n"
-        "	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
-        "	vertexColor = gl_Color;\n"
+        "	textureUV = vTexCoord;\n"
+        "	textureUV2 = vTexCoord4.xy;\n"
+        "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
+        "	vertexColor = vColor;\n"
         "}\n";
     defaultFragmentPrograms["bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec2 textureUV; \n"
+        "varying highp vec2 textureUV2; \n"
+
         "uniform sampler2DRect texture0;\n"
         "uniform sampler2DRect texture1;\n"
         "uniform float pass;\n"
@@ -413,25 +569,36 @@ void initDefaultPrograms() {
 		"vec3 b2l(vec3 bloom) { return bloom; }\n"
         "#endif\n"
         "void main (void) {\n"
-        "	vec4 color0 = texture2DRect(texture0, gl_TexCoord[0].xy);\n"
-        "	vec4 color1 = texture2DRect(texture1, gl_TexCoord[1].xy);\n"
+        "	vec4 color0 = texture2DRect(texture0, textureUV.xy);\n"
+        "	vec4 color1 = texture2DRect(texture1, textureUV2.xy);\n"
         "	vec3 color = l2s(s2l(color0.rgb) + b2l(color1.rgb));\n"
         "	gl_FragColor = vec4(color, 1.0);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     
     defaultVertexPrograms["landscape"] = ""
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
+        "attribute vec4 vPosition;\n"
+        "uniform vec4 vColor;\n"
+        "uniform vec4 vFogColor;\n"
+        "varying vec4 fogColor;\n"
         "uniform mat4 landscapeInverseMatrix;\n"
         "varying vec3 relDir;\n"
         "varying vec4 vertexColor;\n"
         "void main(void) {\n"
-        "	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
+        "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
         "#ifndef DISABLE_CLIP_VERTEX\n"
-        "	gl_ClipVertex = gl_ModelViewMatrix * gl_Vertex;\n"
+//        "	gl_ClipVertex = MS_ModelViewMatrix * vPosition;\n"
         "#endif\n"
-        "	relDir = (gl_ModelViewMatrix * gl_Vertex).xyz;\n"
-        "	vertexColor = gl_Color;\n"
+        "	relDir = (MS_ModelViewMatrix * vPosition).xyz;\n"
+        "	vertexColor = vColor;\n"
+        " fogColor = vFogColor;\n"
         "}\n";
     defaultFragmentPrograms["landscape"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
         "uniform sampler2D texture0;\n"
         "uniform float usefog;\n"
         "uniform float scalex;\n"
@@ -452,12 +619,18 @@ void initDefaultPrograms() {
         "	vec4 color = texture2D(texture0, vec2(offsetx - x * scalex, offsety - y * scaley));\n"
         "	vec3 intensity = color.rgb;\n"
         "	if (usefog > 0.0) {\n"
-        "		intensity = gl_Fog.color.rgb;\n"
+        "		intensity = fogColor.rgb;\n"
         "	}\n"
         "	gl_FragColor = vec4(intensity, 1.0);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["landscape_bloom"] = defaultVertexPrograms["landscape"];
     defaultFragmentPrograms["landscape_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
         "uniform sampler2D texture0;\n"
         "uniform float usefog;\n"
         "uniform float scalex;\n"
@@ -488,9 +661,22 @@ void initDefaultPrograms() {
         "	color.rgb = (color.rgb - 0.1) * 1.11;\n"
         "#endif\n"
         "	gl_FragColor = vec4(color.rgb * intensity, 1.0);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
 	
     defaultVertexPrograms["sprite"] = ""
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrixInverse;\n"
+        "uniform mat4 MS_TextureMatrix;\n"
+        "attribute vec4 vPosition;\n"
+        "uniform vec4 vColor;\n"
+        "uniform vec4 vFogColor;\n"
+        "attribute vec2 vTexCoord;   \n"
+        "varying vec2 textureUV;   \n"
+        "varying vec4 fogColor;\n"
+  
         "uniform float depth;\n"
         "uniform float strictDepthMode;\n"
         "varying vec3 viewDir;\n"
@@ -498,18 +684,23 @@ void initDefaultPrograms() {
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
         "void main(void) {\n"
-        "	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
+        "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
         "	classicDepth = gl_Position.z / 8192.0;\n"
         "#ifndef DISABLE_CLIP_VERTEX\n"
-        "	gl_ClipVertex = gl_ModelViewMatrix * gl_Vertex;\n"
+//        "	gl_ClipVertex = MS_ModelViewMatrix * vPosition;\n"
         "#endif\n"
-        "	vec4 v = gl_ModelViewMatrixInverse * vec4(0.0, 0.0, 0.0, 1.0);\n"
-        "	viewDir = (gl_Vertex - v).xyz;\n"
-        "	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;\n"
-        "	vertexColor = gl_Color;\n"
-        "	FDxLOG2E = -gl_Fog.density * 1.442695;\n"
+        "	vec4 v = MS_ModelViewMatrixInverse * vec4(0.0, 0.0, 0.0, 1.0);\n"
+        "	viewDir = (vPosition - v).xyz;\n"
+        " vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"           //DCW shitty attempt to stuff texUV into a vec4
+        "	textureUV = (MS_TextureMatrix * UV4).xy;\n"
+        "	vertexColor = vColor;\n"
+        "	FDxLOG2E = -vFogColor.a * 1.442695;\n"
+        " fogColor = vFogColor;\n" //DCW maybe unused.
         "}\n";    
     defaultFragmentPrograms["sprite"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float glow;\n"
         "uniform float flare;\n"
@@ -530,12 +721,17 @@ void initDefaultPrograms() {
         "#ifdef GAMMA_CORRECTED_BLENDING\n"
         "	intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(gl_Fog.color.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  //"  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["sprite_bloom"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["sprite_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float glow;\n"
         "uniform float bloomScale;\n"
@@ -545,7 +741,7 @@ void initDefaultPrograms() {
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
         "void main (void) {\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	vec3 intensity = clamp(vertexColor.rgb, glow, 1.0);\n"
         "	//intensity = intensity * clamp(2.0 - length(viewDir)/8192.0, 0.0, 1.0);\n"
         "	intensity = clamp(intensity * bloomScale + bloomShift, 0.0, 1.0);\n"
@@ -557,10 +753,15 @@ void initDefaultPrograms() {
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     
     defaultVertexPrograms["invincible"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["invincible"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float time;\n"
         "uniform float usestatic;\n"
@@ -568,19 +769,24 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main(void) {\n"
-        "	float a = fract(sin(usestatic*(gl_TexCoord[0].x * 133.0 + gl_TexCoord[0].y * 471.0) + time * 7.0) * 43757.0); \n"
-        "	float b = fract(sin(usestatic*(gl_TexCoord[0].x * 2331.0 + gl_TexCoord[0].y * 63.0) + time * 3.0) * 32451.0); \n"
-        "	float c = fract(sin(usestatic*(gl_TexCoord[0].x * 41.0 + gl_TexCoord[0].y * 12911.0) + time * 31.0) * 34563.0);\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	float a = fract(sin(usestatic*(textureUV.x * 133.0 + textureUV.y * 471.0) + time * 7.0) * 43757.0); \n"
+        "	float b = fract(sin(usestatic*(textureUV.x * 2331.0 + textureUV.y * 63.0) + time * 3.0) * 32451.0); \n"
+        "	float c = fract(sin(usestatic*(textureUV.x * 41.0 + textureUV.y * 12911.0) + time * 31.0) * 34563.0);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	vec3 intensity = vec3(a, b, c);\n"
         "#ifdef GAMMA_CORRECTED_BLENDING\n"
         "	intensity = intensity * intensity;  // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(gl_Fog.color.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
+        "	gl_FragColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["invincible_bloom"] = defaultVertexPrograms["invincible"];
     defaultFragmentPrograms["invincible_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float time;\n"
         "uniform float usestatic;\n"
@@ -590,69 +796,111 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main(void) {\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	vec3 intensity = vec3(0.0, 0.0, 0.0);\n"
         "	float fogFactor = exp2(FDxLOG2E * length(viewDir));\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     
     defaultVertexPrograms["invisible"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["invisible"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float visibility;\n"
         "varying vec3 viewDir;\n"
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main(void) {\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "   vec3 intensity = vec3(0.0, 0.0, 0.0);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(gl_Fog.color.rgb, intensity, fogFactor), vertexColor.a * color.a * visibility);\n"
+        "	gl_FragColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a * visibility);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["invisible_bloom"] = defaultVertexPrograms["invisible"];
     defaultFragmentPrograms["invisible_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float visibility;\n"
         "varying vec3 viewDir;\n"
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main(void) {\n"
-        "	vec4 color = texture2D(texture0, gl_TexCoord[0].xy);\n"
+        "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "   vec3 intensity = vec3(0.0, 0.0, 0.0);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), intensity, fogFactor), vertexColor.a * color.a * visibility);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
 	
     defaultVertexPrograms["wall"] = ""
+        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrix;\n"
+        "uniform mat4 MS_ModelViewMatrixInverse;\n"
+        "uniform mat4 MS_TextureMatrix;\n"
+        "attribute vec4 vPosition;\n"
+        "uniform vec4 vColor;\n"
+        "uniform vec4 vFogColor;\n"
+        "attribute vec2 vTexCoord;   \n"
+        "attribute vec3 vNormal;   \n"
+        "uniform vec4 vTexCoord4;   \n"
+        "varying vec2 textureUV2;   \n"
+        "varying vec2 textureUV;   \n"
+        "varying vec4 fogColor;\n"
+        "varying vec3 normal;\n"
         "uniform float depth;\n"
         "varying vec3 viewXY;\n"
         "varying vec3 viewDir;\n"
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
+        "highp mat4 transpose(in highp mat4 inMatrix) {\n"
+        "highp vec4 i0 = inMatrix[0];\n"
+        "highp vec4 i1 = inMatrix[1];\n"
+        "highp vec4 i2 = inMatrix[2];\n"
+        "highp vec4 i3 = inMatrix[3];\n"
+        "highp mat4 outMatrix = mat4(\n"
+        "                       vec4(i0.x, i1.x, i2.x, i3.x),\n"
+        "                       vec4(i0.y, i1.y, i2.y, i3.y),\n"
+        "                        vec4(i0.z, i1.z, i2.z, i3.z),\n"
+        "                       vec4(i0.w, i1.w, i2.w, i3.w) );\n"
+        "return outMatrix; }\n"
+  
         "void main(void) {\n"
-        "	gl_Position  = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
+        "	gl_Position  = MS_ModelViewProjectionMatrix * vPosition;\n"
         "	gl_Position.z = gl_Position.z + depth*gl_Position.z/65536.0;\n"
         "	classicDepth = gl_Position.z / 8192.0;\n"
         "#ifndef DISABLE_CLIP_VERTEX\n"
-        "	gl_ClipVertex = gl_ModelViewMatrix * gl_Vertex;\n"
+//        "	gl_ClipVertex = MS_ModelViewMatrix * vPosition;\n"
         "#endif\n"
-        "	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;\n"
-        "	/* SETUP TBN MATRIX in normal matrix coords, gl_MultiTexCoord1 = tangent vector */\n"
-        "	vec3 n = normalize(gl_NormalMatrix * gl_Normal);\n"
-        "	vec3 t = normalize(gl_NormalMatrix * gl_MultiTexCoord1.xyz);\n"
-        "	vec3 b = normalize(cross(n, t) * gl_MultiTexCoord1.w);\n"
+        " vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"           //DCW shitty attempt to stuff texUV into a vec4
+        " mat3 normalMatrix = mat3(transpose(MS_ModelViewMatrixInverse));\n"           //DCW shitty repolacement for gl_NormalMatrix
+        "  textureUV = (MS_TextureMatrix * UV4).xy;\n"
+        "	/* SETUP TBN MATRIX in normal matrix coords, vTexCoord4 = tangent vector */\n"
+        "	vec3 n = normalize(normalMatrix * normal);\n"
+        "	vec3 t = normalize(normalMatrix * vTexCoord4.xyz);\n"
+        "	vec3 b = normalize(cross(n, t) * vTexCoord4.w);\n"
         "	/* (column wise) */\n"
         "	mat3 tbnMatrix = mat3(t.x, b.x, n.x, t.y, b.y, n.y, t.z, b.z, n.z);\n"
         "	\n"
         "	/* SETUP VIEW DIRECTION in unprojected local coords */\n"
-        "	viewDir = tbnMatrix * (gl_ModelViewMatrix * gl_Vertex).xyz;\n"
-        "	viewXY = -(gl_TextureMatrix[0] * vec4(viewDir.xyz, 1.0)).xyz;\n"
+        "	viewDir = tbnMatrix * (MS_ModelViewMatrix * vPosition).xyz;\n"
+        "	viewXY = -(MS_TextureMatrix * vec4(viewDir.xyz, 1.0)).xyz;\n"
         "	viewDir = -viewDir;\n"
-        "	vertexColor = gl_Color;\n"
-        "	FDxLOG2E = -gl_Fog.density * 1.442695;\n"
+        "	vertexColor = vColor;\n"
+        "	FDxLOG2E = -vFogColor.a * 1.442695;\n"
         "}\n";
     defaultFragmentPrograms["wall"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float pulsate;\n"
         "uniform float wobble;\n"
@@ -665,7 +913,7 @@ void initDefaultPrograms() {
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
         "void main (void) {\n"
-        "	vec3 texCoords = vec3(gl_TexCoord[0].xy, 0.0);\n"
+        "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
         "	vec3 normXY = normalize(viewXY);\n"
         "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
         "	texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
@@ -682,10 +930,16 @@ void initDefaultPrograms() {
         "#endif\n"
         "	vec4 color = texture2D(texture0, texCoords.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(gl_Fog.color.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+//        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+//"  gl_FragColor = vec4(1.0, 1.0, 0 ,.05);\n"
+  "  gl_FragColor = color;\n"
+
         "}\n";
     defaultVertexPrograms["wall_bloom"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["wall_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform float pulsate;\n"
         "uniform float wobble;\n"
@@ -698,7 +952,7 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main (void) {\n"
-        "	vec3 texCoords = vec3(gl_TexCoord[0].xy, 0.0);\n"
+        "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
         "	vec3 normXY = normalize(viewXY);\n"
         "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
         "	texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
@@ -711,10 +965,15 @@ void initDefaultPrograms() {
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(0.5,0.5, 0 ,0.1);\n"
         "}\n";
     
     defaultVertexPrograms["bump"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["bump"] = ""
+        "precision highp float;\n"
+        "varying highp vec4 fogColor; \n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform sampler2D texture1;\n"
         "uniform float pulsate;\n"
@@ -727,7 +986,7 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main (void) {\n"
-        "	vec3 texCoords = vec3(gl_TexCoord[0].xy, 0.0);\n"
+        "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
         "	vec3 normXY = normalize(viewXY);\n"
         "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
         "	texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
@@ -758,10 +1017,14 @@ void initDefaultPrograms() {
         "	intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(gl_Fog.color.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["bump_bloom"] = defaultVertexPrograms["bump"];
     defaultFragmentPrograms["bump_bloom"] = ""
+        "precision highp float;\n"
+        "varying highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
         "uniform sampler2D texture1;\n"
         "uniform float pulsate;\n"
@@ -775,7 +1038,7 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "void main (void) {\n"
-        "	vec3 texCoords = vec3(gl_TexCoord[0].xy, 0.0);\n"
+        "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
         "	vec3 normXY = normalize(viewXY);\n"
         "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
         "	texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
@@ -802,6 +1065,8 @@ void initDefaultPrograms() {
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //DCW shit test
+  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
 }
     

@@ -47,6 +47,8 @@ extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool headBelowMedia ();
+extern bool useShaderRenderer ();
+extern bool fastStart ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();

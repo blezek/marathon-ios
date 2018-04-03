@@ -27,6 +27,7 @@
 #include "OGL_Headers.h"
 #include "FileHandler.h"
 
+
 class Shader {
 
 friend class XML_ShaderParser;
@@ -60,6 +61,14 @@ public:
 		U_Pitch,
 		U_SelfLuminosity,
 		U_GammaAdjust,
+    //DCW below are compatibiliy uniforms to replace the FFT ones.
+    U_MS_ModelViewProjectionMatrix,
+    U_MS_ModelViewMatrix,
+    U_MS_ModelViewMatrixInverse,
+    U_MS_TextureMatrix,
+    U_MS_Color,
+    U_MS_FogColor,
+    U_TexCoords4,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 
@@ -79,8 +88,18 @@ public:
 		S_Bump,
 		S_BumpBloom,
 		S_Gamma,
+    S_Debug,
 		NUMBER_OF_SHADER_TYPES
 	};
+  
+  // DCW attribute index
+  enum {
+    ATTRIB_VERTEX,
+    ATTRIB_TEXCOORDS,
+    ATTRIB_NORMAL,
+    NUM_ATTRIBUTES
+  };
+  
 private:
 
 	GLuint _programObj;
@@ -88,6 +107,7 @@ private:
 	std::string _frag;
 	int16 _passes;
 	bool _loaded;
+  int nameIndex; //DCW
 
 	static const char* _shader_names[NUMBER_OF_SHADER_TYPES];
 	static std::vector<Shader> _shaders;
@@ -120,15 +140,19 @@ public:
 	void unload();
 	void setFloat(UniformName name, float); // shader must be enabled
 	void setMatrix4(UniformName name, float *f);
+  void setVec4(UniformName name, float *f);
 
 	int16 passes();
 
 	static void disable();
+  static void drawDebugRect(); //DCW draws a debugging rect to middle of current binding.
 };
 
 
 class InfoTree;
 void parse_mml_opengl_shader(const InfoTree& root);
 void reset_mml_opengl_shader();
+
+Shader* lastEnabledShader();
 
 #endif

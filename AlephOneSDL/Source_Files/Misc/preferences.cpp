@@ -3103,8 +3103,11 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 	preferences->screen_mode.acceleration = _no_acceleration;
 #endif
   
-  //DCW we pretty much always want shader accelerartion.
-  preferences->screen_mode.acceleration = _shader_acceleration;
+  //DCW we want to control es 1.1 or es 2.0 rendering prefs elsewhere.
+  preferences->screen_mode.acceleration = _opengl_acceleration;
+  if (useShaderRenderer()) {
+    preferences->screen_mode.acceleration = _shader_acceleration;
+  }
   
 	preferences->screen_mode.high_resolution = true;
 	preferences->screen_mode.fullscreen = true;

@@ -87,6 +87,10 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
   
+  if (fastStart()) {
+    [game menuLoadGame];
+  }
+  
 }
 
 //Borrowed from DLudwig
@@ -349,6 +353,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [self.avPlayer play];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.avPlayer currentItem]];
 
+  if (fastStart()) {
+    [self finishIntro:self];
+  }
   
   //[UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
   //  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];

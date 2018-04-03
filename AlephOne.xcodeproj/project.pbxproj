@@ -300,6 +300,18 @@
 		519FCB221EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
 		519FCB231EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
 		519FCB241EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
+		51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
+		51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
+		51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
+		51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
+		51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
+		51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
+		51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
+		51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
+		51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
+		51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
+		51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
+		51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
 		51B683DC1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
 		51B683DD1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
 		51B683DE1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
@@ -408,6 +420,12 @@
 		51E9FD6E2007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
 		51E9FD6F2007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
 		51E9FD702007F86700ADD38A /* bungie-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E9FD6D2007F86600ADD38A /* bungie-logo.png */; };
+		51E9FFD1202BBE7B00ADD38A /* MatrixStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */; };
+		51E9FFD2202BBE7B00ADD38A /* MatrixStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */; };
+		51E9FFD3202BBE7B00ADD38A /* MatrixStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */; };
+		51E9FFD6203CA7A400ADD38A /* esUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFD5203CA7A400ADD38A /* esUtil.cpp */; };
+		51E9FFD7203CA7A400ADD38A /* esUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFD5203CA7A400ADD38A /* esUtil.cpp */; };
+		51E9FFD8203CA7A400ADD38A /* esUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E9FFD5203CA7A400ADD38A /* esUtil.cpp */; };
 		51EAD4251E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
 		51EAD4261E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
 		51EAD4271E58B13600611EFF /* BStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EAD2031E58B13600611EFF /* BStream.cpp */; };
@@ -1182,8 +1200,6 @@
 		A807A71213E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
 		A807A71313E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
 		A807A71413E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
-		A809FDB4140DD73E0051EA11 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718177140D584F00327BEF /* libbz2.1.0.dylib */; };
-		A809FDB5140DD7480051EA11 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8718177140D584F00327BEF /* libbz2.1.0.dylib */; };
 		A809FDBA140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
 		A809FDBB140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
 		A809FDBC140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
@@ -1329,9 +1345,6 @@
 		A81EEFB213E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
 		A81EEFB313E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
 		A81EEFB413E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
-		A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
-		A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
-		A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */; };
 		A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
@@ -1702,11 +1715,9 @@
 		A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
 		A883DC7412F5CEE60041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
 		A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */; };
-		A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
-		A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A88E2EB512BDB43000ABFAAA /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = A88E2EB412BDB43000ABFAAA /* Effects.m */; };
 		A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCB12E1616100318968 /* weather_clear_night.png */; };
 		A88EFBCE12E1616100318968 /* weather_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A88EFBCC12E1616100318968 /* weather_clear.png */; };
@@ -1912,7 +1923,6 @@
 		A8C3922E129789A100E09E32 /* HelpViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8C3922C129789A100E09E32 /* HelpViewController.mm */; };
 		A8C4436813A7CF72002A908B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C4436613A7CF72002A908B /* about.png */; };
 		A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70112EFCD6900D5D23F /* Security.framework */; };
-		A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */; };
 		A8C5563A14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
 		A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
 		A8C5563C14267C29003D329B /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C5563914267C29003D329B /* PurchaseViewController.xib */; };
@@ -2354,6 +2364,10 @@
 		519FCAFF1EA53FB90066EE69 /* Preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Preferences.png; sourceTree = "<group>"; };
 		519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreferencesHighlighted.png; sourceTree = "<group>"; };
 		51A000FE1E8E0B7600FC09F2 /* a1HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = a1HTTP.h; sourceTree = "<group>"; };
+		51AADD722056FB3C00829264 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		51AADD732056FB3D00829264 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		51AADD742056FB3D00829264 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		51AADD752056FB3E00829264 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		51B683C21EAAF58B00CB1628 /* bit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bit.c; path = "submodules/Libraries/libmad-0.15.1b/bit.c"; sourceTree = SOURCE_ROOT; };
 		51B683C31EAAF58B00CB1628 /* decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = "submodules/Libraries/libmad-0.15.1b/decoder.c"; sourceTree = SOURCE_ROOT; };
 		51B683C41EAAF58B00CB1628 /* fixed.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fixed.c; path = "submodules/Libraries/libmad-0.15.1b/fixed.c"; sourceTree = SOURCE_ROOT; };
@@ -2423,6 +2437,10 @@
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		51E9FD692006A0C500ADD38A /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavcodec.a"; sourceTree = SOURCE_ROOT; };
 		51E9FD6D2007F86600ADD38A /* bungie-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bungie-logo.png"; path = "Resources/GUI/bungie-logo.png"; sourceTree = "<group>"; };
+		51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MatrixStack.cpp; path = Classes/MatrixStack.cpp; sourceTree = "<group>"; };
+		51E9FFD0202BBE7A00ADD38A /* MatrixStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MatrixStack.hpp; path = Classes/MatrixStack.hpp; sourceTree = "<group>"; };
+		51E9FFD4203CA7A300ADD38A /* esUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = esUtil.h; path = Classes/esUtil.h; sourceTree = "<group>"; };
+		51E9FFD5203CA7A400ADD38A /* esUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = esUtil.cpp; path = Classes/esUtil.cpp; sourceTree = "<group>"; };
 		51EAD2031E58B13600611EFF /* BStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BStream.cpp; sourceTree = "<group>"; };
 		51EAD2041E58B13600611EFF /* BStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BStream.h; sourceTree = "<group>"; };
 		51EAD2061E58B13600611EFF /* byte_swapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = byte_swapping.cpp; sourceTree = "<group>"; };
@@ -3034,8 +3052,6 @@
 		A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		A81EEFAA13E4F9660031E870 /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
 		A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
-		A8225B37144D1280000F5C7A /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		A826E50B139F0C6500EF8605 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A8294BDA1433F74600300CD5 /* DoneButtonThanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneButtonThanks.png; sourceTree = "<group>"; };
 		A8294BDE1433F74600300CD5 /* ThanksBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThanksBackground.png; sourceTree = "<group>"; };
@@ -3194,7 +3210,6 @@
 		A8695CAB1563560900D5976B /* Infinity@2x. */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Infinity@2x."; sourceTree = "<group>"; };
 		A8695CAD1563561400D5976B /* Infinity-Portrait~ipad. */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Infinity-Portrait~ipad."; sourceTree = "<group>"; };
 		A8695CAF1563562400D5976B /* Infinity-Landscape~ipad. */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Infinity-Landscape~ipad."; sourceTree = "<group>"; };
-		A8718177140D584F00327BEF /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		A871817B140DA9E000327BEF /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		A871817C140DAA2500327BEF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		A871817D140DAA7000327BEF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -3426,7 +3441,6 @@
 		A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A8C4B70112EFCD6900D5D23F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A8C5563914267C29003D329B /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		A8CB80E913A28638004D6DBD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A8D0D6941248544E0098D2AB /* SaveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveState.h; path = Classes/SaveState.h; sourceTree = "<group>"; };
@@ -3494,9 +3508,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2B1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
+				51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
-				A8225B3D144D12CF000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
@@ -3516,6 +3530,7 @@
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
+				51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
 				51324A341EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				51324A311EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
@@ -3523,14 +3538,14 @@
 				51324AAB1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
+				51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A371EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208C1EAAF43400129201 /* boost.framework in Frameworks */,
+				51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				51324A151EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
-				A8C4B70812EFCD6900D5D23F /* libsqlite3.dylib in Frameworks */,
-				A809FDB4140DD73E0051EA11 /* libbz2.1.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3541,7 +3556,6 @@
 				51324A2C1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51324A291EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51041DD31EAAF02300129201 /* libFreetype2.a in Frameworks */,
-				A8225B3C144D12BA000F5C7A /* libz.1.2.5.dylib in Frameworks */,
 				51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 				51324A1A1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
@@ -3549,15 +3563,17 @@
 				51324AAC1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
+				51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
+				51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
 				51324A351EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
 				A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */,
-				A883DC7712F5CEE60041543F /* libsqlite3.dylib in Frameworks */,
 				51324A321EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
+				51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				51324A161EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				51324A2F1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
@@ -3572,6 +3588,7 @@
 				5104208D1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
+				51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 			);
@@ -3582,7 +3599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2D1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
-				A8225B3B144D12A8000F5C7A /* libz.1.2.5.dylib in Frameworks */,
+				51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */,
@@ -3597,7 +3614,6 @@
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				514D349C1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
-				A883DC7D12F5CEFB0041543F /* libsqlite3.dylib in Frameworks */,
 				51324AB11EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */,
 				51041DD41EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				514D34A01E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
@@ -3605,6 +3621,7 @@
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
+				51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
 				51324A361EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51324A331EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51324A1B1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
@@ -3612,13 +3629,14 @@
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
+				51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208E1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A171EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
+				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				A809FDB5140DD7480051EA11 /* libbz2.1.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3660,6 +3678,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				51E9FFD0202BBE7A00ADD38A /* MatrixStack.hpp */,
+				51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */,
+				51E9FFD4203CA7A300ADD38A /* esUtil.h */,
+				51E9FFD5203CA7A400ADD38A /* esUtil.cpp */,
 				518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */,
 				A8695CAF1563562400D5976B /* Infinity-Landscape~ipad. */,
 				A8695CAD1563561400D5976B /* Infinity-Portrait~ipad. */,
@@ -3671,6 +3693,10 @@
 				A871817A140DA9E000327BEF /* BuildConfigurations */,
 				A83983DC11F2AB92002E7CF2 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				51AADD742056FB3D00829264 /* libbz2.1.0.dylib */,
+				51AADD722056FB3C00829264 /* libsqlite3.dylib */,
+				51AADD752056FB3E00829264 /* libz.1.1.3.dylib */,
+				51AADD732056FB3D00829264 /* libz.1.2.5.dylib */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
 				51EAD73E1E58B44100611EFF /* SDL2 */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -3745,10 +3771,6 @@
 				A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */,
 				A8C4B70112EFCD6900D5D23F /* Security.framework */,
 				A8C4B70512EFCD6900D5D23F /* SystemConfiguration.framework */,
-				A8C4B70712EFCD6900D5D23F /* libsqlite3.dylib */,
-				A8718177140D584F00327BEF /* libbz2.1.0.dylib */,
-				A8225B3A144D12A7000F5C7A /* libz.1.2.5.dylib */,
-				A8225B37144D1280000F5C7A /* libz.1.1.3.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -7088,6 +7110,7 @@
 				51B684E21EAAFA0400CB1628 /* registry.c in Sources */,
 				A8DC98E71238799C00317186 /* SaveGame.xcdatamodeld in Sources */,
 				51EAD4971E58B13600611EFF /* WadImageCache.cpp in Sources */,
+				51E9FFD1202BBE7B00ADD38A /* MatrixStack.cpp in Sources */,
 				51EAD5361E58B13700611EFF /* lmem.c in Sources */,
 				A8C29BA61224B69600E79491 /* ManagedObjects.m in Sources */,
 				51B684F71EAAFA0400CB1628 /* vorbisfile.c in Sources */,
@@ -7135,6 +7158,7 @@
 				51EAD42B1E58B13600611EFF /* byte_swapping.cpp in Sources */,
 				51EAD6DA1E58B13800611EFF /* TextLayoutHelper.cpp in Sources */,
 				51EAD5F61E58B13700611EFF /* network_metaserver.cpp in Sources */,
+				51E9FFD6203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DC1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD48E1E58B13600611EFF /* wad.cpp in Sources */,
 				51EAD7161E58B13800611EFF /* MessageDispatcher.cpp in Sources */,
@@ -7411,6 +7435,7 @@
 				51B684E31EAAFA0400CB1628 /* registry.c in Sources */,
 				51EAD4A71E58B13600611EFF /* items.cpp in Sources */,
 				51EAD5911E58B13700611EFF /* CircularByteBuffer.cpp in Sources */,
+				51E9FFD2202BBE7B00ADD38A /* MatrixStack.cpp in Sources */,
 				51EAD6D51E58B13800611EFF /* sdl_resize.cpp in Sources */,
 				51EAD4FB1E58B13700611EFF /* ssdp.c in Sources */,
 				51B684F81EAAFA0400CB1628 /* vorbisfile.c in Sources */,
@@ -7458,6 +7483,7 @@
 				A881216512C7816300A1A08E /* SaveGame.xcdatamodeld in Sources */,
 				A881216612C7816300A1A08E /* ManagedObjects.m in Sources */,
 				A881216812C7816300A1A08E /* SaveGameViewController.mm in Sources */,
+				51E9FFD7203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DD1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD4801E58B13600611EFF /* preprocess_map_sdl.cpp in Sources */,
 				A881216912C7816300A1A08E /* AlephOneShell.cpp in Sources */,
@@ -7734,6 +7760,7 @@
 				51B684E41EAAFA0400CB1628 /* registry.c in Sources */,
 				A881236A12C7826300A1A08E /* SaveGame.xcdatamodeld in Sources */,
 				51EAD4991E58B13600611EFF /* WadImageCache.cpp in Sources */,
+				51E9FFD3202BBE7B00ADD38A /* MatrixStack.cpp in Sources */,
 				51EAD5381E58B13700611EFF /* lmem.c in Sources */,
 				A881236B12C7826300A1A08E /* ManagedObjects.m in Sources */,
 				51B684F91EAAFA0400CB1628 /* vorbisfile.c in Sources */,
@@ -7781,6 +7808,7 @@
 				51EAD42D1E58B13600611EFF /* byte_swapping.cpp in Sources */,
 				51EAD6DC1E58B13800611EFF /* TextLayoutHelper.cpp in Sources */,
 				51EAD5F81E58B13700611EFF /* network_metaserver.cpp in Sources */,
+				51E9FFD8203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DE1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD4901E58B13600611EFF /* wad.cpp in Sources */,
 				51EAD7181E58B13800611EFF /* MessageDispatcher.cpp in Sources */,
@@ -8525,6 +8553,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"$(SRCROOT)/submodules/Libraries/glm",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -8796,6 +8825,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"$(SRCROOT)/submodules/Libraries/glm",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -8961,6 +8991,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"$(SRCROOT)/submodules/Libraries/glm",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -9057,6 +9088,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.5/include",
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
+					"$(SRCROOT)/submodules/Libraries/glm",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (

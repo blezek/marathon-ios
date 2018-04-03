@@ -431,6 +431,15 @@ bool headBelowMedia () {
   return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
 }
 
+bool useShaderRenderer() {
+  return 0;
+}
+
+  //Set to 1 for fast debugging, by lauching directly into last saved game.
+bool fastStart () {
+  return 0;
+}
+
 short pRecord[128][2];
 void helperNewProjectile( short projectile_index, short which_weapon, short which_trigger ) {
   if ( projectile_index >= 128 ) { return; };

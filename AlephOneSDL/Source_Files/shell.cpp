@@ -438,11 +438,13 @@ void initialize_application(void)
 		exit(1);
 	}
   
-  // DCW force opengl es 1.1
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-
+  if ( !useShaderRenderer() ){
+      // DCW force opengl es 1.1
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+  }
+  
 #if defined(HAVE_SDL_IMAGE)
 	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 #endif

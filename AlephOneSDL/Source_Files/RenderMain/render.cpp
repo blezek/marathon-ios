@@ -245,6 +245,10 @@ extern WindowPtr screen_window;
 //DCW Used for mouse smoothing
 #include "mouse.h"
 
+#include "MatrixStack.hpp" //DCW SHIT TEST
+
+#include "OGL_Shader.h" //DCW shit test
+
 /* use native alignment */
 #if defined (powerc) || defined (__powerc)
 #pragma options align=power
@@ -435,7 +439,7 @@ void render_view(
 	memset(automap_polygons, 0, (dynamic_world->polygon_count/8+((dynamic_world->polygon_count%8)?1:0)*sizeof(byte)));
 #endif
 */
-	
+ 
 	if(view->terminal_mode_active)
 	{
 		/* Render the computer interface. */
@@ -479,10 +483,10 @@ void render_view(
 #ifdef HAVE_OPENGL
 			}
 #endif
-			
+      
 			// Set its view:
 			RasPtr->SetView(*view);
-			
+
 			// Start rendering main view
 			RasPtr->Begin();
 			
@@ -496,12 +500,16 @@ void render_view(
 				it to the texture-mapping code */
 			RenPtr->view = view;
 			RenPtr->RasPtr = RasPtr;
-			RenPtr->render_tree();
-			
+      glPushGroupMarkerEXT(0, "render_tree");
+      RenPtr->render_tree();
+      glPopGroupMarkerEXT();
+      
 			// LP: won't put this into a separate class
-			/* render the playerÕs weapons, etc. */		
+			/* render the playerÕs weapons, etc. */
+      glPushGroupMarkerEXT(0, "render_viewer_sprite_layer");
 			render_viewer_sprite_layer(view, RasPtr);
-			
+      glPopGroupMarkerEXT();
+      
 			// Finish rendering main view
 			RasPtr->End();
 		}
@@ -509,7 +517,9 @@ void render_view(
 		if (view->overhead_map_active)
 		{
 			/* if the overhead map is active, render it */
+      glPushGroupMarkerEXT(0, "render_overhead_map");
 			render_overhead_map(view);
+      glPopGroupMarkerEXT();
 		}
 	}
 }

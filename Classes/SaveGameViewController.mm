@@ -13,6 +13,7 @@
 #include "preferences.h"
 #import "map.h"
 #import "Effects.h"
+#import "AlephOneHelper.h"
 
 @implementation SaveGameViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
@@ -86,6 +87,11 @@
     [v.layer addAnimation:group forKey:@"appear"];
   }
   [self.uiView.layer addAnimation:group forKey:nil];*/
+  if (fastStart()) {
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:NULL];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self load:self];
+  }
 }
   
 - (void)disappear {

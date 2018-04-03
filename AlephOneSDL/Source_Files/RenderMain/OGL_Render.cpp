@@ -144,6 +144,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include "mouse.h"
 
 #include <OpenGLES/ES1/gl.h> //DCW
+#include "MatrixStack.hpp"
 
 #ifdef HAVE_OPENGL
 
@@ -170,6 +171,8 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include <cmath>
 
 #import "AlephOneHelper.h"
+//DCW
+#include "esUtil.h"
 
 extern bool use_lua_hud_crosshairs;
 
@@ -273,18 +276,22 @@ static int ProjectionType = Projection_NONE;
 static void SetProjectionType(int NewProjectionType)
 {
 	if (NewProjectionType == ProjectionType) return;
-
+  
 	switch(NewProjectionType)
 	{
 	case Projection_OpenGL_Eye:
-		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(OGLEye_2_Clip);
+		if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+    MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+		if (!useShaderRenderer()) glLoadMatrixf(OGLEye_2_Clip);
+    MatrixStack::Instance()->loadMatrixf(OGLEye_2_Clip);
 		ProjectionType = NewProjectionType;
 		break;
 	
 	case Projection_Screen:
-		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(Screen_2_Clip);
+		if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+    MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+		if (!useShaderRenderer()) glLoadMatrixf(Screen_2_Clip);
+    MatrixStack::Instance()->loadMatrixf(Screen_2_Clip);
 		ProjectionType = NewProjectionType;
 		break;
 	}
@@ -563,7 +570,9 @@ bool OGL_StartRun()
 	}
    
 	FBO_Allowed = false;
-	if (!OGL_CheckExtension("GL_EXT_framebuffer_object"))
+  //DCW in ES 2.0, we can assume FBOs are available
+	//if (!OGL_CheckExtension("GL_EXT_framebuffer_object"))
+  if( !useShaderRenderer() )
 	{
 		logWarning("Framebuffer Objects not available");
 		if (ShaderRender)
@@ -658,10 +667,10 @@ bool OGL_StartRun()
 	OGL_ProgressCallback(1);
   
   //DCW debugging
-  GLfloat m[16];
-  glGetFloatv (GL_MODELVIEW_MATRIX, m);
-  printf ( "Modelviewr: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
-          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+  //GLfloat m[16];
+  //glGetFloatv (GL_MODELVIEW_MATRIX, m);
+  //printf ( "Modelviewr: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+  //        m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
   
 	// Avoid lazy initial texture loading
 	PreloadTextures();
@@ -844,7 +853,8 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
 	
 	// Create the screen -> clip (fundamental) matrix; this will be needed
 	// for all the other projections
-	glMatrixMode(GL_PROJECTION);
+	if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+  MatrixStack::Instance()->matrixMode(MS_PROJECTION);
   
   //DCW Commenting out DJB's hud ortho changes for now... The hud goes wacky with them in.
   // DJB OpenGL Landscape
@@ -852,7 +862,8 @@ bool OGL_SetWindow(Rect &ScreenBounds, Rect &ViewBounds, bool UseBackBuffer)
   //glOrthof(0, ViewWidth, ViewHeight, 0, 1, -1);          // OpenGL-style z
  
   
-	glGetFloatv(GL_PROJECTION_MATRIX,Screen_2_Clip);
+	if (!useShaderRenderer()) glGetFloatv(GL_PROJECTION_MATRIX,Screen_2_Clip);
+  MatrixStack::Instance()->getFloatv(MS_PROJECTION_MATRIX, Screen_2_Clip);
 	
 	// Set projection type to initially none (force load of first one)
 	ProjectionType = Projection_NONE;
@@ -901,10 +912,13 @@ bool OGL_StartMain()
 		}
 		glFogfv(GL_FOG_COLOR,CurrFogColor);
 		glFogf(GL_FOG_DENSITY,1.0F/MAX(1,WORLD_ONE*CurrFog->Depth));
+    MatrixStack::Instance()->fogColor3f(CurrFogColor[0], CurrFogColor[1], CurrFogColor[2]);
+    MatrixStack::Instance()->fogDensity(CurrFogColor[3]);
 	}
 	else
 	{
 		glFogf(GL_FOG_DENSITY,0.0F);
+    MatrixStack::Instance()->fogDensity(0.0F);
 		glDisable(GL_FOG);
 	}
 	
@@ -961,8 +975,10 @@ bool OGL_EndMain()
 	SetProjectionType(Projection_Screen);
 	
 	// Reset modelview matrix
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+	if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+  MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+	if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
 	
 	// No texture mapping now
 	glDisable(GL_TEXTURE_2D);
@@ -980,7 +996,9 @@ bool OGL_EndMain()
 bool OGL_SwapBuffers()
 {
 	if (!OGL_IsActive()) return false;
+  //glPushGroupMarkerEXT(0, "Main screen swap");
 	MainScreenSwap();
+  //glPopGroupMarkerEXT();
 	return true;
 }
 
@@ -1040,12 +1058,15 @@ bool OGL_SetView(view_data &View)
 	if (!OGL_IsActive()) return false;
 	
 	// Use the modelview matrix as storage; set the matrix back when done
-	glMatrixMode(GL_MODELVIEW);
+	if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+  MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
 
 	// World coordinates to Marathon eye coordinates
-	glLoadIdentity();
-	glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
-
+	if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
+	//glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
+  MatrixStack::Instance()->getFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
+ 
 	// Do rotation first:
 	const double TrigMagReciprocal = 1/double(TRIG_MAGNITUDE);
 	double Cosine = TrigMagReciprocal*double(cosine_table[View.yaw]);
@@ -1061,27 +1082,37 @@ bool OGL_SetView(view_data &View)
 	CenteredWorld_2_MaraEye[1] = - Sine;
 	CenteredWorld_2_MaraEye[4] = Sine;
 	CenteredWorld_2_MaraEye[4+1] = Cosine;
-	glLoadMatrixf(CenteredWorld_2_MaraEye);
-
+	if (!useShaderRenderer()) glLoadMatrixf(CenteredWorld_2_MaraEye);
+  MatrixStack::Instance()->loadMatrixf(CenteredWorld_2_MaraEye);
+  
 	// Set the view direction
 	ViewDir[0] = (float)Cosine;
 	ViewDir[1] = (float)Sine;
 	ModelRenderObject.ViewDirection[2] = 0;	// Always stays the same
-
+  
 	// Do a translation and then save;
-	glTranslatef(-View.origin.x,-View.origin.y,-View.origin.z);
-	glGetFloatv(GL_MODELVIEW_MATRIX,World_2_MaraEye);
-	
-	// Find the appropriate modelview matrix for 3D-model inhabitant rendering
-	glLoadMatrixf(MaraEye_2_OGLEye);
-	glMultMatrixf(World_2_MaraEye);
-	glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
-	
+	if (!useShaderRenderer()) glTranslatef(-View.origin.x,-View.origin.y,-View.origin.z);
+  MatrixStack::Instance()->translatef(-View.origin.x,-View.origin.y,-View.origin.z);
+	//glGetFloatv(GL_MODELVIEW_MATRIX,World_2_MaraEye);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW,World_2_MaraEye);
+
+  // Find the appropriate modelview matrix for 3D-model inhabitant rendering
+	if (!useShaderRenderer()) glLoadMatrixf(MaraEye_2_OGLEye);
+  MatrixStack::Instance()->loadMatrixf(MaraEye_2_OGLEye);
+	if (!useShaderRenderer()) glMultMatrixf(World_2_MaraEye);
+  MatrixStack::Instance()->multMatrixf(World_2_MaraEye);
+	//glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX,World_2_OGLEye);
+
+  
 	// Find the appropriate modelview matrix for 3D-model skybox rendering
-	glLoadMatrixf(MaraEye_2_OGLEye);
-	glMultMatrixf(CenteredWorld_2_MaraEye);
-	glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_OGLEye);
-	
+	if (!useShaderRenderer()) glLoadMatrixf(MaraEye_2_OGLEye);
+  MatrixStack::Instance()->loadMatrixf(MaraEye_2_OGLEye);
+	if (!useShaderRenderer()) glMultMatrixf(CenteredWorld_2_MaraEye);
+  MatrixStack::Instance()->multMatrixf(CenteredWorld_2_MaraEye);
+	//glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_OGLEye);
+	MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX,CenteredWorld_2_OGLEye);
+  
 	// Find world-to-screen and screen-to-world conversion factors;
 	// be sure to have some fallbacks in case of zero
 	XScale = View.world_to_screen_x;
@@ -1096,7 +1127,9 @@ bool OGL_SetView(view_data &View)
 	// Find the OGL-eye-to-screen matrix
 	// Remember that z is small negative to large negative (OpenGL style)
 	glLoadIdentity();
-	glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Screen);
+  MatrixStack::Instance()->loadIdentity();
+	//glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Screen);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX,OGLEye_2_Screen);
 	OGLEye_2_Screen[0] = XScale;
 	OGLEye_2_Screen[4+1] = YScale;
 	OGLEye_2_Screen[4*2] = - XOffset;
@@ -1107,12 +1140,16 @@ bool OGL_SetView(view_data &View)
 	OGLEye_2_Screen[4*3+3] = 0;
 		
 	// Find the OGL-eye-to-clip matrix:
-	glLoadMatrixf(Screen_2_Clip);
-	glMultMatrixf(OGLEye_2_Screen);
-	glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Clip);
-	
+	if (!useShaderRenderer()) glLoadMatrixf(Screen_2_Clip);
+  MatrixStack::Instance()->loadMatrixf(Screen_2_Clip);
+	if (!useShaderRenderer()) glMultMatrixf(OGLEye_2_Screen);
+  MatrixStack::Instance()->multMatrixf(OGLEye_2_Screen);
+	//glGetFloatv(GL_MODELVIEW_MATRIX,OGLEye_2_Clip);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX,OGLEye_2_Clip);
+
 	// Restore the default modelview matrix
-	glLoadIdentity();
+	if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
 	
 	// Calculate the horizontal-surface projected-texture vectors
 	GLfloat OrigVec[4];
@@ -1160,9 +1197,11 @@ bool OGL_SetForeground()
 	glClear(GL_DEPTH_BUFFER_BIT);
 	
 	// New renderer needs modelview reset
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	
+	if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+  MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+	if (!useShaderRenderer()) glLoadIdentity();
+	MatrixStack::Instance()->loadIdentity();
+  
 	// Disable sRGB mode
 	if (Wanting_sRGB)
 	{
@@ -1189,15 +1228,18 @@ bool OGL_SetForegroundView(bool HorizReflect)
 	};
 
 	// Find the appropriate modelview matrix for 3D-model inhabitant rendering
-	glLoadMatrixf(Foreground_2_OGLEye);
-	glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
-	
+	if (!useShaderRenderer()) glLoadMatrixf(Foreground_2_OGLEye);
+  MatrixStack::Instance()->loadMatrixf(Foreground_2_OGLEye);
+	//glGetFloatv(GL_MODELVIEW_MATRIX,World_2_OGLEye);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX, World_2_OGLEye);
+  
 	// Perform the reflection if desired; refer to above definition of Foreground_2_OGLEye
 	if (HorizReflect) World_2_OGLEye[0] = -1;
 	
 	// Restore the default modelview matrix
-	glLoadIdentity();
-	
+	if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
+  
 	return true;
 }
 
@@ -1849,7 +1891,16 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 		}
 	}
 	}
-	
+  
+  //DCW debugging
+  /*GLfloat m[16];
+  glGetFloatv (GL_MODELVIEW_MATRIX, m);
+  printf ( "Modelview for realwall: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+    glGetFloatv (GL_PROJECTION_MATRIX, m);
+  printf ( "Projectionmatrix for realwall: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);*/
+  
 	// Revert to default blend
 	SetBlend(OGL_BlendType_Crossfade);
 	if (Z_Buffering) glEnable(GL_DEPTH_TEST);
@@ -2230,10 +2281,17 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   glColor4f(Color[0],Color[1],Color[2],Color[3]);
 	
 	// Location of data:
-	glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
-	glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
-	glEnable(GL_TEXTURE_2D);
-  
+  if( useShaderRenderer() ){
+    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, ExtendedVertexList[0].TexCoord);
+    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, ExtendedVertexList[0].Vertex);
+    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  } else {
+    glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
+    glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
+    glEnable(GL_TEXTURE_2D);
+  }
     //DCW Smart trigger
   if( IsInhabitant &&
      ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0) )/* &&
@@ -2393,11 +2451,15 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
 	
 	// Get from the model coordinates to the screen coordinates.
 	SetProjectionType(Projection_OpenGL_Eye);
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadMatrixf(World_2_OGLEye);
+	if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+  MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+	if (!useShaderRenderer()) glPushMatrix();
+  MatrixStack::Instance()->pushMatrix();
+  if (!useShaderRenderer()) glLoadMatrixf(World_2_OGLEye);
+  MatrixStack::Instance()->loadMatrixf(World_2_OGLEye);
 	world_point3d& Position = RenderRectangle.Position;
-	glTranslatef(Position.x,Position.y,Position.z);
+	if (!useShaderRenderer()) glTranslatef(Position.x,Position.y,Position.z);
+  MatrixStack::Instance()->translatef(Position.x,Position.y,Position.z);
 	
 	// At model's position; now apply the liquid clipping
 	if (RenderRectangle.BelowLiquid)
@@ -2428,10 +2490,12 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
 	}
 	
 	// Its orientation and size
-	glRotatef((360.0/FULL_CIRCLE)*RenderRectangle.Azimuth,0,0,1);
+	if (!useShaderRenderer()) glRotatef((360.0/FULL_CIRCLE)*RenderRectangle.Azimuth,0,0,1);
+  MatrixStack::Instance()->rotatef((360.0/FULL_CIRCLE)*RenderRectangle.Azimuth,0,0,1);
 	GLfloat HorizScale = Scale*RenderRectangle.HorizScale;
-	glScalef(HorizScale,HorizScale,Scale);
-	
+	if (!useShaderRenderer()) glScalef(HorizScale,HorizScale,Scale);
+  MatrixStack::Instance()->scalef(HorizScale,HorizScale,Scale);
+  
 	// Be sure to include texture-mode effects as appropriate.
 	short CollColor = GET_DESCRIPTOR_COLLECTION(RenderRectangle.ShapeDesc);
 	short Collection = GET_COLLECTION(CollColor);
@@ -2439,7 +2503,8 @@ bool RenderModelSetup(rectangle_definition& RenderRectangle)
 	bool ModelRendered = RenderModel(RenderRectangle,Collection,CLUT);
   //printf ( "model collection: %d CollCOlor: %d\n",Collection, CollColor );
 
-  glPopMatrix();
+ if (!useShaderRenderer())  glPopMatrix();
+  MatrixStack::Instance()->popMatrix();
 	
 	// No need for the clip planes anymore
 	if (ClipLeft) glDisable(GL_CLIP_PLANE0);
@@ -3182,16 +3247,26 @@ void OGL_RenderRect(const SDL_Rect& rect)
 void OGL_RenderTexturedRect(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
   //DCW debugging
-  /*GLfloat m[16];
-  glGetFloatv (GL_MODELVIEW_MATRIX, m);
-  printf ( "Modelview OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
-          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);*/
+  /*GLenum currentMode;
+  glGetIntegerv(GL_MATRIX_MODE, (GLint*)&currentMode);
+  GLfloat m[16];
+  glGetFloatv (GL_PROJECTION_MATRIX, m);
+  printf ( "GL_PROJECTION_MATRIX OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+  
+  MatrixStack::Instance()->getFloatv (MS_PROJECTION_MATRIX, m);
+  printf ( "Fake GL_PROJECTION_MATRIX OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]); */
 
-	GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
-	GLfloat texcoords[8] = { tleft, ttop, tright, ttop, tright, tbottom, tleft, tbottom };
+  if ( useShaderRenderer() ) {
+    DrawQuad(x, y, w, h, tleft, ttop, tright, tbottom);
+  } else {
+    GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
+    GLfloat texcoords[8] = { tleft, ttop, tright, ttop, tright, tbottom, tleft, tbottom };
     glVertexPointer(2, GL_FLOAT, 0, vertices);
-	glTexCoordPointer(2, GL_FLOAT, 0, texcoords);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glTexCoordPointer(2, GL_FLOAT, 0, texcoords);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  }
 }
 
 void OGL_RenderTexturedRect(const SDL_Rect& rect, float tleft, float ttop, float tright, float tbottom)

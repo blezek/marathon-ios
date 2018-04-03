@@ -28,33 +28,69 @@
 #include "OGL_Setup.h"
 #include "OGL_Render.h"
 
+//DCW
+#include "AlephOneHelper.h"
+#include "MatrixStack.hpp"
+#include <OpenGLES/ES2/gl.h>
+#include <OpenGLES/ES2/glext.h>
+
+#include "OGL_Shader.h" //DCW shit test
+
 std::vector<FBO *> FBO::active_chain;
 
 FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
-  
-  
+ //DCW try to clear the shitstorm of errors from all the preceding  glEnableClientState() calls in ES 2.0 mode
+  glGetError();
+  glGetError();
+  glGetError();
+  glPushGroupMarkerEXT(0, "FBO Setup");
   
 	glGenFramebuffers(1, &_fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
-	
+
+  //Generate depth buffer
 	glGenRenderbuffers(1, &_depthBuffer);
 	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, _w, _h);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h); //DCW was GL_DEPTH_COMPONENT
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
-	
-	glGenTextures(1, &texID);
-	glBindTexture(GL_TEXTURE_RECTANGLE, texID);
-	glTexImage2D(GL_TEXTURE_RECTANGLE, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_RECTANGLE, texID, 0);
-	assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
+  
+  glGenTextures(1, &texID);
+  glBindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
+  // glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE
+    //DCW srgb support is completely untested by me
+  glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
+
+  assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glPopGroupMarkerEXT();
 }
 
 void FBO::activate(bool clear) {
 	if (!active_chain.size() || active_chain.back() != this) {
 		active_chain.push_back(this);
-		glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+    
+    glGetError();
+    glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW test moving this here, otherwise this function appears to not work.
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+    //glActiveTexture(GL_TEXTURE0);//DCW test
+    glBindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   printGLError(__PRETTY_FUNCTION__);//Apple advice
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    //glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW This seems to be the wrong place for this.
+    
 		// DJB OpenGL glPushAttrib(GL_VIEWPORT_BIT);
+    
+    //DCW Track active frame and render buffers for debugging
+    /*GLint lastFramebuffer, lastRenderbuffer, texture;
+    glGetIntegerv(GL_FRAMEBUFFER_BINDING, &lastFramebuffer);
+    glGetIntegerv(GL_RENDERBUFFER_BINDING, &lastRenderbuffer);
+    glGetIntegerv(GL_TEXTURE_BINDING_2D, &texture);*/
+    
 		glViewport(0, 0, _w, _h);
 		if (_srgb)
 			glEnable(GL_FRAMEBUFFER_SRGB);
@@ -62,6 +98,11 @@ void FBO::activate(bool clear) {
 			glDisable(GL_FRAMEBUFFER_SRGB);
 		if (clear)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    //DCW shit test
+    glClearColor(0,0,1, .5);
+    if (texID !=102 ) glClearColor(0,0,1, .5);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 }
 
@@ -85,43 +126,69 @@ void FBO::deactivate() {
 }
 
 void FBO::draw() {
-	glBindTexture(GL_TEXTURE_RECTANGLE, texID);
-	glEnable(GL_TEXTURE_RECTANGLE);
+  glGetError();
+  glPushGroupMarkerEXT(0, "FBO Binding texture");
+	glBindTexture(GL_TEXTURE_2D, texID); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
+  glPopGroupMarkerEXT();
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
+  glPushGroupMarkerEXT(0, "Shader render draw texture to screen test");
+	glEnable(GL_TEXTURE_2D); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
+  //glActiveTexture(GL_TEXTURE0); printGLError(__PRETTY_FUNCTION__); //DCW shit test adding this in
 	OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
-	glDisable(GL_TEXTURE_RECTANGLE);
+  printGLError(__PRETTY_FUNCTION__);
+	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
+  glPopGroupMarkerEXT();
 }
 
 void FBO::prepare_drawing_mode(bool blend) {
-	glMatrixMode(GL_PROJECTION);
+  /*glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glLoadIdentity();
+	glLoadIdentity();*/
 	
+  MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+  MatrixStack::Instance()->pushMatrix();
+  MatrixStack::Instance()->loadIdentity();
+  MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+  MatrixStack::Instance()->pushMatrix();
+  MatrixStack::Instance()->loadIdentity();
+  
 	glDisable(GL_DEPTH_TEST);
 	if (!blend)
 		glDisable(GL_BLEND);
 	
   //DCW
-  glOrthof(0, _w, _h, 0, -1, 1);
-	//glOrtho(0, _w, _h, 0, -1, 1);
+  /*glOrthof(0, _w, _h, 0, -1, 1);
+	//glOrtho(0, _w, _h, 0, -1, 1);*/
 	glColor4f(1.0, 1.0, 1.0, 1.0);
+  MatrixStack::Instance()->orthof(0, _w, _h, 0, -1, 1);
+  //DCW we will need this sometime! MatrixStack::Instance()->color4f(1.0, 1.0, 1.0, 1.0);
 }
 
 void FBO::reset_drawing_mode() {
 	glEnable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
-	glMatrixMode(GL_MODELVIEW);
+	/*glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
+	glPopMatrix();*/
+  MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+  MatrixStack::Instance()->popMatrix();
+  MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+  MatrixStack::Instance()->popMatrix();
 }
 
 void FBO::draw_full(bool blend) {
+  glPushGroupMarkerEXT(0, "FBO Draw");
 	prepare_drawing_mode(blend);
 	draw();
 	reset_drawing_mode();
+  glPopGroupMarkerEXT();
 }
 
 FBO::~FBO() {
@@ -133,6 +200,7 @@ FBO::~FBO() {
 void FBOSwapper::activate() {
 	if (active)
 		return;
+
 	if (draw_to_first)
 		first.activate(clear_on_activate);
 	else
@@ -190,8 +258,17 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	
 	// set up FBO passed in as texture #1
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_RECTANGLE, other.texID);
-	glEnable(GL_TEXTURE_RECTANGLE);
+	glBindTexture(GL_TEXTURE_2D, other.texID); //DCW was GL_TEXTURE_RECTANGLE
+  
+  //DCW Specific wrap definitions are required for non-power-of-2 textures to render.
+  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  
+  //DCW test
+  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  
+	glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);
 	
 	glClientActiveTexture(GL_TEXTURE1);
@@ -204,7 +281,7 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	
 	// tear down multitexture stuff
 	glActiveTexture(GL_TEXTURE1);
-	glDisable(GL_TEXTURE_RECTANGLE);
+	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);
 	
 	glClientActiveTexture(GL_TEXTURE1);

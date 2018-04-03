@@ -50,6 +50,8 @@ Jan 12, 2001 (Loren Petrich):
 #include "screen_drawing.h"
 #include "screen.h"
 
+#include "OGL_Shader.h"
+
 #ifdef HAVE_OPENGL
 set<FontSpecifier*> *FontSpecifier::m_font_registry = NULL;
 #endif
@@ -391,9 +393,13 @@ void FontSpecifier::OGL_Render(const char *Text)
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.
   //printGLError(__PRETTY_FUNCTION__);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
-
+  if( useShaderRenderer() ){
+    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
+    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+  } else {
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
+  }
   //printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   

@@ -23,6 +23,9 @@
 #include "ChaseCam.h"
 #include "preferences.h"
 
+#include "MatrixStack.hpp"
+#include "AlephOneHelper.h"
+
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
 
 inline bool FogActive();
@@ -198,31 +201,52 @@ void RenderRasterize_Shader::clip_to_window(clipping_window_data *win)
     GLfloat clip[] = { 0., 0., 0., 0. };
         
     // recenter to player's orientation temporarily
+  if (useShaderRenderer()){
+    MatrixStack::Instance()->pushMatrix();
+    MatrixStack::Instance()->translatef(view->origin.x, view->origin.y, 0.);
+    MatrixStack::Instance()->rotatef(view->yaw * (360/float(FULL_CIRCLE)) + 90., 0., 0., 1.);
+    MatrixStack::Instance()->rotatef(-0.1, 0., 0., 1.); // leave some excess to avoid artifacts at edges
+  } else {
     glPushMatrix();
     glTranslatef(view->origin.x, view->origin.y, 0.);
     glRotatef(view->yaw * (360/float(FULL_CIRCLE)) + 90., 0., 0., 1.);
     
     glRotatef(-0.1, 0., 0., 1.); // leave some excess to avoid artifacts at edges
+  }
 	if (win->left.i != leftmost_clip.i || win->left.j != leftmost_clip.j) {
 		clip[0] = win->left.i;
 		clip[1] = win->left.j;
 		glEnable(GL_CLIP_PLANE0);
-		glClipPlanef(GL_CLIP_PLANE0, clip);
+    if ( !useShaderRenderer() ){
+      glClipPlanef(GL_CLIP_PLANE0, clip);
+    } else {
+      //DCW uhhhhh... I do not have a replacement for this. :(
+    }
 	} else {
 		glDisable(GL_CLIP_PLANE0);
 	}
-	
+  if (useShaderRenderer()){
+    MatrixStack::Instance()->rotatef(0.2, 0., 0., 1.); // breathing room for right-hand clip
+  } else {
     glRotatef(0.2, 0., 0., 1.); // breathing room for right-hand clip
+  }
 	if (win->right.i != rightmost_clip.i || win->right.j != rightmost_clip.j) {
 		clip[0] = win->right.i;
 		clip[1] = win->right.j;
 		glEnable(GL_CLIP_PLANE1);
-		glClipPlanef(GL_CLIP_PLANE1, clip);
+    if ( !useShaderRenderer() ){
+      glClipPlanef(GL_CLIP_PLANE1, clip);
+    }  else {
+      //DCW uhhhhh... I do not have a replacement for this. :(
+    }
 	} else {
 		glDisable(GL_CLIP_PLANE1);
 	}
-    
+  if (useShaderRenderer()){
+    MatrixStack::Instance()->popMatrix();
+  } else {
     glPopMatrix();
+  }
 }
 
 void RenderRasterize_Shader::store_endpoint(
@@ -254,9 +278,10 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 
 	float flare = weaponFlare;
 
-	glEnable(GL_TEXTURE_2D);
-	glColor4f(color[0], color[1], color[2], 1);
-
+	//glEnable(GL_TEXTURE_2D); //DCW deprecated?
+	//glColor4f(color[0], color[1], color[2], 1);
+  MatrixStack::Instance()->color4f(color[0], color[1], color[2], 1);
+  
 	switch(TMgr.TransferMode) {
 		case _static_transfer:
 			TMgr.IsShadeless = 1;
@@ -271,20 +296,24 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 			s->setFloat(Shader::U_Visibility, 1.0 - rect.transfer_data/32.0f);
 			break;
 		case _solid_transfer:
-			glColor4f(0,1,0,1);
+			//glColor4f(0,1,0,1);
+      MatrixStack::Instance()->color4f(0,1,0,1);
 			break;
 		case _textured_transfer:
 			if(TMgr.IsShadeless) {
 				if (renderStep == kDiffuse) {
-					glColor4f(1,1,1,1);
+					//glColor4f(1,1,1,1);
+          MatrixStack::Instance()->color4f(1,1,1,1);
 				} else {
-					glColor4f(0,0,0,1);
+					//glColor4f(0,0,0,1);
+          MatrixStack::Instance()->color4f(0,0,0,1);
 				}
 				flare = -1;
 			}
 			break;
 		default:
-			glColor4f(0,0,1,1);
+			//glColor4f(0,0,1,1);
+      MatrixStack::Instance()->color4f(0,0,1,1);
 	}
 
 	if(s == NULL) {
@@ -299,6 +328,10 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 		return TMgr;
 	}
 
+  //DCW set texture filtering to make the 2d sampler show anything but black.
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  
 	TMgr.SetupTextureMatrix();
 
 	if (renderStep == kGlow) {
@@ -336,9 +369,12 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 
 	float flare = weaponFlare;
 
-	glEnable(GL_TEXTURE_2D);
-	glColor4f(intensity, intensity, intensity, 1.0);
-
+  if( useShaderRenderer() ) {
+    MatrixStack::Instance()->color4f(intensity, intensity, intensity, 1.0);
+  } else {
+      glEnable(GL_TEXTURE_2D);
+      glColor4f(intensity, intensity, intensity, 1.0);
+  }
 	switch(transferMode) {
 		case _xfer_static:
 			TMgr.TextureType = OGL_Txtr_Wall;
@@ -364,9 +400,17 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 			TMgr.TextureType = OGL_Txtr_Wall;
 			if(TMgr.IsShadeless) {
 				if (renderStep == kDiffuse) {
-					glColor4f(1,1,1,1);
+          if( useShaderRenderer() ) {
+            MatrixStack::Instance()->color4f(1,1,1,1);
+          } else {
+            glColor4f(1,1,1,1);
+          }
 				} else {
-					glColor4f(0,0,0,1);
+          if( useShaderRenderer() ) {
+            MatrixStack::Instance()->color4f(0,0,0,1);
+          } else {
+            glColor4f(0,0,0,1);
+          }
 				}
 				flare = -1;
 			}
@@ -582,12 +626,18 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 			sign = -1;
 		}
 		glNormal3f(N[0], N[1], N[2]);
-		//glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign); //DCW I don't think we have this ARB extension in iOS
-    glMultiTexCoord4f(GL_TEXTURE1, T[0], T[1], T[2], sign);
+    MatrixStack::Instance()->normal3f(N[0], N[1], N[2]);
 
+    GLfloat tex4[4] = {T[0], T[1], T[2], sign};
+    
+    //glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign); //DCW I don't think we have this ARB extension in iOS
+    if( !useShaderRenderer() ){
+      glMultiTexCoord4f(GL_TEXTURE1, T[0], T[1], T[2], sign);
+    }
+    
 		GLfloat vertex_array[MAXIMUM_VERTICES_PER_POLYGON * 3];
-		GLfloat texcoord_array[MAXIMUM_VERTICES_PER_POLYGON * 2];
-
+    GLfloat texcoord_array[MAXIMUM_VERTICES_PER_POLYGON * 2];
+    
 		GLfloat* vp = vertex_array;
 		GLfloat* tp = texcoord_array;
 		if (ceil)
@@ -612,19 +662,55 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 				*tp++ = (vertex.y + surface->origin.y + y) / float(WORLD_ONE);
 			}
 		}
-		glVertexPointer(3, GL_FLOAT, 0, vertex_array);
-		glTexCoordPointer(2, GL_FLOAT, 0, texcoord_array);
+    if( useShaderRenderer() ){
+      glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+      glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+      
+      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      
+      glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
+      glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+    } else {
+      glVertexPointer(3, GL_FLOAT, 0, vertex_array);
+      glTexCoordPointer(2, GL_FLOAT, 0, texcoord_array);
+    }
+    
+    Shader* lastShader = lastEnabledShader();
+    if (lastShader) {
+      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+      MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+      MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+      MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+      MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+      MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
 
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+      lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+      lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+      lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+      lastShader->setVec4(Shader::U_TexCoords4, tex4);
+    }
+    
+    glPushGroupMarkerEXT(0, "render_node_floor_or_ceiling");
 		glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
+    glPopGroupMarkerEXT();
 
 		if (setupGlow(view, TMgr, wobble, intensity, weaponFlare, selfLuminosity, offset, renderStep)) {
+      glPushGroupMarkerEXT(0, "render_node_floor_or_ceiling glow setup");
 			glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
+      glPopGroupMarkerEXT();
 		}
 
 		Shader::disable();
-		glMatrixMode(GL_TEXTURE);
-		glLoadIdentity();
-		glMatrixMode(GL_MODELVIEW);
+		if (!useShaderRenderer()) glMatrixMode(GL_TEXTURE);
+    MatrixStack::Instance()->matrixMode(MS_TEXTURE);
+		if (!useShaderRenderer()) glLoadIdentity();
+    MatrixStack::Instance()->loadIdentity();
+		if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+    MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
 	}
 }
 
@@ -634,6 +720,9 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 	if (!void_present) {
 		offset = -2.0;
 	}
+  
+  //dcw shit test
+ //   Shader::drawDebugRect();
 
 	const shape_descriptor& texture = AnimTxtr_Translate(surface->texture_definition->texture);
 	float intensity = (get_light_intensity(surface->lightsource_index) + surface->ambient_delta) / float(FIXED_ONE - 1);
@@ -649,12 +738,16 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 	if (TMgr.IsBlended()) {
 		glEnable(GL_BLEND);
 		setupBlendFunc(TMgr.NormalBlend());
-		glEnable(GL_ALPHA_TEST);
-		glAlphaFunc(GL_GREATER, 0.001);
+    if ( !useShaderRenderer()){
+      glEnable(GL_ALPHA_TEST);
+      glAlphaFunc(GL_GREATER, 0.001);
+    }
 	} else {
 		glDisable(GL_BLEND);
-		glEnable(GL_ALPHA_TEST);
-		glAlphaFunc(GL_GREATER, 0.5);
+    if ( ! useShaderRenderer()){
+      glEnable(GL_ALPHA_TEST);
+      glAlphaFunc(GL_GREATER, 0.5);
+    }
 	}
 
 //	if (void_present) {
@@ -682,8 +775,8 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 			vertex_count= 4;
 			vertices[0].z= vertices[1].z= h + view->origin.z;
 			vertices[2].z= vertices[3].z= surface->h0 + view->origin.z;
-			vertices[0].x= vertices[3].x= vertex[0].x, vertices[0].y= vertices[3].y= vertex[0].y;
-			vertices[1].x= vertices[2].x= vertex[1].x, vertices[1].y= vertices[2].y= vertex[1].y;
+      vertices[0].x= vertices[3].x= vertex[0].x; vertices[0].y= vertices[3].y= vertex[0].y; //DCW changed , to ;
+      vertices[1].x= vertices[2].x= vertex[1].x; vertices[1].y= vertices[2].y= vertex[1].y; //DCW changed , to ;
 			vertices[0].flags = vertices[3].flags = 0;
 			vertices[1].flags = vertices[2].flags = 0;
 
@@ -699,10 +792,18 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 			vec3 N(-dy, dx, 0);
 			vec3 T(dx, dy, 0);
 			float sign = 1;
-			glNormal3f(N[0], N[1], N[2]);
-			//glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign); //DCW I don't think we have this ARB extension in iOS
-      glMultiTexCoord4f(GL_TEXTURE1, T[0], T[1], T[2], sign);
+      if (useShaderRenderer() ){
+        MatrixStack::Instance()->normal3f(N[0], N[1], N[2]);
+      } else {
+        glNormal3f(N[0], N[1], N[2]);
+      }
       
+      GLfloat tex4[4] = {T[0], T[1], T[2], sign};
+
+			//glMultiTexCoord4fARB(GL_TEXTURE1_ARB, T[0], T[1], T[2], sign); //DCW I don't think we have this ARB extension in iOS
+      if( !useShaderRenderer() ){
+        glMultiTexCoord4f(GL_TEXTURE1, tex4[0], tex4[1], tex4[2], tex4[3]);
+      }
 			world_distance x = 0.0, y = 0.0;
 			instantiate_transfer_mode(view, surface->transfer_mode, x, y);
 
@@ -711,7 +812,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 
       // DJB OpenGL covert code from quads
       GLfloat t[2][4], v[3][4];
-      for(int i = 0; i < vertex_count; ++i) {
+      /*for(int i = 0; i < vertex_count; ++i) {
         float p2 = 0;
         if(i == 1 || i == 2) {
           p2 = surface->length;
@@ -721,12 +822,66 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
         v[0][i] = vertices[i].x;
         v[1][i] = vertices[i].y;
         v[2][i] = vertices[i].z;
+      }*/
+      //DCW back port the original quad code, because it should work with fans:
+      GLfloat vertex_array[12];
+      GLfloat texcoord_array[8];
+      GLfloat* vp = vertex_array;
+      GLfloat* tp = texcoord_array;
+      for(int i = 0; i < vertex_count; ++i) {
+        float p2 = 0;
+        if(i == 1 || i == 2) { p2 = surface->length; }
+        *vp++ = vertices[i].x;
+        *vp++ = vertices[i].y;
+        *vp++ = vertices[i].z;
+        *tp++ = (tOffset - vertices[i].z) / div;
+        *tp++ = (x0+p2) / div;
       }
-      glVertexPointer(3, GL_FLOAT, 0, v);
-      glEnableClientState(GL_VERTEX_ARRAY);
-      glTexCoordPointer(2, GL_FLOAT, 0, t);
-      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+      
+      if( useShaderRenderer() ){
+        glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+        glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+        
+        glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+        glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+        
+        glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
+        glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+      } else {
+        glVertexPointer(3, GL_FLOAT, 0, vertex_array);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glTexCoordPointer(2, GL_FLOAT, 0, texcoord_array);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+      }
+      
+      Shader* lastShader = lastEnabledShader();
+      if (lastShader) {
+        GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+        MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+        MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+        MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+        MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+        MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+        
+        lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+        lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+        lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+        lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+        lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+        lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+        lastShader->setVec4(Shader::U_TexCoords4, tex4);
+      }
+      
+      //DCW shit test
+      /*glDisable(GL_CULL_FACE);
+      glDisable(GL_BLEND);
+      glDisable(GL_ALPHA_TEST);
+      glDisable(GL_DEPTH_TEST);*/
+
+      
+      glPushGroupMarkerEXT(0, "render_node_side");
       glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      glPopGroupMarkerEXT();
 			/*(GLfloat vertex_array[12];
 			GLfloat texcoord_array[8];
 
@@ -751,7 +906,8 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
       
 			if (setupGlow(view, TMgr, wobble, intensity, weaponFlare, selfLuminosity, offset, renderStep)) {
         // DJB OpenGL convert from quads
-        for(int i = 0; i < vertex_count; ++i) {
+        //DCW I think the original behavior is fine.
+        /*for(int i = 0; i < vertex_count; ++i) {
           float p2 = 0;
           if(i == 1 || i == 2) {
             p2 = surface->length;
@@ -762,19 +918,32 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
           v[1][i] = vertices[i].y;
           v[2][i] = vertices[i].z;
         }
-        glVertexPointer(2, GL_FLOAT, 0, v);
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glTexCoordPointer(2, GL_FLOAT, 0, t);
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        if( useShaderRenderer() ){
+          glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, t);
+          glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+          
+          glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, v);
+          glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+        } else {
+          glVertexPointer(2, GL_FLOAT, 0, v);
+          glEnableClientState(GL_VERTEX_ARRAY);
+          glTexCoordPointer(2, GL_FLOAT, 0, t);
+          glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        }*/
+        glPushGroupMarkerEXT(0, "render_node_side glow");
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-        
+        glPopGroupMarkerEXT();
         //glDrawArrays(GL_QUADS, 0, vertex_count);
 			}
 
 			Shader::disable();
-			glMatrixMode(GL_TEXTURE);
-			glLoadIdentity();
-			glMatrixMode(GL_MODELVIEW);
+			if (!useShaderRenderer()) glMatrixMode(GL_TEXTURE);
+      MatrixStack::Instance()->matrixMode(MS_TEXTURE);
+			if (!useShaderRenderer()) glLoadIdentity();
+      MatrixStack::Instance()->loadIdentity();
+			if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+
 		}
 	}
 }
@@ -812,7 +981,8 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 	GLfloat color[3];
 	GLfloat shade = PIN(static_cast<GLfloat>(RenderRectangle.ambient_shade)/static_cast<GLfloat>(FIXED_ONE),0,1);
 	color[0] = color[1] = color[2] = shade;
-	glColor4f(color[0], color[1], color[2], 1.0);
+	//glColor4f(color[0], color[1], color[2], 1.0);
+  MatrixStack::Instance()->color4f(color[0], color[1], color[2], 1.0);
 
 	Shader *s = NULL;
 	bool canGlow = false;
@@ -829,14 +999,17 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 			s->setFloat(Shader::U_Visibility, 1.0 - RenderRectangle.transfer_data/32.0f);
 			break;
 		case _solid_transfer:
-			glColor4f(0,1,0,1);
+			//glColor4f(0,1,0,1);
+      MatrixStack::Instance()->color4f(0,1,0,1);
 			break;
 		case _textured_transfer:
 			if((RenderRectangle.flags&_SHADELESS_BIT) != 0) {
 				if (renderStep == kDiffuse) {
-					glColor4f(1,1,1,1);
+					//glColor4f(1,1,1,1);
+          MatrixStack::Instance()->color4f(1,1,1,1);
 				} else {
-					glColor4f(0,0,0,1);
+					//glColor4f(0,0,0,1);
+          MatrixStack::Instance()->color4f(0,0,0,1);
 				}
 				flare = -1;
 			} else {
@@ -844,7 +1017,8 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 			}
 			break;
 		default:
-			glColor4f(0,0,1,1);
+			//glColor4f(0,0,1,1);
+      MatrixStack::Instance()->color4f(0,0,1,1);
 	}
 
 	if(s == NULL) {
@@ -874,12 +1048,17 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 		glTexCoordPointer(2,GL_FLOAT,0,ModelPtr->Model.TCBase());
 	}
 
-	glEnableClientState(GL_NORMAL_ARRAY);
-	glNormalPointer(GL_FLOAT,0,ModelPtr->Model.NormBase());
-
+  if( useShaderRenderer() ){
+    glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, ModelPtr->Model.NormBase());
+    glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+  } else {
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glNormalPointer(GL_FLOAT,0,ModelPtr->Model.NormBase());
+  }
+  
 	glClientActiveTexture(GL_TEXTURE1);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	glTexCoordPointer(4,GL_FLOAT,sizeof(vec4),ModelPtr->Model.TangentBase());
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glTexCoordPointer(4,GL_FLOAT,sizeof(vec4),ModelPtr->Model.TangentBase());
 
 	if(ModelPtr->Use(CLUT,OGL_SkinManager::Normal)) {
 		LoadModelSkin(SkinPtr->NormalImg, Collection, CLUT);
@@ -895,9 +1074,28 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 		}
 		glActiveTexture(GL_TEXTURE0);
 	}
+  
+  Shader* lastShader = lastEnabledShader();
+  if (lastShader) {
+    GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+    MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+    MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+    MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+    MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+    
+    lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+    lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+    lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+    lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+    lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+    lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+  }
 
+  glPushGroupMarkerEXT(0, "RenderModel");
 	glDrawElements(GL_TRIANGLES,(GLsizei)ModelPtr->Model.NumVI(),GL_UNSIGNED_SHORT,ModelPtr->Model.VIBase());
-
+  glPopGroupMarkerEXT();
+  
 	if (canGlow && SkinPtr->GlowImg.IsPresent()) {
 		glEnable(GL_BLEND);
 		setupBlendFunc(SkinPtr->GlowBlend);
@@ -914,7 +1112,27 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 		if(ModelPtr->Use(CLUT,OGL_SkinManager::Glowing)) {
 			LoadModelSkin(SkinPtr->GlowImg, Collection, CLUT);
 		}
+    
+    Shader* lastShader = lastEnabledShader();
+    if (lastShader) {
+      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+      MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+      MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+      MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+      MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+      MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+      
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+      lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+      lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+      lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+    }
+    
+    glPushGroupMarkerEXT(0, "RenderModel Glow");
 		glDrawElements(GL_TRIANGLES,(GLsizei)ModelPtr->Model.NumVI(),GL_UNSIGNED_SHORT,ModelPtr->Model.VIBase());
+    glPopGroupMarkerEXT();
 	}
 
 	glDisableClientState(GL_NORMAL_ARRAY);
@@ -972,26 +1190,34 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	const world_point3d& pos = rect.Position;
     
 	if(rect.ModelPtr) {
-		glPushMatrix();
-		glTranslatef(pos.x, pos.y, pos.z);
-		glRotatef((360.0/FULL_CIRCLE)*rect.Azimuth,0,0,1);
+    //glPushMatrix();
+    MatrixStack::Instance()->pushMatrix();
+		//glTranslatef(pos.x, pos.y, pos.z);
+    MatrixStack::Instance()->translatef(pos.x, pos.y, pos.z);
+		//glRotatef((360.0/FULL_CIRCLE)*rect.Azimuth,0,0,1);
+    MatrixStack::Instance()->rotatef((360.0/FULL_CIRCLE)*rect.Azimuth,0,0,1);
 		GLfloat HorizScale = rect.Scale*rect.HorizScale;
-		glScalef(HorizScale,HorizScale,rect.Scale);
+		//glScalef(HorizScale,HorizScale,rect.Scale);
+    MatrixStack::Instance()->scalef(HorizScale,HorizScale,rect.Scale);
 
 		short descriptor = GET_DESCRIPTOR_COLLECTION(rect.ShapeDesc);
 		short collection = GET_COLLECTION(descriptor);
 		short clut = ModifyCLUT(rect.transfer_mode,GET_COLLECTION_CLUT(descriptor));
 
 		RenderModel(rect, collection, clut, weaponFlare, selfLuminosity, renderStep);
-		glPopMatrix();
+		//glPopMatrix();
+    MatrixStack::Instance()->popMatrix();
 		return;
 	}
 
-	glPushMatrix();
-	glTranslatef(pos.x, pos.y, pos.z);
+	//glPushMatrix();
+  MatrixStack::Instance()->pushMatrix();
+	//glTranslatef(pos.x, pos.y, pos.z);
+  MatrixStack::Instance()->translatef(pos.x, pos.y, pos.z);
 
 	double yaw = view->yaw * 360.0 / float(NUMBER_OF_ANGLES);
-	glRotatef(yaw, 0.0, 0.0, 1.0);
+	//glRotatef(yaw, 0.0, 0.0, 1.0);
+  MatrixStack::Instance()->rotatef(yaw, 0.0, 0.0, 1.0);
 
 	float offset = 0;
 	if (OGL_ForceSpriteDepth()) {
@@ -1040,7 +1266,8 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 		glAlphaFunc(GL_GREATER, 0.5);
 	}
   // DJB OpenGL Convert from quad
-  GLfloat t[8] = {
+  //DCW I don't think we need this
+  /*GLfloat t[8] = {
     texCoords[0][0], texCoords[1][0],
     texCoords[0][0], texCoords[1][1],
     texCoords[0][1], texCoords[1][1],
@@ -1051,38 +1278,70 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
     0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
     0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
+  };*/
+  
+  //DCW restoring this:
+  GLfloat vertex_array[12] = {
+    0,
+    rect.WorldLeft * rect.HorizScale * rect.Scale,
+    rect.WorldTop * rect.Scale,
+    0,
+    rect.WorldRight * rect.HorizScale * rect.Scale,
+    rect.WorldTop * rect.Scale,
+    0,
+    rect.WorldRight * rect.HorizScale * rect.Scale,
+    rect.WorldBottom * rect.Scale,
+    0,
+    rect.WorldLeft * rect.HorizScale * rect.Scale,
+    rect.WorldBottom * rect.Scale
   };
-  glVertexPointer(2, GL_FLOAT, 0, v);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glTexCoordPointer(3, GL_FLOAT, 0, t);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  GLfloat texcoord_array[8] = {
+    texCoords[0][0],
+    texCoords[1][0],
+    texCoords[0][0],
+    texCoords[1][1],
+    texCoords[0][1],
+    texCoords[1][1],
+    texCoords[0][1],
+    texCoords[1][0]
+  };
+  
+  
+  if( useShaderRenderer() ){
+    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  } else {
+    glVertexPointer(2, GL_FLOAT, 0, texcoord_array);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(3, GL_FLOAT, 0, vertex_array);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  }
+  
+  Shader* lastShader = lastEnabledShader();
+  if (lastShader) {
+    GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+    MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+    MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+    MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+    MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+    
+    lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+    lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+    lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+    lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+    lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+    lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+  }
+  
+  glPushGroupMarkerEXT(0, "render_node_object_helper");
   glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+  glPopGroupMarkerEXT();
   /*
-	GLfloat vertex_array[12] = {
-		0,
-		rect.WorldLeft * rect.HorizScale * rect.Scale,
-		rect.WorldTop * rect.Scale,
-		0,
-		rect.WorldRight * rect.HorizScale * rect.Scale,
-		rect.WorldTop * rect.Scale,
-		0,
-		rect.WorldRight * rect.HorizScale * rect.Scale,
-		rect.WorldBottom * rect.Scale,
-		0,
-		rect.WorldLeft * rect.HorizScale * rect.Scale,
-		rect.WorldBottom * rect.Scale
-	};
-
-	GLfloat texcoord_array[8] = {
-		texCoords[0][0],
-		texCoords[1][0],
-		texCoords[0][0],
-		texCoords[1][1],
-		texCoords[0][1],
-		texCoords[1][1],
-		texCoords[0][1],
-		texCoords[1][0]
-	};
+	
 
 	glVertexPointer(3, GL_FLOAT, 0, vertex_array);
 	glTexCoordPointer(2, GL_FLOAT, 0, texcoord_array);
@@ -1091,6 +1350,8 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 
 	if (setupGlow(view, TMgr, 0, 1, weaponFlare, selfLuminosity, offset, renderStep)) {
     // DJB OpenGL Convert from quad
+    //DCW I think we don't want this.
+    /*
     GLfloat t[8] = {
       texCoords[0][0], texCoords[1][0],
       texCoords[0][0], texCoords[1][1],
@@ -1102,17 +1363,47 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
       0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldTop * rect.Scale,
       0, rect.WorldRight * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
       0, rect.WorldLeft * rect.HorizScale * rect.Scale, rect.WorldBottom * rect.Scale,
-    };
-    glVertexPointer(2, GL_FLOAT, 0, v);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glTexCoordPointer(3, GL_FLOAT, 0, t);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    };*/
+    
+    if( useShaderRenderer() ){
+      glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+      glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+      
+      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    } else {
+      glVertexPointer(2, GL_FLOAT, 0, vertex_array);
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glTexCoordPointer(3, GL_FLOAT, 0, texcoord_array);
+      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    }
+    
+    Shader* lastShader = lastEnabledShader();
+    if (lastShader) {
+      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+      MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+      MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
+      MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+      MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+      MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+      
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+      lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+      lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+      lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+      lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+    }
+    
+    glPushGroupMarkerEXT(0, "render_node_object_helper glow");
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glPopGroupMarkerEXT();
 		//glDrawArrays(GL_QUADS, 0, 4);
 	}
 
 	glEnable(GL_DEPTH_TEST);
-	glPopMatrix();
+	//glPopMatrix();
+  MatrixStack::Instance()->popMatrix();
 	Shader::disable();
 	TMgr.RestoreTextureMatrix();
 }
