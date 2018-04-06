@@ -232,6 +232,27 @@ void MatrixStack::frustumf (GLfloat left, GLfloat right, GLfloat bottom, GLfloat
   activeStack()[activeStackIndex()] = glm::frustum(left, right, bottom, top, zNear, zFar);
 }
 
+void MatrixStack::clipPlanef (int index, const GLfloat *equation){
+  glm::vec4 plane(equation[0], equation[1], equation[2], equation[3]);
+  glm::mat4 modelviewInverse = glm::affineInverse(modelviewStack[modelviewIndex]);
+  glm::vec4 newPlane = plane * modelviewInverse;
+  clippingPlanes[index] = newPlane;
+}
+void MatrixStack::enablePlane (int index){
+  planeActivated[index] = 1;
+}
+void MatrixStack::disablePlane (int index){
+  planeActivated[index] = 0;
+}
+void MatrixStack::getPlanev (int index, GLfloat* params){
+  if ( !planeActivated[index] ){
+    params[0] = 0; params[1] = 0; params[2] = 0; params[3] = 0;
+  } else {
+    GLfloat* values = glm::value_ptr(clippingPlanes[index]);
+    params[0] = values[0]; params[1] = values[1]; params[2] = values[2]; params[3] = values[3];
+  }
+}
+
 void MatrixStack::color4f (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
   vertexColor[0] = red;
   vertexColor[1] = green;

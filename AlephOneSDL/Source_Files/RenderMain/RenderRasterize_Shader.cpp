@@ -192,8 +192,13 @@ void RenderRasterize_Shader::render_node(sorted_node_data *node, bool SeeThruLiq
     RenderRasterizerClass::render_node(node, SeeThruLiquids, renderStep);
 
 	// turn off clipping planes
-	glDisable(GL_CLIP_PLANE0);
-	glDisable(GL_CLIP_PLANE1);
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->disablePlane(0);
+    MatrixStack::Instance()->disablePlane(1);
+  } else {
+    glDisable(GL_CLIP_PLANE0);
+    glDisable(GL_CLIP_PLANE1);
+  }
 }
 
 void RenderRasterize_Shader::clip_to_window(clipping_window_data *win)
@@ -216,14 +221,20 @@ void RenderRasterize_Shader::clip_to_window(clipping_window_data *win)
 	if (win->left.i != leftmost_clip.i || win->left.j != leftmost_clip.j) {
 		clip[0] = win->left.i;
 		clip[1] = win->left.j;
-		glEnable(GL_CLIP_PLANE0);
+		
     if ( !useShaderRenderer() ){
+      glEnable(GL_CLIP_PLANE0);
       glClipPlanef(GL_CLIP_PLANE0, clip);
     } else {
-      //DCW uhhhhh... I do not have a replacement for this. :(
+      MatrixStack::Instance()->enablePlane(0);
+      MatrixStack::Instance()->clipPlanef(0, clip);
     }
 	} else {
-		glDisable(GL_CLIP_PLANE0);
+     if ( !useShaderRenderer() ){
+       glDisable(GL_CLIP_PLANE0);
+     } else {
+       MatrixStack::Instance()->disablePlane(0);
+     }
 	}
   if (useShaderRenderer()){
     MatrixStack::Instance()->rotatef(0.2, 0., 0., 1.); // breathing room for right-hand clip
@@ -233,14 +244,19 @@ void RenderRasterize_Shader::clip_to_window(clipping_window_data *win)
 	if (win->right.i != rightmost_clip.i || win->right.j != rightmost_clip.j) {
 		clip[0] = win->right.i;
 		clip[1] = win->right.j;
-		glEnable(GL_CLIP_PLANE1);
     if ( !useShaderRenderer() ){
+      glEnable(GL_CLIP_PLANE1);
       glClipPlanef(GL_CLIP_PLANE1, clip);
     }  else {
-      //DCW uhhhhh... I do not have a replacement for this. :(
+      MatrixStack::Instance()->enablePlane(1);
+      MatrixStack::Instance()->clipPlanef(1, clip);
     }
 	} else {
-		glDisable(GL_CLIP_PLANE1);
+    if ( !useShaderRenderer() ){
+      glDisable(GL_CLIP_PLANE1);
+    } else {
+      MatrixStack::Instance()->disablePlane(1);
+    }
 	}
   if (useShaderRenderer()){
     MatrixStack::Instance()->popMatrix();
@@ -329,8 +345,11 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 	}
 
   //DCW set texture filtering to make the 2d sampler show anything but black.
+  /*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);*/
+
   
 	TMgr.SetupTextureMatrix();
 
@@ -587,7 +606,12 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 	// note: wobble and pulsate behave the same way on floors and ceilings
 	// note 2: stronger wobble looks more like classic with default shaders
 	TextureManager TMgr = setupWallTexture(texture, surface->transfer_mode, wobble * 4.0, 0, intensity, offset, renderStep);
-	if(TMgr.ShapeDesc == UNONE) { return; }
+
+  //DCW set texture filtering. Don't clamp to edge here.
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  
+  if(TMgr.ShapeDesc == UNONE) { return; }
 
 	if (TMgr.IsBlended()) {
 		glEnable(GL_BLEND);
@@ -1078,6 +1102,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
   Shader* lastShader = lastEnabledShader();
   if (lastShader) {
     GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+
     MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
     MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
     MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
@@ -1168,8 +1193,13 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object, bool
 			plane[2] = -1.0;
 			plane[3] = h;
 		}
-		glClipPlanef(GL_CLIP_PLANE5, plane);
-		glEnable(GL_CLIP_PLANE5);
+    if( useShaderRenderer() ){
+      MatrixStack::Instance()->clipPlanef(5, plane);
+      MatrixStack::Instance()->enablePlane(5);
+    } else {
+      glClipPlanef(GL_CLIP_PLANE5, plane);
+      glEnable(GL_CLIP_PLANE5);
+    }
 	} else if (other_side_of_media) {
 		// When there's no media present, we can skip the second pass.
 		return;
@@ -1180,8 +1210,11 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object, bool
         clip_to_window(win);
         _render_node_object_helper(object, renderStep);
     }
-    
+  if( useShaderRenderer() ){
+    MatrixStack::Instance()->disablePlane(5);
+  } else {
     glDisable(GL_CLIP_PLANE5);
+  }
 }
 
 void RenderRasterize_Shader::_render_node_object_helper(render_object_data *object, RenderStep renderStep) {
@@ -1235,8 +1268,18 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	}
 
 	TextureManager TMgr = setupSpriteTexture(rect, OGL_Txtr_Inhabitant, offset, renderStep);
-	if (TMgr.ShapeDesc == UNONE) { glPopMatrix(); return; }
+	if (TMgr.ShapeDesc == UNONE) {
+    //glPopMatrix();
+    MatrixStack::Instance()->popMatrix();
+    return; }
 
+  //DCW set texture filtering to make the 2d sampler show anything but black.
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  
+  
 	float texCoords[2][2];
 
 	if(rect.flip_vertical) {
@@ -1265,6 +1308,12 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 		glEnable(GL_ALPHA_TEST);
 		glAlphaFunc(GL_GREATER, 0.5);
 	}
+  
+    //DCW maybe we always want blending in the shader renderer?
+  if( useShaderRenderer() ) {
+    glEnable(GL_BLEND);
+  }
+  
   // DJB OpenGL Convert from quad
   //DCW I don't think we need this
   /*GLfloat t[8] = {
@@ -1335,6 +1384,14 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
     lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
     lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+    
+    GLfloat plane0[4], plane1[4], plane5[4];
+    MatrixStack::Instance()->getPlanev(0, plane0);
+    MatrixStack::Instance()->getPlanev(1, plane1);
+    MatrixStack::Instance()->getPlanev(5, plane5);
+    lastShader->setVec4(Shader::U_ClipPlane0, plane0);
+    lastShader->setVec4(Shader::U_ClipPlane1, plane1);
+    lastShader->setVec4(Shader::U_ClipPlane5, plane5);
   }
   
   glPushGroupMarkerEXT(0, "render_node_object_helper");
@@ -1349,6 +1406,13 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	glDrawArrays(GL_QUADS, 0, 4);*/
 
 	if (setupGlow(view, TMgr, 0, 1, weaponFlare, selfLuminosity, offset, renderStep)) {
+    //DCW set texture filtering to make the 2d sampler show anything but black.
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    
+    
     // DJB OpenGL Convert from quad
     //DCW I think we don't want this.
     /*
@@ -1393,6 +1457,14 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
       lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
       lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
       lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
+      
+      GLfloat plane0[4], plane1[4], plane5[4];
+      MatrixStack::Instance()->getPlanev(0, plane0);
+      MatrixStack::Instance()->getPlanev(1, plane1);
+      MatrixStack::Instance()->getPlanev(5, plane5);
+      lastShader->setVec4(Shader::U_ClipPlane0, plane0);
+      lastShader->setVec4(Shader::U_ClipPlane1, plane1);
+      lastShader->setVec4(Shader::U_ClipPlane5, plane5);
     }
     
     glPushGroupMarkerEXT(0, "render_node_object_helper glow");

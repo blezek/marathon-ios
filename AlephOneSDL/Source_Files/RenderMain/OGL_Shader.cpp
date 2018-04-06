@@ -102,7 +102,13 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "MS_TextureMatrix",
   "vColor",
   "vFogColor",
-  "vTexCoord4"
+  "vTexCoord4",
+  "clipPlane0",
+  "clipPlane1",
+  "clipPlane2",
+  "clipPlane3",
+  "clipPlane4",
+  "clipPlane5"
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -683,7 +689,10 @@ void initDefaultPrograms() {
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
+        "varying vec4 vPosition_eyespace;\n"
+  
         "void main(void) {\n"
+        " vPosition_eyespace = MS_ModelViewMatrix * vPosition;\n"
         "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
         "	classicDepth = gl_Position.z / 8192.0;\n"
         "#ifndef DISABLE_CLIP_VERTEX\n"
@@ -705,11 +714,20 @@ void initDefaultPrograms() {
         "uniform float glow;\n"
         "uniform float flare;\n"
         "uniform float selfLuminosity;\n"
+        "uniform vec4 clipPlane0;"
+        "uniform vec4 clipPlane1;"
+        "uniform vec4 clipPlane5;"
         "varying vec3 viewDir;\n"
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
+        "varying vec4 vPosition_eyespace;\n"
+
         "void main (void) {\n"
+        " if( dot( vPosition_eyespace, clipPlane0) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane1) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+
         "	float mlFactor = clamp(selfLuminosity + flare - classicDepth, 0.0, 1.0);\n"
         "	// more realistic: replace classicDepth with (length(viewDir)/8192.0)\n"
         "	vec3 intensity;\n"
@@ -723,9 +741,7 @@ void initDefaultPrograms() {
         "#endif\n"
         "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
-  //DCW shit test
-  //"  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
+        " gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         "}\n";
     defaultVertexPrograms["sprite_bloom"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["sprite_bloom"] = ""
@@ -736,11 +752,19 @@ void initDefaultPrograms() {
         "uniform float glow;\n"
         "uniform float bloomScale;\n"
         "uniform float bloomShift;\n"
+        "uniform vec4 clipPlane0;"
+        "uniform vec4 clipPlane1;"
+        "uniform vec4 clipPlane5;"
         "varying vec3 viewDir;\n"
         "varying vec4 vertexColor;\n"
         "varying float FDxLOG2E;\n"
         "varying float classicDepth;\n"
+        "varying vec4 vPosition_eyespace;\n"
         "void main (void) {\n"
+        " if( dot( vPosition_eyespace, clipPlane0) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane1) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+
         "	vec4 color = texture2D(texture0, textureUV.xy);\n"
         "	vec3 intensity = clamp(vertexColor.rgb, glow, 1.0);\n"
         "	//intensity = intensity * clamp(2.0 - length(viewDir)/8192.0, 0.0, 1.0);\n"
@@ -779,8 +803,6 @@ void initDefaultPrograms() {
         "#endif\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	gl_FragColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
-  //DCW shit test
-  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     defaultVertexPrograms["invincible_bloom"] = defaultVertexPrograms["invincible"];
     defaultFragmentPrograms["invincible_bloom"] = ""
@@ -800,8 +822,6 @@ void initDefaultPrograms() {
         "	vec3 intensity = vec3(0.0, 0.0, 0.0);\n"
         "	float fogFactor = exp2(FDxLOG2E * length(viewDir));\n"
         "	gl_FragColor = vec4(mix(vec3(0.0, 0.0, 0.0), intensity, fogFactor), vertexColor.a * color.a);\n"
-  //DCW shit test
-  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
         "}\n";
     
     defaultVertexPrograms["invisible"] = defaultVertexPrograms["sprite"];

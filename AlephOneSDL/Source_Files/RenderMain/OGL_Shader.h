@@ -69,6 +69,12 @@ public:
     U_MS_Color,
     U_MS_FogColor,
     U_TexCoords4,
+    U_ClipPlane0,
+    U_ClipPlane1,
+    U_ClipPlane2,
+    U_ClipPlane3,
+    U_ClipPlane4,
+    U_ClipPlane5,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 

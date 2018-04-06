@@ -2278,7 +2278,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 
 	// Already corrected
   // DJB OpenGL
-  glColor4f(Color[0],Color[1],Color[2],Color[3]);
+  if( useShaderRenderer() ){
+    MatrixStack::Instance()->color4f(Color[0],Color[1],Color[2],Color[3]);
+  } else {
+    glColor4f(Color[0],Color[1],Color[2],Color[3]);
+  }
 	
 	// Location of data:
   if( useShaderRenderer() ){
@@ -2306,6 +2310,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	// Go!
 	TMgr.SetupTextureMatrix();
 	TMgr.RenderNormal();	// Always do this, of course
+  
+  //DCW set texture filtering to make the 2d sampler show anything but black.
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  
 	if (RenderRectangle.transfer_mode == _static_transfer)
 	{
 		SetupStaticMode(RenderRectangle.transfer_data);
@@ -2327,9 +2336,9 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	{
 		// Ought not to set this for static mode
 		SetBlend(TMgr.NormalBlend());
-
+    
 		// Do textured rendering
-		glDrawArrays(GL_TRIANGLE_FAN,0,4);
+    glDrawArrays(GL_TRIANGLE_FAN,0,4);
 		
 		if (TMgr.IsGlowMapped())
 		{
@@ -2359,7 +2368,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 }
 
 bool RenderModelSetup(rectangle_definition& RenderRectangle)
-{
+{  
 	OGL_ModelData *ModelPtr = RenderRectangle.ModelPtr;
 	assert(ModelPtr);
 	

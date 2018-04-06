@@ -18,6 +18,7 @@
 #include "map.h"
 
 #define STACK_MAX 10
+#define CLIPPING_PLANES 10
 
 //Cribbed from gl.h.
 #define MS_MODELVIEW                      0x1700
@@ -60,6 +61,11 @@ public:
   void orthof (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
   void frustumf (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
   
+  void clipPlanef (int index, const GLfloat *equation);
+  void enablePlane (int index);
+  void disablePlane (int index);
+  void getPlanev (int index, GLfloat* params);
+  
   void color4f (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
   GLfloat* color();
   
@@ -74,7 +80,19 @@ public:
   bool useFFP; //Flag indicating whether classic OpenGL operations should be performed as well.
   
 private:
-  MatrixStack(){useFFP=1; activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;};  // Private so that it can not be called
+  MatrixStack(){
+    useFFP=1; activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;
+    
+    for( int i = 0; i < CLIPPING_PLANES; i++) {
+      planeActivated[i]=0;
+      glm::vec4 v(0,0,0,0);
+      clippingPlanes[i] = v;
+    }
+    glm::vec4 v(0,0,0,0);
+    nullPlane = v;
+    
+  };  // Private so that it can not be called
+  
   MatrixStack(MatrixStack const&){};             // copy constructor is private
   MatrixStack& operator=(MatrixStack const&){};  // assignment operator is private
   static MatrixStack* m_pInstance;
@@ -87,6 +105,11 @@ private:
   glm::mat4 modelviewStack[STACK_MAX];
   glm::mat4 projectionStack[STACK_MAX];
   glm::mat4 textureStack[STACK_MAX];
+  
+  bool planeActivated[CLIPPING_PLANES];
+  glm::vec4 clippingPlanes[CLIPPING_PLANES];
+  glm::vec4 nullPlane;
+  
   GLfloat vertexColor[4];
   GLfloat fogColor[4];
   GLfloat normalArray[MAX_NORMAL_ELEMENTS];
