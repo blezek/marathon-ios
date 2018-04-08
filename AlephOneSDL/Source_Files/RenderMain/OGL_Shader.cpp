@@ -629,7 +629,7 @@ void initDefaultPrograms() {
         "	}\n"
         "	gl_FragColor = vec4(intensity, 1.0);\n"
   //DCW shit test
-  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
+  //"  gl_FragColor = color;\n"
         "}\n";
     defaultVertexPrograms["landscape_bloom"] = defaultVertexPrograms["landscape"];
     defaultFragmentPrograms["landscape_bloom"] = ""
@@ -915,7 +915,8 @@ void initDefaultPrograms() {
         "	viewXY = -(MS_TextureMatrix * vec4(viewDir.xyz, 1.0)).xyz;\n"
         "	viewDir = -viewDir;\n"
         "	vertexColor = vColor;\n"
-        "	FDxLOG2E = -vFogColor.a * 1.442695;\n"
+        "	FDxLOG2E = -(1.0-vFogColor.a) * 1.442695;\n" //dcw that 1- may be wrong.
+        " fogColor = vFogColor;"
         "}\n";
     defaultFragmentPrograms["wall"] = ""
         "precision highp float;\n"
@@ -950,11 +951,10 @@ void initDefaultPrograms() {
         "#endif\n"
         "	vec4 color = texture2D(texture0, texCoords.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-//        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
-  //DCW shit test
-//"  gl_FragColor = vec4(1.0, 1.0, 0 ,.05);\n"
-  "  gl_FragColor = color;\n"
-
+  "fogFactor=clamp( length(viewDir), 0.0, 1.0);\n" //dcw shit test
+        "	gl_FragColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+  //dcw shit test
+  //"  gl_FragColor = vec4((color.rgb * intensity), vertexColor.a * color.a);\n"
         "}\n";
     defaultVertexPrograms["wall_bloom"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["wall_bloom"] = ""

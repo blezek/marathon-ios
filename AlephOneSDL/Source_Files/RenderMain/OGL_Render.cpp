@@ -913,7 +913,7 @@ bool OGL_StartMain()
 		glFogfv(GL_FOG_COLOR,CurrFogColor);
 		glFogf(GL_FOG_DENSITY,1.0F/MAX(1,WORLD_ONE*CurrFog->Depth));
     MatrixStack::Instance()->fogColor3f(CurrFogColor[0], CurrFogColor[1], CurrFogColor[2]);
-    MatrixStack::Instance()->fogDensity(CurrFogColor[3]);
+    MatrixStack::Instance()->fogDensity(1.0F/MAX(1,WORLD_ONE*CurrFog->Depth));
 	}
 	else
 	{

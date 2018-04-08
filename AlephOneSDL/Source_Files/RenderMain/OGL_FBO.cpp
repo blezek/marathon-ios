@@ -34,8 +34,6 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
-#include "OGL_Shader.h" //DCW shit test
-
 std::vector<FBO *> FBO::active_chain;
 
 FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
@@ -167,7 +165,7 @@ void FBO::prepare_drawing_mode(bool blend) {
 	//glOrtho(0, _w, _h, 0, -1, 1);*/
 	glColor4f(1.0, 1.0, 1.0, 1.0);
   MatrixStack::Instance()->orthof(0, _w, _h, 0, -1, 1);
-  //DCW we will need this sometime! MatrixStack::Instance()->color4f(1.0, 1.0, 1.0, 1.0);
+  MatrixStack::Instance()->color4f(1.0, 1.0, 1.0, 1.0);
 }
 
 void FBO::reset_drawing_mode() {

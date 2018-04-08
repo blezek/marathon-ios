@@ -432,12 +432,12 @@ bool headBelowMedia () {
 }
 
 bool useShaderRenderer() {
-  return 1;
+  return 0;
 }
 
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
-  return 1;
+  return 0;
 }
 
 short pRecord[128][2];
