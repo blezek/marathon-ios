@@ -484,7 +484,7 @@ void initDefaultPrograms() {
 	"	vec4 color0 = texture2DRect(texture0, textureUV.xy);\n"
 	"	gl_FragColor = vec4(pow(color0.r, gammaAdjust), pow(color0.g, gammaAdjust), pow(color0.b, gammaAdjust), 1.0);\n"
   //DCW shit test
-  "  gl_FragColor = vec4(1.0, 0, 0 ,1);\n"
+// "  gl_FragColor = vec4(1.0, 0, 0 ,1.0);\n"
 	"}\n";
 	
     defaultVertexPrograms["blur"] = ""

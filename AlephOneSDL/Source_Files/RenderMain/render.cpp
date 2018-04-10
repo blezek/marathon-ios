@@ -507,7 +507,7 @@ void render_view(
 			// LP: won't put this into a separate class
 			/* render the player’s weapons, etc. */
       glPushGroupMarkerEXT(0, "render_viewer_sprite_layer");
-			render_viewer_sprite_layer(view, RasPtr);
+      render_viewer_sprite_layer(view, RasPtr);
       glPopGroupMarkerEXT();
       
 			// Finish rendering main view

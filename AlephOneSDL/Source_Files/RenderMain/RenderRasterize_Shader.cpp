@@ -754,9 +754,6 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 	if (!void_present) {
 		offset = -2.0;
 	}
-  
-  //dcw shit test
- //   Shader::drawDebugRect();
 
 	const shape_descriptor& texture = AnimTxtr_Translate(surface->texture_definition->texture);
 	float intensity = (get_light_intensity(surface->lightsource_index) + surface->ambient_delta) / float(FIXED_ONE - 1);
@@ -905,14 +902,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
         lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
         lastShader->setVec4(Shader::U_TexCoords4, tex4);
       }
-      
-      //DCW shit test
-      /*glDisable(GL_CULL_FACE);
-      glDisable(GL_BLEND);
-      glDisable(GL_ALPHA_TEST);
-      glDisable(GL_DEPTH_TEST);*/
-
-      
+         
       glPushGroupMarkerEXT(0, "render_node_side");
       glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
       glPopGroupMarkerEXT();

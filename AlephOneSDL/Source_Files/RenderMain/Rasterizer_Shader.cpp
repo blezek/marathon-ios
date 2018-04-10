@@ -150,6 +150,7 @@ void Rasterizer_Shader_Class::Begin()
 {
 	Rasterizer_OGL_Class::Begin();
 	swapper->activate();
+
   if (smear_the_void)
 		swapper->current_contents().draw_full();
 }
@@ -219,14 +220,18 @@ void Rasterizer_Shader_Class::End()
    */
 
   //DCW shit test
-  /*float gamma_adj = get_actual_gamma_adjust(graphics_preferences->screen_mode.gamma_level);
+  float gamma_adj = get_actual_gamma_adjust(graphics_preferences->screen_mode.gamma_level);
 	if (gamma_adj < 0.99f || gamma_adj > 1.01f) {
 		Shader *s = Shader::get(Shader::S_Gamma);
 		s->enable();
 		s->setFloat(Shader::U_GammaAdjust, gamma_adj);
 	}
+  
 	swapper->draw();
-	Shader::disable();*/
+	Shader::disable();
+  
+  //dcw shit test
+  //bindDrawable();
   
 	SetForeground();
 	SglColor3f(0, 0, 0); //DCW

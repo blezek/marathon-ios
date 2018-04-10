@@ -117,7 +117,7 @@ int InitES2Quads()
   "{                                          \n"
   //"  gl_FragColor = vec4(1.0, 1.0, 1.0, .25); \n"
   "  gl_FragColor = texture2D(texture, textureUV); \n"
-//  "  gl_FragColor.r=1.0; \n"
+  //"  gl_FragColor.r=1.0; \n"
   "}                                          \n";
   
   GLuint vertexShader;
@@ -189,11 +189,12 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   glGetIntegerv(GL_RENDERBUFFER_BINDING, &lastRenderbuffer);
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &texture);
 
+//dcw shit test
+  /*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);*/
 
-  //Bind to default frame and render buffers. I hope it's always supposed to be 1, otherwise this will totally do the wrong thing.
-  glBindFramebuffer(GL_FRAMEBUFFER, 1);
-  glBindRenderbuffer(GL_RENDERBUFFER, 1);
-  
   GLfloat stack[16];
   MatrixStack::Instance()->getFloatv(MS_MODELVIEW, stack);
   
@@ -216,9 +217,7 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
     .5, .5, 0,
     .5, -.5, 0,
     -.5, -.5, 0};*/
-  
-
-  
+    
   GLfloat texCoords[8] = { tleft, ttop, tright, ttop, tright, tbottom, tleft, tbottom };
 
   GLubyte indices[] =   {0,1,2,
@@ -228,7 +227,7 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   glUseProgram(quadProgramObject);
   
   glUniform1i(uniforms[SAMPLER], 0);
-  
+
   glVertexAttribPointer(ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
   glEnableVertexAttribArray(ATTRIB_TEXCOORDS);
   
@@ -246,38 +245,14 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
 
   
   glDisableVertexAttribArray(0);
-  //eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
-
-  //Restore last buffers
-  /*glBindFramebuffer(GL_FRAMEBUFFER, lastFramebuffer);*/
-  //glBindRenderbuffer(GL_RENDERBUFFER, lastRenderbuffer);
 }
 
-
-/*int main(int argc, char *argv[])
+void bindDrawable()
 {
-  ESContext esContext;
-  UserData  userData;
-  
-  esInitialize(&esContext);
-  esContext.userData = &userData;
-  
-  esCreateWindow(&esContext, "Hello Triangle", 320, 240,
-                 ES_WINDOW_RGB);
-  
-  if(!Init(&esContext))
-    return 0;
-  
-  esRegisterDrawFunc(&esContext, Draw);
-  
-  esMainLoop(&esContext);
-}*/
+  //Bind to on-screen drawable frame and render buffers.
+  //These are usually, but not guaranteed to be 1.
+  //THe correct way is to bind to the core animation drawable.
+  glBindFramebuffer(GL_FRAMEBUFFER, 1);
+  glBindRenderbuffer(GL_RENDERBUFFER, 1);
 
-
-
-
-
-
-
-
-
+}

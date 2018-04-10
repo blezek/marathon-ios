@@ -31,6 +31,7 @@
 //DCW
 #include "AlephOneHelper.h"
 #include "MatrixStack.hpp"
+#include "esUtil.h"
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
@@ -45,6 +46,15 @@ FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
   
 	glGenFramebuffers(1, &_fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+  
+  //Create texture and attach it to framebuffer's color attachment point
+  glGenTextures(1, &texID);
+  glBindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
+  // glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE
+  //DCW srgb support is completely untested by me
+  glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
 
   //Generate depth buffer
 	glGenRenderbuffers(1, &_depthBuffer);
@@ -52,14 +62,7 @@ FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h); //DCW was GL_DEPTH_COMPONENT
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
   
-  glGenTextures(1, &texID);
-  glBindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
-  // glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE
-    //DCW srgb support is completely untested by me
-  glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
-  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
-
+  
   assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glPopGroupMarkerEXT();
@@ -71,14 +74,16 @@ void FBO::activate(bool clear) {
     
     glGetError();
     glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW test moving this here, otherwise this function appears to not work.
-    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
-    //glActiveTexture(GL_TEXTURE0);//DCW test
+
     glBindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   printGLError(__PRETTY_FUNCTION__);//Apple advice
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+    //glActiveTexture(GL_TEXTURE0);//DCW test
     //glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW This seems to be the wrong place for this.
     
 		// DJB OpenGL glPushAttrib(GL_VIEWPORT_BIT);
@@ -116,7 +121,14 @@ void FBO::deactivate() {
 			prev_srgb = active_chain.back()->_srgb;
 		}
 		glBindFramebuffer(GL_FRAMEBUFFER, prev_fbo);
-		if (prev_srgb)
+    
+    //DCW binding to framebuffer 0 doesn't switch to the on-screen buffer on mobile.
+    //Instead, call this convneience function to do something more likely to work.
+    if (prev_fbo == 0) {
+      bindDrawable();
+    }
+    
+		if (prev_srgb && !useShaderRenderer())
 			glEnable(GL_FRAMEBUFFER_SRGB);
 		else
 			glDisable(GL_FRAMEBUFFER_SRGB);
@@ -126,16 +138,21 @@ void FBO::deactivate() {
 void FBO::draw() {
   glGetError();
   glPushGroupMarkerEXT(0, "FBO Binding texture");
+  
+  glEnable(GL_TEXTURE0); //DCW good practice before binding texture.
+  
 	glBindTexture(GL_TEXTURE_2D, texID); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
   glPopGroupMarkerEXT();
+  
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
   glPushGroupMarkerEXT(0, "Shader render draw texture to screen test");
 	glEnable(GL_TEXTURE_2D); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
-  //glActiveTexture(GL_TEXTURE0); printGLError(__PRETTY_FUNCTION__); //DCW shit test adding this in
-	OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
+
+  //OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
+  OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW changing to raw texture coords
   printGLError(__PRETTY_FUNCTION__);
 	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
   glPopGroupMarkerEXT();
@@ -162,8 +179,8 @@ void FBO::prepare_drawing_mode(bool blend) {
 	
   //DCW
   /*glOrthof(0, _w, _h, 0, -1, 1);
-	//glOrtho(0, _w, _h, 0, -1, 1);*/
-	glColor4f(1.0, 1.0, 1.0, 1.0);
+	//glOrtho(0, _w, _h, 0, -1, 1);
+	glColor4f(1.0, 1.0, 1.0, 1.0);*/
   MatrixStack::Instance()->orthof(0, _w, _h, 0, -1, 1);
   MatrixStack::Instance()->color4f(1.0, 1.0, 1.0, 1.0);
 }

@@ -49,9 +49,12 @@ int InitES2Quads();
 
 //Intended as a shader-based worklalike for OGL_RenderTexturedRect.
 //Stuff like clearing the context, setting matrix state (via MatrixStack), and buffer swap should be handled outside of this drawing function.
+//Note: no texture transformations are done here, so you must do that prior to calling, if needed.
 void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
   
-
+//Bind to on-screen drawable framebuffer
+void bindDrawable();
+  
 #ifdef __cplusplus
 }
 #endif
