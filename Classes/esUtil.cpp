@@ -189,12 +189,6 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   glGetIntegerv(GL_RENDERBUFFER_BINDING, &lastRenderbuffer);
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &texture);
 
-//dcw shit test
-  /*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);*/
-
   GLfloat stack[16];
   MatrixStack::Instance()->getFloatv(MS_MODELVIEW, stack);
   
@@ -236,7 +230,6 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   glEnableVertexAttribArray(ATTRIB_VERTEX);
 
   glPushGroupMarkerEXT(0, "Draw ES Quad");
-  //glDrawArrays(GL_TRIANGLES, 0, 3);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
   glPopGroupMarkerEXT();
  

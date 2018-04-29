@@ -32,8 +32,9 @@
 #include "AlephOneHelper.h"
 #include "MatrixStack.hpp"
 #include "esUtil.h"
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+#include "OGL_Shader.h"
 
 std::vector<FBO *> FBO::active_chain;
 
@@ -57,14 +58,17 @@ FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
 
   //Generate depth buffer
-	glGenRenderbuffers(1, &_depthBuffer);
-	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h); //DCW was GL_DEPTH_COMPONENT
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
-  
-  
+	glGenRenderbuffers(1, &_depthBuffer);printGLError(__PRETTY_FUNCTION__);
+	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h); printGLError(__PRETTY_FUNCTION__);  //DCW was GL_DEPTH_COMPONENT
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+  //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+
   assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+  //glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  bindDrawable();
+  
   glPopGroupMarkerEXT();
 }
 
@@ -82,7 +86,9 @@ void FBO::activate(bool clear) {
     
     glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
+    //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
+    
     //glActiveTexture(GL_TEXTURE0);//DCW test
     //glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW This seems to be the wrong place for this.
     
@@ -103,9 +109,9 @@ void FBO::activate(bool clear) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     //DCW shit test
-    glClearColor(0,0,1, .5);
-    if (texID !=102 ) glClearColor(0,0,1, .5);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //glClearColor(0,0,1, .5);
+    //if (texID !=102 ) glClearColor(0,0,1, .5);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 }
 
@@ -139,8 +145,6 @@ void FBO::draw() {
   glGetError();
   glPushGroupMarkerEXT(0, "FBO Binding texture");
   
-  glEnable(GL_TEXTURE0); //DCW good practice before binding texture.
-  
 	glBindTexture(GL_TEXTURE_2D, texID); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
   glPopGroupMarkerEXT();
   
@@ -152,10 +156,56 @@ void FBO::draw() {
 	glEnable(GL_TEXTURE_2D); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
 
   //OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
-  OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW changing to raw texture coords
+  
+    //DCW if there is a shader already active, draw the quad using that. Otherwise, draw with the default shader.
+  if (lastEnabledShader()) {
+    DrawQuadWithActiveShader(0, 0, _w, _h, 0, _h, _w, 0);
+  } else {
+    OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW; uses normalized texture coordinates
+  }
   printGLError(__PRETTY_FUNCTION__);
 	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
   glPopGroupMarkerEXT();
+}
+
+void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
+{
+  GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+  
+  Shader *theShader = lastEnabledShader();
+  
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
+  MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+  MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+  MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+  
+  theShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+  theShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+  theShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+  theShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+  theShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+  
+  GLfloat vVertices[12] = { x, y, 0,
+    x + w, y, 0,
+    x + w, y + h, 0,
+    x, y + h, 0};
+  
+  GLfloat texCoords[8] = { tleft, ttop, tright, ttop, tright, tbottom, tleft, tbottom };
+  
+  GLubyte indices[] =   {0,1,2,
+    0,2,3};
+  
+  glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
+  glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+  
+  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  
+  glPushGroupMarkerEXT(0, "DrawQuadWithActiveShader");
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  glPopGroupMarkerEXT();
+  
+  glDisableVertexAttribArray(0);
 }
 
 void FBO::prepare_drawing_mode(bool blend) {

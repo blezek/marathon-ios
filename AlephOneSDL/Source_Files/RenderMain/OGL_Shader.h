@@ -75,6 +75,7 @@ public:
     U_ClipPlane3,
     U_ClipPlane4,
     U_ClipPlane5,
+    U_MediaPlane6,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 

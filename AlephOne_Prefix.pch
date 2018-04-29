@@ -23,8 +23,8 @@
 #define HAVE_OPENGL 1
 
 #ifdef HAVE_OPENGL
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 #endif
 
 // Make sure we load PNG and JPEG

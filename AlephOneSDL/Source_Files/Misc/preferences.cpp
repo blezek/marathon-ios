@@ -2496,8 +2496,7 @@ void read_preferences ()
 	default_environment_preferences(environment_preferences);
 
     //DCW playing around with some more options
-//  graphics_preferences->OGL_Configure.Flags  |=
-//    OGL_Flag_Blur
+  graphics_preferences->OGL_Configure.Flags  |= OGL_Flag_Blur;
 //  | OGL_Flag_BumpMap
 //  | OGL_Flag_Fader;
 

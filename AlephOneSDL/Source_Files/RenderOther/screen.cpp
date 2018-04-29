@@ -73,8 +73,8 @@
 
 #import "AlephOneHelper.h"
 #include "MatrixStack.hpp"
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
 //DCW debug shader
 #include "OGL_Shader.h"
 
@@ -292,6 +292,8 @@ void Screen::Initialize(screen_mode_data* mode)
     m_modes.push_back(std::pair<int, int>(1334, 750)); //iphone 6
     m_modes.push_back(std::pair<int, int>(1920, 1080)); //iphone 6+
     m_modes.push_back(std::pair<int, int>(2048, 1538)); //ipad air 2
+    m_modes.push_back(std::pair<int, int>(2436, 1125)); //iPhone X
+
 
 		// these are not validated in graphics prefs because
 		// SDL is not initialized yet when prefs load, so

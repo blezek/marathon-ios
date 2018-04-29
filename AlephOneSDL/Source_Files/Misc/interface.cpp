@@ -913,7 +913,7 @@ bool load_and_start_game(FileSpecifier& File)
 		{
 			Plugins::instance()->set_mode(userWantsMultiplayer ? Plugins::kMode_Net : Plugins::kMode_Solo);
 			Crosshairs_SetActive(player_preferences->crosshairs_active);
-			LoadHUDLua();
+      LoadHUDLua();
 			RunLuaHUDScript();
 			
 			// load the scripts we put off before

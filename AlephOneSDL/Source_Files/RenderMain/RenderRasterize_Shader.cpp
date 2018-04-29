@@ -26,6 +26,7 @@
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
 
+
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
 
 inline bool FogActive();
@@ -52,14 +53,21 @@ public:
 	}
 
 	void draw(FBOSwapper& dest) {
-		
+    glPushGroupMarkerEXT(0, "Draw Blur");
+    
 		int passes = _shader_bloom->passes();
 		if (passes < 0)
 			passes = 5;
+    
+    GLfloat modelProjection[16];
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
 
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 		for (int i = 0; i < passes; i++) {
+      glPushGroupMarkerEXT(0, "Blur Phase");
 			_shader_blur->enable();
+      _shader_blur->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+
 			_shader_blur->setFloat(Shader::U_OffsetX, 1);
 			_shader_blur->setFloat(Shader::U_OffsetY, 0);
 			_shader_blur->setFloat(Shader::U_Pass, i + 1);
@@ -69,8 +77,12 @@ public:
 			_shader_blur->setFloat(Shader::U_OffsetY, 1);
 			_shader_blur->setFloat(Shader::U_Pass, i + 1);
 			_swapper.filter(false);
-
+      glPopGroupMarkerEXT();
+      
+      glPushGroupMarkerEXT(0, "Bloom Phase");
 			_shader_bloom->enable();
+      _shader_bloom->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+
 			_shader_bloom->setFloat(Shader::U_Pass, i + 1);
 //			if (Bloom_sRGB)
 //				dest.blend(_swapper.current_contents(), true);
@@ -78,9 +90,12 @@ public:
 				dest.blend_multisample(_swapper.current_contents());
 			
 			Shader::disable();
+      glPopGroupMarkerEXT();
 		}
 		
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    
+    glPopGroupMarkerEXT();
 	}
 };
 
@@ -176,7 +191,9 @@ void RenderRasterize_Shader::render_tree() {
 		RenderRasterizerClass::render_tree(kGlow);
 		blur->end();
 		RasPtr->swapper->deactivate();
+    glPushGroupMarkerEXT(0, "draw blur passes");
 		blur->draw(*RasPtr->swapper);
+    glPopGroupMarkerEXT();
 		RasPtr->swapper->activate();
 	}
 
@@ -188,8 +205,8 @@ void RenderRasterize_Shader::render_node(sorted_node_data *node, bool SeeThruLiq
 	// parasitic object detection
     objectCount = 0;
     objectY = 0;
-
-    RenderRasterizerClass::render_node(node, SeeThruLiquids, renderStep);
+  
+  RenderRasterizerClass::render_node(node, SeeThruLiquids, renderStep);
 
 	// turn off clipping planes
   if (useShaderRenderer()) {
@@ -712,12 +729,13 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
     
     Shader* lastShader = lastEnabledShader();
     if (lastShader) {
-      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
       MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
       MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
       MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
       MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
       MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+      MatrixStack::Instance()->getPlanev(6, media6);
 
       lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
       lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
@@ -726,6 +744,7 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
       lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
       lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
       lastShader->setVec4(Shader::U_TexCoords4, tex4);
+      lastShader->setVec4(Shader::U_MediaPlane6, media6);
     }
     
     glPushGroupMarkerEXT(0, "render_node_floor_or_ceiling");
@@ -887,13 +906,14 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
       
       Shader* lastShader = lastEnabledShader();
       if (lastShader) {
-        GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16];
+        GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];
         MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
         MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
         MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
         MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
         MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
-        
+        MatrixStack::Instance()->getPlanev(6, media6);
+
         lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
         lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
         lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
@@ -901,6 +921,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
         lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
         lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
         lastShader->setVec4(Shader::U_TexCoords4, tex4);
+        lastShader->setVec4(Shader::U_MediaPlane6, media6);
       }
          
       glPushGroupMarkerEXT(0, "render_node_side");
@@ -1189,7 +1210,7 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object, bool
 	if (media) {
 		float h = media->height;
 		GLfloat plane[] = { 0.0, 0.0, 1.0, -h };
-		if (view->under_media_boundary ^ other_side_of_media) {
+    if (view->under_media_boundary ^ other_side_of_media) {
 			plane[2] = -1.0;
 			plane[3] = h;
 		}
@@ -1264,7 +1285,10 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 			objectY = pos.y;
 		}
 	} else {
-		glDisable(GL_DEPTH_TEST);
+    //DCW I think I want sprites to write to the depth buffer, but not be tested against it themselves;
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_ALWAYS);
+		//glDisable(GL_DEPTH_TEST);
 	}
 
 	TextureManager TMgr = setupSpriteTexture(rect, OGL_Txtr_Inhabitant, offset, renderStep);
@@ -1385,13 +1409,15 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
     lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
     
-    GLfloat plane0[4], plane1[4], plane5[4];
+    GLfloat plane0[4], plane1[4], plane5[4], media6[4];
     MatrixStack::Instance()->getPlanev(0, plane0);
     MatrixStack::Instance()->getPlanev(1, plane1);
     MatrixStack::Instance()->getPlanev(5, plane5);
+    MatrixStack::Instance()->getPlanev(6, media6);
     lastShader->setVec4(Shader::U_ClipPlane0, plane0);
     lastShader->setVec4(Shader::U_ClipPlane1, plane1);
     lastShader->setVec4(Shader::U_ClipPlane5, plane5);
+    lastShader->setVec4(Shader::U_MediaPlane6, media6);
   }
   
   glPushGroupMarkerEXT(0, "render_node_object_helper");

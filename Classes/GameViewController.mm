@@ -830,9 +830,11 @@ short localFindActionTarget(
   self.viewGL = oglView;
   self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO;
   
-	//NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-	//NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
+
+  //NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+  //NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
+  //NSLog(@"ViewGL frame w: %f h:%f", self.viewGL.frame.size.width, self.viewGL.frame.size.height);
 }
 
 #pragma mark -

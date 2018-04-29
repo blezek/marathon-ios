@@ -48,6 +48,9 @@ Sep 2, 2000 (Loren Petrich):
 
 #include <string.h>
 
+//DCW
+#include "MatrixStack.hpp"
+#include "AlephOneHelper.h"
 
 /* maximum number of vertices a polygon can be world-clipped into (one per clip line) */
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
@@ -183,6 +186,22 @@ void RenderRasterizerClass::render_node(
 		if (view->under_media_boundary) return;
 	}
 	
+  
+  //DCW If there is media in this node, set the surface to plane 6. We can use that for under media tinting.
+  short polyIndex=node->polygon_index;
+  if (useShaderRenderer()) {
+    if (media) {
+      float h = media->height;
+      
+      GLfloat plane[] = { 0.0, 0.0, 1.0, -h + (headBelowMedia() ? -2.0 : 2.0) }; //Artifically reduce/increase the plane height a bit, to reduce fighting at media surface.
+      MatrixStack::Instance()->clipPlanef(6, plane);
+      MatrixStack::Instance()->enablePlane(6);
+
+    }
+  }
+
+  
+  
 	// LP: this loop renders the walls
 	for (window= node->clipping_windows; window; window= window->next_window)
 	{
@@ -320,8 +339,9 @@ void RenderRasterizerClass::render_node(
 			
 			for (window= node->clipping_windows; window; window= window->next_window)
 			{
-				render_node_floor_or_ceiling(window, polygon, &LiquidSurface, false, ceil, renderStep);
+        render_node_floor_or_ceiling(window, polygon, &LiquidSurface, false, ceil, renderStep);
 			}
+      
 		}
 	}
 	
@@ -331,6 +351,12 @@ void RenderRasterizerClass::render_node(
 	{
 		render_node_object(object, false, renderStep);
 	}
+  
+  //DCW disable plane 6 if we had media earlier
+  if(/*media &&*/ useShaderRenderer()) {
+    MatrixStack::Instance()->disablePlane(6);
+  }
+
 }
 
 void RenderRasterizerClass::store_endpoint(
