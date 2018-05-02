@@ -96,6 +96,7 @@ public:
 		S_BumpBloom,
 		S_Gamma,
     S_Debug,
+    S_Rect,
 		NUMBER_OF_SHADER_TYPES
 	};
   

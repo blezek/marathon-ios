@@ -134,7 +134,8 @@ const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] =
 	"bump",
 	"bump_bloom",
 	"gamma",
-  "debug"
+  "debug",
+  "rect"
 };
 
 
@@ -454,12 +455,42 @@ void initDefaultPrograms() {
     if (defaultVertexPrograms.size() > 0)
         return;
 
+    defaultVertexPrograms["rect"] = ""
+    "#version 300 es  \n"
+    "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+    "uniform mat4 MS_TextureMatrix;\n"
+    "uniform vec4 vColor;\n"
+    "in vec4 vPosition;   \n"
+    "in vec2 vTexCoord;   \n"
+    "out vec2 textureUV;   \n"
+    "out vec4 vertexColor;\n"
+    "void main()                 \n"
+    "{                           \n"
+    "  vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"
+    "  textureUV = (MS_TextureMatrix * UV4).xy;\n"
+    "  vertexColor = vColor;\n"
+    "  gl_Position = MS_ModelViewProjectionMatrix * vPosition;  \n"
+    "} \n";
+  
+    defaultFragmentPrograms["rect"] = ""
+    "#version 300 es  \n"
+    "precision highp float;\n"
+    "in highp vec2 textureUV; \n"
+    "in vec4 vertexColor;\n"
+    "uniform highp sampler2D texture0;\n"
+    "out vec4 fragmentColor;\n"
+    "void main()                                \n"
+    "{                                          \n"
+    "  fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
+    "} \n";
+
+  
     defaultVertexPrograms["debug"] = ""
     "#version 300 es  \n"
     "in vec4 vPosition;   \n"
     "void main()                 \n"
     "{                           \n"
-    " gl_Position = vPosition;  \n"
+    "  gl_Position = vPosition;  \n"
     "}                           \n";
     defaultFragmentPrograms["debug"] = ""
     "#version 300 es  \n"

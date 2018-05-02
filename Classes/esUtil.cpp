@@ -183,12 +183,6 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
     //Initialize if needed
   int result = InitES2Quads();
   
-    //Track active frame and render buffers for debugging
-  GLint lastFramebuffer, lastRenderbuffer, texture;
-  glGetIntegerv(GL_FRAMEBUFFER_BINDING, &lastFramebuffer);
-  glGetIntegerv(GL_RENDERBUFFER_BINDING, &lastRenderbuffer);
-  glGetIntegerv(GL_TEXTURE_BINDING_2D, &texture);
-
   GLfloat stack[16];
   MatrixStack::Instance()->getFloatv(MS_MODELVIEW, stack);
   

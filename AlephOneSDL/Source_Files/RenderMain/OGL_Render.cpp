@@ -145,6 +145,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 
 #include <OpenGLES/ES1/gl.h> //DCW
 #include "MatrixStack.hpp"
+#include "OGL_Shader.h"
 
 #ifdef HAVE_OPENGL
 
@@ -2284,12 +2285,32 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     glColor4f(Color[0],Color[1],Color[2],Color[3]);
   }
 	
+    //Enable shader, if needed
+  Shader* s_rect = NULL;
+  if ( useShaderRenderer() ) {
+    s_rect = Shader::get(Shader::S_Rect);
+    s_rect->enable();
+  }
+  
+  //DCW debugging
+  /*GLfloat m[16];
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX, m);
+   printf ( "Modelview for rendersprite: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+   m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+   MatrixStack::Instance()->getFloatv(MS_PROJECTION_MATRIX, m);
+   printf ( "Projectionmatrix for rendersprite: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+   m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+   MatrixStack::Instance()->getFloatv(MS_TEXTURE_MATRIX, m);
+   printf ( "Texturematrix for rendersprite: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);*/
+
+  
 	// Location of data:
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, ExtendedVertexList[0].TexCoord);
+    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, sizeof(ExtendedVertexData), ExtendedVertexList[0].TexCoord);
     glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
     
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, ExtendedVertexList[0].Vertex);
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, sizeof(ExtendedVertexData), ExtendedVertexList[0].Vertex);
     glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
   } else {
     glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
@@ -2298,10 +2319,8 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   }
     //DCW Smart trigger
   if( IsInhabitant &&
-     ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0) )/* &&
-     ( (ExtendedVertexList[1].Vertex[1] > 0 &&ExtendedVertexList[3].Vertex[1] < 0) || (ExtendedVertexList[1].Vertex[1] < 0 && ExtendedVertexList[3].Vertex[1] > 0) )*/
-     ) {
-    //Sorry... I can't make a good up/down condition for this yet.
+     ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0)) ) {
+    
     if( RenderRectangle.isMonster ) {
       monsterIsCentered();
     }
@@ -2314,6 +2333,17 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   //DCW set texture filtering to make the 2d sampler show anything but black.
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  
+  if (useShaderRenderer()) {
+    GLfloat modelProjectionMatrix[16], textureMatrix[16];
+    
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjectionMatrix);
+    MatrixStack::Instance()->getFloatv(MS_TEXTURE_MATRIX, textureMatrix);
+    
+    s_rect->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjectionMatrix);
+    s_rect->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+    s_rect->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+  }
   
 	if (RenderRectangle.transfer_mode == _static_transfer)
 	{
@@ -2346,7 +2376,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 			// push the cutoff down so 0.5*0.5 (half of half-transparency)
 		  // DON'T sRGB this.
 			GLfloat GlowColor = TMgr.MinGlowIntensity();
-			glColor4f(std::max(GlowColor,Color[0]),std::max(GlowColor,Color[1]),std::max(GlowColor,Color[2]),Color[3]);
+      if(useShaderRenderer()) {
+        MatrixStack::Instance()->color4f(std::max(GlowColor,Color[0]),std::max(GlowColor,Color[1]),std::max(GlowColor,Color[2]),Color[3]);
+      } else {
+        glColor4f(std::max(GlowColor,Color[0]),std::max(GlowColor,Color[1]),std::max(GlowColor,Color[2]),Color[3]);
+      }
 			glEnable(GL_BLEND);
 			glDisable(GL_ALPHA_TEST);
 			if (Z_Buffering) glDisable(GL_DEPTH_TEST);
@@ -2357,6 +2391,10 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 		}
 	}
 	
+  if ( useShaderRenderer() ) {
+    Shader::disable();
+  }
+  
 	// Revert to default blend
 	SetBlend(OGL_BlendType_Crossfade);
 	TMgr.RestoreTextureMatrix();
@@ -2749,7 +2787,12 @@ void SetupStaticMode(int16 transfer_data)
 		// Do flat-color version of static effect
 		glDisable(GL_ALPHA_TEST);
 		glEnable(GL_BLEND);
-		SglColor4usv(FlatStaticColor);
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->color4f ( sRGB_frob(FlatStaticColor[0]*(1.f/65535.f)), sRGB_frob(FlatStaticColor[1]*(1.f/65535.f)), sRGB_frob(FlatStaticColor[2]*(1.f/65535.f)), FlatStaticColor[3]*(1.f/65535.f) );
+    } else {
+      SglColor4usv(FlatStaticColor);
+    }
+    
 	} else {
 #ifdef USE_STIPPLE_STATIC_EFFECT
 		// Do multitextured stippling to create the static effect
@@ -2870,7 +2913,11 @@ void StaticModeIndivSetup(int SeqNo)
 	}
 
 	// no need to correct
-  glColor4f(StaticBaseColors[SeqNo][0],StaticBaseColors[SeqNo][1],StaticBaseColors[SeqNo][2],1.0);
+  if( useShaderRenderer() ){
+    MatrixStack::Instance()->color4f(StaticBaseColors[SeqNo][0],StaticBaseColors[SeqNo][1],StaticBaseColors[SeqNo][2],1.0);
+  } else {
+    glColor4f(StaticBaseColors[SeqNo][0],StaticBaseColors[SeqNo][1],StaticBaseColors[SeqNo][2],1.0);
+  }
   // DJB OpenGL Static
   // glPolygonStipple((byte *)StaticPatterns[SeqNo]);
 #else
@@ -3255,18 +3302,6 @@ void OGL_RenderRect(const SDL_Rect& rect)
 
 void OGL_RenderTexturedRect(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
-  //DCW debugging
-  /*GLenum currentMode;
-  glGetIntegerv(GL_MATRIX_MODE, (GLint*)&currentMode);
-  GLfloat m[16];
-  glGetFloatv (GL_PROJECTION_MATRIX, m);
-  printf ( "GL_PROJECTION_MATRIX OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
-          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
-  
-  MatrixStack::Instance()->getFloatv (MS_PROJECTION_MATRIX, m);
-  printf ( "Fake GL_PROJECTION_MATRIX OGL_RenderTexturedRect: \n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f\n",
-          m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]); */
-
   if ( useShaderRenderer() ) {
     DrawQuad(x, y, w, h, tleft, ttop, tright, tbottom);
   } else {
