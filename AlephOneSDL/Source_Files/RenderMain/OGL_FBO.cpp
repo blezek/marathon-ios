@@ -58,10 +58,10 @@ FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
 
   //Generate depth buffer
-	glGenRenderbuffers(1, &_depthBuffer);printGLError(__PRETTY_FUNCTION__);
-	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h); printGLError(__PRETTY_FUNCTION__);  //DCW was GL_DEPTH_COMPONENT
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
+	glGenRenderbuffers(1, &_depthBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
   //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
 
   assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
@@ -142,18 +142,17 @@ void FBO::deactivate() {
 }
 
 void FBO::draw() {
-  glGetError();
   glPushGroupMarkerEXT(0, "FBO Binding texture");
   
-	glBindTexture(GL_TEXTURE_2D, texID); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
+	glBindTexture(GL_TEXTURE_2D, texID);
   glPopGroupMarkerEXT();
   
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); printGLError(__PRETTY_FUNCTION__);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); printGLError(__PRETTY_FUNCTION__);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glPushGroupMarkerEXT(0, "Shader render draw texture to screen test");
-	glEnable(GL_TEXTURE_2D); printGLError(__PRETTY_FUNCTION__); //DCW was GL_TEXTURE_RECTANGLE
+	//Deprecated glEnable(GL_TEXTURE_2D);
 
   //OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
   
@@ -163,8 +162,7 @@ void FBO::draw() {
   } else {
     OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW; uses normalized texture coordinates
   }
-  printGLError(__PRETTY_FUNCTION__);
-	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
+	//Deprecated glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
   glPopGroupMarkerEXT();
 }
 
@@ -333,25 +331,25 @@ void FBOSwapper::blend_multisample(FBO& other) {
   //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   
-	glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
+	//Deprecated glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);
 	
-	glClientActiveTexture(GL_TEXTURE1);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	//Deprecated glClientActiveTexture(GL_TEXTURE1);
+	//Deprecated glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	GLint multi_coordinates[8] = { 0, other._h, other._w, other._h, other._w, 0, 0, 0 };
 	glTexCoordPointer(2, GL_INT, 0, multi_coordinates);
-	glClientActiveTexture(GL_TEXTURE0);
+	//Deprecated glClientActiveTexture(GL_TEXTURE0);
 	
 	draw(true);
 	
 	// tear down multitexture stuff
 	glActiveTexture(GL_TEXTURE1);
-	glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
+	//Deprecated glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);
 	
-	glClientActiveTexture(GL_TEXTURE1);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glClientActiveTexture(GL_TEXTURE0);
+	//Deprecated glClientActiveTexture(GL_TEXTURE1);
+	//Deprecated glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	//Deprecated glClientActiveTexture(GL_TEXTURE0);
 	
 	deactivate();
 }

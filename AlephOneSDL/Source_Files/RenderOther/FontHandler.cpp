@@ -392,7 +392,6 @@ void FontSpecifier::OGL_Render(const char *Text)
   glVertexPointer(2, GL_SHORT, 0, VertexCache);
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.
-  //printGLError(__PRETTY_FUNCTION__);
   if( useShaderRenderer() ){
     glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
     glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
@@ -400,7 +399,6 @@ void FontSpecifier::OGL_Render(const char *Text)
     glEnableClientState(GL_VERTEX_ARRAY);
     glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
   }
-  //printGLError(__PRETTY_FUNCTION__);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   
 	size_t Len = MIN(strlen(Text),255);
@@ -411,13 +409,9 @@ void FontSpecifier::OGL_Render(const char *Text)
     // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
     glTranslatef(-PadCache,0,0);
 
-    //printGLError(__PRETTY_FUNCTION__);
     
     glDrawArrays(GL_TRIANGLE_FAN, c*4, 4);
     glTranslatef(WidthCache[c]-PadCache,0,0);
-
-    //printGLError(__PRETTY_FUNCTION__);
-
     
 		//glCallList(DispList+c);
 	}

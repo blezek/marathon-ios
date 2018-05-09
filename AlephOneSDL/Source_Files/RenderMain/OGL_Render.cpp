@@ -2139,7 +2139,7 @@ bool OGL_RenderWall(polygon_definition& RenderPolygon, bool IsVertical)
 bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 {
 	if (!OGL_IsActive()) return false;
-		
+  
 	// Set up the texture manager with the input manager
 	TextureManager TMgr;
 	TMgr.ShapeDesc = RenderRectangle.ShapeDesc;
@@ -2149,7 +2149,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	TMgr.TransferMode = RenderRectangle.transfer_mode;
 	TMgr.TransferData = RenderRectangle.transfer_data;
 	TMgr.IsShadeless = (RenderRectangle.flags&_SHADELESS_BIT) != 0;
-	
+
+  //dcw shit test
+  //RenderRectangle.transfer_mode = 3; //causes white weapon shape
+  //TMgr.TransferMode =3; //Causes unmodified weapon in hand
+  
 	// Is this an inhabitant or a weapons-in-hand texture?
 	// Test by using the distance away from the viewpoint
 	bool IsInhabitant;
@@ -2218,10 +2222,10 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	// Completely clipped away?
 	if (BottomRight.x <= TopLeft.x) return true;
 	if (BottomRight.y <= TopLeft.y) return true;
-	
+  
 	// Use that texture
 	if (!TMgr.Setup()) return true;
-	
+  
 	// Calculate the texture coordinates;
 	// the scanline direction is downward, (texture coordinate 0)
 	// while the line-to-line direction is rightward (texture coordinate 1)
@@ -2270,6 +2274,7 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 	bool IsBlended = TMgr.IsBlended();
 	bool ExternallyLit = false;
 	GLfloat Color[4];
+  
 	DoLightingAndBlending(RenderRectangle, IsBlended,
 		Color, ExternallyLit);
 
@@ -2343,11 +2348,16 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     s_rect->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjectionMatrix);
     s_rect->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
     s_rect->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+    if (RenderRectangle.transfer_mode == _static_transfer) {
+      s_rect->setFloat(Shader::U_UseStatic, 1.0);
+    } else {
+      s_rect->setFloat(Shader::U_UseStatic, 1.0); //dcw shit test
+    }
   }
   
 	if (RenderRectangle.transfer_mode == _static_transfer)
 	{
-		SetupStaticMode(RenderRectangle.transfer_data);
+    SetupStaticMode(RenderRectangle.transfer_data);
 		if (UseFlatStatic)
 		{
 			if (Z_Buffering) glDisable(GL_DEPTH_TEST);
@@ -2356,11 +2366,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
 			// Do multitextured stippling to create the static effect
 			for (int k=0; k<StaticEffectPasses; k++)
 			{
-				StaticModeIndivSetup(k);
+        StaticModeIndivSetup(k);
 				glDrawArrays(GL_TRIANGLE_FAN,0,4);
 			}
 		}
-		TeardownStaticMode();
+    TeardownStaticMode();
 	}
 	else
 	{
@@ -2725,6 +2735,14 @@ bool DoLightingAndBlending(rectangle_definition& RenderRectangle, bool& IsBlende
 		IsGlowmappable = false;
 		glEnable(GL_ALPHA_TEST);
 		glDisable(GL_BLEND);
+    
+      //The shader will be doing static effects, so try to set normal-looking color data here.
+    if (useShaderRenderer()) {
+      ExternallyLit = true;
+      FindShadingColor(RenderRectangle.depth,RenderRectangle.ambient_shade,Color);
+      Color[3] = RenderRectangle.Opacity;
+    }
+    
 		return IsGlowmappable;
 	}
 	else if (RenderRectangle.transfer_mode == _tinted_transfer)

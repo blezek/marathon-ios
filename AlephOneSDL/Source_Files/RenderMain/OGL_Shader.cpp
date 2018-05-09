@@ -114,7 +114,7 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "clipPlane3",
   "clipPlane4",
   "clipPlane5",
-  "mediaPlane"
+  "mediaPlane",
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -314,28 +314,24 @@ void Shader::init() {
   
 	_loaded = true;
   
-  printGLError(__PRETTY_FUNCTION__);
-  
-	//_programObj = glCreateProgramObjectARB(); //DCW no ARB in ios
   _programObj = glCreateProgram();//DCW
-  printGLError(__PRETTY_FUNCTION__);
 
 	assert(!_vert.empty());
-	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);  printGLError(__PRETTY_FUNCTION__);
+	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);
 	assert(vertexShader);
-	glAttachShader(_programObj, vertexShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
-	glDeleteShader(vertexShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
+	glAttachShader(_programObj, vertexShader);
+	glDeleteShader(vertexShader);
 
 	assert(!_frag.empty());
-	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);  printGLError(__PRETTY_FUNCTION__);
+	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);
 	assert(fragmentShader);
-	glAttachShader(_programObj, fragmentShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
-	glDeleteShader(fragmentShader); printGLError(__PRETTY_FUNCTION__);//DCW no ARB in ios
+	glAttachShader(_programObj, fragmentShader);
+	glDeleteShader(fragmentShader);
   
   // DCW Bind enum attributes to program
-  glBindAttribLocation(_programObj, Shader::ATTRIB_VERTEX, "vPosition"); printGLError(__PRETTY_FUNCTION__);
-  glBindAttribLocation(_programObj, Shader::ATTRIB_TEXCOORDS, "vTexCoord"); printGLError(__PRETTY_FUNCTION__);
-  glBindAttribLocation(_programObj, Shader::ATTRIB_NORMAL, "vNormal"); printGLError(__PRETTY_FUNCTION__);
+  glBindAttribLocation(_programObj, Shader::ATTRIB_VERTEX, "vPosition");
+  glBindAttribLocation(_programObj, Shader::ATTRIB_TEXCOORDS, "vTexCoord");
+  glBindAttribLocation(_programObj, Shader::ATTRIB_NORMAL, "vNormal");
   
   glLinkProgram(_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
   
@@ -358,7 +354,7 @@ void Shader::init() {
   
 	assert(_programObj);
 
-  glUseProgram(_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
+  glUseProgram(_programObj);
 
 	glUniform1i(getUniformLocation(U_Texture0), 0);
 	glUniform1i(getUniformLocation(U_Texture1), 1);
@@ -379,15 +375,11 @@ void Shader::setFloat(UniformName name, float f) {
 }
 
 void Shader::setMatrix4(UniformName name, float *f) {
-  glPushGroupMarkerEXT(0, "Shader setMatrix4");
 	glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
-  glPopGroupMarkerEXT();
 }
 
 void Shader::setVec4(UniformName name, float *f) {
-  glPushGroupMarkerEXT(0, "Shader setVec4");
   glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
-  glPopGroupMarkerEXT();
 }
 
 Shader::~Shader() {
@@ -396,7 +388,7 @@ Shader::~Shader() {
 
 void Shader::enable() {
 	if(!_loaded) { init(); }
-  glGetError();
+  //glGetError();
   if(nameIndex >=0){ glPushGroupMarkerEXT(0, _shader_names[nameIndex]);} else {
     glPushGroupMarkerEXT(0, "non-default shader");
   }
@@ -460,6 +452,7 @@ void initDefaultPrograms() {
     "uniform mat4 MS_ModelViewProjectionMatrix;\n"
     "uniform mat4 MS_TextureMatrix;\n"
     "uniform vec4 vColor;\n"
+    "uniform float useStatic;\n"
     "in vec4 vPosition;   \n"
     "in vec2 vTexCoord;   \n"
     "out vec2 textureUV;   \n"
@@ -475,13 +468,26 @@ void initDefaultPrograms() {
     defaultFragmentPrograms["rect"] = ""
     "#version 300 es  \n"
     "precision highp float;\n"
+    "uniform float time;\n"
+    "uniform float useStatic;\n"
     "in highp vec2 textureUV; \n"
     "in vec4 vertexColor;\n"
     "uniform highp sampler2D texture0;\n"
     "out vec4 fragmentColor;\n"
+    "float rand(vec2 co){ \n"
+    "highp float a = 12.9898; \n"
+    "highp float b = 78.233; \n"
+    "highp float c = 43758.5453; \n"
+    "highp float dt= dot(co.xy ,vec2(a,b)); \n"
+    "highp float sn= mod(dt,3.14); \n"
+    "return fract(sin(sn) * c); \n"
+    "} \n"
     "void main()                                \n"
     "{                                          \n"
     "  fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
+    "  if (useStatic > 0.0) { \n"
+    "    vec2 entropy = time * round(gl_FragCoord.xy / 4.0); \n"
+    "    fragmentColor.r =  rand(entropy); fragmentColor.g =  rand(entropy*fragmentColor.r); fragmentColor.b =  rand(entropy*fragmentColor.g); }\n"
     "} \n";
 
   
@@ -962,7 +968,7 @@ void initDefaultPrograms() {
         " mat3 normalMatrix = mat3(transpose(MS_ModelViewMatrixInverse));\n"           //DCW shitty replacement for gl_NormalMatrix
         "  textureUV = (MS_TextureMatrix * UV4).xy;\n"
         "	/* SETUP TBN MATRIX in normal matrix coords, vTexCoord4 = tangent vector */\n"
-        "	vec3 n = normalize(normalMatrix * normal);\n"
+        "	vec3 n = normalize(normalMatrix * vNormal);\n"
         "	vec3 t = normalize(normalMatrix * vTexCoord4.xyz);\n"
         "	vec3 b = normalize(cross(n, t) * vTexCoord4.w);\n"
         "	/* (column wise) */\n"

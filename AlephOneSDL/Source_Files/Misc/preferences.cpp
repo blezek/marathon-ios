@@ -2497,10 +2497,9 @@ void read_preferences ()
 
     //DCW playing around with some more options
   graphics_preferences->OGL_Configure.Flags  |= OGL_Flag_Blur;
-//  | OGL_Flag_BumpMap
-//  | OGL_Flag_Fader;
-
-  
+  //| OGL_Flag_BumpMap
+  //| OGL_Flag_Fader;
+    
 	// Slurp in the file and parse it
 
 	FileSpecifier FileSpec;

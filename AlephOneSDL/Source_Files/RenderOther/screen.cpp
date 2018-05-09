@@ -1503,10 +1503,6 @@ void render_screen(short ticks_elapsed)
 	Screen::instance()->bound_screen();
 	OGL_SetWindow(sr, sr, true); //DCW notes: I'd expect this to be the full size of the screen (640x480, or whatever).
 #endif
-	
-//  glGetError(); //DCW Clear error
-//  printGLError(__PRETTY_FUNCTION__); //DCW testing what any error state might be here before drawibg hud
-  
   
   
 	// If the main view is not being rendered in software but OpenGL is active,
@@ -1516,7 +1512,7 @@ void render_screen(short ticks_elapsed)
 		if (Screen::instance()->hud()) {
       if (Screen::instance()->lua_hud()){
         glPushGroupMarkerEXT(0, "Draw LUA HUD");
-				Lua_DrawHUD(ticks_elapsed);
+			//dcw shit test	Lua_DrawHUD(ticks_elapsed);
         glPopGroupMarkerEXT();
         
         //DCW debug shader. Draws rect in middle of screen.

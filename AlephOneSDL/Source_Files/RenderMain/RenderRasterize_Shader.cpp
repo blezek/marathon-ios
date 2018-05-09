@@ -57,7 +57,7 @@ public:
     
 		int passes = _shader_bloom->passes();
 		if (passes < 0)
-			passes = 5;
+      passes = 5;
     
     GLfloat modelProjection[16];
     MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
@@ -141,6 +141,9 @@ void RenderRasterize_Shader::render_tree() {
 	s->enable();
 	s->setFloat(Shader::U_Time, view->tick_count);
 	s->setFloat(Shader::U_UseStatic, TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_FlatStatic) ? 0.0 : 1.0);
+  s = Shader::get(Shader::S_Rect);
+  s->enable();
+  s->setFloat(Shader::U_Time, view->tick_count);
 	s = Shader::get(Shader::S_InvincibleBloom);
 	s->enable();
 	s->setFloat(Shader::U_Time, view->tick_count);
@@ -186,7 +189,7 @@ void RenderRasterize_Shader::render_tree() {
 
 	RenderRasterizerClass::render_tree(kDiffuse);
 
-	if (TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_Blur) && blur.get()) {
+	if (useShaderPostProcessing() && TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_Blur) && blur.get()) {
 		blur->begin();
 		RenderRasterizerClass::render_tree(kGlow);
 		blur->end();
@@ -494,9 +497,14 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);//DCW this is probably better for non-landscapes
   }
   
-  //DCW set texture filtering. GL_LINEAR won't work if actually mipmapped.
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  //DCW set texture filtering. GL_LINEAR is needed for non-mipmapped landscapes.
+  if ( TMgr.TextureType == OGL_Txtr_Landscape ) {
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  } else {
+    //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+  }
 
 	if (renderStep == kGlow) {
 		if (TMgr.TextureType == OGL_Txtr_Landscape) {
@@ -602,9 +610,9 @@ bool setupGlow(struct view_data *view, TextureManager &TMgr, float wobble, float
 
 		TMgr.RenderGlowing();
 		setupBlendFunc(TMgr.GlowBlend());
-		glEnable(GL_TEXTURE_2D);
+		//Deprecated glEnable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND);
-		glEnable(GL_ALPHA_TEST);
+		//Deprecated glEnable(GL_ALPHA_TEST);
 		glAlphaFunc(GL_GREATER, 0.001);
 
 		s->enable();
@@ -635,19 +643,19 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 	TextureManager TMgr = setupWallTexture(texture, surface->transfer_mode, wobble * 4.0, 0, intensity, offset, renderStep);
 
   //DCW set texture filtering. Don't clamp to edge here.
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
   
   if(TMgr.ShapeDesc == UNONE) { return; }
 
 	if (TMgr.IsBlended()) {
 		glEnable(GL_BLEND);
 		setupBlendFunc(TMgr.NormalBlend());
-		glEnable(GL_ALPHA_TEST);
+		//glEnable(GL_ALPHA_TEST);
 		glAlphaFunc(GL_GREATER, 0.001);
 	} else {
 		glDisable(GL_BLEND);
-		glEnable(GL_ALPHA_TEST);
+		//glEnable(GL_ALPHA_TEST);
 		glAlphaFunc(GL_GREATER, 0.5);
 	}
 
@@ -1242,7 +1250,10 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 
 	rectangle_definition& rect = object->rectangle;
 	const world_point3d& pos = rect.Position;
-    
+  
+  GLint startingDepthFunction;
+  glGetIntegerv(GL_DEPTH_FUNC, &startingDepthFunction);
+  
 	if(rect.ModelPtr) {
     //glPushMatrix();
     MatrixStack::Instance()->pushMatrix();
@@ -1286,8 +1297,10 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 		}
 	} else {
     //DCW I think I want sprites to write to the depth buffer, but not be tested against it themselves;
+    //DCW; The depth function must be restored after this, or walls will stop drawing correctly in some cases.
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_ALWAYS);
+    
 		//glDisable(GL_DEPTH_TEST);
 	}
 
@@ -1295,13 +1308,14 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	if (TMgr.ShapeDesc == UNONE) {
     //glPopMatrix();
     MatrixStack::Instance()->popMatrix();
+    glDepthFunc(startingDepthFunction);
     return; }
 
   //DCW set texture filtering to make the 2d sampler show anything but black.
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
   
   
 	float texCoords[2][2];
@@ -1435,8 +1449,8 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     //DCW set texture filtering to make the 2d sampler show anything but black.
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     
     
     // DJB OpenGL Convert from quad
@@ -1500,6 +1514,8 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	}
 
 	glEnable(GL_DEPTH_TEST);
+  glDepthFunc(startingDepthFunction);
+  
 	//glPopMatrix();
   MatrixStack::Instance()->popMatrix();
 	Shader::disable();

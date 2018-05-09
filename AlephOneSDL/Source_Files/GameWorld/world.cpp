@@ -214,7 +214,7 @@ void build_trig_tables(
 	cosine_table= (int16 *) malloc(sizeof(int16)*NUMBER_OF_ANGLES);
 	tangent_table= (int32 *) malloc(sizeof(int32)*NUMBER_OF_ANGLES);
 	fc_assert(sine_table&&cosine_table&&tangent_table);
-	
+  
 	for (i=0;i<NUMBER_OF_ANGLES;++i)
 	{
 		theta= two_pi*(double)i/(double)NUMBER_OF_ANGLES;
@@ -226,7 +226,7 @@ void build_trig_tables(
 		if (i==QUARTER_CIRCLE) sine_table[i]= TRIG_MAGNITUDE, cosine_table[i]= 0;
 		if (i==HALF_CIRCLE) sine_table[i]= 0, cosine_table[i]= -TRIG_MAGNITUDE;
 		if (i==THREE_QUARTER_CIRCLE) sine_table[i]= -TRIG_MAGNITUDE, cosine_table[i]= 0;
-		
+
 		/* what we care about here is NOT accuracy, rather weÕre concerned with matching the
 			ratio of the existing sine and cosine tables as exactly as possible */
 		if (cosine_table[i])

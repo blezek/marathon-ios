@@ -48,6 +48,7 @@ extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool headBelowMedia ();
 extern bool useShaderRenderer ();
+extern bool useShaderPostProcessing ();
 extern bool fastStart ();
 
 extern int helperAlwaysPlayIntro();

@@ -1049,8 +1049,8 @@ static void render_viewer_sprite_layer(view_data *view, RasterizerClass *RasPtr)
 		textured_rectangle.xc = (textured_rectangle.x0 + textured_rectangle.x1) >> 1;
 		
 		/* make the weapon reflect the ownerÕs transfer mode */
-		instantiate_rectangle_transfer_mode(view, &textured_rectangle, display_data.transfer_mode, display_data.transfer_phase);
-		
+    instantiate_rectangle_transfer_mode(view, &textured_rectangle, display_data.transfer_mode, display_data.transfer_phase);
+    
 		/* and draw it */
 		// LP: added OpenGL support
 		RasPtr->texture_rectangle(textured_rectangle);
