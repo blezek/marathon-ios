@@ -323,14 +323,6 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, other.texID); //DCW was GL_TEXTURE_RECTANGLE
   
-  //DCW Specific wrap definitions are required for non-power-of-2 textures to render.
-  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  
-  //DCW test
-  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  
 	//Deprecated glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);
 	

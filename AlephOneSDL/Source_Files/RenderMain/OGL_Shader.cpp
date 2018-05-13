@@ -469,7 +469,7 @@ void initDefaultPrograms() {
     "#version 300 es  \n"
     "precision highp float;\n"
     "uniform float time;\n"
-    "uniform float useStatic;\n"
+    "uniform float usestatic;\n"
     "in highp vec2 textureUV; \n"
     "in vec4 vertexColor;\n"
     "uniform highp sampler2D texture0;\n"
@@ -484,13 +484,14 @@ void initDefaultPrograms() {
     "} \n"
     "void main()                                \n"
     "{                                          \n"
-    "  fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
-    "  if (useStatic > 0.0) { \n"
-    "    vec2 entropy = time * round(gl_FragCoord.xy / 4.0); \n"
-    "    fragmentColor.r =  rand(entropy); fragmentColor.g =  rand(entropy*fragmentColor.r); fragmentColor.b =  rand(entropy*fragmentColor.g); }\n"
+  "  fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
+    "  if (usestatic != 0.0 ) { \n"
+    "    vec2 entropy = vec2 (time,time); \n"
+    "    if (usestatic > 0.0) { entropy *= round(gl_FragCoord.xy / 4.0); } \n"
+    "    fragmentColor.r = rand(entropy); fragmentColor.g =  rand(entropy*fragmentColor.r); fragmentColor.b =  rand(entropy*fragmentColor.g); \n"
+    "  } \n"
     "} \n";
 
-  
     defaultVertexPrograms["debug"] = ""
     "#version 300 es  \n"
     "in vec4 vPosition;   \n"

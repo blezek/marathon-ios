@@ -141,9 +141,11 @@ void RenderRasterize_Shader::render_tree() {
 	s->enable();
 	s->setFloat(Shader::U_Time, view->tick_count);
 	s->setFloat(Shader::U_UseStatic, TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_FlatStatic) ? 0.0 : 1.0);
+  
   s = Shader::get(Shader::S_Rect);
   s->enable();
   s->setFloat(Shader::U_Time, view->tick_count);
+  
 	s = Shader::get(Shader::S_InvincibleBloom);
 	s->enable();
 	s->setFloat(Shader::U_Time, view->tick_count);

@@ -2349,28 +2349,37 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     s_rect->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
     s_rect->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
     if (RenderRectangle.transfer_mode == _static_transfer) {
-      s_rect->setFloat(Shader::U_UseStatic, 1.0);
+      if ( TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_FlatStatic) ){
+        s_rect->setFloat(Shader::U_UseStatic, -1.0); //A nagative value for this uniform indicates we want flat static
+      } else {
+        s_rect->setFloat(Shader::U_UseStatic, 1.0); //A positive value for this uniform indicates we want stippled static
+      }
     } else {
-      s_rect->setFloat(Shader::U_UseStatic, 1.0); //dcw shit test
+      s_rect->setFloat(Shader::U_UseStatic, 0.0);
     }
   }
   
 	if (RenderRectangle.transfer_mode == _static_transfer)
 	{
-    SetupStaticMode(RenderRectangle.transfer_data);
-		if (UseFlatStatic)
-		{
-			if (Z_Buffering) glDisable(GL_DEPTH_TEST);
-			glDrawArrays(GL_TRIANGLE_FAN,0,4);
-		} else {
-			// Do multitextured stippling to create the static effect
-			for (int k=0; k<StaticEffectPasses; k++)
-			{
-        StaticModeIndivSetup(k);
-				glDrawArrays(GL_TRIANGLE_FAN,0,4);
-			}
-		}
-    TeardownStaticMode();
+    if(useShaderRenderer()) {
+      glEnable(GL_BLEND);
+      glDrawArrays(GL_TRIANGLE_FAN,0,4);
+    } else {
+      SetupStaticMode(RenderRectangle.transfer_data);
+      if (UseFlatStatic)
+      {
+        if (Z_Buffering) glDisable(GL_DEPTH_TEST);
+        glDrawArrays(GL_TRIANGLE_FAN,0,4);
+      } else {
+        // Do multitextured stippling to create the static effect
+        for (int k=0; k<StaticEffectPasses; k++)
+        {
+          StaticModeIndivSetup(k);
+          glDrawArrays(GL_TRIANGLE_FAN,0,4);
+        }
+      }
+      TeardownStaticMode();
+    }
 	}
 	else
 	{
