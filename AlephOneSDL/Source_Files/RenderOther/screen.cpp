@@ -1512,7 +1512,7 @@ void render_screen(short ticks_elapsed)
 		if (Screen::instance()->hud()) {
       if (Screen::instance()->lua_hud()){
         glPushGroupMarkerEXT(0, "Draw LUA HUD");
-			//dcw shit test	Lua_DrawHUD(ticks_elapsed);
+			  Lua_DrawHUD(ticks_elapsed);
         glPopGroupMarkerEXT();
         
         //DCW debug shader. Draws rect in middle of screen.
