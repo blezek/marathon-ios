@@ -136,7 +136,6 @@
     [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderWhiteTrack"]forState:UIControlStateNormal];
   }
   
-  
   KeychainItemWrapper *keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"metaserver" accessGroup:nil] autorelease];
   [login setText:[keychain objectForKey:(id)kSecAttrAccount]];
   [password setText:[keychain objectForKey:(id)kSecValueData]];
@@ -199,6 +198,9 @@
   }
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+  [self.view endEditing:YES]; //Dismisses keyboard when our view is touched.
+}
 
 -(IBAction) toggleButton:(id)sender {
   if ( [sender isKindOfClass:[UIButton class]] ) {

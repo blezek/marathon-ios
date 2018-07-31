@@ -776,7 +776,7 @@ void JoinDialog::getJoinAddressFromMetaserver ()
 		char message[1024];
 		if (e.code() == MetaserverClient::LoginDeniedException::BadUserOrPassword)
 		{
-			strncpy(message, "Login denied: bad username or password.", 1024);
+			strncpy(message, "Login denied: bad MeatServer username or password. Please check your preferences.", 1024);
 		}
 		else if (e.code() == MetaserverClient::LoginDeniedException::UserAlreadyLoggedIn)
 		{
