@@ -60,6 +60,8 @@ Jul 1, 2000 (Loren Petrich):
 #include <math.h>
 #include <limits.h>
 
+//DCW Used for mouse smoothing
+#include "mouse.h"
 
 
 
@@ -212,7 +214,7 @@ void build_trig_tables(
 	cosine_table= (int16 *) malloc(sizeof(int16)*NUMBER_OF_ANGLES);
 	tangent_table= (int32 *) malloc(sizeof(int32)*NUMBER_OF_ANGLES);
 	fc_assert(sine_table&&cosine_table&&tangent_table);
-	
+  
 	for (i=0;i<NUMBER_OF_ANGLES;++i)
 	{
 		theta= two_pi*(double)i/(double)NUMBER_OF_ANGLES;
@@ -224,7 +226,7 @@ void build_trig_tables(
 		if (i==QUARTER_CIRCLE) sine_table[i]= TRIG_MAGNITUDE, cosine_table[i]= 0;
 		if (i==HALF_CIRCLE) sine_table[i]= 0, cosine_table[i]= -TRIG_MAGNITUDE;
 		if (i==THREE_QUARTER_CIRCLE) sine_table[i]= -TRIG_MAGNITUDE, cosine_table[i]= 0;
-		
+
 		/* what we care about here is NOT accuracy, rather weÕre concerned with matching the
 			ratio of the existing sine and cosine tables as exactly as possible */
 		if (cosine_table[i])
@@ -681,7 +683,7 @@ world_point2d *transform_overflow_point2d(
 {
 	// LP change: lengthening the values for more precise calculations
 	long_vector2d temp, tempr;
-	
+  
 	theta = normalize_angle(theta);
 	fc_assert(cosine_table[0]==TRIG_MAGNITUDE);
 	
@@ -690,8 +692,31 @@ world_point2d *transform_overflow_point2d(
 		
 	tempr.i= ((temp.i*cosine_table[theta])>>TRIG_SHIFT) + ((temp.j*sine_table[theta])>>TRIG_SHIFT);
 	tempr.j= ((temp.j*cosine_table[theta])>>TRIG_SHIFT) - ((temp.i*sine_table[theta])>>TRIG_SHIFT);
-	
+
 	long_to_overflow_short_2d(tempr,*point,*flags);
 	
 	return point;
+}
+
+world_point2d *transform_overflow_point2d_smoothed(
+                                          world_point2d *point,
+                                          world_point2d *origin,
+                                          angle theta,
+                                          uint16 *flags)
+{
+  // LP change: lengthening the values for more precise calculations
+  long_vector2d temp, tempr;
+  
+  theta = normalize_angle(theta);
+  fc_assert(cosine_table[0]==TRIG_MAGNITUDE);
+  
+  temp.i= int32(point->x)-int32(origin->x);
+  temp.j= int32(point->y)-int32(origin->y);
+  
+  tempr.i= ((temp.i*(int)cosine_table_calculated(theta + lostMousePrecisionX()) )>>TRIG_SHIFT) + ((temp.j*(int)sine_table_calculated(theta + lostMousePrecisionX()))>>TRIG_SHIFT);
+  tempr.j= ((temp.j*(int)cosine_table_calculated(theta + lostMousePrecisionX()) )>>TRIG_SHIFT) - ((temp.i*(int)sine_table_calculated(theta + lostMousePrecisionX()))>>TRIG_SHIFT);
+  
+  long_to_overflow_short_2d(tempr,*point,*flags);
+  
+  return point;
 }

@@ -23,7 +23,9 @@
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
-extern void  setDefaultA1PrefsIfNeeded();//DCW 
+extern char* getLocalTmpDir(); //DCW
+extern char* LANIP( char *prefix, char *suffix);
+extern void  overrideSomeA1Prefs();//DCW 
 extern void helperBringUpHUD();
 
 extern int helperNewGame();
@@ -44,14 +46,23 @@ extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
-
+extern bool headBelowMedia ();
+extern bool useShaderRenderer ();
+extern bool useShaderPostProcessing ();
+extern bool fastStart ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();
 extern void setKey(SDL_Keycode key, bool down);
 extern void moveMouseRelative(float dx, float dy);
+extern void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval);
 extern void slurpMouseDelta(float *dx, float *dy);
 extern void helperGetMouseDelta ( int *dx, int *dy );
+extern void clearSmartTrigger();
+extern bool smartTriggerEngaged();
+extern void monsterIsCentered ();
+extern void setSmartFirePrimary(bool fire);
+extern void setSmartFireSecondary(bool fire);
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);
@@ -81,6 +92,9 @@ extern void helperPickedUp ( short itemType );
 
 // Gamma from settings
 extern float helperGamma();
+
+//Acessor for mouse smoothing preference
+extern bool smoothMouselookPreference();
 
 // Pause alpho
 extern GLfloat helperPauseAlpha();

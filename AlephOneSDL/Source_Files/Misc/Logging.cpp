@@ -45,7 +45,8 @@ enum { kStringBufferSize = 1024 };
 
 static Logger*	sCurrentLogger	= NULL;
 static FILE*	sOutputFile	= NULL;
-static int	sLoggingThreshhold = logNoteLevel;	// log messages at or above this level will be squelched
+//static int	sLoggingThreshhold = logNoteLevel;	// log messages at or above this level will be squelched
+static int  sLoggingThreshhold = logTraceLevel;  // DCW logging test
 static bool	sShowLocations	= true;			// should filenames and line numbers be printed as well?
 static bool	sFlushOutput	= false;		// flush output after every log-write?  (good if crash expected)
 const char*	logDomain	= "global";

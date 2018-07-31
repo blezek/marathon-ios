@@ -29,6 +29,7 @@ extern bool option_nosound;
 void Mixer::Start(uint16 rate, bool sixteen_bit, bool stereo, int num_channels, int volume, uint16 samples)
 {
 	sound_channel_count = num_channels;
+  fprintf(stderr, "Volume changing from %d to %d\n", main_volume, volume );
 	main_volume = volume;
 	desired.freq = rate;
 #if defined(__MACH__) && defined(__APPLE__)

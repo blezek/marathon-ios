@@ -51,8 +51,9 @@
 							<object class="IBUIImageView" id="275129290">
 								<reference key="NSNextResponder" ref="56065301"/>
 								<int key="NSvFlags">-2147483374</int>
-								<string key="NSFrame">{{751, 244}, {101, 101}}</string>
+								<string key="NSFrame">{{202.5, 71}, {75, 75}}</string>
 								<reference key="NSSuperview" ref="56065301"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1005971842"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -64,9 +65,11 @@
 							<object class="IBUIImageView" id="261256991">
 								<reference key="NSNextResponder" ref="56065301"/>
 								<int key="NSvFlags">-2147483374</int>
-								<string key="NSFrame">{{472, 265}, {79, 79}}</string>
+								<string key="NSFrame">{{210.5, 0}, {60, 60}}</string>
 								<reference key="NSSuperview" ref="56065301"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="275129290"/>
+								<int key="IBUIContentMode">2</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage" id="635779123">
@@ -75,8 +78,9 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{-59, -23}, {1024, 608}}</string>
+						<string key="NSFrameSize">{480, 234}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="261256991"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -96,9 +100,10 @@
 							<object class="IBUIImageView" id="1059818641">
 								<reference key="NSNextResponder" ref="402276250"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 20}, {158, 158}}</string>
+								<string key="NSFrame">{{10.5, 10.5}, {79, 79}}</string>
 								<reference key="NSSuperview" ref="402276250"/>
-								<reference key="NSNextKeyView" ref="964025369"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="291214286"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -109,8 +114,9 @@
 							<object class="IBUIImageView" id="691335718">
 								<reference key="NSNextResponder" ref="402276250"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{198, 198}</string>
+								<string key="NSFrameSize">{100, 100}</string>
 								<reference key="NSSuperview" ref="402276250"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1059818641"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -120,8 +126,9 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{10, 483}, {198, 198}}</string>
+						<string key="NSFrame">{{0, 220}, {100, 100}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="691335718"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -133,9 +140,10 @@
 					<object class="IBUIButton" id="964025369">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{124, 690}, {70, 70}}</string>
+						<string key="NSFrame">{{96, 282}, {35, 35}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
-						<reference key="NSNextKeyView" ref="317572267"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="132311445"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -162,33 +170,12 @@
 							<string key="NSResourceName">patternbuffers-btn.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="1005971842">
-						<reference key="NSNextResponder" ref="776394612"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{70, 70}</string>
-						<reference key="NSSuperview" ref="776394612"/>
-						<reference key="NSNextKeyView" ref="402276250"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<reference key="IBUIFont" ref="524822718"/>
-						<reference key="IBUIHighlightedTitleColor" ref="893362460"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
-						<object class="NSCustomResource" key="IBUINormalImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">overheadmap.png</string>
-						</object>
-					</object>
 					<object class="IBUIButton" id="132311445">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{856, 702}, {64, 64}}</string>
+						<string key="NSFrame">{{388, 288}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="36774145"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -209,8 +196,10 @@
 					<object class="IBUIButton" id="36774145">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{936, 702}, {64, 64}}</string>
+						<string key="NSFrame">{{428, 288}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="317572267"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -230,9 +219,10 @@
 					<object class="IBUIButton" id="880042888">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{941, 616}, {79, 79}}</string>
+						<string key="NSFrame">{{428, 220}, {39, 39}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
-						<reference key="NSNextKeyView" ref="132311445"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="964025369"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -249,8 +239,9 @@
 					<object class="IBUIButton" id="291214286">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{833, 606}, {101, 101}}</string>
+						<string key="NSFrame">{{380, 237}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="880042888"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -265,11 +256,35 @@
 						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
 						<reference key="IBUINormalImage" ref="998449580"/>
 					</object>
+					<object class="IBUIButton" id="1005971842">
+						<reference key="NSNextResponder" ref="776394612"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{35, 35}</string>
+						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="402276250"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="524822718"/>
+						<reference key="IBUIHighlightedTitleColor" ref="893362460"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">overheadmap.png</string>
+						</object>
+					</object>
 					<object class="IBUIButton" id="317572267">
 						<reference key="NSNextResponder" ref="776394612"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{209, 624}, {128, 128}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="268897399"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -288,6 +303,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{345, 625}, {132, 126}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="413825828"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -306,7 +322,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{680, 626}, {116, 130}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
-						<reference key="NSNextKeyView" ref="291214286"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -324,6 +340,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{480, 626}, {200, 130}}</string>
 						<reference key="NSSuperview" ref="776394612"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="333865616"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -338,8 +355,9 @@
 						<reference key="IBUINormalTitleShadowColor" ref="672366824"/>
 					</object>
 				</object>
-				<string key="NSFrameSize">{1024, 768}</string>
+				<string key="NSFrameSize">{480, 320}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="56065301"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
@@ -802,18 +820,18 @@
 						<reference key="object" ref="776394612"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="402276250"/>
-							<reference ref="964025369"/>
 							<reference ref="1005971842"/>
-							<reference ref="132311445"/>
-							<reference ref="36774145"/>
-							<reference ref="880042888"/>
-							<reference ref="291214286"/>
 							<reference ref="317572267"/>
 							<reference ref="268897399"/>
 							<reference ref="333865616"/>
 							<reference ref="413825828"/>
 							<reference ref="56065301"/>
+							<reference ref="36774145"/>
+							<reference ref="132311445"/>
+							<reference ref="291214286"/>
+							<reference ref="964025369"/>
+							<reference ref="402276250"/>
+							<reference ref="880042888"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">HUD</string>
@@ -830,61 +848,10 @@
 						<string key="objectName">Look</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">46</int>
-						<reference key="object" ref="402276250"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1059818641"/>
-							<reference ref="691335718"/>
-						</object>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">MovePad</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">48</int>
-						<reference key="object" ref="1059818641"/>
-						<reference key="parent" ref="402276250"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">49</int>
-						<reference key="object" ref="691335718"/>
-						<reference key="parent" ref="402276250"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">59</int>
-						<reference key="object" ref="964025369"/>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">Action</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
 						<reference key="object" ref="1005971842"/>
 						<reference key="parent" ref="776394612"/>
 						<string key="objectName">Map</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">63</int>
-						<reference key="object" ref="132311445"/>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">PreviousWeapon</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">64</int>
-						<reference key="object" ref="36774145"/>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">NextWeapon</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">65</int>
-						<reference key="object" ref="880042888"/>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">Secondary Fire</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">66</int>
-						<reference key="object" ref="291214286"/>
-						<reference key="parent" ref="776394612"/>
-						<string key="objectName">Primary Fire</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">97</int>
@@ -921,6 +888,57 @@
 						<reference key="object" ref="261256991"/>
 						<reference key="parent" ref="56065301"/>
 						<string key="objectName">SecondaryTrigger</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">46</int>
+						<reference key="object" ref="402276250"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="1059818641"/>
+							<reference ref="691335718"/>
+						</object>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">MovePad</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">48</int>
+						<reference key="object" ref="1059818641"/>
+						<reference key="parent" ref="402276250"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">49</int>
+						<reference key="object" ref="691335718"/>
+						<reference key="parent" ref="402276250"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">59</int>
+						<reference key="object" ref="964025369"/>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">Action</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">66</int>
+						<reference key="object" ref="291214286"/>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">Primary Fire</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">65</int>
+						<reference key="object" ref="880042888"/>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">Secondary Fire</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">63</int>
+						<reference key="object" ref="132311445"/>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">PreviousWeapon</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">64</int>
+						<reference key="object" ref="36774145"/>
+						<reference key="parent" ref="776394612"/>
+						<string key="objectName">NextWeapon</string>
 					</object>
 				</object>
 			</object>
@@ -995,7 +1013,381 @@
 			<nil key="sourceID"/>
 			<int key="maxID">130</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">FloatingTriggerHUDViewController</string>
+					<string key="superclassName">HUDViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionKeyImageView</string>
+							<string>lookView</string>
+							<string>movePadView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIButton</string>
+							<string>FloatingTriggerLookView</string>
+							<string>MovePadView</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionKeyImageView</string>
+							<string>lookView</string>
+							<string>movePadView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">actionKeyImageView</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">lookView</string>
+								<string key="candidateClassName">FloatingTriggerLookView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">movePadView</string>
+								<string key="candidateClassName">MovePadView</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/FloatingTriggerHUDViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">FloatingTriggerLookView</string>
+					<string key="superclassName">UIView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>hudViewController</string>
+							<string>primaryFireButton</string>
+							<string>secondaryFireButton</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>HUDViewController</string>
+							<string>UIView</string>
+							<string>UIView</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>hudViewController</string>
+							<string>primaryFireButton</string>
+							<string>secondaryFireButton</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">hudViewController</string>
+								<string key="candidateClassName">HUDViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">primaryFireButton</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">secondaryFireButton</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/FloatingTriggerLookView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">HUDViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionDown:</string>
+							<string>actionUp:</string>
+							<string>backwardDown:</string>
+							<string>backwardUp:</string>
+							<string>forwardDown:</string>
+							<string>forwardUp:</string>
+							<string>inventoryDown:</string>
+							<string>inventoryUp:</string>
+							<string>leftDown:</string>
+							<string>leftUp:</string>
+							<string>lookDownDown:</string>
+							<string>lookDownUp:</string>
+							<string>lookLeftDown:</string>
+							<string>lookLeftUp:</string>
+							<string>lookRightDown:</string>
+							<string>lookRightUp:</string>
+							<string>lookUpDown:</string>
+							<string>lookUpUp:</string>
+							<string>mapDown:</string>
+							<string>mapUp:</string>
+							<string>nextWeaponDown:</string>
+							<string>nextWeaponUp:</string>
+							<string>previousWeaponDown:</string>
+							<string>previousWeaponUp:</string>
+							<string>primaryFireDown:</string>
+							<string>primaryFireUp:</string>
+							<string>rightDown:</string>
+							<string>rightUp:</string>
+							<string>runDown:</string>
+							<string>runUp:</string>
+							<string>secondaryFireDown:</string>
+							<string>secondaryFireUp:</string>
+							<string>stopMoving:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionDown:</string>
+							<string>actionUp:</string>
+							<string>backwardDown:</string>
+							<string>backwardUp:</string>
+							<string>forwardDown:</string>
+							<string>forwardUp:</string>
+							<string>inventoryDown:</string>
+							<string>inventoryUp:</string>
+							<string>leftDown:</string>
+							<string>leftUp:</string>
+							<string>lookDownDown:</string>
+							<string>lookDownUp:</string>
+							<string>lookLeftDown:</string>
+							<string>lookLeftUp:</string>
+							<string>lookRightDown:</string>
+							<string>lookRightUp:</string>
+							<string>lookUpDown:</string>
+							<string>lookUpUp:</string>
+							<string>mapDown:</string>
+							<string>mapUp:</string>
+							<string>nextWeaponDown:</string>
+							<string>nextWeaponUp:</string>
+							<string>previousWeaponDown:</string>
+							<string>previousWeaponUp:</string>
+							<string>primaryFireDown:</string>
+							<string>primaryFireUp:</string>
+							<string>rightDown:</string>
+							<string>rightUp:</string>
+							<string>runDown:</string>
+							<string>runUp:</string>
+							<string>secondaryFireDown:</string>
+							<string>secondaryFireUp:</string>
+							<string>stopMoving:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">actionDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">actionUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">backwardDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">backwardUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">forwardDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">forwardUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">inventoryDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">inventoryUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">leftDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">leftUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookDownDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookDownUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookLeftDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookLeftUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookRightDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookRightUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookUpDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lookUpUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">mapDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">mapUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">nextWeaponDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">nextWeaponUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">previousWeaponDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">previousWeaponUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">primaryFireDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">primaryFireUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">rightDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">rightUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">runDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">runUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">secondaryFireDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">secondaryFireUp:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">stopMoving:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/HUDViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MovePadView</string>
+					<string key="superclassName">UIView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">knobView</string>
+						<string key="NS.object.0">UIImageView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">knobView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">knobView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MovePadView.h</string>
+					</object>
+				</object>
+			</object>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">

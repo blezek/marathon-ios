@@ -218,6 +218,7 @@ void overflow_short_to_long_2d(world_point2d& WVec, uint16& flags, long_vector2d
 
 // Transform that produces a result with this kludge
 world_point2d *transform_overflow_point2d(world_point2d *point, world_point2d *origin, angle theta, uint16 *flags);
+world_point2d *transform_overflow_point2d_smoothed(world_point2d *point, world_point2d *origin, angle theta, uint16 *flags); //DCW mouselook smoothing test
 
 // Simple copy-overs
 static inline void long_to_short_2d(long_vector2d& LVec, world_vector2d&WVec)

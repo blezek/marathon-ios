@@ -50,6 +50,9 @@
 #include "SDL_timer.h"
 #include "SDL_error.h"
 
+#include <sched.h> //DCW needed for setting self QOS
+#include <pthread.h> //DCW needed for setting self QOS
+
 #include "Logging.h"
 
 #ifndef NO_STD_NAMESPACE
@@ -133,6 +136,9 @@ thread_loop(void* inData) {
     uint32	theLastRunTime	= SDL_GetTicks();
     uint32	theCurrentRunTime;
     int32	theDrift	= 0;
+  
+  //DCW Set iOS interactive QOS
+  pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE,0);
 
 #ifdef DEBUG
     theTMTask->mProfilingData.mStartTime	= theLastRunTime;
@@ -270,7 +276,8 @@ myXTMSetup(int32 time, bool (*func)(void)) {
     theTask->mThread		= SDL_CreateThread(thread_loop, "myXTMSetup_taskThread", theTask);
 
     // Set thread priority a little higher
-    BoostThreadPriority(theTask->mThread);
+  //DCW Prevent setting scheduler parameters to permit QOS on iOS
+   //BoostThreadPriority(theTask->mThread);
     
     sOutstandingTasks.push_back(theTask);
     
@@ -315,7 +322,8 @@ myTMReset(myTMTaskPtr task) {
             task->mThread	= SDL_CreateThread(thread_loop, "myTMReset_taskThread", task);
 
             // Set thread priority a little higher
-            BoostThreadPriority(task->mThread);
+          //DCW Prevent setting scheduler parameters to permit QOS on iOS
+          //BoostThreadPriority(task->mThread);
         }
     }
 }

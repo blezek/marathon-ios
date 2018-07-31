@@ -127,9 +127,8 @@ static vector<entry_point> levels;
   [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateNormal];
   [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateSelected];
   [self.startLevelSlider setThumbImage:[UIImage imageNamed:@"SliderTab"] forState:UIControlStateHighlighted];
-  [self.startLevelSlider setMaximumTrackImage:[UIImage imageNamed:@"SliderBlackTrack"] forState:UIControlStateNormal];
-  [self.startLevelSlider setMinimumTrackImage:[UIImage imageNamed:@"SliderRedTrack"] forState:UIControlStateNormal];
-
+  [self.startLevelSlider setMaximumTrackImage:[UIImage imageNamed:@"SliderGreyTrack"] forState:UIControlStateNormal];
+  [self.startLevelSlider setMinimumTrackImage:[UIImage imageNamed:@"SliderWhiteTrack"] forState:UIControlStateNormal];
   
   /*CAAnimation *group = [Effects appearAnimation];
   for ( UIView *v in self.view.subviews ) {

@@ -27,6 +27,9 @@
 #ifdef HAVE_OPENGL
 #include "OGL_Render.h"
 
+#include "AlephOneHelper.h"
+#include "MatrixStack.hpp"
+
 extern bool OGL_SwapBuffers();
 
 OGL_LoadScreen *OGL_LoadScreen::instance_;
@@ -113,10 +116,17 @@ void OGL_LoadScreen::Progress(const int progress)
 
 	if (useProgress) 
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef(x_offset, y_offset, 0.0);
-		glScalef(x_scale, y_scale, 1.0);
+    if (useShaderRenderer()){
+      MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->translatef(x_offset, y_offset, 0.0);
+      MatrixStack::Instance()->scalef(x_scale, y_scale, 1.0);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+      glPushMatrix();
+      glTranslatef(x_offset, y_offset, 0.0);
+      glScalef(x_scale, y_scale, 1.0);
+    }
 		
 		// draw the progress bar background
 		SglColor3us(colors[0].red, colors[0].green, colors[0].blue); //DCW
@@ -137,8 +147,11 @@ void OGL_LoadScreen::Progress(const int progress)
 		// draw the progress bar foreground
 		SglColor3us(colors[1].red, colors[1].green, colors[1].blue); //DCW
 		OGL_RenderRect(left, top, width, height);
-		
-		glPopMatrix();
+    if (useShaderRenderer()){
+      MatrixStack::Instance()->popMatrix();
+    } else {
+      glPopMatrix();
+    }
 	}
 	
 	OGL_SwapBuffers();

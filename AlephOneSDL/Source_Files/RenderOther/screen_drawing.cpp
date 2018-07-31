@@ -199,7 +199,8 @@ void initialize_screen_drawing(
   // DJB Change terminal font!
   if ( !helperRunningOniPad() ) {
     InterfaceFonts[4].Size = 18;
-    InterfaceFonts[4].File.assign("bankgthd.ttf");
+    //InterfaceFonts[4].File.assign("bankgthd.ttf");
+    InterfaceFonts[4].File.assign("../bankgthd.ttf"); //Check in the4 application bundle root for the font instead of the scenario.
   }
   
 	/* load the font stuff. */

@@ -8,6 +8,8 @@
 
 #import "HUDViewController.h"
 
+#import "AlephOneAppDelegate.h"
+
 extern "C" { 
 #include "SDL_keyboard_c.h"
 #include "SDL_keyboard.h"
@@ -33,12 +35,12 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation HUDViewController
-@synthesize primaryFireKey, secondaryFireKey;
+@synthesize primaryFireKey, secondaryFireKey, lookingAtRefuel, lookPadView, netStats;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {      
+    if (self) {
       key_definition *key = standard_key_definitions;
       for (unsigned i=0; i<NUMBER_OF_STANDARD_KEY_DEFINITIONS; i++, key++) {
         if ( key->action_flag == _left_trigger_state ){
@@ -119,11 +121,19 @@ extern "C" {
 - (IBAction)nextWeaponUp:(id)sender {
   setKey(nextWeaponKey, 0);
 }
+- (IBAction)doNextWeapon:(id)sender{
+  [self nextWeaponDown:self];
+  [self performSelector:@selector(nextWeaponUp:) withObject:self afterDelay:0.10];
+}
 - (IBAction)previousWeaponDown:(id)sender {
   setKey(previousWeaponKey, 1);
 }
 - (IBAction)previousWeaponUp:(id)sender {
   setKey(previousWeaponKey, 0);
+}
+- (IBAction)doPreviousWeapon:(id)sender{
+  [self previousWeaponDown:self];
+  [self performSelector:@selector(previousWeaponUp:) withObject:self afterDelay:0.10];
 }
 - (IBAction)inventoryDown:(id)sender {
   setKey(inventoryKey, 1);
@@ -174,11 +184,16 @@ extern "C" {
   setKey(mapKey, 0);
 }
 
+- (IBAction)doMap:(id)sender{
+  [self mapDown:self];
+  [self performSelector:@selector(mapUp:) withObject:self afterDelay:0.10];
+}
+
 - (IBAction)consoleDown:(id)sender {
-  setKey(consoleKey, 1);
+  //setKey(consoleKey, 1);
 }
 - (IBAction)consoleUp:(id)sender{
-  setKey(consoleKey, 0);
+  //setKey(consoleKey, 0);
   
   SDL_Event enter, unenter;
   enter.type = SDL_KEYDOWN;
@@ -190,9 +205,32 @@ extern "C" {
   unenter.key.keysym.sym=SDLK_BACKSLASH;
   SDL_PushEvent(&unenter);
 
-  
 }
 
+- (IBAction)netStatsDown:(id)sender {
+  SDL_Event stats, unstats;
+  stats.type = SDL_KEYDOWN;
+  SDL_utf8strlcpy(stats.text.text, "1", SDL_arraysize(stats.text.text));
+  stats.key.keysym.sym=SDLK_1;
+  SDL_PushEvent(&stats);
+}
+- (IBAction)netStatsUp:(id)sender{
+  SDL_Event stats, unstats;
+  unstats.type = SDL_KEYUP;
+  SDL_utf8strlcpy(unstats.text.text, "1", SDL_arraysize(unstats.text.text));
+  unstats.key.keysym.sym=SDLK_1;
+  SDL_PushEvent(&unstats);
+}
+
+- (IBAction)doConsole:(id)sender{
+  [self consoleDown:self];
+  [self performSelector:@selector(consoleUp:) withObject:self afterDelay:0.10];
+}
+
+- (IBAction)doNetStats:(id)sender{
+  [self netStatsDown:self];
+  [self performSelector:@selector(netStatsUp:) withObject:self afterDelay:0.10];
+}
 
 // Looking
 - (IBAction)lookUpDown:(id)sender {
@@ -242,6 +280,8 @@ extern "C" {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [netStats setHidden: ![[AlephOneAppDelegate sharedAppDelegate] gameIsNetworked]];
+
     // Do any additional setup after loading the view from its nib.
 }
 

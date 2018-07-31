@@ -40,7 +40,7 @@ public:
 	void Start(uint16 rate, bool sixteen_bit, bool stereo, int num_channels, int volume, uint16 samples);
 	void Stop();
 
-	void SetVolume(short volume) { main_volume = volume; }
+	void SetVolume(short volume) { fprintf(stderr, "Setting volume from %d to %d\n", main_volume, volume ); main_volume = volume; }
 
 	void BufferSound(int channel, const SoundInfo& header, boost::shared_ptr<SoundData> data, _fixed pitch);
 
@@ -60,7 +60,7 @@ public:
 	void UpdateMusicChannel(uint8* data, int len);
 	bool MusicPlaying() { return channels[sound_channel_count + MUSIC_CHANNEL].active; }
 	void StopMusicChannel() { SDL_LockAudio(); channels[sound_channel_count + MUSIC_CHANNEL].active = false; SDL_UnlockAudio(); }
-	void SetMusicChannelVolume(int16 volume) { channels[sound_channel_count + MUSIC_CHANNEL].left_volume = channels[sound_channel_count + MUSIC_CHANNEL].right_volume = volume; }
+  void SetMusicChannelVolume(int16 volume) { /*fprintf(stderr, "Setting music volume from %d to %d\n", channels[sound_channel_count + MUSIC_CHANNEL].left_volume, volume);*/ channels[sound_channel_count + MUSIC_CHANNEL].left_volume = channels[sound_channel_count + MUSIC_CHANNEL].right_volume = volume; }
 
 	SDL_AudioSpec desired, obtained;
 

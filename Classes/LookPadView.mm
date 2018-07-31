@@ -33,6 +33,7 @@ extern "C" {
 
 @synthesize rotationRate;
 @synthesize lastGyroUpdate;
+@synthesize specialGyroModeActive;
 
 - (void)setup {
 	
@@ -59,7 +60,7 @@ extern "C" {
   }
 	
   SDL_MouseInit();
-  
+  [self unPauseGyro];
 	specialGyroModeActive = 0;
 	[self startGyro];
 
@@ -73,6 +74,8 @@ extern "C" {
 	dx = currentPoint.x;
 	dy = currentPoint.y;
 	
+  [self unPauseGyro];
+  
 	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x < width * (2.0/3.0)) {
 		setKey(primaryFireKey, 1);
 	} else {
@@ -128,8 +131,6 @@ extern "C" {
 	gyroDeltaX = 0;
 	gyroDeltaY = 0;
 	gyroDeltaZ = 0;
-	//lookDeltaX = 0;
-	//lookDeltaY = 0;
 	[self setLastGyroUpdate:[NSDate date]];
 }
 
@@ -153,6 +154,13 @@ extern "C" {
    }];
 }
 
+- (void)pauseGyro {
+  gyroPaused=1;
+}
+- (void)unPauseGyro {
+  gyroPaused=0;
+}
+
 - (void)handleGyro {
 
   
@@ -160,6 +168,9 @@ extern "C" {
     [self resetGyro]; //If we are not in a game, keep the gyro clear.
     return;
   }
+  
+  if(gyroPaused)
+    return;
   
 	double elapsedtime = 0.0 - [lastGyroUpdate timeIntervalSinceNow];
 	[self setLastGyroUpdate:[NSDate date]];
@@ -189,6 +200,11 @@ extern "C" {
 	double mouseMovementY = gyroDeltaY;
 	gyroDeltaY -= (double)mouseMovementY;
 	
+  if( ![[NSUserDefaults standardUserDefaults] boolForKey:kGyroAiming] ) {
+    mouseMovementX = 0;
+    mouseMovementY = 0;
+  }
+  
 	double mouseMovementZ = 0; //This is actually going to become X movement below.
 	if (specialGyroModeActive ){
 		mouseMovementZ = gyroDeltaZ;

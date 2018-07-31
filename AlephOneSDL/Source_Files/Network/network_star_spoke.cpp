@@ -58,7 +58,7 @@ enum {
         kDefaultInGameTicksBeforeNetDeath = 5 * TICKS_PER_SECOND,
         kDefaultOutgoingFlagsQueueSize = TICKS_PER_SECOND / 2,
         kDefaultRecoverySendPeriod = TICKS_PER_SECOND / 2,
-	kDefaultTimingWindowSize = 3 * TICKS_PER_SECOND,
+	kDefaultTimingWindowSize =  3 * TICKS_PER_SECOND,
 	kDefaultTimingNthElement = kDefaultTimingWindowSize / 2,
 	kLossyByteStreamDataBufferSize = 1280,
 	kTypicalLossyByteStreamChunkSize = 56,
