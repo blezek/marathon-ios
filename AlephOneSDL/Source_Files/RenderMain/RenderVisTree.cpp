@@ -38,6 +38,8 @@ Oct 13, 2000
 #include "map.h"
 #include "RenderVisTree.h"
 
+//DCW mouse smoothing
+#include "mouse.h"
 
 // LP: "recommended" sizes of stuff in growable lists
 #define POLYGON_QUEUE_SIZE 256
@@ -160,8 +162,14 @@ void RenderVisTreeClass::build_render_tree()
 				
 				/* transform all visited endpoints */
 				endpoint->transformed= endpoint->vertex;
-				transform_overflow_point2d(&endpoint->transformed, (world_point2d *) &view->origin, view->yaw, &endpoint->flags);
-
+        
+        //DCW mouselook smoothing test. This might be a good place to smooth vertical walls.
+        if (shouldSmoothMouselook()) {
+          transform_overflow_point2d_smoothed(&endpoint->transformed, (world_point2d *) &view->origin, view->yaw, &endpoint->flags);
+        } else {
+          transform_overflow_point2d(&endpoint->transformed, (world_point2d *) &view->origin, view->yaw, &endpoint->flags);
+        }
+        
 				/* calculate an outbound vector to this endpoint */
 				// LP: changed to do long distance correctly.	
 				_vector.i= int32(endpoint->vertex.x)-int32(view->origin.x);

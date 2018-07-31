@@ -31,7 +31,7 @@
 
 // DJB OpenGL debug
 #include "AlephOneHelper.h"
-
+#include "MatrixStack.hpp"
 
 const int OGL_Blitter::tile_size;
 set<OGL_Blitter*> *OGL_Blitter::m_blitter_registry = NULL;

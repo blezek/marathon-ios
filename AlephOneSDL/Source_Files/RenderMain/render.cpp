@@ -242,6 +242,13 @@ extern WindowPtr screen_window;
 #include "preferences.h"
 #include "screen.h"
 
+//DCW Used for mouse smoothing
+#include "mouse.h"
+
+#include "MatrixStack.hpp" //DCW SHIT TEST
+
+#include "OGL_Shader.h" //DCW shit test
+
 /* use native alignment */
 #if defined (powerc) || defined (__powerc)
 #pragma options align=power
@@ -432,7 +439,7 @@ void render_view(
 	memset(automap_polygons, 0, (dynamic_world->polygon_count/8+((dynamic_world->polygon_count%8)?1:0)*sizeof(byte)));
 #endif
 */
-	
+ 
 	if(view->terminal_mode_active)
 	{
 		/* Render the computer interface. */
@@ -476,10 +483,10 @@ void render_view(
 #ifdef HAVE_OPENGL
 			}
 #endif
-			
+      
 			// Set its view:
 			RasPtr->SetView(*view);
-			
+
 			// Start rendering main view
 			RasPtr->Begin();
 			
@@ -493,12 +500,16 @@ void render_view(
 				it to the texture-mapping code */
 			RenPtr->view = view;
 			RenPtr->RasPtr = RasPtr;
-			RenPtr->render_tree();
-			
+      glPushGroupMarkerEXT(0, "render_tree");
+      RenPtr->render_tree();
+      glPopGroupMarkerEXT();
+      
 			// LP: won't put this into a separate class
-			/* render the playerÕs weapons, etc. */		
-			render_viewer_sprite_layer(view, RasPtr);
-			
+			/* render the playerÕs weapons, etc. */
+      glPushGroupMarkerEXT(0, "render_viewer_sprite_layer");
+      render_viewer_sprite_layer(view, RasPtr);
+      glPopGroupMarkerEXT();
+      
 			// Finish rendering main view
 			RasPtr->End();
 		}
@@ -506,7 +517,9 @@ void render_view(
 		if (view->overhead_map_active)
 		{
 			/* if the overhead map is active, render it */
+      glPushGroupMarkerEXT(0, "render_overhead_map");
 			render_overhead_map(view);
+      glPopGroupMarkerEXT();
 		}
 	}
 }
@@ -614,15 +627,26 @@ static void update_view_data(
 	
 	/* calculate world_to_screen_y*tan(pitch) */
 	view->dtanpitch= (view->world_to_screen_y*sine_table[view->pitch])/cosine_table[view->pitch];
-
+  
+  //DCW mouselook smoothing test. Works for smoothing pitch.
+  if ( shouldSmoothMouselook() ) {
+    view->dtanpitch= (view->world_to_screen_y*sine_table_calculated(view->pitch + lostMousePrecisionY()) )/cosine_table_calculated(view->pitch + lostMousePrecisionY());
+  }
+  
 	/* calculate left cone vector */
 	theta= NORMALIZE_ANGLE(view->yaw-view->half_cone);
 	view->left_edge.i= cosine_table[theta], view->left_edge.j= sine_table[theta];
-	
+  
+  //DCW mouselook smoothing test
+  //view->left_edge.i= interpolateAngleTable(cosine_table, theta), view->left_edge.j= interpolateAngleTable(sine_table, theta);
+
 	/* calculate right cone vector */
 	theta= NORMALIZE_ANGLE(view->yaw+view->half_cone);
 	view->right_edge.i= cosine_table[theta], view->right_edge.j= sine_table[theta];
-	
+
+  //DCW mouselook smoothing test
+  //view->right_edge.i= interpolateAngleTable(cosine_table, theta), view->right_edge.j= interpolateAngleTable(sine_table, theta);
+
 	/* calculate top cone vector (negative to clip the right direction) */
 	view->top_edge.i= - view->world_to_screen_y;
 	view->top_edge.j= - (view->half_screen_height + view->dtanpitch); /* ==k */
@@ -1025,8 +1049,8 @@ static void render_viewer_sprite_layer(view_data *view, RasterizerClass *RasPtr)
 		textured_rectangle.xc = (textured_rectangle.x0 + textured_rectangle.x1) >> 1;
 		
 		/* make the weapon reflect the ownerÕs transfer mode */
-		instantiate_rectangle_transfer_mode(view, &textured_rectangle, display_data.transfer_mode, display_data.transfer_phase);
-		
+    instantiate_rectangle_transfer_mode(view, &textured_rectangle, display_data.transfer_mode, display_data.transfer_phase);
+    
 		/* and draw it */
 		// LP: added OpenGL support
 		RasPtr->texture_rectangle(textured_rectangle);

@@ -913,7 +913,7 @@ bool load_and_start_game(FileSpecifier& File)
 		{
 			Plugins::instance()->set_mode(userWantsMultiplayer ? Plugins::kMode_Net : Plugins::kMode_Solo);
 			Crosshairs_SetActive(player_preferences->crosshairs_active);
-			LoadHUDLua();
+      LoadHUDLua();
 			RunLuaHUDScript();
 			
 			// load the scripts we put off before
@@ -994,6 +994,9 @@ bool load_and_start_game(FileSpecifier& File)
 		/* We failed.  Balance the cursor */
 		/* Should this also force the system colors or something? */
 		show_cursor();
+    
+    //DCW: Uhhh... I think I'd like to show the main menu here.
+    display_main_menu();
 	}
 
 	return success;
@@ -2201,7 +2204,7 @@ static bool begin_game(
 		/* Begin the game! */
     // DJB Clear any existing errors
     clear_game_error();
-		success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
+    success= new_game(number_of_players, is_networked, &game_information, starts, &entry);
 		if(success)
 		{
 			start_game(user, false);
@@ -2657,6 +2660,10 @@ static void handle_interface_menu_screen_click(
 	short y,
 	bool cheatkeys_down)
 {
+  //DCW Sometimes, clicks hit this screen causing weirdness like a rougue About screen causing a multiplayer joiner to hang on a black screen.
+  //Lets just exit.
+  return;
+  
 	short index;
 	screen_rectangle *screen_rect;
 	short xoffset = 0, yoffset = 0;
@@ -3346,6 +3353,13 @@ size_t should_restore_game_networked(FileSpecifier& file)
 
 	d.set_widget_placer(placer);
 
+  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shopwn.
+  printf("TODO: enable multiplayer restore?\n");
+  if(dynamic_world->player_count != 0) {
+    switchToSDLMenu();
+  }
+  return theRestoreAsNetgameToggle->get_selection(); //DCW temporary
+  
         if(d.run() == 0)
         {
                 theResult = theRestoreAsNetgameToggle->get_selection();

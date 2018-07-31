@@ -79,7 +79,7 @@
 
 static int os_execute (lua_State *L) {
   const char *cmd = luaL_optstring(L, 1, NULL);
-  int stat = system(cmd);
+  int stat = 0; //system(cmd); //DCW: no system() on ios
   if (cmd != NULL)
     return luaL_execresult(L, stat);
   else {

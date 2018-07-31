@@ -13,12 +13,13 @@
 #include "preferences.h"
 #import "map.h"
 #import "Effects.h"
+#import "AlephOneHelper.h"
 
 @implementation SaveGameViewController
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize uiView;
 @synthesize savedGameCell;
-
+@synthesize loadButton, duplicateButton, deleteButton;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -29,6 +30,8 @@
     MLog ( @"inside initWithNib" );
     self.managedObjectContext = [AlephOneAppDelegate sharedAppDelegate].managedObjectContext;
   }
+  
+  [self setButtonsEnabled:NO];
   return self;
 }
            
@@ -64,11 +67,7 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if ( [[AlephOneAppDelegate sharedAppDelegate] runningOniPad] ) {
-    return 390.0;
-  } else {
-    return 166.0;
-  }
+    return 126.0;
 }
 
 
@@ -81,23 +80,34 @@
 #pragma mark Animations
 
 - (void)appear {
-  self.uiView.hidden = NO;
-  CAAnimation* group = [Effects appearAnimation];
+  //self.uiView.hidden = NO;
+  /*CAAnimation* group = [Effects appearAnimation];
   for ( UIView *v in self.uiView.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:@"appear"];
   }
-  [self.uiView.layer addAnimation:group forKey:nil];
+  [self.uiView.layer addAnimation:group forKey:nil];*/
+  if (fastStart()) {
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:NULL];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self load:self];
+  }
 }
   
 - (void)disappear {
-  CAAnimation* group = [Effects disappearAnimation];
+ /* CAAnimation* group = [Effects disappearAnimation];
 
   for ( UIView *v in self.uiView.subviews ) {
     [v.layer removeAllAnimations];
     [v.layer addAnimation:group forKey:nil];
-  }
-  [self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  }*/
+  //[self.uiView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+}
+
+- (void)setButtonsEnabled:(bool)shouldEnable {
+  [loadButton setEnabled:shouldEnable];
+  [duplicateButton setEnabled:shouldEnable];
+  [deleteButton setEnabled:shouldEnable];
 }
 
 
@@ -109,17 +119,21 @@
 }
 
 - (NSIndexPath*)selectedIndex {
-  NSArray *paths = [self.tableView indexPathsForVisibleRows];
-  if ( [paths count] > 0 ) {
-    return [paths objectAtIndex:0];
-  } else {
-    return nil;
-  }
+  return [self.tableView indexPathForSelectedRow];
 }
 
 - (IBAction)deleteGame:(id)sender {
   if ( [self selectedIndex] == nil ) { return; }
-  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Confirm deletion of saved game"
+  
+  
+  NSIndexPath* indexPath = [self selectedIndex];
+  NSString *storageID;
+  if ( indexPath != nil ) {
+    SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    storageID=[NSString stringWithFormat:@"0x%x", [game hash]];
+  }
+  
+  UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Confirm deletion of saved game ID %@" , storageID ]
                                                   delegate:self
                                          cancelButtonTitle:@"Skip"
                                     destructiveButtonTitle:@"Delete"
@@ -145,6 +159,7 @@
     [self.managedObjectContext deleteObject:game];
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
+    [self setButtonsEnabled:NO];
   }
 }
 
@@ -176,14 +191,36 @@
     [[NSFileManager defaultManager] copyItemAtPath:[self fullPath:game.mapFilename] toPath:[self fullPath:newGame.mapFilename] error:nil];
   }
   [self.tableView reloadData];
+  [self setButtonsEnabled:NO];
 }
 
 - (IBAction)load:(id)sender {
-  MLog ( @"Load" );
   NSIndexPath* indexPath = [self selectedIndex];
-  if ( indexPath != nil ) {
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+  
+  if (!indexPath) {
+    MLog(@"No selection to load.");
+    return;
+  } else{
+    MLog(@"Load");
   }
+  
+  [self setButtonsEnabled:NO];
+  
+  // Find the selected saved game.
+  SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  // Make sure it's real!
+  if ( ![[NSFileManager defaultManager] fileExistsAtPath:[self fullPath:game.filename]] ) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                 message:@"For some reason, this saved game does not exist or is corrupt.  Please delete it."
+                                                delegate:self
+                                       cancelButtonTitle:@"Ok"
+                                       otherButtonTitles:nil];
+    [av show];
+    [av release];
+    return;
+  }
+  
+  [[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
 }
 
 - (NSString*)getSaveGameDirectory {
@@ -230,7 +267,7 @@
   NSString *filename = [NSString stringWithFormat:@"%@", uuid];
   NSLog ( @"Filename: %@", filename );
   game.filename = filename;
-  game.mapFilename = [NSString stringWithFormat:@"%@-Map.bmp", uuid];
+  game.mapFilename = [NSString stringWithFormat:@"%@-Map.png", uuid];
   game.difficulty = [NSString stringWithFormat:@"%d", player_preferences->difficulty_level];
   game.lastSaveTime = [NSDate date];
   game.level = [NSString stringWithFormat:@"%s", static_world->level_name];
@@ -279,6 +316,12 @@
   // Configure the cell...
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
   [cell setFields:game withController:self];
+  
+  //Only color selected cell, if any.
+//  if( [indexPath indexAtPosition:1] == [[self selectedIndex] indexAtPosition:1]) {
+//    [cell setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5]];
+//  }
+  
   return cell;
 }
 
@@ -464,6 +507,23 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  //un-highlight all rows
+  for (NSInteger j = 0; j < [tableView numberOfSections]; ++j)
+  {
+    for (NSInteger i = 0; i < [tableView numberOfRowsInSection:j]; ++i)
+    {
+      [[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]] setBackgroundColor:UIColor.clearColor];
+    }
+  }
+  
+  //highlight touched row
+  NSLog(@"Selected row %d",[[self selectedIndex] indexAtPosition:1]);
+  [[tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5]];
+
+  [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+  
+  [self setButtonsEnabled:YES];
+  
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
   // Make sure it's real!
@@ -477,9 +537,9 @@
     [av release];
     return;
   }
-    
-  [[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
-  // [[GameViewController sharedInstance] gameChosen:game];
+  
+  //DCW commenting out so we don't load games just by clicking on them.
+  //[[GameViewController sharedInstance] performSelector:@selector(gameChosen:) withObject:game afterDelay:0.0];
 }
 
 

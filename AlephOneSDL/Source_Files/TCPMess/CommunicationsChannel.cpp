@@ -479,7 +479,7 @@ CommunicationsChannel::connect(const IPaddress& inAddress)
 	if(mSocket != NULL)
 	{
       //DCW Set an appropriate network socket service type.
-    int st = NET_SERVICE_TYPE_VI;
+    int st = NET_SERVICE_TYPE_VO;
     setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
     
 		mConnected = true;
@@ -676,14 +676,13 @@ CommunicationsChannelFactory::CommunicationsChannelFactory(uint16 inPort)
 	IPaddress theAddress;
 	theAddress.host = INADDR_ANY;
 	theAddress.port = SDL_SwapBE16(inPort);
-
+  
 	mSocket = SDLNet_TCP_Open(&theAddress);
 
-  //DCW Set an appropriate network socket service type.
-  int st = NET_SERVICE_TYPE_VI;
+  //DCW Set an appropriate network socket service type. Second connection listening when hosting
+  int st = NET_SERVICE_TYPE_VO;
   setsockopt((int)(mSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 }
-
 
 
 CommunicationsChannel*
@@ -698,6 +697,11 @@ CommunicationsChannelFactory::newIncomingConnection()
 		if(SDLNet_CheckSockets(theSocketSet, 0) > 0) {
 			// Yee-haw!  There's an incoming connection request.
 			TCPsocket theNewSocket = SDLNet_TCP_Accept(mSocket);
+      
+      //DCW Set an appropriate network socket service type. Second connection listening when hosting
+      int st = NET_SERVICE_TYPE_VO;
+      setsockopt((int)(theNewSocket->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
+
 			theNewChannel = new CommunicationsChannel(theNewSocket);
 			MakeTCPsocketNonBlocking(&theNewSocket);
 

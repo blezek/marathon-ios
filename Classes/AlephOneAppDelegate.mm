@@ -11,7 +11,7 @@
 #import "ProgressViewController.h"
 #import "AVFoundation/AVAudioSession.h"
 #import "Appirater.h"
-#import "Achievements.h"
+
 #import "Tracking.h"
 #import "Effects.h"
 ////#import "TestFlight.h"
@@ -42,7 +42,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 
 @implementation AlephOneAppDelegate
 
-@synthesize window, scenario, game, OpenGLESVersion, purchases;
+@synthesize window, scenario, game, OpenGLESVersion;
 @synthesize viewController;
 @synthesize oglWidth, oglHeight, retinaDisplay, longScreenDimension, shortScreenDimension;
 
@@ -52,7 +52,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 - (void)startAlephOne {
   finishedStartup = YES;
 
-  
     //DCW bypass sdl main
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_AddHintCallback(SDL_HINT_IDLE_TIMER_DISABLED, SDL_IdleTimerDisabledChanged, NULL);
@@ -64,7 +63,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   
   AlephOneInitialize();
   MLog ( @"AlephOneInitialize finished" );
-  
+
   SDL_iPhoneSetEventPump(SDL_TRUE);
   
   //DCW
@@ -77,9 +76,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
   
   
-  // Kick in the purchases
-  [self.purchases checkPurchases];
-  
 #ifdef USE_CADisplayLoop
   /*
   [UIView beginAnimations:nil context:nil];
@@ -90,6 +86,10 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
    */
   [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
+  
+  if (fastStart()) {
+    [game menuLoadGame];
+  }
   
 }
 
@@ -128,9 +128,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   introFinished = NO;
 	finishedStartup = NO;
   OpenGLESVersion = 1;
-  self.purchases = [[Purchases alloc] init];
-  [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-  [Achievements login];
 
 	//DCW: provide a common way to get the current screen dimensions for landscape.
 	longScreenDimension = max([[UIScreen mainScreen] bounds].size.height,[[UIScreen mainScreen] bounds].size.width);
@@ -145,24 +142,30 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"2.0", kGamma,
-                               @"NO", kTapShoots,
+                               @"YES", kTapShoots,
                                @"NO", kSecondTapShoots,
-                               @"0.5", kHSensitivity,
-                               @"0.5", kVSensitivity,
+                               @"0.85", kHSensitivity,
+                               @"0.6", kVSensitivity,
                                @"1.0", kSfxVolume,
-                               @"1.0", kMusicVolume,
+                               @"0.8", kMusicVolume,
                                @"0", kEntryLevelNumber,
-                               @"NO", kCrosshairs,
+                               @"YES", kCrosshairs,
+                               @"NO", kOnScreenTrigger,
+                               @"YES",  kHiLowTapsAltFire,
+                               @"YES", kGyroAiming,
+                               @"NO", kTiltTurning,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
                                @"YES", kUsageData,
-                               @"NO", kHaveVidmasterMode,
-                               @"YES", kUseVidmasterMode,
+                               @"YES", kHaveVidmasterMode,
+                               @"NO", kUseVidmasterMode,
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
                                @"NO", kInvertY,
                                @"YES", kAutorecenter,
+                               @"YES", kAlwaysRun,
+                               @"YES", kSmoothMouselook,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -295,9 +298,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking trackPageview:@"/startup"];
 ////  [Tracking tagEvent:@"startup"];
 
-  // Tracking and timer
-  [NSTimer scheduledTimerWithTimeInterval:60 target:[AlephOneAppDelegate sharedAppDelegate] selector:@selector(uploadAchievements) userInfo:nil repeats:YES];
-  
+
   // Do opening animations
   self.game.bungieAerospaceImageView.alpha = 1.0;
   self.game.episodeImageView.alpha = 0.0;
@@ -352,6 +353,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [self.avPlayer play];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.avPlayer currentItem]];
 
+  if (fastStart()) {
+    [self finishIntro:self];
+  }
   
   //[UIView animateWithDuration:duration delay:delay options:0 animations:fadeLoadingToWaiting completion:^(BOOL cc) {
   //  [UIView animateWithDuration:duration delay:delay options:0 animations:fadeWaitingToLogo completion:nil];
@@ -377,9 +381,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     
     self.game.mainMenuBackground.alpha = 0;
     
-    float logoZoomScale = .66;
+    float logoZoomScale = .8; //Fraction to start intro logo zoom from
     CGRect endlogo = self.game.mainMenuLogo.bounds;
-    CGRect startlogo = self.game.mainMenuLogo.bounds; //will be .66 of original size
+    CGRect startlogo = self.game.mainMenuLogo.bounds;
     startlogo.origin.y += (startlogo.size.width - startlogo.size.width*logoZoomScale)/2;
     startlogo.size.width *=logoZoomScale;
     startlogo.size.height *=logoZoomScale;
@@ -437,7 +441,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking tagEvent:@"applicationWillResignActive"];
   
   [game pauseForBackground:self];
-  if(!game_is_networked) {
+  if(![self gameIsNetworked]) {
     [game stopAnimation];
   }
 }
@@ -465,7 +469,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   if (bgTask == UIBackgroundTaskInvalid) {
     NSLog(@"This application does not support background mode");
   } else {
-    NSLog(@"Application will continue to run in background as task %lu", bgTask );
+    //NSLog(@"Application will continue to run in background as task %lu", bgTask );
     
     [self performSelector:@selector(endBackgroundTask:) withObject:[NSNumber numberWithUnsignedLong: bgTask] afterDelay:240];
   }
@@ -490,12 +494,18 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   // [game startAnimation];
 }
 
+- (bool)gameIsNetworked {
+  return game_is_networked;
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 ////  [Tracking trackPageview:@"/applicationDidBecomeActive"];
 ////  [Tracking tagEvent:@"applicationDidBecomeActive"];
+  
   if ( finishedStartup ) {
     [game startAnimation];
+  } else if (!introFinished && self.avPlayer) {
+    [self.avPlayer play]; //We need to play because the avplayer pauses in the background.
   }
 }
 
@@ -545,70 +555,6 @@ const char* argv[] = { "AlephOneHD" };
 }
 
 
-#pragma mark -
-#pragma mark Transactions
-
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
-  for (SKPaymentTransaction *transaction in transactions)
-  {
-    BOOL notifiedOfFailure = NO;
-    switch (transaction.transactionState)
-    {
-      case SKPaymentTransactionStatePurchased:
-      case SKPaymentTransactionStateRestored:
-        MLog ( @"Processing transaction %@", transaction.payment.productIdentifier );
-        if ( [transaction.payment.productIdentifier isEqual:VidmasterModeProductID] ) {
-          MLog ( @"Enable Vidmaster mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveVidmasterMode];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        if ( [transaction.payment.productIdentifier isEqual:HDModeProductID] ) {
-          MLog ( @"Enable HD mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveTTEP];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        if ( [transaction.payment.productIdentifier isEqual:ReticulesProductID] ) {
-          MLog ( @"Enable Reticule mode!" );
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHaveReticleMode];
-          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCrosshairs];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        MLog ( @"Transaction completed" );
-        break;
-      case SKPaymentTransactionStateFailed:
-        // Log something [self failedTransaction:transaction];
-        // Pop up a dialog
-        if ( !notifiedOfFailure ) {
-          notifiedOfFailure = YES;
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:transaction.error.localizedDescription
-                                                       message:transaction.error.localizedFailureReason
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                           otherButtonTitles:nil];
-          [av show];
-          [av release];
-        }
-        MLog ( @"Transaction failed" );
-        break;
-      default:
-        break;
-    }
-  }
-  [[GameViewController sharedInstance].purchaseViewController updateView];
-}
-
-#pragma mark -
-#pragma mark Achievements
-
-- (void)uploadAchievements {
-  MLog(@"Tracking & Achievements");
-  [Achievements uploadAchievements];
-////  [Tracking dispatch];
-}
 
 #pragma mark -
 #pragma mark OpenGL
