@@ -2495,13 +2495,13 @@ void read_preferences ()
 	*sound_preferences = SoundManager::Parameters();
 	default_environment_preferences(environment_preferences);
 
-    //DCW lets add some more options
-  graphics_preferences->OGL_Configure.Flags  |=
-    OGL_Flag_Blur
-  | OGL_Flag_BumpMap
-  | OGL_Flag_Fader;
-
+    //DCW playing around with some more options
+  graphics_preferences->OGL_Configure.Flags  |= OGL_Flag_Blur;
+  //| OGL_Flag_BumpMap
+  //| OGL_Flag_Fader;
   
+  graphics_preferences->OGL_Configure.Flags &= ~OGL_Flag_FlatStatic; //DCW turn off flat static
+    
 	// Slurp in the file and parse it
 
 	FileSpecifier FileSpec;
@@ -2512,9 +2512,9 @@ void read_preferences ()
 	OpenedFile OFile;
 	bool defaults = false;
   
-    //DCW Create new prefs file if it doesn't exist, but leave any existing file in place.
-  setDefaultA1PrefsIfNeeded();
- // SDL_RWops *pfile = SDL_RWFromFile(FileSpec.GetPath(), "a+");
+  
+  
+  // SDL_RWops *pfile = SDL_RWFromFile(FileSpec.GetPath(), "a+");
   //if(pfile) { SDL_RWclose (pfile); }
   
 	bool opened = FileSpec.Open(OFile);
@@ -2523,6 +2523,12 @@ void read_preferences ()
 		defaults = true;
 		FileSpec.SetNameWithPath(getcstr(temporary, strFILENAMES, filenamePREFERENCES));
 		opened = FileSpec.Open(OFile);
+    
+      //DCW if we still can't open, write prefs and try one more time.
+    if (!opened) {
+      write_preferences();
+      opened = FileSpec.Open(OFile);
+    }
 	}
 	
 	bool parse_error = false;
@@ -2550,8 +2556,8 @@ void read_preferences ()
 				parse_player_preferences(child, version);
 //			BOOST_FOREACH(InfoTree child, root.children_named("input"))
 //				parse_input_preferences(child, version);
-//			BOOST_FOREACH(InfoTree child, root.children_named("sound"))
-//				parse_sound_preferences(child, version);
+			BOOST_FOREACH(InfoTree child, root.children_named("sound"))
+				parse_sound_preferences(child, version);
 #if !defined(DISABLE_NETWORKING)
 			BOOST_FOREACH(InfoTree child, root.children_named("network"))
 				parse_network_preferences(child, version);
@@ -2583,15 +2589,17 @@ void read_preferences ()
 	}
 
   helperSetPreferences( false); //DJB
-  
+  overrideSomeA1Prefs(); //DCW
+
   // Print out some things...
-  printf ( "Metaserver Login: %d\n", network_preferences->metaserver_login );
+  printf ( "Metaserver Login: %s\n", network_preferences->metaserver_login );
   printf ( "Horizontal Sensitivity: %d\n", input_preferences->sens_horizontal );
   printf ( "Vertical Sensitivity: %d\n", input_preferences->sens_vertical );
   printf ( "VSen (int): %d\n", FIXED_INTEGERAL_PART(input_preferences->sens_vertical) );
   printf ( "Sound channels: %hd\n", sound_preferences->channel_count );
+  printf ( "Main Volume: %hd\n", sound_preferences->volume );
   printf ( "Music Volume: %hd\n", sound_preferences->music );
-  
+
   
 	// Check on the read-in prefs
 	validate_graphics_preferences(graphics_preferences);
@@ -3094,6 +3102,13 @@ static void default_graphics_preferences(graphics_preferences_data *preferences)
 #else
 	preferences->screen_mode.acceleration = _no_acceleration;
 #endif
+  
+  //DCW we want to control es 1.1 or es 2.0 rendering prefs elsewhere.
+  preferences->screen_mode.acceleration = _opengl_acceleration;
+  if (useShaderRenderer()) {
+    preferences->screen_mode.acceleration = _shader_acceleration;
+  }
+  
 	preferences->screen_mode.high_resolution = true;
 	preferences->screen_mode.fullscreen = true;
 	preferences->screen_mode.fix_h_not_v = true;

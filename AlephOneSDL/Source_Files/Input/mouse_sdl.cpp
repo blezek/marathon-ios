@@ -36,6 +36,8 @@
 #include "preferences.h"
 #include "screen.h"
 
+#include "interface.h"
+
 #ifdef __APPLE__
 #include "mouse_cocoa.h"
 #endif
@@ -51,7 +53,7 @@ static int snapshot_delta_x, snapshot_delta_y;
 
 //DCW
 static float lost_x, lost_y;
-
+static bool smooth_mouselook;
 
 /*
  *  Initialize in-game mouse handling
@@ -138,9 +140,6 @@ void mouse_idle(short type)
 		snapshot_delta_x = 0;
 		snapshot_delta_y = 0;
     
-    //DCW De-amplify our input by 100 to recover the precision we stuffed in at moveMouseRelative()
-    //dx /=100;
-    //dy /=100;
     slurpMouseDelta(&dx, &dy);
     if(dx>0 || dy>0)
     {
@@ -206,15 +205,93 @@ void mouse_idle(short type)
     lost_y = (dy * (float)FIXED_ONE) - (float)snapshot_delta_pitch;
     lost_x /= (float)FIXED_ONE;
     lost_y /= (float)FIXED_ONE;
+    
+    short game_state = get_game_state();
+    smooth_mouselook = smoothMouselookPreference() ;//&& (game_state==_game_in_progress || game_state ==_switch_demo) && (game_state==_single_player || game_state==_network_player);
+
  	}
 }
 
 //DCW
 //Returns the currently not-represented mouse precision as a fraction of a yaw and pitch unit.
-//This might be useful someday if we ever want to render the view with more precise yaw or pitch.
-//Untested
+//This might be useful to render the view with more precise yaw or pitch.
 float lostMousePrecisionX() { return (lost_x*(float)FIXED_ONE)/512.0; }
 float lostMousePrecisionY() { return (lost_y*(float)FIXED_ONE)/2048.0; }
+
+
+double interpolateAngleTable( int16 *theTable, int16 yaw ){
+  //DCW mouselook smoothing test
+  double table_value = double(theTable[yaw]);
+  double adjacent_table_value = theTable[nextNearestYawIndex(yaw)];
+  
+  return interpolateUsingLostX(adjacent_table_value, table_value);
+}
+
+double interpolateUsingLostX(double adjacent_value, double value) {
+  double xPercentage = fabs(lostMousePrecisionX());
+  return(xPercentage*adjacent_value + (1.0-xPercentage)*value);
+}
+
+double interpolateUsingLostY(double adjacent_value, double value) {
+  double yPercentage = fabs(lostMousePrecisionY());
+  return(yPercentage*adjacent_value + (1.0-yPercentage)*value);
+}
+
+double cosine_table_calculated(double i) {
+  double two_pi= 8.0*atan(1.0);
+  double theta= two_pi*(double)i/(double)NUMBER_OF_ANGLES;
+  
+  return ((double)TRIG_MAGNITUDE*cos(theta)+0.5);
+}
+double sine_table_calculated(double i) {
+  double two_pi= 8.0*atan(1.0);
+  double theta= two_pi*(double)i/(double)NUMBER_OF_ANGLES;
+  
+  return ((double)TRIG_MAGNITUDE*sin(theta)+0.5);
+}
+bool shouldSmoothMouselook(){
+  return smooth_mouselook;
+}
+int16 nextNearestYawIndex( int16 yaw ){
+  if (lostMousePrecisionX() > 0){
+    if( (yaw + 1) == NUMBER_OF_ANGLES ) {
+      return 0;
+    } else {
+      return yaw + 1;
+    }
+  } else {
+    if( (yaw - 1) < 0 ) {
+      return NUMBER_OF_ANGLES-1;
+    } else {
+      return yaw - 1;
+    }
+  }
+}
+
+int16 nextNearestPitchIndex( int16 pitch ){
+  //Unlike yaw, pitch does not wrap, so we clamp at the ends of the array.
+  if (lostMousePrecisionY() > 0){
+    if( (pitch + 1) == NUMBER_OF_ANGLES ) {
+      return pitch;
+    } else {
+      return pitch + 1;
+    }
+  } else {
+    if( (pitch - 1) < 0 ) {
+      return pitch;
+    } else {
+      return pitch - 1;
+    }
+  }
+}
+
+double interpolateAngleTableForPitch( int16 *theTable, int16 pitch ){
+  //DCW mouselook smoothing test
+  double table_value = double(theTable[pitch]);
+  double adjacent_table_value = theTable[nextNearestPitchIndex(pitch)];
+  
+  return interpolateUsingLostY(adjacent_table_value, table_value);
+}
 
 /*
  *  Return mouse state

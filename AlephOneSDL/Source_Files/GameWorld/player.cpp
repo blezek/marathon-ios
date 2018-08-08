@@ -178,6 +178,8 @@ May 22, 2003 (Woody Zenfell):
 #include <stdlib.h>
 #include <limits.h> 
 
+#include "AlephOneHelper.h"
+
 /* ---------- constants */
 
 struct player_powerup_durations_definition {
@@ -894,6 +896,12 @@ void damage_player(
 								team_monster_damage_taken[player->team].kills += 1;
 							}
 							L_Call_Player_Killed (player_index, aggressor_player_index, action, projectile_index);
+              
+              // DJB Player was killed
+              if ( player_index==current_player_index ) {
+                helperPlayerKilled();
+              }
+              
 						}
 						
 						player->suit_oxygen= 0;

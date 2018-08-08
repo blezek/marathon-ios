@@ -72,6 +72,11 @@
 #include <algorithm>
 
 #import "AlephOneHelper.h"
+#include "MatrixStack.hpp"
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+//DCW debug shader
+#include "OGL_Shader.h"
 
 #if defined(__WIN32__) || (defined(__MACH__) && defined(__APPLE__))
 #define MUST_RELOAD_VIEW_CONTEXT
@@ -287,6 +292,8 @@ void Screen::Initialize(screen_mode_data* mode)
     m_modes.push_back(std::pair<int, int>(1334, 750)); //iphone 6
     m_modes.push_back(std::pair<int, int>(1920, 1080)); //iphone 6+
     m_modes.push_back(std::pair<int, int>(2048, 1538)); //ipad air 2
+    m_modes.push_back(std::pair<int, int>(2436, 1125)); //iPhone X
+
 
 		// these are not validated in graphics prefs because
 		// SDL is not initialized yet when prefs load, so
@@ -555,10 +562,13 @@ void Screen::bound_screen_to_rect(SDL_Rect &r, bool in_game)
 		int vpx = static_cast<int>(pixw/2.0f - (virw * vscale)/2.0f + (r.x * vscale) + 0.5f);
 		int vpy = static_cast<int>(pixh/2.0f - (virh * vscale)/2.0f + (r.y * vscale) + 0.5f);
 
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
+		if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+    MatrixStack::Instance()->matrixMode(GL_PROJECTION);
+		if (!useShaderRenderer()) glLoadIdentity();
+    MatrixStack::Instance()->loadIdentity();
 		glViewport(vpx, pixh - vph - vpy, vpw, vph);
-		glOrthof(0, r.w, r.h, 0, -1.0, 1.0);
+		if (!useShaderRenderer()) glOrthof(0, r.w, r.h, 0, -1.0, 1.0);
+    MatrixStack::Instance()->orthof(0, r.w, r.h, 0, -1.0, 1.0);
 	}
 #endif
 }
@@ -985,7 +995,9 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 #ifdef __WIN32__
 		glewInit();
 #endif
-		if (!OGL_CheckExtension("GL_ARB_vertex_shader") || !OGL_CheckExtension("GL_ARB_fragment_shader") || !OGL_CheckExtension("GL_ARB_shader_objects") || !OGL_CheckExtension("GL_ARB_shading_language_100"))
+   
+    //DCW These extensions aren't needed on ios, I think. Commenting out check.
+	/*	if (!OGL_CheckExtension("GL_ARB_vertex_shader") || !OGL_CheckExtension("GL_ARB_fragment_shader") || !OGL_CheckExtension("GL_ARB_shader_objects") || !OGL_CheckExtension("GL_ARB_shading_language_100"))
 		{
 			logWarning("OpenGL (Shader) renderer is not available");
 			fprintf(stderr, "WARNING: Failed to initialize OpenGL (Shader) renderer\n");
@@ -998,9 +1010,9 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 										   flags);
 		}
 		else
-		{
+		{*/
 			passed_shader = true;
-		}
+		//}
 	}
 //#endif
 
@@ -1075,8 +1087,6 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	if (!context_created && !nogl && screen_mode.acceleration != _no_acceleration) {
 		SDL_GL_CreateContext(main_screen);
 		context_created = true;
-    
-    
 	}
 #endif
 	} // end if need_window
@@ -1147,6 +1157,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    
 #ifdef __WIN32__
 		clear_screen();
 #endif
@@ -1449,10 +1460,12 @@ void render_screen(short ticks_elapsed)
     // (GL must do this before render_view)
     if (screen_mode.acceleration != _no_acceleration)
         clear_screen_margin();
-    
+  
+  clearSmartTrigger();
+  
 	// Render world view
 	render_view(world_view, world_pixels_structure);
-
+    
     // clear Lua drawing from previous frame
     // (SDL is slower if we do this before render_view)
     if (screen_mode.acceleration == _no_acceleration &&
@@ -1490,18 +1503,41 @@ void render_screen(short ticks_elapsed)
 	Screen::instance()->bound_screen();
 	OGL_SetWindow(sr, sr, true); //DCW notes: I'd expect this to be the full size of the screen (640x480, or whatever).
 #endif
-	
-
+  
+  
 	// If the main view is not being rendered in software but OpenGL is active,
 	// then blit the software rendering to the screen
 	if (screen_mode.acceleration != _no_acceleration) {
 #ifdef HAVE_OPENGL
 		if (Screen::instance()->hud()) {
-			if (Screen::instance()->lua_hud())
-				Lua_DrawHUD(ticks_elapsed);
+      if (Screen::instance()->lua_hud()){
+        glPushGroupMarkerEXT(0, "Draw LUA HUD");
+			  Lua_DrawHUD(ticks_elapsed);
+        glPopGroupMarkerEXT();
+        
+        //DCW debug shader. Draws rect in middle of screen.
+        /*glBindFramebuffer(GL_FRAMEBUFFER, 1);
+        glBindRenderbuffer(GL_RENDERBUFFER, 1);
+        Shader *s = Shader::get(Shader::S_Debug);
+        s->enable();
+         GLfloat vVertices[12] = { -.5, .5, 0,
+         .5, .5, 0,
+         .5, -.5, 0,
+         -.5, -.5, 0};
+        GLubyte indices[] =   {0,1,2,
+          0,2,3};
+        glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+        glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+        glPushGroupMarkerEXT(0, "Draw Debug Rect");
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+        glPopGroupMarkerEXT();
+        Shader::disable();*/
+      }
 			else {
+        glPushGroupMarkerEXT(0, "Draw HUD");
 				Rect dr = {HUD_DestRect.y, HUD_DestRect.x, HUD_DestRect.y + HUD_DestRect.h, HUD_DestRect.x + HUD_DestRect.w};
 				OGL_DrawHUD(dr, ticks_elapsed);
+        glPopGroupMarkerEXT();
 			}
 		}
 		
@@ -1562,7 +1598,7 @@ void render_screen(short ticks_elapsed)
 
 #ifdef HAVE_OPENGL
 	// Swap OpenGL double-buffers
-	if (screen_mode.acceleration != _no_acceleration)
+  if (screen_mode.acceleration != _no_acceleration)
 		OGL_SwapBuffers();
 #endif
 	
@@ -1955,13 +1991,20 @@ void darken_world_window(void)
 		glDisable(GL_STENCIL_TEST);*/
 
 		// Direct projection
-		glMatrixMode(GL_PROJECTION);
-		glPushMatrix();
-		glLoadIdentity();
-		glOrthof(0.0, GLfloat(main_surface->w), GLfloat(main_surface->h), 0.0, 0.0, 1.0);
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glLoadIdentity();
+		if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+    MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+		if (!useShaderRenderer()) glPushMatrix();
+    MatrixStack::Instance()->pushMatrix();
+		if (!useShaderRenderer()) glLoadIdentity();
+    MatrixStack::Instance()->loadIdentity();
+		if (!useShaderRenderer()) glOrthof(0.0, GLfloat(main_surface->w), GLfloat(main_surface->h), 0.0, 0.0, 1.0);
+    MatrixStack::Instance()->orthof(0.0, GLfloat(main_surface->w), GLfloat(main_surface->h), 0.0, 0.0, 1.0);
+		if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+    MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+		if (!useShaderRenderer()) glPushMatrix();
+    MatrixStack::Instance()->pushMatrix();
+		if (!useShaderRenderer()) glLoadIdentity();
+    MatrixStack::Instance()->loadIdentity();
 
     
       //DCW: IN the old code, DJB drew his own rectangle below, but the call has since changed to OGL_RenderRect. Maybe it works now?
@@ -1972,9 +2015,12 @@ void darken_world_window(void)
 		OGL_RenderRect(r);
 
 		// Restore projection and state
-		glPopMatrix();
-		glMatrixMode(GL_PROJECTION);
-		glPopMatrix();
+		if (!useShaderRenderer()) glPopMatrix();
+    MatrixStack::Instance()->popMatrix();
+		if (!useShaderRenderer()) glMatrixMode(GL_PROJECTION);
+    MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+		if (!useShaderRenderer()) glPopMatrix();
+    MatrixStack::Instance()->popMatrix();
     // DJB OpenGL not saving attributes
     // glPopAttrib();
 

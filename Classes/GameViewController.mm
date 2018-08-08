@@ -14,11 +14,11 @@
 #import "Effects.h"
 #import "AlertPrompt.h"
 #import "Appirater.h"
-#import "Achievements.h"
 #include "FileHandler.h"
 #import "Tracking.h"
 #import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
+#import "alephversion.h"
 
 #include "QuickSave.h" //DCW Used for metadata generation
 #include <fstream>
@@ -289,19 +289,17 @@ short localFindActionTarget(
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
+@synthesize A1Version, aboutText;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
 @synthesize controlsOverviewView, controlsOverviewGesture;
 @synthesize zoomInButton, zoomOutButton;
 @synthesize replacementMenuView;
-@synthesize purchaseViewController, purchaseView, aboutView;
 @synthesize saveFilmButton, loadFilmButton;
 @synthesize joinNetworkGameButton, gatherNetworkGameButton;
 @synthesize HUDViewController;
 @synthesize reticule, bungieAerospaceImageView, episodeImageView, logoView, waitingImageView, episodeLoadingImageView;
 @synthesize mainMenuBackground, mainMenuLogo, mainMenuSubLogo, mainMenuButtons;
-////@synthesize HUDTouchViewController, HUDJoypadViewController;
-@synthesize leaderboardButton, achievementsButton;
 
 #pragma mark -
 #pragma mark class instance methods
@@ -324,10 +322,20 @@ short localFindActionTarget(
   currentReticleImage = -1000;
   
   self.saveGameViewController = [[SaveGameViewController alloc] initWithNibName:@"SaveGameViewController" bundle:nil];
-  self.saveGameViewController.view;
+ // self.saveGameViewController.view;
+  //[self.saveGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+  //[self.saveGameViewController.uiView setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+
   MLog ( @"Save Game View: %@", self.saveGameViewController.view );
   // Since the SaveGameViewController was initialized from a nib, add it's view to the proper place
+  //[self.loadGameView setFrame:[UIScreen mainScreen].bounds];//DCW: this subview needs to be the same size as the screen.
+  //[self.saveGameViewController.view setFrame:[UIScreen mainScreen].bounds];//DCW: this subview needs to be the same size as the screen.
+  [self.saveGameViewController.uiView setFrame:self.loadGameView.frame];//DCW: this subview needs to be the same size as the superview.
   [self.loadGameView addSubview:self.saveGameViewController.uiView];
+  MLog ( @"self.loadGameView = %@", self.loadGameView);
+  MLog ( @"self.saveGameViewController.uiView = %@", self.saveGameViewController.uiView);
+
+  [A1Version setText: [NSString stringWithFormat:@"Engine Version: %@", @A1_DISPLAY_VERSION]];
   
   self.progressViewController = [[ProgressViewController alloc] initWithNibName:@"ProgressViewController" bundle:[NSBundle mainBundle]];
   [self.progressViewController view];
@@ -338,12 +346,15 @@ short localFindActionTarget(
   self.preferencesViewController = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:[NSBundle mainBundle]];
   [self.preferencesViewController view];
   [self.preferencesViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
-  MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
+  //MLog ( @"self.preferencesViewController.view = %@", self.preferencesViewController.view);
   [self.preferencesView addSubview:self.preferencesViewController.view];
   
   self.helpViewController = [[HelpViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
-  [self.helpView addSubview:self.helpViewController.view];
-  
+  [self.helpViewController view];
+  [self.helpViewController.view setFrame:self.hud.bounds];
+  //[self.helpView setFrame:self.hud.bounds];
+	[self.helpView addSubview:self.helpViewController.view];
+
   self.pauseViewController = [[PauseViewController alloc] initWithNibName:@"PauseViewController" bundle:[NSBundle mainBundle]];
   [self.pauseViewController view];
   [self.pauseViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
@@ -351,6 +362,7 @@ short localFindActionTarget(
   
   self.newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:[NSBundle mainBundle]];
   [self.newGameViewController view];
+  [self.newGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.newGameView addSubview:self.newGameViewController.view];
   
   self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
@@ -358,10 +370,6 @@ short localFindActionTarget(
   [self.filmViewController enclosingView];
   [self.filmView addSubview:self.filmViewController.enclosingView];
   
-  self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
-  [self.purchaseViewController view];
-  [self.purchaseView addSubview:self.purchaseViewController.view];
-    
   // Kill a warning
   (void)all_key_definitions;
   mode = MenuMode;
@@ -384,7 +392,6 @@ short localFindActionTarget(
                              self.filmView,
                              self.controlsOverviewView,
                              self.replacementMenuView,
-                             self.purchaseView,
                              self.aboutView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
@@ -394,17 +401,11 @@ short localFindActionTarget(
 #if defined(A1DEBUG)
   self.saveFilmButton.hidden = NO;
   self.loadFilmButton.hidden = NO;
-  self.joinNetworkGameButton.hidden = NO;
-  self.gatherNetworkGameButton.hidden = NO;
-
   // joyPad = [[JoyPad alloc] init];
 
 #endif
-  
-#if SCENARIO == 3
-  self.leaderboardButton.hidden = YES;
-  self.achievementsButton.hidden = YES;
-#endif
+  self.joinNetworkGameButton.hidden = NO;
+  self.gatherNetworkGameButton.hidden = NO;
   
   self.splashView.hidden = NO;
   self.restartView.hidden = YES;
@@ -520,7 +521,7 @@ short localFindActionTarget(
 
 - (IBAction)switchBackToGameView {
   [self menuShowReplacementMenu];
-  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or dialog is cancelled!
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or dialog is cancelled!
   mode=GameMode;
   //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
 }
@@ -539,7 +540,7 @@ short localFindActionTarget(
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
-  self.viewGL.userInteractionEnabled = NO; //This must be disabled after the game starts or a dialog is cancelled!
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or a dialog is cancelled!
   /*
   CGPoint location = lastMenuTap;
   SDL_SendMouseMotion(0, location.x, location.y);
@@ -569,7 +570,6 @@ short localFindActionTarget(
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
-    [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
 
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
@@ -614,21 +614,16 @@ short localFindActionTarget(
   ////                                          [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
   ////                                          @"level", nil]];
 
-  mode = DeadMode;
-  self.hud.hidden = YES;
-  self.HUDViewController.view.hidden = YES;
+  //mode = DeadMode;
+ /* self.hud.hidden = YES;
+  self.HUDViewController.view.hidden = YES;*/
   
-  self.restartView.hidden = NO;
+/*  self.restartView.hidden = NO;
   self.restartView.alpha = 0.6;
   [UIView animateWithDuration:2.0 animations:^{
     self.restartView.alpha = 0.8;
-  }];
-  /*
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:2.0];
-  self.restartView.alpha = 0.8;
-  [UIView commitAnimations];
-   */
+  }];*/
+
 }
 
 - (void)bringUpHUD {
@@ -678,6 +673,7 @@ short localFindActionTarget(
    Crosshairs_SetActive(false);
   }
    */
+  
   Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
@@ -708,7 +704,7 @@ short localFindActionTarget(
   for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
-		v.hidden = NO;
+		//v.hidden = NO; //DCW Commenting out. Some views we need control over visibility instead of setting everything to not hidden.
     if ( showAllControls ) {
       [v.layer addAnimation:group forKey:nil];
     } else {
@@ -720,14 +716,18 @@ short localFindActionTarget(
     }
   }
 	
+  //DCW refresh preferences to update hud prefs.
+  helperSetPreferences(true);
+
+  
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
 
-  #if !defined(A1DEBUG) //DCW
-  if ( showControlsOverview ) {
-    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
-  }
-  #endif
+  //DCW This sucks. Commenting out.
+  //if ( showControlsOverview ) {
+  //    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
+  //}
+  //#endif
 
   
 }
@@ -797,74 +797,6 @@ short localFindActionTarget(
   vector<entry_point> levels;
   const int32 AllPlayableLevels = _single_player_entry_point;
   
-  if (get_entry_points(levels, AllPlayableLevels)) {
-    // Figure out where we are
-    for ( size_t idx = 0; idx < levels.size(); idx++ ) {
-      if ( strcmp ( static_world->level_name, levels[idx].level_name ) == 0 ) {
-        // OK, we are leaving this level so give the player some credit
-        if ( idx < NumberOfLevels ) {
-          
-          // We are leaving level idx...
-          [statistics reportAchievementsLeavingLevel:idx];
-          if ( !currentSavedGame.haveCheated ) {
-#if SCENARIO==1
-            switch (idx) {
-              case 2:
-                [Achievements reportAchievementNoPrefix:@"Arrival" progress:100];
-                break;
-              case 9:
-                [Achievements reportAchievementNoPrefix:@"Counterattack" progress:100];
-                break;
-              case 11:
-                [Achievements reportAchievementNoPrefix:@"Reprisal" progress:100];
-                break;
-              case 15:
-                [Achievements reportAchievementNoPrefix:@"Durandal" progress:100];
-                break;
-              case 23:
-                [Achievements reportAchievementNoPrefix:@"Pfhor" progress:100];
-                break;
-              case 26:
-                [Achievements reportAchievementNoPrefix:@"Rebellion" progress:100];
-                break;
-            }
-#endif
-#if SCENARIO==2
-            switch (idx) {
-              case 3:
-                [Achievements reportAchievementNoPrefix:@"Lhowon" progress:100];
-                break;
-              case 6:
-                [Achievements reportAchievementNoPrefix:@"Volunteers" progress:100];
-                break;
-              case 9:
-                [Achievements reportAchievementNoPrefix:@"Garrison" progress:100];
-                break;
-              case 13:
-                [Achievements reportAchievementNoPrefix:@"M2Durandal" progress:100];
-                break;
-              case 18:
-                [Achievements reportAchievementNoPrefix:@"Captured" progress:100];
-                break;
-              case 22:
-                [Achievements reportAchievementNoPrefix:@"Blake" progress:100];
-                break;
-              case 25:
-                [Achievements reportAchievementNoPrefix:@"Simulacrums" progress:100];
-                break;
-              case 28:
-                [Achievements reportAchievementNoPrefix:@"SphtKr" progress:100];
-                break;
-            }
-#endif
-          }
-        }
-      }
-    }
-  }
-  
-  
-  
 }
 
 - (void)teleportInLevel {
@@ -896,14 +828,13 @@ short localFindActionTarget(
 
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView {
   self.viewGL = oglView;
-  self.viewGL.userInteractionEnabled = NO;
+  self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO;
   
-	//NSLog(@"Fuck up the ogl frame for debugging");
-	//[self.viewGL	setFrame:CGRectMake(100, 100, [[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)]; //DCW sizing test
-
-	//NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-	//NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
   [self.view insertSubview:self.viewGL belowSubview:self.hud];
+
+  //NSLog(@"Mainscreen bounds w: %f h:%f", [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+  //NSLog(@"Game view frame w: %f h:%f", self.view.frame.size.width, self.view.frame.size.height);
+  //NSLog(@"ViewGL frame w: %f h:%f", self.viewGL.frame.size.width, self.viewGL.frame.size.height);
 }
 
 #pragma mark -
@@ -940,13 +871,7 @@ short localFindActionTarget(
 - (IBAction) help:(id)sender {
   ////[Tracking trackPageview:@"/help"];
   [self.helpViewController setupUI];
-  self.helpView.hidden = NO;
-  self.helpView.alpha = 0.0;
-  [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.5];
-  self.helpView.alpha = 1.0;
-  [UIView commitAnimations];
-  
+  [Effects appearRevealingView:helpView];
 }
 - (IBAction) closeHelp:(id)sender {
   [self closeEvent];
@@ -1011,6 +936,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   [self.saveGameViewController.tableView reloadData];
   self.loadGameView.hidden = NO;
   [self.saveGameViewController appear];
+  [Effects appearRevealingView:self.loadGameView];
   ////[Tracking trackPageview:@"/load"];
 }
 
@@ -1023,9 +949,7 @@ extern bool load_and_start_game(FileSpecifier& File);
   game.numberOfSessions = [NSNumber numberWithInt:sessions];
   [game.managedObjectContext save:nil];
 
-  // load the HD textures if needed
-  [[AlephOneAppDelegate sharedAppDelegate].purchases checkPurchases];
-
+  
   MLog (@"Loading game: %@", game.filename );
   FileSpecifier FileToLoad ( (char*)[[self.saveGameViewController fullPath:game.filename] UTF8String] );
   load_and_start_game(FileToLoad);
@@ -1037,14 +961,19 @@ extern bool load_and_start_game(FileSpecifier& File);
   ////                                       [NSString stringWithFormat:@"%d", dynamic_world->current_level_number],
   ////                                       @"level",
   ////                                      nil]];
-MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
-  
+  if(local_player) {
+    MLog ( @"Restored game in position %d, %d", local_player->location.x, local_player->location.y );
+  } else {
+     MLog ( @"Game loading cancelled.");
+    
+  }
 }
 
 - (IBAction) chooseSaveGameCanceled {
   [self closeEvent];
+  [Effects disappearHidingView:self.loadGameView];
   [self.saveGameViewController disappear];
-  [self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+  //[self.loadGameView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 
 extern SDL_Surface *draw_surface;
@@ -1086,52 +1015,13 @@ extern SDL_Surface *draw_surface;
   save.save_file.AddPart(base + ".sgaA");
   std::string metadata = build_save_metadata(save);
   std::ostringstream image_stream;
+  
   bool success = build_map_preview(image_stream);
   
-  
-  
-  ////[Tracking trackEvent:@"player" action:@"save" label:@"" value:0];
-  // See if we can generate an overhead view
-  struct overhead_map_data overhead_data;
-  int MapSize = 196;
-  // Create a buffer to render into
-  Uint32 rmask, gmask, bmask, amask;
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  rmask = 0xff000000;
-  gmask = 0x00ff0000;
-  bmask = 0x0000ff00;
-  amask = 0x000000ff;
-#else
-  rmask = 0x000000ff;
-  gmask = 0x0000ff00;
-  bmask = 0x00ff0000;
-  amask = 0xff000000;
-#endif
-  SDL_Surface *s = SDL_CreateRGBSurface(SDL_SWSURFACE, MapSize, MapSize, 32, rmask, gmask, bmask, amask); //DCW format used to be 8
-  SDL_Surface *map = SDL_ConvertSurfaceFormat(s,s->format->format,0); //SDL_DisplayFormat(s); //DCW SDL_DisplayFormat is gone in SDL2. NOt sure what a good replacement is.
-  SDL_FreeSurface(s);
-  
-  SDL_Surface *old = draw_surface;
-  draw_surface = map;
-  
-  MLog ( @"Saving game in position %d, %d", local_player->location.x, local_player->location.y );
-  
-  overhead_data.scale= OVERHEAD_MAP_MINIMUM_SCALE; // This is 1, let's go a little larger
-  overhead_data.scale= 3;
-  overhead_data.origin.x= local_player->location.x;
-  overhead_data.origin.y= local_player->location.y;
-  overhead_data.half_width= 196/2;
-  overhead_data.half_height= 196/2;
-  overhead_data.width= 196;
-  overhead_data.height= 196;
-  overhead_data.mode= _rendering_saved_game_preview;
-  
-  _render_overhead_map(&overhead_data);
-  
-  draw_surface = old;
-  // See here: http://www.bit-101.com/blog/?p=1861
-  SDL_SaveBMP ( map, (char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String] );
-  SDL_FreeSurface ( map );
+  ofstream thumbFile;
+  thumbFile.open ((char*)[[self.saveGameViewController fullPath:self.currentSavedGame.mapFilename] UTF8String]);
+  thumbFile << image_stream.str();
+  thumbFile.close();
   
   SavedGame* game = currentSavedGame;
   game.lastSaveTime = [NSDate date];
@@ -1181,7 +1071,6 @@ extern SDL_Surface *draw_surface;
                     withMultiplier:DifficultyMultiplier[dynamic_world->game_information.difficulty_level]];
   
   [self zeroStats];
-  [statistics reportAchievementsForSaveGame];
   
   game.scenario = [AlephOneAppDelegate sharedAppDelegate].scenario;
   [[AlephOneAppDelegate sharedAppDelegate].scenario addSavedGamesObject:game];
@@ -1360,48 +1249,21 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)menuStore {
   [self PlayInterfaceButtonSound];
   MLog ( @"Goto store" );
-  ////[Tracking trackPageview:@"/store"];
-  // Recommended way to present StoreFront. Alternatively you can open to a specific product detail.
-  //[UAStoreFront displayStoreFront:self withProductID:@"oxygen34"];
-  /*
-  [UAStoreFront displayStoreFront:self animated:YES];
-  
-  // Specify the sorting of the list of products.
-  [UAStoreFront setOrderBy:UAContentsDisplayOrderPrice ascending:YES];
-  */
-  
-  self.purchaseView.hidden = NO;
-  [self.purchaseViewController openDoors];
-  [self.purchaseViewController appear];
 }
+
 - (IBAction)cancelStore {
-  [self PlayInterfaceButtonSound];
-  [self closeEvent];
-  [self.purchaseView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
-  [self.purchaseViewController disappear];
 }
 
 - (IBAction)menuAbout {
   [self PlayInterfaceButtonSound];
-  ////[Tracking trackPageview:@"/about"];
-  CAAnimation *group = [Effects appearAnimation];
-  for ( UIView *v in self.aboutView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:@"Appear"];
-  }
-  self.aboutView.hidden = NO;
+  [aboutText scrollRangeToVisible:NSMakeRange(0,1)]; //Scroll text to top.
+  [Effects appearRevealingView:self.aboutView];
 }
 
 - (IBAction)cancelAbout {
   [self PlayInterfaceButtonSound];
-  [self closeEvent];
-  CAAnimation *group = [Effects disappearAnimation];
-  for ( UIView *v in self.aboutView.subviews ) {
-    [v.layer removeAllAnimations];
-    [v.layer addAnimation:group forKey:nil];
-  }
-  [self.aboutView performSelector:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
-}  
+  [Effects disappearHidingView:self.aboutView];
+}
 
 - (IBAction)finishIntro:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(finishIntro:) withObject:nil afterDelay:0];
@@ -1530,17 +1392,6 @@ extern bool handle_open_replay(FileSpecifier& File);
   isPaused = !isPaused;
 }
 
-#pragma mark -
-#pragma mark Achievements
-- (void) gameFinished {
-  // Need to do much more than this...
-  [Achievements reportAchievement:Achievement_Marathon progress:100.0];
-  ////[Tracking trackEvent:@"player" action:@"finished" label:[Statistics difficultyToString:player_preferences->difficulty_level] value:0];
-  ////[Tracking tagEvent:@"finished" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[Statistics difficultyToString:player_preferences->difficulty_level],
-  ////                                              @"difficulty", nil]];
-
-}
-
 - (void)zeroStats {
   livingBobs = livingEnemies = 0;
   for ( int i = 0; i < MAXIMUM_NUMBER_OF_WEAPONS; i++ ) {
@@ -1644,55 +1495,6 @@ _civilian_fusion_assimilated,
 }
 
 #pragma mark -
-#pragma mark GameKit
-// Achievements and leader boards
-- (IBAction)displayLeaderboard:(id)sender {
-  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
-                                                    message:@"You are not logged into GameCenter, so I can't show the Leaderboards"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Bummer"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-      return;
-  }
-
-  GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
-  if (leaderboardController != nil) {
-      leaderboardController.leaderboardDelegate = self;
-      [self presentModalViewController:leaderboardController animated: YES];
-  }
-}
-- (IBAction)displayAchievements:(id)sender {
-  if ( ![GKLocalPlayer localPlayer].isAuthenticated ) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not logged in"
-                                                    message:@"You are not logged into GameCenter, so I can't show your Achievements"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Bummer"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-      return;
-  }
-  GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
-  if (achievements != nil) {
-    achievements.achievementDelegate = self;
-    [self presentModalViewController: achievements animated: YES];
-  }
-  [achievements release];
-}
-- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
-  [self dismissModalViewControllerAnimated:YES];
-}
-- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
-  [self dismissModalViewControllerAnimated:YES];
-}
-
-
-
-
-#pragma mark -
 #pragma mark Cheats
 
 - (IBAction)shieldCheat:(id)sender {
@@ -1744,33 +1546,7 @@ _civilian_fusion_assimilated,
 }
 
 - (void)pickedUp:(short)itemType {
-  if ( currentSavedGame.haveCheated ) { return; }
-  switch (itemType) {
-    case _i_smg:
-      [Achievements reportAchievement:@"SMG" progress:100.0];
-      break;
-    case _i_assault_rifle :
-      [Achievements reportAchievement:@"AssaultRifle" progress:100.0];
-      break;
-    case _i_magnum:
-      [Achievements reportAchievement:@"Pistol" progress:100.0];
-      break;
-    case _i_missile_launcher:
-      [Achievements reportAchievement:@"MissileLauncherItem" progress:100.0];
-      break;
-    case _i_flamethrower:
-      [Achievements reportAchievement:@"Flamethrower" progress:100.0];
-      break;
-    case _i_plasma_pistol:
-      [Achievements reportAchievement:@"PlasmaPistol" progress:100.0];
-      break;
-    case _i_alien_shotgun:
-      [Achievements reportAchievement:@"AlienShotgun" progress:100.0];
-      break;
-    case _i_shotgun:
-      [Achievements reportAchievement:@"Shotgun" progress:100.0];
-      break;
-  }
+  
 }
 short items[]=
 { 
@@ -1922,7 +1698,7 @@ short items[]=
     [self updateReticule:get_player_desired_weapon(current_player_index)];
     if ( get_game_state() == _display_main_menu && ( mode == SDLMenuMode || mode == MenuMode || mode == CutSceneMode ) ) {
         [self menuShowReplacementMenu];
-        self.viewGL.userInteractionEnabled = NO; //DCW
+      self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
         mode = MenuMode;
     }
     // Causing a bug, always dim
@@ -1977,6 +1753,20 @@ short items[]=
   ////                                              @"level", nil]];
 
 }
+
+- (IBAction)startPrimaryFire {
+  [HUDViewController primaryFireDown:self];
+}
+- (IBAction)stopPrimaryFire{
+  [HUDViewController primaryFireUp:self];
+}
+- (IBAction)startSecondaryFire{
+  [HUDViewController secondaryFireDown:self];
+}
+- (IBAction)stopSecondaryFire{
+  [HUDViewController secondaryFireUp:self];
+}
+
 
 - (IBAction)zoomMapIn {
   if (zoom_overhead_map_in()) {

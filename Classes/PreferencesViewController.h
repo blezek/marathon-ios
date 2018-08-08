@@ -14,6 +14,8 @@
   UITextField *login;
   UITextField *password;
   UIButton *tapShoots;
+  UIButton *alwaysRun;
+  UIButton *smoothMouselook;
   UIButton *crosshairs;
   UIButton *autoCenter;
   UIButton *secondTapShoots;
@@ -34,8 +36,14 @@
 @property (nonatomic, retain) IBOutlet UITextField *login;
 @property (nonatomic, retain) IBOutlet UITextField *password;
 @property (nonatomic, retain) IBOutlet UIButton *tapShoots;
+@property (nonatomic, retain) IBOutlet UIButton *alwaysRun;
+@property (nonatomic, retain) IBOutlet UIButton *smoothMouselook;
 @property (nonatomic, retain) IBOutlet UIButton *autoCenter;
 @property (nonatomic, retain) IBOutlet UIButton *crosshairs;
+@property (nonatomic, retain) IBOutlet UIButton *onScreenTrigger;
+@property (nonatomic, retain) IBOutlet UIButton *hiLowTapsAltFire;
+@property (nonatomic, retain) IBOutlet UIButton *gyroAiming;
+@property (nonatomic, retain) IBOutlet UIButton *tiltTurning;
 @property (nonatomic, retain) IBOutlet UIButton *secondTapShoots;
 @property (nonatomic, retain) IBOutlet UISlider *sfxVolume;
 @property (nonatomic, retain) IBOutlet UISlider *musicVolume;

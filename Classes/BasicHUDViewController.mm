@@ -46,13 +46,14 @@ struct control_panel_definition
 extern control_panel_definition *get_control_panel_definition(
                                                               const short control_panel_type);
 @implementation BasicHUDViewController
-@synthesize lookView, movePadView, lookPadView, actionKeyImageView, actionBox;
+@synthesize lookView, movePadView, actionKeyImageView, actionBox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
       // Custom initialization
+      lookingAtRefuel=NO;
     }
     return self;
 }
@@ -61,14 +62,15 @@ extern control_panel_definition *get_control_panel_definition(
   self.actionKeyImageView.alpha = 0.0;
   self.actionKeyImageView.hidden = YES;
   self.actionBox.hidden = YES;
+  lookingAtRefuel=NO;
 }
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {
   // From player.h
 //  _target_is_platform,
 //  _target_is_control_panel,
 //  _target_is_unrecognized
-  UIImage *image = nil;
-
+    UIImage *image = nil;
+    lookingAtRefuel=NO;
     if(object_index != NONE) {
     switch(target_type)
     {
@@ -91,6 +93,7 @@ extern control_panel_definition *get_control_panel_definition(
           case _panel_is_shield_refuel:
           case _panel_is_double_shield_refuel:
           case _panel_is_triple_shield_refuel:
+            lookingAtRefuel=YES;
           case _panel_is_computer_terminal: 
             image = [UIImage imageNamed:@"UseComputer"];
             break;

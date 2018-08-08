@@ -104,6 +104,9 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include "OGL_Textures.h"
 #include "screen.h"
 
+//DCW
+#include "MatrixStack.hpp"
+
 OGL_TexturesStats gGLTxStats = {0,0,0,500000,0,0, 0};
 
 // Texture mapping
@@ -467,11 +470,12 @@ short ModifyCLUT(short TransferMode, short CLUT)
 	short CTable;
 	
 	// Tinted mode is only used for invisibility, and infravision will make objects visible
-	if (TransferMode == _static_transfer) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
+  // If we are using the shader renderer, do the normal thing here because the shader will be doing static effects.
+	if (TransferMode == _static_transfer && !useShaderRenderer() ) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
 	else if (TransferMode == _tinted_transfer) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
 	else if (InfravisionActive) CTable = INFRAVISION_BITMAP_CLUTSPECIFIC + CLUT;
 	else CTable = CLUT;
-	
+  
 	return CTable;
 }
 
@@ -1368,6 +1372,10 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 				for (i = 0; i < Image->GetMipMapCount(); i++) {
 					glTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetMipMapPtr(i));
           printGLError(__PRETTY_FUNCTION__);
+          if( useShaderRenderer() ) {
+            glGenerateMipmap(GL_TEXTURE_2D);
+            printGLError(__PRETTY_FUNCTION__);
+          }
         }
 				mipmapsLoaded = true;
 			} else {
@@ -1395,7 +1403,11 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                      Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
                      Image->GetBuffer());
         printGLError(__PRETTY_FUNCTION__);
-
+        
+        if( useShaderRenderer() ) {
+          glGenerateMipmap(GL_TEXTURE_2D);
+          printGLError(__PRETTY_FUNCTION__);
+        }
 			}
 			mipmapsLoaded = true;
 			}
@@ -1723,29 +1735,63 @@ void TextureManager::SetupTextureMatrix()
 	case OGL_Txtr_Wall:
 	case OGL_Txtr_WeaponsInHand:
 	case OGL_Txtr_Inhabitant:
-		glMatrixMode(GL_TEXTURE);
-		glLoadIdentity();
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->matrixMode(MS_TEXTURE);
+        MatrixStack::Instance()->loadIdentity();
+      } else {
+        glMatrixMode(GL_TEXTURE);
+        glLoadIdentity();
+      }
 		if (TxtrOptsPtr->Substitution) {
 			// these come in right side up, but the renderer
 			// expects them to be upside down and sideways
-			glRotatef(90.0, 0.0, 0.0, 1.0);
-			glScalef(1.0, -1.0, 1.0);
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->rotatef(90.0, 0.0, 0.0, 1.0);
+        MatrixStack::Instance()->scalef(1.0, -1.0, 1.0);
+      } else {
+        glRotatef(90.0, 0.0, 0.0, 1.0);
+        glScalef(1.0, -1.0, 1.0);
+      }
 		}
-		glMatrixMode(GL_MODELVIEW);
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      } else {
+        glMatrixMode(GL_MODELVIEW);
+      }
 		break;
 	case OGL_Txtr_Landscape:
-		glMatrixMode(GL_TEXTURE);
-		glLoadIdentity();
+      
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->matrixMode(MS_TEXTURE);
+        MatrixStack::Instance()->loadIdentity();
+      } else {
+        glMatrixMode(GL_TEXTURE);
+        glLoadIdentity();
+      }
 		if (TxtrOptsPtr->Substitution) {
 			// these come in right side up, and un-centered
 			// the renderer expects them upside down, and centered
-			glScalef(1.0, -U_Scale, 1.0);
-			glTranslatef(0.0, U_Offset, 0.0);
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->scalef(1.0, -U_Scale, 1.0);
+        MatrixStack::Instance()->translatef(0.0, U_Offset, 0.0);
+      } else {
+        glScalef(1.0, -U_Scale, 1.0);
+        glTranslatef(0.0, U_Offset, 0.0);
+      }
 		} else {
-			glScalef(1.0, U_Scale, 1.0);
-			glTranslatef(0.0, U_Offset, 0.0);
+      if (useShaderRenderer()){
+        MatrixStack::Instance()->scalef(1.0, U_Scale, 1.0);
+        MatrixStack::Instance()->translatef(0.0, U_Offset, 0.0);
+      } else {
+        glScalef(1.0, U_Scale, 1.0);
+        glTranslatef(0.0, U_Offset, 0.0);
+      }
 		}
-		glMatrixMode(GL_MODELVIEW);
+    if (useShaderRenderer()){
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+    }
 		break;
 	}
 }
@@ -1758,9 +1804,15 @@ void TextureManager::RestoreTextureMatrix()
 	case OGL_Txtr_WeaponsInHand:
 	case OGL_Txtr_Inhabitant:
 	case OGL_Txtr_Landscape:
-		glMatrixMode(GL_TEXTURE);
-		glLoadIdentity();
-		glMatrixMode(GL_MODELVIEW);
+    if(useShaderRenderer()){
+      MatrixStack::Instance()->matrixMode(GL_TEXTURE);
+      MatrixStack::Instance()->loadIdentity();
+      MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
+    } else {
+      glMatrixMode(GL_TEXTURE);
+      glLoadIdentity();
+      glMatrixMode(GL_MODELVIEW);
+    }
 	}
 }
 

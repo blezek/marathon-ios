@@ -56,6 +56,7 @@
 #include	"Logging.h"
 
 //DCW
+#include "AlephOneHelper.h"
 #include <sys/socket.h>
 #include "SDLnetsys.h"
 struct UDP_channel {
@@ -212,7 +213,7 @@ SSLPint_FoundAnInstance(struct SSLP_ServiceInstance* inInstance) {
 void
 SSLPint_RemoveTimedOutInstances() {
     logContext("removing stale SSLP service instances");
-    
+
     struct SSLPint_FoundInstance* theCurrentInstance = sFoundInstances;
     struct SSLPint_FoundInstance* thePreviousInstance = NULL;
     
@@ -311,7 +312,7 @@ SSLPint_FlushAllFoundInstances() {
 static void
 SSLPint_ReceivedPacket() {
     logContext("processing a received SSLP packet");
-
+  
     if(sReceivingPacket == NULL) {
         logAnomaly("sReceivingPacket is NULL");
         return;
@@ -493,7 +494,7 @@ SSLPint_Enter() {
     }
   
     //DCW Set an appropriate network socket service type.
-    int st = NET_SERVICE_TYPE_VI;
+    int st = NET_SERVICE_TYPE_VO;
     setsockopt((int)(sSocketDescriptor->channel), SOL_SOCKET, SO_NET_SERVICE_TYPE, (void *)&st, sizeof(st));
 
   
@@ -785,7 +786,9 @@ SSLP_Pump() {
     if(sBehaviorsDesired & (SSLPINT_LOCATING | SSLPINT_HINTING)) {
 
         // Do some work only once every five seconds
-        if(theCurrentTime - theTimeLastWorked >= 5000) {
+        //if(theCurrentTime - theTimeLastWorked >= 5000) {
+        //DCW how about every second?
+      if(theCurrentTime - theTimeLastWorked >= 1000) {
 
             // Do broadcasting work
             if(sBehaviorsDesired & SSLPINT_LOCATING) {
@@ -794,8 +797,9 @@ SSLP_Pump() {
             }
             
             // Do hinting work
-            if(sBehaviorsDesired & SSLPINT_HINTING)
+        if(sBehaviorsDesired & SSLPINT_HINTING) {
                 SDLNet_UDP_Send(sSocketDescriptor, -1, sHintPacket);
+        }
 
             theTimeLastWorked = theCurrentTime;
         }

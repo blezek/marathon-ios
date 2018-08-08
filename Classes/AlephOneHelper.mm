@@ -14,6 +14,11 @@
 #include "player.h"
 #import "Prefs.h"
 #include "screen.h"
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+
+#import "PreferencesViewController.h"
+
 
 extern "C" {
   #include "SDL_mouse_c.h"
@@ -22,8 +27,9 @@ extern "C" {
 //DCW
 float iosDeltaX;
 float iosDeltaY;
-
-
+bool smartTriggerActive;
+bool canSmartFirePrimary;
+bool canSmartFireSecondary;
 
 NSString *dataDir;
 
@@ -80,15 +86,45 @@ char* getLocalPrefsDir() {
   return (char*)[docsDir UTF8String];
 }
 
-void  setDefaultA1PrefsIfNeeded() {
-  char temporary[256];
-  getcstr(temporary, strFILENAMES, filenamePREFERENCES);
-  
-  NSString *A1DefaultPrefs = [NSString stringWithFormat:@"%s/%s", getDataDir(), temporary];
-  NSString *A1TargetPrefs = [NSString stringWithFormat:@"%s/%s", getLocalPrefsDir(), temporary];
+char* getLocalTmpDir() {
+  NSString *tmpDir = NSTemporaryDirectory();
+  return (char*)[tmpDir UTF8String];
+}
 
-  //Copy fresh preferences into place. won't overwrite existing prefs.
-    [[NSFileManager defaultManager] copyItemAtPath:A1DefaultPrefs toPath:A1TargetPrefs error:nil];
+char* LANIP( char *prefix, char *suffix) {
+  NSString *address = @"N/A";
+  struct ifaddrs *interfaces = NULL;
+  struct ifaddrs *temp_addr = NULL;
+  int success = 0;
+  // retrieve the current interfaces - returns 0 on success
+  success = getifaddrs(&interfaces);
+  if (success == 0) {
+    // Loop through linked list of interfaces
+    temp_addr = interfaces;
+    while(temp_addr != NULL) {
+      if(temp_addr->ifa_addr->sa_family == AF_INET) {
+        // Check if interface is en0 which is the wifi connection on the iPhone
+        if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+          // Get NSString from C String
+          address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+          
+        } else if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"bridge100"]) {
+          address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+        }
+        
+      }
+      
+      temp_addr = temp_addr->ifa_next;
+    }
+  }
+  // Free memory
+  freeifaddrs(interfaces);
+  
+  return (char*)[[NSString stringWithFormat:@"%@%@%@", [NSString stringWithCString:prefix],address,[NSString stringWithCString:suffix]] UTF8String];
+}
+
+void  overrideSomeA1Prefs() {
+  [PreferencesViewController setAlephOnePreferences:NO checkPurchases:YES]; //DCW write prefs; do this first in case this is the initial launch of the app and there is no prefs file on disk yet.
  }
 
 void helperQuit() {
@@ -260,6 +296,10 @@ float helperGamma() {
   return g;
 };
 
+bool smoothMouselookPreference() {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:kSmoothMouselook];
+}
+
 int helperAlwaysPlayIntro () {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   BOOL g = [defaults boolForKey:kAlwaysPlayIntro];
@@ -295,19 +335,38 @@ void setKey(SDL_Keycode key, bool down) {
 //DCW
 void moveMouseRelative(float dx, float dy)
 {
-    //DCW Amplify our input by 100 we don't lose as much precision in the int conversion below
-    //DCW This must be de-amplified in mouse_idle() later on.
-  //dx *= 100;
-  //dy *= 100;
   
-  float w, h;
-  w = MainScreenWindowWidth();
-  h = MainScreenWindowHeight();
+  //float w, h;
+  //w = MainScreenWindowWidth();
+  //h = MainScreenWindowHeight();
   
   iosDeltaX+=dx;
   iosDeltaY+=dy;
 
   //SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, true, dx + w/2.0, dy + h/2.0); //Movement is relative to center of screen
+  
+  return;
+}
+void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval)
+{
+  
+  moveMouseRelative(dx, dy);
+  return;
+  //This is currently broken. :(
+  
+  float xRate = fabs(dx/timeInterval);
+  float yRate = fabs(dy/timeInterval);
+  
+  float ax = .1 * dx * xRate;// / timeInterval;
+  float ay = .1 * dy * yRate;// / timeInterval;
+  
+  
+  //NSLog(@"Original: %f Acceleration: %f", dx, .01 * dx / timeInterval );
+  
+  dx += ax;
+  dy += ay;
+  
+  moveMouseRelative(dx, dy);
   
   return;
 }
@@ -324,6 +383,40 @@ void helperGetMouseDelta ( int *dx, int *dy ) {
   [[GameViewController sharedInstance].HUDViewController mouseDeltaX:dx deltaY:dy];
 }
 
+void clearSmartTrigger() {
+  
+  if(smartTriggerActive){
+    //Stop firing!
+    [[GameViewController sharedInstance] stopPrimaryFire];
+    [[GameViewController sharedInstance] stopSecondaryFire];
+  }
+  smartTriggerActive=0;
+}
+bool smartTriggerEngaged(){
+  MLog(@"Smart trigger: %d", smartTriggerActive);
+  return smartTriggerActive;
+}
+void monsterIsCentered () {
+  if(canSmartFirePrimary || canSmartFireSecondary)
+  {
+    smartTriggerActive = 1;
+  }
+  
+  if (smartTriggerActive && canSmartFirePrimary ){
+    [[GameViewController sharedInstance] startPrimaryFire];
+  }
+  if (smartTriggerActive && canSmartFireSecondary ){
+    [[GameViewController sharedInstance] startSecondaryFire];
+  }
+  
+  return;
+}
+void setSmartFirePrimary(bool fire){
+  canSmartFirePrimary=fire;
+}
+void setSmartFireSecondary(bool fire){
+  canSmartFireSecondary=fire;
+}
 
 
 extern GLfloat helperPauseAlpha() {
@@ -331,8 +424,22 @@ extern GLfloat helperPauseAlpha() {
 }
 
 void helperSetPreferences( int notify) {
-  BOOL check = notify ? YES : NO;
-  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:check];
+  [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
+}
+
+bool headBelowMedia () {
+  return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
+}
+
+bool useShaderRenderer() {
+  return 0;
+}
+bool useShaderPostProcessing() {
+  return 1;
+}
+  //Set to 1 for fast debugging, by lauching directly into last saved game.
+bool fastStart () {
+  return 0;
 }
 
 short pRecord[128][2];

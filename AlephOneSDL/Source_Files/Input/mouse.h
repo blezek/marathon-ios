@@ -38,6 +38,15 @@ void recenter_mouse(void);
 //DCW
 float lostMousePrecisionX();
 float lostMousePrecisionY();
+double interpolateAngleTable( int16 *theTable, int16 yaw );
+double interpolateAngleTableForPitch( int16 *theTable, int16 pitch );
+double interpolateUsingLostX(double adjacent_value, double value);
+double interpolateUsingLostY(double adjacent_value, double value);
+double cosine_table_calculated(double i);
+double sine_table_calculated(double i);
+bool shouldSmoothMouselook();
+int16 nextNearestYawIndex( int16 yaw );
+int16 nextNearestPitchIndex( int16 pitch );
 
 // ZZZ: stuff of various hackiness levels to pretend mouse buttons are keys
 void mouse_buttons_become_keypresses(Uint8* ioKeyMap);

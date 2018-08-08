@@ -23,6 +23,9 @@
 
 #include "ConnectPool.h"
 
+#include <sched.h> //DCW needed for setting self QOS
+#include <pthread.h> //DCW needed for setting self QOS
+
 ConnectPool* ConnectPool::m_instance = 0;
 
 NonblockingConnect::NonblockingConnect(const std::string& address, uint16 port)
@@ -60,6 +63,10 @@ void NonblockingConnect::connect()
 
 int NonblockingConnect::connect_thread(void *p)
 {
+  //DCW Set iOS interactive QOS
+  //This might not do anything, just playing around.
+  pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE,0);
+
 	NonblockingConnect *nbc = static_cast<NonblockingConnect *>(p);
 	return nbc->Thread();
 }

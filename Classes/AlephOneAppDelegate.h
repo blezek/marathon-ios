@@ -14,10 +14,9 @@
 #import "ManagedObjects.h"
 #import "Prefs.h"
 #import "Secrets.h"
-#import "Purchases.h"
 
 @class GameViewController;
-@interface AlephOneAppDelegate : NSObject <UIApplicationDelegate, SKPaymentTransactionObserver> {
+@interface AlephOneAppDelegate : NSObject <UIApplicationDelegate> {
     
   UIWindow *window;
   NewGameViewController *newGameViewController;
@@ -30,8 +29,6 @@
   int oglWidth;
   int oglHeight;
   
-  Purchases *purchases;
-    
 @private
     NSManagedObjectContext *managedObjectContext_;
     NSManagedObjectModel *managedObjectModel_;
@@ -41,7 +38,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) GameViewController *game;
-@property (nonatomic, retain) Purchases *purchases;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -63,19 +59,16 @@
 - (void)itemDidFinishPlaying:(NSNotification *)notification;
 - (IBAction)finishIntro:(id)sender;
 
-// Transactions
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
-
 - (NSString *)applicationDocumentsDirectory;
 - (NSString*)getDataDirectory;
 +(AlephOneAppDelegate *)sharedAppDelegate;
 - (void)startAlephOne;
 - (void)initAndBegin;
 - (void)startSound;
-- (void)uploadAchievements;
 - (void)oglWidth:(GLint)width oglHeight:(GLint)height;
 - (BOOL)runningOniPad;
 - (void)endBackgroundTask:(NSNumber *)taskID;
+- (bool)gameIsNetworked;
 @end
 
 

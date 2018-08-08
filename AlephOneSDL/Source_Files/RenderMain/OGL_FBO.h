@@ -54,6 +54,7 @@ public:
 	void draw_full(bool blend = false);
 	
 	static FBO *active_fbo();
+  static void DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
 };
 
 

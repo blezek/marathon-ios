@@ -22,9 +22,8 @@
 #import "HelpViewController.h"
 #import "NewGameViewController.h"
 #import "FilmViewController.h"
-#import "PurchaseViewController.h"
+
 #import "Statistics.h"
-#import "GameKit/GameKit.h"
 
 #import "HUDViewController.h"
 #import "BasicHUDViewController.h"
@@ -39,7 +38,7 @@ typedef enum {
   SDLMenuMode
 } HUDMode;
 
-@interface GameViewController : UIViewController <GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate> {
+@interface GameViewController : UIViewController /*<GKLeaderboardViewControllerDelegate,GKAchievementViewControllerDelegate>*/ {
   IBOutlet SDL_uikitopenglview *viewGL;
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
@@ -54,7 +53,7 @@ typedef enum {
   IBOutlet ButtonView *restartView;
   IBOutlet UIImageView *splashView;
   IBOutlet UIView *filmView;
-  IBOutlet UIView *purchaseView;
+
   IBOutlet UIView *aboutView;
   
   IBOutlet UIButton *pause;
@@ -89,10 +88,6 @@ typedef enum {
   IBOutlet UIView *mainMenuSubLogo;
   IBOutlet UIView *mainMenuButtons;
 
-  
-  IBOutlet UIButton *leaderboardButton;
-  IBOutlet UIButton *achievementsButton;
-
   NSMutableArray *reticuleImageNames;
   
   HUDMode mode;
@@ -123,8 +118,10 @@ typedef enum {
   IBOutlet HelpViewController *helpViewController;
   IBOutlet NewGameViewController *newGameViewController;
   IBOutlet FilmViewController* filmViewController;
-  PurchaseViewController *purchaseViewController;
+
   HUDViewController *HUDViewController;
+  IBOutlet UILabel* A1Version;
+  IBOutlet UITextView* aboutText;
   
   UITapGestureRecognizer *menuTapGesture;
   UITapGestureRecognizer *controlsOverviewGesture;
@@ -216,13 +213,6 @@ typedef enum {
 - (void)saveFilmForReal;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
-
-// Achievements and leader boards
-- (IBAction)displayLeaderboard:(id)sender;
-- (IBAction)displayAchievements:(id)sender;
-- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
-- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController;
-
 // Progress stuff
 - (void) startProgress:(int)total;
 - (void) progressCallback:(int)delta;
@@ -242,6 +232,11 @@ typedef enum {
 - (IBAction)changeInventory;
 - (IBAction)zoomMapIn;
 - (IBAction)zoomMapOut;
+- (IBAction)startPrimaryFire;
+- (IBAction)stopPrimaryFire;
+- (IBAction)startSecondaryFire;
+- (IBAction)stopSecondaryFire;
+
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer;
 - (void)controlsOverviewTap:(UITapGestureRecognizer *)recognizer;
@@ -271,8 +266,10 @@ typedef enum {
 @property (nonatomic, retain) UIView *helpView;
 @property (nonatomic, retain) UIView *replacementMenuView;
 @property (nonatomic, retain) UIView *controlsOverviewView;
-@property (nonatomic, retain) UIView *purchaseView;
+
 @property (nonatomic, retain) UIView *aboutView;
+@property (nonatomic, retain) UILabel* A1Version;
+@property (nonatomic, retain) UITextView* aboutText;
 
 @property (nonatomic, retain) UIView *filmView;
 @property (nonatomic, retain) UIView *preferencesView;
@@ -297,8 +294,6 @@ typedef enum {
 @property (nonatomic, retain) UIButton *joinNetworkGameButton;
 @property (nonatomic, retain) UIButton *gatherNetworkGameButton;
 @property (nonatomic, retain) UIButton *loadFilmButton;
-@property (nonatomic, retain) UIButton *leaderboardButton;
-@property (nonatomic, retain) UIButton *achievementsButton;
 
 @property (nonatomic, retain) SaveGameViewController *saveGameViewController;
 @property (nonatomic, retain) ProgressViewController *progressViewController;
@@ -307,7 +302,7 @@ typedef enum {
 @property (nonatomic, retain) HelpViewController *helpViewController;
 @property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
-@property (nonatomic, retain) PurchaseViewController *purchaseViewController;
+
 @property (nonatomic, retain) HUDViewController *HUDViewController;
 @property (nonatomic, retain) HUDViewController *HUDTouchViewController;
 ////@property (nonatomic, retain) HUDViewController *HUDJoypadViewController;

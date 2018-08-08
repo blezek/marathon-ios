@@ -142,7 +142,7 @@ extern char *app_preferences_directory;
 extern char *app_support_directory;
 //extern char *app_screenshots_directory; //dcw
 char app_screenshots_directory[] = "/tmp/"; //DCW TODO should be dynamic
-//DCW Adding for ios. TODO Should probgably be dynamic.
+//DCW Adding for ios. TODO Should probably be dynamic.
 char application_name[] = A1_DISPLAY_NAME;
 char application_identifier[] = "org.bungie.source.AlephOne";
 
@@ -438,11 +438,18 @@ void initialize_application(void)
 		exit(1);
 	}
   
-  // DCW force opengl es 1.1
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-
+  if ( !useShaderRenderer() ){
+      // DCW force opengl es 1.1
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+  } else {
+      // DCW force OpenGL ES 3.x. The default would otherwise be ES 2.
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+  }
+  
 #if defined(HAVE_SDL_IMAGE)
 	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 #endif
@@ -456,6 +463,7 @@ void initialize_application(void)
 #if TARGET_OS_IPHONE
   default_data_dir = getDataDir();
   local_data_dir = getLocalDataDir();
+  //log_dir = getLocalTmpDir(); //DCW ok, this is not great because the log file grows forever. Commenting out.
 #elif defined(unix) || defined(__NetBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__) && !defined(HAVE_BUNDLE_NAME))
 
 	default_data_dir = PKGDATADIR;
@@ -1128,7 +1136,7 @@ static void handle_game_key(const SDL_Event &event)
 				PlayInterfaceButtonSound(Sound_ButtonFailure());
 			}
 		} 
-		else if (input_preferences->shell_key_bindings[_key_show_scores].count(sc))
+		else if (input_preferences->shell_key_bindings[_key_show_scores].count(sc) || key == SDLK_1) //DCW Adding check for || key == SDLK_1
 		{
 			PlayInterfaceButtonSound(Sound_ButtonSuccess());
 			{
