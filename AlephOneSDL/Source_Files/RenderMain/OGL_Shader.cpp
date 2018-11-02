@@ -433,8 +433,6 @@ void Shader::unload() {
 		_loaded = false;
      if(lastEnabledShader() == this) {
        setLastEnabledShader(NULL);
-       
-       Shader *enablementTest = lastEnabledShader();
      }
 	}
 }

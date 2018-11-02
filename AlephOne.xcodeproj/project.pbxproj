@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -70,6 +70,8 @@
 		5104208C1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		5104208D1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		5104208E1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
+		5114FBC8217FB31F007434C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114FBC7217FB31F007434C5 /* GameKit.framework */; };
+		5114FBCA217FB323007434C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114FBC9217FB323007434C5 /* StoreKit.framework */; };
 		512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C051E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
@@ -146,7 +148,6 @@
 		5146D7D51FE08CC100B89738 /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7D41FE08CC000B89738 /* GenericBackground.png */; };
 		51482D662001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
 		51482D672001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
-		51482D682001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
 		51482D6A2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
 		51482D6B2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
 		51482D6C2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
@@ -165,6 +166,24 @@
 		514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
 		514D349F1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
 		514D34A01E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
+		514F14412119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
+		514F14422119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
+		514F14432119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
+		514F14442119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
+		514F14452119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
+		514F14462119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
+		514F14492119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
+		514F144A2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
+		514F144B2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
+		514F144C2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
+		514F144D2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
+		514F144E2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
+		514F145321195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
+		514F145421195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
+		514F145521195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
+		514F145621195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
+		514F145721195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
+		514F145821195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
 		5152CB901D948FE100C6E65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5152CB8F1D948FE100C6E65C /* Images.xcassets */; };
 		515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
 		515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
@@ -1322,7 +1341,6 @@
 		A818BD2F13A4778400DB3828 /* Marathon_Infinity_Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD2713A4778400DB3828 /* Marathon_Infinity_Icon-Small-50.png */; };
 		A818BD3013A4778400DB3828 /* Marathon_Infinity_Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD2813A4778400DB3828 /* Marathon_Infinity_Icon-Small.png */; };
 		A818BD3113A4778400DB3828 /* Marathon_Infinity_Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD2913A4778400DB3828 /* Marathon_Infinity_Icon-Small@2x.png */; };
-		A818BD3213A4778400DB3828 /* Marathon_Infinity_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD2A13A4778400DB3828 /* Marathon_Infinity_Icon.png */; };
 		A818BD3313A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A818BD2B13A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png */; };
 		A8193C31140EB09C00FFD05A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8193C30140EB09C00FFD05A /* RootViewController.mm */; };
 		A8193C32140EB09C00FFD05A /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8193C30140EB09C00FFD05A /* RootViewController.mm */; };
@@ -2171,6 +2189,8 @@
 		5104204C1EAAF34B00129201 /* pngwtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwtran.c; sourceTree = "<group>"; };
 		5104204D1EAAF34B00129201 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = submodules/Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
+		5114FBC7217FB31F007434C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		5114FBC9217FB323007434C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		512E0C031E70C85D000B0C98 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		51324A141EAAE29100BA8D8F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "submodules/Libraries/SDL2-2.0.5/libSDL2.a"; sourceTree = "<group>"; };
 		51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
@@ -2305,6 +2325,14 @@
 		514D348D1E5965580011BAFD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		514D34991E5966F40011BAFD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		514D349D1E59678A0011BAFD /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		514F143F2119506B00685003 /* TipButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButton.png; sourceTree = "<group>"; };
+		514F14402119506C00685003 /* TipButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButtonHighlighted.png; sourceTree = "<group>"; };
+		514F14472119545100685003 /* TipTheDeveloperHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloperHighlighted.png; sourceTree = "<group>"; };
+		514F14482119545200685003 /* TipTheDeveloper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloper.png; sourceTree = "<group>"; };
+		514F144F21195A0B00685003 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = Classes/PurchaseViewController.h; sourceTree = "<group>"; };
+		514F145021195A0B00685003 /* PurchaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PurchaseViewController.mm; path = Classes/PurchaseViewController.mm; sourceTree = "<group>"; };
+		514F145121195A0C00685003 /* Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Purchases.h; path = Classes/Purchases.h; sourceTree = "<group>"; };
+		514F145221195A0C00685003 /* Purchases.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Purchases.mm; path = Classes/Purchases.mm; sourceTree = "<group>"; };
 		5152CB8F1D948FE100C6E65C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Durandal/Images.xcassets; sourceTree = "<group>"; };
 		515303171DAD716200B0F62A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericLoadingBackground.png; sourceTree = "<group>"; };
@@ -3608,6 +3636,7 @@
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
+				5114FBCA217FB323007434C5 /* StoreKit.framework in Frameworks */,
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
@@ -3637,6 +3666,7 @@
 				51324A171EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
+				5114FBC8217FB31F007434C5 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3744,6 +3774,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5114FBC9217FB323007434C5 /* StoreKit.framework */,
+				5114FBC7217FB31F007434C5 /* GameKit.framework */,
 				512E0C031E70C85D000B0C98 /* ImageIO.framework */,
 				517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */,
 				517BC97F1E5A2478004B42FF /* GameController.framework */,
@@ -4089,6 +4121,10 @@
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				514F14482119545200685003 /* TipTheDeveloper.png */,
+				514F14472119545100685003 /* TipTheDeveloperHighlighted.png */,
+				514F143F2119506B00685003 /* TipButton.png */,
+				514F14402119506C00685003 /* TipButtonHighlighted.png */,
 				5146D7C11FDF1A4400B89738 /* Console.png */,
 				5146D7BD1FDF1A2F00B89738 /* Pause.png */,
 				513F28291F998C3100A23C93 /* HelpButton.png */,
@@ -5062,6 +5098,10 @@
 				A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */,
 				A8EB77F21266A1130043F0D4 /* PreferencesViewController.h */,
 				A8EB77F31266A1130043F0D4 /* PreferencesViewController.mm */,
+				514F145121195A0C00685003 /* Purchases.h */,
+				514F145221195A0C00685003 /* Purchases.mm */,
+				514F144F21195A0B00685003 /* PurchaseViewController.h */,
+				514F145021195A0B00685003 /* PurchaseViewController.mm */,
 				519FCACB1EA06A450066EE69 /* KeychainItemWrapper.h */,
 				519FCACC1EA06A450066EE69 /* KeychainItemWrapper.m */,
 				A8A4D31112A4B2C100AEE140 /* Prefs.h */,
@@ -5947,27 +5987,37 @@
 					A85E672911CB173A00D0FAEF = {
 						DevelopmentTeam = TZ45ZW2588;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					A8811FE812C7816300A1A08E = {
-						DevelopmentTeam = TZ45ZW2588;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					A88121ED12C7826300A1A08E = {
-						DevelopmentTeam = TZ45ZW2588;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
 							};
+							com.apple.GameCenter.iOS = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AlephOne" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -6060,6 +6110,7 @@
 				A8B9F9E913FAE0D400552296 /* ProgressViewController~iphone.xib in Resources */,
 				A8B9F9ED13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE113FB6C1000552296 /* movementboxBase.png in Resources */,
+				514F14442119506C00685003 /* TipButtonHighlighted.png in Resources */,
 				518EA00B1F72F9B40039960A /* mainlogo.png in Resources */,
 				516ECE991F4E063600D38BB2 /* Map.png in Resources */,
 				A8B9FAE413FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
@@ -6134,6 +6185,7 @@
 				A89458F2142808F200A9ECAC /* EpisodeLoading.png in Resources */,
 				A89458F3142808F200A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */,
 				A89458F4142808F200A9ECAC /* EpisodeLoading~iphone.png in Resources */,
+				514F14412119506C00685003 /* TipButton.png in Resources */,
 				A894591214280ABF00A9ECAC /* BungieAerospace.png in Resources */,
 				519FCB1F1EA53FB90066EE69 /* Preferences.png in Resources */,
 				A894591514280ABF00A9ECAC /* BungieAerospace@2x~iphone.png in Resources */,
@@ -6265,10 +6317,12 @@
 				519FCAC41E9FFC500066EE69 /* bankgthd.ttf in Resources */,
 				A812AD37145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
 				A812AD3A145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
+				514F144C2119545300685003 /* TipTheDeveloper.png in Resources */,
 				A812AD3D145F8D9900196F6B /* StartingLevel.png in Resources */,
 				A812AD40145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
 				A812AD43145F8D9900196F6B /* LevelNameBackground.png in Resources */,
 				A812AD60145F971200196F6B /* BuyButton.png in Resources */,
+				514F14492119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
 				A812AD63145F971200196F6B /* BuyButton@2x~iphone.png in Resources */,
 				A812AD66145F971200196F6B /* BuyButton~iphone.png in Resources */,
 				513F282B1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */,
@@ -6415,6 +6469,7 @@
 				A8B9FB1813FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
 				A8B9FB1B13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1E13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
+				514F144A2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
 				A8B9FB2713FB6C1000552296 /* toggleweapons-left-btn.png in Resources */,
 				51451B7B1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */,
 				A8B9FB2A13FB6C1000552296 /* toggleweapons-left-btn@2x~iphone.png in Resources */,
@@ -6431,6 +6486,7 @@
 				51482D6B2001C86000690752 /* github.png in Resources */,
 				517FB49A1F89CA93009F6DCE /* Menu.png in Resources */,
 				517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */,
+				514F144D2119545300685003 /* TipTheDeveloper.png in Resources */,
 				516ECE9A1F4E063600D38BB2 /* Map.png in Resources */,
 				A8B9FB5D13FB6CAF00552296 /* Reload.png in Resources */,
 				51482D6E2001CA5A00690752 /* help4.png in Resources */,
@@ -6486,6 +6542,7 @@
 				A894591914280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
 				A85B58651433BEC00013CDC9 /* BackNewGame.png in Resources */,
 				A85B58681433BEC00013CDC9 /* BackNewGame@2x~iphone.png in Resources */,
+				514F14422119506C00685003 /* TipButton.png in Resources */,
 				A85B586B1433BEC00013CDC9 /* BackNewGame~iphone.png in Resources */,
 				519FCB0B1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */,
 				A85B586E1433BEC00013CDC9 /* Easy.png in Resources */,
@@ -6617,6 +6674,7 @@
 				A812AD82145F971200196F6B /* MCModeAd.png in Resources */,
 				A812AD85145F971200196F6B /* RestoreButton.png in Resources */,
 				A812AD88145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */,
+				514F14452119506C00685003 /* TipButtonHighlighted.png in Resources */,
 				A812AD8B145F971200196F6B /* RestoreButton~iphone.png in Resources */,
 				A812AD99145F97CF00196F6B /* MCModeAd@2x~iphone.png in Resources */,
 				A812AD9C145F97CF00196F6B /* MCModeAd~iphone.png in Resources */,
@@ -6679,7 +6737,6 @@
 				A818BD2F13A4778400DB3828 /* Marathon_Infinity_Icon-Small-50.png in Resources */,
 				A818BD3013A4778400DB3828 /* Marathon_Infinity_Icon-Small.png in Resources */,
 				A818BD3113A4778400DB3828 /* Marathon_Infinity_Icon-Small@2x.png in Resources */,
-				A818BD3213A4778400DB3828 /* Marathon_Infinity_Icon.png in Resources */,
 				A818BD3313A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png in Resources */,
 				A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				516ECEB31F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */,
@@ -6728,6 +6785,7 @@
 				A804993513DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
 				A804993813DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
 				A807A70F13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
+				514F14462119506C00685003 /* TipButtonHighlighted.png in Resources */,
 				516ECE9B1F4E063600D38BB2 /* Map.png in Resources */,
 				519FCB241EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */,
 				51451B7F1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */,
@@ -6740,7 +6798,6 @@
 				51482D6C2001C86000690752 /* github.png in Resources */,
 				A8B9F9EF13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE313FB6C1000552296 /* movementboxBase.png in Resources */,
-				51482D682001C2A300690752 /* powered-by-alephone.png in Resources */,
 				A8B9FAE613FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
 				A8B9FAE913FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				5146D7C71FE0588B00B89738 /* help1.png in Resources */,
@@ -6802,6 +6859,7 @@
 				A8E3B5DB1422E82D004D28A4 /* SettingsButton@2x~iphone.png in Resources */,
 				A8E3B5DE1422E82D004D28A4 /* SettingsButton~iphone.png in Resources */,
 				A8E3B5E11422E82D004D28A4 /* StoreButton.png in Resources */,
+				514F14432119506C00685003 /* TipButton.png in Resources */,
 				A8E3B5E41422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E71422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
 				A8C5563C14267C29003D329B /* PurchaseViewController.xib in Resources */,
@@ -6933,10 +6991,12 @@
 				A812AD68145F971200196F6B /* BuyButton~iphone.png in Resources */,
 				A812AD6B145F971200196F6B /* DoneButtonStore.png in Resources */,
 				A812AD6E145F971200196F6B /* DoneButtonStore@2x~iphone.png in Resources */,
+				514F144E2119545300685003 /* TipTheDeveloper.png in Resources */,
 				A812AD71145F971200196F6B /* DoneButtonStore~iphone.png in Resources */,
 				A812AD83145F971200196F6B /* MCModeAd.png in Resources */,
 				A812AD86145F971200196F6B /* RestoreButton.png in Resources */,
 				A812AD89145F971200196F6B /* RestoreButton@2x~iphone.png in Resources */,
+				514F144B2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
 				519FCB091EA53FB90066EE69 /* BeginNewGame.png in Resources */,
 				5146D7CE1FE06F0400B89738 /* help2.png in Resources */,
 				A812AD8C145F971200196F6B /* RestoreButton~iphone.png in Resources */,
@@ -7158,6 +7218,7 @@
 				51EAD42B1E58B13600611EFF /* byte_swapping.cpp in Sources */,
 				51EAD6DA1E58B13800611EFF /* TextLayoutHelper.cpp in Sources */,
 				51EAD5F61E58B13700611EFF /* network_metaserver.cpp in Sources */,
+				514F145321195A0D00685003 /* PurchaseViewController.mm in Sources */,
 				51E9FFD6203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DC1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD48E1E58B13600611EFF /* wad.cpp in Sources */,
@@ -7296,6 +7357,7 @@
 				A88124A412C79E0100A1A08E /* FilmCell.m in Sources */,
 				51EAD4761E58B13600611EFF /* import_definitions.cpp in Sources */,
 				510420751EAAF34B00129201 /* pngtrans.c in Sources */,
+				514F145621195A0D00685003 /* Purchases.mm in Sources */,
 				51EAD4D61E58B13600611EFF /* world.cpp in Sources */,
 				A88124A512C79E0100A1A08E /* FilmViewController.mm in Sources */,
 				51EAD5751E58B13700611EFF /* lundump.c in Sources */,
@@ -7483,6 +7545,7 @@
 				A881216512C7816300A1A08E /* SaveGame.xcdatamodeld in Sources */,
 				A881216612C7816300A1A08E /* ManagedObjects.m in Sources */,
 				A881216812C7816300A1A08E /* SaveGameViewController.mm in Sources */,
+				514F145421195A0D00685003 /* PurchaseViewController.mm in Sources */,
 				51E9FFD7203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DD1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD4801E58B13600611EFF /* preprocess_map_sdl.cpp in Sources */,
@@ -7621,6 +7684,7 @@
 				51EAD6FC1E58B13800611EFF /* Music.cpp in Sources */,
 				51EAD4771E58B13600611EFF /* import_definitions.cpp in Sources */,
 				510420761EAAF34B00129201 /* pngtrans.c in Sources */,
+				514F145721195A0D00685003 /* Purchases.mm in Sources */,
 				51EAD6DE1E58B13800611EFF /* TextStrings.cpp in Sources */,
 				51EAD5A91E58B13700611EFF /* PlayerName.cpp in Sources */,
 				51EAD6151E58B13700611EFF /* network_messages.cpp in Sources */,
@@ -7808,6 +7872,7 @@
 				51EAD42D1E58B13600611EFF /* byte_swapping.cpp in Sources */,
 				51EAD6DC1E58B13800611EFF /* TextLayoutHelper.cpp in Sources */,
 				51EAD5F81E58B13700611EFF /* network_metaserver.cpp in Sources */,
+				514F145521195A0D00685003 /* PurchaseViewController.mm in Sources */,
 				51E9FFD8203CA7A400ADD38A /* esUtil.cpp in Sources */,
 				51B684DE1EAAFA0400CB1628 /* psy.c in Sources */,
 				51EAD4901E58B13600611EFF /* wad.cpp in Sources */,
@@ -7946,6 +8011,7 @@
 				A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */,
 				51EAD4781E58B13600611EFF /* import_definitions.cpp in Sources */,
 				510420771EAAF34B00129201 /* pngtrans.c in Sources */,
+				514F145821195A0D00685003 /* Purchases.mm in Sources */,
 				51EAD4D81E58B13600611EFF /* world.cpp in Sources */,
 				A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */,
 				51EAD5771E58B13700611EFF /* lundump.c in Sources */,
@@ -8076,7 +8142,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8145,7 +8211,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8201,7 +8267,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8255,7 +8321,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8308,7 +8374,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8325,9 +8391,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8365,10 +8431,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8383,8 +8450,8 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8417,10 +8484,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8433,9 +8501,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8469,10 +8538,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8635,7 +8705,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8689,7 +8759,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8705,10 +8775,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8742,10 +8812,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8907,7 +8978,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

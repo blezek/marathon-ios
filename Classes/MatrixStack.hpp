@@ -1,10 +1,25 @@
-//
-//  MatrixStack.hpp
-//  AlephOne
-//
-//  Created by Dustin Wenz on 2/7/18.
-//  Copyright © 2018 SDG Productions. All rights reserved.
-//
+/*
+ 
+ 
+ MatrixStack.hpp - Singleton for emulating legacy OpenGL state and matrix math. Not intended for long term use; only to ease transition to fully programmable pipeline.
+ 
+ Created by Dustin Wenz on 2/7/18.
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ This license is contained in the file "COPYING",
+ which is included with this source code; it is available online at
+ http://www.gnu.org/licenses/gpl.html
+ 
+ */
 
 #ifndef MatrixStack_hpp
 #define MatrixStack_hpp
@@ -77,11 +92,9 @@ public:
   void normal3f (GLfloat nx, GLfloat ny, GLfloat nz);
   GLfloat* normals();
   
-  bool useFFP; //Flag indicating whether classic OpenGL operations should be performed as well.
-  
 private:
   MatrixStack(){
-    useFFP=1; activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;
+    activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;
     
     for( int i = 0; i < CLIPPING_PLANES; i++) {
       planeActivated[i]=0;
@@ -91,10 +104,10 @@ private:
     glm::vec4 v(0,0,0,0);
     nullPlane = v;
     
-  };  // Private so that it can not be called
+  };
   
-  MatrixStack(MatrixStack const&){};             // copy constructor is private
-  MatrixStack& operator=(MatrixStack const&){};  // assignment operator is private
+  MatrixStack(MatrixStack const&){};
+  MatrixStack& operator=(MatrixStack const&){};
   static MatrixStack* m_pInstance;
   
   int activeMode;

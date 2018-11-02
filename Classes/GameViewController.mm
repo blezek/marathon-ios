@@ -289,6 +289,7 @@ short localFindActionTarget(
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
+@synthesize purchaseViewController;
 @synthesize A1Version, aboutText;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
@@ -365,6 +366,11 @@ short localFindActionTarget(
   [self.newGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.newGameView addSubview:self.newGameViewController.view];
   
+  self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
+  [self.purchaseViewController view];
+  [self.purchaseViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+  [self.purchaseView addSubview:self.purchaseViewController.view];
+  
   self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
   [self.filmViewController view];
   [self.filmViewController enclosingView];
@@ -393,6 +399,7 @@ short localFindActionTarget(
                              self.controlsOverviewView,
                              self.replacementMenuView,
                              self.aboutView,
+                             self.purchaseView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.hidden = YES;
@@ -436,7 +443,7 @@ short localFindActionTarget(
   [reticuleImageNames insertObject:@"ret_shotgun" atIndex:_weapon_ball];
   [reticuleImageNames insertObject:@"ret_machinegun" atIndex:_weapon_smg];
   [reticuleImageNames retain];
-  
+ 
 }
 
 #pragma mark -
@@ -507,6 +514,12 @@ short localFindActionTarget(
 	[Effects appearRevealingView:self.newGameView]; //DCW
   self.currentSavedGame = nil;
   [self zeroStats];
+}
+
+- (IBAction)tipTheDeveloper {
+  [self.purchaseViewController openDoors];
+  [self.purchaseViewController appear];
+  [Effects appearRevealingView:self.purchaseView];
 }
 
 - (IBAction)joinNetworkGame {
@@ -1252,6 +1265,8 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)cancelStore {
+  [self PlayInterfaceButtonSound];
+  [Effects disappearHidingView:self.purchaseView];
 }
 
 - (IBAction)menuAbout {
@@ -1268,6 +1283,11 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)finishIntro:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(finishIntro:) withObject:nil afterDelay:0];
   NSLog(@"Stopping intro early");
+}
+
+- (IBAction)menuTip {
+  [self PlayInterfaceButtonSound];
+  [self tipTheDeveloper];
 }
 
 -(void) PlayInterfaceButtonSound

@@ -19,6 +19,7 @@
 #import "ProgressViewController.h"
 #import "PreferencesViewController.h"
 #import "PauseViewController.h"
+#import "PurchaseViewController.h"
 #import "HelpViewController.h"
 #import "NewGameViewController.h"
 #import "FilmViewController.h"
@@ -43,6 +44,7 @@ typedef enum {
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
   IBOutlet UIView *newGameView;
+  IBOutlet UIView *purchaseView;
   IBOutlet UIView *loadGameView;
   IBOutlet UIView *progressView;
   IBOutlet UIView *preferencesView;
@@ -117,6 +119,7 @@ typedef enum {
   IBOutlet PauseViewController *pauseViewController;
   IBOutlet HelpViewController *helpViewController;
   IBOutlet NewGameViewController *newGameViewController;
+  IBOutlet PurchaseViewController *purchaseViewController;
   IBOutlet FilmViewController* filmViewController;
 
   HUDViewController *HUDViewController;
@@ -161,6 +164,7 @@ typedef enum {
 - (void)playerKilled;
 - (IBAction)quitPressed;
 - (IBAction)networkPressed;
+- (IBAction)tipTheDeveloper;
 
 // Replacement menus
 - (IBAction)menuShowReplacementMenu;
@@ -175,6 +179,8 @@ typedef enum {
 - (IBAction)menuAbout;
 - (IBAction)cancelAbout;
 - (IBAction)finishIntro:(id)sender;
+- (IBAction)menuTip;
+
 
 // Pause actions
 - (IBAction) resume:(id)sender;
@@ -259,6 +265,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *hud;
 @property (nonatomic, retain) UIView *savedGameMessage;
 @property (nonatomic, retain) UIView *newGameView;
+@property (nonatomic, retain) UIView *purchaseView;
 @property (nonatomic, retain) UIView *loadGameView;
 @property (nonatomic, retain) UIView *progressView;
 @property (nonatomic, retain) UIView *menuView;
@@ -302,6 +309,7 @@ typedef enum {
 @property (nonatomic, retain) HelpViewController *helpViewController;
 @property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
+@property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 
 @property (nonatomic, retain) HUDViewController *HUDViewController;
 @property (nonatomic, retain) HUDViewController *HUDTouchViewController;

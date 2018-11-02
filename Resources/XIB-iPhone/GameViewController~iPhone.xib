@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica</string>
-            <string>Helvetica-Bold</string>
-        </array>
         <array key="bankgthd.ttf">
             <string>BankGothicBT-Medium</string>
         </array>
@@ -45,6 +41,7 @@
                 <outlet property="pauseView" destination="101" id="104"/>
                 <outlet property="preferencesView" destination="102" id="105"/>
                 <outlet property="progressView" destination="87" id="89"/>
+                <outlet property="purchaseView" destination="Frd-bN-T7B" id="ekx-hv-M1o"/>
                 <outlet property="replacementMenuView" destination="145" id="150"/>
                 <outlet property="restartView" destination="111" id="114"/>
                 <outlet property="reticule" destination="174" id="175"/>
@@ -361,7 +358,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="156">
-                                            <rect key="frame" x="447" y="230" width="135" height="28"/>
+                                            <rect key="frame" x="495" y="215" width="135" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                             <state key="normal" title="Preferences" image="Preferences.png">
@@ -375,8 +372,23 @@
                                                 <action selector="gotoPreferences:" destination="-1" eventType="touchUpInside" id="157"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1d-sQ-hnD" userLabel="Tip the Developer">
+                                            <rect key="frame" x="430" y="250" width="166" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" title="Preferences" image="TipTheDeveloper.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="highlighted" image="TipTheDeveloperHighlighted.png">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="menuTip" destination="-1" eventType="touchUpInside" id="xRe-oE-LYJ"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160" userLabel="About">
-                                            <rect key="frame" x="528" y="195" width="89" height="28"/>
+                                            <rect key="frame" x="541" y="179" width="89" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -392,7 +404,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46e-Nc-rTf" userLabel="Help">
-                                            <rect key="frame" x="556" y="159" width="68" height="28"/>
+                                            <rect key="frame" x="528" y="143" width="68" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -437,6 +449,11 @@
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="102" userLabel="Preferences">
                     <rect key="frame" x="0.0" y="0.0" width="960" height="641"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-bN-T7B" userLabel="Purchases">
+                    <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -1235,8 +1252,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">	Hardgrove
-	Joey Adams
+                                    <mutableString key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1281,7 +1297,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </string>
+ </mutableString>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -1332,6 +1348,661 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 Cg
 </string>
                                     <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">The Aleph One project owes thanks to the following individuals and groups, for their contributions to this project or to open source software.
+
+Media and support files have been contributed by the Aleph One authors and by:</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">	Bill Catambay
+	Hugo Forss
+	Robert Kreps
+	Tim Larson
+	Ares Ex Machina
+	Tom Moertel
+	Jesse Simko
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">The Aleph One project includes code from:
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">	DevIL, by Denton Woods
+	Expat, by James Clark
+	LibNAT, by Adam Warrington
+	Lua, by PUC-Rio
+	Lua Power Patches, patch by Chris Marrin
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="Aleph One makes use of external libraries including:">
+                                    <attributes>
+                                        <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">	ALSA
+	Boost
+	FFmpeg
+	FreeType
+	GLEW
+	JPEG
+	libav
+	libpng
+	libsndfile
+	libvpx
+	MAD
+	SDL
+	SDL_image
+	SDL_net
+	SDL_ttf
+	smpeg
+	Speex
+	Ogg
+	Vorbis
+	zlib
+	zziplib
+
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">Some background images are produced by NASA and are in the public domain.
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
@@ -1440,6 +2111,8 @@ Cg
         <image name="Reload.png" width="256" height="256"/>
         <image name="Somewhere.png" width="1024" height="768"/>
         <image name="StoreButton.png" width="136" height="36"/>
+        <image name="TipTheDeveloper.png" width="332" height="56"/>
+        <image name="TipTheDeveloperHighlighted.png" width="332" height="56"/>
         <image name="TouchToContinue.png" width="256" height="50"/>
         <image name="bungie-logo.png" width="685" height="300"/>
         <image name="github.png" width="400" height="200"/>

@@ -3661,6 +3661,7 @@ void parse_graphics_preferences(InfoTree root, std::string version)
 	}
 }
 
+extern bool use_lua_hud_crosshairs;
 
 void parse_player_preferences(InfoTree root, std::string version)
 {
@@ -3671,7 +3672,7 @@ void parse_player_preferences(InfoTree root, std::string version)
 	root.read_attr("difficulty", player_preferences->difficulty_level);
 	root.read_attr("bkgd_music", player_preferences->background_music_on);
 	root.read_attr("crosshairs_active", player_preferences->crosshairs_active);
-	
+  
 	BOOST_FOREACH(InfoTree child, root.children_named("chase_cam"))
 	{
 		child.read_attr("behind", player_preferences->ChaseCam.Behind);
@@ -3694,6 +3695,18 @@ void parse_player_preferences(InfoTree root, std::string version)
 		BOOST_FOREACH(InfoTree color, child.children_named("color"))
 			color.read_color(player_preferences->Crosshairs.Color);
 	}
+  
+  //DCW manually activate crosshairs. 
+  player_preferences->crosshairs_active=1;
+  player_preferences->Crosshairs.Thickness=2;
+  player_preferences->Crosshairs.FromCenter=8;
+  player_preferences->Crosshairs.Length=16;
+  player_preferences->Crosshairs.Shape=0;
+  player_preferences->Crosshairs.Opacity=0.5;
+  player_preferences->Crosshairs.Color.red=1.0;
+  player_preferences->Crosshairs.Color.green=1.0;
+  player_preferences->Crosshairs.Color.blue=1.0;
+  
 }
 
 SDL_Scancode translate_old_key(int code)

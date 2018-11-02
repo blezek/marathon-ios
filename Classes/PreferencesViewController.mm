@@ -114,8 +114,9 @@
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
   
   // Crosshairs are set in the UI layer, not by the engine
-  // Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
-  Crosshairs_SetActive(NO);
+  //Crosshairs_SetActive(NO);
+  //DCW changed this; now uses engine reticle.
+  Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
 
 }
 
