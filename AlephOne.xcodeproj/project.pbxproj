@@ -70,8 +70,6 @@
 		5104208C1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		5104208D1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		5104208E1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
-		5114FBC8217FB31F007434C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114FBC7217FB31F007434C5 /* GameKit.framework */; };
-		5114FBCA217FB323007434C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114FBC9217FB323007434C5 /* StoreKit.framework */; };
 		512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C051E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
@@ -106,36 +104,6 @@
 		51324AB01EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB11EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
-		513F282B1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
-		513F282C1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
-		513F282D1F998F4F00A23C93 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */; };
-		513F282E1F998F5200A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
-		513F282F1F998F5200A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
-		513F28301F998F5300A23C93 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28291F998C3100A23C93 /* HelpButton.png */; };
-		51451B6E1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
-		51451B6F1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
-		51451B701F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */; };
-		51451B711F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */; };
-		51451B721F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */; };
-		51451B731F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */; };
-		51451B741F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */; };
-		51451B751F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */; };
-		51451B761F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */; };
-		51451B771F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6B1F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png */; };
-		51451B781F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6B1F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png */; };
-		51451B791F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6B1F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png */; };
-		51451B7A1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6C1F60FDE100EF94F1 /* SavedGame-Load.png */; };
-		51451B7B1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6C1F60FDE100EF94F1 /* SavedGame-Load.png */; };
-		51451B7C1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6C1F60FDE100EF94F1 /* SavedGame-Load.png */; };
-		51451B7D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png */; };
-		51451B7E1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png */; };
-		51451B7F1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51451B6D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png */; };
-		5146D7BE1FDF1A3100B89738 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7BD1FDF1A2F00B89738 /* Pause.png */; };
-		5146D7BF1FDF1A3100B89738 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7BD1FDF1A2F00B89738 /* Pause.png */; };
-		5146D7C01FDF1A3100B89738 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7BD1FDF1A2F00B89738 /* Pause.png */; };
-		5146D7C21FDF1A4500B89738 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7C11FDF1A4400B89738 /* Console.png */; };
-		5146D7C31FDF1A4500B89738 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7C11FDF1A4400B89738 /* Console.png */; };
-		5146D7C41FDF1A4500B89738 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7C11FDF1A4400B89738 /* Console.png */; };
 		5146D7C51FE0588900B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
 		5146D7C61FE0588A00B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
 		5146D7C71FE0588B00B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
@@ -146,8 +114,6 @@
 		5146D7D01FE06F0900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
 		5146D7D11FE06F0A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
 		5146D7D51FE08CC100B89738 /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7D41FE08CC000B89738 /* GenericBackground.png */; };
-		51482D662001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
-		51482D672001C2A300690752 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D652001C2A200690752 /* powered-by-alephone.png */; };
 		51482D6A2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
 		51482D6B2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
 		51482D6C2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
@@ -166,24 +132,141 @@
 		514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
 		514D349F1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
 		514D34A01E59678B0011BAFD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514D349D1E59678A0011BAFD /* VideoToolbox.framework */; };
-		514F14412119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
-		514F14422119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
-		514F14432119506C00685003 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F143F2119506B00685003 /* TipButton.png */; };
-		514F14442119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
-		514F14452119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
-		514F14462119506C00685003 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14402119506C00685003 /* TipButtonHighlighted.png */; };
-		514F14492119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
-		514F144A2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
-		514F144B2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14472119545100685003 /* TipTheDeveloperHighlighted.png */; };
-		514F144C2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
-		514F144D2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
-		514F144E2119545300685003 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F14482119545200685003 /* TipTheDeveloper.png */; };
 		514F145321195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
 		514F145421195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
 		514F145521195A0D00685003 /* PurchaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145021195A0B00685003 /* PurchaseViewController.mm */; };
 		514F145621195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
 		514F145721195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
 		514F145821195A0D00685003 /* Purchases.mm in Sources */ = {isa = PBXBuildFile; fileRef = 514F145221195A0C00685003 /* Purchases.mm */; };
+		5152752A21A1F52C004D1E07 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 515274FF21A1F52C004D1E07 /* JoinNetworkGame.png */; };
+		5152752B21A1F52C004D1E07 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750021A1F52C004D1E07 /* BeginNewGameHighlighted.png */; };
+		5152752C21A1F52C004D1E07 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750121A1F52C004D1E07 /* GatherNetworkGame.png */; };
+		5152752D21A1F52C004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750221A1F52C004D1E07 /* SavedGame-DuplicateHighlighted.png */; };
+		5152752E21A1F52C004D1E07 /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750321A1F52C004D1E07 /* RestoreButtonHighlighted.png */; };
+		5152752F21A1F52C004D1E07 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750421A1F52C004D1E07 /* Difficulty-Normal.png */; };
+		5152753021A1F52C004D1E07 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750521A1F52C004D1E07 /* AboutHighlighted.png */; };
+		5152753121A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750621A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png */; };
+		5152753221A1F52C004D1E07 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750721A1F52C004D1E07 /* BackButton.png */; };
+		5152753321A1F52C004D1E07 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750821A1F52C004D1E07 /* ContinueSavedGameHighlighted.png */; };
+		5152753421A1F52C004D1E07 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750921A1F52C004D1E07 /* TipButtonHighlighted.png */; };
+		5152753521A1F52C004D1E07 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750A21A1F52C004D1E07 /* SavedGame-LoadHighlighted.png */; };
+		5152753621A1F52C004D1E07 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750B21A1F52C004D1E07 /* Map.png */; };
+		5152753721A1F52C004D1E07 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750C21A1F52C004D1E07 /* HelpButton.png */; };
+		5152753821A1F52C004D1E07 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750D21A1F52C004D1E07 /* SavedGame-Delete.png */; };
+		5152753921A1F52C004D1E07 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750E21A1F52C004D1E07 /* ContinueSavedGame.png */; };
+		5152753A21A1F52C004D1E07 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152750F21A1F52C004D1E07 /* PreferencesHighlighted.png */; };
+		5152753B21A1F52C004D1E07 /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751021A1F52C004D1E07 /* Resume.png */; };
+		5152753C21A1F52C004D1E07 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751121A1F52C004D1E07 /* TipTheDeveloperHighlighted.png */; };
+		5152753D21A1F52C004D1E07 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751221A1F52C004D1E07 /* Difficulty-Easy.png */; };
+		5152753E21A1F52C004D1E07 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751321A1F52C004D1E07 /* Difficulty-Total Carnage.png */; };
+		5152753F21A1F52C004D1E07 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751421A1F52C004D1E07 /* JoinNetworkGameHighlighted.png */; };
+		5152754021A1F52C004D1E07 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751521A1F52C004D1E07 /* HelpButtonHighlighted.png */; };
+		5152754121A1F52C004D1E07 /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751621A1F52C004D1E07 /* Menu.png */; };
+		5152754221A1F52C004D1E07 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751721A1F52C004D1E07 /* D-pad-knob.png */; };
+		5152754321A1F52C004D1E07 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751821A1F52C004D1E07 /* Pause.png */; };
+		5152754421A1F52C004D1E07 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751921A1F52C004D1E07 /* Console.png */; };
+		5152754521A1F52C004D1E07 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751A21A1F52C004D1E07 /* TipTheDeveloper.png */; };
+		5152754621A1F52C004D1E07 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751B21A1F52C004D1E07 /* NextWeapon.png */; };
+		5152754721A1F52C004D1E07 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751C21A1F52C004D1E07 /* TipButton.png */; };
+		5152754821A1F52C004D1E07 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751D21A1F52C004D1E07 /* PreviousWeapon.png */; };
+		5152754921A1F52C004D1E07 /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751E21A1F52C004D1E07 /* RestoreButton.png */; };
+		5152754A21A1F52C004D1E07 /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152751F21A1F52C004D1E07 /* ResumeHighlighted.png */; };
+		5152754B21A1F52C004D1E07 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752021A1F52C004D1E07 /* GatherNetworkGameHighlighted.png */; };
+		5152754C21A1F52C004D1E07 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752121A1F52C004D1E07 /* SavedGame-Load.png */; };
+		5152754D21A1F52C004D1E07 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752221A1F52C004D1E07 /* About.png */; };
+		5152754E21A1F52C004D1E07 /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752321A1F52C004D1E07 /* MenuHighlighted.png */; };
+		5152754F21A1F52C004D1E07 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752421A1F52C004D1E07 /* Difficulty-Major Damage.png */; };
+		5152755021A1F52C004D1E07 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752521A1F52C004D1E07 /* D-pad.png */; };
+		5152755121A1F52C004D1E07 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752621A1F52C004D1E07 /* Preferences.png */; };
+		5152755221A1F52C004D1E07 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752721A1F52C004D1E07 /* BeginNewGame.png */; };
+		5152755321A1F52C004D1E07 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752821A1F52C004D1E07 /* SavedGame-Duplicate.png */; };
+		5152755421A1F52C004D1E07 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152752921A1F52C004D1E07 /* BackButtonHighlighted.png */; };
+		5152758121A1F534004D1E07 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755621A1F534004D1E07 /* JoinNetworkGame.png */; };
+		5152758221A1F534004D1E07 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755721A1F534004D1E07 /* BeginNewGameHighlighted.png */; };
+		5152758321A1F534004D1E07 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755821A1F534004D1E07 /* GatherNetworkGame.png */; };
+		5152758421A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755921A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png */; };
+		5152758521A1F534004D1E07 /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755A21A1F534004D1E07 /* RestoreButtonHighlighted.png */; };
+		5152758621A1F534004D1E07 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755B21A1F534004D1E07 /* Difficulty-Normal.png */; };
+		5152758721A1F534004D1E07 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755C21A1F534004D1E07 /* AboutHighlighted.png */; };
+		5152758821A1F534004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755D21A1F534004D1E07 /* SavedGame-DeleteHighlighted.png */; };
+		5152758921A1F534004D1E07 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755E21A1F534004D1E07 /* BackButton.png */; };
+		5152758A21A1F534004D1E07 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152755F21A1F534004D1E07 /* ContinueSavedGameHighlighted.png */; };
+		5152758B21A1F534004D1E07 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756021A1F534004D1E07 /* TipButtonHighlighted.png */; };
+		5152758C21A1F534004D1E07 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756121A1F534004D1E07 /* SavedGame-LoadHighlighted.png */; };
+		5152758D21A1F534004D1E07 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756221A1F534004D1E07 /* Map.png */; };
+		5152758E21A1F534004D1E07 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756321A1F534004D1E07 /* HelpButton.png */; };
+		5152758F21A1F534004D1E07 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756421A1F534004D1E07 /* SavedGame-Delete.png */; };
+		5152759021A1F534004D1E07 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756521A1F534004D1E07 /* ContinueSavedGame.png */; };
+		5152759121A1F534004D1E07 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756621A1F534004D1E07 /* PreferencesHighlighted.png */; };
+		5152759221A1F534004D1E07 /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756721A1F534004D1E07 /* Resume.png */; };
+		5152759321A1F534004D1E07 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756821A1F534004D1E07 /* TipTheDeveloperHighlighted.png */; };
+		5152759421A1F534004D1E07 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756921A1F534004D1E07 /* Difficulty-Easy.png */; };
+		5152759521A1F534004D1E07 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756A21A1F534004D1E07 /* Difficulty-Total Carnage.png */; };
+		5152759621A1F534004D1E07 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756B21A1F534004D1E07 /* JoinNetworkGameHighlighted.png */; };
+		5152759721A1F534004D1E07 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756C21A1F534004D1E07 /* HelpButtonHighlighted.png */; };
+		5152759821A1F534004D1E07 /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756D21A1F534004D1E07 /* Menu.png */; };
+		5152759921A1F534004D1E07 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756E21A1F534004D1E07 /* D-pad-knob.png */; };
+		5152759A21A1F534004D1E07 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152756F21A1F534004D1E07 /* Pause.png */; };
+		5152759B21A1F534004D1E07 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757021A1F534004D1E07 /* Console.png */; };
+		5152759C21A1F534004D1E07 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757121A1F534004D1E07 /* TipTheDeveloper.png */; };
+		5152759D21A1F534004D1E07 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757221A1F534004D1E07 /* NextWeapon.png */; };
+		5152759E21A1F534004D1E07 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757321A1F534004D1E07 /* TipButton.png */; };
+		5152759F21A1F534004D1E07 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757421A1F534004D1E07 /* PreviousWeapon.png */; };
+		515275A021A1F534004D1E07 /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757521A1F534004D1E07 /* RestoreButton.png */; };
+		515275A121A1F534004D1E07 /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757621A1F534004D1E07 /* ResumeHighlighted.png */; };
+		515275A221A1F534004D1E07 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757721A1F534004D1E07 /* GatherNetworkGameHighlighted.png */; };
+		515275A321A1F534004D1E07 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757821A1F534004D1E07 /* SavedGame-Load.png */; };
+		515275A421A1F534004D1E07 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757921A1F534004D1E07 /* About.png */; };
+		515275A521A1F534004D1E07 /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757A21A1F534004D1E07 /* MenuHighlighted.png */; };
+		515275A621A1F534004D1E07 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757B21A1F534004D1E07 /* Difficulty-Major Damage.png */; };
+		515275A721A1F534004D1E07 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757C21A1F534004D1E07 /* D-pad.png */; };
+		515275A821A1F534004D1E07 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757D21A1F534004D1E07 /* Preferences.png */; };
+		515275A921A1F534004D1E07 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757E21A1F534004D1E07 /* BeginNewGame.png */; };
+		515275AA21A1F534004D1E07 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152757F21A1F534004D1E07 /* SavedGame-Duplicate.png */; };
+		515275AB21A1F534004D1E07 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5152758021A1F534004D1E07 /* BackButtonHighlighted.png */; };
+		515275D821A1F53B004D1E07 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275AD21A1F53A004D1E07 /* JoinNetworkGame.png */; };
+		515275D921A1F53B004D1E07 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275AE21A1F53A004D1E07 /* BeginNewGameHighlighted.png */; };
+		515275DA21A1F53B004D1E07 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275AF21A1F53A004D1E07 /* GatherNetworkGame.png */; };
+		515275DB21A1F53B004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B021A1F53A004D1E07 /* SavedGame-DuplicateHighlighted.png */; };
+		515275DC21A1F53B004D1E07 /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B121A1F53A004D1E07 /* RestoreButtonHighlighted.png */; };
+		515275DD21A1F53B004D1E07 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B221A1F53A004D1E07 /* Difficulty-Normal.png */; };
+		515275DE21A1F53B004D1E07 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B321A1F53B004D1E07 /* AboutHighlighted.png */; };
+		515275DF21A1F53B004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B421A1F53B004D1E07 /* SavedGame-DeleteHighlighted.png */; };
+		515275E021A1F53B004D1E07 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B521A1F53B004D1E07 /* BackButton.png */; };
+		515275E121A1F53B004D1E07 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B621A1F53B004D1E07 /* ContinueSavedGameHighlighted.png */; };
+		515275E221A1F53B004D1E07 /* TipButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B721A1F53B004D1E07 /* TipButtonHighlighted.png */; };
+		515275E321A1F53B004D1E07 /* SavedGame-LoadHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B821A1F53B004D1E07 /* SavedGame-LoadHighlighted.png */; };
+		515275E421A1F53B004D1E07 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275B921A1F53B004D1E07 /* Map.png */; };
+		515275E521A1F53B004D1E07 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BA21A1F53B004D1E07 /* HelpButton.png */; };
+		515275E621A1F53B004D1E07 /* SavedGame-Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BB21A1F53B004D1E07 /* SavedGame-Delete.png */; };
+		515275E721A1F53B004D1E07 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BC21A1F53B004D1E07 /* ContinueSavedGame.png */; };
+		515275E821A1F53B004D1E07 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BD21A1F53B004D1E07 /* PreferencesHighlighted.png */; };
+		515275E921A1F53B004D1E07 /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BE21A1F53B004D1E07 /* Resume.png */; };
+		515275EA21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275BF21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png */; };
+		515275EB21A1F53B004D1E07 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C021A1F53B004D1E07 /* Difficulty-Easy.png */; };
+		515275EC21A1F53B004D1E07 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C121A1F53B004D1E07 /* Difficulty-Total Carnage.png */; };
+		515275ED21A1F53B004D1E07 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C221A1F53B004D1E07 /* JoinNetworkGameHighlighted.png */; };
+		515275EE21A1F53B004D1E07 /* HelpButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C321A1F53B004D1E07 /* HelpButtonHighlighted.png */; };
+		515275EF21A1F53B004D1E07 /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C421A1F53B004D1E07 /* Menu.png */; };
+		515275F021A1F53B004D1E07 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C521A1F53B004D1E07 /* D-pad-knob.png */; };
+		515275F121A1F53B004D1E07 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C621A1F53B004D1E07 /* Pause.png */; };
+		515275F221A1F53B004D1E07 /* Console.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C721A1F53B004D1E07 /* Console.png */; };
+		515275F321A1F53B004D1E07 /* TipTheDeveloper.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C821A1F53B004D1E07 /* TipTheDeveloper.png */; };
+		515275F421A1F53B004D1E07 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275C921A1F53B004D1E07 /* NextWeapon.png */; };
+		515275F521A1F53B004D1E07 /* TipButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CA21A1F53B004D1E07 /* TipButton.png */; };
+		515275F621A1F53B004D1E07 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CB21A1F53B004D1E07 /* PreviousWeapon.png */; };
+		515275F721A1F53B004D1E07 /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CC21A1F53B004D1E07 /* RestoreButton.png */; };
+		515275F821A1F53B004D1E07 /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CD21A1F53B004D1E07 /* ResumeHighlighted.png */; };
+		515275F921A1F53B004D1E07 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CE21A1F53B004D1E07 /* GatherNetworkGameHighlighted.png */; };
+		515275FA21A1F53B004D1E07 /* SavedGame-Load.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275CF21A1F53B004D1E07 /* SavedGame-Load.png */; };
+		515275FB21A1F53B004D1E07 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D021A1F53B004D1E07 /* About.png */; };
+		515275FC21A1F53B004D1E07 /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D121A1F53B004D1E07 /* MenuHighlighted.png */; };
+		515275FD21A1F53B004D1E07 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D221A1F53B004D1E07 /* Difficulty-Major Damage.png */; };
+		515275FE21A1F53B004D1E07 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D321A1F53B004D1E07 /* D-pad.png */; };
+		515275FF21A1F53B004D1E07 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D421A1F53B004D1E07 /* Preferences.png */; };
+		5152760021A1F53B004D1E07 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D521A1F53B004D1E07 /* BeginNewGame.png */; };
+		5152760121A1F53B004D1E07 /* SavedGame-Duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D621A1F53B004D1E07 /* SavedGame-Duplicate.png */; };
+		5152760221A1F53B004D1E07 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 515275D721A1F53B004D1E07 /* BackButtonHighlighted.png */; };
 		5152CB901D948FE100C6E65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5152CB8F1D948FE100C6E65C /* Images.xcassets */; };
 		515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
 		515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515303171DAD716200B0F62A /* CoreMotion.framework */; };
@@ -191,39 +274,6 @@
 		516ECE8D1F46195800D38BB2 /* GenericLoadingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */; };
 		516ECE8E1F46195800D38BB2 /* GenericLoadingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */; };
 		516ECE8F1F46195800D38BB2 /* GenericLoadingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */; };
-		516ECE921F4B75FE00D38BB2 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE901F4B75FE00D38BB2 /* NextWeapon.png */; };
-		516ECE931F4B75FE00D38BB2 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE901F4B75FE00D38BB2 /* NextWeapon.png */; };
-		516ECE941F4B75FE00D38BB2 /* NextWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE901F4B75FE00D38BB2 /* NextWeapon.png */; };
-		516ECE951F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE911F4B75FE00D38BB2 /* PreviousWeapon.png */; };
-		516ECE961F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE911F4B75FE00D38BB2 /* PreviousWeapon.png */; };
-		516ECE971F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE911F4B75FE00D38BB2 /* PreviousWeapon.png */; };
-		516ECE991F4E063600D38BB2 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE981F4E063600D38BB2 /* Map.png */; };
-		516ECE9A1F4E063600D38BB2 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE981F4E063600D38BB2 /* Map.png */; };
-		516ECE9B1F4E063600D38BB2 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE981F4E063600D38BB2 /* Map.png */; };
-		516ECE9E1F4E086200D38BB2 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9C1F4E086200D38BB2 /* D-pad-knob.png */; };
-		516ECE9F1F4E086200D38BB2 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9C1F4E086200D38BB2 /* D-pad-knob.png */; };
-		516ECEA01F4E086200D38BB2 /* D-pad-knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9C1F4E086200D38BB2 /* D-pad-knob.png */; };
-		516ECEA11F4E086200D38BB2 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9D1F4E086200D38BB2 /* D-pad.png */; };
-		516ECEA21F4E086200D38BB2 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9D1F4E086200D38BB2 /* D-pad.png */; };
-		516ECEA31F4E086200D38BB2 /* D-pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECE9D1F4E086200D38BB2 /* D-pad.png */; };
-		516ECEAE1F59DEC400D38BB2 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA81F59DEC400D38BB2 /* BackButton.png */; };
-		516ECEAF1F59DEC400D38BB2 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA81F59DEC400D38BB2 /* BackButton.png */; };
-		516ECEB01F59DEC400D38BB2 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA81F59DEC400D38BB2 /* BackButton.png */; };
-		516ECEB11F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA91F59DEC400D38BB2 /* BackButtonHighlighted.png */; };
-		516ECEB21F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA91F59DEC400D38BB2 /* BackButtonHighlighted.png */; };
-		516ECEB31F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEA91F59DEC400D38BB2 /* BackButtonHighlighted.png */; };
-		516ECEB41F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAA1F59DEC400D38BB2 /* Difficulty-Easy.png */; };
-		516ECEB51F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAA1F59DEC400D38BB2 /* Difficulty-Easy.png */; };
-		516ECEB61F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAA1F59DEC400D38BB2 /* Difficulty-Easy.png */; };
-		516ECEB71F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAB1F59DEC400D38BB2 /* Difficulty-Major Damage.png */; };
-		516ECEB81F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAB1F59DEC400D38BB2 /* Difficulty-Major Damage.png */; };
-		516ECEB91F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAB1F59DEC400D38BB2 /* Difficulty-Major Damage.png */; };
-		516ECEBA1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAC1F59DEC400D38BB2 /* Difficulty-Normal.png */; };
-		516ECEBB1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAC1F59DEC400D38BB2 /* Difficulty-Normal.png */; };
-		516ECEBC1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAC1F59DEC400D38BB2 /* Difficulty-Normal.png */; };
-		516ECEBD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png */; };
-		516ECEBE1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png */; };
-		516ECEBF1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */ = {isa = PBXBuildFile; fileRef = 516ECEAD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png */; };
 		5176926C1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
@@ -233,26 +283,8 @@
 		517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
-		517F14B2219E804600C3163E /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B0219E803F00C3163E /* RestoreButtonHighlighted.png */; };
-		517F14B3219E804600C3163E /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B0219E803F00C3163E /* RestoreButtonHighlighted.png */; };
-		517F14B4219E804600C3163E /* RestoreButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B0219E803F00C3163E /* RestoreButtonHighlighted.png */; };
-		517F14B5219E804600C3163E /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B1219E804200C3163E /* RestoreButton.png */; };
-		517F14B6219E804600C3163E /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B1219E804200C3163E /* RestoreButton.png */; };
-		517F14B7219E804600C3163E /* RestoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 517F14B1219E804200C3163E /* RestoreButton.png */; };
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
-		517FB4991F89CA93009F6DCE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4951F89CA93009F6DCE /* Menu.png */; };
-		517FB49A1F89CA93009F6DCE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4951F89CA93009F6DCE /* Menu.png */; };
-		517FB49B1F89CA93009F6DCE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4951F89CA93009F6DCE /* Menu.png */; };
-		517FB49C1F89CA93009F6DCE /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4961F89CA93009F6DCE /* MenuHighlighted.png */; };
-		517FB49D1F89CA93009F6DCE /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4961F89CA93009F6DCE /* MenuHighlighted.png */; };
-		517FB49E1F89CA93009F6DCE /* MenuHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4961F89CA93009F6DCE /* MenuHighlighted.png */; };
-		517FB49F1F89CA93009F6DCE /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4971F89CA93009F6DCE /* Resume.png */; };
-		517FB4A01F89CA93009F6DCE /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4971F89CA93009F6DCE /* Resume.png */; };
-		517FB4A11F89CA93009F6DCE /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4971F89CA93009F6DCE /* Resume.png */; };
-		517FB4A21F89CA93009F6DCE /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4981F89CA93009F6DCE /* ResumeHighlighted.png */; };
-		517FB4A31F89CA93009F6DCE /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4981F89CA93009F6DCE /* ResumeHighlighted.png */; };
-		517FB4A41F89CA93009F6DCE /* ResumeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4981F89CA93009F6DCE /* ResumeHighlighted.png */; };
 		5189238D1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238F1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
@@ -289,42 +321,15 @@
 		519FCAE91EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAE81EA29DD20066EE69 /* DoneButtonThanksHighlighted.png */; };
 		519FCAEA1EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAE81EA29DD20066EE69 /* DoneButtonThanksHighlighted.png */; };
 		519FCAEB1EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAE81EA29DD20066EE69 /* DoneButtonThanksHighlighted.png */; };
-		519FCB011EA53FB90066EE69 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF51EA53FB90066EE69 /* About.png */; };
-		519FCB021EA53FB90066EE69 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF51EA53FB90066EE69 /* About.png */; };
-		519FCB031EA53FB90066EE69 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF51EA53FB90066EE69 /* About.png */; };
-		519FCB041EA53FB90066EE69 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF61EA53FB90066EE69 /* AboutHighlighted.png */; };
-		519FCB051EA53FB90066EE69 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF61EA53FB90066EE69 /* AboutHighlighted.png */; };
-		519FCB061EA53FB90066EE69 /* AboutHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF61EA53FB90066EE69 /* AboutHighlighted.png */; };
-		519FCB071EA53FB90066EE69 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF71EA53FB90066EE69 /* BeginNewGame.png */; };
-		519FCB081EA53FB90066EE69 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF71EA53FB90066EE69 /* BeginNewGame.png */; };
-		519FCB091EA53FB90066EE69 /* BeginNewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF71EA53FB90066EE69 /* BeginNewGame.png */; };
-		519FCB0A1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF81EA53FB90066EE69 /* BeginNewGameHighlighted.png */; };
-		519FCB0B1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF81EA53FB90066EE69 /* BeginNewGameHighlighted.png */; };
-		519FCB0C1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF81EA53FB90066EE69 /* BeginNewGameHighlighted.png */; };
-		519FCB0D1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF91EA53FB90066EE69 /* ContinueSavedGame.png */; };
-		519FCB0E1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF91EA53FB90066EE69 /* ContinueSavedGame.png */; };
-		519FCB0F1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAF91EA53FB90066EE69 /* ContinueSavedGame.png */; };
-		519FCB101EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFA1EA53FB90066EE69 /* ContinueSavedGameHighlighted.png */; };
-		519FCB111EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFA1EA53FB90066EE69 /* ContinueSavedGameHighlighted.png */; };
-		519FCB121EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFA1EA53FB90066EE69 /* ContinueSavedGameHighlighted.png */; };
-		519FCB131EA53FB90066EE69 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFB1EA53FB90066EE69 /* GatherNetworkGame.png */; };
-		519FCB141EA53FB90066EE69 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFB1EA53FB90066EE69 /* GatherNetworkGame.png */; };
-		519FCB151EA53FB90066EE69 /* GatherNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFB1EA53FB90066EE69 /* GatherNetworkGame.png */; };
-		519FCB161EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFC1EA53FB90066EE69 /* GatherNetworkGameHighlighted.png */; };
-		519FCB171EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFC1EA53FB90066EE69 /* GatherNetworkGameHighlighted.png */; };
-		519FCB181EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFC1EA53FB90066EE69 /* GatherNetworkGameHighlighted.png */; };
-		519FCB191EA53FB90066EE69 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFD1EA53FB90066EE69 /* JoinNetworkGame.png */; };
-		519FCB1A1EA53FB90066EE69 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFD1EA53FB90066EE69 /* JoinNetworkGame.png */; };
-		519FCB1B1EA53FB90066EE69 /* JoinNetworkGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFD1EA53FB90066EE69 /* JoinNetworkGame.png */; };
-		519FCB1C1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFE1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png */; };
-		519FCB1D1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFE1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png */; };
-		519FCB1E1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFE1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png */; };
-		519FCB1F1EA53FB90066EE69 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFF1EA53FB90066EE69 /* Preferences.png */; };
-		519FCB201EA53FB90066EE69 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFF1EA53FB90066EE69 /* Preferences.png */; };
-		519FCB211EA53FB90066EE69 /* Preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAFF1EA53FB90066EE69 /* Preferences.png */; };
-		519FCB221EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
-		519FCB231EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
-		519FCB241EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */; };
+		51A6CB8621A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */; };
+		51A6CB8721A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */; };
+		51A6CB8821A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */; };
+		51A6CB8B21A2099900D2C4ED /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB8921A2099800D2C4ED /* AcceptButton.png */; };
+		51A6CB8C21A2099900D2C4ED /* AcceptButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB8A21A2099900D2C4ED /* AcceptButtonHighlighted.png */; };
+		51A6CB8F21A209B200D2C4ED /* AcceptButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB8D21A209B100D2C4ED /* AcceptButtonHighlighted.png */; };
+		51A6CB9021A209B200D2C4ED /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB8E21A209B200D2C4ED /* AcceptButton.png */; };
+		51A6CB9321A209C500D2C4ED /* AcceptButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */; };
+		51A6CB9421A209C500D2C4ED /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB9221A209C500D2C4ED /* AcceptButton.png */; };
 		51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
 		51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
 		51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
@@ -1675,8 +1680,6 @@
 		A881251512C7B18E00A1A08E /* FilmViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A88124A312C79E0100A1A08E /* FilmViewController.mm */; };
 		A88125BE12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
 		A88125BF12C7B99100A1A08E /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88124A112C79E0100A1A08E /* FilmCell.m */; };
-		A883D582148AC5D50000AE37 /* Marathon_Durandal_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A883D581148AC5D40000AE37 /* Marathon_Durandal_Icon.png */; };
-		A883D584148AC5EB0000AE37 /* Marathon_Durandal_Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A883D583148AC5E90000AE37 /* Marathon_Durandal_Icon2@2x.png */; };
 		A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FB12EFCD6900D5D23F /* CFNetwork.framework */; };
 		A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FD12EFCD6900D5D23F /* Foundation.framework */; };
 		A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C4B6FF12EFCD6900D5D23F /* MobileCoreServices.framework */; };
@@ -2132,8 +2135,6 @@
 		5104204C1EAAF34B00129201 /* pngwtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwtran.c; sourceTree = "<group>"; };
 		5104204D1EAAF34B00129201 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = submodules/Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
-		5114FBC7217FB31F007434C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		5114FBC9217FB323007434C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		512E0C031E70C85D000B0C98 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		51324A141EAAE29100BA8D8F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "submodules/Libraries/SDL2-2.0.5/libSDL2.a"; sourceTree = "<group>"; };
 		51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
@@ -2252,55 +2253,152 @@
 		51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
 		51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ttf.h; sourceTree = "<group>"; };
 		513F28261F97CAF100A23C93 /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
-		513F28291F998C3100A23C93 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
-		513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButtonHighlighted.png; sourceTree = "<group>"; };
-		51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Delete.png"; sourceTree = "<group>"; };
-		51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DeleteHighlighted.png"; sourceTree = "<group>"; };
-		51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
-		51451B6B1F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DuplicateHighlighted.png"; sourceTree = "<group>"; };
-		51451B6C1F60FDE100EF94F1 /* SavedGame-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Load.png"; sourceTree = "<group>"; };
-		51451B6D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-LoadHighlighted.png"; sourceTree = "<group>"; };
-		5146D7BD1FDF1A2F00B89738 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
-		5146D7C11FDF1A4400B89738 /* Console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Console.png; sourceTree = "<group>"; };
 		5146D7D41FE08CC000B89738 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
-		51482D652001C2A200690752 /* powered-by-alephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "powered-by-alephone.png"; path = "Resources/GUI/powered-by-alephone.png"; sourceTree = "<group>"; };
 		51482D692001C85F00690752 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = Resources/GUI/github.png; sourceTree = "<group>"; };
 		514D348D1E5965580011BAFD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		514D34991E5966F40011BAFD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		514D349D1E59678A0011BAFD /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		514F143F2119506B00685003 /* TipButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButton.png; sourceTree = "<group>"; };
-		514F14402119506C00685003 /* TipButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButtonHighlighted.png; sourceTree = "<group>"; };
-		514F14472119545100685003 /* TipTheDeveloperHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloperHighlighted.png; sourceTree = "<group>"; };
-		514F14482119545200685003 /* TipTheDeveloper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloper.png; sourceTree = "<group>"; };
 		514F144F21195A0B00685003 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = Classes/PurchaseViewController.h; sourceTree = "<group>"; };
 		514F145021195A0B00685003 /* PurchaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PurchaseViewController.mm; path = Classes/PurchaseViewController.mm; sourceTree = "<group>"; };
 		514F145121195A0C00685003 /* Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Purchases.h; path = Classes/Purchases.h; sourceTree = "<group>"; };
 		514F145221195A0C00685003 /* Purchases.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Purchases.mm; path = Classes/Purchases.mm; sourceTree = "<group>"; };
+		515274FF21A1F52C004D1E07 /* JoinNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGame.png; sourceTree = "<group>"; };
+		5152750021A1F52C004D1E07 /* BeginNewGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGameHighlighted.png; sourceTree = "<group>"; };
+		5152750121A1F52C004D1E07 /* GatherNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGame.png; sourceTree = "<group>"; };
+		5152750221A1F52C004D1E07 /* SavedGame-DuplicateHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DuplicateHighlighted.png"; sourceTree = "<group>"; };
+		5152750321A1F52C004D1E07 /* RestoreButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButtonHighlighted.png; sourceTree = "<group>"; };
+		5152750421A1F52C004D1E07 /* Difficulty-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Normal.png"; sourceTree = "<group>"; };
+		5152750521A1F52C004D1E07 /* AboutHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutHighlighted.png; sourceTree = "<group>"; };
+		5152750621A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DeleteHighlighted.png"; sourceTree = "<group>"; };
+		5152750721A1F52C004D1E07 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
+		5152750821A1F52C004D1E07 /* ContinueSavedGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGameHighlighted.png; sourceTree = "<group>"; };
+		5152750921A1F52C004D1E07 /* TipButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButtonHighlighted.png; sourceTree = "<group>"; };
+		5152750A21A1F52C004D1E07 /* SavedGame-LoadHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-LoadHighlighted.png"; sourceTree = "<group>"; };
+		5152750B21A1F52C004D1E07 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		5152750C21A1F52C004D1E07 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		5152750D21A1F52C004D1E07 /* SavedGame-Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Delete.png"; sourceTree = "<group>"; };
+		5152750E21A1F52C004D1E07 /* ContinueSavedGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGame.png; sourceTree = "<group>"; };
+		5152750F21A1F52C004D1E07 /* PreferencesHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreferencesHighlighted.png; sourceTree = "<group>"; };
+		5152751021A1F52C004D1E07 /* Resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resume.png; sourceTree = "<group>"; };
+		5152751121A1F52C004D1E07 /* TipTheDeveloperHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloperHighlighted.png; sourceTree = "<group>"; };
+		5152751221A1F52C004D1E07 /* Difficulty-Easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Easy.png"; sourceTree = "<group>"; };
+		5152751321A1F52C004D1E07 /* Difficulty-Total Carnage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Total Carnage.png"; sourceTree = "<group>"; };
+		5152751421A1F52C004D1E07 /* JoinNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		5152751521A1F52C004D1E07 /* HelpButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButtonHighlighted.png; sourceTree = "<group>"; };
+		5152751621A1F52C004D1E07 /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
+		5152751721A1F52C004D1E07 /* D-pad-knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-knob.png"; sourceTree = "<group>"; };
+		5152751821A1F52C004D1E07 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		5152751921A1F52C004D1E07 /* Console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Console.png; sourceTree = "<group>"; };
+		5152751A21A1F52C004D1E07 /* TipTheDeveloper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloper.png; sourceTree = "<group>"; };
+		5152751B21A1F52C004D1E07 /* NextWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextWeapon.png; sourceTree = "<group>"; };
+		5152751C21A1F52C004D1E07 /* TipButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButton.png; sourceTree = "<group>"; };
+		5152751D21A1F52C004D1E07 /* PreviousWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousWeapon.png; sourceTree = "<group>"; };
+		5152751E21A1F52C004D1E07 /* RestoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButton.png; sourceTree = "<group>"; };
+		5152751F21A1F52C004D1E07 /* ResumeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeHighlighted.png; sourceTree = "<group>"; };
+		5152752021A1F52C004D1E07 /* GatherNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		5152752121A1F52C004D1E07 /* SavedGame-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Load.png"; sourceTree = "<group>"; };
+		5152752221A1F52C004D1E07 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
+		5152752321A1F52C004D1E07 /* MenuHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuHighlighted.png; sourceTree = "<group>"; };
+		5152752421A1F52C004D1E07 /* Difficulty-Major Damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Major Damage.png"; sourceTree = "<group>"; };
+		5152752521A1F52C004D1E07 /* D-pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad.png"; sourceTree = "<group>"; };
+		5152752621A1F52C004D1E07 /* Preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Preferences.png; sourceTree = "<group>"; };
+		5152752721A1F52C004D1E07 /* BeginNewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGame.png; sourceTree = "<group>"; };
+		5152752821A1F52C004D1E07 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
+		5152752921A1F52C004D1E07 /* BackButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonHighlighted.png; sourceTree = "<group>"; };
+		5152755621A1F534004D1E07 /* JoinNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGame.png; sourceTree = "<group>"; };
+		5152755721A1F534004D1E07 /* BeginNewGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGameHighlighted.png; sourceTree = "<group>"; };
+		5152755821A1F534004D1E07 /* GatherNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGame.png; sourceTree = "<group>"; };
+		5152755921A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DuplicateHighlighted.png"; sourceTree = "<group>"; };
+		5152755A21A1F534004D1E07 /* RestoreButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButtonHighlighted.png; sourceTree = "<group>"; };
+		5152755B21A1F534004D1E07 /* Difficulty-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Normal.png"; sourceTree = "<group>"; };
+		5152755C21A1F534004D1E07 /* AboutHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutHighlighted.png; sourceTree = "<group>"; };
+		5152755D21A1F534004D1E07 /* SavedGame-DeleteHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DeleteHighlighted.png"; sourceTree = "<group>"; };
+		5152755E21A1F534004D1E07 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
+		5152755F21A1F534004D1E07 /* ContinueSavedGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGameHighlighted.png; sourceTree = "<group>"; };
+		5152756021A1F534004D1E07 /* TipButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButtonHighlighted.png; sourceTree = "<group>"; };
+		5152756121A1F534004D1E07 /* SavedGame-LoadHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-LoadHighlighted.png"; sourceTree = "<group>"; };
+		5152756221A1F534004D1E07 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		5152756321A1F534004D1E07 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		5152756421A1F534004D1E07 /* SavedGame-Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Delete.png"; sourceTree = "<group>"; };
+		5152756521A1F534004D1E07 /* ContinueSavedGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGame.png; sourceTree = "<group>"; };
+		5152756621A1F534004D1E07 /* PreferencesHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreferencesHighlighted.png; sourceTree = "<group>"; };
+		5152756721A1F534004D1E07 /* Resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resume.png; sourceTree = "<group>"; };
+		5152756821A1F534004D1E07 /* TipTheDeveloperHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloperHighlighted.png; sourceTree = "<group>"; };
+		5152756921A1F534004D1E07 /* Difficulty-Easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Easy.png"; sourceTree = "<group>"; };
+		5152756A21A1F534004D1E07 /* Difficulty-Total Carnage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Total Carnage.png"; sourceTree = "<group>"; };
+		5152756B21A1F534004D1E07 /* JoinNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		5152756C21A1F534004D1E07 /* HelpButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButtonHighlighted.png; sourceTree = "<group>"; };
+		5152756D21A1F534004D1E07 /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
+		5152756E21A1F534004D1E07 /* D-pad-knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-knob.png"; sourceTree = "<group>"; };
+		5152756F21A1F534004D1E07 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		5152757021A1F534004D1E07 /* Console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Console.png; sourceTree = "<group>"; };
+		5152757121A1F534004D1E07 /* TipTheDeveloper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloper.png; sourceTree = "<group>"; };
+		5152757221A1F534004D1E07 /* NextWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextWeapon.png; sourceTree = "<group>"; };
+		5152757321A1F534004D1E07 /* TipButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButton.png; sourceTree = "<group>"; };
+		5152757421A1F534004D1E07 /* PreviousWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousWeapon.png; sourceTree = "<group>"; };
+		5152757521A1F534004D1E07 /* RestoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButton.png; sourceTree = "<group>"; };
+		5152757621A1F534004D1E07 /* ResumeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeHighlighted.png; sourceTree = "<group>"; };
+		5152757721A1F534004D1E07 /* GatherNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		5152757821A1F534004D1E07 /* SavedGame-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Load.png"; sourceTree = "<group>"; };
+		5152757921A1F534004D1E07 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
+		5152757A21A1F534004D1E07 /* MenuHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuHighlighted.png; sourceTree = "<group>"; };
+		5152757B21A1F534004D1E07 /* Difficulty-Major Damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Major Damage.png"; sourceTree = "<group>"; };
+		5152757C21A1F534004D1E07 /* D-pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad.png"; sourceTree = "<group>"; };
+		5152757D21A1F534004D1E07 /* Preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Preferences.png; sourceTree = "<group>"; };
+		5152757E21A1F534004D1E07 /* BeginNewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGame.png; sourceTree = "<group>"; };
+		5152757F21A1F534004D1E07 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
+		5152758021A1F534004D1E07 /* BackButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonHighlighted.png; sourceTree = "<group>"; };
+		515275AD21A1F53A004D1E07 /* JoinNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGame.png; sourceTree = "<group>"; };
+		515275AE21A1F53A004D1E07 /* BeginNewGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGameHighlighted.png; sourceTree = "<group>"; };
+		515275AF21A1F53A004D1E07 /* GatherNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGame.png; sourceTree = "<group>"; };
+		515275B021A1F53A004D1E07 /* SavedGame-DuplicateHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DuplicateHighlighted.png"; sourceTree = "<group>"; };
+		515275B121A1F53A004D1E07 /* RestoreButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButtonHighlighted.png; sourceTree = "<group>"; };
+		515275B221A1F53A004D1E07 /* Difficulty-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Normal.png"; sourceTree = "<group>"; };
+		515275B321A1F53B004D1E07 /* AboutHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutHighlighted.png; sourceTree = "<group>"; };
+		515275B421A1F53B004D1E07 /* SavedGame-DeleteHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-DeleteHighlighted.png"; sourceTree = "<group>"; };
+		515275B521A1F53B004D1E07 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
+		515275B621A1F53B004D1E07 /* ContinueSavedGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGameHighlighted.png; sourceTree = "<group>"; };
+		515275B721A1F53B004D1E07 /* TipButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButtonHighlighted.png; sourceTree = "<group>"; };
+		515275B821A1F53B004D1E07 /* SavedGame-LoadHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-LoadHighlighted.png"; sourceTree = "<group>"; };
+		515275B921A1F53B004D1E07 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		515275BA21A1F53B004D1E07 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		515275BB21A1F53B004D1E07 /* SavedGame-Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Delete.png"; sourceTree = "<group>"; };
+		515275BC21A1F53B004D1E07 /* ContinueSavedGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGame.png; sourceTree = "<group>"; };
+		515275BD21A1F53B004D1E07 /* PreferencesHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreferencesHighlighted.png; sourceTree = "<group>"; };
+		515275BE21A1F53B004D1E07 /* Resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resume.png; sourceTree = "<group>"; };
+		515275BF21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloperHighlighted.png; sourceTree = "<group>"; };
+		515275C021A1F53B004D1E07 /* Difficulty-Easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Easy.png"; sourceTree = "<group>"; };
+		515275C121A1F53B004D1E07 /* Difficulty-Total Carnage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Total Carnage.png"; sourceTree = "<group>"; };
+		515275C221A1F53B004D1E07 /* JoinNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		515275C321A1F53B004D1E07 /* HelpButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButtonHighlighted.png; sourceTree = "<group>"; };
+		515275C421A1F53B004D1E07 /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
+		515275C521A1F53B004D1E07 /* D-pad-knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-knob.png"; sourceTree = "<group>"; };
+		515275C621A1F53B004D1E07 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		515275C721A1F53B004D1E07 /* Console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Console.png; sourceTree = "<group>"; };
+		515275C821A1F53B004D1E07 /* TipTheDeveloper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipTheDeveloper.png; sourceTree = "<group>"; };
+		515275C921A1F53B004D1E07 /* NextWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextWeapon.png; sourceTree = "<group>"; };
+		515275CA21A1F53B004D1E07 /* TipButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TipButton.png; sourceTree = "<group>"; };
+		515275CB21A1F53B004D1E07 /* PreviousWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousWeapon.png; sourceTree = "<group>"; };
+		515275CC21A1F53B004D1E07 /* RestoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButton.png; sourceTree = "<group>"; };
+		515275CD21A1F53B004D1E07 /* ResumeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeHighlighted.png; sourceTree = "<group>"; };
+		515275CE21A1F53B004D1E07 /* GatherNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGameHighlighted.png; sourceTree = "<group>"; };
+		515275CF21A1F53B004D1E07 /* SavedGame-Load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Load.png"; sourceTree = "<group>"; };
+		515275D021A1F53B004D1E07 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
+		515275D121A1F53B004D1E07 /* MenuHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuHighlighted.png; sourceTree = "<group>"; };
+		515275D221A1F53B004D1E07 /* Difficulty-Major Damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Major Damage.png"; sourceTree = "<group>"; };
+		515275D321A1F53B004D1E07 /* D-pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad.png"; sourceTree = "<group>"; };
+		515275D421A1F53B004D1E07 /* Preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Preferences.png; sourceTree = "<group>"; };
+		515275D521A1F53B004D1E07 /* BeginNewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGame.png; sourceTree = "<group>"; };
+		515275D621A1F53B004D1E07 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
+		515275D721A1F53B004D1E07 /* BackButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonHighlighted.png; sourceTree = "<group>"; };
 		5152CB8F1D948FE100C6E65C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Durandal/Images.xcassets; sourceTree = "<group>"; };
 		515303171DAD716200B0F62A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericLoadingBackground.png; sourceTree = "<group>"; };
-		516ECE901F4B75FE00D38BB2 /* NextWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextWeapon.png; sourceTree = "<group>"; };
-		516ECE911F4B75FE00D38BB2 /* PreviousWeapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousWeapon.png; sourceTree = "<group>"; };
-		516ECE981F4E063600D38BB2 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
-		516ECE9C1F4E086200D38BB2 /* D-pad-knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-knob.png"; sourceTree = "<group>"; };
-		516ECE9D1F4E086200D38BB2 /* D-pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad.png"; sourceTree = "<group>"; };
-		516ECEA81F59DEC400D38BB2 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
-		516ECEA91F59DEC400D38BB2 /* BackButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonHighlighted.png; sourceTree = "<group>"; };
-		516ECEAA1F59DEC400D38BB2 /* Difficulty-Easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Easy.png"; sourceTree = "<group>"; };
-		516ECEAB1F59DEC400D38BB2 /* Difficulty-Major Damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Major Damage.png"; sourceTree = "<group>"; };
-		516ECEAC1F59DEC400D38BB2 /* Difficulty-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Normal.png"; sourceTree = "<group>"; };
-		516ECEAD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Difficulty-Total Carnage.png"; sourceTree = "<group>"; };
 		5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		517BC97F1E5A2478004B42FF /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		517F14B0219E803F00C3163E /* RestoreButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButtonHighlighted.png; sourceTree = "<group>"; };
-		517F14B1219E804200C3163E /* RestoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RestoreButton.png; sourceTree = "<group>"; };
 		517FB48F1F89C379009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4931F89C408009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
-		517FB4951F89CA93009F6DCE /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
-		517FB4961F89CA93009F6DCE /* MenuHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuHighlighted.png; sourceTree = "<group>"; };
-		517FB4971F89CA93009F6DCE /* Resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resume.png; sourceTree = "<group>"; };
-		517FB4981F89CA93009F6DCE /* ResumeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResumeHighlighted.png; sourceTree = "<group>"; };
 		5189238C1E92C26B009BFB67 /* powered-by-alephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "powered-by-alephone.png"; path = "Resources/Splash/powered-by-alephone.png"; sourceTree = SOURCE_ROOT; };
 		518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		518E9FF31F69AEA10039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
@@ -2309,8 +2407,6 @@
 		518E9FF91F69AF6D0039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
 		518E9FFA1F69AF6D0039960A /* HomeScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeScreen.png; sourceTree = "<group>"; };
 		518E9FFB1F69AF6D0039960A /* mainlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainlogo.png; sourceTree = "<group>"; };
-		518E9FFF1F69B0000039960A /* Marathon_Durandal_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marathon_Durandal_Icon.png; sourceTree = "<group>"; };
-		518EA0011F69B04C0039960A /* Marathon_Durandal_Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marathon_Durandal_Icon2@2x.png"; sourceTree = "<group>"; };
 		518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_ffmpeg.c; sourceTree = "<group>"; };
 		518EA0041F6AFDC20039960A /* SDL_ffmpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ffmpeg.h; sourceTree = "<group>"; };
 		518EA0081F72F9B40039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
@@ -2324,19 +2420,14 @@
 		519FCADC1EA1D39F0066EE69 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		519FCAE41EA1D3B80066EE69 /* checkboxactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkboxactive.png; sourceTree = "<group>"; };
 		519FCAE81EA29DD20066EE69 /* DoneButtonThanksHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneButtonThanksHighlighted.png; sourceTree = "<group>"; };
-		519FCAF51EA53FB90066EE69 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
-		519FCAF61EA53FB90066EE69 /* AboutHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutHighlighted.png; sourceTree = "<group>"; };
-		519FCAF71EA53FB90066EE69 /* BeginNewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGame.png; sourceTree = "<group>"; };
-		519FCAF81EA53FB90066EE69 /* BeginNewGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGameHighlighted.png; sourceTree = "<group>"; };
-		519FCAF91EA53FB90066EE69 /* ContinueSavedGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGame.png; sourceTree = "<group>"; };
-		519FCAFA1EA53FB90066EE69 /* ContinueSavedGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueSavedGameHighlighted.png; sourceTree = "<group>"; };
-		519FCAFB1EA53FB90066EE69 /* GatherNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGame.png; sourceTree = "<group>"; };
-		519FCAFC1EA53FB90066EE69 /* GatherNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GatherNetworkGameHighlighted.png; sourceTree = "<group>"; };
-		519FCAFD1EA53FB90066EE69 /* JoinNetworkGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGame.png; sourceTree = "<group>"; };
-		519FCAFE1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoinNetworkGameHighlighted.png; sourceTree = "<group>"; };
-		519FCAFF1EA53FB90066EE69 /* Preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Preferences.png; sourceTree = "<group>"; };
-		519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreferencesHighlighted.png; sourceTree = "<group>"; };
 		51A000FE1E8E0B7600FC09F2 /* a1HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = a1HTTP.h; sourceTree = "<group>"; };
+		51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		51A6CB8921A2099800D2C4ED /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
+		51A6CB8A21A2099900D2C4ED /* AcceptButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonHighlighted.png; sourceTree = "<group>"; };
+		51A6CB8D21A209B100D2C4ED /* AcceptButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonHighlighted.png; sourceTree = "<group>"; };
+		51A6CB8E21A209B200D2C4ED /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
+		51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonHighlighted.png; sourceTree = "<group>"; };
+		51A6CB9221A209C500D2C4ED /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
 		51AADD722056FB3C00829264 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		51AADD732056FB3D00829264 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		51AADD742056FB3D00829264 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
@@ -3477,6 +3568,7 @@
 				51324A341EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				51324A311EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
+				51A6CB8621A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				51324A191EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
 				51324AAB1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
@@ -3520,6 +3612,7 @@
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				51324A161EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				51324A2F1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
+				51A6CB8721A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				A8CB80EB13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
 				514D349B1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				512E0C051E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
@@ -3551,7 +3644,6 @@
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
-				5114FBCA217FB323007434C5 /* StoreKit.framework in Frameworks */,
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
@@ -3569,6 +3661,7 @@
 				51324A361EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51324A331EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51324A1B1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
+				51A6CB8821A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				51324AAD1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
@@ -3581,7 +3674,6 @@
 				51324A171EAAE29100BA8D8F /* libSDL2.a in Frameworks */,
 				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				5114FBC8217FB31F007434C5 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3657,7 +3749,6 @@
 			isa = PBXGroup;
 			children = (
 				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
-				51482D652001C2A200690752 /* powered-by-alephone.png */,
 				51482D692001C85F00690752 /* github.png */,
 				51E9FD6D2007F86600ADD38A /* bungie-logo.png */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
@@ -3688,8 +3779,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5114FBC9217FB323007434C5 /* StoreKit.framework */,
-				5114FBC7217FB31F007434C5 /* GameKit.framework */,
+				51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */,
 				512E0C031E70C85D000B0C98 /* ImageIO.framework */,
 				517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */,
 				517BC97F1E5A2478004B42FF /* GameController.framework */,
@@ -4032,52 +4122,168 @@
 			path = "submodules/Libraries/FFmpeg-iOS/include/libswscale";
 			sourceTree = SOURCE_ROOT;
 		};
+		515274FE21A1F52C004D1E07 /* M1 */ = {
+			isa = PBXGroup;
+			children = (
+				515274FF21A1F52C004D1E07 /* JoinNetworkGame.png */,
+				51A6CB8921A2099800D2C4ED /* AcceptButton.png */,
+				51A6CB8A21A2099900D2C4ED /* AcceptButtonHighlighted.png */,
+				5152750021A1F52C004D1E07 /* BeginNewGameHighlighted.png */,
+				5152750121A1F52C004D1E07 /* GatherNetworkGame.png */,
+				5152750221A1F52C004D1E07 /* SavedGame-DuplicateHighlighted.png */,
+				5152750321A1F52C004D1E07 /* RestoreButtonHighlighted.png */,
+				5152750421A1F52C004D1E07 /* Difficulty-Normal.png */,
+				5152750521A1F52C004D1E07 /* AboutHighlighted.png */,
+				5152750621A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png */,
+				5152750721A1F52C004D1E07 /* BackButton.png */,
+				5152750821A1F52C004D1E07 /* ContinueSavedGameHighlighted.png */,
+				5152750921A1F52C004D1E07 /* TipButtonHighlighted.png */,
+				5152750A21A1F52C004D1E07 /* SavedGame-LoadHighlighted.png */,
+				5152750B21A1F52C004D1E07 /* Map.png */,
+				5152750C21A1F52C004D1E07 /* HelpButton.png */,
+				5152750D21A1F52C004D1E07 /* SavedGame-Delete.png */,
+				5152750E21A1F52C004D1E07 /* ContinueSavedGame.png */,
+				5152750F21A1F52C004D1E07 /* PreferencesHighlighted.png */,
+				5152751021A1F52C004D1E07 /* Resume.png */,
+				5152751121A1F52C004D1E07 /* TipTheDeveloperHighlighted.png */,
+				5152751221A1F52C004D1E07 /* Difficulty-Easy.png */,
+				5152751321A1F52C004D1E07 /* Difficulty-Total Carnage.png */,
+				5152751421A1F52C004D1E07 /* JoinNetworkGameHighlighted.png */,
+				5152751521A1F52C004D1E07 /* HelpButtonHighlighted.png */,
+				5152751621A1F52C004D1E07 /* Menu.png */,
+				5152751721A1F52C004D1E07 /* D-pad-knob.png */,
+				5152751821A1F52C004D1E07 /* Pause.png */,
+				5152751921A1F52C004D1E07 /* Console.png */,
+				5152751A21A1F52C004D1E07 /* TipTheDeveloper.png */,
+				5152751B21A1F52C004D1E07 /* NextWeapon.png */,
+				5152751C21A1F52C004D1E07 /* TipButton.png */,
+				5152751D21A1F52C004D1E07 /* PreviousWeapon.png */,
+				5152751E21A1F52C004D1E07 /* RestoreButton.png */,
+				5152751F21A1F52C004D1E07 /* ResumeHighlighted.png */,
+				5152752021A1F52C004D1E07 /* GatherNetworkGameHighlighted.png */,
+				5152752121A1F52C004D1E07 /* SavedGame-Load.png */,
+				5152752221A1F52C004D1E07 /* About.png */,
+				5152752321A1F52C004D1E07 /* MenuHighlighted.png */,
+				5152752421A1F52C004D1E07 /* Difficulty-Major Damage.png */,
+				5152752521A1F52C004D1E07 /* D-pad.png */,
+				5152752621A1F52C004D1E07 /* Preferences.png */,
+				5152752721A1F52C004D1E07 /* BeginNewGame.png */,
+				5152752821A1F52C004D1E07 /* SavedGame-Duplicate.png */,
+				5152752921A1F52C004D1E07 /* BackButtonHighlighted.png */,
+			);
+			path = M1;
+			sourceTree = "<group>";
+		};
+		5152755521A1F534004D1E07 /* M2 */ = {
+			isa = PBXGroup;
+			children = (
+				5152755621A1F534004D1E07 /* JoinNetworkGame.png */,
+				51A6CB9221A209C500D2C4ED /* AcceptButton.png */,
+				51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */,
+				5152755721A1F534004D1E07 /* BeginNewGameHighlighted.png */,
+				5152755821A1F534004D1E07 /* GatherNetworkGame.png */,
+				5152755921A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png */,
+				5152755A21A1F534004D1E07 /* RestoreButtonHighlighted.png */,
+				5152755B21A1F534004D1E07 /* Difficulty-Normal.png */,
+				5152755C21A1F534004D1E07 /* AboutHighlighted.png */,
+				5152755D21A1F534004D1E07 /* SavedGame-DeleteHighlighted.png */,
+				5152755E21A1F534004D1E07 /* BackButton.png */,
+				5152755F21A1F534004D1E07 /* ContinueSavedGameHighlighted.png */,
+				5152756021A1F534004D1E07 /* TipButtonHighlighted.png */,
+				5152756121A1F534004D1E07 /* SavedGame-LoadHighlighted.png */,
+				5152756221A1F534004D1E07 /* Map.png */,
+				5152756321A1F534004D1E07 /* HelpButton.png */,
+				5152756421A1F534004D1E07 /* SavedGame-Delete.png */,
+				5152756521A1F534004D1E07 /* ContinueSavedGame.png */,
+				5152756621A1F534004D1E07 /* PreferencesHighlighted.png */,
+				5152756721A1F534004D1E07 /* Resume.png */,
+				5152756821A1F534004D1E07 /* TipTheDeveloperHighlighted.png */,
+				5152756921A1F534004D1E07 /* Difficulty-Easy.png */,
+				5152756A21A1F534004D1E07 /* Difficulty-Total Carnage.png */,
+				5152756B21A1F534004D1E07 /* JoinNetworkGameHighlighted.png */,
+				5152756C21A1F534004D1E07 /* HelpButtonHighlighted.png */,
+				5152756D21A1F534004D1E07 /* Menu.png */,
+				5152756E21A1F534004D1E07 /* D-pad-knob.png */,
+				5152756F21A1F534004D1E07 /* Pause.png */,
+				5152757021A1F534004D1E07 /* Console.png */,
+				5152757121A1F534004D1E07 /* TipTheDeveloper.png */,
+				5152757221A1F534004D1E07 /* NextWeapon.png */,
+				5152757321A1F534004D1E07 /* TipButton.png */,
+				5152757421A1F534004D1E07 /* PreviousWeapon.png */,
+				5152757521A1F534004D1E07 /* RestoreButton.png */,
+				5152757621A1F534004D1E07 /* ResumeHighlighted.png */,
+				5152757721A1F534004D1E07 /* GatherNetworkGameHighlighted.png */,
+				5152757821A1F534004D1E07 /* SavedGame-Load.png */,
+				5152757921A1F534004D1E07 /* About.png */,
+				5152757A21A1F534004D1E07 /* MenuHighlighted.png */,
+				5152757B21A1F534004D1E07 /* Difficulty-Major Damage.png */,
+				5152757C21A1F534004D1E07 /* D-pad.png */,
+				5152757D21A1F534004D1E07 /* Preferences.png */,
+				5152757E21A1F534004D1E07 /* BeginNewGame.png */,
+				5152757F21A1F534004D1E07 /* SavedGame-Duplicate.png */,
+				5152758021A1F534004D1E07 /* BackButtonHighlighted.png */,
+			);
+			path = M2;
+			sourceTree = "<group>";
+		};
+		515275AC21A1F53A004D1E07 /* M3 */ = {
+			isa = PBXGroup;
+			children = (
+				515275AD21A1F53A004D1E07 /* JoinNetworkGame.png */,
+				51A6CB8E21A209B200D2C4ED /* AcceptButton.png */,
+				51A6CB8D21A209B100D2C4ED /* AcceptButtonHighlighted.png */,
+				515275AE21A1F53A004D1E07 /* BeginNewGameHighlighted.png */,
+				515275AF21A1F53A004D1E07 /* GatherNetworkGame.png */,
+				515275B021A1F53A004D1E07 /* SavedGame-DuplicateHighlighted.png */,
+				515275B121A1F53A004D1E07 /* RestoreButtonHighlighted.png */,
+				515275B221A1F53A004D1E07 /* Difficulty-Normal.png */,
+				515275B321A1F53B004D1E07 /* AboutHighlighted.png */,
+				515275B421A1F53B004D1E07 /* SavedGame-DeleteHighlighted.png */,
+				515275B521A1F53B004D1E07 /* BackButton.png */,
+				515275B621A1F53B004D1E07 /* ContinueSavedGameHighlighted.png */,
+				515275B721A1F53B004D1E07 /* TipButtonHighlighted.png */,
+				515275B821A1F53B004D1E07 /* SavedGame-LoadHighlighted.png */,
+				515275B921A1F53B004D1E07 /* Map.png */,
+				515275BA21A1F53B004D1E07 /* HelpButton.png */,
+				515275BB21A1F53B004D1E07 /* SavedGame-Delete.png */,
+				515275BC21A1F53B004D1E07 /* ContinueSavedGame.png */,
+				515275BD21A1F53B004D1E07 /* PreferencesHighlighted.png */,
+				515275BE21A1F53B004D1E07 /* Resume.png */,
+				515275BF21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png */,
+				515275C021A1F53B004D1E07 /* Difficulty-Easy.png */,
+				515275C121A1F53B004D1E07 /* Difficulty-Total Carnage.png */,
+				515275C221A1F53B004D1E07 /* JoinNetworkGameHighlighted.png */,
+				515275C321A1F53B004D1E07 /* HelpButtonHighlighted.png */,
+				515275C421A1F53B004D1E07 /* Menu.png */,
+				515275C521A1F53B004D1E07 /* D-pad-knob.png */,
+				515275C621A1F53B004D1E07 /* Pause.png */,
+				515275C721A1F53B004D1E07 /* Console.png */,
+				515275C821A1F53B004D1E07 /* TipTheDeveloper.png */,
+				515275C921A1F53B004D1E07 /* NextWeapon.png */,
+				515275CA21A1F53B004D1E07 /* TipButton.png */,
+				515275CB21A1F53B004D1E07 /* PreviousWeapon.png */,
+				515275CC21A1F53B004D1E07 /* RestoreButton.png */,
+				515275CD21A1F53B004D1E07 /* ResumeHighlighted.png */,
+				515275CE21A1F53B004D1E07 /* GatherNetworkGameHighlighted.png */,
+				515275CF21A1F53B004D1E07 /* SavedGame-Load.png */,
+				515275D021A1F53B004D1E07 /* About.png */,
+				515275D121A1F53B004D1E07 /* MenuHighlighted.png */,
+				515275D221A1F53B004D1E07 /* Difficulty-Major Damage.png */,
+				515275D321A1F53B004D1E07 /* D-pad.png */,
+				515275D421A1F53B004D1E07 /* Preferences.png */,
+				515275D521A1F53B004D1E07 /* BeginNewGame.png */,
+				515275D621A1F53B004D1E07 /* SavedGame-Duplicate.png */,
+				515275D721A1F53B004D1E07 /* BackButtonHighlighted.png */,
+			);
+			path = M3;
+			sourceTree = "<group>";
+		};
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				514F14482119545200685003 /* TipTheDeveloper.png */,
-				514F14472119545100685003 /* TipTheDeveloperHighlighted.png */,
-				517F14B1219E804200C3163E /* RestoreButton.png */,
-				517F14B0219E803F00C3163E /* RestoreButtonHighlighted.png */,
-				514F143F2119506B00685003 /* TipButton.png */,
-				514F14402119506C00685003 /* TipButtonHighlighted.png */,
-				5146D7C11FDF1A4400B89738 /* Console.png */,
-				5146D7BD1FDF1A2F00B89738 /* Pause.png */,
-				513F28291F998C3100A23C93 /* HelpButton.png */,
-				513F282A1F998C3300A23C93 /* HelpButtonHighlighted.png */,
-				51451B681F60FDE100EF94F1 /* SavedGame-Delete.png */,
-				51451B691F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png */,
-				51451B6A1F60FDE100EF94F1 /* SavedGame-Duplicate.png */,
-				51451B6B1F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png */,
-				51451B6C1F60FDE100EF94F1 /* SavedGame-Load.png */,
-				51451B6D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png */,
-				516ECEA81F59DEC400D38BB2 /* BackButton.png */,
-				516ECEA91F59DEC400D38BB2 /* BackButtonHighlighted.png */,
-				516ECEAA1F59DEC400D38BB2 /* Difficulty-Easy.png */,
-				516ECEAB1F59DEC400D38BB2 /* Difficulty-Major Damage.png */,
-				516ECEAC1F59DEC400D38BB2 /* Difficulty-Normal.png */,
-				516ECEAD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png */,
-				517FB4951F89CA93009F6DCE /* Menu.png */,
-				517FB4961F89CA93009F6DCE /* MenuHighlighted.png */,
-				517FB4971F89CA93009F6DCE /* Resume.png */,
-				517FB4981F89CA93009F6DCE /* ResumeHighlighted.png */,
-				516ECE9C1F4E086200D38BB2 /* D-pad-knob.png */,
-				516ECE9D1F4E086200D38BB2 /* D-pad.png */,
-				516ECE981F4E063600D38BB2 /* Map.png */,
-				516ECE901F4B75FE00D38BB2 /* NextWeapon.png */,
-				516ECE911F4B75FE00D38BB2 /* PreviousWeapon.png */,
-				519FCAF51EA53FB90066EE69 /* About.png */,
-				519FCAF61EA53FB90066EE69 /* AboutHighlighted.png */,
-				519FCAF71EA53FB90066EE69 /* BeginNewGame.png */,
-				519FCAF81EA53FB90066EE69 /* BeginNewGameHighlighted.png */,
-				519FCAF91EA53FB90066EE69 /* ContinueSavedGame.png */,
-				519FCAFA1EA53FB90066EE69 /* ContinueSavedGameHighlighted.png */,
-				519FCAFB1EA53FB90066EE69 /* GatherNetworkGame.png */,
-				519FCAFC1EA53FB90066EE69 /* GatherNetworkGameHighlighted.png */,
-				519FCAFD1EA53FB90066EE69 /* JoinNetworkGame.png */,
-				519FCAFE1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png */,
-				519FCAFF1EA53FB90066EE69 /* Preferences.png */,
-				519FCB001EA53FB90066EE69 /* PreferencesHighlighted.png */,
+				515275AC21A1F53A004D1E07 /* M3 */,
+				5152755521A1F534004D1E07 /* M2 */,
+				515274FE21A1F52C004D1E07 /* M1 */,
 			);
 			name = Buttons;
 			path = Resources/Buttons;
@@ -5724,8 +5930,6 @@
 		A8FF8539130F798B00A874F8 /* M2 */ = {
 			isa = PBXGroup;
 			children = (
-				518EA0011F69B04C0039960A /* Marathon_Durandal_Icon2@2x.png */,
-				518E9FFF1F69B0000039960A /* Marathon_Durandal_Icon.png */,
 				A8C4436613A7CF72002A908B /* about.png */,
 				A88121EB12C7816300A1A08E /* Info2.plist */,
 				A818BD1213A464A700DB3828 /* Marathon_Durandal_Icon-72.png */,
@@ -5861,7 +6065,7 @@
 								enabled = 0;
 							};
 							com.apple.GameCenter.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -5901,10 +6105,8 @@
 				A81A31571292475E00BCEA0C /* LoadingLabel.png in Resources */,
 				A8357F6312D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7512D214B0001CD264 /* TouchToContinue.png in Resources */,
-				516ECEBD1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */,
 				A88EFBD112E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD212E1616100318968 /* weather_clear.png in Resources */,
-				516ECEB71F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */,
 				5189238D1E92C26B009BFB67 /* powered-by-alephone.png in Resources */,
 				A8667C4413135EB700BE2654 /* M1A1 in Resources */,
 				A8D66F4F131766DB009801EC /* GenericBackground.png in Resources */,
@@ -5912,27 +6114,32 @@
 				A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */,
 				A8B19C1613A459BA008A095D /* Marathon_Icon-72.png in Resources */,
 				A8B19C1713A459BA008A095D /* Marathon_Icon-Small-50.png in Resources */,
+				5152754521A1F52C004D1E07 /* TipTheDeveloper.png in Resources */,
 				A8B19C1813A459BA008A095D /* Marathon_Icon-Small.png in Resources */,
 				A8B19C1913A459BA008A095D /* Marathon_Icon-Small@2x.png in Resources */,
 				A8B19C1A13A459BA008A095D /* Marathon_Icon.png in Resources */,
 				51EAD4491E58B13600611EFF /* COPYING in Resources */,
+				5152754921A1F52C004D1E07 /* RestoreButton.png in Resources */,
 				A853C9BE13CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C113CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C413CF23A2001E8A25 /* GameViewController.xib in Resources */,
 				A853C9C713CF23A2001E8A25 /* HelpViewController.xib in Resources */,
+				5152753321A1F52C004D1E07 /* ContinueSavedGameHighlighted.png in Resources */,
 				A853C9CA13CF23A2001E8A25 /* MainWindow.xib in Resources */,
 				A853C9CD13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
 				A853C9D013CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D313CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
-				517FB49C1F89CA93009F6DCE /* MenuHighlighted.png in Resources */,
 				519FCAE51EA1D3B80066EE69 /* checkboxactive.png in Resources */,
 				A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
 				A853C9D913CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				51EAD5031E58B13700611EFF /* COPYRIGHT in Resources */,
 				A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9DF13CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
+				5152753A21A1F52C004D1E07 /* PreferencesHighlighted.png in Resources */,
 				A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */,
+				5152753521A1F52C004D1E07 /* SavedGame-LoadHighlighted.png in Resources */,
+				5152753C21A1F52C004D1E07 /* TipTheDeveloperHighlighted.png in Resources */,
 				A8A9C7D913D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
 				A80498FA13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FD13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
@@ -5942,14 +6149,11 @@
 				A804990913DE1CDA00F807FB /* ret_flame~iphone.png in Resources */,
 				A804990C13DE1CDA00F807FB /* ret_machinegun.png in Resources */,
 				A804990F13DE1CDA00F807FB /* ret_machinegun@2x~iphone.png in Resources */,
-				5146D7C21FDF1A4500B89738 /* Console.png in Resources */,
 				A804991213DE1CDA00F807FB /* ret_machinegun~iphone.png in Resources */,
 				A804991513DE1CDA00F807FB /* ret_pistol.png in Resources */,
 				A804991813DE1CDA00F807FB /* ret_pistol@2x~iphone.png in Resources */,
-				519FCB221EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */,
 				A804991B13DE1CDA00F807FB /* ret_pistol~iphone.png in Resources */,
 				A804991E13DE1CDA00F807FB /* ret_plasma.png in Resources */,
-				517F14B2219E804600C3163E /* RestoreButtonHighlighted.png in Resources */,
 				A804992113DE1CDA00F807FB /* ret_plasma@2x~iphone.png in Resources */,
 				A804992413DE1CDA00F807FB /* ret_plasma~iphone.png in Resources */,
 				A804992713DE1CDA00F807FB /* ret_rocket.png in Resources */,
@@ -5961,14 +6165,12 @@
 				A807A70D13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DB13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				A8B9F9DE13FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
-				517F14B5219E804600C3163E /* RestoreButton.png in Resources */,
 				A8B9F9E213FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9E913FAE0D400552296 /* ProgressViewController~iphone.xib in Resources */,
 				A8B9F9ED13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE113FB6C1000552296 /* movementboxBase.png in Resources */,
-				514F14442119506C00685003 /* TipButtonHighlighted.png in Resources */,
+				5152753221A1F52C004D1E07 /* BackButton.png in Resources */,
 				518EA00B1F72F9B40039960A /* mainlogo.png in Resources */,
-				516ECE991F4E063600D38BB2 /* Map.png in Resources */,
 				A8B9FAE413FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
 				A8B9FAE713FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				A8B9FAEA13FB6C1000552296 /* movementboxKnob.png in Resources */,
@@ -5979,7 +6181,6 @@
 				51482D6A2001C86000690752 /* github.png in Resources */,
 				A8B9FB1113FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1413FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
-				51482D662001C2A300690752 /* powered-by-alephone.png in Resources */,
 				A8B9FB1713FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
 				A8B9FB1A13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1D13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
@@ -5987,40 +6188,45 @@
 				A8B9FB2913FB6C1000552296 /* toggleweapons-left-btn@2x~iphone.png in Resources */,
 				A8B9FB2C13FB6C1000552296 /* toggleweapons-left-btn~iphone.png in Resources */,
 				A8B9FB2F13FB6C1000552296 /* toggleweapons-right-btn.png in Resources */,
+				5152754021A1F52C004D1E07 /* HelpButtonHighlighted.png in Resources */,
 				A8B9FB3213FB6C1000552296 /* toggleweapons-right-btn@2x~iphone.png in Resources */,
+				5152755421A1F52C004D1E07 /* BackButtonHighlighted.png in Resources */,
 				A8B9FB3513FB6C1000552296 /* toggleweapons-right-btn~iphone.png in Resources */,
+				5152753421A1F52C004D1E07 /* TipButtonHighlighted.png in Resources */,
+				5152753121A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */,
 				A8B9FB4113FB6C1000552296 /* zoom_in.png in Resources */,
 				A8B9FB4713FB6C1000552296 /* zoom_in@2x~iphone.png in Resources */,
 				A8B9FB4A13FB6C1000552296 /* zoom_in~iphone.png in Resources */,
-				516ECE921F4B75FE00D38BB2 /* NextWeapon.png in Resources */,
 				A8B9FB4D13FB6C1000552296 /* zoom_out.png in Resources */,
+				5152753021A1F52C004D1E07 /* AboutHighlighted.png in Resources */,
 				A8B9FB5313FB6C1000552296 /* zoom_out@2x~iphone.png in Resources */,
 				A8B9FB5613FB6C1000552296 /* zoom_out~iphone.png in Resources */,
 				A8B9FB5C13FB6CAF00552296 /* Reload.png in Resources */,
 				A8B9FB5F13FB6CAF00552296 /* Reload@2x~iphone.png in Resources */,
 				A8B9FB6213FB6CAF00552296 /* Reload~iphone.png in Resources */,
-				519FCB071EA53FB90066EE69 /* BeginNewGame.png in Resources */,
 				A864DDC613FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */,
 				A864DDCB13FDF69300A0AE0C /* SavedGameCell~iphone.xib in Resources */,
+				5152753D21A1F52C004D1E07 /* Difficulty-Easy.png in Resources */,
 				A864DDCE13FDF69300A0AE0C /* SaveGameViewController~iphone.xib in Resources */,
-				51451B741F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */,
 				A864DDD813FDFFDD00A0AE0C /* Marathon_Icon@2x.png in Resources */,
-				519FCB0A1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */,
 				A82B117413FF40410085C1F7 /* HelpViewController~iphone.xib in Resources */,
 				A82B117913FF40A70085C1F7 /* TouchToContinue@2x~iphone.png in Resources */,
-				516ECE951F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */,
 				A82B117C13FF40A70085C1F7 /* TouchToContinue~iphone.png in Resources */,
 				A809FDBA140DE1E90051EA11 /* ret_default.png in Resources */,
 				A809FDBD140DE1E90051EA11 /* ret_default@2x~iphone.png in Resources */,
+				5152754C21A1F52C004D1E07 /* SavedGame-Load.png in Resources */,
 				A809FDC0140DE1E90051EA11 /* ret_default~iphone.png in Resources */,
 				A82BBD17141015A500CE1F92 /* RootViewController.xib in Resources */,
+				5152754F21A1F52C004D1E07 /* Difficulty-Major Damage.png in Resources */,
 				A8E3B5A01422E82D004D28A4 /* AboutButton.png in Resources */,
 				A8E3B5A31422E82D004D28A4 /* AboutButton@2x~iphone.png in Resources */,
+				5152754821A1F52C004D1E07 /* PreviousWeapon.png in Resources */,
 				A8E3B5A61422E82D004D28A4 /* AboutButton~iphone.png in Resources */,
 				A8E3B5A91422E82D004D28A4 /* LoadGameButton.png in Resources */,
 				A8E3B5AC1422E82D004D28A4 /* LoadGameButton@2x~iphone.png in Resources */,
 				A8E3B5AF1422E82D004D28A4 /* LoadGameButton~iphone.png in Resources */,
 				A8E3B5B21422E82D004D28A4 /* HomeScreen.png in Resources */,
+				5152753B21A1F52C004D1E07 /* Resume.png in Resources */,
 				51EAD5811E58B13700611EFF /* README in Resources */,
 				A8E3B5CD1422E82D004D28A4 /* NewGameButton.png in Resources */,
 				A8E3B5D01422E82D004D28A4 /* NewGameButton@2x~iphone.png in Resources */,
@@ -6031,35 +6237,35 @@
 				A8E3B5DF1422E82D004D28A4 /* StoreButton.png in Resources */,
 				A8E3B5E21422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E51422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
+				5152755321A1F52C004D1E07 /* SavedGame-Duplicate.png in Resources */,
 				A8C5563A14267C29003D329B /* PurchaseViewController.xib in Resources */,
 				A89A90221427F996002F8F0F /* Somewhere.png in Resources */,
-				5146D7BE1FDF1A3100B89738 /* Pause.png in Resources */,
-				516ECEAE1F59DEC400D38BB2 /* BackButton.png in Resources */,
 				A89A90351427FA37002F8F0F /* EpisodeLogo.png in Resources */,
 				A89A90361427FA37002F8F0F /* EpisodeLogo@2x~iphone.png in Resources */,
 				A89A90371427FA37002F8F0F /* EpisodeLogo~iphone.png in Resources */,
 				A89458F2142808F200A9ECAC /* EpisodeLoading.png in Resources */,
 				A89458F3142808F200A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */,
 				A89458F4142808F200A9ECAC /* EpisodeLoading~iphone.png in Resources */,
-				514F14412119506C00685003 /* TipButton.png in Resources */,
 				A894591214280ABF00A9ECAC /* BungieAerospace.png in Resources */,
-				519FCB1F1EA53FB90066EE69 /* Preferences.png in Resources */,
 				A894591514280ABF00A9ECAC /* BungieAerospace@2x~iphone.png in Resources */,
 				A894591814280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
 				A85B58641433BEC00013CDC9 /* BackNewGame.png in Resources */,
+				51A6CB8B21A2099900D2C4ED /* AcceptButton.png in Resources */,
 				A85B58671433BEC00013CDC9 /* BackNewGame@2x~iphone.png in Resources */,
 				A85B586A1433BEC00013CDC9 /* BackNewGame~iphone.png in Resources */,
 				A85B586D1433BEC00013CDC9 /* Easy.png in Resources */,
 				A85B58701433BEC00013CDC9 /* Easy@2x~iphone.png in Resources */,
 				A85B58731433BEC00013CDC9 /* Easy~iphone.png in Resources */,
 				A85B58761433BEC00013CDC9 /* Hard.png in Resources */,
-				519FCB161EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */,
-				516ECEB11F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */,
 				A85B58791433BEC00013CDC9 /* Hard@2x~iphone.png in Resources */,
+				5152754121A1F52C004D1E07 /* Menu.png in Resources */,
 				A85B587C1433BEC00013CDC9 /* Hard~iphone.png in Resources */,
 				519FCAE91EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */,
+				5152752D21A1F52C004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */,
 				518EA00A1F72F9B40039960A /* EpisodeLogoAlpha.png in Resources */,
+				5152754A21A1F52C004D1E07 /* ResumeHighlighted.png in Resources */,
 				A85B58881433BEC00013CDC9 /* Nightmare.png in Resources */,
+				5152752E21A1F52C004D1E07 /* RestoreButtonHighlighted.png in Resources */,
 				A85B588B1433BEC00013CDC9 /* Nightmare@2x~iphone.png in Resources */,
 				513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */,
 				A85B588E1433BEC00013CDC9 /* Nightmare~iphone.png in Resources */,
@@ -6075,6 +6281,7 @@
 				A89B963C1433C65D005E9FF3 /* DeleteButton.png in Resources */,
 				5146D7C61FE0588A00B89738 /* help1.png in Resources */,
 				A89B963F1433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
+				5152752A21A1F52C004D1E07 /* JoinNetworkGame.png in Resources */,
 				A89B96421433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
 				A89B96451433C65D005E9FF3 /* DuplicateButton.png in Resources */,
 				A89B96481433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
@@ -6084,6 +6291,7 @@
 				A89B96541433C65D005E9FF3 /* LoadButton~iphone.png in Resources */,
 				519FCAD91EA1CEAE0066EE69 /* SliderWhiteTrack.png in Resources */,
 				A89B965D1433C65D005E9FF3 /* LoadingBackground.png in Resources */,
+				5152754221A1F52C004D1E07 /* D-pad-knob.png in Resources */,
 				51EB1BA81DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A89B96601433C65D005E9FF3 /* LoadingBackground@2x~iphone.png in Resources */,
 				A89B96631433C65D005E9FF3 /* LoadingBackground~iphone.png in Resources */,
@@ -6094,22 +6302,20 @@
 				51482D722001CA6000690752 /* help5.png in Resources */,
 				A8294BF91433F74700300CD5 /* ThanksBackground@2x~iphone.png in Resources */,
 				A8294BFC1433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
+				5152754721A1F52C004D1E07 /* TipButton.png in Resources */,
 				A8294C111433F74700300CD5 /* ThanksScreen.png in Resources */,
-				516ECEBA1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */,
-				51451B771F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */,
-				517FB4991F89CA93009F6DCE /* Menu.png in Resources */,
 				A83FBB72144C95DF00B27426 /* HDModeOff.png in Resources */,
 				A83FBB7B144C95DF00B27426 /* HDModeOn.png in Resources */,
 				A83FBB84144C95DF00B27426 /* SettingsBackground.png in Resources */,
 				5146D7CF1FE06F0900B89738 /* help3.png in Resources */,
 				A83FBB87144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
+				5152753E21A1F52C004D1E07 /* Difficulty-Total Carnage.png in Resources */,
 				A83FBB8A144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
-				516ECEA11F4E086200D38BB2 /* D-pad.png in Resources */,
-				519FCB011EA53FB90066EE69 /* About.png in Resources */,
+				5152754D21A1F52C004D1E07 /* About.png in Resources */,
 				519FCADE1EA1D39F0066EE69 /* checkbox.png in Resources */,
-				513F282E1F998F5200A23C93 /* HelpButton.png in Resources */,
 				A83FBB9F144C95DF00B27426 /* MCModeOff.png in Resources */,
 				A83FBBA8144C95DF00B27426 /* MCModeOn.png in Resources */,
+				5152752B21A1F52C004D1E07 /* BeginNewGameHighlighted.png in Resources */,
 				A83FBBB1144C95DF00B27426 /* Notes.txt in Resources */,
 				519FCAD51EA1CEA40066EE69 /* SliderGreyTrack.png in Resources */,
 				A83FBBBA144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
@@ -6119,20 +6325,21 @@
 				A83FBBCC144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
 				A83FBBCF144C95DF00B27426 /* SliderRedTrack.png in Resources */,
 				A83FBBD2144C95DF00B27426 /* SliderTab.png in Resources */,
-				516ECE9E1F4E086200D38BB2 /* D-pad-knob.png in Resources */,
-				516ECEB41F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */,
 				A83FBBD5144C95DF00B27426 /* SwitchOff.png in Resources */,
 				A83FBBDB144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
 				A83FBBDE144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
-				51451B7D1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */,
 				A83FBBE1144C95DF00B27426 /* SwitchOn.png in Resources */,
 				A83FBBE4144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */,
 				A83FBBE7144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
 				A8421ED714565584008BBF22 /* MenuButton.png in Resources */,
 				51EAD58A1E58B13700611EFF /* alephone.xpm in Resources */,
+				5152752F21A1F52C004D1E07 /* Difficulty-Normal.png in Resources */,
+				5152755121A1F52C004D1E07 /* Preferences.png in Resources */,
 				A8421EDA14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
+				5152752C21A1F52C004D1E07 /* GatherNetworkGame.png in Resources */,
 				A8421EDD14565584008BBF22 /* MenuButton~iphone.png in Resources */,
 				A8421EE314565584008BBF22 /* OpenDoor.png in Resources */,
+				5152755221A1F52C004D1E07 /* BeginNewGame.png in Resources */,
 				A8421EE614565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
 				A8421EE914565584008BBF22 /* OpenDoor~iphone.png in Resources */,
 				A8421EEC14565584008BBF22 /* ResumeButton.png in Resources */,
@@ -6140,57 +6347,54 @@
 				A8421EF214565584008BBF22 /* ResumeButton~iphone.png in Resources */,
 				A8421EF514565584008BBF22 /* SaveGame.png in Resources */,
 				A8421EF814565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
-				51451B7A1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */,
 				A8421EFB14565584008BBF22 /* SaveGame~iphone.png in Resources */,
 				A8421EFE14565584008BBF22 /* ThrowSwitch.png in Resources */,
+				5152755021A1F52C004D1E07 /* D-pad.png in Resources */,
 				A8421F0114565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				5152754421A1F52C004D1E07 /* Console.png in Resources */,
 				51B684FE1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
 				A8421F0414565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
-				519FCB1C1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
 				A8421F0714565584008BBF22 /* UseComputer.png in Resources */,
 				A8421F0A14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
 				A8421F0D14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				A8DEE8D9145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
 				A8DEE8E5145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
+				5152754E21A1F52C004D1E07 /* MenuHighlighted.png in Resources */,
 				A8DEE8E8145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
-				519FCB101EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */,
 				A8DEE8EB145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				5152753F21A1F52C004D1E07 /* JoinNetworkGameHighlighted.png in Resources */,
 				A8DEE8EE145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
-				51451B6E1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */,
 				A8DEE8F1145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
+				5152754B21A1F52C004D1E07 /* GatherNetworkGameHighlighted.png in Resources */,
 				A8DEE906145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
 				A8DEE909145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
 				A8DEE90C145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
 				A8DEE90F145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
 				A8DEE912145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
+				5152753721A1F52C004D1E07 /* HelpButton.png in Resources */,
+				5152753821A1F52C004D1E07 /* SavedGame-Delete.png in Resources */,
+				5152754621A1F52C004D1E07 /* NextWeapon.png in Resources */,
 				A8DEE915145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
 				5176926C1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */,
 				A8DEE918145CEB4300D8608F /* AmmoButton.png in Resources */,
 				A8DEE91B145CEB4300D8608F /* WeaponsButton.png in Resources */,
+				5152753921A1F52C004D1E07 /* ContinueSavedGame.png in Resources */,
 				A8DEE91E145CEB4300D8608F /* ShieldsButton.png in Resources */,
 				A8DEE921145CEB4300D8608F /* SaveButton.png in Resources */,
 				A812AD34145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
 				519FCAC41E9FFC500066EE69 /* bankgthd.ttf in Resources */,
 				A812AD37145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
 				A812AD3A145F8D9900196F6B /* StartingLevel@2x~iphone.png in Resources */,
-				514F144C2119545300685003 /* TipTheDeveloper.png in Resources */,
 				A812AD3D145F8D9900196F6B /* StartingLevel.png in Resources */,
 				A812AD40145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
 				A812AD43145F8D9900196F6B /* LevelNameBackground.png in Resources */,
-				514F14492119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
-				513F282B1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */,
 				5146D7CC1FE06F0200B89738 /* help2.png in Resources */,
-				519FCB0D1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */,
-				517FB4A21F89CA93009F6DCE /* ResumeHighlighted.png in Resources */,
 				51E9FD6E2007F86700ADD38A /* bungie-logo.png in Resources */,
+				5152754321A1F52C004D1E07 /* Pause.png in Resources */,
 				51EAD58D1E58B13700611EFF /* alephone32.xpm in Resources */,
-				519FCB131EA53FB90066EE69 /* GatherNetworkGame.png in Resources */,
-				51451B711F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */,
-				519FCB041EA53FB90066EE69 /* AboutHighlighted.png in Resources */,
 				A80B316C1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
 				A80B31731463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
-				519FCB191EA53FB90066EE69 /* JoinNetworkGame.png in Resources */,
-				517FB49F1F89CA93009F6DCE /* Resume.png in Resources */,
+				51A6CB8C21A2099900D2C4ED /* AcceptButtonHighlighted.png in Resources */,
 				A80B317914638CC300E07A08 /* JoyPad.png in Resources */,
 				A80B317C14638CC300E07A08 /* JoyPad@2x~iphone.png in Resources */,
 				A80B317F14638CC300E07A08 /* JoyPad~iphone.png in Resources */,
@@ -6200,6 +6404,7 @@
 				A8EEFABB147B4589001B5980 /* AchievementsButton~iphone.png in Resources */,
 				A8EEFABE147B4589001B5980 /* LeaderboardsButton.png in Resources */,
 				A8EEFAC1147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
+				5152753621A1F52C004D1E07 /* Map.png in Resources */,
 				A8EEFAC4147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E7F147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
 				A81B703D1491B2BE0058CA3A /* Default-Landscape.png in Resources */,
@@ -6221,6 +6426,7 @@
 				A8811FF912C7816300A1A08E /* LoadingLabel.png in Resources */,
 				A8357F6212D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7412D214B0001CD264 /* TouchToContinue.png in Resources */,
+				515275A221A1F534004D1E07 /* GatherNetworkGameHighlighted.png in Resources */,
 				A88EFBCF12E1616100318968 /* weather_clear_night.png in Resources */,
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
 				A866863113135EDA00BE2654 /* M2A1 in Resources */,
@@ -6230,30 +6436,33 @@
 				A818BD1A13A464A700DB3828 /* Marathon_Durandal_Icon-72.png in Resources */,
 				A818BD1B13A464A700DB3828 /* Marathon_Durandal_Icon-Small-50.png in Resources */,
 				A818BD1C13A464A700DB3828 /* Marathon_Durandal_Icon-Small.png in Resources */,
+				51A6CB9321A209C500D2C4ED /* AcceptButtonHighlighted.png in Resources */,
+				5152758C21A1F534004D1E07 /* SavedGame-LoadHighlighted.png in Resources */,
 				A818BD1D13A464A700DB3828 /* Marathon_Durandal_Icon-Small@2x.png in Resources */,
 				A818BD1E13A464A700DB3828 /* Marathon_Durandal_Icon.png in Resources */,
 				51EAD5041E58B13700611EFF /* COPYRIGHT in Resources */,
+				5152759E21A1F534004D1E07 /* TipButton.png in Resources */,
 				A818BD1F13A464A700DB3828 /* Marathon_Durandal_Icon2@2x.png in Resources */,
 				A8C4436813A7CF72002A908B /* about.png in Resources */,
+				515275AA21A1F534004D1E07 /* SavedGame-Duplicate.png in Resources */,
 				A853C9BF13CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C213CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C513CF23A2001E8A25 /* GameViewController.xib in Resources */,
 				A853C9C813CF23A2001E8A25 /* HelpViewController.xib in Resources */,
-				51451B7E1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */,
-				519FCB141EA53FB90066EE69 /* GatherNetworkGame.png in Resources */,
 				A853C9CB13CF23A2001E8A25 /* MainWindow.xib in Resources */,
 				A853C9CE13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
-				519FCB1D1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
 				A853C9D113CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D413CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D713CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
 				518E9FFD1F69AF6D0039960A /* HomeScreen.png in Resources */,
 				A853C9DA13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
+				5152758E21A1F534004D1E07 /* HelpButton.png in Resources */,
 				A853C9DD13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9E013CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE613D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				A8A9C7DA13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
+				5152759A21A1F534004D1E07 /* Pause.png in Resources */,
 				A80498FB13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FE13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
 				A804990113DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
@@ -6263,23 +6472,26 @@
 				A804990D13DE1CDA00F807FB /* ret_machinegun.png in Resources */,
 				A804991013DE1CDA00F807FB /* ret_machinegun@2x~iphone.png in Resources */,
 				A804991313DE1CDA00F807FB /* ret_machinegun~iphone.png in Resources */,
+				515275A321A1F534004D1E07 /* SavedGame-Load.png in Resources */,
 				A804991613DE1CDA00F807FB /* ret_pistol.png in Resources */,
 				A804991913DE1CDA00F807FB /* ret_pistol@2x~iphone.png in Resources */,
 				A804991C13DE1CDA00F807FB /* ret_pistol~iphone.png in Resources */,
-				516ECEB51F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */,
 				518E9FFC1F69AF6D0039960A /* EpisodeLogoAlpha.png in Resources */,
+				5152759721A1F534004D1E07 /* HelpButtonHighlighted.png in Resources */,
 				A804991F13DE1CDA00F807FB /* ret_plasma.png in Resources */,
 				A804992213DE1CDA00F807FB /* ret_plasma@2x~iphone.png in Resources */,
-				51451B6F1F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */,
 				A804992513DE1CDA00F807FB /* ret_plasma~iphone.png in Resources */,
+				515275A521A1F534004D1E07 /* MenuHighlighted.png in Resources */,
 				A804992813DE1CDA00F807FB /* ret_rocket.png in Resources */,
 				A804992B13DE1CDA00F807FB /* ret_rocket@2x~iphone.png in Resources */,
 				A804992E13DE1CDA00F807FB /* ret_rocket~iphone.png in Resources */,
 				A804993113DE1CDA00F807FB /* ret_shotgun.png in Resources */,
 				A804993413DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
+				5152758121A1F534004D1E07 /* JoinNetworkGame.png in Resources */,
 				51EAD5821E58B13700611EFF /* README in Resources */,
 				A804993713DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
 				5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */,
+				5152759121A1F534004D1E07 /* PreferencesHighlighted.png in Resources */,
 				A807A70E13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DC13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				A8B9F9DF13FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
@@ -6293,46 +6505,40 @@
 				5146D7C51FE0588900B89738 /* help1.png in Resources */,
 				A8B9FAEB13FB6C1000552296 /* movementboxKnob.png in Resources */,
 				A8B9FAEE13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
+				5152758321A1F534004D1E07 /* GatherNetworkGame.png in Resources */,
 				A8B9FAF113FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF413FB6C1000552296 /* overheadmap.png in Resources */,
-				51451B721F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */,
 				519FCAEA1EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */,
 				A8B9FB0F13FB6C1000552296 /* primarytrigger-btn.png in Resources */,
 				A8B9FB1213FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				519FCAE61EA1D3B80066EE69 /* checkboxactive.png in Resources */,
 				A8B9FB1513FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
+				51A6CB9421A209C500D2C4ED /* AcceptButton.png in Resources */,
 				A8B9FB1813FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
 				A8B9FB1B13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1E13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
-				514F144A2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
 				A8B9FB2713FB6C1000552296 /* toggleweapons-left-btn.png in Resources */,
-				51451B7B1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */,
 				A8B9FB2A13FB6C1000552296 /* toggleweapons-left-btn@2x~iphone.png in Resources */,
 				A8B9FB2D13FB6C1000552296 /* toggleweapons-left-btn~iphone.png in Resources */,
 				A8B9FB3013FB6C1000552296 /* toggleweapons-right-btn.png in Resources */,
 				A8B9FB3313FB6C1000552296 /* toggleweapons-right-btn@2x~iphone.png in Resources */,
 				A8B9FB3613FB6C1000552296 /* toggleweapons-right-btn~iphone.png in Resources */,
 				A8B9FB4213FB6C1000552296 /* zoom_in.png in Resources */,
+				5152758221A1F534004D1E07 /* BeginNewGameHighlighted.png in Resources */,
 				A8B9FB4813FB6C1000552296 /* zoom_in@2x~iphone.png in Resources */,
 				A8B9FB4B13FB6C1000552296 /* zoom_in~iphone.png in Resources */,
 				A8B9FB4E13FB6C1000552296 /* zoom_out.png in Resources */,
 				A8B9FB5413FB6C1000552296 /* zoom_out@2x~iphone.png in Resources */,
 				A8B9FB5713FB6C1000552296 /* zoom_out~iphone.png in Resources */,
 				51482D6B2001C86000690752 /* github.png in Resources */,
-				517FB49A1F89CA93009F6DCE /* Menu.png in Resources */,
 				517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */,
-				514F144D2119545300685003 /* TipTheDeveloper.png in Resources */,
-				516ECE9A1F4E063600D38BB2 /* Map.png in Resources */,
 				A8B9FB5D13FB6CAF00552296 /* Reload.png in Resources */,
 				51482D6E2001CA5A00690752 /* help4.png in Resources */,
 				A8B9FB6013FB6CAF00552296 /* Reload@2x~iphone.png in Resources */,
 				A8B9FB6313FB6CAF00552296 /* Reload~iphone.png in Resources */,
-				51451B751F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */,
-				519FCB171EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */,
 				A864DDC713FDF10100A0AE0C /* PreferencesViewController~iphone.xib in Resources */,
 				A864DDCC13FDF69300A0AE0C /* SavedGameCell~iphone.xib in Resources */,
 				A864DDCF13FDF69300A0AE0C /* SaveGameViewController~iphone.xib in Resources */,
-				51451B781F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */,
 				A82B117513FF40410085C1F7 /* HelpViewController~iphone.xib in Resources */,
 				A82B117A13FF40A70085C1F7 /* TouchToContinue@2x~iphone.png in Resources */,
 				A82B117D13FF40A70085C1F7 /* TouchToContinue~iphone.png in Resources */,
@@ -6341,35 +6547,40 @@
 				5146D7D51FE08CC100B89738 /* GenericBackground.png in Resources */,
 				A809FDC1140DE1E90051EA11 /* ret_default~iphone.png in Resources */,
 				A82BBD18141015A500CE1F92 /* RootViewController.xib in Resources */,
-				517FB49D1F89CA93009F6DCE /* MenuHighlighted.png in Resources */,
 				A8E3B5A11422E82D004D28A4 /* AboutButton.png in Resources */,
 				A8E3B5A41422E82D004D28A4 /* AboutButton@2x~iphone.png in Resources */,
 				5146D7D01FE06F0900B89738 /* help3.png in Resources */,
-				5146D7BF1FDF1A3100B89738 /* Pause.png in Resources */,
 				A8E3B5A71422E82D004D28A4 /* AboutButton~iphone.png in Resources */,
 				A8E3B5AA1422E82D004D28A4 /* LoadGameButton.png in Resources */,
 				A8E3B5AD1422E82D004D28A4 /* LoadGameButton@2x~iphone.png in Resources */,
 				A8E3B5B01422E82D004D28A4 /* LoadGameButton~iphone.png in Resources */,
+				5152759821A1F534004D1E07 /* Menu.png in Resources */,
 				A8E3B5CE1422E82D004D28A4 /* NewGameButton.png in Resources */,
 				A8E3B5D11422E82D004D28A4 /* NewGameButton@2x~iphone.png in Resources */,
 				A8E3B5D41422E82D004D28A4 /* NewGameButton~iphone.png in Resources */,
+				5152759621A1F534004D1E07 /* JoinNetworkGameHighlighted.png in Resources */,
 				A8E3B5D71422E82D004D28A4 /* SettingsButton.png in Resources */,
 				A8E3B5DA1422E82D004D28A4 /* SettingsButton@2x~iphone.png in Resources */,
-				516ECEBB1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */,
+				5152759921A1F534004D1E07 /* D-pad-knob.png in Resources */,
 				A8E3B5DD1422E82D004D28A4 /* SettingsButton~iphone.png in Resources */,
 				A8E3B5E01422E82D004D28A4 /* StoreButton.png in Resources */,
 				A8E3B5E31422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E61422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
+				5152758A21A1F534004D1E07 /* ContinueSavedGameHighlighted.png in Resources */,
+				5152759B21A1F534004D1E07 /* Console.png in Resources */,
 				A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */,
 				A89A90231427F996002F8F0F /* Somewhere.png in Resources */,
+				5152758421A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */,
 				A89A903C1427FA45002F8F0F /* EpisodeLogo.png in Resources */,
 				A89A903D1427FA45002F8F0F /* EpisodeLogo@2x~iphone.png in Resources */,
 				A89A903E1427FA45002F8F0F /* EpisodeLogo~iphone.png in Resources */,
 				518E9FFE1F69AF6D0039960A /* mainlogo.png in Resources */,
-				5146D7C31FDF1A4500B89738 /* Console.png in Resources */,
+				515275AB21A1F534004D1E07 /* BackButtonHighlighted.png in Resources */,
 				A894590C1428097700A9ECAC /* EpisodeLoading.png in Resources */,
 				5146D7CD1FE06F0300B89738 /* help2.png in Resources */,
+				5152758721A1F534004D1E07 /* AboutHighlighted.png in Resources */,
 				A894590D1428097700A9ECAC /* EpisodeLoading@2x~iphone.png in Resources */,
+				5152759021A1F534004D1E07 /* ContinueSavedGame.png in Resources */,
 				A894590E1428097700A9ECAC /* EpisodeLoading~iphone.png in Resources */,
 				518AF40E1D91D25E00DB6B36 /* Default-568h@2x.png in Resources */,
 				A894591314280ABF00A9ECAC /* BungieAerospace.png in Resources */,
@@ -6377,50 +6588,47 @@
 				A894591914280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
 				A85B58651433BEC00013CDC9 /* BackNewGame.png in Resources */,
 				A85B58681433BEC00013CDC9 /* BackNewGame@2x~iphone.png in Resources */,
-				514F14422119506C00685003 /* TipButton.png in Resources */,
 				A85B586B1433BEC00013CDC9 /* BackNewGame~iphone.png in Resources */,
-				519FCB0B1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */,
 				A85B586E1433BEC00013CDC9 /* Easy.png in Resources */,
 				A85B58711433BEC00013CDC9 /* Easy@2x~iphone.png in Resources */,
 				A85B58741433BEC00013CDC9 /* Easy~iphone.png in Resources */,
+				515275A621A1F534004D1E07 /* Difficulty-Major Damage.png in Resources */,
 				A85B58771433BEC00013CDC9 /* Hard.png in Resources */,
 				51EAD58E1E58B13700611EFF /* alephone32.xpm in Resources */,
 				A85B587A1433BEC00013CDC9 /* Hard@2x~iphone.png in Resources */,
 				A85B587D1433BEC00013CDC9 /* Hard~iphone.png in Resources */,
-				513F282C1F998F4E00A23C93 /* HelpButtonHighlighted.png in Resources */,
-				519FCB051EA53FB90066EE69 /* AboutHighlighted.png in Resources */,
-				516ECEB81F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */,
 				A85B58891433BEC00013CDC9 /* Nightmare.png in Resources */,
 				A85B588C1433BEC00013CDC9 /* Nightmare@2x~iphone.png in Resources */,
 				A85B588F1433BEC00013CDC9 /* Nightmare~iphone.png in Resources */,
-				517F14B6219E804600C3163E /* RestoreButton.png in Resources */,
+				5152758521A1F534004D1E07 /* RestoreButtonHighlighted.png in Resources */,
 				A85B58921433BEC00013CDC9 /* Normal.png in Resources */,
-				519FCB201EA53FB90066EE69 /* Preferences.png in Resources */,
 				A85B58951433BEC00013CDC9 /* Normal@2x~iphone.png in Resources */,
 				A85B58981433BEC00013CDC9 /* Normal~iphone.png in Resources */,
 				A85B58A11433BEC00013CDC9 /* VidmasterOath.png in Resources */,
-				517F14B3219E804600C3163E /* RestoreButtonHighlighted.png in Resources */,
 				A85B58A41433BEC00013CDC9 /* VidmasterOath@2x~iphone.png in Resources */,
 				A85B58A71433BEC00013CDC9 /* VidmasterOath~iphone.png in Resources */,
 				A89B96341433C65D005E9FF3 /* BackButtonLoad.png in Resources */,
-				519FCB111EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */,
 				A89B96371433C65D005E9FF3 /* BackButtonLoad@2x~iphone.png in Resources */,
 				A89B963A1433C65D005E9FF3 /* BackButtonLoad~iphone.png in Resources */,
+				5152759321A1F534004D1E07 /* TipTheDeveloperHighlighted.png in Resources */,
 				A89B963D1433C65D005E9FF3 /* DeleteButton.png in Resources */,
 				A89B96401433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
 				A89B96431433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
+				5152758D21A1F534004D1E07 /* Map.png in Resources */,
 				A89B96461433C65D005E9FF3 /* DuplicateButton.png in Resources */,
+				5152759C21A1F534004D1E07 /* TipTheDeveloper.png in Resources */,
 				A89B96491433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
 				A89B964C1433C65D005E9FF3 /* DuplicateButton~iphone.png in Resources */,
-				516ECEAF1F59DEC400D38BB2 /* BackButton.png in Resources */,
 				51EAD58B1E58B13700611EFF /* alephone.xpm in Resources */,
 				A89B964F1433C65D005E9FF3 /* LoadButton.png in Resources */,
 				A89B96521433C65D005E9FF3 /* LoadButton@2x~iphone.png in Resources */,
 				A89B96551433C65D005E9FF3 /* LoadButton~iphone.png in Resources */,
+				5152759F21A1F534004D1E07 /* PreviousWeapon.png in Resources */,
 				A8294BEE1433F74700300CD5 /* DoneButtonThanks.png in Resources */,
+				5152758921A1F534004D1E07 /* BackButton.png in Resources */,
 				A8294C001433F74700300CD5 /* ThanksBackground.png in Resources */,
+				515275A921A1F534004D1E07 /* BeginNewGame.png in Resources */,
 				A8294C031433F74700300CD5 /* ThanksBackground@2x~iphone.png in Resources */,
-				517FB4A31F89CA93009F6DCE /* ResumeHighlighted.png in Resources */,
 				A8294C061433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				51EB1BA91DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A8294C121433F74700300CD5 /* ThanksScreen.png in Resources */,
@@ -6428,35 +6636,35 @@
 				A83FBB7C144C95DF00B27426 /* HDModeOn.png in Resources */,
 				51482D712001CA5F00690752 /* help5.png in Resources */,
 				A83FBB8E144C95DF00B27426 /* SettingsBackground.png in Resources */,
-				516ECEB21F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */,
 				A83FBB91144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
 				A83FBB94144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
-				519FCB081EA53FB90066EE69 /* BeginNewGame.png in Resources */,
 				A83FBBA0144C95DF00B27426 /* MCModeOff.png in Resources */,
-				516ECEBE1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */,
 				A83FBBA9144C95DF00B27426 /* MCModeOn.png in Resources */,
 				A83FBBB2144C95DF00B27426 /* Notes.txt in Resources */,
 				A83FBBBB144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
 				A83FBBBE144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
-				519FCB231EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */,
 				A83FBBC1144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
 				A83FBBCA144C95DF00B27426 /* SliderBackground.png in Resources */,
 				A83FBBCD144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
 				A83FBBD0144C95DF00B27426 /* SliderRedTrack.png in Resources */,
 				A83FBBD3144C95DF00B27426 /* SliderTab.png in Resources */,
 				A83FBBD6144C95DF00B27426 /* SwitchOff.png in Resources */,
+				5152758621A1F534004D1E07 /* Difficulty-Normal.png in Resources */,
 				A83FBBDC144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
 				A83FBBDF144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
 				A83FBBE2144C95DF00B27426 /* SwitchOn.png in Resources */,
+				5152759221A1F534004D1E07 /* Resume.png in Resources */,
 				A83FBBE5144C95DF00B27426 /* SwitchOn@2x~iphone.png in Resources */,
 				A83FBBE8144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
 				A8421ED814565584008BBF22 /* MenuButton.png in Resources */,
+				5152759521A1F534004D1E07 /* Difficulty-Total Carnage.png in Resources */,
 				A8421EDB14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
-				519FCB1A1EA53FB90066EE69 /* JoinNetworkGame.png in Resources */,
 				A8421EDE14565584008BBF22 /* MenuButton~iphone.png in Resources */,
 				A8421EE414565584008BBF22 /* OpenDoor.png in Resources */,
 				A8421EE714565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
+				5152758F21A1F534004D1E07 /* SavedGame-Delete.png in Resources */,
 				A8421EEA14565584008BBF22 /* OpenDoor~iphone.png in Resources */,
+				5152759D21A1F534004D1E07 /* NextWeapon.png in Resources */,
 				A8421EED14565584008BBF22 /* ResumeButton.png in Resources */,
 				A8421EF014565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
 				A8421EF314565584008BBF22 /* ResumeButton~iphone.png in Resources */,
@@ -6466,30 +6674,33 @@
 				A8421EFC14565584008BBF22 /* SaveGame~iphone.png in Resources */,
 				A8421EFF14565584008BBF22 /* ThrowSwitch.png in Resources */,
 				A8421F0214565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
+				515275A021A1F534004D1E07 /* RestoreButton.png in Resources */,
+				5152759421A1F534004D1E07 /* Difficulty-Easy.png in Resources */,
 				A8421F0514565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
 				51EAD44A1E58B13600611EFF /* COPYING in Resources */,
+				515275A121A1F534004D1E07 /* ResumeHighlighted.png in Resources */,
 				A8421F0814565584008BBF22 /* UseComputer.png in Resources */,
 				A8421F0B14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
 				A8421F0E14565584008BBF22 /* UseComputer~iphone.png in Resources */,
 				A8DEE8DA145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
 				A8DEE8E6145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8E9145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
+				5152758B21A1F534004D1E07 /* TipButtonHighlighted.png in Resources */,
+				5152758821A1F534004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */,
 				A8DEE8EC145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
-				513F282F1F998F5200A23C93 /* HelpButton.png in Resources */,
 				A8DEE8EF145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
 				A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
 				A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
 				A8DEE90A145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
 				A8DEE90D145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
 				A8DEE910145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
-				519FCB0E1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */,
 				A8DEE913145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
-				516ECE931F4B75FE00D38BB2 /* NextWeapon.png in Resources */,
 				A8DEE916145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
 				51E9FD6F2007F86700ADD38A /* bungie-logo.png in Resources */,
 				A8DEE919145CEB4300D8608F /* AmmoButton.png in Resources */,
 				A8DEE91C145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE91F145CEB4300D8608F /* ShieldsButton.png in Resources */,
+				515275A821A1F534004D1E07 /* Preferences.png in Resources */,
 				A8DEE922145CEB4300D8608F /* SaveButton.png in Resources */,
 				A812AD35145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
 				A812AD38145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
@@ -6499,13 +6710,9 @@
 				A812AD41145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
 				A812AD44145F8D9900196F6B /* LevelNameBackground.png in Resources */,
 				51B684FF1EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
-				516ECE961F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */,
-				516ECEA21F4E086200D38BB2 /* D-pad.png in Resources */,
-				514F14452119506C00685003 /* TipButtonHighlighted.png in Resources */,
-				517FB4A01F89CA93009F6DCE /* Resume.png in Resources */,
+				515275A421A1F534004D1E07 /* About.png in Resources */,
 				A80B316D1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
 				A80B31741463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
-				516ECE9F1F4E086200D38BB2 /* D-pad-knob.png in Resources */,
 				A80B317A14638CC300E07A08 /* JoyPad.png in Resources */,
 				A80B317D14638CC300E07A08 /* JoyPad@2x~iphone.png in Resources */,
 				A80B318014638CC300E07A08 /* JoyPad~iphone.png in Resources */,
@@ -6513,13 +6720,10 @@
 				A8EEFAB9147B4589001B5980 /* AchievementsButton@2x~iphone.png in Resources */,
 				A8EEFABC147B4589001B5980 /* AchievementsButton~iphone.png in Resources */,
 				A8EEFABF147B4589001B5980 /* LeaderboardsButton.png in Resources */,
-				51482D672001C2A300690752 /* powered-by-alephone.png in Resources */,
+				515275A721A1F534004D1E07 /* D-pad.png in Resources */,
 				A8EEFAC2147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC5147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
-				519FCB021EA53FB90066EE69 /* About.png in Resources */,
 				A8184E80147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
-				A883D582148AC5D50000AE37 /* Marathon_Durandal_Icon.png in Resources */,
-				A883D584148AC5EB0000AE37 /* Marathon_Durandal_Icon2@2x.png in Resources */,
 				A81B70391491B2B80058CA3A /* Default-Landscape.png in Resources */,
 				A81B703A1491B2B80058CA3A /* Default-Portrait.png in Resources */,
 				A81B703B1491B2B80058CA3A /* Default.png in Resources */,
@@ -6539,8 +6743,8 @@
 				A88121FE12C7826300A1A08E /* LoadingLabel.png in Resources */,
 				A8357F6112D2125C001CD264 /* ControlsOverview.png in Resources */,
 				A8357F7312D214B0001CD264 /* TouchToContinue.png in Resources */,
+				515275E421A1F53B004D1E07 /* Map.png in Resources */,
 				A88EFBCD12E1616100318968 /* weather_clear_night.png in Resources */,
-				519FCB0F1EA53FB90066EE69 /* ContinueSavedGame.png in Resources */,
 				A88EFBCE12E1616100318968 /* weather_clear.png in Resources */,
 				519FCAC61E9FFC500066EE69 /* bankgthd.ttf in Resources */,
 				A866937413135F0800BE2654 /* M3A1 in Resources */,
@@ -6550,93 +6754,91 @@
 				A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */,
 				A818BD2D13A4778400DB3828 /* Infinity-Portrait~ipad.png in Resources */,
 				A818BD2E13A4778400DB3828 /* Marathon_Infinity_Icon-72.png in Resources */,
+				515275E521A1F53B004D1E07 /* HelpButton.png in Resources */,
 				A818BD2F13A4778400DB3828 /* Marathon_Infinity_Icon-Small-50.png in Resources */,
 				A818BD3013A4778400DB3828 /* Marathon_Infinity_Icon-Small.png in Resources */,
 				A818BD3113A4778400DB3828 /* Marathon_Infinity_Icon-Small@2x.png in Resources */,
 				A818BD3313A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png in Resources */,
+				515275F321A1F53B004D1E07 /* TipTheDeveloper.png in Resources */,
 				A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */,
-				516ECEB31F59DEC400D38BB2 /* BackButtonHighlighted.png in Resources */,
-				516ECEA31F4E086200D38BB2 /* D-pad.png in Resources */,
-				516ECEA01F4E086200D38BB2 /* D-pad-knob.png in Resources */,
 				A853C9C313CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C613CF23A2001E8A25 /* GameViewController.xib in Resources */,
 				518E9FF81F69AEBD0039960A /* HomeScreen.png in Resources */,
+				515275DC21A1F53B004D1E07 /* RestoreButtonHighlighted.png in Resources */,
 				A853C9C913CF23A2001E8A25 /* HelpViewController.xib in Resources */,
 				A853C9CC13CF23A2001E8A25 /* MainWindow.xib in Resources */,
 				A853C9CF13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
 				A853C9D213CF23A2001E8A25 /* PauseViewController.xib in Resources */,
+				515275E321A1F53B004D1E07 /* SavedGame-LoadHighlighted.png in Resources */,
+				515275F121A1F53B004D1E07 /* Pause.png in Resources */,
 				A853C9D513CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				A853C9D813CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
 				A853C9DB13CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				A853C9DE13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
+				515275EA21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png in Resources */,
 				A853C9E113CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
-				516ECEBF1F59DEC400D38BB2 /* Difficulty-Total Carnage.png in Resources */,
 				A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE713D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				A8A9C7DB13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
+				515275DE21A1F53B004D1E07 /* AboutHighlighted.png in Resources */,
 				A80498FC13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FF13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
+				515275E721A1F53B004D1E07 /* ContinueSavedGame.png in Resources */,
 				A804990213DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
 				A804990513DE1CDA00F807FB /* ret_flame.png in Resources */,
 				A804990813DE1CDA00F807FB /* ret_flame@2x~iphone.png in Resources */,
 				A804990B13DE1CDA00F807FB /* ret_flame~iphone.png in Resources */,
 				A804990E13DE1CDA00F807FB /* ret_machinegun.png in Resources */,
-				517FB49B1F89CA93009F6DCE /* Menu.png in Resources */,
 				A804991113DE1CDA00F807FB /* ret_machinegun@2x~iphone.png in Resources */,
 				A804991413DE1CDA00F807FB /* ret_machinegun~iphone.png in Resources */,
 				A804991713DE1CDA00F807FB /* ret_pistol.png in Resources */,
+				515275ED21A1F53B004D1E07 /* JoinNetworkGameHighlighted.png in Resources */,
 				A804991A13DE1CDA00F807FB /* ret_pistol@2x~iphone.png in Resources */,
 				A804991D13DE1CDA00F807FB /* ret_pistol~iphone.png in Resources */,
 				51EAD58C1E58B13700611EFF /* alephone.xpm in Resources */,
-				519FCB181EA53FB90066EE69 /* GatherNetworkGameHighlighted.png in Resources */,
 				A804992013DE1CDA00F807FB /* ret_plasma.png in Resources */,
 				A804992313DE1CDA00F807FB /* ret_plasma@2x~iphone.png in Resources */,
 				A804992613DE1CDA00F807FB /* ret_plasma~iphone.png in Resources */,
 				A804992913DE1CDA00F807FB /* ret_rocket.png in Resources */,
-				516ECEBC1F59DEC400D38BB2 /* Difficulty-Normal.png in Resources */,
 				A804992C13DE1CDA00F807FB /* ret_rocket@2x~iphone.png in Resources */,
 				51EAD5831E58B13700611EFF /* README in Resources */,
 				A804992F13DE1CDA00F807FB /* ret_rocket~iphone.png in Resources */,
 				A804993213DE1CDA00F807FB /* ret_shotgun.png in Resources */,
+				515275E621A1F53B004D1E07 /* SavedGame-Delete.png in Resources */,
 				A804993513DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
+				515275EB21A1F53B004D1E07 /* Difficulty-Easy.png in Resources */,
 				A804993813DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
 				A807A70F13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
-				514F14462119506C00685003 /* TipButtonHighlighted.png in Resources */,
-				516ECE9B1F4E063600D38BB2 /* Map.png in Resources */,
-				519FCB241EA53FB90066EE69 /* PreferencesHighlighted.png in Resources */,
-				51451B7F1F60FDE100EF94F1 /* SavedGame-LoadHighlighted.png in Resources */,
 				A8B9F9DD13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				51EAD44B1E58B13600611EFF /* COPYING in Resources */,
 				A8B9F9E013FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
-				51451B761F60FDE100EF94F1 /* SavedGame-Duplicate.png in Resources */,
 				A8B9F9E413FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9EB13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */,
+				515275E921A1F53B004D1E07 /* Resume.png in Resources */,
 				51482D6C2001C86000690752 /* github.png in Resources */,
 				A8B9F9EF13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE313FB6C1000552296 /* movementboxBase.png in Resources */,
 				A8B9FAE613FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
+				515275F821A1F53B004D1E07 /* ResumeHighlighted.png in Resources */,
+				515275DA21A1F53B004D1E07 /* GatherNetworkGame.png in Resources */,
+				515275F521A1F53B004D1E07 /* TipButton.png in Resources */,
 				A8B9FAE913FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				5146D7C71FE0588B00B89738 /* help1.png in Resources */,
-				51451B791F60FDE100EF94F1 /* SavedGame-DuplicateHighlighted.png in Resources */,
 				A8B9FAEC13FB6C1000552296 /* movementboxKnob.png in Resources */,
-				519FCB031EA53FB90066EE69 /* About.png in Resources */,
-				516ECEB01F59DEC400D38BB2 /* BackButton.png in Resources */,
+				515275EE21A1F53B004D1E07 /* HelpButtonHighlighted.png in Resources */,
 				A8B9FAEF13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				A8B9FAF213FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF513FB6C1000552296 /* overheadmap.png in Resources */,
 				5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */,
-				5146D7C01FDF1A3100B89738 /* Pause.png in Resources */,
 				A8B9FB1013FB6C1000552296 /* primarytrigger-btn.png in Resources */,
 				5189238F1E92C26B009BFB67 /* powered-by-alephone.png in Resources */,
 				A8B9FB1313FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1613FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
-				51451B7C1F60FDE100EF94F1 /* SavedGame-Load.png in Resources */,
 				A8B9FB1913FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
 				A8B9FB1C13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1F13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
 				A8B9FB2813FB6C1000552296 /* toggleweapons-left-btn.png in Resources */,
 				A8B9FB2B13FB6C1000552296 /* toggleweapons-left-btn@2x~iphone.png in Resources */,
-				519FCB1B1EA53FB90066EE69 /* JoinNetworkGame.png in Resources */,
 				A8B9FB2E13FB6C1000552296 /* toggleweapons-left-btn~iphone.png in Resources */,
 				A8B9FB3113FB6C1000552296 /* toggleweapons-right-btn.png in Resources */,
 				A8B9FB3413FB6C1000552296 /* toggleweapons-right-btn@2x~iphone.png in Resources */,
@@ -6644,6 +6846,7 @@
 				A8B9FB4313FB6C1000552296 /* zoom_in.png in Resources */,
 				A8B9FB4913FB6C1000552296 /* zoom_in@2x~iphone.png in Resources */,
 				A8B9FB4C13FB6C1000552296 /* zoom_in~iphone.png in Resources */,
+				515275D821A1F53B004D1E07 /* JoinNetworkGame.png in Resources */,
 				A8B9FB4F13FB6C1000552296 /* zoom_out.png in Resources */,
 				A8B9FB5513FB6C1000552296 /* zoom_out@2x~iphone.png in Resources */,
 				A8B9FB5813FB6C1000552296 /* zoom_out~iphone.png in Resources */,
@@ -6661,7 +6864,6 @@
 				A809FDBF140DE1E90051EA11 /* ret_default@2x~iphone.png in Resources */,
 				A809FDC2140DE1E90051EA11 /* ret_default~iphone.png in Resources */,
 				A82BBD19141015A500CE1F92 /* RootViewController.xib in Resources */,
-				517FB4A41F89CA93009F6DCE /* ResumeHighlighted.png in Resources */,
 				A8E3B5A21422E82D004D28A4 /* AboutButton.png in Resources */,
 				A8E3B5A51422E82D004D28A4 /* AboutButton@2x~iphone.png in Resources */,
 				A8E3B5A81422E82D004D28A4 /* AboutButton~iphone.png in Resources */,
@@ -6675,42 +6877,49 @@
 				A8E3B5DB1422E82D004D28A4 /* SettingsButton@2x~iphone.png in Resources */,
 				A8E3B5DE1422E82D004D28A4 /* SettingsButton~iphone.png in Resources */,
 				A8E3B5E11422E82D004D28A4 /* StoreButton.png in Resources */,
-				514F14432119506C00685003 /* TipButton.png in Resources */,
 				A8E3B5E41422E82D004D28A4 /* StoreButton@2x~iphone.png in Resources */,
 				A8E3B5E71422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
 				A8C5563C14267C29003D329B /* PurchaseViewController.xib in Resources */,
+				515275FF21A1F53B004D1E07 /* Preferences.png in Resources */,
 				A89A90241427F996002F8F0F /* Somewhere.png in Resources */,
 				A894591414280ABF00A9ECAC /* BungieAerospace.png in Resources */,
 				A894591714280ABF00A9ECAC /* BungieAerospace@2x~iphone.png in Resources */,
 				A894591A14280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
 				A85B58661433BEC00013CDC9 /* BackNewGame.png in Resources */,
 				A85B58691433BEC00013CDC9 /* BackNewGame@2x~iphone.png in Resources */,
+				515275E221A1F53B004D1E07 /* TipButtonHighlighted.png in Resources */,
+				51A6CB9021A209B200D2C4ED /* AcceptButton.png in Resources */,
 				A85B586C1433BEC00013CDC9 /* BackNewGame~iphone.png in Resources */,
 				A85B586F1433BEC00013CDC9 /* Easy.png in Resources */,
 				A85B58721433BEC00013CDC9 /* Easy@2x~iphone.png in Resources */,
 				A85B58751433BEC00013CDC9 /* Easy~iphone.png in Resources */,
 				A85B58781433BEC00013CDC9 /* Hard.png in Resources */,
 				A85B587B1433BEC00013CDC9 /* Hard@2x~iphone.png in Resources */,
+				515275FC21A1F53B004D1E07 /* MenuHighlighted.png in Resources */,
+				5152760021A1F53B004D1E07 /* BeginNewGame.png in Resources */,
 				A85B587E1433BEC00013CDC9 /* Hard~iphone.png in Resources */,
 				A85B588A1433BEC00013CDC9 /* Nightmare.png in Resources */,
 				A85B588D1433BEC00013CDC9 /* Nightmare@2x~iphone.png in Resources */,
 				A85B58901433BEC00013CDC9 /* Nightmare~iphone.png in Resources */,
 				A85B58931433BEC00013CDC9 /* Normal.png in Resources */,
 				A85B58961433BEC00013CDC9 /* Normal@2x~iphone.png in Resources */,
-				519FCB211EA53FB90066EE69 /* Preferences.png in Resources */,
-				519FCB1E1EA53FB90066EE69 /* JoinNetworkGameHighlighted.png in Resources */,
+				515275F221A1F53B004D1E07 /* Console.png in Resources */,
 				A85B58991433BEC00013CDC9 /* Normal~iphone.png in Resources */,
 				A85B58A21433BEC00013CDC9 /* VidmasterOath.png in Resources */,
 				51B685001EB3E39E00CB1628 /* A1_fade_in.mp4 in Resources */,
+				515275E821A1F53B004D1E07 /* PreferencesHighlighted.png in Resources */,
 				A85B58A51433BEC00013CDC9 /* VidmasterOath@2x~iphone.png in Resources */,
 				A85B58A81433BEC00013CDC9 /* VidmasterOath~iphone.png in Resources */,
 				A89B96351433C65D005E9FF3 /* BackButtonLoad.png in Resources */,
 				A89B96381433C65D005E9FF3 /* BackButtonLoad@2x~iphone.png in Resources */,
 				A89B963B1433C65D005E9FF3 /* BackButtonLoad~iphone.png in Resources */,
-				519FCB151EA53FB90066EE69 /* GatherNetworkGame.png in Resources */,
 				A89B963E1433C65D005E9FF3 /* DeleteButton.png in Resources */,
+				51A6CB8F21A209B200D2C4ED /* AcceptButtonHighlighted.png in Resources */,
+				515275FD21A1F53B004D1E07 /* Difficulty-Major Damage.png in Resources */,
 				A89B96411433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
 				A89B96441433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
+				515275F621A1F53B004D1E07 /* PreviousWeapon.png in Resources */,
+				5152760221A1F53B004D1E07 /* BackButtonHighlighted.png in Resources */,
 				A89B96471433C65D005E9FF3 /* DuplicateButton.png in Resources */,
 				A89B964A1433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
 				A89B964D1433C65D005E9FF3 /* DuplicateButton~iphone.png in Resources */,
@@ -6720,8 +6929,9 @@
 				A89B96561433C65D005E9FF3 /* LoadButton~iphone.png in Resources */,
 				A89B96711433C65D005E9FF3 /* LoadingBackground.png in Resources */,
 				A89B96741433C65D005E9FF3 /* LoadingBackground@2x~iphone.png in Resources */,
+				515275F421A1F53B004D1E07 /* NextWeapon.png in Resources */,
 				A89B96771433C65D005E9FF3 /* LoadingBackground~iphone.png in Resources */,
-				516ECE941F4B75FE00D38BB2 /* NextWeapon.png in Resources */,
+				515275F921A1F53B004D1E07 /* GatherNetworkGameHighlighted.png in Resources */,
 				51482D6D2001CA5900690752 /* help4.png in Resources */,
 				A8294BEF1433F74700300CD5 /* DoneButtonThanks.png in Resources */,
 				A8294C0A1433F74700300CD5 /* ThanksBackground.png in Resources */,
@@ -6730,16 +6940,21 @@
 				A8294C101433F74700300CD5 /* ThanksBackground~iphone.png in Resources */,
 				A8294C131433F74700300CD5 /* ThanksScreen.png in Resources */,
 				A83FBB74144C95DF00B27426 /* HDModeOff.png in Resources */,
-				517FB49E1F89CA93009F6DCE /* MenuHighlighted.png in Resources */,
 				A83FBB7D144C95DF00B27426 /* HDModeOn.png in Resources */,
+				515275FA21A1F53B004D1E07 /* SavedGame-Load.png in Resources */,
 				A83FBB98144C95DF00B27426 /* SettingsBackground.png in Resources */,
+				515275D921A1F53B004D1E07 /* BeginNewGameHighlighted.png in Resources */,
 				A83FBB9B144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
+				515275DD21A1F53B004D1E07 /* Difficulty-Normal.png in Resources */,
 				A83FBB9E144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
 				5146D7D11FE06F0A00B89738 /* help3.png in Resources */,
 				A83FBBA1144C95DF00B27426 /* MCModeOff.png in Resources */,
+				515275E021A1F53B004D1E07 /* BackButton.png in Resources */,
 				A83FBBAA144C95DF00B27426 /* MCModeOn.png in Resources */,
+				515275FB21A1F53B004D1E07 /* About.png in Resources */,
 				A83FBBB3144C95DF00B27426 /* Notes.txt in Resources */,
 				A83FBBBC144C95DF00B27426 /* SettingsBackgroundLayout in Resources */,
+				515275E121A1F53B004D1E07 /* ContinueSavedGameHighlighted.png in Resources */,
 				A83FBBBF144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
 				A83FBBC2144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
 				A83FBBCB144C95DF00B27426 /* SliderBackground.png in Resources */,
@@ -6754,6 +6969,7 @@
 				A83FBBE9144C95DF00B27426 /* SwitchOn~iphone.png in Resources */,
 				A8421ED914565584008BBF22 /* MenuButton.png in Resources */,
 				A8421EDC14565584008BBF22 /* MenuButton@2x~iphone.png in Resources */,
+				515275F721A1F53B004D1E07 /* RestoreButton.png in Resources */,
 				A8421EDF14565584008BBF22 /* MenuButton~iphone.png in Resources */,
 				A8421EE514565584008BBF22 /* OpenDoor.png in Resources */,
 				A8421EE814565584008BBF22 /* OpenDoor@2x~iphone.png in Resources */,
@@ -6761,7 +6977,6 @@
 				A8421EEE14565584008BBF22 /* ResumeButton.png in Resources */,
 				A8421EF114565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
 				A8421EF414565584008BBF22 /* ResumeButton~iphone.png in Resources */,
-				516ECEB91F59DEC400D38BB2 /* Difficulty-Major Damage.png in Resources */,
 				A8421EF714565584008BBF22 /* SaveGame.png in Resources */,
 				A8421EFA14565584008BBF22 /* SaveGame@2x~iphone.png in Resources */,
 				A8421EFD14565584008BBF22 /* SaveGame~iphone.png in Resources */,
@@ -6769,10 +6984,11 @@
 				A8421F0314565584008BBF22 /* ThrowSwitch@2x~iphone.png in Resources */,
 				A8421F0614565584008BBF22 /* ThrowSwitch~iphone.png in Resources */,
 				A8421F0914565584008BBF22 /* UseComputer.png in Resources */,
+				515275DB21A1F53B004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */,
+				515275EF21A1F53B004D1E07 /* Menu.png in Resources */,
 				519FCAE71EA1D3B80066EE69 /* checkboxactive.png in Resources */,
 				A8421F0C14565584008BBF22 /* UseComputer@2x~iphone.png in Resources */,
 				A8421F0F14565584008BBF22 /* UseComputer~iphone.png in Resources */,
-				519FCB061EA53FB90066EE69 /* AboutHighlighted.png in Resources */,
 				A8DEE8DB145C4FA900D8608F /* BasicHUDViewController~iphone.xib in Resources */,
 				A8DEE8E7145CDEA100D8608F /* SliderTab@2x~iphone.png in Resources */,
 				A8DEE8EA145CDEA100D8608F /* SliderRedTrack~iphone.png in Resources */,
@@ -6782,15 +6998,17 @@
 				A8DEE908145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
 				A8DEE90B145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
 				A8DEE90E145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
+				5152760121A1F53B004D1E07 /* SavedGame-Duplicate.png in Resources */,
 				A8DEE911145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
-				51451B731F60FDE100EF94F1 /* SavedGame-DeleteHighlighted.png in Resources */,
 				517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */,
 				516ECE8F1F46195800D38BB2 /* GenericLoadingBackground.png in Resources */,
 				A8DEE914145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
+				515275FE21A1F53B004D1E07 /* D-pad.png in Resources */,
 				A8DEE917145CEB4300D8608F /* AmmoButton~iphone.png in Resources */,
 				A8DEE91A145CEB4300D8608F /* AmmoButton.png in Resources */,
 				A8DEE91D145CEB4300D8608F /* WeaponsButton.png in Resources */,
 				A8DEE920145CEB4300D8608F /* ShieldsButton.png in Resources */,
+				515275EC21A1F53B004D1E07 /* Difficulty-Total Carnage.png in Resources */,
 				A8DEE923145CEB4300D8608F /* SaveButton.png in Resources */,
 				A812AD36145F8D9900196F6B /* StartingLevel~iphone.png in Resources */,
 				A812AD39145F8D9900196F6B /* LevelNameBackground~iphone.png in Resources */,
@@ -6799,17 +7017,11 @@
 				A812AD42145F8D9900196F6B /* LevelNameBackground@2x~iphone.png in Resources */,
 				51EB1BAA1DAAEEEA00C3D4B4 /* look_multi_button.png in Resources */,
 				A812AD45145F8D9900196F6B /* LevelNameBackground.png in Resources */,
-				516ECEB61F59DEC400D38BB2 /* Difficulty-Easy.png in Resources */,
 				51EAD58F1E58B13700611EFF /* alephone32.xpm in Resources */,
-				519FCB121EA53FB90066EE69 /* ContinueSavedGameHighlighted.png in Resources */,
-				514F144E2119545300685003 /* TipTheDeveloper.png in Resources */,
-				514F144B2119545300685003 /* TipTheDeveloperHighlighted.png in Resources */,
-				519FCB091EA53FB90066EE69 /* BeginNewGame.png in Resources */,
 				5146D7CE1FE06F0400B89738 /* help2.png in Resources */,
+				515275F021A1F53B004D1E07 /* D-pad-knob.png in Resources */,
 				518E9FF41F69AEA10039960A /* EpisodeLogoAlpha.png in Resources */,
-				516ECE971F4B75FE00D38BB2 /* PreviousWeapon.png in Resources */,
 				51E9FD702007F86700ADD38A /* bungie-logo.png in Resources */,
-				517F14B4219E804600C3163E /* RestoreButtonHighlighted.png in Resources */,
 				A80B316E1463460900E07A08 /* WeaponsButton@2x~iphone.png in Resources */,
 				A80B31751463464000E07A08 /* WeaponsButton~iphone.png in Resources */,
 				A80B317B14638CC300E07A08 /* JoyPad.png in Resources */,
@@ -6819,28 +7031,22 @@
 				A8EEFABA147B4589001B5980 /* AchievementsButton@2x~iphone.png in Resources */,
 				A8EEFABD147B4589001B5980 /* AchievementsButton~iphone.png in Resources */,
 				A8EEFAC0147B4589001B5980 /* LeaderboardsButton.png in Resources */,
-				5146D7C41FDF1A4500B89738 /* Console.png in Resources */,
-				519FCB0C1EA53FB90066EE69 /* BeginNewGameHighlighted.png in Resources */,
 				A8EEFAC3147B4589001B5980 /* LeaderboardsButton@2x~iphone.png in Resources */,
 				A8EEFAC6147B4589001B5980 /* LeaderboardsButton~iphone.png in Resources */,
 				A8184E81147CA279007353E7 /* RootViewController~iphone.xib in Resources */,
-				513F28301F998F5300A23C93 /* HelpButton.png in Resources */,
 				A8B6008D149D132A0017A6D8 /* patternbuffers-btn.png in Resources */,
 				519FCADB1EA1CEAE0066EE69 /* SliderWhiteTrack.png in Resources */,
 				A893F72C1502CEC2003A4D28 /* Marathon_Infinity_Icon.png in Resources */,
 				A893F72E1502CED0003A4D28 /* Marathon_Infinity_Icon@2x.png in Resources */,
-				517FB4A11F89CA93009F6DCE /* Resume.png in Resources */,
 				A8D8FC37152E8D6300A54CE4 /* Infinity-Portrait@2x~iphone.png in Resources */,
 				A8D8FC38152E8D6300A54CE4 /* Infinity-Portrait~iphone.png in Resources */,
 				518E9FF61F69AEAF0039960A /* mainlogo.png in Resources */,
 				A8D8FC3C152E8D8500A54CE4 /* Infinity.png in Resources */,
-				513F282D1F998F4F00A23C93 /* HelpButtonHighlighted.png in Resources */,
-				51451B701F60FDE100EF94F1 /* SavedGame-Delete.png in Resources */,
+				515275DF21A1F53B004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */,
 				519FCAE01EA1D39F0066EE69 /* checkbox.png in Resources */,
 				A8695CAA1563560100D5976B /* Infinity. in Resources */,
 				A8695CAC1563560900D5976B /* Infinity@2x. in Resources */,
 				A8695CAE1563561400D5976B /* Infinity-Portrait~ipad. in Resources */,
-				517F14B7219E804600C3163E /* RestoreButton.png in Resources */,
 				519FCAEB1EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */,
 				A8695CB01563562400D5976B /* Infinity-Landscape~ipad. in Resources */,
 			);
@@ -7886,7 +8092,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -7920,18 +8125,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
@@ -7939,7 +8142,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -7959,7 +8162,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -7990,25 +8192,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8064,7 +8265,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8118,7 +8319,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8171,7 +8372,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8452,7 +8653,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8484,25 +8684,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
+					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8556,7 +8755,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -8726,7 +8925,6 @@
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8757,25 +8955,22 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
+					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
+					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL",
 					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
+					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
+					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
 					"$(PROJECT_DIR)/Classes",
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
