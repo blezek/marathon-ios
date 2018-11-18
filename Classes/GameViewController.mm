@@ -679,15 +679,13 @@ short localFindActionTarget(
   
   bool showAllControls = player_controlling_game();
   
-  /*
   if ( player_controlling_game() && [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
     Crosshairs_SetActive(true);
   } else {
    Crosshairs_SetActive(false);
   }
-   */
   
-  Crosshairs_SetActive(false);
+  //Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   self.HUDViewController.view.hidden = NO;
@@ -1337,6 +1335,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 #pragma mark - Reticule
 - (void)updateReticule:(int)index {
+  
+  //DCW all of this stuff is now replaced by engine reticule
+  self.reticule.hidden = YES;
+  Crosshairs_SetActive([[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] );
+  return;
+  
   if ( mode == DeadMode ) { return; }
   if ( world_view->overhead_map_active || world_view->terminal_mode_active ) {
     self.reticule.hidden = YES;
@@ -1359,7 +1363,8 @@ extern bool handle_open_replay(FileSpecifier& File);
   
   if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ) {
     // Fancy reticule
-    self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+    //self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+    Crosshairs_SetActive(true);
   } else {
     // Basic reticule
     self.reticule.image = [UIImage imageNamed:@"ret_default"];    

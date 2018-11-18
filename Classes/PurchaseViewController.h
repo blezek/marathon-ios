@@ -9,47 +9,39 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 #import "RoundedView.h"
-@interface PurchaseViewController : UIViewController<SKProductsRequestDelegate> {
+@interface PurchaseViewController : UIViewController<SKProductsRequestDelegate, SKPaymentTransactionObserver> {
   IBOutlet UIActivityIndicatorView *activity;
-  IBOutlet UILabel *vmmTitle;
-  IBOutlet UILabel *vmmPrice;
-  IBOutlet UITextView *vmmDescription;
-  IBOutlet UILabel *hdmTitle;
-  IBOutlet UILabel *hdmPrice;
-  IBOutlet UITextView *hdmDescription;
   
   IBOutlet RoundedView *loadingView;
-  IBOutlet UIButton *hdmPurchase;
-  IBOutlet UIButton *vmmPurchase;
   
+  IBOutlet UITextView *tipDescription;
+  IBOutlet UIButton *restoreButton;
+  IBOutlet UIButton *tipButton;
+  IBOutlet UISegmentedControl *tipSelector;
+  IBOutlet UIView *thankYou;
 }
 
 @property(nonatomic,retain) UIActivityIndicatorView *activity;
 
-@property(nonatomic,retain) UILabel *vmmTitle;
-@property(nonatomic,retain) UILabel *vmmPrice;
-@property(nonatomic,retain) UITextView *vmmDescription;
-@property(nonatomic,retain) UIButton *vmmPurchase;
+@property(nonatomic,retain) UITextView *tipDescription;
+@property(nonatomic,retain) NSArray *allProductIDs;
+@property(nonatomic,retain) NSMutableArray *validProductIDs;
+@property(nonatomic,retain) NSMutableDictionary *allProductResponses;
+@property(nonatomic,retain) NSMutableDictionary *allProductDescriptions;
 
-@property(nonatomic,retain) UILabel *hdmTitle;
-@property(nonatomic,retain) UILabel *hdmPrice;
-@property(nonatomic,retain) UITextView *hdmDescription;
-@property(nonatomic,retain) UIButton *hdmPurchase;
-
-@property(nonatomic,retain) IBOutlet UILabel *rmTitle;
-@property(nonatomic,retain) IBOutlet UILabel *rmPrice;
-@property(nonatomic,retain) IBOutlet UITextView *rmDescription;
-@property(nonatomic,retain) IBOutlet UIButton *rmPurchase;
+@property(nonatomic,retain) UIButton *restoreButton;
+@property(nonatomic,retain) UIButton *tipButton;
+@property(nonatomic,retain) IBOutlet UISegmentedControl *tipSelector;
+@property(nonatomic,retain) IBOutlet UIView *thankYou;
 
 @property(nonatomic,retain) UIView *loadingView;
 
 - (IBAction)openDoors;
-- (IBAction)buyHDMode:(id)sender;
-- (IBAction)buyVidmasterMode:(id)sender;
-- (IBAction)buyReticuleMode:(id)sender;
+- (IBAction)buyTip:(id)sender;
 - (IBAction)done:(id)sender;
 - (IBAction)restore:(id)sender;
 - (BOOL)canPurchase;
+- (IBAction)tipSelectorChanged:(id)sender;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 - (IBAction)updateView;

@@ -79,7 +79,7 @@ extern "C" {
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   id anything = [touches anyObject];
   
-  NSLog ( @"Touch started ");
+  //NSLog ( @"Touch started ");
   
   [lookPadView unPauseGyro];
 

@@ -14,15 +14,11 @@
 
 @implementation PurchaseViewController
 @synthesize activity;
-@synthesize vmmTitle;
-@synthesize vmmPrice;
-@synthesize vmmDescription;
-@synthesize hdmTitle;
-@synthesize hdmPrice;
-@synthesize hdmDescription;
-@synthesize vmmPurchase, hdmPurchase;
+@synthesize tipDescription;
 @synthesize loadingView;
-@synthesize rmDescription,rmPrice,rmTitle,rmPurchase;
+@synthesize restoreButton, tipButton;
+@synthesize allProductIDs, validProductIDs, allProductDescriptions, allProductResponses;
+@synthesize tipSelector, thankYou;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -35,20 +31,43 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+  thankYou.hidden=YES;
+  allProductIDs = [[NSArray alloc] initWithObjects: Tip1, Tip2, Tip3, Tip5, Tip8, Tip13, Tip21, VidmasterModeProductID, HDModeProductID, ReticulesProductID, nil];
+  validProductIDs = [[NSMutableArray alloc] init];
+  allProductDescriptions = [[NSMutableDictionary alloc] init];
+  allProductResponses = [[NSMutableDictionary alloc] init];
+  [tipSelector setHidden:YES];
+  [tipSelector addTarget:self action:@selector(tipSelectorChanged:) forControlEvents:UIControlEventValueChanged];
+  [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 }
-*/
 
 - (IBAction)openDoors {
+  
+    //This is somethign we are really only interested on first launch.
+//[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHasPurchasedTip]; //TEMPORARY
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kHasAttemptedRestore]) {
+    [self restore:self];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasAttemptedRestore];
+  }
+  
+  //If the user has already tipped, tell them how cool they are and don't show any more purchases.
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip]) {
+    [self updateView];
+    return;
+  }
+  
   // Request our list
   [self.activity startAnimating];
   self.loadingView.hidden = NO;
-  SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithObjects:VidmasterModeProductID, HDModeProductID, ReticulesProductID, Tip1, Tip2, Tip3, Tip5, Tip8, Tip13, Tip21, nil]];
+  SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithArray:allProductIDs]];
   request.delegate = self;
   [request start];
+  [tipSelector removeAllSegments];
+  [tipSelector setHidden:NO];
+  [tipDescription setText:@""];
   [self updateView];
 }
 
@@ -105,37 +124,39 @@
   
   // populate UI
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
-  MLog ( @"Got %d products back", [response.products count] );
+  MLog ( @"Got %d products back", (int)[response.products count] );
   for ( SKProduct* p in response.products ) {
     [dict setObject:p forKey:p.productIdentifier];
   }
-  SKProduct *product;
-  product = [dict objectForKey:VidmasterModeProductID];
-  if ( product != nil ) {
-    self.vmmTitle.text = product.localizedTitle;
-    self.vmmDescription.text = product.localizedDescription;
-    self.vmmPrice.text = [self formatCurrency:product];
-  }
   
-  product = [dict objectForKey:HDModeProductID];
-  if ( product != nil ) {
-    self.hdmTitle.text = product.localizedTitle;
-    self.hdmDescription.text = product.localizedDescription;
-    self.hdmPrice.text = [self formatCurrency:product];
+  int n = 0;
+   for ( int i = 0; i < [allProductIDs count]; ++i ) {
+      for ( SKProduct* p in response.products ) {
+        if ( [[p productIdentifier] isEqualToString:[allProductIDs objectAtIndex:i]]
+            /*Don't add legacy product IDs to the tip selector bar*/
+            && ![[p productIdentifier] isEqualToString:VidmasterModeProductID]
+            && ![[p productIdentifier] isEqualToString:HDModeProductID]
+            && ![[p productIdentifier] isEqualToString:ReticulesProductID]
+            ) {
+          [validProductIDs addObject:[allProductIDs objectAtIndex:i]];
+          [tipSelector insertSegmentWithTitle:[self formatCurrency:p] atIndex:n animated:YES];
+          [allProductDescriptions setObject:p.localizedTitle forKey:[allProductIDs objectAtIndex:i]];
+          [allProductResponses setObject:p forKey:[allProductIDs objectAtIndex:i]];
+          n++;
+        }
+    }
   }
-  
-  product = [dict objectForKey:ReticulesProductID];
-  if ( product != nil ) {
-    self.rmTitle.text = product.localizedTitle;
-    self.rmDescription.text = product.localizedDescription;
-    self.rmPrice.text = [self formatCurrency:product];
-  }
-  
   
   [self updateView];
   [request autorelease];
 }
 
+- (IBAction)tipSelectorChanged:(id)sender {
+  NSString *description = [allProductDescriptions objectForKey:[allProductIDs objectAtIndex:[tipSelector selectedSegmentIndex]]];
+  if ( description != nil ) {
+    [tipDescription setText:description];
+  }
+}
 
 - (BOOL)canPurchase {
   if ([SKPaymentQueue canMakePayments]) {
@@ -162,51 +183,57 @@
   }
 }
 
-- (IBAction)buyHDMode:(id)sender {
-  ////[Tracking trackEvent:@"store" action:@"hd" label:@"" value:[self canPurchase]];
-  if ( [self canPurchase] ) {
-    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:HDModeProductID];
-    [[SKPaymentQueue defaultQueue] addPayment:tPayment];
-  }
-}
-      
-- (IBAction)buyVidmasterMode:(id)sender {
-  ////[Tracking trackEvent:@"store" action:@"mc" label:@"" value:[self canPurchase]];
-  if ( [self canPurchase] ) {
-    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:VidmasterModeProductID];
+- (IBAction)buyTip:(id)sender {
+  int selectedTipIndex = [tipSelector selectedSegmentIndex];
+  if ( [self canPurchase] && selectedTipIndex >= 0  ) {
+    
+    SKPayment* tPayment = [SKPayment paymentWithProduct:[allProductResponses objectForKey:[validProductIDs objectAtIndex:selectedTipIndex]]];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
   }
 }
 
-- (IBAction)buyReticuleMode:(id)sender {
-  ////[Tracking trackEvent:@"store" action:@"rm" label:@"" value:[self canPurchase]];
-  if ( [self canPurchase] ) {
-    SKPayment* tPayment = [SKPayment paymentWithProductIdentifier:ReticulesProductID];
-    [[SKPaymentQueue defaultQueue] addPayment:tPayment];
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions {
+  NSLog(@"Transaction Updated!");
+  for ( SKPaymentTransaction* transaction in transactions ) {
+    switch (transaction.transactionState) {
+      case(SKPaymentTransactionStatePurchasing) :
+        NSLog(@"SKPaymentTransactionStatePurchasing");
+        break;
+      case(SKPaymentTransactionStateRestored) :
+        NSLog(@"SKPaymentTransactionStateRestored");
+      case(SKPaymentTransactionStatePurchased) :
+        NSLog(@"This player has tipped!");
+        //Set prefs here indicating that a tip was made
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasPurchasedTip];
+        [self updateView];
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        break;
+      case(SKPaymentTransactionStateFailed) :
+        NSLog(@"SKPaymentTransactionStateFailed");
+        break;
+      case(SKPaymentTransactionStateDeferred) :
+        NSLog(@"SKPaymentTransactionStateDeferred");
+        break;
+      default:
+        NSLog(@"Unknown Transaction State");
+        break;
+    }
   }
 }
-
-
 
 - (IBAction)updateView {
-  // see if we need to remove the "purchased" buttons
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP] ) {
-    self.hdmPurchase.hidden = YES;
-    self.hdmPrice.text = @"Installed";
+  // see if we need to remove the "tip" buttons
+  if ( /*[[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP] ||
+       [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode] ||
+       [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ||*/
+       [[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip] ) {
+        restoreButton.hidden=YES;
+        tipButton.hidden=YES;
+        tipSelector.hidden=YES;
+        tipDescription.hidden=YES;
+        thankYou.hidden=NO;
   } else {
-    self.hdmPurchase.hidden = NO;
-  }
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode] ) {
-    self.vmmPurchase.hidden = YES;
-    self.vmmPrice.text = @"Installed";
-  } else {
-    self.vmmPurchase.hidden = NO;
-  }
-  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ) {
-    self.rmPurchase.hidden = YES;
-    self.rmPrice.text = @"Installed";
-  } else {
-    self.rmPurchase.hidden = NO;
+        thankYou.hidden=YES;
   }
 }  
 
