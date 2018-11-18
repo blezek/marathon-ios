@@ -193,29 +193,29 @@
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions {
-  NSLog(@"Transaction Updated!");
+  MLog(@"Transaction Updated!");
   for ( SKPaymentTransaction* transaction in transactions ) {
     switch (transaction.transactionState) {
       case(SKPaymentTransactionStatePurchasing) :
-        NSLog(@"SKPaymentTransactionStatePurchasing");
+        MLog(@"SKPaymentTransactionStatePurchasing");
         break;
       case(SKPaymentTransactionStateRestored) :
-        NSLog(@"SKPaymentTransactionStateRestored");
+        MLog(@"SKPaymentTransactionStateRestored");
       case(SKPaymentTransactionStatePurchased) :
-        NSLog(@"This player has tipped!");
+        MLog(@"This player has tipped!");
         //Set prefs here indicating that a tip was made
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasPurchasedTip];
         [self updateView];
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         break;
       case(SKPaymentTransactionStateFailed) :
-        NSLog(@"SKPaymentTransactionStateFailed");
+        MLog(@"SKPaymentTransactionStateFailed");
         break;
       case(SKPaymentTransactionStateDeferred) :
-        NSLog(@"SKPaymentTransactionStateDeferred");
+        MLog(@"SKPaymentTransactionStateDeferred");
         break;
       default:
-        NSLog(@"Unknown Transaction State");
+        MLog(@"Unknown Transaction State");
         break;
     }
   }

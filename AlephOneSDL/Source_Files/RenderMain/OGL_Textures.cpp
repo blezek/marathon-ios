@@ -545,7 +545,7 @@ bool TextureManager::Setup()
 
 #if defined(A1DEBUG)
     // DJB debugging
-    printf ( "Sprite: %d, %d Scale: %0.2f, %0.2f Offset: %0.2f, %0.2f\n", Collection, Bitmap, U_Scale, V_Scale, U_Offset, V_Offset );
+    //printf ( "Sprite: %d, %d Scale: %0.2f, %0.2f Offset: %0.2f, %0.2f\n", Collection, Bitmap, U_Scale, V_Scale, U_Offset, V_Offset );
     // DJB Print if not expected
     if ( CTState.U_Scale != 1.0 || CTState.V_Scale != 1.0 ) {
       if ( BaseTxtrWidth == BaseTxtrHeight ) {
@@ -1352,7 +1352,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 		case GL_NEAREST:
 		case GL_LINEAR:
 			glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetBuffer());
-      printGLError(__PRETTY_FUNCTION__);
+      //printGLError(__PRETTY_FUNCTION__);
       break;
 		case GL_NEAREST_MIPMAP_NEAREST:
 		case GL_LINEAR_MIPMAP_NEAREST:
@@ -1366,15 +1366,15 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
         // DJB OpenGL Generate mipmaps
         glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
-        printGLError(__PRETTY_FUNCTION__);
+        //printGLError(__PRETTY_FUNCTION__);
         
         int i = 0;
 				for (i = 0; i < Image->GetMipMapCount(); i++) {
 					glTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetMipMapPtr(i));
-          printGLError(__PRETTY_FUNCTION__);
+          //printGLError(__PRETTY_FUNCTION__);
           if( useShaderRenderer() ) {
             glGenerateMipmap(GL_TEXTURE_2D);
-            printGLError(__PRETTY_FUNCTION__);
+            //printGLError(__PRETTY_FUNCTION__);
           }
         }
 				mipmapsLoaded = true;
@@ -1395,18 +1395,18 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
          Image->GetBuffer());
          */
         glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-        printGLError(__PRETTY_FUNCTION__);
+        //printGLError(__PRETTY_FUNCTION__);
         // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
         assert ( internalFormat == GL_RGBA );
         glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
                      Image->GetWidth(),
                      Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
                      Image->GetBuffer());
-        printGLError(__PRETTY_FUNCTION__);
+        //printGLError(__PRETTY_FUNCTION__);
         
         if( useShaderRenderer() ) {
           glGenerateMipmap(GL_TEXTURE_2D);
-          printGLError(__PRETTY_FUNCTION__);
+          //printGLError(__PRETTY_FUNCTION__);
         }
 			}
 			mipmapsLoaded = true;
@@ -1459,7 +1459,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                                  0,
                                  size,
                                  data);
-          printGLError(__PRETTY_FUNCTION__);
+          //printGLError(__PRETTY_FUNCTION__);
           data += size;
           width >>= 1;
           height >>= 1;
@@ -1483,7 +1483,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           
           
           glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
-          printGLError(__PRETTY_FUNCTION__);
+          //printGLError(__PRETTY_FUNCTION__);
           int i = 0;
           for (i = 0; i < Image->GetMipMapCount(); i++) {
             glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
@@ -1493,7 +1493,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
                          GL_RGBA,
                          GL_UNSIGNED_BYTE,
                          Image->GetMipMapPtr(i));
-            printGLError(__PRETTY_FUNCTION__);
+            //printGLError(__PRETTY_FUNCTION__);
           }
           mipmapsLoaded = true;
         }
@@ -1555,7 +1555,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 		case GL_NEAREST:
 		case GL_LINEAR:
 			glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
-      printGLError(__PRETTY_FUNCTION__);
+      //printGLError(__PRETTY_FUNCTION__);
 			break;
 		case GL_NEAREST_MIPMAP_NEAREST:
 		case GL_LINEAR_MIPMAP_NEAREST:
@@ -1569,12 +1569,12 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 #endif
         // DJB OpenGL generate mipmaps
         glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
-        printGLError(__PRETTY_FUNCTION__);
+        //printGLError(__PRETTY_FUNCTION__);
         
 				int i = 0;
 				for (i = 0; i < Image->GetMipMapCount(); i++) {
 					glCompressedTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, Image->GetMipMapSize(i), Image->GetMipMapPtr(i)); //DCW No ARB extension in iOS
-          printGLError(__PRETTY_FUNCTION__);
+          //printGLError(__PRETTY_FUNCTION__);
         }
 				mipmapsLoaded = true;
 			} else {
@@ -1589,7 +1589,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         mipmapsLoaded = true;
 
         glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
-        printGLError(__PRETTY_FUNCTION__);
+        //printGLError(__PRETTY_FUNCTION__);
       }
 			break;
 			
@@ -1604,16 +1604,16 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 	
 	// Set texture-mapping features
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-  printGLError(__PRETTY_FUNCTION__);
+  //printGLError(__PRETTY_FUNCTION__);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
-  printGLError(__PRETTY_FUNCTION__);
+  //printGLError(__PRETTY_FUNCTION__);
 	if ((TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_LINEAR || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded)
 	{
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    printGLError(__PRETTY_FUNCTION__);
+    //printGLError(__PRETTY_FUNCTION__);
 	} else {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, TxtrTypeInfo.FarFilter);
-    printGLError(__PRETTY_FUNCTION__);
+    //printGLError(__PRETTY_FUNCTION__);
 	}
 
 	switch(TextureType)
