@@ -2500,7 +2500,8 @@ void read_preferences ()
   //| OGL_Flag_BumpMap
   //| OGL_Flag_Fader;
   
-  graphics_preferences->OGL_Configure.Flags &= ~OGL_Flag_FlatStatic; //DCW turn off flat static
+  //graphics_preferences->OGL_Configure.Flags &= ~OGL_Flag_FlatStatic; //DCW turn off flat static
+  graphics_preferences->OGL_Configure.Flags |= OGL_Flag_FlatStatic; //DCW on flat static
     
 	// Slurp in the file and parse it
 

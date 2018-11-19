@@ -549,7 +549,7 @@ bool TextureManager::Setup()
     // DJB Print if not expected
     if ( CTState.U_Scale != 1.0 || CTState.V_Scale != 1.0 ) {
       if ( BaseTxtrWidth == BaseTxtrHeight ) {
-        printf ( "Unexpected scale: %f, %f  Collection: %d Bitmap: %d\n", U_Scale, V_Scale, Collection, Bitmap );
+        //printf ( "Unexpected scale: %f, %f  Collection: %d Bitmap: %d\n", U_Scale, V_Scale, Collection, Bitmap );
       }
     }
 #endif
