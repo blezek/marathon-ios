@@ -35,10 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   thankYou.hidden=YES;
-  allProductIDs = [[NSArray alloc] initWithObjects: Tip1, Tip2, Tip3, Tip5, Tip8, Tip13, Tip21, VidmasterModeProductID, HDModeProductID, ReticulesProductID, nil];
+  allProductIDs = [[NSArray alloc] initWithObjects: Tip1, Tip2, Tip3, Tip4, Tip5, Tip6, Tip7, nil];
   validProductIDs = [[NSMutableArray alloc] init];
   allProductDescriptions = [[NSMutableDictionary alloc] init];
   allProductResponses = [[NSMutableDictionary alloc] init];
+  [tipButton setHidden:YES];
   [tipSelector setHidden:YES];
   [tipSelector addTarget:self action:@selector(tipSelectorChanged:) forControlEvents:UIControlEventValueChanged];
   [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -46,10 +47,9 @@
 
 - (IBAction)openDoors {
   
-    //This is somethign we are really only interested on first launch.
-//[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHasPurchasedTip]; //TEMPORARY
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kHasAttemptedRestore]) {
-    [self restore:self];
+    //This is something we are really only interested on first access.
+  if ( ![[NSUserDefaults standardUserDefaults] boolForKey:kHasAttemptedRestore] ) {
+    [self restore:self]; //Comment this out if you want to test the restore button.
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasAttemptedRestore];
   }
   
@@ -132,12 +132,7 @@
   int n = 0;
    for ( int i = 0; i < [allProductIDs count]; ++i ) {
       for ( SKProduct* p in response.products ) {
-        if ( [[p productIdentifier] isEqualToString:[allProductIDs objectAtIndex:i]]
-            /*Don't add legacy product IDs to the tip selector bar*/
-            && ![[p productIdentifier] isEqualToString:VidmasterModeProductID]
-            && ![[p productIdentifier] isEqualToString:HDModeProductID]
-            && ![[p productIdentifier] isEqualToString:ReticulesProductID]
-            ) {
+        if ( [[p productIdentifier] isEqualToString:[allProductIDs objectAtIndex:i]] ) {
           [validProductIDs addObject:[allProductIDs objectAtIndex:i]];
           [tipSelector insertSegmentWithTitle:[self formatCurrency:p] atIndex:n animated:YES];
           [allProductDescriptions setObject:p.localizedTitle forKey:[allProductIDs objectAtIndex:i]];
@@ -155,6 +150,7 @@
   NSString *description = [allProductDescriptions objectForKey:[allProductIDs objectAtIndex:[tipSelector selectedSegmentIndex]]];
   if ( description != nil ) {
     [tipDescription setText:description];
+    [tipButton setHidden:NO];
   }
 }
 
@@ -201,8 +197,9 @@
         break;
       case(SKPaymentTransactionStateRestored) :
         MLog(@"SKPaymentTransactionStateRestored");
+        MLog(@"This player has restored...");
       case(SKPaymentTransactionStatePurchased) :
-        MLog(@"This player has tipped!");
+        MLog(@"This player has tipped! %@", transaction.payment.productIdentifier);
         //Set prefs here indicating that a tip was made
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasPurchasedTip];
         [self updateView];
