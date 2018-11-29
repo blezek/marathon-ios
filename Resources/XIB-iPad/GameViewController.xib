@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica</string>
-            <string>Helvetica-Bold</string>
-        </array>
         <array key="bankgthd.ttf">
             <string>BankGothicBT-Medium</string>
         </array>
@@ -21,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
                 <outlet property="A1Version" destination="nUt-dW-zMR" id="mAg-DO-fa6"/>
+                <outlet property="aboutText" destination="Dlm-NF-svl" id="oE2-0b-dCO"/>
                 <outlet property="aboutView" destination="162" id="163"/>
                 <outlet property="bungieAerospaceImageView" destination="177" id="180"/>
                 <outlet property="controlsOverviewView" destination="130" id="133"/>
@@ -44,6 +41,7 @@
                 <outlet property="pauseView" destination="101" id="104"/>
                 <outlet property="preferencesView" destination="102" id="105"/>
                 <outlet property="progressView" destination="87" id="89"/>
+                <outlet property="purchaseView" destination="Frd-bN-T7B" id="ekx-hv-M1o"/>
                 <outlet property="replacementMenuView" destination="145" id="150"/>
                 <outlet property="restartView" destination="111" id="114"/>
                 <outlet property="reticule" destination="174" id="175"/>
@@ -109,9 +107,13 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="ret_pistol.png" translatesAutoresizingMaskIntoConstraints="NO" id="174">
+                    <rect key="frame" x="252" y="128" width="64" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="120" y="684"/>
+            <point key="canvasLocation" x="-547" y="1022"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2">
@@ -139,8 +141,8 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4" userLabel="Pause">
-                            <rect key="frame" x="928" y="27" width="32" height="48"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="928" y="568" width="32" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" image="Pause.png">
                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -183,10 +185,6 @@
                                 <action selector="zoomMapOut" destination="-1" eventType="touchUpInside" id="137"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="ret_pistol.png" translatesAutoresizingMaskIntoConstraints="NO" id="174">
-                            <rect key="frame" x="447" y="291" width="64" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83" userLabel="Game Saved">
                             <rect key="frame" x="190" y="180" width="100" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -220,10 +218,10 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EpisodeLogoAlpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-zM-SZU">
                             <rect key="frame" x="149" y="18" width="661" height="239"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6l-os-46y" userLabel="Sublogo and Buttons">
-                            <rect key="frame" x="85" y="160" width="789" height="342"/>
+                            <rect key="frame" x="85" y="149" width="789" height="342"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6a-WM-8pb" userLabel="Main Menu Buttons">
@@ -360,7 +358,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="156">
-                                            <rect key="frame" x="447" y="230" width="135" height="28"/>
+                                            <rect key="frame" x="495" y="215" width="135" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                             <state key="normal" title="Preferences" image="Preferences.png">
@@ -374,8 +372,23 @@
                                                 <action selector="gotoPreferences:" destination="-1" eventType="touchUpInside" id="157"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1d-sQ-hnD" userLabel="Tip the Developer">
+                                            <rect key="frame" x="430" y="250" width="166" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" title="Preferences" image="TipTheDeveloper.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="highlighted" image="TipTheDeveloperHighlighted.png">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="menuTip" destination="-1" eventType="touchUpInside" id="xRe-oE-LYJ"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160" userLabel="About">
-                                            <rect key="frame" x="528" y="195" width="89" height="28"/>
+                                            <rect key="frame" x="541" y="179" width="89" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -391,7 +404,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46e-Nc-rTf" userLabel="Help">
-                                            <rect key="frame" x="556" y="159" width="68" height="28"/>
+                                            <rect key="frame" x="528" y="143" width="68" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -439,6 +452,11 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-bN-T7B" userLabel="Purchases">
+                    <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <view autoresizesSubviews="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="111" userLabel="Restart View" customClass="ButtonView">
                     <rect key="frame" x="0.0" y="0.0" width="960" height="641"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,7 +492,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="166" userLabel="Done">
-                            <rect key="frame" x="890" y="605" width="62" height="28"/>
+                            <rect key="frame" x="880" y="605" width="62" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" image="BackButton.png">
@@ -489,16 +507,16 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Engine Version" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUt-dW-zMR" userLabel="Engine Version">
-                            <rect key="frame" x="801" y="549" width="151" height="21"/>
+                            <rect key="frame" x="784" y="576" width="151" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <accessibility key="accessibilityConfiguration" label="Engine Version"/>
-                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="10"/>
                             <color key="textColor" red="0.053541739461919757" green="1" blue="0.065519051392396221" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dlm-NF-svl">
-                            <rect key="frame" x="44" y="28" width="374" height="585"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <rect key="frame" x="44" y="28" width="643" height="585"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" notEnabled="YES"/>
                             </accessibility>
@@ -1234,8 +1252,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">	Hardgrove
-	Joey Adams
+                                    <string key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1769,9 +1786,281 @@ Cg
                                         </paragraphStyle>
                                     </attributes>
                                 </fragment>
+                                <fragment content="Aleph One makes use of external libraries including:">
+                                    <attributes>
+                                        <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                    <attributes>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">	ALSA
+	Boost
+	FFmpeg
+	FreeType
+	GLEW
+	JPEG
+	libav
+	libpng
+	libsndfile
+	libvpx
+	MAD
+	SDL
+	SDL_image
+	SDL_net
+	SDL_ttf
+	smpeg
+	Speex
+	Ogg
+	Vorbis
+	zlib
+	zziplib
+
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">Some background images are produced by NASA and are in the public domain.
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
                             </attributedString>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="powered-by-alephone.png" translatesAutoresizingMaskIntoConstraints="NO" id="szm-CB-jj0" userLabel="Powered by A1">
+                            <rect key="frame" x="766" y="28" width="200" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="github.png" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-D1-NA5" userLabel="github">
+                            <rect key="frame" x="794" y="136" width="151" height="75"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bungie-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-Pa-WIC" userLabel="bungie">
+                            <rect key="frame" x="791" y="516" width="151" height="66"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -1822,8 +2111,13 @@ Cg
         <image name="Reload.png" width="256" height="256"/>
         <image name="Somewhere.png" width="1024" height="768"/>
         <image name="StoreButton.png" width="136" height="36"/>
+        <image name="TipTheDeveloper.png" width="332" height="56"/>
+        <image name="TipTheDeveloperHighlighted.png" width="332" height="56"/>
         <image name="TouchToContinue.png" width="256" height="50"/>
+        <image name="bungie-logo.png" width="685" height="300"/>
+        <image name="github.png" width="400" height="200"/>
         <image name="mainlogo.png" width="512" height="512"/>
+        <image name="powered-by-alephone.png" width="640" height="320"/>
         <image name="ret_pistol.png" width="32" height="32"/>
         <image name="zoom_in.png" width="64" height="64"/>
         <image name="zoom_out.png" width="64" height="64"/>

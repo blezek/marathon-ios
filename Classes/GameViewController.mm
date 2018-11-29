@@ -406,8 +406,9 @@ short localFindActionTarget(
   }
   
 #if defined(A1DEBUG)
-  self.saveFilmButton.hidden = NO;
-  self.loadFilmButton.hidden = NO;
+  //self.saveFilmButton.hidden = NO;
+  //self.loadFilmButton.hidden = NO;
+  
   // joyPad = [[JoyPad alloc] init];
 
 #endif
