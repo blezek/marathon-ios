@@ -220,10 +220,7 @@
 
 - (IBAction)updateView {
   // see if we need to remove the "tip" buttons
-  if ( /*[[NSUserDefaults standardUserDefaults] boolForKey:kHaveTTEP] ||
-       [[NSUserDefaults standardUserDefaults] boolForKey:kHaveVidmasterMode] ||
-       [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ||*/
-       [[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip] ) {
+  if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip] ) {
         restoreButton.hidden=YES;
         tipButton.hidden=YES;
         tipSelector.hidden=YES;

@@ -2716,14 +2716,18 @@ public:
 		right_placer->dual_add(new w_static_text("Network"), m_dialog);
 		table_placer *network_table = new table_placer(2, get_theme_space(ITEM_WIDGET));
 		network_table->col_flags(1, placeable::kAlignLeft);
-
+    
 		w_toggle *advertise_on_metaserver_w = new w_toggle (sAdvertiseGameOnMetaserver);
-		network_table->dual_add(advertise_on_metaserver_w, m_dialog);
+#ifndef MAC_APP_STORE
+    network_table->dual_add(advertise_on_metaserver_w, m_dialog);
 		network_table->dual_add(advertise_on_metaserver_w->label("Advertise Game on Internet"), m_dialog);
+#endif
 
 		w_toggle *use_upnp_w = new w_toggle (true);
+#ifndef MAC_APP_STORE
 		network_table->dual_add(use_upnp_w, m_dialog);
 		network_table->dual_add(use_upnp_w->label("Configure UPnP Router"), m_dialog);
+#endif
 
 		w_toggle* realtime_audio_w = new w_toggle(network_preferences->allow_microphone);
 		network_table->dual_add(realtime_audio_w, m_dialog);
