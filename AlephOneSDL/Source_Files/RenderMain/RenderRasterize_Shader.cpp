@@ -189,6 +189,23 @@ void RenderRasterize_Shader::render_tree() {
 	s->setFloat(Shader::U_Pitch, view->pitch * AngleConvert);
 	Shader::disable();
 
+    //Initialize if needed. This must be the size of the main viewport.
+  /*glPushGroupMarkerEXT(0, "Render depth texture");
+  if (colorDepthSansMedia._h == 0 && colorDepthSansMedia._w == 0) {
+    GLint viewPort[4];
+    glGetIntegerv(GL_VIEWPORT, viewPort);
+    colorDepthSansMedia.setup(viewPort[2], viewPort[3], false);
+  }
+  colorDepthSansMedia.activate();
+  RenderRasterizerClass::render_tree(kDiffuse);
+  colorDepthSansMedia.deactivate();
+  glPopGroupMarkerEXT();
+  RasPtr->Begin(); // Needing to call Rasterizer_Shader_Class::Begin() again is wonky.
+  glActiveTexture(GL_TEXTURE2); //Bind the colorDepthSansMedia texture to unit 2.
+  glBindTexture(GL_TEXTURE_2D, colorDepthSansMedia.texID);
+  glActiveTexture(GL_TEXTURE0);*/
+  
+  
 	RenderRasterizerClass::render_tree(kDiffuse);
 
 	if (useShaderPostProcessing() && TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_Blur) && blur.get()) {
@@ -644,9 +661,14 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 	// note 2: stronger wobble looks more like classic with default shaders
 	TextureManager TMgr = setupWallTexture(texture, surface->transfer_mode, wobble * 4.0, 0, intensity, offset, renderStep);
 
-  //DCW set texture filtering. Don't clamp to edge here.
-  //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
-  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+  //DCW set texture filtering. GL_LINEAR is needed for non-mipmapped landscapes. Don't clamp to edge here.
+  if ( TMgr.TextureType == OGL_Txtr_Landscape ) {
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  } else {
+    //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+  }
   
   if(TMgr.ShapeDesc == UNONE) { return; }
 
