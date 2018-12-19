@@ -52,7 +52,6 @@ void Rasterizer_Shader_Class::SetView(view_data& view) {
 		view_width = view.screen_width;
 		view_height = view.screen_height;
 		swapper.reset();
-    float scale = MainScreenPixelScale();//DCW SHIT TEST FOR DEBUGGING
 		swapper.reset(new FBOSwapper(view_width * MainScreenPixelScale(), view_height * MainScreenPixelScale(), false));
 	}
   
@@ -241,3 +240,12 @@ void Rasterizer_Shader_Class::End()
 	Rasterizer_OGL_Class::End();
 }
 
+int Rasterizer_Shader_Class::Height()
+{
+  return view_height;
+}
+
+int Rasterizer_Shader_Class::Width()
+{
+  return view_width;
+}

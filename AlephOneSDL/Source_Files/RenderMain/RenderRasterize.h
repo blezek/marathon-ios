@@ -80,7 +80,8 @@ struct vertical_surface_data
 
 typedef enum {
 	kDiffuse,
-	kGlow
+	kGlow,
+  kDiffuseDepthNoMedia //Early shader pass to capture depth data in the alpha channel, and color information sans any media.
 } RenderStep;
 
 class RenderRasterizerClass

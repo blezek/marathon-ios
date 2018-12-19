@@ -45,6 +45,7 @@ public:
 	FBO(GLuint w, GLuint h, bool srgb = false);
 	~FBO();
 	
+  void setup(GLuint w, GLuint h, bool srgb); //Only call this once if created with zero demensions.
 	void activate(bool clear = false);
 	void deactivate();
 	
