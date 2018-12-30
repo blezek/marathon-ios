@@ -1740,7 +1740,7 @@ short items[]=
     }
   
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
-    if ( !inMainLoop && mode != SDLMenuMode) {
+    if ( !inMainLoop && mode != SDLMenuMode ) {
         inMainLoop = YES;
         AlephOneMainLoop();
         inMainLoop = NO;

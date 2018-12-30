@@ -115,6 +115,7 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "clipPlane4",
   "clipPlane5",
   "mediaPlane",
+  "refractionType"
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -987,6 +988,7 @@ void initDefaultPrograms() {
         "in highp vec4 fogColor; \n"
         "in highp vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
+        "uniform sampler2D texture2;\n" //dcw shit test
         "uniform float pulsate;\n"
         "uniform float wobble;\n"
         "uniform float glow;\n"
@@ -1026,6 +1028,12 @@ void initDefaultPrograms() {
         " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
         "   fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
         "   fragmentColor= mix(fragmentColor, mediaTint,  pow(gl_FragCoord.z, 100.0)); }\n"
+  //dcw shit test red shift
+  
+//  " vec2 textureSize = vec2(textureSize(texture2 ,0));\n"
+//  " vec2 shiftedCoords = vec2((gl_FragCoord.x)/textureSize.x, (gl_FragCoord.y + 10.0)/textureSize.y); \n"
+
+//"fragmentColor.r = texture(texture2, shiftedCoords).r;"
         "}\n";
     defaultVertexPrograms["wall_bloom"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["wall_bloom"] = ""

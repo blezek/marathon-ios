@@ -61,7 +61,7 @@ public:
 		U_Pitch,
 		U_SelfLuminosity,
 		U_GammaAdjust,
-    //DCW below are compatibiliy uniforms to replace the FFT ones.
+    //DCW below are compatibiliy uniforms to replace the FFP ones.
     U_MS_ModelViewProjectionMatrix,
     U_MS_ModelViewMatrix,
     U_MS_ModelViewMatrixInverse,
@@ -76,6 +76,7 @@ public:
     U_ClipPlane4,
     U_ClipPlane5,
     U_MediaPlane6,
+    U_RefractionType,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 

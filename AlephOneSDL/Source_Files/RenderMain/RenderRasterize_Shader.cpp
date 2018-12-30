@@ -190,23 +190,30 @@ void RenderRasterize_Shader::render_tree() {
 	Shader::disable();
 
     //Initialize if needed. This must be the size of the main viewport.
-  /*glPushGroupMarkerEXT(0, "Render depth texture");
+  glPushGroupMarkerEXT(0, "Render depth texture");
   if (colorDepthSansMedia._h == 0 && colorDepthSansMedia._w == 0) {
     GLint viewPort[4];
     glGetIntegerv(GL_VIEWPORT, viewPort);
     colorDepthSansMedia.setup(viewPort[2], viewPort[3], false);
   }
   colorDepthSansMedia.activate();
-  RenderRasterizerClass::render_tree(kDiffuse);
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glClearColor(0,0,1, .5);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  RenderRasterizerClass::render_tree(kDiffuseDepthNoMedia);
   colorDepthSansMedia.deactivate();
   glPopGroupMarkerEXT();
   RasPtr->Begin(); // Needing to call Rasterizer_Shader_Class::Begin() again is wonky.
+  glPushGroupMarkerEXT(0, "Binding depth texture");
   glActiveTexture(GL_TEXTURE2); //Bind the colorDepthSansMedia texture to unit 2.
   glBindTexture(GL_TEXTURE_2D, colorDepthSansMedia.texID);
-  glActiveTexture(GL_TEXTURE0);*/
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+  glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glPopGroupMarkerEXT();
+  glActiveTexture(GL_TEXTURE0);
   
-  
-	RenderRasterizerClass::render_tree(kDiffuse);
+  RenderRasterizerClass::render_tree(kDiffuse);
 
 	if (useShaderPostProcessing() && TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_Blur) && blur.get()) {
 		blur->begin();
@@ -356,7 +363,7 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 			break;
 		case _textured_transfer:
 			if(TMgr.IsShadeless) {
-				if (renderStep == kDiffuse) {
+				if (renderStep == kDiffuse || renderStep == kDiffuseDepthNoMedia) {
 					//glColor4f(1,1,1,1);
           MatrixStack::Instance()->color4f(1,1,1,1);
 				} else {
@@ -457,7 +464,7 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 		default:
 			TMgr.TextureType = OGL_Txtr_Wall;
 			if(TMgr.IsShadeless) {
-				if (renderStep == kDiffuse) {
+				if (renderStep == kDiffuse || renderStep == kDiffuseDepthNoMedia) {
           if( useShaderRenderer() ) {
             MatrixStack::Instance()->color4f(1,1,1,1);
           } else {
@@ -1081,7 +1088,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 			break;
 		case _textured_transfer:
 			if((RenderRectangle.flags&_SHADELESS_BIT) != 0) {
-				if (renderStep == kDiffuse) {
+				if (renderStep == kDiffuse || renderStep == kDiffuseDepthNoMedia) {
 					//glColor4f(1,1,1,1);
           MatrixStack::Instance()->color4f(1,1,1,1);
 				} else {

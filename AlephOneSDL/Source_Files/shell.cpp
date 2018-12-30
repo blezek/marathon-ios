@@ -852,7 +852,6 @@ static void main_event_loop(void)
 {
 	uint32 last_event_poll = 0;
 	short game_state;
-
 	while ((game_state = get_game_state()) != _quit_game) {
 		uint32 cur_time = SDL_GetTicks();
 		bool yield_time = false;
