@@ -420,6 +420,7 @@ protected:
 	FileChooserWidget*	m_scriptWidget;
 	
 	ToggleWidget*		m_allowMicWidget;
+  ToggleWidget*   m_detectDesyncWidget;
 	
 	ToggleWidget*		m_liveCarnageWidget;
 	ToggleWidget*		m_motionSensorWidget;

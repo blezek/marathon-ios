@@ -69,6 +69,7 @@
 #include "crc.h"
 #include "player.h" // for masking out action flags triggers :(
 #include "shell.h" //only for doing screen_printf
+#include "preferences.h"
 
 // Synchronization:
 // hub_received_network_packet() is not reentrant
@@ -1044,6 +1045,9 @@ reset_position_sums()
 static void
 playerReportedPositionSum(int32 inSenderIndex, int32 positionSum)
 {
+  if ( !network_preferences->detect_desync )
+    return;
+  
     //If we currently don't have a position of interest, create one.
   if ( positionOfInterest[inSenderIndex] == 0 ) {
     positionOfInterest[inSenderIndex]=positionSum;
@@ -1053,6 +1057,9 @@ playerReportedPositionSum(int32 inSenderIndex, int32 positionSum)
 
 void capture_position_sums_and_check_for_dsync()
 {
+  if ( !network_preferences->detect_desync )
+    return;
+  
   if ( currentSnapshotIndex >= (numPositionSnapshots-1) ) {
     currentSnapshotIndex=0;
   } else {

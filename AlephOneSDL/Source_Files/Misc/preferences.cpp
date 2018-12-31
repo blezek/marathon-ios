@@ -2985,6 +2985,8 @@ InfoTree network_preferences_tree()
 	root.put_attr("check_for_updates", network_preferences->check_for_updates);
 	root.put_attr("verify_https", network_preferences->verify_https);
 	root.put_attr("metaserver_login", network_preferences->metaserver_login);
+  root.put_attr("detect_desync", network_preferences->detect_desync);
+
 
 	char passwd[33];
 	for (int i = 0; i < 16; i++)
@@ -3178,6 +3180,7 @@ static void default_network_preferences(network_preferences_data *preferences)
 	preferences->metaserver_colors[1] = get_interface_color(PLAYER_COLOR_BASE_INDEX);
 	preferences->join_metaserver_by_default = false;
 	preferences->allow_stats = false;
+  preferences->detect_desync = true;
 }
 
 static void default_player_preferences(player_preferences_data *preferences)
@@ -3348,6 +3351,7 @@ static bool validate_network_preferences(network_preferences_data *preferences)
 	// Fix bool options
 	preferences->allow_microphone = !!preferences->allow_microphone;
 	preferences->game_is_untimed = !!preferences->game_is_untimed;
+  preferences->detect_desync = !!preferences->detect_desync;
 
 	if(preferences->type<0||preferences->type>_ethernet)
 	{
@@ -3366,13 +3370,19 @@ static bool validate_network_preferences(network_preferences_data *preferences)
 		changed= true;
 	}
 
-	if(preferences->allow_microphone != true && preferences->allow_microphone != false)
+  if(preferences->allow_microphone != true && preferences->allow_microphone != false)
+  {
+    preferences->allow_microphone= true;
+    changed= true;
+  }
+  
+	if(preferences->detect_desync != true && preferences->detect_desync != false)
 	{
-		preferences->allow_microphone= true;
+		preferences->detect_desync= true;
 		changed= true;
 	}
-
-	if(preferences->game_type<0 || preferences->game_type >= NUMBER_OF_GAME_TYPES)
+  
+  	if(preferences->game_type<0 || preferences->game_type >= NUMBER_OF_GAME_TYPES)
 	{
 		preferences->game_type= _game_of_kill_monsters;
 		changed= true;
@@ -3941,6 +3951,7 @@ void parse_network_preferences(InfoTree root, std::string version)
 	root.read_attr("join_by_address", network_preferences->join_by_address);
 	root.read_cstr("join_address", network_preferences->join_address, 255);
 	root.read_attr("local_game_port", network_preferences->game_port);
+  root.read_attr("detect_desync", network_preferences->detect_desync);
 
 	std::string protocol;
 	if (root.read_attr("game_protocol", protocol))
