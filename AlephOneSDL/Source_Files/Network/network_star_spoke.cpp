@@ -1111,9 +1111,7 @@ send_position_sync_packet()
     
     // Packet type
     hdr << (uint16)kSpokeToHubPositionSyncSum;
-    
-    ps << sNetworkTicker;
-    
+        
     player_data *player= get_player_data(sLocalPlayerIndex);
 
     int32 positionSum = player->location.x + player->location.y + player->location.z;

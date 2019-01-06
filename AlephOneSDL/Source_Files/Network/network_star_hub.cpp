@@ -1017,9 +1017,6 @@ hub_received_game_data_packet_v1(AIStream& ps, int inSenderIndex)
 static void
 hub_received_position_sync_packet(AIStream& ps, int inSenderIndex)
 {
-  int32 networkTickAtPositionSync;
-  ps >> networkTickAtPositionSync;
-  
   int32 positionSum;
   ps >> positionSum;
   
@@ -1068,6 +1065,7 @@ void capture_position_sums_and_check_for_dsync()
   for( int p = 0; p < sNetworkPlayers.size(); ++p ) {
     
       //If a player has a position of interest, check to see if that is in the buffer before overwriting. If the countdown expires, the player is out-of-sync.
+      //There is a small chance that the real position sum is zero, and will be wrongly ignored. Who cares?
     if ( positionOfInterest[p] != 0 ) {
       if (positionRecords[currentSnapshotIndex].positionSum[p] == positionOfInterest[p] ) {
           //We verified a position of interest; now clear it and carry on.
