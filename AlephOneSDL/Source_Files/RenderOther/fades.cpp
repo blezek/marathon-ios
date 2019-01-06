@@ -193,7 +193,7 @@ static struct fade_definition fade_definitions[NUMBER_OF_FADE_TYPES]=
 	{burn_color_table, {0, 65535, 0}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_burn_green */
 
 	{soft_tint_color_table, {137*256, 0, 137*256}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_tint_purple */
-	{soft_tint_color_table, {0, 0, 65535}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_tint_blue */
+	{soft_tint_color_table, {0, 65535/2, 65535}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_tint_blue but now more turquoise*/
 	{soft_tint_color_table, {65535, 16384, 0}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_tint_orange */
 	{soft_tint_color_table, {32768, 65535, 0}, FIXED_ONE, 0, 2*MACHINE_TICKS_PER_SECOND, 0, 0}, /* _fade_tint_gross */
 	
