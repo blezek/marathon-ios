@@ -93,6 +93,7 @@ char* getLocalTmpDir() {
 
 char* LANIP( char *prefix, char *suffix) {
   NSString *address = @"N/A";
+  bool foundOurFavoriteInterface = NO;
   struct ifaddrs *interfaces = NULL;
   struct ifaddrs *temp_addr = NULL;
   int success = 0;
@@ -107,8 +108,8 @@ char* LANIP( char *prefix, char *suffix) {
         if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
           // Get NSString from C String
           address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-          
-        } else if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"bridge100"]) {
+          foundOurFavoriteInterface=YES;
+        } else if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"bridge100"] && !foundOurFavoriteInterface) {
           address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
         }
         
