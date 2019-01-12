@@ -284,7 +284,6 @@
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
 		51826F7C21A24B3A00103A6B /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 51826F7B21A24B3A00103A6B /* About.png */; };
-		5184488521D5E98900BC479D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5152CB8F1D948FE100C6E65C /* Images.xcassets */; };
 		5189238D1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238F1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
@@ -444,6 +443,9 @@
 		51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
+		51CFD23F21EA9332002F9A46 /* Images M1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD23E21EA9331002F9A46 /* Images M1.xcassets */; };
+		51CFD24121EA933B002F9A46 /* Images M2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24021EA933B002F9A46 /* Images M2.xcassets */; };
+		51CFD24321EA9345002F9A46 /* Images M3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24221EA9344002F9A46 /* Images M3.xcassets */; };
 		51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
 		51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
 		51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
@@ -2389,7 +2391,6 @@
 		515275D521A1F53B004D1E07 /* BeginNewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeginNewGame.png; sourceTree = "<group>"; };
 		515275D621A1F53B004D1E07 /* SavedGame-Duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SavedGame-Duplicate.png"; sourceTree = "<group>"; };
 		515275D721A1F53B004D1E07 /* BackButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonHighlighted.png; sourceTree = "<group>"; };
-		5152CB8F1D948FE100C6E65C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Durandal/Images.xcassets; sourceTree = "<group>"; };
 		515303171DAD716200B0F62A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericLoadingBackground.png; sourceTree = "<group>"; };
 		5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -2498,6 +2499,9 @@
 		51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = A1_fade_in.mp4; path = Resources/A1_fade_in.mp4; sourceTree = "<group>"; };
 		51B685011EB92D0A00CB1628 /* SDLnetsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLnetsys.h; path = "submodules/Libraries/SDL2_net-2.0.1/SDLnetsys.h"; sourceTree = SOURCE_ROOT; };
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		51CFD23E21EA9331002F9A46 /* Images M1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M1.xcassets"; sourceTree = "<group>"; };
+		51CFD24021EA933B002F9A46 /* Images M2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M2.xcassets"; sourceTree = "<group>"; };
+		51CFD24221EA9344002F9A46 /* Images M3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M3.xcassets"; sourceTree = "<group>"; };
 		51E9FD692006A0C500ADD38A /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavcodec.a"; sourceTree = SOURCE_ROOT; };
 		51E9FD6D2007F86600ADD38A /* bungie-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bungie-logo.png"; path = "Resources/GUI/bungie-logo.png"; sourceTree = "<group>"; };
 		51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MatrixStack.cpp; path = Classes/MatrixStack.cpp; sourceTree = "<group>"; };
@@ -3746,12 +3750,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51CFD23E21EA9331002F9A46 /* Images M1.xcassets */,
+				51CFD24021EA933B002F9A46 /* Images M2.xcassets */,
+				51CFD24221EA9344002F9A46 /* Images M3.xcassets */,
 				51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */,
 				51482D692001C85F00690752 /* github.png */,
 				51E9FD6D2007F86600ADD38A /* bungie-logo.png */,
 				519FCAF41EA53FB90066EE69 /* Buttons */,
 				519FCAC31E9FFC500066EE69 /* bankgthd.ttf */,
-				5152CB8F1D948FE100C6E65C /* Images.xcassets */,
 				A83FBB42144C95DE00B27426 /* SettingsScreen */,
 				A8294BD91433F74600300CD5 /* ThanksScreen */,
 				A89B96181433C65D005E9FF3 /* LoadingScreen */,
@@ -6047,7 +6053,6 @@
 						};
 					};
 					A8811FE812C7816300A1A08E = {
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -6130,6 +6135,7 @@
 				51EAD5031E58B13700611EFF /* COPYRIGHT in Resources */,
 				A853C9DC13CF23A2001E8A25 /* SavedGameCell.xib in Resources */,
 				A853C9DF13CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
+				51CFD23F21EA9332002F9A46 /* Images M1.xcassets in Resources */,
 				5152753A21A1F52C004D1E07 /* PreferencesHighlighted.png in Resources */,
 				A82E9BDC13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */,
@@ -6177,7 +6183,6 @@
 				A8B9FB1113FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1413FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
 				A8B9FB1713FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
-				5184488521D5E98900BC479D /* Images.xcassets in Resources */,
 				A8B9FB1A13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1D13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
 				A8B9FB2613FB6C1000552296 /* toggleweapons-left-btn.png in Resources */,
@@ -6426,6 +6431,7 @@
 				A88EFBD012E1616100318968 /* weather_clear.png in Resources */,
 				A866863113135EDA00BE2654 /* M2A1 in Resources */,
 				516ECE8E1F46195800D38BB2 /* GenericLoadingBackground.png in Resources */,
+				51CFD24121EA933B002F9A46 /* Images M2.xcassets in Resources */,
 				A874B1A11318A8D2009C4A92 /* iTunesArtwork in Resources */,
 				51826F7C21A24B3A00103A6B /* About.png in Resources */,
 				A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */,
@@ -6798,6 +6804,7 @@
 				51EAD5831E58B13700611EFF /* README in Resources */,
 				A804992F13DE1CDA00F807FB /* ret_rocket~iphone.png in Resources */,
 				A804993213DE1CDA00F807FB /* ret_shotgun.png in Resources */,
+				51CFD24321EA9345002F9A46 /* Images M3.xcassets in Resources */,
 				515275E621A1F53B004D1E07 /* SavedGame-Delete.png in Resources */,
 				A804993513DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
 				515275EB21A1F53B004D1E07 /* Difficulty-Easy.png in Resources */,
@@ -8080,6 +8087,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -8169,6 +8177,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -8256,9 +8265,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8314,9 +8323,10 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8329,10 +8339,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8385,9 +8395,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8400,9 +8411,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8455,9 +8466,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8781,6 +8793,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -8870,9 +8883,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8925,9 +8938,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -9106,6 +9120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
