@@ -12,18 +12,6 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Marathon_Durandal_Icon-72.png</string>
-		<string>Marathon_Durandal_Icon-Small-50.png</string>
-		<string>Marathon_Durandal_Icon-Small.png</string>
-		<string>Marathon_Durandal_Icon.png</string>
-		<string>Marathon_Durandal_Icon2@2x.png</string>
-	</array>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -42,6 +30,8 @@
 	<string>MainWindow</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Uses the microphone to communicate with other players.</string>
 	<key>SHA1</key>
 	<string>e64cdfd7c0b2439b4d45560d8f6be31f6eb13d88</string>
 	<key>UIInterfaceOrientation</key>
