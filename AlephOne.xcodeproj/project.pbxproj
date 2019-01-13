@@ -1310,15 +1310,6 @@
 		A81B703E1491B2BE0058CA3A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A81B70321491B2030058CA3A /* Default-Portrait.png */; };
 		A81B703F1491B2BE0058CA3A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A81B70331491B2030058CA3A /* Default.png */; };
 		A81B70401491B2BE0058CA3A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A81B70341491B2030058CA3A /* Default@2x.png */; };
-		A81EEFAC13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA713E4F9660031E870 /* NSObject+MKBlockAdditions.m */; };
-		A81EEFAD13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA713E4F9660031E870 /* NSObject+MKBlockAdditions.m */; };
-		A81EEFAE13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA713E4F9660031E870 /* NSObject+MKBlockAdditions.m */; };
-		A81EEFAF13E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */; };
-		A81EEFB013E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */; };
-		A81EEFB113E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */; };
-		A81EEFB213E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
-		A81EEFB313E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
-		A81EEFB413E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */; };
 		A826E50C139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50D139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
 		A826E50E139F0C6600EF8605 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A826E50B139F0C6500EF8605 /* Settings.bundle */; };
@@ -3085,13 +3076,6 @@
 		A81B70361491B2B80058CA3A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		A81B70371491B2B80058CA3A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A81B70381491B2B80058CA3A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		A81EEFA513E4F9660031E870 /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
-		A81EEFA613E4F9660031E870 /* NSObject+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKBlockAdditions.h"; sourceTree = "<group>"; };
-		A81EEFA713E4F9660031E870 /* NSObject+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKBlockAdditions.m"; sourceTree = "<group>"; };
-		A81EEFA813E4F9660031E870 /* UIActionSheet+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+MKBlockAdditions.h"; sourceTree = "<group>"; };
-		A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
-		A81EEFAA13E4F9660031E870 /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
-		A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		A826E50B139F0C6500EF8605 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		A8294BDA1433F74600300CD5 /* DoneButtonThanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneButtonThanks.png; sourceTree = "<group>"; };
 		A8294BDE1433F74600300CD5 /* ThanksBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThanksBackground.png; sourceTree = "<group>"; };
@@ -5059,21 +5043,6 @@
 			path = store;
 			sourceTree = "<group>";
 		};
-		A81EEFA413E4F9660031E870 /* MKAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				A81EEFA513E4F9660031E870 /* MKBlockAdditions.h */,
-				A81EEFA613E4F9660031E870 /* NSObject+MKBlockAdditions.h */,
-				A81EEFA713E4F9660031E870 /* NSObject+MKBlockAdditions.m */,
-				A81EEFA813E4F9660031E870 /* UIActionSheet+MKBlockAdditions.h */,
-				A81EEFA913E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m */,
-				A81EEFAA13E4F9660031E870 /* UIAlertView+MKBlockAdditions.h */,
-				A81EEFAB13E4F9660031E870 /* UIAlertView+MKBlockAdditions.m */,
-			);
-			name = MKAdditions;
-			path = Classes/MKAdditions;
-			sourceTree = "<group>";
-		};
 		A8294BD91433F74600300CD5 /* ThanksScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -5124,7 +5093,6 @@
 		A83983DC11F2AB92002E7CF2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A81EEFA413E4F9660031E870 /* MKAdditions */,
 				A80498DE13DDC97900F807FB /* HUD */,
 				A8193C2F140EB09C00FFD05A /* RootViewController.h */,
 				A8193C30140EB09C00FFD05A /* RootViewController.mm */,
@@ -7408,13 +7376,10 @@
 				51EAD52A1E58B13700611EFF /* linit.c in Sources */,
 				51EAD5D21E58B13700611EFF /* Dim3_Loader.cpp in Sources */,
 				51B684EB1EAAFA0400CB1628 /* smallft.c in Sources */,
-				A81EEFAC13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
 				51EAD4C11E58B13600611EFF /* physics.cpp in Sources */,
 				51EAD5FF1E58B13700611EFF /* network_capabilities.cpp in Sources */,
 				51041F041EAAF28B00129201 /* framing.c in Sources */,
 				51EAD59C1E58B13700611EFF /* interface.cpp in Sources */,
-				A81EEFAF13E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
-				A81EEFB213E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				51EAD5F91E58B13700611EFF /* SdlMetaserverClientUi.cpp in Sources */,
 				51EAD6411E58B13700611EFF /* StarGameProtocol.cpp in Sources */,
 				51B683F71EAAF58B00CB1628 /* synth.c in Sources */,
@@ -7739,9 +7704,6 @@
 				A807A71313E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */,
 				51EAD6901E58B13800611EFF /* ChaseCam.cpp in Sources */,
 				51041F051EAAF28B00129201 /* framing.c in Sources */,
-				A81EEFAD13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
-				A81EEFB013E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
-				A81EEFB313E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				51EAD45C1E58B13600611EFF /* xmltok_ns.c in Sources */,
 				A8193C32140EB09C00FFD05A /* RootViewController.mm in Sources */,
 				51B683F81EAAF58B00CB1628 /* synth.c in Sources */,
@@ -8062,13 +8024,10 @@
 				51EAD52C1E58B13700611EFF /* linit.c in Sources */,
 				51EAD5D41E58B13700611EFF /* Dim3_Loader.cpp in Sources */,
 				51B684ED1EAAFA0400CB1628 /* smallft.c in Sources */,
-				A81EEFAE13E4F9660031E870 /* NSObject+MKBlockAdditions.m in Sources */,
 				51EAD4C31E58B13600611EFF /* physics.cpp in Sources */,
 				51EAD6011E58B13700611EFF /* network_capabilities.cpp in Sources */,
 				51041F061EAAF28B00129201 /* framing.c in Sources */,
 				51EAD59E1E58B13700611EFF /* interface.cpp in Sources */,
-				A81EEFB113E4F9660031E870 /* UIActionSheet+MKBlockAdditions.m in Sources */,
-				A81EEFB413E4F9660031E870 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				51EAD5FB1E58B13700611EFF /* SdlMetaserverClientUi.cpp in Sources */,
 				51EAD6431E58B13700611EFF /* StarGameProtocol.cpp in Sources */,
 				51B683F91EAAF58B00CB1628 /* synth.c in Sources */,
