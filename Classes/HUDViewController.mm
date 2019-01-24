@@ -84,7 +84,7 @@ extern "C" {
 // Noops
 - (void)dimActionKey {}
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {}
-
+- (void)updateSwimmingIndicator {}
 
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
   *dx = 0; *dy = 0;

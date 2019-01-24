@@ -93,6 +93,7 @@
 
 - (void)dimActionKey;
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index;
+- (void)updateSwimmingIndicator;
 
 
 @end

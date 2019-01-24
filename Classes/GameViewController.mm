@@ -1737,6 +1737,7 @@ short items[]=
         } else {
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }
+      [self.HUDViewController updateSwimmingIndicator];
     }
   
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.

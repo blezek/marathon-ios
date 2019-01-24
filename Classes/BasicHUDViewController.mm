@@ -119,6 +119,9 @@ extern control_panel_definition *get_control_panel_definition(
   self.actionBox.alpha = .7;
 }
 
+- (void)updateSwimmingIndicator {
+  [movePadView updateSwimmingIndicatorVisibility];
+}
 
 - (void)dealloc
 {

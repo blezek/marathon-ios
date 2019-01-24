@@ -32,7 +32,7 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation MovePadView
-@synthesize dPadView, knobView;
+@synthesize dPadView, knobView, dPadSwimmingView;
 
 - (void)setup {
 	
@@ -42,6 +42,8 @@ extern "C" {
 	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
   originalFrame=CGRectMake(0, 0, 0, 0);
 
+  [dPadSwimmingView setHidden:YES];
+  
   // Kill a warning
   (void)all_key_definitions;
 
@@ -99,7 +101,6 @@ extern "C" {
     //The reason for doing this is to provide a consistent swipe distance for a "stop/change-direction" operation.
   knobLocation.x += currentPoint.x - lastLocation.x;
   knobLocation.y += currentPoint.y - lastLocation.y;
-
   
   // Doesn't matter where we are in this control, just find the position relative to the center
   float dx, dy;
@@ -140,21 +141,29 @@ extern "C" {
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+        shouldBeSwimmingIfSubmerged=YES;
 			}
 			else {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+        shouldBeSwimmingIfSubmerged=NO;
 			}
-		}
+    } else {
+       shouldBeSwimmingIfSubmerged=YES;
+    }
   } else {
       setKey(runKey, 0);
+    
+    shouldBeSwimmingIfSubmerged=NO;
     
 			//DCW: If we support forcetouch, and it the force is high, we can invert sink/swim so we will swim under pressure.
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+        shouldBeSwimmingIfSubmerged=YES;
 			}
 			else {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+        shouldBeSwimmingIfSubmerged=NO;
 			}
 		}
   }
@@ -204,7 +213,6 @@ extern "C" {
   } else {
     setKey(backwardKey, 0);
   }
-  
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -212,6 +220,9 @@ extern "C" {
   if (originalFrame.size.width == 0) {
     originalFrame=[self frame];
   }
+  
+  shouldBeSwimmingIfSubmerged=NO;
+  [self updateSwimmingIndicatorVisibility];
   
   for ( UITouch *touch in [event touchesForView:self] ) {
     //DCW: I think I'm going to auto-center the control under the touch to prevent immediate movement.
@@ -223,6 +234,7 @@ extern "C" {
     newFrame.origin.x = lastLocation.x-center.x;
     newFrame.origin.y = lastLocation.y-center.y;
     [dPadView setFrame:newFrame];
+    [dPadSwimmingView setFrame:newFrame];
     
     moveCenterPoint = CGPointMake(dPadView.frame.origin.x + dPadView.bounds.size.width / 2.0, dPadView.frame.origin.y + dPadView.bounds.size.height / 2.0 );
     //[self handleTouch:[touch locationInView:self]]; //Irrelevant when control is centered.
@@ -242,7 +254,9 @@ extern "C" {
   setKey(runKey, 0);
 
   SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
-	
+  shouldBeSwimmingIfSubmerged=NO;
+  [self updateSwimmingIndicatorVisibility];
+  
 	//DCW. Do open/activate key when released
   setKey(actionKey, 1);
   if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
@@ -282,5 +296,14 @@ extern "C" {
     [super dealloc];
 }
 
+- (void) updateSwimmingIndicatorVisibility {
+  
+  if (headBelowMedia()) {
+    [dPadSwimmingView setHidden:!shouldBeSwimmingIfSubmerged];
+  } else {
+    [dPadSwimmingView setHidden:YES];
+  }
+  
+}
 
 @end

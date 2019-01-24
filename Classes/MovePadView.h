@@ -30,18 +30,22 @@
 	SDL_Keycode secondaryFireKey;
 	SDL_Keycode actionKey;
 	bool	 useForceTouch;
+  bool shouldBeSwimmingIfSubmerged;
 
   UIImageView *dPadView;
   UIImageView *knobView;
-	
+  UIImageView *dPadSwimmingView;
+  
 	UIImpactFeedbackGenerator *feedbackSecondary; //DCW
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *dPadView;
 @property (nonatomic, retain) IBOutlet UIImageView *knobView;
+@property (nonatomic, retain) IBOutlet UIImageView *dPadSwimmingView;
 @property (nonatomic,retain) IBOutlet UIButton* actionKeyImageView; //DCW
 
 - (void)setup;
 - (void) actionKeyUp; //DCW
+- (void) updateSwimmingIndicatorVisibility;
 
 @end

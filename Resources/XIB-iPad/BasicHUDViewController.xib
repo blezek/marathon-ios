@@ -219,9 +219,14 @@
                             <rect key="frame" x="67" y="171" width="41" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="D-pad-swim.png" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-n3-n4s" userLabel="Swim.png">
+                            <rect key="frame" x="38" y="141" width="98" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
+                        <outlet property="dPadSwimmingView" destination="0GI-n3-n4s" id="kLN-li-omN"/>
                         <outlet property="dPadView" destination="49" id="hcm-Tp-kVo"/>
                         <outlet property="knobView" destination="48" id="104"/>
                     </connections>
@@ -344,6 +349,7 @@
     <resources>
         <image name="Console.png" width="64" height="96"/>
         <image name="D-pad-knob.png" width="200" height="200"/>
+        <image name="D-pad-swim.png" width="400" height="400"/>
         <image name="D-pad.png" width="400" height="400"/>
         <image name="Map.png" width="64" height="96"/>
         <image name="NextWeapon.png" width="64" height="96"/>

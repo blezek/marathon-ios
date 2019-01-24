@@ -1085,7 +1085,7 @@ void capture_position_sums_and_check_for_dsync()
           
           if(desyncStrikes[p] >= 3) {
             playerIsOutOfSync[p]=true;
-            screen_printf("%s seems to have gone OUT OF SYNC!", reinterpret_cast<player_info*>(NetGetPlayerData(p))->name);
+            screen_printf("%s seems to have gone out of sync!", reinterpret_cast<player_info*>(NetGetPlayerData(p))->name);
           }
         }
       }

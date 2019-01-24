@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -219,9 +219,14 @@
                             <rect key="frame" x="67" y="171" width="41" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="D-pad-swim.png" translatesAutoresizingMaskIntoConstraints="NO" id="g3Q-oc-9Ai" userLabel="Swim.png">
+                            <rect key="frame" x="38" y="141" width="98" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
+                        <outlet property="dPadSwimmingView" destination="g3Q-oc-9Ai" id="8pR-Iw-uw9"/>
                         <outlet property="dPadView" destination="49" id="hcm-Tp-kVo"/>
                         <outlet property="knobView" destination="48" id="104"/>
                     </connections>
@@ -344,6 +349,7 @@
     <resources>
         <image name="Console.png" width="64" height="96"/>
         <image name="D-pad-knob.png" width="200" height="200"/>
+        <image name="D-pad-swim.png" width="400" height="400"/>
         <image name="D-pad.png" width="400" height="400"/>
         <image name="Map.png" width="64" height="96"/>
         <image name="NextWeapon.png" width="64" height="96"/>

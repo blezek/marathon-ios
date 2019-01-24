@@ -104,15 +104,15 @@
 		51324AB01EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB11EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
-		5146D7C51FE0588900B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
-		5146D7C61FE0588A00B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
-		5146D7C71FE0588B00B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help1.png */; };
+		5146D7C51FE0588900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
+		5146D7C61FE0588A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
+		5146D7C71FE0588B00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
 		5146D7CC1FE06F0200B89738 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
 		5146D7CD1FE06F0300B89738 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
 		5146D7CE1FE06F0400B89738 /* help2.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DE12A7407E00032ED6 /* help2.png */; };
-		5146D7CF1FE06F0900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
-		5146D7D01FE06F0900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
-		5146D7D11FE06F0A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help3.png */; };
+		5146D7CF1FE06F0900B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help1.png */; };
+		5146D7D01FE06F0900B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help1.png */; };
+		5146D7D11FE06F0A00B89738 /* help1.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DD12A7407E00032ED6 /* help1.png */; };
 		5146D7D51FE08CC100B89738 /* GenericBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5146D7D41FE08CC000B89738 /* GenericBackground.png */; };
 		51482D6A2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
 		51482D6B2001C86000690752 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 51482D692001C85F00690752 /* github.png */; };
@@ -299,6 +299,9 @@
 		518EA0071F6AFDC20039960A /* SDL_ffmpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */; };
 		518EA00A1F72F9B40039960A /* EpisodeLogoAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 518EA0081F72F9B40039960A /* EpisodeLogoAlpha.png */; };
 		518EA00B1F72F9B40039960A /* mainlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 518EA0091F72F9B40039960A /* mainlogo.png */; };
+		519F56DF21F0EBAD00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56DE21F0EBAC00C0382B /* D-pad-swim.png */; };
+		519F56E121F0EBBF00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E021F0EBBF00C0382B /* D-pad-swim.png */; };
+		519F56E321F0EBD700C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E221F0EBD700C0382B /* D-pad-swim.png */; };
 		519FCAC41E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
 		519FCAC51E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
 		519FCAC61E9FFC500066EE69 /* bankgthd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519FCAC31E9FFC500066EE69 /* bankgthd.ttf */; };
@@ -2402,6 +2405,9 @@
 		518EA0041F6AFDC20039960A /* SDL_ffmpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ffmpeg.h; sourceTree = "<group>"; };
 		518EA0081F72F9B40039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
 		518EA0091F72F9B40039960A /* mainlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainlogo.png; sourceTree = "<group>"; };
+		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
+		519F56E021F0EBBF00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
+		519F56E221F0EBD700C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
 		519FCAC31E9FFC500066EE69 /* bankgthd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = bankgthd.ttf; path = Resources/bankgthd.ttf; sourceTree = "<group>"; };
 		519FCAC71E9FFD9A0066EE69 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericBackground.png; path = Resources/GUI/GenericBackground.png; sourceTree = "<group>"; };
 		519FCACB1EA06A450066EE69 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainItemWrapper.h; path = Classes/KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -3094,22 +3100,6 @@
 		A82B117313FF40410085C1F7 /* HelpViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HelpViewController~iphone.xib"; sourceTree = "<group>"; };
 		A82B117713FF40A70085C1F7 /* TouchToContinue@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TouchToContinue@2x~iphone.png"; path = "Artwork/Help/TouchToContinue@2x~iphone.png"; sourceTree = "<group>"; };
 		A82B117813FF40A70085C1F7 /* TouchToContinue~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TouchToContinue~iphone.png"; path = "Artwork/Help/TouchToContinue~iphone.png"; sourceTree = "<group>"; };
-		A82B117F13FF41000085C1F7 /* help12~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help12~iphone.png"; path = "Artwork/Help/help12~iphone.png"; sourceTree = "<group>"; };
-		A82B118013FF41000085C1F7 /* help12@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help12@2x~iphone.png"; path = "Artwork/Help/help12@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118113FF41000085C1F7 /* help11~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help11~iphone.png"; path = "Artwork/Help/help11~iphone.png"; sourceTree = "<group>"; };
-		A82B118213FF41000085C1F7 /* help11@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help11@2x~iphone.png"; path = "Artwork/Help/help11@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118313FF41000085C1F7 /* help10~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help10~iphone.png"; path = "Artwork/Help/help10~iphone.png"; sourceTree = "<group>"; };
-		A82B118413FF41000085C1F7 /* help10@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help10@2x~iphone.png"; path = "Artwork/Help/help10@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118513FF41000085C1F7 /* help9~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help9~iphone.png"; path = "Artwork/Help/help9~iphone.png"; sourceTree = "<group>"; };
-		A82B118613FF41000085C1F7 /* help9@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help9@2x~iphone.png"; path = "Artwork/Help/help9@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118713FF41000085C1F7 /* help8~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help8~iphone.png"; path = "Artwork/Help/help8~iphone.png"; sourceTree = "<group>"; };
-		A82B118813FF41000085C1F7 /* help8@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help8@2x~iphone.png"; path = "Artwork/Help/help8@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118913FF41000085C1F7 /* help7~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help7~iphone.png"; path = "Artwork/Help/help7~iphone.png"; sourceTree = "<group>"; };
-		A82B118A13FF41000085C1F7 /* help7@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help7@2x~iphone.png"; path = "Artwork/Help/help7@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118B13FF41000085C1F7 /* help6@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help6@2x~iphone.png"; path = "Artwork/Help/help6@2x~iphone.png"; sourceTree = "<group>"; };
-		A82B118C13FF41000085C1F7 /* help6~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help6~iphone.png"; path = "Artwork/Help/help6~iphone.png"; sourceTree = "<group>"; };
-		A82B118D13FF41000085C1F7 /* help5~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help5~iphone.png"; path = "Artwork/Help/help5~iphone.png"; sourceTree = "<group>"; };
-		A82B118E13FF41000085C1F7 /* help5@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help5@2x~iphone.png"; path = "Artwork/Help/help5@2x~iphone.png"; sourceTree = "<group>"; };
 		A82B5BD8122ECAAF00B0316C /* AlephOneShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneShell.h; path = Classes/AlephOneShell.h; sourceTree = "<group>"; };
 		A82B5BD9122ECAAF00B0316C /* AlephOneShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneShell.cpp; path = Classes/AlephOneShell.cpp; sourceTree = "<group>"; };
 		A82BBD16141015A500CE1F92 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -3247,16 +3237,11 @@
 		A87C9A7E132F05AF009FBB37 /* about-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-btn.png"; sourceTree = "<group>"; };
 		A87C9A7F132F05AF009FBB37 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		A87D9B2F12963F5D002CDE5D /* ExpandingLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExpandingLabel.png; path = Artwork/ExpandingLabel.png; sourceTree = "<group>"; };
-		A87F55D812A7407E00032ED6 /* help8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help8.png; path = Artwork/Help/help8.png; sourceTree = "<group>"; };
-		A87F55D912A7407E00032ED6 /* help7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help7.png; path = Artwork/Help/help7.png; sourceTree = "<group>"; };
-		A87F55DA12A7407E00032ED6 /* help6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help6.png; path = Artwork/Help/help6.png; sourceTree = "<group>"; };
 		A87F55DB12A7407E00032ED6 /* help5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help5.png; path = Artwork/Help/help5.png; sourceTree = "<group>"; };
 		A87F55DC12A7407E00032ED6 /* help4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help4.png; path = Artwork/Help/help4.png; sourceTree = "<group>"; };
-		A87F55DD12A7407E00032ED6 /* help3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help3.png; path = Artwork/Help/help3.png; sourceTree = "<group>"; };
+		A87F55DD12A7407E00032ED6 /* help1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help1.png; path = Artwork/Help/help1.png; sourceTree = "<group>"; };
 		A87F55DE12A7407E00032ED6 /* help2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help2.png; path = Artwork/Help/help2.png; sourceTree = "<group>"; };
-		A87F55DF12A7407E00032ED6 /* help1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help1.png; path = Artwork/Help/help1.png; sourceTree = "<group>"; };
-		A8811F9B12C76B2200A1A08E /* help11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help11.png; path = Artwork/Help/help11.png; sourceTree = "<group>"; };
-		A8811F9C12C76B2200A1A08E /* help12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help12.png; path = Artwork/Help/help12.png; sourceTree = "<group>"; };
+		A87F55DF12A7407E00032ED6 /* help3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help3.png; path = Artwork/Help/help3.png; sourceTree = "<group>"; };
 		A88121E912C7816300A1A08E /* Durandal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Durandal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88121EB12C7816300A1A08E /* Info2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info2.plist; path = ../../Info2.plist; sourceTree = "<group>"; };
 		A88123EE12C7826300A1A08E /* Infinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infinity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3352,8 +3337,6 @@
 		A8AF817012B7124000671C11 /* complete-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "complete-btn.png"; sourceTree = "<group>"; };
 		A8AF817112B7124000671C11 /* delete-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-btn.png"; sourceTree = "<group>"; };
 		A8AF817212B7124000671C11 /* duplicate-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duplicate-btn.png"; sourceTree = "<group>"; };
-		A8AF81E212B7205400671C11 /* help9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help9.png; path = Artwork/Help/help9.png; sourceTree = "<group>"; };
-		A8AF81E312B7205400671C11 /* help10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help10.png; path = Artwork/Help/help10.png; sourceTree = "<group>"; };
 		A8AFDFCB1402D2B700CC4B31 /* JoyPadButton~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JoyPadButton~iphone.png"; sourceTree = "<group>"; };
 		A8AFDFCC1402D2B700CC4B31 /* JoyPadButton@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JoyPadButton@2x~iphone.png"; sourceTree = "<group>"; };
 		A8AFDFCD1402D2B700CC4B31 /* JoyPadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoyPadButton.png; sourceTree = "<group>"; };
@@ -4113,6 +4096,7 @@
 		515274FE21A1F52C004D1E07 /* M1 */ = {
 			isa = PBXGroup;
 			children = (
+				519F56DE21F0EBAC00C0382B /* D-pad-swim.png */,
 				515274FF21A1F52C004D1E07 /* JoinNetworkGame.png */,
 				51A6CB8921A2099800D2C4ED /* AcceptButton.png */,
 				51A6CB8A21A2099900D2C4ED /* AcceptButtonHighlighted.png */,
@@ -4165,6 +4149,7 @@
 		5152755521A1F534004D1E07 /* M2 */ = {
 			isa = PBXGroup;
 			children = (
+				519F56E021F0EBBF00C0382B /* D-pad-swim.png */,
 				5152755621A1F534004D1E07 /* JoinNetworkGame.png */,
 				51A6CB9221A209C500D2C4ED /* AcceptButton.png */,
 				51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */,
@@ -4217,6 +4202,7 @@
 		515275AC21A1F53A004D1E07 /* M3 */ = {
 			isa = PBXGroup;
 			children = (
+				519F56E221F0EBD700C0382B /* D-pad-swim.png */,
 				515275AD21A1F53A004D1E07 /* JoinNetworkGame.png */,
 				51A6CB8E21A209B200D2C4ED /* AcceptButton.png */,
 				51A6CB8D21A209B100D2C4ED /* AcceptButtonHighlighted.png */,
@@ -5442,34 +5428,11 @@
 				A82B117713FF40A70085C1F7 /* TouchToContinue@2x~iphone.png */,
 				A82B117813FF40A70085C1F7 /* TouchToContinue~iphone.png */,
 				A8357F6012D2125C001CD264 /* ControlsOverview.png */,
-				A8811F9B12C76B2200A1A08E /* help11.png */,
-				A8811F9C12C76B2200A1A08E /* help12.png */,
-				A8AF81E212B7205400671C11 /* help9.png */,
-				A8AF81E312B7205400671C11 /* help10.png */,
-				A87F55D812A7407E00032ED6 /* help8.png */,
-				A87F55D912A7407E00032ED6 /* help7.png */,
-				A87F55DA12A7407E00032ED6 /* help6.png */,
 				A87F55DB12A7407E00032ED6 /* help5.png */,
 				A87F55DC12A7407E00032ED6 /* help4.png */,
-				A87F55DD12A7407E00032ED6 /* help3.png */,
+				A87F55DD12A7407E00032ED6 /* help1.png */,
 				A87F55DE12A7407E00032ED6 /* help2.png */,
-				A87F55DF12A7407E00032ED6 /* help1.png */,
-				A82B117F13FF41000085C1F7 /* help12~iphone.png */,
-				A82B118013FF41000085C1F7 /* help12@2x~iphone.png */,
-				A82B118113FF41000085C1F7 /* help11~iphone.png */,
-				A82B118213FF41000085C1F7 /* help11@2x~iphone.png */,
-				A82B118313FF41000085C1F7 /* help10~iphone.png */,
-				A82B118413FF41000085C1F7 /* help10@2x~iphone.png */,
-				A82B118513FF41000085C1F7 /* help9~iphone.png */,
-				A82B118613FF41000085C1F7 /* help9@2x~iphone.png */,
-				A82B118713FF41000085C1F7 /* help8~iphone.png */,
-				A82B118813FF41000085C1F7 /* help8@2x~iphone.png */,
-				A82B118913FF41000085C1F7 /* help7~iphone.png */,
-				A82B118A13FF41000085C1F7 /* help7@2x~iphone.png */,
-				A82B118B13FF41000085C1F7 /* help6@2x~iphone.png */,
-				A82B118C13FF41000085C1F7 /* help6~iphone.png */,
-				A82B118D13FF41000085C1F7 /* help5~iphone.png */,
-				A82B118E13FF41000085C1F7 /* help5@2x~iphone.png */,
+				A87F55DF12A7407E00032ED6 /* help3.png */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -6218,6 +6181,7 @@
 				A894591214280ABF00A9ECAC /* BungieAerospace.png in Resources */,
 				A894591514280ABF00A9ECAC /* BungieAerospace@2x~iphone.png in Resources */,
 				A894591814280ABF00A9ECAC /* BungieAerospace~iphone.png in Resources */,
+				519F56DF21F0EBAD00C0382B /* D-pad-swim.png in Resources */,
 				A85B58641433BEC00013CDC9 /* BackNewGame.png in Resources */,
 				51A6CB8B21A2099900D2C4ED /* AcceptButton.png in Resources */,
 				A85B58671433BEC00013CDC9 /* BackNewGame@2x~iphone.png in Resources */,
@@ -6248,7 +6212,7 @@
 				A89B96361433C65D005E9FF3 /* BackButtonLoad@2x~iphone.png in Resources */,
 				A89B96391433C65D005E9FF3 /* BackButtonLoad~iphone.png in Resources */,
 				A89B963C1433C65D005E9FF3 /* DeleteButton.png in Resources */,
-				5146D7C61FE0588A00B89738 /* help1.png in Resources */,
+				5146D7C61FE0588A00B89738 /* help3.png in Resources */,
 				A89B963F1433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
 				5152752A21A1F52C004D1E07 /* JoinNetworkGame.png in Resources */,
 				A89B96421433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
@@ -6276,7 +6240,7 @@
 				A83FBB72144C95DF00B27426 /* HDModeOff.png in Resources */,
 				A83FBB7B144C95DF00B27426 /* HDModeOn.png in Resources */,
 				A83FBB84144C95DF00B27426 /* SettingsBackground.png in Resources */,
-				5146D7CF1FE06F0900B89738 /* help3.png in Resources */,
+				5146D7CF1FE06F0900B89738 /* help1.png in Resources */,
 				A83FBB87144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
 				5152753E21A1F52C004D1E07 /* Difficulty-Total Carnage.png in Resources */,
 				A83FBB8A144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
@@ -6471,7 +6435,7 @@
 				A8B9FAE513FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
 				A8B9FAE813FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				519FCAD61EA1CEA40066EE69 /* SliderGreyTrack.png in Resources */,
-				5146D7C51FE0588900B89738 /* help1.png in Resources */,
+				5146D7C51FE0588900B89738 /* help3.png in Resources */,
 				A8B9FAEB13FB6C1000552296 /* movementboxKnob.png in Resources */,
 				A8B9FAEE13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				5152758321A1F534004D1E07 /* GatherNetworkGame.png in Resources */,
@@ -6518,7 +6482,7 @@
 				A82BBD18141015A500CE1F92 /* RootViewController.xib in Resources */,
 				A8E3B5A11422E82D004D28A4 /* AboutButton.png in Resources */,
 				A8E3B5A41422E82D004D28A4 /* AboutButton@2x~iphone.png in Resources */,
-				5146D7D01FE06F0900B89738 /* help3.png in Resources */,
+				5146D7D01FE06F0900B89738 /* help1.png in Resources */,
 				A8E3B5A71422E82D004D28A4 /* AboutButton~iphone.png in Resources */,
 				A8E3B5AA1422E82D004D28A4 /* LoadGameButton.png in Resources */,
 				A8E3B5AD1422E82D004D28A4 /* LoadGameButton@2x~iphone.png in Resources */,
@@ -6537,6 +6501,7 @@
 				A8E3B5E61422E82D004D28A4 /* StoreButton~iphone.png in Resources */,
 				5152758A21A1F534004D1E07 /* ContinueSavedGameHighlighted.png in Resources */,
 				5152759B21A1F534004D1E07 /* Console.png in Resources */,
+				519F56E121F0EBBF00C0382B /* D-pad-swim.png in Resources */,
 				A8C5563B14267C29003D329B /* PurchaseViewController.xib in Resources */,
 				A89A90231427F996002F8F0F /* Somewhere.png in Resources */,
 				5152758421A1F534004D1E07 /* SavedGame-DuplicateHighlighted.png in Resources */,
@@ -6792,7 +6757,7 @@
 				515275DA21A1F53B004D1E07 /* GatherNetworkGame.png in Resources */,
 				515275F521A1F53B004D1E07 /* TipButton.png in Resources */,
 				A8B9FAE913FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
-				5146D7C71FE0588B00B89738 /* help1.png in Resources */,
+				5146D7C71FE0588B00B89738 /* help3.png in Resources */,
 				A8B9FAEC13FB6C1000552296 /* movementboxKnob.png in Resources */,
 				515275EE21A1F53B004D1E07 /* HelpButtonHighlighted.png in Resources */,
 				A8B9FAEF13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
@@ -6887,6 +6852,7 @@
 				515275FD21A1F53B004D1E07 /* Difficulty-Major Damage.png in Resources */,
 				A89B96411433C65D005E9FF3 /* DeleteButton@2x~iphone.png in Resources */,
 				A89B96441433C65D005E9FF3 /* DeleteButton~iphone.png in Resources */,
+				519F56E321F0EBD700C0382B /* D-pad-swim.png in Resources */,
 				515275F621A1F53B004D1E07 /* PreviousWeapon.png in Resources */,
 				5152760221A1F53B004D1E07 /* BackButtonHighlighted.png in Resources */,
 				A89B96471433C65D005E9FF3 /* DuplicateButton.png in Resources */,
@@ -6916,7 +6882,7 @@
 				A83FBB9B144C95DF00B27426 /* SettingsBackground@2x~iphone.png in Resources */,
 				515275DD21A1F53B004D1E07 /* Difficulty-Normal.png in Resources */,
 				A83FBB9E144C95DF00B27426 /* SettingsBackground~iphone.png in Resources */,
-				5146D7D11FE06F0A00B89738 /* help3.png in Resources */,
+				5146D7D11FE06F0A00B89738 /* help1.png in Resources */,
 				A83FBBA1144C95DF00B27426 /* MCModeOff.png in Resources */,
 				515275E021A1F53B004D1E07 /* BackButton.png in Resources */,
 				A83FBBAA144C95DF00B27426 /* MCModeOn.png in Resources */,
@@ -8224,9 +8190,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8285,7 +8252,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M2";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8503,7 +8470,7 @@
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
