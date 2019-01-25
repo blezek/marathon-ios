@@ -155,8 +155,8 @@
                                 <action selector="pause:" destination="-1" eventType="touchUpInside" id="47"/>
                             </connections>
                         </button>
-                        <button opaque="NO" alpha="0.5" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="134" userLabel="Button - Zoom In">
-                            <rect key="frame" x="138" y="208" width="48" height="48"/>
+                        <button opaque="NO" alpha="0.5" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="134">
+                            <rect key="frame" x="88" y="0.0" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Zoom In" image="zoom_in.png">
@@ -171,7 +171,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.5" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="135">
-                            <rect key="frame" x="82" y="208" width="48" height="48"/>
+                            <rect key="frame" x="44" y="0.0" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Zoom Out" image="zoom_out.png">
@@ -1252,7 +1252,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">	Joey Adams
+                                    <string key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1297,7 +1297,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </mutableString>
+ </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4052,7 +4052,7 @@ Cg
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">Product Manager
+                                    <string key="content">Product Manager
 	Tuncer Deniz
 
 Scenario by Double Aught
@@ -4101,7 +4101,7 @@ The Voice of Bob
 	Doug Zartman
 
 
-</mutableString>
+</string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>

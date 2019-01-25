@@ -168,7 +168,7 @@ struct rectangle_definition
 	GLfloat LightDirection[3];		// To the "light point"
 	short WorldLeft, WorldBottom, WorldRight, WorldTop;
 
-  //DCW smart trigger test
+  //DCW smart trigger hint
   bool isMonster;
   
 	// Constructor required defaults
