@@ -446,6 +446,9 @@
 		51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
 		51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C730431E59027900558D7D /* CoreAudio.framework */; };
+		51CE513321FD514800E1132C /* web2a in Resources */ = {isa = PBXBuildFile; fileRef = 51CE513221FD514800E1132C /* web2a */; };
+		51CE513421FD514800E1132C /* web2a in Resources */ = {isa = PBXBuildFile; fileRef = 51CE513221FD514800E1132C /* web2a */; };
+		51CE513521FD514800E1132C /* web2a in Resources */ = {isa = PBXBuildFile; fileRef = 51CE513221FD514800E1132C /* web2a */; };
 		51CFD23F21EA9332002F9A46 /* Images M1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD23E21EA9331002F9A46 /* Images M1.xcassets */; };
 		51CFD24121EA933B002F9A46 /* Images M2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24021EA933B002F9A46 /* Images M2.xcassets */; };
 		51CFD24321EA9345002F9A46 /* Images M3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24221EA9344002F9A46 /* Images M3.xcassets */; };
@@ -2496,6 +2499,7 @@
 		51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = A1_fade_in.mp4; path = Resources/A1_fade_in.mp4; sourceTree = "<group>"; };
 		51B685011EB92D0A00CB1628 /* SDLnetsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLnetsys.h; path = "submodules/Libraries/SDL2_net-2.0.1/SDLnetsys.h"; sourceTree = SOURCE_ROOT; };
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		51CE513221FD514800E1132C /* web2a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web2a; sourceTree = "<group>"; };
 		51CFD23E21EA9331002F9A46 /* Images M1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M1.xcassets"; sourceTree = "<group>"; };
 		51CFD24021EA933B002F9A46 /* Images M2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M2.xcassets"; sourceTree = "<group>"; };
 		51CFD24221EA9344002F9A46 /* Images M3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M3.xcassets"; sourceTree = "<group>"; };
@@ -3717,6 +3721,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51CE513221FD514800E1132C /* web2a */,
 				51CFD23E21EA9331002F9A46 /* Images M1.xcassets */,
 				51CFD24021EA933B002F9A46 /* Images M2.xcassets */,
 				51CFD24221EA9344002F9A46 /* Images M3.xcassets */,
@@ -6120,6 +6125,7 @@
 				A8B9FB2913FB6C1000552296 /* toggleweapons-left-btn@2x~iphone.png in Resources */,
 				A8B9FB2C13FB6C1000552296 /* toggleweapons-left-btn~iphone.png in Resources */,
 				A8B9FB2F13FB6C1000552296 /* toggleweapons-right-btn.png in Resources */,
+				51CE513321FD514800E1132C /* web2a in Resources */,
 				5152754021A1F52C004D1E07 /* HelpButtonHighlighted.png in Resources */,
 				A8B9FB3213FB6C1000552296 /* toggleweapons-right-btn@2x~iphone.png in Resources */,
 				5152755421A1F52C004D1E07 /* BackButtonHighlighted.png in Resources */,
@@ -6440,6 +6446,7 @@
 				A8B9FAEE13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
 				5152758321A1F534004D1E07 /* GatherNetworkGame.png in Resources */,
 				A8B9FAF113FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
+				51CE513421FD514800E1132C /* web2a in Resources */,
 				A8B9FAF413FB6C1000552296 /* overheadmap.png in Resources */,
 				519FCAEA1EA29DD20066EE69 /* DoneButtonThanksHighlighted.png in Resources */,
 				A8B9FB0F13FB6C1000552296 /* primarytrigger-btn.png in Resources */,
@@ -6858,6 +6865,7 @@
 				A89B96471433C65D005E9FF3 /* DuplicateButton.png in Resources */,
 				A89B964A1433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
 				A89B964D1433C65D005E9FF3 /* DuplicateButton~iphone.png in Resources */,
+				51CE513521FD514800E1132C /* web2a in Resources */,
 				A89B96501433C65D005E9FF3 /* LoadButton.png in Resources */,
 				51EAD5051E58B13700611EFF /* COPYRIGHT in Resources */,
 				A89B96531433C65D005E9FF3 /* LoadButton@2x~iphone.png in Resources */,

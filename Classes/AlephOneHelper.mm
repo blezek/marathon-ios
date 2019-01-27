@@ -65,6 +65,16 @@ void printGLError( const char* message ) {
   }
 }
 
+char* randomName31() {
+  NSString *randomWords = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"web2a" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+  NSArray *randomWordList = [randomWords componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  
+  NSString *aRandomName = [randomWordList count] == 0 ? nil : randomWordList[arc4random_uniform([randomWordList count])];
+  aRandomName = (aRandomName.length > 31 ) ? [aRandomName substringToIndex:31] : aRandomName; //Make sure it fits in PREFERENCES_NAME_LENGTH and MAX_NET_PLAYER_NAME_LENGTH
+  
+  return (char*)(aRandomName ? [aRandomName UTF8String] : [@"Bobert" UTF8String]);
+}
+
 char* getDataDir() {
   // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   // dataDir = [paths objectAtIndex:0];
@@ -74,7 +84,6 @@ char* getDataDir() {
   return (char*)[dataDir UTF8String];
   
 }
-
 
 char* getLocalDataDir() {
   NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];

@@ -20,6 +20,7 @@
 // #define USE_SDL_EVENT_LOOP 1
 #define USE_CADisplayLoop 1
 
+extern char* randomName31(); //Returns a random name up to 31 characters.
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
