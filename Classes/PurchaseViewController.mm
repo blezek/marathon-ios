@@ -65,6 +65,10 @@
   SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithArray:allProductIDs]];
   request.delegate = self;
   [request start];
+  
+  [tipButton setEnabled:YES];
+  [restoreButton setEnabled:YES];
+  
   [tipSelector removeAllSegments];
   [tipSelector setHidden:NO];
   [tipDescription setText:@""];
@@ -182,7 +186,8 @@
 - (IBAction)buyTip:(id)sender {
   int selectedTipIndex = [tipSelector selectedSegmentIndex];
   if ( [self canPurchase] && selectedTipIndex >= 0  ) {
-    
+    [tipButton setEnabled:NO];
+    [restoreButton setEnabled:NO];
     SKPayment* tPayment = [SKPayment paymentWithProduct:[allProductResponses objectForKey:[validProductIDs objectAtIndex:selectedTipIndex]]];
     [[SKPaymentQueue defaultQueue] addPayment:tPayment];
   }
@@ -207,12 +212,16 @@
         break;
       case(SKPaymentTransactionStateFailed) :
         MLog(@"SKPaymentTransactionStateFailed");
+        [tipButton setEnabled:YES];
+        [restoreButton setEnabled:YES];
         break;
       case(SKPaymentTransactionStateDeferred) :
         MLog(@"SKPaymentTransactionStateDeferred");
         break;
       default:
         MLog(@"Unknown Transaction State");
+        [tipButton setEnabled:YES];
+        [restoreButton setEnabled:YES];
         break;
     }
   }
