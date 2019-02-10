@@ -20,7 +20,6 @@
   UITouch *secondTouch;
   UITouch *firstTouch;
   NSDate *firstTouchTime;
-  NSDate *lastMovementTime;
   NSDate *lastPrimaryFire;
   NSDate *touchesEndedTime;
   CGPoint startSwipe;
@@ -28,6 +27,7 @@
   bool swipePrimaryFiring;
   bool swipeSecondaryFiring;
   bool autoFireShouldStop;
+  bool firstMoveSinceTouchStarted;
   short tapID;
   LookPadView *lookPadView;
   UIView *smartFireIndicator;
@@ -45,7 +45,6 @@
 @property (nonatomic,retain) NSDate *firstTouchTime;
 @property (nonatomic,retain) NSDate *lastPrimaryFire;
 @property (nonatomic,retain) NSDate *touchesEndedTime;
-@property (nonatomic,retain) NSDate *lastMovementTime;
 
 - (void)alignTLIWithPoint:(CGPoint) location;
 - (bool) touchInPrimaryFireZone:(UITouch*)touch;

@@ -55,9 +55,10 @@ extern bool fastStart ();
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();
 extern void setKey(SDL_Keycode key, bool down);
+extern void moveMouseRelativeAtInterval(float dx, float dy, double movedInterval); //Move mouse at a NSTimeInterval.
 extern void moveMouseRelative(float dx, float dy);
-extern void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval);
-extern void slurpMouseDelta(float *dx, float *dy);
+extern void grabMovementDeltasForCurrentFrameAtInterval(double timeStamp); //Cache accumulated deltas for future slurp. Call this immediately at frame start.
+extern void slurpMouseDelta(float *dx, float *dy); //Grab accumulated deltas.
 extern void helperGetMouseDelta ( int *dx, int *dy );
 extern void clearSmartTrigger();
 extern bool smartTriggerEngaged();

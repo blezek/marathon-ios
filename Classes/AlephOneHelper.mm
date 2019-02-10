@@ -24,9 +24,24 @@ extern "C" {
   #include "SDL_mouse_c.h"
 }
 
-//DCW
+//raw movement deltas for gyro and misc. input
 float iosDeltaX;
 float iosDeltaY;
+
+//raw movement deltas for touches.
+float iosDeltaTouchX;
+float iosDeltaTouchY;
+
+  //Deltas intended for not the next frame, but the one after that.
+float futureFrameDeltaX;
+float futureFrameDeltaY;
+
+//movement deltas as of start of new frame.
+float thisFrameDX;
+float thisFrameDY;
+
+NSTimeInterval frameEndTime;
+
 bool smartTriggerActive;
 bool canSmartFirePrimary;
 bool canSmartFireSecondary;
@@ -343,49 +358,50 @@ void setKey(SDL_Keycode key, bool down) {
 }
 
 //DCW
+void moveMouseRelativeAtInterval(float dx, float dy, double movedInterval)
+{
+  if ( movedInterval >= frameEndTime ) {
+    futureFrameDeltaX+=dx;
+    futureFrameDeltaY+=dy;
+    //NSLog(@"Touches moved for next frame" );
+  } else {
+    iosDeltaTouchX+=dx;
+    iosDeltaTouchY+=dy;
+    //NSLog(@"Touches moved" );
+  }
+}
+
 void moveMouseRelative(float dx, float dy)
 {
-  
-  //float w, h;
-  //w = MainScreenWindowWidth();
-  //h = MainScreenWindowHeight();
-  
   iosDeltaX+=dx;
   iosDeltaY+=dy;
-
-  //SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, true, dx + w/2.0, dy + h/2.0); //Movement is relative to center of screen
   
   return;
 }
-void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval)
-{
+
+void grabMovementDeltasForCurrentFrameAtInterval(double timeStamp) {
   
-  moveMouseRelative(dx, dy);
-  return;
-  //This is currently broken. :(
+    //Calculate when this frame will end. It should be 1/30th of a second.
+  frameEndTime = timeStamp + (1.0/30.0);
   
-  float xRate = fabs(dx/timeInterval);
-  float yRate = fabs(dy/timeInterval);
+  thisFrameDX += iosDeltaX + iosDeltaTouchX;
+  thisFrameDY += iosDeltaY + iosDeltaTouchY;
   
-  float ax = .1 * dx * xRate;// / timeInterval;
-  float ay = .1 * dy * yRate;// / timeInterval;
-  
-  
-  //NSLog(@"Original: %f Acceleration: %f", dx, .01 * dx / timeInterval );
-  
-  dx += ax;
-  dy += ay;
-  
-  moveMouseRelative(dx, dy);
-  
-  return;
+  iosDeltaX=0;
+  iosDeltaY=0;
+  iosDeltaTouchX=futureFrameDeltaX;
+  iosDeltaTouchY=futureFrameDeltaY;
+  futureFrameDeltaX = 0;
+  futureFrameDeltaY = 0;
 }
 
 void slurpMouseDelta(float *dx, float *dy) {
-  *dx=iosDeltaX;
-  *dy=-iosDeltaY;
-  iosDeltaX=0;
-  iosDeltaY=0;
+  
+  *dx=thisFrameDX;
+  *dy=-thisFrameDY;
+  
+  thisFrameDX = 0;
+  thisFrameDY = 0;
 }
 
 void helperGetMouseDelta ( int *dx, int *dy ) {

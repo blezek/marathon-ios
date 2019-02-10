@@ -1675,14 +1675,15 @@ short items[]=
     if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
       displayLinkSupported = TRUE;
     }
-    
-    NSInteger animationFrameInterval = 2;  
+
+    NSInteger animationFrameInterval = 2;
     if (displayLinkSupported) {
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
       // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
       // not be called in system versions earlier than 3.1.
         displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
-        [displayLink setFrameInterval:animationFrameInterval];
+        //dcw changing this to an alternative... [displayLink setFrameInterval:animationFrameInterval];
+        [displayLink setPreferredFramesPerSecond:30]; //DCW changed from deprecated setFrameInterval
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
       animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
@@ -1713,7 +1714,9 @@ short items[]=
 
 - (void)runMainLoopOnce:(id)sender {
     // Do some house keeping here
-    
+    //NSLog(@"Main Loop fire!");
+    grabMovementDeltasForCurrentFrameAtInterval( (NSTimeInterval)[(CADisplayLink*)displayLink timestamp] ); //This will probably crash if displayLink is not supported.
+  
     if (world_view->overhead_map_active) {
         self.zoomInButton.hidden = NO;
         self.zoomOutButton.hidden = NO;

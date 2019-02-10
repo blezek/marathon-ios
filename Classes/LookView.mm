@@ -37,7 +37,7 @@ extern "C" {
 @synthesize tapLocationIndicator;
 @synthesize smartFireIndicator;
 @synthesize primaryFire, secondaryFire;
-@synthesize firstTouch, firstTouchTime, lastPrimaryFire, touchesEndedTime, lastMovementTime;
+@synthesize firstTouch, firstTouchTime, lastPrimaryFire, touchesEndedTime;
 
 - (void)viewDidLoad {
   firstTouch = nil;
@@ -90,7 +90,6 @@ extern "C" {
   swipePrimaryFiring=0;
   swipeSecondaryFiring=0;
   autoFireShouldStop=0;
-  self.lastMovementTime=[NSDate date];
   
   [tapLocationIndicator setHidden:![[NSUserDefaults standardUserDefaults] boolForKey:kHiLowTapsAltFire]];
   
@@ -100,6 +99,7 @@ extern "C" {
     // grab the first
     [self setFirstTouch: (UITouch*)anything];
     self.firstTouchTime = [NSDate date];
+    firstMoveSinceTouchStarted = YES;
   }
   
   startSwipe.x = [firstTouch locationInView: self].x;
@@ -240,85 +240,96 @@ extern "C" {
   return y > TLIframe.origin.y+TLIframe.size.height;
 }
 
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  //NSLog(@"Touches moved" );
-	
-  [lookPadView unPauseGyro];
   
   // If first touch goes away, make this one the first
-  if ( firstTouch == nil ) {
-    firstTouch = [touches anyObject];
-    lastPanPoint = [firstTouch locationInView:self];
-  }
-  for ( UITouch *touch in [event touchesForView:self] ) {
-    if ( firstTouch != nil 
-        && touch != firstTouch ) {
-      continue;
-    }
-    
-    double forceNormalized = touch.force / touch.maximumPossibleForce;
-    CGPoint currentPoint = [touch locationInView:self];
-    float dx, dy;
-    dx = currentPoint.x - lastPanPoint.x;
-    dy = currentPoint.y - lastPanPoint.y;
-    
-    dy *=4; //DCW Lets bump up the vertical sensitivity.
-    
-    //moveMouseRelative(dx,dy);
-    NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self.lastMovementTime];
-    moveMouseRelativeAcceleratedOverTime(dx, dy, delta);
-    self.lastMovementTime=[NSDate date];
+   if ( firstTouch == nil ) {
+     firstTouch = [touches anyObject];
+     lastPanPoint = [firstTouch locationInView:self];
+   }
+   for ( UITouch *touch in [event touchesForView:self] ) {
+     if ( firstTouch != nil && touch != firstTouch ) {
+       continue;
+     }
+     
+     for ( UITouch *highFrequencyTouch in [event coalescedTouchesForTouch:touch] ) {
+       [self handleTouch:highFrequencyTouch];
+     }
+   }
+                           
+}
+- (void)handleTouch:(UITouch *)touch {
+  
+  [lookPadView unPauseGyro];
+  
+  double forceNormalized = touch.force / touch.maximumPossibleForce;
+  CGPoint currentPoint = [touch locationInView:self];
 
+  //Throw out dealts from first movement since touch began, to avoid big jump.
+  if (firstMoveSinceTouchStarted && (lastPanPoint.x != currentPoint.x || lastPanPoint.y != currentPoint.y) ) {
     lastPanPoint = currentPoint;
-    
-    int big = 50;
-    big = big*big;
-    if ( (dx*dx + dy*dy) > big ) {
-      MLog(@"Big motion!" );
-    }
-    
-      //Always update TLI when touch is in the primary fire zone.
-      //Or, only update TLI when we actually pan, and that pan was longer than the tap-to-fire timer.
-    if ( (dx || dy) ) {// && ([self touchInPrimaryFireZone:firstTouch] || [[NSDate date] timeIntervalSinceDate:self.firstTouchTime] > TapToShootDelta) ) {
-        //Yeah, and also, don't move the TLI when we are in continuous-fire mode.
-      if( autoFireShouldStop || tapID == 0 ) {
-          [self alignTLIWithPoint: currentPoint];
-      }
-    }
-		
-		if (lastForce < primaryForceThreshold && forceNormalized >= primaryForceThreshold){
-      setKey(primaryFire, 1);
-			UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
-			[feedback selectionChanged];
-			[feedback prepare];
-		}
-		if (lastForce < secondaryForceThreshold && forceNormalized >= secondaryForceThreshold){
-      setKey(secondaryFire, 1);
-
-			UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
-			[feedback impactOccurred];
-			[feedback prepare];
-
-
-		}
-		if (lastForce >= primaryForceThreshold && forceNormalized < primaryForceThreshold){
-      setKey(primaryFire, 0);
-			UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
-			[feedback selectionChanged];
-			[feedback prepare];
-		}
-		if (lastForce >= secondaryForceThreshold && forceNormalized < secondaryForceThreshold){
-      setKey(secondaryFire, 0);
-			UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
-			[feedback impactOccurred];
-			[feedback prepare];
-		}
-		lastForce = forceNormalized;
-		
-    // NSLog(@"touches moved, sending delta" );
-    
-    break;
+    firstMoveSinceTouchStarted = NO;
+    NSLog(@"Go Touches!");
   }
+
+  float dx, dy;
+  dx = currentPoint.x - lastPanPoint.x;
+  dy = currentPoint.y - lastPanPoint.y;
+
+  dy *=4; //DCW Lets bump up the vertical sensitivity.
+  //NSLog(@"touches moved %f", dx );
+
+  moveMouseRelativeAtInterval(dx, dy, touch.timestamp);
+
+  lastPanPoint = currentPoint;
+
+  int big = 50;
+  big = big*big;
+  if ( (dx*dx + dy*dy) > big ) {
+    MLog(@"Big motion!" );
+  }
+
+    //Always update TLI when touch is in the primary fire zone.
+    //Or, only update TLI when we actually pan, and that pan was longer than the tap-to-fire timer.
+  if ( (dx || dy) ) {// && ([self touchInPrimaryFireZone:firstTouch] || [[NSDate date] timeIntervalSinceDate:self.firstTouchTime] > TapToShootDelta) ) {
+      //Yeah, and also, don't move the TLI when we are in continuous-fire mode.
+    if( autoFireShouldStop || tapID == 0 ) {
+        [self alignTLIWithPoint: currentPoint];
+    }
+  }
+
+  if (lastForce < primaryForceThreshold && forceNormalized >= primaryForceThreshold){
+    setKey(primaryFire, 1);
+    UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
+    [feedback selectionChanged];
+    [feedback prepare];
+  }
+  if (lastForce < secondaryForceThreshold && forceNormalized >= secondaryForceThreshold){
+    setKey(secondaryFire, 1);
+
+    UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
+    [feedback impactOccurred];
+    [feedback prepare];
+
+
+  }
+  if (lastForce >= primaryForceThreshold && forceNormalized < primaryForceThreshold){
+    setKey(primaryFire, 0);
+    UISelectionFeedbackGenerator *feedback = [[[UISelectionFeedbackGenerator alloc] init] autorelease];
+    [feedback selectionChanged];
+    [feedback prepare];
+  }
+  if (lastForce >= secondaryForceThreshold && forceNormalized < secondaryForceThreshold){
+    setKey(secondaryFire, 0);
+    UIImpactFeedbackGenerator *feedback = [[[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy] autorelease];
+    [feedback impactOccurred];
+    [feedback prepare];
+  }
+  lastForce = forceNormalized;
+
+  // NSLog(@"touches moved, sending delta" );
+
 }
 
 - (void)dealloc {
