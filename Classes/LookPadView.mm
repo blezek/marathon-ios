@@ -76,32 +76,32 @@ extern "C" {
 	
   [self unPauseGyro];
   
-	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x < width * (2.0/3.0)) {
+	if (/*currentPoint.y < height * (1.0/3.0) && */currentPoint.x < width * (2.0/3.0)) {
 		setKey(primaryFireKey, 1);
 	} else {
 		setKey(primaryFireKey, 0);
 	}
 	
-	if (currentPoint.y < height * (1.0/3.0) && currentPoint.x > width * (1.0/3.0)) {
+	if (/*currentPoint.y < height * (1.0/3.0) && */currentPoint.x > width * (1.0/3.0)) {
     setKey(secondaryFireKey, 1);
 	} else {
     setKey(secondaryFireKey, 0);
 	}
 	
-	if ( !specialGyroModeActive ) {
+	if ( !specialGyroModeActive && [[NSUserDefaults standardUserDefaults] boolForKey:kTiltTurning] ) {
 		[self resetGyro];
 		specialGyroModeActive = 1;
 	}
   
   //If the make the transition from on button to off in the lower half of the control, switch weapons.
-  if (currentPoint.y > height/2 && currentPoint.x < 0 && lastMovedPoint.x >= 0) {
+  /*if (currentPoint.y > height/2 && currentPoint.x < 0 && lastMovedPoint.x >= 0) {
     setKey(previousWeaponKey, 1);
     [self performSelector:@selector(previousWeaponKeyUp) withObject:nil afterDelay:0.1];
   }
   if (currentPoint.y > height/2 && currentPoint.x > width && lastMovedPoint.x <= width) {
     setKey(nextWeaponKey, 1);
     [self performSelector:@selector(nextWeaponKeyUp) withObject:nil afterDelay:0.1];
-  }
+  }*/
 	
 }
 

@@ -261,7 +261,6 @@ extern "C" {
 - (void)dimActionKey:(short)actionType {}
 - (void)lightActionKey:(short)actionType {}
 
-
 - (void)dealloc
 {
     [super dealloc];

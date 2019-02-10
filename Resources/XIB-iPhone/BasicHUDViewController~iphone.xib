@@ -173,7 +173,7 @@
                 </button>
                 <view hidden="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131" customClass="RoundedView">
                     <rect key="frame" x="242" y="251" width="77" height="68"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59" userLabel="Action">
                             <rect key="frame" x="-1" y="0.0" width="79" height="68"/>
@@ -197,11 +197,11 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9e-7F-7Dx" customClass="LookPadView">
-                    <rect key="frame" x="409" y="150" width="128" height="128"/>
+                    <rect key="frame" x="340" y="175" width="225" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="look_multi_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-lX-sG8">
-                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -247,7 +247,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62" userLabel="Map">
-                    <rect key="frame" x="0.0" y="27" width="32" height="48"/>
+                    <rect key="frame" x="0.0" y="27" width="96" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="Map.png">
@@ -262,7 +262,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64" userLabel="NextWeapon">
-                    <rect key="frame" x="536" y="27" width="32" height="48"/>
+                    <rect key="frame" x="471" y="27" width="96" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="NextWeapon.png">
@@ -277,7 +277,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63" userLabel="PreviousWeapon">
-                    <rect key="frame" x="536" y="77" width="32" height="48"/>
+                    <rect key="frame" x="471" y="77" width="96" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="PreviousWeapon.png">
@@ -351,11 +351,11 @@
         <image name="D-pad-knob.png" width="200" height="200"/>
         <image name="D-pad-swim.png" width="400" height="400"/>
         <image name="D-pad.png" width="400" height="400"/>
-        <image name="Map.png" width="64" height="96"/>
-        <image name="NextWeapon.png" width="64" height="96"/>
-        <image name="PreviousWeapon.png" width="64" height="96"/>
+        <image name="Map.png" width="192" height="96"/>
+        <image name="NextWeapon.png" width="192" height="96"/>
+        <image name="PreviousWeapon.png" width="192" height="96"/>
         <image name="UseComputer.png" width="60" height="60"/>
-        <image name="look_multi_button.png" width="400" height="400"/>
+        <image name="look_multi_button.png" width="450" height="154"/>
         <image name="primarytrigger-btn.png" width="50" height="50"/>
     </resources>
 </document>

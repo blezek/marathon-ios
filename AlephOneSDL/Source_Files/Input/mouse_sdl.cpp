@@ -246,6 +246,7 @@ bool shouldSmoothMouselook(){
 void test_mouse(short type, uint32 *flags, _fixed *delta_yaw, _fixed *delta_pitch, _fixed *delta_velocity)
 {
 	if (mouse_active) {
+    //printf ("Sampled mouse: %d\n", snapshot_delta_yaw);
 		*delta_yaw = snapshot_delta_yaw;
 		*delta_pitch = snapshot_delta_pitch;
 		*delta_velocity = 0;  // Mouse-driven player velocity is unimplemented
