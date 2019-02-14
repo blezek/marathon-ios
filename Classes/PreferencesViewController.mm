@@ -31,6 +31,8 @@
 @synthesize hiLowTapsAltFire;
 @synthesize gyroAiming;
 @synthesize tiltTurning;
+@synthesize threeDTouchFires;
+@synthesize dPadAction;
 @synthesize brightness;
 @synthesize autoCenter;
 @synthesize filmsDisabled;
@@ -64,6 +66,9 @@
   [defaults setBool:[self.hiLowTapsAltFire isSelected] forKey:kHiLowTapsAltFire];
   [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
   [defaults setBool:[self.tiltTurning isSelected] forKey:kTiltTurning];
+  
+  [defaults setBool:[self.dPadAction isSelected] forKey:kDPadAction];
+  [defaults setBool:[self.threeDTouchFires isSelected] forKey:kThreeDTouchFires];
   
   [defaults setBool:[self.secondTapShoots isSelected] forKey:kSecondTapShoots];
   if ( [self.secondTapShoots isSelected] != [defaults boolForKey:kSecondTapShoots] ) {
@@ -152,6 +157,17 @@
   [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
   [self.tiltTurning setSelected:[defaults boolForKey:kTiltTurning]];
+  
+  [self.dPadAction setSelected:[defaults boolForKey:kDPadAction]];
+  [self.threeDTouchFires setSelected:[defaults boolForKey:kThreeDTouchFires]];
+  if ( self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable ) {
+    self.threeDTouchFires.hidden = NO;
+    self.threeDTouchFiresLabel.hidden = NO;
+  } else {
+    self.threeDTouchFires.hidden = YES;
+    self.threeDTouchFiresLabel.hidden = YES;
+
+  }
   
   [self.autoCenter setSelected:[defaults boolForKey:kAutocenter]];
   [self.secondTapShoots setSelected:[defaults boolForKey:kSecondTapShoots]];

@@ -263,7 +263,7 @@ extern "C" {
   
   [lookPadView unPauseGyro];
   
-  double forceNormalized = touch.force / touch.maximumPossibleForce;
+  double forceNormalized = [[NSUserDefaults standardUserDefaults] boolForKey:kThreeDTouchFires] ? touch.force / touch.maximumPossibleForce : 0;
   CGPoint currentPoint = [touch locationInView:self];
 
   //Throw out dealts from first movement since touch began, to avoid big jump.

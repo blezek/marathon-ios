@@ -45,6 +45,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *gyroAiming;
 @property (nonatomic, retain) IBOutlet UIButton *tiltTurning;
 @property (nonatomic, retain) IBOutlet UIButton *secondTapShoots;
+@property (nonatomic, retain) IBOutlet UIButton *threeDTouchFires;
+@property (nonatomic, retain) IBOutlet UILabel *threeDTouchFiresLabel;
+@property (nonatomic, retain) IBOutlet UIButton *dPadAction;
 @property (nonatomic, retain) IBOutlet UISlider *sfxVolume;
 @property (nonatomic, retain) IBOutlet UISlider *musicVolume;
 @property (nonatomic, retain) IBOutlet UILabel *musicLabel;

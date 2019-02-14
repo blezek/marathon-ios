@@ -154,6 +154,8 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"YES",  kHiLowTapsAltFire,
                                @"YES", kGyroAiming,
                                @"NO", kTiltTurning,
+                               @"YES", kDPadAction,
+                               @"YES", kThreeDTouchFires,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,

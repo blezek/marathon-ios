@@ -1163,6 +1163,9 @@
 		51EB1BAD1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
 		51EB1BAE1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
 		51EB1BAF1DAAF01500C3D4B4 /* LookPadView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */; };
+		51FCA06D22112CE600C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA06C22112CE500C8C3F2 /* Escape.png */; };
+		51FCA07122112D0000C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA07022112D0000C8C3F2 /* Escape.png */; };
+		51FCA07322112D0E00C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA07222112D0D00C8C3F2 /* Escape.png */; };
 		A80498E113DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E213DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E313DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
@@ -3010,6 +3013,9 @@
 		51EB1BA71DAAEEEA00C3D4B4 /* look_multi_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = look_multi_button.png; sourceTree = "<group>"; };
 		51EB1BAB1DAAF01500C3D4B4 /* LookPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookPadView.h; path = Classes/LookPadView.h; sourceTree = "<group>"; };
 		51EB1BAC1DAAF01500C3D4B4 /* LookPadView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LookPadView.mm; path = Classes/LookPadView.mm; sourceTree = "<group>"; };
+		51FCA06C22112CE500C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
+		51FCA07022112D0000C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
+		51FCA07222112D0D00C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A80498DF13DDC9D500F807FB /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertView.h; path = Classes/AlertView.h; sourceTree = "<group>"; };
 		A80498E013DDC9D500F807FB /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = Classes/AlertView.m; sourceTree = "<group>"; };
@@ -4102,6 +4108,7 @@
 			isa = PBXGroup;
 			children = (
 				519F56DE21F0EBAC00C0382B /* D-pad-swim.png */,
+				51FCA06C22112CE500C8C3F2 /* Escape.png */,
 				515274FF21A1F52C004D1E07 /* JoinNetworkGame.png */,
 				51A6CB8921A2099800D2C4ED /* AcceptButton.png */,
 				51A6CB8A21A2099900D2C4ED /* AcceptButtonHighlighted.png */,
@@ -4155,6 +4162,7 @@
 			isa = PBXGroup;
 			children = (
 				519F56E021F0EBBF00C0382B /* D-pad-swim.png */,
+				51FCA07022112D0000C8C3F2 /* Escape.png */,
 				5152755621A1F534004D1E07 /* JoinNetworkGame.png */,
 				51A6CB9221A209C500D2C4ED /* AcceptButton.png */,
 				51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */,
@@ -4208,6 +4216,7 @@
 			isa = PBXGroup;
 			children = (
 				519F56E221F0EBD700C0382B /* D-pad-swim.png */,
+				51FCA07222112D0D00C8C3F2 /* Escape.png */,
 				515275AD21A1F53A004D1E07 /* JoinNetworkGame.png */,
 				51A6CB8E21A209B200D2C4ED /* AcceptButton.png */,
 				51A6CB8D21A209B100D2C4ED /* AcceptButtonHighlighted.png */,
@@ -6265,6 +6274,7 @@
 				A83FBBCF144C95DF00B27426 /* SliderRedTrack.png in Resources */,
 				A83FBBD2144C95DF00B27426 /* SliderTab.png in Resources */,
 				A83FBBD5144C95DF00B27426 /* SwitchOff.png in Resources */,
+				51FCA06D22112CE600C8C3F2 /* Escape.png in Resources */,
 				A83FBBDB144C95DF00B27426 /* SwitchOff@2x~iphone.png in Resources */,
 				A83FBBDE144C95DF00B27426 /* SwitchOff~iphone.png in Resources */,
 				A83FBBE1144C95DF00B27426 /* SwitchOn.png in Resources */,
@@ -6586,6 +6596,7 @@
 				A83FBBBE144C95DF00B27426 /* SettingsBackgroundLayout@2x~iphone.png in Resources */,
 				A83FBBC1144C95DF00B27426 /* SettingsBackgroundLayout~iphone.png in Resources */,
 				A83FBBCA144C95DF00B27426 /* SliderBackground.png in Resources */,
+				51FCA07122112D0000C8C3F2 /* Escape.png in Resources */,
 				A83FBBCD144C95DF00B27426 /* SliderBlackTrack.png in Resources */,
 				A83FBBD0144C95DF00B27426 /* SliderRedTrack.png in Resources */,
 				A83FBBD3144C95DF00B27426 /* SliderTab.png in Resources */,
@@ -6837,6 +6848,7 @@
 				A85B58781433BEC00013CDC9 /* Hard.png in Resources */,
 				A85B587B1433BEC00013CDC9 /* Hard@2x~iphone.png in Resources */,
 				515275FC21A1F53B004D1E07 /* MenuHighlighted.png in Resources */,
+				51FCA07322112D0E00C8C3F2 /* Escape.png in Resources */,
 				5152760021A1F53B004D1E07 /* BeginNewGame.png in Resources */,
 				A85B587E1433BEC00013CDC9 /* Hard~iphone.png in Resources */,
 				A85B588A1433BEC00013CDC9 /* Nightmare.png in Resources */,

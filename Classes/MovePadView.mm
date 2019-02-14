@@ -258,12 +258,14 @@ extern "C" {
   [self updateSwimmingIndicatorVisibility];
   
 	//DCW. Do open/activate key when released
-  setKey(actionKey, 1);
-  if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
-    [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+  if( [[NSUserDefaults standardUserDefaults] boolForKey:kDPadAction] || PLAYER_IS_DEAD(local_player)) {
+    setKey(actionKey, 1);
+    if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+      [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+    }
+    [self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
   }
-	[self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
-
+  
   // Animate the knob returning to home...
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];

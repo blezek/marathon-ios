@@ -24,6 +24,8 @@
 #define kHiLowTapsAltFire @"hiLowTapsAltFire"
 #define kGyroAiming @"gyroAiming"
 #define kTiltTurning @"tiltTurning"
+#define kThreeDTouchFires @"threeDTouchFires"
+#define kDPadAction @"dPadAction"
 #define kHaveTTEP @"haveTTEP"
 #define kUseTTEP @"useTTEP"
 #define kHaveVidmasterMode @"haveVidmasterMode"

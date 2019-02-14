@@ -207,6 +207,20 @@ extern "C" {
 
 }
 
+- (IBAction)escapeDown:(id)sender {
+  SDL_Event sdlevent = {};
+  sdlevent.type = SDL_KEYDOWN;
+  sdlevent.key.keysym.sym = SDL_SCANCODE_ESCAPE;
+  SDL_PushEvent(&sdlevent);
+  
+}
+- (IBAction)escapeUp:(id)sender{
+  SDL_Event sdlevent = {};
+  sdlevent.type = SDL_KEYUP;
+  sdlevent.key.keysym.sym = SDL_SCANCODE_ESCAPE;
+  SDL_PushEvent(&sdlevent);
+}
+
 - (IBAction)netStatsDown:(id)sender {
   SDL_Event stats, unstats;
   stats.type = SDL_KEYDOWN;
@@ -225,6 +239,11 @@ extern "C" {
 - (IBAction)doConsole:(id)sender{
   [self consoleDown:self];
   [self performSelector:@selector(consoleUp:) withObject:self afterDelay:0.10];
+}
+
+- (IBAction)doEscape:(id)sender{
+  [self escapeDown:self];
+  [self performSelector:@selector(escapeUp:) withObject:self afterDelay:0.10];
 }
 
 - (IBAction)doNetStats:(id)sender{

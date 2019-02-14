@@ -78,7 +78,10 @@
 - (IBAction)doMap:(id)sender;
 - (IBAction)consoleDown:(id)sender;
 - (IBAction)consoleUp:(id)sender;
+- (IBAction)escapeDown:(id)sender;
+- (IBAction)escapeUp:(id)sender;
 - (IBAction)doConsole:(id)sender;
+- (IBAction)doEscape:(id)sender;
 - (IBAction)doNetStats:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
