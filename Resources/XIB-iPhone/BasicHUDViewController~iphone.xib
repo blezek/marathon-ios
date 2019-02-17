@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="actionBox" destination="131" id="132"/>
                 <outlet property="actionKeyImageView" destination="59" id="130"/>
+                <outlet property="escapeButton" destination="1HG-cf-fUl" id="ids-DN-vts"/>
                 <outlet property="lookPadView" destination="Q9e-7F-7Dx" id="Cif-Mz-WuS"/>
                 <outlet property="lookView" destination="36" id="102"/>
                 <outlet property="movePadView" destination="46" id="103"/>
@@ -173,7 +174,7 @@
                 </button>
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9e-7F-7Dx" customClass="LookPadView">
                     <rect key="frame" x="340" y="175" width="225" height="75"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="look_multi_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-lX-sG8">
                             <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>

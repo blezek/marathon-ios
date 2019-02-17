@@ -18,6 +18,7 @@
 #include "items.h"
 #include "player.h"
 #include "platforms.h"
+#include "AlephOneHelper.h"
 
 // From devices.cpp
 enum // control panel sounds
@@ -46,7 +47,7 @@ struct control_panel_definition
 extern control_panel_definition *get_control_panel_definition(
                                                               const short control_panel_type);
 @implementation BasicHUDViewController
-@synthesize lookView, movePadView, actionKeyImageView, actionBox;
+@synthesize lookView, movePadView, actionKeyImageView, actionBox, escapeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -121,6 +122,10 @@ extern control_panel_definition *get_control_panel_definition(
 
 - (void)updateSwimmingIndicator {
   [movePadView updateSwimmingIndicatorVisibility];
+}
+
+- (void)updateEscapeButtonVisibility {
+  escapeButton.hidden=!playerInTerminal();
 }
 
 - (void)dealloc

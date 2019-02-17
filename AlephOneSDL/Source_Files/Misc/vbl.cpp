@@ -1150,7 +1150,7 @@ uint32 parse_keymap(void)
 					flags |= standard_key_definitions[i].action_flag;
 			}
 		}
-		
+      
       // Post-process the keymap
       struct special_flag_data *special = special_flags;
       for (unsigned i=0; i<NUMBER_OF_SPECIAL_FLAGS; i++, special++) {

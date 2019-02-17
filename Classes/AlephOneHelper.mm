@@ -16,6 +16,7 @@
 #include "screen.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
+#include "computer_interface.h" //Used for player in terminal check
 
 #import "PreferencesViewController.h"
 
@@ -455,6 +456,10 @@ void helperSetPreferences( int notify) {
 
 bool headBelowMedia () {
   return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
+}
+
+bool playerInTerminal () {
+  return player_in_terminal_mode(local_player_index);
 }
 
 bool useShaderRenderer() {

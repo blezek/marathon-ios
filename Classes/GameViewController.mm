@@ -1713,10 +1713,10 @@ short items[]=
 }
 
 - (void)runMainLoopOnce:(id)sender {
-    // Do some house keeping here
-    //NSLog(@"Main Loop fire!");
+      //Capture touch movement deltas immediately!
     grabMovementDeltasForCurrentFrameAtInterval( (NSTimeInterval)[(CADisplayLink*)displayLink timestamp] ); //This will probably crash if displayLink is not supported.
   
+    // Do some house keeping here
     if (world_view->overhead_map_active) {
         self.zoomInButton.hidden = NO;
         self.zoomOutButton.hidden = NO;
@@ -1741,6 +1741,7 @@ short items[]=
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }
       [self.HUDViewController updateSwimmingIndicator];
+      [self.HUDViewController updateEscapeButtonVisibility];
     }
   
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.

@@ -85,6 +85,7 @@ extern "C" {
 - (void)dimActionKey {}
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {}
 - (void)updateSwimmingIndicator {}
+- (void)updateEscapeButtonVisibility {}
 
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
   *dx = 0; *dy = 0;
@@ -208,17 +209,10 @@ extern "C" {
 }
 
 - (IBAction)escapeDown:(id)sender {
-  SDL_Event sdlevent = {};
-  sdlevent.type = SDL_KEYDOWN;
-  sdlevent.key.keysym.sym = SDL_SCANCODE_ESCAPE;
-  SDL_PushEvent(&sdlevent);
-  
+  setKey(SDL_SCANCODE_ESCAPE, 1);
 }
 - (IBAction)escapeUp:(id)sender{
-  SDL_Event sdlevent = {};
-  sdlevent.type = SDL_KEYUP;
-  sdlevent.key.keysym.sym = SDL_SCANCODE_ESCAPE;
-  SDL_PushEvent(&sdlevent);
+  setKey(SDL_SCANCODE_ESCAPE, 0);
 }
 
 - (IBAction)netStatsDown:(id)sender {

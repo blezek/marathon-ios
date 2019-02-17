@@ -48,6 +48,7 @@ extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool headBelowMedia ();
+extern bool playerInTerminal ();
 extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();
