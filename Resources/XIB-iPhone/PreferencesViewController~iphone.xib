@@ -127,22 +127,6 @@
                         <action selector="resetAchievements:" destination="-1" eventType="touchUpInside" id="63"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="81" userLabel="MC Mode">
-                    <rect key="frame" x="20" y="250" width="75" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" image="MCModeOff.png">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="selected" image="MCModeOn.png"/>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="83"/>
-                    </connections>
-                </button>
                 <view hidden="YES" alpha="0.69718307256698608" contentMode="scaleToFill" id="86" customClass="RoundedView">
                     <rect key="frame" x="4" y="14" width="222" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -176,39 +160,39 @@
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
                 <view alpha="0.69718307256698608" contentMode="scaleToFill" id="geP-jV-9G2" userLabel="Metaserver Settings Background">
-                    <rect key="frame" x="20" y="16" width="319" height="67"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="13" y="16" width="326" height="74"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Internet Meatserver" lineBreakMode="tailTruncation" id="erQ-yo-Bci" userLabel="Meatserver Label">
-                            <rect key="frame" x="8" y="-7" width="130" height="23"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="INTERNET MEATSERVER" lineBreakMode="tailTruncation" id="erQ-yo-Bci" userLabel="Meatserver Label">
+                            <rect key="frame" x="8" y="-1" width="151" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="1" green="0.96351180550000004" blue="0.0029339916539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Login:" lineBreakMode="tailTruncation" id="Exy-cl-MuO" userLabel="Metaserver login:">
-                            <rect key="frame" x="21" y="4" width="134" height="29"/>
+                            <rect key="frame" x="21" y="11" width="134" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="14"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" id="lnG-x0-Btu">
-                            <rect key="frame" x="21" y="29" width="134" height="30"/>
+                            <rect key="frame" x="21" y="36" width="134" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" id="3bl-Eh-nnd">
-                            <rect key="frame" x="163" y="29" width="134" height="30"/>
+                            <rect key="frame" x="163" y="36" width="134" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" id="bwV-vt-wwX" userLabel="Metaserver login:">
-                            <rect key="frame" x="163" y="4" width="134" height="29"/>
+                            <rect key="frame" x="163" y="11" width="134" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="14"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -230,55 +214,6 @@
                     </state>
                     <connections>
                         <action selector="closePreferences:" destination="-1" eventType="touchUpInside" id="12"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Always Run:" textAlignment="center" lineBreakMode="tailTruncation" id="apM-5U-8sQ" userLabel="Always Run">
-                    <rect key="frame" x="102" y="243" width="102" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
-                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FR6-XL-vdr" userLabel="Always Run">
-                    <rect key="frame" x="136" y="263" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="checkbox.png"/>
-                    <state key="selected" image="checkboxactive.png"/>
-                    <connections>
-                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GWw-6Y-3a7"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Smooth Aiming:" textAlignment="center" lineBreakMode="tailTruncation" id="nrZ-om-S6a" userLabel="Smooth Mouselook">
-                    <rect key="frame" x="199" y="243" width="102" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
-                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yGO-Kr-vMZ" userLabel="Smooth Mouselook">
-                    <rect key="frame" x="233" y="263" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="checkbox.png"/>
-                    <state key="selected" image="checkboxactive.png"/>
-                    <connections>
-                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="bfI-yr-VSr"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="yOy-kl-nbb" userLabel="D-Pad action">
-                    <rect key="frame" x="233" y="203" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="checkbox.png">
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="selected" title="Crosshairs" image="checkboxactive.png"/>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GUq-rH-Aff"/>
                     </connections>
                 </button>
                 <view alpha="0.69718307256698608" contentMode="scaleToFill" id="ntg-GG-0Ug" userLabel="Firing">
@@ -369,7 +304,7 @@
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FIRING" lineBreakMode="tailTruncation" id="6ZQ-Yb-QSh" userLabel="Firing Label">
-                            <rect key="frame" x="8" y="-6" width="102" height="23"/>
+                            <rect key="frame" x="8" y="0.0" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="1" green="0.96351180550000004" blue="0.0029339916539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -379,11 +314,11 @@
                     <color key="backgroundColor" red="0.26740608809999999" green="0.11272067396235824" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view alpha="0.69718307256698608" contentMode="scaleToFill" id="0Go-Hx-PPT" userLabel="Control">
-                    <rect key="frame" x="347" y="175" width="209" height="82"/>
+                    <rect key="frame" x="347" y="166" width="209" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="K8i-db-PC7" userLabel="Gyro">
-                            <rect key="frame" x="169" y="8" width="32" height="32"/>
+                            <rect key="frame" x="169" y="16" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="checkbox.png">
@@ -398,14 +333,14 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Always Aim with Gyro:" textAlignment="right" lineBreakMode="tailTruncation" id="YZX-zv-ScH" userLabel="Gyro">
-                            <rect key="frame" x="24" y="13" width="137" height="23"/>
+                            <rect key="frame" x="24" y="21" width="137" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="5LG-Ce-e2J" userLabel="Tilt">
-                            <rect key="frame" x="169" y="39" width="32" height="32"/>
+                            <rect key="frame" x="169" y="47" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="checkbox.png">
@@ -420,14 +355,14 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Touch + Tilt Turning:" textAlignment="right" lineBreakMode="tailTruncation" id="GGk-Uu-mRm" userLabel="Tilt">
-                            <rect key="frame" x="29" y="44" width="132" height="23"/>
+                            <rect key="frame" x="29" y="52" width="132" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GYROSCOPE" lineBreakMode="tailTruncation" id="yGn-1X-ggX" userLabel="Gyroscope Label">
-                            <rect key="frame" x="8" y="-6" width="102" height="23"/>
+                            <rect key="frame" x="8" y="0.0" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="1" green="0.96351180550000004" blue="0.0029339916539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -436,82 +371,161 @@
                     </subviews>
                     <color key="backgroundColor" red="0.26740608809999999" green="0.0" blue="0.2367885472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="nG9-hE-RBi">
-                    <rect key="frame" x="190" y="168" width="118" height="35"/>
+                <view alpha="0.69718307256698608" contentMode="scaleToFill" id="BON-tl-kzI" userLabel="Enhancements">
+                    <rect key="frame" x="130" y="150" width="209" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <attributedString key="attributedText">
-                        <fragment>
-                            <string key="content">Releasing D-pad
-does Action:</string>
-                            <attributes>
-                                <color key="NSColor" red="0.0019" green="1" blue="0.12955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <font key="NSFont" size="11" name="BankGothicBT-Medium"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                    <tabStops>
-                                        <textTab alignment="left" location="36">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="72">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="108">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="144">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="180">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="216">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="252">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="288">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="324">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="360">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="396">
-                                            <options/>
-                                        </textTab>
-                                        <textTab alignment="left" location="432">
-                                            <options/>
-                                        </textTab>
-                                    </tabStops>
-                                </paragraphStyle>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Crosshairs:" textAlignment="center" lineBreakMode="tailTruncation" id="JgC-nf-yrQ" userLabel="Crosshairs">
-                    <rect key="frame" x="101" y="180" width="102" height="23"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Crosshairs:" textAlignment="center" lineBreakMode="tailTruncation" id="JgC-nf-yrQ" userLabel="Crosshairs">
+                            <rect key="frame" x="-3" y="27" width="102" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="77" userLabel="Crosshairs">
+                            <rect key="frame" x="32" y="50" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="checkbox.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected" title="Crosshairs" image="checkboxactive.png"/>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="78"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Always Run:" textAlignment="center" lineBreakMode="tailTruncation" id="apM-5U-8sQ" userLabel="Always Run">
+                            <rect key="frame" x="-2" y="90" width="102" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FR6-XL-vdr" userLabel="Always Run">
+                            <rect key="frame" x="32" y="110" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="checkbox.png"/>
+                            <state key="selected" image="checkboxactive.png"/>
+                            <connections>
+                                <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GWw-6Y-3a7"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Smooth Aiming:" textAlignment="center" lineBreakMode="tailTruncation" id="nrZ-om-S6a" userLabel="Smooth Mouselook">
+                            <rect key="frame" x="95" y="90" width="102" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yGO-Kr-vMZ" userLabel="Smooth Mouselook">
+                            <rect key="frame" x="129" y="110" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="checkbox.png"/>
+                            <state key="selected" image="checkboxactive.png"/>
+                            <connections>
+                                <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="bfI-yr-VSr"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="yOy-kl-nbb" userLabel="D-Pad action">
+                            <rect key="frame" x="129" y="50" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="checkbox.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected" title="Crosshairs" image="checkboxactive.png"/>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GUq-rH-Aff"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="nG9-hE-RBi">
+                            <rect key="frame" x="86" y="15" width="118" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Releasing D-pad
+Does Action:</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.0019" green="1" blue="0.12955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="11" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="36">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="72">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="108">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="144">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="180">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="216">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="288">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="324">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="360">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="396">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="432">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ENHANCEMENTS" lineBreakMode="tailTruncation" id="0xC-5T-VKN" userLabel="Enhancements Label">
+                            <rect key="frame" x="8" y="0.0" width="107" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
+                            <color key="textColor" red="1" green="0.96351180550000004" blue="0.0029339916539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1876065719913933" green="0.0" blue="0.26740608809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="81" userLabel="MC Mode">
+                    <rect key="frame" x="47" y="247" width="75" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
-                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="77" userLabel="Crosshairs">
-                    <rect key="frame" x="136" y="203" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="checkbox.png">
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="MCModeOff.png">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <state key="selected" title="Crosshairs" image="checkboxactive.png"/>
+                    <state key="selected" image="MCModeOn.png"/>
                     <state key="highlighted">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="78"/>
+                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="83"/>
                     </connections>
                 </button>
             </subviews>
