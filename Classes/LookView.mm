@@ -167,7 +167,6 @@ extern "C" {
       autoFireShouldStop=1;
       [smartFireIndicator setHidden:YES];
       setSmartFirePrimary(NO);
-      setSmartFireSecondary(NO);
       
       //if ( [[NSUserDefaults standardUserDefaults] boolForKey:kTapShoots] ) {
         if ( lastTouchWasTap ) {

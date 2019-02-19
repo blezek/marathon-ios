@@ -65,7 +65,6 @@ extern void clearSmartTrigger();
 extern bool smartTriggerEngaged();
 extern void monsterIsCentered ();
 extern void setSmartFirePrimary(bool fire);
-extern void setSmartFireSecondary(bool fire);
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);

@@ -45,7 +45,6 @@ NSTimeInterval frameEndTime;
 
 bool smartTriggerActive;
 bool canSmartFirePrimary;
-bool canSmartFireSecondary;
 
 NSString *dataDir;
 
@@ -415,7 +414,6 @@ void clearSmartTrigger() {
   if(smartTriggerActive){
     //Stop firing!
     [[GameViewController sharedInstance] stopPrimaryFire];
-    [[GameViewController sharedInstance] stopSecondaryFire];
   }
   smartTriggerActive=0;
 }
@@ -424,7 +422,7 @@ bool smartTriggerEngaged(){
   return smartTriggerActive;
 }
 void monsterIsCentered () {
-  if(canSmartFirePrimary || canSmartFireSecondary)
+  if(canSmartFirePrimary)
   {
     smartTriggerActive = 1;
   }
@@ -432,19 +430,12 @@ void monsterIsCentered () {
   if (smartTriggerActive && canSmartFirePrimary ){
     [[GameViewController sharedInstance] startPrimaryFire];
   }
-  if (smartTriggerActive && canSmartFireSecondary ){
-    [[GameViewController sharedInstance] startSecondaryFire];
-  }
   
   return;
 }
 void setSmartFirePrimary(bool fire){
   canSmartFirePrimary=fire;
 }
-void setSmartFireSecondary(bool fire){
-  canSmartFireSecondary=fire;
-}
-
 
 extern GLfloat helperPauseAlpha() {
   return [[GameViewController sharedInstance] getPauseAlpha];
