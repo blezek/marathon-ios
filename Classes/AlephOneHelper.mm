@@ -464,6 +464,11 @@ bool fastStart () {
   return 0;
 }
 
+  //Hide HUD for filming and screenshot purposes
+bool shouldHideHud () {
+  return 0;
+}
+
 short pRecord[128][2];
 void helperNewProjectile( short projectile_index, short which_weapon, short which_trigger ) {
   if ( projectile_index >= 128 ) { return; };

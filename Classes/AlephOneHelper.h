@@ -52,6 +52,7 @@ extern bool playerInTerminal ();
 extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();
+extern bool shouldHideHud ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();

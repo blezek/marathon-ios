@@ -1511,9 +1511,11 @@ void render_screen(short ticks_elapsed)
 #ifdef HAVE_OPENGL
 		if (Screen::instance()->hud()) {
       if (Screen::instance()->lua_hud()){
-        glPushGroupMarkerEXT(0, "Draw LUA HUD");
-			  Lua_DrawHUD(ticks_elapsed);
-        glPopGroupMarkerEXT();
+        if (!shouldHideHud()) {
+          glPushGroupMarkerEXT(0, "Draw LUA HUD");
+          Lua_DrawHUD(ticks_elapsed);
+          glPopGroupMarkerEXT();
+        }
         
         //DCW debug shader. Draws rect in middle of screen.
         /*glBindFramebuffer(GL_FRAMEBUFFER, 1);

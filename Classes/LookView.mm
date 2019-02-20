@@ -269,7 +269,7 @@ extern "C" {
   if (firstMoveSinceTouchStarted && (lastPanPoint.x != currentPoint.x || lastPanPoint.y != currentPoint.y) ) {
     lastPanPoint = currentPoint;
     firstMoveSinceTouchStarted = NO;
-    NSLog(@"Go Touches!");
+    //NSLog(@"Go Touches!");
   }
 
   float dx, dy;

@@ -1742,6 +1742,9 @@ short items[]=
         }
       [self.HUDViewController updateSwimmingIndicator];
       [self.HUDViewController updateEscapeButtonVisibility];
+      if(shouldHideHud()) {
+        self.HUDViewController.view.alpha = 0.03; //If alpha is too low, it stops responding. Don't use 0.
+      }
     }
   
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
