@@ -1841,7 +1841,7 @@ short items[]=
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
-  MLog ( @"AUTOROTATE!!!!!!!!!\n\n\n\n" );
+  MLog ( @"AUTOROTATE!\n" );
 
 
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight

@@ -53,6 +53,7 @@ extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();
 extern bool shouldHideHud ();
+extern bool shouldAllowDoubleClick ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();

@@ -186,6 +186,14 @@ extern "C" {
 	double rotatedY = abs(rotationRate.y) < cutoff ? 0.0 : rotationRate.y * elapsedtime;
 	double rotatedZ = abs(rotationRate.z) < cutoff ? 0.0 : rotationRate.z * elapsedtime;
   
+  //Invert X and Y if device is upside down (Home button is on left).
+  //Note that we need the interface orientation, NOT the device orientation.
+  UIDeviceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+  if (orientation == UIInterfaceOrientationLandscapeLeft)  {
+    rotatedX *= -1.0;
+    rotatedY *= -1.0;
+  }
+  
 	//Apply comfortable rotation rate adjustment.
 	gyroDeltaX = rotatedX  * tiltFactor;
 	gyroDeltaY = rotatedY  * tiltFactor;

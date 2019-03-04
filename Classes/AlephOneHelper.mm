@@ -469,6 +469,12 @@ bool shouldHideHud () {
   return 0;
 }
 
+  //Do we ever want to allow double cliock actions?
+  //Probable never, so tapping movepad doesn't trigger action.
+bool shouldAllowDoubleClick () {
+  return NO;
+}
+
 short pRecord[128][2];
 void helperNewProjectile( short projectile_index, short which_weapon, short which_trigger ) {
   if ( projectile_index >= 128 ) { return; };

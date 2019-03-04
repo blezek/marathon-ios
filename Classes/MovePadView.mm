@@ -128,12 +128,12 @@ extern "C" {
   float fdy = fabs ( dy );
   
   float tightClamp = [[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun] && (useForceTouch || !headBelowMedia()); //Whether to clamp the knob close to center or not.
-  bool running = ( fdx > runRadius || fdy > runRadius || tightClamp);
+  bool shouldRunIfNeeded = ( fdx > runRadius || fdy > runRadius || tightClamp);
   float runThresholdBufferX=5; //How far we let the knob move into the run delta threshold for strafing.
   float runThresholdBufferY=30; //How far we let the knob move into the run delta threshold for forward/back movement.
   
   // Are we running?
-  if ( running ) {
+  if ( shouldRunIfNeeded ) {
     setKey(runKey, 1);
     // MLog ( @"Running!" );
 		
@@ -151,7 +151,7 @@ extern "C" {
        shouldBeSwimmingIfSubmerged=YES;
     }
   } else {
-      setKey(runKey, 0);
+    setKey(runKey, 0);
     
     shouldBeSwimmingIfSubmerged=NO;
     

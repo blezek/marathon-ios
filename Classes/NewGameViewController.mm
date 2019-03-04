@@ -159,7 +159,8 @@ static vector<entry_point> levels;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Overriden to allow any orientation.
-  return ( interfaceOrientation == UIInterfaceOrientationLandscapeRight );
+  return (interfaceOrientation == UIInterfaceOrientationLandscapeRight
+          || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 

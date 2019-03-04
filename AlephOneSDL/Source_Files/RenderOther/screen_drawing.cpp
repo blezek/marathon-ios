@@ -197,11 +197,14 @@ void initialize_screen_drawing(
 	load_screen_interface_colors();
 	
   // DJB Change terminal font!
-  if ( !helperRunningOniPad() ) {
+  //DCW WHAT? WHY NOT CHANGE FONT ON iPAD? I'm gonna do it...
+  //if ( !helperRunningOniPad() ) {
+    //DCW only Durandal needs this?
+  #if SCENARIO == 2
     InterfaceFonts[4].Size = 18;
-    //InterfaceFonts[4].File.assign("bankgthd.ttf");
-    InterfaceFonts[4].File.assign("../bankgthd.ttf"); //Check in the4 application bundle root for the font instead of the scenario.
-  }
+    InterfaceFonts[4].File.assign("../bankgthd.ttf"); //Check in the application bundle root for the font instead of the scenario.
+  #endif
+  //}
   
 	/* load the font stuff. */
 	for(loop=0; loop<NUMBER_OF_INTERFACE_FONTS; ++loop)

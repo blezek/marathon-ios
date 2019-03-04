@@ -73,7 +73,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Override to allow orientations other than the default portrait orientation.
-    return NO;
+    return YES;
 }
 
 #pragma mark -
