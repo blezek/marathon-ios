@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5103959522F7D77600601366 /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5103959422F7D77600601366 /* help6.png */; };
+		5103959622F7D77600601366 /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5103959422F7D77600601366 /* help6.png */; };
+		5103959722F7D77600601366 /* help6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5103959422F7D77600601366 /* help6.png */; };
 		51041DD21EAAF02300129201 /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51041DD11EAAF02300129201 /* libFreetype2.a */; };
 		51041DD31EAAF02300129201 /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51041DD11EAAF02300129201 /* libFreetype2.a */; };
 		51041DD41EAAF02300129201 /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51041DD11EAAF02300129201 /* libFreetype2.a */; };
@@ -103,6 +106,12 @@
 		51324AAF1EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB01EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
 		51324AB11EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */; };
+		513436E52266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
+		513436E62266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
+		513436E72266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
+		513436E92266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
+		513436EA2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
+		513436EB2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
 		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
 		5146D7C51FE0588900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
 		5146D7C61FE0588A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
@@ -2005,6 +2014,7 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* AlephOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlephOne_Prefix.pch; sourceTree = "<group>"; };
+		5103959422F7D77600601366 /* help6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help6.png; path = Artwork/Help/help6.png; sourceTree = "<group>"; };
 		51041DD11EAAF02300129201 /* libFreetype2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFreetype2.a; path = submodules/Libraries/freetype_2.4.4/libFreetype2.a; sourceTree = SOURCE_ROOT; };
 		51041DD81EAAF03C00129201 /* ftconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftconfig.h; sourceTree = "<group>"; };
 		51041DD91EAAF03C00129201 /* ftheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftheader.h; sourceTree = "<group>"; };
@@ -2229,6 +2239,9 @@
 		51324AAA1EAAE3C400BA8D8F /* libSDL2_net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_net.a; sourceTree = "<group>"; };
 		51324AAE1EAAE3E700BA8D8F /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
 		51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ttf.h; sourceTree = "<group>"; };
+		513436E32266C9B400435C9D /* AOMGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AOMGameController.h; path = Classes/AOMGameController.h; sourceTree = "<group>"; };
+		513436E42266C9B400435C9D /* AOMGameController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AOMGameController.mm; path = Classes/AOMGameController.mm; sourceTree = "<group>"; };
+		513436E82266CAE600435C9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		513F28261F97CAF100A23C93 /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		5146D7D41FE08CC000B89738 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
 		51482D692001C85F00690752 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = Resources/GUI/github.png; sourceTree = "<group>"; };
@@ -3501,6 +3514,7 @@
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
 				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
+				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
 				514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51324AAF1EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */,
@@ -3537,6 +3551,7 @@
 			files = (
 				51324A2C1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51324A291EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
+				513436EA2266CAE700435C9D /* GameController.framework in Frameworks */,
 				51041DD31EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
@@ -3594,6 +3609,7 @@
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
+				513436EB2266CAE700435C9D /* GameController.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				514D349C1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
@@ -3729,6 +3745,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				513436E82266CAE600435C9D /* GameController.framework */,
 				51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */,
 				512E0C031E70C85D000B0C98 /* ImageIO.framework */,
 				517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */,
@@ -5062,6 +5079,8 @@
 			isa = PBXGroup;
 			children = (
 				A80498DE13DDC97900F807FB /* HUD */,
+				513436E32266C9B400435C9D /* AOMGameController.h */,
+				513436E42266C9B400435C9D /* AOMGameController.mm */,
 				A8193C2F140EB09C00FFD05A /* RootViewController.h */,
 				A8193C30140EB09C00FFD05A /* RootViewController.mm */,
 				A84CA788130E1F9800A3A4F4 /* Secrets.h */,
@@ -5407,6 +5426,7 @@
 				A87F55DD12A7407E00032ED6 /* help1.png */,
 				A87F55DE12A7407E00032ED6 /* help2.png */,
 				A87F55DF12A7407E00032ED6 /* help3.png */,
+				5103959422F7D77600601366 /* help6.png */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -6081,6 +6101,7 @@
 				A8B9FAE713FB6C1000552296 /* movementboxBase~iphone.png in Resources */,
 				A8B9FAEA13FB6C1000552296 /* movementboxKnob.png in Resources */,
 				A8B9FAED13FB6C1000552296 /* movementboxKnob@2x~iphone.png in Resources */,
+				5103959522F7D77600601366 /* help6.png in Resources */,
 				A8B9FAF013FB6C1000552296 /* movementboxKnob~iphone.png in Resources */,
 				A8B9FAF313FB6C1000552296 /* overheadmap.png in Resources */,
 				A8B9FB0E13FB6C1000552296 /* primarytrigger-btn.png in Resources */,
@@ -6395,6 +6416,7 @@
 				5152759121A1F534004D1E07 /* PreferencesHighlighted.png in Resources */,
 				A807A70E13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DC13FA001700552296 /* GameViewController~iphone.xib in Resources */,
+				5103959622F7D77600601366 /* help6.png in Resources */,
 				A8B9F9DF13FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
 				A8B9F9E313FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9EA13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */,
@@ -6684,6 +6706,7 @@
 				A804990813DE1CDA00F807FB /* ret_flame@2x~iphone.png in Resources */,
 				A804990B13DE1CDA00F807FB /* ret_flame~iphone.png in Resources */,
 				A804990E13DE1CDA00F807FB /* ret_machinegun.png in Resources */,
+				5103959722F7D77600601366 /* help6.png in Resources */,
 				A804991113DE1CDA00F807FB /* ret_machinegun@2x~iphone.png in Resources */,
 				A804991413DE1CDA00F807FB /* ret_machinegun~iphone.png in Resources */,
 				A804991713DE1CDA00F807FB /* ret_pistol.png in Resources */,
@@ -6996,6 +7019,7 @@
 				510420631EAAF34B00129201 /* pngread.c in Sources */,
 				51EAD55D1E58B13700611EFF /* lua_map.cpp in Sources */,
 				51EAD71C1E58B13800611EFF /* MessageInflater.cpp in Sources */,
+				513436E52266C9B400435C9D /* AOMGameController.mm in Sources */,
 				51EAD4521E58B13600611EFF /* xmlrole.c in Sources */,
 				51EAD5091E58B13700611EFF /* lauxlib.c in Sources */,
 				51EAD7191E58B13800611EFF /* MessageHandler.cpp in Sources */,
@@ -7320,6 +7344,7 @@
 				51EAD5AC1E58B13700611EFF /* preference_dialogs.cpp in Sources */,
 				510420641EAAF34B00129201 /* pngread.c in Sources */,
 				51EAD65A1E58B13700611EFF /* OGL_FBO.cpp in Sources */,
+				513436E62266C9B400435C9D /* AOMGameController.mm in Sources */,
 				51EAD4B01E58B13600611EFF /* map.cpp in Sources */,
 				51EAD71A1E58B13800611EFF /* MessageHandler.cpp in Sources */,
 				51EAD4741E58B13600611EFF /* game_wad.cpp in Sources */,
@@ -7644,6 +7669,7 @@
 				510420651EAAF34B00129201 /* pngread.c in Sources */,
 				51EAD55F1E58B13700611EFF /* lua_map.cpp in Sources */,
 				51EAD71E1E58B13800611EFF /* MessageInflater.cpp in Sources */,
+				513436E72266C9B400435C9D /* AOMGameController.mm in Sources */,
 				51EAD4541E58B13600611EFF /* xmlrole.c in Sources */,
 				51EAD50B1E58B13700611EFF /* lauxlib.c in Sources */,
 				51EAD71B1E58B13800611EFF /* MessageHandler.cpp in Sources */,
@@ -7969,11 +7995,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8043,11 +8069,11 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8062,8 +8088,8 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8130,11 +8156,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8146,10 +8172,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8205,10 +8231,10 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M2";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8221,10 +8247,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8277,10 +8303,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M2";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8293,10 +8319,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8349,10 +8375,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M2";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8364,11 +8390,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8423,11 +8449,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8439,10 +8465,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8492,11 +8518,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = Dustin;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8510,8 +8536,8 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8562,11 +8588,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8677,8 +8703,8 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8746,11 +8772,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8763,10 +8789,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8819,10 +8845,10 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M2";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8837,8 +8863,8 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8889,11 +8915,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9004,8 +9030,8 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -9070,11 +9096,11 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

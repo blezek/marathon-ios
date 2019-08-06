@@ -422,6 +422,7 @@ bool smartTriggerEngaged(){
   return smartTriggerActive;
 }
 void monsterIsCentered () {
+  
   if(canSmartFirePrimary)
   {
     smartTriggerActive = 1;

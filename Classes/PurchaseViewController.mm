@@ -55,6 +55,8 @@
   
   //If the user has already tipped, tell them how cool they are and don't show any more purchases.
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip]) {
+    //[tipButton setEnabled:YES];
+    //[tipButton setHidden:NO];
     [self updateView];
     return;
   }
@@ -184,6 +186,26 @@
 }
 
 - (IBAction)buyTip:(id)sender {
+  
+    //If the user clicks the tip button, but has already tipped, and the Thanks view is visible, hide the Thanks view and populate the segment control.
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kHasPurchasedTip] && !thankYou.hidden) {
+    [tipButton setHidden:NO];
+    thankYou.hidden=YES;
+    
+    [self.activity startAnimating];
+    self.loadingView.hidden = NO;
+    SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers: [NSSet setWithArray:allProductIDs]];
+    request.delegate = self;
+    [request start];
+    
+    [tipButton setEnabled:YES];
+    [restoreButton setEnabled:YES];
+    
+    [tipSelector removeAllSegments];
+    [tipSelector setHidden:NO];
+    [tipDescription setText:@""];
+  }
+  
   int selectedTipIndex = [tipSelector selectedSegmentIndex];
   if ( [self canPurchase] && selectedTipIndex >= 0  ) {
     [tipButton setEnabled:NO];

@@ -407,7 +407,8 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     [UIView animateWithDuration:1 delay:1 options:0 animations:fadeInBackground completion:nil];
     [Effects performSelector:@selector(appearRevealingView:) withObject:self.game.mainMenuButtons afterDelay:2];
     
-    [self.game menuShowReplacementMenu];
+    //[self.game menuShowReplacementMenu];
+    [self.game switchBackToGameView];
     self.game.logoView.hidden = YES;
     [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil];
   }

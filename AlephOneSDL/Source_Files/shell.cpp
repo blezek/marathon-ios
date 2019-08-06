@@ -703,7 +703,7 @@ void initialize_application(void)
 	SoundManager::instance()->Initialize(*sound_preferences);
 	initialize_marathon_music_handler();
 	initialize_keyboard_controller();
-	initialize_joystick();
+  initialize_joystick();
 	initialize_gamma();
 	alephone::Screen::instance()->Initialize(&graphics_preferences->screen_mode);
 	initialize_marathon();

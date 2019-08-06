@@ -28,6 +28,8 @@
 
 #import "HUDViewController.h"
 #import "BasicHUDViewController.h"
+#import "AOMGameController.h"
+
 //#import "JoypadHUDViewController.h"
 
 typedef enum {
@@ -138,7 +140,9 @@ typedef enum {
   id displayLink;
   bool animating;
   bool inMainLoop;
-  NSTimer *animationTimer;  
+  NSTimer *animationTimer;
+  
+  AOMGameController *gameController;
   
   // Ticks for calculating how long the player has been playing
   int ticks;
@@ -154,6 +158,7 @@ typedef enum {
 
 - (IBAction)pause:(id)from;
 - (IBAction)pauseForBackground:(id)from;
+- (IBAction)togglePause:(id)from;
 - (IBAction)newGame;
 - (IBAction)joinNetworkGame;
 - (IBAction)gatherNetworkGame;

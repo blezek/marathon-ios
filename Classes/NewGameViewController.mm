@@ -82,6 +82,7 @@ static vector<entry_point> levels;
  */
 
 - (void)appear {
+  
   /*
   self.pledge.layer.cornerRadius = 20.0;
   self.pledge.layer.borderColor = [[UIColor grayColor] CGColor];

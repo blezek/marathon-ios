@@ -319,6 +319,8 @@ short localFindActionTarget(
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  gameController = [[AOMGameController alloc] init];
+  
   // Bogus reticule
   currentReticleImage = -1000;
   
@@ -534,9 +536,14 @@ short localFindActionTarget(
 }
 
 - (IBAction)switchBackToGameView {
+  
+    //Disable gamepad input while not in SDL menu mode
+  SDL_GameControllerEventState(SDL_IGNORE);
+  SDL_JoystickEventState(SDL_IGNORE);
+  
   [self menuShowReplacementMenu];
   self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or dialog is cancelled!
-  mode=GameMode;
+//DCW not sure if needed... it will crash the gamepad in this state if buttons are pressed before game starts  mode=GameMode;
   //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
 }
 
@@ -549,8 +556,13 @@ short localFindActionTarget(
   showControlsOverview = NO;
   [self cancelNewGame];
   self.viewGL.userInteractionEnabled = YES; //This must be disabled after the game starts or dialog is cancelled!
+  
+    //Enable gamepad navigation
+  SDL_GameControllerEventState(SDL_ENABLE);
+  SDL_JoystickEventState(SDL_ENABLE);
+
   mode=SDLMenuMode;
-}
+  }
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
@@ -1226,6 +1238,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 #pragma mark -
 #pragma mark Replacement menus
 - (IBAction)menuShowReplacementMenu {
+  
   self.logoView.hidden = YES;
   self.episodeImageView.image = nil;
   self.bungieAerospaceImageView.image = nil;
@@ -1382,6 +1395,21 @@ extern bool handle_open_replay(FileSpecifier& File);
   if ( mode == GameMode && !isPaused ) {
     [self pause:from];
   }
+  return;
+}
+
+- (IBAction)togglePause:(id)from{
+  
+  if ( mode != GameMode ) {
+    return;
+  }
+  
+  if( isPaused ) {
+    [self pause:self];
+  } else {
+    [self resume:self];
+  }
+    
   return;
 }
   
@@ -1726,7 +1754,8 @@ short items[]=
     }
     [self updateReticule:get_player_desired_weapon(current_player_index)];
     if ( get_game_state() == _display_main_menu && ( mode == SDLMenuMode || mode == MenuMode || mode == CutSceneMode ) ) {
-        [self menuShowReplacementMenu];
+        //[self menuShowReplacementMenu];
+      [self switchBackToGameView];
       self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
         mode = MenuMode;
     }
@@ -1740,10 +1769,21 @@ short items[]=
         } else {
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }
+      
+      if(gameController.mainController != nil) {
+        moveMouseRelative(gameController.rightXAxis, gameController.rightYAxis);
+      }
+      
       [self.HUDViewController updateSwimmingIndicator];
       [self.HUDViewController updateEscapeButtonVisibility];
-      if(shouldHideHud()) {
-        self.HUDViewController.view.alpha = 0.03; //If alpha is too low, it stops responding. Don't use 0.
+      if(shouldHideHud() || gameController.mainController != nil) {
+          //If alpha is too low, the UI won't respond to input responding. Don't use 0 if you still want interaction.
+          //Of course, use zero if there is a controller connected
+        float hudAlpha = gameController.mainController != nil ? 0.0 : 0.03;
+        
+        self.HUDViewController.view.alpha = hudAlpha;
+      } else {
+        self.HUDViewController.view.alpha = 1.0;
       }
     }
   
