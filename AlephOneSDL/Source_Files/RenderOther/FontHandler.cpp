@@ -52,6 +52,8 @@ Jan 12, 2001 (Loren Petrich):
 
 #include "OGL_Shader.h"
 
+#include "MatrixStack.hpp"
+
 #ifdef HAVE_OPENGL
 set<FontSpecifier*> *FontSpecifier::m_font_registry = NULL;
 #endif
@@ -389,17 +391,22 @@ void FontSpecifier::OGL_Render(const char *Text)
 
 	glBindTexture(GL_TEXTURE_2D,TxtrID);
 	
-  glVertexPointer(2, GL_SHORT, 0, VertexCache);
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.
   if( useShaderRenderer() ){
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, 0, VertexCache);
+    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    
     glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
     glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+
   } else {
+    glVertexPointer(2, GL_SHORT, 0, VertexCache);
     glEnableClientState(GL_VERTEX_ARRAY);
     glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
   }
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   
 	size_t Len = MIN(strlen(Text),255);
 	for (size_t k=0; k<Len; k++)
@@ -407,11 +414,28 @@ void FontSpecifier::OGL_Render(const char *Text)
 		unsigned char c = Text[k];
     
     // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
-    glTranslatef(-PadCache,0,0);
-
+    if( !useShaderRenderer() ) glTranslatef(-PadCache,0,0);
+    MatrixStack::Instance()->translatef(-PadCache,0,0);
+    
+    if (useShaderRenderer()) {
+      
+      //Set shader uniforms, etc.
+      Shader* lastShader = lastEnabledShader();
+      if (lastShader) {
+        GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+        MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+        MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+        
+        lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+        lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+      }
+    }
     
     glDrawArrays(GL_TRIANGLE_FAN, c*4, 4);
-    glTranslatef(WidthCache[c]-PadCache,0,0);
+    
+    if( !useShaderRenderer() ) glTranslatef(WidthCache[c]-PadCache,0,0);
+    MatrixStack::Instance()->translatef(WidthCache[c]-PadCache,0,0);
+
     
 		//glCallList(DispList+c);
 	}

@@ -190,7 +190,7 @@ void RenderRasterize_Shader::render_tree() {
 	Shader::disable();
 
     //Initialize if needed. This must be the size of the main viewport.
-  glPushGroupMarkerEXT(0, "Render depth texture");
+/*  glPushGroupMarkerEXT(0, "Render depth texture");
   if (colorDepthSansMedia._h == 0 && colorDepthSansMedia._w == 0) {
     GLint viewPort[4];
     glGetIntegerv(GL_VIEWPORT, viewPort);
@@ -199,7 +199,7 @@ void RenderRasterize_Shader::render_tree() {
   colorDepthSansMedia.activate();
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glClearColor(0,0,1, .5);
+  glClearColor(0,0,0, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   RenderRasterizerClass::render_tree(kDiffuseDepthNoMedia);
   colorDepthSansMedia.deactivate();
@@ -212,6 +212,7 @@ void RenderRasterize_Shader::render_tree() {
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glPopGroupMarkerEXT();
   glActiveTexture(GL_TEXTURE0);
+  */
   
   RenderRasterizerClass::render_tree(kDiffuse);
 

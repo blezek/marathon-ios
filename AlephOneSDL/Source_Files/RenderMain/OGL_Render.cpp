@@ -3234,7 +3234,8 @@ bool OGL_RenderCrosshairs()
 bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r, unsigned char g, unsigned char b)
 {
 	if (!OGL_IsActive()) return false;
-	
+  glPushGroupMarkerEXT(0, "Render Text");
+
 	// Create display list for the current text string;
 	// use the "standard" text-font display list (display lists can be nested)
   // DJB Unused
@@ -3242,6 +3243,19 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
   // DJB OpenGL, don't use display lists
   // TextDisplayList = glGenLists(1);
   // glNewList(TextDisplayList,GL_COMPILE);
+  
+  //Enable shader, if needed
+  Shader* s_rect = NULL;
+  if ( useShaderRenderer() ) {
+    s_rect = Shader::get(Shader::S_Rect);
+    s_rect->enable();
+    ///?????
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  }
+  
 	GetOnScreenFont().OGL_Render(Text);
 	//glEndList();
 	
@@ -3250,12 +3264,17 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 	GLfloat Depth = 0;
 	
 	// Using a modelview matrix, of course
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
+  
+  if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
+  MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
 	
+	if (!useShaderRenderer()) glPushMatrix();
+	MatrixStack::Instance()->pushMatrix();
+  
 	// Background
-  glColor4f(0,0,0,1);
-	
+  if (!useShaderRenderer()) glColor4f(0,0,0,1);
+  MatrixStack::Instance()->color4f(0,0,0,1);
+
 	// Changed to drop shadow only for performance reasons
 	/*
 	glLoadIdentity();
@@ -3287,25 +3306,37 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 	glCallList(TextDisplayList);
 	*/
 	
-	glLoadIdentity();
-	glTranslatef(BaseX+1.0F,BaseY+1.0F,Depth);
+	
+  if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
+
+	if (!useShaderRenderer()) glTranslatef(BaseX+1.0F,BaseY+1.0F,Depth);
+  MatrixStack::Instance()->translatef(BaseX+1.0F,BaseY+1.0F,Depth);
   // DJB OpenGL Render text, not display list
   // glCallList(TextDisplayList);
   GetOnScreenFont().OGL_Render(Text);
 	
 	// Foreground
-	SglColor3f(r/255.0f,g/255.0f,b/255.0f);
-
-	glLoadIdentity();
-	glTranslatef(BaseX,BaseY,Depth);
+  if (!useShaderRenderer()) SglColor3f(r/255.0f,g/255.0f,b/255.0f);
+  MatrixStack::Instance()->color4f(r/255.0f,g/255.0f,b/255.0f,1);
+  
+  if (!useShaderRenderer()) glLoadIdentity();
+  MatrixStack::Instance()->loadIdentity();
+  
+  if (!useShaderRenderer()) glTranslatef(BaseX,BaseY,Depth);
+  MatrixStack::Instance()->translatef(BaseX,BaseY,Depth);
+  
   // DJB OpenGL Render text, not display list
   // glCallList(TextDisplayList);
   GetOnScreenFont().OGL_Render(Text);
 		
 	// Clean up
 	//glDeleteLists(TextDisplayList,1);
-	glPopMatrix();
-	
+	if (!useShaderRenderer()) glPopMatrix();
+  MatrixStack::Instance()->popMatrix();
+  
+  glPopGroupMarkerEXT();
+
 	return true;
 }
 

@@ -470,8 +470,7 @@ short ModifyCLUT(short TransferMode, short CLUT)
 	short CTable;
 	
 	// Tinted mode is only used for invisibility, and infravision will make objects visible
-  // If we are using the shader renderer, do the normal thing here because the shader will be doing static effects.
-	if (TransferMode == _static_transfer && !useShaderRenderer() ) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
+	if (TransferMode == _static_transfer ) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
 	else if (TransferMode == _tinted_transfer) CTable = SILHOUETTE_BITMAP_CLUTSPECIFIC + CLUT;
 	else if (InfravisionActive) CTable = INFRAVISION_BITMAP_CLUTSPECIFIC + CLUT;
 	else CTable = CLUT;
