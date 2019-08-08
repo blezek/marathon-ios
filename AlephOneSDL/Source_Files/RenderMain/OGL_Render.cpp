@@ -259,7 +259,7 @@ static GLfloat CenteredWorld_2_OGLEye[16];
 
   //DCW: converting these double matrices to float for ES1
 // Screen -> clip (good starter matrix; assumes distance is already projected)
-static GLfloat Screen_2_Clip[16];
+GLfloat Screen_2_Clip[16];
 // OpenGL eye -> clip (good projection matrix for 3D models)
 static GLfloat OGLEye_2_Clip[16];
 // OpenGL eye -> screen
