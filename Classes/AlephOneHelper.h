@@ -47,6 +47,7 @@ extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
+extern bool getLocalPlayer ();
 extern bool headBelowMedia ();
 extern bool playerInTerminal ();
 extern bool useShaderRenderer ();

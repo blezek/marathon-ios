@@ -446,7 +446,16 @@ void helperSetPreferences( int notify) {
   [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
 }
 
+bool getLocalPlayer () {
+  return local_player;
+}
+
 bool headBelowMedia () {
+  
+  if( !local_player ) {
+    return 0;
+  }
+  
   return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
 }
 
@@ -455,7 +464,7 @@ bool playerInTerminal () {
 }
 
 bool useShaderRenderer() {
-  return 1;
+  return 0;
 }
 bool useShaderPostProcessing() {
   return 1;

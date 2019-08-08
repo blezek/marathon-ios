@@ -157,7 +157,6 @@ extern "C" {
     setKey(mapKey, gamepad.buttonX.isPressed);
     
     
-    
       //Always run above media. Never check headBelowMedia or set preferences if no game is active, otherwise it will crash!
     setKey(runKey, 1);
     if ([[GameViewController sharedInstance] mode] == GameMode) {
@@ -180,9 +179,11 @@ extern "C" {
     }
     
     if ([[GameViewController sharedInstance] mode] == GameMode) {
-      if( playerInTerminal() ) {
+      //
+      if( playerInTerminal() || !getLocalPlayer() ) {
         setKey(SDL_SCANCODE_ESCAPE, gamepad.leftShoulder.isPressed);
       } else {
+        setKey(SDL_SCANCODE_ESCAPE, 0); //We don't want to get stuck in escape!
         setKey(runKey, !(gamepad.leftShoulder.isPressed));
       }
     }

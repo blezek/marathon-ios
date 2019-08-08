@@ -1556,8 +1556,6 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	TMgr.RestoreTextureMatrix();
 }
 
-//DCW everything below needs conversion to ES2/3
-
 extern void position_sprite_axis(short *x0, short *x1, short scale_width, short screen_width, short positioning_mode, _fixed position, bool flip, world_distance world_left, world_distance world_right);
 
 extern GLfloat Screen_2_Clip[16];
@@ -1568,7 +1566,7 @@ void RenderRasterize_Shader::render_viewer_sprite_layer(RenderStep renderStep)
   
   MatrixStack::Instance()->matrixMode(MS_TEXTURE);
   MatrixStack::Instance()->pushMatrix();
-  
+
   MatrixStack::Instance()->matrixMode(MS_PROJECTION);
   MatrixStack::Instance()->pushMatrix();
   MatrixStack::Instance()->loadMatrixf(Screen_2_Clip);
