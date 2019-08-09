@@ -1400,7 +1400,7 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 - (IBAction)togglePause:(id)from{
   
-  if ( mode != GameMode ) {
+  if ( mode != GameMode || !getLocalPlayer() ) {
     return;
   }
   

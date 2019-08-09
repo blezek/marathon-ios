@@ -1663,6 +1663,8 @@ struct ExtendedVertexData
 
 void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRectangle, RenderStep renderStep)
 {
+  glPushGroupMarkerEXT(0, "render_viewer_sprite");
+
   auto TMgr = setupSpriteTexture(RenderRectangle, OGL_Txtr_WeaponsInHand, 0, renderStep);
   
   // Find texture coordinates
@@ -1760,6 +1762,16 @@ void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRe
     theShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
     theShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
     
+    GLfloat plane0[4], plane1[4], plane5[4], media6[4];
+    MatrixStack::Instance()->getPlanev(0, plane0);
+    MatrixStack::Instance()->getPlanev(1, plane1);
+    MatrixStack::Instance()->getPlanev(5, plane5);
+    MatrixStack::Instance()->getPlanev(6, media6);
+    theShader->setVec4(Shader::U_ClipPlane0, plane0);
+    theShader->setVec4(Shader::U_ClipPlane1, plane1);
+    theShader->setVec4(Shader::U_ClipPlane5, plane5);
+    theShader->setVec4(Shader::U_MediaPlane6, media6);
+    
   } else {
     glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
     glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
@@ -1779,4 +1791,5 @@ void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRe
   Shader::disable();
   TMgr.RestoreTextureMatrix();
   
+  glPopGroupMarkerEXT();
 }

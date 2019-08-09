@@ -103,7 +103,11 @@ extern "C" {
   
   [self.mainController setControllerPausedHandler: ^(GCController *controller) {
     //Note: don't let the AO SDL joystick event handler initialize, otherwise it will override this callback.
-    NSLog(@"Controller PAUSE!");
+    
+    if( !getLocalPlayer() ){
+      return;
+    }
+        
     [[GameViewController sharedInstance] togglePause:self];
   } ];
   
