@@ -23,6 +23,7 @@
 #include "ChaseCam.h"
 #include "preferences.h"
 
+#include "mouse.h"
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
 
@@ -180,13 +181,13 @@ void RenderRasterize_Shader::render_tree() {
 	s = Shader::get(Shader::S_Landscape);
 	s->enable();
 	s->setFloat(Shader::U_UseFog, usefog ? 1.0 : 0.0);
-	s->setFloat(Shader::U_Yaw, view->yaw * AngleConvert);
-	s->setFloat(Shader::U_Pitch, view->pitch * AngleConvert);
+	s->setFloat(Shader::U_Yaw, ((float)(view->yaw) + lostMousePrecisionX()) * AngleConvert);
+	s->setFloat(Shader::U_Pitch, ((float)(view->pitch) + lostMousePrecisionY()) * AngleConvert);
 	s = Shader::get(Shader::S_LandscapeBloom);
 	s->enable();
 	s->setFloat(Shader::U_UseFog, usefog ? 1.0 : 0.0);
-	s->setFloat(Shader::U_Yaw, view->yaw * AngleConvert);
-	s->setFloat(Shader::U_Pitch, view->pitch * AngleConvert);
+  s->setFloat(Shader::U_Yaw, ((float)(view->yaw) + lostMousePrecisionX()) * AngleConvert);
+  s->setFloat(Shader::U_Pitch, ((float)(view->pitch) + lostMousePrecisionY()) * AngleConvert);
 	Shader::disable();
 
     //Initialize if needed. This must be the size of the main viewport.
@@ -836,6 +837,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
     }
 	} else {
 		glDisable(GL_BLEND);
+    glEnable(GL_BLEND); //dcw shit test (this actually fixes alph textures?)
     if ( ! useShaderRenderer()){
       glEnable(GL_ALPHA_TEST);
       glAlphaFunc(GL_GREATER, 0.5);
@@ -1314,7 +1316,7 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
 	//glTranslatef(pos.x, pos.y, pos.z);
   MatrixStack::Instance()->translatef(pos.x, pos.y, pos.z);
 
-	double yaw = view->yaw * 360.0 / float(NUMBER_OF_ANGLES);
+	double yaw = ((float)(view->yaw) + lostMousePrecisionX()) * 360.0 / float(NUMBER_OF_ANGLES);
 	//glRotatef(yaw, 0.0, 0.0, 1.0);
   MatrixStack::Instance()->rotatef(yaw, 0.0, 0.0, 1.0);
 
@@ -1771,6 +1773,10 @@ void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRe
     theShader->setVec4(Shader::U_ClipPlane1, plane1);
     theShader->setVec4(Shader::U_ClipPlane5, plane5);
     theShader->setVec4(Shader::U_MediaPlane6, media6);
+    
+    //DCW I think we always want to blend weapon in hand, even if the flag isn't set right in the trexture for some reason.
+    //During invincibility in M1, this would be off due to some bug in the port.
+    glEnable(GL_BLEND);
     
   } else {
     glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);

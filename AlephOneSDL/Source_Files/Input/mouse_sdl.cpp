@@ -219,8 +219,8 @@ void mouse_idle(short type)
 //DCW
 //Returns the currently not-represented mouse precision as a fraction of a yaw and pitch unit.
 //This might be useful to render the view with more precise yaw or pitch.
-float lostMousePrecisionX() { return ( (lost_x_at_last_sample*(float)FIXED_ONE)/512.0) - 0.5; }
-float lostMousePrecisionY() { return ( (lost_y_at_last_sample*(float)FIXED_ONE)/2048.0) - 0.5; }
+float lostMousePrecisionX() { return ( (float)shouldSmoothMouselook() * ((lost_x_at_last_sample*(float)FIXED_ONE)/512.0) - 0.5); }
+float lostMousePrecisionY() { return ( (float)shouldSmoothMouselook() * ((lost_y_at_last_sample*(float)FIXED_ONE)/2048.0) - 0.5); }
 
 double cosine_table_calculated(double i) {
   double two_pi= 8.0*atan(1.0);
