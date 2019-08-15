@@ -63,7 +63,6 @@ extern "C" {
   [self unPauseGyro];
 	specialGyroModeActive = 0;
 	[self startGyro];
-
 }
 
 - (void)handleTouch:(CGPoint)currentPoint {

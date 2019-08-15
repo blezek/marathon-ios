@@ -34,15 +34,18 @@ extern "C" {
 
 @implementation LookView
 @synthesize lookPadView;
+@synthesize actionBox;
 @synthesize tapLocationIndicator;
 @synthesize smartFireIndicator;
 @synthesize primaryFire, secondaryFire;
 @synthesize firstTouch, firstTouchTime, lastPrimaryFire, touchesEndedTime;
+@synthesize inRearrangement;
 
 - (void)viewDidLoad {
   firstTouch = nil;
   secondTouch = nil;
   tapID=0;
+  inRearrangement=NO;
   lastTouchWasTap = NO;
   autoFireShouldStop = YES;
 	self.touchesEndedTime = [NSDate date];
@@ -78,6 +81,13 @@ extern "C" {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   id anything = [touches anyObject];
+  NSLog ( @"Touch started ");
+  if (inRearrangement) {
+    if( [anything isKindOfClass:[UITouch class]] ){
+      [self moveSomeViewToTouch: (UITouch*)anything];
+    }
+    return;
+  }
   
   //NSLog ( @"Touch started ");
   
@@ -149,6 +159,14 @@ extern "C" {
   }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  id anything = [touches anyObject];
+  
+  if (inRearrangement) {
+    if( [anything isKindOfClass:[UITouch class]] ){
+      [self moveSomeViewToTouch: (UITouch*)anything];
+    }
+    return;
+  }
   
   for ( UITouch *touch in touches ) {
     if ( touch == firstTouch ) {
@@ -242,6 +260,12 @@ extern "C" {
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   
+  if (inRearrangement) {
+    [self moveSomeViewToTouch: [touches anyObject]];
+    return;
+  }
+
+  
   // If first touch goes away, make this one the first
    if ( firstTouch == nil ) {
      firstTouch = [touches anyObject];
@@ -259,6 +283,11 @@ extern "C" {
                            
 }
 - (void)handleTouch:(UITouch *)touch {
+  
+  if (inRearrangement) {
+    [self moveSomeViewToTouch: touch];
+    return;
+  }
   
   [lookPadView unPauseGyro];
   
@@ -329,6 +358,61 @@ extern "C" {
 
   // NSLog(@"touches moved, sending delta" );
 
+}
+
+- (void) shouldRearrange:(bool)rearrange {
+  inRearrangement=rearrange;
+  
+  [lookPadView setUserInteractionEnabled:!inRearrangement];
+  [actionBox setUserInteractionEnabled:!inRearrangement];
+  
+    //Un-hide lookPadView, but the actionbox will be shown by runmainlooponce.
+  [lookPadView setHidden:!(rearrange || [[NSUserDefaults standardUserDefaults] boolForKey:kOnScreenTrigger])];
+  
+  if (!rearrange) {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCustomTriggerLocation];
+    [[NSUserDefaults standardUserDefaults] setFloat:[lookPadView frame].origin.x forKey:kCustomTriggerLocationX];
+    [[NSUserDefaults standardUserDefaults] setFloat:[lookPadView frame].origin.y forKey:kCustomTriggerLocationY];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kCustomActionLocation];
+    [[NSUserDefaults standardUserDefaults] setFloat:[actionBox frame].origin.x forKey:kCustomActionLocationX];
+    [[NSUserDefaults standardUserDefaults] setFloat:[actionBox frame].origin.y forKey:kCustomActionLocationY];
+  }
+}
+
+- (void) loadCustomArrangementFromPreferences {
+  if([[NSUserDefaults standardUserDefaults] boolForKey:kCustomTriggerLocation]) {
+    CGRect newFrame=CGRectMake([[NSUserDefaults standardUserDefaults] floatForKey:kCustomTriggerLocationX],
+                               [[NSUserDefaults standardUserDefaults] floatForKey:kCustomTriggerLocationY],
+                               [lookPadView frame].size.width, [lookPadView frame].size.height);
+    
+    [lookPadView setFrame:newFrame];
+  }
+  
+  if([[NSUserDefaults standardUserDefaults] boolForKey:kCustomActionLocation]) {
+    CGRect newFrame=CGRectMake([[NSUserDefaults standardUserDefaults] floatForKey:kCustomActionLocationX],
+                               [[NSUserDefaults standardUserDefaults] floatForKey:kCustomActionLocationY],
+                               [actionBox frame].size.width, [actionBox frame].size.height);
+    
+    [actionBox setFrame:newFrame];
+  }
+}
+
+- (void) moveSomeViewToTouch:(UITouch*)touch {
+  bool centerViewOnTouch = NO;
+  UIView *viewOfInterest = actionBox;
+  if ([touch locationInView:self].x > self.frame.size.width / 2) {
+    viewOfInterest = lookPadView;
+    centerViewOnTouch=YES;
+  }
+  
+  CGRect newFrame = [viewOfInterest frame];
+  CGPoint halfDimensions= CGPointMake(newFrame.size.width/2, newFrame.size.height/2);
+  CGPoint newOrigin = [touch locationInView:self];
+  if (centerViewOnTouch) { newOrigin.x -= halfDimensions.x; }
+  newOrigin.y -= halfDimensions.y;
+  newFrame.origin=newOrigin;
+  [viewOfInterest setFrame:newFrame];
 }
 
 - (void)dealloc {

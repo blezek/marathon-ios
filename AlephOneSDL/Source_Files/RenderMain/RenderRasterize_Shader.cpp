@@ -830,7 +830,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
 
 	if (TMgr.IsBlended()) {
 		glEnable(GL_BLEND);
-		setupBlendFunc(TMgr.NormalBlend());
+ 		setupBlendFunc(TMgr.NormalBlend());
     if ( !useShaderRenderer()){
       glEnable(GL_ALPHA_TEST);
       glAlphaFunc(GL_GREATER, 0.001);

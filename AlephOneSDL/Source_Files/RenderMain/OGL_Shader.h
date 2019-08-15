@@ -98,6 +98,7 @@ public:
 		S_Gamma,
     S_Debug,
     S_Rect,
+    S_SolidColor,
 		NUMBER_OF_SHADER_TYPES
 	};
   

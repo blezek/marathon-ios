@@ -464,7 +464,7 @@ bool playerInTerminal () {
 }
 
 bool useShaderRenderer() {
-  return 1;
+  return 0;
 }
 bool useShaderPostProcessing() {
   return 1;

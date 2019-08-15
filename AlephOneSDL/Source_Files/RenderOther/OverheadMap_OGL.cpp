@@ -73,7 +73,12 @@ Jan 25, 2002 (Br'fin (Jeremy Parsons)):
 #ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
 #include "OGL_Render.h"
+
+#include "AlephOneHelper.h"
+#include "MatrixStack.hpp"
+#include "OGL_Shader.h"
 #endif
+
 
 
 
@@ -82,10 +87,20 @@ static inline void SetColor(rgb_color& Color)
 {
   if (map_is_translucent()) {
     unsigned short col[4] = { Color.red, Color.green, Color.blue, 32767};
-		SglColor3usv(col);
+    
+    if(useShaderRenderer()){
+      MatrixStack::Instance()->color4f((float)Color.red / 65535,(float)Color.green / 65535,(float)Color.blue / 65535,.5);
+    } else {
+      SglColor3usv(col);
+    }
   }
-	else
-		SglColor3usv((unsigned short *)(&Color));
+  else {
+    if(useShaderRenderer()){
+      MatrixStack::Instance()->color4f((float)Color.red / 65535,(float)Color.green / 65535,(float)Color.blue / 65535, 1.0);
+    } else {
+      SglColor3usv((unsigned short *)(&Color));
+    }
+  }
 }
 
 // Need to test this so as to find out when the color changes
@@ -104,12 +119,25 @@ extern short ViewWidth, ViewHeight;
 
 void OverheadMap_OGL_Class::begin_overall()
 {
-
+  
+  if(useShaderRenderer()){
+    GLfloat modelProjection[16];
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+    
+    Shader *s = Shader::get(Shader::S_SolidColor);
+    s->enable();
+    s->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+  }
+  
 	// Blank out the screen
 	// Do that by painting a black polygon
 	if (!map_is_translucent())
 	{
-		glColor4f(0,0,0,1);
+    if(useShaderRenderer()){
+      MatrixStack::Instance()->color4f(0,0,0,1);
+    } else {
+      glColor4f(0,0,0,1);
+    }
 		OGL_RenderRect(0, 0, ViewWidth, ViewHeight);
 	}
 	
@@ -143,8 +171,13 @@ void OverheadMap_OGL_Class::begin_polygons()
 	// Polygons are rendered before lines, and use the endpoint array,
 	// so both of them will have it set here. Using the compiled-vertex extension,
 	// however, makes everything the same color :-P
-	glVertexPointer(2,GL_SHORT,GetVertexStride(),GetFirstVertex());
-
+  if(useShaderRenderer()){
+    Shader *lastShader = lastEnabledShader();
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, GetVertexStride(), GetFirstVertex());
+    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  } else {
+    glVertexPointer(2,GL_SHORT,GetVertexStride(),GetFirstVertex());
+  }
 	// Reset color defaults
 	SavedColor.red = SavedColor.green = SavedColor.blue = 0;
 	SetColor(SavedColor);
@@ -188,6 +221,11 @@ void OverheadMap_OGL_Class::end_polygons()
 
 void OverheadMap_OGL_Class::DrawCachedPolygons()
 {
+  if(useShaderRenderer()) {
+    Shader* lastShader = lastEnabledShader();
+    lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+  }
+  
 	glDrawElements(GL_TRIANGLES, PolygonCache.size(),
 		GL_UNSIGNED_SHORT, &PolygonCache.front());
 	PolygonCache.clear();
@@ -309,6 +347,8 @@ void OverheadMap_OGL_Class::draw_player(
 	short rear,
 	short rear_theta)
 {
+  glPushGroupMarkerEXT(0, "Draw Player");
+
 	SetColor(color);
 	
 	// The player is a simple triangle
@@ -325,18 +365,44 @@ void OverheadMap_OGL_Class::draw_player(
 	PlayerShape[2][1] = - rear_y;
 	
 	// Let OpenGL do the transformation work
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glTranslatef(center.x,center.y,0);
-	glRotatef(facing*(360.0F/FULL_CIRCLE),0,0,1);
-	float scale = 1/float(1 << shrink);
-	glScalef(scale,scale,1);
-	glDisable(GL_TEXTURE_2D);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glVertexPointer(2,GL_FLOAT,0,PlayerShape[0]);
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+    MatrixStack::Instance()->pushMatrix();
+    MatrixStack::Instance()->translatef(center.x,center.y,0);
+    MatrixStack::Instance()->rotatef(facing*(360.0F/FULL_CIRCLE),0,0,1);
+    float scale = 1/float(1 << shrink);
+    MatrixStack::Instance()->scalef(scale,scale,1);
+    glDisable(GL_TEXTURE_2D);
+    
+    GLfloat modelProjection[16];
+    MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+    
+    Shader *lastShader = lastEnabledShader();
+    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, PlayerShape[0]);
+    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+    lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+    
+  } else {
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glTranslatef(center.x,center.y,0);
+    glRotatef(facing*(360.0F/FULL_CIRCLE),0,0,1);
+    float scale = 1/float(1 << shrink);
+    glScalef(scale,scale,1);
+    glDisable(GL_TEXTURE_2D);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glVertexPointer(2,GL_FLOAT,0,PlayerShape[0]);
+  }
 	glDrawArrays(GL_TRIANGLE_FAN,0,3);
 
-	glPopMatrix();
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->popMatrix();
+  } else {
+    glPopMatrix();
+  }
+  
+  glPopGroupMarkerEXT();
 }
 
 	
@@ -366,12 +432,24 @@ void OverheadMap_OGL_Class::draw_text(
 	// Set color and location	
 	SetColor(color);
 	
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef(left_location.x,left_location.y,0);	
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+    MatrixStack::Instance()->pushMatrix();
+    MatrixStack::Instance()->loadIdentity();
+    MatrixStack::Instance()->translatef(left_location.x,left_location.y,0);
+  } else {
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(left_location.x,left_location.y,0);
+  }
 	FontData.OGL_Render(text);
-	glPopMatrix();
+  
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->popMatrix();
+  } else {
+    glPopMatrix();
+  }
 }
 	
 void OverheadMap_OGL_Class::set_path_drawing(rgb_color& color)

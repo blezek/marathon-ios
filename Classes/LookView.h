@@ -30,13 +30,17 @@
   bool firstMoveSinceTouchStarted;
   short tapID;
   LookPadView *lookPadView;
+  UIView *actionBox;
   UIView *smartFireIndicator;
   UIView *tapLocationIndicator;
   
 	double lastForce, primaryForceThreshold, secondaryForceThreshold;
+  
+  bool inRearrangement;
 }
 
 @property (nonatomic,retain) IBOutlet LookPadView *lookPadView;
+@property (nonatomic,retain) IBOutlet UIView *actionBox;
 @property (nonatomic,retain) IBOutlet UIView *tapLocationIndicator;
 @property (nonatomic,retain) IBOutlet UIView *smartFireIndicator;
 @property (nonatomic) SDL_Keycode primaryFire;
@@ -45,6 +49,7 @@
 @property (nonatomic,retain) NSDate *firstTouchTime;
 @property (nonatomic,retain) NSDate *lastPrimaryFire;
 @property (nonatomic,retain) NSDate *touchesEndedTime;
+@property (nonatomic) bool inRearrangement;
 
 - (void)alignTLIWithPoint:(CGPoint) location;
 - (bool) touchInPrimaryFireZone:(UITouch*)touch;
@@ -53,4 +58,7 @@
 - (void)stopAllFire: (NSNumber *) thisTapID;
 - (void)stopSecondaryFire;
 - (float)distanceFromPoint:(CGPoint)p1 to:(CGPoint)p2;
+- (void) shouldRearrange:(bool)rearrange;
+- (void) loadCustomArrangementFromPreferences;
+- (void) moveSomeViewToTouch:(UITouch*)touch;
 @end

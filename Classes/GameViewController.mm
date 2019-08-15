@@ -16,7 +16,7 @@
 #import "Appirater.h"
 #include "FileHandler.h"
 #import "Tracking.h"
-#import "FloatingTriggerHUDViewController.h"
+//#import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
 #import "alephversion.h"
 
@@ -703,7 +703,7 @@ short localFindActionTarget(
   self.hud.hidden = NO;
   self.HUDViewController.view.hidden = NO;
 
-  CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  /*CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
   opacityAnimation.duration = 1.0;
   opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
   opacityAnimation.toValue = [NSNumber numberWithFloat:1.0];
@@ -717,14 +717,19 @@ short localFindActionTarget(
   group.animations = [NSArray arrayWithObjects:opacityAnimation, scaleAnimation, nil];
   group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-  
+  */
   if ( self.HUDViewController == nil ) {
     [self configureHUD:nil];
   }
 
+    //The custom arrangement needs to be restored AFTER the HUD is sized correctly.
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView loadCustomArrangementFromPreferences];
+  }
+  
   NSMutableArray* views = [NSMutableArray arrayWithArray:[self.hud subviews]];
   [views addObjectsFromArray:[self.HUDViewController.view subviews]];
-
+/*
   for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
@@ -738,22 +743,14 @@ short localFindActionTarget(
         v.hidden = YES;
       }
     }
-  }
+  }*/
 	
   //DCW refresh preferences to update hud prefs.
   helperSetPreferences(true);
-
   
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
 
-  //DCW This sucks. Commenting out.
-  //if ( showControlsOverview ) {
-  //    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
-  //}
-  //#endif
-
-  
 }
 
 - (GLfloat) getPauseAlpha { return pauseAlpha; }
@@ -869,6 +866,36 @@ short localFindActionTarget(
   [self pause:sender];
 }
 
+- (IBAction) startRearranging:(id)sender {
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView shouldRearrange:YES];
+    [((BasicHUDViewController*)self.HUDViewController).movePadView setHidden:YES];
+  }
+  [self closeEvent];
+  self.pauseView.hidden = YES;
+  
+  UIImage *image = [UIImage imageNamed:@"PauseDone"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+  
+}
+
+- (IBAction) stopRearranging:(id)sender {
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView shouldRearrange:NO];
+    [((BasicHUDViewController*)self.HUDViewController).movePadView setHidden:NO];
+  }
+  UIImage *image = [UIImage imageNamed:@"Pause"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+}
+
 - (IBAction) gotoMenu:(id)sender {
   MLog ( @"How do we go back?!" );
   self.pauseView.hidden = YES;
@@ -926,6 +953,7 @@ short localFindActionTarget(
    //// self.HUDViewController = self.HUDJoypadViewController;
   }
   [self.HUDViewController.view setFrame:self.hud.bounds];//DCW: the inserted subview needs to be the same size as the superview.
+  
   [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
 }
 /*- (IBAction) initiateJoypad:(id)sender {
@@ -1415,6 +1443,22 @@ extern bool handle_open_replay(FileSpecifier& File);
   
 
 - (IBAction)pause:(id)from {
+  
+  UIImage *image = [UIImage imageNamed:@"Pause"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+  
+    //The pause action, if we are in arrangemewnt, just stops re-arranging.
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    if( ((BasicHUDViewController*)self.HUDViewController).lookView.inRearrangement ) {
+      [self stopRearranging:self];
+    }
+  }
+  
+  
   // If we are dead, don't do anything
   if ( mode == DeadMode ) { return; }
   if ( from != nil ) {
@@ -1765,7 +1809,11 @@ short items[]=
         short target_type, object_index;
         object_index = localFindActionTarget(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type);
         if ( NONE == object_index ) {
+          if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]] && [((BasicHUDViewController*)self.HUDViewController).lookView inRearrangement]) {
+            [self.HUDViewController lightActionKeyWithTarget:_target_is_platform objectIndex:NONE];
+          } else {
             [self.HUDViewController dimActionKey];
+          }
         } else {
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }

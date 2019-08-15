@@ -136,7 +136,8 @@ const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] =
 	"bump_bloom",
 	"gamma",
   "debug",
-  "rect"
+  "rect",
+  "solid_color"
 };
 
 
@@ -446,6 +447,28 @@ void initDefaultPrograms() {
     if (defaultVertexPrograms.size() > 0)
         return;
 
+  defaultVertexPrograms["solid_color"] = ""
+    "#version 300 es  \n"
+    "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+    "uniform vec4 vColor;\n"
+    "in vec4 vPosition;   \n"
+    "out vec4 vertexColor;\n"
+    "void main()                 \n"
+    "{                           \n"
+    "  vertexColor = vColor;\n"
+    "  gl_Position = MS_ModelViewProjectionMatrix * vPosition;  \n"
+    "} \n";
+  
+    defaultFragmentPrograms["solid_color"] = ""
+    "#version 300 es  \n"
+    "precision highp float;\n"
+    "in vec4 vertexColor;\n"
+    "out vec4 fragmentColor;\n"
+    "void main()                                \n"
+    "{                                          \n"
+    "fragmentColor = vertexColor;\n"
+    "} \n";
+  
     defaultVertexPrograms["rect"] = ""
     "#version 300 es  \n"
     "uniform mat4 MS_ModelViewProjectionMatrix;\n"

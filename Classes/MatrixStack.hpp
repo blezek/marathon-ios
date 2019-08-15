@@ -32,7 +32,7 @@
 
 #include "map.h"
 
-#define STACK_MAX 10
+#define STACK_MAX 20
 #define CLIPPING_PLANES 10
 
 //Cribbed from gl.h.

@@ -308,6 +308,15 @@
 		518EA0071F6AFDC20039960A /* SDL_ffmpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 518EA0031F6AFDC20039960A /* SDL_ffmpeg.c */; };
 		518EA00A1F72F9B40039960A /* EpisodeLogoAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 518EA0081F72F9B40039960A /* EpisodeLogoAlpha.png */; };
 		518EA00B1F72F9B40039960A /* mainlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 518EA0091F72F9B40039960A /* mainlogo.png */; };
+		518F64AE23048E0D0016F33B /* Rearrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64AD23048E0D0016F33B /* Rearrange.png */; };
+		518F64B023048E200016F33B /* Rearrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64AF23048E200016F33B /* Rearrange.png */; };
+		518F64B223048E320016F33B /* Rearrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B123048E310016F33B /* Rearrange.png */; };
+		518F64B423048FAF0016F33B /* RearrangeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B323048FAF0016F33B /* RearrangeHighlighted.png */; };
+		518F64B623048FC80016F33B /* RearrangeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B523048FC70016F33B /* RearrangeHighlighted.png */; };
+		518F64B823048FE40016F33B /* RearrangeHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B723048FE40016F33B /* RearrangeHighlighted.png */; };
+		518F64BA2304B3B60016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B92304B3B50016F33B /* PauseDone.png */; };
+		518F64BC2304B3CC0016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BB2304B3CC0016F33B /* PauseDone.png */; };
+		518F64BE2304B3E20016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BD2304B3E10016F33B /* PauseDone.png */; };
 		519F56DF21F0EBAD00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56DE21F0EBAC00C0382B /* D-pad-swim.png */; };
 		519F56E121F0EBBF00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E021F0EBBF00C0382B /* D-pad-swim.png */; };
 		519F56E321F0EBD700C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E221F0EBD700C0382B /* D-pad-swim.png */; };
@@ -1241,15 +1250,6 @@
 		A804993613DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80498F913DE1CD900F807FB /* ret_shotgun~iphone.png */; };
 		A804993713DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80498F913DE1CD900F807FB /* ret_shotgun~iphone.png */; };
 		A804993813DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A80498F913DE1CD900F807FB /* ret_shotgun~iphone.png */; };
-		A807A70913E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A807A70813E17BD50038AB8C /* FloatingTriggerHUDViewController.m */; };
-		A807A70A13E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A807A70813E17BD50038AB8C /* FloatingTriggerHUDViewController.m */; };
-		A807A70B13E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A807A70813E17BD50038AB8C /* FloatingTriggerHUDViewController.m */; };
-		A807A70D13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */; };
-		A807A70E13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */; };
-		A807A70F13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */; };
-		A807A71213E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
-		A807A71313E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
-		A807A71413E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */; };
 		A809FDBA140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
 		A809FDBB140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
 		A809FDBC140DE1E90051EA11 /* ret_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A809FDB7140DE1E90051EA11 /* ret_default.png */; };
@@ -1754,9 +1754,6 @@
 		A89B967F1433C97F005E9FF3 /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A89B967B1433C874005E9FF3 /* LoadingScreen.png */; };
 		A8A06C80125819C800BE6EF5 /* PDColoredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7D125819C800BE6EF5 /* PDColoredProgressView.m */; };
 		A8A06C81125819C800BE6EF5 /* drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A06C7F125819C800BE6EF5 /* drawing.m */; };
-		A8A9C7D913D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
-		A8A9C7DA13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
-		A8A9C7DB13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */; };
 		A8AD432912220F9500A09383 /* AlephOneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */; };
 		A8AD432A12220F9500A09383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AD432412220F9500A09383 /* main.m */; };
 		A8AD43511222125200A09383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AD43501222125200A09383 /* CoreData.framework */; };
@@ -1777,9 +1774,6 @@
 		A8B9F9DE13FA001700552296 /* NewGameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */; };
 		A8B9F9DF13FA001700552296 /* NewGameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */; };
 		A8B9F9E013FA001700552296 /* NewGameViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */; };
-		A8B9F9E213FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */; };
-		A8B9F9E313FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */; };
-		A8B9F9E413FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */; };
 		A8B9F9E913FAE0D400552296 /* ProgressViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */; };
 		A8B9F9EA13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */; };
 		A8B9F9EB13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */; };
@@ -2400,6 +2394,15 @@
 		518EA0041F6AFDC20039960A /* SDL_ffmpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ffmpeg.h; sourceTree = "<group>"; };
 		518EA0081F72F9B40039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
 		518EA0091F72F9B40039960A /* mainlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainlogo.png; sourceTree = "<group>"; };
+		518F64AD23048E0D0016F33B /* Rearrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rearrange.png; sourceTree = "<group>"; };
+		518F64AF23048E200016F33B /* Rearrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rearrange.png; sourceTree = "<group>"; };
+		518F64B123048E310016F33B /* Rearrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rearrange.png; sourceTree = "<group>"; };
+		518F64B323048FAF0016F33B /* RearrangeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RearrangeHighlighted.png; sourceTree = "<group>"; };
+		518F64B523048FC70016F33B /* RearrangeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RearrangeHighlighted.png; sourceTree = "<group>"; };
+		518F64B723048FE40016F33B /* RearrangeHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RearrangeHighlighted.png; sourceTree = "<group>"; };
+		518F64B92304B3B50016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
+		518F64BB2304B3CC0016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
+		518F64BD2304B3E10016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
 		519F56E021F0EBBF00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
 		519F56E221F0EBD700C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
@@ -3029,11 +3032,6 @@
 		A80498F713DE1CD900F807FB /* ret_shotgun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ret_shotgun.png; sourceTree = "<group>"; };
 		A80498F813DE1CD900F807FB /* ret_shotgun@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ret_shotgun@2x~iphone.png"; sourceTree = "<group>"; };
 		A80498F913DE1CD900F807FB /* ret_shotgun~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ret_shotgun~iphone.png"; sourceTree = "<group>"; };
-		A807A70713E17BD50038AB8C /* FloatingTriggerHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FloatingTriggerHUDViewController.h; path = Classes/FloatingTriggerHUDViewController.h; sourceTree = "<group>"; };
-		A807A70813E17BD50038AB8C /* FloatingTriggerHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FloatingTriggerHUDViewController.m; path = Classes/FloatingTriggerHUDViewController.m; sourceTree = "<group>"; };
-		A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingTriggerHUDViewController.xib; sourceTree = "<group>"; };
-		A807A71013E17CA90038AB8C /* FloatingTriggerLookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FloatingTriggerLookView.h; path = Classes/FloatingTriggerLookView.h; sourceTree = "<group>"; };
-		A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FloatingTriggerLookView.mm; path = Classes/FloatingTriggerLookView.mm; sourceTree = "<group>"; };
 		A809FDB7140DE1E90051EA11 /* ret_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ret_default.png; sourceTree = "<group>"; };
 		A809FDB8140DE1E90051EA11 /* ret_default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ret_default@2x~iphone.png"; sourceTree = "<group>"; };
 		A809FDB9140DE1E90051EA11 /* ret_default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ret_default~iphone.png"; sourceTree = "<group>"; };
@@ -3302,7 +3300,6 @@
 		A8A06C7E125819C800BE6EF5 /* PDColoredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDColoredProgressView.h; path = Classes/PDColoredProgressView.h; sourceTree = "<group>"; };
 		A8A06C7F125819C800BE6EF5 /* drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = drawing.m; path = Classes/drawing.m; sourceTree = "<group>"; };
 		A8A4D31112A4B2C100AEE140 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Classes/Prefs.h; sourceTree = "<group>"; };
-		A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoypadHUDViewController.xib; sourceTree = "<group>"; };
 		A8AA814B12C055B400821170 /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-btn.png"; path = "Artwork/play-btn.png"; sourceTree = "<group>"; };
 		A8AD432212220F9500A09383 /* AlephOneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlephOneAppDelegate.mm; path = Classes/AlephOneAppDelegate.mm; sourceTree = "<group>"; };
 		A8AD432312220F9500A09383 /* AlephOneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlephOneAppDelegate.h; path = Classes/AlephOneAppDelegate.h; sourceTree = "<group>"; };
@@ -3343,7 +3340,6 @@
 		A8B6008A149D132A0017A6D8 /* patternbuffers-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patternbuffers-btn.png"; sourceTree = "<group>"; };
 		A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NewGameViewController~iphone.xib"; sourceTree = "<group>"; };
-		A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FloatingTriggerHUDViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProgressViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9EC13FAE4F500552296 /* PauseViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PauseViewController~iphone.xib"; sourceTree = "<group>"; };
 		A8B9F9F013FB68AF00552296 /* weapons-btn~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weapons-btn~iphone.png"; sourceTree = "<group>"; };
@@ -4114,6 +4110,8 @@
 				5152750E21A1F52C004D1E07 /* ContinueSavedGame.png */,
 				5152750F21A1F52C004D1E07 /* PreferencesHighlighted.png */,
 				5152751021A1F52C004D1E07 /* Resume.png */,
+				518F64AD23048E0D0016F33B /* Rearrange.png */,
+				518F64B323048FAF0016F33B /* RearrangeHighlighted.png */,
 				5152751121A1F52C004D1E07 /* TipTheDeveloperHighlighted.png */,
 				5152751221A1F52C004D1E07 /* Difficulty-Easy.png */,
 				5152751321A1F52C004D1E07 /* Difficulty-Total Carnage.png */,
@@ -4122,6 +4120,7 @@
 				5152751621A1F52C004D1E07 /* Menu.png */,
 				5152751721A1F52C004D1E07 /* D-pad-knob.png */,
 				5152751821A1F52C004D1E07 /* Pause.png */,
+				518F64BD2304B3E10016F33B /* PauseDone.png */,
 				5152751921A1F52C004D1E07 /* Console.png */,
 				5152751A21A1F52C004D1E07 /* TipTheDeveloper.png */,
 				5152751B21A1F52C004D1E07 /* NextWeapon.png */,
@@ -4168,6 +4167,8 @@
 				5152756521A1F534004D1E07 /* ContinueSavedGame.png */,
 				5152756621A1F534004D1E07 /* PreferencesHighlighted.png */,
 				5152756721A1F534004D1E07 /* Resume.png */,
+				518F64AF23048E200016F33B /* Rearrange.png */,
+				518F64B523048FC70016F33B /* RearrangeHighlighted.png */,
 				5152756821A1F534004D1E07 /* TipTheDeveloperHighlighted.png */,
 				5152756921A1F534004D1E07 /* Difficulty-Easy.png */,
 				5152756A21A1F534004D1E07 /* Difficulty-Total Carnage.png */,
@@ -4176,6 +4177,7 @@
 				5152756D21A1F534004D1E07 /* Menu.png */,
 				5152756E21A1F534004D1E07 /* D-pad-knob.png */,
 				5152756F21A1F534004D1E07 /* Pause.png */,
+				518F64BB2304B3CC0016F33B /* PauseDone.png */,
 				5152757021A1F534004D1E07 /* Console.png */,
 				5152757121A1F534004D1E07 /* TipTheDeveloper.png */,
 				5152757221A1F534004D1E07 /* NextWeapon.png */,
@@ -4222,6 +4224,8 @@
 				515275BC21A1F53B004D1E07 /* ContinueSavedGame.png */,
 				515275BD21A1F53B004D1E07 /* PreferencesHighlighted.png */,
 				515275BE21A1F53B004D1E07 /* Resume.png */,
+				518F64B123048E310016F33B /* Rearrange.png */,
+				518F64B723048FE40016F33B /* RearrangeHighlighted.png */,
 				515275BF21A1F53B004D1E07 /* TipTheDeveloperHighlighted.png */,
 				515275C021A1F53B004D1E07 /* Difficulty-Easy.png */,
 				515275C121A1F53B004D1E07 /* Difficulty-Total Carnage.png */,
@@ -4230,6 +4234,7 @@
 				515275C421A1F53B004D1E07 /* Menu.png */,
 				515275C521A1F53B004D1E07 /* D-pad-knob.png */,
 				515275C621A1F53B004D1E07 /* Pause.png */,
+				518F64B92304B3B50016F33B /* PauseDone.png */,
 				515275C721A1F53B004D1E07 /* Console.png */,
 				515275C821A1F53B004D1E07 /* TipTheDeveloper.png */,
 				515275C921A1F53B004D1E07 /* NextWeapon.png */,
@@ -4972,10 +4977,6 @@
 				A82E9BD713D673FD00EC2CAD /* BasicHUDViewController.mm */,
 				A82E9BDF13D6743700EC2CAD /* HUDViewController.h */,
 				A82E9BE013D6743700EC2CAD /* HUDViewController.mm */,
-				A807A70713E17BD50038AB8C /* FloatingTriggerHUDViewController.h */,
-				A807A70813E17BD50038AB8C /* FloatingTriggerHUDViewController.m */,
-				A807A71013E17CA90038AB8C /* FloatingTriggerLookView.h */,
-				A807A71113E17CA90038AB8C /* FloatingTriggerLookView.mm */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -5252,8 +5253,6 @@
 				A853C9B413CF23A2001E8A25 /* NewGameViewController.xib */,
 				A853C9B613CF23A2001E8A25 /* PreferencesViewController.xib */,
 				A82BBD16141015A500CE1F92 /* RootViewController.xib */,
-				A807A70C13E17C310038AB8C /* FloatingTriggerHUDViewController.xib */,
-				A8A9C7D513D920D10087E0CF /* JoypadHUDViewController.xib */,
 				A82E9BE113D6743700EC2CAD /* HUDViewController.xib */,
 				A82E9BD813D673FE00EC2CAD /* BasicHUDViewController.xib */,
 				A853C9AF13CF23A2001E8A25 /* FilmCell.xib */,
@@ -5277,7 +5276,6 @@
 				A853C9B813CF23A2001E8A25 /* PurchaseViewController~iphone.xib */,
 				A8B9F9DA13FA001700552296 /* NewGameViewController~iphone.xib */,
 				A864DDC513FDF10100A0AE0C /* PreferencesViewController~iphone.xib */,
-				A8B9F9E113FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib */,
 				A8B9F9D913FA001700552296 /* GameViewController~iphone.xib */,
 				A8DEE8D8145C4FA900D8608F /* BasicHUDViewController~iphone.xib */,
 				A8B9F9E813FAE0D400552296 /* ProgressViewController~iphone.xib */,
@@ -6055,6 +6053,7 @@
 				A853C9D013CF23A2001E8A25 /* PauseViewController.xib in Resources */,
 				A853C9D313CF23A2001E8A25 /* PreferencesViewController.xib in Resources */,
 				519FCAE51EA1D3B80066EE69 /* checkboxactive.png in Resources */,
+				518F64B423048FAF0016F33B /* RearrangeHighlighted.png in Resources */,
 				A853C9D613CF23A2001E8A25 /* ProgressViewController.xib in Resources */,
 				A853C9D913CF23A2001E8A25 /* PurchaseViewController~iphone.xib in Resources */,
 				51EAD5031E58B13700611EFF /* COPYRIGHT in Resources */,
@@ -6066,7 +6065,6 @@
 				A82E9BE513D6743700EC2CAD /* HUDViewController.xib in Resources */,
 				5152753521A1F52C004D1E07 /* SavedGame-LoadHighlighted.png in Resources */,
 				5152753C21A1F52C004D1E07 /* TipTheDeveloperHighlighted.png in Resources */,
-				A8A9C7D913D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
 				A80498FA13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FD13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
 				A804990013DE1CDA00F807FB /* ret_alien~iphone.png in Resources */,
@@ -6088,10 +6086,8 @@
 				A804993013DE1CDA00F807FB /* ret_shotgun.png in Resources */,
 				A804993313DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
 				A804993613DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
-				A807A70D13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DB13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				A8B9F9DE13FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
-				A8B9F9E213FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9E913FAE0D400552296 /* ProgressViewController~iphone.xib in Resources */,
 				A8B9F9ED13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE113FB6C1000552296 /* movementboxBase.png in Resources */,
@@ -6215,6 +6211,7 @@
 				A89B96451433C65D005E9FF3 /* DuplicateButton.png in Resources */,
 				A89B96481433C65D005E9FF3 /* DuplicateButton@2x~iphone.png in Resources */,
 				A89B964B1433C65D005E9FF3 /* DuplicateButton~iphone.png in Resources */,
+				518F64BE2304B3E20016F33B /* PauseDone.png in Resources */,
 				A89B964E1433C65D005E9FF3 /* LoadButton.png in Resources */,
 				A89B96511433C65D005E9FF3 /* LoadButton@2x~iphone.png in Resources */,
 				A89B96541433C65D005E9FF3 /* LoadButton~iphone.png in Resources */,
@@ -6291,6 +6288,7 @@
 				A8DEE906145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
 				A8DEE909145CEB4300D8608F /* ShieldsButton@2x~iphone.png in Resources */,
 				A8DEE90C145CEB4300D8608F /* SaveButton~iphone.png in Resources */,
+				518F64AE23048E0D0016F33B /* Rearrange.png in Resources */,
 				A8DEE90F145CEB4300D8608F /* SaveButton@2x~iphone.png in Resources */,
 				A8DEE912145CEB4300D8608F /* AmmoButton@2x~iphone.png in Resources */,
 				5152753721A1F52C004D1E07 /* HelpButton.png in Resources */,
@@ -6370,6 +6368,7 @@
 				A853C9BF13CF23A2001E8A25 /* FilmCell.xib in Resources */,
 				A853C9C213CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C513CF23A2001E8A25 /* GameViewController.xib in Resources */,
+				518F64B623048FC80016F33B /* RearrangeHighlighted.png in Resources */,
 				A853C9C813CF23A2001E8A25 /* HelpViewController.xib in Resources */,
 				A853C9CB13CF23A2001E8A25 /* MainWindow.xib in Resources */,
 				A853C9CE13CF23A2001E8A25 /* NewGameViewController.xib in Resources */,
@@ -6383,7 +6382,6 @@
 				A853C9E013CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDD13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE613D6743700EC2CAD /* HUDViewController.xib in Resources */,
-				A8A9C7DA13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
 				5152759A21A1F534004D1E07 /* Pause.png in Resources */,
 				A80498FB13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FE13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
@@ -6414,11 +6412,9 @@
 				A804993713DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
 				5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */,
 				5152759121A1F534004D1E07 /* PreferencesHighlighted.png in Resources */,
-				A807A70E13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DC13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				5103959622F7D77600601366 /* help6.png in Resources */,
 				A8B9F9DF13FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
-				A8B9F9E313FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9EA13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */,
 				A8B9F9EE13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE213FB6C1000552296 /* movementboxBase.png in Resources */,
@@ -6530,6 +6526,7 @@
 				A85B58951433BEC00013CDC9 /* Normal@2x~iphone.png in Resources */,
 				A85B58981433BEC00013CDC9 /* Normal~iphone.png in Resources */,
 				A85B58A11433BEC00013CDC9 /* VidmasterOath.png in Resources */,
+				518F64BC2304B3CC0016F33B /* PauseDone.png in Resources */,
 				A85B58A41433BEC00013CDC9 /* VidmasterOath@2x~iphone.png in Resources */,
 				A85B58A71433BEC00013CDC9 /* VidmasterOath~iphone.png in Resources */,
 				A89B96341433C65D005E9FF3 /* BackButtonLoad.png in Resources */,
@@ -6606,6 +6603,7 @@
 				5152758B21A1F534004D1E07 /* TipButtonHighlighted.png in Resources */,
 				5152758821A1F534004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */,
 				A8DEE8EC145CDEA100D8608F /* SliderBlackTrack~iphone.png in Resources */,
+				518F64B023048E200016F33B /* Rearrange.png in Resources */,
 				A8DEE8EF145CDEA100D8608F /* SliderBlackTrack@2x~iphone.png in Resources */,
 				A8DEE8F2145CDEA100D8608F /* SliderRedTrack@2x~iphone.png in Resources */,
 				A8DEE907145CEB4300D8608F /* ShieldsButton~iphone.png in Resources */,
@@ -6678,6 +6676,7 @@
 				A818BD3313A4778400DB3828 /* Marathon_Infinity_Icon2@2x.png in Resources */,
 				515275F321A1F53B004D1E07 /* TipTheDeveloper.png in Resources */,
 				A853C9C013CF23A2001E8A25 /* FilmCell.xib in Resources */,
+				518F64BA2304B3B60016F33B /* PauseDone.png in Resources */,
 				A853C9C313CF23A2001E8A25 /* FilmViewController.xib in Resources */,
 				A853C9C613CF23A2001E8A25 /* GameViewController.xib in Resources */,
 				518E9FF81F69AEBD0039960A /* HomeScreen.png in Resources */,
@@ -6696,7 +6695,6 @@
 				A853C9E113CF23A2001E8A25 /* SaveGameViewController.xib in Resources */,
 				A82E9BDE13D673FE00EC2CAD /* BasicHUDViewController.xib in Resources */,
 				A82E9BE713D6743700EC2CAD /* HUDViewController.xib in Resources */,
-				A8A9C7DB13D920D20087E0CF /* JoypadHUDViewController.xib in Resources */,
 				515275DE21A1F53B004D1E07 /* AboutHighlighted.png in Resources */,
 				A80498FC13DE1CDA00F807FB /* ret_alien.png in Resources */,
 				A80498FF13DE1CDA00F807FB /* ret_alien@2x~iphone.png in Resources */,
@@ -6727,16 +6725,15 @@
 				A804993513DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
 				515275EB21A1F53B004D1E07 /* Difficulty-Easy.png in Resources */,
 				A804993813DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
-				A807A70F13E17C310038AB8C /* FloatingTriggerHUDViewController.xib in Resources */,
 				A8B9F9DD13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				51EAD44B1E58B13600611EFF /* COPYING in Resources */,
 				A8B9F9E013FA001700552296 /* NewGameViewController~iphone.xib in Resources */,
-				A8B9F9E413FA03DB00552296 /* FloatingTriggerHUDViewController~iphone.xib in Resources */,
 				A8B9F9EB13FAE0D500552296 /* ProgressViewController~iphone.xib in Resources */,
 				515275E921A1F53B004D1E07 /* Resume.png in Resources */,
 				51482D6C2001C86000690752 /* github.png in Resources */,
 				A8B9F9EF13FAE4F600552296 /* PauseViewController~iphone.xib in Resources */,
 				A8B9FAE313FB6C1000552296 /* movementboxBase.png in Resources */,
+				518F64B823048FE40016F33B /* RearrangeHighlighted.png in Resources */,
 				A8B9FAE613FB6C1000552296 /* movementboxBase@2x~iphone.png in Resources */,
 				515275F821A1F53B004D1E07 /* ResumeHighlighted.png in Resources */,
 				515275DA21A1F53B004D1E07 /* GatherNetworkGame.png in Resources */,
@@ -6763,6 +6760,7 @@
 				A8B9FB3413FB6C1000552296 /* toggleweapons-right-btn@2x~iphone.png in Resources */,
 				A8B9FB3713FB6C1000552296 /* toggleweapons-right-btn~iphone.png in Resources */,
 				A8B9FB4313FB6C1000552296 /* zoom_in.png in Resources */,
+				518F64B223048E320016F33B /* Rearrange.png in Resources */,
 				A8B9FB4913FB6C1000552296 /* zoom_in@2x~iphone.png in Resources */,
 				A8B9FB4C13FB6C1000552296 /* zoom_in~iphone.png in Resources */,
 				515275D821A1F53B004D1E07 /* JoinNetworkGame.png in Resources */,
@@ -7313,8 +7311,6 @@
 				51EAD4851E58B13600611EFF /* resource_manager.cpp in Sources */,
 				51B683EB1EAAF58B00CB1628 /* layer3.c in Sources */,
 				A80498E113DDC9D500F807FB /* AlertView.m in Sources */,
-				A807A70913E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */,
-				A807A71213E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */,
 				51EAD6A41E58B13800611EFF /* HUDRenderer_OGL.cpp in Sources */,
 				51B684CD1EAAFA0400CB1628 /* lookup.c in Sources */,
 				51EAD6AD1E58B13800611EFF /* images.cpp in Sources */,
@@ -7647,8 +7643,6 @@
 				A80498E213DDC9D500F807FB /* AlertView.m in Sources */,
 				51EAD5C11E58B13700611EFF /* Statistics.cpp in Sources */,
 				51B684EC1EAAFA0400CB1628 /* smallft.c in Sources */,
-				A807A70A13E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */,
-				A807A71313E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */,
 				51EAD6901E58B13800611EFF /* ChaseCam.cpp in Sources */,
 				51041F051EAAF28B00129201 /* framing.c in Sources */,
 				51EAD45C1E58B13600611EFF /* xmltok_ns.c in Sources */,
@@ -7963,8 +7957,6 @@
 				51EAD4871E58B13600611EFF /* resource_manager.cpp in Sources */,
 				51B683ED1EAAF58B00CB1628 /* layer3.c in Sources */,
 				A80498E313DDC9D500F807FB /* AlertView.m in Sources */,
-				A807A70B13E17BD50038AB8C /* FloatingTriggerHUDViewController.m in Sources */,
-				A807A71413E17CA90038AB8C /* FloatingTriggerLookView.mm in Sources */,
 				51EAD6A61E58B13800611EFF /* HUDRenderer_OGL.cpp in Sources */,
 				51B684CF1EAAFA0400CB1628 /* lookup.c in Sources */,
 				51EAD6AF1E58B13800611EFF /* images.cpp in Sources */,

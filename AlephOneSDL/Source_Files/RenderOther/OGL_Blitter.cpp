@@ -254,14 +254,26 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 	bool rotating = (rotation > 0.1 || rotation < -0.1);
 	if (rotating)
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
-		glRotatef(rotation, 0.0, 0.0, 1.0);
-		glTranslatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->translatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
+      MatrixStack::Instance()->rotatef(rotation, 0.0, 0.0, 1.0);
+      MatrixStack::Instance()->translatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+      glPushMatrix();
+      glTranslatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
+      glRotatef(rotation, 0.0, 0.0, 1.0);
+      glTranslatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    }
 	}
-	
-	glColor4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  
+  if(useShaderRenderer()) {
+    MatrixStack::Instance()->color4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  } else {
+    glColor4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  }
 	
 	for (int i = 0; i < m_rects.size(); i++)
 	{
@@ -292,8 +304,13 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 							   VMin, UMin, VMax, UMax);
 	}
 	
-	if (rotating)
-		glPopMatrix();
+  if (rotating) {
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->popMatrix();
+    } else {
+      glPopMatrix();
+    }
+  }
   // DJB OpenGL
   // glPopAttrib();
 }

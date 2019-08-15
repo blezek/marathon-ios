@@ -11,10 +11,14 @@
 
 @interface PauseViewController : UIViewController <UIActionSheetDelegate> {
   UILabel *statusLabel;
+  bool inRearrangement;
 }
-
 @property (retain, nonatomic) IBOutlet UILabel *statusLabel;
+@property bool inRearrangement;
+
 - (IBAction) resume:(id)sender;
+- (IBAction) rearrange:(id)sender;
+- (IBAction) doneRearranging:(id)sender;
 - (IBAction) gotoMenu:(id)sender;
 - (IBAction) help:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
@@ -24,6 +28,6 @@
 - (IBAction) saveCheat:(id)sender;
 - (IBAction) weaponsCheat:(id)sender;
 - (IBAction) connectToJoypad:(id)sender;
-- (IBAction)setup;
+- (IBAction) setup;
 
 @end

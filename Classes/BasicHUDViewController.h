@@ -16,6 +16,7 @@
 
   IBOutlet UIButton* actionKeyImageView;
   IBOutlet UIButton* escapeButton;
+  IBOutlet LookView* lookView;
 }
 
 @property (nonatomic,retain) IBOutlet LookView* lookView;

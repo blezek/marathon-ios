@@ -63,6 +63,8 @@ extern short GetNumberOfPaths();
 
 void OverheadMapClass::Render(overhead_map_data& Control)
 {
+  glPushGroupMarkerEXT(0, "Overhead Map");
+  
 	world_distance x0= Control.origin.x, y0= Control.origin.y;
 	int xoff= Control.left + Control.half_width, yoff= Control.top + Control.half_height;
 	short scale= Control.scale;
@@ -389,6 +391,8 @@ void OverheadMapClass::Render(overhead_map_data& Control)
 	
 	// LP addition: overall cleanup
 	end_overall();
+  
+  glPopGroupMarkerEXT();
 }
 
 

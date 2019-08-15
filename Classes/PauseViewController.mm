@@ -16,6 +16,7 @@
 
 @implementation PauseViewController
 @synthesize statusLabel;
+@synthesize inRearrangement;
 
 - (IBAction) setup {
   // Hide cheats
@@ -33,6 +34,15 @@
 
 - (IBAction) resume:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate].game resume:sender];
+}
+
+- (IBAction) rearrange:(id)sender {
+  inRearrangement = YES;
+  [[AlephOneAppDelegate sharedAppDelegate].game startRearranging:sender];
+}
+
+- (IBAction) doneRearranging:(id)sender {
+  inRearrangement = NO;
 }
 
 - (IBAction) gotoMenu:(id)sender {

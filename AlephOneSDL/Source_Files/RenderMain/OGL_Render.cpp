@@ -3318,15 +3318,31 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 
 void OGL_RenderRect(float x, float y, float w, float h)
 {
+  GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
+  
 	glDisable(GL_TEXTURE_2D);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+  
+  if(useShaderRenderer()){
+    Shader *lastShader = lastEnabledShader();
+    if(lastShader) {
+      lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+
+      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertices);
+      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    }
+  } else {
+      glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+      glVertexPointer(2, GL_FLOAT, 0, vertices);
+  }
 	
-	GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
-	glVertexPointer(2, GL_FLOAT, 0, vertices);
+
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
 	glEnable(GL_TEXTURE_2D);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  
+  if(!useShaderRenderer()){
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  }
 }
 
 void OGL_RenderRect(const SDL_Rect& rect)
@@ -3410,7 +3426,16 @@ void OGL_RenderLines(const std::vector<world_point2d>& points, float thickness)
 		coords.push_back(cur.x - yd);
 		coords.push_back(cur.y + xd);
 	}
-	glVertexPointer(2, GL_FLOAT, 0, &coords.front());
+  if(useShaderRenderer()) {
+    Shader* lastShader = lastEnabledShader();
+    if (lastShader) {
+      lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, &coords.front());
+      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    }
+  } else {
+    glVertexPointer(2, GL_FLOAT, 0, &coords.front());
+  }
 	glDrawArrays(GL_TRIANGLES, 0, coords.size() / 2);
 	
 	glEnable(GL_TEXTURE_2D);

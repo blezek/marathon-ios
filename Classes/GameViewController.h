@@ -189,6 +189,8 @@ typedef enum {
 
 // Pause actions
 - (IBAction) resume:(id)sender;
+- (IBAction) startRearranging:(id)sender;
+- (IBAction) stopRearranging:(id)sender;
 - (IBAction) gotoMenu:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
 - (IBAction) closePreferences:(id)sender;

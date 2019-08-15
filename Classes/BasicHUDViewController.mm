@@ -70,7 +70,7 @@ extern control_panel_definition *get_control_panel_definition(
 //  _target_is_platform,
 //  _target_is_control_panel,
 //  _target_is_unrecognized
-    UIImage *image = nil;
+    UIImage *image = [UIImage imageNamed:@"OpenDoor"]; //This seems a good default...
     lookingAtRefuel=NO;
     if(object_index != NONE) {
     switch(target_type)

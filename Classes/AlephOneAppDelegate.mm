@@ -151,6 +151,8 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"0", kEntryLevelNumber,
                                @"YES", kCrosshairs,
                                @"NO", kOnScreenTrigger,
+                               @"NO", kCustomTriggerLocation,
+                               @"NO", kCustomActionLocation,
                                @"YES",  kHiLowTapsAltFire,
                                @"YES", kGyroAiming,
                                @"NO", kTiltTurning,
