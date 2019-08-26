@@ -177,7 +177,7 @@ typedef enum {
 - (IBAction)menuNewGame;
 - (IBAction)menuLoadGame;
 - (IBAction)menuJoinNetworkGame;
-- (IBAction)gatherJoinNetworkGame;
+- (IBAction)menuGatherNetworkGame;
 - (IBAction)menuPreferences;
 - (IBAction)menuStore;
 - (IBAction)cancelStore;

@@ -115,7 +115,11 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "clipPlane4",
   "clipPlane5",
   "mediaPlane",
-  "refractionType"
+  "refractionType",
+  "logicalWidth",
+  "logicalHeight",
+  "pixelWidth",
+  "pixelHeight"
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -780,10 +784,14 @@ void initDefaultPrograms() {
         "uniform float glow;\n"
         "uniform float flare;\n"
         "uniform float selfLuminosity;\n"
-        "uniform vec4 clipPlane0;"
-        "uniform vec4 clipPlane1;"
-        "uniform vec4 clipPlane5;"
-        "uniform vec4 mediaPlane;"
+        "uniform vec4 clipPlane0;\n"
+        "uniform vec4 clipPlane1;\n"
+        "uniform vec4 clipPlane5;\n"
+        "uniform vec4 mediaPlane;\n"
+        "uniform float logicalWidth;\n"
+        "uniform float logicalHeight;\n"
+        "uniform float pixelWidth;\n"
+        "uniform float pixelHeight;\n"
         "in vec3 viewDir;\n"
         "in vec4 vertexColor;\n"
         "in float FDxLOG2E;\n"
@@ -791,6 +799,22 @@ void initDefaultPrograms() {
         "in vec4 vPosition_eyespace;\n"
         "out vec4 fragmentColor;\n"
 
+        "float sample_height(vec2 uv){ \n"
+        "  vec4 color = texture(texture0, uv);\n"
+        "  return color.a * (color.r+color.g+color.b)/3.0;"
+        "} \n"
+  
+        "float sample_nearby_average_heights(float pixel_span, vec2 centerUV){ \n"
+        "  int num_samples = 8;\n"
+        "  float height = 0.0;\n"
+        "  vec2 textureSize = vec2(textureSize(texture0 ,0));\n"
+        "  float span = pixel_span * (1.0/float(textureSize.x));\n" //FLIP?
+        "  for(int i = 0; i < num_samples; ++i) {\n"
+        "    height += sample_height( vec2(centerUV.x+(span*float(i)),centerUV.y) );\n" //FLIP?
+        "  }\n"
+        "  return height / float(num_samples);\n"
+        "} \n"
+  
         "void main (void) {\n"
         " if( dot( vPosition_eyespace, clipPlane0) < 0.0 ) {discard;}\n"
         " if( dot( vPosition_eyespace, clipPlane1) < 0.0 ) {discard;}\n"
@@ -807,7 +831,16 @@ void initDefaultPrograms() {
         "#ifdef GAMMA_CORRECTED_BLENDING\n"
         "	intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
-        "	vec4 color = texture(texture0, textureUV.xy);\n"
+  
+    //Parallax test
+        " float leftRightFraction=( (gl_FragCoord.x/pixelWidth) * 2.0 ) - 1.0;"
+        "  vec2 textureSize = vec2(textureSize(texture0 ,0));\n"
+        "  float pixel_size = 1.0/float(textureSize.x);\n" //FLIP?
+        " vec2 pUV = textureUV.xy;\n"
+        //" float parallax = (sample_height(pUV) * 2.0)-1.0; \n"
+        //" pUV.x += 4.0* pixel_size*parallax*leftRightFraction; \n"
+  
+        "	vec4 color = texture(texture0, pUV.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         " fragmentColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         " if ( fragmentColor.a == 0.0 ) {discard;} //discard transparent fragments so they don't write on the depth buffer \n "
@@ -815,7 +848,11 @@ void initDefaultPrograms() {
         " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
         " fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
         "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"
-         "}\n";
+  
+    //DCW shit test emboss
+ // "fragmentColor.rgb += 1.0 * ( sample_nearby_average_heights(0.0-leftRightFraction, pUV) - sample_nearby_average_heights(leftRightFraction, pUV) );\n"
+
+        "}\n";
     defaultVertexPrograms["sprite_bloom"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["sprite_bloom"] = ""
         "#version 300 es  \n"
@@ -1086,6 +1123,8 @@ void initDefaultPrograms() {
         "uniform float wobble;\n"
         "uniform float glow;\n"
         "uniform float flare;\n"
+        "uniform vec4 mediaPlane;"
+        "in vec4 vPosition_eyespace;\n"
         "uniform float bloomScale;\n"
         "uniform float bloomShift;\n"
         "in vec3 viewXY;\n"
@@ -1109,8 +1148,13 @@ void initDefaultPrograms() {
         "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
   //dcw shit test
   "  fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, 1.0), vertexColor.a * color.a);\n"
+  
+      //DCW shit test Everything below media glows
+      //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
+      //"  fragmentColor = vec4(color.rgb*color.rgb,vertexColor.a * color.a);\n"
+      //"} \n"
 
-        "}\n";
+  "}\n";
     
     defaultVertexPrograms["bump"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["bump"] = ""

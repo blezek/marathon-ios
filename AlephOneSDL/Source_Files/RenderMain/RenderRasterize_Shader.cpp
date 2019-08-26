@@ -23,6 +23,7 @@
 #include "ChaseCam.h"
 #include "preferences.h"
 
+#include "screen.h"
 #include "mouse.h"
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
@@ -414,6 +415,10 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 	s->setFloat(Shader::U_Depth, offset);
 	s->setFloat(Shader::U_StrictDepthMode, OGL_ForceSpriteDepth() ? 1 : 0);
 	s->setFloat(Shader::U_Glow, 0);
+  s->setFloat(Shader::U_LogicalWidth, view->screen_width);
+  s->setFloat(Shader::U_LogicalHeight, view->screen_height);
+  s->setFloat(Shader::U_PixelWidth, view->screen_width * MainScreenPixelScale());
+  s->setFloat(Shader::U_PixelHeight, view->screen_height * MainScreenPixelScale());
 	return TMgr;
 }
 

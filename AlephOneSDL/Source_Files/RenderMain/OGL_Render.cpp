@@ -2319,11 +2319,15 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
     glEnable(GL_TEXTURE_2D);
   }
     //DCW Smart trigger
-  if( IsInhabitant &&
-     ( (ExtendedVertexList[1].Vertex[0] > 0 &&ExtendedVertexList[3].Vertex[0] < 0) || (ExtendedVertexList[1].Vertex[0] < 0 && ExtendedVertexList[3].Vertex[0] > 0)) ) {
-    
-    if( RenderRectangle.isMonster ) {
-      monsterIsCentered();
+  if( IsInhabitant && RenderRectangle.isMonster ) {
+    if ( (ExtendedVertexList[1].Vertex[0] >= 0 &&ExtendedVertexList[3].Vertex[0] <= 0) || (ExtendedVertexList[1].Vertex[0] <= 0 && ExtendedVertexList[3].Vertex[0] >= 0) ) {
+        monsterIsCentered();
+    } else {
+      if( ExtendedVertexList[1].Vertex[0] < 0  ) {
+         monsterIsOnRight();
+      } else  {
+         monsterIsOnLeft();
+      }
     }
   }
   

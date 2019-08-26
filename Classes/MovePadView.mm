@@ -32,6 +32,7 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation MovePadView
+@synthesize forwardKey;
 @synthesize dPadView, knobView, dPadSwimmingView;
 
 - (void)setup {

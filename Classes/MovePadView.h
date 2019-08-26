@@ -39,6 +39,7 @@
 	UIImpactFeedbackGenerator *feedbackSecondary; //DCW
 }
 
+@property (nonatomic) SDL_Keycode forwardKey;
 @property (nonatomic, retain) IBOutlet UIImageView *dPadView;
 @property (nonatomic, retain) IBOutlet UIImageView *knobView;
 @property (nonatomic, retain) IBOutlet UIImageView *dPadSwimmingView;

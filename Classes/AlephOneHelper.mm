@@ -44,7 +44,11 @@ float thisFrameDY;
 NSTimeInterval frameEndTime;
 
 bool smartTriggerActive;
+bool monsterOnLeft;
+bool monsterOnRight;
 bool canSmartFirePrimary;
+
+bool shouldDoOk;
 
 NSString *dataDir;
 
@@ -416,6 +420,8 @@ void clearSmartTrigger() {
     [[GameViewController sharedInstance] stopPrimaryFire];
   }
   smartTriggerActive=0;
+  monsterOnLeft=0;
+  monsterOnRight=0;
 }
 bool smartTriggerEngaged(){
   MLog(@"Smart trigger: %d", smartTriggerActive);
@@ -428,12 +434,30 @@ void monsterIsCentered () {
     smartTriggerActive = 1;
   }
   
-  if (smartTriggerActive && canSmartFirePrimary ){
+  if (smartTriggerActive && canSmartFirePrimary){
     [[GameViewController sharedInstance] startPrimaryFire];
   }
   
   return;
 }
+
+void monsterIsOnLeft (){
+  monsterOnLeft=YES;
+}
+void monsterIsOnRight (){
+  monsterOnRight=YES;
+}
+
+bool isMonsterCentered (){
+  return smartTriggerActive;
+}
+bool isMonsterOnLeft (){
+  return monsterOnLeft;
+}
+bool isMonsterOnRight (){
+  return monsterOnRight;
+}
+
 void setSmartFirePrimary(bool fire){
   canSmartFirePrimary=fire;
 }
@@ -467,16 +491,32 @@ bool useShaderRenderer() {
   return 0;
 }
 bool useShaderPostProcessing() {
-  return 1;
+  return 0;
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
   return 0;
 }
 
+bool shouldAutoBot() {
+  return 0;
+}
+
+void doOkOnNextDialog( bool ok ) {
+  shouldDoOk = ok;
+}
+
+bool okOnNextDialog() {
+  if(shouldDoOk) {
+    shouldDoOk = 0;
+    return 1;
+  }
+  return 0;
+}
+
   //Hide HUD for filming and screenshot purposes
 bool shouldHideHud () {
-  return 0;
+  return 1;
 }
 
   //Do we ever want to allow double cliock actions?

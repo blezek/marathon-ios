@@ -77,6 +77,10 @@ public:
     U_ClipPlane5,
     U_MediaPlane6,
     U_RefractionType,
+    U_LogicalWidth,
+    U_LogicalHeight,
+    U_PixelWidth,
+    U_PixelHeight,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 

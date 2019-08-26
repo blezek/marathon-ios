@@ -487,6 +487,12 @@ void GatherDialog::ReceivedMessageFromPlayer(
 	e.message = message;
 
 	gPregameChatHistory.append(e);
+  
+  if( shouldAutoBot() && (e.message.compare("go") == 0 || e.message.compare("Go") == 0 || e.message.compare ("GO") == 0) ){
+    doOkOnNextDialog(1);
+    //StartGameHit();
+  }
+  
 }
 
 /****************************************************
@@ -1320,7 +1326,7 @@ bool SetupNetgameDialog::SetupNetworkGameByRunning (
 			// but that means prefs reading/writing have to be reworked instead
 		//	strncpy(network_preferences->netscript_file, theNetscriptFile.GetPath(), sizeof(network_preferences->netscript_file));
 		//}
-		
+    
 		return true;
 
 	} else // dialog was cancelled
@@ -2363,7 +2369,7 @@ send_text_fake(w_text_entry* te) {
 void display_net_game_stats(void)
 {
 //printf("display_net_game_stats\n");
-
+  
   switchToSDLMenu(); //DCW
   
 	if (gMetaserverClient) 
@@ -2428,8 +2434,10 @@ void display_net_game_stats(void)
     }
     
     d.set_widget_placer(placer);
-    
+  
+  if( !shouldAutoBot()) {
     d.run();
+  }
 }
 
 class SdlGatherDialog : public GatherDialog
@@ -2953,7 +2961,7 @@ public:
 	
 	virtual bool Run ()
 	{		
-		return (m_dialog.run () == 0);
+		return (m_dialog.run () == 0 );
 	}
 
 	virtual void Stop (bool result)

@@ -180,7 +180,7 @@ void FBO::draw() {
 
 void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
-  GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+  GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];
   
   Shader *theShader = lastEnabledShader();
   

@@ -81,7 +81,7 @@ extern "C" {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   id anything = [touches anyObject];
-  NSLog ( @"Touch started ");
+
   if (inRearrangement) {
     if( [anything isKindOfClass:[UITouch class]] ){
       [self moveSomeViewToTouch: (UITouch*)anything];

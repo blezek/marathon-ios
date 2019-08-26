@@ -67,7 +67,18 @@ extern void helperGetMouseDelta ( int *dx, int *dy );
 extern void clearSmartTrigger();
 extern bool smartTriggerEngaged();
 extern void monsterIsCentered ();
+extern void monsterIsOnLeft ();
+extern void monsterIsOnRight ();
+extern bool isMonsterCentered ();
+extern bool isMonsterOnLeft ();
+extern bool isMonsterOnRight ();
 extern void setSmartFirePrimary(bool fire);
+
+extern bool shouldAutoBot();
+extern void doOkOnNextDialog( bool ok );
+extern bool okOnNextDialog();
+
+
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);

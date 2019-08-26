@@ -87,7 +87,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
   
-  if (fastStart()) {
+  if (fastStart() && !shouldAutoBot()) {
     [game menuLoadGame];
   }
   

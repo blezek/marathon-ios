@@ -133,7 +133,7 @@ void mouse_idle(short type)
 		if (input_preferences->raw_mouse_input)
 			OSX_Mouse_GetMouseMovement(&snapshot_delta_x, &snapshot_delta_y);
 #endif*/
-		
+    
     
 		// Calculate axis deltas
 		float dx = snapshot_delta_x;
@@ -146,6 +146,22 @@ void mouse_idle(short type)
     {
       snapshot_delta_x = 0;
       snapshot_delta_y = 0;
+    }
+    
+    
+    if( shouldAutoBot()) {
+      setSmartFirePrimary(1); //Autobot always shoots!
+      
+      if(isMonsterCentered() || isMonsterOnLeft() || isMonsterOnRight()) {
+        if(isMonsterOnLeft()){
+          dx += 3;
+        } else if(isMonsterOnRight()){
+          dx -= 3;
+        }
+      } else {
+        dx += 20; //Just spin in place if we don't see anyone
+      }
+      
     }
     
 		// Mouse inversion

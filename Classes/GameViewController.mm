@@ -531,8 +531,10 @@ short localFindActionTarget(
 }
 
 - (IBAction)gatherNetworkGame {
-  [self switchToSDLMenu];
-  do_menu_item_command(mInterface, iGatherGame, false);
+  if( mode!=SDLMenuMode ){
+    [self switchToSDLMenu];
+    do_menu_item_command(mInterface, iGatherGame, false);
+  }
 }
 
 - (IBAction)switchBackToGameView {
@@ -1272,7 +1274,12 @@ extern bool handle_open_replay(FileSpecifier& File);
   self.bungieAerospaceImageView.image = nil;
   self.splashView.image = nil;
 
+  if ( !self.replacementMenuView.hidden && shouldAutoBot() ) {
+    [self performSelector:@selector(menuGatherNetworkGame) withObject:nil afterDelay:2];
+  }
+  
   self.replacementMenuView.hidden = NO;
+  
 }
 
 - (IBAction)menuHideReplacementMenu {
@@ -1289,6 +1296,17 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (IBAction)menuGatherNetworkGame {
   [self PlayInterfaceButtonSound];
+
+    //If this is the autobot, don't queue the ok operation if we are already in sdl mode
+  if (shouldAutoBot() && mode != SDLMenuMode ) {
+    //Accept the Gather dialog after a bit of a delay.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      //NSLog(@"Queueing ok");
+      sleep(10);
+      doOkOnNextDialog(YES);
+    });
+  }
+  
   [self gatherNetworkGame];
 }
 - (IBAction)menuLoadGame {
@@ -1802,6 +1820,7 @@ short items[]=
       [self switchBackToGameView];
       self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
         mode = MenuMode;
+      
     }
     // Causing a bug, always dim
     // [self.HUDViewController dimActionKey:0];
@@ -1832,6 +1851,14 @@ short items[]=
         self.HUDViewController.view.alpha = hudAlpha;
       } else {
         self.HUDViewController.view.alpha = 1.0;
+      }
+      
+      if( shouldAutoBot() ) {
+        if(isMonsterCentered() || isMonsterOnLeft() || isMonsterOnRight()) {
+          setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 1);
+        } else {
+          setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 0);
+        }
       }
     }
   

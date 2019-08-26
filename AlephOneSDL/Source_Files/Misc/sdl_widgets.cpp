@@ -2685,7 +2685,7 @@ void w_colorful_chat::append_entry(const ColoredChatEntry& e)
 		name = string(e.sender, 0, font->trunc_styled_text(e.sender, kNameWidth, style | styleShadow));
 	else
 		name = e.sender;
-	
+  
 	int message_style = style;
 	int available_width = rect.w - get_theme_space(LIST_WIDGET, L_SPACE) - get_theme_space(LIST_WIDGET, R_SPACE);
 	if (e.type == ColoredChatEntry::ChatMessage)
@@ -2749,6 +2749,7 @@ void w_colorful_chat::append_entry(const ColoredChatEntry& e)
 	}
 	
 	append_entry(e_rest);
+  
 }
 
 void w_colorful_chat::draw_item(vector<ColoredChatEntry>::const_iterator it, SDL_Surface *s, int16 x, int16 y, uint16 width, bool selected) const

@@ -63,6 +63,8 @@
 #include <map>
 #include <string>
 
+#include "AlephOneHelper.h"
+
 // Global variables
 dialog *top_dialog = NULL;
 
@@ -2212,7 +2214,6 @@ void dialog::event(SDL_Event &e)
 
 int dialog::run(bool intro_exit_sounds)
 {
-  
   //DCW Sometimes the modelview matrix is weird after a match and the dialog is off the edge of the screen. Set identity here to fix.
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
@@ -2221,11 +2222,20 @@ int dialog::run(bool intro_exit_sounds)
 
 	// Put dialog on screen
 	start(intro_exit_sounds);
-  
-	// Run dialog loop
+
+  // Run dialog loop
 	while (!done) {
+
+    int isOK = okOnNextDialog();
+    if(isOK) {
+      done = TRUE;
+      result = 0;
+      break;
+    }
+    
 		// Process events
 		process_events();
+    
 		if (done)
 			break;
     
@@ -2319,6 +2329,12 @@ bool dialog::process_events()
 {
 	while (!done) {
 		SDL_Event e;
+    
+   // int isOK = okOnNextDialog();
+   // if (okOnNextDialog() ){
+    //  return 1;
+    //}
+    
     if (SDL_PollEvent(&e)){
 			event(e);
       
