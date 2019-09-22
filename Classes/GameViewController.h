@@ -155,6 +155,7 @@ typedef enum {
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)runMainLoopOnce:(id)sender;
+- (void)setDialogOk;
 
 - (IBAction)pause:(id)from;
 - (IBAction)pauseForBackground:(id)from;

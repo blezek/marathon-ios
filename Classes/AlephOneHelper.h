@@ -75,6 +75,7 @@ extern bool isMonsterOnRight ();
 extern void setSmartFirePrimary(bool fire);
 
 extern bool shouldAutoBot();
+extern void doOkInASec();
 extern void doOkOnNextDialog( bool ok );
 extern bool okOnNextDialog();
 

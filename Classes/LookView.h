@@ -51,12 +51,13 @@
 @property (nonatomic,retain) NSDate *touchesEndedTime;
 @property (nonatomic) bool inRearrangement;
 
-- (void)alignTLIWithPoint:(CGPoint) location;
+- (void) unPauseGyro;
+- (void) alignTLIWithPoint:(CGPoint) location;
 - (bool) touchInPrimaryFireZone:(UITouch*)touch;
 - (bool) touchInSecondaryFireZone:(UITouch*)touch;
 - (bool) touchInPrimaryPlusSecondaryFireZone:(UITouch*)touch;
-- (void)stopAllFire: (NSNumber *) thisTapID;
-- (void)stopSecondaryFire;
+- (void) stopAllFire: (NSNumber *) thisTapID;
+- (void) stopSecondaryFire;
 - (float)distanceFromPoint:(CGPoint)p1 to:(CGPoint)p2;
 - (void) shouldRearrange:(bool)rearrange;
 - (void) loadCustomArrangementFromPreferences;

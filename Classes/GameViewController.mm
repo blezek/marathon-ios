@@ -1839,6 +1839,10 @@ short items[]=
       
       if(gameController.mainController != nil) {
         moveMouseRelative(gameController.rightXAxis, gameController.rightYAxis);
+        
+        if (gameController.rightXAxis != 0.0 || gameController.rightYAxis != 0.0) {
+          [lookView unPauseGyro]; //Any movement unpauses gyro.
+        }
       }
       
       [self.HUDViewController updateSwimmingIndicator];
@@ -1854,10 +1858,19 @@ short items[]=
       }
       
       if( shouldAutoBot() ) {
+        
+          //If autobot sees anything, run forward!
         if(isMonsterCentered() || isMonsterOnLeft() || isMonsterOnRight()) {
           setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 1);
         } else {
           setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 0);
+        }
+        
+          //Autobot just toggles action key constantly.
+        if (machine_tick_count() % 7 == 0) {
+          [self.HUDViewController actionDown:self];
+        } else if (machine_tick_count() % 19 == 0) {
+          [self.HUDViewController actionUp:self];
         }
       }
     }
@@ -1868,6 +1881,10 @@ short items[]=
         AlephOneMainLoop();
         inMainLoop = NO;
     }
+}
+
+- (void)setDialogOk {
+  doOkOnNextDialog(1);
 }
 
 #pragma mark -

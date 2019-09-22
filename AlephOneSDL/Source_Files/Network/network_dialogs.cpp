@@ -413,9 +413,19 @@ void GatherDialog::StartGameHit ()
 
 void GatherDialog::JoinSucceeded(const prospective_joiner_info* player)
 {
-	if (NetGetNumberOfPlayers () > 1)
+  if (NetGetNumberOfPlayers () > 1) {
 		m_startWidget->activate ();
+  }
 	
+  if(shouldAutoBot()) {
+    if (NetGetNumberOfPlayers () <= 2) {
+      m_chatEntryWidget->set_text("You are the only human here! Wait for some real players, then type GO to start a game.");
+    } else {
+      m_chatEntryWidget->set_text("Yo Dawg! Wait here for more players, or type GO to start a game.");
+    }
+    sendChat();
+  }
+  
 	m_pigWidget->redraw ();
 
 	if (gMetaserverClient->isConnected())
@@ -487,10 +497,10 @@ void GatherDialog::ReceivedMessageFromPlayer(
 	e.message = message;
 
 	gPregameChatHistory.append(e);
-  
+
   if( shouldAutoBot() && (e.message.compare("go") == 0 || e.message.compare("Go") == 0 || e.message.compare ("GO") == 0) ){
     doOkOnNextDialog(1);
-    //StartGameHit();
+    printf("GOT A GO!\n");
   }
   
 }
@@ -2744,10 +2754,11 @@ public:
 		network_table->col_flags(1, placeable::kAlignLeft);
     
 		w_toggle *advertise_on_metaserver_w = new w_toggle (sAdvertiseGameOnMetaserver);
-#ifndef MAC_APP_STORE
-    network_table->dual_add(advertise_on_metaserver_w, m_dialog);
-		network_table->dual_add(advertise_on_metaserver_w->label("Advertise Game on Internet"), m_dialog);
-#endif
+
+    if(shouldAutoBot()) {
+      network_table->dual_add(advertise_on_metaserver_w, m_dialog);
+      network_table->dual_add(advertise_on_metaserver_w->label("Advertise Game on Internet"), m_dialog);
+    }
 
 		w_toggle *use_upnp_w = new w_toggle (true);
 #ifndef MAC_APP_STORE

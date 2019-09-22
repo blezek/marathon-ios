@@ -842,7 +842,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
     }
 	} else {
 		glDisable(GL_BLEND);
-    glEnable(GL_BLEND); //dcw shit test (this actually fixes alph textures?)
+    glEnable(GL_BLEND); //dcw shit test (this actually fixes alpha textures?)
     if ( ! useShaderRenderer()){
       glEnable(GL_ALPHA_TEST);
       glAlphaFunc(GL_GREATER, 0.5);

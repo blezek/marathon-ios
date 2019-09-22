@@ -502,6 +502,12 @@ bool shouldAutoBot() {
   return 0;
 }
 
+void doOkInASec() {
+  
+  [[GameViewController sharedInstance] performSelector:@selector(setDialogOk) withObject:nil afterDelay:2];
+
+}
+
 void doOkOnNextDialog( bool ok ) {
   shouldDoOk = ok;
 }
@@ -516,7 +522,7 @@ bool okOnNextDialog() {
 
   //Hide HUD for filming and screenshot purposes
 bool shouldHideHud () {
-  return 1;
+  return 0;
 }
 
   //Do we ever want to allow double cliock actions?
