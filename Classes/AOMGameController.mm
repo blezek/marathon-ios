@@ -156,6 +156,10 @@ extern "C" {
     
     // XYAB buttons
     setKey(actionKey, gamepad.buttonA.isPressed);
+      //Pause gyro if in refuel.
+    if (gamepad.buttonA.isPressed && [[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+      [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+    }
     setKey(nextWeapon, gamepad.buttonB.isPressed);
     setKey(previousWeapon, gamepad.buttonY.isPressed);
     setKey(mapKey, gamepad.buttonX.isPressed);

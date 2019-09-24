@@ -51,7 +51,6 @@
 @property (nonatomic,retain) NSDate *touchesEndedTime;
 @property (nonatomic) bool inRearrangement;
 
-- (void) unPauseGyro;
 - (void) alignTLIWithPoint:(CGPoint) location;
 - (bool) touchInPrimaryFireZone:(UITouch*)touch;
 - (bool) touchInSecondaryFireZone:(UITouch*)touch;

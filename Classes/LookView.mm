@@ -283,9 +283,6 @@ extern "C" {
                            
 }
 
-- (void)unPauseGyro {
-  [lookPadView unPauseGyro];
-}
 
 - (void)handleTouch:(UITouch *)touch {
   
@@ -294,7 +291,7 @@ extern "C" {
     return;
   }
   
-  [self unPauseGyro];
+  [lookPadView unPauseGyro];
   
   double forceNormalized = [[NSUserDefaults standardUserDefaults] boolForKey:kThreeDTouchFires] ? touch.force / touch.maximumPossibleForce : 0;
   CGPoint currentPoint = [touch locationInView:self];

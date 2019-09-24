@@ -1841,8 +1841,19 @@ short items[]=
         moveMouseRelative(gameController.rightXAxis, gameController.rightYAxis);
         
         if (gameController.rightXAxis != 0.0 || gameController.rightYAxis != 0.0) {
-          [lookView unPauseGyro]; //Any movement unpauses gyro.
+          [[GameViewController sharedInstance].HUDViewController.lookPadView unPauseGyro]; //Any movement unpauses gyro.
         }
+        
+        //Always run above media. Never check headBelowMedia or set preferences if no game is active, otherwise it will crash!
+        //This logic is essentially duplicated in the AOGameController... we just need it to work when there is no controller input also.
+        if ([[GameViewController sharedInstance] mode] == GameMode) {
+          if(headBelowMedia()){
+            SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+          } else {
+            SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+          }
+        }
+        
       }
       
       [self.HUDViewController updateSwimmingIndicator];
