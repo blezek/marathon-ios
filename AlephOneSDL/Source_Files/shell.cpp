@@ -94,6 +94,7 @@
 
 #ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
+#include "OGL_Shader.h" //DCW needed to init Shader earlier than before
 #endif
 
 #if !defined(DISABLE_NETWORKING)
@@ -448,6 +449,9 @@ void initialize_application(void)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    
+      //DCW initialize shader immediately, since it will be used for intro screen fades.
+    Shader::loadAll();
   }
   
 #if defined(HAVE_SDL_IMAGE)
