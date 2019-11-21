@@ -371,6 +371,15 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 #include "AlephOneHelper.h"
 void FontSpecifier::OGL_Render(const char *Text)
 {
+  Shader *previousShader = NULL;
+  Shader *textShader = NULL;
+  
+  if(useShaderRenderer()) {
+    previousShader = lastEnabledShader();
+    textShader = Shader::get(Shader::S_Rect);
+    textShader->enable();
+  }
+  
 	// Bug out if no texture to render
 	if (!OGL_Texture)
 	{
@@ -428,6 +437,7 @@ void FontSpecifier::OGL_Render(const char *Text)
         
         lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
         lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+        lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
       }
     }
     
@@ -442,6 +452,12 @@ void FontSpecifier::OGL_Render(const char *Text)
 	
   
   //glPopAttrib();
+  
+    //Restore original shader
+  if(useShaderRenderer() && previousShader) {
+     previousShader->enable();
+  }
+   
 }
 
 

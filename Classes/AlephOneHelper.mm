@@ -487,8 +487,13 @@ bool playerInTerminal () {
   return player_in_terminal_mode(local_player_index);
 }
 
-bool useShaderRenderer() {
+//Hide HUD for filming and screenshot purposes
+bool shouldHideHud () {
   return 0;
+}
+
+bool useShaderRenderer() {
+  return 1;
 }
 bool useShaderPostProcessing() {
   return 0;
@@ -517,11 +522,6 @@ bool okOnNextDialog() {
     shouldDoOk = 0;
     return 1;
   }
-  return 0;
-}
-
-  //Hide HUD for filming and screenshot purposes
-bool shouldHideHud () {
   return 0;
 }
 
