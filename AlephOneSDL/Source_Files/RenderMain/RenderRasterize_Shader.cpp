@@ -1473,6 +1473,31 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     lastShader->setVec4(Shader::U_ClipPlane1, plane1);
     lastShader->setVec4(Shader::U_ClipPlane5, plane5);
     lastShader->setVec4(Shader::U_MediaPlane6, media6);
+    
+    //DCW Smart trigger
+    GLfloat spriteOnScreen[12] = {vertex_array[0], vertex_array[1], vertex_array[2],
+                                  vertex_array[3], vertex_array[4], vertex_array[5],
+                                  vertex_array[6], vertex_array[7], vertex_array[8],
+                                  vertex_array[9], vertex_array[10], vertex_array[11]};
+    
+      //Convert sprite coordinates to screen coordinates. Hopefully the right matrix is enabled, otherwise this would behave strangely.
+    MatrixStack::Instance()->transformVertex(spriteOnScreen[0], spriteOnScreen[1], spriteOnScreen[2]);
+    MatrixStack::Instance()->transformVertex(spriteOnScreen[3], spriteOnScreen[4], spriteOnScreen[5]);
+    MatrixStack::Instance()->transformVertex(spriteOnScreen[6], spriteOnScreen[7], spriteOnScreen[8]);
+    MatrixStack::Instance()->transformVertex(spriteOnScreen[9], spriteOnScreen[10], spriteOnScreen[11]);
+    //printf("Sprite: \n%f %f %f\n%f %f %f\n%f %f %f\n%f %f %f\n\n", spriteOnScreen[0], spriteOnScreen[1], spriteOnScreen[2], spriteOnScreen[3], spriteOnScreen[4], spriteOnScreen[5], spriteOnScreen[6], spriteOnScreen[7], spriteOnScreen[8], spriteOnScreen[9], spriteOnScreen[10], spriteOnScreen[11]);
+
+    //Sprite is centered horizontally if index 0 and 3 are different signs.
+    //Sprite is centered vertically if index 4 and 7 are different signs.
+    
+    if( /*IsInhabitant && */ rect.isMonster ) {
+      if ( (spriteOnScreen[0] >= 0 && spriteOnScreen[3] <= 0) || (spriteOnScreen[0] <= 0 && spriteOnScreen[3] >= 0) ) {
+          if ( (spriteOnScreen[4] >= 0 && spriteOnScreen[7] <= 0) || (spriteOnScreen[4] <= 0 && spriteOnScreen[7] >= 0) ) {
+              monsterIsCentered();
+          }
+      }
+    }
+        
   }
   
   glPushGroupMarkerEXT(0, "render_node_object_helper");
