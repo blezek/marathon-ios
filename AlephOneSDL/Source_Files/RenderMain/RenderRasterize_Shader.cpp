@@ -1490,7 +1490,7 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     //Sprite is centered horizontally if index 0 and 3 are different signs.
     //Sprite is centered vertically if index 4 and 7 are different signs.
     
-    if( /*IsInhabitant && */ rect.isMonster ) {
+    if( /*IsInhabitant && */ rect.isLivingMonster ) {
       if ( (spriteOnScreen[0] >= 0 && spriteOnScreen[3] <= 0) || (spriteOnScreen[0] <= 0 && spriteOnScreen[3] >= 0) ) {
           if ( (spriteOnScreen[4] >= 0 && spriteOnScreen[7] <= 0) || (spriteOnScreen[4] <= 0 && spriteOnScreen[7] >= 0) ) {
               monsterIsCentered();

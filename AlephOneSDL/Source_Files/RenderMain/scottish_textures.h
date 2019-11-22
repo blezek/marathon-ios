@@ -169,7 +169,7 @@ struct rectangle_definition
 	short WorldLeft, WorldBottom, WorldRight, WorldTop;
 
   //DCW smart trigger hint
-  bool isMonster;
+  bool isLivingMonster;
   
 	// Constructor required defaults
 	rectangle_definition() :

@@ -62,6 +62,7 @@
 #include <limits.h>
 
 #include "mouse.h" //DCW Mouse smoothing
+#include "monsters.h" //DCW Needed to set monster hints for smart trigger
 
 // LP: "recommended" sizes of stuff in growable lists
 #define MAXIMUM_RENDER_OBJECTS 72
@@ -308,11 +309,14 @@ render_object_data *RenderPlaceObjsClass::build_render_object(
         render_object= &RenderObjects[Length];
         
         //DCW smart trigger test
-        render_object->rectangle.isMonster= 0;
+        render_object->rectangle.isLivingMonster= 0;
         object_data *object = get_object_data(object_index);
         if (GET_OBJECT_OWNER(object) == _object_is_monster)
         {
-          render_object->rectangle.isMonster=1;
+          struct monster_data *monster= get_monster_data(object->permutation);
+          if (monster && !MONSTER_IS_DYING(monster)) {
+            render_object->rectangle.isLivingMonster=1;
+          }
         }
         
         render_object->rectangle.flags= 0;
