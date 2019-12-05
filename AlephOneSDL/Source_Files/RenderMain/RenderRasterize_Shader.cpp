@@ -260,7 +260,7 @@ void RenderRasterize_Shader::clip_to_window(clipping_window_data *win)
   if (useShaderRenderer()){
     MatrixStack::Instance()->pushMatrix();
     MatrixStack::Instance()->translatef(view->origin.x, view->origin.y, 0.);
-    MatrixStack::Instance()->rotatef(view->yaw * (360/float(FULL_CIRCLE)) + 90., 0., 0., 1.);
+    MatrixStack::Instance()->rotatef(((float)(view->yaw) + lostMousePrecisionX()) * (360/float(FULL_CIRCLE)) + 90., 0., 0., 1.);
     MatrixStack::Instance()->rotatef(-0.1, 0., 0., 1.); // leave some excess to avoid artifacts at edges
   } else {
     glPushMatrix();

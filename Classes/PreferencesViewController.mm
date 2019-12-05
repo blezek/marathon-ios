@@ -43,6 +43,8 @@
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
 @synthesize settingPrefsView;
+@synthesize bloom;
+@synthesize rendererLabel;
 
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
@@ -114,10 +116,14 @@
     ////[ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
   }
 
+  [defaults setBool:[self.bloom isSelected] forKey:kUseBloom];
+  
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[GameViewController sharedInstance] updateReticule:-1];
 
+  cacheRendererQualityPreferences(); //The helper will cache renderer settings, since they get read from a lot.
+  
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
   
   // Crosshairs are set in the UI layer, not by the engine
@@ -159,6 +165,15 @@
   [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
   [self.tiltTurning setSelected:[defaults boolForKey:kTiltTurning]];
+  
+  [self.bloom setHidden:!useShaderRenderer()];
+  [self.bloom setSelected:[defaults boolForKey:kUseBloom]];
+  
+  if(useShaderRenderer()) {
+    [rendererLabel setText:@"Renderer: Modern"];
+  } else {
+    [rendererLabel setText:@"Renderer: Classic"];
+  }
   
   [self.dPadAction setSelected:[defaults boolForKey:kDPadAction]];
   [self.threeDTouchFires setSelected:[defaults boolForKey:kThreeDTouchFires]];

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -521,7 +519,11 @@
                                 <accessibilityTraits key="traits" notEnabled="YES"/>
                             </accessibility>
                             <attributedString key="attributedText">
-                                <fragment content="Special Thanks To">
+                                <fragment>
+                                    <string key="content">Celebrating 25 Years of Marathon!
+
+
+Special Thanks To</string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="14" name="BankGothicBT-Medium"/>
@@ -1252,7 +1254,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">	Joey Adams
+                                    <mutableString key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1297,7 +1299,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </string>
+ </mutableString>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4052,7 +4054,7 @@ Cg
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Product Manager
+                                    <mutableString key="content">Product Manager
 	Tuncer Deniz
 
 Scenario by Double Aught
@@ -4101,7 +4103,7 @@ The Voice of Bob
 	Doug Zartman
 
 
-</string>
+</mutableString>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4314,7 +4316,7 @@ Cg
         <image name="TipTheDeveloper.png" width="332" height="56"/>
         <image name="TipTheDeveloperHighlighted.png" width="332" height="56"/>
         <image name="TouchToContinue.png" width="512" height="100"/>
-        <image name="bungie-logo.png" width="684.91436767578125" height="300"/>
+        <image name="bungie-logo.png" width="685" height="300"/>
         <image name="github.png" width="400" height="200"/>
         <image name="mainlogo.png" width="512" height="512"/>
         <image name="powered-by-alephone.png" width="640" height="320"/>

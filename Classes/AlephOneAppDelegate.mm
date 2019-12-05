@@ -171,6 +171,8 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"YES", kAlwaysRun,
                                @"YES", kSmoothMouselook,
                                [NSNumber numberWithBool:YES], kFirstGame,
+                               @"NO", kUseClassicRenderer,
+                               @"NO", kUseBloom,
                                nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];  

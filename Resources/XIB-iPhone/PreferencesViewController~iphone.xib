@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" colorMatched="YES">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreferencesViewController">
             <connections>
                 <outlet property="alwaysRun" destination="FR6-XL-vdr" id="fhk-LP-j46"/>
+                <outlet property="bloom" destination="YUd-Ea-gO8" id="3kK-E4-qdN"/>
                 <outlet property="brightness" destination="38" id="39"/>
                 <outlet property="crosshairs" destination="77" id="79"/>
                 <outlet property="dPadAction" destination="yOy-kl-nbb" id="6cg-St-SIR"/>
@@ -28,6 +27,7 @@
                 <outlet property="musicVolume" destination="21" id="27"/>
                 <outlet property="onScreenTrigger" destination="bWi-SZ-qZq" id="cyS-bD-waA"/>
                 <outlet property="password" destination="3bl-Eh-nnd" id="8hl-pL-7wF"/>
+                <outlet property="rendererLabel" destination="iC7-eU-NHV" id="wgR-ts-7qc"/>
                 <outlet property="settingPrefsView" destination="86" id="89"/>
                 <outlet property="sfxVolume" destination="50" id="51"/>
                 <outlet property="smoothMouselook" destination="yGO-Kr-vMZ" id="QbI-i9-W2k"/>
@@ -45,23 +45,23 @@
             <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" id="3t7-i2-I4a" userLabel="Deprecated Elements">
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3t7-i2-I4a" userLabel="Deprecated Elements">
                     <rect key="frame" x="-240" y="96" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="3" id="38" userLabel="Brightness">
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="38" userLabel="Brightness">
                             <rect key="frame" x="47" y="49" width="146" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </slider>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="50" userLabel="Volume">
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="50" userLabel="Volume">
                             <rect key="frame" x="47" y="49" width="146" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </slider>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="21" userLabel="Music Volume">
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="21" userLabel="Music Volume">
                             <rect key="frame" x="47" y="49" width="146" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </slider>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="80" userLabel="HD Mode">
+                        <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80" userLabel="HD Mode">
                             <rect key="frame" x="88" y="39" width="64" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -77,21 +77,21 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="82"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Brightness:" textAlignment="right" lineBreakMode="tailTruncation" id="QFl-14-UoC" userLabel="Brightness">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Brightness:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFl-14-UoC" userLabel="Brightness">
                             <rect key="frame" x="34" y="52" width="171" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="13"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Volume:" textAlignment="right" lineBreakMode="tailTruncation" id="2RV-Vn-xMn" userLabel="Volume">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Volume:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RV-Vn-xMn" userLabel="Volume">
                             <rect key="frame" x="34" y="52" width="171" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="13"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Music Volume:" textAlignment="right" lineBreakMode="tailTruncation" id="9fl-qz-jJb" userLabel="Music Volume">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Music Volume:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fl-qz-jJb" userLabel="Music Volume">
                             <rect key="frame" x="34" y="52" width="171" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="13"/>
@@ -101,19 +101,26 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="GenericBackground.png" id="13">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" image="GenericBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="13">
                     <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="22" userLabel="Horizontal Sensitivity">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Renderer: Modern" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-eU-NHV">
+                    <rect key="frame" x="347" y="261" width="110" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="22" userLabel="Horizontal Sensitivity">
                     <rect key="frame" x="209" y="89" width="132" height="29"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </slider>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="41" userLabel="Vertical Sensitivity">
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="41" userLabel="Vertical Sensitivity">
                     <rect key="frame" x="209" y="114" width="132" height="29"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </slider>
-                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="60">
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60">
                     <rect key="frame" x="49" y="669" width="171" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -127,15 +134,15 @@
                         <action selector="resetAchievements:" destination="-1" eventType="touchUpInside" id="63"/>
                     </connections>
                 </button>
-                <view hidden="YES" alpha="0.69718307256698608" contentMode="scaleToFill" id="86" customClass="RoundedView">
+                <view hidden="YES" alpha="0.69718307256698608" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86" customClass="RoundedView">
                     <rect key="frame" x="4" y="14" width="222" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" id="88">
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="88">
                             <rect key="frame" x="8" y="11" width="20" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Configuring preferences..." lineBreakMode="tailTruncation" id="87" userLabel="Loading">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Configuring preferences..." lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87" userLabel="Loading">
                             <rect key="frame" x="8" y="7" width="206" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="12"/>
@@ -145,53 +152,51 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Horizontal Sensitivity:" textAlignment="right" lineBreakMode="tailTruncation" id="uug-Ap-A0c" userLabel="H sensitivity">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Horizontal Sensitivity:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uug-Ap-A0c" userLabel="H sensitivity">
                     <rect key="frame" x="32" y="92" width="171" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="13"/>
                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vertical Sensitivity:" textAlignment="right" lineBreakMode="tailTruncation" id="xbk-VK-2l4" userLabel="V Sensitivity">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Vertical Sensitivity:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbk-VK-2l4" userLabel="V Sensitivity">
                     <rect key="frame" x="32" y="118" width="171" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="13"/>
                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
-                <view alpha="0.69718307256698608" contentMode="scaleToFill" id="geP-jV-9G2" userLabel="Metaserver Settings Background">
+                <view alpha="0.69718307256698608" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geP-jV-9G2" userLabel="Metaserver Settings Background">
                     <rect key="frame" x="13" y="16" width="326" height="74"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="INTERNET MEATSERVER" lineBreakMode="tailTruncation" id="erQ-yo-Bci" userLabel="Meatserver Label">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="INTERNET MEATSERVER" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erQ-yo-Bci" userLabel="Meatserver Label">
                             <rect key="frame" x="8" y="-1" width="151" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="1" green="0.96351180550000004" blue="0.0029339916539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Login:" lineBreakMode="tailTruncation" id="Exy-cl-MuO" userLabel="Metaserver login:">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Login:" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-cl-MuO" userLabel="Metaserver login:">
                             <rect key="frame" x="21" y="11" width="134" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="14"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" id="lnG-x0-Btu">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lnG-x0-Btu">
                             <rect key="frame" x="21" y="36" width="134" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" id="3bl-Eh-nnd">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-Eh-nnd">
                             <rect key="frame" x="163" y="36" width="134" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" id="bwV-vt-wwX" userLabel="Metaserver login:">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Password:" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwV-vt-wwX" userLabel="Metaserver login:">
                             <rect key="frame" x="163" y="11" width="134" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="14"/>
@@ -201,7 +206,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0004253318202347081" green="0.1324617444989116" blue="0.31484779792746109" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="11" userLabel="OK">
+                <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11" userLabel="Accept">
                     <rect key="frame" x="441" y="272" width="107" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
@@ -216,11 +221,11 @@
                         <action selector="closePreferences:" destination="-1" eventType="touchUpInside" id="12"/>
                     </connections>
                 </button>
-                <view alpha="0.69718307256698608" contentMode="scaleToFill" id="ntg-GG-0Ug" userLabel="Firing">
+                <view alpha="0.69718307256698608" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-GG-0Ug" userLabel="Firing">
                     <rect key="frame" x="347" y="16" width="209" height="143"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hIT-bR-PuV" userLabel="HiLow">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIT-bR-PuV" userLabel="HiLow">
                             <rect key="frame" x="169" y="41" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -235,14 +240,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="zZi-Xt-fcO"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="High/Low Taps Alt-Fire" textAlignment="right" lineBreakMode="tailTruncation" id="Mc1-QA-9dh" userLabel="HiLow">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="High/Low Taps Alt-Fire" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mc1-QA-9dh" userLabel="HiLow">
                             <rect key="frame" x="19" y="46" width="142" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="74" userLabel="Tap to fire">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74" userLabel="Tap to fire">
                             <rect key="frame" x="169" y="10" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -252,14 +257,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="75"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tap to Fire:" textAlignment="right" lineBreakMode="tailTruncation" id="W8I-7C-ALi" userLabel="Tap to fire">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Tap to Fire:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8I-7C-ALi" userLabel="Tap to fire">
                             <rect key="frame" x="59" y="14" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="bWi-SZ-qZq" userLabel="Triggers">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWi-SZ-qZq" userLabel="Triggers">
                             <rect key="frame" x="169" y="72" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,14 +279,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="nlK-eu-M0p"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="On-Screen Triggers:" textAlignment="right" lineBreakMode="tailTruncation" id="jqm-6b-kXx" userLabel="Triggers">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="On-Screen Triggers:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqm-6b-kXx" userLabel="Triggers">
                             <rect key="frame" x="0.0" y="77" width="161" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="TD4-hI-qWz" userLabel="3d Touch Fire">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD4-hI-qWz" userLabel="3d Touch Fire">
                             <rect key="frame" x="169" y="103" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -296,14 +301,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="txT-QK-nfu"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3D Touches Fire Weapon" textAlignment="right" lineBreakMode="tailTruncation" id="cZQ-IJ-yPA" userLabel="3d Touch Fire">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="3D Touches Fire Weapon" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZQ-IJ-yPA" userLabel="3d Touch Fire">
                             <rect key="frame" x="0.0" y="108" width="161" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FIRING" lineBreakMode="tailTruncation" id="6ZQ-Yb-QSh" userLabel="Firing Label">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="FIRING" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZQ-Yb-QSh" userLabel="Firing Label">
                             <rect key="frame" x="8" y="0.0" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
@@ -313,11 +318,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.26740608809999999" green="0.11272067396235824" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view alpha="0.69718307256698608" contentMode="scaleToFill" id="0Go-Hx-PPT" userLabel="Control">
+                <view alpha="0.69718307256698608" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-Hx-PPT" userLabel="Control">
                     <rect key="frame" x="347" y="166" width="209" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="K8i-db-PC7" userLabel="Gyro">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8i-db-PC7" userLabel="Gyro">
                             <rect key="frame" x="169" y="16" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -332,14 +337,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="Alg-dN-lbq"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Always Aim with Gyro:" textAlignment="right" lineBreakMode="tailTruncation" id="YZX-zv-ScH" userLabel="Gyro">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Always Aim with Gyro:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZX-zv-ScH" userLabel="Gyro">
                             <rect key="frame" x="24" y="21" width="137" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="5LG-Ce-e2J" userLabel="Tilt">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LG-Ce-e2J" userLabel="Tilt">
                             <rect key="frame" x="169" y="47" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,14 +359,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="Gg8-zy-qqk"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Touch + Tilt Turning:" textAlignment="right" lineBreakMode="tailTruncation" id="GGk-Uu-mRm" userLabel="Tilt">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Touch + Tilt Turning:" textAlignment="right" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGk-Uu-mRm" userLabel="Tilt">
                             <rect key="frame" x="29" y="52" width="132" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GYROSCOPE" lineBreakMode="tailTruncation" id="yGn-1X-ggX" userLabel="Gyroscope Label">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="GYROSCOPE" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGn-1X-ggX" userLabel="Gyroscope Label">
                             <rect key="frame" x="8" y="0.0" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
@@ -371,18 +376,18 @@
                     </subviews>
                     <color key="backgroundColor" red="0.26740608809999999" green="0.0" blue="0.2367885472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view alpha="0.69718307256698608" contentMode="scaleToFill" id="BON-tl-kzI" userLabel="Enhancements">
+                <view alpha="0.69718307256698608" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BON-tl-kzI" userLabel="Enhancements">
                     <rect key="frame" x="130" y="150" width="209" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Crosshairs:" textAlignment="center" lineBreakMode="tailTruncation" id="JgC-nf-yrQ" userLabel="Crosshairs">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Crosshairs:" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgC-nf-yrQ" userLabel="Crosshairs">
                             <rect key="frame" x="-3" y="27" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="77" userLabel="Crosshairs">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77" userLabel="Crosshairs">
                             <rect key="frame" x="32" y="50" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,14 +402,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="78"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Always Run:" textAlignment="center" lineBreakMode="tailTruncation" id="apM-5U-8sQ" userLabel="Always Run">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Always Run:" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apM-5U-8sQ" userLabel="Always Run">
                             <rect key="frame" x="-2" y="90" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FR6-XL-vdr" userLabel="Always Run">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR6-XL-vdr" userLabel="Always Run">
                             <rect key="frame" x="32" y="110" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -414,14 +419,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GWw-6Y-3a7"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Smooth Aiming:" textAlignment="center" lineBreakMode="tailTruncation" id="nrZ-om-S6a" userLabel="Smooth Mouselook">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Smooth Aiming:" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrZ-om-S6a" userLabel="Smooth Mouselook">
                             <rect key="frame" x="95" y="90" width="102" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yGO-Kr-vMZ" userLabel="Smooth Mouselook">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGO-Kr-vMZ" userLabel="Smooth Mouselook">
                             <rect key="frame" x="129" y="110" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -431,7 +436,7 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="bfI-yr-VSr"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="yOy-kl-nbb" userLabel="D-Pad action">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOy-kl-nbb" userLabel="D-Pad action">
                             <rect key="frame" x="129" y="50" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -446,7 +451,7 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GUq-rH-Aff"/>
                             </connections>
                         </button>
-                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="nG9-hE-RBi">
+                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nG9-hE-RBi">
                             <rect key="frame" x="86" y="15" width="118" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -502,7 +507,7 @@ Does Action:</string>
                             </attributedString>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ENHANCEMENTS" lineBreakMode="tailTruncation" id="0xC-5T-VKN" userLabel="Enhancements Label">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="ENHANCEMENTS" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xC-5T-VKN" userLabel="Enhancements Label">
                             <rect key="frame" x="8" y="0.0" width="107" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
@@ -512,7 +517,7 @@ Does Action:</string>
                     </subviews>
                     <color key="backgroundColor" red="0.1876065719913933" green="0.0" blue="0.26740608809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="81" userLabel="MC Mode">
+                <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81" userLabel="MC Mode">
                     <rect key="frame" x="47" y="247" width="75" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -528,6 +533,22 @@ Does Action:</string>
                         <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="83"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUd-Ea-gO8" userLabel="Bloom">
+                    <rect key="frame" x="47" y="174" width="75" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="BloomOff.png">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" image="BloomOn.png"/>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="NV3-5G-mCW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -538,12 +559,14 @@ Does Action:</string>
     <resources>
         <image name="AcceptButton.png" width="200" height="56"/>
         <image name="AcceptButtonHighlighted.png" width="200" height="56"/>
-        <image name="GenericBackground.png" width="1024" height="768"/>
-        <image name="HDModeOff.png" width="256" height="200"/>
-        <image name="HDModeOn.png" width="256" height="200"/>
-        <image name="MCModeOff.png" width="300" height="200"/>
-        <image name="MCModeOn.png" width="300" height="200"/>
-        <image name="checkbox.png" width="128" height="128"/>
-        <image name="checkboxactive.png" width="128" height="128"/>
+        <image name="BloomOff.png" width="150" height="100"/>
+        <image name="BloomOn.png" width="150" height="100"/>
+        <image name="GenericBackground.png" width="558.54547119140625" height="418.90908813476562"/>
+        <image name="HDModeOff.png" width="128" height="100"/>
+        <image name="HDModeOn.png" width="128" height="100"/>
+        <image name="MCModeOff.png" width="150" height="100"/>
+        <image name="MCModeOn.png" width="150" height="100"/>
+        <image name="checkbox.png" width="64" height="64"/>
+        <image name="checkboxactive.png" width="64" height="64"/>
     </resources>
 </document>

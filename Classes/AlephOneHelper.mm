@@ -50,6 +50,9 @@ bool canSmartFirePrimary;
 
 bool shouldDoOk;
 
+bool shouldUseClassicRenderer;
+bool shouldUseBloom;
+
 NSString *dataDir;
 
 void printGLError( const char* message ) {
@@ -492,11 +495,21 @@ bool shouldHideHud () {
   return 0;
 }
 
+void cacheRendererPreferences() {
+  shouldUseClassicRenderer = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicRenderer];
+  cacheRendererQualityPreferences();
+}
+
+void cacheRendererQualityPreferences() {
+  shouldUseBloom = [[NSUserDefaults standardUserDefaults] boolForKey:kUseBloom];
+}
+
+
 bool useShaderRenderer() {
-  return 1;
+  return !shouldUseClassicRenderer;
 }
 bool useShaderPostProcessing() {
-  return 0;
+  return shouldUseBloom;
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {

@@ -317,6 +317,12 @@
 		518F64BA2304B3B60016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B92304B3B50016F33B /* PauseDone.png */; };
 		518F64BC2304B3CC0016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BB2304B3CC0016F33B /* PauseDone.png */; };
 		518F64BE2304B3E20016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BD2304B3E10016F33B /* PauseDone.png */; };
+		5195D5C72396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
+		5195D5C82396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
+		5195D5C92396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
+		5195D5CA2396B47C0078A375 /* BloomOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C62396B47C0078A375 /* BloomOn.png */; };
+		5195D5CB2396B47C0078A375 /* BloomOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C62396B47C0078A375 /* BloomOn.png */; };
+		5195D5CC2396B47C0078A375 /* BloomOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C62396B47C0078A375 /* BloomOn.png */; };
 		519F56DF21F0EBAD00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56DE21F0EBAC00C0382B /* D-pad-swim.png */; };
 		519F56E121F0EBBF00C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E021F0EBBF00C0382B /* D-pad-swim.png */; };
 		519F56E321F0EBD700C0382B /* D-pad-swim.png in Resources */ = {isa = PBXBuildFile; fileRef = 519F56E221F0EBD700C0382B /* D-pad-swim.png */; };
@@ -2403,6 +2409,8 @@
 		518F64B92304B3B50016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BB2304B3CC0016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BD2304B3E10016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
+		5195D5C52396B47A0078A375 /* BloomOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOff.png; sourceTree = "<group>"; };
+		5195D5C62396B47C0078A375 /* BloomOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOn.png; sourceTree = "<group>"; };
 		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
 		519F56E021F0EBBF00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
 		519F56E221F0EBD700C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
@@ -5148,6 +5156,8 @@
 		A83FBB42144C95DE00B27426 /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5195D5C52396B47A0078A375 /* BloomOff.png */,
+				5195D5C62396B47C0078A375 /* BloomOn.png */,
 				519FCADC1EA1D39F0066EE69 /* checkbox.png */,
 				519FCAE41EA1D3B80066EE69 /* checkboxactive.png */,
 				A83FBB44144C95DE00B27426 /* HDModeOff.png */,
@@ -6118,8 +6128,10 @@
 				A8B9FB3513FB6C1000552296 /* toggleweapons-right-btn~iphone.png in Resources */,
 				5152753421A1F52C004D1E07 /* TipButtonHighlighted.png in Resources */,
 				5152753121A1F52C004D1E07 /* SavedGame-DeleteHighlighted.png in Resources */,
+				5195D5CA2396B47C0078A375 /* BloomOn.png in Resources */,
 				A8B9FB4113FB6C1000552296 /* zoom_in.png in Resources */,
 				A8B9FB4713FB6C1000552296 /* zoom_in@2x~iphone.png in Resources */,
+				5195D5C72396B47C0078A375 /* BloomOff.png in Resources */,
 				A8B9FB4A13FB6C1000552296 /* zoom_in~iphone.png in Resources */,
 				A8B9FB4D13FB6C1000552296 /* zoom_out.png in Resources */,
 				5152753021A1F52C004D1E07 /* AboutHighlighted.png in Resources */,
@@ -6433,8 +6445,10 @@
 				A8B9FB1213FB6C1000552296 /* primarytrigger-btn@2x~iphone.png in Resources */,
 				519FCAE61EA1D3B80066EE69 /* checkboxactive.png in Resources */,
 				A8B9FB1513FB6C1000552296 /* primarytrigger-btn~iphone.png in Resources */,
+				5195D5CB2396B47C0078A375 /* BloomOn.png in Resources */,
 				51A6CB9421A209C500D2C4ED /* AcceptButton.png in Resources */,
 				A8B9FB1813FB6C1000552296 /* secondarytrigger-btn.png in Resources */,
+				5195D5C82396B47C0078A375 /* BloomOff.png in Resources */,
 				A8B9FB1B13FB6C1000552296 /* secondarytrigger-btn@2x~iphone.png in Resources */,
 				A8B9FB1E13FB6C1000552296 /* secondarytrigger-btn~iphone.png in Resources */,
 				A8B9FB2713FB6C1000552296 /* toggleweapons-left-btn.png in Resources */,
@@ -6724,6 +6738,7 @@
 				515275E621A1F53B004D1E07 /* SavedGame-Delete.png in Resources */,
 				A804993513DE1CDA00F807FB /* ret_shotgun@2x~iphone.png in Resources */,
 				515275EB21A1F53B004D1E07 /* Difficulty-Easy.png in Resources */,
+				5195D5CC2396B47C0078A375 /* BloomOn.png in Resources */,
 				A804993813DE1CDA00F807FB /* ret_shotgun~iphone.png in Resources */,
 				A8B9F9DD13FA001700552296 /* GameViewController~iphone.xib in Resources */,
 				51EAD44B1E58B13600611EFF /* COPYING in Resources */,
@@ -6893,6 +6908,7 @@
 				A8421EDF14565584008BBF22 /* MenuButton~iphone.png in Resources */,
 				A8421EE514565584008BBF22 /* OpenDoor.png in Resources */,
 				A8421EEE14565584008BBF22 /* ResumeButton.png in Resources */,
+				5195D5C92396B47C0078A375 /* BloomOff.png in Resources */,
 				A8421EF114565584008BBF22 /* ResumeButton@2x~iphone.png in Resources */,
 				A8421EF414565584008BBF22 /* ResumeButton~iphone.png in Resources */,
 				A8421EF714565584008BBF22 /* SaveGame.png in Resources */,
@@ -7987,11 +8003,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8059,13 +8076,14 @@
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
+				MARKETING_VERSION = 5.0;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M1";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8080,8 +8098,9 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8147,12 +8166,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
+				MARKETING_VERSION = 5.0;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8695,8 +8715,9 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8763,12 +8784,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
+				MARKETING_VERSION = 5.0;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -9022,8 +9044,9 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -9087,12 +9110,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
+				MARKETING_VERSION = 5.0;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

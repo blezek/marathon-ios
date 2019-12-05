@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -217,11 +215,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EpisodeLogoAlpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-zM-SZU">
-                            <rect key="frame" x="149" y="18" width="661" height="239"/>
+                            <rect key="frame" x="149" y="18" width="661" height="238"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6l-os-46y" userLabel="Sublogo and Buttons">
-                            <rect key="frame" x="85" y="269" width="789" height="342"/>
+                            <rect key="frame" x="171" y="298" width="789" height="342"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6a-WM-8pb" userLabel="Main Menu Buttons">
@@ -521,7 +519,11 @@
                                 <accessibilityTraits key="traits" notEnabled="YES"/>
                             </accessibility>
                             <attributedString key="attributedText">
-                                <fragment content="Special Thanks To">
+                                <fragment>
+                                    <string key="content">Celebrating 25 Years of Marathon!
+
+
+Special Thanks To</string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="14" name="BankGothicBT-Medium"/>
@@ -1252,7 +1254,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">	Joey Adams
+                                    <mutableString key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1297,7 +1299,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </string>
+ </mutableString>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4052,7 +4054,7 @@ Cg
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Product Manager
+                                    <mutableString key="content">Product Manager
 	Tuncer Deniz
 
 Scenario by Double Aught
@@ -4101,7 +4103,7 @@ The Voice of Bob
 	Doug Zartman
 
 
-</string>
+</mutableString>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4284,41 +4286,41 @@ Cg
     <resources>
         <image name="About.png" width="180" height="56"/>
         <image name="AboutHighlighted.png" width="180" height="56"/>
-        <image name="AchievementsButton.png" width="52" height="46"/>
+        <image name="AchievementsButton.png" width="104" height="93"/>
         <image name="BackButton.png" width="124" height="56"/>
         <image name="BackButtonHighlighted.png" width="124" height="56"/>
         <image name="BeginNewGame.png" width="363" height="56"/>
         <image name="BeginNewGameHighlighted.png" width="363" height="56"/>
-        <image name="BungieAerospace.png" width="480" height="320"/>
+        <image name="BungieAerospace.png" width="523.6363525390625" height="349.09091186523438"/>
         <image name="ContinueSavedGame.png" width="500" height="56"/>
         <image name="ContinueSavedGameHighlighted.png" width="500" height="56"/>
         <image name="ControlsOverview.png" width="1024" height="768"/>
-        <image name="EpisodeLoading.png" width="480" height="320"/>
+        <image name="EpisodeLoading.png" width="960" height="640"/>
         <image name="EpisodeLogoAlpha.png" width="918" height="332"/>
         <image name="GatherNetworkGame.png" width="500" height="56"/>
         <image name="GatherNetworkGameHighlighted.png" width="500" height="56"/>
-        <image name="GenericBackground.png" width="1024" height="768"/>
+        <image name="GenericBackground.png" width="558.54547119140625" height="418.90908813476562"/>
         <image name="HelpButton.png" width="135" height="56"/>
         <image name="HelpButtonHighlighted.png" width="135" height="56"/>
         <image name="HomeScreen.png" width="1024" height="768"/>
         <image name="JoinNetworkGame.png" width="418" height="56"/>
         <image name="JoinNetworkGameHighlighted.png" width="418" height="56"/>
-        <image name="LeaderboardsButton.png" width="52" height="47"/>
+        <image name="LeaderboardsButton.png" width="104" height="94"/>
         <image name="Pause.png" width="96" height="96"/>
         <image name="Preferences.png" width="269" height="56"/>
         <image name="PreferencesHighlighted.png" width="269" height="56"/>
-        <image name="Reload.png" width="256" height="256"/>
+        <image name="Reload.png" width="512" height="512"/>
         <image name="Somewhere.png" width="1024" height="768"/>
-        <image name="StoreButton.png" width="136" height="36"/>
+        <image name="StoreButton.png" width="273" height="72"/>
         <image name="TipTheDeveloper.png" width="332" height="56"/>
         <image name="TipTheDeveloperHighlighted.png" width="332" height="56"/>
-        <image name="TouchToContinue.png" width="256" height="50"/>
+        <image name="TouchToContinue.png" width="512" height="100"/>
         <image name="bungie-logo.png" width="685" height="300"/>
         <image name="github.png" width="400" height="200"/>
         <image name="mainlogo.png" width="512" height="512"/>
         <image name="powered-by-alephone.png" width="640" height="320"/>
-        <image name="ret_pistol.png" width="32" height="32"/>
-        <image name="zoom_in.png" width="64" height="64"/>
-        <image name="zoom_out.png" width="64" height="64"/>
+        <image name="ret_pistol.png" width="64" height="64"/>
+        <image name="zoom_in.png" width="128" height="128"/>
+        <image name="zoom_out.png" width="128" height="128"/>
     </resources>
 </document>

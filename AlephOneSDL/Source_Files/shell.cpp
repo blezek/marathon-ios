@@ -439,6 +439,9 @@ void initialize_application(void)
 		exit(1);
 	}
   
+    //Establish renderer preferences.
+  cacheRendererPreferences();
+  
   if ( !useShaderRenderer() ){
       // DCW force opengl es 1.1
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);

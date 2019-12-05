@@ -44,6 +44,9 @@
 #define kSmoothMouselook @"smoothMouselook"
 #define kHasPurchasedTip @"hasPurchasedTip"
 #define kHasAttemptedRestore @"hasAttemptedRestore"
+#define kUseClassicRenderer @"useClassicRenderer"
+#define kUseBloom @"useBloom"
+
 
 // Tap to shoot timeout in seconds
 #define TapToShootDelta 0.2 //DCW was originally 0.1

@@ -31,6 +31,8 @@
   UILabel *musicLabel;
   UILabel *filmsDisabled;
   UIView *screenView;
+  UIButton *bloom;
+  UILabel *rendererLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *login;
@@ -55,6 +57,10 @@
 @property (nonatomic, retain) IBOutlet UISlider *hSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
+@property (nonatomic, retain) IBOutlet UIButton *bloom;
+@property (nonatomic, retain) IBOutlet UILabel *rendererLabel;
+
+
 
 @property (nonatomic, retain) IBOutlet UIButton *hiresTextures;
 @property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
