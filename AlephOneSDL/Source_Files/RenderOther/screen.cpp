@@ -2014,8 +2014,27 @@ void darken_world_window(void)
 		// Draw 50% black rectangle
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4f(0.0, 0.0, 0.0, 0.5);
+    MatrixStack::Instance()->color4f(0.0, 0.0, 0.0, 0.5);
+    
+    Shader* previousShader = NULL;
+    Shader* rectShader = NULL;
+    
+    if(useShaderRenderer()) {
+      previousShader = lastEnabledShader();
+      rectShader = Shader::get(Shader::S_SolidColor);
+      rectShader->enable();
+        
+      GLfloat modelProjection[16];
+      MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+      rectShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+    }
+    
 		OGL_RenderRect(r);
 
+    if(useShaderRenderer() && previousShader) {
+      previousShader->enable();
+    }
+    
 		// Restore projection and state
 		if (!useShaderRenderer()) glPopMatrix();
     MatrixStack::Instance()->popMatrix();
