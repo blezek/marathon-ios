@@ -182,6 +182,16 @@ void MatrixStack::getFloatvModelviewProjection(GLfloat* params){
   params[12] = m[12]; params[13] = m[13]; params[14] = m[14]; params[15] = m[15];
   return;
 }
+void MatrixStack::getFloatvModelview(GLfloat* params){
+  GLfloat* m = glm::value_ptr(modelviewStack[modelviewIndex]);
+  
+  params[0]  = m[0];  params[1]  = m[1];  params[2]  = m[2];  params[3]  = m[3];
+  params[4]  = m[4];  params[5]  = m[5];  params[6]  = m[6];  params[7]  = m[7];
+  params[8]  = m[8];  params[9]  = m[9];  params[10] = m[10]; params[11] = m[11];
+  params[12] = m[12]; params[13] = m[13]; params[14] = m[14]; params[15] = m[15];
+  return;
+}
+
 void MatrixStack::loadIdentity(){
   activeStack()[activeStackIndex()] = glm::mat4(1.0);
 }

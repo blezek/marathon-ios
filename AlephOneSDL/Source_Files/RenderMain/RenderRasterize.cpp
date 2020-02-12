@@ -82,6 +82,10 @@ void RenderRasterizerClass::render_tree(RenderStep renderStep)
 	// LP change: added support for semitransparent liquids
 	bool SeeThruLiquids = get_screen_mode()->acceleration != _no_acceleration ? TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_LiqSeeThru) : graphics_preferences->software_alpha_blending != _sw_alpha_off;
   
+  if(useClassicVisuals()) {
+    SeeThruLiquids = 0;
+  }
+  
 	/* walls, ceilings, interior objects, floors, exterior objects for all nodes, back to front */
 	for (node= SortedNodes.begin(); node != SortedNodes.end(); ++node)
 		render_node(&*node, SeeThruLiquids, renderStep);

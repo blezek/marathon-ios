@@ -254,10 +254,10 @@ bool OGL_DoFades(float Left, float Top, float Right, float Bottom)
 			// as if the scene was illuminated by light with that fader color.
 			MultAlpha(Fader.Color,BlendColor);
       if(useShaderRenderer()) {
-        MatrixStack::Instance()->color4f(BlendColor[0],BlendColor[1],BlendColor[2], 1);
+        MatrixStack::Instance()->color4f(BlendColor[0],BlendColor[1],BlendColor[2], BlendColor[3]);
         s->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
       } else {
-        glColor4f(BlendColor[0],BlendColor[1],BlendColor[2], 1); //DCW
+        glColor4f(BlendColor[0],BlendColor[1],BlendColor[2], BlendColor[3]); //DCW
       }
 			glBlendFunc(GL_DST_COLOR,GL_ONE_MINUS_SRC_ALPHA);
 			glDrawArrays(GL_TRIANGLE_FAN,0,4);

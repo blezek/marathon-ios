@@ -539,6 +539,9 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
   } else {
     //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    if(useClassicVisuals()) {
+      glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST); //Assume classic visuals.
+    }
   }
 
 	if (renderStep == kGlow) {
@@ -684,6 +687,9 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
   } else {
     //glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    if(useClassicVisuals()) {
+      glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST); //Assume classic visuals.
+    }
   }
   
   if(TMgr.ShapeDesc == UNONE) { return; }
@@ -699,6 +705,11 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 		glAlphaFunc(GL_GREATER, 0.5);
 	}
 
+    //For some reason, IsBlended isn't always set right for opaque/classic media surfaces. Disable blending here in classic mode.
+  if(useClassicVisuals()) {
+    glDisable(GL_BLEND);
+  }
+  
 //	if (void_present) {
 //		glDisable(GL_BLEND);
 //		glDisable(GL_ALPHA_TEST);
@@ -1358,6 +1369,10 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
   
+  if(useClassicVisuals()) {
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST); //Assume classic visuals.
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+  }
   
 	float texCoords[2][2];
 
@@ -1518,6 +1533,10 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR );
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     
+    if(useClassicVisuals()) {
+       glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST); //Assume classic visuals.
+       glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+     }
     
     // DJB OpenGL Convert from quad
     //DCW I think we don't want this.

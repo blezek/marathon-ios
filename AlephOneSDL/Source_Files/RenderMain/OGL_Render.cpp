@@ -3322,6 +3322,8 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 
 void OGL_RenderRect(float x, float y, float w, float h)
 {
+  glPushGroupMarkerEXT(0, "OGL_RenderRect");
+  
   GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
   
 	glDisable(GL_TEXTURE_2D);
@@ -3331,7 +3333,7 @@ void OGL_RenderRect(float x, float y, float w, float h)
     if(lastShader) {
       lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
 
-      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertices);
+      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
       glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
     }
   } else {
@@ -3347,6 +3349,8 @@ void OGL_RenderRect(float x, float y, float w, float h)
   if(!useShaderRenderer()){
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   }
+  
+  glPopGroupMarkerEXT();
 }
 
 void OGL_RenderRect(const SDL_Rect& rect)

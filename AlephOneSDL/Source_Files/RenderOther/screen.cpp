@@ -681,7 +681,7 @@ void ReloadViewContext(void)
 
 bool map_is_translucent(void)
 {
-	return ( (screen_mode.translucent_map || useShaderRenderer()) && NetAllowOverlayMap());
+	return ( (screen_mode.translucent_map || !useClassicVisuals()) && NetAllowOverlayMap());
 }
 
 /*

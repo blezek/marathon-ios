@@ -52,6 +52,7 @@ extern bool headBelowMedia ();
 extern bool playerInTerminal ();
 extern void cacheRendererPreferences();
 extern void cacheRendererQualityPreferences();
+extern bool useClassicVisuals ();
 extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();

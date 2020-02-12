@@ -169,10 +169,10 @@
   [self.bloom setHidden:!useShaderRenderer()];
   [self.bloom setSelected:[defaults boolForKey:kUseBloom]];
   
-  if(useShaderRenderer()) {
-    [rendererLabel setText:@"Renderer: Modern"];
+  if(useClassicVisuals()) {
+    [rendererLabel setText:@"Visuals: Classic"];
   } else {
-    [rendererLabel setText:@"Renderer: Classic"];
+    [rendererLabel setText:@"Visuals: HD"];
   }
   
   [self.dPadAction setSelected:[defaults boolForKey:kDPadAction]];

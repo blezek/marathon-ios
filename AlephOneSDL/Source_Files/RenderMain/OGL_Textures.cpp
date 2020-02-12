@@ -325,6 +325,11 @@ void OGL_StartTextures()
 		OGL_Texture_Configure& TxtrConfigure = ConfigureData.TxtrConfigList[k];
 		TxtrTypeInfoData& TxtrTypeInfo = TxtrTypeInfoList[k];
 		
+    if(useClassicVisuals()){
+        TxtrConfigure.FarFilter=2;
+        TxtrConfigure.NearFilter=2;
+    }
+    
 		short NearFilter = TxtrConfigure.NearFilter;
 		if (NearFilter < NUMBER_OF_NEAR_FILTERS)
 			TxtrTypeInfo.NearFilter = NearFilterList[NearFilter];

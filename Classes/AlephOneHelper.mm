@@ -504,9 +504,13 @@ void cacheRendererQualityPreferences() {
   shouldUseBloom = [[NSUserDefaults standardUserDefaults] boolForKey:kUseBloom];
 }
 
+bool useClassicVisuals() {
+  return shouldUseClassicRenderer;
+}
 
 bool useShaderRenderer() {
-  return !shouldUseClassicRenderer;
+  return true; // From now on, alway use shader, even for classic style!
+  //return !shouldUseClassicRenderer;
 }
 bool useShaderPostProcessing() {
   return shouldUseBloom;

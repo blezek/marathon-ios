@@ -34,6 +34,8 @@
 #include "XML_ParseTreeRoot.h"
 #include "Scenario.h"
 
+#include "AlephOneHelper.h"
+
 #ifdef HAVE_ZZIP
 #include <zzip/lib.h>
 #endif
@@ -78,7 +80,32 @@ bool Plugin::allowed() const {
 bool Plugin::valid() const {
 	if (!enabled)
 		return false;
-	
+	  
+  if(useClassicVisuals()) {
+    if(
+        //M1
+        strcmp(name.c_str(), "TTEP v7") == 0 ||
+        strcmp(name.c_str(), "TTEP") == 0 ||
+        strcmp(name.c_str(), "Updated Starscape") == 0 ||
+        //M2
+        strcmp(name.c_str(), "HD Monsters") == 0 ||
+        strcmp(name.c_str(), "HD Textures") == 0 ||
+       
+        //M2&M3
+        strcmp(name.c_str(), "HD Weapons") == 0 ||
+
+        //M3
+        strcmp(name.c_str(), "Gorans Highres Landscapes") == 0 ||
+        strcmp(name.c_str(), "Gorans Jjarro Set DDS") == 0 ||
+        strcmp(name.c_str(), "Gorans Lava Set 2.0") == 0 ||
+        strcmp(name.c_str(), "Gorans Pfhor Set DDS") == 0 ||
+        strcmp(name.c_str(), "Gorans Sewage Set DDS") == 0 ||
+        strcmp(name.c_str(), "Gorans Pfhor Set DDS") == 0
+        ) {
+      return false;
+    }
+  }
+  
 	if (!environment_preferences->use_solo_lua &&
 		Plugins::instance()->mode() == Plugins::kMode_Solo)
 		return !overridden_solo;

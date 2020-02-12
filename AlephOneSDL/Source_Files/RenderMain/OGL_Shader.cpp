@@ -845,9 +845,9 @@ void initDefaultPrograms() {
         " fragmentColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         " if ( fragmentColor.a == 0.0 ) {discard;} //discard transparent fragments so they don't write on the depth buffer \n "
         " vec4 mediaTint = vec4(0.0, 0.6, 1.0, 1.0);"
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
+        /*" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
         " fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
-        "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"
+        "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"*/
   
     //DCW shit test emboss
  // "fragmentColor.rgb += 1.0 * ( sample_nearby_average_heights(0.0-leftRightFraction, pUV) - sample_nearby_average_heights(leftRightFraction, pUV) );\n"
@@ -891,7 +891,7 @@ void initDefaultPrograms() {
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         " if ( fragmentColor.a == 0.0 ) {discard;} //discard transparent fragments so they don't write on the depth buffer \n "
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {fragmentColor.g-=pow(gl_FragCoord.z, 100.0); fragmentColor.r-=pow(gl_FragCoord.z, 100.0);}\n"
+        //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {fragmentColor.g-=pow(gl_FragCoord.z, 100.0); fragmentColor.r-=pow(gl_FragCoord.z, 100.0);}\n"
         "}\n";
     
     defaultVertexPrograms["invincible"] = defaultVertexPrograms["sprite"];
@@ -1098,16 +1098,16 @@ void initDefaultPrograms() {
         "#endif\n"
         "	vec4 color = texture(texture0, texCoords.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "fogFactor=clamp( length(viewDir), 0.0, 1.0);\n" //dcw shit test
+        " fogFactor=clamp( length(viewDir), 0.0, 1.0);\n" //dcw shit test. ok... maybe we need this...
         "	fragmentColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
   
   //dcw shit test
-        " vec4 mediaTint = vec4(0.0, 0.6, 1.0, 1.0);"
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
-        "   fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
-        "   fragmentColor= mix(fragmentColor, mediaTint,  pow(gl_FragCoord.z, 100.0)); }\n"
-  //dcw shit test red shift
+        //" vec4 mediaTint = vec4(0.0, 0.6, 1.0, 1.0);"
+        //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
+        //"   fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
+        //"   fragmentColor= mix(fragmentColor, mediaTint,  pow(gl_FragCoord.z, 100.0)); }\n"
   
+  //dcw shit test red shift
 //  " vec2 textureSize = vec2(textureSize(texture2 ,0));\n"
 //  " vec2 shiftedCoords = vec2((gl_FragCoord.x)/textureSize.x, (gl_FragCoord.y + 10.0)/textureSize.y); \n"
 
@@ -1147,7 +1147,7 @@ void initDefaultPrograms() {
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
   //dcw shit test
-  "  fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, 1.0), vertexColor.a * color.a);\n"
+  //"  fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, 1.0), vertexColor.a * color.a);\n"
   
       //DCW shit test Everything below media glows
       //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"

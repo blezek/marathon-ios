@@ -3672,8 +3672,15 @@ void parse_graphics_preferences(InfoTree root, std::string version)
 			tex.read_attr("resolution", Config.Resolution);
 			tex.read_attr("color_format", Config.ColorFormat);
 			tex.read_attr("max_size", Config.MaxSize);
+      
+      if(useClassicVisuals()){
+        Config.FarFilter=2;
+        Config.NearFilter=2;
+      }
+      
 		}
 	}
+  
 }
 
 extern bool use_lua_hud_crosshairs;
@@ -4045,5 +4052,8 @@ void parse_environment_preferences(InfoTree root, std::string version)
 			Plugins::instance()->disable(tempstr);
 		}
 	}
+  
+  
+  
 }
 

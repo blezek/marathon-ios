@@ -62,7 +62,7 @@ public:
   void getFloatv (GLenum pname, GLfloat* params);
   void getFloatvInverse (GLenum pname, GLfloat* params);
   void getFloatvModelviewProjection(GLfloat* params); //populates params with the product of modelview and projection
-
+  void getFloatvModelview(GLfloat* params); //populates params with unmodified modelview
 
   void loadIdentity();
   void loadMatrixf(const GLfloat *m);
