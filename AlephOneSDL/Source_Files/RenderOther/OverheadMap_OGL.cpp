@@ -289,19 +289,45 @@ void OverheadMap_OGL_Class::draw_thing(
 	short shape,
 	short radius)
 {
+  glPushGroupMarkerEXT(0, "Draw Thing");
+
+  Shader* previousShader = NULL;
+  Shader* rectShader = NULL;
+  
 	SetColor(color);
 	
-	// Let OpenGL do the transformation work
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glTranslatef(center.x,center.y,0);
-	glScalef(radius, radius, 1);
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+    MatrixStack::Instance()->pushMatrix();
+    MatrixStack::Instance()->translatef(center.x,center.y,0);
+    MatrixStack::Instance()->scalef(radius, radius, 1);
+  } else {
+    // Let OpenGL do the transformation work
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glTranslatef(center.x,center.y,0);
+    glScalef(radius, radius, 1);
+  }
 
 	switch(shape)
 	{
 	case _rectangle_thing:
 		{
+      if(useShaderRenderer()) {
+        previousShader = lastEnabledShader();
+        rectShader = Shader::get(Shader::S_SolidColor);
+        rectShader->enable();
+        
+        GLfloat modelProjection[16];
+        MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+        rectShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+      }
+      
 			OGL_RenderRect(-0.75f, -0.75f, 1.5f, 1.5f);
+      
+      if(useShaderRenderer() && previousShader) {
+        previousShader->enable();
+      }
 		}
 		break;
 	case _circle_thing:
@@ -328,14 +354,36 @@ void OverheadMap_OGL_Class::draw_thing(
 				-0.30f - ht, -0.75f,
 				-0.30f + ht, -0.75f + ft
 			};
-			glVertexPointer(2, GL_FLOAT, 0, vertices);
+      if(useShaderRenderer()) {
+        
+        //DCW I haven't tested this at all for shader!
+        
+        Shader *lastShader = lastEnabledShader();
+        GLfloat modelProjection[16];
+        MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+        
+        lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+        lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+        glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+        glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      } else {
+        glVertexPointer(2, GL_FLOAT, 0, vertices);
+      }
+      
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 36);
 		}
 		break;
 	default:
 		break;
 	}
-	glPopMatrix();
+  
+  if (useShaderRenderer()) {
+    MatrixStack::Instance()->popMatrix();
+  } else {
+    glPopMatrix();
+  }
+  
+  glPopGroupMarkerEXT();
 }
 
 void OverheadMap_OGL_Class::draw_player(
