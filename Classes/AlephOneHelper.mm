@@ -50,6 +50,8 @@ bool canSmartFirePrimary;
 
 bool shouldDoOk;
 
+bool swapJoypadSticks;
+
 bool shouldUseClassicRenderer;
 bool shouldUseBloom;
 
@@ -494,6 +496,15 @@ bool playerInTerminal () {
 bool shouldHideHud () {
   return 0;
 }
+
+void cacheInputPreferences() {
+  swapJoypadSticks = [[NSUserDefaults standardUserDefaults] boolForKey:kSwapJoysticks];
+}
+
+bool shouldswapJoysticks() {
+  return swapJoypadSticks;
+}
+
 
 void cacheRendererPreferences() {
   shouldUseClassicRenderer = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicRenderer];

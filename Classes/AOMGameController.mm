@@ -142,6 +142,14 @@ extern "C" {
     
     NSString *message = @"";
     
+    GCControllerDirectionPad *lookThumbstick = gamepad.rightThumbstick;
+    GCControllerDirectionPad *moveThumbstick = gamepad.leftThumbstick;
+
+    if( shouldswapJoysticks() ){
+      lookThumbstick = gamepad.leftThumbstick;
+      moveThumbstick = gamepad.rightThumbstick;
+    }
+    
     //Triggers. Only activate if this is a current element, so we don't interfere with smart trigger.
     if (gamepad.rightTrigger == element) {
       setKey(primaryFire, gamepad.rightTrigger.isPressed);
@@ -176,13 +184,13 @@ extern "C" {
     }
     
     // d-pad
-    float leftStickToDirectionThreshold=0.2;
-    if (gamepad.dpad == element || gamepad.leftThumbstick == element ) {
+    float moveStickToDirectionThreshold=0.2;
+    if (gamepad.dpad == element || moveThumbstick == element ) {
 
-      setKey(moveLeft,    gamepad.dpad.left.isPressed  || gamepad.leftThumbstick.xAxis.value < (0-leftStickToDirectionThreshold));
-      setKey(moveRight,   gamepad.dpad.right.isPressed || gamepad.leftThumbstick.xAxis.value > leftStickToDirectionThreshold );
-      setKey(moveBack,    gamepad.dpad.down.isPressed  || gamepad.leftThumbstick.yAxis.value < (0-leftStickToDirectionThreshold) );
-      setKey(moveForward, gamepad.dpad.up.isPressed    || gamepad.leftThumbstick.yAxis.value > leftStickToDirectionThreshold );
+      setKey(moveLeft,    gamepad.dpad.left.isPressed  || moveThumbstick.xAxis.value < (0-moveStickToDirectionThreshold));
+      setKey(moveRight,   gamepad.dpad.right.isPressed || moveThumbstick.xAxis.value > moveStickToDirectionThreshold );
+      setKey(moveBack,    gamepad.dpad.down.isPressed  || moveThumbstick.yAxis.value < (0-moveStickToDirectionThreshold) );
+      setKey(moveForward, gamepad.dpad.up.isPressed    || moveThumbstick.yAxis.value > moveStickToDirectionThreshold );
     
     }
     
@@ -196,46 +204,15 @@ extern "C" {
       }
     }
     
-    //right stick
-    float rX = gamepad.rightThumbstick.xAxis.value;
-    float rY = gamepad.rightThumbstick.yAxis.value;
+    
+    //Look stick
+    float rX = lookThumbstick.xAxis.value;
+    float rY = lookThumbstick.yAxis.value;
     float arbitraryConstant=14; 
 
     rightXAxis = rX * arbitraryConstant;
     rightYAxis = 0.0 - rY * arbitraryConstant * 2.0;
     
-    // left stick
-    
-    if (gamepad.leftThumbstick == element) {
-      
-      if (gamepad.leftThumbstick.up.isPressed) {
-        
-        message = [NSString stringWithFormat:@"Left Stick %f", gamepad.leftThumbstick.yAxis.value];
-        
-      }
-      
-      if (gamepad.leftThumbstick.down.isPressed) {
-        
-        message = [NSString stringWithFormat:@"Left Stick %f", gamepad.leftThumbstick.yAxis.value];
-        
-      }
-      
-      if (gamepad.leftThumbstick.left.isPressed) {
-        
-        message = [NSString stringWithFormat:@"Left Stick %f", gamepad.leftThumbstick.xAxis.value];
-        
-      }
-      
-      if (gamepad.leftThumbstick.right.isPressed) {
-        
-        message = [NSString stringWithFormat:@"Left Stick %f", gamepad.leftThumbstick.xAxis.value];
-        
-      }
-      
-      
-      //[self displayMessage:message];
-      
-    }
 
     //NSLog(@"Controller thing: %@", message);
 

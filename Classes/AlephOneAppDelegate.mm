@@ -167,6 +167,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
                                @"NO", kInvertY,
+                               @"NO", kSwapJoysticks,
                                @"YES", kAutorecenter,
                                @"YES", kAlwaysRun,
                                @"YES", kSmoothMouselook,
@@ -509,6 +510,12 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking trackPageview:@"/applicationDidBecomeActive"];
 ////  [Tracking tagEvent:@"applicationDidBecomeActive"];
   
+    //Check to see if external prefs changed.
+  cacheInputPreferences();
+  cacheRendererPreferences();
+  
+  [PreferencesViewController setAlephOnePreferences:NO checkPurchases:YES];
+
   if ( finishedStartup ) {
     [game startAnimation];
   } else if (!introFinished && self.avPlayer) {

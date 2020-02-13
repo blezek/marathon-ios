@@ -253,6 +253,12 @@
 }
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check{
+  
+  if(!sound_preferences) {
+    MLog ( @"Skipping preferences engine sync. Not yet initialized." );
+    return;
+  }
+  
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
@@ -285,6 +291,7 @@
   
   [[(BasicHUDViewController*)([[GameViewController sharedInstance] HUDViewController]) lookPadView] setHidden: ![defaults boolForKey:kOnScreenTrigger]];
 
+  cacheInputPreferences();
   
   float sens;
   sens = [defaults floatForKey:kVSensitivity];

@@ -96,60 +96,65 @@
 
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-  [self.activity stopAnimating];
-  self.loadingView.hidden = YES;
-  if ( response == nil ) {
-    // Pop up a dialog
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
-                                          message:@"Could not connect to the app store, please try again later."
-                                         delegate:self
-                                cancelButtonTitle:@"Ok"
-                                otherButtonTitles:nil];
-    [av show];
-    [av release];
-    return;
-  }
-   
-  MLog ( @"Found %d invalid Product IDS", response.invalidProductIdentifiers.count );
-  for ( id invalidID in response.invalidProductIdentifiers ) {
-    MLog ( @"ID %@ was invalid", invalidID );
-  }
   
-  if ( response.products.count == 0 && response.invalidProductIdentifiers.count > 0 ) {
-    // Show an error
-    // Pop up a dialog
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
-                                                 message:@"Could not connect to the app store, (invalid response), please try again later."
-                                                delegate:self
-                                       cancelButtonTitle:@"Ok"
-                                       otherButtonTitles:nil];
-    [av show];
-    [av release];
-    return;
-  }
+  dispatch_async(dispatch_get_main_queue(), ^{ // This UI stuff needs to happen on the Main Thread in newer Xcode.
   
-  // populate UI
-  NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
-  MLog ( @"Got %d products back", (int)[response.products count] );
-  for ( SKProduct* p in response.products ) {
-    [dict setObject:p forKey:p.productIdentifier];
-  }
-  
-  int n = 0;
-   for ( int i = 0; i < [allProductIDs count]; ++i ) {
-      for ( SKProduct* p in response.products ) {
-        if ( [[p productIdentifier] isEqualToString:[allProductIDs objectAtIndex:i]] ) {
-          [validProductIDs addObject:[allProductIDs objectAtIndex:i]];
-          [tipSelector insertSegmentWithTitle:[self formatCurrency:p] atIndex:n animated:YES];
-          [allProductDescriptions setObject:p.localizedTitle forKey:[allProductIDs objectAtIndex:i]];
-          [allProductResponses setObject:p forKey:[allProductIDs objectAtIndex:i]];
-          n++;
-        }
+    [self.activity stopAnimating];
+    self.loadingView.hidden = YES;
+    if ( response == nil ) {
+      // Pop up a dialog
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
+                                            message:@"Could not connect to the app store, please try again later."
+                                           delegate:self
+                                  cancelButtonTitle:@"Ok"
+                                  otherButtonTitles:nil];
+      [av show];
+      [av release];
+      return;
     }
-  }
-  
-  [self updateView];
-  [request autorelease];
+     
+    MLog ( @"Found %d invalid Product IDS", response.invalidProductIdentifiers.count );
+    for ( id invalidID in response.invalidProductIdentifiers ) {
+      MLog ( @"ID %@ was invalid", invalidID );
+    }
+    
+    if ( response.products.count == 0 && response.invalidProductIdentifiers.count > 0 ) {
+      // Show an error
+      // Pop up a dialog
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No response for the App Store"
+                                                   message:@"Could not connect to the app store, (invalid response), please try again later."
+                                                  delegate:self
+                                         cancelButtonTitle:@"Ok"
+                                         otherButtonTitles:nil];
+      [av show];
+      [av release];
+      return;
+    }
+    
+    // populate UI
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
+    MLog ( @"Got %d products back", (int)[response.products count] );
+    for ( SKProduct* p in response.products ) {
+      [dict setObject:p forKey:p.productIdentifier];
+    }
+    
+    int n = 0;
+     for ( int i = 0; i < [allProductIDs count]; ++i ) {
+        for ( SKProduct* p in response.products ) {
+          if ( [[p productIdentifier] isEqualToString:[allProductIDs objectAtIndex:i]] ) {
+            [validProductIDs addObject:[allProductIDs objectAtIndex:i]];
+            [tipSelector insertSegmentWithTitle:[self formatCurrency:p] atIndex:n animated:YES];
+            [allProductDescriptions setObject:p.localizedTitle forKey:[allProductIDs objectAtIndex:i]];
+            [allProductResponses setObject:p forKey:[allProductIDs objectAtIndex:i]];
+            n++;
+          }
+      }
+    }
+    
+    [self updateView];
+    [request autorelease];
+    
+  });
 }
 
 - (IBAction)tipSelectorChanged:(id)sender {

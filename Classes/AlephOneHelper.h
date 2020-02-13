@@ -50,6 +50,8 @@ extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool getLocalPlayer ();
 extern bool headBelowMedia ();
 extern bool playerInTerminal ();
+extern void cacheInputPreferences();
+extern bool shouldswapJoysticks();
 extern void cacheRendererPreferences();
 extern void cacheRendererQualityPreferences();
 extern bool useClassicVisuals ();

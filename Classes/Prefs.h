@@ -39,6 +39,7 @@
 #define kAlwaysPlayIntro @"alwaysPlayIntro"
 #define kHaveReticleMode @"haveReticleMode"
 #define kInvertY @"invertY"
+#define kSwapJoysticks @"swapJoysticks"
 #define kAutorecenter @"autorecenter"
 #define kAlwaysRun @"alwaysRun"
 #define kSmoothMouselook @"smoothMouselook"

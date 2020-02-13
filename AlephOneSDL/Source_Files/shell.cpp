@@ -439,8 +439,9 @@ void initialize_application(void)
 		exit(1);
 	}
   
-    //Establish renderer preferences.
+    //Establish preferences.
   cacheRendererPreferences();
+  cacheInputPreferences();
   
   if ( !useShaderRenderer() ){
       // DCW force opengl es 1.1
