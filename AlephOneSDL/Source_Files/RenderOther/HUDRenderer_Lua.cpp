@@ -36,6 +36,9 @@ HUD_RENDERER_LUA.CPP
 #include "OGL_Render.h"
 #endif
 
+#include "MatrixStack.hpp"
+#include "AlephOneHelper.h"
+
 #include <math.h>
 
 #if defined(__WIN32__) || defined(__MINGW32__)
@@ -391,14 +394,27 @@ void HUD_Lua_Class::draw_text(FontSpecifier *font, const char *text,
 #ifdef HAVE_OPENGL
 	if (m_opengl)
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef(x, y + (font->Height * scale), 0);
-        glScalef(scale, scale, 1.0);
-		glColor4f(r, g, b, a);
+    if(useShaderRenderer()) {
+        MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+        MatrixStack::Instance()->pushMatrix();
+        MatrixStack::Instance()->translatef(x, y + (font->Height * scale), 0);
+        MatrixStack::Instance()->scalef(scale, scale, 1.0);
+        MatrixStack::Instance()->color4f(r, g, b, a);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+      glPushMatrix();
+      glTranslatef(x, y + (font->Height * scale), 0);
+      glScalef(scale, scale, 1.0);
+      glColor4f(r, g, b, a);
+    }
 		font->OGL_Render(text);
-		glColor4f(1, 1, 1, 1);
-		glPopMatrix();
+    if(useShaderRenderer()) {
+        MatrixStack::Instance()->color4f(1, 1, 1, 1);
+        MatrixStack::Instance()->popMatrix();
+    } else {
+        glColor4f(1, 1, 1, 1);
+        glPopMatrix();
+    }
 	}
 	else
 #endif
