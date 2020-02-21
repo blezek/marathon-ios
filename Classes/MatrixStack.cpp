@@ -48,6 +48,10 @@ void MatrixStack::matrixMode(int newMode){
 
 }
 
+int MatrixStack::currentActiveMode(){
+  return activeMode;
+}
+
 glm::mat4 MatrixStack::activeMatrix() {
   return activeStack()[activeStackIndex()];
 }
@@ -194,6 +198,13 @@ void MatrixStack::getFloatvModelview(GLfloat* params){
 
 void MatrixStack::loadIdentity(){
   activeStack()[activeStackIndex()] = glm::mat4(1.0);
+}
+void MatrixStack::loadZero(){
+  GLfloat* target = glm::value_ptr(activeStack()[activeStackIndex()]);
+  target[0]  = 0;  target[1]  = 0;  target[2]  = 0;  target[3]  = 0;
+  target[4]  = 0;  target[5]  = 0;  target[6]  = 0;  target[7]  = 0;
+  target[8]  = 0;  target[9]  = 0;  target[10] = 0;  target[11] = 0;
+  target[12] = 0;  target[13] = 0;  target[14] = 0;  target[15] = 0;
 }
 void MatrixStack::loadMatrixf(const GLfloat *m){
   //activeStack()[activeStackIndex()] = glm::mat4(*m);

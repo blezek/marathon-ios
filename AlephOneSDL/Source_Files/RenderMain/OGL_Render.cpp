@@ -3187,14 +3187,14 @@ bool OGL_RenderCrosshairs()
 				
 				// at the initial rotation, this is the bottom right
 				GLfloat vertices[16] = {
-					LenMax + WidthMin, LenMin + HeightMin,
-					LenMax + WidthMax, LenMin + HeightMin,
-					LenMax + WidthMin, LenMid + HeightMin,
-					LenMax + WidthMax, LenMid + HeightMax,
-					LenMid + WidthMin, LenMax + HeightMin,
-					LenMid + WidthMax, LenMax + HeightMax,
-					LenMin + WidthMin, LenMax + HeightMin,
-					LenMin + WidthMin, LenMax + HeightMax
+          static_cast<GLfloat>(LenMax + WidthMin), static_cast<GLfloat>(LenMin + HeightMin),
+          static_cast<GLfloat>(LenMax + WidthMax), static_cast<GLfloat>(LenMin + HeightMin),
+          static_cast<GLfloat>(LenMax + WidthMin), static_cast<GLfloat>(LenMid + HeightMin),
+          static_cast<GLfloat>(LenMax + WidthMax), static_cast<GLfloat>(LenMid + HeightMax),
+          static_cast<GLfloat>(LenMid + WidthMin), static_cast<GLfloat>(LenMax + HeightMin),
+          static_cast<GLfloat>(LenMid + WidthMax), static_cast<GLfloat>(LenMax + HeightMax),
+          static_cast<GLfloat>(LenMin + WidthMin), static_cast<GLfloat>(LenMax + HeightMin),
+          static_cast<GLfloat>(LenMin + WidthMin), static_cast<GLfloat>(LenMax + HeightMax)
 				};
 				glVertexPointer(2, GL_FLOAT, 0, vertices);
 				glDrawArrays(GL_TRIANGLE_STRIP, 0, 8);

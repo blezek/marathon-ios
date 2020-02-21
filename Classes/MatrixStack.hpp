@@ -56,6 +56,7 @@ public:
   void setActiveStackIndex(int index); //Sets index for the top of active stack.
 
   void matrixMode(int newMode);
+  int currentActiveMode();
   glm::mat4 activeMatrix();
   void pushMatrix();
   void popMatrix();
@@ -65,6 +66,7 @@ public:
   void getFloatvModelview(GLfloat* params); //populates params with unmodified modelview
 
   void loadIdentity();
+  void loadZero();
   void loadMatrixf(const GLfloat *m);
   void translatef(GLfloat x, GLfloat y, GLfloat z);
   void scalef (GLfloat x, GLfloat y, GLfloat z);

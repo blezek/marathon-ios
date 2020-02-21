@@ -411,12 +411,12 @@ void HUD_Lua_Class::draw_text(FontSpecifier *font, const char *text,
 	{
     int previousMode;
     if(useShaderRenderer()) {
-       previousMode=MatrixStack::Instance()->currentActiveMode();
-        MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
-        MatrixStack::Instance()->pushMatrix();
-        MatrixStack::Instance()->translatef(x, y + (font->Height * scale), 0);
-        MatrixStack::Instance()->scalef(scale, scale, 1.0);
-        MatrixStack::Instance()->color4f(r, g, b, a);
+      previousMode=MatrixStack::Instance()->currentActiveMode();
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->translatef(x, y + (font->Height * scale), 0);
+      MatrixStack::Instance()->scalef(scale, scale, 1.0);
+      MatrixStack::Instance()->color4f(r, g, b, a);
     } else {
       glMatrixMode(GL_MODELVIEW);
       glPushMatrix();
@@ -426,12 +426,12 @@ void HUD_Lua_Class::draw_text(FontSpecifier *font, const char *text,
     }
 		font->OGL_Render(text);
     if(useShaderRenderer()) {
-        MatrixStack::Instance()->color4f(1, 1, 1, 1);
-        MatrixStack::Instance()->popMatrix();
-        MatrixStack::Instance()->matrixMode(previousMode);
+      MatrixStack::Instance()->color4f(1, 1, 1, 1);
+      MatrixStack::Instance()->popMatrix();
+      MatrixStack::Instance()->matrixMode(previousMode);
     } else {
-        glColor4f(1, 1, 1, 1);
-        glPopMatrix();
+      glColor4f(1, 1, 1, 1);
+      glPopMatrix();
     }
 	}
 	else

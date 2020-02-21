@@ -173,6 +173,9 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"YES", kSmoothMouselook,
                                [NSNumber numberWithBool:YES], kFirstGame,
                                @"NO", kUseClassicRenderer,
+                               @"NO", kUseClassicTextures,
+                               @"NO", kUseClassicSprites,
+                               @"YES", kUseTransparentLiquids,
                                @"NO", kUseBloom,
                                nil];
   [defaults registerDefaults:appDefaults];
@@ -216,7 +219,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   if ( [list count] == 0 ) {
     // Insert us!
     self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:self.managedObjectContext];
-    self.scenario.isDownloaded = NO;
+    self.scenario.isDownloaded = [NSNumber numberWithBool: NO];
     
     self.scenario.version = [NSNumber numberWithInteger:1];
 

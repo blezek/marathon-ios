@@ -194,7 +194,7 @@ void OGL_Blitter::WindowToScreen(int& x, int& y, bool in_game)
 
 void OGL_Blitter::Draw(const SDL_Rect& dst)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
     Draw(idst);
 }
 

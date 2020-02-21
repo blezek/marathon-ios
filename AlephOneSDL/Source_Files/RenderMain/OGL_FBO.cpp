@@ -340,7 +340,7 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	
 	//Deprecated glClientActiveTexture(GL_TEXTURE1);
 	//Deprecated glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	GLint multi_coordinates[8] = { 0, other._h, other._w, other._h, other._w, 0, 0, 0 };
+  GLint multi_coordinates[8] = { 0, static_cast<GLint>(other._h), static_cast<GLint>(other._w), static_cast<GLint>(other._h), static_cast<GLint>(other._w), 0, 0, 0 };
   glTexCoordPointer(2, GL_INT, 0, multi_coordinates);
 	//Deprecated glClientActiveTexture(GL_TEXTURE0);
 	

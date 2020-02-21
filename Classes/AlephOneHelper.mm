@@ -53,6 +53,9 @@ bool shouldDoOk;
 bool swapJoypadSticks;
 
 bool shouldUseClassicRenderer;
+bool shouldUseClassicTextures;
+bool shouldUseClassicSprites;
+bool shouldUseTransparentLiquids;
 bool shouldUseBloom;
 
 NSString *dataDir;
@@ -508,11 +511,15 @@ bool shouldswapJoysticks() {
 
 void cacheRendererPreferences() {
   shouldUseClassicRenderer = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicRenderer];
+  shouldUseClassicTextures = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicTextures];
+  shouldUseClassicSprites = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicSprites];
+
   cacheRendererQualityPreferences();
 }
 
 void cacheRendererQualityPreferences() {
   shouldUseBloom = [[NSUserDefaults standardUserDefaults] boolForKey:kUseBloom];
+  shouldUseTransparentLiquids = [[NSUserDefaults standardUserDefaults] boolForKey:kUseTransparentLiquids];
 }
 
 bool useClassicVisuals() {

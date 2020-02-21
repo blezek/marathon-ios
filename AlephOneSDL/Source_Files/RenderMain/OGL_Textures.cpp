@@ -85,7 +85,8 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 
 #ifdef HAVE_OPENGL
 
-#include "OGL_Headers.h"
+//#include "OGL_Headers.h"
+#include "AlephOneAcceleration.hpp"
 //DJB OpenGL
 #include "AlephOneHelper.h"
 #include "preferences.h"
@@ -112,10 +113,10 @@ OGL_TexturesStats gGLTxStats = {0,0,0,500000,0,0, 0};
 // Texture mapping
 struct TxtrTypeInfoData
 {
-	GLenum NearFilter;			// OpenGL parameter for near filter (GL_NEAREST, etc.)
-	GLenum FarFilter;			// OpenGL parameter for far filter (GL_NEAREST, etc.)
+	AOAenum NearFilter;			// OpenGL parameter for near filter (AOA_NEAREST, etc.)
+	AOAenum FarFilter;			// OpenGL parameter for far filter (AOA_NEAREST, etc.)
 	int Resolution;				// 0 is full-sized, 1 is half-sized, 2 is fourth-sized
-	GLenum ColorFormat;			// OpenGL parameter for stored color format (RGBA8, etc.)
+	AOAenum ColorFormat;			// OpenGL parameter for stored color format (RGBA8, etc.)
 };
 
 
@@ -130,7 +131,7 @@ static bool useMirroredRepeat = false;
 
 struct InfravisionData
 {
-	GLfloat Red, Green, Blue;	// Infravision tint components: 0 to 1
+	AOAfloat Red, Green, Blue;	// Infravision tint components: 0 to 1
 	bool IsTinted;				// whether to use infravision with this collection
 };
 
@@ -184,7 +185,7 @@ bool TextureState::Allocate(short txType)
 	{
 		sgActiveTextureStates.push_front(this);
 		gGLTxStats.inUse++;
-		glGenTextures(NUMBER_OF_TEXTURES,IDs);
+		AOA::genTextures(NUMBER_OF_TEXTURES,IDs);
 		IsUsed = true;
 		unusedFrames=0;
 		return true;
@@ -195,7 +196,7 @@ bool TextureState::Allocate(short txType)
 // Use a texture and indicate whether to load it
 bool TextureState::Use(int Which)
 {
-	glBindTexture(GL_TEXTURE_2D,IDs[Which]);
+	AOA::bindTexture(AOA_TEXTURE_2D,IDs[Which]);
 	bool result = !TexGened[Which];
 	TexGened[Which] = true;
 	IDUsage[Which]++;
@@ -258,20 +259,20 @@ void FlatBumpTexture() {
 	
 	if (flatBumpTextureID == 0)
 	{
-		glGenTextures(1, &flatBumpTextureID);
-		glBindTexture(GL_TEXTURE_2D, flatBumpTextureID);
+		AOA::genTextures(1, &flatBumpTextureID);
+		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID);
 		
-		GLubyte flatTextureData[4] = {0x80, 0x80, 0xFF, 0x80};
+		AOAubyte flatTextureData[4] = {0x80, 0x80, 0xFF, 0x80};
 		
-		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, flatTextureData);
+		AOA::texEnvi(AOA_TEXTURE_ENV, AOA_TEXTURE_ENV_MODE, AOA_MODULATE);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MAG_FILTER, AOA_NEAREST);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MIN_FILTER, AOA_NEAREST);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_S, AOA_REPEAT);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_REPEAT);
+		AOA::texImage2D(AOA_TEXTURE_2D, 0, AOA_RGBA8, 1, 1, 0, AOA_RGBA, AOA_UNSIGNED_BYTE, flatTextureData);
 	}
 	else
-		glBindTexture(GL_TEXTURE_2D, flatBumpTextureID);
+		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID);
 }
 
 
@@ -292,29 +293,29 @@ void OGL_StartTextures()
 	
 	// Initialize the texture-type info
 	const int NUMBER_OF_NEAR_FILTERS = 2;
-	const GLenum NearFilterList[NUMBER_OF_NEAR_FILTERS] =
+	const AOAenum NearFilterList[NUMBER_OF_NEAR_FILTERS] =
 	{
-		GL_NEAREST,
-		GL_LINEAR
+		AOA_NEAREST,
+		AOA_LINEAR
 	};
 	const int NUMBER_OF_FAR_FILTERS = 6;
-	const GLenum FarFilterList[NUMBER_OF_FAR_FILTERS] =
+	const AOAenum FarFilterList[NUMBER_OF_FAR_FILTERS] =
 	{
-		GL_NEAREST,
-		GL_LINEAR,
-		GL_NEAREST_MIPMAP_NEAREST,
-		GL_LINEAR_MIPMAP_NEAREST,
-		GL_NEAREST_MIPMAP_LINEAR,
-		GL_LINEAR_MIPMAP_LINEAR
+		AOA_NEAREST,
+		AOA_LINEAR,
+		AOA_NEAREST_MIPMAP_NEAREST,
+		AOA_LINEAR_MIPMAP_NEAREST,
+		AOA_NEAREST_MIPMAP_LINEAR,
+		AOA_LINEAR_MIPMAP_LINEAR
 	};
-  // DJB OpenGL only support GL_RGBA
+  // DJB OpenGL only support AOA_RGBA
   const int NUMBER_OF_COLOR_FORMATS = 1;
-  const GLenum ColorFormatList[NUMBER_OF_COLOR_FORMATS] =
+  const AOAenum ColorFormatList[NUMBER_OF_COLOR_FORMATS] =
   {
-    GL_RGBA,
+    AOA_RGBA,
     /*
-     GL_RGBA4,
-     GL_RGBA2
+     AOA_RGBA4,
+     AOA_RGBA2
      */
   };
 	
@@ -334,13 +335,13 @@ void OGL_StartTextures()
 		if (NearFilter < NUMBER_OF_NEAR_FILTERS)
 			TxtrTypeInfo.NearFilter = NearFilterList[NearFilter];
 		else
-			TxtrTypeInfo.NearFilter = GL_NEAREST;
+			TxtrTypeInfo.NearFilter = AOA_NEAREST;
 		
 		short FarFilter = TxtrConfigure.FarFilter;
 		if (FarFilter < NUMBER_OF_FAR_FILTERS)
 			TxtrTypeInfo.FarFilter = FarFilterList[FarFilter];
 		else
-			TxtrTypeInfo.FarFilter = GL_NEAREST;
+			TxtrTypeInfo.FarFilter = AOA_NEAREST;
 		
 		TxtrTypeInfo.Resolution = TxtrConfigure.Resolution;
 		
@@ -348,7 +349,7 @@ void OGL_StartTextures()
 		if (ColorFormat < NUMBER_OF_COLOR_FORMATS)
 			TxtrTypeInfo.ColorFormat = ColorFormatList[ColorFormat];
 		else
-			TxtrTypeInfo.ColorFormat = GL_RGBA8;
+			TxtrTypeInfo.ColorFormat = AOA_RGBA8;
 	}
 
 	// Model skin
@@ -360,13 +361,13 @@ void OGL_StartTextures()
 		if (NearFilter < NUMBER_OF_NEAR_FILTERS)
 			TxtrTypeInfo.NearFilter = NearFilterList[NearFilter];
 		else
-			TxtrTypeInfo.NearFilter = GL_NEAREST;
+			TxtrTypeInfo.NearFilter = AOA_NEAREST;
 		
 		short FarFilter = TxtrConfigure.FarFilter;
 		if (FarFilter < NUMBER_OF_FAR_FILTERS)
 			TxtrTypeInfo.FarFilter = FarFilterList[FarFilter];
 		else
-			TxtrTypeInfo.FarFilter = GL_NEAREST;
+			TxtrTypeInfo.FarFilter = AOA_NEAREST;
 		
 		TxtrTypeInfo.Resolution = TxtrConfigure.Resolution;
 		
@@ -374,14 +375,14 @@ void OGL_StartTextures()
 		if (ColorFormat < NUMBER_OF_COLOR_FORMATS)
 			TxtrTypeInfo.ColorFormat = ColorFormatList[ColorFormat];
 		else
-			TxtrTypeInfo.ColorFormat = GL_RGBA8;
+			TxtrTypeInfo.ColorFormat = AOA_RGBA8;
 	}
 
-#if defined GL_SGIS_generate_mipmap
-	useSGISMipmaps = OGL_CheckExtension("GL_SGIS_generate_mipmap");
+#if defined AOA_SGIS_generate_mipmap
+	useSGISMipmaps = OGL_CheckExtension("AOA_SGIS_generate_mipmap");
 #endif
-#if defined GL_ARB_texture_mirrored_repeat
-	useMirroredRepeat = OGL_CheckExtension("GL_ARB_texture_mirrored_repeat");
+#if defined AOA_ARB_texture_mirrored_repeat
+	useMirroredRepeat = OGL_CheckExtension("AOA_ARB_texture_mirrored_repeat");
 #endif
 }
 
@@ -599,8 +600,8 @@ bool TextureManager::Setup()
 		int MaxHeight = MAX(TxtrHeight >> TxtrTypeInfo.Resolution, 1);
 		
 		// Fit the image into the maximum size allowed by the OpenGL implementation in use
-		GLint MaxTextureSize;
-		glGetIntegerv(GL_MAX_TEXTURE_SIZE,&MaxTextureSize);
+		AOAint MaxTextureSize;
+		AOA::getIntegerv(AOA_MAX_TEXTURE_SIZE,&MaxTextureSize);
 		while (MaxWidth > MaxTextureSize || MaxHeight > MaxTextureSize)
 		{
 			LoadedWidth >>= 1;
@@ -688,12 +689,12 @@ inline bool WhetherTextureFix()
 
 // Conversion of color data types
 
-inline int MakeEightBit(GLfloat Chan)
+inline int MakeEightBit(AOAfloat Chan)
 {
 	return int(PIN(int(255*Chan+0.5),0,255));
 }
 
-uint32 MakeIntColor(GLfloat *FloatColor)
+uint32 MakeIntColor(AOAfloat *FloatColor)
 {
 	uint32 IntColor;
 	uint8 *ColorPtr = (uint8 *)(&IntColor);
@@ -702,7 +703,7 @@ uint32 MakeIntColor(GLfloat *FloatColor)
 	return IntColor;
 }
 
-void MakeFloatColor(uint32 IntColor, GLfloat *FloatColor)
+void MakeFloatColor(uint32 IntColor, AOAfloat *FloatColor)
 {
 	uint8 *ColorPtr = (uint8 *)(&IntColor);
 	for (int k=0; k<4; k++)
@@ -1176,7 +1177,7 @@ uint32 *TextureManager::GetOGLTexture(uint32 *ColorTable)
 	for (short h = 0; h < OGLHeightOffset; h++)
 	{
 		uint32 *SrcStrip;
-		if (TextureType == OGL_Txtr_Landscape) 
+		if (TextureType == OGL_Txtr_Landscape)
 		{
 			SrcStrip = &Buffer[TxtrWidth * (2 * OGLHeightOffset - h) - 1];
 		} 
@@ -1193,7 +1194,7 @@ uint32 *TextureManager::GetOGLTexture(uint32 *ColorTable)
 	for (short h = OGLHeightFinish; h < TxtrHeight; h++)
 	{
 		uint32 *SrcStrip;
-		if (TextureType == OGL_Txtr_Landscape) 
+		if (TextureType == OGL_Txtr_Landscape)
 		{
 			SrcStrip = &Buffer[TxtrWidth * (2 * OGLHeightFinish - h - 1)];
 		} 
@@ -1232,7 +1233,7 @@ uint32 *TextureManager::GetFakeLandscape()
 	RGBColor OrigSkyColor = ConfigureData.LscpColors[LscpIndx][1];
 	
 	// Set up floating-point ones, complete with alpha channel
-	GLfloat LandColor[4], SkyColor[4];
+	AOAfloat LandColor[4], SkyColor[4];
 	MakeFloatColor(OrigLandColor,LandColor);
 	LandColor[3] = 1;
 	MakeFloatColor(OrigSkyColor,SkyColor);
@@ -1268,8 +1269,8 @@ uint32 *TextureManager::Shrink(uint32 *Buffer)
 	GLuint *NewBuffer = new GLuint[NumPixels];
   // DJB OpenGL no glScaleImage
   // printf ( "******************* gluScaleImage not available in OGL_Textures.cpp *********************\n" );
-  /*gluScaleImage(GL_RGBA, TxtrWidth, TxtrHeight, GL_UNSIGNED_BYTE, Buffer,
-		LoadedWidth, LoadedHeight, GL_UNSIGNED_BYTE, NewBuffer);*/
+  /*gluScaleImage(AOA_RGBA, TxtrWidth, TxtrHeight, AOA_UNSIGNED_BYTE, Buffer,
+		LoadedWidth, LoadedHeight, AOA_UNSIGNED_BYTE, NewBuffer);*/
 	
 	return (uint32 *)NewBuffer;
 }
@@ -1284,67 +1285,67 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 
 	TxtrTypeInfoData& TxtrTypeInfo = TxtrTypeInfoList[TextureType];
 
-	GLenum internalFormat = TxtrTypeInfo.ColorFormat;
+	AOAenum internalFormat = TxtrTypeInfo.ColorFormat;
   // some optimizations here:
-  // DJB OpenGL, convert GL_RGBA to GL_RGBA and GL_RGB to GL_RGB in the whole file
+  // DJB OpenGL, convert AOA_RGBA to AOA_RGBA and AOA_RGB to AOA_RGB in the whole file
   if (TextureType == 1) {     // landscape
-    if (internalFormat == GL_RGBA) {
-      internalFormat = GL_RGBA;
+    if (internalFormat == AOA_RGBA) {
+      internalFormat = AOA_RGBA;
     }
-    else if (internalFormat == GL_RGBA4) {
+    else if (internalFormat == AOA_RGBA4) {
       printf ( "******************* invalid internal format!!! ***********\n" );
-      // internalFormat = GL_RGB5;
+      // internalFormat = AOA_RGB5;
     }
   }
-	else if (!IsBlended() && internalFormat == GL_RGBA4)
+	else if (!IsBlended() && internalFormat == AOA_RGBA4)
 	{
-		internalFormat = GL_RGB5_A1;
+		internalFormat = AOA_RGB5_A1;
 	}
 
 	bool load_as_sRGB = (Wanting_sRGB && !normal_map &&
 						 Collection != _collection_interface &&
 						 Collection != _collection_weapons_in_hand);
 	
-  // DJB OpenGL Internal format is always GL_RGBA?
+  // DJB OpenGL Internal format is always AOA_RGBA?
   if(Using_sRGB && !normal_map) {
     switch(internalFormat) {
-      case GL_RGB:
+      case AOA_RGB:
         
-        internalFormat = GL_SRGB;
+        internalFormat = AOA_SRGB;
         break;
-      case GL_RGBA:
-        // DJB Internal format is GL_RGBA;
-        internalFormat = GL_RGBA;
+      case AOA_RGBA:
+        // DJB Internal format is AOA_RGBA;
+        internalFormat = AOA_RGBA;
         break;
       defualt:
-      case GL_RGBA4:
-      case GL_RGB5_A1:
+      case AOA_RGBA4:
+      case AOA_RGB5_A1:
         /*
-         case GL_RGBA2:
-         case GL_RGB10_A2:
-         case GL_RGBA12:
-         case GL_RGBA16:
-         case GL_R3_G3_B2:
-         case GL_RGB4:
-         case GL_RGB5:
-         case GL_RGB10:
-         case GL_RGB12:
-         case GL_RGB16:
+         case AOA_RGBA2:
+         case AOA_RGB10_A2:
+         case AOA_RGBA12:
+         case AOA_RGBA16:
+         case AOA_R3_G3_B2:
+         case AOA_RGB4:
+         case AOA_RGB5:
+         case AOA_RGB10:
+         case AOA_RGB12:
+         case AOA_RGB16:
          */
         printf ( "***************** Don't know these formats! ****************\n" );
-#if defined(GL_ARB_texture_compression) && defined(GL_COMPRESSED_RGB_S3TC_DXT1_EXT)
+#if defined(AOA_ARB_texture_compression) && defined(AOA_COMPRESSED_RGB_S3TC_DXT1_EXT)
 	    /* These might not do anything... */
-	  case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
-	    internalFormat = GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
+	  case AOA_COMPRESSED_RGB_S3TC_DXT1_EXT:
+	    internalFormat = AOA_COMPRESSED_SRGB_S3TC_DXT1_EXT;
 	    break;
-	  case GL_COMPRESSED_RGBA_S3TC_DXT1_EXT:
-	    internalFormat = GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT;
+	  case AOA_COMPRESSED_RGBA_S3TC_DXT1_EXT:
+	    internalFormat = AOA_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT;
 	    break;
-	  case GL_COMPRESSED_RGBA_S3TC_DXT3_EXT:
-	    internalFormat = GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT;
+	  case AOA_COMPRESSED_RGBA_S3TC_DXT3_EXT:
+	    internalFormat = AOA_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT;
 	    break;
-	  case GL_COMPRESSED_RGBA_S3TC_DXT5_EXT:
-	    internalFormat = GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT;
+	  case AOA_COMPRESSED_RGBA_S3TC_DXT5_EXT:
+	    internalFormat = AOA_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT;
 	    break;
 #endif
 	  }
@@ -1353,63 +1354,63 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 	if (Image->GetFormat() == ImageDescriptor::RGBA8) {
 		switch (TxtrTypeInfo.FarFilter)
 		{
-		case GL_NEAREST:
-		case GL_LINEAR:
-			glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetBuffer());
+		case AOA_NEAREST:
+		case AOA_LINEAR:
+			AOA::texImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image->GetBuffer());
       //printGLError(__PRETTY_FUNCTION__);
       break;
-		case GL_NEAREST_MIPMAP_NEAREST:
-		case GL_LINEAR_MIPMAP_NEAREST:
-		case GL_NEAREST_MIPMAP_LINEAR:
-		case GL_LINEAR_MIPMAP_LINEAR:
+		case AOA_NEAREST_MIPMAP_NEAREST:
+		case AOA_LINEAR_MIPMAP_NEAREST:
+		case AOA_NEAREST_MIPMAP_LINEAR:
+		case AOA_LINEAR_MIPMAP_LINEAR:
 			if (Image->GetMipMapCount() > 1) {
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 	if (useSGISMipmaps) {
-		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_FALSE);
 	}
 #endif
         // DJB OpenGL Generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
         //printGLError(__PRETTY_FUNCTION__);
         
         int i = 0;
 				for (i = 0; i < Image->GetMipMapCount(); i++) {
-					glTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetMipMapPtr(i));
+					AOA::texImage2D(AOA_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image->GetMipMapPtr(i));
           //printGLError(__PRETTY_FUNCTION__);
           if( useShaderRenderer() ) {
-            glGenerateMipmap(GL_TEXTURE_2D);
+            glGenerateMipmap(AOA_TEXTURE_2D);
             //printGLError(__PRETTY_FUNCTION__);
           }
         }
 				mipmapsLoaded = true;
 			} else {
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 			if (useSGISMipmaps) {
-				glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-				glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image->GetBuffer());
+				AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_TRUE);
+				AOA::texImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image->GetBuffer());
 			} else 
 #endif
 			{
         // DJB OpenGL gluBuild2DMipmaps
         // printf ( "******************* gluBuild2DMipmaps not supported! *****************\n" );
         /*
-         gluBuild2DMipmaps(GL_TEXTURE_2D, internalFormat,
+         gluBuild2DMipmaps(AOA_TEXTURE_2D, internalFormat,
          Image->GetWidth(),
-         Image->GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE,
+         Image->GetHeight(), AOA_RGBA, AOA_UNSIGNED_BYTE,
          Image->GetBuffer());
          */
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_TRUE);
         //printGLError(__PRETTY_FUNCTION__);
-        // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
-        assert ( internalFormat == GL_RGBA );
-        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+        // DJB OpenGL  AOA_RGBA is 6407 and AOA_RGB is 6408
+        assert ( internalFormat == AOA_RGBA );
+        AOA::texImage2D(AOA_TEXTURE_2D, 0, internalFormat,
                      Image->GetWidth(),
-                     Image->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                     Image->GetHeight(), 0, AOA_RGBA, AOA_UNSIGNED_BYTE,
                      Image->GetBuffer());
         //printGLError(__PRETTY_FUNCTION__);
         
         if( useShaderRenderer() ) {
-          glGenerateMipmap(GL_TEXTURE_2D);
+          glGenerateMipmap(AOA_TEXTURE_2D);
           //printGLError(__PRETTY_FUNCTION__);
         }
 			}
@@ -1424,26 +1425,26 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
   if (Image->GetFormat() == ImageDescriptor::PVRTC4 || Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
     switch (TxtrTypeInfo.FarFilter)
     {
-      case GL_NEAREST:
-      case GL_LINEAR:
-      case GL_NEAREST_MIPMAP_NEAREST:
-      case GL_LINEAR_MIPMAP_NEAREST:
-      case GL_NEAREST_MIPMAP_LINEAR:
-      case GL_LINEAR_MIPMAP_LINEAR:
+      case AOA_NEAREST:
+      case AOA_LINEAR:
+      case AOA_NEAREST_MIPMAP_NEAREST:
+      case AOA_LINEAR_MIPMAP_NEAREST:
+      case AOA_NEAREST_MIPMAP_LINEAR:
+      case AOA_LINEAR_MIPMAP_LINEAR:
       {
         int level = 0;
-        GLenum format;
+        AOAenum format;
         uint32_t blockSize = 0;
         uint32_t bpp;
         if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
-          format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+          format = AOA_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
           blockSize = 4 * 4; // Pixel by pixel block size for 4bpp
           // widthBlocks = width / 4;
           // heightBlocks = height / 4;
           bpp = 4;
         }
         if ( Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
-          format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+          format = AOA_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
           blockSize = 8 * 4; // Pixel by pixel block size for 2bpp
           // widthBlocks = width / 8;
           // heightBlocks = height / 4;
@@ -1455,7 +1456,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         unsigned char* data = (unsigned char*)Image->GetBuffer();
         for ( level = 0; level <= Image->GetMipMapCount() && width > 0 && height > 0; level++ ) {
           GLsizei size = std::max ( 32u, width * height * bpp / 8 );
-          glCompressedTexImage2D(GL_TEXTURE_2D,
+          AOA::compressedTexImage2D(AOA_TEXTURE_2D,
                                  level,
                                  format,
                                  width,
@@ -1478,7 +1479,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           /*
            for (int level = 0; width > 0 && height > 0; ++level) {
            GLsizei size = std::max(32, width * height * bitsPerPixel / 8);
-           glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width,
+           AOA::compressedTexImage2D(AOA_TEXTURE_2D, level, format, width,
            height, 0, size, data);
            data += size;
            width >>= 1; height >>= 1;
@@ -1486,16 +1487,16 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
            */
           
           
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+          AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
           //printGLError(__PRETTY_FUNCTION__);
           int i = 0;
           for (i = 0; i < Image->GetMipMapCount(); i++) {
-            glTexImage2D(GL_TEXTURE_2D, i, internalFormat,
+            AOA::texImage2D(AOA_TEXTURE_2D, i, internalFormat,
                          max(1, Image->GetWidth() >> i),
                          max(1, Image->GetHeight() >> i),
                          0,
-                         GL_RGBA,
-                         GL_UNSIGNED_BYTE,
+                         AOA_RGBA,
+                         AOA_UNSIGNED_BYTE,
                          Image->GetMipMapPtr(i));
             //printGLError(__PRETTY_FUNCTION__);
           }
@@ -1503,18 +1504,18 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
         }
         else {
           // DJB OpenGL gluBuild2DMipmaps, but don't build for compressed textures
-          // glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+          // AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_TRUE);
           // printGLError(__PRETTY_FUNCTION__);
-          // DJB OpenGL  GL_RGBA is 6407 and GL_RGB is 6408
-          // assert ( internalFormat == GL_RGBA );
+          // DJB OpenGL  AOA_RGBA is 6407 and AOA_RGB is 6408
+          // assert ( internalFormat == AOA_RGBA );
           
           int level = 0;
-          GLenum format;
+          AOAenum format;
           if ( Image->GetFormat() == ImageDescriptor::PVRTC4 ) {
-            format = GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+            format = AOA_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
           }
           if ( Image->GetFormat() == ImageDescriptor::PVRTC2 ) {
-            format = GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+            format = AOA_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
           }
           
           int width = Image->GetWidth();
@@ -1522,7 +1523,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
           unsigned char* data = (unsigned char*)Image->GetBuffer();
           for ( level = 0; level <= Image->GetMipMapCount() && width > 0 && height > 0; level++ ) {
             GLsizei size = std::max ( 32, width * height * 4 / 8 );
-            glCompressedTexImage2D(GL_TEXTURE_2D,
+            AOA::compressedTexImage2D(AOA_TEXTURE_2D,
                                    level,
                                    format,
                                    width,
@@ -1546,53 +1547,53 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 		   Image->GetFormat() == ImageDescriptor::DXTC3 ||
 		   Image->GetFormat() == ImageDescriptor::DXTC5)
 	{
-#if defined(GL_ARB_texture_compression) && defined(GL_COMPRESSED_RGB_S3TC_DXT1_EXT)
+#if defined(AOA_ARB_texture_compression) && defined(AOA_COMPRESSED_RGB_S3TC_DXT1_EXT)
 		if (Image->GetFormat() == ImageDescriptor::DXTC1)
-		  internalFormat = (load_as_sRGB) ? GL_COMPRESSED_SRGB_S3TC_DXT1_EXT : GL_COMPRESSED_RGB_S3TC_DXT1_EXT;
+		  internalFormat = (load_as_sRGB) ? AOA_COMPRESSED_SRGB_S3TC_DXT1_EXT : AOA_COMPRESSED_RGB_S3TC_DXT1_EXT;
 		else if (Image->GetFormat() == ImageDescriptor::DXTC3)
-		  internalFormat = (load_as_sRGB) ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT : GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+		  internalFormat = (load_as_sRGB) ? AOA_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT : AOA_COMPRESSED_RGBA_S3TC_DXT3_EXT;
 		else if (Image->GetFormat() == ImageDescriptor::DXTC5)
-		  internalFormat = (load_as_sRGB) ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT : GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+		  internalFormat = (load_as_sRGB) ? AOA_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT : AOA_COMPRESSED_RGBA_S3TC_DXT5_EXT;
 		
 		switch(TxtrTypeInfo.FarFilter)
 		{
-		case GL_NEAREST:
-		case GL_LINEAR:
-			glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
+		case AOA_NEAREST:
+		case AOA_LINEAR:
+			AOA::compressedTexImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
       //printGLError(__PRETTY_FUNCTION__);
 			break;
-		case GL_NEAREST_MIPMAP_NEAREST:
-		case GL_LINEAR_MIPMAP_NEAREST:
-		case GL_NEAREST_MIPMAP_LINEAR:
-		case GL_LINEAR_MIPMAP_LINEAR:
+		case AOA_NEAREST_MIPMAP_NEAREST:
+		case AOA_LINEAR_MIPMAP_NEAREST:
+		case AOA_NEAREST_MIPMAP_LINEAR:
+		case AOA_LINEAR_MIPMAP_LINEAR:
 			if (Image->GetMipMapCount() > 1) {
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps) {
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_FALSE);
 				}
 #endif
         // DJB OpenGL generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
         //printGLError(__PRETTY_FUNCTION__);
         
 				int i = 0;
 				for (i = 0; i < Image->GetMipMapCount(); i++) {
-					glCompressedTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, Image->GetMipMapSize(i), Image->GetMipMapPtr(i)); //DCW No ARB extension in iOS
+					AOA::compressedTexImage2D(AOA_TEXTURE_2D, i, internalFormat, max(1, Image->GetWidth() >> i), max(1, Image->GetHeight() >> i), 0, Image->GetMipMapSize(i), Image->GetMipMapPtr(i)); //DCW No ARB extension in iOS
           //printGLError(__PRETTY_FUNCTION__);
         }
 				mipmapsLoaded = true;
 			} else {
-#if defined GL_SGIS_generate_mipmap
+#if defined AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps) {
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_TRUE);
 					mipmapsLoaded = true;
 				}  
 #endif
         // DJB OpenGL generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
         mipmapsLoaded = true;
 
-        glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
+        AOA::compressedTexImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image->GetWidth(), Image->GetHeight(), 0, Image->GetMipMapSize(0), Image->GetBuffer()); //DCW No ARB extension in iOS
         //printGLError(__PRETTY_FUNCTION__);
       }
 			break;
@@ -1607,16 +1608,16 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 	}
 	
 	// Set texture-mapping features
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	AOA::texEnvi(AOA_TEXTURE_ENV, AOA_TEXTURE_ENV_MODE, AOA_MODULATE);
   //printGLError(__PRETTY_FUNCTION__);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
+  AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
   //printGLError(__PRETTY_FUNCTION__);
-	if ((TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_LINEAR || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded)
+	if ((TxtrTypeInfo.FarFilter == AOA_NEAREST_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == AOA_LINEAR_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == AOA_NEAREST_MIPMAP_LINEAR || TxtrTypeInfo.FarFilter == AOA_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded)
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MIN_FILTER, AOA_LINEAR);
     //printGLError(__PRETTY_FUNCTION__);
 	} else {
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, TxtrTypeInfo.FarFilter);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MIN_FILTER, TxtrTypeInfo.FarFilter);
     //printGLError(__PRETTY_FUNCTION__);
 	}
 
@@ -1624,16 +1625,16 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 	{
 	case OGL_Txtr_Wall:
 		// Walls are tiled in both direction
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-#if defined(GL_TEXTURE_MAX_ANISOTROPY_EXT)
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_S, AOA_REPEAT);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_REPEAT);
+#if defined(AOA_TEXTURE_MAX_ANISOTROPY_EXT)
                 // enable anisotropic filtering
                 {
                     float anisoLevel = Get_OGL_ConfigureData().AnisotropyLevel;
                     if (anisoLevel > 0.0) {
-                        GLfloat max_aniso;
-                        glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &max_aniso);
-                        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 1.0F + ((anisoLevel-1.0F)/15.0F)*(max_aniso-1.0F));
+                        AOAfloat max_aniso;
+                        glGetFloatv(AOA_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &max_aniso);
+                        glTexParameterf(AOA_TEXTURE_2D, AOA_TEXTURE_MAX_ANISOTROPY_EXT, 1.0F + ((anisoLevel-1.0F)/15.0F)*(max_aniso-1.0F));
                     }
                 }
 #endif
@@ -1641,20 +1642,20 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 		
 	case OGL_Txtr_Landscape:
 		// Landscapes repeat horizontally, have vertical limits or repeats vertically
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_S, AOA_REPEAT);
 		if (LandscapeVertRepeat)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_REPEAT);
 		else
 		{
-#if defined(GL_ARB_texture_mirrored_repeat)
+#if defined(AOA_ARB_texture_mirrored_repeat)
 			if (useMirroredRepeat)
 			{
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT_ARB);
+				AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_MIRRORED_REPEAT_ARB);
 			}
 			else
 #endif
 			{
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+				AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_CLAMP_TO_EDGE);
 			}	
 		}
 		break;
@@ -1662,8 +1663,8 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 	case OGL_Txtr_Inhabitant:
 	case OGL_Txtr_WeaponsInHand:
 		// Sprites have both horizontal and vertical limits
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_S, AOA_CLAMP_TO_EDGE);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_CLAMP_TO_EDGE);
 		break;
 	}
 }
@@ -1743,7 +1744,7 @@ void TextureManager::SetupTextureMatrix()
         MatrixStack::Instance()->matrixMode(MS_TEXTURE);
         MatrixStack::Instance()->loadIdentity();
       } else {
-        glMatrixMode(GL_TEXTURE);
+        glMatrixMode(AOA_TEXTURE);
         glLoadIdentity();
       }
 		if (TxtrOptsPtr->Substitution) {
@@ -1769,7 +1770,7 @@ void TextureManager::SetupTextureMatrix()
         MatrixStack::Instance()->matrixMode(MS_TEXTURE);
         MatrixStack::Instance()->loadIdentity();
       } else {
-        glMatrixMode(GL_TEXTURE);
+        glMatrixMode(AOA_TEXTURE);
         glLoadIdentity();
       }
 		if (TxtrOptsPtr->Substitution) {
@@ -1809,9 +1810,9 @@ void TextureManager::RestoreTextureMatrix()
 	case OGL_Txtr_Inhabitant:
 	case OGL_Txtr_Landscape:
     if(useShaderRenderer()){
-      MatrixStack::Instance()->matrixMode(GL_TEXTURE);
+      MatrixStack::Instance()->matrixMode(AOA_TEXTURE);
       MatrixStack::Instance()->loadIdentity();
-      MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
     } else {
       glMatrixMode(GL_TEXTURE);
       glLoadIdentity();
@@ -1914,8 +1915,8 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 	int LoadedHeight = MAX(TxtrHeight >> TxtrTypeInfo.Resolution, 1);
 	
 	// Fit the image into the maximum size allowed by the OpenGL implementation in use
-	GLint MaxTextureSize;
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE,&MaxTextureSize);
+	AOAint MaxTextureSize;
+	AOA::getIntegerv(AOA_MAX_TEXTURE_SIZE,&MaxTextureSize);
 	while (LoadedWidth > MaxTextureSize || LoadedHeight > MaxTextureSize)
 	{
 		LoadedWidth >>= 1;
@@ -1930,44 +1931,44 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 	bool mipmapsLoaded = false;
 
 	// Load the texture
-	GLenum internalFormat = TxtrTypeInfo.ColorFormat;
+	AOAenum internalFormat = TxtrTypeInfo.ColorFormat;
 	if (Image.get()->GetFormat() == ImageDescriptor::RGBA8)
 	{
 		switch(TxtrTypeInfo.FarFilter)
 		{
-		case GL_NEAREST:
-		case GL_LINEAR:
-			glTexImage2D(GL_TEXTURE_2D, 0, TxtrTypeInfo.ColorFormat, LoadedWidth, LoadedHeight,
-				     0, GL_RGBA, GL_UNSIGNED_BYTE, Image.get()->GetBuffer());
+		case AOA_NEAREST:
+		case AOA_LINEAR:
+			AOA::texImage2D(AOA_TEXTURE_2D, 0, TxtrTypeInfo.ColorFormat, LoadedWidth, LoadedHeight,
+				     0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image.get()->GetBuffer());
 			break;
-		case GL_NEAREST_MIPMAP_NEAREST:
-		case GL_LINEAR_MIPMAP_NEAREST:
-		case GL_NEAREST_MIPMAP_LINEAR:
-		case GL_LINEAR_MIPMAP_LINEAR:
+		case AOA_NEAREST_MIPMAP_NEAREST:
+		case AOA_LINEAR_MIPMAP_NEAREST:
+		case AOA_NEAREST_MIPMAP_LINEAR:
+		case AOA_LINEAR_MIPMAP_LINEAR:
 			if (Image.get()->GetMipMapCount() > 1) 
 			{
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps) {
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_FALSE);
 				}
 #endif
         // DJB OpenGL Generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
 
 				int i = 0;
 				for (i = 0; i < Image.get()->GetMipMapCount(); i++) 
 				{
-					glTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image.get()->GetWidth() >> i), max(1, Image.get()->GetHeight() >> i), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image.get()->GetMipMapPtr(i));
+					AOA::texImage2D(AOA_TEXTURE_2D, i, internalFormat, max(1, Image.get()->GetWidth() >> i), max(1, Image.get()->GetHeight() >> i), 0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image.get()->GetMipMapPtr(i));
 				}
 				mipmapsLoaded = true;
 			}
 			else
 			{
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps)
 				{
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-					glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, Image.get()->GetBuffer());
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_TRUE);
+					AOA::texImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, AOA_RGBA, AOA_UNSIGNED_BYTE, Image.get()->GetBuffer());
 				}
 				else
 #endif
@@ -1975,15 +1976,15 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
           // DJB OpenGL No gluBuild2DMipmaps
           // printf ( "********************** no gluBuild2DMipmaps available *******************\n" );
           /*
-           gluBuild2DMipmaps(GL_TEXTURE_2D, TxtrTypeInfo.ColorFormat,
+           gluBuild2DMipmaps(AOA_TEXTURE_2D, TxtrTypeInfo.ColorFormat,
            LoadedWidth, LoadedHeight,
-           GL_RGBA, GL_UNSIGNED_BYTE,
+           AOA_RGBA, AOA_UNSIGNED_BYTE,
            Image.get()->GetBuffer());
            */
-          glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-          glTexImage2D(GL_TEXTURE_2D, 0, internalFormat,
+          AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_TRUE);
+          AOA::texImage2D(AOA_TEXTURE_2D, 0, internalFormat,
                        Image.get()->GetWidth(),
-                       Image.get()->GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                       Image.get()->GetHeight(), 0, AOA_RGBA, AOA_UNSIGNED_BYTE,
                        Image.get()->GetBuffer());
 				}
 				mipmapsLoaded = true;
@@ -1999,56 +2000,56 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 		 Image.get()->GetFormat() == ImageDescriptor::DXTC3 ||
 		 Image.get()->GetFormat() == ImageDescriptor::DXTC5)
 	{
-#if defined (GL_ARB_texture_compression) && defined(GL_COMPRESSED_RGB_S3TC_DXT1_EXT)
+#if defined (AOA_ARB_texture_compression) && defined(AOA_COMPRESSED_RGB_S3TC_DXT1_EXT)
 		if (Image.get()->GetFormat() == ImageDescriptor::DXTC1)
-			internalFormat = GL_COMPRESSED_RGB_S3TC_DXT1_EXT;
+			internalFormat = AOA_COMPRESSED_RGB_S3TC_DXT1_EXT;
 		else if (Image.get()->GetFormat() == ImageDescriptor::DXTC3)
-			internalFormat = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+			internalFormat = AOA_COMPRESSED_RGBA_S3TC_DXT3_EXT;
 		else if (Image.get()->GetFormat() == ImageDescriptor::DXTC5)
-			internalFormat = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+			internalFormat = AOA_COMPRESSED_RGBA_S3TC_DXT5_EXT;
 
 		switch (TxtrTypeInfo.FarFilter)
 		{
-		case GL_NEAREST:
-		case GL_LINEAR:
-			glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, Image.get()->GetMipMapSize(0), Image.get()->GetBuffer()); //DCW No ARB extension in iOS
+		case AOA_NEAREST:
+		case AOA_LINEAR:
+			AOA::compressedTexImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, Image.get()->GetMipMapSize(0), Image.get()->GetBuffer()); //DCW No ARB extension in iOS
 			break;
-		case GL_NEAREST_MIPMAP_NEAREST:
-		case GL_LINEAR_MIPMAP_NEAREST:
-		case GL_NEAREST_MIPMAP_LINEAR:
-		case GL_LINEAR_MIPMAP_LINEAR:
+		case AOA_NEAREST_MIPMAP_NEAREST:
+		case AOA_LINEAR_MIPMAP_NEAREST:
+		case AOA_NEAREST_MIPMAP_LINEAR:
+		case AOA_LINEAR_MIPMAP_LINEAR:
 			if (Image.get()->GetMipMapCount() > 1)
 			{
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps)
 				{
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_FALSE);
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_FALSE);
 				}
 #endif
         // DJB OpenGL generate mipmaps
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_FALSE);
         
 				int i = 0;
 				for (i = 0; i < Image.get()->GetMipMapCount(); i++)
 				{
-					glCompressedTexImage2D(GL_TEXTURE_2D, i, internalFormat, max(1, Image.get()->GetWidth() >> i), max(1, Image.get()->GetHeight() >> i), 0, Image.get()->GetMipMapSize(i), Image.get()->GetMipMapPtr(i)); //DCW No ARB extension in iOS
+					AOA::compressedTexImage2D(AOA_TEXTURE_2D, i, internalFormat, max(1, Image.get()->GetWidth() >> i), max(1, Image.get()->GetHeight() >> i), 0, Image.get()->GetMipMapSize(i), Image.get()->GetMipMapPtr(i)); //DCW No ARB extension in iOS
 				}
 				mipmapsLoaded = true;
 			}
 			else
 			{
-#ifdef GL_SGIS_generate_mipmap
+#ifdef AOA_SGIS_generate_mipmap
 				if (useSGISMipmaps) 
 				{
-					glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+					AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP_SGIS, AOA_TRUE);
 					mipmapsLoaded = true;
 				}
 #endif
           //DCW. Not sure if the two lines below are needed. Ther were in an old version of the source, and are consistent with DJB's changes above.
-        glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+        AOA::texParameteri(AOA_TEXTURE_2D, AOA_GENERATE_MIPMAP, AOA_TRUE);
         mipmapsLoaded = true;
         
-				glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, Image.get()->GetMipMapSize(0), Image.get()->GetBuffer()); //DCW No ARB extension in iOS
+				AOA::compressedTexImage2D(AOA_TEXTURE_2D, 0, internalFormat, Image.get()->GetWidth(), Image.get()->GetHeight(), 0, Image.get()->GetMipMapSize(0), Image.get()->GetBuffer()); //DCW No ARB extension in iOS
 			}
 			break;
 
@@ -2062,21 +2063,21 @@ void LoadModelSkin(ImageDescriptor& SkinImage, short Collection, short CLUT)
 	}
 	
 	// Set texture-mapping features
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
-	if ((TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == GL_NEAREST_MIPMAP_LINEAR || TxtrTypeInfo.FarFilter == GL_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded)
+	AOA::texEnvi(AOA_TEXTURE_ENV, AOA_TEXTURE_ENV_MODE, AOA_MODULATE);
+	AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MAG_FILTER, TxtrTypeInfo.NearFilter);
+	if ((TxtrTypeInfo.FarFilter == AOA_NEAREST_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == AOA_LINEAR_MIPMAP_NEAREST || TxtrTypeInfo.FarFilter == AOA_NEAREST_MIPMAP_LINEAR || TxtrTypeInfo.FarFilter == AOA_LINEAR_MIPMAP_LINEAR) && !mipmapsLoaded)
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MIN_FILTER, AOA_LINEAR);
 	}
 	else
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, TxtrTypeInfo.FarFilter);
+		AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_MIN_FILTER, TxtrTypeInfo.FarFilter);
 	}
 
 	
 	// Like sprites, model textures have both horizontal and vertical limits
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_S, AOA_CLAMP_TO_EDGE);
+	AOA::texParameteri(AOA_TEXTURE_2D, AOA_TEXTURE_WRAP_T, AOA_CLAMP_TO_EDGE);
 
 }
 
@@ -2103,14 +2104,14 @@ bool SetInfravisionTint(short Collection, bool IsTinted, float Red, float Green,
 
 // Finds the infravision version of a color for some collection set;
 // it makes no change if infravision is inactive.
-void FindInfravisionVersionRGBA(short Collection, GLfloat *Color)
+void FindInfravisionVersionRGBA(short Collection, AOAfloat *Color)
 {
 	if (!InfravisionActive) return;
 	
 	InfravisionData& IVData = IVDataList[Collection];
 	if (!IVData.IsTinted) return;
 	
-	GLfloat AvgColor = (Color[0] + Color[1] + Color[2])/3;
+	AOAfloat AvgColor = (Color[0] + Color[1] + Color[2])/3;
 	Color[0] = IVData.Red*AvgColor;
 	Color[1] = IVData.Green*AvgColor;
 	Color[2] = IVData.Blue*AvgColor;
@@ -2132,7 +2133,7 @@ void FindInfravisionVersionRGBA(short Collection, int NumPixels, uint32 *Pixels)
 	for (int k=0; k<NumPixels; k++, Pixels++)
 	{
 		uint8 *PxlPtr = (uint8 *)Pixels;
-		GLfloat AvgColor = GLfloat(int(PxlPtr[0]) + int(PxlPtr[1]) + int(PxlPtr[2]))/3;
+		AOAfloat AvgColor = AOAfloat(int(PxlPtr[0]) + int(PxlPtr[1]) + int(PxlPtr[2]))/3;
 		PxlPtr[0] = PIN(int(IVData.Red*AvgColor + 0.5),0,255);
 		PxlPtr[1] = PIN(int(IVData.Green*AvgColor + 0.5),0,255);
 		PxlPtr[2] = PIN(int(IVData.Blue*AvgColor + 0.5),0,255);

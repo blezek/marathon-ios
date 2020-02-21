@@ -197,7 +197,9 @@ void RenderRasterizerClass::render_node(
     if (media) {
       float h = media->height;
       
-      GLfloat plane[] = { 0.0, 0.0, 1.0, -h + (headBelowMedia() ? -2.0 : 2.0) }; //Artifically reduce/increase the plane height a bit, to reduce fighting at media surface.
+      GLfloat plane[] = { 0.0, 0.0, 1.0, 0.0 };
+      plane[3] = (0-h) + (headBelowMedia() ? -2.0 : 2.0); //Artifically reduce/increase the plane height a bit, to reduce fighting at media surface.
+      
       MatrixStack::Instance()->clipPlanef(6, plane);
       MatrixStack::Instance()->enablePlane(6);
 

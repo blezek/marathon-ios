@@ -46,6 +46,9 @@
 #define kHasPurchasedTip @"hasPurchasedTip"
 #define kHasAttemptedRestore @"hasAttemptedRestore"
 #define kUseClassicRenderer @"useClassicRenderer"
+#define kUseClassicTextures @"useClassicTextures"
+#define kUseClassicSprites @"useClassicSprites"
+#define kUseTransparentLiquids @"useTransparentLiquids"
 #define kUseBloom @"useBloom"
 
 

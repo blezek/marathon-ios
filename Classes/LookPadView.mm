@@ -187,7 +187,7 @@ extern "C" {
   
   //Invert X and Y if device is upside down (Home button is on left).
   //Note that we need the interface orientation, NOT the device orientation.
-  UIDeviceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
   if (orientation == UIInterfaceOrientationLandscapeLeft)  {
     rotatedX *= -1.0;
     rotatedY *= -1.0;

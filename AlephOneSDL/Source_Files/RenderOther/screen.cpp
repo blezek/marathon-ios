@@ -75,6 +75,9 @@
 #include "MatrixStack.hpp"
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
+#include "AlephOneAcceleration.hpp"
+#include <bgfx/bgfx.h>
+#include "SDL_syswm.h"
 //DCW debug shader
 #include "OGL_Shader.h"
 
@@ -911,27 +914,31 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	}
 	
 	if (need_mode_change(sdl_width, sdl_height, vmode_width, vmode_height, depth, nogl)) {
-#ifdef HAVE_OPENGL
-	if (!nogl && screen_mode.acceleration != _no_acceleration) {
-		passed_shader = false;
-		flags |= SDL_WINDOW_OPENGL;
-		SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
-		SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
-		SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
-		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-		if (Get_OGL_ConfigureData().Multisamples > 0) {
-			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, Get_OGL_ConfigureData().Multisamples);
-		} else {
-			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
-			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
-		}
-		SDL_GL_SetSwapInterval(Get_OGL_ConfigureData().WaitForVSync ? 1 : 0);
-	}
-#endif 
-
+    
+    if(AOA::useBGFX()) {
+      
+    } else {
+    #ifdef HAVE_OPENGL
+      if (!nogl && screen_mode.acceleration != _no_acceleration) {
+        passed_shader = false;
+        flags |= SDL_WINDOW_OPENGL;
+        SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+        if (Get_OGL_ConfigureData().Multisamples > 0) {
+          SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+          SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, Get_OGL_ConfigureData().Multisamples);
+        } else {
+          SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
+          SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+        }
+        SDL_GL_SetSwapInterval(Get_OGL_ConfigureData().WaitForVSync ? 1 : 0);
+      }
+    #endif
+    }
 		
 		if (main_surface != NULL) {
 			SDL_FreeSurface(main_surface);
@@ -951,27 +958,93 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		main_screen = NULL;
 		SDL_FilterEvents(change_window_filter, &window_id);
 	}
-	main_screen = SDL_CreateWindow(get_application_name(),
+    if(AOA::useBGFX()) {
+      SDL_setenv("METAL_DEVICE_WRAPPER_TYPE", "1", 0);
+    }
+	
+    main_screen = SDL_CreateWindow(get_application_name(),
 								   SDL_WINDOWPOS_CENTERED,
 								   SDL_WINDOWPOS_CENTERED,
 								   sdl_width, sdl_height,
 								   flags);
+    
+    bool context_created = false;
+    
+    if(AOA::useBGFX()) {
+      
+     /* bgfx::Init init;
+      //init.type     = args.m_type;
+      //init.vendorId = args.m_pciId;
+      init.resolution.width  = sdl_width;
+      init.resolution.height = sdl_height;
+      //init.resolution.reset  = m_reset;
+      bgfx::init(init);
+      
+      // Enable debug text.
+      //bgfx::setDebug(m_debug);
 
-#ifdef HAVE_OPENGL
-	bool context_created = false;
-	if (main_screen == NULL && !nogl && screen_mode.acceleration != _no_acceleration && Get_OGL_ConfigureData().Multisamples > 0) {
-		// retry with multisampling off
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
-		main_screen = SDL_CreateWindow(get_application_name(),
-									   SDL_WINDOWPOS_CENTERED,
-									   SDL_WINDOWPOS_CENTERED,
-									   sdl_width, sdl_height,
-									   flags);
-		if (main_screen)
-			failed_multisamples = Get_OGL_ConfigureData().Multisamples;
-	}
-#endif
+      // Set view 0 clear state.
+      bgfx::setViewClear(0
+        , BGFX_CLEAR_COLOR|BGFX_CLEAR_DEPTH
+        , 0x303030ff
+        , 1.0f
+        , 0
+        );
+      */
+         SDL_SysWMinfo window_system_info;
+         SDL_VERSION(&window_system_info.version);
+         if(SDL_GetWindowWMInfo(main_screen, &window_system_info)) { /* the call returns true on success */
+              /* success */
+              const char *subsystem = "an unknown system!";
+              switch(window_system_info.subsystem) {
+                case SDL_SYSWM_UNKNOWN:   break;
+                case SDL_SYSWM_WINDOWS:   subsystem = "Microsoft Windows(TM)";  break;
+                case SDL_SYSWM_X11:       subsystem = "X Window System";        break;
+          #if SDL_VERSION_ATLEAST(2, 0, 3)
+                case SDL_SYSWM_WINRT:     subsystem = "WinRT";                  break;
+          #endif
+                case SDL_SYSWM_DIRECTFB:  subsystem = "DirectFB";               break;
+                case SDL_SYSWM_COCOA:     subsystem = "Apple OS X";             break;
+                case SDL_SYSWM_UIKIT:     subsystem = "UIKit";                  break;
+          #if SDL_VERSION_ATLEAST(2, 0, 2)
+                case SDL_SYSWM_WAYLAND:   subsystem = "Wayland";                break;
+                case SDL_SYSWM_MIR:       subsystem = "Mir";                    break;
+          #endif
+          #if SDL_VERSION_ATLEAST(2, 0, 4)
+                case SDL_SYSWM_ANDROID:   subsystem = "Android";                break;
+          #endif
+          #if SDL_VERSION_ATLEAST(2, 0, 5)
+                case SDL_SYSWM_VIVANTE:   subsystem = "Vivante";                break;
+          #endif
+              }
+
+              SDL_Log("This program is running SDL version %d.%d.%d on %s",
+                  (int)window_system_info.version.major,
+                  (int)window_system_info.version.minor,
+                  (int)window_system_info.version.patch,
+                  subsystem);
+            } else {
+              /* call failed */
+              SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Couldn't get window information: %s", SDL_GetError());
+            }
+      
+
+    } else {
+    #ifdef HAVE_OPENGL
+      if (main_screen == NULL && !nogl && screen_mode.acceleration != _no_acceleration && Get_OGL_ConfigureData().Multisamples > 0) {
+        // retry with multisampling off
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+        main_screen = SDL_CreateWindow(get_application_name(),
+                         SDL_WINDOWPOS_CENTERED,
+                         SDL_WINDOWPOS_CENTERED,
+                         sdl_width, sdl_height,
+                         flags);
+        if (main_screen)
+          failed_multisamples = Get_OGL_ConfigureData().Multisamples;
+      }
+    #endif
+       }
 	if (main_screen == NULL && !nogl && screen_mode.acceleration != _no_acceleration) {
 		fprintf(stderr, "WARNING: Failed to initialize OpenGL with 24 bit depth\n");
 		fprintf(stderr, "WARNING: Retrying with 16 bit depth\n");
@@ -1018,21 +1091,25 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 
 	if (main_screen == NULL) {
 		fprintf(stderr, "Can't open video display (%s)\n", SDL_GetError());
-#ifdef HAVE_OPENGL
-		fprintf(stderr, "WARNING: Failed to initialize OpenGL with 24 bit colour\n");
-		fprintf(stderr, "WARNING: Retrying with 16 bit colour\n");
-		logWarning("Trying OpenGL 16-bit mode");
-		
-		SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
- 		SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);
-		SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+    if(AOA::useBGFX()) {
 
-		main_screen = SDL_CreateWindow(get_application_name(),
-									   SDL_WINDOWPOS_CENTERED,
-									   SDL_WINDOWPOS_CENTERED,
-									   sdl_width, sdl_height,
-									   flags);
-#endif
+    } else {
+      #ifdef HAVE_OPENGL
+          fprintf(stderr, "WARNING: Failed to initialize OpenGL with 24 bit colour\n");
+          fprintf(stderr, "WARNING: Retrying with 16 bit colour\n");
+          logWarning("Trying OpenGL 16-bit mode");
+          
+          SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
+          SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);
+          SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+
+          main_screen = SDL_CreateWindow(get_application_name(),
+                           SDL_WINDOWPOS_CENTERED,
+                           SDL_WINDOWPOS_CENTERED,
+                           sdl_width, sdl_height,
+                           flags);
+      #endif
+    }
 	}
 	if (main_screen == NULL && (flags & SDL_WINDOW_FULLSCREEN_DESKTOP)) {
 		fprintf(stderr, "Can't open video display (%s)\n", SDL_GetError());
@@ -1083,12 +1160,16 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		logWarning("Unable to find working display mode; exiting");
 		vhalt("Cannot find a working video mode.");
 	}
-#ifdef HAVE_OPENGL
-	if (!context_created && !nogl && screen_mode.acceleration != _no_acceleration) {
-		SDL_GL_CreateContext(main_screen);
-		context_created = true;
-	}
-#endif
+    if(AOA::useBGFX()) {
+         
+    } else {
+      #ifdef HAVE_OPENGL
+        if (!context_created && !nogl && screen_mode.acceleration != _no_acceleration) {
+          SDL_GL_CreateContext(main_screen);
+          context_created = true;
+        }
+      #endif
+    }
 	} // end if need_window
 	if (nogl || screen_mode.acceleration == _no_acceleration) {
 		if (!main_render) {
@@ -1136,33 +1217,37 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	Intro_Buffer = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32, pixel_format_32.Rmask, pixel_format_32.Gmask, pixel_format_32.Bmask, 0);
 	Intro_Buffer_corrected = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32, pixel_format_32.Rmask, pixel_format_32.Gmask, pixel_format_32.Bmask, 0);
 
-#ifdef HAVE_OPENGL
-	if (!nogl && screen_mode.acceleration != _no_acceleration) {
-		static bool gl_info_printed = false;
-		if (!gl_info_printed)
-		{
-			printf("GL_VENDOR: %s\n", glGetString(GL_VENDOR));
-			printf("GL_RENDERER: %s\n", glGetString(GL_RENDERER));
-			printf("GL_VERSION: %s\n", glGetString(GL_VERSION));
-//		const char *gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
-//		printf("GL_EXTENSIONS: %s\n", gl_extensions);
-			gl_info_printed = true;
-		}
-		int pixw = MainScreenPixelWidth();
-		int pixh = MainScreenPixelHeight();
-		glScissor(0, 0, pixw, pixh);
-		glViewport(0, 0, pixw, pixh);
-		
-		OGL_ClearScreen();
-		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    
-#ifdef __WIN32__
-		clear_screen();
-#endif
-	}
-#endif
+  if(AOA::useBGFX()) {
+       
+  } else {
+    #ifdef HAVE_OPENGL
+      if (!nogl && screen_mode.acceleration != _no_acceleration) {
+        static bool gl_info_printed = false;
+        if (!gl_info_printed)
+        {
+          printf("GL_VENDOR: %s\n", glGetString(GL_VENDOR));
+          printf("GL_RENDERER: %s\n", glGetString(GL_RENDERER));
+          printf("GL_VERSION: %s\n", glGetString(GL_VERSION));
+    //		const char *gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
+    //		printf("GL_EXTENSIONS: %s\n", gl_extensions);
+          gl_info_printed = true;
+        }
+        int pixw = MainScreenPixelWidth();
+        int pixh = MainScreenPixelHeight();
+        glScissor(0, 0, pixw, pixh);
+        glViewport(0, 0, pixw, pixh);
+        
+        OGL_ClearScreen();
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        
+    #ifdef __WIN32__
+        clear_screen();
+    #endif
+      }
+    #endif
+  }
 	
 	if (in_game && screen_mode.hud)
 	{
@@ -1448,8 +1533,8 @@ void render_screen(short ticks_elapsed)
 		OGL_MapActive = false;
 
 	// Set OpenGL viewport to world view
-	Rect sr = {0, 0, Screen::instance()->height(), Screen::instance()->width()};
-	Rect vr = {ViewRect.y, ViewRect.x, ViewRect.y + ViewRect.h, ViewRect.x + ViewRect.w};
+  Rect sr = {0, 0, static_cast<short>(Screen::instance()->height()), static_cast<short>(Screen::instance()->width())};
+  Rect vr = {static_cast<short>(ViewRect.y), static_cast<short>(ViewRect.x), static_cast<short>(ViewRect.y + ViewRect.h), static_cast<short>(ViewRect.x + ViewRect.w)};
 	Screen::instance()->bound_screen_to_rect(ViewRect);
 
 	OGL_SetWindow(sr, vr, true); //DCW notes; src should be screen rect (640x480, or whatever), and vr is the view rect; probably that size or smaller. Origins should be 0,0.
@@ -1537,7 +1622,7 @@ void render_screen(short ticks_elapsed)
       }
 			else {
         glPushGroupMarkerEXT(0, "Draw HUD");
-				Rect dr = {HUD_DestRect.y, HUD_DestRect.x, HUD_DestRect.y + HUD_DestRect.h, HUD_DestRect.x + HUD_DestRect.w};
+        Rect dr = {static_cast<short>(HUD_DestRect.y), static_cast<short>(HUD_DestRect.x), static_cast<short>(HUD_DestRect.y + HUD_DestRect.h), static_cast<short>(HUD_DestRect.x + HUD_DestRect.w)};
 				OGL_DrawHUD(dr, ticks_elapsed);
         glPopGroupMarkerEXT();
 			}
@@ -1545,7 +1630,14 @@ void render_screen(short ticks_elapsed)
 		
 		if (world_view->terminal_mode_active) {
 			// Copy 2D rendering to screen
-
+      
+      //DCW debugging
+      //MatrixStack::Instance()->matrixMode(MS_PROJECTION);
+      //GLfloat m[16];
+      //MatrixStack::Instance()->getFloatv (MS_PROJECTION_MATRIX, m);
+      //printf ( "perojectionmatrixr: %f %f %f %f, %f %f %f %f, %f %f %f %f, %f %f %f %f\n",
+      //        m[0],m[1],m[2],m[3],m[4],m[5],m[6],m[7],m[8],m[9],m[10],m[11],m[12],m[13],m[14],m[15]);
+      
 			if (Term_RenderRequest) {
 				SDL_SetSurfaceBlendMode(Term_Buffer, SDL_BLENDMODE_NONE);
 				Term_Blitter.Load(*Term_Buffer);
@@ -1866,9 +1958,9 @@ void render_overhead_map(struct view_data *view)
 #ifdef HAVE_OPENGL
 	if (OGL_IsActive()) {
 		// Set OpenGL viewport to world view
-		Rect sr = {0, 0, Screen::instance()->height(), Screen::instance()->width()};
+    Rect sr = {0, 0, static_cast<short>(Screen::instance()->height()), static_cast<short>(Screen::instance()->width())};
 		SDL_Rect MapRect = Screen::instance()->map_rect();
-		Rect mr = {MapRect.y, MapRect.x, MapRect.y + MapRect.h, MapRect.x + MapRect.w};
+    Rect mr = {static_cast<short>(MapRect.y), static_cast<short>(MapRect.x), static_cast<short>(MapRect.y + MapRect.h), static_cast<short>(MapRect.x + MapRect.w)};
 		Screen::instance()->bound_screen_to_rect(MapRect);
 		OGL_SetWindow(sr, mr, true);
 	}
