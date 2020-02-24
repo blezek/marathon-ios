@@ -72,7 +72,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
   UIView *a1View = [a1Window rootViewController].view;
   [game setOpenGLView:a1View];
-    
+  
   [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
   
   

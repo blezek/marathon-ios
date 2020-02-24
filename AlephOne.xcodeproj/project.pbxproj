@@ -302,15 +302,33 @@
 		517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
 		517D258823FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
 		517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
-		517D25B523FFAA5E00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B223FFAA5E00B0878E /* libbxRelease.a */; };
-		517D25B623FFAA5E00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B223FFAA5E00B0878E /* libbxRelease.a */; };
-		517D25B723FFAA5E00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B223FFAA5E00B0878E /* libbxRelease.a */; };
-		517D25B823FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B323FFAA5E00B0878E /* libbgfxRelease.a */; };
-		517D25B923FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B323FFAA5E00B0878E /* libbgfxRelease.a */; };
-		517D25BA23FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B323FFAA5E00B0878E /* libbgfxRelease.a */; };
-		517D25BB23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B423FFAA5E00B0878E /* libbimgRelease.a */; };
-		517D25BC23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B423FFAA5E00B0878E /* libbimgRelease.a */; };
-		517D25BD23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25B423FFAA5E00B0878E /* libbimgRelease.a */; };
+		517D25D72400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
+		517D25D82400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
+		517D25D92400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
+		517D25DA2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
+		517D25DB2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
+		517D25DC2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
+		517D25DD2400579600B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D62400579600B0878E /* libbgfxRelease.a */; };
+		517D25DE2400579600B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D62400579600B0878E /* libbgfxRelease.a */; };
+		517D25DF2400579600B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D62400579600B0878E /* libbgfxRelease.a */; };
+		517D25E3240057AA00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E0240057A900B0878E /* libbxRelease.a */; };
+		517D25E4240057AA00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E0240057A900B0878E /* libbxRelease.a */; };
+		517D25E5240057AA00B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E0240057A900B0878E /* libbxRelease.a */; };
+		517D25E6240057AA00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E1240057A900B0878E /* libbimgRelease.a */; };
+		517D25E7240057AA00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E1240057A900B0878E /* libbimgRelease.a */; };
+		517D25E8240057AA00B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E1240057A900B0878E /* libbimgRelease.a */; };
+		517D25E9240057AA00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E2240057A900B0878E /* libbgfxRelease.a */; };
+		517D25EA240057AA00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E2240057A900B0878E /* libbgfxRelease.a */; };
+		517D25EB240057AA00B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25E2240057A900B0878E /* libbgfxRelease.a */; };
+		517D25EF240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
+		517D25F0240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
+		517D25F1240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
+		517D25F2240057C100B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25ED240057C100B0878E /* libbgfxRelease.a */; };
+		517D25F3240057C100B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25ED240057C100B0878E /* libbgfxRelease.a */; };
+		517D25F4240057C100B0878E /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25ED240057C100B0878E /* libbgfxRelease.a */; };
+		517D25F5240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
+		517D25F6240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
+		517D25F7240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
 		51826F7C21A24B3A00103A6B /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 51826F7B21A24B3A00103A6B /* About.png */; };
@@ -2411,9 +2429,15 @@
 		517D1A2323FC6F6B00B0878E /* libSDL2.intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.intel.a; path = "submodules/Libraries/SDL2-2.0.10/libSDL2.intel.a"; sourceTree = "<group>"; };
 		517D1A2723FC6FDD00B0878E /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "submodules/Libraries/SDL2-2.0.10/libSDL2.a"; sourceTree = "<group>"; };
 		517D258623FFA8A900B0878E /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
-		517D25B223FFAA5E00B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
-		517D25B323FFAA5E00B0878E /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbgfxRelease.a"; sourceTree = SOURCE_ROOT; };
-		517D25B423FFAA5E00B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25D42400579600B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25D52400579600B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25D62400579600B0878E /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin/libbgfxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25E0240057A900B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25E1240057A900B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25E2240057A900B0878E /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbgfxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25EC240057C000B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25ED240057C100B0878E /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin/libbgfxRelease.a"; sourceTree = SOURCE_ROOT; };
+		517D25EE240057C100B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
 		517FB48F1F89C379009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4931F89C408009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		51826F7B21A24B3A00103A6B /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
@@ -3536,6 +3560,7 @@
 			files = (
 				51324A2B1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
+				517D25DA2400579600B0878E /* libbimgRelease.a in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -3546,9 +3571,11 @@
 				514D348E1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
 				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
+				517D25F5240057C100B0878E /* libbimgRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
+				517D25E9240057AA00B0878E /* libbgfxRelease.a in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
 				514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51324AAF1EAAE3E700BA8D8F /* libSDL2_ttf.a in Frameworks */,
@@ -3558,26 +3585,29 @@
 				A85E685811CB173A00D0FAEF /* CoreGraphics.framework in Frameworks */,
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
 				517D1A2823FC6FDD00B0878E /* libSDL2.a in Frameworks */,
+				517D25F2240057C100B0878E /* libbgfxRelease.a in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
-				517D25B523FFAA5E00B0878E /* libbxRelease.a in Frameworks */,
+				517D25DD2400579600B0878E /* libbgfxRelease.a in Frameworks */,
+				517D25D72400579600B0878E /* libbxRelease.a in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
+				517D25E6240057AA00B0878E /* libbimgRelease.a in Frameworks */,
 				51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
+				517D25E3240057AA00B0878E /* libbxRelease.a in Frameworks */,
 				51324A341EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				51324A311EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51A6CB8621A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				51324A191EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
 				51324AAB1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
-				517D25BB23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
+				517D25EF240057C100B0878E /* libbxRelease.a in Frameworks */,
 				517D1A2423FC6F6C00B0878E /* libSDL2.intel.a in Frameworks */,
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A371EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
-				517D25B823FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */,
 				51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208C1EAAF43400129201 /* boost.framework in Frameworks */,
 				51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
@@ -3589,21 +3619,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2C1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
-				517D25B923FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */,
-				517D25BC23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */,
 				51324A291EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				513436EA2266CAE700435C9D /* GameController.framework in Frameworks */,
 				51041DD31EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
+				517D25E7240057AA00B0878E /* libbimgRelease.a in Frameworks */,
+				517D25F3240057C100B0878E /* libbgfxRelease.a in Frameworks */,
 				51324A1A1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
-				517D25B623FFAA5E00B0878E /* libbxRelease.a in Frameworks */,
+				517D25D82400579600B0878E /* libbxRelease.a in Frameworks */,
 				514D349F1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51324AAC1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				517D258823FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
 				51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
+				517D25F0240057C100B0878E /* libbxRelease.a in Frameworks */,
+				517D25E4240057AA00B0878E /* libbxRelease.a in Frameworks */,
 				51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
@@ -3616,6 +3648,7 @@
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
 				51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
+				517D25F6240057C100B0878E /* libbimgRelease.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				51324A2F1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51A6CB8721A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
@@ -3629,10 +3662,13 @@
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				5104208D1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
+				517D25DB2400579600B0878E /* libbimgRelease.a in Frameworks */,
 				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
 				517D1A2923FC6FDD00B0878E /* libSDL2.a in Frameworks */,
+				517D25DE2400579600B0878E /* libbgfxRelease.a in Frameworks */,
 				51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
+				517D25EA240057AA00B0878E /* libbgfxRelease.a in Frameworks */,
 				51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3643,6 +3679,7 @@
 			files = (
 				51324A2D1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
+				517D25DC2400579600B0878E /* libbimgRelease.a in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */,
@@ -3653,9 +3690,11 @@
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
+				517D25F7240057C100B0878E /* libbimgRelease.a in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				513436EB2266CAE700435C9D /* GameController.framework in Frameworks */,
+				517D25EB240057AA00B0878E /* libbgfxRelease.a in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				514D349C1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
@@ -3665,26 +3704,29 @@
 				514D34A01E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				517D1A2A23FC6FDD00B0878E /* libSDL2.a in Frameworks */,
+				517D25F4240057C100B0878E /* libbgfxRelease.a in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
-				517D25B723FFAA5E00B0878E /* libbxRelease.a in Frameworks */,
+				517D25DF2400579600B0878E /* libbgfxRelease.a in Frameworks */,
+				517D25D92400579600B0878E /* libbxRelease.a in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
+				517D25E8240057AA00B0878E /* libbimgRelease.a in Frameworks */,
 				51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
+				517D25E5240057AA00B0878E /* libbxRelease.a in Frameworks */,
 				51324A361EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51324A331EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51324A1B1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
 				51A6CB8821A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				51324AAD1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
-				517D25BD23FFAA5E00B0878E /* libbimgRelease.a in Frameworks */,
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
+				517D25F1240057C100B0878E /* libbxRelease.a in Frameworks */,
 				517D1A2623FC6F6C00B0878E /* libSDL2.intel.a in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */,
-				517D25BA23FFAA5E00B0878E /* libbgfxRelease.a in Frameworks */,
 				5104208E1EAAF43400129201 /* boost.framework in Frameworks */,
 				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -4319,12 +4361,42 @@
 		517D258A23FFA8E400B0878E /* bgfx */ = {
 			isa = PBXGroup;
 			children = (
-				517D25B323FFAA5E00B0878E /* libbgfxRelease.a */,
-				517D25B423FFAA5E00B0878E /* libbimgRelease.a */,
-				517D25B223FFAA5E00B0878E /* libbxRelease.a */,
+				517D25D3240056BC00B0878E /* simulator */,
+				517D25D2240056B400B0878E /* arm64 */,
+				517D25D1240056A800B0878E /* arm */,
 			);
 			name = bgfx;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		517D25D1240056A800B0878E /* arm */ = {
+			isa = PBXGroup;
+			children = (
+				517D25D62400579600B0878E /* libbgfxRelease.a */,
+				517D25D52400579600B0878E /* libbimgRelease.a */,
+				517D25D42400579600B0878E /* libbxRelease.a */,
+			);
+			path = arm;
+			sourceTree = "<group>";
+		};
+		517D25D2240056B400B0878E /* arm64 */ = {
+			isa = PBXGroup;
+			children = (
+				517D25E2240057A900B0878E /* libbgfxRelease.a */,
+				517D25E1240057A900B0878E /* libbimgRelease.a */,
+				517D25E0240057A900B0878E /* libbxRelease.a */,
+			);
+			path = arm64;
+			sourceTree = "<group>";
+		};
+		517D25D3240056BC00B0878E /* simulator */ = {
+			isa = PBXGroup;
+			children = (
+				517D25ED240057C100B0878E /* libbgfxRelease.a */,
+				517D25EE240057C100B0878E /* libbimgRelease.a */,
+				517D25EC240057C000B0878E /* libbxRelease.a */,
+			);
+			path = simulator;
 			sourceTree = "<group>";
 		};
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
@@ -8147,6 +8219,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_CFLAGS = "";
@@ -8246,6 +8320,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -8346,6 +8422,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_CFLAGS = "";
@@ -8441,6 +8519,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -8535,6 +8615,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -8629,6 +8711,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
@@ -8722,6 +8806,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -8814,6 +8900,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -9007,6 +9095,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -9106,6 +9196,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -9198,6 +9290,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_LDFLAGS = "";
@@ -9390,6 +9484,8 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
 				);
 				MARKETING_VERSION = 5.1;
 				OTHER_CPLUSPLUSFLAGS = (

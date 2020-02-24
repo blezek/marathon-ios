@@ -76,6 +76,7 @@
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
 #include "AlephOneAcceleration.hpp"
+#include "AlephOneHelper.h"
 #include <bgfx/bgfx.h>
 #include "SDL_syswm.h"
 //DCW debug shader
@@ -972,25 +973,51 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
     
     if(AOA::useBGFX()) {
       
-     /* bgfx::Init init;
-      //init.type     = args.m_type;
-      //init.vendorId = args.m_pciId;
-      init.resolution.width  = sdl_width;
-      init.resolution.height = sdl_height;
-      //init.resolution.reset  = m_reset;
-      bgfx::init(init);
+        //Create an unused renderer so that SDL creates the metal layer.
+      SDL_Renderer *temp_render = SDL_CreateRenderer(main_screen, -1, 0);
+      SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+      SDL_RenderSetLogicalSize(temp_render, sdl_width, sdl_height);
+      SDL_RendererInfo rendererInfo;
+      SDL_GetRendererInfo(temp_render, &rendererInfo);
+      printf("SDL renderer name: %s\n", rendererInfo.name);
+      
+      SDL_SysWMinfo wmi;
+      SDL_VERSION(&wmi.version);
+      SDL_GetWindowWMInfo(main_screen, &wmi);
+      
+      bgfx::PlatformData pd;
+      pd.ndt          = NULL;
+      pd.nwh          = getLayerFromSDLWindow(main_screen);
+      pd.context      = NULL;
+      pd.backBuffer   = NULL;
+      pd.backBufferDS = NULL;
+      
+      bgfx::Init bgfxInit;
+      bgfxInit.platformData = pd;
+      bgfxInit.type = bgfx::RendererType::Metal; // Choose a renderer. Use 'Count' for automatic
+      bgfxInit.resolution.width = helperLongScreenDimension();
+      bgfxInit.resolution.height = helperShortScreenDimension();
+      bgfxInit.resolution.reset = BGFX_RESET_VSYNC;
+      bgfx::init(bgfxInit);
+      
+      context_created = TRUE;
       
       // Enable debug text.
       //bgfx::setDebug(m_debug);
 
       // Set view 0 clear state.
-      bgfx::setViewClear(0
-        , BGFX_CLEAR_COLOR|BGFX_CLEAR_DEPTH
-        , 0x303030ff
-        , 1.0f
-        , 0
-        );
-      */
+      bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
+      bgfx::setViewRect(0, 0, 0, helperLongScreenDimension(), helperShortScreenDimension());
+
+      setDefaultA1View();
+      
+      unsigned int counter = 0;
+      //while(true) {
+          bgfx::touch(0);
+          bgfx::frame();
+          counter++;
+      //}
+      
          SDL_SysWMinfo window_system_info;
          SDL_VERSION(&window_system_info.version);
          if(SDL_GetWindowWMInfo(main_screen, &window_system_info)) { /* the call returns true on success */

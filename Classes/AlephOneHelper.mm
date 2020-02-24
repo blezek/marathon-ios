@@ -17,6 +17,7 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include "computer_interface.h" //Used for player in terminal check
+#include "SDL_syswm.h"
 
 #import "PreferencesViewController.h"
 
@@ -91,6 +92,28 @@ void printGLError( const char* message ) {
   }          
   }
 }
+
+void* getLayerFromSDLWindow(SDL_Window *main_screen)
+{
+  SDL_SysWMinfo wmi;
+  SDL_VERSION(&wmi.version);
+  SDL_GetWindowWMInfo(main_screen, &wmi);
+
+  NSLog(@"SDL UIView type: %@", NSStringFromClass([wmi.info.uikit.window.rootViewController.view class]));
+  NSLog(@"SDL UIView Layer type: %@", NSStringFromClass([wmi.info.uikit.window.rootViewController.view.layer class]));
+  NSLog(@"SDL UIView Layer size (h,w): %f, %f", wmi.info.uikit.window.rootViewController.view.layer.bounds.size.height, wmi.info.uikit.window.rootViewController.view.layer.bounds.size.width);
+
+  return wmi.info.uikit.window.rootViewController.view.layer;
+}
+
+void setDefaultA1View()
+{
+  UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
+  UIView *a1View = [a1Window rootViewController].view;
+  GameViewController *game = [GameViewController sharedInstance];
+  [game setOpenGLView:(SDL_uikitopenglview*)a1View];
+}
+
 
 char* randomName31() {
   NSString *randomWords = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"web2a" ofType:@""] encoding:NSUTF8StringEncoding error:nil];

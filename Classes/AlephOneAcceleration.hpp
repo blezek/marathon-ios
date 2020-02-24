@@ -167,3 +167,50 @@ private:
 };
 
 #endif /* AlephOneAcceleration_hpp */
+
+
+/*Building and using BGFX for iOS
+ 
+ In a directory submodules/Libraries/bgfx/
+
+ Do this:
+ git clone git://github.com/bkaradzic/bx.git
+ git clone git://github.com/bkaradzic/bimg.git
+ git clone git://github.com/bkaradzic/bgfx.git
+
+ cd bgfx
+ ../bx/tools/bin/darwin/genie --gcc=ios-arm64 gmake
+ ../bx/tools/bin/darwin/genie --gcc=ios-arm gmake
+ ../bx/tools/bin/darwin/genie --gcc=ios-simulator gmake
+ ../bx/tools/bin/darwin/genie --gcc=ios-simulator64 gmake
+
+ make -R -C .build/projects/gmake-ios-arm64 config=release
+ make -R -C .build/projects/gmake-ios-arm config=release
+ make -R -C .build/projects/gmake-ios-simulator config=release
+ make -R -C .build/projects/gmake-ios-simulator64 config=release
+
+ You will then have the following products:
+ .build/ios-arm64/bin/libbxRelease.a
+ .build/ios-arm64/bin/libbimgRelease.a
+ .build/ios-arm64/bin/libbgfxRelease.a
+ .build/ios-arm/bin/libbxRelease.a
+ .build/ios-arm/bin/libbimgRelease.a
+ .build/ios-arm/bin/libbgfxRelease.a
+ .build/ios-simulator64/bin/libbxRelease.a
+ .build/ios-simulator64/bin/libbimgRelease.a
+ .build/ios-simulator64/bin/libbgfxRelease.a
+
+ Add a group in the Xcode project (if none yet exists) called bgfx with these groups inside: arm, arm64, and simulator. Drag in the respective 3 .a files into their groups (for a total of nine files).
+
+ Be sure you also have these frameworks in your project:
+ UIKit
+ Metal
+ MetalKit
+ OpenGLES
+ QuartzCore
+
+ Finally, add these non-recursive header search paths for all of your project targets:
+ ${SRCROOT}/submodules/Libraries/bgfx/include
+ ${SRCROOT}/submodules/Libraries/bx/include
+ ${SRCROOT}/submodules/Libraries/bimg/include
+ */

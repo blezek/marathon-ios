@@ -324,13 +324,13 @@ void Shader::init() {
 
 	assert(!_vert.empty());
 	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);
-	assert(vertexShader);
+//dcw shit test bgfx	assert(vertexShader);
 	glAttachShader(_programObj, vertexShader);
 	glDeleteShader(vertexShader);
 
 	assert(!_frag.empty());
 	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);
-	assert(fragmentShader);
+//dcw shit test bgfx	assert(fragmentShader);
 	glAttachShader(_programObj, fragmentShader);
 	glDeleteShader(fragmentShader);
   
@@ -358,7 +358,7 @@ void Shader::init() {
   }
 
   
-	assert(_programObj);
+	//dcw shit test bgfx assert(_programObj);
 
   glUseProgram(_programObj);
 
