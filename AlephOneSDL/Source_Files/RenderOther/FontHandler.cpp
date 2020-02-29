@@ -53,6 +53,7 @@ Jan 12, 2001 (Loren Petrich):
 #include "OGL_Shader.h"
 
 #include "MatrixStack.hpp"
+#include "AlephOneAcceleration.hpp"
 
 #ifdef HAVE_OPENGL
 set<FontSpecifier*> *FontSpecifier::m_font_registry = NULL;
@@ -180,7 +181,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	// that indicates that there are no valid texture and display-list ID's.
 	if (!IsStarting && OGL_Texture)
 	{
-		glDeleteTextures(1,&TxtrID);
+		AOA::deleteTextures(1,&TxtrID);
     // DJB OpenGL No need to delete the lists
     // glDeleteLists(DispList,256);
 		OGL_Deregister(this);
@@ -288,8 +289,8 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	
 	// OpenGL stuff starts here 	
  	// Load texture
- 	glGenTextures(1,&TxtrID);
- 	glBindTexture(GL_TEXTURE_2D,TxtrID);
+ 	AOA::genTextures(1,&TxtrID);
+ 	AOA::bindTexture(GL_TEXTURE_2D,TxtrID);
 	OGL_Register(this);
  	
  	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -297,7 +298,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, TxtrWidth, TxtrHeight,
+	AOA::texImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, TxtrWidth, TxtrHeight,
 		0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, OGL_Texture);
  	
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -398,7 +399,7 @@ void FontSpecifier::OGL_Render(const char *Text)
 	glDisable(GL_ALPHA_TEST);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-	glBindTexture(GL_TEXTURE_2D,TxtrID);
+	AOA::bindTexture(GL_TEXTURE_2D,TxtrID);
 	
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.

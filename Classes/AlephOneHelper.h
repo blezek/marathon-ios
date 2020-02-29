@@ -21,6 +21,7 @@
 #define USE_CADisplayLoop 1
 
 extern void* getLayerFromSDLWindow(SDL_Window *main_screen);
+extern void cleanRenderer(SDL_Renderer *renderer);
 extern void setDefaultA1View();
 extern char* randomName31(); //Returns a random name up to 31 characters.
 extern char *getDataDir();
@@ -126,6 +127,12 @@ extern GLfloat helperPauseAlpha();
   //DCW
 extern Uint8 fake_key_map[SDL_NUM_SCANCODES];
 
+extern void helperCacheScreenDimension();
+extern int helperLongScreenDimension(); //DCW
+extern int helperShortScreenDimension(); //DCW
+extern float helperScreenScale();
+
+
 // C linkage
 #if defined(__cplusplus)
 extern "C" {
@@ -135,8 +142,6 @@ extern "C" {
   int helperOpenGLWidth();
   int helperOpenGLHeight();
 	
-	int helperLongScreenDimension(); //DCW
-	int helperShortScreenDimension(); //DCW
 #if defined(__cplusplus)
 }
 #endif

@@ -2282,6 +2282,7 @@
 		513436E82266CAE600435C9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		513F28261F97CAF100A23C93 /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		5146D7D41FE08CC000B89738 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
+		51478EE32405AAAD00375EF7 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		51482D692001C85F00690752 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = Resources/GUI/github.png; sourceTree = "<group>"; };
 		514D348D1E5965580011BAFD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		514D34991E5966F40011BAFD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
@@ -3771,6 +3772,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				51478EE32405AAAD00375EF7 /* shaders */,
 				51E9FFD0202BBE7A00ADD38A /* MatrixStack.hpp */,
 				51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */,
 				517D19FF23FAF04800B0878E /* AlephOneAcceleration.hpp */,
@@ -7130,7 +7132,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "plist=${PROJECT_DIR}/Info.plist\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n";
+			shellScript = "plist=${PROJECT_DIR}/Info.plist\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n\n${PROJECT_DIR}/shaders/buildAllShaders.sh \"${PROJECT_DIR}\"\n\n";
 		};
 		A893F72915019895003A4D28 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8197,6 +8199,7 @@
 					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -8297,6 +8300,7 @@
 					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -9072,6 +9076,7 @@
 					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -9462,6 +9467,7 @@
 					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
 					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

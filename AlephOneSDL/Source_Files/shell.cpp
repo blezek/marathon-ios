@@ -60,6 +60,8 @@
 #include "Plugins.h"
 #include "FilmProfile.h"
 
+#include <bgfx/bgfx.h>
+
 #include "mytm.h"	// mytm_initialize(), for platform-specific shell_*.h
 
 #include <stdlib.h>

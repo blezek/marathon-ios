@@ -30,6 +30,7 @@
 
 //DCW
 #include "AlephOneHelper.h"
+#include "AlephOneAcceleration.hpp"
 #include "MatrixStack.hpp"
 #include "esUtil.h"
 #include <OpenGLES/ES3/gl.h>
@@ -61,12 +62,12 @@ void FBO::setup(GLuint w, GLuint h, bool srgb) {
   glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
   
   //Create texture and attach it to framebuffer's color attachment point
-  glGenTextures(1, &texID);
-  glBindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
+  AOA::genTextures(1, &texID);
+  AOA::bindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
   // glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE
   //DCW srgb support is completely untested by me
-  glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
+  AOA::texImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
   
   //Generate depth buffer
@@ -76,7 +77,7 @@ void FBO::setup(GLuint w, GLuint h, bool srgb) {
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
   //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
   
-  assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
+  //dcw shit test bgfx sssert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
   
   //glBindFramebuffer(GL_FRAMEBUFFER, 0);
   bindDrawable();
@@ -91,9 +92,9 @@ void FBO::activate(bool clear) {
     glGetError();
     glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW test moving this here, otherwise this function appears to not work.
 
-    glBindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
+    AOA::bindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   printGLError(__PRETTY_FUNCTION__);//Apple advice
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    AOA::texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
     
     glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
@@ -156,7 +157,7 @@ void FBO::deactivate() {
 void FBO::draw() {
   glPushGroupMarkerEXT(0, "FBO Binding texture");
   
-	glBindTexture(GL_TEXTURE_2D, texID);
+	AOA::bindTexture(GL_TEXTURE_2D, texID);
   glPopGroupMarkerEXT();
   
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -333,7 +334,7 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	
 	// set up FBO passed in as texture #1
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, other.texID); //DCW was GL_TEXTURE_RECTANGLE
+	AOA::bindTexture(GL_TEXTURE_2D, other.texID); //DCW was GL_TEXTURE_RECTANGLE
   
 	//Deprecated glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
 	glActiveTexture(GL_TEXTURE0);

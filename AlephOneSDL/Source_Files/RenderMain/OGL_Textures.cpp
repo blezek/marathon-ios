@@ -211,7 +211,7 @@ void TextureState::Reset()
 	{
 		sgActiveTextureStates.remove(this);
 		gGLTxStats.inUse--;
-		glDeleteTextures(NUMBER_OF_TEXTURES,IDs);
+		AOA::deleteTextures(NUMBER_OF_TEXTURES,IDs);
 	}
 	IsUsed = IsGlowing = IsBumped = TexGened[Normal] = TexGened[Glowing] = TexGened[Bump] = false;
 	IDUsage[Normal] = IDUsage[Glowing] = IDUsage[Bump] = unusedFrames = 0;
@@ -399,7 +399,7 @@ void OGL_StopTextures()
 	OGL_Blitter::StopTextures();
 	FontSpecifier::OGL_ResetFonts(false);
 	
-	glDeleteTextures(1, &flatBumpTextureID);
+	AOA::deleteTextures(1, &flatBumpTextureID);
 	flatBumpTextureID = 0;
     
     // clear leftover infravision
@@ -1885,7 +1885,7 @@ void OGL_ResetTextures()
 	// Reset blitters
 	OGL_Blitter::StopTextures();
 
-	glDeleteTextures(1, &flatBumpTextureID);
+	AOA::deleteTextures(1, &flatBumpTextureID);
 	flatBumpTextureID = 0;
 }
 

@@ -59,6 +59,10 @@ bool shouldUseClassicSprites;
 bool shouldUseTransparentLiquids;
 bool shouldUseBloom;
 
+int screenLongDimension;
+int screenShortDimension;
+float screenScale;
+
 NSString *dataDir;
 
 void printGLError( const char* message ) {
@@ -103,6 +107,13 @@ void* getLayerFromSDLWindow(SDL_Window *main_screen)
   NSLog(@"SDL UIView Layer type: %@", NSStringFromClass([wmi.info.uikit.window.rootViewController.view.layer class]));
   NSLog(@"SDL UIView Layer size (h,w): %f, %f", wmi.info.uikit.window.rootViewController.view.layer.bounds.size.height, wmi.info.uikit.window.rootViewController.view.layer.bounds.size.width);
 
+  if( [wmi.info.uikit.window.rootViewController.view.layer isKindOfClass:[CAMetalLayer class]] ) {
+    NSLog(@"Setting CAMetalLayer size?");
+    CAMetalLayer *mLayer = (CAMetalLayer*)wmi.info.uikit.window.rootViewController.view.layer;
+    NSLog(@"CAMetalLayer drawable size (h,w): %f, %f", [mLayer drawableSize].height, [mLayer drawableSize].width);
+
+  }
+  
   return wmi.info.uikit.window.rootViewController.view.layer;
 }
 
@@ -695,13 +706,24 @@ extern "C" int helperRetinaDisplay() {
 }
 
 	//DCW
-extern "C" int helperLongScreenDimension() {
-  return [AlephOneAppDelegate sharedAppDelegate].longScreenDimension;
+void helperCacheScreenDimension() {
+  screenLongDimension = [AlephOneAppDelegate sharedAppDelegate].longScreenDimension ;
+  screenShortDimension = [AlephOneAppDelegate sharedAppDelegate].shortScreenDimension;
+  screenScale = [[UIScreen mainScreen] scale];
 }
-extern "C" int helperShortScreenDimension() {
-	return [AlephOneAppDelegate sharedAppDelegate].shortScreenDimension;
+
+int helperLongScreenDimension() {
+  if (screenLongDimension == 0) helperCacheScreenDimension();
+  return screenLongDimension;
 }
 
+int helperShortScreenDimension() {
+	if (screenShortDimension == 0) helperCacheScreenDimension();
+  return screenShortDimension;
+}
 
-
+float helperScreenScale(){
+  if (screenScale == 0) helperCacheScreenDimension();
+  return screenScale;
+}
 

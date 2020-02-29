@@ -10,6 +10,7 @@
 
 #include "MatrixStack.hpp"
 
+#include "AlephOneAcceleration.hpp"
 
 /*typedef struct
 {
@@ -183,6 +184,11 @@ int InitES2Quads()
 //
 void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
+  if(AOA::useBGFX()) {
+    AOA::DrawQuad(x, y, w, h, tleft, ttop, tright, tbottom);
+    return;
+  }
+  
     //Initialize if needed
   int result = InitES2Quads();
   
@@ -193,7 +199,7 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   GLint viewport[4];
   glGetIntegerv( GL_VIEWPORT, viewport );
   
-  
+  //printf("Drawing quad!\nr");
   GLfloat vVertices[12] = { x, y, 0,
                             x + w, y, 0,
                             x + w, y + h, 0,

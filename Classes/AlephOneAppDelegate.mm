@@ -30,6 +30,7 @@ extern "C" {
 #import "AlephOneHelper.h"
 #include "preferences.h"
 #include "map.h" //Needed for detecting whether we are networked when going into background.
+#include <bgfx/bgfx.h>
 
 
   //DCW
@@ -62,6 +63,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   UIWindow *appMenuWindow = [[UIApplication sharedApplication] keyWindow]; //Grab a reference to the current key window
   
   AlephOneInitialize();
+
   MLog ( @"AlephOneInitialize finished" );
 
   SDL_iPhoneSetEventPump(SDL_TRUE);

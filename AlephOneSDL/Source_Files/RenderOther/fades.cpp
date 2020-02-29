@@ -76,6 +76,8 @@ Jan 31, 2001 (Loren Petrich):
 #include <string.h>
 #include "OGL_Faders.h"
 
+#include <bgfx/bgfx.h>
+
 #include "Music.h"
 #include "Movie.h"
 
@@ -365,8 +367,8 @@ void explicit_start_fade(
 	struct fade_definition *definition= get_fade_definition(type);
 	// LP change: idiot-proofing
 	if (!definition) return;
-		
-	uint32 machine_ticks= machine_tick_count();
+
+  uint32 machine_ticks= machine_tick_count();
 	bool do_fade= true;
 
 	if (FADE_IS_ACTIVE(fade))

@@ -161,6 +161,8 @@ extern TP2PerfGlobals perf_globals;
 #include "network_dialog_widgets_sdl.h"
 
 #import "AlephOneHelper.h"
+#include <bgfx/bgfx.h>
+
 
 /* Change this when marathon changes & replays are no longer valid */
 enum recording_version {
@@ -2602,7 +2604,7 @@ static void display_screen(
 	if (images_picture_exists(pict_resource_number))
 	{
 		stop_interface_fade();
-
+    
 		if(current_picture_clut)
 		{
 			interface_fade_out(pict_resource_number, false);
@@ -2847,7 +2849,7 @@ static void start_interface_fade(
 	{
 		interface_fade_in_progress= true;
 		interface_fade_type= type;
-
+    
 		explicit_start_fade(type, original_color_table, animated_color_table);
 	}
 }

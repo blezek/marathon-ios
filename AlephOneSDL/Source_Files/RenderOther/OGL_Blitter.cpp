@@ -31,6 +31,7 @@
 
 // DJB OpenGL debug
 #include "AlephOneHelper.h"
+#include "AlephOneAcceleration.hpp"
 #include "MatrixStack.hpp"
 
 const int OGL_Blitter::tile_size;
@@ -118,15 +119,15 @@ void OGL_Blitter::_LoadTextures()
 				}
 			}
 			
-			glGenTextures(1, &m_refs[i]);
-			glBindTexture(GL_TEXTURE_2D, m_refs[i]);
+			AOA::genTextures(1, &m_refs[i]);
+			AOA::bindTexture(GL_TEXTURE_2D, m_refs[i]);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_tile_width, m_tile_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t->pixels);
+			AOA::texImage2DCopy(GL_TEXTURE_2D, 0, GL_RGBA, m_tile_width, m_tile_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t->pixels, 1);
 
 			i++;
 		}
@@ -149,7 +150,7 @@ void OGL_Blitter::_UnloadTextures()
 		return;
 	Deregister(this);
 	if (m_refs.size())
-		glDeleteTextures(m_refs.size(), &m_refs[0]);
+		AOA::deleteTextures(m_refs.size(), &m_refs[0]);
 	m_refs.clear();
 	m_rects.clear();
 	m_textures_loaded = false;
@@ -298,7 +299,7 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 		GLfloat ttop    = ((m_rects[i].y + ty) * y_scale) + (GLfloat) (dst.y - (src.y * y_scale));
 		GLfloat tbottom = ttop + (th * y_scale);
 		
-		glBindTexture(GL_TEXTURE_2D, m_refs[i]);
+		AOA::bindTexture(GL_TEXTURE_2D, m_refs[i]);
 		
 		OGL_RenderTexturedRect(tleft, ttop, tright - tleft, tbottom - ttop,
 							   VMin, UMin, VMax, UMax);

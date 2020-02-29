@@ -149,10 +149,15 @@ public:
   static void texEnvi (AOAenum target, AOAenum pname, AOAint param);
   static void texParameteri (AOAenum target, AOAenum pname, AOAint param);
   static void texImage2D (AOAenum target, AOAint level, AOAint internalformat, AOAsizei width, AOAsizei height, AOAint border, AOAenum format, AOAenum type, const AOAvoid* pixels);
+  static void texImage2DCopy (AOAenum target, AOAint level, AOAint internalformat, AOAsizei width, AOAsizei height, AOAint border, AOAenum format, AOAenum type, const AOAvoid* pixels, bool copyData); //just like texImage2D, but can optionally copy the data instead of referencing it
   static void compressedTexImage2D (AOAenum target, AOAint level, AOAenum internalformat, AOAsizei width, AOAsizei height, AOAint border, AOAsizei imageSize, const void *data);
   static void getIntegerv (AOAenum pname, AOAint* params);
   static void getGetFloatv (AOAenum pname, AOAfloat* params);
   
+  static void swapWindow(SDL_Window *window);
+  static void fillAndCenterViewPort(float w, float h);
+  static void setPreferredViewPort(float x, float y, float w, float h);
+  static void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
   
 private:
   AOA(){
@@ -209,8 +214,14 @@ private:
  OpenGLES
  QuartzCore
 
- Finally, add these non-recursive header search paths for all of your project targets:
+ Add these non-recursive header search paths for all of your project targets:
  ${SRCROOT}/submodules/Libraries/bgfx/include
  ${SRCROOT}/submodules/Libraries/bx/include
  ${SRCROOT}/submodules/Libraries/bimg/include
+ 
+ Now, in order to compile shaders, you need to make shaderc for your build platform (osx):
+ 
+ ../bx/tools/bin/darwin/genie --gcc=osx --with-tools gmake
+ make -R -C .build/projects/gmake-osx  config=release
+ 
  */

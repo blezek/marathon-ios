@@ -77,7 +77,11 @@
 #include <OpenGLES/ES3/glext.h>
 #include "AlephOneAcceleration.hpp"
 #include "AlephOneHelper.h"
+
+#include <bx/bx.h>
+#include <bx/math.h>
 #include <bgfx/bgfx.h>
+
 #include "SDL_syswm.h"
 //DCW debug shader
 #include "OGL_Shader.h"
@@ -220,7 +224,7 @@ void Screen::Initialize(screen_mode_data* mode)
       // On success, print the current display mode.
       printf("Current display mode is %dx%dpx @ %dhz.", current.w, current.h, current.refresh_rate);
 
-      //DCW: on retina displays, this is half of the actual resolution.
+      //DCW: on retina displays, this is a fraction of the actual resolution.
     desktop_height = current.h;
     desktop_width = current.w;
 
@@ -859,7 +863,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	if (main_surface)
 	{
 		prev_width = main_surface->w;
-		prev_width = main_surface->h;
+		prev_height = main_surface->h;
 	}
 	
 	int vmode_height = height;
@@ -875,6 +879,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	
 	int sdl_width = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) ? 0 : vmode_width;
 	int sdl_height = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) ? 0 : vmode_height;
+  
 	if (force_menu)
 	{
 		vmode_width = 640;
@@ -913,11 +918,11 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 				break;
 		}
 	}
-	
+  
 	if (need_mode_change(sdl_width, sdl_height, vmode_width, vmode_height, depth, nogl)) {
     
     if(AOA::useBGFX()) {
-      
+      AOA::fillAndCenterViewPort(vmode_width, vmode_height);
     } else {
     #ifdef HAVE_OPENGL
       if (!nogl && screen_mode.acceleration != _no_acceleration) {
@@ -960,7 +965,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		SDL_FilterEvents(change_window_filter, &window_id);
 	}
     if(AOA::useBGFX()) {
-      SDL_setenv("METAL_DEVICE_WRAPPER_TYPE", "1", 0);
+      //SDL_setenv("METAL_DEVICE_WRAPPER_TYPE", "1", 0);
     }
 	
     main_screen = SDL_CreateWindow(get_application_name(),
@@ -971,15 +976,25 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
     
     bool context_created = false;
     
-    if(AOA::useBGFX()) {
+    if(AOA::useBGFX() && !context_created) {
       
         //Create an unused renderer so that SDL creates the metal layer.
       SDL_Renderer *temp_render = SDL_CreateRenderer(main_screen, -1, 0);
       SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
       SDL_RenderSetLogicalSize(temp_render, sdl_width, sdl_height);
+      /*SDL_Rect topLeftViewport;
+      topLeftViewport.x = 0;
+      topLeftViewport.y = 0;
+      topLeftViewport.w = helperLongScreenDimension() ;
+      topLeftViewport.h = helperShortScreenDimension() ;
+      SDL_RenderSetViewport( temp_render, &topLeftViewport );*/
+      
+      //SDL_RenderGetMetalCommandEncoder(temp_render);
+      
       SDL_RendererInfo rendererInfo;
       SDL_GetRendererInfo(temp_render, &rendererInfo);
       printf("SDL renderer name: %s\n", rendererInfo.name);
+      SDL_DestroyRenderer(temp_render);
       
       SDL_SysWMinfo wmi;
       SDL_VERSION(&wmi.version);
@@ -995,8 +1010,8 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
       bgfx::Init bgfxInit;
       bgfxInit.platformData = pd;
       bgfxInit.type = bgfx::RendererType::Metal; // Choose a renderer. Use 'Count' for automatic
-      bgfxInit.resolution.width = helperLongScreenDimension();
-      bgfxInit.resolution.height = helperShortScreenDimension();
+      bgfxInit.resolution.width = helperLongScreenDimension() * helperScreenScale();
+      bgfxInit.resolution.height = helperShortScreenDimension() * helperScreenScale();
       bgfxInit.resolution.reset = BGFX_RESET_VSYNC;
       bgfx::init(bgfxInit);
       
@@ -1006,55 +1021,22 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
       //bgfx::setDebug(m_debug);
 
       // Set view 0 clear state.
-      bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
-      bgfx::setViewRect(0, 0, 0, helperLongScreenDimension(), helperShortScreenDimension());
-
+      bgfx::setViewClear(0
+          , BGFX_CLEAR_COLOR|BGFX_CLEAR_DEPTH
+          , 0x301030ff
+          , 1.0f
+          , 0
+          );
+      
+      AOA::fillAndCenterViewPort((sdl_width ? sdl_width : vmode_width), (sdl_height ? sdl_height : vmode_height));
+      
+      bgfx::setViewName(0, "View 0");
+      bgfx::setViewMode(0, bgfx::ViewMode::Sequential);
+      
       setDefaultA1View();
       
-      unsigned int counter = 0;
-      //while(true) {
-          bgfx::touch(0);
-          bgfx::frame();
-          counter++;
-      //}
-      
-         SDL_SysWMinfo window_system_info;
-         SDL_VERSION(&window_system_info.version);
-         if(SDL_GetWindowWMInfo(main_screen, &window_system_info)) { /* the call returns true on success */
-              /* success */
-              const char *subsystem = "an unknown system!";
-              switch(window_system_info.subsystem) {
-                case SDL_SYSWM_UNKNOWN:   break;
-                case SDL_SYSWM_WINDOWS:   subsystem = "Microsoft Windows(TM)";  break;
-                case SDL_SYSWM_X11:       subsystem = "X Window System";        break;
-          #if SDL_VERSION_ATLEAST(2, 0, 3)
-                case SDL_SYSWM_WINRT:     subsystem = "WinRT";                  break;
-          #endif
-                case SDL_SYSWM_DIRECTFB:  subsystem = "DirectFB";               break;
-                case SDL_SYSWM_COCOA:     subsystem = "Apple OS X";             break;
-                case SDL_SYSWM_UIKIT:     subsystem = "UIKit";                  break;
-          #if SDL_VERSION_ATLEAST(2, 0, 2)
-                case SDL_SYSWM_WAYLAND:   subsystem = "Wayland";                break;
-                case SDL_SYSWM_MIR:       subsystem = "Mir";                    break;
-          #endif
-          #if SDL_VERSION_ATLEAST(2, 0, 4)
-                case SDL_SYSWM_ANDROID:   subsystem = "Android";                break;
-          #endif
-          #if SDL_VERSION_ATLEAST(2, 0, 5)
-                case SDL_SYSWM_VIVANTE:   subsystem = "Vivante";                break;
-          #endif
-              }
-
-              SDL_Log("This program is running SDL version %d.%d.%d on %s",
-                  (int)window_system_info.version.major,
-                  (int)window_system_info.version.minor,
-                  (int)window_system_info.version.patch,
-                  subsystem);
-            } else {
-              /* call failed */
-              SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Couldn't get window information: %s", SDL_GetError());
-            }
-      
+      bgfx::touch(0);
+      bgfx::frame();
 
     } else {
     #ifdef HAVE_OPENGL
@@ -1119,7 +1101,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	if (main_screen == NULL) {
 		fprintf(stderr, "Can't open video display (%s)\n", SDL_GetError());
     if(AOA::useBGFX()) {
-
+      AOA::fillAndCenterViewPort((sdl_width ? sdl_width : vmode_width), (sdl_height ? sdl_height : vmode_height));
     } else {
       #ifdef HAVE_OPENGL
           fprintf(stderr, "WARNING: Failed to initialize OpenGL with 24 bit colour\n");
@@ -1188,7 +1170,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		vhalt("Cannot find a working video mode.");
 	}
     if(AOA::useBGFX()) {
-         
+         AOA::fillAndCenterViewPort((sdl_width ? sdl_width : vmode_width), (sdl_height ? sdl_height : vmode_height));
     } else {
       #ifdef HAVE_OPENGL
         if (!context_created && !nogl && screen_mode.acceleration != _no_acceleration) {
@@ -1245,7 +1227,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 	Intro_Buffer_corrected = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32, pixel_format_32.Rmask, pixel_format_32.Gmask, pixel_format_32.Bmask, 0);
 
   if(AOA::useBGFX()) {
-       
+       AOA::fillAndCenterViewPort((sdl_width ? sdl_width : vmode_width), (sdl_height ? sdl_height : vmode_height));
   } else {
     #ifdef HAVE_OPENGL
       if (!nogl && screen_mode.acceleration != _no_acceleration) {
@@ -2409,7 +2391,7 @@ bool MainScreenIsOpenGL()
 }
 void MainScreenSwap()
 {
-	SDL_GL_SwapWindow(main_screen);
+	AOA::swapWindow(main_screen);
 }
 void MainScreenCenterMouse()
 {

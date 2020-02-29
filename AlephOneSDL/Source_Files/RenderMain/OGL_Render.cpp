@@ -2978,7 +2978,7 @@ void StaticModeShader(void *Data)
 	else
 	{
 		// For the static effect
-		glBindTexture(GL_TEXTURE_2D,0);
+		AOA::bindTexture(GL_TEXTURE_2D,0);
 		
 		const int TxSize = 64;
 		const int TxPxls = TxSize*TxSize;
@@ -2995,7 +2995,7 @@ void StaticModeShader(void *Data)
 			Buffer[k] = Pxl;
 		}
 		
-		glTexImage2D(GL_TEXTURE_2D, 0, Using_sRGB ? GL_SRGB_ALPHA : GL_RGBA8, TxSize, TxSize,
+		AOA::texImage2D(GL_TEXTURE_2D, 0, Using_sRGB ? GL_SRGB_ALPHA : GL_RGBA8, TxSize, TxSize,
 			0, GL_RGBA, GL_UNSIGNED_BYTE, Buffer);
 		
 		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
