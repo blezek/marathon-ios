@@ -96,6 +96,11 @@
 #define AOA_CLAMP_TO_EDGE                                 0x812F
 #define AOA_MIRRORED_REPEAT                               0x8370
 
+#define AOA_TEXTURE0                               0
+#define AOA_TEXTURE1                               1
+#define AOA_TEXTURE2                               2
+#define AOA_TEXTURE3                               3
+
 
 typedef char      AOAcharARB;
 typedef char      AOAchar;
@@ -114,21 +119,28 @@ typedef uint16_t  AOAushort;
 typedef void      AOAvoid;
 
 #include <stdio.h>
+#include <iostream>
+
+#include "OGL_Shader.h"
 
 class AOA{
 public:
   static AOA* Instance();
   
   static bool useBGFX();
+  static bool OGLIrrelevant(); //Returns trus if OpenGL should not be used.
   static void pushGroupMarker(AOAsizei length, const char *marker);
   static void popGroupMarker(void);
   static void clearColor (AOAfloat red, AOAfloat green, AOAfloat blue, AOAfloat alpha);
   static void clear (uint32_t maskField);
+  static void initAllShaders();
+  static void programFromNameIndex (AOAuint *_programObj, AOAuint nameIndex, Shader *shader); //_programObj needs to be a reference, because the getUniformLocation function in Shader needs it set as a side-effect.
   static AOAuint createProgram (void);
   static AOAuint createShader (AOAenum type);
   static void linkProgram (AOAuint program);
   static void shaderSource (AOAuint shader, AOAsizei count, const AOAchar *const*string, const AOAint *length);
   static void useProgram (AOAuint program);
+  static void disuseProgram ();
   static void compileShader (AOAuint shader);
   static void attachShader (AOAuint program, AOAuint shader);
   static void deleteShader (AOAuint shader);
@@ -136,15 +148,18 @@ public:
   static void getProgramiv (AOAuint program, AOAenum pname, AOAint *params);
   static void getProgramInfoLog (AOAuint program, AOAsizei bufSize, AOAsizei *length, AOAchar *infoLog);
   static void deleteProgram (AOAuint program);
-  static void uniform4f (AOAint location, AOAfloat v0, AOAfloat v1, AOAfloat v2, AOAfloat v3);
-  static void uniform1i (AOAint location, AOAint v0);
   static AOAint getUniformLocation (AOAuint program, const AOAchar *name);
-  static void uniformMatrix4fv (AOAint location, AOAsizei count, AOAboolean transpose, const AOAfloat *value);
+  static void resetUniforms (); //Call this after drawing anything.
+  static void uniform4f (AOAint name, Shader *shader, AOAfloat v0, AOAfloat v1, AOAfloat v2, AOAfloat v3);
+  static void uniform1i (AOAint name, Shader *shader, AOAint v0, void* alternateTextureHandle); //Uses alternateTextureHandle, but if null, will use v0 from texture slots instead.
+  static void uniform1f (AOAint name, Shader *shader, AOAfloat v0);
+  static void uniformMatrix4fv (AOAint name, Shader *shader, AOAsizei count, AOAboolean transpose, const AOAfloat *value);
   static void vertexAttribPointer (AOAuint index, AOAint size, AOAenum type, AOAboolean normalized, AOAsizei stride, const void *pointer);
   static void enableVertexAttribArray (AOAuint index);
   static void drawElements (AOAenum mode, AOAsizei count, AOAenum type, const AOAvoid* indices);
   static void genTextures (AOAsizei n, AOAuint* textures);
-  static void bindTexture (AOAenum target, AOAuint texture);
+  static void activeTexture (AOAuint unit);
+  static void bindTexture (AOAenum target, AOAuint texture, void* alternateTextureHandle, bool dontSetUniform);//Uses alternateTextureHandle, but if null, will use texture slot instead.
   static void deleteTextures (AOAsizei n, const AOAuint* textures);
   static void texEnvi (AOAenum target, AOAenum pname, AOAint param);
   static void texParameteri (AOAenum target, AOAenum pname, AOAint param);
@@ -152,12 +167,20 @@ public:
   static void texImage2DCopy (AOAenum target, AOAint level, AOAint internalformat, AOAsizei width, AOAsizei height, AOAint border, AOAenum format, AOAenum type, const AOAvoid* pixels, bool copyData); //just like texImage2D, but can optionally copy the data instead of referencing it
   static void compressedTexImage2D (AOAenum target, AOAint level, AOAenum internalformat, AOAsizei width, AOAsizei height, AOAint border, AOAsizei imageSize, const void *data);
   static void getIntegerv (AOAenum pname, AOAint* params);
-  static void getGetFloatv (AOAenum pname, AOAfloat* params);
+  static void getFloatv (AOAenum pname, AOAfloat* params);
+  static AOAuint generateFrameBuffer(AOAint width, AOAint height);
+  static void bindFramebuffer(AOAuint frameBuffer);
+  static void prepareToDrawFramebuffer(AOAuint frameBuffer);
+  static void drawFramebuffer(AOAuint frameBuffer);
+  static void deleteFramebuffer(AOAuint frameBuffer);
+  
   
   static void swapWindow(SDL_Window *window);
   static void fillAndCenterViewPort(float w, float h);
   static void setPreferredViewPort(float x, float y, float w, float h);
   static void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
+  static void DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom, void* theTextureHandle, uint viewID);
+
   
 private:
   AOA(){

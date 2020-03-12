@@ -74,6 +74,7 @@ Jan 25, 2002 (Br'fin (Jeremy Parsons)):
 #include "OGL_Headers.h"
 #include "OGL_Render.h"
 
+#include "AlephOneAcceleration.hpp"
 #include "AlephOneHelper.h"
 #include "MatrixStack.hpp"
 #include "OGL_Shader.h"
@@ -289,7 +290,7 @@ void OverheadMap_OGL_Class::draw_thing(
 	short shape,
 	short radius)
 {
-  glPushGroupMarkerEXT(0, "Draw Thing");
+  AOA::pushGroupMarker(0, "Draw Thing");
 
   Shader* previousShader = NULL;
   Shader* rectShader = NULL;
@@ -395,7 +396,7 @@ void OverheadMap_OGL_Class::draw_player(
 	short rear,
 	short rear_theta)
 {
-  glPushGroupMarkerEXT(0, "Draw Player");
+  AOA::pushGroupMarker(0, "Draw Player");
 
 	SetColor(color);
 	

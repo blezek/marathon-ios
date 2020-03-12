@@ -120,7 +120,7 @@ void OGL_Blitter::_LoadTextures()
 			}
 			
 			AOA::genTextures(1, &m_refs[i]);
-			AOA::bindTexture(GL_TEXTURE_2D, m_refs[i]);
+			AOA::bindTexture(GL_TEXTURE_2D, m_refs[i], NULL, 1);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -299,7 +299,7 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 		GLfloat ttop    = ((m_rects[i].y + ty) * y_scale) + (GLfloat) (dst.y - (src.y * y_scale));
 		GLfloat tbottom = ttop + (th * y_scale);
 		
-		AOA::bindTexture(GL_TEXTURE_2D, m_refs[i]);
+		AOA::bindTexture(GL_TEXTURE_2D, m_refs[i], NULL, 0);
 		
 		OGL_RenderTexturedRect(tleft, ttop, tright - tleft, tbottom - ttop,
 							   VMin, UMin, VMax, UMax);

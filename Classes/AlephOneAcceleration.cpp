@@ -11,6 +11,8 @@
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
 
+#include <OpenGLES/ES1/gl.h>
+#include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
 
@@ -19,29 +21,71 @@
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 
-#include "quad_vs.h"
-#include "quad_fs.h"
+#include "OGL_Shader.h"
+
+#include "metal_quad_vs.h"
+#include "metal_quad_fs.h"
+#include "metal_wall_vs.h"
+#include "metal_wall_fs.h"
 
 
+#define AOA_MAX_FRAMEBUFFERS 64
 #define AOA_MAX_TEXTURES 8192
+//AOA_TEXTURE_UNITS **MUST** corelate with the number of sampler uniforms in the name list (texture0, texture1, etc).
+#define AOA_TEXTURE_UNITS 4
 
 typedef struct texture_slot {
   bool reserved;
   bool initialized;
   bgfx::TextureHandle bgfxHandle;
 } texture_slot;
+texture_slot texture_slots[AOA_MAX_TEXTURES];
+AOAint boundTextureSlotIndex; //Needed??
+AOAint nextTextureSlotIndex;
+
+typedef struct texture_unit {
+  AOAuint textureID;
+  bgfx::TextureHandle *alternateTexture; //Use this handle (probably a fremabuffer texture) instead of textureID if set.
+} texture_unit;
+texture_unit texture_units[AOA_TEXTURE_UNITS];
+AOAint activeTextureUnit;
+
+
+typedef struct framebuffer_slot {
+  bgfx::FrameBufferHandle bgfxHandle;
+  bgfx::TextureHandle textures[2]; //Color and depth texture.
+  bool initialized;
+  
+  AOAuint w, h;
+  
+  AOAuint OGLFBID; //Only used in OpenGL Mode
+  AOAuint OGLTextureID; //Only used in OpenGL Mode
+  AOAuint OGLRenderBufferID; //Only used in OpenGL Mode
+} framebuffer_slot;
+framebuffer_slot framebuffers[AOA_MAX_FRAMEBUFFERS];
+AOAint boundFrameBuffer;
+
+bool frameBufferReadyToDraw;
+AOAint frameBufferToDraw;
+
+int drawsThisFrame;
 
 float portX, portY, portW, portH;
 
-texture_slot texture_slots[AOA_MAX_TEXTURES];
-AOAint boundTextureSlotIndex;
-AOAint nextTextureSlotIndex;
+bgfx::ProgramHandle bgfxPrograms[Shader::NUMBER_OF_SHADER_TYPES];
+bgfx::ShaderHandle bgfxVertexShaders[Shader::NUMBER_OF_SHADER_TYPES];
+bgfx::ShaderHandle bgfxFragmentShaders[Shader::NUMBER_OF_SHADER_TYPES];
+bgfx::UniformHandle bgfxUniforms[Shader::NUMBER_OF_UNIFORM_LOCATIONS];
+bool uniformCreated[Shader::NUMBER_OF_UNIFORM_LOCATIONS];
+bool uniformSet[Shader::NUMBER_OF_UNIFORM_LOCATIONS];
+
+int activeProgram = -1; //-1 indicates no active program.
 
 bgfx::ShaderHandle quad_vert;
 bgfx::ShaderHandle quad_frag;
 bgfx::ProgramHandle quad_program;
 
-bool quad_inited;
+bool quad_inited, shaders_inited;
 
 struct QuadVertexLayout
 {
@@ -78,17 +122,30 @@ AOA* AOA::Instance()
 
 bool AOA::useBGFX()
 {
-  return 0;
+  return 1;
+}
+
+bool AOA::OGLIrrelevant(){
+  return AOA::useBGFX();
 }
 
 void AOA::pushGroupMarker(AOAsizei length, const char *marker)
 {
-  glPushGroupMarkerEXT(length, marker);
+  if ( useBGFX() ) {
+    bgfx::setMarker(marker);
+  } else {
+    glPushGroupMarkerEXT(length, marker);
+  }
 }
 
 void AOA::popGroupMarker(void)
 {
-  glPopGroupMarkerEXT();
+  
+  if ( useBGFX() ) {
+    //NOOP?
+  } else {
+    glPopGroupMarkerEXT();
+  }
 }
 
 void  AOA::clearColor (AOAfloat red, AOAfloat green, AOAfloat blue, AOAfloat alpha)
@@ -99,6 +156,115 @@ void  AOA::clearColor (AOAfloat red, AOAfloat green, AOAfloat blue, AOAfloat alp
 void AOA::clear (uint32_t maskField)
 {
   glClear(maskField);
+}
+
+void AOA::initAllShaders() {
+
+  if(shaders_inited) return;
+  
+  //Init layouts:
+  QuadVertexLayout::init();
+  
+  activeProgram = -1;
+  
+  for( int i = 0; i < Shader::NUMBER_OF_SHADER_TYPES; ++i) {
+    
+    bgfxPrograms[i] = BGFX_INVALID_HANDLE;
+    bgfxVertexShaders[i] = BGFX_INVALID_HANDLE;
+    bgfxFragmentShaders[i] = BGFX_INVALID_HANDLE;
+    
+    const bgfx::Memory *vs_mem;
+    const bgfx::Memory *fs_mem;
+    
+      //Map the OGL shader types to the BGFX Shaders.
+    if (i == Shader::S_Wall || i == Shader::S_WallBloom) {
+      vs_mem = bgfx::makeRef(metal_wall_vs, sizeof(metal_wall_vs));
+      fs_mem = bgfx::makeRef(metal_wall_fs, sizeof(metal_wall_fs));
+      
+      bgfxVertexShaders[i] = bgfx::createShader(vs_mem);
+      bgfxFragmentShaders[i] = bgfx::createShader(fs_mem);
+
+      bgfx::setName(bgfxVertexShaders[i], Shader::_shader_names[i] );
+      bgfx::setName(bgfxFragmentShaders[i], Shader::_shader_names[i] );
+
+      bgfxPrograms[i] = bgfx::createProgram(bgfxVertexShaders[i], bgfxFragmentShaders[i]);
+      
+      if( bgfx::isValid(bgfxPrograms[i]) ) {
+        printf("Created program for %s!\n", Shader::_shader_names[i] );
+      } else {
+        printf("Program for %s is invalid!\n", Shader::_shader_names[i] );
+      }
+    }
+  }
+  
+   //Lets initialize uniforms on-demand.
+  //for( int i = 0; i < Shader::NUMBER_OF_UNIFORM_LOCATIONS; ++i) {
+  //  bgfxUniforms[i] = BGFX_INVALID_HANDLE;
+  //}
+  
+  shaders_inited = 1;
+}
+
+
+void AOA::programFromNameIndex (AOAuint *_programObj, AOAuint nameIndex, Shader *shader)
+{
+  if ( AOA::useBGFX() ) {
+    
+    if(!shaders_inited) {
+      AOA::initAllShaders();
+    }
+    
+    *_programObj = nameIndex;
+  } else {
+    GLint linked;
+    
+    *_programObj = glCreateProgram();//DCW
+    
+    assert(!shader->_vert.empty());
+      GLuint vertexShader = parseShader(shader->_vert.c_str(), GL_VERTEX_SHADER);
+      assert(vertexShader);
+      glAttachShader(*_programObj, vertexShader);
+      glDeleteShader(vertexShader);
+
+      assert(!shader->_frag.empty());
+      GLuint fragmentShader = parseShader(shader->_frag.c_str(), GL_FRAGMENT_SHADER);
+      assert(fragmentShader);
+      glAttachShader(*_programObj, fragmentShader);
+      glDeleteShader(fragmentShader);
+      
+      // DCW Bind enum attributes to program
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_VERTEX, "vPosition");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_TEXCOORDS, "vTexCoord");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_NORMAL, "vNormal");
+      
+      glLinkProgram(*_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
+      glGetProgramiv(*_programObj, GL_LINK_STATUS, &linked);
+      
+      if(!linked)
+      {
+        GLint infoLen = 0;
+        glGetProgramiv(*_programObj, GL_INFO_LOG_LENGTH, &infoLen);
+        if(infoLen > 1)
+        {
+          char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+          glGetProgramInfoLog(*_programObj, infoLen, NULL, infoLog);
+          printf("Error linking program:\n%s\n", infoLog);
+          free(infoLog);
+        }
+        glDeleteProgram(*_programObj);
+      }
+      assert(_programObj);
+
+      glUseProgram(*_programObj);
+
+      glUniform1i(shader->getUniformLocation(Shader::U_Texture0), 0);
+      glUniform1i(shader->getUniformLocation(Shader::U_Texture1), 1);
+      glUniform1i(shader->getUniformLocation(Shader::U_Texture2), 2);
+      glUniform1i(shader->getUniformLocation(Shader::U_Texture3), 3);
+  
+      glUseProgram(0); // no ARB on ios
+    
+  }
 }
 
 AOAuint AOA::createProgram (void)
@@ -121,7 +287,21 @@ void AOA::shaderSource (AOAuint shader, AOAsizei count, const AOAchar *const*str
 }
 void AOA::useProgram (AOAuint program)
 {
-  glUseProgram(program);
+  if ( AOA::useBGFX() ) {
+    printf ("Using program %d\n", program);
+    activeProgram = program;
+   } else {
+     glUseProgram(program);
+   }
+}
+
+void AOA::disuseProgram ()
+{
+  if ( AOA::useBGFX() ) {
+    activeProgram=-1;
+  } else {
+    glUseProgram(0);
+  }
 }
 
 void AOA::compileShader (AOAuint shader)
@@ -159,24 +339,114 @@ void AOA::deleteProgram (AOAuint program)
   glDeleteProgram(program);
 }
 
-void AOA::uniform4f (AOAint location, AOAfloat v0, AOAfloat v1, AOAfloat v2, AOAfloat v3)
-{
-  glUniform4f(location, v0, v1, v2, v3);
-}
-
-void AOA::uniform1i (AOAint location, AOAint v0)
-{
-  glUniform1f(location, v0);
-}
-
 AOAint AOA::getUniformLocation (AOAuint program, const AOAchar *name)
 {
   return glGetUniformLocation(program, name);
 }
 
-void AOA::uniformMatrix4fv (AOAint location, AOAsizei count, AOAboolean transpose, const AOAfloat *value)
+void AOA::resetUniforms ()
 {
-  glUniformMatrix4fv(location, count, transpose, value);
+  for(int i = 0; i < Shader::NUMBER_OF_UNIFORM_LOCATIONS; ++i ) {
+    uniformSet[i] = 0;
+  }
+}
+
+void AOA::uniform4f (AOAint name, Shader *shader, AOAfloat v0, AOAfloat v1, AOAfloat v2, AOAfloat v3)
+{
+  if(AOA::useBGFX()){
+    if( !uniformSet[name] ) {
+      if ( !uniformCreated[name] ) {
+        printf("Creating Vec4 uniform %s\n", Shader::_uniform_names[name]);
+        bgfxUniforms[name] = bgfx::createUniform(Shader::_uniform_names[name], bgfx::UniformType::Vec4);
+        uniformCreated[name] = 1;
+        if( !bgfx::isValid(bgfxUniforms[name]) ) {
+          printf("Unable to create valid uniform %s!\n", Shader::_uniform_names[name]);
+        }
+      }
+      
+      AOAfloat v[4]; v[0]=v0; v[1]=v1; v[2]=v2; v[3]=v3;
+      bgfx::setUniform(bgfxUniforms[name], &v, 1); //Jeez, I hope this sets all 4 values...
+      uniformSet[name] = 1;
+    }
+  } else {
+    glUniform4f(shader->getUniformLocation((Shader::UniformName)name), v0, v1, v2, v3);
+  }
+}
+
+void AOA::uniform1i (AOAint name, Shader *shader, AOAint v0, void* alternateTextureHandle)
+{
+  if(AOA::useBGFX()){
+    if( !uniformSet[name] ) {
+      if ( !uniformCreated[name] ) {
+        printf("Creating sampler uniform %s\n", Shader::_uniform_names[name]);
+        bgfxUniforms[name] = bgfx::createUniform(Shader::_uniform_names[name], bgfx::UniformType::Sampler);
+        uniformCreated[name] = 1;
+        if( !bgfx::isValid(bgfxUniforms[name]) ) {
+          printf("Unable to create uniform %s\n", Shader::_uniform_names[name]);
+        }
+      }
+      
+      if( alternateTextureHandle != NULL ) {
+        printf("Setting alternate texture with unit: %d\n", name);
+        bgfx::setTexture(0, bgfxUniforms[name], *(bgfx::TextureHandle*)alternateTextureHandle);
+        if ( !bgfx::isValid(*(bgfx::TextureHandle*)alternateTextureHandle) ) {
+          printf("Alternate texture invalid!\n");
+        }
+      } else {
+        printf("Setting texture slot %d with unit: %d\n", v0, name);
+        bgfx::setTexture(0, bgfxUniforms[name], texture_slots[v0].bgfxHandle);
+        if ( !bgfx::isValid(texture_slots[v0].bgfxHandle) ) {
+          printf("Texture invalid at slot %d!\n", v0);
+        }
+
+      }
+      uniformSet[name] = 1;
+    }
+  } else {
+    glUniform1f(shader->getUniformLocation((Shader::UniformName)name), v0);
+  }
+}
+
+void AOA::uniform1f(AOAint name, Shader *shader, AOAfloat v0)
+{
+  if(AOA::useBGFX()){
+    if( !uniformSet[name] ) {
+      if ( !uniformCreated[name] ) {
+        printf("Creating float uniform %s\n", Shader::_uniform_names[name]);
+        bgfxUniforms[name] = bgfx::createUniform(Shader::_uniform_names[name], bgfx::UniformType::Vec4);
+        uniformCreated[name] = 1;
+        if( !bgfx::isValid(bgfxUniforms[name]) ) {
+          printf("Unable to create uniform %s\n", Shader::_uniform_names[name]);
+        }
+      }
+      
+      bgfx::setUniform(bgfxUniforms[name], &v0, 1);
+      uniformSet[name] = 1;
+    }
+  } else {
+    glUniform1f(shader->getUniformLocation((Shader::UniformName)name), v0);
+  }
+}
+
+void AOA::uniformMatrix4fv (AOAint name, Shader *shader, AOAsizei count, AOAboolean transpose, const AOAfloat *value)
+{
+  if(AOA::useBGFX()){
+    if( !uniformSet[name] ) {
+      if ( !uniformCreated[name] ) {
+        printf("Creating mat4 uniform %s\n", Shader::_uniform_names[name]);
+        bgfxUniforms[name] = bgfx::createUniform(Shader::_uniform_names[name], bgfx::UniformType::Mat4);
+        uniformCreated[name] = 1;
+        if( !bgfx::isValid(bgfxUniforms[name]) ) {
+          printf("Unable to create uniform %s\n", Shader::_uniform_names[name]);
+        }
+      }
+      
+      bgfx::setUniform(bgfxUniforms[name], value, 1);
+      uniformSet[name] = 1;
+    }
+  } else {
+    glUniformMatrix4fv(shader->getUniformLocation((Shader::UniformName)name), count, transpose, value);
+  }
 }
 
 void AOA::vertexAttribPointer (AOAuint index, AOAint size, AOAenum type, AOAboolean normalized, AOAsizei stride, const void *pointer)
@@ -226,7 +496,33 @@ void AOA::genTextures (AOAsizei n, AOAuint* textures)
   }
 }
 
-void AOA::bindTexture (AOAenum target, AOAuint texture)
+void AOA::activeTexture (AOAuint unit)
+{
+  if( AOA::useBGFX() ) {
+    activeTextureUnit = unit;
+    printf("Setting texture unit: %d\n", (int)unit);
+  } else {
+    switch (unit) {
+      case(AOA_TEXTURE0):
+        glActiveTexture(GL_TEXTURE0);
+        break;
+      case(AOA_TEXTURE1):
+        glActiveTexture(GL_TEXTURE1);
+        break;
+      case(AOA_TEXTURE2):
+        glActiveTexture(GL_TEXTURE2);
+        break;
+      case(AOA_TEXTURE3):
+        glActiveTexture(GL_TEXTURE3);
+        break;
+      default:
+        glActiveTexture(GL_TEXTURE0);
+        break;
+     }
+  }
+}
+
+void AOA::bindTexture (AOAenum target, AOAuint texture, void* alternateTextureHandle, bool dontSetUniform)
 {
   if( useBGFX() ) {
     
@@ -239,6 +535,15 @@ void AOA::bindTexture (AOAenum target, AOAuint texture)
     
     if( texture_slots[texture].reserved) {
       boundTextureSlotIndex = texture;
+      
+      frameBufferReadyToDraw = false;
+        
+      //if( !dontSetUniform ) {
+      //  AOA::uniform1i (activeTextureUnit, NULL, texture, alternateTextureHandle);
+      //}
+      
+      texture_units[activeTextureUnit].textureID=texture;
+      texture_units[activeTextureUnit].alternateTexture= (bgfx::TextureHandle*)alternateTextureHandle;
       
       /*if (texture_slots[boundTextureSlotIndex].initialized) {
         bgfx::setTexture(0, s_texColor,  texture_slots[texture].bgfxHandle); //Really needed here?
@@ -368,19 +673,175 @@ void AOA::getIntegerv (AOAenum pname, AOAint* params)
   glGetIntegerv(pname, params);
 }
 
-void AOA::getGetFloatv (AOAenum pname, AOAfloat* params)
+void AOA::getFloatv (AOAenum pname, AOAfloat* params)
 {
   glGetFloatv(pname, params);
 }
 
+AOAuint AOA::generateFrameBuffer(AOAint width, AOAint height)
+{
+  //Find an open framebuffer slot to use...
+  int fb;
+  for(fb = 0; fb < AOA_MAX_FRAMEBUFFERS; ++fb) {
+    if( !framebuffers[fb].initialized ) {
+      framebuffers[fb].initialized = 1;
+      framebuffers[fb].w = width;
+      framebuffers[fb].h = height;
+      break;
+    }
+  }
+  if(fb >= AOA_MAX_FRAMEBUFFERS) {
+    printf("Out of frame buffer slots!\n");
+    return 0;
+  }
+  
+  if( useBGFX() ) {
+    printf("Creating framebuffer (%d, %d)\n", width,  height);
+
+      //Color texture
+    framebuffers[fb].textures[0] = bgfx::createTexture2D(width, height, false, 1, bgfx::TextureFormat::RGBA8, (uint16_t)0
+                                                                                                                  | BGFX_TEXTURE_RT
+                                                                                                                  | BGFX_SAMPLER_MIN_POINT
+                                                                                                                  | BGFX_SAMPLER_MAG_POINT
+                                                                                                                  | BGFX_SAMPLER_MIP_POINT
+                                                                                                                  | BGFX_SAMPLER_U_CLAMP
+                                                                                                                  | BGFX_SAMPLER_V_CLAMP);
+      //Depth texture
+    framebuffers[fb].textures[1] = bgfx::createTexture2D(width, height, false, 1, bgfx::TextureFormat::D16, BGFX_TEXTURE_RT_WRITE_ONLY);
+    if (!bgfx::isValid(framebuffers[fb].textures[1])) {
+      printf("Couldn't create frame buffer depth texture!");
+    }
+    
+    
+    framebuffers[fb].bgfxHandle = bgfx::createFrameBuffer(2, framebuffers[fb].textures, true);
+    //framebuffers[fb].bgfxHandle = bgfx::createFrameBuffer(width, height, bgfx::TextureFormat::RGBA8, BGFX_SAMPLER_U_MIRROR | BGFX_SAMPLER_MAG_ANISOTROPIC);
+    
+    if ( !bgfx::isValid(framebuffers[fb].bgfxHandle) ) {
+      printf("Framebuffer could not be created!\n");
+      framebuffers[fb].bgfxHandle = BGFX_INVALID_HANDLE;
+      framebuffers[fb].initialized = 0;
+      framebuffers[fb].w = 0;
+      framebuffers[fb].h = 0;
+    } else {
+      bgfx::setViewFrameBuffer(2, framebuffers[fb].bgfxHandle);
+      bgfx::setViewClear(2, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x00FFFFFF, 1.0f, 0);
+      bgfx::setViewRect(2, 0,0, width, height); //Maybe this should be full screen...
+      bgfx::touch(2);
+    }
+    
+  } else {
+    glGenFramebuffers(1, &(framebuffers[fb].OGLFBID));
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffers[fb].OGLFBID);
+    
+    printf("Creating OpenGL framebuffer (%d, %d) AOA Index %d (OGL ID %d)\n", width,  height, fb, framebuffers[fb].OGLFBID);
+    
+    //Create texture and attach it to framebuffer's color attachment point
+    AOA::genTextures(1, &(framebuffers[fb].OGLTextureID));
+    AOA::bindTexture(GL_TEXTURE_2D, framebuffers[fb].OGLTextureID, NULL, 0); //DCW was GL_TEXTURE_RECTANGE
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
+    AOA::texImage2D(GL_TEXTURE_2D, 0, /*srgb ? GL_SRGB :*/ GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, framebuffers[fb].OGLTextureID, 0);
+    
+    //Generate depth buffer
+    glGenRenderbuffers(1, &(framebuffers[fb].OGLRenderBufferID));
+    glBindRenderbuffer(GL_RENDERBUFFER, framebuffers[fb].OGLRenderBufferID);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, framebuffers[fb].OGLRenderBufferID);
+  }
+  
+  return fb;
+}
+
+void AOA::bindFramebuffer(AOAuint frameBuffer)
+{
+  if( useBGFX() ) {
+    //I think the viewport needs to be set the same as the framebuffer for setViewFrameBuffer to work.
+    //If we don't check, this is the error you will see: -[MTLDebugRenderCommandEncoder setScissorRect:]:2702: failed assertion `(rect.x(0) + rect.width(2436))(2436) must be <= render pass width(640)'
+    if (framebuffers[frameBuffer].w == (int)portW && framebuffers[frameBuffer].h == (int)portH){
+      bgfx::setViewMode(2);
+      bgfx::setViewFrameBuffer(2, framebuffers[frameBuffer].bgfxHandle);
+      boundFrameBuffer=frameBuffer;
+    } else {
+      printf("Framebuffer (%d, %d) does not match viewport size (%d, %d)\n", framebuffers[frameBuffer].w, framebuffers[frameBuffer].h, (int)portW, (int)portH);
+    }
+    
+   } else {
+     glBindFramebuffer(GL_FRAMEBUFFER, framebuffers[frameBuffer].OGLFBID);
+   }
+}
+
+void AOA::prepareToDrawFramebuffer(AOAuint frameBuffer)
+{
+  if( useBGFX() ) {
+    //DCW SHIT TEST. This will break until I fix it!  frameBufferReadyToDraw = true;
+    frameBufferToDraw = frameBuffer;
+    //This is just for testing! ... it would normally be drawn by DrawQuadWithActiveShader in the swapper.
+    //AOA::pushGroupMarker(0, "TEMPORARY drawFramebuffer test");
+    //bgfx::setViewMode(0);
+    //AOA::drawFramebuffer(frameBuffer);
+  } else {
+    AOA::pushGroupMarker(0, "FBO Binding texture");
+    
+    glBindTexture(GL_TEXTURE_2D, framebuffers[frameBuffer].OGLTextureID);
+    glPopGroupMarkerEXT();
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  }
+
+}
+
+void AOA::drawFramebuffer(AOAuint frameBuffer)
+{
+  
+  AOA::pushGroupMarker(0, "drawFramebuffer");
+  
+  //bgfx::TextureHandle theTexture = bgfx::getTexture(framebuffers[frameBuffer].bgfxHandle, 0);
+  bgfx::TextureHandle theTexture = framebuffers[frameBuffer].textures[0];
+  
+  AOA::DrawQuadUsingTexture(0, 0, framebuffers[frameBuffer].w, framebuffers[frameBuffer].h , 0, 0, 1, 1, &theTexture, 0);
+
+}
+
+void AOA::deleteFramebuffer(AOAuint frameBuffer)
+{
+  if( frameBuffer < 0 || frameBuffer >= AOA_MAX_FRAMEBUFFERS) {
+    printf("FrameBuffer slot %d out of range!\n", (int)frameBuffer);
+    return;
+  }
+  
+  if( useBGFX() ) {
+    if (bgfx::isValid(framebuffers[frameBuffer].bgfxHandle) )
+    {
+      bgfx::destroy(framebuffers[frameBuffer].bgfxHandle);
+      framebuffers[frameBuffer].bgfxHandle = BGFX_INVALID_HANDLE;
+    }
+  } else {
+    glDeleteFramebuffers(1, &(framebuffers[frameBuffer].OGLFBID));
+    glDeleteRenderbuffers(1, &(framebuffers[frameBuffer].OGLRenderBufferID));
+  }
+  
+  framebuffers[frameBuffer].initialized = 0;
+  framebuffers[frameBuffer].w = 0;
+  framebuffers[frameBuffer].h = 0;
+}
+
+
 void AOA::swapWindow(SDL_Window *window)
 {
   if( useBGFX() ) {
-    //bgfx::setDebug(true ? BGFX_DEBUG_STATS : BGFX_DEBUG_TEXT);
+    bgfx::setDebug(false ? BGFX_DEBUG_STATS : BGFX_DEBUG_TEXT);
     
+    printf("bgfx swap frame with draws %d!\n", drawsThisFrame);
     bgfx::touch(0);
-    
-    bgfx::frame();
+    bgfx::touch(1);
+    bgfx::touch(2);
+    if( drawsThisFrame > 0 ) {
+      bgfx::frame();
+    }
+    drawsThisFrame=0;
   } else {
     SDL_GL_SwapWindow(window);
   }
@@ -409,19 +870,27 @@ void AOA::setPreferredViewPort(float x, float y, float w, float h)
   printf("SETTUBG bgfx view %f %f %f %f\n", portX, portY, portW, portH);
 }
 
-void AOA::DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
+void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom, void* theTextureHandle, uint viewID)
 {
-  bgfx::setViewRect(0, portX, portY, portW, portH);
-  bgfx::setViewRect(1, portX, portY, portW, portH);
+  if(frameBufferReadyToDraw) {
+    AOA::pushGroupMarker(0, "FrameBuffer needs drawing");
+    frameBufferReadyToDraw = false;
+    AOA::drawFramebuffer(frameBufferToDraw);
+  }
+  
+  AOA::pushGroupMarker(0, "DrawQuadUsingTexture");
+  printf("DrawQuadUsingTexture!\n");
+  
+  bgfx::setViewRect(viewID, portX, portY, portW, portH); //This might need to get moved to DrawQuad...
+  //bgfx::setViewRect(1, portX, portY, portW, portH);
+  //bgfx::setViewRect(2, portX, portY, portW, portH);
 
-  
-  
-   //Initialize if needed
+     //Initialize if needed
   if( !quad_inited ){
     QuadVertexLayout::init();
     
-    const bgfx::Memory *quad_vs_mem = bgfx::makeRef(quad_vs, sizeof(quad_vs));
-    const bgfx::Memory *quad_fs_mem = bgfx::makeRef(quad_fs, sizeof(quad_fs));
+    const bgfx::Memory *quad_vs_mem = bgfx::makeRef(metal_quad_vs, sizeof(metal_quad_vs));
+    const bgfx::Memory *quad_fs_mem = bgfx::makeRef(metal_quad_fs, sizeof(metal_quad_fs));
 
     quad_vert = bgfx::createShader(quad_vs_mem);
     quad_frag = bgfx::createShader(quad_fs_mem);
@@ -523,7 +992,10 @@ void AOA::DrawQuad(float x, float y, float w, float h, float tleft, float ttop, 
     indices[3] = 0;
     indices[4] = 2;
     indices[5] = 3;*/
-
+    
+    bgfx::setIndexBuffer(&tib);
+    bgfx::setVertexBuffer(0, &tvb);
+    
     bgfx::setState( 0
                    | BGFX_STATE_WRITE_RGB
                    | BGFX_STATE_WRITE_A
@@ -534,17 +1006,33 @@ void AOA::DrawQuad(float x, float y, float w, float h, float tleft, float ttop, 
                    //| BGFX_STATE_MSAA
                    
                    );
+
     
-    bgfx::setIndexBuffer(&tib);
-    bgfx::setVertexBuffer(0, &tvb);
-    
-    bgfx::UniformHandle s_texColor; //Standard texture0
+    //dcw shit test. This will bresk the UI until we fix it!
+    /*bgfx::UniformHandle s_texColor; //Standard texture0
     s_texColor = bgfx::createUniform("s_texColor", bgfx::UniformType::Sampler);
     
     if (texture_slots[boundTextureSlotIndex].initialized) {
-      bgfx::setTexture(0, s_texColor,  texture_slots[boundTextureSlotIndex].bgfxHandle);
-    }
-        
-    bgfx::submit(1, quad_program);
+      bgfx::setTexture(0, s_texColor, *(bgfx::TextureHandle*)theTextureHandle);
+    }*/
+    
+    AOA::uniform1i (activeTextureUnit, NULL, texture_units[activeTextureUnit].textureID, texture_units[activeTextureUnit].alternateTexture);
+    
+    printf("Submit quad with viewid %d!\n", viewID);
+    
+    bgfx::submit(viewID, quad_program);
+    drawsThisFrame++;
+    AOA::resetUniforms();
   }
 }
+
+void AOA::DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
+{
+  AOA::pushGroupMarker(0, "DrawQuad");
+  printf("DrawQuad!\n");
+
+  if (texture_slots[boundTextureSlotIndex].initialized) {
+    AOA::DrawQuadUsingTexture(x, y, w, h, tleft, ttop, tright, tbottom, &(texture_slots[boundTextureSlotIndex].bgfxHandle), 0);
+  }
+}
+

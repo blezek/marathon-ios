@@ -196,7 +196,7 @@ bool TextureState::Allocate(short txType)
 // Use a texture and indicate whether to load it
 bool TextureState::Use(int Which)
 {
-	AOA::bindTexture(AOA_TEXTURE_2D,IDs[Which]);
+	AOA::bindTexture(AOA_TEXTURE_2D,IDs[Which], NULL, 0);
 	bool result = !TexGened[Which];
 	TexGened[Which] = true;
 	IDUsage[Which]++;
@@ -260,7 +260,7 @@ void FlatBumpTexture() {
 	if (flatBumpTextureID == 0)
 	{
 		AOA::genTextures(1, &flatBumpTextureID);
-		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID);
+		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID, NULL, 0);
 		
 		AOAubyte flatTextureData[4] = {0x80, 0x80, 0xFF, 0x80};
 		
@@ -272,7 +272,7 @@ void FlatBumpTexture() {
 		AOA::texImage2D(AOA_TEXTURE_2D, 0, AOA_RGBA8, 1, 1, 0, AOA_RGBA, AOA_UNSIGNED_BYTE, flatTextureData);
 	}
 	else
-		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID);
+		AOA::bindTexture(AOA_TEXTURE_2D, flatBumpTextureID, NULL, 0);
 }
 
 

@@ -117,25 +117,16 @@ public:
 private:
 
 	GLuint _programObj;
-	std::string _vert;
-	std::string _frag;
 	int16 _passes;
 	bool _loaded;
   int nameIndex; //DCW
 
-	static const char* _shader_names[NUMBER_OF_SHADER_TYPES];
 	static std::vector<Shader> _shaders;
 
-	static const char* _uniform_names[NUMBER_OF_UNIFORM_LOCATIONS];
 	GLint _uniform_locations[NUMBER_OF_UNIFORM_LOCATIONS];
 	float _cached_floats[NUMBER_OF_UNIFORM_LOCATIONS];
 
-	GLint getUniformLocation(UniformName name) { 
-		if (_uniform_locations[name] == -1) {
-			_uniform_locations[name] = glGetUniformLocation(_programObj, _uniform_names[name]); //DCW no ARB in ios
-		}
-		return _uniform_locations[name];
-	}
+	
 	
 public:
 
@@ -160,12 +151,28 @@ public:
 
 	static void disable();
   static void drawDebugRect(); //DCW draws a debugging rect to middle of current binding.
+  
+    //DCW: Needed for AOA OpenGL Only
+  std::string _vert;
+  std::string _frag;
+  GLint getUniformLocation(UniformName name) {
+    if (_uniform_locations[name] == -1) {
+      _uniform_locations[name] = glGetUniformLocation(_programObj, _uniform_names[name]); //DCW no ARB in ios
+    }
+    return _uniform_locations[name];
+  }
+  //DCW also want this public
+  static const char* _shader_names[NUMBER_OF_SHADER_TYPES];
+  static const char* _uniform_names[NUMBER_OF_UNIFORM_LOCATIONS];
+
 };
 
 
 class InfoTree;
 void parse_mml_opengl_shader(const InfoTree& root);
 void reset_mml_opengl_shader();
+
+GLuint parseShader(const GLcharARB* str, GLenum shaderType); //DCW for AOA
 
 Shader* lastEnabledShader();
 

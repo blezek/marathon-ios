@@ -245,6 +245,8 @@ extern WindowPtr screen_window;
 //DCW Used for mouse smoothing
 #include "mouse.h"
 
+#include "AlephOneAcceleration.hpp"
+
 #include "MatrixStack.hpp" //DCW SHIT TEST
 
 #include "OGL_Shader.h" //DCW shit test
@@ -500,13 +502,13 @@ void render_view(
 				it to the texture-mapping code */
 			RenPtr->view = view;
 			RenPtr->RasPtr = RasPtr;
-      glPushGroupMarkerEXT(0, "render_tree");
+      AOA::pushGroupMarker(0, "render_tree");
       RenPtr->render_tree();
       glPopGroupMarkerEXT();
       
 			// LP: won't put this into a separate class
 			/* render the playerÕs weapons, etc. */
-      glPushGroupMarkerEXT(0, "render_viewer_sprite_layer");
+      AOA::pushGroupMarker(0, "render_viewer_sprite_layer");
       if (!RenPtr->renders_viewer_sprites_in_tree()) {
         render_viewer_sprite_layer(view, RasPtr);
       }
@@ -519,7 +521,7 @@ void render_view(
 		if (view->overhead_map_active)
 		{
 			/* if the overhead map is active, render it */
-      glPushGroupMarkerEXT(0, "render_overhead_map");
+      AOA::pushGroupMarker(0, "render_overhead_map");
 			render_overhead_map(view);
       glPopGroupMarkerEXT();
 		}

@@ -965,7 +965,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
 		SDL_FilterEvents(change_window_filter, &window_id);
 	}
     if(AOA::useBGFX()) {
-      //SDL_setenv("METAL_DEVICE_WRAPPER_TYPE", "1", 0);
+      SDL_setenv("METAL_DEVICE_WRAPPER_TYPE", "1", 0);
     }
 	
     main_screen = SDL_CreateWindow(get_application_name(),
@@ -1035,6 +1035,7 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
       
       setDefaultA1View();
       
+      printf("touch frame!\n");
       bgfx::touch(0);
       bgfx::frame();
 
@@ -1606,7 +1607,7 @@ void render_screen(short ticks_elapsed)
 		if (Screen::instance()->hud()) {
       if (Screen::instance()->lua_hud()){
         if (!shouldHideHud()) {
-          glPushGroupMarkerEXT(0, "Draw LUA HUD");
+          AOA::pushGroupMarker(0, "Draw LUA HUD");
           Lua_DrawHUD(ticks_elapsed);
           glPopGroupMarkerEXT();
         }
@@ -1624,13 +1625,13 @@ void render_screen(short ticks_elapsed)
           0,2,3};
         glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
         glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
-        glPushGroupMarkerEXT(0, "Draw Debug Rect");
+        AOA::pushGroupMarker(0, "Draw Debug Rect");
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
         glPopGroupMarkerEXT();
         Shader::disable();*/
       }
 			else {
-        glPushGroupMarkerEXT(0, "Draw HUD");
+        AOA::pushGroupMarker(0, "Draw HUD");
         Rect dr = {static_cast<short>(HUD_DestRect.y), static_cast<short>(HUD_DestRect.x), static_cast<short>(HUD_DestRect.y + HUD_DestRect.h), static_cast<short>(HUD_DestRect.x + HUD_DestRect.w)};
 				OGL_DrawHUD(dr, ticks_elapsed);
         glPopGroupMarkerEXT();
@@ -2361,6 +2362,10 @@ int MainScreenWindowHeight()
 }
 int MainScreenPixelWidth()
 {
+  if(AOA::useBGFX()) {
+    return helperLongScreenDimension() * helperScreenScale();
+  }
+  
 	int w = 0;
 #ifdef HAVE_OPENGL
 	if (MainScreenIsOpenGL())
@@ -2372,6 +2377,10 @@ int MainScreenPixelWidth()
 }
 int MainScreenPixelHeight()
 {
+  if(AOA::useBGFX()) {
+    return helperShortScreenDimension() * helperScreenScale();
+  }
+  
 	int h = 0;
 #ifdef HAVE_OPENGL
 	if (MainScreenIsOpenGL())

@@ -146,6 +146,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 #include <OpenGLES/ES1/gl.h> //DCW
 #include "MatrixStack.hpp"
 #include "OGL_Shader.h"
+#include "AlephOneAcceleration.hpp"
 
 #ifdef HAVE_OPENGL
 
@@ -2978,7 +2979,7 @@ void StaticModeShader(void *Data)
 	else
 	{
 		// For the static effect
-		AOA::bindTexture(GL_TEXTURE_2D,0);
+		AOA::bindTexture(GL_TEXTURE_2D,0, NULL, 0);
 		
 		const int TxSize = 64;
 		const int TxPxls = TxSize*TxSize;
@@ -3214,7 +3215,7 @@ bool OGL_RenderCrosshairs()
 bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r, unsigned char g, unsigned char b)
 {
 	if (!OGL_IsActive()) return false;
-  glPushGroupMarkerEXT(0, "Render Text");
+  AOA::pushGroupMarker(0, "Render Text");
 
 	// Create display list for the current text string;
 	// use the "standard" text-font display list (display lists can be nested)
@@ -3322,7 +3323,7 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 
 void OGL_RenderRect(float x, float y, float w, float h)
 {
-  glPushGroupMarkerEXT(0, "OGL_RenderRect");
+  AOA::pushGroupMarker(0, "OGL_RenderRect");
   
   GLfloat vertices[8] = { x, y, x + w, y, x + w, y + h, x, y + h };
   

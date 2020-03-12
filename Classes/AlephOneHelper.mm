@@ -531,7 +531,7 @@ bool playerInTerminal () {
 
 //Hide HUD for filming and screenshot purposes
 bool shouldHideHud () {
-  return 0;
+  return 1;
 }
 
 void cacheInputPreferences() {
@@ -569,7 +569,7 @@ bool useShaderPostProcessing() {
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
-  return 0;
+  return 1;
 }
 
 bool shouldAutoBot() {

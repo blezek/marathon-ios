@@ -31,6 +31,7 @@
 #include "OGL_Setup.h"
 #include "InfoTree.h"
 
+#include "AlephOneAcceleration.hpp"
 #include "AlephOneHelper.h"
 
 
@@ -214,6 +215,11 @@ void parseFile(FileSpecifier& fileSpec, std::string& s) {
 
 GLuint parseShader(const GLcharARB* str, GLenum shaderType) {
 
+  if(AOA::OGLIrrelevant()) {
+    //When not using OpenGL, the shader ID is just the shaderType index.
+    return shaderType;
+  }
+  
 	GLint status;
 	GLuint shader = glCreateShader(shaderType); //DCW no ARB in ios
 
@@ -316,11 +322,16 @@ Shader::Shader(const std::string& name, FileSpecifier& vert, FileSpecifier& frag
 void Shader::init() {
 	std::fill_n(_uniform_locations, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), -1);
 	std::fill_n(_cached_floats, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), 0.0);
-  GLint linked;
   
 	_loaded = true;
   
+  
+  AOA::programFromNameIndex( &_programObj, nameIndex, this);
+/*  return;
+  
   _programObj = glCreateProgram();//DCW
+   
+   GLint linked;
 
 	assert(!_vert.empty());
 	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);
@@ -363,29 +374,35 @@ void Shader::init() {
   glUseProgram(_programObj);
 
 	glUniform1i(getUniformLocation(U_Texture0), 0);
+ 
 	glUniform1i(getUniformLocation(U_Texture1), 1);
 	glUniform1i(getUniformLocation(U_Texture2), 2);
 	glUniform1i(getUniformLocation(U_Texture3), 3);
 
 	glUseProgram(0); // no ARB on ios
+ */
 
 //	assert(glGetError() == GL_NO_ERROR);
+   
 }
 
 void Shader::setFloat(UniformName name, float f) {
 
 	if (_cached_floats[name] != f) {
 		_cached_floats[name] = f;
-		glUniform1f(getUniformLocation(name), f); //DCW no ARB on ios
+    AOA::uniform1f(name, this, f);
+		//glUniform1f(getUniformLocation(name), f); //DCW no ARB on ios
 	}
 }
 
 void Shader::setMatrix4(UniformName name, float *f) {
-	glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
+  AOA::uniformMatrix4fv(name, this, 1, false, f);
+	//glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
 }
 
 void Shader::setVec4(UniformName name, float *f) {
-  glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
+  AOA::uniform4f(name, this, f[0], f[1], f[2], f[3]);
+  //glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
 }
 
 Shader::~Shader() {
@@ -395,16 +412,18 @@ Shader::~Shader() {
 void Shader::enable() {
 	if(!_loaded) { init(); }
   //glGetError();
-  if(nameIndex >=0){ glPushGroupMarkerEXT(0, _shader_names[nameIndex]);} else {
-    glPushGroupMarkerEXT(0, "non-default shader");
+  if(nameIndex >=0){ AOA::pushGroupMarker(0, _shader_names[nameIndex]);} else {
+    AOA::pushGroupMarker(0, "non-default shader");
   }
-	glUseProgram(_programObj); //DCW no ARB in ios
+  AOA::useProgram(_programObj);
+	//glUseProgram(_programObj); //DCW no ARB in ios
   setLastEnabledShader(this);
   glPopGroupMarkerEXT();
 }
 
 void Shader::disable() {
-	glUseProgram(0);//DCW no ARB in ios
+  AOA::disuseProgram();
+	//glUseProgram(0);//DCW no ARB in ios
   Shader *enabledShader = lastEnabledShader();
   setLastEnabledShader(NULL);
 }
@@ -425,13 +444,19 @@ void Shader::drawDebugRect() {
     0,2,3};
   glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
   glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
-  glPushGroupMarkerEXT(0, "Draw Debug Rect");
+  AOA::pushGroupMarker(0, "Draw Debug Rect");
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
   glPopGroupMarkerEXT();
   Shader::disable();
 }
 
 void Shader::unload() {
+  
+    //Unloading not yet implemented in AOA
+  if(AOA::OGLIrrelevant()) {
+    return;
+  }
+  
 	if(_programObj) {
 		//glDeleteObjectARB(_programObj);//DCW no ARB in ios
     glDeleteProgram(_programObj); //DCW maybe this needs to be a createshader()?

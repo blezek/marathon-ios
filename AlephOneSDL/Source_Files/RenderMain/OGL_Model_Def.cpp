@@ -282,7 +282,7 @@ bool OGL_SkinManager::Use(short CLUT, short Which)
 		InUse = true;
 		LoadSkin = true;
 	}
-	AOA::bindTexture(GL_TEXTURE_2D,TxtrID);
+	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	return LoadSkin;
 }
 

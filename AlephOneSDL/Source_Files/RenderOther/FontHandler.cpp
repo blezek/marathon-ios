@@ -290,7 +290,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	// OpenGL stuff starts here 	
  	// Load texture
  	AOA::genTextures(1,&TxtrID);
- 	AOA::bindTexture(GL_TEXTURE_2D,TxtrID);
+ 	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	OGL_Register(this);
  	
  	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -399,7 +399,7 @@ void FontSpecifier::OGL_Render(const char *Text)
 	glDisable(GL_ALPHA_TEST);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-	AOA::bindTexture(GL_TEXTURE_2D,TxtrID);
+	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.

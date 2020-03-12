@@ -27,6 +27,7 @@
 #include "mouse.h"
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
+#include "AlephOneAcceleration.hpp"
 
 
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
@@ -55,7 +56,7 @@ public:
 	}
 
 	void draw(FBOSwapper& dest) {
-    glPushGroupMarkerEXT(0, "Draw Blur");
+    AOA::pushGroupMarker(0, "Draw Blur");
     
 		int passes = _shader_bloom->passes();
 		if (passes < 0)
@@ -66,7 +67,7 @@ public:
 
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 		for (int i = 0; i < passes; i++) {
-      glPushGroupMarkerEXT(0, "Blur Phase");
+      AOA::pushGroupMarker(0, "Blur Phase");
 			_shader_blur->enable();
       _shader_blur->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
 
@@ -81,7 +82,7 @@ public:
 			_swapper.filter(false);
       glPopGroupMarkerEXT();
       
-      glPushGroupMarkerEXT(0, "Bloom Phase");
+      AOA::pushGroupMarker(0, "Bloom Phase");
 			_shader_bloom->enable();
       _shader_bloom->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
 
@@ -192,7 +193,7 @@ void RenderRasterize_Shader::render_tree() {
 	Shader::disable();
 
     //Initialize if needed. This must be the size of the main viewport.
-/*  glPushGroupMarkerEXT(0, "Render depth texture");
+/*  AOA::pushGroupMarker(0, "Render depth texture");
   if (colorDepthSansMedia._h == 0 && colorDepthSansMedia._w == 0) {
     GLint viewPort[4];
     glGetIntegerv(GL_VIEWPORT, viewPort);
@@ -207,7 +208,7 @@ void RenderRasterize_Shader::render_tree() {
   colorDepthSansMedia.deactivate();
   glPopGroupMarkerEXT();
   RasPtr->Begin(); // Needing to call Rasterizer_Shader_Class::Begin() again is wonky.
-  glPushGroupMarkerEXT(0, "Binding depth texture");
+  AOA::pushGroupMarker(0, "Binding depth texture");
   glActiveTexture(GL_TEXTURE2); //Bind the colorDepthSansMedia texture to unit 2.
   glBindTexture(GL_TEXTURE_2D, colorDepthSansMedia.texID);
   glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
@@ -225,7 +226,7 @@ void RenderRasterize_Shader::render_tree() {
     render_viewer_sprite_layer(kGlow);
 		blur->end();
 		RasPtr->swapper->deactivate();
-    glPushGroupMarkerEXT(0, "draw blur passes");
+    AOA::pushGroupMarker(0, "draw blur passes");
 		blur->draw(*RasPtr->swapper);
     glPopGroupMarkerEXT();
 		RasPtr->swapper->activate();
@@ -502,9 +503,9 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 	if(TMgr.Setup()) {
 		TMgr.RenderNormal(); // must allocate first
 		if (TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_BumpMap)) {
-			glActiveTexture(GL_TEXTURE1);
+			AOA::activeTexture(AOA_TEXTURE1);
 			TMgr.RenderBump();
-			glActiveTexture(GL_TEXTURE0);
+			AOA::activeTexture(AOA_TEXTURE0);
 		}
 	} else {
 		TMgr.ShapeDesc = UNONE;
@@ -806,12 +807,12 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
       lastShader->setVec4(Shader::U_MediaPlane6, media6);
     }
     
-    glPushGroupMarkerEXT(0, "render_node_floor_or_ceiling");
+    AOA::pushGroupMarker(0, "render_node_floor_or_ceiling");
 		glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
     glPopGroupMarkerEXT();
 
 		if (setupGlow(view, TMgr, wobble, intensity, weaponFlare, selfLuminosity, offset, renderStep)) {
-      glPushGroupMarkerEXT(0, "render_node_floor_or_ceiling glow setup");
+      AOA::pushGroupMarker(0, "render_node_floor_or_ceiling glow setup");
 			glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
       glPopGroupMarkerEXT();
 		}
@@ -984,7 +985,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
         lastShader->setVec4(Shader::U_MediaPlane6, media6);
       }
          
-      glPushGroupMarkerEXT(0, "render_node_side");
+      AOA::pushGroupMarker(0, "render_node_side");
       glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
       glPopGroupMarkerEXT();
 			/*(GLfloat vertex_array[12];
@@ -1035,7 +1036,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
           glTexCoordPointer(2, GL_FLOAT, 0, t);
           glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         }*/
-        glPushGroupMarkerEXT(0, "render_node_side glow");
+        AOA::pushGroupMarker(0, "render_node_side glow");
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
         glPopGroupMarkerEXT();
         //glDrawArrays(GL_QUADS, 0, vertex_count);
@@ -1170,14 +1171,14 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 	}
 
 	if(TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_BumpMap)) {
-		glActiveTexture(GL_TEXTURE1);
+		AOA::activeTexture(AOA_TEXTURE1);
 		if(ModelPtr->Use(CLUT,OGL_SkinManager::Bump)) {
 			LoadModelSkin(SkinPtr->OffsetImg, Collection, CLUT);
 		}
 		if (!SkinPtr->OffsetImg.IsPresent()) {
 			FlatBumpTexture();
 		}
-		glActiveTexture(GL_TEXTURE0);
+		AOA::activeTexture(AOA_TEXTURE0);
 	}
   
   Shader* lastShader = lastEnabledShader();
@@ -1198,7 +1199,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
     lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
   }
 
-  glPushGroupMarkerEXT(0, "RenderModel");
+  AOA::pushGroupMarker(0, "RenderModel");
 	glDrawElements(GL_TRIANGLES,(GLsizei)ModelPtr->Model.NumVI(),GL_UNSIGNED_SHORT,ModelPtr->Model.VIBase());
   glPopGroupMarkerEXT();
   
@@ -1236,7 +1237,7 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
       lastShader->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
     }
     
-    glPushGroupMarkerEXT(0, "RenderModel Glow");
+    AOA::pushGroupMarker(0, "RenderModel Glow");
 		glDrawElements(GL_TRIANGLES,(GLsizei)ModelPtr->Model.NumVI(),GL_UNSIGNED_SHORT,ModelPtr->Model.VIBase());
     glPopGroupMarkerEXT();
 	}
@@ -1515,7 +1516,7 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
         
   }
   
-  glPushGroupMarkerEXT(0, "render_node_object_helper");
+  AOA::pushGroupMarker(0, "render_node_object_helper");
   glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
   glPopGroupMarkerEXT();
   /*
@@ -1592,7 +1593,7 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
       lastShader->setVec4(Shader::U_ClipPlane5, plane5);
     }
     
-    glPushGroupMarkerEXT(0, "render_node_object_helper glow");
+    AOA::pushGroupMarker(0, "render_node_object_helper glow");
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     glPopGroupMarkerEXT();
 		//glDrawArrays(GL_QUADS, 0, 4);
@@ -1714,7 +1715,7 @@ struct ExtendedVertexData
 
 void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRectangle, RenderStep renderStep)
 {
-  glPushGroupMarkerEXT(0, "render_viewer_sprite");
+  AOA::pushGroupMarker(0, "render_viewer_sprite");
 
   auto TMgr = setupSpriteTexture(RenderRectangle, OGL_Txtr_WeaponsInHand, 0, renderStep);
   
