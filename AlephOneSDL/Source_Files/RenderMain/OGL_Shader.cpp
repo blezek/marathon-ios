@@ -442,8 +442,8 @@ void Shader::drawDebugRect() {
   
   GLubyte indices[] =   {0,1,2,
     0,2,3};
-  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   AOA::pushGroupMarker(0, "Draw Debug Rect");
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
   glPopGroupMarkerEXT();

@@ -174,8 +174,8 @@ void OverheadMap_OGL_Class::begin_polygons()
 	// however, makes everything the same color :-P
   if(useShaderRenderer()){
     Shader *lastShader = lastEnabledShader();
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, GetVertexStride(), GetFirstVertex());
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, GetVertexStride(), GetFirstVertex());
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   } else {
     glVertexPointer(2,GL_SHORT,GetVertexStride(),GetFirstVertex());
   }
@@ -365,8 +365,8 @@ void OverheadMap_OGL_Class::draw_thing(
         
         lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
         lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
-        glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-        glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+        AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+        AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
       } else {
         glVertexPointer(2, GL_FLOAT, 0, vertices);
       }
@@ -427,8 +427,8 @@ void OverheadMap_OGL_Class::draw_player(
     MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
     
     Shader *lastShader = lastEnabledShader();
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, PlayerShape[0]);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, PlayerShape[0]);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
     lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
     

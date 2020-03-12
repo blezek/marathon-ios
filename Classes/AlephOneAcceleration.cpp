@@ -87,14 +87,25 @@ bgfx::ProgramHandle quad_program;
 
 bool quad_inited, shaders_inited;
 
-struct QuadVertexLayout
+struct V3N3T2VertexLayout
 {
-  float m_x;
-  float m_y;
-  float m_z;
-  float m_u;
-  float m_v;
+  float m_x; float m_y; float m_z; float m_normal[3]; float m_u; float m_v;
+  static void init()
+  {
+    ms_layout
+      .begin()
+      .add(bgfx::Attrib::Position,  3, bgfx::AttribType::Float)
+      .add(bgfx::Attrib::Normal,   3, bgfx::AttribType::Float)
+      .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+      .end();
+  }
+  static bgfx::VertexLayout ms_layout;
+};
+bgfx::VertexLayout V3N3T2VertexLayout::ms_layout;
 
+struct V3T2VertexLayout
+{
+  float m_x; float m_y; float m_z; float m_u; float m_v;
   static void init()
   {
     ms_layout
@@ -103,11 +114,55 @@ struct QuadVertexLayout
       .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
       .end();
   }
-
   static bgfx::VertexLayout ms_layout;
 };
+bgfx::VertexLayout V3T2VertexLayout::ms_layout;
+  
+struct V2T2VertexLayout
+{
+  float m_x; float m_y; float m_u; float m_v;
+  static void init()
+  {
+    ms_layout
+      .begin()
+      .add(bgfx::Attrib::Position,  2, bgfx::AttribType::Float)
+      .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+      .end();
+  }
+  static bgfx::VertexLayout ms_layout;
+};
+bgfx::VertexLayout V2T2VertexLayout::ms_layout;
 
-bgfx::VertexLayout QuadVertexLayout::ms_layout;
+struct V3sT2VertexLayout
+{
+  int16 m_x; int16 m_y; int16 m_z; float m_u; float m_v;
+  static void init()
+  {
+    ms_layout
+      .begin()
+      .add(bgfx::Attrib::Position,  3, bgfx::AttribType::Int16)
+      .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+      .end();
+  }
+  static bgfx::VertexLayout ms_layout;
+};
+bgfx::VertexLayout V3sT2VertexLayout::ms_layout;
+  
+struct V2sT2VertexLayout
+{
+  int16 m_x; int16 m_y; float m_u; float m_v;
+  static void init()
+  {
+    ms_layout
+      .begin()
+      .add(bgfx::Attrib::Position,  2, bgfx::AttribType::Int16)
+      .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+      .end();
+  }
+  static bgfx::VertexLayout ms_layout;
+};
+bgfx::VertexLayout V2sT2VertexLayout::ms_layout;
+
 
 AOA* AOA::m_pInstance = NULL;
 
@@ -163,7 +218,7 @@ void AOA::initAllShaders() {
   if(shaders_inited) return;
   
   //Init layouts:
-  QuadVertexLayout::init();
+  V3T2VertexLayout::init();
   
   activeProgram = -1;
   
@@ -289,6 +344,10 @@ void AOA::useProgram (AOAuint program)
 {
   if ( AOA::useBGFX() ) {
     printf ("Using program %d\n", program);
+    if(program==4) {
+      printf ("!!Using program %d\n", program);
+    }
+    
     activeProgram = program;
    } else {
      glUseProgram(program);
@@ -451,12 +510,23 @@ void AOA::uniformMatrix4fv (AOAint name, Shader *shader, AOAsizei count, AOAbool
 
 void AOA::vertexAttribPointer (AOAuint index, AOAint size, AOAenum type, AOAboolean normalized, AOAsizei stride, const void *pointer)
 {
-  glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+  if(AOA::useBGFX()){
+    //Textures are always size 2, vertex are 2 or 3, and normal are always 3.
+    //Type for textures is always float, vertex either float or short,
+    //Normalized are always false
+
+  } else {
+    glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+  }
 }
 
 void AOA::enableVertexAttribArray (AOAuint index)
 {
-  glEnableVertexAttribArray(index);
+  if(AOA::useBGFX()){
+    //Could be Shader::ATTRIB_TEXCOORDS or Shader::ATTRIB_VERTEX or Shader::ATTRIB_NORMAL
+  } else {
+    glEnableVertexAttribArray(index);
+  }
 }
 
 void AOA::drawElements (AOAenum mode, AOAsizei count, AOAenum type, const AOAvoid* indices)
@@ -670,7 +740,19 @@ void AOA::compressedTexImage2D (AOAenum target, AOAint level, AOAenum internalfo
 
 void AOA::getIntegerv (AOAenum pname, AOAint* params)
 {
-  glGetIntegerv(pname, params);
+  if( useBGFX() ) {
+    switch (pname) {
+      case AOA_MAX_TEXTURE_SIZE:
+        *params = bgfx::getCaps()->limits.maxTextureSize;
+        break;
+        
+      default:
+        printf("Unsupported getIntegerv type!\n");
+        break;
+    }
+  } else {
+    glGetIntegerv(pname, params);
+  }
 }
 
 void AOA::getFloatv (AOAenum pname, AOAfloat* params)
@@ -887,7 +969,7 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
 
      //Initialize if needed
   if( !quad_inited ){
-    QuadVertexLayout::init();
+    V3T2VertexLayout::init();
     
     const bgfx::Memory *quad_vs_mem = bgfx::makeRef(metal_quad_vs, sizeof(metal_quad_vs));
     const bgfx::Memory *quad_fs_mem = bgfx::makeRef(metal_quad_fs, sizeof(metal_quad_fs));
@@ -947,11 +1029,11 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
   bgfx::TransientVertexBuffer tvb;
   bgfx::TransientIndexBuffer tib;
 
-  int numTVM = bgfx::getAvailTransientVertexBuffer(4, QuadVertexLayout::ms_layout);
+  int numTVM = bgfx::getAvailTransientVertexBuffer(4, V3T2VertexLayout::ms_layout);
   int numTIM = bgfx::getAvailTransientIndexBuffer(6);
   
-  if (bgfx::allocTransientBuffers(&tvb, QuadVertexLayout::ms_layout, 4, &tib, 6) ) {
-    QuadVertexLayout* vertex = (QuadVertexLayout*)tvb.data;
+  if (bgfx::allocTransientBuffers(&tvb, V3T2VertexLayout::ms_layout, 4, &tib, 6) ) {
+    V3T2VertexLayout* vertex = (V3T2VertexLayout*)tvb.data;
     
     vertex[0].m_x = vVertices[0];
     vertex[0].m_y = vVertices[1];

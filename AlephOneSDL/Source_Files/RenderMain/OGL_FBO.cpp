@@ -196,11 +196,11 @@ void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tle
   GLubyte indices[] =   {0,1,2,
     0,2,3};
   
-  glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
-  glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+  AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
   
-  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   
   AOA::pushGroupMarker(0, "DrawQuadWithActiveShader");
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);

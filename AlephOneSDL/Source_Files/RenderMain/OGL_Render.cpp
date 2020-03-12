@@ -2309,11 +2309,11 @@ bool OGL_RenderSprite(rectangle_definition& RenderRectangle)
   
 	// Location of data:
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, sizeof(ExtendedVertexData), ExtendedVertexList[0].TexCoord);
-    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, sizeof(ExtendedVertexData), ExtendedVertexList[0].TexCoord);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
     
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, sizeof(ExtendedVertexData), ExtendedVertexList[0].Vertex);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, sizeof(ExtendedVertexData), ExtendedVertexList[0].Vertex);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   } else {
     glVertexPointer(3,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].Vertex);
     glTexCoordPointer(2,GL_FLOAT,sizeof(ExtendedVertexData),ExtendedVertexList[0].TexCoord);
@@ -3334,8 +3334,8 @@ void OGL_RenderRect(float x, float y, float w, float h)
     if(lastShader) {
       lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
 
-      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+      AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     }
   } else {
       glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -3439,8 +3439,8 @@ void OGL_RenderLines(const std::vector<world_point2d>& points, float thickness)
     Shader* lastShader = lastEnabledShader();
     if (lastShader) {
       lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
-      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, &coords.front());
-      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, &coords.front());
+      AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     }
   } else {
     glVertexPointer(2, GL_FLOAT, 0, &coords.front());

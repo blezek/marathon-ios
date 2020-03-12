@@ -404,11 +404,11 @@ void FontSpecifier::OGL_Render(const char *Text)
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, 0, VertexCache);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, 0, VertexCache);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
-    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
 
   } else {
     glVertexPointer(2, GL_SHORT, 0, VertexCache);

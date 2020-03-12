@@ -34,6 +34,7 @@
 #include "OGL_Shader.h"
 #include "AlephOneHelper.h"
 #include "MatrixStack.hpp"
+#include "AlephOneAcceleration.hpp"
 
 #ifdef HAVE_OPENGL
 
@@ -114,8 +115,8 @@ bool OGL_DoFades(float Left, float Top, float Right, float Bottom)
     s->enable();
     s->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
     
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, Vertices[0]);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, Vertices[0]);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
 
   } else {
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);

@@ -774,14 +774,14 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
 			}
 		}
     if( useShaderRenderer() ){
-      glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
-      glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+      AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+      AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
       
-      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
-      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+      AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
       
-      glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
-      glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+      AOA::vertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
+      AOA::enableVertexAttribArray(Shader::ATTRIB_NORMAL);
     } else {
       glVertexPointer(3, GL_FLOAT, 0, vertex_array);
       glTexCoordPointer(2, GL_FLOAT, 0, texcoord_array);
@@ -950,14 +950,14 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
       }
       
       if( useShaderRenderer() ){
-        glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
-        glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+        AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+        AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
         
-        glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
-        glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+        AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+        AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
         
-        glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
-        glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+        AOA::vertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, MatrixStack::Instance()->normals());
+        AOA::enableVertexAttribArray(Shader::ATTRIB_NORMAL);
       } else {
         glVertexPointer(3, GL_FLOAT, 0, vertex_array);
         glEnableClientState(GL_VERTEX_ARRAY);
@@ -1155,8 +1155,8 @@ bool RenderModel(rectangle_definition& RenderRectangle, short Collection, short 
 	}
 
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, ModelPtr->Model.NormBase());
-    glEnableVertexAttribArray(Shader::ATTRIB_NORMAL);
+    AOA::vertexAttribPointer(Shader::ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, ModelPtr->Model.NormBase());
+    AOA::enableVertexAttribArray(Shader::ATTRIB_NORMAL);
   } else {
     glEnableClientState(GL_NORMAL_ARRAY);
     glNormalPointer(GL_FLOAT,0,ModelPtr->Model.NormBase());
@@ -1452,11 +1452,11 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
   
   
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
-    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
     
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   } else {
     glVertexPointer(2, GL_FLOAT, 0, texcoord_array);
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -1556,11 +1556,11 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     };*/
     
     if( useShaderRenderer() ){
-      glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
-      glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+      AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texcoord_array);
+      AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
       
-      glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
-      glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+      AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vertex_array);
+      AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     } else {
       glVertexPointer(2, GL_FLOAT, 0, vertex_array);
       glEnableClientState(GL_VERTEX_ARRAY);
@@ -1801,11 +1801,11 @@ void RenderRasterize_Shader::render_viewer_sprite(rectangle_definition& RenderRe
     GLfloat modelProjectionMatrix[16], textureMatrix[16];
     Shader *theShader = lastEnabledShader();
     
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, sizeof(ExtendedVertexData), ExtendedVertexList[0].TexCoord);
-    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, sizeof(ExtendedVertexData), ExtendedVertexList[0].TexCoord);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
     
-    glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, sizeof(ExtendedVertexData), ExtendedVertexList[0].Vertex);
-    glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, sizeof(ExtendedVertexData), ExtendedVertexList[0].Vertex);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
     
     MatrixStack::Instance()->getFloatvModelviewProjection(modelProjectionMatrix);
     MatrixStack::Instance()->getFloatv(MS_TEXTURE_MATRIX, textureMatrix);

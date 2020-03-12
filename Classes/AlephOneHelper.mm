@@ -531,7 +531,7 @@ bool playerInTerminal () {
 
 //Hide HUD for filming and screenshot purposes
 bool shouldHideHud () {
-  return 1;
+  return 0;
 }
 
 void cacheInputPreferences() {
