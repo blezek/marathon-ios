@@ -180,6 +180,7 @@ public:
   static void setPreferredViewPort(float x, float y, float w, float h);
   static void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
   static void DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom, void* theTextureHandle, uint viewID);
+  static void drawTriangleFan(GLenum mode, GLint first, GLsizei count);
 
   
 private:

@@ -152,6 +152,10 @@ public:
 	static void disable();
   static void drawDebugRect(); //DCW draws a debugging rect to middle of current binding.
   
+  int getNameIndex() {
+    return nameIndex;
+  }
+  
     //DCW: Needed for AOA OpenGL Only
   std::string _vert;
   std::string _frag;

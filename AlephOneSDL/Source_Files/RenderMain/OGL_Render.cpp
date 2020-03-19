@@ -1857,12 +1857,13 @@ static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 		// Switch off
 		glDisableClientState(GL_COLOR_ARRAY);
 	}
-	else
+  else {
 		// Go!
 		// Don't care about triangulation here, because the polygon never got split
     // DJB OpenGL GL_POLYGON
     glDrawArrays(GL_TRIANGLE_FAN,0,NumVertices);
-	
+  }
+    
 	// Do textured rendering
 	if (TMgr.IsGlowMapped())
 	{

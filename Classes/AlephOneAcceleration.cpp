@@ -87,6 +87,11 @@ bgfx::ProgramHandle quad_program;
 
 bool quad_inited, shaders_inited;
 
+const void *texturePointer, *vertexPointer, *normalPointer;
+int vertexPointerSize;
+int vertexType;
+int vertexStride;
+
 struct V3N3T2VertexLayout
 {
   float m_x; float m_y; float m_z; float m_normal[3]; float m_u; float m_v;
@@ -177,7 +182,7 @@ AOA* AOA::Instance()
 
 bool AOA::useBGFX()
 {
-  return 1;
+  return 0;
 }
 
 bool AOA::OGLIrrelevant(){
@@ -218,8 +223,13 @@ void AOA::initAllShaders() {
   if(shaders_inited) return;
   
   //Init layouts:
+  V3N3T2VertexLayout::init();
   V3T2VertexLayout::init();
-  
+  V2T2VertexLayout::init();
+  V3sT2VertexLayout::init();
+  V2sT2VertexLayout::init();
+
+
   activeProgram = -1;
   
   for( int i = 0; i < Shader::NUMBER_OF_SHADER_TYPES; ++i) {
@@ -343,7 +353,7 @@ void AOA::shaderSource (AOAuint shader, AOAsizei count, const AOAchar *const*str
 void AOA::useProgram (AOAuint program)
 {
   if ( AOA::useBGFX() ) {
-    printf ("Using program %d\n", program);
+    //printf ("Using program %d\n", program);
     if(program==4) {
       printf ("!!Using program %d\n", program);
     }
@@ -452,7 +462,7 @@ void AOA::uniform1i (AOAint name, Shader *shader, AOAint v0, void* alternateText
           printf("Alternate texture invalid!\n");
         }
       } else {
-        printf("Setting texture slot %d with unit: %d\n", v0, name);
+        //printf("Setting texture slot %d with unit: %d\n", v0, name);
         bgfx::setTexture(0, bgfxUniforms[name], texture_slots[v0].bgfxHandle);
         if ( !bgfx::isValid(texture_slots[v0].bgfxHandle) ) {
           printf("Texture invalid at slot %d!\n", v0);
@@ -478,7 +488,7 @@ void AOA::uniform1f(AOAint name, Shader *shader, AOAfloat v0)
           printf("Unable to create uniform %s\n", Shader::_uniform_names[name]);
         }
       }
-      
+      printf("setting float uniform %s\n", Shader::_uniform_names[name]);
       bgfx::setUniform(bgfxUniforms[name], &v0, 1);
       uniformSet[name] = 1;
     }
@@ -515,6 +525,26 @@ void AOA::vertexAttribPointer (AOAuint index, AOAint size, AOAenum type, AOAbool
     //Type for textures is always float, vertex either float or short,
     //Normalized are always false
 
+    switch (index) {
+      case Shader::ATTRIB_TEXCOORDS:
+        texturePointer=pointer;
+        break;
+        
+      case Shader::ATTRIB_VERTEX:
+        vertexPointerSize=size;
+        vertexPointer=pointer;
+        vertexType=type;
+        vertexStride=stride;
+        break;
+      case Shader::ATTRIB_NORMAL:
+        normalPointer=pointer;
+        break;
+        
+      default:
+        break;
+    }
+       
+    
   } else {
     glVertexAttribPointer(index, size, type, normalized, stride, pointer);
   }
@@ -570,7 +600,7 @@ void AOA::activeTexture (AOAuint unit)
 {
   if( AOA::useBGFX() ) {
     activeTextureUnit = unit;
-    printf("Setting texture unit: %d\n", (int)unit);
+    //printf("Setting texture unit: %d\n", (int)unit);
   } else {
     switch (unit) {
       case(AOA_TEXTURE0):
@@ -949,7 +979,7 @@ void AOA::setPreferredViewPort(float x, float y, float w, float h)
   portW = w;
   portH = h;
   
-  printf("SETTUBG bgfx view %f %f %f %f\n", portX, portY, portW, portH);
+  printf("SETTING bgfx view %f %f %f %f\n", portX, portY, portW, portH);
 }
 
 void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom, void* theTextureHandle, uint viewID)
@@ -961,7 +991,6 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
   }
   
   AOA::pushGroupMarker(0, "DrawQuadUsingTexture");
-  printf("DrawQuadUsingTexture!\n");
   
   bgfx::setViewRect(viewID, portX, portY, portW, portH); //This might need to get moved to DrawQuad...
   //bgfx::setViewRect(1, portX, portY, portW, portH);
@@ -1068,12 +1097,6 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
     indices[4] = 3;
     indices[5] = 2;
     
-    /*indices[0] = 0;
-    indices[1] = 1;
-    indices[2] = 2;
-    indices[3] = 0;
-    indices[4] = 2;
-    indices[5] = 3;*/
     
     bgfx::setIndexBuffer(&tib);
     bgfx::setVertexBuffer(0, &tvb);
@@ -1100,7 +1123,7 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
     
     AOA::uniform1i (activeTextureUnit, NULL, texture_units[activeTextureUnit].textureID, texture_units[activeTextureUnit].alternateTexture);
     
-    printf("Submit quad with viewid %d!\n", viewID);
+    //printf("Submit quad with viewid %d!\n", viewID);
     
     bgfx::submit(viewID, quad_program);
     drawsThisFrame++;
@@ -1111,10 +1134,108 @@ void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, 
 void AOA::DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
   AOA::pushGroupMarker(0, "DrawQuad");
-  printf("DrawQuad!\n");
+  //printf("DrawQuad!\n");
 
   if (texture_slots[boundTextureSlotIndex].initialized) {
     AOA::DrawQuadUsingTexture(x, y, w, h, tleft, ttop, tright, tbottom, &(texture_slots[boundTextureSlotIndex].bgfxHandle), 0);
   }
 }
 
+
+
+void AOA::drawTriangleFan(GLenum mode, GLint first, GLsizei count)
+{
+  if( useBGFX() ) {
+    
+    AOA::pushGroupMarker(0, "drawTriangleFan");
+    
+    Shader* lastShader = lastEnabledShader();
+    
+    if(!lastShader) {
+      printf("No shader enabled for drawTriangleFan!\n");
+      return;
+    }
+    
+    if( count != 4 ) {
+      printf("Sorry, only 4 vertices supported for drawTriangleFan!\n");
+      return;
+    }
+    
+    if( !texturePointer || !vertexPointer || vertexPointerSize != 3 || vertexType != GL_FLOAT) {
+      printf("Sorry, format not supported for drawTriangleFan!\n");
+      return;
+    }
+    
+    bgfx::TransientVertexBuffer tvb;
+    bgfx::TransientIndexBuffer tib;
+    
+    int numTVM = bgfx::getAvailTransientVertexBuffer(4, V3T2VertexLayout::ms_layout);
+    int numTIM = bgfx::getAvailTransientIndexBuffer(6);
+    
+    if (bgfx::allocTransientBuffers(&tvb, V3T2VertexLayout::ms_layout, 4, &tib, 6) ) {
+      V3T2VertexLayout* vertex = (V3T2VertexLayout*)tvb.data;
+      
+      float *vertices = (float*)vertexPointer;
+      float *texCoords = (float*)texturePointer;
+      int stride = 0;
+      vertex[0].m_x = vertices[0];
+      vertex[0].m_y = vertices[1];
+      vertex[0].m_z = vertices[2];
+      vertex[0].m_u = texCoords[0];
+      vertex[0].m_v = texCoords[1];
+
+      stride = vertexStride;
+      vertex[1].m_x = vertices[stride+ 3];
+      vertex[1].m_y = vertices[stride+ 4];
+      vertex[1].m_z = vertices[stride+ 5];
+      vertex[1].m_u = texCoords[2];
+      vertex[1].m_v = texCoords[3];
+
+      stride = 2*vertexStride;
+      vertex[2].m_x = vertices[stride+ 6];
+      vertex[2].m_y = vertices[stride+ 7];
+      vertex[2].m_z = vertices[stride+ 8];
+      vertex[2].m_u = texCoords[4];
+      vertex[2].m_v = texCoords[5];
+      
+      stride = 3*vertexStride;
+      vertex[3].m_x = vertices[stride+ 9];
+      vertex[3].m_y = vertices[stride+ 10];
+      vertex[3].m_z = vertices[stride+ 11];
+      vertex[3].m_u = texCoords[6];
+      vertex[3].m_v = texCoords[7];
+
+      uint16_t* indices = (uint16_t*)tib.data;
+
+      indices[0] = 0;
+      indices[1] = 2;
+      indices[2] = 1;
+      indices[3] = 0;
+      indices[4] = 3;
+      indices[5] = 2;
+      
+      
+      bgfx::setIndexBuffer(&tib);
+      bgfx::setVertexBuffer(0, &tvb);
+      
+      bgfx::setState( 0
+                     | BGFX_STATE_WRITE_RGB
+                     | BGFX_STATE_WRITE_A
+                     | BGFX_STATE_WRITE_Z
+                     | BGFX_STATE_DEPTH_TEST_ALWAYS
+                     | BGFX_STATE_BLEND_ALPHA
+                     );
+      
+      AOA::uniform1i (activeTextureUnit, NULL, texture_units[activeTextureUnit].textureID, texture_units[activeTextureUnit].alternateTexture);
+    
+      
+      bgfx::submit(0, bgfxPrograms[lastShader->getNameIndex()]);
+      drawsThisFrame++;
+      AOA::resetUniforms();
+    }
+    
+  } else {
+    glDrawArrays(mode, first, count);
+  }
+  
+}

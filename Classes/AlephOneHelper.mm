@@ -569,7 +569,7 @@ bool useShaderPostProcessing() {
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
-  return 1;
+  return 0;
 }
 
 bool shouldAutoBot() {

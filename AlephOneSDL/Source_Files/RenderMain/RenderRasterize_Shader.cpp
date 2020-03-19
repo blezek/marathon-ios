@@ -789,7 +789,7 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
     
     Shader* lastShader = lastEnabledShader();
     if (lastShader) {
-      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+      GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];
       MatrixStack::Instance()->getFloatv(MS_MODELVIEW, modelMatrix);
       MatrixStack::Instance()->getFloatv(MS_PROJECTION, projectionMatrix);
       MatrixStack::Instance()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
@@ -808,7 +808,7 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
     }
     
     AOA::pushGroupMarker(0, "render_node_floor_or_ceiling");
-		glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
+		AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, vertex_count);
     glPopGroupMarkerEXT();
 
 		if (setupGlow(view, TMgr, wobble, intensity, weaponFlare, selfLuminosity, offset, renderStep)) {
@@ -974,7 +974,7 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
         MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
         MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
         MatrixStack::Instance()->getPlanev(6, media6);
-
+        
         lastShader->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
         lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
         lastShader->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
@@ -986,7 +986,8 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
       }
          
       AOA::pushGroupMarker(0, "render_node_side");
-      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, 4);
+      //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
       glPopGroupMarkerEXT();
 			/*(GLfloat vertex_array[12];
 			GLfloat texcoord_array[8];
