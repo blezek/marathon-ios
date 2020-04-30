@@ -61,6 +61,7 @@
 - (IBAction)doPreviousWeapon:(id)sender;
 - (IBAction)inventoryDown:(id)sender;
 - (IBAction)inventoryUp:(id)sender;
+- (IBAction)doAction:(id)sender;
 - (IBAction)actionDown:(id)sender;
 - (IBAction)actionUp:(id)sender;
 - (IBAction)forwardDown:(id)sender;

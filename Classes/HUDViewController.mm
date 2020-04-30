@@ -9,6 +9,7 @@
 #import "HUDViewController.h"
 
 #import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
 
 extern "C" { 
 #include "SDL_keyboard_c.h"
@@ -141,6 +142,17 @@ extern "C" {
 }
 - (IBAction)inventoryUp:(id)sender {
   setKey(inventoryKey, 0);
+}
+- (IBAction)doAction:(id)sender {
+    //Pause gyro if in refuel.
+  if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+    [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+    
+    [self performSelector:@selector(actionDown:) withObject:self afterDelay:0.05];
+  } else {
+    [self actionDown:self];
+  }
+  [self performSelector:@selector(actionUp:) withObject:self afterDelay:0.15];
 }
 - (IBAction)actionDown:(id)sender {
   setKey(actionKey, 1);
