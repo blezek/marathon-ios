@@ -1067,7 +1067,7 @@ bool OGL_SetView(view_data &View)
 	if (!useShaderRenderer()) glLoadIdentity();
   MatrixStack::Instance()->loadIdentity();
 	//glGetFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
-  MatrixStack::Instance()->getFloatv(GL_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
+  MatrixStack::Instance()->getFloatv(MS_MODELVIEW_MATRIX,CenteredWorld_2_MaraEye);
  
 	// Do rotation first:
 	const double TrigMagReciprocal = 1/double(TRIG_MAGNITUDE);
@@ -3217,7 +3217,16 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 {
 	if (!OGL_IsActive()) return false;
   AOA::pushGroupMarker(0, "Render Text");
+  
+  Shader* previousShader = NULL;
+  int previousMode;
+  if(useShaderRenderer()) {
+    previousShader = lastEnabledShader();
+    previousMode = MatrixStack::Instance()->currentActiveMode();
+    MatrixStack::Instance()->pushMatrix();
+  }
 
+  
 	// Create display list for the current text string;
 	// use the "standard" text-font display list (display lists can be nested)
   // DJB Unused
@@ -3238,7 +3247,7 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   }
   
-	GetOnScreenFont().OGL_Render(Text);
+  GetOnScreenFont().OGL_Render(Text);
 	//glEndList();
 	
 	// Place the text in the foreground of the display
@@ -3314,8 +3323,16 @@ bool OGL_RenderText(short BaseX, short BaseY, const char *Text, unsigned char r,
 		
 	// Clean up
 	//glDeleteLists(TextDisplayList,1);
-	if (!useShaderRenderer()) glPopMatrix();
-  MatrixStack::Instance()->popMatrix();
+  if (!useShaderRenderer()) {
+    glPopMatrix();
+  } else {
+    MatrixStack::Instance()->popMatrix();
+    MatrixStack::Instance()->matrixMode(previousMode);
+    MatrixStack::Instance()->popMatrix(); //Lets not hose the active matrix for others, ok?
+    if(previousShader) {
+      previousShader->enable();
+    }
+  }
   
   glPopGroupMarkerEXT();
 

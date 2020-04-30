@@ -44,6 +44,7 @@
 @synthesize hiresTexturesLabel, hiresTextures;
 @synthesize settingPrefsView;
 @synthesize bloom;
+@synthesize extraFOV;
 @synthesize rendererLabel;
 
 - (IBAction)closePreferences:(id)sender {
@@ -65,7 +66,7 @@
   }
   
   [defaults setBool:[self.alwaysRun isSelected] forKey:kAlwaysRun];
-  [defaults setBool:[self.smoothMouselook isSelected] forKey:kSmoothMouselook];
+  if(self.smoothMouselook) {[defaults setBool:[self.smoothMouselook isSelected] forKey:kSmoothMouselook];}
   [defaults setBool:[self.onScreenTrigger isSelected] forKey:kOnScreenTrigger];
   [defaults setBool:[self.hiLowTapsAltFire isSelected] forKey:kHiLowTapsAltFire];
   [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
@@ -117,7 +118,8 @@
   }
 
   [defaults setBool:[self.bloom isSelected] forKey:kUseBloom];
-  
+  [defaults setBool:[self.extraFOV isSelected] forKey:kUseExtraFOV];
+
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[GameViewController sharedInstance] updateReticule:-1];
@@ -160,7 +162,7 @@
   [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
   
   [self.alwaysRun setSelected:[defaults boolForKey:kAlwaysRun]];
-  [self.smoothMouselook setSelected:[defaults boolForKey:kSmoothMouselook]];
+  if(self.smoothMouselook) {[self.smoothMouselook setSelected:[defaults boolForKey:kSmoothMouselook]];}
   [self.onScreenTrigger setSelected:[defaults boolForKey:kOnScreenTrigger]];
   [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
@@ -168,6 +170,8 @@
   
   [self.bloom setHidden:!useShaderRenderer()];
   [self.bloom setSelected:[defaults boolForKey:kUseBloom]];
+  
+  [self.extraFOV setSelected:[defaults boolForKey:kUseExtraFOV]];
   
   if(useClassicVisuals()) {
     [rendererLabel setText:@"Visuals: Classic"];

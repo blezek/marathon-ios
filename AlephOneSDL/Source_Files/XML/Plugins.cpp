@@ -80,7 +80,11 @@ bool Plugin::allowed() const {
 bool Plugin::valid() const {
 	if (!enabled)
 		return false;
-	  
+  
+  if( !survivalMode() && strcmp(name.c_str(), "Parasite Survival") == 0 ) {
+    return false;
+  }
+  
   if(useClassicVisuals()) {
     if(
         //M1

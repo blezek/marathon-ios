@@ -32,6 +32,7 @@
   UILabel *filmsDisabled;
   UIView *screenView;
   UIButton *bloom;
+  UIButton *extraFOV;
   UILabel *rendererLabel;
 }
 
@@ -58,6 +59,7 @@
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
 @property (nonatomic, retain) IBOutlet UIButton *bloom;
+@property (nonatomic, retain) IBOutlet UIButton *extraFOV;
 @property (nonatomic, retain) IBOutlet UILabel *rendererLabel;
 
 

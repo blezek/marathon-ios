@@ -51,6 +51,7 @@ extern void helperPlayerKilled();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool getLocalPlayer ();
+extern float extraFieldOfView ();
 extern bool headBelowMedia ();
 extern bool playerInTerminal ();
 extern void cacheInputPreferences();
@@ -61,6 +62,8 @@ extern bool useClassicVisuals ();
 extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();
+extern bool usingA1DEBUG ();
+extern bool survivalMode ();
 extern bool shouldHideHud ();
 extern bool shouldAllowDoubleClick ();
 

@@ -131,11 +131,14 @@ void MatrixStack::getFloatv(GLenum pname, GLfloat* params){
   GLfloat* m = glm::value_ptr(modelviewStack[modelviewIndex]); //Default
   
   switch (pname) {
-    case(MS_PROJECTION):
-      m = glm::value_ptr(projectionStack[projectionIndex]);
+      case(MS_MODELVIEW):
+        //Default (See above)
+      break;
+      case(MS_PROJECTION):
+        m = glm::value_ptr(projectionStack[projectionIndex]);
       break;
       case(MS_TEXTURE) :
-      m = glm::value_ptr(textureStack[textureIndex]);
+        m = glm::value_ptr(textureStack[textureIndex]);
       break;
     
     default:
@@ -155,6 +158,9 @@ void MatrixStack::getFloatvInverse(GLenum pname, GLfloat* params){
   glm::mat4 inverse = glm::affineInverse(modelviewStack[modelviewIndex]); //Default
   
   switch (pname) {
+    case(MS_MODELVIEW):
+      //Default (See above)
+    break;
     case(MS_PROJECTION):
       inverse = glm::affineInverse(projectionStack[projectionIndex]);
       break;

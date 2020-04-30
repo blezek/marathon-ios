@@ -615,7 +615,7 @@ static void update_view_data(
 
 	// LP change: doing all the FOV changes here:
 	View_AdjustFOV(view->field_of_view,view->target_field_of_view);
-	
+  
 	if (view->effect==NONE)
 	{
 		view->world_to_screen_x= view->real_world_to_screen_x;

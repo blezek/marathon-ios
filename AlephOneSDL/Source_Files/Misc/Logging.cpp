@@ -36,6 +36,8 @@
 #include "FileHandler.h"
 #include "InfoTree.h"
 
+#include "AlephOneHelper.h"
+
 #ifndef NO_STD_NAMESPACE
 using std::vector;
 using std::string;
@@ -150,7 +152,8 @@ void
 TopLevelLogger::logMessageV(const char* inDomain, int inLevel, const char* inFile, int inLine, const char* inMessage, va_list inArgs) {
     // Obviously eventually this will be settable more dynamically...
     // Also eventually some logged messages could be posted in a dialog in addition to appended to the file.
-    if(sOutputFile != NULL && inLevel < sLoggingThreshhold) {
+    // DCW: if sOutputFile is null, we still want stderr for debugging!
+    if( (sOutputFile != NULL || usingA1DEBUG() ) && inLevel < sLoggingThreshhold) {
         char	stringBuffer[kStringBufferSize];
         size_t firstDepthToPrint = mMostRecentCommonStackDepth;
     /*
@@ -166,7 +169,7 @@ TopLevelLogger::logMessageV(const char* inDomain, int inLevel, const char* inFil
             theString += "while ";
             theString += mContextStack[depth];
             
-            fprintf(sOutputFile, "%s\n", theString.c_str());
+            if(sOutputFile) fprintf(sOutputFile, "%s\n", theString.c_str());
 			fprintf(stderr, "%s\n", theString.c_str());
         }
         
@@ -183,10 +186,10 @@ TopLevelLogger::logMessageV(const char* inDomain, int inLevel, const char* inFil
         else
             theString += "\n";
         
-        fprintf(sOutputFile, "%s", theString.c_str());
+        if(sOutputFile) fprintf(sOutputFile, "%s", theString.c_str());
 		fprintf(stderr, "%s", theString.c_str());
         
-        if(sFlushOutput)
+        if(sFlushOutput && sOutputFile)
                 fflush(sOutputFile);
         
         mMostRecentCommonStackDepth = mContextStack.size();

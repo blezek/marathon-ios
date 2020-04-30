@@ -66,7 +66,7 @@ framebuffer_slot framebuffers[AOA_MAX_FRAMEBUFFERS];
 AOAint boundFrameBuffer;
 
 bool frameBufferReadyToDraw;
-AOAint frameBufferToDraw;
+AOAint frameBufferToDraw = -1;
 
 int drawsThisFrame;
 
@@ -887,10 +887,6 @@ void AOA::prepareToDrawFramebuffer(AOAuint frameBuffer)
   if( useBGFX() ) {
     //DCW SHIT TEST. This will break until I fix it!  frameBufferReadyToDraw = true;
     frameBufferToDraw = frameBuffer;
-    //This is just for testing! ... it would normally be drawn by DrawQuadWithActiveShader in the swapper.
-    //AOA::pushGroupMarker(0, "TEMPORARY drawFramebuffer test");
-    //bgfx::setViewMode(0);
-    //AOA::drawFramebuffer(frameBuffer);
   } else {
     AOA::pushGroupMarker(0, "FBO Binding texture");
     
@@ -907,14 +903,16 @@ void AOA::prepareToDrawFramebuffer(AOAuint frameBuffer)
 
 void AOA::drawFramebuffer(AOAuint frameBuffer)
 {
-  
   AOA::pushGroupMarker(0, "drawFramebuffer");
-  
-  //bgfx::TextureHandle theTexture = bgfx::getTexture(framebuffers[frameBuffer].bgfxHandle, 0);
-  bgfx::TextureHandle theTexture = framebuffers[frameBuffer].textures[0];
-  
-  AOA::DrawQuadUsingTexture(0, 0, framebuffers[frameBuffer].w, framebuffers[frameBuffer].h , 0, 0, 1, 1, &theTexture, 0);
-
+    
+  if( useBGFX()) {
+    //bgfx::TextureHandle theTexture = bgfx::getTexture(framebuffers[frameBuffer].bgfxHandle, 0);
+    bgfx::TextureHandle theTexture = framebuffers[frameBuffer].textures[0];
+    
+    AOA::DrawQuadUsingTexture(0, 0, framebuffers[frameBuffer].w, framebuffers[frameBuffer].h , 0, 0, 1, 1, &theTexture, 0);
+  } else {
+    AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, 4);
+  }
 }
 
 void AOA::deleteFramebuffer(AOAuint frameBuffer)
@@ -984,11 +982,11 @@ void AOA::setPreferredViewPort(float x, float y, float w, float h)
 
 void AOA::DrawQuadUsingTexture(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom, void* theTextureHandle, uint viewID)
 {
-  if(frameBufferReadyToDraw) {
+  /*if(frameBufferReadyToDraw) {
     AOA::pushGroupMarker(0, "FrameBuffer needs drawing");
     frameBufferReadyToDraw = false;
     AOA::drawFramebuffer(frameBufferToDraw);
-  }
+  }*/
   
   AOA::pushGroupMarker(0, "DrawQuadUsingTexture");
   
@@ -1227,7 +1225,6 @@ void AOA::drawTriangleFan(GLenum mode, GLint first, GLsizei count)
                      );
       
       AOA::uniform1i (activeTextureUnit, NULL, texture_units[activeTextureUnit].textureID, texture_units[activeTextureUnit].alternateTexture);
-    
       
       bgfx::submit(0, bgfxPrograms[lastShader->getNameIndex()]);
       drawsThisFrame++;

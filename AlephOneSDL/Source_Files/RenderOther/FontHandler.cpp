@@ -447,8 +447,7 @@ void FontSpecifier::OGL_Render(const char *Text)
     if( !useShaderRenderer() ) glTranslatef(WidthCache[c]-PadCache,0,0);
     MatrixStack::Instance()->translatef(WidthCache[c]-PadCache,0,0);
 
-    
-		//glCallList(DispList+c);
+    //glCallList(DispList+c);
 	}
 	
   

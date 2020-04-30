@@ -50,6 +50,7 @@
 #define kUseClassicSprites @"useClassicSprites"
 #define kUseTransparentLiquids @"useTransparentLiquids"
 #define kUseBloom @"useBloom"
+#define kUseExtraFOV @"useExtraFOV"
 
 
 // Tap to shoot timeout in seconds

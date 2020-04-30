@@ -161,6 +161,7 @@ void FBO::draw() {
     
     //DCW if there is a shader already active, draw the quad using that. Otherwise, draw with the default shader.
   if (lastEnabledShader()) {
+    //DCW ack! This might never get called!
     DrawQuadWithActiveShader(0, 0, _w, _h, 0, _h, _w, 0);
   } else {
     OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW; uses normalized texture coordinates
@@ -195,6 +196,7 @@ void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tle
   
   GLubyte indices[] =   {0,1,2,
     0,2,3};
+    
   
   AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
   AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
@@ -203,7 +205,10 @@ void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tle
   AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   
   AOA::pushGroupMarker(0, "DrawQuadWithActiveShader");
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  
+  AOA::drawFramebuffer(_fbo);
+  //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  
   glPopGroupMarkerEXT();
   
   glDisableVertexAttribArray(0);

@@ -42,6 +42,7 @@ Dec 17, 2000 (Loren Petrich:
 #include "ViewControl.h"
 #include "InfoTree.h"
 
+#include "AlephOneHelper.h"
 
 struct view_settings_definition {
 	bool MapActive;
@@ -137,16 +138,16 @@ bool View_AdjustFOV(float& FOV, float FOV_Target)
 	bool Changed = false;
 	if (FOV_ChangeRate < 0) FOV_ChangeRate *= -1;
 	
-	if (FOV > FOV_Target)
+	if (FOV > FOV_Target + extraFieldOfView())
 	{
 		FOV -= FOV_ChangeRate;
-		FOV = MAX(FOV,FOV_Target);
+		FOV = MAX(FOV,FOV_Target + extraFieldOfView() );
 		Changed = true;
 	}
-	else if (FOV < FOV_Target)
+	else if (FOV < FOV_Target + extraFieldOfView())
 	{
 		FOV += FOV_ChangeRate;
-		FOV = MIN(FOV,FOV_Target);
+		FOV = MIN(FOV,FOV_Target + extraFieldOfView());
 		Changed = true;
 	}
 	

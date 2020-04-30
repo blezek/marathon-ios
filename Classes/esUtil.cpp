@@ -191,10 +191,7 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   
     //Initialize if needed
   int result = InitES2Quads();
-  
-  GLfloat stack[16];
-  MatrixStack::Instance()->getFloatv(MS_MODELVIEW, stack);
-  
+    
   //printf("Drawing Quad. x:%f, y:%f  w:%f, h:%f\n", x,y,w,h);
   GLint viewport[4];
   glGetIntegerv( GL_VIEWPORT, viewport );

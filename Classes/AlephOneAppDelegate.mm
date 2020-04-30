@@ -179,6 +179,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"NO", kUseClassicSprites,
                                @"YES", kUseTransparentLiquids,
                                @"NO", kUseBloom,
+                               @"NO", kUseExtraFOV,
                                nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];  

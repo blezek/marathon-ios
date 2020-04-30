@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,6 +19,7 @@
                 <outlet property="brightness" destination="38" id="39"/>
                 <outlet property="crosshairs" destination="77" id="79"/>
                 <outlet property="dPadAction" destination="yOy-kl-nbb" id="6cg-St-SIR"/>
+                <outlet property="extraFOV" destination="yGO-Kr-vMZ" id="bNA-hz-NBg"/>
                 <outlet property="gyroAiming" destination="K8i-db-PC7" id="7cY-hL-vAK"/>
                 <outlet property="hSensitivity" destination="22" id="28"/>
                 <outlet property="hiLowTapsAltFire" destination="hIT-bR-PuV" id="0bf-t4-JWb"/>
@@ -30,7 +31,6 @@
                 <outlet property="rendererLabel" destination="iC7-eU-NHV" id="wgR-ts-7qc"/>
                 <outlet property="settingPrefsView" destination="86" id="89"/>
                 <outlet property="sfxVolume" destination="50" id="51"/>
-                <outlet property="smoothMouselook" destination="yGO-Kr-vMZ" id="QbI-i9-W2k"/>
                 <outlet property="tapShoots" destination="74" id="76"/>
                 <outlet property="threeDTouchFires" destination="TD4-hI-qWz" id="VQE-AH-VKL"/>
                 <outlet property="threeDTouchFiresLabel" destination="cZQ-IJ-yPA" id="q1s-1l-38p"/>
@@ -419,14 +419,14 @@
                                 <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="GWw-6Y-3a7"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Smooth Aiming:" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrZ-om-S6a" userLabel="Smooth Mouselook">
-                            <rect key="frame" x="95" y="90" width="102" height="23"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Wider FOV:" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrZ-om-S6a" userLabel="Wider FOV">
+                            <rect key="frame" x="91" y="90" width="111" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="11"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGO-Kr-vMZ" userLabel="Smooth Mouselook">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGO-Kr-vMZ" userLabel="Wider FOV">
                             <rect key="frame" x="129" y="110" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

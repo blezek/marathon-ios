@@ -58,6 +58,7 @@ bool shouldUseClassicTextures;
 bool shouldUseClassicSprites;
 bool shouldUseTransparentLiquids;
 bool shouldUseBloom;
+bool shouldUseExtraFOV;
 
 int screenLongDimension;
 int screenShortDimension;
@@ -516,6 +517,10 @@ bool getLocalPlayer () {
   return local_player;
 }
 
+float extraFieldOfView () {
+  return shouldUseExtraFOV ? 20 : 0;
+}
+
 bool headBelowMedia () {
   
   if( !local_player ) {
@@ -554,6 +559,7 @@ void cacheRendererPreferences() {
 void cacheRendererQualityPreferences() {
   shouldUseBloom = [[NSUserDefaults standardUserDefaults] boolForKey:kUseBloom];
   shouldUseTransparentLiquids = [[NSUserDefaults standardUserDefaults] boolForKey:kUseTransparentLiquids];
+  shouldUseExtraFOV = [[NSUserDefaults standardUserDefaults] boolForKey:kUseExtraFOV];
 }
 
 bool useClassicVisuals() {
@@ -569,6 +575,18 @@ bool useShaderPostProcessing() {
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
+  return 0;
+}
+
+bool usingA1DEBUG () {
+  #if defined(A1DEBUG)
+    return 1;
+  #endif
+  
+  return 0;
+}
+
+bool survivalMode () {
   return 0;
 }
 
