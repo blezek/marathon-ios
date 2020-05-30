@@ -91,6 +91,8 @@ bool Plugin::valid() const {
         strcmp(name.c_str(), "TTEP v7") == 0 ||
         strcmp(name.c_str(), "TTEP") == 0 ||
         strcmp(name.c_str(), "Updated Starscape") == 0 ||
+        strcmp(name.c_str(), "M1 Hd Weapon Pack") == 0 ||
+       
         //M2
         strcmp(name.c_str(), "HD Monsters") == 0 ||
         strcmp(name.c_str(), "HD Textures") == 0 ||

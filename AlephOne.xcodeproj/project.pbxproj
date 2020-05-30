@@ -76,15 +76,6 @@
 		512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C051E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
-		512F9CD7240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD4240D9DF300AB10B9 /* libbimgDebug.a */; };
-		512F9CD8240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD4240D9DF300AB10B9 /* libbimgDebug.a */; };
-		512F9CD9240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD4240D9DF300AB10B9 /* libbimgDebug.a */; };
-		512F9CDA240D9DF400AB10B9 /* libbxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD5240D9DF300AB10B9 /* libbxDebug.a */; };
-		512F9CDB240D9DF400AB10B9 /* libbxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD5240D9DF300AB10B9 /* libbxDebug.a */; };
-		512F9CDC240D9DF400AB10B9 /* libbxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CD5240D9DF300AB10B9 /* libbxDebug.a */; };
-		512F9CE1240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CE0240DA06500AB10B9 /* libbgfxDebug.a */; };
-		512F9CE2240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CE0240DA06500AB10B9 /* libbgfxDebug.a */; };
-		512F9CE3240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F9CE0240DA06500AB10B9 /* libbgfxDebug.a */; };
 		51324A191EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
 		51324A1A1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
 		51324A1B1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */; };
@@ -311,18 +302,6 @@
 		517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
 		517D258823FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
 		517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D258623FFA8A900B0878E /* MetalKit.framework */; };
-		517D25D72400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
-		517D25D82400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
-		517D25D92400579600B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D42400579600B0878E /* libbxRelease.a */; };
-		517D25DA2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
-		517D25DB2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
-		517D25DC2400579600B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25D52400579600B0878E /* libbimgRelease.a */; };
-		517D25EF240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
-		517D25F0240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
-		517D25F1240057C100B0878E /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EC240057C000B0878E /* libbxRelease.a */; };
-		517D25F5240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
-		517D25F6240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
-		517D25F7240057C100B0878E /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517D25EE240057C100B0878E /* libbimgRelease.a */; };
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
 		51826F7C21A24B3A00103A6B /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 51826F7B21A24B3A00103A6B /* About.png */; };
@@ -350,6 +329,15 @@
 		518F64BA2304B3B60016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B92304B3B50016F33B /* PauseDone.png */; };
 		518F64BC2304B3CC0016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BB2304B3CC0016F33B /* PauseDone.png */; };
 		518F64BE2304B3E20016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BD2304B3E10016F33B /* PauseDone.png */; };
+		51919B08245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
+		51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
+		51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
+		51919B0C245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
+		51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
+		51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
+		51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
+		51919B11245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
+		51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
 		5195D5C72396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
 		5195D5C82396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
 		5195D5C92396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
@@ -2156,9 +2144,6 @@
 		5104204D1EAAF34B00129201 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = submodules/Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
 		512E0C031E70C85D000B0C98 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		512F9CD4240D9DF300AB10B9 /* libbimgDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgDebug.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbimgDebug.a"; sourceTree = SOURCE_ROOT; };
-		512F9CD5240D9DF300AB10B9 /* libbxDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxDebug.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbxDebug.a"; sourceTree = SOURCE_ROOT; };
-		512F9CE0240DA06500AB10B9 /* libbgfxDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxDebug.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin/libbgfxDebug.a"; sourceTree = SOURCE_ROOT; };
 		51324A181EAAE2BA00BA8D8F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
 		51324A1C1EAAE2CC00BA8D8F /* SDL_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_image.h; sourceTree = "<group>"; };
 		51324A1F1EAAE33E00BA8D8F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavdevice.a"; sourceTree = SOURCE_ROOT; };
@@ -2427,10 +2412,6 @@
 		517D1A2323FC6F6B00B0878E /* libSDL2.intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.intel.a; path = "submodules/Libraries/SDL2-2.0.10/libSDL2.intel.a"; sourceTree = "<group>"; };
 		517D1A2723FC6FDD00B0878E /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "submodules/Libraries/SDL2-2.0.10/libSDL2.a"; sourceTree = "<group>"; };
 		517D258623FFA8A900B0878E /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
-		517D25D42400579600B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
-		517D25D52400579600B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
-		517D25EC240057C000B0878E /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin/libbxRelease.a"; sourceTree = SOURCE_ROOT; };
-		517D25EE240057C100B0878E /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = "submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin/libbimgRelease.a"; sourceTree = SOURCE_ROOT; };
 		517FB48F1F89C379009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4931F89C408009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		51826F7B21A24B3A00103A6B /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
@@ -2455,6 +2436,9 @@
 		518F64B92304B3B50016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BB2304B3CC0016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BD2304B3E10016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
+		51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbgfxRelease.a; sourceTree = SOURCE_ROOT; };
+		51919B0B245C8BA200DFB6AC /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbimgRelease.a; sourceTree = SOURCE_ROOT; };
+		51919B0F245C8BA700DFB6AC /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbxRelease.a; sourceTree = SOURCE_ROOT; };
 		5195D5C52396B47A0078A375 /* BloomOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOff.png; sourceTree = "<group>"; };
 		5195D5C62396B47C0078A375 /* BloomOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOn.png; sourceTree = "<group>"; };
 		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
@@ -3552,21 +3536,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2B1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
+				51919B08245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
+				51919B0C245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
 				51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
-				517D25DA2400579600B0878E /* libbimgRelease.a in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
-				512F9CD7240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
-				512F9CE1240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
 				A85E684B11CB173A00D0FAEF /* UIKit.framework in Frameworks */,
 				A85E684C11CB173A00D0FAEF /* OpenGLES.framework in Frameworks */,
 				514D348E1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
 				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
-				517D25F5240057C100B0878E /* libbimgRelease.a in Frameworks */,
+				51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
@@ -3580,7 +3563,6 @@
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
 				517D1A2823FC6FDD00B0878E /* libSDL2.a in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
-				517D25D72400579600B0878E /* libbxRelease.a in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
 				51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
@@ -3593,7 +3575,6 @@
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
-				517D25EF240057C100B0878E /* libbxRelease.a in Frameworks */,
 				517D1A2423FC6F6C00B0878E /* libSDL2.intel.a in Frameworks */,
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A371EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
@@ -3601,7 +3582,6 @@
 				51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208C1EAAF43400129201 /* boost.framework in Frameworks */,
 				51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
-				512F9CDA240D9DF400AB10B9 /* libbxDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3616,30 +3596,24 @@
 				51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				A88121E412C7816300A1A08E /* AVFoundation.framework in Frameworks */,
 				51324A1A1EAAE2BA00BA8D8F /* libSDL2_image.a in Frameworks */,
-				517D25D82400579600B0878E /* libbxRelease.a in Frameworks */,
 				514D349F1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51324AAC1EAAE3C400BA8D8F /* libSDL2_net.a in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
-				512F9CDB240D9DF400AB10B9 /* libbxDebug.a in Frameworks */,
 				517D258823FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
 				51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
-				517D25F0240057C100B0878E /* libbxRelease.a in Frameworks */,
-				512F9CE2240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */,
 				51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
 				51324A351EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				517D1A2123FC6E5E00B0878E /* Metal.framework in Frameworks */,
 				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
-				512F9CD8240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */,
 				A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */,
 				51324A321EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				517D1A2523FC6F6C00B0878E /* libSDL2.intel.a in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
 				51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
-				517D25F6240057C100B0878E /* libbimgRelease.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				51324A2F1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51A6CB8721A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
@@ -3650,10 +3624,12 @@
 				517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				A88121DC12C7816300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */,
+				51919B11245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				5104208D1EAAF43400129201 /* boost.framework in Frameworks */,
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
-				517D25DB2400579600B0878E /* libbimgRelease.a in Frameworks */,
+				51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
+				51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
 				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
 				517D1A2923FC6FDD00B0878E /* libSDL2.a in Frameworks */,
 				51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
@@ -3667,21 +3643,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2D1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
+				51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
+				51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
 				51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
-				517D25DC2400579600B0878E /* libbimgRelease.a in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */,
-				512F9CD9240D9DF400AB10B9 /* libbimgDebug.a in Frameworks */,
 				51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */,
-				512F9CE3240DA06500AB10B9 /* libbgfxDebug.a in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
-				517D25F7240057C100B0878E /* libbimgRelease.a in Frameworks */,
+				51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				513436EB2266CAE700435C9D /* GameController.framework in Frameworks */,
@@ -3695,7 +3670,6 @@
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				517D1A2A23FC6FDD00B0878E /* libSDL2.a in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
-				517D25D92400579600B0878E /* libbxRelease.a in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
 				51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
@@ -3708,7 +3682,6 @@
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
-				517D25F1240057C100B0878E /* libbxRelease.a in Frameworks */,
 				517D1A2623FC6F6C00B0878E /* libSDL2.intel.a in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
@@ -3716,7 +3689,6 @@
 				5104208E1EAAF43400129201 /* boost.framework in Frameworks */,
 				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				512F9CDC240D9DF400AB10B9 /* libbxDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4349,40 +4321,12 @@
 		517D258A23FFA8E400B0878E /* bgfx */ = {
 			isa = PBXGroup;
 			children = (
-				517D25D3240056BC00B0878E /* simulator */,
-				517D25D2240056B400B0878E /* arm64 */,
-				517D25D1240056A800B0878E /* arm */,
+				51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */,
+				51919B0B245C8BA200DFB6AC /* libbimgRelease.a */,
+				51919B0F245C8BA700DFB6AC /* libbxRelease.a */,
 			);
 			name = bgfx;
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		517D25D1240056A800B0878E /* arm */ = {
-			isa = PBXGroup;
-			children = (
-				517D25D52400579600B0878E /* libbimgRelease.a */,
-				517D25D42400579600B0878E /* libbxRelease.a */,
-			);
-			path = arm;
-			sourceTree = "<group>";
-		};
-		517D25D2240056B400B0878E /* arm64 */ = {
-			isa = PBXGroup;
-			children = (
-				512F9CE0240DA06500AB10B9 /* libbgfxDebug.a */,
-				512F9CD4240D9DF300AB10B9 /* libbimgDebug.a */,
-				512F9CD5240D9DF300AB10B9 /* libbxDebug.a */,
-			);
-			path = arm64;
-			sourceTree = "<group>";
-		};
-		517D25D3240056BC00B0878E /* simulator */ = {
-			isa = PBXGroup;
-			children = (
-				517D25EE240057C100B0878E /* libbimgRelease.a */,
-				517D25EC240057C000B0878E /* libbxRelease.a */,
-			);
-			path = simulator;
 			sourceTree = "<group>";
 		};
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
@@ -8133,7 +8077,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8205,11 +8149,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.3;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8237,7 +8179,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8307,11 +8249,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -8413,9 +8353,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_CFLAGS = "";
@@ -8514,9 +8452,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -8613,9 +8549,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -8635,12 +8569,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8686,6 +8620,10 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
+					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders/shader_h",
 				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -8709,19 +8647,17 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8734,11 +8670,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8781,6 +8717,10 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
+					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders/shader_h",
 				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -8804,17 +8744,15 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8827,11 +8765,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8875,6 +8813,10 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
+					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders/shader_h",
 				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -8898,17 +8840,15 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9023,7 +8963,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9094,11 +9034,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -9199,9 +9137,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -9222,11 +9158,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -9270,6 +9206,10 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
+					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
+					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
+					"${SRCROOT}/shaders/shader_h",
 				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -9293,17 +9233,15 @@
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9418,7 +9356,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9488,11 +9426,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm64/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-arm/bin",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/bgfx/.build/ios-simulator/bin",
+					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",

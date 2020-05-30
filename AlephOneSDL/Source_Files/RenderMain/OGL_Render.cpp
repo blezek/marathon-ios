@@ -1314,7 +1314,6 @@ static void InterpolateByDepth(GLfloat Depth,
 // it returns whether or not the texture is a legitimate wall texture
 static bool RenderAsRealWall(polygon_definition& RenderPolygon, bool IsVertical)
 {
-	
 	// Set up the texture manager with the input manager
 	TextureManager TMgr;
 	TMgr.ShapeDesc = RenderPolygon.ShapeDesc;
