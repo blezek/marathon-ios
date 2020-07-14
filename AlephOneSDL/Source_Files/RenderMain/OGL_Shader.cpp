@@ -841,9 +841,11 @@ void initDefaultPrograms() {
         "} \n"
   
         "void main (void) {\n"
+        "bool unwantedFragment = false;\n"
         " if( dot( vPosition_eyespace, clipPlane0) < 0.0 ) {discard;}\n"
         " if( dot( vPosition_eyespace, clipPlane1) < 0.0 ) {discard;}\n"
-        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+       //" if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {unwantedFragment = true;}\n"
 
         "	float mlFactor = clamp(selfLuminosity + flare - classicDepth, 0.0, 1.0);\n"
         "	// more realistic: replace classicDepth with (length(viewDir)/8192.0)\n"
@@ -873,9 +875,11 @@ void initDefaultPrograms() {
         /*" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
         " fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
         "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"*/
-  
-    //DCW shit test emboss
+
+  //DCW shit test emboss
  // "fragmentColor.rgb += 1.0 * ( sample_nearby_average_heights(0.0-leftRightFraction, pUV) - sample_nearby_average_heights(leftRightFraction, pUV) );\n"
+
+        " if( unwantedFragment ) {fragmentColor.a = 0.0;}\n"
 
         "}\n";
     defaultVertexPrograms["sprite_bloom"] = defaultVertexPrograms["sprite"];

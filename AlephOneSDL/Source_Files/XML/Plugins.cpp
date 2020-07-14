@@ -99,7 +99,10 @@ bool Plugin::valid() const {
        
         //M2&M3
         strcmp(name.c_str(), "HD Weapons") == 0 ||
-
+       
+        //Any CFP
+        strncmp(name.c_str(), "CFP", 3) == 0 ||
+       
         //M3
         strcmp(name.c_str(), "Gorans Highres Landscapes") == 0 ||
         strcmp(name.c_str(), "Gorans Jjarro Set DDS") == 0 ||

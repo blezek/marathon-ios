@@ -33,7 +33,8 @@
   UIView *screenView;
   UIButton *bloom;
   UIButton *extraFOV;
-  UILabel *rendererLabel;
+  UIButton *rendererButton;
+  UILabel *rendererNote;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *login;
@@ -60,7 +61,8 @@
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
 @property (nonatomic, retain) IBOutlet UIButton *bloom;
 @property (nonatomic, retain) IBOutlet UIButton *extraFOV;
-@property (nonatomic, retain) IBOutlet UILabel *rendererLabel;
+@property (nonatomic, retain) IBOutlet UIButton *rendererButton;
+@property (nonatomic, retain) IBOutlet UILabel *rendererNote;
 
 
 
@@ -72,6 +74,7 @@
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check;
 - (void)setupUI:(BOOL)inMainMenu;
+- (void)setVisualStyleButton;
 - (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;
 - (IBAction)notifyOfChanges;

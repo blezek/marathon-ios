@@ -161,7 +161,7 @@ void FBO::draw() {
     
     //DCW if there is a shader already active, draw the quad using that. Otherwise, draw with the default shader.
   if (lastEnabledShader()) {
-    //DCW ack! This might never get called!
+    //DCW ack! This might never get called! Maybe for bloom?
     DrawQuadWithActiveShader(0, 0, _w, _h, 0, _h, _w, 0);
   } else {
     OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW; uses normalized texture coordinates

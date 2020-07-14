@@ -28,7 +28,8 @@
                 <outlet property="musicVolume" destination="21" id="27"/>
                 <outlet property="onScreenTrigger" destination="bWi-SZ-qZq" id="cyS-bD-waA"/>
                 <outlet property="password" destination="3bl-Eh-nnd" id="8hl-pL-7wF"/>
-                <outlet property="rendererLabel" destination="iC7-eU-NHV" id="wgR-ts-7qc"/>
+                <outlet property="rendererButton" destination="4Bc-nx-7kN" id="7Pm-AT-k0D"/>
+                <outlet property="rendererNote" destination="zGv-c6-9t1" id="aNU-3V-pAc"/>
                 <outlet property="settingPrefsView" destination="86" id="89"/>
                 <outlet property="sfxVolume" destination="50" id="51"/>
                 <outlet property="tapShoots" destination="74" id="76"/>
@@ -105,13 +106,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Renderer: Modern" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-eU-NHV">
-                    <rect key="frame" x="347" y="261" width="110" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="22" userLabel="Horizontal Sensitivity">
                     <rect key="frame" x="209" y="89" width="132" height="29"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -549,6 +543,25 @@ Does Action:</string>
                         <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="NV3-5G-mCW"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4Bc-nx-7kN">
+                    <rect key="frame" x="347" y="261" width="108" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.93924060880829019" green="0.044808120453820537" blue="0.0" alpha="0.27935189260563381" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="17"/>
+                    <state key="normal" title="Renderer: Modern">
+                        <color key="titleColor" red="0.0" green="1" blue="0.019321741805740089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="toggleButton:" destination="-1" eventType="touchUpInside" id="2Xe-DR-DDM"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Renderer changes at next load. HD Visuals may be slow on older devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGv-c6-9t1" userLabel="Renderer Note">
+                    <rect key="frame" x="32" y="0.0" width="503" height="13"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="BankGothicBT-Medium" family="BankGothic Md BT" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>

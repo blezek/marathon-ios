@@ -45,7 +45,7 @@
 @synthesize settingPrefsView;
 @synthesize bloom;
 @synthesize extraFOV;
-@synthesize rendererLabel;
+@synthesize rendererButton, rendererNote;
 
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
@@ -120,11 +120,15 @@
   [defaults setBool:[self.bloom isSelected] forKey:kUseBloom];
   [defaults setBool:[self.extraFOV isSelected] forKey:kUseExtraFOV];
 
+  [defaults setBool:![self.rendererButton isSelected] forKey:kUseClassicRenderer];
+  
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[GameViewController sharedInstance] updateReticule:-1];
 
-  cacheRendererQualityPreferences(); //The helper will cache renderer settings, since they get read from a lot.
+    //The helper will cache renderer settings, since they get read from a lot.
+  cacheRendererQualityPreferences();
+  cacheRendererPreferences();
   
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
   
@@ -174,10 +178,11 @@
   [self.extraFOV setSelected:[defaults boolForKey:kUseExtraFOV]];
   
   if(useClassicVisuals()) {
-    [rendererLabel setText:@"Visuals: Classic"];
+    [rendererButton setSelected:false];
   } else {
-    [rendererLabel setText:@"Visuals: HD"];
+    [rendererButton setSelected:true];
   }
+  [self setVisualStyleButton];
   
   [self.dPadAction setSelected:[defaults boolForKey:kDPadAction]];
   [self.threeDTouchFires setSelected:[defaults boolForKey:kThreeDTouchFires]];
@@ -236,6 +241,17 @@
   }
 }
 
+- (void)setVisualStyleButton
+{
+    if(rendererButton.isSelected) {
+        [rendererButton setTitle: @"Visuals: HD" forState: UIControlStateNormal];
+        [rendererNote setHidden:!useClassicVisuals()];
+    } else {
+        [rendererButton setTitle: @"Visuals: Classic" forState: UIControlStateNormal];
+        [rendererNote setHidden:useClassicVisuals()];
+    }
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
   [self.view endEditing:YES]; //Dismisses keyboard when our view is touched.
 }
@@ -243,6 +259,8 @@
 -(IBAction) toggleButton:(id)sender {
   if ( [sender isKindOfClass:[UIButton class]] ) {
     [sender setSelected:![sender isSelected]];
+    
+    [self setVisualStyleButton];
   }
 }
 
