@@ -71,7 +71,6 @@
 		510420851EAAF34B00129201 /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5104204D1EAAF34B00129201 /* pngwutil.c */; };
 		510420861EAAF34B00129201 /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5104204D1EAAF34B00129201 /* pngwutil.c */; };
 		5104208C1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
-		5104208D1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		5104208E1EAAF43400129201 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
 		512E0C051E70C85D000B0C98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512E0C031E70C85D000B0C98 /* ImageIO.framework */; };
@@ -362,18 +361,6 @@
 		51A6CB9021A209B200D2C4ED /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB8E21A209B200D2C4ED /* AcceptButton.png */; };
 		51A6CB9321A209C500D2C4ED /* AcceptButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */; };
 		51A6CB9421A209C500D2C4ED /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A6CB9221A209C500D2C4ED /* AcceptButton.png */; };
-		51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
-		51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
-		51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD722056FB3C00829264 /* libsqlite3.dylib */; };
-		51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
-		51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
-		51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD732056FB3D00829264 /* libz.1.2.5.dylib */; };
-		51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
-		51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
-		51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD742056FB3D00829264 /* libbz2.1.0.dylib */; };
-		51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
-		51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
-		51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AADD752056FB3E00829264 /* libz.1.1.3.dylib */; };
 		51B683DC1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
 		51B683DD1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
 		51B683DE1EAAF58B00CB1628 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B683C21EAAF58B00CB1628 /* bit.c */; };
@@ -1196,23 +1183,23 @@
 		51FCA06D22112CE600C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA06C22112CE500C8C3F2 /* Escape.png */; };
 		51FCA07122112D0000C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA07022112D0000C8C3F2 /* Escape.png */; };
 		51FCA07322112D0E00C8C3F2 /* Escape.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA07222112D0D00C8C3F2 /* Escape.png */; };
+		8C009F7C2592DF7A00FB4561 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D06F2592D8C800BF0AAE /* libz.tbd */; };
+		8C009F822592DF8D00FB4561 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C009F812592DF8500FB4561 /* libbz2.tbd */; };
+		8C00A00A2592EA5300FB4561 /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0062592EA5300FB4561 /* libSDL2_net.a */; };
+		8C00A00B2592EA5300FB4561 /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0062592EA5300FB4561 /* libSDL2_net.a */; };
+		8C00A00C2592EA5300FB4561 /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0062592EA5300FB4561 /* libSDL2_net.a */; };
+		8C00A00D2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */; };
+		8C00A00E2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */; };
+		8C00A00F2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */; };
+		8C00A0102592EA5300FB4561 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0082592EA5300FB4561 /* libSDL2.a */; };
+		8C00A0112592EA5300FB4561 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0082592EA5300FB4561 /* libSDL2.a */; };
+		8C00A0122592EA5300FB4561 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0082592EA5300FB4561 /* libSDL2.a */; };
+		8C00A0132592EA5300FB4561 /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0092592EA5300FB4561 /* libSDL2_image.a */; };
+		8C00A0142592EA5300FB4561 /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0092592EA5300FB4561 /* libSDL2_image.a */; };
+		8C00A0152592EA5300FB4561 /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0092592EA5300FB4561 /* libSDL2_image.a */; };
+		8C00A07F2592F27600FB4561 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
 		8CE1D02B2591932800BF0AAE /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */; };
 		8CE1D04B25919C8300BF0AAE /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */; };
-		8CE1D0792592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0742592DA4E00BF0AAE /* libSDL2_net.a */; };
-		8CE1D07A2592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0742592DA4E00BF0AAE /* libSDL2_net.a */; };
-		8CE1D07B2592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0742592DA4E00BF0AAE /* libSDL2_net.a */; };
-		8CE1D07C2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0752592DA4E00BF0AAE /* libSDL2.intel.a */; };
-		8CE1D07D2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0752592DA4E00BF0AAE /* libSDL2.intel.a */; };
-		8CE1D07E2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0752592DA4E00BF0AAE /* libSDL2.intel.a */; };
-		8CE1D07F2592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0762592DA4E00BF0AAE /* libSDL2_ttf.a */; };
-		8CE1D0802592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0762592DA4E00BF0AAE /* libSDL2_ttf.a */; };
-		8CE1D0812592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0762592DA4E00BF0AAE /* libSDL2_ttf.a */; };
-		8CE1D0822592DA4E00BF0AAE /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0772592DA4E00BF0AAE /* libSDL2.a */; };
-		8CE1D0832592DA4E00BF0AAE /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0772592DA4E00BF0AAE /* libSDL2.a */; };
-		8CE1D0842592DA4E00BF0AAE /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0772592DA4E00BF0AAE /* libSDL2.a */; };
-		8CE1D0852592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0782592DA4E00BF0AAE /* libSDL2_image.a */; };
-		8CE1D0862592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0782592DA4E00BF0AAE /* libSDL2_image.a */; };
-		8CE1D0872592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D0782592DA4E00BF0AAE /* libSDL2_image.a */; };
 		A80498E113DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E213DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
 		A80498E313DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
@@ -2146,7 +2133,6 @@
 		5104204D1EAAF34B00129201 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = submodules/Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
 		512E0C031E70C85D000B0C98 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		51324A1C1EAAE2CC00BA8D8F /* SDL_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_image.h; sourceTree = "<group>"; };
 		51324A1F1EAAE33E00BA8D8F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavdevice.a"; sourceTree = SOURCE_ROOT; };
 		51324A201EAAE33E00BA8D8F /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavfilter.a"; sourceTree = SOURCE_ROOT; };
 		51324A211EAAE33E00BA8D8F /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavformat.a"; sourceTree = SOURCE_ROOT; };
@@ -2256,8 +2242,6 @@
 		51324AA51EAAE37A00BA8D8F /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		51324AA71EAAE37A00BA8D8F /* swscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swscale.h; sourceTree = "<group>"; };
 		51324AA81EAAE37A00BA8D8F /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		51324AA91EAAE3B100BA8D8F /* SDL_net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_net.h; sourceTree = "<group>"; };
-		51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_ttf.h; sourceTree = "<group>"; };
 		513436E32266C9B400435C9D /* AOMGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AOMGameController.h; path = Classes/AOMGameController.h; sourceTree = "<group>"; };
 		513436E42266C9B400435C9D /* AOMGameController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AOMGameController.mm; path = Classes/AOMGameController.mm; sourceTree = "<group>"; };
 		513436E82266CAE600435C9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
@@ -2458,10 +2442,6 @@
 		51A6CB8E21A209B200D2C4ED /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
 		51A6CB9121A209C400D2C4ED /* AcceptButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonHighlighted.png; sourceTree = "<group>"; };
 		51A6CB9221A209C500D2C4ED /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
-		51AADD722056FB3C00829264 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		51AADD732056FB3D00829264 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		51AADD742056FB3D00829264 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
-		51AADD752056FB3E00829264 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		51B683C21EAAF58B00CB1628 /* bit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bit.c; path = "submodules/Libraries/libmad-0.15.1b/bit.c"; sourceTree = SOURCE_ROOT; };
 		51B683C31EAAF58B00CB1628 /* decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = "submodules/Libraries/libmad-0.15.1b/decoder.c"; sourceTree = SOURCE_ROOT; };
 		51B683C41EAAF58B00CB1628 /* fixed.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fixed.c; path = "submodules/Libraries/libmad-0.15.1b/fixed.c"; sourceTree = SOURCE_ROOT; };
@@ -2527,7 +2507,6 @@
 		51B684B01EAAFA0400CB1628 /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "submodules/Libraries/libvorbis-1.2.0/lib/vorbisfile.c"; sourceTree = SOURCE_ROOT; };
 		51B684B11EAAFA0400CB1628 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "submodules/Libraries/libvorbis-1.2.0/lib/window.c"; sourceTree = SOURCE_ROOT; };
 		51B684FD1EB3E39E00CB1628 /* A1_fade_in.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = A1_fade_in.mp4; path = Resources/A1_fade_in.mp4; sourceTree = "<group>"; };
-		51B685011EB92D0A00CB1628 /* SDLnetsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLnetsys.h; path = "submodules/Libraries/SDL2_net-2.0.1/SDLnetsys.h"; sourceTree = SOURCE_ROOT; };
 		51C730431E59027900558D7D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		51CE513221FD514800E1132C /* web2a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web2a; sourceTree = "<group>"; };
 		51CFD23E21EA9331002F9A46 /* Images M1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M1.xcassets"; sourceTree = "<group>"; };
@@ -3043,13 +3022,14 @@
 		51FCA06C22112CE500C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
 		51FCA07022112D0000C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
 		51FCA07222112D0D00C8C3F2 /* Escape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Escape.png; sourceTree = "<group>"; };
+		8C009F802592DF7F00FB4561 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		8C009F812592DF8500FB4561 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		8C00A0062592EA5300FB4561 /* libSDL2_net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_net.a; sourceTree = "<group>"; };
+		8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
+		8C00A0082592EA5300FB4561 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2.a; sourceTree = "<group>"; };
+		8C00A0092592EA5300FB4561 /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
 		8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		8CE1D06F2592D8C800BF0AAE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		8CE1D0742592DA4E00BF0AAE /* libSDL2_net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_net.a; sourceTree = "<group>"; };
-		8CE1D0752592DA4E00BF0AAE /* libSDL2.intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2.intel.a; sourceTree = "<group>"; };
-		8CE1D0762592DA4E00BF0AAE /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
-		8CE1D0772592DA4E00BF0AAE /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2.a; sourceTree = "<group>"; };
-		8CE1D0782592DA4E00BF0AAE /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A80498DF13DDC9D500F807FB /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertView.h; path = Classes/AlertView.h; sourceTree = "<group>"; };
 		A80498E013DDC9D500F807FB /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = Classes/AlertView.m; sourceTree = "<group>"; };
@@ -3541,9 +3521,7 @@
 			files = (
 				51324A2B1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51919B08245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
-				8CE1D07C2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */,
 				51919B0C245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
-				51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -3553,40 +3531,37 @@
 				A85E684C11CB173A00D0FAEF /* OpenGLES.framework in Frameworks */,
 				514D348E1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
-				8CE1D0852592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */,
 				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
-				8CE1D0822592DA4E00BF0AAE /* libSDL2.a in Frameworks */,
 				514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51041DD21EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				8CE1D02B2591932800BF0AAE /* CoreHaptics.framework in Frameworks */,
 				517D1A2023FC6E5E00B0878E /* Metal.framework in Frameworks */,
+				8C00A00A2592EA5300FB4561 /* libSDL2_net.a in Frameworks */,
 				A85E685711CB173A00D0FAEF /* CoreAudio.framework in Frameworks */,
 				A85E685811CB173A00D0FAEF /* CoreGraphics.framework in Frameworks */,
 				A85E685911CB173A00D0FAEF /* OpenAL.framework in Frameworks */,
 				A85E685B11CB173A00D0FAEF /* MobileCoreServices.framework in Frameworks */,
 				A85E685C11CB173A00D0FAEF /* SystemConfiguration.framework in Frameworks */,
+				8C00A00D2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */,
 				A8FEAB371290773200FA55E0 /* AVFoundation.framework in Frameworks */,
-				51AADD762056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
 				51324A341EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				51324A311EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51A6CB8621A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
 				51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
-				51AADD7C2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
+				8C00A0132592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
-				8CE1D07F2592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */,
 				51324A371EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
-				8CE1D0792592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */,
+				8C00A0102592EA5300FB4561 /* libSDL2.a in Frameworks */,
 				517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 				5104208C1EAAF43400129201 /* boost.framework in Frameworks */,
-				51AADD792056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3596,7 +3571,6 @@
 			files = (
 				51324A2C1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51324A291EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
-				8CE1D07D2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */,
 				513436EA2266CAE700435C9D /* GameController.framework in Frameworks */,
 				51041DD31EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				51C730451E59027900558D7D /* CoreAudio.framework in Frameworks */,
@@ -3604,22 +3578,22 @@
 				514D349F1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				A883DC7112F5CEE60041543F /* CFNetwork.framework in Frameworks */,
 				517D258823FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
+				8C00A00B2592EA5300FB4561 /* libSDL2_net.a in Frameworks */,
+				8C009F7C2592DF7A00FB4561 /* libz.tbd in Frameworks */,
 				A883DC7212F5CEE60041543F /* Foundation.framework in Frameworks */,
-				8CE1D0862592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */,
-				51AADD802056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
-				51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
+				8C00A07F2592F27600FB4561 /* boost.framework in Frameworks */,
 				51324A351EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				517D1A2123FC6E5E00B0878E /* Metal.framework in Frameworks */,
-				8CE1D0832592DA4E00BF0AAE /* libSDL2.a in Frameworks */,
 				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
 				A883DC7612F5CEE60041543F /* SystemConfiguration.framework in Frameworks */,
 				51324A321EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				8CE1D04B25919C8300BF0AAE /* CoreHaptics.framework in Frameworks */,
+				8C00A0142592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
 				A88121D312C7816300A1A08E /* CoreData.framework in Frameworks */,
 				A88121D612C7816300A1A08E /* UIKit.framework in Frameworks */,
-				51AADD772056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
+				8C00A0112592EA5300FB4561 /* libSDL2.a in Frameworks */,
 				A88121D812C7816300A1A08E /* QuartzCore.framework in Frameworks */,
 				51324A2F1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51A6CB8721A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
@@ -3630,15 +3604,13 @@
 				A88121DC12C7816300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */,
 				51919B11245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
+				8C009F822592DF8D00FB4561 /* libbz2.tbd in Frameworks */,
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
-				5104208D1EAAF43400129201 /* boost.framework in Frameworks */,
+				8C00A00E2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */,
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
 				51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
-				8CE1D0802592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */,
 				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
-				8CE1D07A2592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */,
-				51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */,
 			);
@@ -3650,8 +3622,9 @@
 			files = (
 				51324A2D1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
 				51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
+				8C00A0152592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
 				51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
-				51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
+				8C00A0122592EA5300FB4561 /* libSDL2.a in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */,
@@ -3660,11 +3633,9 @@
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
 				A8E3FEFF1460D60C003A90E2 /* OpenGLES.framework in Frameworks */,
 				A88123E912C7826300A1A08E /* AVFoundation.framework in Frameworks */,
-				8CE1D0872592DA4E00BF0AAE /* libSDL2_image.a in Frameworks */,
+				8C00A00C2592EA5300FB4561 /* libSDL2_net.a in Frameworks */,
 				5153031A1DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
-				8CE1D07E2592DA4E00BF0AAE /* libSDL2.intel.a in Frameworks */,
 				514D34901E5965590011BAFD /* CoreMedia.framework in Frameworks */,
-				8CE1D07B2592DA4E00BF0AAE /* libSDL2_net.a in Frameworks */,
 				51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
@@ -3675,26 +3646,22 @@
 				517D1A2223FC6E5E00B0878E /* Metal.framework in Frameworks */,
 				51041DD41EAAF02300129201 /* libFreetype2.a in Frameworks */,
 				514D34A01E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
-				8CE1D0812592DA4E00BF0AAE /* libSDL2_ttf.a in Frameworks */,
 				A88123DB12C7826300A1A08E /* UIKit.framework in Frameworks */,
 				A88123DD12C7826300A1A08E /* QuartzCore.framework in Frameworks */,
 				A88123E112C7826300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88123E212C7826300A1A08E /* CoreGraphics.framework in Frameworks */,
-				51AADD782056FB3F00829264 /* libsqlite3.dylib in Frameworks */,
 				51324A361EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				51324A331EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51A6CB8821A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
-				51AADD7E2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */,
+				8C00A00F2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */,
 				5104208E1EAAF43400129201 /* boost.framework in Frameworks */,
-				51AADD7B2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				A8CB80EC13A28639004D6DBD /* AudioToolbox.framework in Frameworks */,
-				8CE1D0842592DA4E00BF0AAE /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3704,11 +3671,7 @@
 		080E96DDFE201D6D7F000001 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
-				51324A1C1EAAE2CC00BA8D8F /* SDL_image.h */,
 				51C72FA11E58EE4700558D7D /* FFmpeg-iOS */,
-				51324AA91EAAE3B100BA8D8F /* SDL_net.h */,
-				51B685011EB92D0A00CB1628 /* SDLnetsys.h */,
-				51324AB21EAAE3F400BA8D8F /* SDL_ttf.h */,
 				51C785041DA0A5530061978B /* freetype_2.4.4 */,
 				A8CCD13A1280CA7900A62339 /* MAD */,
 				A89240DA127FBB5400F0A2EE /* Vorbis */,
@@ -3751,13 +3714,9 @@
 				A871817A140DA9E000327BEF /* BuildConfigurations */,
 				A83983DC11F2AB92002E7CF2 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				51AADD742056FB3D00829264 /* libbz2.1.0.dylib */,
-				51AADD722056FB3C00829264 /* libsqlite3.dylib */,
-				51AADD752056FB3E00829264 /* libz.1.1.3.dylib */,
-				51AADD732056FB3D00829264 /* libz.1.2.5.dylib */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
 				517D258A23FFA8E400B0878E /* bgfx */,
-				8CE1D0732592DA4E00BF0AAE /* SDL_fat */,
+				8C00A0052592EA5200FB4561 /* SDL_fat */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 			);
@@ -3804,6 +3763,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C009F812592DF8500FB4561 /* libbz2.tbd */,
+				8C009F802592DF7F00FB4561 /* libsqlite3.tbd */,
 				8CE1D06F2592D8C800BF0AAE /* libz.tbd */,
 				8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */,
 				517D1A1F23FC6E5E00B0878E /* Metal.framework */,
@@ -5010,14 +4971,13 @@
 			path = XML;
 			sourceTree = "<group>";
 		};
-		8CE1D0732592DA4E00BF0AAE /* SDL_fat */ = {
+		8C00A0052592EA5200FB4561 /* SDL_fat */ = {
 			isa = PBXGroup;
 			children = (
-				8CE1D0742592DA4E00BF0AAE /* libSDL2_net.a */,
-				8CE1D0752592DA4E00BF0AAE /* libSDL2.intel.a */,
-				8CE1D0762592DA4E00BF0AAE /* libSDL2_ttf.a */,
-				8CE1D0772592DA4E00BF0AAE /* libSDL2.a */,
-				8CE1D0782592DA4E00BF0AAE /* libSDL2_image.a */,
+				8C00A0062592EA5300FB4561 /* libSDL2_net.a */,
+				8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */,
+				8C00A0082592EA5300FB4561 /* libSDL2.a */,
+				8C00A0092592EA5300FB4561 /* libSDL2_image.a */,
 			);
 			name = SDL_fat;
 			path = submodules/Libraries/SDL_fat;
@@ -8282,7 +8242,6 @@
 		A88121E612C7816300A1A08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8290,10 +8249,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT79NLMXJ8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8323,38 +8279,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.14/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.14/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.14/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_CFLAGS = "";
@@ -8372,7 +8301,6 @@
 		A88121E712C7816300A1A08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -8381,10 +8309,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT79NLMXJ8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -8412,49 +8337,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -8471,7 +8358,6 @@
 		A88121E812C7816300A1A08E /* AdHocDistribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
@@ -8480,10 +8366,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT79NLMXJ8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -8511,48 +8394,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.10/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-				);
 				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -8864,7 +8710,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -8895,7 +8741,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8925,26 +8771,36 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules/Libraries/bgfx/include/bgfx",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bgfx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/src/events\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_image-2.0.5\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_net-2.0.1\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_ttf-2.0.15\"",
+					"\"$(SRCROOT)/submodules/Libraries/libogg-1.1.3/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libvorbis-1.2.0/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libpng-1.2.24\"",
+					"\"$(SRCROOT)/submodules/Libraries/libmad-0.15.1b\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/jpeg-6b\"",
+					"\"$(SRCROOT)/submodules/Libraries/glm\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
+					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
-					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
+					"\"$(SRCROOT)/submodules//Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL_fat\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -8955,7 +8811,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Distribution;
 		};
@@ -9063,7 +8918,6 @@
 		A8A689AB1310C61B0079FD7D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
@@ -9072,10 +8926,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT79NLMXJ8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -9103,49 +8954,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info2.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/SDL\"",
-					"$(PROJECT_DIR)/Libraries/TestFlight",
-					"$(PROJECT_DIR)/Libraries/SDL",
-					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5.2;
 				OTHER_LDFLAGS = "";
@@ -9260,7 +9073,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -9291,7 +9104,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -9321,26 +9134,36 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules/Libraries/bgfx/include/bgfx",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bgfx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/src/events\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_image-2.0.5\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_net-2.0.1\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_ttf-2.0.15\"",
+					"\"$(SRCROOT)/submodules/Libraries/libogg-1.1.3/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libvorbis-1.2.0/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libpng-1.2.24\"",
+					"\"$(SRCROOT)/submodules/Libraries/libmad-0.15.1b\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/jpeg-6b\"",
+					"\"$(SRCROOT)/submodules/Libraries/glm\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
+					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
-					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
+					"\"$(SRCROOT)/submodules//Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL_fat\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -9351,7 +9174,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = AdHocDistribution;
 		};
@@ -9459,7 +9281,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A871817B140DA9E000327BEF /* Project.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -9489,7 +9311,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -9520,26 +9342,36 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules/Libraries/bgfx/include/bgfx",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bgfx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/src/events\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_image-2.0.5\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_net-2.0.1\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_ttf-2.0.15\"",
+					"\"$(SRCROOT)/submodules/Libraries/libogg-1.1.3/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libvorbis-1.2.0/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libpng-1.2.24\"",
+					"\"$(SRCROOT)/submodules/Libraries/libmad-0.15.1b\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/jpeg-6b\"",
+					"\"$(SRCROOT)/submodules/Libraries/glm\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
+					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
-					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
+					"\"$(SRCROOT)/submodules//Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL_fat\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -9550,7 +9382,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -9558,7 +9389,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A871817D140DAA7000327BEF /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -9589,7 +9420,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -9619,26 +9450,36 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules/Libraries/bgfx/include/bgfx",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.5/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bgfx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bx/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2-2.0.14/src/events\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_image-2.0.5\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_net-2.0.1\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL2_ttf-2.0.15\"",
+					"\"$(SRCROOT)/submodules/Libraries/libogg-1.1.3/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libvorbis-1.2.0/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/libpng-1.2.24\"",
+					"\"$(SRCROOT)/submodules/Libraries/libmad-0.15.1b\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/jpeg-6b\"",
+					"\"$(SRCROOT)/submodules/Libraries/glm\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries\"",
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
+					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
-					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
+					"\"$(SRCROOT)/submodules//Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK\"",
+					"\"$(SRCROOT)/submodules/Libraries/SDL_fat\"",
+					"\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"",
+					"\"$(SRCROOT)/submodules/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -9649,7 +9490,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
