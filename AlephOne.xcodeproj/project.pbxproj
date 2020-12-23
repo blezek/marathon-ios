@@ -1198,6 +1198,11 @@
 		8C00A0142592EA5300FB4561 /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0092592EA5300FB4561 /* libSDL2_image.a */; };
 		8C00A0152592EA5300FB4561 /* libSDL2_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00A0092592EA5300FB4561 /* libSDL2_image.a */; };
 		8C00A07F2592F27600FB4561 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5104208B1EAAF43400129201 /* boost.framework */; };
+		8C00A0C52592F9A300FB4561 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C009F812592DF8500FB4561 /* libbz2.tbd */; };
+		8C00A0C92592F9B500FB4561 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D06F2592D8C800BF0AAE /* libz.tbd */; };
+		8C00A0DC2592FCD100FB4561 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */; };
+		8C00A0DE2592FCEF00FB4561 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D06F2592D8C800BF0AAE /* libz.tbd */; };
+		8C00A0E22592FCF600FB4561 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C009F812592DF8500FB4561 /* libbz2.tbd */; };
 		8CE1D02B2591932800BF0AAE /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */; };
 		8CE1D04B25919C8300BF0AAE /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */; };
 		A80498E113DDC9D500F807FB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80498E013DDC9D500F807FB /* AlertView.m */; };
@@ -3028,6 +3033,7 @@
 		8C00A0072592EA5300FB4561 /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_ttf.a; sourceTree = "<group>"; };
 		8C00A0082592EA5300FB4561 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2.a; sourceTree = "<group>"; };
 		8C00A0092592EA5300FB4561 /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2_image.a; sourceTree = "<group>"; };
+		8C00A0DD2592FCE700FB4561 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		8CE1D02A2591932800BF0AAE /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		8CE1D06F2592D8C800BF0AAE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -3553,7 +3559,9 @@
 				51C730441E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				51324A311EAAE33E00BA8D8F /* libavutil.a in Frameworks */,
 				51A6CB8621A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
+				8C00A0C92592F9B500FB4561 /* libz.tbd in Frameworks */,
 				A8C4B70212EFCD6900D5D23F /* Security.framework in Frameworks */,
+				8C00A0C52592F9A300FB4561 /* libbz2.tbd in Frameworks */,
 				51324A281EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
 				8C00A0132592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
 				51324A2E1EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
@@ -3621,6 +3629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51324A2D1EAAE33E00BA8D8F /* libavfilter.a in Frameworks */,
+				8C00A0DE2592FCEF00FB4561 /* libz.tbd in Frameworks */,
 				51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
 				8C00A0152592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
 				51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
@@ -3655,6 +3664,8 @@
 				51A6CB8821A1FEBA00D2C4ED /* StoreKit.framework in Frameworks */,
 				A88123E312C7826300A1A08E /* OpenAL.framework in Frameworks */,
 				51324A2A1EAAE33E00BA8D8F /* libavdevice.a in Frameworks */,
+				8C00A0E22592FCF600FB4561 /* libbz2.tbd in Frameworks */,
+				8C00A0DC2592FCD100FB4561 /* CoreHaptics.framework in Frameworks */,
 				51324A301EAAE33E00BA8D8F /* libavformat.a in Frameworks */,
 				51324A391EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
@@ -3763,6 +3774,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C00A0DD2592FCE700FB4561 /* libz.1.tbd */,
 				8C009F812592DF8500FB4561 /* libbz2.tbd */,
 				8C009F802592DF7F00FB4561 /* libsqlite3.tbd */,
 				8CE1D06F2592D8C800BF0AAE /* libz.tbd */,
@@ -7029,7 +7041,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "plist=${PROJECT_DIR}/Info.plist\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n\n${PROJECT_DIR}/shaders/_buildAllShaders.sh \"${PROJECT_DIR}\"\n\n";
+			shellScript = "plist=${PROJECT_DIR}/Info.plist\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print BuildNumber\" ${plist})\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :BuildNumber $buildNumber\" ${plist}\nsha=$(cd ${PROJECT_DIR} && git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :SHA1 $sha\" ${plist}\n\n#${PROJECT_DIR}/shaders/_buildAllShaders.sh \"${PROJECT_DIR}\"\n\n";
 		};
 		A893F72915019895003A4D28 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8048,10 +8060,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8080,47 +8088,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include/**",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules/Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL_ttf-2.0.10",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include",
-					"$(SRCROOT)/AlephOneSDL/Source_Files",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/src/events",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.3;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -8151,10 +8120,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8180,48 +8145,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include/**",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules/Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL_ttf-2.0.10",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include",
-					"$(SRCROOT)/AlephOneSDL/Source_Files",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/src/events",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8415,7 +8340,6 @@
 		A88123EB12C7826300A1A08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8424,10 +8348,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8454,51 +8374,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.10/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL/build-scripts/lib\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -8516,7 +8393,6 @@
 		A88123EC12C7826300A1A08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -8525,10 +8401,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SCENARIO=3",
 					"${GCC_PREPROCESSOR_DEFINITIONS}",
@@ -8552,51 +8424,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.10/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL/build-scripts/lib\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.4;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
@@ -8612,7 +8441,6 @@
 		A88123ED12C7826300A1A08E /* AdHocDistribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
@@ -8621,10 +8449,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 82636XW3TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SCENARIO=3",
@@ -8649,51 +8473,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.10/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL/build-scripts/lib\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.4;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
@@ -8826,10 +8607,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -8856,48 +8633,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include/**",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules/Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL_ttf-2.0.10",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include",
-					"$(SRCROOT)/AlephOneSDL/Source_Files",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/src/events",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8975,7 +8712,6 @@
 		A8A689AC1310C61B0079FD7D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
@@ -8984,10 +8720,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 82636XW3TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SCENARIO=3",
@@ -9012,51 +8744,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include\"/**",
-					"${SDL}/Xcode-iPhoneOS/SDL/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules//Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT/submodules/}/Libraries/SDL_ttf-2.0.10",
-					"\"$(SRCROOT)/submodules//Libraries/TestFlight\"",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"${SOURCE_ROOT}/submodules//Libraries/SDL2-2.0.10/src/events",
-					"\"$(SRCROOT)/submodules//Libraries/FFmpeg-iOS/include\"",
-					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info3.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.6\"",
-					"\"$(SRCROOT)/submodules/Libraries/SDL/build-scripts/lib\"",
-					"\"$(SRCROOT)/Libraries/TestFlightSDK1.0\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.4;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
@@ -9189,10 +8878,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 82636XW3TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
-				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlephOne_Prefix.pch;
@@ -9219,47 +8904,8 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/submodules/Libraries/freetype_2.4.4/include/**",
-					"${SOURCE_ROOT}/submodules//Libraries/libvorbis-1.2.0/include",
-					"${SOURCE_ROOT}/submodules/Libraries/libogg-1.1.3/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL_ttf-2.0.10",
-					"${SOURCE_ROOT}/submodules//Libraries/boost_1_63_0",
-					"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include",
-					"$(SRCROOT)/AlephOneSDL/Source_Files",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/src/events",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2-2.0.10/include",
-					"${SOURCE_ROOT}/submodules/Libraries/SDL2_net-2.0.1",
-					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
-					"$(SRCROOT)/submodules/Libraries/glm",
-					"${SRCROOT}/submodules/Libraries/bgfx/bgfx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bx/include",
-					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
-					"${SRCROOT}/shaders/shader_h",
-				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
-					"$(PROJECT_DIR)/submodules/Libraries/TestFlight",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL",
-					"$(PROJECT_DIR)/Classes/TapittyTapTap",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_net-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2_image-2.0.1",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.5",
-					"$(PROJECT_DIR)/Classes",
-					"$(PROJECT_DIR)/submodules/Libraries/FFmpeg-iOS/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10/build-scripts/lib",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL2-2.0.10",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
-					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
-					"$(PROJECT_DIR)/submodules/Libraries/SDL_fat",
-				);
 				MARKETING_VERSION = 5.3;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
