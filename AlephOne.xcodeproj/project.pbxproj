@@ -2051,7 +2051,7 @@
 		5104204B1EAAF34B00129201 /* pngwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwrite.c; sourceTree = "<group>"; };
 		5104204C1EAAF34B00129201 /* pngwtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwtran.c; sourceTree = "<group>"; };
 		5104204D1EAAF34B00129201 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
-		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
+		5104208B1EAAF43400129201 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = submodules/Libraries/boost_1_63_0/boost.framework; sourceTree = "<group>"; };
 		512E0C031E70C85D000B0C98 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		513436E32266C9B400435C9D /* AOMGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AOMGameController.h; path = Classes/AOMGameController.h; sourceTree = "<group>"; };
 		513436E42266C9B400435C9D /* AOMGameController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AOMGameController.mm; path = Classes/AOMGameController.mm; sourceTree = "<group>"; };
@@ -4803,7 +4803,7 @@
 				8C00A5052594122100FB4561 /* lib */,
 			);
 			name = "FFmpeg-iOS";
-			path = "Libraries/FFmpeg-iOS";
+			path = "submodules/Libraries/FFmpeg-iOS";
 			sourceTree = SOURCE_ROOT;
 		};
 		8C00A4962594122000FB4561 /* include */ = {
@@ -8545,7 +8545,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/boost_1_63_0\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8587,7 +8587,7 @@
 					"\"$(SRCROOT)/Libraries/libvorbis-1.2.0/include\"",
 					"\"$(SRCROOT)/Libraries/libpng-1.2.24\"",
 					"\"$(SRCROOT)/Libraries/libmad-0.15.1b\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"",
 					"\"$(SRCROOT)/Libraries/jpeg-6b\"",
 					"\"$(SRCROOT)/Libraries/glm\"",
@@ -8603,7 +8603,7 @@
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
 					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
@@ -8831,7 +8831,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/boost_1_63_0\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8873,7 +8873,7 @@
 					"\"$(SRCROOT)/Libraries/libvorbis-1.2.0/include\"",
 					"\"$(SRCROOT)/Libraries/libpng-1.2.24\"",
 					"\"$(SRCROOT)/Libraries/libmad-0.15.1b\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"",
 					"\"$(SRCROOT)/Libraries/jpeg-6b\"",
 					"\"$(SRCROOT)/Libraries/glm\"",
@@ -8889,7 +8889,7 @@
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
 					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
@@ -9000,7 +9000,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/boost_1_63_0\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -9043,7 +9043,7 @@
 					"\"$(SRCROOT)/Libraries/libvorbis-1.2.0/include\"",
 					"\"$(SRCROOT)/Libraries/libpng-1.2.24\"",
 					"\"$(SRCROOT)/Libraries/libmad-0.15.1b\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"",
 					"\"$(SRCROOT)/Libraries/jpeg-6b\"",
 					"\"$(SRCROOT)/Libraries/glm\"",
@@ -9059,7 +9059,7 @@
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
 					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -9109,7 +9109,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/boost_1_63_0\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/submodules/Libraries/boost_1_63_0\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -9151,7 +9151,7 @@
 					"\"$(SRCROOT)/Libraries/libvorbis-1.2.0/include\"",
 					"\"$(SRCROOT)/Libraries/libpng-1.2.24\"",
 					"\"$(SRCROOT)/Libraries/libmad-0.15.1b\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/include\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/include\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4/include\"",
 					"\"$(SRCROOT)/Libraries/jpeg-6b\"",
 					"\"$(SRCROOT)/Libraries/glm\"",
@@ -9167,7 +9167,7 @@
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
 					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
-					"\"$(SRCROOT)/Libraries/FFmpeg-iOS/lib\"",
+					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
 				OTHER_CFLAGS = "";
