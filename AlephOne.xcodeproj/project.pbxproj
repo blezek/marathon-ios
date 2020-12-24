@@ -2228,9 +2228,9 @@
 		518F64B92304B3B50016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BB2304B3CC0016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BD2304B3E10016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
-		51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbgfxRelease.a; sourceTree = SOURCE_ROOT; };
-		51919B0B245C8BA200DFB6AC /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbimgRelease.a; sourceTree = SOURCE_ROOT; };
-		51919B0F245C8BA700DFB6AC /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = submodules/Libraries/bgfx/fat_libs/libbxRelease.a; sourceTree = SOURCE_ROOT; };
+		51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = Libraries/libbgfx_fat/libbgfxRelease.a; sourceTree = SOURCE_ROOT; };
+		51919B0B245C8BA200DFB6AC /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = Libraries/libbgfx_fat/libbimgRelease.a; sourceTree = SOURCE_ROOT; };
+		51919B0F245C8BA700DFB6AC /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = Libraries/libbgfx_fat/libbxRelease.a; sourceTree = SOURCE_ROOT; };
 		5195D5C52396B47A0078A375 /* BloomOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOff.png; sourceTree = "<group>"; };
 		5195D5C62396B47C0078A375 /* BloomOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOn.png; sourceTree = "<group>"; };
 		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
@@ -8575,9 +8575,9 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Libraries/bgfx/bgfx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/vendors/bgfx/include\"",
+					"\"$(SRCROOT)/vendors/bx/include\"",
+					"\"$(SRCROOT)/vendors/bimg/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/src/events\"",
 					"\"$(SRCROOT)/Libraries/SDL2_image-2.0.5\"",
@@ -8602,7 +8602,7 @@
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
-					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/Libraries/libbgfx_fat\"",
 					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
@@ -8861,9 +8861,9 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Libraries/bgfx/bgfx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/vendors/bgfx/include\"",
+					"\"$(SRCROOT)/vendors/bx/include\"",
+					"\"$(SRCROOT)/vendors/bimg/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/src/events\"",
 					"\"$(SRCROOT)/Libraries/SDL2_image-2.0.5\"",
@@ -8888,7 +8888,7 @@
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
-					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/Libraries/libbgfx_fat\"",
 					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
@@ -9031,9 +9031,9 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Libraries/bgfx/bgfx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/vendors/bgfx/include\"",
+					"\"$(SRCROOT)/vendors/bx/include\"",
+					"\"$(SRCROOT)/vendors/bimg/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/src/events\"",
 					"\"$(SRCROOT)/Libraries/SDL2_image-2.0.5\"",
@@ -9058,7 +9058,7 @@
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
-					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/Libraries/libbgfx_fat\"",
 					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);
@@ -9139,9 +9139,9 @@
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Libraries/bgfx/bgfx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bx/include\"",
-					"\"$(SRCROOT)/Libraries/bgfx/bimg/include\"",
+					"\"$(SRCROOT)/vendors/bgfx/include\"",
+					"\"$(SRCROOT)/vendors/bx/include\"",
+					"\"$(SRCROOT)/vendors/bimg/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/include\"",
 					"\"$(SRCROOT)/Libraries/SDL2-2.0.14/src/events\"",
 					"\"$(SRCROOT)/Libraries/SDL2_image-2.0.5\"",
@@ -9166,7 +9166,7 @@
 					"\"$(SRCROOT)/Libraries/JoypadCocoaTouchSDK\"",
 					"\"$(SRCROOT)/Libraries/SDL_fat\"",
 					"\"$(SRCROOT)/Libraries/boost_1_63_0\"",
-					"\"$(SRCROOT)/Libraries/bgfx/fat_libs\"",
+					"\"$(SRCROOT)/Libraries/libbgfx_fat\"",
 					"\"$(SRCROOT)/submodules/Libraries/FFmpeg-iOS/lib\"",
 					"\"$(SRCROOT)/Libraries/freetype_2.4.4\"",
 				);

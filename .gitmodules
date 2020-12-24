@@ -2,5 +2,11 @@
 	path = submodules
 	url = https://TrajansRow@gitlab.com/a1-mobile-assets/Libraries.git
 [submodule "bgfx"]
-	path = Libraries/bgfx/
+	path = vendors/bgfx
 	url = https://github.com/bkaradzic/bgfx.git
+[submodule "bx"]
+	path = vendors/bx
+	url = git@github.com:bkaradzic/bx.git
+[submodule "bimg"]
+	path = vendors/bimg
+	url = git@github.com:bkaradzic/bimg.git
