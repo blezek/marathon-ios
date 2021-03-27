@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -70,7 +70,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-GW-ZAQ" userLabel="Powered Video View">
-                            <rect key="frame" x="-89" y="0.0" width="1137" height="640"/>
+                            <rect key="frame" x="-90" y="0.0" width="1138" height="640"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="183">
@@ -127,7 +127,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.014171527698636055" green="0.0" blue="0.014546377584338188" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3w-SJ-vwl" userLabel="Finish intro button">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3w-SJ-vwl" userLabel="Finish intro button">
                     <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
@@ -215,7 +215,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EpisodeLogoAlpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-zM-SZU">
-                            <rect key="frame" x="149" y="18" width="661" height="238"/>
+                            <rect key="frame" x="149" y="18" width="660" height="238"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6l-os-46y" userLabel="Sublogo and Buttons">
@@ -271,7 +271,7 @@
                                                 <action selector="menuStore" destination="-1" eventType="touchUpInside" id="154"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168">
                                             <rect key="frame" x="286" y="557" width="150" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -311,7 +311,7 @@
                                                 <action selector="menuJoinNetworkGame" destination="-1" eventType="touchUpInside" id="3Eg-Sn-Vbs"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
                                             <rect key="frame" x="184" y="557" width="150" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -526,7 +526,7 @@
 Special Thanks To</string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="14" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="14"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -575,7 +575,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -623,7 +623,7 @@ Cg
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -669,7 +669,7 @@ Cg
                                 <fragment content="Marathon iOS Team:">
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -717,7 +717,7 @@ Cg
 CgoJA
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -767,7 +767,7 @@ CgoJA
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -815,7 +815,7 @@ CgoJA
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -864,7 +864,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -912,7 +912,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -960,7 +960,7 @@ Cg
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1006,7 +1006,7 @@ Cg
                                 <fragment content="Beta Testers:">
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1054,7 +1054,7 @@ Cg
 Cgo
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1111,7 +1111,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1159,7 +1159,7 @@ Cgo
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1208,7 +1208,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1255,7 +1255,7 @@ Cg
                                     <string key="content">	Alex Hall </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1303,7 +1303,7 @@ Cg
 Cgo
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1352,7 +1352,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1406,7 +1406,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1454,7 +1454,7 @@ Cgo
 Cgo
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1505,7 +1505,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1549,7 +1549,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">	Joey Adams
+                                    <string key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1594,10 +1594,10 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </mutableString>
+ </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1645,7 +1645,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1694,7 +1694,7 @@ Cg
 Media and support files have been contributed by the Aleph One authors and by:</string>
                                     <attributes>
                                         <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1742,7 +1742,7 @@ Media and support files have been contributed by the Aleph One authors and by:</
 Cgo
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1796,7 +1796,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1844,7 +1844,7 @@ Cgo
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1892,7 +1892,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1940,7 +1940,7 @@ Cg
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -1992,7 +1992,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2040,7 +2040,7 @@ Cg
 Cg
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2086,7 +2086,7 @@ Cg
                                 <fragment content="Aleph One makes use of external libraries including:">
                                     <attributes>
                                         <color key="NSColor" red="0.062539999999999998" green="0.92957999999999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2134,7 +2134,7 @@ Cg
 Cgo
 </string>
                                     <attributes>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2203,7 +2203,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2255,7 +2255,7 @@ Marathon's Creators:
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2303,7 +2303,7 @@ Marathon's Creators:
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2352,7 +2352,7 @@ Product Design
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2400,7 +2400,7 @@ Product Design
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2449,7 +2449,7 @@ Story
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2497,7 +2497,7 @@ Story
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2546,7 +2546,7 @@ Art Director &amp; Graphics
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2594,7 +2594,7 @@ Art Director &amp; Graphics
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2643,7 +2643,7 @@ Programming
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2693,7 +2693,7 @@ Programming
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2742,7 +2742,7 @@ Music &amp; Sounds
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2790,7 +2790,7 @@ Music &amp; Sounds
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2839,7 +2839,7 @@ Scenario Design
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2891,7 +2891,7 @@ Scenario Design
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2940,7 +2940,7 @@ Damage &amp; Spin
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -2989,7 +2989,7 @@ Damage &amp; Spin
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3038,7 +3038,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3086,7 +3086,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3134,7 +3134,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3182,7 +3182,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3231,7 +3231,7 @@ Programming
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3281,7 +3281,7 @@ Programming
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3330,7 +3330,7 @@ Story
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3379,7 +3379,7 @@ Story
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3428,7 +3428,7 @@ Scenario Design
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3478,7 +3478,7 @@ Scenario Design
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3527,7 +3527,7 @@ Title Theme
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3575,7 +3575,7 @@ Title Theme
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3624,7 +3624,7 @@ Sound
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3672,7 +3672,7 @@ Sound
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3721,7 +3721,7 @@ Art &amp; Graphics
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3770,7 +3770,7 @@ Art &amp; Graphics
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3819,7 +3819,7 @@ The Voice Of Bob
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3867,7 +3867,7 @@ The Voice Of Bob
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3917,7 +3917,7 @@ On-Line Asbestos Suit
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -3965,7 +3965,7 @@ On-Line Asbestos Suit
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4014,7 +4014,7 @@ Packaging
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4062,7 +4062,7 @@ Packaging
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4111,7 +4111,7 @@ Chapter Screens
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4159,7 +4159,7 @@ Chapter Screens
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4208,7 +4208,7 @@ CgoKA
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4256,7 +4256,7 @@ CgoKA
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4305,7 +4305,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4349,7 +4349,7 @@ Cg
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">Product Manager
+                                    <string key="content">Product Manager
 	Tuncer Deniz
 
 Scenario by Double Aught
@@ -4398,10 +4398,10 @@ The Voice of Bob
 	Doug Zartman
 
 
-</mutableString>
+</string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4450,7 +4450,7 @@ Cgo
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4499,7 +4499,7 @@ Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <font key="NSFont" metaFont="system" size="10"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                             <tabStops>
                                                 <textTab alignment="left" location="36">
@@ -4576,6 +4576,7 @@ Cg
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </view>
+            <point key="canvasLocation" x="-117" y="-870"/>
         </viewController>
     </objects>
     <resources>

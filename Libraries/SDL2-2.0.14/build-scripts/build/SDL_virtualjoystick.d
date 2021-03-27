@@ -1,0 +1,20 @@
+build/SDL_virtualjoystick.lo: \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/SDL_virtualjoystick.c \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/../../SDL_internal.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/../../dynapi/SDL_dynapi.h \
+  include/SDL_config.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_platform.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/begin_code.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/close_code.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_assert.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_config.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_log.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_stdinc.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/SDL_virtualjoystick_c.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_joystick.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_error.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/../SDL_sysjoystick.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/src/joystick/virtual/../SDL_joystick_c.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_gamecontroller.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_rwops.h \
+  /Users/taxxodium/Documents/ExternalDev/marathon-ios/submodules/Libraries/SDL2-2.0.14/include/SDL_sensor.h
