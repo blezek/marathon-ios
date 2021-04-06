@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -70,7 +70,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-GW-ZAQ" userLabel="Powered Video View">
-                            <rect key="frame" x="-89" y="0.0" width="1137" height="640"/>
+                            <rect key="frame" x="-90" y="0.0" width="1138" height="640"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Somewhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="183">
@@ -127,7 +127,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.014171527698636055" green="0.0" blue="0.014546377584338188" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3w-SJ-vwl" userLabel="Finish intro button">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3w-SJ-vwl" userLabel="Finish intro button">
                     <rect key="frame" x="0.0" y="0.0" width="960" height="640"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
@@ -271,7 +271,7 @@
                                                 <action selector="menuStore" destination="-1" eventType="touchUpInside" id="154"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168">
                                             <rect key="frame" x="286" y="557" width="150" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -311,7 +311,7 @@
                                                 <action selector="menuJoinNetworkGame" destination="-1" eventType="touchUpInside" id="3Eg-Sn-Vbs"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
                                             <rect key="frame" x="184" y="557" width="150" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
@@ -513,15 +513,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dlm-NF-svl">
-                            <rect key="frame" x="44" y="28" width="643" height="585"/>
+                            <rect key="frame" x="44" y="28" width="643" height="2916"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" notEnabled="YES"/>
                             </accessibility>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">Celebrating 25 Years of Marathon!
-
+                                    <string key="content">
 
 Special Thanks To</string>
                                     <attributes>
@@ -666,7 +665,7 @@ Cg
                                         </paragraphStyle>
                                     </attributes>
                                 </fragment>
-                                <fragment content="Marathon iOS Team:">
+                                <fragment content="Marathon® iOS Team:">
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -1498,7 +1497,7 @@ Cgo
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Aleph One is based on the Marathon 2 and Marathon Infinity source code which was developed by Bungie Software &lt;http://www.bungie.com/&gt;.
+                                    <string key="content">Aleph One is based on the Marathon 2® and Marathon Infinity® source code which was developed by Bungie Software &lt;http://www.bungie.com/&gt;.
 
 The enhancements and extensions to Marathon 2 and Marathon Infinity that constitute Aleph One have been made by:
 
@@ -1549,7 +1548,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">	Joey Adams
+                                    <string key="content">	Joey Adams
 	Michael Adams (mdmkolbe)
 	Falko Axmann
 	Christian Bauer
@@ -1594,7 +1593,7 @@ The enhancements and extensions to Marathon 2 and Marathon Infinity that constit
 	Clemens Unterkofler (hogdotmac)
 	James Willson
 	Woody Zenfell III
- </mutableString>
+ </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -2250,7 +2249,7 @@ Cgo
                                     <string key="content">Some background images are produced by NASA and are in the public domain.
 
 
-Marathon's Creators:
+Marathon's® Creators:
 
 </string>
                                     <attributes>
@@ -2299,7 +2298,7 @@ Marathon's Creators:
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Marathon (1994)
+                                    <string key="content">Marathon® (1994)
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.77905000000000002" blue="0.98860000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3082,7 +3081,7 @@ Cgo
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Marathon 2: Durandal (1995)
+                                    <string key="content">Marathon 2: Durandal® (1995)
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99946000000000002" green="0.98636000000000001" blue="0.25319999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4252,7 +4251,7 @@ CgoKA
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <string key="content">Marathon Infinity (1996)
+                                    <string key="content">Marathon Infinity® (1996)
 </string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4349,7 +4348,7 @@ Cg
                                     </attributes>
                                 </fragment>
                                 <fragment>
-                                    <mutableString key="content">Product Manager
+                                    <string key="content">Product Manager
 	Tuncer Deniz
 
 Scenario by Double Aught
@@ -4398,7 +4397,7 @@ The Voice of Bob
 	Doug Zartman
 
 
-</mutableString>
+</string>
                                     <attributes>
                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
@@ -4445,8 +4444,31 @@ The Voice of Bob
                                     </attributes>
                                 </fragment>
                                 <fragment>
+                                    <string key="content">BUNGIE™, MARATHON® and the Bungie and Marathon logos are either trademarks or registered trademarks of Bungie, Inc., used with permission.</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.68627000000000005" blue="0.80391999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="12" name="BankGothicBT-Medium"/>
+                                        <real key="NSKern" value="0.0"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops/>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
                                     <string key="content" base64-UTF8="YES">
-Cgo
+Cg
+</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="10" name="BankGothicBT-Medium"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops/>
+                                        </paragraphStyle>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content" base64-UTF8="YES">
+Cg
 </string>
                                     <attributes>
                                         <color key="NSColor" red="0.061060000000000003" green="0.92832000000000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

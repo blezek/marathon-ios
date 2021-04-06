@@ -75,9 +75,7 @@
 		513436E52266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
 		513436E62266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
 		513436E72266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
-		513436E92266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
 		513436EA2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
-		513436EB2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
 		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
 		5146D7C51FE0588900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
 		5146D7C61FE0588A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
@@ -251,7 +249,6 @@
 		5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
-		517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
 		517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
 		517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
@@ -292,15 +289,6 @@
 		518F64BA2304B3B60016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64B92304B3B50016F33B /* PauseDone.png */; };
 		518F64BC2304B3CC0016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BB2304B3CC0016F33B /* PauseDone.png */; };
 		518F64BE2304B3E20016F33B /* PauseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 518F64BD2304B3E10016F33B /* PauseDone.png */; };
-		51919B08245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
-		51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
-		51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */; };
-		51919B0C245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
-		51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
-		51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0B245C8BA200DFB6AC /* libbimgRelease.a */; };
-		51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
-		51919B11245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
-		51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51919B0F245C8BA700DFB6AC /* libbxRelease.a */; };
 		5195D5C72396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
 		5195D5C82396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
 		5195D5C92396B47C0078A375 /* BloomOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5195D5C52396B47A0078A375 /* BloomOff.png */; };
@@ -2058,7 +2046,6 @@
 		513436E82266CAE600435C9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		513F28261F97CAF100A23C93 /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		5146D7D41FE08CC000B89738 /* GenericBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericBackground.png; sourceTree = "<group>"; };
-		51478EE32405AAAD00375EF7 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		51482D692001C85F00690752 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = Resources/GUI/github.png; sourceTree = "<group>"; };
 		514D348D1E5965580011BAFD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		514D34991E5966F40011BAFD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
@@ -2228,9 +2215,6 @@
 		518F64B92304B3B50016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BB2304B3CC0016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
 		518F64BD2304B3E10016F33B /* PauseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseDone.png; sourceTree = "<group>"; };
-		51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbgfxRelease.a; path = Libraries/libbgfx_fat/libbgfxRelease.a; sourceTree = SOURCE_ROOT; };
-		51919B0B245C8BA200DFB6AC /* libbimgRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbimgRelease.a; path = Libraries/libbgfx_fat/libbimgRelease.a; sourceTree = SOURCE_ROOT; };
-		51919B0F245C8BA700DFB6AC /* libbxRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbxRelease.a; path = Libraries/libbgfx_fat/libbxRelease.a; sourceTree = SOURCE_ROOT; };
 		5195D5C52396B47A0078A375 /* BloomOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOff.png; sourceTree = "<group>"; };
 		5195D5C62396B47C0078A375 /* BloomOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloomOn.png; sourceTree = "<group>"; };
 		519F56DE21F0EBAC00C0382B /* D-pad-swim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "D-pad-swim.png"; sourceTree = "<group>"; };
@@ -3525,8 +3509,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51919B08245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
-				51919B0C245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
@@ -3539,11 +3521,9 @@
 				514D348E1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				A85E684D11CB173A00D0FAEF /* QuartzCore.framework in Frameworks */,
 				515303181DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
-				51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				8C00A5C5259556A000FB4561 /* libFreetype2.a in Frameworks */,
-				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
 				8C00A5162594122100FB4561 /* libavfilter.a in Frameworks */,
 				8C00A51F2594122100FB4561 /* libavdevice.a in Frameworks */,
 				8C00A5222594122100FB4561 /* libswresample.a in Frameworks */,
@@ -3613,13 +3593,9 @@
 				517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */,
 				A88121DC12C7816300A1A08E /* CoreAudio.framework in Frameworks */,
 				A88121DD12C7816300A1A08E /* CoreGraphics.framework in Frameworks */,
-				51919B11245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				8C009F822592DF8D00FB4561 /* libbz2.tbd in Frameworks */,
 				A88121DE12C7816300A1A08E /* OpenAL.framework in Frameworks */,
 				8C00A00E2592EA5300FB4561 /* libSDL2_ttf.a in Frameworks */,
-				51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
-				51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
-				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3629,9 +3605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C00A0DE2592FCEF00FB4561 /* libz.tbd in Frameworks */,
-				51919B0A245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
 				8C00A0152592EA5300FB4561 /* libSDL2_image.a in Frameworks */,
-				51919B0E245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
 				8C00A0122592EA5300FB4561 /* libSDL2.a in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				8C00A5272594122100FB4561 /* libswscale.a in Frameworks */,
@@ -3650,10 +3624,8 @@
 				8C00A5182594122100FB4561 /* libavfilter.a in Frameworks */,
 				8C00A5212594122100FB4561 /* libavdevice.a in Frameworks */,
 				8C00A5242594122100FB4561 /* libswresample.a in Frameworks */,
-				51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
-				513436EB2266CAE700435C9D /* GameController.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				8C00A51B2594122100FB4561 /* libavcodec.a in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
@@ -3705,7 +3677,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				51478EE32405AAAD00375EF7 /* shaders */,
 				51E9FFD0202BBE7A00ADD38A /* MatrixStack.hpp */,
 				51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */,
 				517D19FF23FAF04800B0878E /* AlephOneAcceleration.hpp */,
@@ -3725,7 +3696,6 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				080E96DDFE201D6D7F000001 /* LibrarySource */,
 				8C00A56A2595569F00FB4561 /* freetype_2.4.4 */,
-				517D258A23FFA8E400B0878E /* bgfx */,
 				8C00A0052592EA5200FB4561 /* SDL_fat */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -3982,17 +3952,6 @@
 				515275D721A1F53B004D1E07 /* BackButtonHighlighted.png */,
 			);
 			path = M3;
-			sourceTree = "<group>";
-		};
-		517D258A23FFA8E400B0878E /* bgfx */ = {
-			isa = PBXGroup;
-			children = (
-				51919B07245C8B9D00DFB6AC /* libbgfxRelease.a */,
-				51919B0B245C8BA200DFB6AC /* libbimgRelease.a */,
-				51919B0F245C8BA700DFB6AC /* libbxRelease.a */,
-			);
-			name = bgfx;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		519FCAF41EA53FB90066EE69 /* Buttons */ = {
@@ -6005,7 +5964,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "SDG Productions";
 				TargetAttributes = {
 					A85E672911CB173A00D0FAEF = {
@@ -8072,14 +8031,14 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.5;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8135,14 +8094,14 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.5;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -8200,7 +8159,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8211,7 +8170,7 @@
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.5;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edotstudios.m2;
@@ -8264,7 +8223,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8275,7 +8234,7 @@
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edotstudios.m2;
 				PRODUCT_NAME = Durandal;
@@ -8327,7 +8286,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8338,7 +8297,7 @@
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edotstudios.m2;
 				PRODUCT_NAME = Durandal;
@@ -8357,7 +8316,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
@@ -8388,22 +8347,22 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "com.swirlingvortex.alephone.m3 dev";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8417,7 +8376,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TZ45ZW2588;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8444,20 +8403,20 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "com.swirlingvortex.alephone.m3 dev";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8469,11 +8428,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SCENARIO=3",
@@ -8499,20 +8458,20 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 iOS Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8539,6 +8498,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -8604,7 +8564,7 @@
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
 					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/submodules/Libraries/JoypadCocoaTouchSDK\"",
@@ -8665,14 +8625,14 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.5;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -8729,7 +8689,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8740,7 +8700,7 @@
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edotstudios.m2;
 				PRODUCT_NAME = Durandal;
@@ -8758,11 +8718,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"SCENARIO=3",
@@ -8788,20 +8748,20 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.alephone.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 iOS Distribution";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8828,6 +8788,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -8893,7 +8854,7 @@
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
 					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/submodules/Libraries/JoypadCocoaTouchSDK\"",
@@ -8954,14 +8915,14 @@
 				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/freetype_2.4.4",
 					"$(PROJECT_DIR)/Libraries/FFmpeg-iOS/lib",
 					"$(PROJECT_DIR)/submodules/Libraries/freetype_2.4.4",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.5;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -8999,6 +8960,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -9064,7 +9026,7 @@
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
 					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/submodules/Libraries/JoypadCocoaTouchSDK\"",
@@ -9107,6 +9069,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -9172,7 +9135,7 @@
 					"\"$(SRCROOT)/AlephOneSDL/Source_Files\"",
 					"\"$(SRCROOT)/shaders/shader_h\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/submodules/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/submodules/Libraries/JoypadCocoaTouchSDK\"",

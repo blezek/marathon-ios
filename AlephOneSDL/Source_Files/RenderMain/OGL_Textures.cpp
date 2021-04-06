@@ -1606,7 +1606,7 @@ void TextureManager::PlaceTexture(const ImageDescriptor *Image, bool normal_map)
 		assert(false);
 #endif
 	}
-	
+    
 	// Set texture-mapping features
 	AOA::texEnvi(AOA_TEXTURE_ENV, AOA_TEXTURE_ENV_MODE, AOA_MODULATE);
   //printGLError(__PRETTY_FUNCTION__);

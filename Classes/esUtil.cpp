@@ -184,11 +184,6 @@ int InitES2Quads()
 //
 void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
-  if(AOA::useBGFX()) {
-    AOA::DrawQuad(x, y, w, h, tleft, ttop, tright, tbottom);
-    return;
-  }
-  
     //Initialize if needed
   int result = InitES2Quads();
     
