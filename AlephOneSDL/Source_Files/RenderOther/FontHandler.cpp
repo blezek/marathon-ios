@@ -100,6 +100,10 @@ void FontSpecifier::Init()
 
 void FontSpecifier::Update()
 {
+  if(fontImmutable) {
+    return;
+  }
+  
 	// Clear away
 	if (Info) {
 		unload_font(Info);
@@ -148,8 +152,10 @@ void FontSpecifier::Update()
 		Leading = Info->get_leading();
 		Height = Ascent + Leading;
 		LineSpacing = Ascent + Descent + Leading;
-		for (int k=0; k<256; k++)
+    for (int k=0; k<256; k++) {
 			Widths[k] = char_width(k, Info, Style);
+    }
+    
 	} else
 		Ascent = Descent = Leading = Height = LineSpacing = 0;
 }
@@ -165,7 +171,7 @@ int FontSpecifier::TextWidth(const char *text)
 		return width;
 	while ((c = *text++) != 0)
 		width += Widths[static_cast<unsigned char>(c)];
-	return width;
+  return width;
 }
 
 #ifdef HAVE_OPENGL

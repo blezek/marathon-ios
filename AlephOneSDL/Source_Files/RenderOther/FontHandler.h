@@ -69,6 +69,8 @@ public:
 	short Ascent, Descent, Leading;
 	short Widths[256];
 	
+  bool fontImmutable; //Flag to indicate the iOS font substution hack was used, and this font should no longer update.
+  
 	font_info *Info;
 	
 	// Initialize: call this before calling anything else;
