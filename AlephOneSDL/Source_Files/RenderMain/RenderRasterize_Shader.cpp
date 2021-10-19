@@ -22,6 +22,7 @@
 #include "OGL_Shader.h"
 #include "ChaseCam.h"
 #include "preferences.h"
+#include "DrawCache.hpp"
 
 #include "screen.h"
 #include "mouse.h"
@@ -218,12 +219,31 @@ void RenderRasterize_Shader::render_tree() {
   */
   
   RenderRasterizerClass::render_tree(kDiffuse);
+  DC()->drawAll(); //Draw and flush buffers
+
   render_viewer_sprite_layer(kDiffuse);
+  DC()->drawAll(); //Draw and flush buffers
+
   
 	if (useShaderPostProcessing() && TEST_FLAG(Get_OGL_ConfigureData().Flags, OGL_Flag_Blur) && blur.get()) {
 		blur->begin();
+
+    DC()->startGatheringLights();
+
+    //Add a random light off the floor if the player has invincibility active.
+    if(current_player->invincibility_duration) {
+        DC()->addLight(current_player->location.x, current_player->location.y, current_player->location.z + 200, 2000, rand() / double(RAND_MAX), rand() / double(RAND_MAX), rand() / double(RAND_MAX), 1);
+    }
+    
 		RenderRasterizerClass::render_tree(kGlow);
+
+    DC()->finishGatheringLights();
+    DC()->drawAll(); //Draw and flush buffers
+
     render_viewer_sprite_layer(kGlow);
+
+    DC()->drawAll(); //Draw and flush buffers
+
 		blur->end();
 		RasPtr->swapper->deactivate();
     AOA::pushGroupMarker(0, "draw blur passes");
@@ -356,6 +376,10 @@ TextureManager RenderRasterize_Shader::setupSpriteTexture(const rectangle_defini
 			flare = -1;
 			s = Shader::get(renderStep == kGlow ? Shader::S_InvincibleBloom : Shader::S_Invincible);
 			s->enable();
+      
+      //Add a random light slightly off the floor
+     DC()->addLight(rect.Position.x, rect.Position.y, rect.Position.z + 100, 2000, rand() / double(RAND_MAX), rand() / double(RAND_MAX), rand() / double(RAND_MAX), 1);
+      
 			break;
 		case _tinted_transfer:
 			flare = -1;
@@ -518,13 +542,17 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 		double TexScale = ABS(TMgr.U_Scale);
 		double HorizScale = double(1 << opts->HorizExp);
 		s->setFloat(Shader::U_ScaleX, HorizScale * (npotTextures ? 1.0 : TexScale) * Radian2Circle);
+    DC()->cacheScaleX(HorizScale * (npotTextures ? 1.0 : TexScale) * Radian2Circle);
 		s->setFloat(Shader::U_OffsetX, HorizScale * (0.25 + opts->Azimuth * FullCircleReciprocal));
-		
+    DC()->cacheOffsetX(HorizScale * (0.25 + opts->Azimuth * FullCircleReciprocal));
+
 		short AdjustedVertExp = opts->VertExp + opts->OGL_AspRatExp;
 		double VertScale = (AdjustedVertExp >= 0) ? double(1 << AdjustedVertExp)
 		                                          : 1/double(1 << (-AdjustedVertExp));
 		s->setFloat(Shader::U_ScaleY, VertScale * TexScale * Radian2Circle);
+    DC()->cacheScaleY(VertScale * TexScale * Radian2Circle);
 		s->setFloat(Shader::U_OffsetY, (0.5 + TMgr.U_Offset) * TexScale);
+    DC()->cacheOffsetY((0.5 + TMgr.U_Offset) * TexScale);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); //DCW added for landscape. Repeat horizontally
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT); //DCW added for landscape. Mirror vertically.
 
@@ -548,17 +576,26 @@ TextureManager RenderRasterize_Shader::setupWallTexture(const shape_descriptor& 
 	if (renderStep == kGlow) {
 		if (TMgr.TextureType == OGL_Txtr_Landscape) {
 			s->setFloat(Shader::U_BloomScale, TMgr.LandscapeBloom());
+      DC()->cacheBloomScale(TMgr.LandscapeBloom());
 		} else {
 			s->setFloat(Shader::U_BloomScale, TMgr.BloomScale());
+      DC()->cacheBloomScale(TMgr.BloomScale());\
 			s->setFloat(Shader::U_BloomShift, TMgr.BloomShift());
+      DC()->cacheBloomShift(TMgr.BloomShift());
 		}
 	}
 	s->setFloat(Shader::U_Flare, flare);
+  DC()->cacheFlare(flare);
 	s->setFloat(Shader::U_SelfLuminosity, selfLuminosity);
-	s->setFloat(Shader::U_Pulsate, pulsate);
-	s->setFloat(Shader::U_Wobble, wobble);
-	s->setFloat(Shader::U_Depth, offset);
-	s->setFloat(Shader::U_Glow, 0);
+  DC()->cacheSelfLuminosity(selfLuminosity);
+  s->setFloat(Shader::U_Pulsate, pulsate);
+  DC()->cachePulsate(pulsate);
+  s->setFloat(Shader::U_Wobble, wobble);
+  DC()->cacheWobble(wobble);
+  s->setFloat(Shader::U_Depth, offset);
+  DC()->cacheDepth(offset);
+  s->setFloat(Shader::U_Glow, 0);
+  DC()->cacheGlow(0);
 	return TMgr;
 }
 
@@ -657,13 +694,20 @@ bool setupGlow(struct view_data *view, TextureManager &TMgr, float wobble, float
 		s->enable();
 		if (renderStep == kGlow) {
 			s->setFloat(Shader::U_BloomScale, TMgr.GlowBloomScale());
+      DC()->cacheBloomScale(TMgr.GlowBloomScale());
 			s->setFloat(Shader::U_BloomShift, TMgr.GlowBloomShift());
+      DC()->cacheBloomShift(TMgr.GlowBloomShift());
 		}
 		s->setFloat(Shader::U_Flare, flare);
+    DC()->cacheFlare(flare);
 		s->setFloat(Shader::U_SelfLuminosity, selfLuminosity);
+    DC()->cacheSelfLuminosity(selfLuminosity);
 		s->setFloat(Shader::U_Wobble, wobble);
+    DC()->cacheWobble(wobble);
 		s->setFloat(Shader::U_Depth, offset - 1.0);
+    DC()->cacheDepth(offset - 1.0);
 		s->setFloat(Shader::U_Glow, TMgr.MinGlowIntensity());
+    DC()->cacheGlow(TMgr.MinGlowIntensity());
 		return true;
 	}
 	return false;
@@ -808,12 +852,14 @@ void RenderRasterize_Shader::render_node_floor_or_ceiling(clipping_window_data *
     }
     
     AOA::pushGroupMarker(0, "render_node_floor_or_ceiling");
-		AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, vertex_count);
+		//AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, vertex_count);
+    DC()->drawSurfaceBuffered(vertex_count, vertex_array, texcoord_array, tex4);
     glPopGroupMarkerEXT();
 
 		if (setupGlow(view, TMgr, wobble, intensity, weaponFlare, selfLuminosity, offset, renderStep)) {
       AOA::pushGroupMarker(0, "render_node_floor_or_ceiling glow setup");
-			glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
+			//glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_count);
+      DC()->drawSurfaceBuffered(vertex_count, vertex_array, texcoord_array, tex4);
       glPopGroupMarkerEXT();
 		}
 
@@ -986,8 +1032,11 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
       }
          
       AOA::pushGroupMarker(0, "render_node_side");
-      AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, 4);
+      ////AOA::drawTriangleFan(GL_TRIANGLE_FAN, 0, 4);
       //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+      
+      DC()->drawSurfaceBuffered(vertex_count, vertex_array, texcoord_array, tex4);
+      
       glPopGroupMarkerEXT();
 			/*(GLfloat vertex_array[12];
 			GLfloat texcoord_array[8];
@@ -1038,7 +1087,8 @@ void RenderRasterize_Shader::render_node_side(clipping_window_data *window, vert
           glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         }*/
         AOA::pushGroupMarker(0, "render_node_side glow");
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        DC()->drawSurfaceBuffered(vertex_count, vertex_array, texcoord_array, tex4);
         glPopGroupMarkerEXT();
         //glDrawArrays(GL_QUADS, 0, vertex_count);
 			}
@@ -1302,8 +1352,13 @@ void RenderRasterize_Shader::render_node_object(render_object_data *object, bool
 
 void RenderRasterize_Shader::_render_node_object_helper(render_object_data *object, RenderStep renderStep) {
 
+  //Rendering a node object requires a flush of the draw buffers for walls and ceilings. Someday maybe sprites won't have to flush.
+  DC()->drawAll();
+  
 	rectangle_definition& rect = object->rectangle;
 	const world_point3d& pos = rect.Position;
+  
+  DC()->addDefaultLight(pos.x, pos.y, pos.z, object->object_owner_type, object->object_owner_permutation_type);
   
   GLint startingDepthFunction;
   glGetIntegerv(GL_DEPTH_FUNC, &startingDepthFunction);

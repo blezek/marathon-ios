@@ -81,6 +81,9 @@ public:
     U_LogicalHeight,
     U_PixelWidth,
     U_PixelHeight,
+    U_LightPositions,
+    U_LightColors,
+    U_UseUniformFeatures,
 		NUMBER_OF_UNIFORM_LOCATIONS
 	};
 
@@ -111,6 +114,14 @@ public:
     ATTRIB_VERTEX,
     ATTRIB_TEXCOORDS,
     ATTRIB_NORMAL,
+    ATTRIB_COLOR,
+    ATTRIB_TEXCOORDS4,
+    ATTRIB_CLIPPLANE0,
+    ATTRIB_CLIPPLANE1,
+    ATTRIB_CLIPPLANE5,
+    ATTRIB_SxOxSyOy, //Pack in scaleX, offsetX, scaleY, offsetY
+    ATTRIB_BsBtFlSl, //Pack in bloomScale, bloomShift, flare, selfLuminosity
+    ATTRIB_PuWoDeGl, //Pack in pulsate, wobble, depth, glow
     NUM_ATTRIBUTES
   };
   
@@ -143,9 +154,12 @@ public:
 	void init();
 	void enable();
 	void unload();
+  void enableAndSetStandardUniforms();
 	void setFloat(UniformName name, float); // shader must be enabled
 	void setMatrix4(UniformName name, float *f);
   void setVec4(UniformName name, float *f);
+  void setVec4v(UniformName name, int count, float *f);
+  void setVec2(UniformName name, float *f);
 
 	int16 passes();
 

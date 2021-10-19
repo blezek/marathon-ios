@@ -114,11 +114,11 @@ int InitES2Quads()
   "precision highp float;\n"
   "varying highp vec2 textureUV; \n"
   "uniform sampler2D texture; \n"
-  "uniform vec4 vColor;\n"
+  "uniform vec4 uColor;\n"
   "void main()                                \n"
   "{                                          \n"
   //"  gl_FragColor = vec4(1.0, 1.0, 1.0, .25); \n"
-  "  gl_FragColor = texture2D(texture, textureUV) * vColor; \n"
+  "  gl_FragColor = texture2D(texture, textureUV) * uColor; \n"
   //"  gl_FragColor.r=1.0; \n"
   "}                                          \n";
   
@@ -172,7 +172,7 @@ int InitES2Quads()
   
   // Get uniform locations
   uniforms[SAMPLER] = glGetUniformLocation(quadProgramObject, "texture");
-  uniforms[COLOR] = glGetUniformLocation(quadProgramObject, "vColor");
+  uniforms[COLOR] = glGetUniformLocation(quadProgramObject, "uColor");
 
   
   //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

@@ -136,7 +136,15 @@ void AOA::programFromNameIndex (AOAuint *_programObj, AOAuint nameIndex, Shader 
       glBindAttribLocation(*_programObj, Shader::ATTRIB_VERTEX, "vPosition");
       glBindAttribLocation(*_programObj, Shader::ATTRIB_TEXCOORDS, "vTexCoord");
       glBindAttribLocation(*_programObj, Shader::ATTRIB_NORMAL, "vNormal");
-      
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_COLOR, "vColor");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_TEXCOORDS4, "vTexCoords4");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_CLIPPLANE0, "vClipPlane0");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_CLIPPLANE1, "vClipPlane1");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_CLIPPLANE5, "vClipPlane5");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_SxOxSyOy, "vSxOxSyOy");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_BsBtFlSl, "vBsBtFlSl");
+      glBindAttribLocation(*_programObj, Shader::ATTRIB_PuWoDeGl, "vPuWoDeGl");
+
       glLinkProgram(*_programObj);   printGLError(__PRETTY_FUNCTION__); //DCW no ARB in ios
       glGetProgramiv(*_programObj, GL_LINK_STATUS, &linked);
       

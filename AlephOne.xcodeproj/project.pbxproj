@@ -305,6 +305,9 @@
 		517FB4901F89C37A009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB48F1F89C379009F6DCE /* NewGameBackground.png */; };
 		517FB4941F89C408009F6DCE /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 517FB4931F89C408009F6DCE /* NewGameBackground.png */; };
 		51826F7C21A24B3A00103A6B /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 51826F7B21A24B3A00103A6B /* About.png */; };
+		5182CC60263060F700D930F5 /* DrawCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5182CC5F263060F700D930F5 /* DrawCache.cpp */; };
+		5182CC61263060F700D930F5 /* DrawCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5182CC5F263060F700D930F5 /* DrawCache.cpp */; };
+		5182CC62263060F700D930F5 /* DrawCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5182CC5F263060F700D930F5 /* DrawCache.cpp */; };
 		5189238D1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238E1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
 		5189238F1E92C26B009BFB67 /* powered-by-alephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5189238C1E92C26B009BFB67 /* powered-by-alephone.png */; };
@@ -2414,6 +2417,8 @@
 		517FB48F1F89C379009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		517FB4931F89C408009F6DCE /* NewGameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameBackground.png; sourceTree = "<group>"; };
 		51826F7B21A24B3A00103A6B /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
+		5182CC5E263060F600D930F5 /* DrawCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DrawCache.hpp; sourceTree = "<group>"; };
+		5182CC5F263060F700D930F5 /* DrawCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawCache.cpp; sourceTree = "<group>"; };
 		5189238C1E92C26B009BFB67 /* powered-by-alephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "powered-by-alephone.png"; path = "Resources/Splash/powered-by-alephone.png"; sourceTree = SOURCE_ROOT; };
 		518AF40D1D91D25E00DB6B36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		518E9FF31F69AEA10039960A /* EpisodeLogoAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EpisodeLogoAlpha.png; sourceTree = "<group>"; };
@@ -4819,6 +4824,8 @@
 				51EAD3801E58B13600611EFF /* Crosshairs.h */,
 				51EAD3811E58B13600611EFF /* Crosshairs_SDL.cpp */,
 				51EAD3821E58B13600611EFF /* DDS.h */,
+				5182CC5F263060F700D930F5 /* DrawCache.cpp */,
+				5182CC5E263060F600D930F5 /* DrawCache.hpp */,
 				51EAD3831E58B13600611EFF /* ImageLoader.h */,
 				51EAD3841E58B13600611EFF /* ImageLoader_SDL.cpp */,
 				51EAD3851E58B13600611EFF /* ImageLoader_Shared.cpp */,
@@ -7276,6 +7283,7 @@
 				51B684C71EAAFA0400CB1628 /* floor1.c in Sources */,
 				51EAD5E71E58B13700611EFF /* HTTP.cpp in Sources */,
 				51EAD4821E58B13600611EFF /* preprocess_map_shared.cpp in Sources */,
+				5182CC60263060F700D930F5 /* DrawCache.cpp in Sources */,
 				51B684E51EAAFA0400CB1628 /* res0.c in Sources */,
 				51EAD5691E58B13700611EFF /* lua_projectiles.cpp in Sources */,
 				51EAD5AB1E58B13700611EFF /* preference_dialogs.cpp in Sources */,
@@ -7600,6 +7608,7 @@
 				51B684C81EAAFA0400CB1628 /* floor1.c in Sources */,
 				51EAD6B11E58B13800611EFF /* IMG_savepng.c in Sources */,
 				51EAD6DB1E58B13800611EFF /* TextLayoutHelper.cpp in Sources */,
+				5182CC61263060F700D930F5 /* DrawCache.cpp in Sources */,
 				51B684E61EAAFA0400CB1628 /* res0.c in Sources */,
 				51EAD4681E58B13600611EFF /* AStream.cpp in Sources */,
 				51EAD4471E58B13600611EFF /* mytm_sdl.cpp in Sources */,
@@ -7924,6 +7933,7 @@
 				51B684C91EAAFA0400CB1628 /* floor1.c in Sources */,
 				51EAD5E91E58B13700611EFF /* HTTP.cpp in Sources */,
 				51EAD4841E58B13600611EFF /* preprocess_map_shared.cpp in Sources */,
+				5182CC62263060F700D930F5 /* DrawCache.cpp in Sources */,
 				51B684E71EAAFA0400CB1628 /* res0.c in Sources */,
 				51EAD56B1E58B13700611EFF /* lua_projectiles.cpp in Sources */,
 				51EAD5AD1E58B13700611EFF /* preference_dialogs.cpp in Sources */,
@@ -8073,10 +8083,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8157,11 +8167,11 @@
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M1";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8261,7 +8271,7 @@
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8477,11 +8487,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8558,10 +8568,10 @@
 				);
 				MARKETING_VERSION = 5.6;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "M2 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8843,11 +8853,11 @@
 				);
 				MARKETING_VERSION = 5.6;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9046,7 +9056,7 @@
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -9060,11 +9070,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -9143,10 +9153,10 @@
 				);
 				MARKETING_VERSION = 5.6;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "M2 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -9237,11 +9247,11 @@
 				);
 				MARKETING_VERSION = 5.6;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M3";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9439,7 +9449,7 @@
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Dustin M1 Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

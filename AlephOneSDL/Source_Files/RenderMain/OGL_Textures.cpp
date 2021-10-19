@@ -107,6 +107,7 @@ May 3, 2003 (Br'fin (Jeremy Parsons))
 
 //DCW
 #include "MatrixStack.hpp"
+#include "DrawCache.hpp"
 
 OGL_TexturesStats gGLTxStats = {0,0,0,500000,0,0, 0};
 
@@ -197,6 +198,7 @@ bool TextureState::Allocate(short txType)
 bool TextureState::Use(int Which)
 {
 	AOA::bindTexture(AOA_TEXTURE_2D,IDs[Which], NULL, 0);
+  DC()->cacheLandscapeTextureStatus(TextureType == OGL_Txtr_Landscape);
 	bool result = !TexGened[Which];
 	TexGened[Which] = true;
 	IDUsage[Which]++;
