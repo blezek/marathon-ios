@@ -51,6 +51,7 @@ Sep 2, 2000 (Loren Petrich):
 //DCW
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
+#include "DrawCache.hpp"
 
 /* maximum number of vertices a polygon can be world-clipped into (one per clip line) */
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
@@ -343,6 +344,10 @@ void RenderRasterizerClass::render_node(
 			LiquidSurface.transfer_mode= media->transfer_mode;
 			LiquidSurface.transfer_mode_data= 0;
 			
+      //We need to flush before drawing see-through liquids.
+      //In the future, we should cache this status so we can buffer media surfaces, too.
+      DC()->drawAll();
+      
 			for (window= node->clipping_windows; window; window= window->next_window)
 			{
         render_node_floor_or_ceiling(window, polygon, &LiquidSurface, false, ceil, renderStep);
