@@ -1410,7 +1410,8 @@ void RenderRasterize_Shader::_render_node_object_helper(render_object_data *obje
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_ALWAYS);
     
-		//glDisable(GL_DEPTH_TEST);
+    //DCW there is a problem where sprite portions below transparent media are messing with the depth buffer. Disabling depth test here for now until I can figure it out.
+		glDisable(GL_DEPTH_TEST);
 	}
 
 	TextureManager TMgr = setupSpriteTexture(rect, OGL_Txtr_Inhabitant, offset, renderStep);

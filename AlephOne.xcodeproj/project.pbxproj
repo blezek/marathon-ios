@@ -8160,7 +8160,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8261,7 +8261,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -8367,7 +8367,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
@@ -8468,7 +8468,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
@@ -8566,7 +8566,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
@@ -8586,10 +8586,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8662,15 +8662,15 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8685,9 +8685,9 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8757,13 +8757,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8779,7 +8779,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8851,9 +8851,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9046,7 +9046,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
@@ -9151,7 +9151,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
@@ -9173,7 +9173,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 82636XW3TE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9245,9 +9245,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9439,7 +9439,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.6;
+				MARKETING_VERSION = 5.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",

@@ -103,6 +103,10 @@ static vector<entry_point> levels;
    */
   int32 playableLevels = _single_player_entry_point;
   
+  if(usingA1DEBUG()) {
+    playableLevels = _single_player_entry_point | _multiplayer_carnage_entry_point;
+  }
+  
   if(survivalMode()) {
     playableLevels = _multiplayer_carnage_entry_point;
   }

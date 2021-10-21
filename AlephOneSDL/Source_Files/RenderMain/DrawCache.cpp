@@ -395,7 +395,6 @@ void DrawCache::drawSurfaceBuffered(int vertex_count, GLfloat *vertex_array, GLf
         drawBuffers[b].clipPlane1[i] = clipPlane1[0]; drawBuffers[b].clipPlane1[i+1] = clipPlane1[1]; drawBuffers[b].clipPlane1[i+2] = clipPlane1[2]; drawBuffers[b].clipPlane1[i+3] = clipPlane1[3];
         drawBuffers[b].clipPlane5[i] = clipPlane5[0]; drawBuffers[b].clipPlane5[i+1] = clipPlane5[1]; drawBuffers[b].clipPlane5[i+2] = clipPlane5[2]; drawBuffers[b].clipPlane5[i+3] = clipPlane5[3];
     
-        
         drawBuffers[b].vSxOxSyOy[i] = scaleX; drawBuffers[b].vSxOxSyOy[i+1] = offsetX; drawBuffers[b].vSxOxSyOy[i+2] = scaleY; drawBuffers[b].vSxOxSyOy[i+3] = offsetY;
         drawBuffers[b].vBsBtFlSl[i] = bloomScale; drawBuffers[b].vBsBtFlSl[i+1] = bloomShift; drawBuffers[b].vBsBtFlSl[i+2] = flare; drawBuffers[b].vBsBtFlSl[i+3] = selfLuminosity;
         drawBuffers[b].vPuWoDeGl[i] = pulsate; drawBuffers[b].vPuWoDeGl[i+1] = wobble; drawBuffers[b].vPuWoDeGl[i+2] = depth; drawBuffers[b].vPuWoDeGl[i+3] = glow;
@@ -471,7 +470,7 @@ void DrawCache::drawAndResetBuffer(int index) {
     glEnableVertexAttribArray(Shader::ATTRIB_CLIPPLANE1);
     glVertexAttribPointer(Shader::ATTRIB_CLIPPLANE5, 4, GL_FLOAT, GL_FALSE, 0, drawBuffers[index].clipPlane5);
     glEnableVertexAttribArray(Shader::ATTRIB_CLIPPLANE5);
-        
+  
     glVertexAttribPointer(Shader::ATTRIB_SxOxSyOy, 4, GL_FLOAT, GL_FALSE, 0, drawBuffers[index].vSxOxSyOy);
     glEnableVertexAttribArray(Shader::ATTRIB_SxOxSyOy);
     glVertexAttribPointer(Shader::ATTRIB_BsBtFlSl, 4, GL_FLOAT, GL_FALSE, 0, drawBuffers[index].vBsBtFlSl);

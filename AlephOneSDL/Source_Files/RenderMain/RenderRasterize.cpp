@@ -352,7 +352,6 @@ void RenderRasterizerClass::render_node(
 			{
         render_node_floor_or_ceiling(window, polygon, &LiquidSurface, false, ceil, renderStep);
 			}
-      
 		}
 	}
 	
