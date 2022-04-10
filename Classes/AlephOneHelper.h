@@ -48,6 +48,7 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
+extern void switchToSDLMenuPostGame(); //DCW
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
 extern bool getLocalPlayer ();

@@ -250,6 +250,7 @@ void gotoMenu() {
   [[GameViewController sharedInstance] gotoMenu:nil];
 }
 
+
 void switchToSDLMenu() {
   [[GameViewController sharedInstance] switchToSDLMenu];
 }

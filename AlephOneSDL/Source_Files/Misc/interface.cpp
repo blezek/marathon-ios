@@ -423,6 +423,7 @@ void set_game_state(
 					break;
 					
 				case _close_game:
+          //Maybe here we can hide the hud, then skip this finish command until the next tick?
 					finish_game(true);
 					break;
 					
@@ -3353,7 +3354,7 @@ size_t should_restore_game_networked(FileSpecifier& file)
 
 	d.set_widget_placer(placer);
 
-  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shopwn.
+  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shown.
   printf("TODO: enable multiplayer restore?\n");
   if(dynamic_world->player_count != 0) {
     switchToSDLMenu();

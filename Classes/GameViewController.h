@@ -162,10 +162,13 @@ typedef enum {
 - (IBAction)togglePause:(id)from;
 - (IBAction)newGame;
 - (IBAction)joinNetworkGame;
+- (IBAction)joinNetworkGameCommand; //Needed to test delayed menu selection
 - (IBAction)gatherNetworkGame;
+- (IBAction)gatherNetworkGameCommand;
 - (IBAction)switchBackToGameView;
 - (IBAction)switchToSDLMenu;
 - (IBAction)beginGame;
+- (IBAction)beginGameCommand;
 - (IBAction)cancelNewGame;
 - (void)playerKilled;
 - (IBAction)quitPressed;
@@ -216,6 +219,7 @@ typedef enum {
 
 - (IBAction)chooseSaveGame;
 - (IBAction)gameChosen:(SavedGame*)game;
+- (IBAction)gameChosenCommand:(SavedGame*)game;
 - (IBAction)saveGame;
 - (IBAction)chooseSaveGameCanceled;
 
@@ -241,6 +245,7 @@ typedef enum {
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 - (void)closeEvent;
+- (void)setDisplaylinkPaused:(bool)paused;
 
 // Some actions inventory and map
 - (IBAction)changeInventory;

@@ -487,6 +487,13 @@ short localFindActionTarget(
   }
 }
 
+- (void)setDisplaylinkPaused:(bool)paused {
+  
+  if(displayLink) {
+    ((CADisplayLink*)displayLink).paused = paused; //dcw shit test
+  }
+}
+
 - (IBAction)quitPressed {
   rateGame = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
                                                message:@"Quit? Like you have something better to do!  Why not rate the app instead?"
@@ -527,18 +534,29 @@ short localFindActionTarget(
 
 - (IBAction)joinNetworkGame {
   [self switchToSDLMenu];
+  //[self performSelector:@selector(switchToSDLMenu) withObject:nil afterDelay:.1];
+  //[self performSelector:@selector(joinNetworkGameCommand) withObject:nil afterDelay:0];
+  [self performSelectorOnMainThread:@selector(joinNetworkGameCommand) withObject:nil waitUntilDone:NO];
+  //do_menu_item_command(mInterface, iJoinGame, false);
+}
+- (IBAction)joinNetworkGameCommand {
   do_menu_item_command(mInterface, iJoinGame, false);
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
 }
 
 - (IBAction)gatherNetworkGame {
   if( mode!=SDLMenuMode ){
     [self switchToSDLMenu];
-    do_menu_item_command(mInterface, iGatherGame, false);
+    [self performSelector:@selector(gatherNetworkGameCommand) withObject:nil afterDelay:0];
   }
 }
 
+- (IBAction)gatherNetworkGameCommand {
+  do_menu_item_command(mInterface, iGatherGame, false);
+  [self setDisplaylinkPaused: NO];
+}
+
 - (IBAction)switchBackToGameView {
-  
     //Disable gamepad input while not in SDL menu mode
   SDL_GameControllerEventState(SDL_IGNORE);
   SDL_JoystickEventState(SDL_IGNORE);
@@ -549,7 +567,11 @@ short localFindActionTarget(
   //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
 }
 
+
 - (IBAction)switchToSDLMenu {
+
+  [self setDisplaylinkPaused: YES];
+  
   self.currentSavedGame = nil;
   [self zeroStats];
   haveNewGamePreferencesBeenSet = YES;
@@ -559,10 +581,21 @@ short localFindActionTarget(
   [self cancelNewGame];
   self.viewGL.userInteractionEnabled = YES; //This must be disabled after the game starts or dialog is cancelled!
   
+  //dcw shit test
+  /*[self.hud removeFromSuperview];
+  [self.view setNeedsLayout];
+  [self.view setNeedsDisplay];
+  [self.view layoutSubviews];
+  [self.view layoutIfNeeded];
+  [self.hud setNeedsLayout];
+  [self.hud setNeedsDisplay];
+  [self.hud layoutSubviews];
+  [self.hud layoutIfNeeded];*/
+   
+  
     //Enable gamepad navigation
   SDL_GameControllerEventState(SDL_ENABLE);
   SDL_JoystickEventState(SDL_ENABLE);
-
   mode=SDLMenuMode;
   }
 
@@ -598,16 +631,19 @@ short localFindActionTarget(
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
-
+  [self switchToSDLMenu];
+  [self performSelector:@selector(beginGameCommand) withObject:nil afterDelay:0];
+}
+- (IBAction)beginGameCommand {
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
-  
-  
-#if defined(A1DEBUG)
-  [self shieldCheat:nil];
-  [self ammoCheat:nil];
-  [self weaponsCheat:nil];
-#endif
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
+
+  #if defined(A1DEBUG)
+    [self shieldCheat:nil];
+    [self ammoCheat:nil];
+    [self weaponsCheat:nil];
+  #endif
 }
 
 - (IBAction)cancelNewGame {
@@ -995,6 +1031,11 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
+  [self switchToSDLMenu];
+  [self performSelector:@selector(gameChosenCommand:) withObject:game afterDelay:0];
+}
+
+- (IBAction) gameChosenCommand:(SavedGame*)game {
   [self performSelector:@selector(chooseSaveGameCanceled) withObject:nil afterDelay:0.0];
 
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
@@ -1021,6 +1062,7 @@ extern bool load_and_start_game(FileSpecifier& File);
      MLog ( @"Game loading cancelled.");
     
   }
+  [self setDisplaylinkPaused: NO]; 
 }
 
 - (IBAction) chooseSaveGameCanceled {
@@ -1268,7 +1310,9 @@ extern bool handle_open_replay(FileSpecifier& File);
 #pragma mark -
 #pragma mark Replacement menus
 - (IBAction)menuShowReplacementMenu {
-  
+
+  [self setDisplaylinkPaused: NO]; //dcw shit test
+
   self.logoView.hidden = YES;
   self.episodeImageView.image = nil;
   self.bungieAerospaceImageView.image = nil;
@@ -1279,11 +1323,11 @@ extern bool handle_open_replay(FileSpecifier& File);
   }
   
   self.replacementMenuView.hidden = NO;
-  
 }
 
 - (IBAction)menuHideReplacementMenu {
-  self.replacementMenuView.hidden = YES;
+  //self.replacementMenuView.hidden = YES;
+  [Effects disappearWithDelay:self.replacementMenuView];
 }
 
 - (IBAction)menuNewGame {
@@ -1819,7 +1863,7 @@ short items[]=
         //[self menuShowReplacementMenu];
       [self switchBackToGameView];
       self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
-        mode = MenuMode;
+      mode = MenuMode;
       
     }
     // Causing a bug, always dim
@@ -1887,7 +1931,8 @@ short items[]=
     }
   
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
-    if ( !inMainLoop && mode != SDLMenuMode ) {
+    if ( !inMainLoop && mode != SDLMenuMode )
+    {
         inMainLoop = YES;
         AlephOneMainLoop();
         inMainLoop = NO;

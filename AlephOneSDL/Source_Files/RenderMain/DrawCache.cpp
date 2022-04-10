@@ -16,6 +16,8 @@
 #include "projectiles.h"
 #include "effects.h"
 
+extern bool shapes_file_is_m1();
+
     //Caches for texture attributes as set by the texture manager.
     //These get cleared once drawn or fed into a buffer.
 GLfloat scaleX, offsetX, scaleY, offsetY, bloomScale, bloomShift, flare, selfLuminosity, pulsate, wobble, depth, glow;
@@ -118,6 +120,22 @@ void DrawCache::addDefaultLight(GLfloat x, GLfloat y, GLfloat z, short objectTyp
                 default:
                     break;
             }
+            
+            //Handle any differences in M1 default projectile lights
+        if (shapes_file_is_m1()) {
+          switch (permutationType)
+           {
+               case _projectile_fist: //Major Fusion Bolt
+                  addLight(x, y, z, 3000, .8, rand() / double(RAND_MAX), 1, 1 );
+                   break;
+               case _projectile_staff_bolt: //flamethrower
+                  addLight(x, y, z, 1000, 1, .8, 0, 1 );
+                  break;
+               default:
+                   break;
+           }
+        }
+      
     } else if(objectType == _object_is_effect) {
             switch (permutationType)
             {

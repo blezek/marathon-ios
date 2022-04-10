@@ -103,9 +103,7 @@
 		513436E52266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
 		513436E62266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
 		513436E72266C9B400435C9D /* AOMGameController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 513436E42266C9B400435C9D /* AOMGameController.mm */; };
-		513436E92266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
 		513436EA2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
-		513436EB2266CAE700435C9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513436E82266CAE600435C9D /* GameController.framework */; };
 		513F28271F97CDDF00A23C93 /* NewGameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 513F28261F97CAF100A23C93 /* NewGameBackground.png */; };
 		5146D7C51FE0588900B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
 		5146D7C61FE0588A00B89738 /* help3.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F55DF12A7407E00032ED6 /* help3.png */; };
@@ -288,7 +286,6 @@
 		5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
-		517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
 		517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
 		517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
@@ -3557,7 +3554,6 @@
 				51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
-				513436E92266CAE700435C9D /* GameController.framework in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
 				514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51041DD21EAAF02300129201 /* libFreetype2.a in Frameworks */,
@@ -3633,7 +3629,6 @@
 				51324A381EAAE33E00BA8D8F /* libswscale.a in Frameworks */,
 				51919B09245C8B9D00DFB6AC /* libbgfxRelease.a in Frameworks */,
 				51919B0D245C8BA200DFB6AC /* libbimgRelease.a in Frameworks */,
-				517BC9811E5A2478004B42FF /* GameController.framework in Frameworks */,
 				51AADD7A2056FB3F00829264 /* libz.1.2.5.dylib in Frameworks */,
 				514D348F1E5965580011BAFD /* CoreMedia.framework in Frameworks */,
 				51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */,
@@ -3661,7 +3656,6 @@
 				51919B12245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
-				513436EB2266CAE700435C9D /* GameController.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				514D349C1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
@@ -6043,7 +6037,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "SDG Productions";
 				TargetAttributes = {
 					A85E672911CB173A00D0FAEF = {
@@ -8083,10 +8077,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8139,7 +8133,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
@@ -8167,11 +8161,11 @@
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M1";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8239,7 +8233,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
@@ -8267,7 +8261,7 @@
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -8345,7 +8339,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8391,7 +8385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ45ZW2588;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8446,7 +8440,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8470,7 +8464,7 @@
 				);
 				MARKETING_VERSION = 5.7;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8544,7 +8538,7 @@
 					"${SRCROOT}/submodules/Libraries/bgfx/bimg/include",
 				);
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8640,7 +8634,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8735,7 +8729,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8829,7 +8823,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -8884,6 +8878,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -8944,7 +8939,7 @@
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
 					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
@@ -9024,7 +9019,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/submodules/Libraries/freetype-2.4.4\"",
@@ -9052,7 +9047,7 @@
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9129,7 +9124,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info2.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -9223,7 +9218,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info3.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/SDL\"",
@@ -9278,6 +9273,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -9338,7 +9334,7 @@
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
 					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
@@ -9418,7 +9414,7 @@
 					"${SOURCE_ROOT}/submodules/Libraries/SDL2_image-2.0.1",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/submodules/Libraries/SDL\"",
@@ -9445,7 +9441,7 @@
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -9477,6 +9473,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -9537,7 +9534,7 @@
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
 					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
@@ -9576,6 +9573,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -9636,7 +9634,7 @@
 					"$(SRCROOT)/AlephOneSDL/Source_Files/CSeries",
 					"$(SRCROOT)/submodules/Libraries/glm",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules//Libraries/GoogleAnalytics",
 					"$(SRCROOT)/submodules//Libraries/JoypadCocoaTouchSDK",
