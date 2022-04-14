@@ -1483,6 +1483,9 @@ bool SetupNetgameDialog::informationIsAcceptable ()
 		if (game_limit_type == duration_time_limit)
 		{
 			information_is_acceptable = m_timeLimitWidget->get_value () >= 1;
+      #if defined(A1DEBUG)
+      information_is_acceptable = TRUE; //Anything goes in Debug mode!
+      #endif
 		}
 		
 	if (information_is_acceptable)
@@ -2379,7 +2382,7 @@ send_text_fake(w_text_entry* te) {
 void display_net_game_stats(void)
 {
 //printf("display_net_game_stats\n");
-  
+  //return;//dcw shit test
   switchToSDLMenu(); //DCW
   
 	if (gMetaserverClient) 
@@ -3149,7 +3152,7 @@ bool network_gather(void) {
 	game_information.initial_random_seed= network_game_info->initial_random_seed;
 	game_information.difficulty_level= network_game_info->difficulty_level;
 
-    display_net_game_stats();
+      display_net_game_stats_helper();//display_net_game_stats();
     } // if setup box was OK'd
     return false;
 }

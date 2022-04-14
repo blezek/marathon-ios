@@ -163,6 +163,7 @@ typedef enum {
 - (IBAction)newGame;
 - (IBAction)joinNetworkGame;
 - (IBAction)joinNetworkGameCommand; //Needed to test delayed menu selection
+- (IBAction)displayNetGameStatsCommand;
 - (IBAction)gatherNetworkGame;
 - (IBAction)gatherNetworkGameCommand;
 - (IBAction)switchBackToGameView;

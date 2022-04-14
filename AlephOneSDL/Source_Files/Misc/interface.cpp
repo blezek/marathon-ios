@@ -2374,7 +2374,7 @@ static void finish_game(
 
 		change_screen_mode(_screentype_menu);
 		force_system_colors();
-		display_net_game_stats();
+    display_net_game_stats_helper();//display_net_game_stats();
 		exit_networking();
 	} 
 	else
@@ -2384,7 +2384,7 @@ static void finish_game(
 		game_state.state = _displaying_network_game_dialogs;
 
 		force_system_colors();
-		display_net_game_stats();
+    display_net_game_stats_helper();//display_net_game_stats();
 	}
 	
 	load_environment_from_preferences();

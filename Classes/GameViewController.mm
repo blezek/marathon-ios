@@ -16,9 +16,11 @@
 #import "Appirater.h"
 #include "FileHandler.h"
 #import "Tracking.h"
+
 //#import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
 #import "alephversion.h"
+#include "network.h"
 
 #include "QuickSave.h" //DCW Used for metadata generation
 #include <fstream>
@@ -541,6 +543,11 @@ short localFindActionTarget(
 }
 - (IBAction)joinNetworkGameCommand {
   do_menu_item_command(mInterface, iJoinGame, false);
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
+}
+
+- (IBAction)displayNetGameStatsCommand {
+  display_net_game_stats();
   [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
 }
 

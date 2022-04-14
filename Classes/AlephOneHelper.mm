@@ -250,6 +250,11 @@ void gotoMenu() {
   [[GameViewController sharedInstance] gotoMenu:nil];
 }
 
+void display_net_game_stats_helper() {
+  [[GameViewController sharedInstance] switchToSDLMenu];
+  [[GameViewController sharedInstance] performSelectorOnMainThread:@selector(displayNetGameStatsCommand) withObject:nil waitUntilDone:NO];
+}
+
 
 void switchToSDLMenu() {
   [[GameViewController sharedInstance] switchToSDLMenu];
