@@ -20,7 +20,9 @@
 //#import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
 #import "alephversion.h"
+
 #include "network.h"
+#include "player.h"
 
 #include "QuickSave.h" //DCW Used for metadata generation
 #include <fstream>
@@ -1943,6 +1945,12 @@ short items[]=
         inMainLoop = YES;
         AlephOneMainLoop();
         inMainLoop = NO;
+    }
+
+      //Hide or show hud based on teleporting status. This prevents HUD from being visible during level changes.
+    if (dynamic_world->player_count) {
+      struct player_data *player= get_player_data(0);
+        [self.hud setHidden:PLAYER_IS_TELEPORTING(player)];
     }
 }
 
