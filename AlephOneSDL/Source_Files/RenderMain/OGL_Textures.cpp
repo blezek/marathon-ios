@@ -528,7 +528,7 @@ bool TextureManager::Setup()
 #if defined(A1DEBUG)
   // DJB Debugging
   if ( Collection == 16 && CTState.IsUsed == false) {
-    printf ( "Stop here\n" );
+    //printf ( "Stop here\n" );
   }
 #endif
 

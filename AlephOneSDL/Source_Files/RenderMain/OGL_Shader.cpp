@@ -1254,8 +1254,8 @@ void initDefaultPrograms() {
         //"uniform vec4 clipPlane5;\n"
         "in vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
-        "uniform vec4 lightPositions[32];\n"
-        "uniform vec4 lightColors[32];\n"
+        "uniform vec4 lightPositions[64];\n"
+        "uniform vec4 lightColors[64];\n"
 
         //"uniform mat4 MS_ModelViewMatrix;\n"
         //"uniform float pulsate;\n"
@@ -1311,7 +1311,7 @@ void initDefaultPrograms() {
         
         //Calculate light
         "    vec4 lightAddition = vec4(0.0, 0.0, 0.0, 1.0);\n"
-        "    for(int i = 0; i < 32; ++i) {\n"
+        "    for(int i = 0; i < 64; ++i) {\n"
         "       float size = lightPositions[i].w;\n"
         "       if( size < .1) { break; }\n" //End of light list
         "       vec3 lightPosition = vec3(lightPositions[i].xyz);\n"
@@ -1332,8 +1332,8 @@ void initDefaultPrograms() {
         "precision highp float;\n"
         "in vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
-        "uniform vec4 lightPositions[32];\n"
-        "uniform vec4 lightColors[32];\n"
+        "uniform vec4 lightPositions[64];\n"
+        "uniform vec4 lightColors[64];\n"
 
         "in vec4 fSxOxSyOy; \n"
         "in vec4 fBsBtFlSl; \n"

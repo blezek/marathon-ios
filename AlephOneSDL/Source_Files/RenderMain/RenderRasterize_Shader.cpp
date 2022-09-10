@@ -218,6 +218,8 @@ void RenderRasterize_Shader::render_tree() {
   glActiveTexture(GL_TEXTURE0);
   */
   
+  DC()->resetStats();
+  
   RenderRasterizerClass::render_tree(kDiffuse);
   DC()->drawAll(); //Draw and flush buffers
 
@@ -230,6 +232,16 @@ void RenderRasterize_Shader::render_tree() {
 
     DC()->startGatheringLights();
 
+    //First, add any scenery object lights
+    /*for (auto object = begin (ObjectList); object != end (ObjectList); ++object) {
+      if (GET_OBJECT_OWNER(object) == _object_is_scenery)
+      {
+        DC()->addLight(object->location.x, object->location.y, object->location.z - 200, 2000, 1, 1, 1, 1 );
+        DC()->addLight(object->location.x, object->location.y, object->location.z - 200, 500, 0, 1, 0, 1 );
+
+      }
+    }*/
+    
     //Add a random light off the floor if the player has invincibility active.
     if(current_player->invincibility_duration) {
         DC()->addLight(current_player->location.x, current_player->location.y, current_player->location.z + 200, 2000, rand() / double(RAND_MAX), rand() / double(RAND_MAX), rand() / double(RAND_MAX), 1);

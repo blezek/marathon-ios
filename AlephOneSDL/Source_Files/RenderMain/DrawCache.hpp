@@ -26,7 +26,7 @@
     //Maximum number of lights allowed in a single draw call
     //Each light requires 8 uniform slots. Don't over do it!
     //This number also is a hard-coded cap in the shader to help with the unroller; if you increase this, increase it in the shaders too.
-#define ACTIVE_LIGHTS_MAX 32
+#define ACTIVE_LIGHTS_MAX 64
 
 struct DrawBuffer
 {
@@ -133,7 +133,7 @@ private:
         //Guaranteed to return a buffer index for the shader/texID combo big enough to hold vertex_count.
         //This might trigger a draw operation in order to free up a buffer if they are exhausted or full.
         //If texID1 is zero, it is ignored.
-    int getBufferFor(Shader* shader, GLuint texID, GLuint texID1, int vertex_count);
+    int getBufferFor(Shader* shader, GLuint texID, GLuint texID1, int vertex_count, bool isBlended);
     
     void drawAndResetBuffer(int index);
 };
