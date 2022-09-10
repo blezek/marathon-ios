@@ -8154,7 +8154,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -8255,17 +8255,17 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 2022 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -8361,7 +8361,7 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
@@ -8385,7 +8385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8462,9 +8462,9 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8481,11 +8481,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8560,12 +8560,12 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M2 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8580,10 +8580,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8656,15 +8656,15 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8679,9 +8679,9 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/Libraries/boost_1_63_0",
@@ -8751,13 +8751,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "AlephOne M3";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8845,13 +8845,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M3 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 2022 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9041,17 +9041,17 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 2022";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -9065,11 +9065,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82636XW3TE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -9146,12 +9146,12 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M2 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -9240,13 +9240,13 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 					"$(PROJECT_DIR)/submodules/Libraries/SDL2_ttf-2.0.14",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m3;
 				PRODUCT_NAME = Infinity;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M3 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "M3 2022 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -9435,17 +9435,17 @@
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx",
 					"$(PROJECT_DIR)/submodules/Libraries/bgfx/fat_libs",
 				);
-				MARKETING_VERSION = 5.8;
+				MARKETING_VERSION = 5.9;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wnoc++11-narrowing",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m1;
 				PRODUCT_NAME = Marathon;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "M1 App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "M1 2022";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
