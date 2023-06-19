@@ -19,7 +19,11 @@
 @synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
 @synthesize uiView;
 @synthesize savedGameCell;
-@synthesize loadButton, duplicateButton, deleteButton;
+@synthesize duplicateButton, deleteButton;
+@synthesize easyButton;
+@synthesize normalButton;
+@synthesize hardButton;
+@synthesize nightmareButton;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -105,7 +109,11 @@
 }
 
 - (void)setButtonsEnabled:(bool)shouldEnable {
-  [loadButton setEnabled:shouldEnable];
+  [easyButton setEnabled:shouldEnable];
+  [normalButton setEnabled:shouldEnable];
+  [hardButton setEnabled:shouldEnable];
+  [nightmareButton setEnabled:shouldEnable];
+  
   [duplicateButton setEnabled:shouldEnable];
   [deleteButton setEnabled:shouldEnable];
 }
@@ -205,6 +213,11 @@
   }
   
   [self setButtonsEnabled:NO];
+  
+  if ( sender == easyButton ) { player_preferences->difficulty_level = _easy_level; }
+  if ( sender == normalButton ) { player_preferences->difficulty_level = _normal_level; }
+  if ( sender == hardButton ) { player_preferences->difficulty_level = _major_damage_level; }
+  if ( sender == nightmareButton ) { player_preferences->difficulty_level = _total_carnage_level; }
   
   // Find the selected saved game.
   SavedGame *game = [self.fetchedResultsController objectAtIndexPath:indexPath];
