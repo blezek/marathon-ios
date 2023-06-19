@@ -1938,7 +1938,7 @@ short items[]=
         }
       }
     }
-  
+    
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
     if ( !inMainLoop && mode != SDLMenuMode )
     {
@@ -1948,9 +1948,13 @@ short items[]=
     }
 
       //Hide or show hud based on teleporting status. This prevents HUD from being visible during level changes.
-    if (dynamic_world->player_count) {
+    if (dynamic_world->player_count && !shouldHideHud()) {
       struct player_data *player= get_player_data(0);
-        [self.hud setHidden:PLAYER_IS_TELEPORTING(player)];
+      if (PLAYER_IS_TELEPORTING(player)) {
+        self.hud.alpha = 0.03;
+      } else {
+        self.hud.alpha = 1.0;
+      }
     }
 }
 
