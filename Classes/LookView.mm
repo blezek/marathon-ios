@@ -295,7 +295,7 @@ extern "C" {
   
   double forceNormalized = [[NSUserDefaults standardUserDefaults] boolForKey:kThreeDTouchFires] ? touch.force / touch.maximumPossibleForce : 0;
   CGPoint currentPoint = [touch locationInView:self];
-
+  //NSLog(@"Force %f", forceNormalized);
   //Throw out dealts from first movement since touch began, to avoid big jump.
   if (firstMoveSinceTouchStarted && (lastPanPoint.x != currentPoint.x || lastPanPoint.y != currentPoint.y) ) {
     lastPanPoint = currentPoint;
@@ -358,7 +358,7 @@ extern "C" {
   }
   lastForce = forceNormalized;
 
-  // NSLog(@"touches moved, sending delta" );
+  //NSLog(@"touches moved, sending delta" );
 
 }
 

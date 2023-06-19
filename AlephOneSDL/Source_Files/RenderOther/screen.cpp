@@ -1162,7 +1162,8 @@ static void change_screen_mode(int width, int height, int depth, bool nogl, bool
           printf("GL_VENDOR: %s\n", glGetString(GL_VENDOR));
           printf("GL_RENDERER: %s\n", glGetString(GL_RENDERER));
           printf("GL_VERSION: %s\n", glGetString(GL_VERSION));
-    //		const char *gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
+          printf("GL_SHADING_LANGUAGE_VERSION: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+          //		const char *gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
     //		printf("GL_EXTENSIONS: %s\n", gl_extensions);
           gl_info_printed = true;
         }

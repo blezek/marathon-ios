@@ -345,11 +345,6 @@ void getSomeTextFromIOS(char *label, const char *currentText)  {
   
 }
 
-
-void helperHideHUD() {
-  [[GameViewController sharedInstance] hideHUD];
-}
-
 void helperBeginTeleportOut() {
   [[GameViewController sharedInstance] teleportOut];
 }

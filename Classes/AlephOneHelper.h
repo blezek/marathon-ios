@@ -34,7 +34,6 @@ extern void helperBringUpHUD();
 
 extern int helperNewGame();
 extern void helperSaveGame();
-extern void helperHideHUD();
 extern void helperBeginTeleportOut();
 extern void helperTeleportInLevel();
 extern void helperEpilog();
