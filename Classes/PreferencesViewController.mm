@@ -20,6 +20,8 @@
 ////#import "Tracking.h"
 @implementation PreferencesViewController
 
+@synthesize prefsScrollView, prefsScrollContents;
+
 @synthesize login, password;
 @synthesize tapShoots;
 @synthesize secondTapShoots;
@@ -141,6 +143,24 @@
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
+  
+  if (prefsScrollView && prefsScrollContents) {
+    
+      //Adjust height of contents to fit the subviews, plus a little extra for padding.
+    float h;
+    for (UIView *v in prefsScrollContents.subviews) {
+        float fh = v.frame.origin.y + v.frame.size.height;
+        h = MAX(fh, h);
+    }
+    [prefsScrollContents setFrame:CGRectMake(prefsScrollContents.frame.origin.x, prefsScrollContents.frame.origin.y, prefsScrollContents.frame.size.width, h + 20)];
+    
+    [prefsScrollView addSubview:prefsScrollContents];
+      //Fix the width, so we can't scroll horizontally.
+    CGSize scrollableSize = CGSizeMake(prefsScrollView.frame.size.width, prefsScrollContents.frame.size.height);
+    prefsScrollView.contentSize = scrollableSize;
+    [prefsScrollView layoutSubviews];
+  }
+  
   //self.settingPrefsView.hidden = YES; //DCW commented out after changinc appear/disappear animations.
   NSArray *sliders = [NSArray arrayWithObjects:self.hSensitivity,
                      self.vSensitivity,

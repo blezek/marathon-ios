@@ -11,6 +11,10 @@
 
 @interface PreferencesViewController : UIViewController {
   BOOL inMainMenu;
+  
+  UIScrollView *prefsScrollView;
+  UIView *prefsScrollContents;
+
   UITextField *login;
   UITextField *password;
   UIButton *tapShoots;
@@ -36,6 +40,9 @@
   UIButton *rendererButton;
   UILabel *rendererNote;
 }
+
+@property (nonatomic, retain) IBOutlet UIScrollView *prefsScrollView;
+@property (nonatomic, retain) IBOutlet UIView *prefsScrollContents;
 
 @property (nonatomic, retain) IBOutlet UITextField *login;
 @property (nonatomic, retain) IBOutlet UITextField *password;
