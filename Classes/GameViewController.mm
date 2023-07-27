@@ -1603,9 +1603,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (int) livingBobs {
   MLog (@"Current Bob Causalties: %d count: %d", dynamic_world->current_civilian_causalties, dynamic_world->current_civilian_count );
   MLog (@"Total Bob Causalties: %d count: %d", dynamic_world->total_civilian_causalties, dynamic_world->total_civilian_count );
-  
+
+  #if SCENARIO == 1
+    //This appears only to work for Marathon 1
   return dynamic_world->current_civilian_count - dynamic_world->current_civilian_causalties;
-  
+  #endif
+
   struct monster_data *monster;
   short live_alien_count= 0;
   short monster_index;
