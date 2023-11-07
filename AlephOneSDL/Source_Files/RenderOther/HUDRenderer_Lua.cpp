@@ -36,6 +36,9 @@ HUD_RENDERER_LUA.CPP
 #include "OGL_Render.h"
 #endif
 
+#include "MatrixStack.hpp"
+#include "AlephOneHelper.h"
+
 #include <math.h>
 
 #if defined(__WIN32__) || defined(__MINGW32__)
@@ -133,11 +136,20 @@ void HUD_Lua_Class::start_draw(void)
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDisable(GL_FOG);
-        
+      
+  
+    if(useShaderRenderer()) {
+      //DCW oh jeez this prevents the hud from working...
+      /*MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->loadIdentity();
+      MatrixStack::Instance()->translatef(m_wr.x, m_wr.y, 0.0);*/
+    } else {
         glMatrixMode(GL_MODELVIEW);
         glPushMatrix();
         glLoadIdentity();
         glTranslatef(m_wr.x, m_wr.y, 0.0);
+    }
 		
 		m_surface = NULL;
 	}
@@ -174,8 +186,14 @@ void HUD_Lua_Class::end_draw(void)
 #ifdef HAVE_OPENGL
 	if (m_opengl)
 	{
-        glMatrixMode(GL_MODELVIEW);
-        glPopMatrix();
+    if(useShaderRenderer()) {
+        //DCW oh jeez this prevents the hud from working...
+         /*MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+         MatrixStack::Instance()->popMatrix();*/
+       } else {
+         glMatrixMode(GL_MODELVIEW);
+         glPopMatrix();
+       }
     // DJB OpenGL See if we can just ignore saving of attributes...
     // glPopAttrib();
   }
@@ -391,14 +409,30 @@ void HUD_Lua_Class::draw_text(FontSpecifier *font, const char *text,
 #ifdef HAVE_OPENGL
 	if (m_opengl)
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef(x, y + (font->Height * scale), 0);
-        glScalef(scale, scale, 1.0);
-		glColor4f(r, g, b, a);
+    int previousMode;
+    if(useShaderRenderer()) {
+      previousMode=MatrixStack::Instance()->currentActiveMode();
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->translatef(x, y + (font->Height * scale), 0);
+      MatrixStack::Instance()->scalef(scale, scale, 1.0);
+      MatrixStack::Instance()->color4f(r, g, b, a);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+      glPushMatrix();
+      glTranslatef(x, y + (font->Height * scale), 0);
+      glScalef(scale, scale, 1.0);
+      glColor4f(r, g, b, a);
+    }
 		font->OGL_Render(text);
-		glColor4f(1, 1, 1, 1);
-		glPopMatrix();
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->color4f(1, 1, 1, 1);
+      MatrixStack::Instance()->popMatrix();
+      MatrixStack::Instance()->matrixMode(previousMode);
+    } else {
+      glColor4f(1, 1, 1, 1);
+      glPopMatrix();
+    }
 	}
 	else
 #endif

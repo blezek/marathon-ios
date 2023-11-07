@@ -35,6 +35,9 @@ ALEPHVERSION.H
 #ifdef MAC_APP_STORE
 #define A1_DISPLAY_PLATFORM "Mac OS X (App Store)"
 #define A1_UPDATE_PLATFORM "macappstore"
+#elif defined(TARGET_OS_IPHONE)
+#define A1_DISPLAY_PLATFORM "iOS"
+#define A1_UPDATE_PLATFORM "ios"
 #else
 #define A1_DISPLAY_PLATFORM "Mac OS X"
 #define A1_UPDATE_PLATFORM "macosx"

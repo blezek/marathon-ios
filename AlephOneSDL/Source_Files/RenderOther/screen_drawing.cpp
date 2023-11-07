@@ -197,17 +197,26 @@ void initialize_screen_drawing(
 	load_screen_interface_colors();
 	
   // DJB Change terminal font!
-  if ( !helperRunningOniPad() ) {
-    InterfaceFonts[4].Size = 18;
-    //InterfaceFonts[4].File.assign("bankgthd.ttf");
-    InterfaceFonts[4].File.assign("../bankgthd.ttf"); //Check in the4 application bundle root for the font instead of the scenario.
-  }
-  
+  // Check in the application bundle root for the font instead of the scenario.
+  //InterfaceFonts[4].Size = 14;
+  #if SCENARIO == 2
+  InterfaceFonts[4].Size = 14;
+  InterfaceFonts[4].File.assign("../Monaco.dfont");
+  //InterfaceFonts[4].File.assign("../bankgthd.ttf");
+  #endif
+  #if SCENARIO == 3
+  InterfaceFonts[4].Size = 14;
+  InterfaceFonts[4].File.assign("../Monaco.dfont");
+  #endif
+
+
 	/* load the font stuff. */
 	for(loop=0; loop<NUMBER_OF_INTERFACE_FONTS; ++loop)
 	{
-		InterfaceFonts[loop].Init();
+    InterfaceFonts[loop].Init();
 	}
+  
+  //InterfaceFonts[4].fontImmutable = 1; //DCW font layout hack: Prevent this from ever updating again.
 }
 
 screen_rectangle *get_interface_rectangle(short index)
@@ -709,7 +718,7 @@ TextSpec *_get_font_spec(short font_index)
 font_info *GetInterfaceFont(short font_index)
 {
 	assert(font_index>=0 && font_index<NUMBER_OF_INTERFACE_FONTS);
-	
+	  
 	return static_cast<font_info*>(InterfaceFonts[font_index].Info);
 }
 

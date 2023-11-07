@@ -38,9 +38,29 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
+			<string>Smoother Mouselook</string>
+			<key>Key</key>
+			<string>smoothMouselook</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
 			<string>Invert Y Axis</string>
 			<key>Key</key>
 			<string>invertY</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Swap Controller Joysticks</string>
+			<key>Key</key>
+			<string>swapJoysticks</string>
 			<key>DefaultValue</key>
 			<false/>
 		</dict>

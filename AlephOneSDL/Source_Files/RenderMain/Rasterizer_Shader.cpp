@@ -26,6 +26,7 @@
 #include "fades.h"
 #include "screen.h"
 
+#include "mouse.h"
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
 
@@ -52,7 +53,6 @@ void Rasterizer_Shader_Class::SetView(view_data& view) {
 		view_width = view.screen_width;
 		view_height = view.screen_height;
 		swapper.reset();
-    float scale = MainScreenPixelScale();//DCW SHIT TEST FOR DEBUGGING
 		swapper.reset(new FBOSwapper(view_width * MainScreenPixelScale(), view_height * MainScreenPixelScale(), false));
 	}
   
@@ -84,8 +84,8 @@ void Rasterizer_Shader_Class::SetView(view_data& view) {
   
 	if (!useShaderRenderer()) glMatrixMode(GL_MODELVIEW);
   MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
-	double yaw = view.yaw * 360.0 / float(NUMBER_OF_ANGLES);
-	double pitch = view.pitch * 360.0 / float(NUMBER_OF_ANGLES);
+  double yaw = ((float)(view.yaw) + lostMousePrecisionX()) * 360.0 / float(NUMBER_OF_ANGLES);
+  double pitch = ((float)(view.pitch) + lostMousePrecisionY()) * 360.0 / float(NUMBER_OF_ANGLES);
 	pitch = (pitch > 180.0 ? pitch -360.0 : pitch);
 
 	// setup a rotation matrix for the landscape texture shader
@@ -241,3 +241,12 @@ void Rasterizer_Shader_Class::End()
 	Rasterizer_OGL_Class::End();
 }
 
+int Rasterizer_Shader_Class::Height()
+{
+  return view_height;
+}
+
+int Rasterizer_Shader_Class::Width()
+{
+  return view_width;
+}

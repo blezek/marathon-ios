@@ -16,7 +16,7 @@
 @synthesize leftButton, rightButton;
 
 //DCW for the record, I think using a constant for the number of pages is stupid.
-#define kNumImages 5
+#define kNumImages 6
 
 BOOL Pages[kNumImages];
 

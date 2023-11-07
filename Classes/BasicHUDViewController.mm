@@ -18,6 +18,7 @@
 #include "items.h"
 #include "player.h"
 #include "platforms.h"
+#include "AlephOneHelper.h"
 
 // From devices.cpp
 enum // control panel sounds
@@ -46,7 +47,7 @@ struct control_panel_definition
 extern control_panel_definition *get_control_panel_definition(
                                                               const short control_panel_type);
 @implementation BasicHUDViewController
-@synthesize lookView, movePadView, actionKeyImageView, actionBox;
+@synthesize lookView, movePadView, actionKeyImageView, actionBox, escapeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,7 +70,7 @@ extern control_panel_definition *get_control_panel_definition(
 //  _target_is_platform,
 //  _target_is_control_panel,
 //  _target_is_unrecognized
-    UIImage *image = nil;
+    UIImage *image = [UIImage imageNamed:@"OpenDoor"]; //This seems a good default...
     lookingAtRefuel=NO;
     if(object_index != NONE) {
     switch(target_type)
@@ -119,6 +120,13 @@ extern control_panel_definition *get_control_panel_definition(
   self.actionBox.alpha = .7;
 }
 
+- (void)updateSwimmingIndicator {
+  [movePadView updateSwimmingIndicatorVisibility];
+}
+
+- (void)updateEscapeButtonVisibility {
+  escapeButton.hidden=!playerInTerminal();
+}
 
 - (void)dealloc
 {

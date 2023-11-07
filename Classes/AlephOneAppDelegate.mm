@@ -30,6 +30,7 @@ extern "C" {
 #import "AlephOneHelper.h"
 #include "preferences.h"
 #include "map.h" //Needed for detecting whether we are networked when going into background.
+#include <bgfx/bgfx.h>
 
 
   //DCW
@@ -62,6 +63,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   UIWindow *appMenuWindow = [[UIApplication sharedApplication] keyWindow]; //Grab a reference to the current key window
   
   AlephOneInitialize();
+
   MLog ( @"AlephOneInitialize finished" );
 
   SDL_iPhoneSetEventPump(SDL_TRUE);
@@ -72,7 +74,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
   UIView *a1View = [a1Window rootViewController].view;
   [game setOpenGLView:a1View];
-    
+  
   [appMenuWindow makeKeyAndVisible]; //DCW SDL2 sets new windows to key, which we don't want. Restore previous key window.
   
   
@@ -87,7 +89,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   [self performSelector:@selector(initAndBegin) withObject:nil afterDelay:.0];
 #endif
   
-  if (fastStart()) {
+  if (fastStart() && !shouldAutoBot()) {
     [game menuLoadGame];
   }
   
@@ -150,10 +152,14 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"0.8", kMusicVolume,
                                @"0", kEntryLevelNumber,
                                @"YES", kCrosshairs,
-                               @"NO", kOnScreenTrigger,
-                               @"YES",  kHiLowTapsAltFire,
+                               @"YES", kOnScreenTrigger,
+                               @"NO", kCustomTriggerLocation,
+                               @"NO", kCustomActionLocation,
+                               @"NO",  kHiLowTapsAltFire,
                                @"YES", kGyroAiming,
                                @"NO", kTiltTurning,
+                               @"YES", kDPadAction,
+                               @"YES", kThreeDTouchFires,
                                @"NO", kAutocenter,
                                @"NO", kHaveTTEP,
                                @"YES", kUseTTEP,
@@ -163,10 +169,17 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
                                @"NO", kAlwaysPlayIntro,
                                @"NO", kHaveReticleMode,
                                @"NO", kInvertY,
+                               @"NO", kSwapJoysticks,
                                @"YES", kAutorecenter,
                                @"YES", kAlwaysRun,
                                @"YES", kSmoothMouselook,
                                [NSNumber numberWithBool:YES], kFirstGame,
+                               @"NO", kUseClassicRenderer,
+                               @"NO", kUseClassicTextures,
+                               @"NO", kUseClassicSprites,
+                               @"YES", kUseTransparentLiquids,
+                               @"NO", kUseBloom,
+                               @"NO", kUseExtraFOV,
                                nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];  
@@ -209,7 +222,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
   if ( [list count] == 0 ) {
     // Insert us!
     self.scenario = [NSEntityDescription insertNewObjectForEntityForName:[scenarioEntity name] inManagedObjectContext:self.managedObjectContext];
-    self.scenario.isDownloaded = NO;
+    self.scenario.isDownloaded = [NSNumber numberWithBool: NO];
     
     self.scenario.version = [NSNumber numberWithInteger:1];
 
@@ -405,7 +418,8 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     [UIView animateWithDuration:1 delay:1 options:0 animations:fadeInBackground completion:nil];
     [Effects performSelector:@selector(appearRevealingView:) withObject:self.game.mainMenuButtons afterDelay:2];
     
-    [self.game menuShowReplacementMenu];
+    //[self.game menuShowReplacementMenu];
+    [self.game switchBackToGameView];
     self.game.logoView.hidden = YES;
     [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(startAlephOne) withObject:nil];
   }
@@ -502,6 +516,12 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 ////  [Tracking trackPageview:@"/applicationDidBecomeActive"];
 ////  [Tracking tagEvent:@"applicationDidBecomeActive"];
   
+    //Check to see if external prefs changed.
+  cacheInputPreferences();
+  cacheRendererPreferences();
+  
+  [PreferencesViewController setAlephOnePreferences:NO checkPurchases:YES];
+
   if ( finishedStartup ) {
     [game startAnimation];
   } else if (!introFinished && self.avPlayer) {

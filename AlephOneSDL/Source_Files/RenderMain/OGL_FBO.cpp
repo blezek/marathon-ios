@@ -30,6 +30,7 @@
 
 //DCW
 #include "AlephOneHelper.h"
+#include "AlephOneAcceleration.hpp"
 #include "MatrixStack.hpp"
 #include "esUtil.h"
 #include <OpenGLES/ES3/gl.h>
@@ -39,34 +40,47 @@
 std::vector<FBO *> FBO::active_chain;
 
 FBO::FBO(GLuint w, GLuint h, bool srgb) : _h(h), _w(w), _srgb(srgb) {
- //DCW try to clear the shitstorm of errors from all the preceding  glEnableClientState() calls in ES 2.0 mode
-  glGetError();
-  glGetError();
-  glGetError();
-  glPushGroupMarkerEXT(0, "FBO Setup");
+  setup(w, h, srgb);
+}
+
+void FBO::setup(GLuint w, GLuint h, bool srgb) {
   
-	glGenFramebuffers(1, &_fbo);
-	glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+  _h = h; _w = w; _srgb = srgb;
+  
+  //DCW do nothing if not valid size. Call again later to initialize.
+  if( w == 0 && h == 0) {
+    return;
+  }
+  
+  //DCW try to clear the shitstorm of errors from all the preceding  glEnableClientState() calls in ES 2.0 mode
+  glGetError();
+  glGetError();
+  glGetError();
+  AOA::pushGroupMarker(0, "FBO Setup");
+  
+  _fbo = AOA::generateFrameBuffer(w, h);
+  /*
+  glGenFramebuffers(1, &_fbo);
+  glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
   
   //Create texture and attach it to framebuffer's color attachment point
-  glGenTextures(1, &texID);
-  glBindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
+  AOA::genTextures(1, &texID);
+  AOA::bindTexture(GL_TEXTURE_2D, texID); //DCW was GL_TEXTURE_RECTANGE
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //DCW
-  // glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGB8, _w, _h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE
-  //DCW srgb support is completely untested by me
-  glTexImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
+  AOA::texImage2D(GL_TEXTURE_2D, 0, srgb ? GL_SRGB : GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);//DCW was GL_TEXTURE_RECTANGLE, changed GL_RGB to GL_RGBA
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0); //DCW was GL_TEXTURE_RECTANGLE
-
+  
   //Generate depth buffer
-	glGenRenderbuffers(1, &_depthBuffer);
-	glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);
+  glGenRenderbuffers(1, &_depthBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
-  //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer); printGLError(__PRETTY_FUNCTION__);
-
-  assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE);
-
-  //glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  */
+  
+  
+  
+  
+  
   bindDrawable();
   
   glPopGroupMarkerEXT();
@@ -77,28 +91,17 @@ void FBO::activate(bool clear) {
 		active_chain.push_back(this);
     
     glGetError();
-    glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW test moving this here, otherwise this function appears to not work.
+    AOA::bindFramebuffer(_fbo);
+    //glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW test moving this here, otherwise this function appears to not work.
 
-    glBindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   printGLError(__PRETTY_FUNCTION__);//Apple advice
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
-    //glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
-    
-    //glActiveTexture(GL_TEXTURE0);//DCW test
-    //glBindFramebuffer(GL_FRAMEBUFFER, _fbo); printGLError(__PRETTY_FUNCTION__); //DCW This seems to be the wrong place for this.
-    
-		// DJB OpenGL glPushAttrib(GL_VIEWPORT_BIT);
-    
-    //DCW Track active frame and render buffers for debugging
-    /*GLint lastFramebuffer, lastRenderbuffer, texture;
-    glGetIntegerv(GL_FRAMEBUFFER_BINDING, &lastFramebuffer);
-    glGetIntegerv(GL_RENDERBUFFER_BINDING, &lastRenderbuffer);
-    glGetIntegerv(GL_TEXTURE_BINDING_2D, &texture);*/
+    //The following had been in relase, but appear to be not needed (and possibly wasteful).
+    //? AOA::bindTexture(GL_TEXTURE_2D, texID);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGE
+    //? glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   printGLError(__PRETTY_FUNCTION__);//Apple advice
+    //? AOA::texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _w, _h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL); printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    //? glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texID, 0);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_TEXTURE_RECTANGLE
+    //? glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);  printGLError(__PRETTY_FUNCTION__);
+    //? glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _w, _h);  printGLError(__PRETTY_FUNCTION__);//DCW was GL_DEPTH_COMPONENT
+    //? glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
     
 		glViewport(0, 0, _w, _h);
 		if (_srgb)
@@ -108,10 +111,6 @@ void FBO::activate(bool clear) {
 		if (clear)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    //DCW shit test
-    //glClearColor(0,0,1, .5);
-    //if (texID !=102 ) glClearColor(0,0,1, .5);
-    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 }
 
@@ -126,7 +125,9 @@ void FBO::deactivate() {
 			prev_fbo = active_chain.back()->_fbo;
 			prev_srgb = active_chain.back()->_srgb;
 		}
-		glBindFramebuffer(GL_FRAMEBUFFER, prev_fbo);
+    
+    AOA::bindFramebuffer(prev_fbo);
+    //glBindFramebuffer(GL_FRAMEBUFFER, prev_fbo);
     
     //DCW binding to framebuffer 0 doesn't switch to the on-screen buffer on mobile.
     //Instead, call this convneience function to do something more likely to work.
@@ -142,9 +143,12 @@ void FBO::deactivate() {
 }
 
 void FBO::draw() {
+
+  AOA::prepareToDrawFramebuffer(_fbo);
+  /*
   glPushGroupMarkerEXT(0, "FBO Binding texture");
   
-	glBindTexture(GL_TEXTURE_2D, texID);
+	AOA::bindTexture(GL_TEXTURE_2D, texID);
   glPopGroupMarkerEXT();
   
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -152,12 +156,12 @@ void FBO::draw() {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glPushGroupMarkerEXT(0, "Shader render draw texture to screen test");
-	//Deprecated glEnable(GL_TEXTURE_2D);
-
-  //OGL_RenderTexturedRect(0, 0, _w, _h, 0, _h, _w, 0);
+  */
   
+    
     //DCW if there is a shader already active, draw the quad using that. Otherwise, draw with the default shader.
   if (lastEnabledShader()) {
+    //DCW ack! This might never get called! Maybe for bloom?
     DrawQuadWithActiveShader(0, 0, _w, _h, 0, _h, _w, 0);
   } else {
     OGL_RenderTexturedRect(0, 0, _w, _h, 0, 1.0, 1.0, 0); //DCW; uses normalized texture coordinates
@@ -168,7 +172,7 @@ void FBO::draw() {
 
 void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom)
 {
-  GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+  GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];
   
   Shader *theShader = lastEnabledShader();
   
@@ -192,15 +196,19 @@ void FBO::DrawQuadWithActiveShader(float x, float y, float w, float h, float tle
   
   GLubyte indices[] =   {0,1,2,
     0,2,3};
+    
   
-  glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
-  glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+  AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
   
-  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
   
-  glPushGroupMarkerEXT(0, "DrawQuadWithActiveShader");
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  AOA::pushGroupMarker(0, "DrawQuadWithActiveShader");
+  
+  AOA::drawFramebuffer(_fbo);
+  //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+  
   glPopGroupMarkerEXT();
   
   glDisableVertexAttribArray(0);
@@ -247,7 +255,7 @@ void FBO::reset_drawing_mode() {
 }
 
 void FBO::draw_full(bool blend) {
-  glPushGroupMarkerEXT(0, "FBO Draw");
+  AOA::pushGroupMarker(0, "FBO Draw");
 	prepare_drawing_mode(blend);
 	draw();
 	reset_drawing_mode();
@@ -255,8 +263,9 @@ void FBO::draw_full(bool blend) {
 }
 
 FBO::~FBO() {
-	glDeleteFramebuffers(1, &_fbo);
-	glDeleteRenderbuffers(1, &_depthBuffer);
+  AOA::deleteFramebuffer(_fbo);
+	/*glDeleteFramebuffers(1, &_fbo);
+  glDeleteRenderbuffers(1, &_depthBuffer);*/
 }
 
 
@@ -320,24 +329,26 @@ void FBOSwapper::blend_multisample(FBO& other) {
 	activate();
 	
 	// set up FBO passed in as texture #1
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, other.texID); //DCW was GL_TEXTURE_RECTANGLE
+	AOA::activeTexture(AOA_TEXTURE1);
+  
+  AOA::prepareToDrawFramebuffer(other.fboID()); //DCW This is going to require rework for bgfx to handle the second texture unit.
+	//AOA::bindTexture(GL_TEXTURE_2D, other.texID);
   
 	//Deprecated glEnable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
-	glActiveTexture(GL_TEXTURE0);
+	AOA::activeTexture(AOA_TEXTURE0);
 	
 	//Deprecated glClientActiveTexture(GL_TEXTURE1);
 	//Deprecated glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	GLint multi_coordinates[8] = { 0, other._h, other._w, other._h, other._w, 0, 0, 0 };
-	glTexCoordPointer(2, GL_INT, 0, multi_coordinates);
+  GLint multi_coordinates[8] = { 0, static_cast<GLint>(other._h), static_cast<GLint>(other._w), static_cast<GLint>(other._h), static_cast<GLint>(other._w), 0, 0, 0 };
+  glTexCoordPointer(2, GL_INT, 0, multi_coordinates);
 	//Deprecated glClientActiveTexture(GL_TEXTURE0);
 	
 	draw(true);
 	
 	// tear down multitexture stuff
-	glActiveTexture(GL_TEXTURE1);
+	AOA::activeTexture(AOA_TEXTURE1);
 	//Deprecated glDisable(GL_TEXTURE_2D); //DCW was GL_TEXTURE_RECTANGLE
-	glActiveTexture(GL_TEXTURE0);
+	AOA::activeTexture(AOA_TEXTURE0);
 	
 	//Deprecated glClientActiveTexture(GL_TEXTURE1);
 	//Deprecated glDisableClientState(GL_TEXTURE_COORD_ARRAY);

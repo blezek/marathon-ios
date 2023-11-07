@@ -31,7 +31,9 @@
 #include "OGL_Setup.h"
 #include "InfoTree.h"
 
+#include "AlephOneAcceleration.hpp"
 #include "AlephOneHelper.h"
+#include "MatrixStack.hpp"
 
 
 // gl_ClipVertex workaround
@@ -105,9 +107,9 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "MS_ModelViewMatrix",
   "MS_ModelViewMatrixInverse",
   "MS_TextureMatrix",
-  "vColor",
-  "vFogColor",
-  "vTexCoord4",
+  "uColor",
+  "uFogColor",
+  "uTexCoord4",
   "clipPlane0",
   "clipPlane1",
   "clipPlane2",
@@ -115,6 +117,14 @@ const char* Shader::_uniform_names[NUMBER_OF_UNIFORM_LOCATIONS] =
   "clipPlane4",
   "clipPlane5",
   "mediaPlane",
+  "refractionType",
+  "logicalWidth",
+  "logicalHeight",
+  "pixelWidth",
+  "pixelHeight",
+  "lightPositions",
+  "lightColors",
+  "useUniformFeatures"
 };
 
 const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] = 
@@ -135,7 +145,8 @@ const char* Shader::_shader_names[NUMBER_OF_SHADER_TYPES] =
 	"bump_bloom",
 	"gamma",
   "debug",
-  "rect"
+  "rect",
+  "solid_color"
 };
 
 
@@ -208,6 +219,11 @@ void parseFile(FileSpecifier& fileSpec, std::string& s) {
 
 GLuint parseShader(const GLcharARB* str, GLenum shaderType) {
 
+  if(AOA::OGLIrrelevant()) {
+    //When not using OpenGL, the shader ID is just the shaderType index.
+    return shaderType;
+  }
+  
 	GLint status;
 	GLuint shader = glCreateShader(shaderType); //DCW no ARB in ios
 
@@ -310,21 +326,26 @@ Shader::Shader(const std::string& name, FileSpecifier& vert, FileSpecifier& frag
 void Shader::init() {
 	std::fill_n(_uniform_locations, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), -1);
 	std::fill_n(_cached_floats, static_cast<int>(NUMBER_OF_UNIFORM_LOCATIONS), 0.0);
-  GLint linked;
   
 	_loaded = true;
   
+  
+  AOA::programFromNameIndex( &_programObj, nameIndex, this);
+/*  return;
+  
   _programObj = glCreateProgram();//DCW
+   
+   GLint linked;
 
 	assert(!_vert.empty());
 	GLuint vertexShader = parseShader(_vert.c_str(), GL_VERTEX_SHADER);
-	assert(vertexShader);
+//dcw shit test bgfx	assert(vertexShader);
 	glAttachShader(_programObj, vertexShader);
 	glDeleteShader(vertexShader);
 
 	assert(!_frag.empty());
 	GLuint fragmentShader = parseShader(_frag.c_str(), GL_FRAGMENT_SHADER);
-	assert(fragmentShader);
+//dcw shit test bgfx	assert(fragmentShader);
 	glAttachShader(_programObj, fragmentShader);
 	glDeleteShader(fragmentShader);
   
@@ -352,34 +373,63 @@ void Shader::init() {
   }
 
   
-	assert(_programObj);
+	//dcw shit test bgfx assert(_programObj);
 
   glUseProgram(_programObj);
 
 	glUniform1i(getUniformLocation(U_Texture0), 0);
+ 
 	glUniform1i(getUniformLocation(U_Texture1), 1);
 	glUniform1i(getUniformLocation(U_Texture2), 2);
 	glUniform1i(getUniformLocation(U_Texture3), 3);
 
 	glUseProgram(0); // no ARB on ios
+ */
 
 //	assert(glGetError() == GL_NO_ERROR);
+   
+}
+
+void Shader::enableAndSetStandardUniforms() {
+    
+    GLfloat modelMatrix[16], modelProjection[16], modelMatrixInverse[16];
+    MSI()->getFloatv(MS_MODELVIEW, modelMatrix);
+    MSI()->getFloatvInverse(MS_MODELVIEW, modelMatrixInverse);
+    MSI()->getFloatvModelviewProjection(modelProjection);
+    
+    this->enable();
+    this->setMatrix4(Shader::U_MS_ModelViewMatrix, modelMatrix);
+    this->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+    this->setMatrix4(Shader::U_MS_ModelViewMatrixInverse, modelMatrixInverse);
+    this->setVec4(Shader::U_MS_FogColor, MatrixStack::Instance()->fog());
 }
 
 void Shader::setFloat(UniformName name, float f) {
 
 	if (_cached_floats[name] != f) {
 		_cached_floats[name] = f;
-		glUniform1f(getUniformLocation(name), f); //DCW no ARB on ios
+    AOA::uniform1f(name, this, f);
+		//glUniform1f(getUniformLocation(name), f); //DCW no ARB on ios
 	}
 }
 
 void Shader::setMatrix4(UniformName name, float *f) {
-	glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
+  AOA::uniformMatrix4fv(name, this, 1, false, f);
+	//glUniformMatrix4fv(getUniformLocation(name), 1, false, f); //DCW no ARB in ios
 }
 
 void Shader::setVec4(UniformName name, float *f) {
-  glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
+  AOA::uniform4f(name, this, f[0], f[1], f[2], f[3]);
+  //glUniform4f(getUniformLocation(name), f[0], f[1], f[2], f[3]);
+}
+
+void Shader::setVec4v(UniformName name, int count, float *f) {
+
+    glUniform4fv(getUniformLocation(name), count, f);
+}
+
+void Shader::setVec2(UniformName name, float *f) {
+  glUniform2f(getUniformLocation(name), f[0], f[1]);
 }
 
 Shader::~Shader() {
@@ -389,16 +439,18 @@ Shader::~Shader() {
 void Shader::enable() {
 	if(!_loaded) { init(); }
   //glGetError();
-  if(nameIndex >=0){ glPushGroupMarkerEXT(0, _shader_names[nameIndex]);} else {
-    glPushGroupMarkerEXT(0, "non-default shader");
+  if(nameIndex >=0){ AOA::pushGroupMarker(0, _shader_names[nameIndex]);} else {
+    AOA::pushGroupMarker(0, "non-default shader");
   }
-	glUseProgram(_programObj); //DCW no ARB in ios
+  AOA::useProgram(_programObj);
+	//glUseProgram(_programObj); //DCW no ARB in ios
   setLastEnabledShader(this);
   glPopGroupMarkerEXT();
 }
 
 void Shader::disable() {
-	glUseProgram(0);//DCW no ARB in ios
+  AOA::disuseProgram();
+	//glUseProgram(0);//DCW no ARB in ios
   Shader *enabledShader = lastEnabledShader();
   setLastEnabledShader(NULL);
 }
@@ -417,15 +469,21 @@ void Shader::drawDebugRect() {
   
   GLubyte indices[] =   {0,1,2,
     0,2,3};
-  glVertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-  glEnableVertexAttribArray(Shader::ATTRIB_VERTEX);
-  glPushGroupMarkerEXT(0, "Draw Debug Rect");
+  AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
+  AOA::pushGroupMarker(0, "Draw Debug Rect");
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
   glPopGroupMarkerEXT();
   Shader::disable();
 }
 
 void Shader::unload() {
+  
+    //Unloading not yet implemented in AOA
+  if(AOA::OGLIrrelevant()) {
+    return;
+  }
+  
 	if(_programObj) {
 		//glDeleteObjectARB(_programObj);//DCW no ARB in ios
     glDeleteProgram(_programObj); //DCW maybe this needs to be a createshader()?
@@ -433,8 +491,6 @@ void Shader::unload() {
 		_loaded = false;
      if(lastEnabledShader() == this) {
        setLastEnabledShader(NULL);
-       
-       Shader *enablementTest = lastEnabledShader();
      }
 	}
 }
@@ -447,12 +503,33 @@ void initDefaultPrograms() {
     if (defaultVertexPrograms.size() > 0)
         return;
 
+  defaultVertexPrograms["solid_color"] = ""
+    "#version 300 es  \n"
+    "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+    "uniform vec4 uColor;\n"
+    "in vec4 vPosition;   \n"
+    "out vec4 vertexColor;\n"
+    "void main()                 \n"
+    "{                           \n"
+    "  vertexColor = uColor;\n"
+    "  gl_Position = MS_ModelViewProjectionMatrix * vPosition;  \n"
+    "} \n";
+  
+    defaultFragmentPrograms["solid_color"] = ""
+    "#version 300 es  \n"
+    "precision highp float;\n"
+    "in vec4 vertexColor;\n"
+    "out vec4 fragmentColor;\n"
+    "void main()                                \n"
+    "{                                          \n"
+    "fragmentColor = vertexColor;\n"
+    "} \n";
+  
     defaultVertexPrograms["rect"] = ""
     "#version 300 es  \n"
     "uniform mat4 MS_ModelViewProjectionMatrix;\n"
     "uniform mat4 MS_TextureMatrix;\n"
-    "uniform vec4 vColor;\n"
-    "uniform float useStatic;\n"
+    "uniform vec4 uColor;\n"
     "in vec4 vPosition;   \n"
     "in vec2 vTexCoord;   \n"
     "out vec2 textureUV;   \n"
@@ -461,35 +538,20 @@ void initDefaultPrograms() {
     "{                           \n"
     "  vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"
     "  textureUV = (MS_TextureMatrix * UV4).xy;\n"
-    "  vertexColor = vColor;\n"
+    "  vertexColor = uColor;\n"
     "  gl_Position = MS_ModelViewProjectionMatrix * vPosition;  \n"
     "} \n";
   
     defaultFragmentPrograms["rect"] = ""
     "#version 300 es  \n"
     "precision highp float;\n"
-    "uniform float time;\n"
-    "uniform float usestatic;\n"
     "in highp vec2 textureUV; \n"
     "in vec4 vertexColor;\n"
     "uniform highp sampler2D texture0;\n"
     "out vec4 fragmentColor;\n"
-    "float rand(vec2 co){ \n"
-    "highp float a = 12.9898; \n"
-    "highp float b = 78.233; \n"
-    "highp float c = 43758.5453; \n"
-    "highp float dt= dot(co.xy ,vec2(a,b)); \n"
-    "highp float sn= mod(dt,3.14); \n"
-    "return fract(sin(sn) * c); \n"
-    "} \n"
     "void main()                                \n"
     "{                                          \n"
-  "  fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
-    "  if (usestatic != 0.0 ) { \n"
-    "    vec2 entropy = vec2 (time,time); \n"
-    "    if (usestatic > 0.0) { entropy *= round(gl_FragCoord.xy / 4.0); } \n"
-    "    fragmentColor.r = rand(entropy); fragmentColor.g =  rand(entropy*fragmentColor.r); fragmentColor.b =  rand(entropy*fragmentColor.g); \n"
-    "  } \n"
+    "fragmentColor = texture(texture0, textureUV.xy) * vertexColor;\n"
     "} \n";
 
     defaultVertexPrograms["debug"] = ""
@@ -512,8 +574,8 @@ void initDefaultPrograms() {
   "uniform mat4 MS_ModelViewProjectionMatrix;\n"
   "uniform mat4 MS_ModelViewMatrix;\n"
   "in vec4 vPosition;\n"
-  "uniform vec4 vColor;\n"
-  "uniform vec4 vFogColor;\n"
+  "uniform vec4 uColor;\n"
+  "uniform vec4 uFogColor;\n"
   "in vec2 vTexCoord;   \n"
   "out vec2 textureUV;   \n"
   "out vec4 fogColor;\n"
@@ -521,7 +583,7 @@ void initDefaultPrograms() {
 	"void main(void) {\n"
 	"	textureUV = vTexCoord;\n"
 	"	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
-	"	vertexColor = vColor;\n"
+	"	vertexColor = uColor;\n"
 	"}\n";
 	defaultFragmentPrograms["gamma"] = ""
   "#version 300 es  \n"
@@ -540,8 +602,8 @@ void initDefaultPrograms() {
         "uniform mat4 MS_ModelViewProjectionMatrix;\n"
         "uniform mat4 MS_ModelViewMatrix;\n"
         "in vec4 vPosition;\n"
-        "uniform vec4 vColor;\n"
-        "uniform vec4 vFogColor;\n"
+        "uniform vec4 uColor;\n"
+        "uniform vec4 uFogColor;\n"
         "in vec2 vTexCoord;   \n"
         "out vec2 textureUV;   \n"
         "out vec4 fogColor;\n"
@@ -549,7 +611,7 @@ void initDefaultPrograms() {
         "void main(void) {\n"
         "	textureUV = vTexCoord;\n"
         "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
-        "	vertexColor = vColor;\n"
+        "	vertexColor = uColor;\n"
         "}\n";
     defaultFragmentPrograms["blur"] = ""
         "#version 300 es  \n"
@@ -597,19 +659,19 @@ void initDefaultPrograms() {
         "uniform mat4 MS_ModelViewProjectionMatrix;\n"
         "uniform mat4 MS_ModelViewMatrix;\n"
         "in vec4 vPosition;\n"
-        "uniform vec4 vColor;\n"
-        "uniform vec4 vFogColor;\n"
+        "uniform vec4 uColor;\n"
+        "uniform vec4 uFogColor;\n"
         "in vec2 vTexCoord;   \n"
-        "uniform vec4 vTexCoord4;   \n"
+        "uniform vec4 uTexCoord4;   \n"
         "out vec2 textureUV;   \n"
         "out vec2 textureUV2;   \n"
         "out vec4 fogColor;\n"
         "out vec4 vertexColor;\n"
         "void main(void) {\n"
         "	textureUV = vTexCoord;\n"
-        "	textureUV2 = vTexCoord4.xy;\n"
+        "	textureUV2 = uTexCoord4.xy;\n"
         "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
-        "	vertexColor = vColor;\n"
+        "	vertexColor = uColor;\n"
         "}\n";
     defaultFragmentPrograms["bloom"] = ""
         "#version 300 es  \n"
@@ -640,95 +702,154 @@ void initDefaultPrograms() {
         "	fragmentColor = vec4(color, 1.0);\n"
         "}\n";
     
-    defaultVertexPrograms["landscape"] = ""
-        "#version 300 es  \n"
-        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
-        "uniform mat4 MS_ModelViewMatrix;\n"
-        "in vec4 vPosition;\n"
-        "uniform vec4 vColor;\n"
-        "uniform vec4 vFogColor;\n"
-        "out vec4 fogColor;\n"
-        "uniform mat4 landscapeInverseMatrix;\n"
-        "out vec3 relDir;\n"
-        "out vec4 vertexColor;\n"
-        "void main(void) {\n"
-        "	gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
-        "#ifndef DISABLE_CLIP_VERTEX\n"
-//        "	gl_ClipVertex = MS_ModelViewMatrix * vPosition;\n"
-        "#endif\n"
-        "	relDir = (MS_ModelViewMatrix * vPosition).xyz;\n"
-        "	vertexColor = vColor;\n"
-        " fogColor = vFogColor;\n"
-        "}\n";
-    defaultFragmentPrograms["landscape"] = ""
-        "#version 300 es  \n"
-        "precision highp float;\n"
-        "in highp vec4 fogColor; \n"
-        "uniform sampler2D texture0;\n"
-        "uniform float usefog;\n"
-        "uniform float scalex;\n"
-        "uniform float scaley;\n"
-        "uniform float offsetx;\n"
-        "uniform float offsety;\n"
-        "uniform float yaw;\n"
-        "uniform float pitch;\n"
-        "in vec3 relDir;\n"
-        "in vec4 vertexColor;\n"
-        "const float zoom = 1.2;\n"
-        "const float pitch_adjust = 0.96;\n"
-        "out vec4 fragmentColor;\n"
-        "void main(void) {\n"
-        "	vec3 facev = vec3(cos(yaw), sin(yaw), sin(pitch));\n"
-        "	vec3 relv  = (relDir);\n"
-        "	float x = relv.x / (relv.z * zoom) + atan(facev.x, facev.y);\n"
-        "	float y = relv.y / (relv.z * zoom) - (facev.z * pitch_adjust);\n"
-        "	vec4 color = texture(texture0, vec2(offsetx - x * scalex, offsety - y * scaley));\n"
-        "	vec3 intensity = color.rgb;\n"
-        "	if (usefog > 0.0) {\n"
-        "		intensity = fogColor.rgb;\n"
-        "	}\n"
-        "	fragmentColor = vec4(intensity, 1.0);\n"
-        "}\n";
-    defaultVertexPrograms["landscape_bloom"] = defaultVertexPrograms["landscape"];
-    defaultFragmentPrograms["landscape_bloom"] = ""
-        "#version 300 es  \n"
-        "precision highp float;\n"
-        "in highp vec4 fogColor; \n"
-        "uniform mat4 MS_ModelViewProjectionMatrix;\n"
-        "uniform mat4 MS_ModelViewMatrix;\n"
-        "uniform sampler2D texture0;\n"
-        "uniform float usefog;\n"
-        "uniform float scalex;\n"
-        "uniform float scaley;\n"
-        "uniform float offsetx;\n"
-        "uniform float offsety;\n"	
-        "uniform float yaw;\n"
-        "uniform float pitch;\n"
-        "uniform float bloomScale;\n"
-        "in vec3 relDir;\n"
-        "in vec4 vertexColor;\n"
-        "const float zoom = 1.205;\n"
-        "const float pitch_adjust = 0.955;\n"
-        "out vec4 fragmentColor;\n"
-        "void main(void) {\n"
-        "	vec3 facev = vec3(cos(yaw), sin(yaw), sin(pitch));\n"
-        "	vec3 relv  = normalize(relDir);\n"
-        "	float x = relv.x / (relv.z * zoom) + atan(facev.x, facev.y);\n"
-        "	float y = relv.y / (relv.z * zoom) - (facev.z * pitch_adjust);\n"
-        "	vec4 color = texture(texture0, vec2(offsetx - x * scalex, offsety - y * scaley));\n"
-        "	float intensity = clamp(bloomScale, 0.0, 1.0);\n"
-        "	if (usefog > 0.0) {\n"
-        "		intensity = 0.0;\n"
-        "	}\n"
-        "#ifdef GAMMA_CORRECTED_BLENDING\n"
-        "	//intensity = intensity * intensity;\n"
-        "	color.rgb = (color.rgb - 0.01) * 1.01;\n"
-        "#else\n"
-        "	color.rgb = (color.rgb - 0.1) * 1.11;\n"
-        "#endif\n"
-        "	fragmentColor = vec4(color.rgb * intensity, 1.0);\n"
-        "}\n";
-	
+  defaultVertexPrograms["landscape"] = ""
+      "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+      "uniform mat4 MS_ModelViewMatrix;\n"
+      "uniform mat4 landscapeInverseMatrix;\n" //What is this for?
+      "uniform vec4 uFogColor;\n"
+      //"uniform vec4 uColor;\n"
+  
+      "attribute vec4 vPosition;\n"
+
+      "attribute vec4 vColor;\n"
+      "attribute vec4 vClipPlane0;   \n"
+      "attribute vec4 vClipPlane1;   \n"
+      "attribute vec4 vClipPlane5;   \n"
+      "attribute vec4 vSxOxSyOy; \n"
+      "attribute vec4 vBsBtFlSl; \n"
+      "attribute vec4 vPuWoDeGl; \n"
+  
+      "varying vec4 fSxOxSyOy; \n"
+      "varying vec4 fBsBtFlSl; \n"
+      "varying vec4 fPuWoDeGl; \n"
+      "varying vec4 fClipPlane0;   \n"
+      "varying vec4 fClipPlane1;   \n"
+      "varying vec4 fClipPlane5;   \n"
+  
+      "varying vec4 fogColor;\n"
+      "varying vec3 relDir;\n"
+      "varying vec4 vertexColor;\n"
+      "varying vec4 vPosition_eyespace;\n"
+
+      "void main(void) {\n"
+      "    gl_Position = MS_ModelViewProjectionMatrix * vPosition;\n"
+      "    vPosition_eyespace = MS_ModelViewMatrix * vPosition;\n"
+      "    relDir = (MS_ModelViewMatrix * vPosition).xyz;\n"
+      "    vertexColor = vColor;\n"
+      "    fogColor = uFogColor;\n"
+  
+      "    fSxOxSyOy = vSxOxSyOy;\n"
+      "    fBsBtFlSl = vBsBtFlSl;\n"
+      "    fPuWoDeGl = vPuWoDeGl;\n"
+      "    fClipPlane0 = vClipPlane0;\n"
+      "    fClipPlane1 = vClipPlane1;\n"
+      "    fClipPlane5 = vClipPlane5;\n"
+
+      "}\n";
+  defaultFragmentPrograms["landscape"] = ""
+            "precision highp float;\n"
+            "varying highp vec4 fogColor; \n"
+            "uniform sampler2D texture0;\n"
+            "uniform float usefog;\n"
+  
+            //"uniform float scalex;\n"
+            //"uniform float scaley;\n"
+            //"uniform float offsetx;\n"
+            //"uniform float offsety;\n"
+          
+          "varying vec4 fSxOxSyOy; \n"
+          "varying vec4 fBsBtFlSl; \n"
+          "varying vec4 fPuWoDeGl; \n"
+          "varying vec4 fClipPlane0;   \n"
+          "varying vec4 fClipPlane1;   \n"
+          "varying vec4 fClipPlane5;   \n"
+
+  
+            "uniform float yaw;\n"
+            "uniform float pitch;\n"
+            "varying vec3 relDir;\n"
+            "varying vec4 vertexColor;\n"
+            "const float zoom = 1.2;\n"
+            "const float pitch_adjust = 0.96;\n"
+            "varying vec4 vPosition_eyespace;\n"
+
+            "void main(void) {\n"
+              "   if( dot( vPosition_eyespace, fClipPlane0) < 0.0 ) {discard;}\n"
+              "   if( dot( vPosition_eyespace, fClipPlane1) < 0.0 ) {discard;}\n"
+              "   if( dot( vPosition_eyespace, fClipPlane5) < 0.0 ) {discard;}\n"
+  
+            "   float scalex = fSxOxSyOy.x;\n"
+            "   float scaley = fSxOxSyOy.z;\n"
+            "   float offsetx = fSxOxSyOy.y;\n"
+            "   float offsety = fSxOxSyOy.w;\n"
+          
+            "    vec3 facev = vec3(cos(yaw), sin(yaw), sin(pitch));\n"
+            "    vec3 relv  = (relDir);\n"
+            "    float x = relv.x / (relv.z * zoom) + atan(facev.x, facev.y);\n"
+            "    float y = relv.y / (relv.z * zoom) - (facev.z * pitch_adjust);\n"
+            "    vec4 color = texture2D(texture0, vec2(offsetx - x * scalex, offsety - y * scaley));\n"
+            "    vec3 intensity = color.rgb;\n"
+            "    if (usefog > 0.0) {\n"
+            "        intensity = fogColor.rgb;\n"
+            "    }\n"
+            "    gl_FragColor = vec4(intensity, 1.0);\n"
+            "}\n";
+  defaultVertexPrograms["landscape_bloom"] = defaultVertexPrograms["landscape"];
+  defaultFragmentPrograms["landscape_bloom"] = ""
+      "precision highp float;\n"
+      "uniform mat4 MS_ModelViewProjectionMatrix;\n"
+      "uniform mat4 MS_ModelViewMatrix;\n"
+      "uniform sampler2D texture0;\n"
+      "uniform float usefog;\n"
+      //"uniform float scalex;\n"
+      //"uniform float scaley;\n"
+      //"uniform float offsetx;\n"
+      //"uniform float offsety;\n"
+  
+      "varying vec4 fSxOxSyOy; \n"
+      "varying vec4 fBsBtFlSl; \n"
+      "varying vec4 fPuWoDeGl; \n"
+      "varying vec4 fClipPlane0;   \n"
+      "varying vec4 fClipPlane1;   \n"
+      "varying vec4 fClipPlane5;   \n"
+
+      "uniform float yaw;\n"
+      "uniform float pitch;\n"
+      "uniform float bloomScale;\n"
+      "varying highp vec4 fogColor; \n"
+      "varying vec3 relDir;\n"
+      "varying vec4 vertexColor;\n"
+      "const float zoom = 1.205;\n"
+      "const float pitch_adjust = 0.955;\n"
+      "varying vec4 vPosition_eyespace;\n"
+      "void main(void) {\n"
+      "   if( dot( vPosition_eyespace, fClipPlane0) < 0.0 ) {discard;}\n"
+      "   if( dot( vPosition_eyespace, fClipPlane1) < 0.0 ) {discard;}\n"
+      "   if( dot( vPosition_eyespace, fClipPlane5) < 0.0 ) {discard;}\n"
+
+      "   float scalex = fSxOxSyOy.x;\n"
+      "   float scaley = fSxOxSyOy.z;\n"
+      "   float offsetx = fSxOxSyOy.y;\n"
+      "   float offsety = fSxOxSyOy.w;\n"
+          
+      "    vec3 facev = vec3(cos(yaw), sin(yaw), sin(pitch));\n"
+      "    vec3 relv  = normalize(relDir);\n"
+      "    float x = relv.x / (relv.z * zoom) + atan(facev.x, facev.y);\n"
+      "    float y = relv.y / (relv.z * zoom) - (facev.z * pitch_adjust);\n"
+      "    vec4 color = texture2D(texture0, vec2(offsetx - x * scalex, offsety - y * scaley));\n"
+      "    float intensity = clamp(bloomScale, 0.0, 1.0);\n"
+      "    if (usefog > 0.0) {\n"
+      "        intensity = 0.0;\n"
+      "    }\n"
+      "#ifdef GAMMA_CORRECTED_BLENDING\n"
+      "    //intensity = intensity * intensity;\n"
+      "    color.rgb = (color.rgb - 0.01) * 1.01;\n"
+      "#else\n"
+      "    color.rgb = (color.rgb - 0.1) * 1.11;\n"
+      "#endif\n"
+      "    gl_FragColor = vec4(color.rgb * intensity, 1.0);\n"
+      "}\n";
+
     defaultVertexPrograms["sprite"] = ""
         "#version 300 es  \n"
         "uniform mat4 MS_ModelViewProjectionMatrix;\n"
@@ -736,8 +857,8 @@ void initDefaultPrograms() {
         "uniform mat4 MS_ModelViewMatrixInverse;\n"
         "uniform mat4 MS_TextureMatrix;\n"
         "in vec4 vPosition;\n"
-        "uniform vec4 vColor;\n"
-        "uniform vec4 vFogColor;\n"
+        "uniform vec4 uColor;\n"
+        "uniform vec4 uFogColor;\n"
         "in vec2 vTexCoord;   \n"
         "out vec2 textureUV;   \n"
         "out vec4 fogColor;\n"
@@ -761,9 +882,9 @@ void initDefaultPrograms() {
         "	viewDir = (vPosition - v).xyz;\n"
         " vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"           //DCW shitty attempt to stuff texUV into a vec4
         "	textureUV = (MS_TextureMatrix * UV4).xy;\n"
-        "	vertexColor = vColor;\n"
-        "	FDxLOG2E = -vFogColor.a * 1.442695;\n"
-        " fogColor = vFogColor;\n" //DCW maybe unused.
+        "	vertexColor = uColor;\n"
+        "	FDxLOG2E = -uFogColor.a * 1.442695;\n"
+        " fogColor = uFogColor;\n" //DCW maybe unused.
         "}\n";    
     defaultFragmentPrograms["sprite"] = ""
         "#version 300 es  \n"
@@ -774,10 +895,14 @@ void initDefaultPrograms() {
         "uniform float glow;\n"
         "uniform float flare;\n"
         "uniform float selfLuminosity;\n"
-        "uniform vec4 clipPlane0;"
-        "uniform vec4 clipPlane1;"
-        "uniform vec4 clipPlane5;"
-        "uniform vec4 mediaPlane;"
+        "uniform vec4 clipPlane0;\n"
+        "uniform vec4 clipPlane1;\n"
+        "uniform vec4 clipPlane5;\n"
+        "uniform vec4 mediaPlane;\n"
+        "uniform float logicalWidth;\n"
+        "uniform float logicalHeight;\n"
+        "uniform float pixelWidth;\n"
+        "uniform float pixelHeight;\n"
         "in vec3 viewDir;\n"
         "in vec4 vertexColor;\n"
         "in float FDxLOG2E;\n"
@@ -785,10 +910,28 @@ void initDefaultPrograms() {
         "in vec4 vPosition_eyespace;\n"
         "out vec4 fragmentColor;\n"
 
+        "float sample_height(vec2 uv){ \n"
+        "  vec4 color = texture(texture0, uv);\n"
+        "  return color.a * (color.r+color.g+color.b)/3.0;"
+        "} \n"
+  
+        "float sample_nearby_average_heights(float pixel_span, vec2 centerUV){ \n"
+        "  int num_samples = 8;\n"
+        "  float height = 0.0;\n"
+        "  vec2 textureSize = vec2(textureSize(texture0 ,0));\n"
+        "  float span = pixel_span * (1.0/float(textureSize.x));\n" //FLIP?
+        "  for(int i = 0; i < num_samples; ++i) {\n"
+        "    height += sample_height( vec2(centerUV.x+(span*float(i)),centerUV.y) );\n" //FLIP?
+        "  }\n"
+        "  return height / float(num_samples);\n"
+        "} \n"
+  
         "void main (void) {\n"
+        "bool unwantedFragment = false;\n"
         " if( dot( vPosition_eyespace, clipPlane0) < 0.0 ) {discard;}\n"
         " if( dot( vPosition_eyespace, clipPlane1) < 0.0 ) {discard;}\n"
-        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+       //" if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {discard;}\n"
+        " if( dot( vPosition_eyespace, clipPlane5) < 0.0 ) {unwantedFragment = true;}\n"
 
         "	float mlFactor = clamp(selfLuminosity + flare - classicDepth, 0.0, 1.0);\n"
         "	// more realistic: replace classicDepth with (length(viewDir)/8192.0)\n"
@@ -801,15 +944,30 @@ void initDefaultPrograms() {
         "#ifdef GAMMA_CORRECTED_BLENDING\n"
         "	intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
-        "	vec4 color = texture(texture0, textureUV.xy);\n"
+  
+    //Parallax test
+        " float leftRightFraction=( (gl_FragCoord.x/pixelWidth) * 2.0 ) - 1.0;"
+        "  vec2 textureSize = vec2(textureSize(texture0 ,0));\n"
+        "  float pixel_size = 1.0/float(textureSize.x);\n" //FLIP?
+        " vec2 pUV = textureUV.xy;\n"
+        //" float parallax = (sample_height(pUV) * 2.0)-1.0; \n"
+        //" pUV.x += 4.0* pixel_size*parallax*leftRightFraction; \n"
+  
+        "	vec4 color = texture(texture0, pUV.xy);\n"
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         " fragmentColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         " if ( fragmentColor.a == 0.0 ) {discard;} //discard transparent fragments so they don't write on the depth buffer \n "
         " vec4 mediaTint = vec4(0.0, 0.6, 1.0, 1.0);"
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
+        /*" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
         " fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
-        "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"
-         "}\n";
+        "   fragmentColor.rgb = mix(fragmentColor.rgb, mediaTint.rgb,  pow(gl_FragCoord.z, 100.0)); }\n"*/
+
+  //DCW shit test emboss
+ // "fragmentColor.rgb += 1.0 * ( sample_nearby_average_heights(0.0-leftRightFraction, pUV) - sample_nearby_average_heights(leftRightFraction, pUV) );\n"
+
+        " if( unwantedFragment ) {fragmentColor.a = 0.0;}\n"
+
+        "}\n";
     defaultVertexPrograms["sprite_bloom"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["sprite_bloom"] = ""
         "#version 300 es  \n"
@@ -848,56 +1006,90 @@ void initDefaultPrograms() {
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
         " if ( fragmentColor.a == 0.0 ) {discard;} //discard transparent fragments so they don't write on the depth buffer \n "
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {fragmentColor.g-=pow(gl_FragCoord.z, 100.0); fragmentColor.r-=pow(gl_FragCoord.z, 100.0);}\n"
+        //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {fragmentColor.g-=pow(gl_FragCoord.z, 100.0); fragmentColor.r-=pow(gl_FragCoord.z, 100.0);}\n"
         "}\n";
     
     defaultVertexPrograms["invincible"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["invincible"] = ""
-        "#version 300 es  \n"
-        "precision highp float;\n"
-        "in highp vec4 fogColor; \n"
-        "in highp vec2 textureUV; \n"
-        "uniform sampler2D texture0;\n"
-        "uniform float time;\n"
-        "uniform float usestatic;\n"
-        "in vec3 viewDir;\n"
-        "in vec4 vertexColor;\n"
-        "in float FDxLOG2E;\n"
-        "out vec4 fragmentColor;\n"
-        "void main(void) {\n"
-        "	float a = fract(sin(usestatic*(textureUV.x * 133.0 + textureUV.y * 471.0) + time * 7.0) * 43757.0); \n"
-        "	float b = fract(sin(usestatic*(textureUV.x * 2331.0 + textureUV.y * 63.0) + time * 3.0) * 32451.0); \n"
-        "	float c = fract(sin(usestatic*(textureUV.x * 41.0 + textureUV.y * 12911.0) + time * 31.0) * 34563.0);\n"
-        "	vec4 color = texture(texture0, textureUV.xy);\n"
-        "	vec3 intensity = vec3(a, b, c);\n"
-        "#ifdef GAMMA_CORRECTED_BLENDING\n"
-        "	intensity = intensity * intensity;  // approximation of pow(intensity, 2.2)\n"
-        "#endif\n"
-        "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "	fragmentColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
-        "}\n";
+      "#version 300 es  \n"
+      "precision highp float;\n"
+      "in highp vec4 fogColor; \n"
+      "in highp vec2 textureUV; \n"
+      "uniform sampler2D texture0;\n"
+      "uniform float time;\n"
+      "in vec3 viewDir;\n"
+      "in vec4 vertexColor;\n"
+      "in float FDxLOG2E;\n"
+      "out vec4 fragmentColor;\n"
+      "float rand(vec2 co){ \n"
+      "   float a = 12.9898; \n"
+      "   float b = 78.233; \n"
+      "   float c = 43758.5453; \n"
+      "   float dt= dot(co.xy ,vec2(a,b)); \n"
+      "   float sn= mod(dt,3.14); \n"
+      "   return fract(sin(sn) * c); \n"
+      "} \n"
+      "void main(void) {\n"
+      "   float blockSize = 6.0;\n"
+      "   float moment=fract(time/10000.0);\n"
+      "   float eX=moment*round(gl_FragCoord.x / blockSize);\n"
+      "   float eY=moment*round(gl_FragCoord.y / blockSize);\n"
+      "   vec2 entropy = vec2 (eX,eY); \n"
+      "   float sr = rand(entropy); \n"
+      "   float sg = rand(entropy*sr); \n"
+      "   float sb = rand(entropy*sg); \n"
+      "   vec3 intensity = vec3(sr, sg, sb); \n"
+      "   vec4 color = texture(texture0, textureUV.xy);\n"
+      "#ifdef GAMMA_CORRECTED_BLENDING\n"
+      "   intensity = intensity * intensity;  // approximation of pow(intensity, 2.2)\n"
+      "#endif\n"
+      "   float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
+      "   fragmentColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
+      "}\n";
+
+  
     defaultVertexPrograms["invincible_bloom"] = defaultVertexPrograms["invincible"];
     defaultFragmentPrograms["invincible_bloom"] = ""
-        "#version 300 es  \n"
-        "precision highp float;\n"
-        "in highp vec4 fogColor; \n"
-        "in highp vec2 textureUV; \n"
-        "uniform sampler2D texture0;\n"
-        "uniform float time;\n"
-        "uniform float usestatic;\n"
-        "uniform float bloomScale;\n"
-        "uniform float bloomShift;\n"
-        "in vec3 viewDir;\n"
-        "in vec4 vertexColor;\n"
-        "in float FDxLOG2E;\n"
-        "out vec4 fragmentColor;\n"
-        "void main(void) {\n"
-        "	vec4 color = texture(texture0, textureUV.xy);\n"
-        "	vec3 intensity = vec3(0.0, 0.0, 0.0);\n"
-        "	float fogFactor = exp2(FDxLOG2E * length(viewDir));\n"
-        "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), intensity, fogFactor), vertexColor.a * color.a);\n"
-        "}\n";
-    
+      "#version 300 es  \n"
+      "precision highp float;\n"
+      "in highp vec4 fogColor; \n"
+      "in highp vec2 textureUV; \n"
+      "uniform sampler2D texture0;\n"
+      "uniform float time;\n"
+      "in vec3 viewDir;\n"
+      "in vec4 vertexColor;\n"
+      "in float FDxLOG2E;\n"
+      "out vec4 fragmentColor;\n"
+      "float rand(vec2 co){ \n"
+      "   float a = 12.9898; \n"
+      "   float b = 78.233; \n"
+      "   float c = 43758.5453; \n"
+      "   float dt= dot(co.xy ,vec2(a,b)); \n"
+      "   float sn= mod(dt,3.14); \n"
+      "   return fract(sin(sn) * c); \n"
+      "} \n"
+      "void main(void) {\n"
+      "   float blockHeight=2.0;\n"
+      "   float blockWidth=50.0;\n"
+      "   float darkBlockProbability=0.8;\n"
+      "   float moment=fract(time/10000.0);\n"
+      "   float eX=moment*round((gl_FragCoord.x + mod(time, 60.0)*7.0) / blockWidth);\n"
+      "   float eY=moment*round((gl_FragCoord.y + mod(time, 60.0)*11.0) / blockHeight);\n"
+      "   vec2 entropy = vec2 (eX, eY); \n"
+      "   float sr = rand(entropy); \n"
+      "   float sg = rand(entropy*sr); \n"
+      "   float sb = rand(entropy*sg); \n"
+      "   vec3 intensity = vec3(0.0,0.0,0.0);\n"
+      "   if (rand(entropy*sr*sg*sb) > darkBlockProbability) {\n"
+      "      intensity = vec3(sr*sr, sg*sg, sb); }\n"
+      "   vec4 color = texture(texture0, textureUV.xy);\n"
+      "#ifdef GAMMA_CORRECTED_BLENDING\n"
+      "   intensity = intensity * intensity;  // approximation of pow(intensity, 2.2)\n"
+      "#endif\n"
+      "   float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
+      "   fragmentColor = vec4(mix(fogColor.rgb, intensity, fogFactor), vertexColor.a * color.a);\n"
+      "}\n";
+
     defaultVertexPrograms["invisible"] = defaultVertexPrograms["sprite"];
     defaultFragmentPrograms["invisible"] = ""
         "#version 300 es  \n"
@@ -940,113 +1132,235 @@ void initDefaultPrograms() {
         "uniform mat4 MS_ModelViewMatrix;\n"
         "uniform mat4 MS_ModelViewMatrixInverse;\n"
         "uniform mat4 MS_TextureMatrix;\n"
-        "in vec4 vPosition;\n"
-        "uniform vec4 vColor;\n"
-        "uniform vec4 vFogColor;\n"
+  
+        "uniform float useUniformFeatures;\n" //Flag indicating whether to use the features as uniforms (such as for 3d models), or per-vertex attributes (normal walls).
+        "uniform vec4 clipPlane0;\n"
+        "uniform vec4 clipPlane1;\n"
+        "uniform vec4 clipPlane5;\n"
+        "uniform vec4 uColor;\n"
+        "uniform float bloomScale;\n"
+        "uniform float bloomShift;\n"
+        "uniform float flare;\n"
+        "uniform float selfLuminosity;\n"
+        "uniform float pulsate;\n"
+        "uniform float wobble;\n"
+        "uniform float depth;\n"
+        "uniform float glow;\n"
+  
+        "uniform vec4 uFogColor;\n"
         "in vec2 vTexCoord;   \n"
         "in vec3 vNormal;   \n"
-        "uniform vec4 vTexCoord4;   \n"
+        "in vec4 vPosition;\n"
+        "in vec4 vColor;\n"
+        "in vec4 vTexCoord4;   \n"
+        "in vec4 vClipPlane0;   \n"
+        "in vec4 vClipPlane1;   \n"
+        "in vec4 vClipPlane5;   \n"
+        "in vec4 vSxOxSyOy; \n"
+        "in vec4 vBsBtFlSl; \n"
+        "in vec4 vPuWoDeGl; \n"
+
+        "out vec4 fSxOxSyOy; \n"
+        "out vec4 fBsBtFlSl; \n"
+        "out vec4 fPuWoDeGl; \n"
+        "out vec4 fClipPlane0;   \n"
+        "out vec4 fClipPlane1;   \n"
+        "out vec4 fClipPlane5;   \n"
+
         "out vec2 textureUV2;   \n"
         "out vec2 textureUV;   \n"
         "out vec4 fogColor;\n"
-        "out vec3 normal;\n"
-        "uniform float depth;\n"
         "out vec3 viewXY;\n"
         "out vec3 viewDir;\n"
         "out vec4 vertexColor;\n"
         "out float FDxLOG2E;\n"
         "out float classicDepth;\n"
+        "out mat3 tbnMatrix;"
         "out vec4 vPosition_eyespace;\n"
+        "out vec3 eyespaceNormal;\n"
+  
+       /* "highp mat4 transpose(in highp mat4 inMatrix) {\n"  //I have not tested this.
+        "    highp vec4 i0 = inMatrix[0];\n"
+         "   highp vec4 i1 = inMatrix[1];\n"
+        "    highp vec4 i2 = inMatrix[2];\n"
+        "    highp vec4 i3 = inMatrix[3];\n"
+
+        "    highp mat4 outMatrix = mat4(\n"
+        "                 vec4(i0.x, i1.x, i2.x, i3.x),\n"
+        "                 vec4(i0.y, i1.y, i2.y, i3.y),\n"
+        "                 vec4(i0.z, i1.z, i2.z, i3.z),\n"
+        "                 vec4(i0.w, i1.w, i2.w, i3.w)\n"
+        "                 );\n"
+
+        "    return outMatrix;\n"
+        "}\n"*/
+
         "void main(void) {\n"
-        " vPosition_eyespace = MS_ModelViewMatrix * vPosition;\n"
-        "	gl_Position  = MS_ModelViewProjectionMatrix * vPosition;\n"
-        "	gl_Position.z = gl_Position.z + depth*gl_Position.z/65536.0;\n"
-        "	classicDepth = gl_Position.z / 8192.0;\n"
+        "    vPosition_eyespace = MS_ModelViewMatrix * vPosition;\n"
+        "    gl_Position  = MS_ModelViewProjectionMatrix * vPosition;\n"
+        "    float depth = vPuWoDeGl.z;\n"
+        "    gl_Position.z = gl_Position.z + depth*gl_Position.z/65536.0;\n"
+        "    classicDepth = gl_Position.z / 8192.0;\n"
         "#ifndef DISABLE_CLIP_VERTEX\n"
-//        "	gl_ClipVertex = MS_ModelViewMatrix * vPosition;\n"
+      //        "    gl_ClipVertex = gl_ModelViewMatrix * gl_Vertex;\n"
         "#endif\n"
-        " vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"           //DCW shitty attempt to stuff texUV into a vec4
-        " mat3 normalMatrix = mat3(transpose(MS_ModelViewMatrixInverse));\n"           //DCW shitty replacement for gl_NormalMatrix
-        "  textureUV = (MS_TextureMatrix * UV4).xy;\n"
-        "	/* SETUP TBN MATRIX in normal matrix coords, vTexCoord4 = tangent vector */\n"
-        "	vec3 n = normalize(normalMatrix * vNormal);\n"
-        "	vec3 t = normalize(normalMatrix * vTexCoord4.xyz);\n"
-        "	vec3 b = normalize(cross(n, t) * vTexCoord4.w);\n"
-        "	/* (column wise) */\n"
-        "	mat3 tbnMatrix = mat3(t.x, b.x, n.x, t.y, b.y, n.y, t.z, b.z, n.z);\n"
-        "	\n"
-        "	/* SETUP VIEW DIRECTION in unprojected local coords */\n"
-        "	viewDir = tbnMatrix * (MS_ModelViewMatrix * vPosition).xyz;\n"
-        "	viewXY = -(MS_TextureMatrix * vec4(viewDir.xyz, 1.0)).xyz;\n"
-        "	viewDir = -viewDir;\n"
-        "	vertexColor = vColor;\n"
-        "	FDxLOG2E = -(1.0-vFogColor.a) * 1.442695;\n" //dcw that 1- may be wrong.
-        " fogColor = vFogColor;"
+        "    vec4 UV4 = vec4(vTexCoord.x, vTexCoord.y, 0.0, 1.0);\n"           //DCW shitty attempt to stuff texUV into a vec4
+        "    mat3 normalMatrix = mat3(transpose(MS_ModelViewMatrixInverse));\n"           //DCW shitty replacement for gl_NormalMatrix
+        "    textureUV = (MS_TextureMatrix * UV4).xy;\n"
+        "    /* SETUP TBN MATRIX in normal matrix coords, gl_MultiTexCoord1 = tangent vector */\n"
+        "    vec3 n = normalize(normalMatrix * vNormal);\n"
+        "    vec3 t = normalize(normalMatrix * vTexCoord4.xyz);\n"
+        "    vec3 b = normalize(cross(n, t) * vTexCoord4.w);\n"
+        "    /* (column wise) */\n"
+        "    tbnMatrix = mat3(t.x, b.x, n.x, t.y, b.y, n.y, t.z, b.z, n.z);\n"
+        "    \n"
+        "    /* SETUP VIEW DIRECTION in unprojected local coords */\n"
+        "    viewDir = tbnMatrix * (MS_ModelViewMatrix * vPosition).xyz;\n"
+        "    viewXY = -(MS_TextureMatrix * vec4(viewDir.xyz, 1.0)).xyz;\n"
+        "    viewDir = -viewDir;\n"
+        "    vertexColor = vColor;\n"
+        "    FDxLOG2E = -uFogColor.a * 1.442695;\n"
+        "    fogColor = uFogColor;"
+        "    if( useUniformFeatures > 0.5 ) {\n"
+        "       fClipPlane0 = clipPlane0;\n"
+        "       fClipPlane0 = clipPlane1;\n"
+        "       fClipPlane0 = clipPlane5;\n"
+        "       vertexColor = uColor;\n"
+        "       fBsBtFlSl.x = bloomScale;\n"
+        "       fBsBtFlSl.y = bloomShift;\n"
+        "       fBsBtFlSl.z = flare;\n"
+        "       fBsBtFlSl.w = selfLuminosity;\n"
+        "       fPuWoDeGl.x = pulsate;\n"
+        "       fPuWoDeGl.y = wobble;\n"
+        "       fPuWoDeGl.z = depth;\n"
+        "       fPuWoDeGl.w = glow;\n"
+        "    } else { \n"
+        "       fClipPlane0 = vClipPlane0;\n"
+        "       fClipPlane1 = vClipPlane1;\n"
+        "       fClipPlane5 = vClipPlane5;\n"
+        "       vertexColor = vColor;\n"
+        "       fSxOxSyOy = vSxOxSyOy;\n"
+        "       fBsBtFlSl = vBsBtFlSl;\n"
+        "       fPuWoDeGl = vPuWoDeGl;\n"
+        "   }\n"
+        "    eyespaceNormal = vec3(MS_ModelViewMatrix * vec4(vNormal, 0.0));\n"
         "}\n";
+
     defaultFragmentPrograms["wall"] = ""
         "#version 300 es  \n"
         "precision highp float;\n"
-        "in highp vec4 fogColor; \n"
-        "in highp vec2 textureUV; \n"
+        //"uniform vec4 clipPlane0;\n"
+        //"uniform vec4 clipPlane1;\n"
+        //"uniform vec4 clipPlane5;\n"
+        "in vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
-        "uniform float pulsate;\n"
-        "uniform float wobble;\n"
-        "uniform float glow;\n"
-        "uniform float flare;\n"
-        "uniform float selfLuminosity;\n"
-        "uniform vec4 mediaPlane;"
+        "uniform vec4 lightPositions[64];\n"
+        "uniform vec4 lightColors[64];\n"
+
+        //"uniform mat4 MS_ModelViewMatrix;\n"
+        //"uniform float pulsate;\n"
+        //"uniform float wobble;\n"
+        //"uniform float glow;\n"
+        //"uniform float flare;\n"
+        //"uniform float selfLuminosity;\n"
+
+        "in vec4 fSxOxSyOy; \n"
+        "in vec4 fBsBtFlSl; \n"
+        "in vec4 fPuWoDeGl; \n"
+        "in vec4 fClipPlane0;   \n"
+        "in vec4 fClipPlane1;   \n"
+        "in vec4 fClipPlane5;   \n"
+
         "in vec3 viewXY;\n"
         "in vec3 viewDir;\n"
         "in vec4 vertexColor;\n"
         "in float FDxLOG2E;\n"
+        "in vec4 fogColor; \n"
         "in float classicDepth;\n"
         "in vec4 vPosition_eyespace;\n"
+        "in vec3 eyespaceNormal;\n"
         "out vec4 fragmentColor;\n"
         "void main (void) {\n"
-        "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
-        "	vec3 normXY = normalize(viewXY);\n"
-        "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
-        "	texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
-        "	float mlFactor = clamp(selfLuminosity + flare - classicDepth, 0.0, 1.0);\n"
-        "	// more realistic: replace classicDepth with (length(viewDir)/8192.0)\n"
-        "	vec3 intensity;\n"
-        "	if (vertexColor.r > mlFactor) {\n"
-        "		intensity = vertexColor.rgb + (mlFactor * 0.5); }\n"
-        "	else {\n"
-        "		intensity = (vertexColor.rgb * 0.5) + mlFactor; }\n"
-        "	intensity = clamp(intensity, glow, 1.0);\n"
+        "   if( dot( vPosition_eyespace, fClipPlane0) < 0.0 ) {discard;}\n"
+        "   if( dot( vPosition_eyespace, fClipPlane1) < 0.0 ) {discard;}\n"
+        "   if( dot( vPosition_eyespace, fClipPlane5) < 0.0 ) {discard;}\n"
+        "    float pulsate = fPuWoDeGl.x;\n"
+        "    float wobble = fPuWoDeGl.y;\n"
+        "    float glow = fPuWoDeGl.w;\n"
+        "    float flare = fBsBtFlSl.z;\n"
+        "    float selfLuminosity = fBsBtFlSl.w;\n"
+        "    vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
+        "    vec3 normXY = normalize(viewXY);\n"
+        "    texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
+        "    texCoords += vec3(normXY.y * -wobble * texCoords.y, wobble * texCoords.y, 0.0);\n"
+        "    float mlFactor = clamp(selfLuminosity + flare - classicDepth, 0.0, 1.0);\n"
+        "    // more realistic: replace classicDepth with (length(viewDir)/8192.0)\n"
+        "    vec3 intensity;\n"
+        "    if (vertexColor.r > mlFactor) {\n"
+        "        intensity = vertexColor.rgb + (mlFactor * 0.5); }\n"
+        "    else {\n"
+        "        intensity = (vertexColor.rgb * 0.5) + mlFactor; }\n"
+        "    intensity = clamp(intensity, glow, 1.0);\n"
         "#ifdef GAMMA_CORRECTED_BLENDING\n"
-        "	intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
+        "    intensity = intensity * intensity; // approximation of pow(intensity, 2.2)\n"
         "#endif\n"
-        "	vec4 color = texture(texture0, texCoords.xy);\n"
-        "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
-        "fogFactor=clamp( length(viewDir), 0.0, 1.0);\n" //dcw shit test
-        "	fragmentColor = vec4(mix(fogColor.rgb, color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
+        "    vec4 color = texture(texture0, texCoords.xy);\n"
+        "    float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
+        "    fogFactor=clamp( length(viewDir), 0.0, 1.0);\n" //dcw shit test. ok... maybe we need this...
+
+        
+        //Calculate light
+        "    vec4 lightAddition = vec4(0.0, 0.0, 0.0, 1.0);\n"
+        "    for(int i = 0; i < 64; ++i) {\n"
+        "       float size = lightPositions[i].w;\n"
+        "       if( size < .1) { break; }\n" //End of light list
+        "       vec3 lightPosition = vec3(lightPositions[i].xyz);\n"
+        "       vec4 lightColor = vec4(lightColors[i].rgb, 1.0);\n"
+        "       float distance = length(lightPosition - vPosition_eyespace.xyz);\n"
+        "       vec3 lightVector = normalize(lightPosition - vPosition_eyespace.xyz);\n"
+        "       float diffuse = max(dot(eyespaceNormal, lightVector), 0.0);\n"
+        "       diffuse = diffuse * max((size*size - distance*distance)/(size*size), 0.0 );\n" //Attenuation
+        "       lightAddition = lightAddition + color * diffuse * lightColor;\n"
+        "    }\n"
+
+        "    fragmentColor = vec4(mix(fogColor.rgb, lightAddition.rgb + color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
   
-  //dcw shit test
-        " vec4 mediaTint = vec4(0.0, 0.6, 1.0, 1.0);"
-        " if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
-        "   fragmentColor.rgb -= 0.2 * (vec3(1.0) - mediaTint.rgb);\n"
-        "   fragmentColor= mix(fragmentColor, mediaTint,  pow(gl_FragCoord.z, 100.0)); }\n"
         "}\n";
     defaultVertexPrograms["wall_bloom"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["wall_bloom"] = ""
         "#version 300 es  \n"
         "precision highp float;\n"
-        "in highp vec2 textureUV; \n"
+        "in vec2 textureUV; \n"
         "uniform sampler2D texture0;\n"
-        "uniform float pulsate;\n"
-        "uniform float wobble;\n"
-        "uniform float glow;\n"
-        "uniform float flare;\n"
-        "uniform float bloomScale;\n"
-        "uniform float bloomShift;\n"
+        "uniform vec4 lightPositions[64];\n"
+        "uniform vec4 lightColors[64];\n"
+
+        "in vec4 fSxOxSyOy; \n"
+        "in vec4 fBsBtFlSl; \n"
+        "in vec4 fPuWoDeGl; \n"
+        "in vec4 fClipPlane0;   \n"
+        "in vec4 fClipPlane1;   \n"
+        "in vec4 fClipPlane5;   \n"
+
         "in vec3 viewXY;\n"
         "in vec3 viewDir;\n"
         "in vec4 vertexColor;\n"
         "in float FDxLOG2E;\n"
+        "in vec4 fogColor; \n"
+        "in float classicDepth;\n"
+        "in vec4 vPosition_eyespace;\n"
+        "in vec3 eyespaceNormal;\n"
         "out vec4 fragmentColor;\n"
         "void main (void) {\n"
+        "   if( dot( vPosition_eyespace, fClipPlane0) < 0.0 ) {discard;}\n"
+        "   if( dot( vPosition_eyespace, fClipPlane1) < 0.0 ) {discard;}\n"
+        "   if( dot( vPosition_eyespace, fClipPlane5) < 0.0 ) {discard;}\n"
+        "    float pulsate = fPuWoDeGl.x;\n"
+        "    float wobble = fPuWoDeGl.y;\n"
+        "    float glow = fPuWoDeGl.w;\n"
+        "    float flare = fBsBtFlSl.z;\n"
+        "    float bloomScale = fBsBtFlSl.x;\n"
+        "    float bloomShift = fBsBtFlSl.y;\n"
         "	vec3 texCoords = vec3(textureUV.xy, 0.0);\n"
         "	vec3 normXY = normalize(viewXY);\n"
         "	texCoords += vec3(normXY.y * -pulsate, normXY.x * pulsate, 0.0);\n"
@@ -1061,9 +1375,14 @@ void initDefaultPrograms() {
         "	float fogFactor = clamp(exp2(FDxLOG2E * length(viewDir)), 0.0, 1.0);\n"
         "	fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, fogFactor), vertexColor.a * color.a);\n"
   //dcw shit test
-  "  fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, 1.0), vertexColor.a * color.a);\n"
+  //"  fragmentColor = vec4(mix(vec3(0.0, 0.0, 0.0), color.rgb * intensity, 1.0), vertexColor.a * color.a);\n"
+  
+      //DCW shit test Everything below media glows
+      //" if( dot( vPosition_eyespace, mediaPlane) < 0.0 ) {\n"
+      //"  fragmentColor = vec4(color.rgb*color.rgb,vertexColor.a * color.a);\n"
+      //"} \n"
 
-        "}\n";
+  "}\n";
     
     defaultVertexPrograms["bump"] = defaultVertexPrograms["wall"];
     defaultFragmentPrograms["bump"] = ""

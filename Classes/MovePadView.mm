@@ -32,7 +32,8 @@ extern "C" {
 #include "AlephOneHelper.h"
 
 @implementation MovePadView
-@synthesize dPadView, knobView;
+@synthesize forwardKey;
+@synthesize dPadView, knobView, dPadSwimmingView;
 
 - (void)setup {
 	
@@ -42,6 +43,8 @@ extern "C" {
 	[feedbackSecondary initWithStyle:UIImpactFeedbackStyleHeavy];
   originalFrame=CGRectMake(0, 0, 0, 0);
 
+  [dPadSwimmingView setHidden:YES];
+  
   // Kill a warning
   (void)all_key_definitions;
 
@@ -99,7 +102,6 @@ extern "C" {
     //The reason for doing this is to provide a consistent swipe distance for a "stop/change-direction" operation.
   knobLocation.x += currentPoint.x - lastLocation.x;
   knobLocation.y += currentPoint.y - lastLocation.y;
-
   
   // Doesn't matter where we are in this control, just find the position relative to the center
   float dx, dy;
@@ -127,12 +129,12 @@ extern "C" {
   float fdy = fabs ( dy );
   
   float tightClamp = [[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysRun] && (useForceTouch || !headBelowMedia()); //Whether to clamp the knob close to center or not.
-  bool running = ( fdx > runRadius || fdy > runRadius || tightClamp);
+  bool shouldRunIfNeeded = ( fdx > runRadius || fdy > runRadius || tightClamp);
   float runThresholdBufferX=5; //How far we let the knob move into the run delta threshold for strafing.
   float runThresholdBufferY=30; //How far we let the knob move into the run delta threshold for forward/back movement.
   
   // Are we running?
-  if ( running ) {
+  if ( shouldRunIfNeeded ) {
     setKey(runKey, 1);
     // MLog ( @"Running!" );
 		
@@ -140,21 +142,29 @@ extern "C" {
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+        shouldBeSwimmingIfSubmerged=YES;
 			}
 			else {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+        shouldBeSwimmingIfSubmerged=NO;
 			}
-		}
+    } else {
+       shouldBeSwimmingIfSubmerged=YES;
+    }
   } else {
-      setKey(runKey, 0);
+    setKey(runKey, 0);
+    
+    shouldBeSwimmingIfSubmerged=NO;
     
 			//DCW: If we support forcetouch, and it the force is high, we can invert sink/swim so we will swim under pressure.
 		if(useForceTouch) {
 			if ( force > 0.5 ) {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+        shouldBeSwimmingIfSubmerged=YES;
 			}
 			else {
 				SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+        shouldBeSwimmingIfSubmerged=NO;
 			}
 		}
   }
@@ -204,7 +214,6 @@ extern "C" {
   } else {
     setKey(backwardKey, 0);
   }
-  
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -212,6 +221,9 @@ extern "C" {
   if (originalFrame.size.width == 0) {
     originalFrame=[self frame];
   }
+  
+  shouldBeSwimmingIfSubmerged=NO;
+  [self updateSwimmingIndicatorVisibility];
   
   for ( UITouch *touch in [event touchesForView:self] ) {
     //DCW: I think I'm going to auto-center the control under the touch to prevent immediate movement.
@@ -223,6 +235,7 @@ extern "C" {
     newFrame.origin.x = lastLocation.x-center.x;
     newFrame.origin.y = lastLocation.y-center.y;
     [dPadView setFrame:newFrame];
+    [dPadSwimmingView setFrame:newFrame];
     
     moveCenterPoint = CGPointMake(dPadView.frame.origin.x + dPadView.bounds.size.width / 2.0, dPadView.frame.origin.y + dPadView.bounds.size.height / 2.0 );
     //[self handleTouch:[touch locationInView:self]]; //Irrelevant when control is centered.
@@ -242,14 +255,18 @@ extern "C" {
   setKey(runKey, 0);
 
   SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false); //DCW
-	
+  shouldBeSwimmingIfSubmerged=NO;
+  [self updateSwimmingIndicatorVisibility];
+  
 	//DCW. Do open/activate key when released
-  setKey(actionKey, 1);
-  if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
-    [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+  if( [[NSUserDefaults standardUserDefaults] boolForKey:kDPadAction] || PLAYER_IS_DEAD(local_player)) {
+    setKey(actionKey, 1);
+    if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+      [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+    }
+    [self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
   }
-	[self performSelector:@selector(actionKeyUp) withObject:nil afterDelay:0.15];
-
+  
   // Animate the knob returning to home...
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
@@ -282,5 +299,14 @@ extern "C" {
     [super dealloc];
 }
 
+- (void) updateSwimmingIndicatorVisibility {
+  
+  if (headBelowMedia()) {
+    [dPadSwimmingView setHidden:!shouldBeSwimmingIfSubmerged];
+  } else {
+    [dPadSwimmingView setHidden:YES];
+  }
+  
+}
 
 @end

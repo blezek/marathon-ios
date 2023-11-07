@@ -60,6 +60,8 @@
 #include "Plugins.h"
 #include "FilmProfile.h"
 
+#include <bgfx/bgfx.h>
+
 #include "mytm.h"	// mytm_initialize(), for platform-specific shell_*.h
 
 #include <stdlib.h>
@@ -94,7 +96,10 @@
 
 #ifdef HAVE_OPENGL
 #include "OGL_Headers.h"
+#include "OGL_Shader.h" //DCW needed to init Shader earlier than before
 #endif
+
+#include "AlephOneAcceleration.hpp"
 
 #if !defined(DISABLE_NETWORKING)
 #include "SDL_net.h"
@@ -438,16 +443,24 @@ void initialize_application(void)
 		exit(1);
 	}
   
+    //Establish preferences.
+  cacheRendererPreferences();
+  cacheInputPreferences();
+  
   if ( !useShaderRenderer() ){
       // DCW force opengl es 1.1
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
   } else {
-      // DCW force OpenGL ES 3.x. The default would otherwise be ES 2.
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    
+        // DCW force OpenGL ES 3.x. The default would otherwise be ES 2.
+      SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+      SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+      SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    
+      //DCW initialize shader immediately, since it will be used for intro screen fades.
+    Shader::loadAll();
   }
   
 #if defined(HAVE_SDL_IMAGE)
@@ -703,7 +716,7 @@ void initialize_application(void)
 	SoundManager::instance()->Initialize(*sound_preferences);
 	initialize_marathon_music_handler();
 	initialize_keyboard_controller();
-	initialize_joystick();
+  initialize_joystick();
 	initialize_gamma();
 	alephone::Screen::instance()->Initialize(&graphics_preferences->screen_mode);
 	initialize_marathon();
@@ -852,7 +865,6 @@ static void main_event_loop(void)
 {
 	uint32 last_event_poll = 0;
 	short game_state;
-
 	while ((game_state = get_game_state()) != _quit_game) {
 		uint32 cur_time = SDL_GetTicks();
 		bool yield_time = false;

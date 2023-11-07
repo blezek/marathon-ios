@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica-Bold</string>
-        </array>
         <array key="bankgthd.ttf">
             <string>BankGothicBT-Medium</string>
         </array>
@@ -21,6 +16,7 @@
             <connections>
                 <outlet property="actionBox" destination="131" id="132"/>
                 <outlet property="actionKeyImageView" destination="59" id="130"/>
+                <outlet property="escapeButton" destination="1HG-cf-fUl" id="ids-DN-vts"/>
                 <outlet property="lookPadView" destination="Q9e-7F-7Dx" id="Cif-Mz-WuS"/>
                 <outlet property="lookView" destination="36" id="102"/>
                 <outlet property="movePadView" destination="46" id="103"/>
@@ -34,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36" userLabel="Look" customClass="LookView">
-                    <rect key="frame" x="-1" y="0.0" width="569" height="279"/>
+                    <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="💥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-la-EWL" userLabel="Auto Trigger Active">
@@ -45,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwX-FH-08D">
-                            <rect key="frame" x="550" y="110" width="19" height="60"/>
+                            <rect key="frame" x="549" y="131" width="19" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0F-Mu-Te5" userLabel="Vertical bar">
@@ -97,114 +93,18 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
+                        <outlet property="actionBox" destination="131" id="mkK-sX-BXf"/>
                         <outlet property="lookPadView" destination="Q9e-7F-7Dx" id="0xx-23-2ex"/>
                         <outlet property="smartFireIndicator" destination="ZkN-la-EWL" id="p6b-XT-5x6"/>
                         <outlet property="tapLocationIndicator" destination="mwX-FH-08D" id="yeI-5G-sw9"/>
                     </connections>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97" userLabel="Overhead Map">
-                    <rect key="frame" x="209" y="624" width="128" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="mapDown:" destination="-1" eventType="touchDown" id="99"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchCancel" id="98"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchUpInside" id="100"/>
-                        <action selector="mapUp:" destination="-1" eventType="touchUpOutside" id="101"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="108" userLabel="PreviousWeapon Area">
-                    <rect key="frame" x="345" y="625" width="132" height="126"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="previousWeaponDown:" destination="-1" eventType="touchDown" id="111"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchCancel" id="110"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchUpInside" id="112"/>
-                        <action selector="previousWeaponUp:" destination="-1" eventType="touchUpOutside" id="113"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="114" userLabel="Next Wepon Area">
-                    <rect key="frame" x="680" y="626" width="116" height="130"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="nextWeaponDown:" destination="-1" eventType="touchDown" id="117"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchCancel" id="116"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchUpInside" id="118"/>
-                        <action selector="nextWeaponUp:" destination="-1" eventType="touchUpOutside" id="119"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="115" userLabel="Inventory Area">
-                    <rect key="frame" x="480" y="626" width="200" height="130"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                    <state key="normal">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="inventoryDown:" destination="-1" eventType="touchDown" id="121"/>
-                        <action selector="inventoryUp:" destination="-1" eventType="touchCancel" id="120"/>
-                        <action selector="inventoryUp:" destination="-1" eventType="touchUpInside" id="122"/>
-                        <action selector="inventoryUp:" destination="-1" eventType="touchUpOutside" id="123"/>
-                    </connections>
-                </button>
-                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131" customClass="RoundedView">
-                    <rect key="frame" x="242" y="251" width="77" height="68"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59" userLabel="Action">
-                            <rect key="frame" x="-1" y="0.0" width="79" height="68"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                            <state key="normal" image="UseComputer.png">
-                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="actionDown:" destination="-1" eventType="touchDown" id="72"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchUpOutside" id="73"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchUpInside" id="74"/>
-                                <action selector="actionUp:" destination="-1" eventType="touchCancel" id="75"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-                <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9e-7F-7Dx" customClass="LookPadView">
-                    <rect key="frame" x="409" y="150" width="128" height="128"/>
+                <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9e-7F-7Dx" customClass="LookPadView">
+                    <rect key="frame" x="340" y="175" width="225" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="look_multi_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-lX-sG8">
-                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -222,12 +122,39 @@
                             <rect key="frame" x="67" y="171" width="41" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="D-pad-swim.png" translatesAutoresizingMaskIntoConstraints="NO" id="g3Q-oc-9Ai" userLabel="Swim.png">
+                            <rect key="frame" x="38" y="141" width="98" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
+                        <outlet property="dPadSwimmingView" destination="g3Q-oc-9Ai" id="8pR-Iw-uw9"/>
                         <outlet property="dPadView" destination="49" id="hcm-Tp-kVo"/>
                         <outlet property="knobView" destination="48" id="104"/>
                     </connections>
+                </view>
+                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131">
+                    <rect key="frame" x="232" y="200" width="87" height="88"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59" userLabel="Action">
+                            <rect key="frame" x="-1" y="0.0" width="88" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                            <state key="normal" image="UseComputer.png">
+                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doAction:" destination="-1" eventType="touchUpInside" id="R3m-TN-mXj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBa-Ng-6xP" userLabel="Console">
                     <rect key="frame" x="0.0" y="246" width="32" height="48"/>
@@ -245,7 +172,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62" userLabel="Map">
-                    <rect key="frame" x="0.0" y="27" width="32" height="48"/>
+                    <rect key="frame" x="0.0" y="27" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="Map.png">
@@ -260,7 +187,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64" userLabel="NextWeapon">
-                    <rect key="frame" x="536" y="27" width="32" height="48"/>
+                    <rect key="frame" x="518" y="27" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="NextWeapon.png">
@@ -275,7 +202,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63" userLabel="PreviousWeapon">
-                    <rect key="frame" x="536" y="77" width="32" height="48"/>
+                    <rect key="frame" x="518" y="77" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" image="PreviousWeapon.png">
@@ -300,10 +227,25 @@
                         <action selector="doNetStats:" destination="-1" eventType="touchUpInside" id="s31-H5-9qe"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HG-cf-fUl" userLabel="Escape">
+                    <rect key="frame" x="534" y="127" width="32" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                    <state key="normal" image="Escape.png">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="doEscape:" destination="-1" eventType="touchUpInside" id="lMj-qZ-yyY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.98556053638458252" green="1" blue="0.99009859561920166" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="33" y="117"/>
+            <point key="canvasLocation" x="32.74647887323944" y="116.25"/>
         </view>
         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="66" userLabel="Primary Fire">
             <rect key="frame" x="0.0" y="0.0" width="74" height="76"/>
@@ -347,12 +289,14 @@
     <resources>
         <image name="Console.png" width="64" height="96"/>
         <image name="D-pad-knob.png" width="200" height="200"/>
+        <image name="D-pad-swim.png" width="400" height="400"/>
         <image name="D-pad.png" width="400" height="400"/>
-        <image name="Map.png" width="64" height="96"/>
-        <image name="NextWeapon.png" width="64" height="96"/>
-        <image name="PreviousWeapon.png" width="64" height="96"/>
-        <image name="UseComputer.png" width="60" height="60"/>
-        <image name="look_multi_button.png" width="400" height="400"/>
-        <image name="primarytrigger-btn.png" width="50" height="50"/>
+        <image name="Escape.png" width="64" height="96"/>
+        <image name="Map.png" width="96" height="96"/>
+        <image name="NextWeapon.png" width="96" height="96"/>
+        <image name="PreviousWeapon.png" width="96" height="96"/>
+        <image name="UseComputer.png" width="119" height="119"/>
+        <image name="look_multi_button.png" width="450" height="154"/>
+        <image name="primarytrigger-btn.png" width="101" height="101"/>
     </resources>
 </document>

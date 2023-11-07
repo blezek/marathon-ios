@@ -15,11 +15,14 @@
   MovePadView *movePadView;
 
   IBOutlet UIButton* actionKeyImageView;
+  IBOutlet UIButton* escapeButton;
+  IBOutlet LookView* lookView;
 }
 
 @property (nonatomic,retain) IBOutlet LookView* lookView;
 @property (nonatomic,retain) IBOutlet MovePadView* movePadView;
 @property (nonatomic,retain) IBOutlet UIButton* actionKeyImageView;
+@property (nonatomic,retain) IBOutlet UIButton* escapeButton;
 @property (nonatomic,retain) IBOutlet UIView* actionBox;
 
 @end

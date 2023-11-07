@@ -45,6 +45,7 @@ public:
 	FBO(GLuint w, GLuint h, bool srgb = false);
 	~FBO();
 	
+  void setup(GLuint w, GLuint h, bool srgb); //Only call this once if created with zero demensions.
 	void activate(bool clear = false);
 	void deactivate();
 	
@@ -52,9 +53,11 @@ public:
 	void prepare_drawing_mode(bool blend = false);
 	void reset_drawing_mode();
 	void draw_full(bool blend = false);
-	
+  void DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
+  
 	static FBO *active_fbo();
-  static void DrawQuadWithActiveShader(float x, float y, float w, float h, float tleft, float ttop, float tright, float tbottom);
+    
+  GLuint fboID() { return _fbo; }
 };
 
 

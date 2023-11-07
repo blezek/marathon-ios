@@ -16,9 +16,13 @@
 #import "Appirater.h"
 #include "FileHandler.h"
 #import "Tracking.h"
-#import "FloatingTriggerHUDViewController.h"
+
+//#import "FloatingTriggerHUDViewController.h"
 #import "AlephOneHelper.h"
 #import "alephversion.h"
+
+#include "network.h"
+#include "player.h"
 
 #include "QuickSave.h" //DCW Used for metadata generation
 #include <fstream>
@@ -289,6 +293,7 @@ short localFindActionTarget(
 @synthesize progressView, progressViewController, preferencesViewController, pauseViewController, splashView;
 @synthesize helpViewController, helpView;
 @synthesize newGameViewController;
+@synthesize purchaseViewController;
 @synthesize A1Version, aboutText;
 @synthesize previousWeaponButton, nextWeaponButton;
 @synthesize filmView, filmViewController;
@@ -317,6 +322,8 @@ short localFindActionTarget(
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  gameController = [[AOMGameController alloc] init];
   
   // Bogus reticule
   currentReticleImage = -1000;
@@ -365,6 +372,11 @@ short localFindActionTarget(
   [self.newGameViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
   [self.newGameView addSubview:self.newGameViewController.view];
   
+  self.purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:[NSBundle mainBundle]];
+  [self.purchaseViewController view];
+  [self.purchaseViewController.view setFrame:self.hud.bounds];//DCW: this subview needs to be the same size the hud view.
+  [self.purchaseView addSubview:self.purchaseViewController.view];
+  
   self.filmViewController = [[FilmViewController alloc] initWithNibName:@"FilmViewController" bundle:[NSBundle mainBundle]];
   [self.filmViewController view];
   [self.filmViewController enclosingView];
@@ -393,14 +405,16 @@ short localFindActionTarget(
                              self.controlsOverviewView,
                              self.replacementMenuView,
                              self.aboutView,
+                             self.purchaseView,
                              nil] autorelease];
   for ( UIView *v in viewList ) {
     v.hidden = YES;
   }
   
 #if defined(A1DEBUG)
-  self.saveFilmButton.hidden = NO;
-  self.loadFilmButton.hidden = NO;
+  //self.saveFilmButton.hidden = NO;
+  //self.loadFilmButton.hidden = NO;
+  
   // joyPad = [[JoyPad alloc] init];
 
 #endif
@@ -436,7 +450,7 @@ short localFindActionTarget(
   [reticuleImageNames insertObject:@"ret_shotgun" atIndex:_weapon_ball];
   [reticuleImageNames insertObject:@"ret_machinegun" atIndex:_weapon_smg];
   [reticuleImageNames retain];
-  
+ 
 }
 
 #pragma mark -
@@ -477,6 +491,13 @@ short localFindActionTarget(
   }
 }
 
+- (void)setDisplaylinkPaused:(bool)paused {
+  
+  if(displayLink) {
+    ((CADisplayLink*)displayLink).paused = paused; //dcw shit test
+  }
+}
+
 - (IBAction)quitPressed {
   rateGame = [[UIAlertView alloc] initWithTitle:@"Rate the app?"
                                                message:@"Quit? Like you have something better to do!  Why not rate the app instead?"
@@ -509,24 +530,57 @@ short localFindActionTarget(
   [self zeroStats];
 }
 
+- (IBAction)tipTheDeveloper {
+  [self.purchaseViewController openDoors];
+  [self.purchaseViewController appear];
+  [Effects appearRevealingView:self.purchaseView];
+}
+
 - (IBAction)joinNetworkGame {
   [self switchToSDLMenu];
+  //[self performSelector:@selector(switchToSDLMenu) withObject:nil afterDelay:.1];
+  //[self performSelector:@selector(joinNetworkGameCommand) withObject:nil afterDelay:0];
+  [self performSelectorOnMainThread:@selector(joinNetworkGameCommand) withObject:nil waitUntilDone:NO];
+  //do_menu_item_command(mInterface, iJoinGame, false);
+}
+- (IBAction)joinNetworkGameCommand {
   do_menu_item_command(mInterface, iJoinGame, false);
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
+}
+
+- (IBAction)displayNetGameStatsCommand {
+  display_net_game_stats();
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
 }
 
 - (IBAction)gatherNetworkGame {
-  [self switchToSDLMenu];
+  if( mode!=SDLMenuMode ){
+    [self switchToSDLMenu];
+    [self performSelector:@selector(gatherNetworkGameCommand) withObject:nil afterDelay:0];
+  }
+}
+
+- (IBAction)gatherNetworkGameCommand {
   do_menu_item_command(mInterface, iGatherGame, false);
+  [self setDisplaylinkPaused: NO];
 }
 
 - (IBAction)switchBackToGameView {
+    //Disable gamepad input while not in SDL menu mode
+  SDL_GameControllerEventState(SDL_IGNORE);
+  SDL_JoystickEventState(SDL_IGNORE);
+  
   [self menuShowReplacementMenu];
   self.viewGL.userInteractionEnabled = YES;//DCW: why are we disabling this, again? //NO; //This must be disabled after the game starts or dialog is cancelled!
-  mode=GameMode;
+//DCW not sure if needed... it will crash the gamepad in this state if buttons are pressed before game starts  mode=GameMode;
   //[self startAnimation]; //Animation must also be restarted after the dialog is dismissed?
 }
 
+
 - (IBAction)switchToSDLMenu {
+
+  [self setDisplaylinkPaused: YES];
+  
   self.currentSavedGame = nil;
   [self zeroStats];
   haveNewGamePreferencesBeenSet = YES;
@@ -535,8 +589,24 @@ short localFindActionTarget(
   showControlsOverview = NO;
   [self cancelNewGame];
   self.viewGL.userInteractionEnabled = YES; //This must be disabled after the game starts or dialog is cancelled!
+  
+  //dcw shit test
+  /*[self.hud removeFromSuperview];
+  [self.view setNeedsLayout];
+  [self.view setNeedsDisplay];
+  [self.view layoutSubviews];
+  [self.view layoutIfNeeded];
+  [self.hud setNeedsLayout];
+  [self.hud setNeedsDisplay];
+  [self.hud layoutSubviews];
+  [self.hud layoutIfNeeded];*/
+   
+  
+    //Enable gamepad navigation
+  SDL_GameControllerEventState(SDL_ENABLE);
+  SDL_JoystickEventState(SDL_ENABLE);
   mode=SDLMenuMode;
-}
+  }
 
 - (IBAction)beginGame {
   haveNewGamePreferencesBeenSet = YES;
@@ -570,16 +640,19 @@ short localFindActionTarget(
   // [self performSelector:@selector(cancelNewGame) withObject:nil afterDelay:0.0];
   
   // Start the new game for real!
-
+  [self switchToSDLMenu];
+  [self performSelector:@selector(beginGameCommand) withObject:nil afterDelay:0];
+}
+- (IBAction)beginGameCommand {
   // New menus
   do_menu_item_command(mInterface, iNewGame, false);
-  
-  
-#if defined(A1DEBUG)
-  [self shieldCheat:nil];
-  [self ammoCheat:nil];
-  [self weaponsCheat:nil];
-#endif
+  [self setDisplaylinkPaused: NO]; //Unpause CADL ater joining finished.
+
+  #if defined(A1DEBUG)
+    [self shieldCheat:nil];
+    [self ammoCheat:nil];
+    [self weaponsCheat:nil];
+  #endif
 }
 
 - (IBAction)cancelNewGame {
@@ -666,20 +739,18 @@ short localFindActionTarget(
   
   bool showAllControls = player_controlling_game();
   
-  /*
   if ( player_controlling_game() && [[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] ) {
     Crosshairs_SetActive(true);
   } else {
    Crosshairs_SetActive(false);
   }
-   */
   
-  Crosshairs_SetActive(false);
+  //Crosshairs_SetActive(false);
   self.hud.alpha = 1.0;
   self.hud.hidden = NO;
   self.HUDViewController.view.hidden = NO;
 
-  CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  /*CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
   opacityAnimation.duration = 1.0;
   opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
   opacityAnimation.toValue = [NSNumber numberWithFloat:1.0];
@@ -693,14 +764,19 @@ short localFindActionTarget(
   group.animations = [NSArray arrayWithObjects:opacityAnimation, scaleAnimation, nil];
   group.duration = 1.0;
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-  
+  */
   if ( self.HUDViewController == nil ) {
     [self configureHUD:nil];
   }
 
+    //The custom arrangement needs to be restored AFTER the HUD is sized correctly.
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView loadCustomArrangementFromPreferences];
+  }
+  
   NSMutableArray* views = [NSMutableArray arrayWithArray:[self.hud subviews]];
   [views addObjectsFromArray:[self.HUDViewController.view subviews]];
-
+/*
   for ( UIView *v in views ) {
     // [self.hud.layer addAnimation:group forKey:nil];
     if ( v == self.savedGameMessage || v.tag == 400 || v == self.HUDViewController.view) { continue; }
@@ -714,22 +790,14 @@ short localFindActionTarget(
         v.hidden = YES;
       }
     }
-  }
+  }*/
 	
   //DCW refresh preferences to update hud prefs.
   helperSetPreferences(true);
-
   
 	//DCW: After updating to arm7, the newGameView would pop up after a new game starts. Setting to hidden here seems to fix the issue.
 	[self newGameView].hidden = YES;
 
-  //DCW This sucks. Commenting out.
-  //if ( showControlsOverview ) {
-  //    [self performSelector:@selector(bringUpControlsOverview) withObject:nil afterDelay:0.0];
-  //}
-  //#endif
-
-  
 }
 
 - (GLfloat) getPauseAlpha { return pauseAlpha; }
@@ -845,6 +913,36 @@ short localFindActionTarget(
   [self pause:sender];
 }
 
+- (IBAction) startRearranging:(id)sender {
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView shouldRearrange:YES];
+    [((BasicHUDViewController*)self.HUDViewController).movePadView setHidden:YES];
+  }
+  [self closeEvent];
+  self.pauseView.hidden = YES;
+  
+  UIImage *image = [UIImage imageNamed:@"PauseDone"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+  
+}
+
+- (IBAction) stopRearranging:(id)sender {
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    [((BasicHUDViewController*)self.HUDViewController).lookView shouldRearrange:NO];
+    [((BasicHUDViewController*)self.HUDViewController).movePadView setHidden:NO];
+  }
+  UIImage *image = [UIImage imageNamed:@"Pause"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+}
+
 - (IBAction) gotoMenu:(id)sender {
   MLog ( @"How do we go back?!" );
   self.pauseView.hidden = YES;
@@ -902,6 +1000,7 @@ short localFindActionTarget(
    //// self.HUDViewController = self.HUDJoypadViewController;
   }
   [self.HUDViewController.view setFrame:self.hud.bounds];//DCW: the inserted subview needs to be the same size as the superview.
+  
   [self.hud insertSubview:self.HUDViewController.view belowSubview:self.pause];
 }
 /*- (IBAction) initiateJoypad:(id)sender {
@@ -941,6 +1040,11 @@ extern bool load_and_start_game(FileSpecifier& File);
 }
 
 - (IBAction) gameChosen:(SavedGame*)game {
+  [self switchToSDLMenu];
+  [self performSelector:@selector(gameChosenCommand:) withObject:game afterDelay:0];
+}
+
+- (IBAction) gameChosenCommand:(SavedGame*)game {
   [self performSelector:@selector(chooseSaveGameCanceled) withObject:nil afterDelay:0.0];
 
   MLog ( @"Current world ticks %d", dynamic_world->tick_count );
@@ -967,6 +1071,7 @@ extern bool load_and_start_game(FileSpecifier& File);
      MLog ( @"Game loading cancelled.");
     
   }
+  [self setDisplaylinkPaused: NO]; 
 }
 
 - (IBAction) chooseSaveGameCanceled {
@@ -1214,16 +1319,24 @@ extern bool handle_open_replay(FileSpecifier& File);
 #pragma mark -
 #pragma mark Replacement menus
 - (IBAction)menuShowReplacementMenu {
+
+  [self setDisplaylinkPaused: NO]; //dcw shit test
+
   self.logoView.hidden = YES;
   self.episodeImageView.image = nil;
   self.bungieAerospaceImageView.image = nil;
   self.splashView.image = nil;
 
+  if ( !self.replacementMenuView.hidden && shouldAutoBot() ) {
+    [self performSelector:@selector(menuGatherNetworkGame) withObject:nil afterDelay:2];
+  }
+  
   self.replacementMenuView.hidden = NO;
 }
 
 - (IBAction)menuHideReplacementMenu {
-  self.replacementMenuView.hidden = YES;
+  //self.replacementMenuView.hidden = YES;
+  [Effects disappearWithDelay:self.replacementMenuView];
 }
 
 - (IBAction)menuNewGame {
@@ -1236,6 +1349,17 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 - (IBAction)menuGatherNetworkGame {
   [self PlayInterfaceButtonSound];
+
+    //If this is the autobot, don't queue the ok operation if we are already in sdl mode
+  if (shouldAutoBot() && mode != SDLMenuMode ) {
+    //Accept the Gather dialog after a bit of a delay.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      //NSLog(@"Queueing ok");
+      sleep(10);
+      doOkOnNextDialog(YES);
+    });
+  }
+  
   [self gatherNetworkGame];
 }
 - (IBAction)menuLoadGame {
@@ -1252,6 +1376,8 @@ extern bool handle_open_replay(FileSpecifier& File);
 }
 
 - (IBAction)cancelStore {
+  [self PlayInterfaceButtonSound];
+  [Effects disappearHidingView:self.purchaseView];
 }
 
 - (IBAction)menuAbout {
@@ -1268,6 +1394,11 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (IBAction)finishIntro:(id)sender {
   [[AlephOneAppDelegate sharedAppDelegate] performSelector:@selector(finishIntro:) withObject:nil afterDelay:0];
   NSLog(@"Stopping intro early");
+}
+
+- (IBAction)menuTip {
+  [self PlayInterfaceButtonSound];
+  [self tipTheDeveloper];
 }
 
 -(void) PlayInterfaceButtonSound
@@ -1317,6 +1448,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 
 #pragma mark - Reticule
 - (void)updateReticule:(int)index {
+  
+  //DCW all of this stuff is now replaced by engine reticule
+  self.reticule.hidden = YES;
+  Crosshairs_SetActive([[NSUserDefaults standardUserDefaults] boolForKey:kCrosshairs] );
+  return;
+  
   if ( mode == DeadMode ) { return; }
   if ( world_view->overhead_map_active || world_view->terminal_mode_active ) {
     self.reticule.hidden = YES;
@@ -1339,7 +1476,8 @@ extern bool handle_open_replay(FileSpecifier& File);
   
   if ( [[NSUserDefaults standardUserDefaults] boolForKey:kHaveReticleMode] ) {
     // Fancy reticule
-    self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+    //self.reticule.image = [UIImage imageNamed:[reticuleImageNames objectAtIndex:index]];
+    Crosshairs_SetActive(true);
   } else {
     // Basic reticule
     self.reticule.image = [UIImage imageNamed:@"ret_default"];    
@@ -1358,9 +1496,40 @@ extern bool handle_open_replay(FileSpecifier& File);
   }
   return;
 }
+
+- (IBAction)togglePause:(id)from{
+  
+  if ( mode != GameMode || !getLocalPlayer() ) {
+    return;
+  }
+  
+  if( isPaused ) {
+    [self pause:self];
+  } else {
+    [self resume:self];
+  }
+    
+  return;
+}
   
 
 - (IBAction)pause:(id)from {
+  
+  UIImage *image = [UIImage imageNamed:@"Pause"];
+  if(image) {
+    [pause setImage:image forState:UIControlStateNormal];
+    [pause setImage:image forState:UIControlStateHighlighted];
+    [pause setImage:image forState:UIControlStateSelected];
+  }
+  
+    //The pause action, if we are in arrangemewnt, just stops re-arranging.
+  if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]]) {
+    if( ((BasicHUDViewController*)self.HUDViewController).lookView.inRearrangement ) {
+      [self stopRearranging:self];
+    }
+  }
+  
+  
   // If we are dead, don't do anything
   if ( mode == DeadMode ) { return; }
   if ( from != nil ) {
@@ -1434,7 +1603,12 @@ extern bool handle_open_replay(FileSpecifier& File);
 - (int) livingBobs {
   MLog (@"Current Bob Causalties: %d count: %d", dynamic_world->current_civilian_causalties, dynamic_world->current_civilian_count );
   MLog (@"Total Bob Causalties: %d count: %d", dynamic_world->total_civilian_causalties, dynamic_world->total_civilian_count );
-  
+
+  #if SCENARIO == 1
+    //This appears only to work for Marathon 1
+  return dynamic_world->current_civilian_count - dynamic_world->current_civilian_causalties;
+  #endif
+
   struct monster_data *monster;
   short live_alien_count= 0;
   short monster_index;
@@ -1649,14 +1823,15 @@ short items[]=
     if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
       displayLinkSupported = TRUE;
     }
-    
-    NSInteger animationFrameInterval = 2;  
+
+    NSInteger animationFrameInterval = 2;
     if (displayLinkSupported) {
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result in a warning, but can be dismissed
       // if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
       // not be called in system versions earlier than 3.1.
         displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(runMainLoopOnce:)];
-        [displayLink setFrameInterval:animationFrameInterval];
+        //dcw changing this to an alternative... [displayLink setFrameInterval:animationFrameInterval];
+        [displayLink setPreferredFramesPerSecond:30]; //DCW changed from deprecated setFrameInterval
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
       animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(runMainLoopOnce:) userInfo:nil repeats:TRUE];
@@ -1686,8 +1861,10 @@ short items[]=
 }
 
 - (void)runMainLoopOnce:(id)sender {
+      //Capture touch movement deltas immediately!
+    grabMovementDeltasForCurrentFrameAtInterval( (NSTimeInterval)[(CADisplayLink*)displayLink timestamp] ); //This will probably crash if displayLink is not supported.
+  
     // Do some house keeping here
-    
     if (world_view->overhead_map_active) {
         self.zoomInButton.hidden = NO;
         self.zoomOutButton.hidden = NO;
@@ -1697,9 +1874,11 @@ short items[]=
     }
     [self updateReticule:get_player_desired_weapon(current_player_index)];
     if ( get_game_state() == _display_main_menu && ( mode == SDLMenuMode || mode == MenuMode || mode == CutSceneMode ) ) {
-        [self menuShowReplacementMenu];
+        //[self menuShowReplacementMenu];
+      [self switchBackToGameView];
       self.viewGL.userInteractionEnabled = YES; //DCW: why are we disabling this, again? NO; //DCW
-        mode = MenuMode;
+      mode = MenuMode;
+      
     }
     // Causing a bug, always dim
     // [self.HUDViewController dimActionKey:0];
@@ -1707,18 +1886,85 @@ short items[]=
         short target_type, object_index;
         object_index = localFindActionTarget(current_player_index, MAXIMUM_ACTIVATION_RANGE, &target_type);
         if ( NONE == object_index ) {
+          if ([self.HUDViewController isKindOfClass:[BasicHUDViewController class]] && [((BasicHUDViewController*)self.HUDViewController).lookView inRearrangement]) {
+            [self.HUDViewController lightActionKeyWithTarget:_target_is_platform objectIndex:NONE];
+          } else {
             [self.HUDViewController dimActionKey];
+          }
         } else {
             [self.HUDViewController lightActionKeyWithTarget:target_type objectIndex:object_index];    
         }
+      
+      if(gameController.mainController != nil) {
+        moveMouseRelative(gameController.rightXAxis, gameController.rightYAxis);
+        
+        if (gameController.rightXAxis != 0.0 || gameController.rightYAxis != 0.0) {
+          [[GameViewController sharedInstance].HUDViewController.lookPadView unPauseGyro]; //Any movement unpauses gyro.
+        }
+        
+        //Always run above media. Never check headBelowMedia or set preferences if no game is active, otherwise it will crash!
+        //This logic is essentially duplicated in the AOGameController... we just need it to work when there is no controller input also.
+        if ([[GameViewController sharedInstance] mode] == GameMode) {
+          if(headBelowMedia()){
+            SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, true);
+          } else {
+            SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
+          }
+        }
+        
+      }
+      
+      [self.HUDViewController updateSwimmingIndicator];
+      [self.HUDViewController updateEscapeButtonVisibility];
+      if(shouldHideHud() || gameController.mainController != nil) {
+          //If alpha is too low, the UI won't respond to input responding. Don't use 0 if you still want interaction.
+          //Of course, use zero if there is a controller connected
+        float hudAlpha = gameController.mainController != nil ? 0.0 : 0.03;
+        
+        self.HUDViewController.view.alpha = hudAlpha;
+      } else {
+        self.HUDViewController.view.alpha = 1.0;
+      }
+      
+      if( shouldAutoBot() ) {
+        
+          //If autobot sees anything, run forward!
+        if(isMonsterCentered() || isMonsterOnLeft() || isMonsterOnRight()) {
+          setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 1);
+        } else {
+          setKey(((BasicHUDViewController*)self.HUDViewController).movePadView.forwardKey, 0);
+        }
+        
+          //Autobot just toggles action key constantly.
+        if (machine_tick_count() % 7 == 0) {
+          [self.HUDViewController actionDown:self];
+        } else if (machine_tick_count() % 19 == 0) {
+          [self.HUDViewController actionUp:self];
+        }
+      }
     }
-  
+    
     //DCW adding check for SDLMenuMode, so we don't run the main loop. It slurps up SDL events, which the menus need instead.
-    if ( !inMainLoop && mode != SDLMenuMode) {
+    if ( !inMainLoop && mode != SDLMenuMode )
+    {
         inMainLoop = YES;
         AlephOneMainLoop();
         inMainLoop = NO;
     }
+
+      //Hide or show hud based on teleporting status. This prevents HUD from being visible during level changes.
+    if (dynamic_world->player_count && !shouldHideHud()) {
+      struct player_data *player= get_player_data(0);
+      if (PLAYER_IS_TELEPORTING(player)) {
+        self.hud.alpha = 0.03;
+      } else {
+        self.hud.alpha = 1.0;
+      }
+    }
+}
+
+- (void)setDialogOk {
+  doOkOnNextDialog(1);
 }
 
 #pragma mark -
@@ -1807,7 +2053,7 @@ short items[]=
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
-  MLog ( @"AUTOROTATE!!!!!!!!!\n\n\n\n" );
+  MLog ( @"AUTOROTATE!\n" );
 
 
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight

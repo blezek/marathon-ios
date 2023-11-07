@@ -19,6 +19,7 @@
 #import "ProgressViewController.h"
 #import "PreferencesViewController.h"
 #import "PauseViewController.h"
+#import "PurchaseViewController.h"
 #import "HelpViewController.h"
 #import "NewGameViewController.h"
 #import "FilmViewController.h"
@@ -27,6 +28,8 @@
 
 #import "HUDViewController.h"
 #import "BasicHUDViewController.h"
+#import "AOMGameController.h"
+
 //#import "JoypadHUDViewController.h"
 
 typedef enum {
@@ -43,6 +46,7 @@ typedef enum {
   IBOutlet UIView *hud;
   IBOutlet UIView *menuView;
   IBOutlet UIView *newGameView;
+  IBOutlet UIView *purchaseView;
   IBOutlet UIView *loadGameView;
   IBOutlet UIView *progressView;
   IBOutlet UIView *preferencesView;
@@ -117,6 +121,7 @@ typedef enum {
   IBOutlet PauseViewController *pauseViewController;
   IBOutlet HelpViewController *helpViewController;
   IBOutlet NewGameViewController *newGameViewController;
+  IBOutlet PurchaseViewController *purchaseViewController;
   IBOutlet FilmViewController* filmViewController;
 
   HUDViewController *HUDViewController;
@@ -135,7 +140,9 @@ typedef enum {
   id displayLink;
   bool animating;
   bool inMainLoop;
-  NSTimer *animationTimer;  
+  NSTimer *animationTimer;
+  
+  AOMGameController *gameController;
   
   // Ticks for calculating how long the player has been playing
   int ticks;
@@ -148,19 +155,26 @@ typedef enum {
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)runMainLoopOnce:(id)sender;
+- (void)setDialogOk;
 
 - (IBAction)pause:(id)from;
 - (IBAction)pauseForBackground:(id)from;
+- (IBAction)togglePause:(id)from;
 - (IBAction)newGame;
 - (IBAction)joinNetworkGame;
+- (IBAction)joinNetworkGameCommand; //Needed to test delayed menu selection
+- (IBAction)displayNetGameStatsCommand;
 - (IBAction)gatherNetworkGame;
+- (IBAction)gatherNetworkGameCommand;
 - (IBAction)switchBackToGameView;
 - (IBAction)switchToSDLMenu;
 - (IBAction)beginGame;
+- (IBAction)beginGameCommand;
 - (IBAction)cancelNewGame;
 - (void)playerKilled;
 - (IBAction)quitPressed;
 - (IBAction)networkPressed;
+- (IBAction)tipTheDeveloper;
 
 // Replacement menus
 - (IBAction)menuShowReplacementMenu;
@@ -168,16 +182,20 @@ typedef enum {
 - (IBAction)menuNewGame;
 - (IBAction)menuLoadGame;
 - (IBAction)menuJoinNetworkGame;
-- (IBAction)gatherJoinNetworkGame;
+- (IBAction)menuGatherNetworkGame;
 - (IBAction)menuPreferences;
 - (IBAction)menuStore;
 - (IBAction)cancelStore;
 - (IBAction)menuAbout;
 - (IBAction)cancelAbout;
 - (IBAction)finishIntro:(id)sender;
+- (IBAction)menuTip;
+
 
 // Pause actions
 - (IBAction) resume:(id)sender;
+- (IBAction) startRearranging:(id)sender;
+- (IBAction) stopRearranging:(id)sender;
 - (IBAction) gotoMenu:(id)sender;
 - (IBAction) gotoPreferences:(id)sender;
 - (IBAction) closePreferences:(id)sender;
@@ -202,6 +220,7 @@ typedef enum {
 
 - (IBAction)chooseSaveGame;
 - (IBAction)gameChosen:(SavedGame*)game;
+- (IBAction)gameChosenCommand:(SavedGame*)game;
 - (IBAction)saveGame;
 - (IBAction)chooseSaveGameCanceled;
 
@@ -227,6 +246,7 @@ typedef enum {
 - (void)endReplay;
 - (void)setOpenGLView:(SDL_uikitopenglview*)oglView;
 - (void)closeEvent;
+- (void)setDisplaylinkPaused:(bool)paused;
 
 // Some actions inventory and map
 - (IBAction)changeInventory;
@@ -259,6 +279,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *hud;
 @property (nonatomic, retain) UIView *savedGameMessage;
 @property (nonatomic, retain) UIView *newGameView;
+@property (nonatomic, retain) UIView *purchaseView;
 @property (nonatomic, retain) UIView *loadGameView;
 @property (nonatomic, retain) UIView *progressView;
 @property (nonatomic, retain) UIView *menuView;
@@ -302,6 +323,7 @@ typedef enum {
 @property (nonatomic, retain) HelpViewController *helpViewController;
 @property (nonatomic, retain) FilmViewController *filmViewController;
 @property (nonatomic, retain) NewGameViewController *newGameViewController;
+@property (nonatomic, retain) PurchaseViewController *purchaseViewController;
 
 @property (nonatomic, retain) HUDViewController *HUDViewController;
 @property (nonatomic, retain) HUDViewController *HUDTouchViewController;

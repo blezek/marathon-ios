@@ -1,26 +1,34 @@
-//
-//  MatrixStack.cpp
-//  AlephOne
-//
-//  Created by Dustin Wenz on 2/7/18.
-//  Copyright © 2018 SDG Productions. All rights reserved.
-//
+/*
+ 
+ MatrixStack.cpp - Singleton for emulating legacy OpenGL state and matrix math. Not intended for long term use; only to ease transition to fully programmable pipeline.
+ 
+ Created by Dustin Wenz on 2/7/18.
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ This license is contained in the file "COPYING",
+ which is included with this source code; it is available online at
+ http://www.gnu.org/licenses/gpl.html
+ 
+ */
 
 #include "MatrixStack.hpp"
 #include "Logging.h"
 #include <stddef.h>
 
-// Global static pointer used to ensure a single instance of the class.
 MatrixStack* MatrixStack::m_pInstance = NULL;
-
-/** This function is called to create an instance of the class.
- Calling the constructor publicly is not allowed. The constructor
- is private and is only called by this Instance function.
- */
 
 MatrixStack* MatrixStack::Instance()
 {
-  if (!m_pInstance)   // Only allow one instance of class to be generated.
+  if (!m_pInstance)
     m_pInstance = new MatrixStack;
   
     return m_pInstance;
@@ -38,6 +46,10 @@ void MatrixStack::matrixMode(int newMode){
       break;
   }
 
+}
+
+int MatrixStack::currentActiveMode(){
+  return activeMode;
 }
 
 glm::mat4 MatrixStack::activeMatrix() {
@@ -119,11 +131,14 @@ void MatrixStack::getFloatv(GLenum pname, GLfloat* params){
   GLfloat* m = glm::value_ptr(modelviewStack[modelviewIndex]); //Default
   
   switch (pname) {
-    case(MS_PROJECTION):
-      m = glm::value_ptr(projectionStack[projectionIndex]);
+      case(MS_MODELVIEW):
+        //Default (See above)
+      break;
+      case(MS_PROJECTION):
+        m = glm::value_ptr(projectionStack[projectionIndex]);
       break;
       case(MS_TEXTURE) :
-      m = glm::value_ptr(textureStack[textureIndex]);
+        m = glm::value_ptr(textureStack[textureIndex]);
       break;
     
     default:
@@ -143,6 +158,9 @@ void MatrixStack::getFloatvInverse(GLenum pname, GLfloat* params){
   glm::mat4 inverse = glm::affineInverse(modelviewStack[modelviewIndex]); //Default
   
   switch (pname) {
+    case(MS_MODELVIEW):
+      //Default (See above)
+    break;
     case(MS_PROJECTION):
       inverse = glm::affineInverse(projectionStack[projectionIndex]);
       break;
@@ -174,8 +192,25 @@ void MatrixStack::getFloatvModelviewProjection(GLfloat* params){
   params[12] = m[12]; params[13] = m[13]; params[14] = m[14]; params[15] = m[15];
   return;
 }
+void MatrixStack::getFloatvModelview(GLfloat* params){
+  GLfloat* m = glm::value_ptr(modelviewStack[modelviewIndex]);
+  
+  params[0]  = m[0];  params[1]  = m[1];  params[2]  = m[2];  params[3]  = m[3];
+  params[4]  = m[4];  params[5]  = m[5];  params[6]  = m[6];  params[7]  = m[7];
+  params[8]  = m[8];  params[9]  = m[9];  params[10] = m[10]; params[11] = m[11];
+  params[12] = m[12]; params[13] = m[13]; params[14] = m[14]; params[15] = m[15];
+  return;
+}
+
 void MatrixStack::loadIdentity(){
   activeStack()[activeStackIndex()] = glm::mat4(1.0);
+}
+void MatrixStack::loadZero(){
+  GLfloat* target = glm::value_ptr(activeStack()[activeStackIndex()]);
+  target[0]  = 0;  target[1]  = 0;  target[2]  = 0;  target[3]  = 0;
+  target[4]  = 0;  target[5]  = 0;  target[6]  = 0;  target[7]  = 0;
+  target[8]  = 0;  target[9]  = 0;  target[10] = 0;  target[11] = 0;
+  target[12] = 0;  target[13] = 0;  target[14] = 0;  target[15] = 0;
 }
 void MatrixStack::loadMatrixf(const GLfloat *m){
   //activeStack()[activeStackIndex()] = glm::mat4(*m);
@@ -218,6 +253,16 @@ void MatrixStack::multMatrixf (const GLfloat *m){
 void MatrixStack::transformVertex (GLfloat &x, GLfloat &y, GLfloat &z){
   glm::vec4 v4(x,y,z, 1.0);
   glm::vec4 Transformed = activeMatrix() *v4;
+  
+  GLfloat *m = glm::value_ptr(Transformed);
+  x = m[0]/m[3];
+  y = m[1]/m[3];
+  z = m[2]/m[3];
+}
+
+void MatrixStack::transformVertexToEyespace (GLfloat &x, GLfloat &y, GLfloat &z){
+  glm::vec4 v4(x,y,z, 1.0);
+  glm::vec4 Transformed = modelviewStack[modelviewIndex] *v4;
   
   GLfloat *m = glm::value_ptr(Transformed);
   x = m[0]/m[3];
@@ -291,3 +336,8 @@ GLfloat* MatrixStack::fog() {
 GLfloat* MatrixStack::normals() {
   return normalArray;
 }
+
+MatrixStack* MSI() {
+    return MatrixStack::Instance();
+}
+

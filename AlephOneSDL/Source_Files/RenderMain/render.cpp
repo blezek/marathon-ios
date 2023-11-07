@@ -245,6 +245,8 @@ extern WindowPtr screen_window;
 //DCW Used for mouse smoothing
 #include "mouse.h"
 
+#include "AlephOneAcceleration.hpp"
+
 #include "MatrixStack.hpp" //DCW SHIT TEST
 
 #include "OGL_Shader.h" //DCW shit test
@@ -329,7 +331,7 @@ static void update_render_effect(struct view_data *view);
 static void shake_view_origin(struct view_data *view, world_distance delta);
 
 static void render_viewer_sprite_layer(view_data *view, RasterizerClass *RasPtr);
-static void position_sprite_axis(short *x0, short *x1, short scale_width, short screen_width,
+void position_sprite_axis(short *x0, short *x1, short scale_width, short screen_width,
 	short positioning_mode, _fixed position, bool flip, world_distance world_left, world_distance world_right);
 
 
@@ -500,14 +502,16 @@ void render_view(
 				it to the texture-mapping code */
 			RenPtr->view = view;
 			RenPtr->RasPtr = RasPtr;
-      glPushGroupMarkerEXT(0, "render_tree");
+      AOA::pushGroupMarker(0, "render_tree");
       RenPtr->render_tree();
       glPopGroupMarkerEXT();
       
 			// LP: won't put this into a separate class
 			/* render the playerÕs weapons, etc. */
-      glPushGroupMarkerEXT(0, "render_viewer_sprite_layer");
-      render_viewer_sprite_layer(view, RasPtr);
+      AOA::pushGroupMarker(0, "render_viewer_sprite_layer");
+      if (!RenPtr->renders_viewer_sprites_in_tree()) {
+        render_viewer_sprite_layer(view, RasPtr);
+      }
       glPopGroupMarkerEXT();
       
 			// Finish rendering main view
@@ -517,7 +521,7 @@ void render_view(
 		if (view->overhead_map_active)
 		{
 			/* if the overhead map is active, render it */
-      glPushGroupMarkerEXT(0, "render_overhead_map");
+      AOA::pushGroupMarker(0, "render_overhead_map");
 			render_overhead_map(view);
       glPopGroupMarkerEXT();
 		}
@@ -611,7 +615,7 @@ static void update_view_data(
 
 	// LP change: doing all the FOV changes here:
 	View_AdjustFOV(view->field_of_view,view->target_field_of_view);
-	
+  
 	if (view->effect==NONE)
 	{
 		view->world_to_screen_x= view->real_world_to_screen_x;
@@ -1057,7 +1061,7 @@ static void render_viewer_sprite_layer(view_data *view, RasterizerClass *RasPtr)
 	}
 }
 
-static void position_sprite_axis(
+void position_sprite_axis(
 	short *x0,
 	short *x1,
 	short scale_width,

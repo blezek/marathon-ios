@@ -61,6 +61,7 @@
 - (IBAction)doPreviousWeapon:(id)sender;
 - (IBAction)inventoryDown:(id)sender;
 - (IBAction)inventoryUp:(id)sender;
+- (IBAction)doAction:(id)sender;
 - (IBAction)actionDown:(id)sender;
 - (IBAction)actionUp:(id)sender;
 - (IBAction)forwardDown:(id)sender;
@@ -78,7 +79,10 @@
 - (IBAction)doMap:(id)sender;
 - (IBAction)consoleDown:(id)sender;
 - (IBAction)consoleUp:(id)sender;
+- (IBAction)escapeDown:(id)sender;
+- (IBAction)escapeUp:(id)sender;
 - (IBAction)doConsole:(id)sender;
+- (IBAction)doEscape:(id)sender;
 - (IBAction)doNetStats:(id)sender;
 - (IBAction)stopMoving:(id)sender;
 
@@ -93,6 +97,7 @@
 
 - (void)dimActionKey;
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index;
-
+- (void)updateSwimmingIndicator;
+- (void)updateEscapeButtonVisibility;
 
 @end

@@ -16,6 +16,7 @@
 #include "OGL_FBO.h"
 #include "OGL_Textures.h"
 #include "Rasterizer_Shader.h"
+#include "AlephOneHelper.h"
 
 #include <memory>
 
@@ -31,6 +32,8 @@ class RenderRasterize_Shader : public RenderRasterizerClass {
 	float selfLuminosity;
 	
 	long_vector2d leftmost_clip, rightmost_clip;
+  
+  FBO colorDepthSansMedia; //FBO to hold scene color data (without media) and depth in the alpha channel.
 
 protected:
 	virtual void render_node(sorted_node_data *node, bool SeeThruLiquids, RenderStep renderStep);	
@@ -47,14 +50,18 @@ protected:
 	
 	virtual void clip_to_window(clipping_window_data *win);
 	virtual void _render_node_object_helper(render_object_data *object, RenderStep renderStep);
-	
+  
+  void render_viewer_sprite_layer(RenderStep renderStep);
+  void render_viewer_sprite(rectangle_definition& RenderRectangle, RenderStep renderStep);
+
 public:
 
-	RenderRasterize_Shader() : blur(NULL), RenderRasterizerClass() {}
+	RenderRasterize_Shader() : colorDepthSansMedia(0, 0, false), blur(NULL), RenderRasterizerClass() {}
 
 	virtual void setupGL(Rasterizer_Shader_Class& Rasterizer);
 
 	virtual void render_tree(void);
+  bool renders_viewer_sprites_in_tree() { return true; }
 
 	TextureManager setupWallTexture(const shape_descriptor& Texture, short transferMode, float pulsate, float wobble, float intensity, float offset, RenderStep renderStep);
 	TextureManager setupSpriteTexture(const rectangle_definition& rect, short type, float offset, RenderStep renderStep);

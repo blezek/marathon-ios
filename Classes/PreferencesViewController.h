@@ -11,6 +11,10 @@
 
 @interface PreferencesViewController : UIViewController {
   BOOL inMainMenu;
+  
+  UIScrollView *prefsScrollView;
+  UIView *prefsScrollContents;
+
   UITextField *login;
   UITextField *password;
   UIButton *tapShoots;
@@ -31,7 +35,14 @@
   UILabel *musicLabel;
   UILabel *filmsDisabled;
   UIView *screenView;
+  UIButton *bloom;
+  UIButton *extraFOV;
+  UIButton *rendererButton;
+  UILabel *rendererNote;
 }
+
+@property (nonatomic, retain) IBOutlet UIScrollView *prefsScrollView;
+@property (nonatomic, retain) IBOutlet UIView *prefsScrollContents;
 
 @property (nonatomic, retain) IBOutlet UITextField *login;
 @property (nonatomic, retain) IBOutlet UITextField *password;
@@ -45,6 +56,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *gyroAiming;
 @property (nonatomic, retain) IBOutlet UIButton *tiltTurning;
 @property (nonatomic, retain) IBOutlet UIButton *secondTapShoots;
+@property (nonatomic, retain) IBOutlet UIButton *threeDTouchFires;
+@property (nonatomic, retain) IBOutlet UILabel *threeDTouchFiresLabel;
+@property (nonatomic, retain) IBOutlet UIButton *dPadAction;
 @property (nonatomic, retain) IBOutlet UISlider *sfxVolume;
 @property (nonatomic, retain) IBOutlet UISlider *musicVolume;
 @property (nonatomic, retain) IBOutlet UILabel *musicLabel;
@@ -52,6 +66,12 @@
 @property (nonatomic, retain) IBOutlet UISlider *hSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *vSensitivity;
 @property (nonatomic, retain) IBOutlet UISlider *brightness;
+@property (nonatomic, retain) IBOutlet UIButton *bloom;
+@property (nonatomic, retain) IBOutlet UIButton *extraFOV;
+@property (nonatomic, retain) IBOutlet UIButton *rendererButton;
+@property (nonatomic, retain) IBOutlet UILabel *rendererNote;
+
+
 
 @property (nonatomic, retain) IBOutlet UIButton *hiresTextures;
 @property (nonatomic, retain) IBOutlet UILabel *hiresTexturesLabel;
@@ -61,6 +81,7 @@
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check;
 - (void)setupUI:(BOOL)inMainMenu;
+- (void)setVisualStyleButton;
 - (IBAction)updatePreferences:(id)sender;
 - (IBAction)closePreferences:(id)sender;
 - (IBAction)notifyOfChanges;

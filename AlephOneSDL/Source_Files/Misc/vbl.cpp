@@ -1150,7 +1150,7 @@ uint32 parse_keymap(void)
 					flags |= standard_key_definitions[i].action_flag;
 			}
 		}
-		
+      
       // Post-process the keymap
       struct special_flag_data *special = special_flags;
       for (unsigned i=0; i<NUMBER_OF_SPECIAL_FLAGS; i++, special++) {
@@ -1160,7 +1160,7 @@ uint32 parse_keymap(void)
 	    // If this flag has a double-click flag and has been hit within
 	    // DOUBLE_CLICK_PERSISTENCE (but not at MAXIMUM_FLAG_PERSISTENCE),
 	    // mask on the double-click flag */
-	    if (special->persistence < MAXIMUM_FLAG_PERSISTENCE
+	    if (shouldAllowDoubleClick() && special->persistence < MAXIMUM_FLAG_PERSISTENCE
 		&&	special->persistence > MAXIMUM_FLAG_PERSISTENCE - DOUBLE_CLICK_PERSISTENCE)
 	      flags |= special->alternate_flag;
 	    break;

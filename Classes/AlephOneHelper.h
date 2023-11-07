@@ -20,6 +20,10 @@
 // #define USE_SDL_EVENT_LOOP 1
 #define USE_CADisplayLoop 1
 
+extern void* getLayerFromSDLWindow(SDL_Window *main_screen);
+extern void cleanRenderer(SDL_Renderer *renderer);
+extern void setDefaultA1View();
+extern char* randomName31(); //Returns a random name up to 31 characters.
 extern char *getDataDir();
 extern char* getLocalDataDir();
 extern char* getLocalPrefsDir(); //DCW
@@ -30,7 +34,6 @@ extern void helperBringUpHUD();
 
 extern int helperNewGame();
 extern void helperSaveGame();
-extern void helperHideHUD();
 extern void helperBeginTeleportOut();
 extern void helperTeleportInLevel();
 extern void helperEpilog();
@@ -44,25 +47,50 @@ extern void progressCallback ( int d );
 extern void stopProgress();
 extern int getOpenGLESVersion();
 extern void helperPlayerKilled();
+extern void display_net_game_stats_helper();
 extern void switchToSDLMenu(); //DCW
 extern void getSomeTextFromIOS(char *label, const char *currentText); //DCW
+extern bool getLocalPlayer ();
+extern float extraFieldOfView ();
 extern bool headBelowMedia ();
+extern bool playerInTerminal ();
+extern void cacheInputPreferences();
+extern bool shouldswapJoysticks();
+extern void cacheRendererPreferences();
+extern void cacheRendererQualityPreferences();
+extern bool useClassicVisuals ();
 extern bool useShaderRenderer ();
 extern bool useShaderPostProcessing ();
 extern bool fastStart ();
+extern bool usingA1DEBUG ();
+extern bool survivalMode ();
+extern bool shouldHideHud ();
+extern bool shouldAllowDoubleClick ();
 
 extern int helperAlwaysPlayIntro();
 extern int helperAutocenter();
 extern void setKey(SDL_Keycode key, bool down);
+extern void moveMouseRelativeAtInterval(float dx, float dy, double movedInterval); //Move mouse at a NSTimeInterval.
 extern void moveMouseRelative(float dx, float dy);
-extern void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval);
-extern void slurpMouseDelta(float *dx, float *dy);
+extern void grabMovementDeltasForCurrentFrameAtInterval(double timeStamp); //Cache accumulated deltas for future slurp. Call this immediately at frame start.
+extern void slurpMouseDelta(float *dx, float *dy); //Grab accumulated deltas.
 extern void helperGetMouseDelta ( int *dx, int *dy );
 extern void clearSmartTrigger();
 extern bool smartTriggerEngaged();
 extern void monsterIsCentered ();
+extern void monsterIsOnLeft ();
+extern void monsterIsOnRight ();
+extern bool isMonsterCentered ();
+extern bool isMonsterOnLeft ();
+extern bool isMonsterOnRight ();
 extern void setSmartFirePrimary(bool fire);
-extern void setSmartFireSecondary(bool fire);
+
+extern bool shouldAutoBot();
+extern void doOkInASec();
+extern void doOkOnNextDialog( bool ok );
+extern bool okOnNextDialog();
+
+
 
 // Switch weapons
 extern void helperSwitchWeapons(int weapon);
@@ -102,6 +130,12 @@ extern GLfloat helperPauseAlpha();
   //DCW
 extern Uint8 fake_key_map[SDL_NUM_SCANCODES];
 
+extern void helperCacheScreenDimension();
+extern int helperLongScreenDimension(); //DCW
+extern int helperShortScreenDimension(); //DCW
+extern float helperScreenScale();
+
+
 // C linkage
 #if defined(__cplusplus)
 extern "C" {
@@ -111,8 +145,6 @@ extern "C" {
   int helperOpenGLWidth();
   int helperOpenGLHeight();
 	
-	int helperLongScreenDimension(); //DCW
-	int helperShortScreenDimension(); //DCW
 #if defined(__cplusplus)
 }
 #endif

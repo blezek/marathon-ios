@@ -1,10 +1,25 @@
-//
-//  MatrixStack.hpp
-//  AlephOne
-//
-//  Created by Dustin Wenz on 2/7/18.
-//  Copyright © 2018 SDG Productions. All rights reserved.
-//
+/*
+ 
+ 
+ MatrixStack.hpp - Singleton for emulating legacy OpenGL state and matrix math. Not intended for long term use; only to ease transition to fully programmable pipeline.
+ 
+ Created by Dustin Wenz on 2/7/18.
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ This license is contained in the file "COPYING",
+ which is included with this source code; it is available online at
+ http://www.gnu.org/licenses/gpl.html
+ 
+ */
 
 #ifndef MatrixStack_hpp
 #define MatrixStack_hpp
@@ -17,7 +32,7 @@
 
 #include "map.h"
 
-#define STACK_MAX 10
+#define STACK_MAX 20
 #define CLIPPING_PLANES 10
 
 //Cribbed from gl.h.
@@ -41,15 +56,17 @@ public:
   void setActiveStackIndex(int index); //Sets index for the top of active stack.
 
   void matrixMode(int newMode);
+  int currentActiveMode();
   glm::mat4 activeMatrix();
   void pushMatrix();
   void popMatrix();
   void getFloatv (GLenum pname, GLfloat* params);
   void getFloatvInverse (GLenum pname, GLfloat* params);
   void getFloatvModelviewProjection(GLfloat* params); //populates params with the product of modelview and projection
-
+  void getFloatvModelview(GLfloat* params); //populates params with unmodified modelview
 
   void loadIdentity();
+  void loadZero();
   void loadMatrixf(const GLfloat *m);
   void translatef(GLfloat x, GLfloat y, GLfloat z);
   void scalef (GLfloat x, GLfloat y, GLfloat z);
@@ -57,6 +74,7 @@ public:
   void multMatrixf (const GLfloat *m);
 
   void transformVertex (GLfloat &x, GLfloat &y, GLfloat &z);
+  void transformVertexToEyespace (GLfloat &x, GLfloat &y, GLfloat &z);
   
   void orthof (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
   void frustumf (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
@@ -77,11 +95,9 @@ public:
   void normal3f (GLfloat nx, GLfloat ny, GLfloat nz);
   GLfloat* normals();
   
-  bool useFFP; //Flag indicating whether classic OpenGL operations should be performed as well.
-  
 private:
   MatrixStack(){
-    useFFP=1; activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;
+    activeMode=MS_MODELVIEW; modelviewIndex=projectionIndex=textureIndex=0;
     
     for( int i = 0; i < CLIPPING_PLANES; i++) {
       planeActivated[i]=0;
@@ -91,10 +107,10 @@ private:
     glm::vec4 v(0,0,0,0);
     nullPlane = v;
     
-  };  // Private so that it can not be called
+  };
   
-  MatrixStack(MatrixStack const&){};             // copy constructor is private
-  MatrixStack& operator=(MatrixStack const&){};  // assignment operator is private
+  MatrixStack(MatrixStack const&){};
+  MatrixStack& operator=(MatrixStack const&){};
   static MatrixStack* m_pInstance;
   
   int activeMode;
@@ -115,6 +131,6 @@ private:
   GLfloat normalArray[MAX_NORMAL_ELEMENTS];
 };
 
-
+MatrixStack* MSI(); //Convenience instance access
 
 #endif /* MatrixStack_hpp */

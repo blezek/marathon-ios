@@ -41,9 +41,9 @@ enum {
 #include <stdio.h>
 
 enum {
-        kEndOfMessagesMessageType = 0x454d,	// 'EM'
-        kTimingAdjustmentMessageType = 0x5441,	// 'TA'
-        kPlayerNetDeadMessageType = 0x4e44,	// 'ND'
+  kEndOfMessagesMessageType = 0x454d,	// 'EM'
+  kTimingAdjustmentMessageType = 0x5441,	// 'TA'
+  kPlayerNetDeadMessageType = 0x4e44,	// 'ND'
 	kSpokeToHubLossyByteStreamMessageType = 0x534c,	// 'SL'
 	kHubToSpokeLossyByteStreamMessageType = 0x484c, // 'HL'
 
@@ -53,9 +53,10 @@ enum {
 	kHubToSpokeGameDataPacketWithSpokeFlagsV1Magic = 0x4631, // 'F1'
 	kPingRequestPacket = 0x5051, // 'PQ'
 	kPingResponsePacket = 0x5052, // 'PR'
-
-        kPregameTicks = TICKS_PER_SECOND * 3,	// Synchronization/timing adjustment before real data
-        kActionFlagsSerializedLength = 4,	// bytes for each serialized action_flags_t (should be elsewhere)
+  kSpokeToHubPositionSyncSum = 0x5059, // 'PY'
+  
+  kPregameTicks = TICKS_PER_SECOND * 3,	// Synchronization/timing adjustment before real data
+  kActionFlagsSerializedLength = 4,	// bytes for each serialized action_flags_t (should be elsewhere)
 	
 	kStarPacketHeaderSize = 4, // 2 bytes for packet magic, 2 for CRC
 };
@@ -90,5 +91,6 @@ extern int32 spoke_get_smallest_unconfirmed_tick();
 extern void DefaultSpokePreferences();
 extern InfoTree SpokePreferencesTree();
 extern void SpokeParsePreferencesTree(InfoTree prefs, std::string version);
+extern void capture_position_sums_and_check_for_dsync();
 
 #endif // NETWORK_STAR_H

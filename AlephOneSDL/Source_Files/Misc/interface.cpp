@@ -161,6 +161,8 @@ extern TP2PerfGlobals perf_globals;
 #include "network_dialog_widgets_sdl.h"
 
 #import "AlephOneHelper.h"
+#include <bgfx/bgfx.h>
+
 
 /* Change this when marathon changes & replays are no longer valid */
 enum recording_version {
@@ -390,10 +392,8 @@ bool player_controlling_game(
 	void)
 {
 	bool player_in_control= false;
-
-	assert(game_state.state==_game_in_progress || game_state.state==_switch_demo);
 	
-	if(game_state.user==_single_player || game_state.user==_network_player)
+	if( (game_state.user==_single_player || game_state.user==_network_player) && (game_state.state==_game_in_progress || game_state.state==_switch_demo) )
 	{
 		player_in_control= true;
 	}
@@ -423,6 +423,7 @@ void set_game_state(
 					break;
 					
 				case _close_game:
+          //Maybe here we can hide the hud, then skip this finish command until the next tick?
 					finish_game(true);
 					break;
 					
@@ -2373,7 +2374,7 @@ static void finish_game(
 
 		change_screen_mode(_screentype_menu);
 		force_system_colors();
-		display_net_game_stats();
+    display_net_game_stats_helper();//display_net_game_stats();
 		exit_networking();
 	} 
 	else
@@ -2383,7 +2384,7 @@ static void finish_game(
 		game_state.state = _displaying_network_game_dialogs;
 
 		force_system_colors();
-		display_net_game_stats();
+    display_net_game_stats_helper();//display_net_game_stats();
 	}
 	
 	load_environment_from_preferences();
@@ -2604,7 +2605,7 @@ static void display_screen(
 	if (images_picture_exists(pict_resource_number))
 	{
 		stop_interface_fade();
-
+    
 		if(current_picture_clut)
 		{
 			interface_fade_out(pict_resource_number, false);
@@ -2849,7 +2850,7 @@ static void start_interface_fade(
 	{
 		interface_fade_in_progress= true;
 		interface_fade_type= type;
-
+    
 		explicit_start_fade(type, original_color_table, animated_color_table);
 	}
 }
@@ -3353,7 +3354,7 @@ size_t should_restore_game_networked(FileSpecifier& file)
 
 	d.set_widget_placer(placer);
 
-  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shopwn.
+  //DCW TODO: enable multiplayer restore. currently, the dialog can't be shown.
   printf("TODO: enable multiplayer restore?\n");
   if(dynamic_world->player_count != 0) {
     switchToSDLMenu();

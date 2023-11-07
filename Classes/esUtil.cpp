@@ -10,6 +10,7 @@
 
 #include "MatrixStack.hpp"
 
+#include "AlephOneAcceleration.hpp"
 
 /*typedef struct
 {
@@ -20,6 +21,7 @@
 // uniform index
 enum {
   SAMPLER,
+  COLOR,
   NUM_UNIFORMS
 };
 GLint uniforms[NUM_UNIFORMS];
@@ -28,7 +30,6 @@ GLint uniforms[NUM_UNIFORMS];
 enum {
   ATTRIB_VERTEX,
   ATTRIB_TEXCOORDS,
-  ATTRIB_COLOR,
   NUM_ATTRIBUTES
 };
 
@@ -113,10 +114,11 @@ int InitES2Quads()
   "precision highp float;\n"
   "varying highp vec2 textureUV; \n"
   "uniform sampler2D texture; \n"
+  "uniform vec4 uColor;\n"
   "void main()                                \n"
   "{                                          \n"
   //"  gl_FragColor = vec4(1.0, 1.0, 1.0, .25); \n"
-  "  gl_FragColor = texture2D(texture, textureUV); \n"
+  "  gl_FragColor = texture2D(texture, textureUV) * uColor; \n"
   //"  gl_FragColor.r=1.0; \n"
   "}                                          \n";
   
@@ -170,7 +172,9 @@ int InitES2Quads()
   
   // Get uniform locations
   uniforms[SAMPLER] = glGetUniformLocation(quadProgramObject, "texture");
+  uniforms[COLOR] = glGetUniformLocation(quadProgramObject, "uColor");
 
+  
   //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   return 1;
 }
@@ -182,15 +186,12 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
 {
     //Initialize if needed
   int result = InitES2Quads();
-  
-  GLfloat stack[16];
-  MatrixStack::Instance()->getFloatv(MS_MODELVIEW, stack);
-  
+    
   //printf("Drawing Quad. x:%f, y:%f  w:%f, h:%f\n", x,y,w,h);
   GLint viewport[4];
   glGetIntegerv( GL_VIEWPORT, viewport );
   
-  
+  //printf("Drawing quad!\nr");
   GLfloat vVertices[12] = { x, y, 0,
                             x + w, y, 0,
                             x + w, y + h, 0,
@@ -215,9 +216,14 @@ void DrawQuad(float x, float y, float w, float h, float tleft, float ttop, float
   glUseProgram(quadProgramObject);
   
   glUniform1i(uniforms[SAMPLER], 0);
+  
+  float *color = MatrixStack::Instance()->color();
+  
+  glUniform4f(uniforms[COLOR], color[0], color[1], color[2], color[3]);
 
   glVertexAttribPointer(ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, texCoords);
   glEnableVertexAttribArray(ATTRIB_TEXCOORDS);
+
   
   // Load the vertex data
   glVertexAttribPointer(ATTRIB_VERTEX, 3, GL_FLOAT, GL_FALSE, 0, vVertices);

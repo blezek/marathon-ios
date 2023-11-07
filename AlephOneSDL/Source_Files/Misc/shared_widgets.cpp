@@ -31,13 +31,19 @@
 #include "shared_widgets.h"
 #include <vector>
 #include <algorithm>
-	
+
+#include "AlephOneHelper.h"
 	
 void ChatHistory::append(const ColoredChatEntry& e)
 {
 	m_history.push_back(e);
 	if (m_notificationAdapter)
 		m_notificationAdapter->contentAdded(e);
+  
+  if( shouldAutoBot() && (e.message.compare("go") == 0 || e.message.compare("Go") == 0 || e.message.compare ("GO") == 0) ){
+    doOkInASec();
+    printf("GOT A SHARED GO!\n");
+  }
 }
 
 void ChatHistory::clear ()

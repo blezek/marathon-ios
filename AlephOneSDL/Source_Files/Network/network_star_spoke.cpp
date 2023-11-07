@@ -159,6 +159,7 @@ static void handle_lossy_byte_stream_message(AIStream& ps, IncomingGameDataPacke
 static void process_optional_message(AIStream& ps, IncomingGameDataPacketProcessingContext& context, uint16 inMessageType);
 static bool spoke_tick();
 static void send_packet();
+static void send_position_sync_packet();
 static void send_identification_packet();
 
 
@@ -976,6 +977,11 @@ spoke_tick()
 		if (sHeardFromHub) {
 			if(shouldSend || (sNetworkTicker - sLastNetworkTickSent) >= sSpokePreferences.mRecoverySendPeriod)
 				send_packet();
+      if (sHubIsLocal) {
+        capture_position_sums_and_check_for_dsync();
+      } else if(!(sNetworkTicker % 30)) {
+          send_position_sync_packet();
+      }
 		} else {
 			if (!(sNetworkTicker % 30))
 				send_identification_packet();
@@ -1096,7 +1102,42 @@ send_packet()
         }
 }
 
+static void
+send_position_sync_packet()
+{
+  try {
+    AOStreamBE hdr(sOutgoingFrame->data, kStarPacketHeaderSize);
+    AOStreamBE ps(sOutgoingFrame->data, ddpMaxData, kStarPacketHeaderSize);
+    
+    // Packet type
+    hdr << (uint16)kSpokeToHubPositionSyncSum;
+        
+    player_data *player= get_player_data(sLocalPlayerIndex);
 
+    int32 positionSum = player->location.x + player->location.y + player->location.z;
+    ps << positionSum;
+    
+    //printf ("Position sending: %d\n",positionSum);
+    
+    // blank out the CRC before calculating it
+    sOutgoingFrame->data[2] = 0;
+    sOutgoingFrame->data[3] = 0;
+    
+    uint16 crc = calculate_data_crc_ccitt(sOutgoingFrame->data, ps.tellp());
+    hdr << crc;
+    
+    // Send the packet
+    sOutgoingFrame->data_size = ps.tellp();
+    
+    if(sHubIsLocal)
+      send_frame_to_local_hub(sOutgoingFrame, &sHubAddress, kPROTOCOL_TYPE, 0 /* ignored */);
+    else
+      NetDDPSendFrame(sOutgoingFrame, &sHubAddress, kPROTOCOL_TYPE, 0 /* ignored */);
+    
+  }
+  catch (...) {
+  }
+}
 
 static void
 send_identification_packet()

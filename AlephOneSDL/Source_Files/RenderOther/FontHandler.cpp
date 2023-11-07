@@ -52,6 +52,9 @@ Jan 12, 2001 (Loren Petrich):
 
 #include "OGL_Shader.h"
 
+#include "MatrixStack.hpp"
+#include "AlephOneAcceleration.hpp"
+
 #ifdef HAVE_OPENGL
 set<FontSpecifier*> *FontSpecifier::m_font_registry = NULL;
 #endif
@@ -97,6 +100,10 @@ void FontSpecifier::Init()
 
 void FontSpecifier::Update()
 {
+  if(fontImmutable) {
+    return;
+  }
+  
 	// Clear away
 	if (Info) {
 		unload_font(Info);
@@ -145,8 +152,10 @@ void FontSpecifier::Update()
 		Leading = Info->get_leading();
 		Height = Ascent + Leading;
 		LineSpacing = Ascent + Descent + Leading;
-		for (int k=0; k<256; k++)
+    for (int k=0; k<256; k++) {
 			Widths[k] = char_width(k, Info, Style);
+    }
+    
 	} else
 		Ascent = Descent = Leading = Height = LineSpacing = 0;
 }
@@ -162,7 +171,7 @@ int FontSpecifier::TextWidth(const char *text)
 		return width;
 	while ((c = *text++) != 0)
 		width += Widths[static_cast<unsigned char>(c)];
-	return width;
+  return width;
 }
 
 #ifdef HAVE_OPENGL
@@ -178,7 +187,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	// that indicates that there are no valid texture and display-list ID's.
 	if (!IsStarting && OGL_Texture)
 	{
-		glDeleteTextures(1,&TxtrID);
+		AOA::deleteTextures(1,&TxtrID);
     // DJB OpenGL No need to delete the lists
     // glDeleteLists(DispList,256);
 		OGL_Deregister(this);
@@ -286,8 +295,8 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	
 	// OpenGL stuff starts here 	
  	// Load texture
- 	glGenTextures(1,&TxtrID);
- 	glBindTexture(GL_TEXTURE_2D,TxtrID);
+ 	AOA::genTextures(1,&TxtrID);
+ 	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	OGL_Register(this);
  	
  	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -295,7 +304,7 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, TxtrWidth, TxtrHeight,
+	AOA::texImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, TxtrWidth, TxtrHeight,
 		0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, OGL_Texture);
  	
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -369,6 +378,15 @@ void FontSpecifier::OGL_Reset(bool IsStarting)
 #include "AlephOneHelper.h"
 void FontSpecifier::OGL_Render(const char *Text)
 {
+  Shader *previousShader = NULL;
+  Shader *textShader = NULL;
+  
+  if(useShaderRenderer()) {
+    previousShader = lastEnabledShader();
+    textShader = Shader::get(Shader::S_Rect);
+    textShader->enable();
+  }
+  
 	// Bug out if no texture to render
 	if (!OGL_Texture)
 	{
@@ -387,19 +405,24 @@ void FontSpecifier::OGL_Render(const char *Text)
 	glDisable(GL_ALPHA_TEST);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-	glBindTexture(GL_TEXTURE_2D,TxtrID);
+	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	
-  glVertexPointer(2, GL_SHORT, 0, VertexCache);
 
     //DCW These OpenGl errors are a bit spammy. Turning them off for now.
   if( useShaderRenderer() ){
-    glVertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
-    glEnableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+    AOA::vertexAttribPointer(Shader::ATTRIB_VERTEX, 2, GL_SHORT, GL_FALSE, 0, VertexCache);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_VERTEX);
+    
+    AOA::vertexAttribPointer(Shader::ATTRIB_TEXCOORDS, 2, GL_FLOAT, 0, 0, TextureCache);
+    AOA::enableVertexAttribArray(Shader::ATTRIB_TEXCOORDS);
+
   } else {
+    glVertexPointer(2, GL_SHORT, 0, VertexCache);
     glEnableClientState(GL_VERTEX_ARRAY);
     glTexCoordPointer(2, GL_FLOAT, 0, TextureCache);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
   }
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   
 	size_t Len = MIN(strlen(Text),255);
 	for (size_t k=0; k<Len; k++)
@@ -407,17 +430,40 @@ void FontSpecifier::OGL_Render(const char *Text)
 		unsigned char c = Text[k];
     
     // DJB OpenGL Rather than call the list, just render here glCallList(DispList+c);
-    glTranslatef(-PadCache,0,0);
-
+    if( !useShaderRenderer() ) glTranslatef(-PadCache,0,0);
+    MatrixStack::Instance()->translatef(-PadCache,0,0);
+    
+    if (useShaderRenderer()) {
+      
+      //Set shader uniforms, etc.
+      Shader* lastShader = lastEnabledShader();
+      if (lastShader) {
+        GLfloat modelMatrix[16], projectionMatrix[16], modelProjection[16], modelMatrixInverse[16], textureMatrix[16], media6[4];;
+        MatrixStack::Instance()->getFloatv(MS_TEXTURE, textureMatrix);
+        MatrixStack::Instance()->getFloatvModelviewProjection(modelProjection);
+        
+        lastShader->setMatrix4(Shader::U_MS_ModelViewProjectionMatrix, modelProjection);
+        lastShader->setMatrix4(Shader::U_MS_TextureMatrix, textureMatrix);
+        lastShader->setVec4(Shader::U_MS_Color, MatrixStack::Instance()->color());
+      }
+    }
     
     glDrawArrays(GL_TRIANGLE_FAN, c*4, 4);
-    glTranslatef(WidthCache[c]-PadCache,0,0);
     
-		//glCallList(DispList+c);
+    if( !useShaderRenderer() ) glTranslatef(WidthCache[c]-PadCache,0,0);
+    MatrixStack::Instance()->translatef(WidthCache[c]-PadCache,0,0);
+
+    //glCallList(DispList+c);
 	}
 	
   
   //glPopAttrib();
+  
+    //Restore original shader
+  if(useShaderRenderer() && previousShader) {
+     previousShader->enable();
+  }
+   
 }
 
 

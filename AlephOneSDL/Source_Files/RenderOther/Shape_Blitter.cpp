@@ -93,7 +93,7 @@ int Shape_Blitter::UnscaledHeight()
 
 void Shape_Blitter::OGL_Draw(const SDL_Rect& dst)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
     OGL_Draw(idst);
 }
 void Shape_Blitter::OGL_Draw(const Image_Rect& dst)
@@ -226,10 +226,10 @@ void Shape_Blitter::OGL_Draw(const Image_Rect& dst)
         U_Offset, V_Offset + V_Scale
       };
       GLshort v[8] = {
-        dst.x, dst.y,
-        dst.x + dst.w, dst.y,
-        dst.x + dst.w, dst.y + dst.h,
-        dst.x, dst.y + dst.h
+        static_cast<GLshort>(dst.x), static_cast<GLshort>(dst.y),
+        static_cast<GLshort>(dst.x + dst.w), static_cast<GLshort>(dst.y),
+        static_cast<GLshort>(dst.x + dst.w), static_cast<GLshort>(dst.y + dst.h),
+        static_cast<GLshort>(dst.x), static_cast<GLshort>(dst.y + dst.h)
       };
       glVertexPointer(2, GL_SHORT, 0, v);
       glEnableClientState(GL_VERTEX_ARRAY);
@@ -298,7 +298,7 @@ SDL_Surface *flip_surface(SDL_Surface *s, int width, int height)
 
 void Shape_Blitter::SDL_Draw(SDL_Surface *dst_surface, const SDL_Rect& dst)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
     SDL_Draw(dst_surface, idst);
 }
 
@@ -368,8 +368,8 @@ void Shape_Blitter::SDL_Draw(SDL_Surface *dst_surface, const Image_Rect& dst)
     if (!m_scaled_surface)
         return;
     
-    SDL_Rect r = { crop_rect.x, crop_rect.y, crop_rect.w, crop_rect.h };
-    SDL_Rect sdst = { dst.x, dst.y, dst.w, dst.h };
+  SDL_Rect r = { static_cast<int>(crop_rect.x), static_cast<int>(crop_rect.y), static_cast<int>(crop_rect.w), static_cast<int>(crop_rect.h) };
+  SDL_Rect sdst = { static_cast<int>(dst.x), static_cast<int>(dst.y), static_cast<int>(dst.w), static_cast<int>(dst.h) };
 	SDL_BlitSurface(m_scaled_surface, &r, dst_surface, &sdst);
 }
 

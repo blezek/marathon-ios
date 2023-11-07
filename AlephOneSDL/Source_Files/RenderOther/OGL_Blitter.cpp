@@ -31,6 +31,7 @@
 
 // DJB OpenGL debug
 #include "AlephOneHelper.h"
+#include "AlephOneAcceleration.hpp"
 #include "MatrixStack.hpp"
 
 const int OGL_Blitter::tile_size;
@@ -118,15 +119,15 @@ void OGL_Blitter::_LoadTextures()
 				}
 			}
 			
-			glGenTextures(1, &m_refs[i]);
-			glBindTexture(GL_TEXTURE_2D, m_refs[i]);
+			AOA::genTextures(1, &m_refs[i]);
+			AOA::bindTexture(GL_TEXTURE_2D, m_refs[i], NULL, 1);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_tile_width, m_tile_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t->pixels);
+			AOA::texImage2DCopy(GL_TEXTURE_2D, 0, GL_RGBA, m_tile_width, m_tile_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t->pixels, 1);
 
 			i++;
 		}
@@ -149,7 +150,7 @@ void OGL_Blitter::_UnloadTextures()
 		return;
 	Deregister(this);
 	if (m_refs.size())
-		glDeleteTextures(m_refs.size(), &m_refs[0]);
+		AOA::deleteTextures(m_refs.size(), &m_refs[0]);
 	m_refs.clear();
 	m_rects.clear();
 	m_textures_loaded = false;
@@ -194,7 +195,7 @@ void OGL_Blitter::WindowToScreen(int& x, int& y, bool in_game)
 
 void OGL_Blitter::Draw(const SDL_Rect& dst)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
     Draw(idst);
 }
 
@@ -254,14 +255,26 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 	bool rotating = (rotation > 0.1 || rotation < -0.1);
 	if (rotating)
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
-		glRotatef(rotation, 0.0, 0.0, 1.0);
-		glTranslatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->matrixMode(MS_MODELVIEW);
+      MatrixStack::Instance()->pushMatrix();
+      MatrixStack::Instance()->translatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
+      MatrixStack::Instance()->rotatef(rotation, 0.0, 0.0, 1.0);
+      MatrixStack::Instance()->translatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    } else {
+      glMatrixMode(GL_MODELVIEW);
+      glPushMatrix();
+      glTranslatef((dst.x + dst.w/2.0), (dst.y + dst.h/2.0), 0.0);
+      glRotatef(rotation, 0.0, 0.0, 1.0);
+      glTranslatef(-(dst.x + dst.w/2.0), -(dst.y + dst.h/2.0), 0.0);
+    }
 	}
-	
-	glColor4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  
+  if(useShaderRenderer()) {
+    MatrixStack::Instance()->color4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  } else {
+    glColor4f(tint_color_r, tint_color_g, tint_color_b, tint_color_a);
+  }
 	
 	for (int i = 0; i < m_rects.size(); i++)
 	{
@@ -286,14 +299,19 @@ void OGL_Blitter::Draw(const Image_Rect& dst, const Image_Rect& raw_src)
 		GLfloat ttop    = ((m_rects[i].y + ty) * y_scale) + (GLfloat) (dst.y - (src.y * y_scale));
 		GLfloat tbottom = ttop + (th * y_scale);
 		
-		glBindTexture(GL_TEXTURE_2D, m_refs[i]);
+		AOA::bindTexture(GL_TEXTURE_2D, m_refs[i], NULL, 0);
 		
 		OGL_RenderTexturedRect(tleft, ttop, tright - tleft, tbottom - ttop,
 							   VMin, UMin, VMax, UMax);
 	}
 	
-	if (rotating)
-		glPopMatrix();
+  if (rotating) {
+    if(useShaderRenderer()) {
+      MatrixStack::Instance()->popMatrix();
+    } else {
+      glPopMatrix();
+    }
+  }
   // DJB OpenGL
   // glPopAttrib();
 }

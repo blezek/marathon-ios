@@ -107,4 +107,18 @@
 									 }];
 }
 
++ (void)disappearWithDelay:(UIView*)enclosingView {
+  
+  [UIView animateWithDuration:0.5
+                        delay:0.5
+                      options: UIViewAnimationOptionCurveEaseInOut
+                   animations:^{
+                     enclosingView.layer.transform = CATransform3DMakeScale(1,1,1); //Don't choose 0 for y, otherwise view will instantly vanish.
+                   }
+                   completion:^(BOOL finished){
+                     [enclosingView setHidden:YES];
+                   }];
+}
+
+
 @end

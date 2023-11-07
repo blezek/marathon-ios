@@ -15,8 +15,12 @@
 #include "Mixer.h"
 #import "KeychainItemWrapper.h"
 
+#include "AlephOneHelper.h"
+
 ////#import "Tracking.h"
 @implementation PreferencesViewController
+
+@synthesize prefsScrollView, prefsScrollContents;
 
 @synthesize login, password;
 @synthesize tapShoots;
@@ -31,6 +35,8 @@
 @synthesize hiLowTapsAltFire;
 @synthesize gyroAiming;
 @synthesize tiltTurning;
+@synthesize threeDTouchFires;
+@synthesize dPadAction;
 @synthesize brightness;
 @synthesize autoCenter;
 @synthesize filmsDisabled;
@@ -39,6 +45,9 @@
 @synthesize vidmasterModeLabel, vidmasterMode;
 @synthesize hiresTexturesLabel, hiresTextures;
 @synthesize settingPrefsView;
+@synthesize bloom;
+@synthesize extraFOV;
+@synthesize rendererButton, rendererNote;
 
 - (IBAction)closePreferences:(id)sender {
   // Save the back to defaults
@@ -59,11 +68,14 @@
   }
   
   [defaults setBool:[self.alwaysRun isSelected] forKey:kAlwaysRun];
-  [defaults setBool:[self.smoothMouselook isSelected] forKey:kSmoothMouselook];
+  if(self.smoothMouselook) {[defaults setBool:[self.smoothMouselook isSelected] forKey:kSmoothMouselook];}
   [defaults setBool:[self.onScreenTrigger isSelected] forKey:kOnScreenTrigger];
   [defaults setBool:[self.hiLowTapsAltFire isSelected] forKey:kHiLowTapsAltFire];
   [defaults setBool:[self.gyroAiming isSelected] forKey:kGyroAiming];
   [defaults setBool:[self.tiltTurning isSelected] forKey:kTiltTurning];
+  
+  [defaults setBool:[self.dPadAction isSelected] forKey:kDPadAction];
+  [defaults setBool:[self.threeDTouchFires isSelected] forKey:kThreeDTouchFires];
   
   [defaults setBool:[self.secondTapShoots isSelected] forKey:kSecondTapShoots];
   if ( [self.secondTapShoots isSelected] != [defaults boolForKey:kSecondTapShoots] ) {
@@ -107,20 +119,48 @@
     ////[ Tracking trackEvent:@"settings" action:kVSensitivity label:@"" value: self.vSensitivity.value ];
   }
 
+  [defaults setBool:[self.bloom isSelected] forKey:kUseBloom];
+  [defaults setBool:[self.extraFOV isSelected] forKey:kUseExtraFOV];
+
+  [defaults setBool:![self.rendererButton isSelected] forKey:kUseClassicRenderer];
+  
   [defaults synchronize];
   [PreferencesViewController setAlephOnePreferences:YES checkPurchases:inMainMenu];
   [[GameViewController sharedInstance] updateReticule:-1];
 
+    //The helper will cache renderer settings, since they get read from a lot.
+  cacheRendererQualityPreferences();
+  cacheRendererPreferences();
+  
   [[AlephOneAppDelegate sharedAppDelegate].game closePreferences:sender];
   
   // Crosshairs are set in the UI layer, not by the engine
-  // Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
-  Crosshairs_SetActive(NO);
+  //Crosshairs_SetActive(NO);
+  //DCW changed this; now uses engine reticle.
+  Crosshairs_SetActive([defaults boolForKey:kCrosshairs]);
 
 }
 
 
 - (void)setupUI:(BOOL)inMainMenuFlag {
+  
+  if (prefsScrollView && prefsScrollContents) {
+    
+      //Adjust height of contents to fit the subviews, plus a little extra for padding.
+    float h;
+    for (UIView *v in prefsScrollContents.subviews) {
+        float fh = v.frame.origin.y + v.frame.size.height;
+        h = MAX(fh, h);
+    }
+    [prefsScrollContents setFrame:CGRectMake(prefsScrollContents.frame.origin.x, prefsScrollContents.frame.origin.y, prefsScrollContents.frame.size.width, h + 20)];
+    
+    [prefsScrollView addSubview:prefsScrollContents];
+      //Fix the width, so we can't scroll horizontally.
+    CGSize scrollableSize = CGSizeMake(prefsScrollView.frame.size.width, prefsScrollContents.frame.size.height);
+    prefsScrollView.contentSize = scrollableSize;
+    [prefsScrollView layoutSubviews];
+  }
+  
   //self.settingPrefsView.hidden = YES; //DCW commented out after changinc appear/disappear animations.
   NSArray *sliders = [NSArray arrayWithObjects:self.hSensitivity,
                      self.vSensitivity,
@@ -146,11 +186,34 @@
   [self.crosshairs setSelected:[defaults boolForKey:kCrosshairs]];
   
   [self.alwaysRun setSelected:[defaults boolForKey:kAlwaysRun]];
-  [self.smoothMouselook setSelected:[defaults boolForKey:kSmoothMouselook]];
+  if(self.smoothMouselook) {[self.smoothMouselook setSelected:[defaults boolForKey:kSmoothMouselook]];}
   [self.onScreenTrigger setSelected:[defaults boolForKey:kOnScreenTrigger]];
   [self.hiLowTapsAltFire setSelected:[defaults boolForKey:kHiLowTapsAltFire]];
   [self.gyroAiming setSelected:[defaults boolForKey:kGyroAiming]];
   [self.tiltTurning setSelected:[defaults boolForKey:kTiltTurning]];
+  
+  [self.bloom setHidden:!useShaderRenderer()];
+  [self.bloom setSelected:[defaults boolForKey:kUseBloom]];
+  
+  [self.extraFOV setSelected:[defaults boolForKey:kUseExtraFOV]];
+  
+  if(useClassicVisuals()) {
+    [rendererButton setSelected:false];
+  } else {
+    [rendererButton setSelected:true];
+  }
+  [self setVisualStyleButton];
+  
+  [self.dPadAction setSelected:[defaults boolForKey:kDPadAction]];
+  [self.threeDTouchFires setSelected:[defaults boolForKey:kThreeDTouchFires]];
+  if ( self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable ) {
+    self.threeDTouchFires.hidden = NO;
+    self.threeDTouchFiresLabel.hidden = NO;
+  } else {
+    self.threeDTouchFires.hidden = YES;
+    self.threeDTouchFiresLabel.hidden = YES;
+
+  }
   
   [self.autoCenter setSelected:[defaults boolForKey:kAutocenter]];
   [self.secondTapShoots setSelected:[defaults boolForKey:kSecondTapShoots]];
@@ -198,6 +261,17 @@
   }
 }
 
+- (void)setVisualStyleButton
+{
+    if(rendererButton.isSelected) {
+        [rendererButton setTitle: @"Visuals: HD" forState: UIControlStateNormal];
+        [rendererNote setHidden:!useClassicVisuals()];
+    } else {
+        [rendererButton setTitle: @"Visuals: Classic" forState: UIControlStateNormal];
+        [rendererNote setHidden:useClassicVisuals()];
+    }
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
   [self.view endEditing:YES]; //Dismisses keyboard when our view is touched.
 }
@@ -205,6 +279,8 @@
 -(IBAction) toggleButton:(id)sender {
   if ( [sender isKindOfClass:[UIButton class]] ) {
     [sender setSelected:![sender isSelected]];
+    
+    [self setVisualStyleButton];
   }
 }
 
@@ -219,6 +295,12 @@
 }
 
 + (void)setAlephOnePreferences:(BOOL)notifySoundManager checkPurchases:(BOOL)check{
+  
+  if(!sound_preferences) {
+    MLog ( @"Skipping preferences engine sync. Not yet initialized." );
+    return;
+  }
+  
   MLog ( @"Set preferences from device back to engine" );
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
@@ -227,6 +309,9 @@
   
     //DCW I don't think we need preferences for sound volumes on iOS. I'll just set somthing reasonable here, and let the rocker buttons do the rest.
   sound_preferences->music = ceil ( (double).5 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
+  if(shouldHideHud()) {
+    sound_preferences->music = 0;
+  }
   sound_preferences->volume = ceil ( (double).3 * (NUMBER_OF_SOUND_VOLUME_LEVELS-1) );
 
   SoundManager::instance()->parameters.music = sound_preferences->music;
@@ -248,6 +333,7 @@
   
   [[(BasicHUDViewController*)([[GameViewController sharedInstance] HUDViewController]) lookPadView] setHidden: ![defaults boolForKey:kOnScreenTrigger]];
 
+  cacheInputPreferences();
   
   float sens;
   sens = [defaults floatForKey:kVSensitivity];

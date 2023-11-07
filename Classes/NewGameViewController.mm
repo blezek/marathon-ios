@@ -12,6 +12,8 @@
 #include "map.h"
 #import "Effects.h"
 
+#import "AlephOneHelper.h"
+
 @implementation NewGameViewController
 @synthesize easyButton;
 @synthesize normalButton;
@@ -82,6 +84,7 @@ static vector<entry_point> levels;
  */
 
 - (void)appear {
+  
   /*
   self.pledge.layer.cornerRadius = 20.0;
   self.pledge.layer.borderColor = [[UIColor grayColor] CGColor];
@@ -98,9 +101,17 @@ static vector<entry_point> levels;
   _rugby_entry_point |
   _capture_the_flag_entry_point;
    */
-  const int32 AllPlayableLevels = _single_player_entry_point;
+  int32 playableLevels = _single_player_entry_point;
   
-  if (!get_entry_points(levels, AllPlayableLevels)) {
+  if(usingA1DEBUG()) {
+    playableLevels = _single_player_entry_point | _multiplayer_carnage_entry_point;
+  }
+  
+  if(survivalMode()) {
+    playableLevels = _multiplayer_carnage_entry_point;
+  }
+  
+  if (!get_entry_points(levels, playableLevels)) {
     entry_point dummy;
     dummy.level_number = 0;
     strcpy(dummy.level_name, "Untitled Level");
@@ -159,7 +170,8 @@ static vector<entry_point> levels;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Overriden to allow any orientation.
-  return ( interfaceOrientation == UIInterfaceOrientationLandscapeRight );
+  return (interfaceOrientation == UIInterfaceOrientationLandscapeRight
+          || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 

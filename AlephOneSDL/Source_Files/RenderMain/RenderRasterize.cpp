@@ -51,6 +51,7 @@ Sep 2, 2000 (Loren Petrich):
 //DCW
 #include "MatrixStack.hpp"
 #include "AlephOneHelper.h"
+#include "DrawCache.hpp"
 
 /* maximum number of vertices a polygon can be world-clipped into (one per clip line) */
 #define MAXIMUM_VERTICES_PER_WORLD_POLYGON (MAXIMUM_VERTICES_PER_POLYGON+4)
@@ -81,6 +82,12 @@ void RenderRasterizerClass::render_tree(RenderStep renderStep)
 	
 	// LP change: added support for semitransparent liquids
 	bool SeeThruLiquids = get_screen_mode()->acceleration != _no_acceleration ? TEST_FLAG(Get_OGL_ConfigureData().Flags,OGL_Flag_LiqSeeThru) : graphics_preferences->software_alpha_blending != _sw_alpha_off;
+  
+  //There is a bug here where setting SeeThruLiquids to 0 makes 5d space sometimes appear beneath it. Disabling until there is a fix.
+  if(useClassicVisuals()) {
+    SeeThruLiquids = 0;
+  }
+  SeeThruLiquids = 1;
   
 	/* walls, ceilings, interior objects, floors, exterior objects for all nodes, back to front */
 	for (node= SortedNodes.begin(); node != SortedNodes.end(); ++node)
@@ -193,7 +200,9 @@ void RenderRasterizerClass::render_node(
     if (media) {
       float h = media->height;
       
-      GLfloat plane[] = { 0.0, 0.0, 1.0, -h + (headBelowMedia() ? -2.0 : 2.0) }; //Artifically reduce/increase the plane height a bit, to reduce fighting at media surface.
+      GLfloat plane[] = { 0.0, 0.0, 1.0, 0.0 };
+      plane[3] = (0-h) + (headBelowMedia() ? -2.0 : 2.0); //Artifically reduce/increase the plane height a bit, to reduce fighting at media surface.
+      
       MatrixStack::Instance()->clipPlanef(6, plane);
       MatrixStack::Instance()->enablePlane(6);
 
@@ -319,7 +328,7 @@ void RenderRasterizerClass::render_node(
 	
 	// LP: render the liquid surface after the walls and the stuff behind it
 	// and before the stuff before it.
-	if (media && SeeThruLiquids)
+	if (media && SeeThruLiquids && renderStep != kDiffuseDepthNoMedia)
 	{
 		
 		// Render only if between the floor and the ceiling:
@@ -337,11 +346,14 @@ void RenderRasterizerClass::render_node(
 			LiquidSurface.transfer_mode= media->transfer_mode;
 			LiquidSurface.transfer_mode_data= 0;
 			
+      //We need to flush before drawing see-through liquids.
+      //In the future, we should cache this status so we can buffer media surfaces, too.
+      DC()->drawAll();
+      
 			for (window= node->clipping_windows; window; window= window->next_window)
 			{
         render_node_floor_or_ceiling(window, polygon, &LiquidSurface, false, ceil, renderStep);
 			}
-      
 		}
 	}
 	

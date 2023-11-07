@@ -16,6 +16,8 @@
 #include "screen.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
+#include "computer_interface.h" //Used for player in terminal check
+#include "SDL_syswm.h"
 
 #import "PreferencesViewController.h"
 
@@ -24,12 +26,43 @@ extern "C" {
   #include "SDL_mouse_c.h"
 }
 
-//DCW
+//raw movement deltas for gyro and misc. input
 float iosDeltaX;
 float iosDeltaY;
+
+//raw movement deltas for touches.
+float iosDeltaTouchX;
+float iosDeltaTouchY;
+
+  //Deltas intended for not the next frame, but the one after that.
+float futureFrameDeltaX;
+float futureFrameDeltaY;
+
+//movement deltas as of start of new frame.
+float thisFrameDX;
+float thisFrameDY;
+
+NSTimeInterval frameEndTime;
+
 bool smartTriggerActive;
+bool monsterOnLeft;
+bool monsterOnRight;
 bool canSmartFirePrimary;
-bool canSmartFireSecondary;
+
+bool shouldDoOk;
+
+bool swapJoypadSticks;
+
+bool shouldUseClassicRenderer;
+bool shouldUseClassicTextures;
+bool shouldUseClassicSprites;
+bool shouldUseTransparentLiquids;
+bool shouldUseBloom;
+bool shouldUseExtraFOV;
+
+int screenLongDimension;
+int screenShortDimension;
+float screenScale;
 
 NSString *dataDir;
 
@@ -65,6 +98,45 @@ void printGLError( const char* message ) {
   }
 }
 
+void* getLayerFromSDLWindow(SDL_Window *main_screen)
+{
+  SDL_SysWMinfo wmi;
+  SDL_VERSION(&wmi.version);
+  SDL_GetWindowWMInfo(main_screen, &wmi);
+
+  NSLog(@"SDL UIView type: %@", NSStringFromClass([wmi.info.uikit.window.rootViewController.view class]));
+  NSLog(@"SDL UIView Layer type: %@", NSStringFromClass([wmi.info.uikit.window.rootViewController.view.layer class]));
+  NSLog(@"SDL UIView Layer size (h,w): %f, %f", wmi.info.uikit.window.rootViewController.view.layer.bounds.size.height, wmi.info.uikit.window.rootViewController.view.layer.bounds.size.width);
+
+  if( [wmi.info.uikit.window.rootViewController.view.layer isKindOfClass:[CAMetalLayer class]] ) {
+    NSLog(@"Setting CAMetalLayer size?");
+    CAMetalLayer *mLayer = (CAMetalLayer*)wmi.info.uikit.window.rootViewController.view.layer;
+    NSLog(@"CAMetalLayer drawable size (h,w): %f, %f", [mLayer drawableSize].height, [mLayer drawableSize].width);
+
+  }
+  
+  return wmi.info.uikit.window.rootViewController.view.layer;
+}
+
+void setDefaultA1View()
+{
+  UIWindow *a1Window = [[UIApplication sharedApplication] keyWindow];
+  UIView *a1View = [a1Window rootViewController].view;
+  GameViewController *game = [GameViewController sharedInstance];
+  [game setOpenGLView:(SDL_uikitopenglview*)a1View];
+}
+
+
+char* randomName31() {
+  NSString *randomWords = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"web2a" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+  NSArray *randomWordList = [randomWords componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  
+  NSString *aRandomName = [randomWordList count] == 0 ? nil : randomWordList[arc4random_uniform([randomWordList count])];
+  aRandomName = (aRandomName.length > 31 ) ? [aRandomName substringToIndex:31] : aRandomName; //Make sure it fits in PREFERENCES_NAME_LENGTH and MAX_NET_PLAYER_NAME_LENGTH
+  
+  return (char*)(aRandomName ? [aRandomName UTF8String] : [@"Bobert" UTF8String]);
+}
+
 char* getDataDir() {
   // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   // dataDir = [paths objectAtIndex:0];
@@ -74,7 +146,6 @@ char* getDataDir() {
   return (char*)[dataDir UTF8String];
   
 }
-
 
 char* getLocalDataDir() {
   NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -93,6 +164,7 @@ char* getLocalTmpDir() {
 
 char* LANIP( char *prefix, char *suffix) {
   NSString *address = @"N/A";
+  bool foundOurFavoriteInterface = NO;
   struct ifaddrs *interfaces = NULL;
   struct ifaddrs *temp_addr = NULL;
   int success = 0;
@@ -107,8 +179,8 @@ char* LANIP( char *prefix, char *suffix) {
         if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
           // Get NSString from C String
           address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-          
-        } else if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"bridge100"]) {
+          foundOurFavoriteInterface=YES;
+        } else if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"bridge100"] && !foundOurFavoriteInterface) {
           address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
         }
         
@@ -177,6 +249,12 @@ void switchBackToGameView() {
 void gotoMenu() {
   [[GameViewController sharedInstance] gotoMenu:nil];
 }
+
+void display_net_game_stats_helper() {
+  [[GameViewController sharedInstance] switchToSDLMenu];
+  [[GameViewController sharedInstance] performSelectorOnMainThread:@selector(displayNetGameStatsCommand) withObject:nil waitUntilDone:NO];
+}
+
 
 void switchToSDLMenu() {
   [[GameViewController sharedInstance] switchToSDLMenu];
@@ -267,11 +345,6 @@ void getSomeTextFromIOS(char *label, const char *currentText)  {
   
 }
 
-
-void helperHideHUD() {
-  [[GameViewController sharedInstance] hideHUD];
-}
-
 void helperBeginTeleportOut() {
   [[GameViewController sharedInstance] teleportOut];
 }
@@ -333,49 +406,50 @@ void setKey(SDL_Keycode key, bool down) {
 }
 
 //DCW
+void moveMouseRelativeAtInterval(float dx, float dy, double movedInterval)
+{
+  if ( movedInterval >= frameEndTime ) {
+    futureFrameDeltaX+=dx;
+    futureFrameDeltaY+=dy;
+    //NSLog(@"Touches moved for next frame" );
+  } else {
+    iosDeltaTouchX+=dx;
+    iosDeltaTouchY+=dy;
+    //NSLog(@"Touches moved" );
+  }
+}
+
 void moveMouseRelative(float dx, float dy)
 {
-  
-  //float w, h;
-  //w = MainScreenWindowWidth();
-  //h = MainScreenWindowHeight();
-  
   iosDeltaX+=dx;
   iosDeltaY+=dy;
-
-  //SDL_SendMouseMotion (NULL, SDL_TOUCH_MOUSEID, true, dx + w/2.0, dy + h/2.0); //Movement is relative to center of screen
   
   return;
 }
-void moveMouseRelativeAcceleratedOverTime(float dx, float dy, float timeInterval)
-{
+
+void grabMovementDeltasForCurrentFrameAtInterval(double timeStamp) {
   
-  moveMouseRelative(dx, dy);
-  return;
-  //This is currently broken. :(
+    //Calculate when this frame will end. It should be 1/30th of a second.
+  frameEndTime = timeStamp + (1.0/30.0);
   
-  float xRate = fabs(dx/timeInterval);
-  float yRate = fabs(dy/timeInterval);
+  thisFrameDX += iosDeltaX + iosDeltaTouchX;
+  thisFrameDY += iosDeltaY + iosDeltaTouchY;
   
-  float ax = .1 * dx * xRate;// / timeInterval;
-  float ay = .1 * dy * yRate;// / timeInterval;
-  
-  
-  //NSLog(@"Original: %f Acceleration: %f", dx, .01 * dx / timeInterval );
-  
-  dx += ax;
-  dy += ay;
-  
-  moveMouseRelative(dx, dy);
-  
-  return;
+  iosDeltaX=0;
+  iosDeltaY=0;
+  iosDeltaTouchX=futureFrameDeltaX;
+  iosDeltaTouchY=futureFrameDeltaY;
+  futureFrameDeltaX = 0;
+  futureFrameDeltaY = 0;
 }
 
 void slurpMouseDelta(float *dx, float *dy) {
-  *dx=iosDeltaX;
-  *dy=-iosDeltaY;
-  iosDeltaX=0;
-  iosDeltaY=0;
+  
+  *dx=thisFrameDX;
+  *dy=-thisFrameDY;
+  
+  thisFrameDX = 0;
+  thisFrameDY = 0;
 }
 
 void helperGetMouseDelta ( int *dx, int *dy ) {
@@ -388,36 +462,49 @@ void clearSmartTrigger() {
   if(smartTriggerActive){
     //Stop firing!
     [[GameViewController sharedInstance] stopPrimaryFire];
-    [[GameViewController sharedInstance] stopSecondaryFire];
   }
   smartTriggerActive=0;
+  monsterOnLeft=0;
+  monsterOnRight=0;
 }
 bool smartTriggerEngaged(){
   MLog(@"Smart trigger: %d", smartTriggerActive);
   return smartTriggerActive;
 }
 void monsterIsCentered () {
-  if(canSmartFirePrimary || canSmartFireSecondary)
+  
+  if(canSmartFirePrimary)
   {
     smartTriggerActive = 1;
   }
   
-  if (smartTriggerActive && canSmartFirePrimary ){
+  if (smartTriggerActive && canSmartFirePrimary){
     [[GameViewController sharedInstance] startPrimaryFire];
-  }
-  if (smartTriggerActive && canSmartFireSecondary ){
-    [[GameViewController sharedInstance] startSecondaryFire];
   }
   
   return;
 }
+
+void monsterIsOnLeft (){
+  monsterOnLeft=YES;
+}
+void monsterIsOnRight (){
+  monsterOnRight=YES;
+}
+
+bool isMonsterCentered (){
+  return smartTriggerActive;
+}
+bool isMonsterOnLeft (){
+  return monsterOnLeft;
+}
+bool isMonsterOnRight (){
+  return monsterOnRight;
+}
+
 void setSmartFirePrimary(bool fire){
   canSmartFirePrimary=fire;
 }
-void setSmartFireSecondary(bool fire){
-  canSmartFireSecondary=fire;
-}
-
 
 extern GLfloat helperPauseAlpha() {
   return [[GameViewController sharedInstance] getPauseAlpha];
@@ -427,19 +514,109 @@ void helperSetPreferences( int notify) {
   [PreferencesViewController setAlephOnePreferences:notify checkPurchases:YES];
 }
 
+bool getLocalPlayer () {
+  return local_player;
+}
+
+float extraFieldOfView () {
+  return shouldUseExtraFOV ? 20 : 0;
+}
+
 bool headBelowMedia () {
+  
+  if( !local_player ) {
+    return 0;
+  }
+  
   return local_player->variables.flags&_HEAD_BELOW_MEDIA_BIT;
 }
 
-bool useShaderRenderer() {
+bool playerInTerminal () {
+  return player_in_terminal_mode(local_player_index);
+}
+
+//Hide HUD for filming and screenshot purposes
+bool shouldHideHud () {
   return 0;
 }
+
+void cacheInputPreferences() {
+  swapJoypadSticks = [[NSUserDefaults standardUserDefaults] boolForKey:kSwapJoysticks];
+}
+
+bool shouldswapJoysticks() {
+  return swapJoypadSticks;
+}
+
+
+void cacheRendererPreferences() {
+  shouldUseClassicRenderer = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicRenderer];
+  shouldUseClassicTextures = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicTextures];
+  shouldUseClassicSprites = [[NSUserDefaults standardUserDefaults] boolForKey:kUseClassicSprites];
+
+  cacheRendererQualityPreferences();
+}
+
+void cacheRendererQualityPreferences() {
+  shouldUseBloom = [[NSUserDefaults standardUserDefaults] boolForKey:kUseBloom];
+  shouldUseTransparentLiquids = [[NSUserDefaults standardUserDefaults] boolForKey:kUseTransparentLiquids];
+  shouldUseExtraFOV = [[NSUserDefaults standardUserDefaults] boolForKey:kUseExtraFOV];
+}
+
+bool useClassicVisuals() {
+  return shouldUseClassicRenderer;
+}
+
+bool useShaderRenderer() {
+  return true; // From now on, alway use shader, even for classic style!
+  //return !shouldUseClassicRenderer;
+}
 bool useShaderPostProcessing() {
-  return 1;
+  return shouldUseBloom;
 }
   //Set to 1 for fast debugging, by lauching directly into last saved game.
 bool fastStart () {
   return 0;
+}
+
+bool usingA1DEBUG () {
+  #if defined(A1DEBUG)
+    return 1;
+  #endif
+  
+  return 0;
+}
+
+bool survivalMode () {
+  return 0;
+}
+
+bool shouldAutoBot() {
+  return 0;
+}
+
+void doOkInASec() {
+  
+  [[GameViewController sharedInstance] performSelector:@selector(setDialogOk) withObject:nil afterDelay:2];
+
+}
+
+void doOkOnNextDialog( bool ok ) {
+  shouldDoOk = ok;
+}
+
+bool okOnNextDialog() {
+  if(shouldDoOk) {
+    shouldDoOk = 0;
+    return 1;
+  }
+  return 0;
+}
+
+  //Do we ever want to allow double cliock actions?
+  //Probable never, so tapping movepad doesn't trigger action.
+bool shouldAllowDoubleClick () {
+  return NO;
 }
 
 short pRecord[128][2];
@@ -548,13 +725,24 @@ extern "C" int helperRetinaDisplay() {
 }
 
 	//DCW
-extern "C" int helperLongScreenDimension() {
-  return [AlephOneAppDelegate sharedAppDelegate].longScreenDimension;
+void helperCacheScreenDimension() {
+  screenLongDimension = [AlephOneAppDelegate sharedAppDelegate].longScreenDimension ;
+  screenShortDimension = [AlephOneAppDelegate sharedAppDelegate].shortScreenDimension;
+  screenScale = [[UIScreen mainScreen] scale];
 }
-extern "C" int helperShortScreenDimension() {
-	return [AlephOneAppDelegate sharedAppDelegate].shortScreenDimension;
+
+int helperLongScreenDimension() {
+  if (screenLongDimension == 0) helperCacheScreenDimension();
+  return screenLongDimension;
 }
 
+int helperShortScreenDimension() {
+	if (screenShortDimension == 0) helperCacheScreenDimension();
+  return screenShortDimension;
+}
 
-
+float helperScreenScale(){
+  if (screenScale == 0) helperCacheScreenDimension();
+  return screenScale;
+}
 

@@ -9,6 +9,7 @@
 #import "HUDViewController.h"
 
 #import "AlephOneAppDelegate.h"
+#import "GameViewController.h"
 
 extern "C" { 
 #include "SDL_keyboard_c.h"
@@ -84,7 +85,8 @@ extern "C" {
 // Noops
 - (void)dimActionKey {}
 - (void)lightActionKeyWithTarget:(short)target_type objectIndex:(short)object_index {}
-
+- (void)updateSwimmingIndicator {}
+- (void)updateEscapeButtonVisibility {}
 
 - (void)mouseDeltaX:(int*)dx deltaY:(int*)dy {
   *dx = 0; *dy = 0;
@@ -140,6 +142,17 @@ extern "C" {
 }
 - (IBAction)inventoryUp:(id)sender {
   setKey(inventoryKey, 0);
+}
+- (IBAction)doAction:(id)sender {
+    //Pause gyro if in refuel.
+  if ([[GameViewController sharedInstance].HUDViewController lookingAtRefuel]){
+    [[GameViewController sharedInstance].HUDViewController.lookPadView pauseGyro];
+    
+    [self performSelector:@selector(actionDown:) withObject:self afterDelay:0.05];
+  } else {
+    [self actionDown:self];
+  }
+  [self performSelector:@selector(actionUp:) withObject:self afterDelay:0.15];
 }
 - (IBAction)actionDown:(id)sender {
   setKey(actionKey, 1);
@@ -207,6 +220,13 @@ extern "C" {
 
 }
 
+- (IBAction)escapeDown:(id)sender {
+  setKey(SDL_SCANCODE_ESCAPE, 1);
+}
+- (IBAction)escapeUp:(id)sender{
+  setKey(SDL_SCANCODE_ESCAPE, 0);
+}
+
 - (IBAction)netStatsDown:(id)sender {
   SDL_Event stats, unstats;
   stats.type = SDL_KEYDOWN;
@@ -225,6 +245,11 @@ extern "C" {
 - (IBAction)doConsole:(id)sender{
   [self consoleDown:self];
   [self performSelector:@selector(consoleUp:) withObject:self afterDelay:0.10];
+}
+
+- (IBAction)doEscape:(id)sender{
+  [self escapeDown:self];
+  [self performSelector:@selector(escapeUp:) withObject:self afterDelay:0.10];
 }
 
 - (IBAction)doNetStats:(id)sender{
@@ -260,7 +285,6 @@ extern "C" {
 
 - (void)dimActionKey:(short)actionType {}
 - (void)lightActionKey:(short)actionType {}
-
 
 - (void)dealloc
 {

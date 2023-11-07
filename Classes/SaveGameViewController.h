@@ -14,7 +14,12 @@
 @interface SaveGameViewController : UITableViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UIView *uiView;
   IBOutlet SavedGameCell *savedGameCell;
-  IBOutlet UIButton *loadButton;
+  
+  UIButton *easyButton;
+  UIButton *normalButton;
+  UIButton *hardButton;
+  UIButton *nightmareButton;
+  
   IBOutlet UIButton *duplicateButton;
   IBOutlet UIButton *deleteButton;
 @private
@@ -46,7 +51,10 @@
 
 @property (nonatomic, retain) IBOutlet UIView *uiView;
 @property (nonatomic, retain) IBOutlet SavedGameCell *savedGameCell;
-@property (nonatomic, retain) IBOutlet UIButton *loadButton;
+@property (nonatomic, retain) IBOutlet UIButton *easyButton;
+@property (nonatomic, retain) IBOutlet UIButton *normalButton;
+@property (nonatomic, retain) IBOutlet UIButton *hardButton;
+@property (nonatomic, retain) IBOutlet UIButton *nightmareButton;
 @property (nonatomic, retain) IBOutlet UIButton *duplicateButton;
 @property (nonatomic, retain) IBOutlet UIButton *deleteButton;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;

@@ -52,7 +52,8 @@ static _fixed snapshot_delta_scrollwheel;
 static int snapshot_delta_x, snapshot_delta_y;
 
 //DCW
-static float lost_x, lost_y;
+static float lost_x, lost_y; //Stores the unrepresented mouselook precision.
+static float lost_x_at_last_sample, lost_y_at_last_sample; //Stores the unrepresented mouse presion values as of sample time, which can be used by the renderer. Capturing this value eliminates jitter in multiplayer.
 static bool smooth_mouselook;
 
 /*
@@ -132,7 +133,7 @@ void mouse_idle(short type)
 		if (input_preferences->raw_mouse_input)
 			OSX_Mouse_GetMouseMovement(&snapshot_delta_x, &snapshot_delta_y);
 #endif*/
-		
+    
     
 		// Calculate axis deltas
 		float dx = snapshot_delta_x;
@@ -145,6 +146,22 @@ void mouse_idle(short type)
     {
       snapshot_delta_x = 0;
       snapshot_delta_y = 0;
+    }
+    
+    
+    if( shouldAutoBot()) {
+      setSmartFirePrimary(1); //Autobot always shoots!
+      
+      if(isMonsterCentered() || isMonsterOnLeft() || isMonsterOnRight()) {
+        if(isMonsterOnLeft()){
+          dx += 3;
+        } else if(isMonsterOnRight()){
+          dx -= 3;
+        }
+      } else {
+        dx += 20; //Just spin in place if we don't see anyone
+      }
+      
     }
     
 		// Mouse inversion
@@ -206,36 +223,20 @@ void mouse_idle(short type)
     lost_x /= (float)FIXED_ONE;
     lost_y /= (float)FIXED_ONE;
     
-    short game_state = get_game_state();
-    smooth_mouselook = smoothMouselookPreference() ;//&& (game_state==_game_in_progress || game_state ==_switch_demo) && (game_state==_single_player || game_state==_network_player);
-
+    //Discard lost_y if it would put the view beyond the pitch limits.
+    _fixed minimumAbsolutePitch, maximumAbsolutePitch;
+    get_absolute_pitch_range(&minimumAbsolutePitch, &maximumAbsolutePitch);
+    if((local_player->variables.elevation == minimumAbsolutePitch && dy < 0.0) || (local_player->variables.elevation == maximumAbsolutePitch && dy > 0.0)) { lost_y=0.0; }
+    
+    smooth_mouselook = smoothMouselookPreference() && player_controlling_game() && !PLAYER_IS_DEAD(local_player);
  	}
 }
 
 //DCW
 //Returns the currently not-represented mouse precision as a fraction of a yaw and pitch unit.
 //This might be useful to render the view with more precise yaw or pitch.
-float lostMousePrecisionX() { return (lost_x*(float)FIXED_ONE)/512.0; }
-float lostMousePrecisionY() { return (lost_y*(float)FIXED_ONE)/2048.0; }
-
-
-double interpolateAngleTable( int16 *theTable, int16 yaw ){
-  //DCW mouselook smoothing test
-  double table_value = double(theTable[yaw]);
-  double adjacent_table_value = theTable[nextNearestYawIndex(yaw)];
-  
-  return interpolateUsingLostX(adjacent_table_value, table_value);
-}
-
-double interpolateUsingLostX(double adjacent_value, double value) {
-  double xPercentage = fabs(lostMousePrecisionX());
-  return(xPercentage*adjacent_value + (1.0-xPercentage)*value);
-}
-
-double interpolateUsingLostY(double adjacent_value, double value) {
-  double yPercentage = fabs(lostMousePrecisionY());
-  return(yPercentage*adjacent_value + (1.0-yPercentage)*value);
-}
+float lostMousePrecisionX() { return ( (float)shouldSmoothMouselook() * ((lost_x_at_last_sample*(float)FIXED_ONE)/512.0) - 0.5); }
+float lostMousePrecisionY() { return ( (float)shouldSmoothMouselook() * ((lost_y_at_last_sample*(float)FIXED_ONE)/2048.0) - 0.5); }
 
 double cosine_table_calculated(double i) {
   double two_pi= 8.0*atan(1.0);
@@ -252,46 +253,7 @@ double sine_table_calculated(double i) {
 bool shouldSmoothMouselook(){
   return smooth_mouselook;
 }
-int16 nextNearestYawIndex( int16 yaw ){
-  if (lostMousePrecisionX() > 0){
-    if( (yaw + 1) == NUMBER_OF_ANGLES ) {
-      return 0;
-    } else {
-      return yaw + 1;
-    }
-  } else {
-    if( (yaw - 1) < 0 ) {
-      return NUMBER_OF_ANGLES-1;
-    } else {
-      return yaw - 1;
-    }
-  }
-}
 
-int16 nextNearestPitchIndex( int16 pitch ){
-  //Unlike yaw, pitch does not wrap, so we clamp at the ends of the array.
-  if (lostMousePrecisionY() > 0){
-    if( (pitch + 1) == NUMBER_OF_ANGLES ) {
-      return pitch;
-    } else {
-      return pitch + 1;
-    }
-  } else {
-    if( (pitch - 1) < 0 ) {
-      return pitch;
-    } else {
-      return pitch - 1;
-    }
-  }
-}
-
-double interpolateAngleTableForPitch( int16 *theTable, int16 pitch ){
-  //DCW mouselook smoothing test
-  double table_value = double(theTable[pitch]);
-  double adjacent_table_value = theTable[nextNearestPitchIndex(pitch)];
-  
-  return interpolateUsingLostY(adjacent_table_value, table_value);
-}
 
 /*
  *  Return mouse state
@@ -300,10 +262,12 @@ double interpolateAngleTableForPitch( int16 *theTable, int16 pitch ){
 void test_mouse(short type, uint32 *flags, _fixed *delta_yaw, _fixed *delta_pitch, _fixed *delta_velocity)
 {
 	if (mouse_active) {
+    //printf ("Sampled mouse: %d\n", snapshot_delta_yaw);
 		*delta_yaw = snapshot_delta_yaw;
 		*delta_pitch = snapshot_delta_pitch;
 		*delta_velocity = 0;  // Mouse-driven player velocity is unimplemented
-
+    lost_x_at_last_sample = lost_x;
+    lost_y_at_last_sample = lost_y;
 		snapshot_delta_yaw = snapshot_delta_pitch = 0;
 	} else {
 		*delta_yaw = 0;

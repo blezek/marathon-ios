@@ -33,7 +33,9 @@ public:
 	virtual void setupGL();
 	virtual void Begin();
 	virtual void End();
-
+  
+  int  Height();
+  int  Width();
 };
 
 #endif

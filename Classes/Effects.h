@@ -22,5 +22,6 @@
 	//DCW
 + (void)disappearHidingView:(UIView*)enclosingView;
 + (void)appearRevealingView:(UIView*)enclosingView;
++ (void)disappearWithDelay:(UIView*)enclosingView;
 
 @end

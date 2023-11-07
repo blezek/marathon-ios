@@ -27,6 +27,8 @@
 #include "cseries.h"
 #include "OGL_Model_Def.h"
 #include "OGL_Setup.h"
+#include "AlephOneAcceleration.hpp"
+
 
 #ifdef HAVE_OPENGL
 
@@ -219,7 +221,7 @@ void OGL_SkinManager::Reset(bool Clear_OGL_Txtrs)
 			for (int l=0; l<NUMBER_OF_TEXTURES; l++)
 			{
 				if (IDsInUse[k][l])
-					glDeleteTextures(1,&IDs[k][l]);
+					AOA::deleteTextures(1,&IDs[k][l]);
 			}
 	}
 	
@@ -276,11 +278,11 @@ bool OGL_SkinManager::Use(short CLUT, short Which)
 	bool LoadSkin = false;
 	if (!InUse)
 	{
-		glGenTextures(1,&TxtrID);
+		AOA::genTextures(1,&TxtrID);
 		InUse = true;
 		LoadSkin = true;
 	}
-	glBindTexture(GL_TEXTURE_2D,TxtrID);
+	AOA::bindTexture(GL_TEXTURE_2D,TxtrID, NULL, 0);
 	return LoadSkin;
 }
 

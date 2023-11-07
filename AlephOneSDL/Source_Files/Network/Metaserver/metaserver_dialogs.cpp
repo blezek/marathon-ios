@@ -38,6 +38,8 @@
 #include "Update.h"
 #include "progress.h"
 
+#include "AlephOneHelper.h"
+
 extern ChatHistory gMetaserverChatHistory;
 extern MetaserverClient* gMetaserverClient;
 
@@ -234,6 +236,7 @@ void GlobalMetaserverChatNotificationAdapter::receivedChatMessage(const std::str
 	color_entry(e, gMetaserverClient->find_player(senderID));
 
 	gMetaserverChatHistory.append(e);
+  
 	PlayInterfaceButtonSound(_snd_computer_interface_logon);
 }
 

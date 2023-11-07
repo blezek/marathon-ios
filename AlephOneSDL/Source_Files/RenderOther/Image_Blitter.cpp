@@ -154,14 +154,14 @@ int Image_Blitter::UnscaledHeight()
 
 void Image_Blitter::Draw(SDL_Surface *dst_surface, const SDL_Rect& dst)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
     Draw(dst_surface, idst);
 }
 
 void Image_Blitter::Draw(SDL_Surface *dst_surface, const SDL_Rect& dst, const SDL_Rect& src)
 {
-    Image_Rect idst = { dst.x, dst.y, dst.w, dst.h };
-    Image_Rect isrc = { src.x, src.y, src.w, src.h };
+  Image_Rect idst = { static_cast<float>(dst.x), static_cast<float>(dst.y), static_cast<float>(dst.w), static_cast<float>(dst.h) };
+  Image_Rect isrc = { static_cast<float>(src.x), static_cast<float>(src.y), static_cast<float>(src.w), static_cast<float>(src.h) };
     Draw(dst_surface, idst, isrc);
 }
 
@@ -196,8 +196,8 @@ void Image_Blitter::Draw(SDL_Surface *dst_surface, const Image_Rect& dst, const 
 	if (!src_surface)
 		return;
   
-    SDL_Rect ssrc = { src.x, src.y, src.w, src.h };
-    SDL_Rect sdst = { dst.x, dst.y, dst.w, dst.h };
+  SDL_Rect ssrc = { static_cast<int>(src.x), static_cast<int>(src.y), static_cast<int>(src.w), static_cast<int>(src.h) };
+  SDL_Rect sdst = { static_cast<int>(dst.x), static_cast<int>(dst.y), static_cast<int>(dst.w), static_cast<int>(dst.h) };
 	SDL_BlitSurface(src_surface, &ssrc, dst_surface, &sdst);
 }
 

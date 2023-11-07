@@ -146,6 +146,7 @@ struct network_preferences_data
 	bool mute_metaserver_guests;
 	bool join_metaserver_by_default;
 	bool allow_stats;
+  bool detect_desync;
 };
 
 struct player_preferences_data

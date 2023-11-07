@@ -187,6 +187,7 @@ static std::string get_name_from_system()
 #if defined(unix) || (defined (__APPLE__) && defined (__MACH__)) || defined(__NetBSD__) || defined(__OpenBSD__)
 
 	const char *login_name = getlogin();
+  
 	std::string login = (login_name ? login_name : "");
 	if (login.length())
 		return login;
@@ -2500,8 +2501,12 @@ void read_preferences ()
   //| OGL_Flag_BumpMap
   //| OGL_Flag_Fader;
   
-  graphics_preferences->OGL_Configure.Flags &= ~OGL_Flag_FlatStatic; //DCW turn off flat static
-    
+  if( useShaderRenderer() ) {
+    graphics_preferences->OGL_Configure.Flags &= ~OGL_Flag_FlatStatic; //DCW turn off flat static
+  } else {
+    graphics_preferences->OGL_Configure.Flags |= OGL_Flag_FlatStatic; //DCW on flat static
+  }
+  
 	// Slurp in the file and parse it
 
 	FileSpecifier FileSpec;
@@ -2984,6 +2989,8 @@ InfoTree network_preferences_tree()
 	root.put_attr("check_for_updates", network_preferences->check_for_updates);
 	root.put_attr("verify_https", network_preferences->verify_https);
 	root.put_attr("metaserver_login", network_preferences->metaserver_login);
+  root.put_attr("detect_desync", network_preferences->detect_desync);
+
 
 	char passwd[33];
 	for (int i = 0; i < 16; i++)
@@ -3177,6 +3184,7 @@ static void default_network_preferences(network_preferences_data *preferences)
 	preferences->metaserver_colors[1] = get_interface_color(PLAYER_COLOR_BASE_INDEX);
 	preferences->join_metaserver_by_default = false;
 	preferences->allow_stats = false;
+  preferences->detect_desync = true;
 }
 
 static void default_player_preferences(player_preferences_data *preferences)
@@ -3347,6 +3355,7 @@ static bool validate_network_preferences(network_preferences_data *preferences)
 	// Fix bool options
 	preferences->allow_microphone = !!preferences->allow_microphone;
 	preferences->game_is_untimed = !!preferences->game_is_untimed;
+  preferences->detect_desync = !!preferences->detect_desync;
 
 	if(preferences->type<0||preferences->type>_ethernet)
 	{
@@ -3365,13 +3374,19 @@ static bool validate_network_preferences(network_preferences_data *preferences)
 		changed= true;
 	}
 
-	if(preferences->allow_microphone != true && preferences->allow_microphone != false)
+  if(preferences->allow_microphone != true && preferences->allow_microphone != false)
+  {
+    preferences->allow_microphone= true;
+    changed= true;
+  }
+  
+	if(preferences->detect_desync != true && preferences->detect_desync != false)
 	{
-		preferences->allow_microphone= true;
+		preferences->detect_desync= true;
 		changed= true;
 	}
-
-	if(preferences->game_type<0 || preferences->game_type >= NUMBER_OF_GAME_TYPES)
+  
+  	if(preferences->game_type<0 || preferences->game_type >= NUMBER_OF_GAME_TYPES)
 	{
 		preferences->game_type= _game_of_kill_monsters;
 		changed= true;
@@ -3657,10 +3672,18 @@ void parse_graphics_preferences(InfoTree root, std::string version)
 			tex.read_attr("resolution", Config.Resolution);
 			tex.read_attr("color_format", Config.ColorFormat);
 			tex.read_attr("max_size", Config.MaxSize);
+      
+      if(useClassicVisuals()){
+        Config.FarFilter=2;
+        Config.NearFilter=2;
+      }
+      
 		}
 	}
+  
 }
 
+extern bool use_lua_hud_crosshairs;
 
 void parse_player_preferences(InfoTree root, std::string version)
 {
@@ -3671,7 +3694,7 @@ void parse_player_preferences(InfoTree root, std::string version)
 	root.read_attr("difficulty", player_preferences->difficulty_level);
 	root.read_attr("bkgd_music", player_preferences->background_music_on);
 	root.read_attr("crosshairs_active", player_preferences->crosshairs_active);
-	
+  
 	BOOST_FOREACH(InfoTree child, root.children_named("chase_cam"))
 	{
 		child.read_attr("behind", player_preferences->ChaseCam.Behind);
@@ -3694,6 +3717,18 @@ void parse_player_preferences(InfoTree root, std::string version)
 		BOOST_FOREACH(InfoTree color, child.children_named("color"))
 			color.read_color(player_preferences->Crosshairs.Color);
 	}
+  
+  //DCW manually activate crosshairs. 
+  player_preferences->crosshairs_active=1;
+  player_preferences->Crosshairs.Thickness=2;
+  player_preferences->Crosshairs.FromCenter=8;
+  player_preferences->Crosshairs.Length=16;
+  player_preferences->Crosshairs.Shape=0;
+  player_preferences->Crosshairs.Opacity=0.5;
+  player_preferences->Crosshairs.Color.red=1.0;
+  player_preferences->Crosshairs.Color.green=1.0;
+  player_preferences->Crosshairs.Color.blue=1.0;
+  
 }
 
 SDL_Scancode translate_old_key(int code)
@@ -3927,6 +3962,7 @@ void parse_network_preferences(InfoTree root, std::string version)
 	root.read_attr("join_by_address", network_preferences->join_by_address);
 	root.read_cstr("join_address", network_preferences->join_address, 255);
 	root.read_attr("local_game_port", network_preferences->game_port);
+  root.read_attr("detect_desync", network_preferences->detect_desync);
 
 	std::string protocol;
 	if (root.read_attr("game_protocol", protocol))
@@ -4016,5 +4052,8 @@ void parse_environment_preferences(InfoTree root, std::string version)
 			Plugins::instance()->disable(tempstr);
 		}
 	}
+  
+  
+  
 }
 

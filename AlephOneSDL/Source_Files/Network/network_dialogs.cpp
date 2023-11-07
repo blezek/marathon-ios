@@ -96,6 +96,8 @@ Apr 10, 2003 (Woody Zenfell):
 #include "SoundManager.h"
 #include "progress.h"
 
+#include "AlephOneHelper.h"
+
 
 extern void NetRetargetJoinAttempts(const IPaddress* inAddress);
 
@@ -411,9 +413,19 @@ void GatherDialog::StartGameHit ()
 
 void GatherDialog::JoinSucceeded(const prospective_joiner_info* player)
 {
-	if (NetGetNumberOfPlayers () > 1)
+  if (NetGetNumberOfPlayers () > 1) {
 		m_startWidget->activate ();
+  }
 	
+  if(shouldAutoBot()) {
+    if (NetGetNumberOfPlayers () <= 2) {
+      m_chatEntryWidget->set_text("You are the only human here! Wait for some real players, then type GO to start a game.");
+    } else {
+      m_chatEntryWidget->set_text("Yo Dawg! Wait here for more players, or type GO to start a game.");
+    }
+    sendChat();
+  }
+  
 	m_pigWidget->redraw ();
 
 	if (gMetaserverClient->isConnected())
@@ -485,6 +497,12 @@ void GatherDialog::ReceivedMessageFromPlayer(
 	e.message = message;
 
 	gPregameChatHistory.append(e);
+
+  if( shouldAutoBot() && (e.message.compare("go") == 0 || e.message.compare("Go") == 0 || e.message.compare ("GO") == 0) ){
+    doOkOnNextDialog(1);
+    printf("GOT A GO!\n");
+  }
+  
 }
 
 /****************************************************
@@ -587,7 +605,13 @@ const int JoinDialog::JoinNetworkGameByRunning ()
 	binders.insert<bool> (m_joinByAddressWidget, &joinByAddressPref);
 	
 	CStringPref namePref (player_preferences->name, MAX_NET_PLAYER_NAME_LENGTH);
-	binders.insert<std::string> (m_nameWidget, &namePref);
+  
+  //DCW if we get a generic mobile name from the system, replace it with something random.
+  if(strcmp(player_preferences->name, "mobile") == 0){
+    namePref.bind_import(randomName31());
+  }
+  
+  binders.insert<std::string> (m_nameWidget, &namePref);
 	Int16Pref colourPref (player_preferences->color);
 	binders.insert<int> (m_colourWidget, &colourPref);
 	Int16Pref teamPref (player_preferences->team);
@@ -1025,7 +1049,8 @@ SetupNetgameDialog::~SetupNetgameDialog ()
 	delete m_scriptWidget;
 	
 	delete m_allowMicWidget;
-	
+  delete m_detectDesyncWidget;
+  
 	delete m_liveCarnageWidget;
 	delete m_motionSensorWidget;
 	
@@ -1117,6 +1142,12 @@ bool SetupNetgameDialog::SetupNetworkGameByRunning (
 	BinderSet binders;
 	
 	CStringPref namePref (player_preferences->name, MAX_NET_PLAYER_NAME_LENGTH);
+  
+  //DCW if we get a generic mobile name from the system, replace it with something random.
+  if(strcmp(player_preferences->name, "mobile") == 0){
+    namePref.bind_import(randomName31());
+  }
+  
 	binders.insert<std::string> (m_nameWidget, &namePref);
 	Int16Pref colourPref (player_preferences->color);
 	binders.insert<int> (m_colourWidget, &colourPref);
@@ -1156,6 +1187,9 @@ bool SetupNetgameDialog::SetupNetworkGameByRunning (
 	
 	BoolPref allowMicPref (active_network_preferences->allow_microphone);
 	binders.insert<bool> (m_allowMicWidget, &allowMicPref);
+  
+  BoolPref detectDesyncPref (active_network_preferences->detect_desync);
+  binders.insert<bool> (m_detectDesyncWidget, &detectDesyncPref);
 	
 	BitPref liveCarnagePref (active_network_preferences->game_options, _live_network_stats);
 	binders.insert<bool> (m_liveCarnageWidget, &liveCarnagePref);
@@ -1302,7 +1336,7 @@ bool SetupNetgameDialog::SetupNetworkGameByRunning (
 			// but that means prefs reading/writing have to be reworked instead
 		//	strncpy(network_preferences->netscript_file, theNetscriptFile.GetPath(), sizeof(network_preferences->netscript_file));
 		//}
-		
+    
 		return true;
 
 	} else // dialog was cancelled
@@ -1449,6 +1483,9 @@ bool SetupNetgameDialog::informationIsAcceptable ()
 		if (game_limit_type == duration_time_limit)
 		{
 			information_is_acceptable = m_timeLimitWidget->get_value () >= 1;
+      #if defined(A1DEBUG)
+      information_is_acceptable = TRUE; //Anything goes in Debug mode!
+      #endif
 		}
 		
 	if (information_is_acceptable)
@@ -2345,7 +2382,7 @@ send_text_fake(w_text_entry* te) {
 void display_net_game_stats(void)
 {
 //printf("display_net_game_stats\n");
-
+  //return;//dcw shit test
   switchToSDLMenu(); //DCW
   
 	if (gMetaserverClient) 
@@ -2410,8 +2447,10 @@ void display_net_game_stats(void)
     }
     
     d.set_widget_placer(placer);
-    
+  
+  if( !shouldAutoBot()) {
     d.run();
+  }
 }
 
 class SdlGatherDialog : public GatherDialog
@@ -2716,18 +2755,28 @@ public:
 		right_placer->dual_add(new w_static_text("Network"), m_dialog);
 		table_placer *network_table = new table_placer(2, get_theme_space(ITEM_WIDGET));
 		network_table->col_flags(1, placeable::kAlignLeft);
-
+    
 		w_toggle *advertise_on_metaserver_w = new w_toggle (sAdvertiseGameOnMetaserver);
-		network_table->dual_add(advertise_on_metaserver_w, m_dialog);
-		network_table->dual_add(advertise_on_metaserver_w->label("Advertise Game on Internet"), m_dialog);
+
+    if(shouldAutoBot()) {
+      network_table->dual_add(advertise_on_metaserver_w, m_dialog);
+      network_table->dual_add(advertise_on_metaserver_w->label("Advertise Game on Internet"), m_dialog);
+    }
 
 		w_toggle *use_upnp_w = new w_toggle (true);
+#ifndef MAC_APP_STORE
 		network_table->dual_add(use_upnp_w, m_dialog);
 		network_table->dual_add(use_upnp_w->label("Configure UPnP Router"), m_dialog);
+#endif
 
 		w_toggle* realtime_audio_w = new w_toggle(network_preferences->allow_microphone);
 		network_table->dual_add(realtime_audio_w, m_dialog);
 		network_table->dual_add(realtime_audio_w->label("Allow Microphone"), m_dialog);
+    
+    w_toggle* detect_desync_w = new w_toggle(network_preferences->detect_desync);
+    network_table->dual_add(detect_desync_w, m_dialog);
+    network_table->dual_add(detect_desync_w->label("Detect Out-Of-Sync Players"), m_dialog);
+
 
 		w_select_popup *latency_tolerance_w = new w_select_popup();
 		horizontal_placer *latency_placer = new horizontal_placer(get_theme_space(ITEM_WIDGET));
@@ -2908,6 +2957,7 @@ public:
 		m_scriptWidget = new FileChooserWidget (choose_script_w);
 	
 		m_allowMicWidget = new ToggleWidget (realtime_audio_w);
+    m_detectDesyncWidget = new ToggleWidget (detect_desync_w);
 
 		m_liveCarnageWidget = new ToggleWidget (live_w);
 		m_motionSensorWidget = new ToggleWidget (sensor_w);
@@ -2925,7 +2975,7 @@ public:
 	
 	virtual bool Run ()
 	{		
-		return (m_dialog.run () == 0);
+		return (m_dialog.run () == 0 );
 	}
 
 	virtual void Stop (bool result)
@@ -3102,7 +3152,7 @@ bool network_gather(void) {
 	game_information.initial_random_seed= network_game_info->initial_random_seed;
 	game_information.difficulty_level= network_game_info->difficulty_level;
 
-    display_net_game_stats();
+      display_net_game_stats_helper();//display_net_game_stats();
     } // if setup box was OK'd
     return false;
 }
