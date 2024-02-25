@@ -285,8 +285,6 @@
 		5176926C1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926D1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
 		5176926E1D9AE4FD00945B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */; };
-		517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
-		517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC97F1E5A2478004B42FF /* GameController.framework */; };
 		517BC9E01E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E11E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
 		517BC9E21E5A2DD4004B42FF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */; };
@@ -497,6 +495,9 @@
 		51CFD23F21EA9332002F9A46 /* Images M1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD23E21EA9331002F9A46 /* Images M1.xcassets */; };
 		51CFD24121EA933B002F9A46 /* Images M2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24021EA933B002F9A46 /* Images M2.xcassets */; };
 		51CFD24321EA9345002F9A46 /* Images M3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CFD24221EA9344002F9A46 /* Images M3.xcassets */; };
+		51D41FBE2B8A3C8E00E7996A /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D41FBD2B8A3C8E00E7996A /* GameController.framework */; };
+		51D41FBF2B8A3C9400E7996A /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D41FBD2B8A3C8E00E7996A /* GameController.framework */; };
+		51D41FC02B8A3C9500E7996A /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D41FBD2B8A3C8E00E7996A /* GameController.framework */; };
 		51E9FD6A2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
 		51E9FD6B2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
 		51E9FD6C2006A0C600ADD38A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9FD692006A0C500ADD38A /* libavcodec.a */; };
@@ -2405,7 +2406,6 @@
 		51577608261FAB140062A73F /* Monaco.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; name = Monaco.dfont; path = Resources/Monaco.dfont; sourceTree = "<group>"; };
 		516ECE8C1F46195800D38BB2 /* GenericLoadingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericLoadingBackground.png; sourceTree = "<group>"; };
 		5176926B1D9AE4FD00945B31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
-		517BC97F1E5A2478004B42FF /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		517D19FE23FAF04700B0878E /* AlephOneAcceleration.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AlephOneAcceleration.cpp; path = Classes/AlephOneAcceleration.cpp; sourceTree = "<group>"; };
 		517D19FF23FAF04800B0878E /* AlephOneAcceleration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlephOneAcceleration.hpp; path = Classes/AlephOneAcceleration.hpp; sourceTree = "<group>"; };
@@ -2537,6 +2537,7 @@
 		51CFD23E21EA9331002F9A46 /* Images M1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M1.xcassets"; sourceTree = "<group>"; };
 		51CFD24021EA933B002F9A46 /* Images M2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M2.xcassets"; sourceTree = "<group>"; };
 		51CFD24221EA9344002F9A46 /* Images M3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images M3.xcassets"; sourceTree = "<group>"; };
+		51D41FBD2B8A3C8E00E7996A /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		51E9FD692006A0C500ADD38A /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "submodules/Libraries/FFmpeg-iOS/lib/libavcodec.a"; sourceTree = SOURCE_ROOT; };
 		51E9FD6D2007F86600ADD38A /* bungie-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bungie-logo.png"; path = "Resources/GUI/bungie-logo.png"; sourceTree = "<group>"; };
 		51E9FFCF202BBE7A00ADD38A /* MatrixStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MatrixStack.cpp; path = Classes/MatrixStack.cpp; sourceTree = "<group>"; };
@@ -3542,7 +3543,6 @@
 				51AADD7F2056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
 				512E0C041E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
 				515775B9261F628D0062A73F /* libSDL2_ttf.a in Frameworks */,
-				517BC9801E5A2478004B42FF /* GameController.framework in Frameworks */,
 				A8CB80ED13A28662004D6DBD /* AudioToolbox.framework in Frameworks */,
 				A8AD43511222125200A09383 /* CoreData.framework in Frameworks */,
 				A85E684A11CB173A00D0FAEF /* Foundation.framework in Frameworks */,
@@ -3554,6 +3554,7 @@
 				51919B10245C8BA700DFB6AC /* libbxRelease.a in Frameworks */,
 				514D349A1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D258723FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
+				51D41FBF2B8A3C9400E7996A /* GameController.framework in Frameworks */,
 				A85E685611CB173A00D0FAEF /* CFNetwork.framework in Frameworks */,
 				514D349E1E59678B0011BAFD /* VideoToolbox.framework in Frameworks */,
 				51041DD21EAAF02300129201 /* libFreetype2.a in Frameworks */,
@@ -3605,6 +3606,7 @@
 				51AADD7D2056FB3F00829264 /* libbz2.1.0.dylib in Frameworks */,
 				515303191DAD716200B0F62A /* CoreMotion.framework in Frameworks */,
 				A883DC7312F5CEE60041543F /* MobileCoreServices.framework in Frameworks */,
+				51D41FBE2B8A3C8E00E7996A /* GameController.framework in Frameworks */,
 				51324A351EAAE33E00BA8D8F /* libswresample.a in Frameworks */,
 				517D1A2123FC6E5E00B0878E /* Metal.framework in Frameworks */,
 				A883DC7412F5CEE60041543F /* Security.framework in Frameworks */,
@@ -3645,7 +3647,6 @@
 				51AADD812056FB3F00829264 /* libz.1.1.3.dylib in Frameworks */,
 				A88123E512C7826300A1A08E /* MobileCoreServices.framework in Frameworks */,
 				512E0C061E70C85D000B0C98 /* ImageIO.framework in Frameworks */,
-				517BC9821E5A2478004B42FF /* GameController.framework in Frameworks */,
 				51C730461E59027900558D7D /* CoreAudio.framework in Frameworks */,
 				A88123E612C7826300A1A08E /* SystemConfiguration.framework in Frameworks */,
 				A88123D812C7826300A1A08E /* CoreData.framework in Frameworks */,
@@ -3657,6 +3658,7 @@
 				A883DC7912F5CEFB0041543F /* CFNetwork.framework in Frameworks */,
 				517D258923FFA8AA00B0878E /* MetalKit.framework in Frameworks */,
 				A883DC7A12F5CEFB0041543F /* Foundation.framework in Frameworks */,
+				51D41FC02B8A3C9500E7996A /* GameController.framework in Frameworks */,
 				A883DC7B12F5CEFB0041543F /* Security.framework in Frameworks */,
 				514D349C1E5966F40011BAFD /* CoreVideo.framework in Frameworks */,
 				517D1A2223FC6E5E00B0878E /* Metal.framework in Frameworks */,
@@ -3796,13 +3798,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51D41FBD2B8A3C8E00E7996A /* GameController.framework */,
 				517D1A1F23FC6E5E00B0878E /* Metal.framework */,
 				517D258623FFA8A900B0878E /* MetalKit.framework */,
 				513436E82266CAE600435C9D /* GameController.framework */,
 				51A6CB8521A1FEBA00D2C4ED /* StoreKit.framework */,
 				512E0C031E70C85D000B0C98 /* ImageIO.framework */,
 				517BC9DF1E5A2DD3004B42FF /* OpenGLES.framework */,
-				517BC97F1E5A2478004B42FF /* GameController.framework */,
 				514D349D1E59678A0011BAFD /* VideoToolbox.framework */,
 				514D34991E5966F40011BAFD /* CoreVideo.framework */,
 				514D348D1E5965580011BAFD /* CoreMedia.framework */,
@@ -8281,12 +8283,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8368,11 +8368,10 @@
 				MARKETING_VERSION = 5.11.1;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "M2 2023 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8387,12 +8386,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 82636XW3TE;
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",
@@ -8471,11 +8468,10 @@
 				);
 				MARKETING_VERSION = 5.11.1;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alephonesdg.m2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swirlingvortex.m2;
 				PRODUCT_NAME = Durandal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "M2 2023 App Store";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -8493,7 +8489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TZ45ZW2588;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/boost_1_63_0",

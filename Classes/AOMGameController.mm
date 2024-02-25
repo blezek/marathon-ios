@@ -8,6 +8,10 @@
 
 #import "AOMGameController.h"
 #import "GameViewController.h"
+#import "GameController/GCExtendedGamepad.h"
+#import "GameController/GCControllerButtonInput.h"
+#import "GameController/GCControllerDirectionPad.h"
+#import "GameController/GCControllerAxisInput.h"
 
 extern "C" {
 #include "SDL_keyboard_c.h"
@@ -129,13 +133,11 @@ extern "C" {
 }
 
 - (void)handleControllerInput {
-  
-  
-  
+    
   // register block for input change detection
   
   GCExtendedGamepad *profile = self.mainController.extendedGamepad;
-  
+	
   profile.valueChangedHandler = ^(GCExtendedGamepad *gamepad, GCControllerElement *element)
   
   {
@@ -149,10 +151,10 @@ extern "C" {
       lookThumbstick = gamepad.leftThumbstick;
       moveThumbstick = gamepad.rightThumbstick;
     }
-    
+    		
     //Triggers. Only activate if this is a current element, so we don't interfere with smart trigger.
-    if (gamepad.rightTrigger == element) {
-      setKey(primaryFire, gamepad.rightTrigger.isPressed);
+    if ( gamepad.buttonA == element ) {
+      setKey(primaryFire, gamepad.buttonA.isPressed);
     }
     if (gamepad.leftTrigger == element) {
       setKey(secondaryFire, gamepad.leftTrigger.isPressed);
@@ -182,11 +184,10 @@ extern "C" {
         SET_FLAG(input_preferences->modifiers,_inputmod_interchange_swim_sink, false);
       }
     }
-    
-    // d-pad
+
+		// d-pad
     float moveStickToDirectionThreshold=0.2;
     if (gamepad.dpad == element || moveThumbstick == element ) {
-
       setKey(moveLeft,    gamepad.dpad.left.isPressed  || moveThumbstick.xAxis.value < (0-moveStickToDirectionThreshold));
       setKey(moveRight,   gamepad.dpad.right.isPressed || moveThumbstick.xAxis.value > moveStickToDirectionThreshold );
       setKey(moveBack,    gamepad.dpad.down.isPressed  || moveThumbstick.yAxis.value < (0-moveStickToDirectionThreshold) );
@@ -216,12 +217,11 @@ extern "C" {
 
     //NSLog(@"Controller thing: %@", message);
 
-   /* [[self mainController]  setControllerPausedHandler: ^(GCController *controller) {
-      NSLog(@"Controller PAUSE!");
-    } ];*/
+   // [[self mainController]  setControllerPausedHandler: ^(GCController *controller) {
+   //   NSLog(@"Controller PAUSE!");
+   // } ];
     
   };
-  
     
 }
 
