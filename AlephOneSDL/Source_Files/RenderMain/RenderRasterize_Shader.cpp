@@ -1774,6 +1774,11 @@ void RenderRasterize_Shader::render_viewer_sprite_layer(RenderStep renderStep)
   MatrixStack::Instance()->popMatrix();
   
   MatrixStack::Instance()->matrixMode(GL_MODELVIEW);
+	
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 struct ExtendedVertexData
