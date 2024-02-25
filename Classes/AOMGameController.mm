@@ -153,8 +153,8 @@ extern "C" {
     }
     		
     //Triggers. Only activate if this is a current element, so we don't interfere with smart trigger.
-    if ( gamepad.buttonA == element ) {
-      setKey(primaryFire, gamepad.buttonA.isPressed);
+    if ( gamepad.rightTrigger == element ) {
+      setKey(primaryFire, gamepad.rightTrigger.isPressed);
     }
     if (gamepad.leftTrigger == element) {
       setKey(secondaryFire, gamepad.leftTrigger.isPressed);
